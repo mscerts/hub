@@ -7,6 +7,7 @@ Everything you need to navigate the certification world.
 
 - [ ] GitHub part:
 - [ ] De-reddit-fy the posts
+- [ ] Move images
 - [ ] Complete the sources
 - [ ] Update the individual pages
 - [ ] Add specific page for any discounted deal currently out there
