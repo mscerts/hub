@@ -1,7 +1,7 @@
 # Microsoft-Certifications
 Everything you need to navigate the certification world.
 
-- [x] Exist
+- [x] Exist //Irrelevant, certifications will find you even if you don't exist
 
 ## GitHub To-Do
 - [x] De-reddit-fy the posts
