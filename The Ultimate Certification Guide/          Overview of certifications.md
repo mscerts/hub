@@ -34,7 +34,7 @@ If you only take the SC-100 exam, you will receive the badge for SC-100 exam, bu
 
 You can see the difference here:
 
-**To pass an exam you need 70% of the total score so your score can't be lower than 700/1000. Scoring is individual and depends on the question set you receive. If you want to get familiar with the testing process, I have thoroughly described it in this post:** [**How to take Microsoft Exams**](https://www.reddit.com/r/SCICertifications/comments/10sa4cx/how_to_take_a_microsoft_exam/).
+**To pass an exam you need 70% of the total score so your score can't be lower than 700/1000. Scoring is individual and depends on the question set you receive. If you want to get familiar with the testing process, I have thoroughly described it in this post:** [**How to take Microsoft Exams**](%20%20%20%20%20%20How%20to%20take%20Microsoft%20Exams.md).
 
 **There are 4 certification types in total:**
 
@@ -54,7 +54,7 @@ Fundamental certifications are good for life and will never expire, even when th
 
 * Associate certifications are very technical certifications that often require hands-on experience with the technology (Hands-on isn't required but it makes studying and preparation easier). They are aimed at professionals who want to certify their skills.
 * When taking the exam, you will have 100 minutes (if it can have a lab in it, you get 120 minutes) + 20 minutes where you will have to read NDA and go through questionnaires.
-* Associate certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](https://www.reddit.com/r/SCICertifications/comments/wcxnw1/certification_renewal/).
+* Associate certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](%20%20Certification%20Renewal.md).
 
 **Expert**
 
