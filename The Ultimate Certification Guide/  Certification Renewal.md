@@ -31,3 +31,9 @@ Renewal assessment:
 * Is free!
 
 You can access the renewals in your certification dashboard here: [https://aka.ms/certdashboard](https://aka.ms/certdashboard)
+
+**Sources**
+
+[Renew your Microsoft Certifications | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/renew-your-microsoft-certification)
+[Renew your Microsoft Certifications - FAQ | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/renew-your-microsoft-certification-faq)
+
