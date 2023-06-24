@@ -12,7 +12,7 @@
 
 To get to the certificating, you first need to create a personal Microsoft account. You don't want to use company email account that you can lose access to because if the account was deleted, it would be a huge pain in the ass to transfer the certificates, if it is even possible.
 
-After creating the account, you need to register with Microsoft Learn. After that you can go straight into making the certification profile. [Microsoft Learning Exam Registration](https://examregistration.microsoft.com/MyProfile/?locale=en-us) (if the URL isn't working, go to any exam page and order the exam, it will have the same effect).
+After creating the account, you need to register with Microsoft Learn. After that you can go straight into making the certification profile. [Microsoft Learning Exam Registration](https://go.microsoft.com/fwlink/?linkid=2188912) (if the URL isn't working, go to any exam page and order the exam, it will have the same effect).
 
 It is extremely important to fill the information in as accurately as possible, because those details will be compared to your ID documents that you will present when arriving at the testing center/online exam. You will also have to present these details to Microsoft certification support for verification purposes and this is the place where most of them are.
 
