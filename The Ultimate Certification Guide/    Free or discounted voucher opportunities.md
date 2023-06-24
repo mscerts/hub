@@ -14,27 +14,6 @@ As Microsoft is trying to get more people to learn about cloud there are lots of
 
 # 100% off
 
-[**~~Microsoft Virtual Training Days~~**](https://www.microsoft.com/en-us/trainingdays) ~~- Microsoft VTDs are the easiest way to get into Microsoft Cloud Certifications. They are specific pre-recorded webinars that when you attend, you will receive a 100% off voucher (there is usually page with VTDs specifically for your country that will have more time zone friendly times.~~
-
-~~Other than the universal page, there are a lot of regional pages with more dates, here are some more to check out:~~ [~~Microsoft Virtual Training Days~~](https://mvtd.events.microsoft.com/?ocid=AID3032310_QSG_529831)~~,~~ [~~Microsoft Virtual Training Days~~](https://www.microsoft.com/en-ca/sites/microsoft-training-days/?EventTitle=&index=0&RecordCount=12&OrderBy=Date%20(ascending)&EventTypesNew=Fundamental&ProductCategory=Azure_Dynamics+365_Microsoft+365_Power+Platform_Security&wt.mc_id=)~~,~~ [~~Microsoft Virtual Training Days~~](https://www.microsoft.com/cs-cz/trainingdays)~~.~~
-
-&#x200B;
-
-* ~~For~~ **~~AZ-900~~** ~~voucher attend~~ [**~~Microsoft Azure Virtual Training Day: Fundamentals~~**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&format=Digital&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Fundamentals)
-* ~~For~~ **~~AI-900~~** ~~voucher attend~~ [**~~Microsoft Azure Virtual Training Day: AI Fundamentals~~**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&format=Digital&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20AI%20Fundamentals)
-* ~~For~~ **~~DP-900~~** ~~voucher attend~~ [**~~Microsoft Azure Virtual Training Day: Data Fundamentals~~**](https://events.microsoft.com/en-us/allevents/?clientTimeZone=1&format=Digital&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Data%20Fundamentals&language=English)
-* ~~For~~ **~~MB-910~~** ~~voucher attend~~ [**~~Microsoft Dynamics 365 Virtual Training Day: Fundamentals (CRM)~~**](https://events.microsoft.com/en-us/allevents/?clientTimeZone=1&format=Digital&language=English&search=Microsoft%20Dynamics%20365%20Virtual%20Training%20Day:%20Fundamentals%20(CRM))
-* ~~For~~ **~~MB-920~~** ~~voucher attend~~ [**~~Microsoft Dynamics 365 Virtual Training Day: Fundamentals (ERP)~~**](https://events.microsoft.com/en-us/allevents/?clientTimeZone=1&format=Digital&language=English&search=Microsoft%20Dynamics%20365%20Virtual%20Training%20Day:%20Fundamentals%20(ERP))
-* ~~For~~ **~~PL-900~~** ~~voucher attend~~ [**~~Microsoft Power Platform Virtual Training Day: Fundamentals~~**](https://events.microsoft.com/en-us/allevents/?clientTimeZone=1&format=Digital&language=English&search=Microsoft%20Power%20Platform%20Virtual%20Training%20Day:%20Fundamentals)
-* ~~For~~ **~~SC-900~~** ~~voucher attend~~ [**~~Microsoft Security Virtual Training Day: Security, Compliance, and Identity Fundamentals~~**](https://events.microsoft.com/en-us/allevents/?clientTimeZone=1&format=Digital&language=English&search=Microsoft%20Security%20Virtual%20Training%20Day:%20Security,%20Compliance%20and%20Identity%20Fundamentals)
-* ~~For~~ **~~MS-700~~** ~~voucher attend~~ [**~~Microsoft 365 Virtual Training Day: Enable Hybrid Work with Microsoft Teams~~**](https://events.microsoft.com/en-us/allevents/?clientTimeZone=1&format=Digital&language=English&search=Microsoft%20365%20Virtual%20Training%20Day:%20Enable%20Hybrid%20Work%20with%20Microsoft%20Teams)
-
-~~For some reason there is no VTD for MS-900 but instead there is for MS-700 which is an associate level exam.~~
-
-~~After attending all of the webinars (no activity during them is required) you will be eligible for a 100% off discount voucher for any above-mentioned exam. The voucher will be added to your certification profile, more information on that is here:~~ [~~Creating Certification Profile~~](https://www.reddit.com/r/SCICertifications/comments/w8w1yv/creating_certification_profile/?utm_source=share&utm_medium=web2x&context=3)~~. VTD FAQ can be found~~ [~~here~~](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWG1g3)~~.~~
-
-**Virtual Training Days are no longer offering Free exam vouchers.**
-
 **Microsoft** [**Build**](https://aka.ms/buildcsc) **and** [**Ignite**](https://aka.ms/ignitecsc) **Cloud Skills Challenges** \- Microsoft Build usually happens in Fall and Ignite in Spring. Historically both of the events end with a Cloud Skills Challenge.
 
 * You enter the challenge and will have the option to complete one of the predetermined learning paths. You don't actually need to read those or answer the questions correctly at the end of modules, so if you don't have much time you can skip through the content and read it during your preparation later.
