@@ -26,43 +26,13 @@ The biggest change from the now ending competencies is that requirements require
 
 Also, now it will be significantly harder to obtain designations for smaller companies so if you can renew the legacy Gold/Silver, do it. Action pack and specializations will remain unchanged.
 
-[**~~Microsoft Cloud Partner Weeks~~**](https://aka.ms/mscloudweeks)
-
-~~Microsoft Cloud weeks are weeklong learning events, where:~~
-
-* ~~There are daily webinars from MCTs on the exam tracks~~
-* ~~You can do the labs for tracks that have them (labs are delivered through labsondemand)~~
-* ~~Daily Q&A sessions~~
-* ~~DMOC code for the exam~~
-* ~~100% universal exam voucher code (was able to order beta exam with it, no restrictions only 1 voucher per cloud week)~~
-* ~~Microsoft Partner resources are always changing so it is possible that not all the mentioned above will still happen in the future.~~
-
 [**Microsoft demo environments**](https://cdx.transform.microsoft.com/)
 
 For long term demo tenants (there are other resources but this is the most significant one), this is the best way to get them for free. The tenants are only missing license for E5 for devices (it is probably Windows 365 E5 but it isn't specified from what I have found). You can even have one for a year and create them on demand.
 
-[**Microsoft Partner Community Forums**](https://www.microsoftpartnercommunity.com/t5/Communities/ct-p/communities)
+[**Microsoft Techcommunity for Partners**](https://techcommunity.microsoft.com/t5/partner-discussion-topics/ct-p/PartnerDiscuss)
 
 These are the communication channels, where you can see 99% of any news or changes happening to everything. I recommend subscribing to the community in your region to stay up to date on all the cool stuff
-
-[**~~Partner Skills Academy~~**](https://partner.skills-academy.com/program/)
-
-~~Partner Skills academy is a program made for partners in the CEE region nominated by Microsoft (usually through the people who are managing the partners).~~
-
-~~You can ask if your company is in this program but there is a chance no one will even know about this, after that you can try making the account and looking into the checkout to see if your company is eligible.~~
-
-~~If you really wanted, you could ask for your company in the comments and I can look there for you if you don't want to create another account but I am leaving that one up to your discretion.~~
-
-~~Since Microsoft is slowly destroying all programs that are actually useful for partners, I can't promise anything but here is info on how it worked in the past.~~
-
-* ~~You create an account on their portal~~
-* ~~You buy a package and during checkout you will find your company in the list and enter MPN ID~~
-* ~~You will receive an email containing access to all the resources you just bought (It was MeasureUp, Labs, DMOC and their live sessions)~~
-* ~~After you study, you will then use a registration form to register for your exam and after a few days someone will register it to your certification profile~~
-* ~~You sit the exam (pass or fail, it doesn't matter) and use a special form to send them your exam report confirming you have attended the exam.~~
-* ~~After a few days you will get your money refunded, making the whole process free of charge~~
-
-**~~You need to know the company's MPN ID which you can only access with a user account from that company so there isn't a possibility to bypass this requirement like it was possible with other events.~~**
 
 **Sources:**
 
