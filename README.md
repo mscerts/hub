@@ -5,7 +5,7 @@ Everything you need to navigate the certification world.
 
 ## GitHub To-Do
 - [x] De-reddit-fy the posts
-- [ ] Move images
+- [x] Move images
 - [ ] Complete the sources
 - [ ] Update the individual pages
 - [ ] Add specific page for any discounted deal currently out there
