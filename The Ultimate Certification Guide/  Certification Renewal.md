@@ -35,5 +35,6 @@ You can access the renewals in your certification dashboard here: [https://aka.m
 **Sources**
 
 [Renew your Microsoft Certifications | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/renew-your-microsoft-certification)
+
 [Renew your Microsoft Certifications - FAQ | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/renew-your-microsoft-certification-faq)
 
