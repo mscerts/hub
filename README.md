@@ -1,11 +1,9 @@
 # Microsoft-Certifications
 Everything you need to navigate the certification world.
 
-- [x] #739
-- [ ] https://github.com/some/issue
-- [ ] Add delight to the experience when all tasks are complete :tada:
+- [x] Exist
 
-- [ ] GitHub part:
+## GitHub To-Do
 - [ ] De-reddit-fy the posts
 - [ ] Move images
 - [ ] Complete the sources
@@ -13,7 +11,7 @@ Everything you need to navigate the certification world.
 - [ ] Add specific page for any discounted deal currently out there
 - [ ] Last: Start working on wiki
   
-- [ ] Reddit part:
+## Reddit To-Do
 - [ ] Replace all Reddit posts
 - [ ] Draft a middle finger post to Reddit
 - [ ] Direct users to discord server
