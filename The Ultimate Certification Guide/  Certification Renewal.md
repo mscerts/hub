@@ -14,11 +14,11 @@ Microsoft has changed the certification renewal process so now instead of having
 
 You only renew certifications so if you for example earned Azure Solutions Architect Expert certification by passing the AZ-303 and AZ-304 you only need to do one assessment for the certification. It doesn't matter that the exams changed in the meantime as long as the certification itself isn't being retired.
 
-There are also some people saying that for certification renewal you no longer need the prerequisite certification. So that would mean you can let your associate certifications expire and still renew your expert certification without hassle. But I would strongly discourage people from doing that since doing a free quiz is easier than passing the exam once you will need it.
+There are also some people saying that for certification renewal you no longer need the prerequisite certification. So that would mean you can let your associate certifications expire and still renew your expert certification without hassle. But I would strongly discourage people from doing that since doing a free quiz is easier than passing the exam if you need the certification again.
 
 Confirmed by Microsoft FAQ, you don't need to renew prerequisite associate certification to renew an expert certification.
 
-Exams themselves don't expire which means you have as much time as you need to complete the certification.  [Proof](https://trainingsupport.microsoft.com/en-us/mcp/forum/all/is-there-any-time-limit-to-complete-the/4e885c43-bcde-44ce-a685-f4c3adf9f4dc)
+Exams themselves don't expire which means you have as much time as you need to complete the certification.
 
 Renewal assessment:
 
@@ -37,4 +37,6 @@ You can access the renewals in your certification dashboard here: [https://aka.m
 [Renew your Microsoft Certifications | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/renew-your-microsoft-certification)
 
 [Renew your Microsoft Certifications - FAQ | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/renew-your-microsoft-certification-faq)
+
+[Exams don't expire | Microsoft Certification Support](https://trainingsupport.microsoft.com/en-us/mcp/forum/all/is-there-any-time-limit-to-complete-the/4e885c43-bcde-44ce-a685-f4c3adf9f4dc)
 
