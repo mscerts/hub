@@ -9,7 +9,7 @@
 9. [Opportunities for students](https://www.reddit.com/r/SCICertifications/comments/x4sltu/opportunities_for_students/)
 10. [Certification Renewal](https://www.reddit.com/r/SCICertifications/comments/wcxnw1/certification_renewal)
 11. [Information for Microsoft Partner Employees](https://www.reddit.com/r/SCICertifications/comments/ww24ib/information_for_microsoft_partner_employees)
-12. [a relative link](Introduction.md)
+12. [a relative link]( Introduction.md)
 
 
 **What are Microsoft Cloud Certifications?**
