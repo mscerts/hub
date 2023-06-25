@@ -20,9 +20,9 @@
 
 ### Text Based
 
-### Full Course Videos
+### Videos
 
-### Study Cram Videos
+### Courses
 
 ### Practice Tests
 
