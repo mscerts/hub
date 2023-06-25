@@ -9,6 +9,8 @@
 9. [Certification Renewal](X.%20Certification%20renewal.md)
 10. [**Information for Microsoft Partner Employees**](XI.%20Information%20for%20Microsoft%20Partner%20Employees.md)
 
+---
+
 # Information for Microsoft Partner Employees
 
 There are a lot of resources for Microsoft Partners but a lot of them are under NDAs so I will only put here those that are available for public. If you are unsure if your company is a partner, you can look it up here [Microsoft Partner Directory](http://appsource.microsoft.com/en-us/marketplace/partner-dir/).
@@ -34,6 +36,8 @@ For long term demo tenants (there are other resources but this is the most signi
 [**Microsoft Techcommunity for Partners**](https://techcommunity.microsoft.com/t5/partner-discussion-topics/ct-p/PartnerDiscuss)
 
 These are the communication channels, where you can see 99% of any news or changes happening to everything. I recommend subscribing to the topics that interest you to stay up to date on all the cool stuff happening.
+
+---
 
 **Sources:**
 
