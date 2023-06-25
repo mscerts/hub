@@ -47,4 +47,5 @@ The voucher is eligible but not limited to:
 - AZ-801: Configuring Windows Server Hybrid Advanced Services
 
 **The voucher provided technically isn't restricted to the eligible exams above but can be used for virtually any exam. This isn't encouraging anyone to not follow the official rules but I felt like this was worth mentioning.**
+
 **[Microsoft | 30 Days to Learn It - Official Rules](https://aka.ms/30-days-to-learn-it/voucher)**
