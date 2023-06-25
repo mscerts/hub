@@ -1,22 +1,23 @@
-Exam Name
+# Exam Name
 
-Exam URL
+## Exam URL
 
-Related Certifications
+### Related Certifications
 
-Difficulty level:
+### Difficulty Level
 
-Practice Assessment:
+### Practice Assessment
 
-Readiness zone:
+### Readiness Zone
 
 ---
+## Studying Resources 
 
-Text Based
+### Text Based
 
-Full Course Videos
+### Full Course Videos
 
-Study Cram Videos
+### Study Cram Videos
 
-Practice Tests
+### Practice Tests
 
