@@ -5,10 +5,9 @@
 5. [Microsoft Certification dashboard and PearsonVUE portal](5.%20Microsoft%20certification%20dashboard%20and%20PearsonVUE%20portal.md)
 6. [How to take a Microsoft Exam](%20%20%20%20%20%20How%20to%20take%20Microsoft%20Exams.md)
 7. [Official Microsoft study materials](7.%20Official%20Microsoft%20study%20materials.md)
-8. [Free or discounted voucher opportunities](8.%20Free%20or%20discounted%20voucher%20opportunities.md)
-9. [Opportunities for students](9.%20Opportunities%20for%20students.md)
-10. [Certification Renewal](X.%20Certification%20renewal.md)
-11. [**Information for Microsoft Partner Employees**](XI.%20Information%20for%20Microsoft%20Partner%20Employees.md)
+8. [Opportunities for students](9.%20Opportunities%20for%20students.md)
+9. [Certification Renewal](X.%20Certification%20renewal.md)
+10. [**Information for Microsoft Partner Employees**](XI.%20Information%20for%20Microsoft%20Partner%20Employees.md)
 
 # Information for Microsoft Partner Employees
 
