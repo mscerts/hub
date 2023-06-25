@@ -1,4 +1,4 @@
-# Microsoft-Certifications
+# Microsoft Certifications
 Everything you need to navigate the certification world.
 
 - [x] Exist //Irrelevant, certifications will find you even if you don't exist
@@ -6,7 +6,7 @@ Everything you need to navigate the certification world.
 ## GitHub To-Do
 - [x] De-reddit-fy the posts
 - [x] Move images
-- [ ] Complete the sources
+- [x] Complete the sources
 - [ ] Update the individual pages
 - [ ] Add specific page for any discounted deal currently out there
 - [ ] Last: Start working on wiki
