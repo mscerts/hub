@@ -7,7 +7,7 @@ Everything you need to navigate the certification world.
 - [x] De-reddit-fy the posts
 - [x] Move images
 - [x] Complete the sources
-- [ ] Update the individual pages
+- [x] Update the individual pages
 - [ ] Add specific page for any discounted deal currently out there
 - [ ] Last: Start working on wiki
 - [ ] Style/Release/Page
