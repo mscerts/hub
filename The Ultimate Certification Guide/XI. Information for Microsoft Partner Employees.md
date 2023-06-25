@@ -11,7 +11,7 @@
 11. [**Information for Microsoft Partner Employees**](XI.%20Information%20for%20Microsoft%20Partner%20Employees.md)
 
 
-There are a lot of resources for Microsoft Partners but a lot of them are under NDAs so I will only put here those that are available for public. If you are unsure if your company is a partner, you can look here [Microsoft Partner Directory](http://appsource.microsoft.com/en-us/marketplace/partner-dir/).
+There are a lot of resources for Microsoft Partners but a lot of them are under NDAs so I will only put here those that are available for public. If you are unsure if your company is a partner, you can look it up here [Microsoft Partner Directory](http://appsource.microsoft.com/en-us/marketplace/partner-dir/).
 
 **Associating your certification profile with your organization**
 
