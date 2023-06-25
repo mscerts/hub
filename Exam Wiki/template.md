@@ -12,7 +12,9 @@ Readiness zone:
 
 Text Based
 
-Videos
+Full Course Videos
+
+Study Cram Videos
 
 Practice Tests
 
