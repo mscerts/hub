@@ -15,7 +15,7 @@ There are a lot of resources for Microsoft Partners but a lot of them are under 
 
 **Associating your certification profile with your organization**
 
-Sign into your organizations [Partner Center Account](https://partner.microsoft.com/pc/users/myaccount) (yes, it is very slow to get there, it isn't a problem on your side) and under **Your learning** choose the **Associate Microsoft Learning account.**
+Sign into your organizations [Partner Center Account](https://partner.microsoft.com/pc/users/myaccount) (yes, it is very slow load, it isn't a problem on your side) and under **Your learning** choose the **Associate Microsoft Learning account.**
 
 If you are wondering what the Partner University is, there are some assessments that you needed to take for some competencies but since the whole system is changing, there is no need to provide more information on this topic.
 
