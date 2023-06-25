@@ -2,7 +2,7 @@
 
 Microsoft Cloud Skills Challenge is a free and interactive program that provides access to Microsoft cloud technologies through a gamified experience utilizing Microsoft Learn content to assess and enhance participants' knowledge and skills in Microsoft cloud technologies. They involve completing tasks, solving problems, or answering quiz questions related to Azure, Microsoft 365, or other cloud platforms. These challenges provide practical learning opportunities and a chance to engage with the Microsoft community along with a free voucher for selected exams.
 
-## [Microsoft Build](https://aka.ms/build) (100% Discount Voucher)
+## [Microsoft Build](https://aka.ms/buildcsc) (100% Discount Voucher)
 
 Microsoft Build usually happens in **Spring (March/June)**. Historically the event ends with a Cloud Skills Challenge.
 
@@ -11,7 +11,7 @@ Microsoft Build usually happens in **Spring (March/June)**. Historically the eve
 - The voucher is usually **valid for the next 3 months**, after that you will be unable to reschedule it any further *(it is the final deadline)* and you can only use the voucher code for the exams that are **eligible for that specific challenge event** (but can complete any challenge and take any of the eligible exams).
 - In the past vouchers were universal which meant you can use them with any exam, that has changed since Build 2021. You will now only recieve one voucher that is only applicable to the exams listed in the event details. **However you can do any challenge & apply your voucher to any of the allowed exams.**
 
-## [Microsoft Ignite](https://aka.ms/ignite) (100% Discount Voucher)
+## [Microsoft Ignite](https://aka.ms/ignitecsc) (100% Discount Voucher)
 
 Microsoft Ignite takes place in **Fall (October/November)**. Historically the event ends with a Cloud Skills Challenge just like Build.
 
