@@ -18,7 +18,7 @@ Use one of these badges depending on what type of exam it is:
 ### Studying Resources:
 
 ### Text Based
-- Like MS Learn study path
+- Like the MS Learn study path
 
 ### Videos
 - Include only free ones in this category
