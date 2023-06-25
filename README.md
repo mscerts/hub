@@ -10,6 +10,7 @@ Everything you need to navigate the certification world.
 - [ ] Update the individual pages
 - [ ] Add specific page for any discounted deal currently out there
 - [ ] Last: Start working on wiki
+- [ ] Style/Release/Page
   
 ## Reddit To-Do
 - [ ] Replace all Reddit posts
