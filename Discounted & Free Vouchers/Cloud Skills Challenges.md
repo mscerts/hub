@@ -20,7 +20,7 @@ Microsoft Ignite takes place in **Fall (October/November)**. Historically the ev
 - The voucher is usually **valid for the next 3 months**, after that you will be unable to reschedule it any further *(it is the final deadline)* and you can only use the voucher code for the exams that are **eligible for that specific challenge event** (but can complete any challenge and take any of the eligible exams).
 - In the past vouchers were universal which meant you can use them with any exam, that has changed since Ignite 2021. You will now only recieve one voucher that is only applicable to the exams listed in the event details. **However you can do any challenge & apply your voucher to any of the allowed exams.**
 
-## [30 Days To Learn](](https://aka.ms/30-days-to-learn-it)) (50% Discount Voucher)
+## [30 Days To Learn](https://aka.ms/30-days-to-learn-it) (50% Discount Voucher)
 
 It is very similar to the normal cloud skills challenge from **Ignite** or **Build**.
 
