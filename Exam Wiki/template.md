@@ -2,7 +2,11 @@
 
 # Exam name + hyperlink URL
 Use one of these badges depending on what type of exam it is:
-<a href='https://learn.microsoft.com/en-us/certifications/fundamentals' target="_blank"><img alt='microsoftazure' src='https://img.shields.io/badge/fundamentals-100000?style=for-the-badge&logo=microsoftazure&logoColor=white&labelColor=0078D4&color=2B3931'/></a>
+<br>
+
+<a href='https://learn.microsoft.com/en-us/certifications/browse/?type=fundamentals' target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/fundamentals-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=0078D4&color=212221'/></a> <a href='https://learn.microsoft.com/en-us/certifications/browse/?type=role-based&levels=intermediate' target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/associate-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=0078D4&color=212221'/></a> <a href='https://learn.microsoft.com/en-us/certifications/browse/?type=role-based&levels=advanced' target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/expert-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=0078D4&color=212221'/></a> <a href='https://learn.microsoft.com/en-us/certifications/browse/?type=specialty' target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/specialty-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=0078D4&color=212221'/></a>
+
+
 
 ### Related Certifications
 
