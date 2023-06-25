@@ -10,7 +10,6 @@
 
 ### Readiness Zone
 
----
 ## Studying Resources 
 
 ### Text Based
