@@ -12,7 +12,7 @@ Use one of these badges depending on what type of exam it is:
 
 ### Official Assessment/Test
 - Check if there is a MS Learn assessment for it
-- Check if there MeasureUp Practice Test for it
+- Check if there is a MeasureUp Practice Test for it
 - **No dumps**
 
 ### Studying Resources:
