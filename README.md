@@ -1,4 +1,4 @@
-# Microsoft Certifications
+# Microsoft Certification Knowledge Hub
 Everything you need to navigate the certification world.
 
 - [x] Exist //Irrelevant, certifications will find you even if you don't exist
