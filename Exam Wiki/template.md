@@ -1,6 +1,6 @@
 "insert exam badge or certification badge here"
 
-# Exam name + hyperlink URL
+# [Exam name](https://learn.microsoft.com/certifications/exams/)
 Use one of these badges depending on what type of exam it is:
 <br>
 
@@ -13,13 +13,14 @@ Use one of these badges depending on what type of exam it is:
 ### Exam Study Guide
 
 ### Official Assessment/Test
-- Check if there is a MS Learn assessment for it
-- Check if there is a MeasureUp Practice Test for it
+- [MS Learn Practice Assessment](https://learn.microsoft.com/certifications/exams/)
+- [MeasureUp Practice Tests](https://www.measureup.com/)
 - **No dumps**
 
 ### Studying Resources:
 
 ### Text Based
+- [Microsoft Learn](https://learn.microsoft.com/certifications/exams/)
 - Like the MS Learn study path
 
 ### Videos
