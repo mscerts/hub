@@ -10,6 +10,8 @@ Use one of these badges depending on what type of exam it is:
 
 ### Related Certifications
 
+### Exam Study Guide
+
 ### Official Assessment/Test
 - Check if there is a MS Learn assessment for it
 - Check if there is a MeasureUp Practice Test for it
