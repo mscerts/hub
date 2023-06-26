@@ -17,6 +17,8 @@ Use one of these badges depending on what type of exam it is:
 - [MeasureUp Practice Tests](https://www.measureup.com/)
 - **No dumps**
 
+### [GitHub Labs]()
+
 ### Studying Resources:
 
 ### Text Based
