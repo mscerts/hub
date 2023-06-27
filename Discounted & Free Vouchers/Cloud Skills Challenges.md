@@ -26,12 +26,12 @@ Microsoft Ignite takes place in **Fall (October/November)**. Historically the ev
 
 It is very similar to the normal cloud skills challenge from **Ignite** or **Build**.
 
-Basically, you just go through MS Learn modules for a specific certification and after completing it, you get a **50% off** voucher. It isn't 100% but everything can help, especially since it includes a lot of exams.
+Basically, you just go through MS Learn modules for a specific certification and after completing it, you get a **50% off** voucher. It isn't 100% but everything can help, especially since it includes a lot of exams. It technically ends on June 30th but there is a chance it renews. But don't count on it and if you can, get your voucher before it ends.
 
 - You get **1 voucher every 6 months**.
 - You get it within 3 days of finishing the challenge.
 
-The voucher is eligible but not limited to:
+The voucher is eligible for these exams:
 
 - SC-400: Microsoft Information Protection Administrator - **New**
 - DP-300: Administering Microsoft Azure SQL Solutions - **New**
