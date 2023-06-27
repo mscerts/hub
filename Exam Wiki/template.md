@@ -13,8 +13,8 @@ Use one of these badges depending on what type of exam it is:
 ### [Exam Study Guide](https://aka.ms/code-stuyguide)
 
 ### Official Assessment/Test
-- [MS Learn Practice Assessment](https://learn.microsoft.com/certifications/exams/)
-- [MeasureUp Practice Tests](https://www.measureup.com/)
+- [MS Learn Practice Assessment](https://learn.microsoft.com/certifications/exams)
+- [MeasureUp Practice Tests](https://www.measureup.com)
 - **No dumps**
 
 ### [GitHub Labs](https://aka.ms/)
