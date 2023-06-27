@@ -1,4 +1,4 @@
-"insert exam badge or certification badge here"
+<img src="credly badge URL" width="150" height="150">
 
 # [Exam name](https://learn.microsoft.com/certifications/exams/)
 Use one of these badges depending on what type of exam it is:
@@ -10,14 +10,14 @@ Use one of these badges depending on what type of exam it is:
 
 ### Related Certifications
 
-### [Exam Study Guide](https://aka.ms/)
+### [Exam Study Guide](https://aka.ms/code-stuyguide)
 
 ### Official Assessment/Test
 - [MS Learn Practice Assessment](https://learn.microsoft.com/certifications/exams/)
 - [MeasureUp Practice Tests](https://www.measureup.com/)
 - **No dumps**
 
-### [GitHub Labs]()
+### [GitHub Labs](https://aka.ms/)
 
 ### Studying Resources:
 
