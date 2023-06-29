@@ -13,7 +13,7 @@ Use one of these badges depending on what type of exam it is:
 
 ### Related Certifications
 
-### [Exam Study Guide](https://aka.ms/code-stuyguide)
+### [Exam Study Guide](https://aka.ms/code-studyguide)
 
 ### Official Assessment/Test
 - [MS Learn Practice Assessment](https://learn.microsoft.com/certifications/exams)
