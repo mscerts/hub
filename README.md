@@ -3,7 +3,31 @@
 ---
 
 <img src="Images/mscertified.png" width="170" height="200" alt="mscertified" align="right" />
+<a href='https://microsoft.com' target="_blank"><img alt='microsoftazure' src='https://img.shields.io/badge/Azure-100000?style=for-the-badge&logo=microsoftazure&logoColor=white&labelColor=0078D4&color=212221'/></a> <a href='https://microsoft.com' target="_blank"><img alt='dynamics365' src='https://img.shields.io/badge/D365-100000?style=for-the-badge&logo=dynamics365&logoColor=white&labelColor=0B53CE&color=212221'/></a> <a href='https://microsoft.com' target="_blank"><img alt='powerbi' src='https://img.shields.io/badge/Power_Platform-100000?style=for-the-badge&logo=powerbi&logoColor=white&labelColor=F2C811&color=212221'/></a> <a href='https://microsoft.com' target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/M365_& SCI-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=5E5E5E&color=212221'/></a>
+<br>
+<br>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean interdum cursus enim, sit amet molestie augue eleifend sit amet. Vestibulum vitae rutrum tellus. Quisque ultricies dolor sed neque ultrices pellentesque. In a elit aliquet, consequat turpis sed, maximus lacus. Phasellus suscipit ante porttitor mauris auctor, sed laoreet tellus tempor. Integer malesuada massa sed nulla feugiat, vel mattis velit mattis. Sed pretium nibh eget dolor dictum, nec laoreet urna aliquet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque vitae euismod sapien.
+Welcome to the Knowledge Hub for Microsoft Certifications.<br>
 
-Ut vulputate orci sit amet vulputate luctus. Pellentesque euismod venenatis lobortis. Nunc mollis sapien sit amet efficitur dapibus. Maecenas in venenatis ipsum, at imperdiet mi. Duis nibh erat, lacinia eget tellus et, vestibulum gravida justo. Aliquam vehicula eu quam vel consectetur. Suspendisse dignissim non ipsum et dignissim. Integer faucibus nunc ac neque blandit, vitae varius tellus finibus. Aliquam consequat nunc ac magna venenatis, sed suscipit sem facilisis. Curabitur porta felis id quam vulputate, vel rhoncus nibh convallis. In a dui in purus eleifend luctus vel ut enim. In mattis ipsum dolor, tempor lobortis erat suscipit et.
+Discover a world of valuable resources and guides to help you navigate the realm of Microsoft certifications. Whether you're a seasoned professional or just starting your journey, this hub is here to support you every step of the way. Here, you'll find the Ultimate Certification Guide, exam wikis, and information on free exam opportunities.
+
+---
+## What are Microsoft Cloud Certifications?
+
+Microsoft Cloud Certification are worldwide recognized certifications that show you have knowledge of different areas of Microsoft Cloud. As any other certifications, you shouldn't be taking them to learn or study new areas, you should learn those areas and certify your knowledge in them because having bunch of certifications but actually having none real-world experience won't provide many benefits to your career or job seeking.
+
+## Why should you get Microsoft Cloud Certifications?
+
+- You will have an advantage over other job seekers who don't have them
+- Helps go through the HR filter and makes you more attractive to recruiters
+- Microsoft Partner companies receive benefits from Microsoft by employing certified individuals
+- Bigger scale projects or government contracts sometimes require employees to be certified in the areas
+
+Read the [Ultimate Certification Guide]([/](https://github.com/teriaavibes/Microsoft-Certification-Knowledge-Hub/tree/main/The%20Ultimate%20Certification%20Guide)) to learn more about the world of Microsoft certifications.
+
+---
+
+### Currently active or upcoming free/discounted exam opportunities
+
+- Microsoft ESI
+- _Microsoft Ignite_ (Fall 2023)
