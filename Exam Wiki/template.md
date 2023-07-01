@@ -1,4 +1,4 @@
-<img src="credly badge URL" width="150" height="150">
+```<img src="credly badge URL" width="150" height="150">```
 
 # [Exam name](https://learn.microsoft.com/certifications/exams/)
 Use one of these badges depending on what type of exam it is:
