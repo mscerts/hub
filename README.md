@@ -9,7 +9,7 @@
 
 Welcome to the Knowledge Hub for Microsoft Certifications.<br>
 
-Discover a world of valuable resources and guides to help you navigate the realm of Microsoft certifications. Whether you're a seasoned professional or just starting your journey, this hub is here to support you every step of the way. Here, you'll find the Ultimate Certification Guide, exam wikis, and information on free exam opportunities.
+Discover a world of valuable resources and guides to help you navigate the realm of Microsoft certifications. Whether you're a seasoned professional or just starting your journey, this hub is here to support you every step of the way. Here, you'll find the Ultimate Certification Guide, Exam Wiki containing all resources related to the specific exams (work in progress), and information on free exam voucher opportunities.
 
 ---
 ## What are Microsoft Cloud Certifications?
@@ -19,7 +19,7 @@ Microsoft Cloud Certification are worldwide recognized certifications that show 
 ## Why should you get Microsoft Cloud Certifications?
 
 - You will have an advantage over other job seekers who don't have them
-- Helps go through the HR filter and makes you more attractive to recruiters
+- Helps get through the HR filter and makes you more attractive to recruiters
 - Microsoft Partner companies receive benefits from Microsoft by employing certified individuals
 - Bigger scale projects or government contracts sometimes require employees to be certified in the areas
 
@@ -29,5 +29,5 @@ Read the [Ultimate Certification Guide]([/](https://github.com/teriaavibes/Micro
 
 ### Currently active or upcoming free/discounted exam opportunities
 
-- Microsoft ESI
+- Microsoft Enteprise Skills Initiative
 - _Microsoft Ignite_ (Fall 2023)
