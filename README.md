@@ -3,7 +3,7 @@
 ---
 
 <img src="Images/mscertified.png" width="170" height="200" alt="mscertified" align="right" />
-<a href='' target="_blank"><img alt='microsoftazure' src='https://img.shields.io/badge/Azure-100000?style=for-the-badge&logo=microsoftazure&logoColor=white&labelColor=0078D4&color=212221'/></a> <a href='' target="_blank"><img alt='dynamics365' src='https://img.shields.io/badge/D365-100000?style=for-the-badge&logo=dynamics365&logoColor=white&labelColor=0B53CE&color=212221'/></a> <a href='m' target="_blank"><img alt='powerbi' src='https://img.shields.io/badge/Power_Platform-100000?style=for-the-badge&logo=powerbi&logoColor=white&labelColor=F2C811&color=212221'/></a> <a href='' target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/M365_& SCI-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=5E5E5E&color=212221'/></a>
+<a target="_blank"><img alt='microsoftazure' src='https://img.shields.io/badge/Azure-100000?style=for-the-badge&logo=microsoftazure&logoColor=white&labelColor=0078D4&color=212221'/></a> <a href='' target="_blank"><img alt='dynamics365' src='https://img.shields.io/badge/D365-100000?style=for-the-badge&logo=dynamics365&logoColor=white&labelColor=0B53CE&color=212221'/></a> <a href='m' target="_blank"><img alt='powerbi' src='https://img.shields.io/badge/Power_Platform-100000?style=for-the-badge&logo=powerbi&logoColor=white&labelColor=F2C811&color=212221'/></a> <a href='' target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/M365_& SCI-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=5E5E5E&color=212221'/></a>
 <br>
 <br>
 
