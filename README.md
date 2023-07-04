@@ -23,7 +23,7 @@ Microsoft Cloud Certification are worldwide recognized certifications that show 
 - Microsoft Partner companies receive benefits from Microsoft by employing certified individuals
 - Bigger scale projects or government contracts sometimes require employees to be certified in the areas
 
-Read the [Ultimate Certification Guide]([/](https://github.com/teriaavibes/Microsoft-Certification-Knowledge-Hub/tree/main/The%20Ultimate%20Certification%20Guide)) to learn more about the world of Microsoft certifications.
+Read the [Ultimate Certification Guide](The%20Ultimate%20Certification%20Guide) to learn more about the world of Microsoft certifications.
 
 ---
 
