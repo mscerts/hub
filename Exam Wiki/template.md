@@ -1,6 +1,6 @@
-```<img src="credly badge URL" width="150" height="150">```
+<img src="/Images/certs/examcode.png" width="150" height="150">
 
-# [Exam name](https://learn.microsoft.com/certifications/exams/)
+# [Exam name](https://learn.microsoft.com/certifications/exams/examcode)
 Use one of these badges depending on what type of exam it is:
 <br>
 
@@ -11,7 +11,7 @@ Use one of these badges depending on what type of exam it is:
 
 
 
-### Related Certifications
+### Related Certifications - []()
 
 ### [Exam Study Guide](https://aka.ms/code-studyguide)
 
@@ -20,12 +20,12 @@ Use one of these badges depending on what type of exam it is:
 - [MeasureUp Practice Tests](https://www.measureup.com)
 - **No dumps**
 
-### [GitHub Labs](https://aka.ms/)
+### [GitHub Labs](https://aka.ms/examcodelabs)
 
 ### Studying Resources:
 
 ### Text Based
-- [Microsoft Learn](https://learn.microsoft.com/certifications/exams/)
+- [Microsoft Learn](https://learn.microsoft.com/certifications/exams/examcode)
 - Like the MS Learn study path
 
 ### Videos
