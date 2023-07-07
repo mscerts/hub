@@ -15,7 +15,7 @@ Use one of these badges depending on what type of exam it is:
 
 ### [Exam Study Guide](https://aka.ms/code-studyguide)
 
-### Official Assessment/Test
+### Practice Tests/Assessments:
 - [MS Learn Practice Assessment](https://learn.microsoft.com/certifications/exams)
 - [MeasureUp Practice Tests](https://www.measureup.com)
 - **No dumps**
