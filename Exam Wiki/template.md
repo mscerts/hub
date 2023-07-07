@@ -27,11 +27,9 @@ Use one of these badges depending on what type of exam it is:
 ### Text Based
 - [Microsoft Learn](https://learn.microsoft.com/certifications/exams/examcode)
 - Like the MS Learn study path
-
 ### Videos
 - Include only free ones in this category
 - Usually from YouTube
-
 ### Paid Courses
 - Any course that requires a fee or payment
 - Like the ones on Udemy
