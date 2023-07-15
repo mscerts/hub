@@ -1,3 +1,8 @@
+---
+title: Template
+description: A template for the exam wiki.
+---
+
 <img src="/Images/certs/examcode.png" width="150" height="150">
 
 # [Exam name](https://learn.microsoft.com/certifications/exams/examcode)
