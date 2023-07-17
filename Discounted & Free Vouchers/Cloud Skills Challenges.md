@@ -26,25 +26,27 @@ Microsoft Ignite takes place in **Fall (October/November)**. Historically the ev
 
 It is very similar to the normal cloud skills challenge from **Ignite** or **Build**.
 
-Basically, you just go through MS Learn modules for a specific certification and after completing it, you get a **50% off** voucher. It isn't 100% but everything can help, especially since it includes a lot of exams. It technically ends on June 30th but there is a chance it renews. But don't count on it and if you can, get your voucher before it ends.
+Basically, you just go through MS Learn modules for a specific certification and after completing it, you get a **50% off** voucher. It isn't 100% but everything can help, especially since it includes a lot of exams. It just got extended to December 31st 2023.
 
 - You get **1 voucher every 6 months**.
 - You get it within 3 days of finishing the challenge.
 
 The voucher is eligible for these exams:
 
-- SC-400: Microsoft Information Protection Administrator - **New**
-- DP-300: Administering Microsoft Azure SQL Solutions - **New**
-- AI-900: Microsoft Azure AI Fundamentals
+- AI-102: Designing and Implementing a Microsoft Azure AI Solution
+- AZ-700: Designing and Implementing Microsoft Azure Networking Solutions
+- SC-400: Microsoft Information Protection Administrator
 - DP-100: Designing and Implementing a Data Science Solution on Azure
-- AZ-204: Developing Solutions for Microsoft Azure
-- MS-600: Building Applications and Solutions with Microsoft 365 Core Services
-- PL-100: Microsoft Power Platform App Maker
 - AZ-305: Designing Microsoft Azure Infrastructure Solutions
-- AZ-400: Designing and Implementing Microsoft DevOps Solutions
+- AZ-204: Developing Solutions for Microsoft Azure
 - DP-203: Data Engineering on Microsoft Azure
-- AZ-140: Configuring and Operating Microsoft Azure Virtual Desktop
 - DP-420: Designing and Implementing Cloud-Native Applications Using Microsoft Azure Cosmos DB
+- DP-900: Microsoft Azure Data Fundamentals
+- DP-300: Administering Microsoft Azure SQL Solutions
+- AI-900: Microsoft Azure AI Fundamentals
+- PL-100: Microsoft Power Platform App Maker
+- AZ-400: Designing and Implementing Microsoft DevOps Solutions
+- AZ-140: Configuring and Operating Microsoft Azure Virtual Desktop
 - AZ-800: Administering Windows Server Hybrid Core Infrastructure
 - AZ-801: Configuring Windows Server Hybrid Advanced Services
 
