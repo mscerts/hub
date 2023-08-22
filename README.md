@@ -9,7 +9,9 @@
 
 ## Welcome to the Knowledge Hub for Microsoft Certifications.<br>
 
-Discover a world of valuable resources and guides to help you navigate the realm of Microsoft certifications. Whether you're a seasoned professional or just starting your journey, this hub is here to support you every step of the way. Here, you'll find the Ultimate Certification Guide, Exam Wiki containing all resources related to the specific exams and information on free exam voucher opportunities. If you need any additional help or have any questions, be sure to join our [Discord server](https://discord.gg/microsoft-certification-study-group-676990910176821270).
+Discover a world of valuable resources and guides to help you navigate the realm of Microsoft certifications. Whether you're a seasoned professional or just starting your journey, this hub is here to support you every step of the way. Here, you'll find the Ultimate Certification Guide, Exam Wiki containing all resources related to the specific exams and information on free exam voucher opportunities. 
+
+If you need any additional help or have any questions, be sure to join our [Discord server](https://discord.gg/microsoft-certification-study-group-676990910176821270).
 
 ---
 If you are new to the Microsoft Certification Program, be sure to read the [Ultimate Certification Guide](The%20Ultimate%20Certification%20Guide). It contains all the information you may need to sucessfully navigate the program.
