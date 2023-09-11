@@ -21,7 +21,7 @@ export default defineConfig({
           autogenerate: { directory: 'guide' },
         },
         {
-          label: 'Offers',
+          label: 'Voucher Offers',
           autogenerate: { directory: 'vouchers' },
         },
         {
