@@ -1,0 +1,36 @@
+---
+title: Welcome!
+description: Community Powered Knowledge Hub for Microsoft Certifications.
+template: splash
+hero:
+  tagline: To the Knowledge Hub for Microsoft Certifications.
+  image:
+    file: ../../assets/all.svg
+  actions:
+    - text: Documentation
+      link: /guide/1-introduction/
+      icon: right-arrow
+      variant: primary
+    - text: Join the community
+      link: https://discord.gg/microsoft-certification-study-group-676990910176821270
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Next steps
+
+<CardGrid stagger>
+  <Card title="Community" icon="discord">
+    Join us on [Discord](https://discord.gg/microsoft-certification-study-group-676990910176821270) to chat with others
+  </Card>
+  <Card title="Powered" icon="rocket">
+    By `Astro` & `Cloudflare`
+  </Card>
+  <Card title="Contribute" icon="add-document">
+    On our [GitHub repository](https://github.com/mscerts/hub) to keep this project updated
+  </Card>
+  <Card title="Created" icon="approve-check-circle">
+    By [teriaavibes](https://github.com/teriaavibes), [nighthouse](https://github.com/gitnighthouse) and supporters like you :3
+  </Card>
+</CardGrid>
