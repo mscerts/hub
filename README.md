@@ -16,7 +16,7 @@ If you need any additional help or have any questions, be sure to join our [Disc
 ---
 If you are new to the Microsoft Certification Program, be sure to read the [Ultimate Certification Guide](The%20Ultimate%20Certification%20Guide). It contains all the information you may need to sucessfully navigate the program.
 
-If you are currently preparing for an exam, be sure to check out the [Exam Wiki](Exam%20Wiki). For every Microsoft Exam there is a collection of Official and Third-Party resources you can use for studying. After that you can also check out this [post](%20%20%20%20%20%20How%20to%20take%20Microsoft%20Exams.md) to get familiar with the exam format.
+If you are currently preparing for an exam, be sure to check out the [Exam Wiki](https://certs.msfthub.wiki/). For every Microsoft Exam there is a collection of Official and Third-Party resources you can use for studying. After that you can also check out this [post](%20%20%20%20%20%20How%20to%20take%20Microsoft%20Exams.md) to get familiar with the exam format.
 
 ---
 
