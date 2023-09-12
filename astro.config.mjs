@@ -7,8 +7,8 @@ export default defineConfig({
     starlight({
       title: 'MCH',
       logo: {
-				light: '/Images/msftcertblack.svg',
-				dark: '/Images/msftcertwhite.svg',
+				light: '../../assets/images/msftcertblack.svg',
+				dark: '../../assets/images/msftcertwhite.svg',
 				replacesTitle: true,
       },
       social: {
