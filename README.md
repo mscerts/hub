@@ -1,9 +1,9 @@
 <br>
-<img src="Images/mscertguide.png"  alt="mscertknowledgehub" align="left" /><br>
+<img src="/public/mscertguide.png"  alt="mscertknowledgehub" align="left" /><br>
 
 ---
 
-<img src="Images/mscertified.png" width="170" height="200" alt="mscertified" align="right" /><a target="_blank"><img alt='microsoftazure' src='https://img.shields.io/badge/Azure-100000?style=for-the-badge&logo=microsoftazure&logoColor=white&labelColor=0078D4&color=212221'/></a> <a target="_blank"><img alt='dynamics365' src='https://img.shields.io/badge/D365-100000?style=for-the-badge&logo=dynamics365&logoColor=white&labelColor=0B53CE&color=212221'/></a> <a  target="_blank"><img alt='powerbi' src='https://img.shields.io/badge/Power_Platform-100000?style=for-the-badge&logo=powerbi&logoColor=white&labelColor=F2C811&color=212221'/></a> <a  target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/M365_& SCI-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=5E5E5E&color=212221'/></a>
+<img src="/src/assets/all.svg" width="170" height="200" alt="mscertified" align="right" /><a target="_blank"><img alt='microsoftazure' src='https://img.shields.io/badge/Azure-100000?style=for-the-badge&logo=microsoftazure&logoColor=white&labelColor=0078D4&color=212221'/></a> <a target="_blank"><img alt='dynamics365' src='https://img.shields.io/badge/D365-100000?style=for-the-badge&logo=dynamics365&logoColor=white&labelColor=0B53CE&color=212221'/></a> <a  target="_blank"><img alt='powerbi' src='https://img.shields.io/badge/Power_Platform-100000?style=for-the-badge&logo=powerbi&logoColor=white&labelColor=F2C811&color=212221'/></a> <a  target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/M365_& SCI-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=5E5E5E&color=212221'/></a>
 <br>
 <br>
 
@@ -16,7 +16,7 @@ If you need any additional help or have any questions, be sure to join our [Disc
 ---
 If you are new to the Microsoft Certification Program, be sure to read the [Ultimate Certification Guide](The%20Ultimate%20Certification%20Guide). It contains all the information you may need to sucessfully navigate the program.
 
-If you are currently preparing for an exam, be sure to check out the [Exam Wiki](Exam%20Wiki). For every Microsoft Exam there is a collection of Official and Third-Party resources you can use for studying. After that you can also check out this [post](%20%20%20%20%20%20How%20to%20take%20Microsoft%20Exams.md) to get familiar with the exam format.
+If you are currently preparing for an exam, be sure to check out the [Exam Wiki](https://certs.msfthub.wiki/). For every Microsoft Exam there is a collection of Official and Third-Party resources you can use for studying. After that you can also check out this [post](%20%20%20%20%20%20How%20to%20take%20Microsoft%20Exams.md) to get familiar with the exam format.
 
 ---
 
