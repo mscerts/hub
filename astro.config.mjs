@@ -1,14 +1,13 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [
     starlight({
       title: 'MCH',
       logo: {
-				light: '/src/assets/images/msftcertblack.svg',
-				dark: '/src/assets/images/msftcertwhite.svg',
+				light: '/src/assets/msftcertblack.svg',
+				dark: '/src/assets/msftcertwhite.svg',
 				replacesTitle: true,
       },
       social: {
@@ -39,6 +38,5 @@ export default defineConfig({
     }),
   ],
 
-  // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
   image: { service: { entrypoint: 'astro/assets/services/sharp' } },
 });
