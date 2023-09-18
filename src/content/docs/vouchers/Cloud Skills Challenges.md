@@ -52,6 +52,7 @@ The voucher is eligible for these exams:
 - AZ-800: Administering Windows Server Hybrid Core Infrastructure
 - AZ-801: Configuring Windows Server Hybrid Advanced Services
 
-**The voucher provided technically isn't restricted to the eligible exams above but can be used for virtually any exam. This isn't encouraging anyone to not follow the official rules but I felt like this was worth mentioning.**
+**The voucher provided technically isn't restricted to the eligible exams above but can be used for virtually any exam. This isn't encouraging anyone to not follow the official rules but I felt like this was worth mentioning. 
+Also while you can combine this voucher with the [ESI voucher](https://certs.msfthub.wiki/vouchers/microsoft-esi/) and get 100% off discount, it is not allowed to use 2 vouchers for a single exam order**
 
 **[Microsoft | 30 Days to Learn It - Official Rules](https://aka.ms/30-days-to-learn-it/voucher)**
