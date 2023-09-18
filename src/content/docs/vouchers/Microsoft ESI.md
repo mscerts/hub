@@ -11,4 +11,4 @@ For those who don't have it and are interested in getting your company enrolled,
 You get access to:
 - Live trainings by Microsoft Certified Trainers
 - Microsoft official MeasureUp practice tests (being slowly replaced by Microsoft's new practice assessments for exams that have one)
-- And 50% off vouchers for all Fundamenta, Azure and SCI exams.
+- And 50% off vouchers for all Fundamental, Azure and SCI exams.
