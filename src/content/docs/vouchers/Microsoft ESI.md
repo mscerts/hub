@@ -11,4 +11,4 @@ For those who don't have it and are interested in getting your company enrolled,
 You get access to:
 - Live trainings by Microsoft Certified Trainers. These trainings also give you access to Skillable (LearnOnDemand) labs. These are the same labs you can see on GitHub but you get a subscription to complete them for free. There are also challenge labs who are aimed at imitating the real exam lab format, where you are given a task and have to complete it on your own. 
 - Microsoft official MeasureUp practice tests (being slowly replaced by Microsoft's new practice assessments for exams that have one)
-- And 50% off vouchers for all Fundamental, Azure and SCI exams.
+- And 50% off vouchers for all Fundamental, Azure, SCI, Dynamics 365 (except MB-335), Power Platform (except PL-500)
