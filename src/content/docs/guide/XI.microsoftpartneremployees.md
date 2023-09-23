@@ -26,6 +26,10 @@ For long term demo tenants (there are other resources but this is the most signi
 
 These are the communication channels, where you can see 99% of any news or changes happening to everything. I recommend subscribing to the topics that interest you to stay up to date on all the cool stuff happening.
 
+[**Microsoft Cloud Weeks for Partners**](https://aka.ms/mscloudweeks)
+
+Cloud weeks are a great way to prepare for an exam if you are employee of Microsoft Partner. As the title suggests, these are week-long training events where there is a combination of presenting theoretical content from the exams and labbing in Skillable (LearnOnDemand) platform. Just keep in mind that the labs have limited seats and are assigned on first-come first-server basis so if you are interested in them, register as soon as possible.
+
 ---
 
 **Sources:**
