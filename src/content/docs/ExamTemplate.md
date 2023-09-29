@@ -1,5 +1,5 @@
 ---
-title: 0. Contribution Template
+title: Contribution Template
 description: Follow this guide to add new exams the repository.
 ---
 

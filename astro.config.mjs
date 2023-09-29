@@ -1,42 +1,100 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightBlog from 'starlight-blog';
+
+const site = 'https://certs.msfthub.wiki/';
 
 export default defineConfig({
-  integrations: [
-    starlight({
-      title: 'MCH',
-      logo: {
+	integrations: [
+		starlightBlog({
+			authors: {
+				nighthouse: {
+				name: 'nighthouse',
+				title: 'Content & Site Editor',
+				picture: 'https://avatars.githubusercontent.com/u/121154936?v=4',
+				url: 'https://github.com/gitnighthouse',
+			  },
+			  teriaavibes: {
+				name: 'teriaavibes',
+				title: 'Content Editor',
+				picture: 'https://avatars.githubusercontent.com/u/68708075?v=4', 
+				url: 'https://github.com/teriaavibes',
+			  },
+			},
+		  }),
+		starlight({
+			title: 'Microsoft Certifications Hub',
+			head: [
+				{
+					tag: 'meta',
+					attrs: { property: 'og:image', content: site + 'og.jpg' },
+				},
+				{
+					tag: 'meta',
+					attrs: { property: 'twitter:image', content: site + 'og.jpg' },
+				},
+				{
+					tag: 'meta',
+					attrs: { property: 'og:url', content: 'https://certs.msfthub.wiki/' },
+				},
+			],
+			editLink: {
+				baseUrl: 'https://github.com/mscerts/hub/edit/main/',
+			},
+			logo: {
 				light: '/src/assets/msftcertblack.svg',
 				dark: '/src/assets/msftcertwhite.svg',
 				replacesTitle: true,
-      },
-      social: {
-        github: 'https://github.com/mscerts/hub',
-        discord: 'https://discord.gg/microsoft-certification-study-group-676990910176821270',
-      },
-      sidebar: [
-        {
-          label: 'Guide',
-          autogenerate: { directory: 'guide' },
-        },
-        {
-          label: 'Voucher Offers',
-          autogenerate: { directory: 'vouchers' },
-        },
-        {
-          label: 'Wiki',
-          collapsed: false,
-          items: [
-            { label: 'Azure', collapsed:true, autogenerate: { directory: 'Azure', collaped:true },},
-            { label: 'Dynamics 365', collapsed:true, autogenerate: { directory: 'Dynamics 365', collaped:true },},
-            { label: 'Microsoft 365', collapsed:true, autogenerate: { directory: 'Microsoft 365', collaped:true },},
-            { label: 'Power Platform', collapsed:true, autogenerate: { directory: 'Power Platform', collaped:true },},
-            { label: 'Security, Compliance & Identity', collapsed:true, autogenerate: { directory: 'Security, Compliance, and Identity', collaped:true },},
-          ]
-        },
-      ],
-    }),
-  ],
+            },
+			customCss: process.env.NO_GRADIENTS ? [	'./src/custom.css'] : ['./src/landing.css', 	'./src/custom.css'],
+			social: {
+				github: 'https://github.com/mscerts/hub',
+				discord: 'https://discord.gg/microsoft-certification-study-group-676990910176821270',
+			},
+			sidebar: [
+				{
+					label: 'Updates Blog',
+					link: '/blog',
+					badge: 'New',
+				},
+				{
+					label: 'Guide',
+					items: [
+						{ label: 'Introduction', link: '/guide/introduction/' },
+						{ label: 'Overview', link: '/guide/overview/' },
+						{ label: 'Your Certification Profile', link: '/guide/certificationprofile/' },
+						{ label: 'Exam Vouchers', link: '/guide/voucherguide/' },
+						{ label: 'Certification Dashboard', link: '/guide/certificationdashboard/' },
+						{ label: 'Taking The Exam', link: '/guide/takingtheexams/' },
+						{ label: 'Official Study Materials', link: '/guide/officialstudymaterials/' },
+						{ label: 'Opportunities for Students', link: '/guide/studentopportunities/' },
+						{ label: 'Certification Renewal', link: '/guide/certificationrenewal/' },
+						{ label: 'Microsoft Partner Employees', link: '/guide/partneremployees/' },
 
-  image: { service: { entrypoint: 'astro/assets/services/sharp' } },
+					],
+				},
+				{
+					label: 'Voucher Offers',
+					autogenerate: { directory: 'vouchers' },
+				},
+				{
+					label: 'Wiki Collection',
+					link: '/wiki',
+					badge: 'New',
+				},
+				{
+					label: 'Exams',
+					collapsed: false,
+					items: [
+						{ label: 'Azure', collapsed:true, autogenerate: { directory: 'azure', collaped:true },},
+						{ label: 'Dynamics 365', collapsed:true, autogenerate: { directory: 'dynamics', collaped:true },},
+						{ label: 'Microsoft 365', collapsed:true, autogenerate: { directory: 'microsoft365', collaped:true },},
+						{ label: 'Power Platform', collapsed:true, autogenerate: { directory: 'power', collaped:true },},
+						{ label: 'Security & Identity', collapsed:true, autogenerate: { directory: 'security', collaped:true },},
+					],
+				},
+			],
+			lastUpdated: true,
+		}),
+	],
 });

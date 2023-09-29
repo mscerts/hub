@@ -1,0 +1,93 @@
+---
+title: Wiki
+description: Using components in MDX with Starlight.
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { Icon } from '@astrojs/starlight/components';
+
+<LinkCard
+	title="Examination Guide"
+	description="Explore our comprehensive guide to taking Microsoft exams and discover how to navigate the certification process."
+	href="/guide/introduction/"
+/>
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+	<TabItem label="Azure">
+	<CardGrid>
+	<LinkCard title="AZ-900: Microsoft Azure Fundamentals" href="/az-900/" />
+	<LinkCard title="AI-900: Microsoft Azure AI Fundamentals" href="/ai-900/" />
+	<LinkCard title="DP-900: Microsoft Azure Data Fundamentals" href="/dp-900/" />
+	<LinkCard title="AZ-104: Microsoft Azure Administrator" href="/az-104/" />
+	<LinkCard title="AZ-204: Developing Solutions for Microsoft Azure" href="/az-104/" />
+	<LinkCard title="AI-102: Designing and Implementing a Microsoft Azure AI Solution" href="/az-104/" />
+	<LinkCard title="AZ-140: Configuring and Operating Microsoft Azure Virtual Desktop" href="/az-104/" />
+	<LinkCard title="AZ-120: Planning and Administering Microsoft Azure for SAP Workloads" href="/az-104/" />
+	<LinkCard title="AZ-400: Designing and Implementing Microsoft DevOps Solutions" href="/az-104/" />
+	<LinkCard title="AZ-500: Microsoft Azure Security Technologies" href="/az-104/" />
+	<LinkCard title="AZ-801: Configuring Windows Server Hybrid Advanced Services" href="/az-104/" />
+	<LinkCard title="AZ-800: Administering Windows Server Hybrid Core Infrastructure" href="/az-104/" />
+	<LinkCard title="AZ-305: Designing Microsoft Azure Infrastructure Solutions" href="/az-104/" />
+	<LinkCard title="AZ-700: Designing and Implementing Microsoft Azure Networking Solutions" href="/az-104/" />
+    <LinkCard title="DP-100: Designing and Implementing a Data Science Solution on Azure" href="/az-104/" />
+	<LinkCard title="DP-500: Designing and Implementing Enterprise-Scale Analytics Solutions" href="/az-104/" />
+	<LinkCard title="DP-420: Designing and Implementing Cloud-Native Applications" href="/az-104/" />
+	<LinkCard title="DP-300: Administering Microsoft Azure SQL Solutions" href="/az-104/" />
+	<LinkCard title="DP-203: Data Engineering on Microsoft Azure" href="/az-104/" />
+     </CardGrid>
+	</TabItem>
+
+	<TabItem label="Dynamics">
+	<CardGrid>
+	<LinkCard title="MB-260: Microsoft Customer Data Platform Specialist" href="/mb-260/" />
+	<LinkCard title="MB-800: Microsoft Dynamics 365 Business Central Functional Consultant" href="/mb-880/" />
+	<LinkCard title="MB-220: Microsoft Dynamics 365 Customer Insights Functional Consultant" href="/mb-220/" />
+	<LinkCard title="MB-230: Microsoft Dynamics 365 Customer Service Functional Consultant" href="/mb-230/" />
+	<LinkCard title="MB-240: Developing Solutions for Microsoft Azure" href="/mb-240/" />
+	<LinkCard title="MB-310: Microsoft Dynamics 365 Finance Functional Consultant" href="/mb-310/" />
+	<LinkCard title="MB-210: Microsoft Dynamics 365 Sales Functional Consultant" href="/mb-210/" />
+	<LinkCard title="MB-330: Microsoft Dynamics 365 Supply Chain Management Functional Consultant" href="/mb-330/" />
+	<LinkCard title="MB-300: Microsoft Dynamics 365: Core Finance and Operations" href="/mb-300/" />
+	<LinkCard title="MB-500: Microsoft Dynamics 365: Finance and Operations Apps Developer" href="/mb-500/" />
+     </CardGrid>
+	</TabItem>
+
+	<TabItem label="Microsoft">
+	<CardGrid>
+	<LinkCard title="MS-102: Microsoft 365 Administrator" href="/ms-102/" />
+	<LinkCard title="MS-900: Microsoft 365 Fundamentals" href="/ms-900/" />
+	<LinkCard title="MS-203: Microsoft 365 Messaging" href="/ms-203/" />
+	<LinkCard title="MD-102: Endpoint Administrator" href="/md-102/" />
+	<LinkCard title="MS-700: Managing Microsoft Teams" href="/ms-700/" />
+	<LinkCard title="MS-721: Collaboration Communications Systems Engineer" href="/ms-721/" />
+     </CardGrid>
+	</TabItem>
+
+	<TabItem label="Power">
+	<CardGrid>
+	<LinkCard title="PL-100: Microsoft Power Platform App Maker" href="/pl-100/" />
+	<LinkCard title="PL-900: Microsoft Power Platform Fundamentals" href="/pl-900/" />
+	<LinkCard title="PL-200: Microsoft Power Platform Functional Consultant" href="/pl-200/" />
+	<LinkCard title="PL-400: Microsoft Power Platform Developer" href="/pl-400/" />
+	<LinkCard title="PL-600: Microsoft Power Platform Solution Architect" href="/pl-600/" />
+	<LinkCard title="PL-300: Microsoft Power BI Data Analyst" href="/pl-300/" />
+	<LinkCard title="PL-500: Microsoft Power Automate RPA Developer" href="/pl-500/" />
+    </CardGrid>
+	</TabItem>
+
+	<TabItem label="Security">
+	<CardGrid>
+	<LinkCard title="SC-100: Microsoft Cybersecurity Architect" href="/sc-100/" />
+	<LinkCard title="SC-300: Microsoft Identity and Access Administrator" href="/sc-300/" />
+	<LinkCard title="SC-400: Administering Information Protection and Compliance in Microsoft 365" href="/sc-400/" />
+	<LinkCard title="SC-900: Microsoft Security, Compliance, and Identity Fundamentals" href="/sc-900/" />
+	<LinkCard title="SC-200: Microsoft Security Operations Analyst" href="/sc-200/" />
+     </CardGrid>
+	</TabItem>
+</Tabs>
+
+
+
+

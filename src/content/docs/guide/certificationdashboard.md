@@ -11,6 +11,8 @@ When following the URL there are 4 sections:
 
 Here you can see all your scheduled appointments. As of this January, you can only have 2 exams scheduled at the same time. You can directly access PearsonVUE portal from here by clicking the **Reschedule** button.
 
+<img src="/upcomingexam.png" alt="Microsoft Certification Dashboard Upcoming Certification">
+
 ## Certifications
 
 <img src="/certificationdashboardoptions.webp" alt="Microsoft Certification Dashboard Certifications">
