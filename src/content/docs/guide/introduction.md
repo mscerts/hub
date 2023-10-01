@@ -11,12 +11,12 @@ Microsoft Cloud Certification are worldwide recognized certifications that show 
 
 * You will have an advantage over other job seekers who don't have them
 * Helps go through the HR filter and makes you more attractive to recruiters/hiring managers
-* Microsoft Partner companies receive benefits from Microsoft by employing certified professionals [Microsoft Partner Companies](https://certs.msfthub.wiki/guide/ximicrosoftpartneremployees/)
+* Microsoft Partner companies receive benefits from Microsoft by employing certified professionals [Microsoft Partner Companies](https://certs.msfthub.wiki/guide/partneremployees/)
 * Bigger scale projects or government contracts often require employees to be certified in the products provided
 
 ## How to get started?
 
-First you need to create a Microsoft Certification profile. You can find the tutorial here: [**Creating Certification Profile**](https://certs.msfthub.wiki/guide/3-creating-a-certification-profile). Then you can choose which area/s of Microsoft Cloud you are interested in.
+First you need to create a Microsoft Certification profile. You can find the tutorial here: [**Creating Certification Profile**](https://certs.msfthub.wiki/guide/certificationprofile/). Then you can choose which area/s of Microsoft Cloud you are interested in.
 
 **The options are:**
 
