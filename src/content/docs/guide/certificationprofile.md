@@ -11,7 +11,7 @@ It is extremely important to fill the information in as accurately as possible, 
 
 <img title="" src="/certificationprofilepage.webp" width="800" height="1200" alt="Certification Profile">
 
-There are a few interesting things to note here. If you choose **Student** in the job title dropdown and verify yourself as such, you will get discounted rate for the exams. It is 30% off for Fundamental and 45% for role based exams. More information here [Opportunities for Students](https://certs.msfthub.wiki/guide/8studentoppurtunities/)
+There are a few interesting things to note here. If you choose **Student** in the job title dropdown and verify yourself as such, you will get discounted rate for the exams. It is 30% off for Fundamental and 45% for role based exams. More information here [Opportunities for Students](https://certs.msfthub.wiki/guide/studentopportunities/)
 
 <img title="" src="/studentdiscount.webp" alt="Certification Profile Student Discounts">
 
