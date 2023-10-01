@@ -26,7 +26,7 @@ I will use the [Microsoft Certified: Cybersecurity Architect Expert](https://doc
 
 After that will then receive the Microsoft Certified: Cybersecurity Architect Expert certification. If you only pass the exam and don't earn certification, you will get no recognition. 
 
-**To pass an exam you need 70% of the total score so your score can't be lower than 700/1000. Scoring is individual and depends on the question set you receive. If you want to get familiar with the testing process, I have thoroughly described it in this post:** [**How to take Microsoft Exams**](https://certs.msfthub.wiki/guide/6-how-to-take-microsoft-exams).
+**To pass an exam you need 70% of the total score so your score can't be lower than 700/1000. Scoring is individual and depends on the question set you receive. If you want to get familiar with the testing process, I have thoroughly described it in this post:** [**How to take Microsoft Exams**](https://certs.msfthub.wiki/guide/takingtheexams/).
 
 **There are 4 certification types in total:**
 
@@ -46,17 +46,17 @@ Fundamental certifications are good for life and will never expire, even when th
 
 * Associate certifications are very technical certifications that require a deep knowledge of the technologies (Hands-on experience isn't required but it makes studying and preparation easier). They are aimed at professionals who want to certify their skills with the products.
 * When taking the exam, you will have 100 minutes (if it can contain a lab, you get 120 minutes) + 20 minutes where you will have to read NDA and go through questionnaires.
-* Associate certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](https://certs.msfthub.wiki/guide/9-certification-renewal).
+* Associate certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](https://certs.msfthub.wiki/guide/certificationrenewal/).
 
 **Expert**
 
 * Expert certifications are a mix of technical and architectural content and are almost impossible to pass without hands-on experience. You will be expected to know all of the relevant products, how they work, differences between similar products, SKUs and basic knowledge of how to use the products and how they work with each other. They are aimed at people who already feel really comfortable in the cloud.
-* Expert certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](https://certs.msfthub.wiki/guide/9-certification-renewal).
+* Expert certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](https://certs.msfthub.wiki/guide/certificationrenewal/).
 
 **Specialty**
 
 * Specialty certifications are purely concentrated around the product in their name. They are a mix of high level and technical knowledge and require a really good understanding of it and how it fits in with Microsoft Cloud.
-* Specialty certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](https://certs.msfthub.wiki/guide/9-certification-renewal).
+* Specialty certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](https://certs.msfthub.wiki/guide/certificationrenewal/).
 
 ---
 
