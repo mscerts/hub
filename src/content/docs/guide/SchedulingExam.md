@@ -1,5 +1,5 @@
 ---
-title: 4. Exam Vouchers
+title: 4. How to schedule an Exam
 ---
 
 # Ordering & Redeeming
