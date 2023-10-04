@@ -63,6 +63,7 @@ export default defineConfig({
 						{ label: 'Introduction', link: '/guide/introduction/' },
 						{ label: 'Overview', link: '/guide/overview/' },
 						{ label: 'Your Certification Profile', link: '/guide/certificationprofile/' },
+						{ label: 'Scheduling an Exam', link: '/guide/schedulingexam/' },						
 						{ label: 'Certification Dashboard', link: '/guide/certificationdashboard/' },
 						{ label: 'Taking The Exam', link: '/guide/takingtheexams/' },
 						{ label: 'Official Study Materials', link: '/guide/officialstudymaterials/' },
