@@ -486,6 +486,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
+"guide/schedulingexam.md": {
+	id: "guide/schedulingexam.md";
+  slug: "guide/schedulingexam";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
 "guide/studentopportunities.md": {
 	id: "guide/studentopportunities.md";
   slug: "guide/studentopportunities";
@@ -496,13 +503,6 @@ declare module 'astro:content' {
 "guide/takingtheexams.md": {
 	id: "guide/takingtheexams.md";
   slug: "guide/takingtheexams";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"guide/voucherguide.md": {
-	id: "guide/voucherguide.md";
-  slug: "guide/voucherguide";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -636,6 +636,13 @@ declare module 'astro:content' {
 "security/SC-900.md": {
 	id: "security/SC-900.md";
   slug: "security/sc-900";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"vouchers/Beta Exams.md": {
+	id: "vouchers/Beta Exams.md";
+  slug: "vouchers/beta-exams";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">

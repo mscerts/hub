@@ -31,6 +31,12 @@
 	text-underline-offset: 0.1em;
 }
 
+[data-has-hero] .card {
+    border-radius: 12px;
+    position: relative;
+    background: radial-gradient(300px circle at top left, rgba(85, 44, 190, 0.081) 20%, transparent 100%),
+                radial-gradient(300px circle at bottom right, rgba(44, 102, 190, 0.09) 20%, transparent 100%);
+
 .ph-banner {
 	display: flex;
 	align-items: center;
