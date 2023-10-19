@@ -23,7 +23,7 @@ export default defineConfig({
 			},
 		  }),
 		starlight({
-			title: 'Microsoft Certifications Hub',
+			title: 'Microsoft Certification Hub',
 			head: [
 				{
 					tag: 'meta',
