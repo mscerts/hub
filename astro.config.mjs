@@ -12,7 +12,7 @@ export default defineConfig({
 				name: 'nighthouse',
 				title: 'Content & Site Editor',
 				picture: 'https://avatars.githubusercontent.com/u/121154936?v=4',
-				url: 'https://github.com/gitnighthouse',
+				url: 'https://github.com/n1ghthouse',
 			  },
 			  teriaavibes: {
 				name: 'teriaavibes',
