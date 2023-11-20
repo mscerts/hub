@@ -19,6 +19,8 @@ Microsoft Build usually happens in **Spring (March/June)**. Historically the eve
 
 Microsoft Ignite takes place in **Fall (October/November)**. Historically the event ends with a Cloud Skills Challenge just like Build.
 
+<em>NOTE: There is no 100% Discount Voucher available during Ignite 2023.  This is now replaced with a challenge for a chance to win a VIP event pass for the next Microsoft Ignite or Microsoft Build</em>
+
 - You enter the challenge and will have the option to complete one of the predetermined learning paths. You don't actually need to read those or answer the questions correctly at the end of modules, so if you don't have much time you can skip through the content and read it during your preparation later.
 - As always there is a select date on which you'll get a voucher after you complete all the modules in a specific challenge. **You will not instantly recieve a voucher upon finishing your modules.**
 - The voucher is usually **valid for the next 3 months**, after that you will be unable to reschedule it any further *(it is the final deadline)* and you can only use the voucher code for the exams that are **eligible for that specific challenge event** (but can complete any challenge and take any of the eligible exams).
