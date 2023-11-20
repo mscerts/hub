@@ -23,6 +23,8 @@ Specifically, the **Calculator** and **Take a Break options**.
 
 **Take a Break** allows you to exit the room to go refresh or other stuff you forgot to do before an exam. After taking the break: **Timer will continue and you won't be able to return to any of the previous questions.** So, cheating won't help you.
 
+**Microsoft Learn** button (launched in September 2023, not shown in the above image) will appear next to **Take Break** only for role-based exams.  The Open Book exam is <a href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/introducing-a-new-resource-for-all-role-based-microsoft/ba-p/3500870" target="_blank">introduced</a> to refer the product documentation from Microsoft Learn during the Exam. 
+
 **On the top side:**
 
 <img src="/examtools2.webp" alt="Exam tools again">
@@ -37,7 +39,7 @@ Then there is **Review later** box. If you aren't sure about your answer, you ca
 
 And lastly on the right, is the timer. This timer and question total is for the whole exam. So if on the left you see 30 questions and on the right there are 40 questions that means when you finish the current section, there will be 10 more questions. If there is lab or case study it is  mentioned on the **Welcome to the exam page** at the start. So don't be surprised when you finish and there is still a case study or lab waiting for you.
 
-[**Microsoft Learn during your exam**](https://learn.microsoft.com)
+[**Using the Open Book - Microsoft Learn feature during your exam**](https://learn.microsoft.com)
 :::note
 Microsoft Learn is only available for role-based exams, it will be missing for fundamental exams.
 :::
