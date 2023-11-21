@@ -5,6 +5,18 @@ import starlightBlog from 'starlight-blog';
 const site = 'https://certs.msfthub.wiki/';
 
 export default defineConfig({
+	redirects: {
+		'/office': '/wiki',
+		'/guide': '/guide/introduction',
+		'/m365': '/wiki',
+		'/microsoft365': '/wiki',
+		'/azure': '/wiki',
+		'/power': '/wiki',
+		'/powerplatform': '/wiki',
+		'/security': '/wiki',
+		'/dynamics': '/wiki',
+		'/dynamics365': '/wiki',
+	  },
 	integrations: [
 		starlightBlog({
 			authors: {
@@ -87,6 +99,7 @@ export default defineConfig({
 					collapsed: false,
 					items: [
 						{ label: 'Azure', collapsed:true, autogenerate: { directory: 'azure', collaped:true },},
+						{ label: 'Office', collapsed:true, autogenerate: { directory: 'office', collaped:true },},
 						{ label: 'Dynamics 365', collapsed:true, autogenerate: { directory: 'dynamics', collaped:true },},
 						{ label: 'Microsoft 365', collapsed:true, autogenerate: { directory: 'microsoft365', collaped:true },},
 						{ label: 'Power Platform', collapsed:true, autogenerate: { directory: 'power', collaped:true },},
