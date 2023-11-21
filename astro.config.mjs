@@ -100,8 +100,8 @@ export default defineConfig({
 					items: [
 						{ label: 'Azure', collapsed:true, autogenerate: { directory: 'azure', collaped:true },},
 						{ label: 'Office', collapsed:true, autogenerate: { directory: 'office', collaped:true },},
-						{ label: 'Dynamics 365', collapsed:true, autogenerate: { directory: 'dynamics', collaped:true },},
 						{ label: 'Microsoft 365', collapsed:true, autogenerate: { directory: 'microsoft365', collaped:true },},
+						{ label: 'Dynamics 365', collapsed:true, autogenerate: { directory: 'dynamics', collaped:true },},
 						{ label: 'Power Platform', collapsed:true, autogenerate: { directory: 'power', collaped:true },},
 						{ label: 'Security & Identity', collapsed:true, autogenerate: { directory: 'security', collaped:true },},
 					],
