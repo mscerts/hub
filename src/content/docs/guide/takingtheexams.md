@@ -125,6 +125,6 @@ On the next page you will see your score report (no need to read it now, can acc
 
 **Sources:**
 
-[Prepare for an exam | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/prepare-exam)
-[Microsoft Learn for Exams | Techcommunity](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/introducing-a-new-resource-for-all-role-based-microsoft/ba-p/3500870)
-[How to use Microsoft Learn during the exam | Microsoft Video](https://www.microsoft.com/videoplayer/embed/RW1a0L5)
+- [Prepare for an exam | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/prepare-exam)
+- [Microsoft Learn for Exams | Techcommunity](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/introducing-a-new-resource-for-all-role-based-microsoft/ba-p/3500870)
+- [How to use Microsoft Learn during the exam | Microsoft Video](https://www.microsoft.com/videoplayer/embed/RW1a0L5)
