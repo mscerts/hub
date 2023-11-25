@@ -7,7 +7,7 @@ title: Power Up Program
 **(100% discount vouchers)**
 
 :::note
-This program is for people from non-technical backgrounds to help them transition careers and those appliants will be prioritized.
+This program is for people from non-technical backgrounds to help them transition careers and those applicants will be prioritized.
 :::
 
 Microsoft Power Up Program is focused on helping non-technical people transition their careers, in this case into the Power Platform area. It contains self-paced learning, guidance and mentoring from experts and free exam vouchers to take exams to certify your skills.
