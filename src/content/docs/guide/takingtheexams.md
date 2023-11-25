@@ -15,13 +15,27 @@ After that you will be shown information about the exam itself. Be sure to read 
 
 Other useful information to know: On the bottom of page there are various tools that can help you
 
-<img src="/examtools.webp" alt="Exam Tools">
+<img src="/examtools.png" alt="Exam Tools">
 
-Specifically, the **Calculator** and **Take a Break options**.
+Specifically, the **Calculator**, **Take a Break options** and **Microsoft Learn**.
 
-**Calculator** is useful when you need to count SLAs or other stuff that would take too long to do in your head.
+- **Calculator** is useful when you need to count SLAs or other stuff that would take too long to do in your head.
 
-**Take a Break** allows you to exit the room to go refresh or other stuff you forgot to do before an exam. After taking the break: **Timer will continue and you won't be able to return to any of the previous questions.** So, cheating won't help you.
+- **Take a Break** allows you to exit the room to go refresh or other stuff you forgot to do before an exam. After taking the break: **Timer will continue and you won't be able to return to any of the previous questions.** So, cheating won't help you.
+
+- [**Microsoft Learn during your exam**](https://learn.microsoft.com)
+:::note
+Microsoft Learn is only available for role-based exams, it will not be available for fundamental exams.
+:::
+
+As of September 2023, Role-based Microsoft Exams now contain the option to access Microsoft Learn during your exam to look up information and if you haven't used it in the exam yet, I highly recommend reading this so you know how to correctly use it. The most important things to know is that you are still limited by the same time during your exam is it in nearly impossible to lookup all questions you get and it is Microsoft Learn, not Google so you need to know what you are looking for to find it, if you don't you are in for a bad time. 
+
+So how to use it?
+
+- First of all if you feel like you need the documentation to verify/find the answer, mark the question for review and return to it when you finish all the other questions and have time left (unless it is one of the questions asking about roles/cmdlets/powershell modules)
+- Learn how to navigate Microsoft Learn. For example I didn't have an issue with it because I use Microsoft Learn daily in my job but that isn't the case for everyone and many people have said that they couldn't find what to look for. What is important here is to know how the page you are looking for is called or what does it contain exactly. So if you don't learn the SKUs for App Service Plans, learn how to find the page inside Microsoft Learn.
+- Don't think this is your Get out of Jail free card. While having access to Microsoft Learn makes the exams easier, it isn't a free win. On average you have 2-3 minutes per questions (including lab tasks and case studies) and you won't have the time to look up what is a Virtual Machine and how to turn it on. So while you only need to know the concepts and how the products work now, it doesn't mean you can walk into the center with zero knowledge and pass it.
+- On Microsoft Learn you don't get access to Q&A and your profile. It is obvious why this is but just felt like mentioning here.
 
 **On the top side:**
 
@@ -36,20 +50,6 @@ Then there is **Review later** box. If you aren't sure about your answer, you ca
 **Leave Feedback** is not that important. If you toggle this on questions, you can then tell Microsoft after you finish the exam how bad the question was. Not relevant to the exam.
 
 And lastly on the right, is the timer. This timer and question total is for the whole exam. So if on the left you see 30 questions and on the right there are 40 questions that means when you finish the current section, there will be 10 more questions. If there is lab or case study it is  mentioned on the **Welcome to the exam page** at the start. So don't be surprised when you finish and there is still a case study or lab waiting for you.
-
-[**Microsoft Learn during your exam**](https://learn.microsoft.com)
-:::note
-Microsoft Learn is only available for role-based exams, it will be missing for fundamental exams.
-:::
-
-As of September 2023, Role-based Microsoft Exams now contain the option to access Microsoft Learn during your exam to look up information and if you haven't used it in the exam yet, I highly recommend reading this so you know how to correctly use it. The most important things to know is that you are still limited by the same time during your exam is it in nearly impossible to lookup all questions you get and it is Microsoft Learn, not Google so you need to know what you are looking for to find it, if you don't you are in for a bad time. 
-
-So how to use it?
-
-- First of all if you feel like you need the documentation to verify/find the answer, mark the question for review and return to it when you finish all the other questions and have time left (unless it is one of the questions asking about roles/cmdlets/powershell modules)
-- Learn how to navigate Microsoft Learn. For example I didn't have an issue with it because I use Microsoft Learn daily in my job but that isn't the case for everyone and many people have said that they couldn't find what to look for. What is important here is to know how the page you are looking for is called or what does it contain exactly. So if you don't learn the SKUs for App Service Plans, learn how to find the page inside Microsoft Learn.
-- Don't think this is your Get out of Jail free card. While having access to Microsoft Learn makes the exams easier, it isn't a free win. On average you have 2-3 minutes per questions (including lab tasks and case studies) and you won't have the time to look up what is a Virtual Machine and how to turn it on. So while you only need to know the concepts and how the products work now, it doesn't mean you can walk into the center with zero knowledge and pass it.
-- On Microsoft Learn you don't get access to Q&A and your profile. It is obvious why this is but just felt like mentioning here.
 
 **There are 3 requirements that are always present in questions and required**:
 
