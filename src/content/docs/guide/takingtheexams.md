@@ -39,7 +39,7 @@ So how to use it?
 
 **On the top side:**
 
-<img src="/examtools2.webp" alt="Exam tools again">
+<img src="/examtools2.png" alt="Exam tools again">
 
 First You can see the question count. This counts the questions for the **current section** so if it shows 30 questions, this means that there is a very high propability there will be more questions after that.
 
