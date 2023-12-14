@@ -10,4 +10,9 @@ If your company is a big Microsoft customer or partner, there is a high chance y
 You get access to:
 - Live trainings by Microsoft Certified Trainers
 - Microsoft official MeasureUp practice tests (being slowly replaced by Microsoft's new practice assessments)
-- And 50% off vouchers for all Azure and SCI exams.
+- And 50% off vouchers for:
+  - All Azure Exams
+  - All Security, Compliance, and Identity Exams
+  - MS-900
+  - All Power Platform Exams **except** PL-500
+  - All Dynamics 365 Exams **except** MB-335
