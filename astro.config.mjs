@@ -67,7 +67,6 @@ export default defineConfig({
 				{
 					label: 'Updates Blog',
 					link: '/blog',
-					badge: 'New',
 				},
 				{
 					label: 'Guide',
@@ -92,7 +91,6 @@ export default defineConfig({
 				{
 					label: 'Wiki Collection',
 					link: '/wiki',
-					badge: 'New',
 				},
 				{
 					label: 'Exams',
