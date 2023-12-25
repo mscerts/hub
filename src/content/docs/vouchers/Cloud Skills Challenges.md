@@ -30,27 +30,28 @@ Microsoft Ignite takes place in **Fall (October/November)**. Historically the ev
 
 It is very similar to the normal cloud skills challenge from **Ignite** or **Build**.
 
-Basically, you just go through MS Learn modules for a specific certification and after completing it, you get a **50% off** voucher. It isn't 100% but everything can help, especially since it includes a lot of exams. Offer just got extended to December 31st 2023.
+Basically, you just go through MS Learn modules for a specific certification and after completing it, you get a **50% off** voucher. It isn't 100% but everything can help, especially since it includes a lot of exams. Offer just got extended to June 3Oth, 2024.
 
 - You get **1 voucher every 6 months**.
 - You usually get it within 3 days of finishing the challenge.
 
 The voucher is eligible for these exams:
-
+- AZ-140: Configuring and Operating Microsoft Azure Virtual Desktop
 - AZ-204: Developing Solutions for Microsoft Azure
+- AZ-305: Designing Microsoft Azure Infrastructure Solutions
+- AZ-500: Microsoft Azure Security Technologies
+- AZ-400: Designing and Implementing Microsoft DevOps Solutions
 - AZ-700: Designing and Implementing Microsoft Azure Networking Solutions
 - AZ-800: Administering Windows Server Hybrid Core Infrastructure
 - AZ-801: Configuring Windows Server Hybrid Advanced Services
-- AZ-400: Designing and Implementing Microsoft DevOps Solutions
-- AZ-305: Designing Microsoft Azure Infrastructure Solutions
-- AZ-140: Configuring and Operating Microsoft Azure Virtual Desktop
-- DP-900: Microsoft Azure Data Fundamentals
 - DP-100: Designing and Implementing a Data Science Solution on Azure
 - DP-203: Data Engineering on Microsoft Azure
 - DP-300: Administering Microsoft Azure SQL Solutions
 - DP-420: Designing and Implementing Cloud-Native Applications Using Microsoft Azure Cosmos DB
-- AI-900: Microsoft Azure AI Fundamentals
+- DP-600: Implementing Analytics Solutions Using Microsoft Fabric
+- DP-900: Microsoft Azure Data Fundamentals
 - AI-102: Designing and Implementing a Microsoft Azure AI Solution
+- AI-900: Microsoft Azure AI Fundamentals
 - SC-200: Microsoft Security Operations Analyst
 - SC-400: Microsoft Information Protection Administrator
 - MS-102: Microsoft 365 Administrator
