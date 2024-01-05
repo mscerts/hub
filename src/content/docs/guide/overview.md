@@ -1,5 +1,5 @@
 ---
-title: 2. Overview
+title: Overview
 ---
 
 # The Certifications
