@@ -1,5 +1,5 @@
 ---
-title: 10. Microsoft Partner Employees
+title: Microsoft Partner Employees
 ---
 
 There are a lot of resources for Microsoft Partners but a lot of them are under NDAs so I will only put here those that are available for public. If you are unsure if your company is a partner, you can look it up here [Microsoft Partner Directory](http://appsource.microsoft.com/en-us/marketplace/partner-dir/).
