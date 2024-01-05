@@ -1,5 +1,5 @@
 ---
-title: 1. Introduction
+title: Introduction
 description: Introduction to Microsoft Cloud Certifications
 ---
 
