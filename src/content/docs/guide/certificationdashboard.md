@@ -1,5 +1,5 @@
 ---
-title: 5. Certification Dashboard
+title: Certification Dashboard
 description: A guide on the Microsoft Certification Dashboard.
 ---
 
