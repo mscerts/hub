@@ -1,5 +1,5 @@
 ---
-title: 3. Your Certification Profile
+title: Your Certification Profile
 description: A guide on how to create a certification profile
 ---
 
