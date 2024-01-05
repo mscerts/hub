@@ -1,5 +1,5 @@
 ---
-title: 8. Opportunities for Students
+title: Opportunities for Students
 ---
 
 Microsoft offers a lot of resources to get students into the cloud, here are some opportunities that Microsoft offers.
