@@ -1,5 +1,5 @@
 ---
-title: 7. Official Study Materials
+title: Official Study Materials
 ---
 
 [**Microsoft Learn**](https://aka.ms/certifications) \- Usually the place that everyone uses in preparation for exams since it's always updated and it contains sandboxes so you can actually try the stuff out you are learning. People usually pair it up with some 3rd party courses and practice tests but in terms of raw information related to the exams this is usually the best.
