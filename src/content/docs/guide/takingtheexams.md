@@ -1,5 +1,5 @@
 ---
-title: 6. Taking the Exam
+title: Taking the Exam
 ---
 
 
