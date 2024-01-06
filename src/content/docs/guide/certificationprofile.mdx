@@ -2,6 +2,7 @@
 title: Your Certification Profile
 description: A guide on how to create a certification profile
 ---
+import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 
 To get to the certificating, you first need to create a personal Microsoft account. You don't want to use company email account that you can lose access to because if the account was deleted, it would be a huge pain in the ass to transfer the certificates, if it is even possible.
 
@@ -31,7 +32,5 @@ On the bottom of the page, you can add accounts with vouchers in it, so if you c
 ---
 
 **Sources:**
-
-[Manage your certification profile | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/manage-certification-profile)
-
-[Connect a certification profile to Learn | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/connect-cert-profile-to-learn)
+  <LinkCard title="Manage your certification profile | Microsoft Learn" href="https://learn.microsoft.com/en-us/certifications/manage-certification-profile" />
+  <LinkCard title="Connect a certification profile to Learn | Microsoft Learn" href="https://learn.microsoft.com/en-us/certifications/connect-cert-profile-to-learn" />
