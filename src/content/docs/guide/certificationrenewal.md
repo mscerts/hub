@@ -5,7 +5,7 @@ title: Certification Renewal
 Microsoft has changed the certification renewal process so now instead of having to take the certification exam/s every 2 years, you just have to complete renewal assessment every year.
 
 :::note
-Once your certification expires, you can only renew it by paying for and retaking the full certifications again. It is extremely recommended to renew your certifications on time. You also need to finish the renewal assessement **before** the certification expires. If you aren't able to complete the assessment before the certification expires, the previous scenario applies.
+Once your certification expires, you can only renew it by paying for and retaking the full certifications again. It is **extremely** recommended to renew your certifications on time. You also need to finish the renewal assessement **before** the certification expires. If you aren't able to complete the assessment before the certification expires, the renewal assessment will throw an error when you submit it and the result will not be submitted.
 :::
 
 You only renew certifications so if you for example earned Azure Solutions Architect Expert certification by passing the AZ-303 and AZ-304 you only need to do one assessment for the certification. It doesn't matter that the exams changed in the meantime as long as the certification itself isn't being retired.
@@ -19,11 +19,11 @@ Exams themselves don't expire which means you have as much time as you need to c
 Renewal assessment:
 
 * Consists of around 25-40 questions (depending on the question bank you randomly get)
-* It is an open book test so you can freely use the internet to help you with the answering (the questions are under the same NDA as the exam ones so don't copy paste them anywhere like google or github)
+* It is an open book test so you can freely use the internet to help you with the answering
 * Has no time limit to complete it
 * After the initial 2 attempts you have to wait 24h before attempting it again
 * You will get the chance to pass the assessment 180 days before the certification expires so you get a lot of chances and losing the certificate is only caused because you didn't want to do it
-* Shows you the assessment areas and how you did in them
+* Shows you how you did in the areas you are being tested on
 * Is free!
 
 You can access the renewals in your certification dashboard here: [https://aka.ms/certdashboard](https://aka.ms/certdashboard)
