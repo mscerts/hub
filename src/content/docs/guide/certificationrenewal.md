@@ -35,10 +35,6 @@ You are still required to follow the program agreement and Non-Disclosure Agreem
 ---
 
 **Sources**
-
-[Renew your Microsoft Certifications | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/renew-your-microsoft-certification)
-
-[Renew your Microsoft Certifications - FAQ | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/renew-your-microsoft-certification-faq)
-
-[Exams don't expire | Microsoft Certification Support](https://trainingsupport.microsoft.com/en-us/mcp/forum/all/is-there-any-time-limit-to-complete-the/4e885c43-bcde-44ce-a685-f4c3adf9f4dc)
-
+  <LinkCard title="Renew your Microsoft Certifications | Microsoft Learn" href="https://learn.microsoft.com/en-us/certifications/renew-your-microsoft-certification)" />
+  <LinkCard title="Renew your Microsoft Certifications - FAQ | Microsoft Learn" href="https://learn.microsoft.com/en-us/certifications/renew-your-microsoft-certification-faq)" />
+  <LinkCard title="Exams don't expire | Microsoft Certification Support" href="https://trainingsupport.microsoft.com/en-us/mcp/forum/all/is-there-any-time-limit-to-complete-the/4e885c43-bcde-44ce-a685-f4c3adf9f4dc" />
