@@ -1,6 +1,7 @@
 ---
 title: Certification Renewal
 ---
+import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 
 Microsoft has changed the certification renewal process so now instead of having to take the certification exam/s every 2 years, you just have to complete renewal assessment every year.
 
