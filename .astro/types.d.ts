@@ -444,76 +444,76 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"guide/certificationdashboard.md": {
-	id: "guide/certificationdashboard.md";
+"guide/certificationdashboard.mdx": {
+	id: "guide/certificationdashboard.mdx";
   slug: "guide/certificationdashboard";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"guide/certificationprofile.md": {
-	id: "guide/certificationprofile.md";
+} & { render(): Render[".mdx"] };
+"guide/certificationprofile.mdx": {
+	id: "guide/certificationprofile.mdx";
   slug: "guide/certificationprofile";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"guide/certificationrenewal.md": {
-	id: "guide/certificationrenewal.md";
+} & { render(): Render[".mdx"] };
+"guide/certificationrenewal.mdx": {
+	id: "guide/certificationrenewal.mdx";
   slug: "guide/certificationrenewal";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"guide/introduction.md": {
-	id: "guide/introduction.md";
+} & { render(): Render[".mdx"] };
+"guide/introduction.mdx": {
+	id: "guide/introduction.mdx";
   slug: "guide/introduction";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"guide/officialstudymaterials.md": {
-	id: "guide/officialstudymaterials.md";
+} & { render(): Render[".mdx"] };
+"guide/officialstudymaterials.mdx": {
+	id: "guide/officialstudymaterials.mdx";
   slug: "guide/officialstudymaterials";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"guide/overview.md": {
-	id: "guide/overview.md";
+} & { render(): Render[".mdx"] };
+"guide/overview.mdx": {
+	id: "guide/overview.mdx";
   slug: "guide/overview";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"guide/partneremployees.md": {
-	id: "guide/partneremployees.md";
+} & { render(): Render[".mdx"] };
+"guide/partneremployees.mdx": {
+	id: "guide/partneremployees.mdx";
   slug: "guide/partneremployees";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"guide/schedulingexam.md": {
-	id: "guide/schedulingexam.md";
+} & { render(): Render[".mdx"] };
+"guide/schedulingexam.mdx": {
+	id: "guide/schedulingexam.mdx";
   slug: "guide/schedulingexam";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"guide/studentopportunities.md": {
-	id: "guide/studentopportunities.md";
+} & { render(): Render[".mdx"] };
+"guide/studentopportunities.mdx": {
+	id: "guide/studentopportunities.mdx";
   slug: "guide/studentopportunities";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"guide/takingtheexams.md": {
-	id: "guide/takingtheexams.md";
+} & { render(): Render[".mdx"] };
+"guide/takingtheexams.mdx": {
+	id: "guide/takingtheexams.mdx";
   slug: "guide/takingtheexams";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "index.mdx": {
 	id: "index.mdx";
   slug: "index";
@@ -531,13 +531,6 @@ declare module 'astro:content' {
 "microsoft365/MS-102.md": {
 	id: "microsoft365/MS-102.md";
   slug: "microsoft365/ms-102";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"microsoft365/MS-203.md": {
-	id: "microsoft365/MS-203.md";
-  slug: "microsoft365/ms-203";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
