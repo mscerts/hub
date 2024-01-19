@@ -190,532 +190,532 @@ declare module 'astro:content' {
   slug: "404";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "AZ-107.mdx": {
 	id: "AZ-107.mdx";
   slug: "az-107";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "ExamTemplate.md": {
 	id: "ExamTemplate.md";
   slug: "examtemplate";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AI-102.md": {
 	id: "azure/AI-102.md";
   slug: "azure/ai-102";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AI-900.md": {
 	id: "azure/AI-900.md";
   slug: "azure/ai-900";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AZ-104.md": {
 	id: "azure/AZ-104.md";
   slug: "azure/az-104";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AZ-120.md": {
 	id: "azure/AZ-120.md";
   slug: "azure/az-120";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AZ-140.md": {
 	id: "azure/AZ-140.md";
   slug: "azure/az-140";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AZ-204.md": {
 	id: "azure/AZ-204.md";
   slug: "azure/az-204";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AZ-305.md": {
 	id: "azure/AZ-305.md";
   slug: "azure/az-305";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AZ-400.md": {
 	id: "azure/AZ-400.md";
   slug: "azure/az-400";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AZ-500.md": {
 	id: "azure/AZ-500.md";
   slug: "azure/az-500";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AZ-700.md": {
 	id: "azure/AZ-700.md";
   slug: "azure/az-700";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AZ-800.md": {
 	id: "azure/AZ-800.md";
   slug: "azure/az-800";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AZ-801.md": {
 	id: "azure/AZ-801.md";
   slug: "azure/az-801";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/AZ-900.md": {
 	id: "azure/AZ-900.md";
   slug: "azure/az-900";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/DP-100.md": {
 	id: "azure/DP-100.md";
   slug: "azure/dp-100";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/DP-203.md": {
 	id: "azure/DP-203.md";
   slug: "azure/dp-203";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/DP-300.md": {
 	id: "azure/DP-300.md";
   slug: "azure/dp-300";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/DP-420.md": {
 	id: "azure/DP-420.md";
   slug: "azure/dp-420";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/DP-500.md": {
 	id: "azure/DP-500.md";
   slug: "azure/dp-500";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "azure/DP-900.md": {
 	id: "azure/DP-900.md";
   slug: "azure/dp-900";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "blog/newupdate.mdx": {
 	id: "blog/newupdate.mdx";
   slug: "blog/newupdate";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "dynamics/MB-210.md": {
 	id: "dynamics/MB-210.md";
   slug: "dynamics/mb-210";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-220.md": {
 	id: "dynamics/MB-220.md";
   slug: "dynamics/mb-220";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-230.md": {
 	id: "dynamics/MB-230.md";
   slug: "dynamics/mb-230";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-240.md": {
 	id: "dynamics/MB-240.md";
   slug: "dynamics/mb-240";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-260.md": {
 	id: "dynamics/MB-260.md";
   slug: "dynamics/mb-260";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-300.md": {
 	id: "dynamics/MB-300.md";
   slug: "dynamics/mb-300";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-310.md": {
 	id: "dynamics/MB-310.md";
   slug: "dynamics/mb-310";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-330.md": {
 	id: "dynamics/MB-330.md";
   slug: "dynamics/mb-330";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-335.md": {
 	id: "dynamics/MB-335.md";
   slug: "dynamics/mb-335";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-500.md": {
 	id: "dynamics/MB-500.md";
   slug: "dynamics/mb-500";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-700.md": {
 	id: "dynamics/MB-700.md";
   slug: "dynamics/mb-700";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-800.md": {
 	id: "dynamics/MB-800.md";
   slug: "dynamics/mb-800";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-910.md": {
 	id: "dynamics/MB-910.md";
   slug: "dynamics/mb-910";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "dynamics/MB-920.md": {
 	id: "dynamics/MB-920.md";
   slug: "dynamics/mb-920";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "guide/certificationdashboard.mdx": {
 	id: "guide/certificationdashboard.mdx";
   slug: "guide/certificationdashboard";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "guide/certificationprofile.mdx": {
 	id: "guide/certificationprofile.mdx";
   slug: "guide/certificationprofile";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "guide/certificationrenewal.mdx": {
 	id: "guide/certificationrenewal.mdx";
   slug: "guide/certificationrenewal";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "guide/introduction.mdx": {
 	id: "guide/introduction.mdx";
   slug: "guide/introduction";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "guide/officialstudymaterials.mdx": {
 	id: "guide/officialstudymaterials.mdx";
   slug: "guide/officialstudymaterials";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "guide/overview.mdx": {
 	id: "guide/overview.mdx";
   slug: "guide/overview";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "guide/partneremployees.mdx": {
 	id: "guide/partneremployees.mdx";
   slug: "guide/partneremployees";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "guide/schedulingexam.mdx": {
 	id: "guide/schedulingexam.mdx";
   slug: "guide/schedulingexam";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "guide/studentopportunities.mdx": {
 	id: "guide/studentopportunities.mdx";
   slug: "guide/studentopportunities";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "guide/takingtheexams.mdx": {
 	id: "guide/takingtheexams.mdx";
   slug: "guide/takingtheexams";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "index.mdx": {
 	id: "index.mdx";
   slug: "index";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 "microsoft365/MD-102.md": {
 	id: "microsoft365/MD-102.md";
   slug: "microsoft365/md-102";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "microsoft365/MS-102.md": {
 	id: "microsoft365/MS-102.md";
   slug: "microsoft365/ms-102";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "microsoft365/MS-700.md": {
 	id: "microsoft365/MS-700.md";
   slug: "microsoft365/ms-700";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "microsoft365/MS-721.md": {
 	id: "microsoft365/MS-721.md";
   slug: "microsoft365/ms-721";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "microsoft365/MS-900.md": {
 	id: "microsoft365/MS-900.md";
   slug: "microsoft365/ms-900";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "office/MO-110.md": {
 	id: "office/MO-110.md";
   slug: "office/mo-110";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "office/MO-111.md": {
 	id: "office/MO-111.md";
   slug: "office/mo-111";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "office/MO-210.md": {
 	id: "office/MO-210.md";
   slug: "office/mo-210";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "office/MO-211.md": {
 	id: "office/MO-211.md";
   slug: "office/mo-211";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "office/MO-310.md": {
 	id: "office/MO-310.md";
   slug: "office/mo-310";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "power/PL-100.md": {
 	id: "power/PL-100.md";
   slug: "power/pl-100";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "power/PL-200.md": {
 	id: "power/PL-200.md";
   slug: "power/pl-200";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "power/PL-300.md": {
 	id: "power/PL-300.md";
   slug: "power/pl-300";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "power/PL-400.md": {
 	id: "power/PL-400.md";
   slug: "power/pl-400";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "power/PL-500.md": {
 	id: "power/PL-500.md";
   slug: "power/pl-500";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "power/PL-600.md": {
 	id: "power/PL-600.md";
   slug: "power/pl-600";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "power/PL-900.md": {
 	id: "power/PL-900.md";
   slug: "power/pl-900";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "security/SC-100.md": {
 	id: "security/SC-100.md";
   slug: "security/sc-100";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "security/SC-200.md": {
 	id: "security/SC-200.md";
   slug: "security/sc-200";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "security/SC-300.md": {
 	id: "security/SC-300.md";
   slug: "security/sc-300";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "security/SC-400.md": {
 	id: "security/SC-400.md";
   slug: "security/sc-400";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "security/SC-900.md": {
 	id: "security/SC-900.md";
   slug: "security/sc-900";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "vouchers/Beta Exams.md": {
 	id: "vouchers/Beta Exams.md";
   slug: "vouchers/beta-exams";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "vouchers/Cloud Skills Challenges.md": {
 	id: "vouchers/Cloud Skills Challenges.md";
   slug: "vouchers/cloud-skills-challenges";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "vouchers/Microsoft ESI.md": {
 	id: "vouchers/Microsoft ESI.md";
   slug: "vouchers/microsoft-esi";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "vouchers/MindHub Replay Voucher Bundles.md": {
 	id: "vouchers/MindHub Replay Voucher Bundles.md";
   slug: "vouchers/mindhub-replay-voucher-bundles";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "vouchers/Power Up Program.md": {
 	id: "vouchers/Power Up Program.md";
   slug: "vouchers/power-up-program";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
 "wiki.mdx": {
 	id: "wiki.mdx";
   slug: "wiki";
   body: string;
   collection: "docs";
-  data: any
+  data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
 };
 
@@ -727,5 +727,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	type ContentConfig = never;
+	type ContentConfig = typeof import("../src/content/config");
 }
