@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import starlightBlog from 'starlight-blog';
 
 const site = 'https://certs.msfthub.wiki/';
 
@@ -18,22 +17,6 @@ export default defineConfig({
 		'/dynamics365': '/wiki',
 	  },
 	integrations: [
-		starlightBlog({
-			authors: {
-				nighthouse: {
-				name: 'nighthouse',
-				title: 'Content & Site Editor',
-				picture: 'https://avatars.githubusercontent.com/u/121154936?v=4',
-				url: 'https://github.com/n1ghthouse',
-			  },
-			  teriaavibes: {
-				name: 'teriaavibes',
-				title: 'Content Editor',
-				picture: 'https://avatars.githubusercontent.com/u/68708075?v=4', 
-				url: 'https://github.com/teriaavibes',
-			  },
-			},
-		  }),
 		starlight({
 			title: 'Microsoft Certification Hub',
 			head: [
