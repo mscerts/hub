@@ -3,14 +3,14 @@ title: Beta Exams
 ---
 
 
-## [Beta Exams](https://learn.microsoft.com/en-us/certifications/beta-exams) 
+## [Beta Exams](https://learn.microsoft.com/certifications/beta-exams?WT.mc_id=291324) 
 **(80% + 25% Discount Voucher)**
 
 Every once in a while Microsoft creates a new exam either for a new certification or to update existing ones and they need to test them out before they release them into General Availability. 
 
-Because of this there are incentives for exam beta testers. The first and most important one is that Microsoft offers 80% off for first 300 people who order the exam. This discount is on first-come basis and the voucher code is shared publicly on the [Microsoft Learn Blog](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog).
+Because of this there are incentives for exam beta testers. The first and most important one is that Microsoft offers 80% off for first 300 people who order the exam. This discount is on first-come basis and the voucher code is shared publicly on the [Microsoft Learn Blog](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog?WT.mc_id=291324).
 
-There is also an option to be invited if you are part of the [Subject Matter Expert database](https://learn.microsoft.com/en-us/certifications/posts/help-us-create-exams-and-learning-content). The process is not simple but worth it if you want the closed-off beta vouchers. These are the same 80% off beta vouchers for 300 people, first-come basis but the benefit is that the code is not shared publicly. Based on your preferences you may be also served some other engagements but I haven't experienced anything worthy of mentioning.
+There is also an option to be invited if you are part of the [Subject Matter Expert database](https://learn.microsoft.com/certifications/posts/help-us-create-exams-and-learning-content?WT.mc_id=291324). The process is not simple but worth it if you want the closed-off beta vouchers. These are the same 80% off beta vouchers for 300 people, first-come basis but the benefit is that the code is not shared publicly. Based on your preferences you may be also served some other engagements but I haven't experienced anything worthy of mentioning.
 
 Keep in mind that you can generally only use this code to take the exam within 3-4 weeks from the beta launch.
 
