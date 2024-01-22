@@ -15,7 +15,7 @@ Microsoft Build usually happens in **Spring (March/June)**. Historically the eve
 - The voucher is usually **valid for the next 3 months**, after that you will be unable to reschedule it any further *(it is the final deadline)* and you can only use the voucher code for the exams that are **eligible for that specific challenge event** (but can complete any challenge and take any of the eligible exams).
 - In the past vouchers were universal which meant you can use them with any exam, that has changed since Build 2021. You will now only recieve one voucher that is only applicable to the exams listed in the event details. **However you can do any challenge & apply your voucher to any of the allowed exams.**
 
-## [Microsoft Ignite](https://aka.ms/ignitecsc) (100% Discount Voucher)
+## [Microsoft Ignite](https://aka.ms/ignitecsc) (100% Discount Voucher) 
 
 Microsoft Ignite takes place in **Fall (October/November)**. Historically the event ends with a Cloud Skills Challenge just like Build.
 
@@ -26,11 +26,11 @@ Microsoft Ignite takes place in **Fall (October/November)**. Historically the ev
 - The voucher is usually **valid for the next 3 months**, after that you will be unable to reschedule it any further *(it is the final deadline)* and you can only use the voucher code for the exams that are **eligible for that specific challenge event** (but can complete any challenge and take any of the eligible exams).
 - In the past vouchers were universal which meant you can use them with any exam, that has changed since Ignite 2021. You will now only receive one voucher that is only applicable to the exams listed in the event details.
 
-## [30 Days To Learn](https://aka.ms/30-days-to-learn-it) (50% Discount Voucher)
+## [30 Days To Learn](https://developer.microsoft.com/en-us/offers/30-days-to-learn-it?WT.mc_id=291324) (50% Discount Voucher) h
 
 It is very similar to the normal cloud skills challenge from **Ignite** or **Build**.
 
-Basically, you just go through MS Learn modules for a specific certification and after completing it, you get a **50% off** voucher. It isn't 100% but everything can help, especially since it includes a lot of exams. Offer just got extended to June 3Oth, 2024.
+Basically, you just go through MS Learn modules for a specific certification and after completing it, you get a **50% off** voucher. It isn't 100% but everything can help, especially since it includes a lot of exams. Offer just got extended to **June 3Oth, 2024**.
 
 - You get **1 voucher every 6 months**.
 - You usually get it within 3 days of finishing the challenge.
@@ -59,4 +59,4 @@ The voucher is eligible for these exams:
 
 **The voucher provided technically isn't restricted to the eligible exams above but can be used for virtually any exam. This isn't encouraging anyone to not follow the official rules but I felt like this was worth mentioning.**
 
-**[Microsoft | 30 Days to Learn It - Official Rules](https://aka.ms/30-days-to-learn-it/voucher)**
+**[Microsoft | 30 Days to Learn It - Official Rules](https://developer.microsoft.com/en-us/offers/30-days-to-learn-it/official-rules?WT.mc_id=291324#terms-and-conditions)**
