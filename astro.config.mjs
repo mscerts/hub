@@ -32,6 +32,13 @@ export default defineConfig({
 					tag: 'meta',
 					attrs: { property: 'og:url', content: 'https://certs.msfthub.wiki/' },
 				},
+				{
+					tag: 'script',
+					attrs: {
+					  src: 'https://www.clarity.ms/tag/',
+					  defer: true,
+					},
+				},
 			],
 			editLink: {
 				baseUrl: 'https://github.com/mscerts/hub/edit/main/',

@@ -1,0 +1,9 @@
+---
+import Pagination from "@astrojs/starlight/components/Pagination.astro";
+import FeedbackComponent from "./FeedbackComponent.astro";
+---
+
+<>
+    <FeedbackComponent />
+    <Pagination {...Astro.props as any} />
+</>
