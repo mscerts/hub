@@ -25,6 +25,7 @@ If you are interested, join our [Discord Server](https://discord.gg/microsoft-ce
 When do the Study Group run?
 
 | **Study Group Cohorts** | **Registration Start** | **Registration End/Program Start** | **Program End** |
+| ------------------- | ------------------ | ------------------------------ | ----------- | 
 | **Winter** | End of January | Middle of February | End of March | 
 | **Spring** | End of April | Middle of May | End of June |
 | **Summer** | End of July | Middle of August | End of September | 
