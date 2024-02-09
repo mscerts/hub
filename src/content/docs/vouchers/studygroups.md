@@ -23,7 +23,9 @@ For the information that I know:
 If you are interested, join our [Discord Server](https://discord.gg/microsoft-certification-study-group-676990910176821270) and create a ticket in the Reports and Suggestion channel. There are limited seats so be sure not to delay. 
 
 When do the Study Group run?
-First opens up in January, registration ends on February 15th and it ends in March (currently running in trial run)
-Second opens up in April, registration ends on May 15th and it ends in June
-Third opens up in July, registration ends on August 5th and it ends in September
-Forth opens up in October, registration ends on November 15th and it ends in December
+
+| **Study Group Cohorts** | **Registration Start** | **Registration End/Program Start** | **Program End** |
+| **Winter** | End of January | Middle of February | End of March | 
+| **Spring** | End of April | Middle of May | End of June |
+| **Summer** | End of July | Middle of August | End of September | 
+| **Fall** | End of October | Middle of November | End of December | 
