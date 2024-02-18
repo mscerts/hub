@@ -2,11 +2,11 @@
 import FeelbackTaggedMessage from "astro-feelback/components/FeelbackTaggedMessage.astro";
 import "astro-feelback/styles/feelback.css";
 
-const CONTENT_SET_ID = "context.env.FEELBACK_ID";
+const PROCESS_SET_ID = "process.env.FEELBACK_ID";
 ---
 
 <FeelbackTaggedMessage
-    contentSetId={CONTENT_SET_ID}
+    contentSetId={PROCESS_SET_ID}
     preset="evaluation"
     title="Was this page useful?"
     layout="reveal-message"

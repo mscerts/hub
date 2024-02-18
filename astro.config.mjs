@@ -1,7 +1,10 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightBlog from 'starlight-blog'
 
 const site = 'https://certs.msfthub.wiki/';
+const clarityId = process.env.CLARITY_ID;
+let url = `https://clarity.ms/tag/${clarityId}`;
 
 export default defineConfig({
 	redirects: {
@@ -18,6 +21,24 @@ export default defineConfig({
 	  },
 	integrations: [
 		starlight({
+			plugins: [
+				starlightBlog({
+					authors: {
+						nighthouse: {
+						name: 'nighthouse',
+						title: 'Content & Site Editor',
+						picture: 'https://avatars.githubusercontent.com/u/121154936?v=4',
+						url: 'https://github.com/n1ghthouse',
+					  },
+					  teriaavibes: {
+						name: 'teriaavibes',
+						title: 'Content Editor',
+						picture: 'https://avatars.githubusercontent.com/u/68708075?v=4', 
+						url: 'https://github.com/teriaavibes',
+					  },
+					},
+				  }),
+			],
 			title: 'Microsoft Certification Hub',
 			head: [
 				{
@@ -35,11 +56,14 @@ export default defineConfig({
 				{
 					tag: 'script',
 					attrs: {
-					  src: 'https://www.clarity.ms/tag/',
+					  src: url,
 					  defer: true,
 					},
 				},
 			],
+			components: {
+				Pagination: "./src/components/CustomPagination.astro"
+			},
 			editLink: {
 				baseUrl: 'https://github.com/mscerts/hub/edit/main/',
 			},
