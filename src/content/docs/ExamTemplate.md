@@ -26,7 +26,7 @@ Use one of these badges depending on what type of exam it is:
 
 ### Practice Tests/Assessments:
 - [MS Learn Practice Assessment](https://learn.microsoft.com/certifications/exams)
-- [MeasureUp Practice Tests](https://www.measureup.com)
+- [MeasureUp Practice Tests](https://www.measureup.com#44)
 - **No dumps**
 
 ### [GitHub Labs](https://aka.ms/examcodelabs)
