@@ -3,8 +3,6 @@ import starlight from '@astrojs/starlight';
 import starlightBlog from 'starlight-blog'
 
 const site = 'https://certs.msfthub.wiki/';
-const clarityId = process.env.CLARITY_ID;
-let url = `https://clarity.ms/tag/${clarityId}`;
 
 export default defineConfig({
 	redirects: {
@@ -52,13 +50,6 @@ export default defineConfig({
 				{
 					tag: 'meta',
 					attrs: { property: 'og:url', content: 'https://certs.msfthub.wiki/' },
-				},
-				{
-					tag: 'script',
-					attrs: {
-					  src: url,
-					  defer: true,
-					},
 				},
 			],
 			components: {
