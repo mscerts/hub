@@ -52,9 +52,6 @@ export default defineConfig({
 					attrs: { property: 'og:url', content: 'https://certs.msfthub.wiki/' },
 				},
 			],
-			components: {
-				Pagination: "./src/components/CustomPagination.astro"
-			},
 			editLink: {
 				baseUrl: 'https://github.com/mscerts/hub/edit/main/',
 			},
