@@ -20,7 +20,7 @@ For the information that I know:
 - Active participation is required
 - Voucher is good for any fundamental exam
 
-If you are interested, join our [Discord Server](https://discord.gg/microsoft-certification-study-group-676990910176821270) and create a ticket in the Reports and Suggestion channel. There are limited seats so be sure not to delay. 
+If you are interested, there will be a sign-up form here you can use to register when the Study Groups start.
 
 When do the Study Group run?
 
