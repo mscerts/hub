@@ -22,7 +22,7 @@ For the information that I know:
 
 If you are interested, there will be a sign-up form here you can use to register when the Study Groups start.
 
-When do the Study Group runs?
+When do the Study Groups run?
 
 | **Study Group Cohorts** | **Registration Start** | **Registration End/Program Start** | **Program End** |
 | ------------------- | ------------------ | ------------------------------ | ----------- | 
