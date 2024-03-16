@@ -7,7 +7,8 @@
 <br>
 <br>
 
-## Welcome to the Knowledge Hub for Microsoft Certifications.<br>
+## Welcome to the Knowledge Hub for Microsoft Certifications.
+
 
 Discover a world of valuable resources and guides to help you navigate the realm of Microsoft certifications. Whether you're a seasoned professional or just starting your journey, this hub is here to support you every step of the way. Here, you'll find the Ultimate Certification Guide, Exam Wiki containing all resources related to the specific exams and information on free exam voucher opportunities. Everything is now on our new website https://certs.msfthub.wiki/ and this GitHub now only hosts the source files.
 
