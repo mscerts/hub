@@ -147,12 +147,13 @@ After you finish all your questions in the section, you will be presented with t
 
 This doesn't necessarily mean it is the end of the exam as there may be case study or lab after. Here you can see how you and can easily access questions you didn't answer or marked for review. **Always answer all questions, even if you have no clue. You don't get negative points for guessing. If you finish the review screen and there are still unanswered questions, you've done it wrong.**
 
-After finishing the whole exam, it still isn't over. Once you get to this window and don't want to leave feedback to the questions (or are just really anxious about how you did). **Ignore it. In the bottom right there is Exit button.**
+After finishing the whole exam, it still isn't over. Once you get to this window and don't want to leave feedback to the questions (or are just really anxious about how you did). **Ignore it. In the bottom there is Exit button.**
 
 <img src="/examfeedback.png" alt="Microsoft Certification Exam Feedback Screenshot"/>
 
 This will take you to the result page (if you had a lab, you won't get your result immediately).
 
+##Trying to source new screenshots, until then I have to leave the old ones up unfortunately.
 <img src="/resultscreen.webp" alt="Result Page"/>
 
 On the next page you will see your score report no need to read it now, can access it from PearsonVue later on. And only once you hit the End button there, you finished the exam.
