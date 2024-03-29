@@ -149,7 +149,7 @@ This doesn't necessarily mean it is the end of the exam as there may be case stu
 
 After finishing the whole exam, it still isn't over. Once you get to this window and don't want to leave feedback to the questions (or are just really anxious about how you did). **Ignore it. In the bottom right there is Exit button.**
 
-<img src="/exanfeedback.png" alt="Microsoft Certification Exam Feedback Screenshot"/>
+<img src="/examfeedback.png" alt="Microsoft Certification Exam Feedback Screenshot"/>
 
 This will take you to the result page (if you had a lab, you won't get your result immediately).
 
