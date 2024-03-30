@@ -153,7 +153,7 @@ After finishing the whole exam, it still isn't over. Once you get to this window
 
 This will take you to the result page (if you had a lab, you won't get your result immediately).
 
-##Trying to source new screenshots, until then I have to leave the old ones up unfortunately.
+## Trying to source new screenshots, until then I have to leave the old ones up unfortunately.
 <img src="/resultscreen.webp" alt="Result Page"/>
 
 On the next page you will see your score report no need to read it now, can access it from PearsonVue later on. And only once you hit the End button there, you finished the exam.
