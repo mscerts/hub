@@ -12,11 +12,11 @@ Then you scroll down to the "Schedule exam" section. For some exams there is als
 After clicking **Schedule exam**, you will be taken to the Certification Profile that you have created before. 
 After verifying the information, you will continue to the Exam Discounts page, here is the first of the 2 ways to apply the vouchers for your exam. If the voucher is associated with the email account you will see it there. Just hit the **Claim** button on the voucher to redeem it and click the **Schedule Exam** in bottom right to continue. This will take you to the PearsonVue portal.
 
-<img title="" src="/sc900examorderpage.webp" alt="SC-900 Exam order page"/>
+<img title="" src="/az900orderexam.png" alt="AZ-900 Exam order page"/>
 
 First you need to choose how you will take the exam. The choices are:
 
-<img title="" src="/pearsonvueexamoptions.webp" alt="PearsonVue exam options"/>
+<img title="" src="/pearsonvueexamoptions.png" alt="PearsonVue Exam Options"/>
 
 * At a test center - you will physically have to go to the location and take the exam there (this is the best option, more on that later)
 * Online using the OnVue app - you will take the exam in your home/office, no need to travel anywhere (this is not the recommended option)
