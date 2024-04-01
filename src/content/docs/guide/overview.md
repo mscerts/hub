@@ -15,15 +15,15 @@ You can find the complete and frequently updated certification poster at [https:
 * The star symbol in the top right indicates it is an expert level certification
 * The lock symbol in the bottom right indicates there is a prerequisite certification you must hold to be able to get this certification. You can still take the exams, you just won't receieve a certification. 
 
-I will use the [Microsoft Certified: Azure Solutions Architect Expert](https://docs.microsoft.com/learn/certifications/azure-solutions-architect?WT.mc_id=165290) as an example. As you can see on this image:
+I will use the [Microsoft Certified: Azure Solutions Architect Expert](https://docs.microsoft.com/learn/certifications/azure-solutions-architect?WT.mc_id=studentamb_165290) as an example. As you can see on this image:
 
 <img src="/azurearchitectpath.png" alt="Certification Path for Azure Solutions Architect Certification"/>
 
 (You can find this on every certification page), you need to:
 
-* Complete one prerequisite certification in this case, the [Microsoft Certified: Azure Administrator Associate](https://docs.microsoft.com/learn/certifications/azure-administrator?WT.mc_id=165290)
+* Complete one prerequisite certification in this case, the [Microsoft Certified: Azure Administrator Associate](https://docs.microsoft.com/learn/certifications/azure-administrator?WT.mc_id=studentamb_165290)
 * **AND**
-* Pass the [AZ-305: Designing Microsoft Azure Infrastructure Solutions Exam](https://learn.microsoft.com/credentials/certifications/exams/az-305/?WT.mc_id=165290)
+* Pass the [AZ-305: Designing Microsoft Azure Infrastructure Solutions Exam](https://learn.microsoft.com/credentials/certifications/exams/az-305/?WT.mc_id=studentamb_165290)
 
 After that will then receive the Microsoft Certified: Azure Solutions Architect Expert Certification.
 
@@ -63,6 +63,6 @@ Fundamental certifications are good for life and will never expire, even when th
 
 **Sources:**
 
-[Exam retake policy | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/exam-retake-policy?WT.mc_id=165290) 
+[Exam retake policy | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/exam-retake-policy?WT.mc_id=studentamb_165290) 
 
-[Exam reschedule and cancellation policy | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/exam-reschedule-and-cancellation-policy?WT.mc_id=165290)
+[Exam reschedule and cancellation policy | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/exam-reschedule-and-cancellation-policy?WT.mc_id=studentamb_165290)
