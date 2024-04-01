@@ -21,10 +21,10 @@ First you need to create a Microsoft Certification profile. You can find the tut
 **The options are:**
 
 * **Microsoft Azure** \- Azure is a cloud computing platform where you rent computer power from Microsoft datacenters
-* **Microsoft 365** \- M365 is a modern workplace ecosystem which includes identities, collaboration and email services and device management
-* **Dynamics 365** \- D365 is a product line of enterprise resource planning (ERP) and customer relationship management (CRM) intelligent business applications
+* **Microsoft 365** \- M365 is a modern workplace ecosystem which includes identities, collaboration, email services and device management
+* **Dynamics 365** \- D365 is a product line of Enterprise Resource Planning (ERP) and Customer Relationship Management (CRM) intelligent business applications
 * **Power Platform** \- Power Platform is a line of business intelligence, app development, and app connectivity software applications. Microsoft developed the Power Fx low-code programming language for expressing logic across the Power Platform.
-* **Microsoft Security, Compliance and Identity** \- Microsoft cloud Security, Compliance and Identity is a set of tools which protect and govern the whole Microsoft Cloud
+* **Microsoft Security, Compliance and Identity** \- Microsoft Cloud Security, Compliance and Identity is a set of tools which protect and govern the whole Microsoft Cloud
 
 If you aren't able to choose at this point, don't worry. Microsoft offers introductory exams into each area which gives you a good idea what the areas are about.
 
@@ -32,6 +32,6 @@ If you aren't able to choose at this point, don't worry. Microsoft offers introd
 
 **Sources:**
 
-[Why get certified? | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/posts/microsoft-learn-why-get-certified?WT.mc_id=291324)
+[Why get certified? | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/posts/microsoft-learn-why-get-certified?WT.mc_id=165290)
 
-[Microsoft Certifications | Microsoft Learn](https://learn.microsoft.com/en-us/certifications?WT.mc_id=291324)
+[Microsoft Certifications | Microsoft Learn](https://learn.microsoft.com/en-us/certifications?WT.mc_id=165290)
