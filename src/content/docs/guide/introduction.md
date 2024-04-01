@@ -32,6 +32,6 @@ If you aren't able to choose at this point, don't worry. Microsoft offers introd
 
 **Sources:**
 
-[Why get certified? | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/posts/microsoft-learn-why-get-certified?WT.mc_id=165290)
+[Why get certified? | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/posts/microsoft-learn-why-get-certified?WT.mc_id=studentamb_165290)
 
-[Microsoft Certifications | Microsoft Learn](https://learn.microsoft.com/en-us/certifications?WT.mc_id=165290)
+[Microsoft Certifications | Microsoft Learn](https://learn.microsoft.com/en-us/certifications?WT.mc_id=studentamb_165290)
