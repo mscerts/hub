@@ -8,23 +8,23 @@ You can find the complete and frequently updated certification poster at [https:
 
 <img src="/azurearchitect.png" alt="Azure Solutions Architect Expert Certification Poster Tile"/>
 
-* Each rectangle contains a different certification.
-* Under certification you can see the exams required to get it.
+* Each tile contains a different certification.
+* Under the certification you can see the exam/s required to get it.
 * By clicking on the certification name, you will be directed into the certification webpage.
 * After clicking the exam name, you will be directed into the exam webpage.
 * The star symbol in the top right indicates it is an expert level certification
-* The lock symbol in the bottom right indicates there is a prerequisite certification you must hold to be able to get this certification.
+* The lock symbol in the bottom right indicates there is a prerequisite certification you must hold to be able to get this certification. You can still take the exams, you just won't receieve a certification. 
 
-I will use the [Microsoft Certified: Cybersecurity Architect Expert](https://learn.microsoft.com/credentials/certifications/cybersecurity-architect-expert/?WT.mc_id=291324) as an example. As you can see on this image:
+I will use the [Microsoft Certified: Azure Solutions Architect Expert](https://docs.microsoft.com/learn/certifications/azure-solutions-architect?WT.mc_id=165290) as an example. As you can see on this image:
 
 <img src="/azurearchitectpath.png" alt="Certification Path for Azure Solutions Architect Certification"/>
 
 (You can find this on every certification page), you need to:
 
-* Complete one prerequisite certification out of those on the left side and
-* Pass the SC-100 exam
+* Complete one prerequisite certification in this case, the [Microsoft Certified: Azure Administrator Associate](https://docs.microsoft.com/learn/certifications/azure-administrator?WT.mc_id=165290) and
+* Pass the [AZ-305: Designing Microsoft Azure Infrastructure Solutions Exam](https://learn.microsoft.com/credentials/certifications/exams/az-305/?WT.mc_id=165290)
 
-After that will then receive the Microsoft Certified: Cybersecurity Architect Expert certification. If you only pass the exam and don't earn certification, you will get no recognition. 
+After that will then receive the Microsoft Certified: Azure Solutions Architect Expert Certification.
 
 **To pass an exam you need 70% of the total score so your score can't be lower than 700/1000. Scoring is individual and depends on the question set you receive. If you want to get familiar with the testing process, I have thoroughly described it in this post:** [**How to take Microsoft Exams**](https://certs.msfthub.wiki/guide/takingtheexams/).
 
@@ -37,15 +37,15 @@ After that will then receive the Microsoft Certified: Cybersecurity Architect Ex
 
 **Fundamentals** 
 
-* Fundamental certifications consist of entry level exams in their respective areas. Their content is usually learning how does the respective area work, what are the major products and what is their purpose. These certifications are aimed at non-technical people (sales associates, managers or executives) and people trying to enter Microsoft Cloud before they go towards harder exams.
+* Fundamental certifications consist of entry level exams in their respective areas. Their content is usually learning how does the respective area work, what are the important products/concepts and what is their purpose. These certifications are aimed at non-technical people (Sales Associates, Managers, Executives or Students) and people trying to enter Microsoft Cloud before they start with the harder exams.
 * When taking the exam, you will have 45 minutes for the exam itself + 20 minutes where you will have to read non-disclosure agreement (NDA) and go through questionnaires.
 
 Fundamental certifications are good for life and will never expire, even when the exam/certification is retired.
 
 **Associate** 
 
-* Associate certifications are very technical certifications that require a deep knowledge of the technologies (Hands-on experience isn't required but it makes studying and preparation easier). They are aimed at professionals who want to certify their skills with the products.
-* When taking the exam, you will have 100 minutes (if it can contain a lab, you get 120 minutes) + 20 minutes where you will have to read NDA and go through questionnaires.
+* Associate certifications are very technical certifications that require a deep knowledge of the technologies (Hands-on experience isn't required but usually necessary to pass the exam as they expect test takers to have real experience with the tools). They are aimed at professionals who want to certify their skills with the products.
+* When taking the exam, you will have 100 minutes (if it contains a lab, you get 120 minutes) + 20 minutes where you will have to read NDA and go through questionnaires.
 * Associate certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](https://certs.msfthub.wiki/guide/certificationrenewal/).
 
 **Expert**
@@ -62,6 +62,6 @@ Fundamental certifications are good for life and will never expire, even when th
 
 **Sources:**
 
-[Exam retake policy | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/exam-retake-policy?WT.mc_id=291324) 
+[Exam retake policy | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/exam-retake-policy?WT.mc_id=165290) 
 
-[Exam reschedule and cancellation policy | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/exam-reschedule-and-cancellation-policy?WT.mc_id=291324)
+[Exam reschedule and cancellation policy | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/exam-reschedule-and-cancellation-policy?WT.mc_id=165290)
