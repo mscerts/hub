@@ -10,15 +10,15 @@ Before you get to the actual exam questions, Microsoft will first ask you about 
 
 Next you will be shown the Microsoft Certification Exam Candidate Agreement. You will need to accept it before you can see the real exam.
 
-<img src="/examagreement.png" alt="Microsoft Certification Exam Agreement Screenshot"/>
+<img src="/examagreement.png" alt="Microsoft Certification Exam Agreement"/>
 
 After agreeing that you will be shown information about the exam itself. Be sure to read the total number of questions because sometimes you don't get a lab or case study at the beginning which means that you need to save time at the end for them. Information about the exam structure can be also accessed during the exam
 
-<img src="/summary.png" alt="Microsoft Certification Exam Welcome Screenshot"/>
+<img src="/summary.png" alt="Microsoft Certification Exam Welcome"/>
 
 Next page will explain how the exam works, be sure to read it.
 
-<img src="/examoverview.png" alt="Microsoft Certification Exam Overview Screenshot"/>
+<img src="/examoverview.png" alt="Microsoft Certification Exam Overview"/>
 
 After reading all the information, there will be another screen with summary and the option to start the exam. 
 
@@ -26,15 +26,15 @@ After reading all the information, there will be another screen with summary and
 
 For the basic navigation:
 
-<img src="/basicnavigation.png" alt="Microsoft Certification Exam UI Screenshot"/>
+<img src="/basicnavigation.png" alt="Microsoft Certification Exam UI"/>
 
 - **Timer** - There is a timer in the top right corner. You have the option to turn the timer off in case it is stressing you out. **Turning the timer off does not stop it, the timer will still continue after turning it off.**
 
-<img src="/timer.png" alt="Microsoft Certification Exam Timer Screenshot"/>
+<img src="/timer.png" alt="Microsoft Certification Exam Timer"/>
 
 - **Exam Progress Bar** - In the top middle part of the exam, there is the Progress bar. The bar tells you how many questions are in the current section, not the total amount of questions.
 
-<img src="/progressbar.png" alt="Microsoft Certification Exam Progress Bar Screenshot"/>
+<img src="/progressbar.png" alt="Microsoft Certification Exam Progress Bar"/>
 
 - **Exam Toolbar** - In the top left you can access the exam toolbar where there are many tools:
 
@@ -42,19 +42,19 @@ For the basic navigation:
 
 - **Exam Question Details** - Here you can access all the questions in your current sections and filter them.
 
-<img src="/examdetails.png" alt="Microsoft Certification Exam Details Screenshot"/>
+<img src="/examdetails.png" alt="Microsoft Certification Exam Details"/>
 
 In case you are done with filtering and want to return to all questions, use the **Exit Review Mode** Button on the bottom of the screen next to navigational buttons.
 
-<img src="/buttons.png" alt="Microsoft Certification Exam Navigation Buttons Screenshot"/>
+<img src="/buttons.png" alt="Microsoft Certification Exam Navigation Buttons"/>
 
 - **Exam Progress** - Here you can see the whole structure of the exam, where you currently are and how much is remaining. It will also show you all the questions that are still in front of you, outside the current section so now there is no need to remember it from the Welcome screen but you have it in the exam.
 
-<img src="/examprogress.png" alt="Microsoft Certification Exam Progress Screenshot"/>
+<img src="/examprogress.png" alt="Microsoft Certification Exam Progress"/>
 
 - **Microsoft Learn** - If you are taking non-fundamental exam, you will have limited access to Microsoft Learn during your exam. The button will be right below the **Exam Progress** button.
 
-  [**Microsoft Learn during your exam**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=165290#accessing-microsoft-learn-during-your-certification-exam)
+  [**Microsoft Learn during your exam**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#accessing-microsoft-learn-during-your-certification-exam)
   
 :::note
 Statistically, people who use Microsoft Learn incorrectly are failing more exams than people who don't use it at all during the exam.
@@ -71,19 +71,19 @@ So how to use it?
 
 - **Take a Break** - You are allowed to take unscheduled breaks during the exam. Keep in mind that once you initiate a break, the timer will go on as usual and you won't have access to any question you have seen before after you return, **including the one you are currently looking at**. The interface will warn you of any incomplete question beforehand.
 
-<img src="/takeabreak.png" alt="Microsoft Certification Take a Break Screenshot"/>
+<img src="/takeabreak.png" alt="Microsoft Certification Take a Break"/>
 
 - **Calculator** - There might be some basic math in the exam, like calculating SLAs, bandwith or subnetting. You can access calculator for these questions, it is just a normal calculator, nothing special about it.
 
-<img src="/calculator.png" alt="Microsoft Certification Exam Calculator Screenshot"/>
+<img src="/calculator.png" alt="Microsoft Certification Exam Calculator"/>
 
 - **Color Scheme** - Long awaited feature, now you can switch your exam to dark mode. There is also High Contract option for those who prefer it.
 
-<img src="/colorscheme.png" alt="Microsoft Certification Exam Color Scheme Screenshot"/>
+<img src="/colorscheme.png" alt="Microsoft Certification Exam Color Scheme"/>
 
 - **Help Button** - Here you can find all the technical information about the interface, the exam format and even some shortcuts. This doesn't contain any information that will actually help you answer the question.
 
-<img src="/helpbutton.png" alt="Microsoft Certification Exam Help Button Screenshot"/>
+<img src="/helpbutton.png" alt="Microsoft Certification Exam Help Button"/>
 
 - **Exam Question Itself** - In the middle you can see the Exam Question Itself. The different question types are explained below. There are 2 important buttons there.
    - **Review Later** allows you to highlight the question and access it easily from the review screen. So in case you are not sure about your answer, mark it for review and return to it when you have extra time.
@@ -105,19 +105,19 @@ So if you feel like there are 2 possible answers, try to find one that also foll
  You can find most of these in the exam demo that simulates how the real exam looks like, [https://aka.ms/examdemo](https://aka.ms/examdemo)
 :::
 
-[**Active Screen**](https://learn.microsoft.com/credentials/support/exam-duration-exam-experience?WT.mc_id=291324#active-screen-044)**/**[**Best answer**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=165290#best-answer-020)**/**[**Multiple Choice**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=165290#multiple-choice-037): I grouped these together because the strategy is the same. Choose the best answer. You can usually discard 2 answers because you either haven't heard of it or you know it is obviously wrong. So, you are left with 50/50 choice. If you feel like both are correct, think of the more elegant solution. Abide by the 3 rules I mentioned in bold earlier.
+[**Active Screen**](https://learn.microsoft.com/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#active-screen-044)**/**[**Best answer**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#best-answer-020)**/**[**Multiple Choice**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#multiple-choice-037): I grouped these together because the strategy is the same. Choose the best answer. You can usually discard 2 answers because you either haven't heard of it or you know it is obviously wrong. So, you are left with 50/50 choice. If you feel like both are correct, think of the more elegant solution. Abide by the 3 rules I mentioned in bold earlier.
 
 <img src="/multiplechoice.png" alt="Multiple Choice Question Type"/>
 <br></br>
 <img src="/multiplechoicemultipleanswer.png" alt="Multiple Choice & Multiple Select Question Type"/>
 
-[**Hot Area/Active Screen**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=165290#hot-area-017): It can be screenshot of basically any menu or portal that is related to the exam. AAD Connect configuration, Azure Portal, creating Virtual Machines for example. Your task will be to answer the question by toggling option/s in the screenshot. 
+[**Hot Area/Active Screen**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#hot-area-017): It can be screenshot of basically any menu or portal that is related to the exam. AAD Connect configuration, Azure Portal, creating Virtual Machines for example. Your task will be to answer the question by toggling option/s in the screenshot. 
 
 <img src="/activescreen.png" alt="Active Screen Question Type"/>
 
 It is really useful to know the menu you are interacting with and not going in blind.
 
-[**Drag and Drop**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=165290#drag-and-drop-037): As the name says, pretty self-explanatory. Drag an answer from left to right.
+[**Drag and Drop**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#drag-and-drop-037): As the name says, pretty self-explanatory. Drag an answer from left to right.
 
 Usually there aren't more of the same answers on the right so if you have 3 on the left and 3 on the right and have no idea, there is a good chance that all answers will be used once.  **That isn't the case with some questions** but most I encountered used this pattern.
 
@@ -125,50 +125,53 @@ Usually there aren't more of the same answers on the right so if you have 3 on t
 
 **The question types below will only appear in role-based exams.**
 
-[**Build List**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=165290#build-list-045): Similar to the Drag and Drop, but now you are making a list. So, you will also need to order it correctly. **Don't forget about the basics**, like resource providers in PowerShell or create resource button in Azure Portal.
+[**Build List**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#build-list-045): Similar to the Drag and Drop, but now you are making a list. So, you will also need to order it correctly. **Don't forget about the basics**, like resource providers in PowerShell or create resource button in Azure Portal.
 
 <img src="/buildlist.png" alt="Build List Question Type"/>
 
-[**Repeated answer choices**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=165290#repeated-answer-choices-020): Probably the strangest and most confusing question type you will encounter if you haven't heard about it yet. You will be presented with one scenario. There will be a possible solution and you will be asked if it is a **full** solution to the scenario and problem. There will be multiple questions presenting the same scenario but different solutions. **After answering the question, you may not return to it.** There are usually around 4 questions in a scenario.
+[**Repeated answer choices**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#repeated-answer-choices-020): Probably the strangest and most confusing question type you will encounter if you haven't heard about it yet. You will be presented with one scenario. There will be a possible solution and you will be asked if it is a **full** solution to the scenario and problem. There will be multiple questions presenting the same scenario but different solutions. **After answering the question, you may not return to it.** There are usually around 4 questions in a scenario.
 
 The strategy here is simple, if you aren't **100%** sure, pick **false**. There are 3 patterns, there either isn't presented correct answer, there is only one and there are 2. From my own experience the chance there are 2 answers is really low. So statistically it is best to always pick false unless you are sure it is correct.
 
-[**Simulations/Labs**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=165290#labs-258): You will enter a virtual environment and will have to complete a series of tasks there. The only thing that matters is to get the task done. So if you are more comfortable using Cloud Shell, go for it. It is only the result that counts. Be aware that you cannot use internet to search stuff up. 
+[**Simulations/Labs**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#labs-258): You will enter a virtual environment and will have to complete a series of tasks there. The only thing that matters is to get the task done. So if you are more comfortable using Cloud Shell, go for it. It is only the result that counts. Be aware that you cannot use internet to search stuff up. 
 
 Labs take longer to score so you will not receive your score immediately.
 
-[**Case Study**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=165290#case-studies-113): You will be shown a screen with a lot of tabs and screens with tons of information in them. The important thing here: **Don't read it all!**  The first screen doesn't contain the question, so you will have to go to the next one. Only after reading the question, start going through the relevant materials.
+[**Case Study**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#case-studies-113): You will be shown a screen with a lot of tabs and screens with tons of information in them. The important thing here: **Don't read it all!**  The first screen doesn't contain the question, so you will have to go to the next one. Only after reading the question, start going through the relevant materials.
 
 <img src="/casestudy.png" alt="Case Study Question Type"/>
 
 After you finish all your questions in the section, you will be presented with the Review screen (also accessible from the top tool bar).
 
-<img src="/reviewscreen.png" alt="Microsoft Certification Exam Review Screenshot"/>
+<img src="/reviewscreen.png" alt="Microsoft Certification Exam Review"/>
 
 This doesn't necessarily mean it is the end of the exam as there may be case study or lab after. Here you can see how you and can easily access questions you didn't answer or marked for review. **Always answer all questions, even if you have no clue. You don't get negative points for guessing. If you finish the review screen and there are still unanswered questions, you've done it wrong.**
 
 After finishing the whole exam, it still isn't over. Once you get to this window and don't want to leave feedback to the questions (or are just really anxious about how you did). **Ignore it. In the bottom there is Exit button.**
 
-<img src="/examfeedback.png" alt="Microsoft Certification Exam Feedback Screenshot"/>
+<img src="/examfeedback.png" alt="Microsoft Certification Exam Feedback"/>
 
 This will take you to the result page (if you had a lab, you won't get your result immediately).
 
-## Trying to source new screenshots, until then I have to leave the old ones up unfortunately.
-<img src="/resultscreen.webp" alt="Result Page"/>
+<img src="/examresults.png" alt="Exam Results Page"/>
 
-On the next page you will see your score report no need to read it now, can access it from PearsonVue later on. And only once you hit the End button there, you finished the exam.
+In case you pass, you will see these cool fireworks!
+
+<img src="/examfireworks.png" alt="Exam Fireworks Page"/>
+
+On the next page you will see your score report no need to read it now, can access it from PearsonVue later on. And only once you hit the End button there, you have finished the exam.
 
 **This is especially important when taking a test from home so you don't get failed for leaving the screen before this.**
 
-<img src="/scorereport.webp" alt="Score Report"/>
+<img src="/scorereport.png" alt="Exam Score Report"/>
 
 ---
 
 
 **Sources:**
 
-[Prepare for an exam | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/prepare-exam?WT.mc_id=165290)
+[Prepare for an exam | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/prepare-exam?WT.mc_id=studentamb_165290)
 
-[Microsoft Learn for Exams | Techcommunity](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/introducing-a-new-resource-for-all-role-based-microsoft/ba-p/3500870?WT.mc_id=165290)
+[Microsoft Learn for Exams | Techcommunity](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/introducing-a-new-resource-for-all-role-based-microsoft/ba-p/3500870?WT.mc_id=studentamb_165290)
 
 [How to use Microsoft Learn during the exam | Microsoft Video](https://www.microsoft.com/videoplayer/embed/RW1a0L5)
