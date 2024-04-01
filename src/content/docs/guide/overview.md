@@ -21,39 +21,40 @@ I will use the [Microsoft Certified: Azure Solutions Architect Expert](https://d
 
 (You can find this on every certification page), you need to:
 
-* Complete one prerequisite certification in this case, the [Microsoft Certified: Azure Administrator Associate](https://docs.microsoft.com/learn/certifications/azure-administrator?WT.mc_id=165290) and
+* Complete one prerequisite certification in this case, the [Microsoft Certified: Azure Administrator Associate](https://docs.microsoft.com/learn/certifications/azure-administrator?WT.mc_id=165290)
+* **AND**
 * Pass the [AZ-305: Designing Microsoft Azure Infrastructure Solutions Exam](https://learn.microsoft.com/credentials/certifications/exams/az-305/?WT.mc_id=165290)
 
 After that will then receive the Microsoft Certified: Azure Solutions Architect Expert Certification.
 
 **To pass an exam you need 70% of the total score so your score can't be lower than 700/1000. Scoring is individual and depends on the question set you receive. If you want to get familiar with the testing process, I have thoroughly described it in this post:** [**How to take Microsoft Exams**](https://certs.msfthub.wiki/guide/takingtheexams/).
 
-**There are 4 certification types in total:**
+## There are 4 certification types in total:
 
-* Fundamentals (1 star)
-* Associate (2 star)
-* Expert (3 star)
-* Specialty
+* **Fundamentals (1 star)**
+* **Associate (2 star)**
+* **Expert (3 star)**
+* **Specialty**
 
-**Fundamentals** 
+## Fundamentals
 
 * Fundamental certifications consist of entry level exams in their respective areas. Their content is usually learning how does the respective area work, what are the important products/concepts and what is their purpose. These certifications are aimed at non-technical people (Sales Associates, Managers, Executives or Students) and people trying to enter Microsoft Cloud before they start with the harder exams.
 * When taking the exam, you will have 45 minutes for the exam itself + 20 minutes where you will have to read non-disclosure agreement (NDA) and go through questionnaires.
 
 Fundamental certifications are good for life and will never expire, even when the exam/certification is retired.
 
-**Associate** 
+## Associate
 
 * Associate certifications are very technical certifications that require a deep knowledge of the technologies (Hands-on experience isn't required but usually necessary to pass the exam as they expect test takers to have real experience with the tools). They are aimed at professionals who want to certify their skills with the products.
 * When taking the exam, you will have 100 minutes (if it contains a lab, you get 120 minutes) + 20 minutes where you will have to read NDA and go through questionnaires.
 * Associate certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](https://certs.msfthub.wiki/guide/certificationrenewal/).
 
-**Expert**
+## Expert
 
 * Expert certifications are a mix of technical and architectural content and are almost impossible to pass without hands-on experience. You will be expected to know all of the relevant products, how they work, differences between similar products, SKUs and basic knowledge of how to use the products and how they work with each other. They are aimed at people who already feel really comfortable in the cloud.
 * Expert certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](https://certs.msfthub.wiki/guide/certificationrenewal/).
 
-**Specialty**
+## Specialty
 
 * Specialty certifications are purely concentrated around the product in their name. They are a mix of high level and technical knowledge and require a really good understanding of it and how it fits in with Microsoft Cloud.
 * Specialty certifications have to be renewed every year. The renewal process is described here: [**Certification Renewal**](https://certs.msfthub.wiki/guide/certificationrenewal/).
