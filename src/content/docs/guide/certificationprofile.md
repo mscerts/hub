@@ -2,7 +2,6 @@
 title: Your Certification Profile
 description: A guide on how to create a certification profile
 ---
-import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 
 To get to the certificating, you first need to create a personal Microsoft account. You don't want to use company email account that you can lose access to because if the account was deleted, it would be a huge pain in the ass to transfer the certificates, if it is even possible.
 
@@ -10,7 +9,7 @@ After creating the account, you need to register for Microsoft Learn. After that
 
 It is extremely important to fill the information in as accurately as possible, because those details will be compared to your ID documents that you will present when arriving at the testing center/online exam. You will also have to present these details to Microsoft certification support for verification purposes and this is the place where most of them are.
 
-<img title="" src="/certificationprofilepage.webp" width="800" height="1200" alt="Certification Profile"/>
+<img title="" src="/certificationprofile.png" width="800" height="1200" alt="Certification Profile"/>
 
 There are a few interesting things to note here. If you choose **Student** in the job title dropdown and verify yourself as such, you will get discounted rate for the exams. It is 30% off for Fundamental and 45% for role based exams. More information here [Opportunities for Students](https://certs.msfthub.wiki/guide/studentopportunities/)
 
@@ -21,7 +20,7 @@ If your country doesn't have **Area code** in your address. Put the first 3 digi
 **Don't forget to save all the information when you are finished.**
 After successfully creating the profile, you should see your MCID in the top right corner
 
-On the Exam discounts page is where the interesting stuff is. On the top you can see all of the vouchers associated with your account or the accounts you have linked to. You can see [Microsoft Build Cloud Skills Challenge](https://certs.msfthub.wiki/vouchers/cloud-skills-challenges/), [Microsoft Certified Trainer](https://learn.microsoft.com/certifications/mct-certification?WT.mc_id=291324) and [Enterprise Skills Initiative](https://certs.msfthub.wiki/vouchers/microsoft-esi/) discounts on the screenshot.
+On the Exam discounts page is where the interesting stuff is. On the top you can see all of the vouchers associated with your account or the accounts you have linked to. You can see [Microsoft Build Cloud Skills Challenge](https://certs.msfthub.wiki/vouchers/cloud-skills-challenges/), [Microsoft Certified Trainer](https://learn.microsoft.com/certifications/mct-certification?WT.mc_id=studentamb_165290) and [Enterprise Skills Initiative](https://certs.msfthub.wiki/vouchers/microsoft-esi/) discounts on the screenshot.
 
 <img title="" src="/certificationprofileexamdiscounts.png" width="700" height="650" alt="Microsoft Certification Profile Exam Discounts"/>
 
@@ -33,6 +32,6 @@ On the bottom of the page, you can add accounts with vouchers in it, so if you c
 
 **Sources:**
 
-[Manage your certification profile | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/manage-certification-profile?WT.mc_id=291324)
+[Manage your certification profile | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/manage-certification-profile?WT.mc_id=studentamb_165290)
 
-[Connect a certification profile to Learn | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/connect-cert-profile-to-learn?WT.mc_id=291324)
+[Connect a certification profile to Learn | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/connect-cert-profile-to-learn?WT.mc_id=studentamb_165290)
