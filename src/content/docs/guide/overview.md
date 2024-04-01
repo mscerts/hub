@@ -6,7 +6,7 @@ title: Overview
 
 You can find the complete and frequently updated certification poster at [https://aka.ms/TrainCertPoster](https://aka.ms/TrainCertPoster).
 
-<img title="" src="/azurearchitect.png" alt="Azure Solutions Architect Expert Certification Poster Tile"/>
+<img src="/azurearchitect.png" alt="Azure Solutions Architect Expert Certification Poster Tile"/>
 
 * Each rectangle contains a different certification.
 * Under certification you can see the exams required to get it.
@@ -17,7 +17,7 @@ You can find the complete and frequently updated certification poster at [https:
 
 I will use the [Microsoft Certified: Cybersecurity Architect Expert](https://learn.microsoft.com/credentials/certifications/cybersecurity-architect-expert/?WT.mc_id=291324) as an example. As you can see on this image:
 
-<img title="" src="/azurearchitectpath.png" alt="Certification Path for Azure Solutions Architect Certification"/>
+<img src="/azurearchitectpath.png" alt="Certification Path for Azure Solutions Architect Certification"/>
 
 (You can find this on every certification page), you need to:
 
