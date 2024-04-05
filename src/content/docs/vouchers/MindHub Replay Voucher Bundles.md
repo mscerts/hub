@@ -1,5 +1,5 @@
 ---
-title: Mindhub
+title: Mindhub Replay Voucher Bundles
 ---
 
 ## [MindHub Replay Voucher Bundles](https://eu2.mindhub.com/exam-replay)
