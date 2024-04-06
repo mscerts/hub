@@ -2,8 +2,6 @@
 title: Cloud Skills Challenges
 ---
 
-<img src="https://www.microsoft.com/cloudskillschallenge/images/Trophy_CSC%20-%20128%20px.png" width="60" height="60" class="center">
-
 Microsoft Cloud Skills Challenge is a free and interactive program that provides access to Microsoft cloud technologies through a gamified experience utilizing Microsoft Learn content to assess and enhance participants' knowledge and skills in Microsoft cloud technologies. They involve completing tasks, solving problems, or answering quiz questions related to Azure, Microsoft 365, or other cloud platforms. These challenges provide practical learning opportunities and a chance to engage with the Microsoft community along with a free voucher for selected exams.
 
 ## [Microsoft AI Skills Challenge](https://www.microsoft.com/en-us/cloudskillschallenge/ai/registration/2024) (100% Discount Voucher)
@@ -40,7 +38,7 @@ Microsoft Ignite takes place in **Fall (October/November)**. Historically the ev
 - The voucher is usually **valid for the next 3 months**, after that you will be unable to reschedule it any further *(it is the final deadline)* and you can only use the voucher code for the exams that are **eligible for that specific challenge event** (but can complete any challenge and take any of the eligible exams).
 - In the past vouchers were universal which meant you can use them with any exam, that has changed since Ignite 2021. You will now only receive one voucher that is only applicable to the exams listed in the event details.
 
-## [30 Days To Learn](https://developer.microsoft.com/en-us/offers/30-days-to-learn-it?WT.mc_id=291324) (50% Discount Voucher) 
+## [30 Days To Learn](https://developer.microsoft.com/offers/30-days-to-learn-it?WT.mc_id=studentamb_165290) (50% Discount Voucher) 
 
 It is very similar to the normal cloud skills challenge from **Ignite** or **Build**.
 
@@ -73,4 +71,4 @@ The voucher is eligible for these exams:
 
 **The voucher provided technically isn't restricted to the eligible exams above but can be used for virtually any exam. This isn't encouraging anyone to not follow the official rules but I felt like this was worth mentioning.**
 
-**[Microsoft | 30 Days to Learn It - Official Rules](https://developer.microsoft.com/en-us/offers/30-days-to-learn-it/official-rules?WT.mc_id=291324#terms-and-conditions)**
+**[Microsoft | 30 Days to Learn It - Official Rules](https://developer.microsoft.com/offers/30-days-to-learn-it/official-rules?WT.mc_id=studentamb_165290#terms-and-conditions)**
