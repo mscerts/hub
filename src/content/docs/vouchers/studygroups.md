@@ -6,6 +6,8 @@ title: Exam Study Groups
 ## [Exam Study Groups](https://discord.com/channels/676990910176821270/1118446725540085801/1199713482937999420) 
 **(100% off fundamental voucher)**
 
+# This initiative has been cancelled due to MLSA program lying and misleading me about this program. 
+
 As part of the Microsoft Learn Student Ambassadors program, MLSAs are able to organize Exam Study group for either AZ-900 or AI-900 where upon the end, participants might receive a free fundamental voucher. 
 
 This program will require participation from participants, for example completing Microsoft Learn modules or attending study sessions with trainers. 
