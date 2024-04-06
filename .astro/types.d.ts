@@ -241,13 +241,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".md"] };
-"azure/AZ-900.md": {
-	id: "azure/AZ-900.md";
+"azure/AZ-900.mdx": {
+	id: "azure/AZ-900.mdx";
   slug: "azure/az-900";
   body: string;
   collection: "docs";
   data: any
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "azure/DP-100.md": {
 	id: "azure/DP-100.md";
   slug: "azure/dp-100";
@@ -444,13 +444,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: any
 } & { render(): Render[".mdx"] };
-"guide/schedulingexam.mdx": {
-	id: "guide/schedulingexam.mdx";
+"guide/schedulingexam.md": {
+	id: "guide/schedulingexam.md";
   slug: "guide/schedulingexam";
   body: string;
   collection: "docs";
   data: any
-} & { render(): Render[".mdx"] };
+} & { render(): Render[".md"] };
 "guide/studentopportunities.mdx": {
 	id: "guide/studentopportunities.mdx";
   slug: "guide/studentopportunities";
