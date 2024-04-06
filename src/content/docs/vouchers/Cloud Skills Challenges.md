@@ -2,8 +2,6 @@
 title: Cloud Skills Challenges
 ---
 
-<img src="https://www.microsoft.com/cloudskillschallenge/images/Trophy_CSC%20-%20128%20px.png" width="60" height="60" class="center">
-
 Microsoft Cloud Skills Challenge is a free and interactive program that provides access to Microsoft cloud technologies through a gamified experience utilizing Microsoft Learn content to assess and enhance participants' knowledge and skills in Microsoft cloud technologies. They involve completing tasks, solving problems, or answering quiz questions related to Azure, Microsoft 365, or other cloud platforms. These challenges provide practical learning opportunities and a chance to engage with the Microsoft community along with a free voucher for selected exams.
 
 ## [Microsoft AI Skills Challenge](https://www.microsoft.com/en-us/cloudskillschallenge/ai/registration/2024) (100% Discount Voucher)
