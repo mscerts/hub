@@ -6,10 +6,10 @@ import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 import { Icon } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-### Labs
 <Tabs>
 
   <TabItem label="Applied Skills">
+Applied skills are a new type of credential that tests your hands on experience with the products. It will only practical tasks you complete with Microsoft products. They are free at the moment so a great way to practice for free but that can change soon. 
 <CardGrid>
 
   <LinkCard title="Applied Skills - Deploy and configure Azure Monitor" href="https://learn.microsoft.com/en-us/credentials/applied-skills/deploy-and-configure-azure-monitor/" /> 
@@ -20,8 +20,9 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
   </TabItem>
   <TabItem label="Microsoft Learn">
-  <CardGrid>
-
+Microsoft Learn sandboxes are mini-labs that are part of Microsoft Learn modules. Easy and simple way to practice using the products you will get tested on.
+  
+<CardGrid>
   <LinkCard title="Install Azure PowerShell" href="https://learn.microsoft.com/en-us/training/modules/automate-azure-tasks-with-powershell/4-exercise-install-azure-powershell?pivots=windows" />
   <LinkCard title="Create an Azure Resource using scripts in Azure PowerShell" href="https://learn.microsoft.com/en-us/training/modules/automate-azure-tasks-with-powershell/6-exercise-create-resource-interactively" />
   <LinkCard title="Create and save scripts in Azure PowerShell" href="https://learn.microsoft.com/en-us/training/modules/automate-azure-tasks-with-powershell/8-exercise-create-resource-using-script" />
@@ -72,6 +73,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   </TabItem>
 
   <TabItem label="Microsoft GitHub">
+While doing GitHub labs is not free, like those on Microsoft Learn, they are complete lab exercises that guide you through projects and help you get familiar with the products you will be tested on. For Azure, at the end of all labs there is self destruct PowerShell script, always run it when you finish to avoid additional costs.
 <CardGrid>
 
   <LinkCard title="Manage Microsoft Entra ID Identities" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_01-Manage_Entra_ID_Identities.html" />
@@ -97,7 +99,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
   </TabItem>
 
   <TabItem label="Guided Labs">
-
+These are basically interactive videos, they are free and easy to navigate but the issue is that it is not a live environment, always good to supplement with real labbing with Microsoft Products.
 <CardGrid>
 
   <LinkCard title="Manage Azure resources by using Azure Portal" href="https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%204" />
