@@ -472,6 +472,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
+"labs/AZ-107labs.mdx": {
+	id: "labs/AZ-107labs.mdx";
+  slug: "labs/az-107labs";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
 "microsoft365/MD-102.md": {
 	id: "microsoft365/MD-102.md";
   slug: "microsoft365/md-102";
@@ -657,6 +664,13 @@ declare module 'astro:content' {
 "vouchers/Power Up Program.md": {
 	id: "vouchers/Power Up Program.md";
   slug: "vouchers/power-up-program";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"vouchers/Virtual Training Days.md": {
+	id: "vouchers/Virtual Training Days.md";
+  slug: "vouchers/virtual-training-days";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
