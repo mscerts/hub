@@ -18,20 +18,20 @@ How does it work?
 
 Where to find the events:
 
-- [**AZ-900**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Fundamentals)
+- [**AZ-900: Azure Fundamentals**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Fundamentals)
 
-- [**AI-900**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20AI%20Fundamentals)
+- [**AI-900: Azure AI Fundamentals**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20AI%20Fundamentals)
 
-- [**DP-900**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Data%20Fundamentals)
+- [**DP-900: Azure Data Fundamentals**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Data%20Fundamentals)
 
-- [**MS-900**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20365%20Virtual%20Training%20Day:%20Fundamentals)
+- [**MS-900: Microsoft 365 Fundamentals**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20365%20Virtual%20Training%20Day:%20Fundamentals)
 
-- [**SC-900**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Security%20Virtual%20Training%20Day:%20Security,%20Compliance,%20and%20Identity%20Fundamentals)
+- [**SC-900: Security, Compliance, and Identity Fundamentals**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Security%20Virtual%20Training%20Day:%20Security,%20Compliance,%20and%20Identity%20Fundamentals)
 
-- [**PL-900**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Power%20Platform%20Virtual%20Training%20Day:%20Fundamentals)
+- [**PL-900: Power Platform Fundamentals**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Power%20Platform%20Virtual%20Training%20Day:%20Fundamentals)
 
-- [**MB-910**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Dynamics%20365%20Virtual%20Training%20Day:%20Fundamentals%20(CRM))
+- [**MB-910: Dynamics 365 Fundamentals (CRM)**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Dynamics%20365%20Virtual%20Training%20Day:%20Fundamentals%20(CRM))
 
-- [**MB-920**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Dynamics%20365%20Virtual%20Training%20Day:%20Fundamentals%20(ERP))
+- [**MB-920: Dynamics 365 Fundamentals (ERP)**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Dynamics%20365%20Virtual%20Training%20Day:%20Fundamentals%20(ERP))
 
 [**Microsoft Virtual Training Days Discounted Certification Exam FAQ**](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWFTgx)
