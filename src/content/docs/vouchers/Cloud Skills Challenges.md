@@ -6,8 +6,6 @@ Microsoft Cloud Skills Challenge is a free and interactive program that provides
 
 ## [30 Days To Learn](https://developer.microsoft.com/offers/30-days-to-learn-it?WT.mc_id=studentamb_165290) (50% Discount Voucher) 
 
-It is very similar to the normal cloud skills challenge from **Ignite** or **Build**.
-
 Basically, you just go through MS Learn modules for a specific certification and after completing it, you get a **50% off** voucher. It isn't 100% but everything can help, especially since it includes a lot of exams. Offer just got extended to **June 30th, 2024**.
 
 - You get **1 voucher every 6 months**.
