@@ -14,13 +14,14 @@ How does it work?
 - 5-10 days after the event finishes, you will receive the voucher (See here how to redeem it [How to schedule an Exam and redeem vouchers
 ](https://certs.msfthub.wiki/guide/schedulingexam). Usually you receive it a day after but it can be delayed.
 - You will have 90 days after the event concludes to schedule the exam. Usually you can take the exam later than 90 days but it is at your own risk and support won't help you if something goes wrong, like the exam crashing.
-- Good for all fundamental exams
+- Good for all fundamental exams + **recently AI-102 and DP-600**
 
 Where to find the events:
 
 - [**AZ-900: Azure Fundamentals**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Fundamentals)
 
 - [**AI-900: Azure AI Fundamentals**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20AI%20Fundamentals)
+- [**AI-900: Azure AI Fundamentals Option 2**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Generative%20AI%20Fundamentals)
 
 - [**DP-900: Azure Data Fundamentals**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Data%20Fundamentals)
 
@@ -33,5 +34,9 @@ Where to find the events:
 - [**MB-910: Dynamics 365 Fundamentals (CRM)**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Dynamics%20365%20Virtual%20Training%20Day:%20Fundamentals%20(CRM))
 
 - [**MB-920: Dynamics 365 Fundamentals (ERP)**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Dynamics%20365%20Virtual%20Training%20Day:%20Fundamentals%20(ERP))
+
+- [**AI-102: Azure AI Engineer Associate**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Building%20Generative%20Apps%20with%20Azure%20OpenAI%20Service)
+  
+- [**DP-600: Fabric Analytics Engineer Associate**](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Implementing%20a%20Data%20Lakehouse%20with%20Microsoft%20Fabric)
 
 [**Microsoft Virtual Training Days Discounted Certification Exam FAQ**](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWFTgx)
