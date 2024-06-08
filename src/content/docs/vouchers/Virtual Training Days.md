@@ -12,7 +12,7 @@ How does it work?
 - Register for the event
 - Attend all the sessions
 - 5-10 days after the event finishes, you will receive the voucher (See here how to redeem it [How to schedule an Exam and redeem vouchers
-](https://certs.msfthub.wiki/guide/schedulingexam). Usually you receive it a day after but it can be delayed.
+](https://certs.msfthub.wiki/guide/schedulingexam/#checkout-and-redeeming-voucher-codes). Usually you receive it a day after but it can be delayed.
 - You will have 90 days after the event concludes to schedule the exam. Usually you can take the exam later than 90 days but it is at your own risk and support won't help you if something goes wrong, like the exam crashing.
 - Good for all fundamental exams + **recently AI-102 and DP-600**
 
