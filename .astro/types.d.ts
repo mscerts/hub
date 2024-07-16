@@ -640,13 +640,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"vouchers/Cloud Skills Challenges.md": {
-	id: "vouchers/Cloud Skills Challenges.md";
+"vouchers/Cloud Skills Challenges.mdx": {
+	id: "vouchers/Cloud Skills Challenges.mdx";
   slug: "vouchers/cloud-skills-challenges";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "vouchers/Microsoft ESI.md": {
 	id: "vouchers/Microsoft ESI.md";
   slug: "vouchers/microsoft-esi";

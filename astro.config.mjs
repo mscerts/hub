@@ -75,7 +75,6 @@ export default defineConfig({
 					items: [
 						{ label: 'Introduction', link: '/guide/introduction/' },
 						{ label: 'Overview', link: '/guide/overview/' },
-						{ label: 'Your Certification Profile', link: '/guide/certificationprofile/' },
 						{ label: 'Scheduling an Exam', link: '/guide/schedulingexam/' },						
 						{ label: 'Certification Dashboard', link: '/guide/certificationdashboard/' },
 						{ label: 'Taking The Exam', link: '/guide/takingtheexams/' },
@@ -88,7 +87,15 @@ export default defineConfig({
 				},
 				{
 					label: 'Voucher Offers',
-					autogenerate: { directory: 'vouchers' },
+					items: [
+						{ label: 'Beta Exams', link: '/vouchers/betaexams/' },
+						{ label: 'Cloud Skills Challenges', link: '/vouchers/cloudskillschallenges/',badge: { text: 'N/A', variant: 'danger' }, },
+						{ label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' },
+						{ label: 'Mindhub Replay Voucher Bundles', link: '/vouchers/mindhubreplayvoucherbundles/' },						
+						{ label: 'Power Up Program', link: '/vouchers/powerupprogram/' },
+						{ label: 'Exam Study Groups', link: '/vouchers/studygroups/' },
+						{ label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' },
+					],
 				},
 				{
 					label: 'Wiki Collection',
