@@ -479,6 +479,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
+"labs/azurelabs.mdx": {
+	id: "labs/azurelabs.mdx";
+  slug: "labs/azurelabs";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
 "microsoft365/MD-102.md": {
 	id: "microsoft365/MD-102.md";
   slug: "microsoft365/md-102";
@@ -633,44 +640,37 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"vouchers/Beta Exams.md": {
-	id: "vouchers/Beta Exams.md";
-  slug: "vouchers/beta-exams";
+"vouchers/betaexams.md": {
+	id: "vouchers/betaexams.md";
+  slug: "vouchers/betaexams";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"vouchers/Cloud Skills Challenges.mdx": {
-	id: "vouchers/Cloud Skills Challenges.mdx";
-  slug: "vouchers/cloud-skills-challenges";
+"vouchers/cloudskillschallenges.mdx": {
+	id: "vouchers/cloudskillschallenges.mdx";
+  slug: "vouchers/cloudskillschallenges";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"vouchers/Microsoft ESI.md": {
-	id: "vouchers/Microsoft ESI.md";
-  slug: "vouchers/microsoft-esi";
+"vouchers/microsoftesi.md": {
+	id: "vouchers/microsoftesi.md";
+  slug: "vouchers/microsoftesi";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"vouchers/MindHub Replay Voucher Bundles.md": {
-	id: "vouchers/MindHub Replay Voucher Bundles.md";
-  slug: "vouchers/mindhub-replay-voucher-bundles";
+"vouchers/mindhubreplayvoucherbundles.md": {
+	id: "vouchers/mindhubreplayvoucherbundles.md";
+  slug: "vouchers/mindhubreplayvoucherbundles";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"vouchers/Power Up Program.md": {
-	id: "vouchers/Power Up Program.md";
-  slug: "vouchers/power-up-program";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"vouchers/Virtual Training Days.md": {
-	id: "vouchers/Virtual Training Days.md";
-  slug: "vouchers/virtual-training-days";
+"vouchers/powerupprogram.md": {
+	id: "vouchers/powerupprogram.md";
+  slug: "vouchers/powerupprogram";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -678,6 +678,13 @@ declare module 'astro:content' {
 "vouchers/studygroups.md": {
 	id: "vouchers/studygroups.md";
   slug: "vouchers/studygroups";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"vouchers/virtualtrainingdays.md": {
+	id: "vouchers/virtualtrainingdays.md";
+  slug: "vouchers/virtualtrainingdays";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
