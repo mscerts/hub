@@ -402,13 +402,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"guide/certificationprofile.mdx": {
-	id: "guide/certificationprofile.mdx";
-  slug: "guide/certificationprofile";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
 "guide/certificationrenewal.mdx": {
 	id: "guide/certificationrenewal.mdx";
   slug: "guide/certificationrenewal";
@@ -671,13 +664,6 @@ declare module 'astro:content' {
 "vouchers/powerupprogram.md": {
 	id: "vouchers/powerupprogram.md";
   slug: "vouchers/powerupprogram";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"vouchers/studygroups.md": {
-	id: "vouchers/studygroups.md";
-  slug: "vouchers/studygroups";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
