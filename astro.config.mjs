@@ -93,7 +93,6 @@ export default defineConfig({
 						{ label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' },
 						{ label: 'Mindhub Replay Voucher Bundles', link: '/vouchers/mindhubreplayvoucherbundles/' },						
 						{ label: 'Power Up Program', link: '/vouchers/powerupprogram/' },
-						{ label: 'Exam Study Groups', link: '/vouchers/studygroups/' },
 						{ label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' },
 					],
 				},
