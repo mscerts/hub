@@ -591,41 +591,41 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"power/PL-900.md": {
-	id: "power/PL-900.md";
+"power/PL-900.mdx": {
+	id: "power/PL-900.mdx";
   slug: "power/pl-900";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"security/SC-100.md": {
-	id: "security/SC-100.md";
+} & { render(): Render[".mdx"] };
+"security/SC-100.mdx": {
+	id: "security/SC-100.mdx";
   slug: "security/sc-100";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"security/SC-200.md": {
-	id: "security/SC-200.md";
+} & { render(): Render[".mdx"] };
+"security/SC-200.mdx": {
+	id: "security/SC-200.mdx";
   slug: "security/sc-200";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"security/SC-300.md": {
-	id: "security/SC-300.md";
+} & { render(): Render[".mdx"] };
+"security/SC-300.mdx": {
+	id: "security/SC-300.mdx";
   slug: "security/sc-300";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"security/SC-400.md": {
-	id: "security/SC-400.md";
+} & { render(): Render[".mdx"] };
+"security/SC-400.mdx": {
+	id: "security/SC-400.mdx";
   slug: "security/sc-400";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "security/SC-900.mdx": {
 	id: "security/SC-900.mdx";
   slug: "security/sc-900";
