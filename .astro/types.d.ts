@@ -164,13 +164,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"azure/AI-900.md": {
-	id: "azure/AI-900.md";
+"azure/AI-900.mdx": {
+	id: "azure/AI-900.mdx";
   slug: "azure/ai-900";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "azure/AZ-104.mdx": {
 	id: "azure/AZ-104.mdx";
   slug: "azure/az-104";
@@ -178,20 +178,20 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"azure/AZ-120.md": {
-	id: "azure/AZ-120.md";
+"azure/AZ-120.mdx": {
+	id: "azure/AZ-120.mdx";
   slug: "azure/az-120";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"azure/AZ-140.md": {
-	id: "azure/AZ-140.md";
+} & { render(): Render[".mdx"] };
+"azure/AZ-140.mdx": {
+	id: "azure/AZ-140.mdx";
   slug: "azure/az-140";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "azure/AZ-204.mdx": {
 	id: "azure/AZ-204.mdx";
   slug: "azure/az-204";
@@ -279,6 +279,13 @@ declare module 'astro:content' {
 "azure/DP-500.mdx": {
 	id: "azure/DP-500.mdx";
   slug: "azure/dp-500";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"azure/DP-600.mdx": {
+	id: "azure/DP-600.mdx";
+  slug: "azure/dp-600";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -388,13 +395,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"dynamics/MB-920.md": {
-	id: "dynamics/MB-920.md";
+"dynamics/MB-920.mdx": {
+	id: "dynamics/MB-920.mdx";
   slug: "dynamics/mb-920";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "guide/certificationdashboard.mdx": {
 	id: "guide/certificationdashboard.mdx";
   slug: "guide/certificationdashboard";
@@ -479,41 +486,41 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"microsoft365/MD-102.md": {
-	id: "microsoft365/MD-102.md";
+"microsoft365/MD-102.mdx": {
+	id: "microsoft365/MD-102.mdx";
   slug: "microsoft365/md-102";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"microsoft365/MS-102.md": {
-	id: "microsoft365/MS-102.md";
+} & { render(): Render[".mdx"] };
+"microsoft365/MS-102.mdx": {
+	id: "microsoft365/MS-102.mdx";
   slug: "microsoft365/ms-102";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"microsoft365/MS-700.md": {
-	id: "microsoft365/MS-700.md";
+} & { render(): Render[".mdx"] };
+"microsoft365/MS-700.mdx": {
+	id: "microsoft365/MS-700.mdx";
   slug: "microsoft365/ms-700";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"microsoft365/MS-721.md": {
-	id: "microsoft365/MS-721.md";
+} & { render(): Render[".mdx"] };
+"microsoft365/MS-721.mdx": {
+	id: "microsoft365/MS-721.mdx";
   slug: "microsoft365/ms-721";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"microsoft365/MS-900.md": {
-	id: "microsoft365/MS-900.md";
+} & { render(): Render[".mdx"] };
+"microsoft365/MS-900.mdx": {
+	id: "microsoft365/MS-900.mdx";
   slug: "microsoft365/ms-900";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "office/MO-110.md": {
 	id: "office/MO-110.md";
   slug: "office/mo-110";
@@ -549,48 +556,41 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"power/PL-100.md": {
-	id: "power/PL-100.md";
-  slug: "power/pl-100";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"power/PL-200.md": {
-	id: "power/PL-200.md";
+"power/PL-200.mdx": {
+	id: "power/PL-200.mdx";
   slug: "power/pl-200";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"power/PL-300.md": {
-	id: "power/PL-300.md";
+} & { render(): Render[".mdx"] };
+"power/PL-300.mdx": {
+	id: "power/PL-300.mdx";
   slug: "power/pl-300";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"power/PL-400.md": {
-	id: "power/PL-400.md";
+} & { render(): Render[".mdx"] };
+"power/PL-400.mdx": {
+	id: "power/PL-400.mdx";
   slug: "power/pl-400";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"power/PL-500.md": {
-	id: "power/PL-500.md";
+} & { render(): Render[".mdx"] };
+"power/PL-500.mdx": {
+	id: "power/PL-500.mdx";
   slug: "power/pl-500";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"power/PL-600.md": {
-	id: "power/PL-600.md";
+} & { render(): Render[".mdx"] };
+"power/PL-600.mdx": {
+	id: "power/PL-600.mdx";
   slug: "power/pl-600";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
+} & { render(): Render[".mdx"] };
 "power/PL-900.mdx": {
 	id: "power/PL-900.mdx";
   slug: "power/pl-900";
