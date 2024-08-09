@@ -1,31 +1,53 @@
 ---
 title: DP-500
 ---
+import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<img src="/dp-500.png" width="150" height="150"/>
+<Card title="Get Started" icon="star"> 
+  <LinkCard title="Exam DP-500: Microsoft Azure Enterprise Data Analyst Associate" href="https://learn.microsoft.com/certifications/exams/dp-500?WT.mc_id=studentamb_165290" target="_blank"/>
+      Demonstrate methods and practices for performing advanced analytics at scale with Microsoft Purview, Microsoft Azure Synapse Analytics, and Microsoft Power BI.
+  <LinkCard title="DP-500 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-500?WT.mc_id=studentamb_165290" target="_blank"/>
+      Study guide contains topics and information you need to know to successfully prepare for the exam.
+  <LinkCard title="Exam Sandbox" href="https://aka.ms/examdemo" target="_blank"/>
+      Near exact copy of the exam environment you encouter during the real exam. Explore the sandbox to get familiar with how the exam looks so you save time and are not caught off guard. 
+  <LinkCard title="GitHub Labs" href="https://aka.ms/az305labs" target="_blank"/>
+      Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings, Applied Skills, Microsoft Learn and Interactive Lab Simulations
+</Card>
 
-# [DP-500](https://learn.microsoft.com/certifications/exams/dp-500?WT.mc_id=studentamb_165290)
+<Card title="MeasureUp Practice Tests" icon="open-book"> 
+  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-dp-500-practice-test.html#u44" target="_blank"/>
+  <LinkCard title="Whizlab Practice Tests" href="https://www.whizlabs.com/microsoft-azure-certification-dp-500/" target="_blank"/>
+      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
+      even more to identify your weak areas and where you need to study more. 
+      MeasureUp also offers a money-back guarantee if you don’t pass the exam and subscriptions in case you are planning to take multiple exams. 
+</Card>
 
-<a href='https://learn.microsoft.com/en-us/certifications/browse/?type=role-based&levels=intermediate&WT.mc_id=studentamb_165290' target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/associate-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=0078D4&color=212221'/></a> 
+### Studying Resources
 
-### Related Certifications - [Microsoft Certified: Azure Enterprise Data Analyst Associate](https://learn.microsoft.com/en-us/certifications/azure-enterprise-data-analyst-associate?WT.mc_id=studentamb_165290)
+<Tabs>
 
-### [Exam Study Guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-500?WT.mc_id=studentamb_165290)
+  <TabItem label="Text">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/certifications/exams/dp-500?WT.mc_id=studentamb_165290" target="_blank"/>
+  </CardGrid>
+  </TabItem>
 
-### Practice Tests/Assessments:
-- [MeasureUp Practice Tests](https://www.measureup.com/microsoft-dp-500-practice-test.html#u44)
-- [Whizlab Practice Tests](https://www.whizlabs.com/microsoft-azure-certification-dp-500/)
+  <TabItem label="Videos">
+  <CardGrid>
+    <LinkCard title="On Demand Instructor-led Training Series" href="https://learn.microsoft.com/en-us/shows/on-demand-instructor-led-training-series/?terms=DP-500&WT.mc_id=studentamb_165290" target="_blank"/>
+  </CardGrid>
+  </TabItem>
 
-### [GitHub Labs](https://microsoftlearning.github.io/DP-500-Azure-Data-Analyst)
+  <TabItem label="Paid">
+  <CardGrid>
+    <LinkCard title="Pluralsight Course" href="https://www.pluralsight.com/paths/designing-and-implementing-enterprise-scale-analytics-solutions-using-microsoft-azure-and-microsoft-power-bi" target="_blank"/>
+  </CardGrid>
+  </TabItem>
 
-### Studying Resources:
-
-### Text Based
-- [Microsoft Learn](https://learn.microsoft.com/certifications/exams/dp-500?WT.mc_id=studentamb_165290)
-  
-### Videos
-- [On Demand Instructor-led Training Series](https://learn.microsoft.com/en-us/shows/on-demand-instructor-led-training-series/?terms=DP-500&WT.mc_id=studentamb_165290)
-### Paid Courses
-- [Pluralsight Course](https://www.pluralsight.com/paths/designing-and-implementing-enterprise-scale-analytics-solutions-using-microsoft-azure-and-microsoft-power-bi)
-### Additional useful resources
-- [Microsoft Azure Free Account](https://azure.microsoft.com/en-us/offers/ms-azr-0044p?WT.mc_id=studentamb_165290)
+  <TabItem label="Misc">
+  <CardGrid>
+    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/en-us/offers/ms-azr-0044p?WT.mc_id=studentamb_165290" target="_blank"/> 
+  </CardGrid>
+  </TabItem>
+</Tabs>

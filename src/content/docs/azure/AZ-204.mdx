@@ -1,44 +1,63 @@
 ---
 title: AZ-204
 ---
+import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-<img src="/az-204.png" width="150" height="150"/>
+<Card title="Get Started" icon="star"> 
+  <LinkCard title="Exam AZ-204: Microsoft Azure Developer Associate" href="https://learn.microsoft.com/certifications/exams/az-204?WT.mc_id=studentamb_165290" target="_blank"/>
+      Build end-to-end solutions in Microsoft Azure to create Azure Functions, implement and manage web apps, develop solutions utilizing Azure storage, and more.
+  <LinkCard title="AZ-204 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-204?WT.mc_id=studentamb_165290" target="_blank"/>
+      Study guide contains topics and information you need to know to successfully prepare for the exam.
+  <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/az-204t00?WT.mc_id=studentamb_165290#course-syllabus" target="_blank"/>
+      This course teaches IT Professionals how to develop solutions in Azure, including Azure Functions, web apps, Azure storage solutions, and more.
+  <LinkCard title="Readiness Zone" href="https://learn.microsoft.com/en-us/shows/exam-readiness-zone/preparing-for-az-204-develop-azure-compute-solutions-1-of-5?WT.mc_id=studentamb_165290" target="_blank"/>
+      Series of videos that explain what the exam tests you on so you don't miss any important topics.
+  <LinkCard title="Practice Assessment" href="https://learn.microsoft.com/certifications/exams/az-204/practice/assessment?assessment-type=practice&assessmentId=35&WT.mc_id=studentamb_165290" target="_blank"/>
+      Mini test that shows examples of how exam questions are structured. These are not equivalent to the real exams in format/difficulty. They are way easier than real exams.
+  <LinkCard title="Exam Sandbox" href="https://aka.ms/examdemo" target="_blank"/>
+      Near exact copy of the exam environment you encouter during the real exam. Explore the sandbox to get familiar with how the exam looks so you save time and are not caught off guard. 
+  <LinkCard title="GitHub Labs" href="https://aka.ms/az204labs" target="_blank"/>
+      Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings, Applied Skills, Microsoft Learn and Interactive Lab Simulations
+</Card>
 
-# [AZ-204](https://learn.microsoft.com/certifications/exams/az-204?WT.mc_id=studentamb_165290)
+<Card title="MeasureUp Practice Tests" icon="open-book"> 
+  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-az-204-developing-solutions-for-microsoft-azure.html#u44" target="_blank"/>
+  <LinkCard title="Whizlab Practice Tests" href="https://www.whizlabs.com/microsoft-azure-certification-az-204/" target="_blank"/>
+      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
+      even more to identify your weak areas and where you need to study more. 
+      MeasureUp also offers a money-back guarantee if you don’t pass the exam and subscriptions in case you are planning to take multiple exams. 
+</Card>
 
-<a href='https://learn.microsoft.com/en-us/certifications/browse/?type=role-based&levels=intermediate&WT.mc_id=studentamb_165290' target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/associate-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=0078D4&color=212221'/></a>
+### Studying Resources
 
+<Tabs>
 
-### Related Certifications:
-- [Microsoft Certified: Azure Developer Associate](https://learn.microsoft.com/en-us/certifications/azure-developer?WT.mc_id=studentamb_165290)
-- [Microsoft Certified: DevOps Engineer Expert](https://learn.microsoft.com/en-us/certifications/devops-engineer?WT.mc_id=studentamb_165290)
+  <TabItem label="Text">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/certifications/exams/az-204" target="_blank"/>
+  </CardGrid>
+  </TabItem>
 
-### [Exam Study Guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-204?WT.mc_id=studentamb_165290)
-### [Exam Readiness Zone](https://learn.microsoft.com/en-us/shows/exam-readiness-zone/preparing-for-az-204-develop-azure-compute-solutions-1-of-5?WT.mc_id=studentamb_165290)
+  <TabItem label="Videos">
+  <CardGrid>
+    <LinkCard title="On Demand Instructor-led Training Series" href="https://learn.microsoft.com/en-us/shows/on-demand-instructor-led-training-series/?terms=AZ-204&WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="AGuideToCloud Course" href="https://www.youtube.com/playlist?list=PLhLKc18P9YODdrbyuA52Zn9-kwboIOz2W" target="_blank"/>
+    <LinkCard title="Alan Rodrigues Course" href="https://www.youtube.com/playlist?list=PLLc2nQDXYMHpekgrToMrDpVtFtvmRSqVt" target="_blank"/>
+    <LinkCard title="Microsoft Virtual Training Day - Azure for Developers" href="https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&view=list&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Azure%20for%20Developers" target="_blank"/>
+  </CardGrid>
+  </TabItem>
 
-### Practice Tests/Assessments:
-- [MS Learn Practice Assessment](https://learn.microsoft.com/certifications/exams/az-204/practice/assessment?assessment-type=practice&assessmentId=35&WT.mc_id=studentamb_165290)
-- [MeasureUp Practice Tests](https://www.measureup.com/microsoft-practice-test-az-204-developing-solutions-for-microsoft-azure.html#u44)
-- [Whizlab Practice Tests](https://www.whizlabs.com/microsoft-azure-certification-az-204/)
+  <TabItem label="Paid">
+  <CardGrid>
+    <LinkCard title="Pluralsight Course" href="https://www.pluralsight.com/paths/developing-solutions-for-microsoft-azure-az-204" target="_blank"/>
+    <LinkCard title="Microsoft's Official Coursera Course" href="https://www.coursera.org/professional-certificates/azure-developer-associate" target="_blank"/>
+  </CardGrid>
+  </TabItem>
 
-### Labs
-- [GitHub Labs](https://aka.ms/az204labs)
-- [Applied Skills - Develop an ASP.NET Core web app that consumes an API](https://learn.microsoft.com/en-us/credentials/applied-skills/develop-an-aspnet-core-web-app-that-consumes-an-api?WT.mc_id=studentamb_165290)
-- [Applied Skills - Deploy cloud-native apps using Azure Container Apps](https://learn.microsoft.com/credentials/applied-skills/deploy-cloud-native-apps-using-azure-container-apps/?WT.mc_id=studentamb_165290)
-
-### Studying Resources:
-
-### Text Based
-- [Microsoft Learn](https://learn.microsoft.com/certifications/exams/az-204?WT.mc_id=studentamb_165290)
-### Videos
-- [On Demand Instructor-led Training Series](https://learn.microsoft.com/en-us/shows/on-demand-instructor-led-training-series/?terms=AZ-204&WT.mc_id=studentamb_165290&WT.mc_id=studentamb_165290)
-- [AGuideToCloud Course](https://www.youtube.com/playlist?list=PLhLKc18P9YODdrbyuA52Zn9-kwboIOz2W)
-- [Alan Rodrigues Course](https://www.youtube.com/playlist?list=PLLc2nQDXYMHpekgrToMrDpVtFtvmRSqVt)
-- [Microsoft Virtual Training Day - Azure for Developers](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&view=list&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Azure%20for%20Developers)
-- [Microsoft Virtual Training Day - Modernise Enterprise Applications](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Modernize%20Enterprise%20Applications)
-- [Microsoft Virtual Training Day - Innovate and Scale with Cloud Native Apps](https://events.microsoft.com/en-us/allevents/?language=English&clientTimeZone=1&view=list&search=Microsoft%20Azure%20Virtual%20Training%20Day:%20Well-Architected%20Framework)
-### Paid Courses
-- [Pluralsight Course](https://www.pluralsight.com/paths/developing-solutions-for-microsoft-azure-az-204)
-- [Microsoft's Official Coursera Course](https://www.coursera.org/professional-certificates/azure-developer-associate)
-### Additional useful resources
-- [Microsoft Azure Free Account](https://azure.microsoft.com/en-us/offers/ms-azr-0044p?WT.mc_id=studentamb_165290)
+  <TabItem label="Misc">
+  <CardGrid>
+    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/en-us/offers/ms-azr-0044p?WT.mc_id=studentamb_165290" target="_blank"/> 
+  </CardGrid>
+  </TabItem>
+</Tabs>
