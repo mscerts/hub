@@ -1,0 +1,138 @@
+---
+title: 'Contributing'
+editUrl: false
+lastUpdated: false
+next: false
+prev: false
+description: Learn how to contribute to the Hub
+---
+import { Badge } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { FileTree } from '@astrojs/starlight/components';
+
+If you're interested in supporting the Hub's development and are familiar with [Markdown](https://starlight.astro.build/guides/authoring-content/), read on to learn how to contribute to the project. 
+
+Contributions are very welcome and appreciated. Be sure to review [CONTRIBUTING.md](https://github.com/mscerts/hub/blob/main/.github/CONTRIBUTING.md) before getting started with your contribution!
+
+### Project Structure
+
+This is not the entire project structure, but it's the most important part of the project structure which we recommend you limit your contributions to.
+
+<FileTree>
+
+- public (any image used on the hub is found here)
+   - ...
+- src
+  - assets (our official logos are here)
+    - ...
+  - content
+    - docs 
+      - azure/ (Azure exams are found here)
+      - blog/ (Blog posts are found here)
+      - dynamics/ (Dynamics exams are found here)
+      - guide/ (The guide is found here)
+      - microsoft365/ (Microsoft 365 exams are found here)
+      - office/ (Office exams are found here)
+      - power/ (Power Platform exams are found here)
+      - security/ (Security exams are found here)
+      - vouchers/ (voucher offers are found here)
+      - 404.mdx
+      - **contributing.mdx**
+      - index.mdx
+      - wiki.mdx (This is the Wiki collection)
+- astro.config.mjs (Astro configuration file)
+- package.json (Project dependencies)
+
+</FileTree>
+
+
+## Web-only Contribution
+
+While this method is limited in terms of what you should contribute, you can still contribute to the project by adding new text content on existing pages, fixing typos, or improving existing text content.
+
+### Requirements 
+
+- Good understanding of [Markdown](https://starlight.astro.build/guides/authoring-content/)
+- Basic understanding of how to use GitHub
+- A brain and patience
+- A computer and an internet connection
+
+### Setting up the project
+
+<Steps>
+
+1. Fork the project to your GitHub account.
+
+2. Navigate to the file you want to edit in the GitHub repository of your fork.
+
+3. Click on the edit icon on the top right corner of the file.
+
+4. Make your changes in the editor.
+
+5. After making changes, scroll down to the bottom of the page and write a short description of the changes you made.
+
+6. Create a pull request to the main repository. Wait for the maintainers to review your pull request.
+
+7. Celebrate when your pull request is merged!
+
+</Steps>
+
+## IDE-based Contribution
+
+This method is more advanced and allows you to contribute to the project in a more flexible way. You can add new pages, edit existing pages, and add new components to the Hub. 
+This also allows you to preview your changes locally before submitting a pull request.
+
+### Requirements 
+
+- Basic understanding of [Markdown](https://starlight.astro.build/guides/authoring-content/) and [Starlight Components](https://starlight.astro.build/components/using-components/)
+- Basic understanding of how to use GitHub
+- A brain and patience
+- A computer and an internet connection
+- A code editor like VSCode or a GitHub's Codespace
+
+### Setting up the project
+
+
+<Steps>
+
+1. Fork the project, then clone it to your local machine. If you don't know what any of this means then refer to this [video here](https://youtu.be/CML6vfKjQss?t=106).
+
+2. Install any package manager you want to use. We recommend pnpm due to it's performant and small size. 
+   You can install pnpm by visiting the [official website](https://pnpm.io/installation) and following the instructions.
+
+3. Install the dependencies by running the following command in the terminal:
+
+   ```bash
+   pnpm install
+   ```
+4. Run the project by running the following command in the terminal:
+
+   ```bash
+   pnpm dev
+   ```
+5. Open your browser and navigate to `http://localhost:4321` to see the project running.
+
+6. After making changes, make sure you're not breaking anything by previewing your changes locally.
+   If there are no errors, commit your changes and push them to your forked repository.
+
+7. Create a pull request to the main repository. Wait for the maintainers to review your pull request.
+
+8. Celebrate when your pull request is merged!
+
+</Steps>
+
+
+## Where to begin?
+
+If you're new to the project, you can start by fixing typos, adding new studying resources, or improving existing guides. 
+This will help you get familiar with the project structure and the way content is written.
+
+Here's a bunch of resources that will help you understand how the Hub works better:
+
+- [Starlight Documentation](https://starlight.astro.build/)
+- [Starlight Components](https://starlight.astro.build/components/using-components/)
+- [Starlight Markdown Guide](https://starlight.astro.build/guides/authoring-content/)
+- [Astro Documentation](https://docs.astro.build/)
+
+ 
+

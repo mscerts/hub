@@ -21,4 +21,4 @@ If you are currently preparing for an exam, be sure to check out the [Exam Wiki]
 
 ---
 
-### This is a community resource. If you want to contribute in any way, go ahead, it is appreciated.
+### This is a community resource. If you want to contribute in any way, go ahead, it is appreciated. [Please make sure to read our contribution guide first.](http://certs.msfthub.wiki/contributing)

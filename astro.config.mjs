@@ -5,6 +5,7 @@ import starlightBlog from 'starlight-blog'
 const site = 'https://certs.msfthub.wiki/';
 
 export default defineConfig({
+	site: 'https://certs.msfthub.wiki/',
 	redirects: {
 		'/office': '/wiki',
 		'/guide': '/guide/introduction',
@@ -112,6 +113,10 @@ export default defineConfig({
 						{ label: 'Office', collapsed:true, autogenerate: { directory: 'office', collaped:true },},
 
 					],
+				},
+				{
+					label: 'Contributing',
+					link: '/contributing',
 				},
 			],
 			lastUpdated: true,
