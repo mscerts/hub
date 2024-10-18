@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightBlog from 'starlight-blog'
+import starlightImageZoom from 'starlight-image-zoom'
 
 const site = 'https://certs.msfthub.wiki/';
 
@@ -21,6 +22,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			plugins: [
+				starlightImageZoom(),
 				starlightBlog({
 					authors: {
 						nighthouse: {

@@ -20,6 +20,9 @@ importers:
       starlight-blog:
         specifier: ^0.5.1
         version: 0.5.1(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.20.0)(typescript@5.6.3)))(astro@4.16.6(rollup@4.20.0)(typescript@5.6.3))
+      starlight-image-zoom:
+        specifier: ^0.8.0
+        version: 0.8.0(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.20.0)(typescript@5.6.3)))
     devDependencies:
       accessible-astro-components:
         specifier: ^2.3.6
@@ -1710,6 +1713,12 @@ packages:
     peerDependencies:
       '@astrojs/starlight': '>=0.19.0'
       astro: '>=4.2.7'
+
+  starlight-image-zoom@0.8.0:
+    resolution: {integrity: sha512-+YDqCyihQescGs9hJoyTQt+KHEq9s6zIv8ksBMjPjwOrVicXtY0pM4hHj8yO1r2znud4gTytyGt25kAOmRyP9A==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.22.0'
 
   stdin-discarder@0.2.2:
     resolution: {integrity: sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==}
@@ -4226,6 +4235,13 @@ snapshots:
       '@astrojs/starlight': 0.28.3(astro@4.16.6(rollup@4.20.0)(typescript@5.6.3))
       astro: 4.16.6(rollup@4.20.0)(typescript@5.6.3)
       github-slugger: 2.0.0
+
+  starlight-image-zoom@0.8.0(@astrojs/starlight@0.28.3(astro@4.16.6(rollup@4.20.0)(typescript@5.6.3))):
+    dependencies:
+      '@astrojs/starlight': 0.28.3(astro@4.16.6(rollup@4.20.0)(typescript@5.6.3))
+      rehype-raw: 7.0.0
+      unist-util-visit: 5.0.0
+      unist-util-visit-parents: 6.0.1
 
   stdin-discarder@0.2.2: {}
 
