@@ -75,7 +75,7 @@ export default defineConfig({
             {
                 tag: 'script',
                 attrs: {
-                    src: 'https://www.googletagmanager.com/gtag/js?id=GTM-TMNHVD5B',
+                    src: 'https://www.googletagmanager.com/gtag/js?id=G-CDTP3TERKP',
                     type: 'text/partytown',
                 },
             },
@@ -86,7 +86,7 @@ export default defineConfig({
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
                     gtag('js', new Date());
-                    gtag('config', 'GTM-TMNHVD5B');
+                    gtag('config', 'G-CDTP3TERKP');
                 `,
             },
         ],
