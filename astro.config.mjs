@@ -40,6 +40,9 @@ export default defineConfig({
 					},
 				  }),
 			],
+			components: {
+                		MarkdownContent: "./src/components/MarkdownContent.astro",
+            		},
 			title: 'Microsoft Certification Hub',
 			head: [
 				{
