@@ -21,7 +21,6 @@ export default defineConfig({
         '/dynamics365': '/wiki',
       },
     integrations:[
-		sitemap(),
         partytown({
             config: {
               forward: ["dataLayer.push", "gtag"],
