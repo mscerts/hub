@@ -3,7 +3,6 @@ import starlight from '@astrojs/starlight';
 import starlightBlog from 'starlight-blog'
 import starlightImageZoom from 'starlight-image-zoom'
 import partytown from '@astrojs/partytown'
-import sitemap from '@astrojs/sitemap';
 
 const site = 'https://certs.msfthub.wiki/';
 
