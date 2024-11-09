@@ -4,7 +4,6 @@ import starlightBlog from 'starlight-blog'
 import starlightImageZoom from 'starlight-image-zoom'
 import partytown from '@astrojs/partytown'
 import sitemap from '@astrojs/sitemap';
-import { MicrosoftClarity } from 'astro-microsoft-clarity';
 
 const site = 'https://certs.msfthub.wiki/';
 
