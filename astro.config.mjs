@@ -4,6 +4,7 @@ import starlightBlog from 'starlight-blog'
 import starlightImageZoom from 'starlight-image-zoom'
 import partytown from '@astrojs/partytown'
 import sitemap from '@astrojs/sitemap';
+import { MicrosoftClarity } from 'astro-microsoft-clarity';
 
 const site = 'https://certs.msfthub.wiki/';
 
@@ -68,16 +69,27 @@ export default defineConfig({
             {
                 tag: 'script',
                 attrs: {
-                  src: "https://clarity.ms/tag/ke9gk0s2sg",
-                  defer: true,
+                    src: 'https://www.googletagmanager.com/gtag/js?id=G-CDTP3TERKP', 'config': 'G-CDTP3TERKP',
+                    defer: true,
                 },
             },
             {
                 tag: 'script',
                 attrs: {
-                    src: 'https://www.googletagmanager.com/gtag/js?id=G-CDTP3TERKP',
-                    type: 'text/partytown',
+                    src: 'https://www.clarity.ms/ke9gk0s2sg/', 'clarity': 'ke9gk0s2sg', 
+                    defer: true,
                 },
+            },
+            {
+                tag: 'script',
+                type: 'text/partytown',
+                children: `
+                 (function(c,l,a,r,i,t,y){
+                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                 })(window, document, "clarity", "script", "ke9gk0s2sg");
+                `,
             },
             {
                 tag: 'script',
