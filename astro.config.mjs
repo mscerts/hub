@@ -73,6 +73,20 @@ export default defineConfig({
             {
                 tag: 'script',
                 attrs: {
+                    src: 'https://www.googletagmanager.com/gtag/js?id=GTM-TMNHVD5B', 'config': 'GTM-TMNHVD5B',
+                    defer: true,
+                },
+            },
+            {
+                tag: 'script',
+                attrs: {
+                    src: 'https://www.googletagmanager.com/gtag/js?id=GT-MJKRWRH', 'config': 'GT-MJKRWRH',
+                    defer: true,
+                },
+            },
+            {
+                tag: 'script',
+                attrs: {
                     src: 'https://www.clarity.ms/ke9gk0s2sg/', 'clarity': 'ke9gk0s2sg', 
                     defer: true,
                 },
