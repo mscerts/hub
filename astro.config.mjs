@@ -52,6 +52,23 @@ export default defineConfig({
         title: 'Microsoft Certification Hub',
         head: [
             {
+                tag: 'script',
+                attrs: {
+                    src: 'https://www.googletagmanager.com/gtag/js?id=GTM-TMNHVD5B', 'config': 'GTM-TMNHVD5B',
+                    defer: true,
+                },
+            },
+            {
+                tag: 'script',
+                type: 'text/partytown',
+                children: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'GTM-TMNHVD5B');
+                `,
+            },
+            {
                 tag: 'meta',
                 attrs: { property: 'og:image', content: site + 'og.jpg' },
             },
@@ -63,27 +80,7 @@ export default defineConfig({
                 tag: 'meta',
                 attrs: { property: 'og:url', content: 'https://certs.msfthub.wiki/' },
             },
-            {
-                tag: 'script',
-                attrs: {
-                    src: 'https://www.googletagmanager.com/gtag/js?id=G-CDTP3TERKP', 'config': 'G-CDTP3TERKP',
-                    defer: true,
-                },
-            },
-            {
-                tag: 'script',
-                attrs: {
-                    src: 'https://www.googletagmanager.com/gtag/js?id=GTM-TMNHVD5B', 'config': 'GTM-TMNHVD5B',
-                    defer: true,
-                },
-            },
-            {
-                tag: 'script',
-                attrs: {
-                    src: 'https://www.googletagmanager.com/gtag/js?id=GT-MJKRWRH', 'config': 'GT-MJKRWRH',
-                    defer: true,
-                },
-            },
+
             {
                 tag: 'script',
                 attrs: {
@@ -102,16 +99,7 @@ export default defineConfig({
                  })(window, document, "clarity", "script", "ke9gk0s2sg");
                 `,
             },
-            {
-                tag: 'script',
-                type: 'text/partytown',
-                children: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', 'G-CDTP3TERKP');
-                `,
-            },
+
         ],
         editLink: {
             baseUrl: 'https://github.com/mscerts/hub/edit/main/',
