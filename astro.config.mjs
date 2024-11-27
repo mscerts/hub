@@ -54,7 +54,7 @@ export default defineConfig({
             {
                 tag: 'script',
                 attrs: {
-                    src: 'https://www.googletagmanager.com/gtag/js?id=GTM-TMNHVD5B', 'config': 'GTM-TMNHVD5B',
+                    src: 'https://www.clarity.ms/ke9gk0s2sg/', 'clarity': 'ke9gk0s2sg', 
                     defer: true,
                 },
             },
@@ -62,10 +62,11 @@ export default defineConfig({
                 tag: 'script',
                 type: 'text/partytown',
                 children: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', 'GTM-TMNHVD5B');
+                    (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                    })(window, document, "clarity", "script", "ke9gk0s2sg");
                 `,
             },
             {
@@ -80,26 +81,6 @@ export default defineConfig({
                 tag: 'meta',
                 attrs: { property: 'og:url', content: 'https://certs.msfthub.wiki/' },
             },
-
-            {
-                tag: 'script',
-                attrs: {
-                    src: 'https://www.clarity.ms/ke9gk0s2sg/', 'clarity': 'ke9gk0s2sg', 
-                    defer: true,
-                },
-            },
-            {
-                tag: 'script',
-                type: 'text/partytown',
-                children: `
-                 (function(c,l,a,r,i,t,y){
-                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-                 })(window, document, "clarity", "script", "ke9gk0s2sg");
-                `,
-            },
-
         ],
         editLink: {
             baseUrl: 'https://github.com/mscerts/hub/edit/main/',
