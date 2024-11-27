@@ -54,7 +54,7 @@ export default defineConfig({
             {
                 tag: 'script',
                 attrs: {
-                    src: 'https://www.clarity.ms/ke9gk0s2sg/', 'clarity': 'ke9gk0s2sg', 
+                    src: 'https://www.clarity.ms/tag/ke9gk0s2sg',
                     defer: true,
                 },
             },
