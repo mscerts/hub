@@ -2,7 +2,7 @@
 title: Certification Renewal
 description: How to renew your shiny new Microsoft certification
 ---
-import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
+import { LinkButton, LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 
 Microsoft has changed the certification renewal process so now instead of having to take the certification exam/s every 2 years, you just have to complete renewal assessment every year.
 
@@ -36,10 +36,33 @@ You are still required to follow the program agreement and Non-Disclosure Agreem
 
 ---
 
-**Sources**
+**Sources**:
 
-[Renew your Microsoft Certifications | Microsoft Learn](https://learn.microsoft.com/certifications/renew-your-microsoft-certification?WT.mc_id=studentamb_165290)
+<CardGrid>
+<LinkButton
+  href="https://learn.microsoft.com/certifications/renew-your-microsoft-certification?WT.mc_id=studentamb_165290"
+  variant="minimal"
+  icon="external"
+  iconPlacement="start"
+>
+  Renew your Microsoft Certifications | Microsoft Learn
+</LinkButton>
 
-[Renew your Microsoft Certifications - FAQ | Microsoft Learn](https://learn.microsoft.com/certifications/renew-your-microsoft-certification-faq?WT.mc_id=studentamb_165290)
+<LinkButton
+  href="https://learn.microsoft.com/certifications/renew-your-microsoft-certification-faq?WT.mc_id=studentamb_165290"
+  variant="minimal"
+  icon="external"
+  iconPlacement="start"
+>
+  Renew your Microsoft Certifications - FAQ | Microsoft Learn
+</LinkButton>
 
-[Exams don't expire | Microsoft Certification Support](https://trainingsupport.microsoft.com/en-us/mcp/forum/all/is-there-any-time-limit-to-complete-the/4e885c43-bcde-44ce-a685-f4c3adf9f4dc)
+<LinkButton
+  href="https://trainingsupport.microsoft.com/en-us/mcp/forum/all/is-there-any-time-limit-to-complete-the/4e885c43-bcde-44ce-a685-f4c3adf9f4dc"
+  variant="minimal"
+  icon="external"
+  iconPlacement="start"
+>
+  Exams don't expire | Microsoft Certification Support
+</LinkButton>
+</CardGrid>

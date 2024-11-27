@@ -2,6 +2,7 @@
 title: Overview
 description: Microsoft Certification Types
 ---
+import { Card, CardGrid, LinkButton } from '@astrojs/starlight/components';
 
 You can find the complete and frequently updated certification poster at [https://aka.ms/TrainCertPoster](https://aka.ms/TrainCertPoster).
 
@@ -64,6 +65,22 @@ Fundamental certifications are good for life and will never expire, even when th
 
 **Sources:**
 
-[Exam retake policy | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/exam-retake-policy?WT.mc_id=studentamb_165290) 
+<CardGrid>
+<LinkButton
+  href="https://learn.microsoft.com/en-us/certifications/exam-retake-policy?WT.mc_id=studentamb_165290"
+  variant="minimal"
+  icon="external"
+  iconPlacement="start"
+>
+  Exam retake policy | Microsoft Learn
+</LinkButton>
 
-[Exam reschedule and cancellation policy | Microsoft Learn](https://learn.microsoft.com/en-us/certifications/exam-reschedule-and-cancellation-policy?WT.mc_id=studentamb_165290)
+<LinkButton
+  href="https://learn.microsoft.com/en-us/certifications/exam-reschedule-and-cancellation-policy?WT.mc_id=studentamb_165290"
+  variant="minimal"
+  icon="external"
+  iconPlacement="start"
+>
+  Exam reschedule and cancellation policy | Microsoft Learn
+</LinkButton>
+</CardGrid>
