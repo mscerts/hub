@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import starlightBlog from 'starlight-blog'
 import starlightImageZoom from 'starlight-image-zoom'
 import partytown from '@astrojs/partytown'
 
@@ -29,26 +28,25 @@ export default defineConfig({
 		starlight({
         plugins: [
             starlightImageZoom(),
+            /*
             starlightBlog({
-                authors: {
-                    nighthouse: {
-                    name: 'nighthouse',
-                    title: 'Content & Site Editor',
-                    picture: 'https://avatars.githubusercontent.com/u/121154936?v=4',
-                    url: 'https://github.com/n1ghthouse',
-                  },
-                  teriaavibes: {
-                    name: 'teriaavibes',
-                    title: 'Content Editor',
-                    picture: 'https://avatars.githubusercontent.com/u/68708075?v=4', 
-                    url: 'https://github.com/teriaavibes',
-                  },
-                },
-              }),
+                            authors: {
+                                nighthouse: {
+                                name: 'nighthouse',
+                                title: 'Content & Site Editor',
+                                picture: 'https://avatars.githubusercontent.com/u/121154936?v=4',
+                                url: 'https://github.com/n1ghthouse',
+                              },
+                              teriaavibes: {
+                                name: 'teriaavibes',
+                                title: 'Content Editor',
+                                picture: 'https://avatars.githubusercontent.com/u/68708075?v=4', 
+                                url: 'https://github.com/teriaavibes',
+                              },
+                            },
+                          }),
+            */
         ],
-        components: {
-            MarkdownContent: "./src/components/MarkdownContent.astro",
-        },
         title: 'Microsoft Certification Hub',
         head: [
             {
@@ -107,10 +105,11 @@ export default defineConfig({
             discord: 'https://discord.gg/microsoft-certification-study-group-676990910176821270',
         },
         sidebar: [
-            {
+/*            {
                 label: 'Updates Blog',
                 link: '/blog',
             },
+*/
             {
                 label: 'Guide',
                 items: [
