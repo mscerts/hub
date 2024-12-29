@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightImageZoom from 'starlight-image-zoom'
 import partytown from '@astrojs/partytown'
+import starlightCoolerCredit from 'starlight-cooler-credit'
 
 const site = 'https://certs.msfthub.wiki/';
 
@@ -27,6 +28,19 @@ export default defineConfig({
         }),
 		starlight({
         plugins: [
+            starlightCoolerCredit({
+                showImage: true,
+                customImage: "./src/assets/mascot.png",
+                credit: {
+                    title: {
+                        en: "Have any exam feedback?",
+                    },
+                    href: "https://discord.gg/y7jXDE6NVf",
+                    description: {
+                        en: "Get in contact with the MSFT Cert team in our Discord.",
+                    },
+                },
+            }),
             starlightImageZoom(),
             /*
             starlightBlog({

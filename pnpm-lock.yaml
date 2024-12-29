@@ -23,6 +23,9 @@ importers:
       sharp:
         specifier: ^0.33.4
         version: 0.33.4
+      starlight-cooler-credit:
+        specifier: ^0.2.2
+        version: 0.2.2(@astrojs/starlight@0.30.3(astro@5.1.1(rollup@4.29.1)(typescript@5.6.3)))
       starlight-image-zoom:
         specifier: ^0.8.0
         version: 0.8.0(@astrojs/starlight@0.30.3(astro@5.1.1(rollup@4.29.1)(typescript@5.6.3)))
@@ -835,6 +838,9 @@ packages:
   chalk@5.3.0:
     resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+
+  change-case@5.4.4:
+    resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
 
   character-entities-html4@2.1.0:
     resolution: {integrity: sha512-1v7fgQRj6hnSwFpq1Eu0ynr/CDEw0rXo2B61qXrLNdHZmPKgb7fqS1a2JwF0rISo9q77jDI8VMEHoApn8qDoZA==}
@@ -1720,6 +1726,12 @@ packages:
 
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
+
+  starlight-cooler-credit@0.2.2:
+    resolution: {integrity: sha512-OX5gPxwJBfxGCfd4KRRhJrJCuBOyphN32tn+iCVihEhOR/kch3jr91NuFRmHrgcaB+OEjBxuWDMESHGtz8obcw==}
+    engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.30'
 
   starlight-image-zoom@0.8.0:
     resolution: {integrity: sha512-+YDqCyihQescGs9hJoyTQt+KHEq9s6zIv8ksBMjPjwOrVicXtY0pM4hHj8yO1r2znud4gTytyGt25kAOmRyP9A==}
@@ -2774,6 +2786,8 @@ snapshots:
   ccount@2.0.1: {}
 
   chalk@5.3.0: {}
+
+  change-case@5.4.4: {}
 
   character-entities-html4@2.1.0: {}
 
@@ -4236,6 +4250,11 @@ snapshots:
   space-separated-tokens@2.0.2: {}
 
   sprintf-js@1.0.3: {}
+
+  starlight-cooler-credit@0.2.2(@astrojs/starlight@0.30.3(astro@5.1.1(rollup@4.29.1)(typescript@5.6.3))):
+    dependencies:
+      '@astrojs/starlight': 0.30.3(astro@5.1.1(rollup@4.29.1)(typescript@5.6.3))
+      change-case: 5.4.4
 
   starlight-image-zoom@0.8.0(@astrojs/starlight@0.30.3(astro@5.1.1(rollup@4.29.1)(typescript@5.6.3))):
     dependencies:
