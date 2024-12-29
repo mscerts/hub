@@ -3,6 +3,7 @@ import starlight from '@astrojs/starlight';
 import starlightImageZoom from 'starlight-image-zoom'
 import partytown from '@astrojs/partytown'
 import starlightCoolerCredit from 'starlight-cooler-credit'
+import starlightBlog from 'starlight-blog'
 
 const site = 'https://certs.msfthub.wiki/';
 
@@ -28,39 +29,40 @@ export default defineConfig({
         }),
 		starlight({
         plugins: [
-            starlightCoolerCredit({
-                showImage: true,
-                customImage: "./src/assets/mascot.png",
-                credit: {
-                    title: {
-                        en: "Have any exam feedback?",
-                    },
-                    href: "https://discord.gg/y7jXDE6NVf",
-                    description: {
-                        en: "Get in contact with the MSFT Cert team in our Discord.",
-                    },
-                },
-            }),
-            starlightImageZoom(),
-            /*
-            starlightBlog({
-                            authors: {
-                                nighthouse: {
-                                name: 'nighthouse',
-                                title: 'Content & Site Editor',
-                                picture: 'https://avatars.githubusercontent.com/u/121154936?v=4',
-                                url: 'https://github.com/n1ghthouse',
-                              },
-                              teriaavibes: {
-                                name: 'teriaavibes',
-                                title: 'Content Editor',
-                                picture: 'https://avatars.githubusercontent.com/u/68708075?v=4', 
-                                url: 'https://github.com/teriaavibes',
-                              },
-                            },
-                          }),
-            */
+          starlightCoolerCredit({
+              showImage: true,
+              customImage: "./src/assets/mascot.png",
+              credit: {
+                  title: {
+                      en: "Have any exam feedback?",
+                  },
+                  href: "https://discord.gg/y7jXDE6NVf",
+                  description: {
+                      en: "Get in contact with the MSFT Cert team in our Discord.",
+                  },
+              },
+          }),
+          starlightImageZoom(),
+          starlightBlog({
+            authors: {
+              nighthouse: {
+                name: 'nighthouse',
+                title: 'Content & Site Editor',
+                picture: 'https://avatars.githubusercontent.com/u/121154936?v=4',
+                url: 'https://github.com/n1ghthouse',
+              },
+              teriaavibes: {
+                name: 'teriaavibes',
+                title: 'Content Editor',
+                picture: 'https://avatars.githubusercontent.com/u/68708075?v=4', 
+                url: 'https://github.com/teriaavibes',
+              },
+            },
+          }),
         ],
+        components: {
+            MarkdownContent: "./src/components/MarkdownContent.astro",
+        },
         title: 'Microsoft Certification Hub',
         head: [
             {
