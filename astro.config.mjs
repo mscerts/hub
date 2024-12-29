@@ -126,6 +126,10 @@ export default defineConfig({
                 ],
             },
             {
+                label: 'Voucher Collection',
+                link: '/vouchers',
+            },
+            {
                 label: 'Voucher Offers',
                 items: [
                     { label: 'Beta Exams', link: '/vouchers/betaexams/' },
