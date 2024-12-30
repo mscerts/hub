@@ -121,11 +121,10 @@ export default defineConfig({
             discord: 'https://discord.gg/microsoft-certification-study-group-676990910176821270',
         },
         sidebar: [
-/*            {
+            {
                 label: 'Updates Blog',
                 link: '/blog',
             },
-*/
             {
                 label: 'Guide',
                 items: [
