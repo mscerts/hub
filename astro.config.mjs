@@ -154,6 +154,7 @@ export default defineConfig({
                     { label: 'Power Up Program', link: '/vouchers/powerupprogram/' },
                     { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' },
 		    { label: 'DP-600 for Microsoft Partners', link: '/vouchers/dp-600forpartners/'},
+		    { label: 'DP-700 Discount', link: '/vouchers/dp-700discount/'}
                 ],
             },
             {
