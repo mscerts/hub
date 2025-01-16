@@ -149,7 +149,7 @@ export default defineConfig({
                 items: [
                     { label: 'Beta Exams', link: '/vouchers/betaexams/' },
                     { label: 'Cloud Skills Challenges', link: '/vouchers/cloudskillschallenges/',badge: { text: 'N/A', variant: 'danger' }, },
-                    { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' },
+                    { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '50%', variant: 'note' }, },
                     { label: 'Mindhub Replay Voucher Bundles', link: '/vouchers/mindhubreplayvoucherbundles/' },						
                     { label: 'Power Up Program', link: '/vouchers/powerupprogram/' },
                     { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' },
