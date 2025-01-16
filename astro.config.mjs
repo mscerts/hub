@@ -153,7 +153,7 @@ export default defineConfig({
                     { label: 'Mindhub Replay Voucher Bundles', link: '/vouchers/mindhubreplayvoucherbundles/' },						
                     { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '100%', variant: 'note' }, },
                     { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/', badge: { text: '50%', variant: 'note' }, },
-		    { label: 'DP-600 for Microsoft Partners', link: '/vouchers/dp-600forpartners/' ,badge: { text: '100%', variant: 'note' }, },
+		    { label: 'DP-600 for Partners', link: '/vouchers/dp-600forpartners/' ,badge: { text: '100%', variant: 'note' }, },
 		    { label: 'DP-700 Discount', link: '/vouchers/dp-700discount/' ,badge: { text: '50%', variant: 'note' }, }
                 ],
             },
