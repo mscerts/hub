@@ -153,7 +153,7 @@ export default defineConfig({
                     { label: 'Mindhub Replay Voucher Bundles', link: '/vouchers/mindhubreplayvoucherbundles/' },						
                     { label: 'Power Up Program', link: '/vouchers/powerupprogram/' },
                     { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' },
-		    { label: 'DP-600 for Microsoft Partners', link: '/vouchers/DP-600 for Microsoft Partners/'},
+		    { label: 'DP-600 for Microsoft Partners', link: '/vouchers/dp-600formicrosoftpartners.mdx/'},
                 ],
             },
             {
