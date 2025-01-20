@@ -162,7 +162,7 @@ export default defineConfig({
                 link: '/wiki',
             },
             {
-                label: 'Exams',
+                label: 'Exam Study Materials',
                 collapsed: false,
                 items: [
                     { label: 'Azure', collapsed:true, autogenerate: { directory: 'azure', collaped:true },},
@@ -170,7 +170,7 @@ export default defineConfig({
                     { label: 'Security & Identity', collapsed:true, autogenerate: { directory: 'security', collaped:true },},
                     { label: 'Power Platform', collapsed:true, autogenerate: { directory: 'power', collaped:true },},
                     { label: 'Dynamics 365', collapsed:true, autogenerate: { directory: 'dynamics', collaped:true },},
-                    { label: 'Office', collapsed:true, autogenerate: { directory: 'office', collaped:true },},
+                    { label: 'Office Apps', collapsed:true, autogenerate: { directory: 'office', collaped:true },},
 
                 ],
             },
