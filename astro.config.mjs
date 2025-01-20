@@ -126,7 +126,7 @@ export default defineConfig({
                 link: '/blog',
             },
             {
-                label: 'Guide',
+                label: 'Certification Program Guide',
                 items: [
                     { label: 'Introduction', link: '/guide/introduction/' },
                     { label: 'Overview', link: '/guide/overview/' },
@@ -158,7 +158,7 @@ export default defineConfig({
                 ],
             },
             {
-                label: 'Wiki Collection',
+                label: 'Exam Wiki Collection',
                 link: '/wiki',
             },
             {
