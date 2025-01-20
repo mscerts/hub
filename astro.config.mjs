@@ -141,11 +141,11 @@ export default defineConfig({
                 ],
             },
             {
-                label: 'Exam Discount Vouchers',
+                label: 'Exam Voucher Collection',
                 link: '/vouchers',
             },
             {
-                label: 'Voucher Offers',
+                label: 'Discounted Exam Vouchers',
                 items: [
 		    { label: 'DP-700 Discount', link: '/vouchers/dp-700discount/' ,badge: { text: '50%', variant: 'note' }, },
 		    { label: 'DP-600 for Partners', link: '/vouchers/dp-600forpartners/' ,badge: { text: '100%', variant: 'note' }, },
