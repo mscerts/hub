@@ -141,7 +141,7 @@ export default defineConfig({
                 ],
             },
             {
-                label: 'Voucher Collection',
+                label: 'Exam Discount Vouchers',
                 link: '/vouchers',
             },
             {
