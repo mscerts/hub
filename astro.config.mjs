@@ -29,7 +29,7 @@ export default defineConfig({
         }),
 		starlight({
         plugins: [
-          starlightCoolerCredit({
+/*          starlightCoolerCredit({
               showImage: true,
               customImage: "./src/assets/mascot.png",
               credit: {
@@ -41,7 +41,7 @@ export default defineConfig({
                       en: "Get in contact with the MSFT Cert team in our Discord.",
                   },
               },
-          }),
+          }), */
           starlightImageZoom(),
           starlightBlog({
             authors: {
