@@ -126,7 +126,7 @@ export default defineConfig({
                 link: '/blog',
             },
             {
-                label: 'Guide',
+                label: 'Certification Program Guide',
                 items: [
                     { label: 'Introduction', link: '/guide/introduction/' },
                     { label: 'Overview', link: '/guide/overview/' },
@@ -141,26 +141,28 @@ export default defineConfig({
                 ],
             },
             {
-                label: 'Voucher Collection',
+                label: 'Exam Voucher Collection',
                 link: '/vouchers',
             },
             {
-                label: 'Voucher Offers',
+                label: 'Discounted Exam Vouchers',
                 items: [
-                    { label: 'Beta Exams', link: '/vouchers/betaexams/' },
-                    { label: 'Cloud Skills Challenges', link: '/vouchers/cloudskillschallenges/',badge: { text: 'N/A', variant: 'danger' }, },
-                    { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' },
-                    { label: 'Mindhub Replay Voucher Bundles', link: '/vouchers/mindhubreplayvoucherbundles/' },						
-                    { label: 'Power Up Program', link: '/vouchers/powerupprogram/' },
-                    { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' },
+		    { label: 'DP-700 Discount', link: '/vouchers/dp-700discount/' ,badge: { text: '50%', variant: 'note' }, },
+		    { label: 'DP-600 for Partners', link: '/vouchers/dp-600forpartners/' ,badge: { text: '100%', variant: 'note' }, },
+                    { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
+                    { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '50%', variant: 'note' }, },
+                    { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '100%', variant: 'note' }, },						
+                    { label: 'Beta Exams', link: '/vouchers/betaexams/' ,badge: { text: '80% + 25%', variant: 'note' }, },
+		    { label: 'Replay/Retake Vouchers', link: '/vouchers/mindhubreplayvoucherbundles/' },
+
                 ],
             },
             {
-                label: 'Wiki Collection',
+                label: 'Exam Wiki Collection',
                 link: '/wiki',
             },
             {
-                label: 'Exams',
+                label: 'Exam Study Materials',
                 collapsed: false,
                 items: [
                     { label: 'Azure', collapsed:true, autogenerate: { directory: 'azure', collaped:true },},
@@ -168,7 +170,7 @@ export default defineConfig({
                     { label: 'Security & Identity', collapsed:true, autogenerate: { directory: 'security', collaped:true },},
                     { label: 'Power Platform', collapsed:true, autogenerate: { directory: 'power', collaped:true },},
                     { label: 'Dynamics 365', collapsed:true, autogenerate: { directory: 'dynamics', collaped:true },},
-                    { label: 'Office', collapsed:true, autogenerate: { directory: 'office', collaped:true },},
+                    { label: 'Office Apps', collapsed:true, autogenerate: { directory: 'office', collaped:true },},
 
                 ],
             },

@@ -8,21 +8,31 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Tabs>
   <TabItem label="Applied Skills">
-Applied skills are a new type of credential that tests your hands on experience with the products. It will only practical tasks you complete with Microsoft products. They are free at the moment so a great way to practice for free but that can change soon. 
+
+:::note 
+Applied Skills on Microsoft Learn are practical, hands-on exercises designed to help users build and demonstrate proficiency in specific technologies or tasks. These small labs focus on solving real-world scenarios, reinforcing learning through direct application of skills, and preparing users for industry roles or certifications.
+:::
+
 <CardGrid>
-
-  <LinkCard title="Applied Skills - Deploy and configure Azure Monitor" href="https://learn.microsoft.com/en-us/credentials/applied-skills/deploy-and-configure-azure-monitor?WT.mc_id=studentamb_165290" /> 
-  <LinkCard title="Applied Skills - Secure storage for Azure Files and Azure Blob Storage" href="https://learn.microsoft.com/en-us/credentials/applied-skills/secure-storage-azure-files-azure-blob-storage?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Applied Skills - Configure secure access to your workloads using Azure networking" href="https://learn.microsoft.com/en-us/credentials/applied-skills/configure-secure-workloads-use-azure-virtual-networking?WT.mc_id=studentamb_165290" />
-
+  <LinkCard title="Deploy and configure Azure Monitor" href="https://learn.microsoft.com/en-us/credentials/applied-skills/deploy-and-configure-azure-monitor?WT.mc_id=studentamb_165290" /> 
+  <LinkCard title="Secure storage for Azure Files and Azure Blob Storage" href="https://learn.microsoft.com/en-us/credentials/applied-skills/secure-storage-azure-files-azure-blob-storage?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Configure secure access to your workloads using Azure networking" href="https://learn.microsoft.com/en-us/credentials/applied-skills/configure-secure-workloads-use-azure-virtual-networking?WT.mc_id=studentamb_165290" />
 </CardGrid>
 
   </TabItem>
   <TabItem label="Microsoft Learn">
-Microsoft Learn sandboxes are mini-labs that are part of Microsoft Learn modules. Easy and simple way to practice using the products you will get tested on.
 
-**Prerequisites**
+:::note 
+Microsoft Learn sandboxes are interactive, temporary environments provided by Microsoft Learn that allow users to practice and explore Azure services and other Microsoft technologies without needing their own subscription. These sandboxes are free, time-limited, and isolated, offering a secure space to complete guided learning modules, tutorials, and hands-on exercises in a real-world setup.
 
+Occasionally, they require you to bring your own subscription or run the exercises locally on your computer.
+:::
+:::caution 
+Be careful of starting multiple sandboxes/visiting multiple sandbox URLs at the same time as Microsoft Learn might suspend your access due to detected suspicious activity. 
+:::
+
+<Tabs>
+  <TabItem label="Prerequisites">
 <CardGrid>
   <LinkCard title="Install Azure PowerShell" href="https://learn.microsoft.com/en-us/training/modules/automate-azure-tasks-with-powershell/4-exercise-install-azure-powershell?WT.mc_id=studentamb_165290" />
   <LinkCard title="Create an Azure Resource using scripts in Azure PowerShell" href="https://learn.microsoft.com/en-us/training/modules/automate-azure-tasks-with-powershell/6-exercise-create-resource-interactively?WT.mc_id=studentamb_165290" />
@@ -31,9 +41,9 @@ Microsoft Learn sandboxes are mini-labs that are part of Microsoft Learn modules
   <LinkCard title="Create an Azure website using the CLI" href="https://learn.microsoft.com/en-us/training/modules/control-azure-services-with-cli/5-exercise-create-website-using-the-cli?WT.mc_id=studentamb_165290" />
   <LinkCard title="Create and deploy an Azure Resource Manager template" href="https://learn.microsoft.com/en-us/training/modules/create-azure-resource-manager-template-vs-code/3-exercise-create-and-deploy-template?WT.mc_id=studentamb_165290" />
 </CardGrid>
+</TabItem>
 
-**Manage Azure identities and governance**
-
+  <TabItem label="Identities">
 <CardGrid>
   <LinkCard title="Add and delete users in Microsoft Entra ID" href="https://learn.microsoft.com/en-us/training/modules/create-users-and-groups-in-azure-active-directory/3-exercise-add-delete-users-azure-ad?WT.mc_id=studentamb_165290" />
   <LinkCard title="Assign users to Microsoft Entra groups" href="https://learn.microsoft.com/en-us/training/modules/create-users-and-groups-in-azure-active-directory/5-exercise-assign-users-azure-ad-groups?WT.mc_id=studentamb_165290" />
@@ -44,9 +54,9 @@ Microsoft Learn sandboxes are mini-labs that are part of Microsoft Learn modules
   <LinkCard title="Set up self-service password reset" href="https://learn.microsoft.com/en-us/training/modules/allow-users-reset-their-password/4-exercise-set-up-self-service-password-reset?WT.mc_id=studentamb_165290" />
   <LinkCard title="Customize directory branding" href="https://learn.microsoft.com/en-us/training/modules/allow-users-reset-their-password/5-exercise-customize-directory-branding?WT.mc_id=studentamb_165290" />
 </CardGrid>
+</TabItem>
 
-**Implement and manage storage**
-
+<TabItem label="Storage">
 <CardGrid>
   <LinkCard title="Create a storage account using the Azure portal" href="https://learn.microsoft.com/en-us/training/modules/create-azure-resource-manager-template-vs-code/5-exercise-parameters-output?pivots=powershell?WT.mc_id=studentamb_165290" />
   <LinkCard title="Use stored access policies to delegate access to Azure Storage" href="https://learn.microsoft.com/en-us/training/modules/control-access-to-azure-storage-with-sas/6-exercise-use-stored-access-policies?WT.mc_id=studentamb_165290" />
@@ -54,9 +64,9 @@ Microsoft Learn sandboxes are mini-labs that are part of Microsoft Learn modules
   <LinkCard title="Connect Azure Storage Explorer to Azure Data Lake Storage" href="https://learn.microsoft.com/en-us/training/modules/upload-download-and-manage-data-with-azure-storage-explorer/5-exercise-connect-cosmosdb-data-lake?WT.mc_id=studentamb_165290" />
   <LinkCard title="Connect Azure Storage Explorer to a storage account" href="https://learn.microsoft.com/en-us/training/modules/upload-download-and-manage-data-with-azure-storage-explorer/3-exercise-connect-storage-account?WT.mc_id=studentamb_165290" />
 </CardGrid>
+</TabItem>
 
-**Deploy and manage Azure compute resources**
-
+<TabItem label="Compute">
 <CardGrid>
   <LinkCard title="Create a virtual machine" href="https://learn.microsoft.com/en-us/training/modules/manage-virtual-machines-with-azure-cli/2-create-a-vm?WT.mc_id=studentamb_165290" />
   <LinkCard title="Test your new virtual machine" href="https://learn.microsoft.com/en-us/training/modules/manage-virtual-machines-with-azure-cli/3-testing-the-vm?WT.mc_id=studentamb_165290" />
@@ -71,9 +81,9 @@ Microsoft Learn sandboxes are mini-labs that are part of Microsoft Learn modules
   <LinkCard title="Write code to implement a web application" href="https://learn.microsoft.com/en-us/training/modules/host-a-web-app-with-azure-app-service/5-exercise-implement-a-web-application?WT.mc_id=studentamb_165290" />
   <LinkCard title="Deploy your code to App Service" href="https://learn.microsoft.com/en-us/training/modules/host-a-web-app-with-azure-app-service/7-exercise-deploy-your-code-to-app-service?WT.mc_id=studentamb_165290" />
 </CardGrid>
+</TabItem>
 
-**Implement and manage virtual networking**
-
+<TabItem label="Networking">
 <CardGrid>
   <LinkCard title="Design and implement IP addressing for Azure virtual networks" href="https://learn.microsoft.com/en-us/training/modules/design-ip-addressing-for-azure/5-exercise-implement-vnets?WT.mc_id=studentamb_165290" />
   <LinkCard title="Prepare virtual networks for peering by using Azure CLI commands" href="https://learn.microsoft.com/en-us/training/modules/integrate-vnets-with-vnet-peering/3-exercise-prepare-vnets-for-peering-using-azure-cli-commands?WT.mc_id=studentamb_165290" />
@@ -86,22 +96,27 @@ Microsoft Learn sandboxes are mini-labs that are part of Microsoft Learn modules
   <LinkCard title="Route traffic through the NVA" href="https://learn.microsoft.com/en-us/training/modules/control-network-traffic-flow-with-routes/6-exercise-route-traffic-through-nva?WT.mc_id=studentamb_165290" />
   <LinkCard title="Configure a public load balancer" href="https://learn.microsoft.com/en-us/training/modules/improve-app-scalability-resiliency-with-load-balancer/4-exercise-configure-public-load-balancer?WT.mc_id=studentamb_165290" />
 </CardGrid>
+</TabItem>
 
-**Monitor and maintain Azure resources**
-
+<TabItem label="Monitor">
 <CardGrid>
   <LinkCard title="Use metric alerts to alert on performance issues in your Azure environment" href="https://learn.microsoft.com/en-us/training/modules/incident-response-with-alerting-on-azure/4-exercise-metric-alerts?WT.mc_id=studentamb_165290" />
   <LinkCard title="Use an activity log alert and an action group to notify users about events in your Azure infrastructure" href="https://learn.microsoft.com/en-us/training/modules/incident-response-with-alerting-on-azure/8-exercise-activity-log-alerts?WT.mc_id=studentamb_165290" />
   <LinkCard title="Create basic Azure Monitor log queries to extract information from log data" href="https://learn.microsoft.com/en-us/training/modules/analyze-infrastructure-with-azure-monitor-logs/4-exercise-create-log-queries?WT.mc_id=studentamb_165290" />
-
 </CardGrid>
+</TabItem>
+
+</Tabs>
 
   </TabItem>
 
   <TabItem label="Microsoft GitHub">
-While doing GitHub labs is not free, like those on Microsoft Learn, they are complete lab exercises that guide you through projects and help you get familiar with the products you will be tested on. For Azure, at the end of all labs there is self destruct PowerShell script, always run it when you finish to avoid additional costs.
-<CardGrid>
 
+:::note 
+Microsoft GitHub labs are series of labs designed to be used in Microsoft Instructor Lead Trainings delivered by Microsoft Certified Trainers where participants also have access to the environment to perform them. This means that for everyone else, it is necessary to bring your own environment to go through them. 
+:::
+
+<CardGrid>
   <LinkCard title="Manage Microsoft Entra ID Identities" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_01-Manage_Entra_ID_Identities.html" />
   <LinkCard title="Manage Subscriptions and RBAC" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_02a_Manage_Subscriptions_and_RBAC_Entra.html" />
   <LinkCard title="Manage Governance via Azure Policy" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_02b-Manage_Governance_via_Azure_Policy.html" />
@@ -119,15 +134,17 @@ While doing GitHub labs is not free, like those on Microsoft Learn, they are com
   <LinkCard title="Implement Azure Container Apps" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_09c-Implement-Azure-Container-Apps.html" />
   <LinkCard title="Implement Data Protection" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_10-Implement_Data_Protection.html" />
   <LinkCard title="Implement Monitoring" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_11-Implement_Monitoring.html" />
-
 </CardGrid>
 
   </TabItem>
 
   <TabItem label="Guided Labs">
-These are basically interactive videos, they are free and easy to navigate but the issue is that it is not a live environment, always good to supplement with real labbing with Microsoft Products.
-<CardGrid>
 
+:::note 
+Guided labs are short interactive videos that offer a free way to get familiar with the products being presented. They aren't as good as actually using the products but they provide a safe way to practice without the risk of messing something up or running up a bill.
+:::
+
+<CardGrid>
   <LinkCard title="Manage Azure resources by using Azure Portal" href="https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%204" />
   <LinkCard title="Manage Azure resources by using Azure Powershell" href="https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%206" />
   <LinkCard title="Manage Azure resources by using Azure CLI" href="https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%207" />
@@ -151,9 +168,6 @@ These are basically interactive videos, they are free and easy to navigate but t
   <LinkCard title="Implement Monitoring" href="https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2017" />
   <LinkCard title="Implement traffic management" href="https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2010" />
   <LinkCard title="Implement traffic management" href="https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2010" />
-
-
 </CardGrid>
-
   </TabItem>
 </Tabs>
