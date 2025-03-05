@@ -1,0 +1,99 @@
+---
+title: SC-200 Labs
+
+---
+import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
+import { Icon } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+  <TabItem label="Applied Skills">
+
+:::note 
+Applied Skills on Microsoft Learn are practical, hands-on exercises designed to help users build and demonstrate proficiency in specific technologies or tasks. These small labs focus on solving real-world scenarios, reinforcing learning through direct application of skills, and preparing users for industry roles or certifications.
+:::
+
+  <CardGrid>
+    <LinkCard title="Defend against cyberthreats with Microsoft Defender XDR" href="https://learn.microsoft.com/en-us/credentials/applied-skills/defend-against-cyberthreats-with-microsoft-defender-xdr/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Prepare security and compliance to support Microsoft 365 Copilot" href="https://learn.microsoft.com/en-us/credentials/applied-skills/prepare-security-and-compliance-to-support-microsoft-365-copilot/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Implement information protection and data loss prevention by using Microsoft Purview" href="https://learn.microsoft.com/en-us/credentials/applied-skills/implement-information-protection-and-data-loss-prevention-by-using-microsoft-purview/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Configure SIEM security operations using Microsoft Sentinel" href="https://learn.microsoft.com/en-us/credentials/applied-skills/configure-siem-security-operations-using-microsoft-sentinel/?WT.mc_id=studentamb_165290" />
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Microsoft Learn">
+
+:::note 
+Microsoft Learn sandboxes are interactive, temporary environments provided by Microsoft Learn that allow users to practice and explore Azure services and other Microsoft technologies without needing their own subscription. These sandboxes are free, time-limited, and isolated, offering a secure space to complete guided learning modules, tutorials, and hands-on exercises in a real-world setup.
+
+Occasionally, they require you to bring your own subscription or run the exercises locally on your computer.
+:::
+:::caution 
+Be careful of starting multiple sandboxes/visiting multiple sandbox URLs at the same time as Microsoft Learn might suspend your access due to detected suspicious activity. 
+::: 
+
+  <CardGrid>
+  <LinkCard title="Exercise configure Microsoft Entra multifactor authentication registration policy" href="https://learn.microsoft.com/en-us/training/modules/manage-azure-active-directory-identity-protection/5-exercise-configure-multi-factor-authentication-registration-policy/?WT.mc_id=studentamb_165290" /> 
+  <LinkCard title="Exercise enable sign-in risk policy" href="https://learn.microsoft.com/en-us/training/modules/manage-azure-active-directory-identity-protection/4-exercise-enable-sign-risk-policy/?WT.mc_id=studentamb_165290" /> 
+  </CardGrid>
+  </TabItem>
+
+
+  <TabItem label="Microsoft GitHub">
+
+:::note 
+Microsoft GitHub labs are series of labs designed to be used in Microsoft Instructor Lead Trainings delivered by Microsoft Certified Trainers where participants also have access to the environment to perform them. This means that for everyone else, it is necessary to bring your own environment to go through them. 
+:::
+
+<CardGrid>
+  <LinkCard title="Explore Microsoft Defender XDR" href="https://microsoftlearning.github.io/SC-200T00A-Microsoft-Security-Operations-Analyst/Instructions/Labs/LAB_AK_01_Lab1_Ex01_Explore_Defender_XDR.html" />
+  <LinkCard title="Explore use cases in Microsoft Security Copilot" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_02a_Manage_Subscriptions_and_RBAC_Entra.html" />
+  <LinkCard title="Explore Microsoft Purview Audit logs" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_02b-Manage_Governance_via_Azure_Policy.html" />
+  <LinkCard title="Deploy Microsoft Defender for Endpoint" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_03a-Manage_Azure_Resources_by_Using_the_Azure_Portal.html" />
+  <LinkCard title="Mitigate Attacks with Microsoft Defender for Endpoint" href="hthttps://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_03b-Manage_Azure_Resources_by_Using_ARM_Templates.html" />
+  <LinkCard title="Enable Microsoft Defender for Cloud" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_03c-Manage_Azure_Resources_by_Using_Azure_PowerShell.html" />
+  <LinkCard title="Mitigate threats using Microsoft Defender for Cloud" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_03d-Manage_Azure_Resources_by_Using_Azure_CLI.html" />
+  <LinkCard title="Create queries for Microsoft Sentinel using Kusto Query Language (KQL)" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_04-Implement_Virtual_Networking.html" />
+  <LinkCard title="Configure your Microsoft Sentinel environment" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_05-Implement_Intersite_Connectivity.html" />
+  <LinkCard title="Connect data to Microsoft Sentinel using data connectors" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_06-Implement_Network_Traffic_Management.html" />
+  <LinkCard title="Connect Windows devices to Microsoft Sentinel using data connectors" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_07-Manage_Azure_Storage.html" />
+  <LinkCard title="Connect Linux hosts to Microsoft Sentinel using data connectors" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_08-Manage_Virtual_Machines.html" />
+  <LinkCard title="Modify a Microsoft Security rule" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_09a-Implement_Web_Apps.html" />
+  <LinkCard title="Create a Playbook" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_09b-Implement_Azure_Container_Instances.html" />
+  <LinkCard title="Create a Scheduled Query from a template" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_09c-Implement-Azure-Container-Apps.html" />
+  <LinkCard title="Explore Entity Behavior Analytics" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_10-Implement_Data_Protection.html" />
+  <LinkCard title="Prepare to perform simulated attacks" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_11-Implement_Monitoring.html" />
+  <LinkCard title="Conduct attacks" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_09b-Implement_Azure_Container_Instances.html" />
+  <LinkCard title="Create Detections" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_09c-Implement-Azure-Container-Apps.html" />
+  <LinkCard title="Investigate Incidents" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_10-Implement_Data_Protection.html" />
+  <LinkCard title="Create ASIM parsers" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_11-Implement_Monitoring.html" />
+  <LinkCard title="Create workbooks" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_09b-Implement_Azure_Container_Instances.html" />
+  <LinkCard title="Use Repositories in Microsoft Sentinel" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_09c-Implement-Azure-Container-Apps.html" />
+  <LinkCard title="Perform Threat Hunting in Microsoft Sentinel" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_10-Implement_Data_Protection.html" />
+  <LinkCard title="Threat Hunting using Notebooks with Microsoft Sentinel" href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_11-Implement_Monitoring.html" />
+</CardGrid>
+
+  </TabItem>
+
+  <TabItem label="Guided Labs">
+
+:::note 
+Guided labs are short interactive videos that offer a free way to get familiar with the products being presented. They aren't as good as actually using the products but they provide a safe way to practice without the risk of messing something up or running up a bill.
+:::
+
+<CardGrid>
+  <LinkCard title="Create an endpoint device group in Microsoft 365 Defender for devices that start with 'NYC'" href="https://www.iorad.com/player/2181525/Create-an-endpoint-device-group-in-Microsoft-365-Defender-for-devices-that-start-with--NYC-" />
+  <LinkCard title="Assign JC to the Microsoft Sentinel Contributor role" href="https://www.iorad.com/player/2289042/Assign-JC-to-the-Microsoft-Sentinel-Contributor-role#trysteps-1" />
+  <LinkCard title="Configure the Microsoft Entra ID data connector with Sign-In Log and Audit Log support" href="https://www.iorad.com/player/2290780/Configure-the-Microsoft-Entra-ID-data-connector-with-Sign-In-Log-and-Audit-Log-support#trysteps-1" />
+  <LinkCard title="Turn on automatic onboarding of servers for Defender for Endpoint using Defender for Cloud" href="https://www.iorad.com/player/2277937/Turn-on-automatic-onboarding-of-servers-for-Defender-for-Endpoint-using-Defender-for-Cloud#trysteps-1" />
+  <LinkCard title="Create an alert policy, high severity, information governance, malware in a file" href="https://www.iorad.com/player/2276571/Create-an-alert-policy--high-severity--information-governance--malware-in-a-filer#trysteps-1" />
+  <LinkCard title="Create an incident creation rule for Defender for Identity that has alert text 'account disabled'" href="https://www.iorad.com/player/2290945/Create-an-incident-creation-rule-for-Defender-for-Identity-that-has-alert-text--account-disabled-#trysteps-1" />
+  <LinkCard title="Create a safe attachment policy for Sales with Dynamic Deliver & redirect to jc@examlabpractice.com" href="https://www.iorad.com/player/2201805/Create-a-safe-attachment-policy-for-Sales-with-Dynamic-Deliver---redirect-to-jc-examlabpractice-com#trysteps-1" />
+  <LinkCard title="Create a custom DLP policy that uses Payroll Keyword sensitivity info type. Enable user notifications" href="https://www.iorad.com/player/2181550/Create-a-custom-DLP-policy-that-uses-Payroll-Keyword-sensitivity-info-type-Enable-user-notifications#trysteps-1" />
+  <LinkCard title="Perform an audit search in Purview for the first 5 listed Exchange activities for JC's email" href="https://www.iorad.com/player/2236483/Perform-an-audit-search-in-Purview-for-the-first-5-listed-Exchange-activities-for-JC-s-email#trysteps-1" />
+  <LinkCard title="Configure the Medium 'Malicious Inbox' incident. Set to High, Active, and assign JC" href="https://www.iorad.com/player/2292736/Configure-the-Medium--Malicious-Inbox--incident--Set-to-High--Active--and-assign-JC#trysteps-1" />
+  <LinkCard title="Setup a Copilot for Security compute capabilities resource with 2 Security Compute Units (SCUs)" href="https://www.iorad.com/player/2451724/Setup-a-Copilot-for-Security-compute-capabilities-resource-with-2-Security-Compute-Units--SCUs-#trysteps-1" />
+  <LinkCard title="Select the Malicious Keyword Query in Hunting. Create a bookmark from the first entry. Do Livestream" href="https://www.iorad.com/player/2294191/Select-the-Malicious-Keyword-Query-in-Hunting--Create-a-bookmark-from-the-first-entry--Do-Livestream#trysteps-1" />
+</CardGrid>
+  </TabItem>
+</Tabs>
