@@ -3,7 +3,8 @@ import starlight from '@astrojs/starlight';
 import starlightImageZoom from 'starlight-image-zoom'
 import partytown from '@astrojs/partytown'
 import starlightCoolerCredit from 'starlight-cooler-credit'
-import starlightBlog from 'starlight-blog'
+import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
+import starlightBlog from 'starlight-blog';
 
 const site = 'https://certs.msfthub.wiki/';
 
@@ -32,16 +33,18 @@ export default defineConfig({
 /*          starlightCoolerCredit({
               showImage: true,
               customImage: "./src/assets/mascot.png",
+              customImageAlt: "MSFT Cert Mascot",
               credit: {
                   title: {
                       en: "Have any exam feedback?",
                   },
                   href: "https://discord.gg/y7jXDE6NVf",
                   description: {
-                      en: "Get in contact with the MSFT Cert team in our Discord.",
+                      en: "Join our Discord server and share your feedback with us!",
                   },
               },
           }), */
+          viewTransitions(),
           starlightImageZoom(),
           starlightBlog({
             authors: {
@@ -58,11 +61,11 @@ export default defineConfig({
                 url: 'https://github.com/teriaavibes',
               },
             },
-          }),
-        ],
+          }), 
+        ], 
         components: {
             MarkdownContent: "./src/components/MarkdownContent.astro",
-        },
+        }, 
         title: 'Microsoft Certification Hub',
         head: [
             {

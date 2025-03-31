@@ -10,16 +10,26 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/partytown": "^2.1.2",
-    "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/starlight": "^0.30.3",
-    "astro": "^5.1.1",
-    "sharp": "^0.33.4",
-    "starlight-blog": "^0.16.1",
-    "starlight-cooler-credit": "^0.2.2",
+    "@astrojs/partytown": "^2.1.4",
+    "@astrojs/sitemap": "^3.3.0",
+    "@astrojs/starlight": "^0.32.4",
+    "astro": "^5.5.4",
+    "sharp": "^0.33.5",
+    "starlight-blog": "^0.19.0",
+    "starlight-cooler-credit": "^0.3.1",
     "starlight-image-zoom": "^0.8.0"
   },
   "devDependencies": {
-    "accessible-astro-components": "^2.3.6"
+    "accessible-astro-components": "^2.4.0",
+    "astro-vtbot": "^2.1.2"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "sharp"
+    ],
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }
