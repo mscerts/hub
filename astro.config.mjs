@@ -7,6 +7,7 @@ import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
 import starlightBlog from 'starlight-blog';
 import starWarp from '@inox-tools/star-warp';
 
+const googleAnalyticsId = 'G-CDTP3TERKP'
 const site = 'https://certs.msfthub.wiki/';
 
 export default defineConfig({
@@ -71,30 +72,17 @@ export default defineConfig({
         {
             tag: 'script',
             attrs: {
-                src: 'https://www.clarity.ms/tag/ke9gk0s2sg',
-                defer: true,
+              src: `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`,
             },
         },
         {
             tag: 'script',
-            type: 'text/javascript',
-            children: `
-                (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-                })(window, document, "clarity", "script", "ke9gk0s2sg");
-            `,
-        },
-        {
-            tag: 'script',
-            type: 'text/partytown',
-            children: `
-                (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-                })(window, document, "clarity", "script", "ke9gk0s2sg");
+            content: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+  
+            gtag('config', '${googleAnalyticsId}');
             `,
         },
         {
