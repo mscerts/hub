@@ -188,7 +188,7 @@ export default defineConfig({
             link: '/contributing',
         },
         {
-            label: 'Privacy olicy',
+            label: 'Privacy Policy',
             link: '/privacy',
         },
     ],
