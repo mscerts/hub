@@ -24,6 +24,7 @@ export default defineConfig({
         '/security': '/wiki',
         '/dynamics': '/wiki',
         '/dynamics365': '/wiki',
+        '/az-107': '/azure/az-104/',
       },
     integrations:[partytown({
         config: {
