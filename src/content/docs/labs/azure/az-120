@@ -1,0 +1,44 @@
+---
+title: AZ-120 Labs
+
+---
+import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
+import { Icon } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+<Tabs>
+
+  <TabItem label="Microsoft GitHub">
+
+:::note 
+Microsoft GitHub labs are series of labs designed to be used in Microsoft Instructor Lead Trainings delivered by Microsoft Certified Trainers where participants also have access to the environment to perform them. This means that for everyone else, it is necessary to bring your own environment to go through them. 
+:::
+
+:::tip
+Prerequisites here: [AZ 120: Lab prerequisites](https://microsoftlearning.github.io/AZ-120-Planning-and-Administering-Microsoft-Azure-for-SAP-Workloads/Instructions/AZ-120_Lab00_Prerequisites.html)
+:::
+
+  <CardGrid>
+    <LinkCard title="Implement Linux clustering on Azure VMs" href="https://microsoftlearning.github.io/AZ-120-Planning-and-Administering-Microsoft-Azure-for-SAP-Workloads/Instructions/AZ-120_Lab01a-Azure_VM_Linux_Clustering.html" /> 
+    <LinkCard title="Implement Windows clustering on Azure VMs" href="https://microsoftlearning.github.io/AZ-120-Planning-and-Administering-Microsoft-Azure-for-SAP-Workloads/Instructions/AZ-120_Lab01b-Azure_VM_Windows_Clustering.html" /> 
+    <LinkCard title="Implement SAP architecture on Azure VMs running Linux" href="https://microsoftlearning.github.io/AZ-120-Planning-and-Administering-Microsoft-Azure-for-SAP-Workloads/Instructions/AZ-120_Lab03a-HANA_HA_Infrastructure_Deployment.html" /> 
+    <LinkCard title="Implement SAP architecture on Azure VMs running Windows" href="https://microsoftlearning.github.io/AZ-120-Planning-and-Administering-Microsoft-Azure-for-SAP-Workloads/Instructions/AZ-120_Lab03b-SQL_HA_Infrastructure_Deployment.html" /> 
+    <LinkCard title="Automate deployment by using Azure Center for SAP solutions" href="https://microsoftlearning.github.io/AZ-120-Planning-and-Administering-Microsoft-Azure-for-SAP-Workloads/Instructions/AZ-120_Lab05-ACSS_Deployment.html" /> 
+    <LinkCard title="Overview of prerequisites for deployment of Azure Center for SAP solutions (ACSS)" href="https://microsoftlearning.github.io/AZ-120-Planning-and-Administering-Microsoft-Azure-for-SAP-Workloads/Instructions/AZ-120_Lab06a-ACSS_One_Day.html" /> 
+    <LinkCard title="Overview of deployment and maintenance of Azure Center for SAP solutions (ACSS)" href="https://microsoftlearning.github.io/AZ-120-Planning-and-Administering-Microsoft-Azure-for-SAP-Workloads/Instructions/AZ-120_Lab06b-ACSS_One_Day.html" /> 
+    <LinkCard title="Overview of deployment Azure Center for SAP solutions" href="https://microsoftlearning.github.io/AZ-120-Planning-and-Administering-Microsoft-Azure-for-SAP-Workloads/Instructions/AZ-120_Lab06c-ACSS_One_Day.html" /> 
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Guided Labs">
+
+:::note 
+Guided labs are short interactive videos that offer a free way to get familiar with the products being presented. They aren't as good as actually using the products but they provide a safe way to practice without the risk of messing something up or running up a bill.
+:::
+
+  <CardGrid>
+    <LinkCard title="Deploy an SAP system" href="https://mslearn.cloudguides.com/guides/Azure%20Center%20for%20SAP%20solutions%20-%20Deploy%20an%20SAP%20system#" /> 
+  </CardGrid>
+  </TabItem>
+</Tabs>
