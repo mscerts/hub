@@ -10,7 +10,9 @@ So, you have studied, ordered an exam and now the exam itself has started. Here 
  Get familiar with the exam envinment in this demo [https://aka.ms/examdemo](https://aka.ms/examdemo)
 :::
 
+:::note
 **The tests themselves are divided into multiple sections - General questions, Case Studies and Labs**. You can't skip between them. Once you complete a section, you are unable to return to it.
+:::
 
 Before you get to the actual exam questions, Microsoft will first ask you about your experience. This is not graded and it doesn't matter what you answer there.
 
@@ -79,9 +81,9 @@ As of September 2023, Role-based/Non-fundamental Microsoft Exams now contain the
 How to use Microsoft Learn effectively?
 
 - First of all if you feel like you need the documentation to verify/find the answer, mark the question for review and return to it when you finish all the other questions and have time left (unless it is one of the questions asking about roles/cmdlets/powershell modules where looking up the information is quick)
-- Learn how to navigate Microsoft Learn. For example I didn't have an issue with it because I use Microsoft Learn daily at my job but that isn't the case for everyone and many people have said that they couldn't find what to look for. What is important here is to know how the page you are looking for is called or what does it contain exactly. So if you don't learn the SKUs for App Service Plans, learn how to find the page inside Microsoft Learn.
+- Learn how to navigate Microsoft Learn. For example I didn't have an issue with it because I use Microsoft Learn daily at my job but that isn't the case for everyone and many people have said that they couldn't find what to look for. What is important here is to know how the page you are looking for is called or what does it contain exactly. So if you don't learn the SKUs for App Service Plans, learn how to find the page inside Microsoft Learn before you take the actual exam.
 - Don't think this is your Get out of Jail Free card. While having access to Microsoft Learn makes the exams easier, it isn't a free win. On average you have 2-3 minutes per questions (including lab tasks and case studies) and you won't have the time to look up what is a Virtual Machine and how to turn it on. So while you only need to know the concepts and how the products work now, it doesn't mean you can walk into the center with zero knowledge and pass it.
-- On Microsoft Learn you don't get access to Q&A Practice Assessments and your profile. It is obvious why this is but just felt like mentioning here.
+- On Microsoft Learn you don't get access to Q&A, Practice Assessments and your profile.
 
 ### Take a Break
 
@@ -114,6 +116,7 @@ In the center of the screen you can see the Exam Question Itself. The different 
    - **Leave Feedback** allows you to mark the question for feedback after you finish the exam. So in case the question was wrong, had mistakes etc. you can provide feedback about it so the certification team can improve it. **The Leave Feedback button in the Exam Demo is live and the team is reading your feedbacks so be sure to leave any if you have any ideas.**
 ## Answering Exam questions
 
+:::note
 **There are 3 basic requirements that are always present in questions and required**:
 
 * **Solution must be as cheap as possible**
@@ -121,12 +124,17 @@ In the center of the screen you can see the Exam Question Itself. The different 
 * **Must be the simplest to implement**
 
 So if you feel like there are 2 possible answers, try to find one that also follows these requirements.
+:::
 
 ## Exam question types that appear in all exams:
 
 ### [Active Screen](https://learn.microsoft.com/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#active-screen-044)**/**[**Best answer**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#best-answer-020)**/**[**Multiple Choice**](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#multiple-choice-037)
 
-I grouped these together because the strategy is the same. Choose the best answer. You can usually discard 2 answers because you either haven't heard of it or you know it is obviously wrong. So, you are left with 50/50 choice. If you feel like both are correct, think of the more elegant solution. Abide by the 3 rules I mentioned in bold earlier.
+I grouped these together because the strategy is the same. Choose the best answer. 
+
+:::tip
+You can usually discard 2 answers because you either haven't heard of it or you know it is obviously wrong. So, you are left with 50/50 choice. If you feel like both are correct, think of the more elegant solution. Abide by the 3 rules I mentioned in bold earlier.
+:::
 
 <img src="/multiplechoice.png" alt="Multiple Choice Question Type"/>
 <br></br>
@@ -134,17 +142,21 @@ I grouped these together because the strategy is the same. Choose the best answe
 
 ### [Hot Area/Active Screen](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#hot-area-017)
 
-It can be screenshot of basically any menu or portal that is related to the exam. AAD Connect configuration, Azure Portal, creating Virtual Machines for example. Your task will be to answer the question by toggling option/s in the screenshot. 
+It can be screenshot of basically any menu or portal that is related to the exam. Entra ID Connect configuration, Azure Portal, creating Virtual Machines for example. Your task will be to answer the question by toggling option/s in the screenshot. 
+
+:::tip
+It is really useful to know the menu you are interacting with and not going in blind.
+:::
 
 <img src="/activescreen.png" alt="Active Screen Question Type"/>
-
-It is really useful to know the menu you are interacting with and not going in blind.
 
 ### [Drag and Drop](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#drag-and-drop-037)
 
 As the name says, pretty self-explanatory. Drag an answer from left to right.
 
+:::tip
 Usually there aren't more of the same answers on the right so if you have 3 on the left and 3 on the right and have no idea, there is a good chance that all answers will be used once.  **That isn't the case with some questions** but most I encountered used this pattern.
+:::
 
 <img src="/draganddrop.png" alt="Drag and Drop Question Type"/>
 
@@ -152,7 +164,11 @@ Usually there aren't more of the same answers on the right so if you have 3 on t
 
 ### [Build List](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#build-list-045)
 
-Similar to the Drag and Drop, but now you are making a list. So, you will also need to order it correctly. **Don't forget about the basics**, like resource providers in PowerShell or create resource button in Azure Portal.
+Similar to the Drag and Drop, but now you are making a list. So, you will also need to order it correctly. 
+
+:::tip
+**Don't forget about the basics**, like resource providers in PowerShell or create resource button in Azure Portal.
+:::
 
 <img src="/buildlist.png" alt="Build List Question Type"/>
 
@@ -169,7 +185,9 @@ Probably the strangest and most confusing question type you will encounter if yo
 
 <img src="/psqset.png" alt="Build List Question Type"/>
 
+:::tip
 The strategy here is simple, if you aren't **100%** sure, pick **false**. There are 3 patterns, there either isn't presented correct answer, there is only one and there are 2. From my own experience the chance there are 2 answers is really low. So statistically it is best to always pick false unless you are sure it is correct.
+:::
 
 ### [Simulations/Labs](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#labs-258) 
 
@@ -187,7 +205,11 @@ Labs take longer to score so you will not receive your score immediately upon fi
 
 ### [Case Study](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience?WT.mc_id=studentamb_165290#case-studies-113)
 
-You will be shown a screen with a lot of tabs and screens with tons of information in them. The important thing here: **Don't read it all!**  The first screen doesn't contain the question, so you will have to go to the next one. Only after reading the question, start going through the relevant materials.
+You will be shown a screen with a lot of tabs and screens with tons of information in them. 
+
+:::tip
+The important thing here: **Don't read it all!**  The first screen doesn't contain the question, so you will have to go to the next one. Only after reading the question, start going through the relevant materials.
+:::
 
 <img src="/casestudy.png" alt="Case Study Question Type"/>
 
@@ -203,8 +225,6 @@ After finishing the whole exam, it still isn't over. Once you get to this window
 <img src="/examfeedback.png" alt="Microsoft Certification Exam Feedback"/>
 
 This will take you to the result page (if you had a lab, you won't get your result immediately).
-
-<img src="/examresults.png" alt="Exam Results Page"/>
 
 In case you pass, you will see these cool fireworks!
 
