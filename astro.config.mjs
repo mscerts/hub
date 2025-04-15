@@ -168,7 +168,7 @@ export default defineConfig({
             ],
         },
         {
-            label: 'Exam Wiki Collection',
+            label: 'Exam Study Materials Collection',
             link: '/wiki',
         },
         {
