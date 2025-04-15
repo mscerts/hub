@@ -1,0 +1,67 @@
+---
+title: AZ-400 Labs
+
+---
+import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
+import { Icon } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+<Tabs>
+  <TabItem label="Applied Skills">
+
+:::note 
+Applied Skills on Microsoft Learn are practical, hands-on exercises designed to help users build and demonstrate proficiency in specific technologies or tasks. These small labs focus on solving real-world scenarios, reinforcing learning through direct application of skills, and preparing users for industry roles or certifications.
+:::
+
+  <CardGrid>
+    <LinkCard title="Implement security through a pipeline using Azure DevOps" href="https://learn.microsoft.com/credentials/applied-skills/implement-security-through-pipeline-using-devops/?WT.mc_id=studentamb_165290" /> 
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Microsoft Learn">
+
+:::note 
+Microsoft Learn sandboxes are interactive, temporary environments provided by Microsoft Learn that allow users to practice and explore Azure services and other Microsoft technologies without needing their own subscription. These sandboxes are free, time-limited, and isolated, offering a secure space to complete guided learning modules, tutorials, and hands-on exercises in a real-world setup.
+
+Occasionally, they require you to bring your own subscription or run the exercises locally on your computer.
+:::
+:::caution 
+Be careful of starting multiple sandboxes/visiting multiple sandbox URLs at the same time as Microsoft Learn might suspend your access due to detected suspicious activity. 
+:::
+
+  <CardGrid>  
+    <LinkCard title="Set up service connections" href="https://learn.microsoft.com/en-us/training/modules/configure-provision-environments/3-exercise-set-up-service-connections/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Create and manage variable groups" href="https://learn.microsoft.com/training/modules/manage-modularize-tasks-templates/4-exercise-create-manage-variable-groups/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Deploy a Bicep file from Azure Pipelines" href="https://learn.microsoft.com/training/modules/implement-bicep/6-exercise-deploy-bicep-file-azure-pipelines/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Deploy a Bicep file from GitHub workflows" href="https://learn.microsoft.com/training/modules/implement-bicep/7-exercise-deploy-bicep-file-github-workflows/?WT.mc_id=studentamb_165290" /> 
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Microsoft GitHub">
+
+:::note 
+Microsoft GitHub labs are series of labs designed to be used in Microsoft Instructor Lead Trainings delivered by Microsoft Certified Trainers where participants also have access to the environment to perform them. This means that for everyone else, it is necessary to bring your own environment to go through them. 
+:::
+    <LinkCard title="Validate lab environment" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M00_Validate_lab_environment.html" /> 
+
+  <CardGrid>
+    <LinkCard title="Agile planning and portfolio management with Azure Boards" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M01_L01_Agile_Plan_and_Portfolio_Management_with_Azure_Boards.html" /> 
+    <LinkCard title="Version Control with Git in Azure Repos" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M01_L02_Version_Control_with_Git_in_Azure_Repos.html" /> 
+    <LinkCard title="Configure agent pools and understand pipeline styles" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M02_L03_Configure_Agent_Pools_and_Understand_Pipeline_Styles.html" /> 
+    <LinkCard title="Enable Continuous Integration with Azure Pipelines" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M02_L04_Enable_Continuous_Integration_with_Azure_Pipelines.html" /> 
+    <LinkCard title="Implement GitHub Actions for CI/CD" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M02_L05_Implement_GitHub_Actions_for_CI_CD.html" /> 
+    <LinkCard title="Deploy Docker containers to Azure App Service web apps" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M02_L06_Deploy_Docker_containers_to_Azure_App_Service_web_apps.html" /> 
+    <LinkCard title="Configure Pipelines as Code with YAML" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M03_L07_Configure_Pipelines_as_Code_with_YAML.html" /> 
+    <LinkCard title="Control Deployments using Release Gates" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M03_L08_Control_Deployments_using_Release_Gates.html" /> 
+    <LinkCard title="Set up and run functional tests" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M03_L09_Set_Up_and_Run_Functional_Tests.html" /> 
+    <LinkCard title="Integrate Azure Key Vault with Azure DevOps" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M04_L10_Integrate_Azure_Key_Vault_with_Azure_DevOps.html" /> 
+    <LinkCard title="Enable Dynamic Configuration and Feature Flags" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M04_L11_Enable_Dynamic_Configuration_and_Feature_Flags.html" /> 
+    <LinkCard title="Deployments using Azure Bicep templates" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M05_L12_Deployments_using_Azure_Bicep_templates.html" /> 
+    <LinkCard title="Package Management with Azure Artifacts" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M07_L13_Package_Management_with_Azure_Artifacts.html" /> 
+    <LinkCard title="Monitor Application Performance with Azure Load Testing" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M08_L14_Monitor_Application_Performance_with_Azure_Load_Testing.html" /> 
+    <LinkCard title="Share team knowledge using Azure Project Wiki" href="https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M08_L15_Share_Team_Knowledge_using_Azure_Project_Wikis.html" /> 
+  </CardGrid>
+  </TabItem>
+  
+</Tabs>
