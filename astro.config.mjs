@@ -159,7 +159,6 @@ export default defineConfig({
                 { label: 'Certification Week', link: '/vouchers/certificationweek/' ,badge: { text: '100%', variant: 'note' }, },   
                 { label: 'AI Skills Fest', link: '/vouchers/aiskillsfest/' ,badge: { text: '100%', variant: 'note' }, },   
 		        { label: 'DP-700 Discount', link: '/vouchers/dp-700discount/' ,badge: { text: '50%', variant: 'note' }, },
-		        { label: 'DP-600 for Partners', link: '/vouchers/dp-600forpartners/' ,badge: { text: '100%', variant: 'note' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '100%', variant: 'note' }, },						
