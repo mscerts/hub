@@ -1,0 +1,89 @@
+---
+title: DP-300 Labs
+
+---
+import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
+import { Icon } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+  <TabItem label="Applied Skills">
+
+:::note 
+Applied Skills on Microsoft Learn are practical, hands-on exercises designed to help users build and demonstrate proficiency in specific technologies or tasks. These small labs focus on solving real-world scenarios, reinforcing learning through direct application of skills, and preparing users for industry roles or certifications.
+:::
+
+  <CardGrid>
+    <LinkCard title="Migrate SQL Server workloads to Azure SQL Database" href="https://learn.microsoft.com/en-us/credentials/applied-skills/migrate-sql-workloads-azure-sql-database/?WT.mc_id=studentamb_165290" /> 
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Microsoft Learn">
+
+:::note 
+Microsoft Learn sandboxes are interactive, temporary environments provided by Microsoft Learn that allow users to practice and explore Azure services and other Microsoft technologies without needing their own subscription. These sandboxes are free, time-limited, and isolated, offering a secure space to complete guided learning modules, tutorials, and hands-on exercises in a real-world setup.
+
+Occasionally, they require you to bring your own subscription or run the exercises locally on your computer.
+:::
+:::caution 
+Be careful of starting multiple sandboxes/visiting multiple sandbox URLs at the same time as Microsoft Learn might suspend your access due to detected suspicious activity. 
+:::
+
+  <CardGrid>  
+    <LinkCard title="Provision a SQL Server on an Azure Virtual Machine" href="https://learn.microsoft.com/training/modules/deploy-iaas-solutions-with-azure-sql/6-exercise-provision-sql-server-azure-virtual-machine/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Deploy an Azure SQL Database" href="https://learn.microsoft.com/training/modules/deploy-paas-solutions-with-azure-sql/8-exercise-deploy-azure-sql-database/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Migrate a SQL Server database to Azure SQL Database" href="https://learn.microsoft.com/training/modules/migrate-sql-workloads-azure-sql-databases/8-exercise-migrate-sql-database/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Migrate a SQL Server database to Azure SQL Managed Instance" href="https://learn.microsoft.com/training/modules/migrate-sql-workloads-azure-managed-instances/6-exercise-migrate-sql-managed-instance/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Access to Azure SQL Database with Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/configure-database-authentication-authorization/7-exercise-authorize-access-sql-database-azure-active-directory/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Configure a server-based firewall rule using the Azure portal" href="https://learn.microsoft.com/training/modules/protect-data-transit-rest/8-exercise-configure-azure-sql-database-firewall/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Enable Microsoft Defender for SQL and Data Classification" href="https://learn.microsoft.com/training/modules/implement-compliance-controls-sensitive-data/9-exercise-enable-advanced-data-security-classification/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Isolate problems with monitoring" href="https://learn.microsoft.com/training/modules/describe-performance-monitoring/8-exercise-isolate-problems/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Detect and correct fragmentation issues" href="https://learn.microsoft.com/training/modules/configure-databases-for-optimal-performance/6-exercise-detect-correct-fragmentation-issues/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Identify and resolve blocking issues" href="https://learn.microsoft.com/training/modules/explore-query-performance-optimization/8-exercise-identify-resolve-blocking-issues/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Identify database design issues" href="https://learn.microsoft.com/training/modules/explore-performance-based-design/5-exercise-identify-issues-database-design/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Isolate problem areas in poorly performing queries" href="https://learn.microsoft.com/training/modules/evaluate-performance-improvements/5-exercise-isolate-problem-areas-poor-performing-queries/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Deploy an Azure SQL Database using an Azure Resource Manager template" href="https://learn.microsoft.com/training/modules/configure-automatic-deployment-azure-sql-database/6-exercise-deploy-azure-database-using-template/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Create a CPU status alert for a SQL Server" href="https://learn.microsoft.com/training/modules/schedule-tasks-using-sql-server-agent/4-exercise-create-cpu-status-alert/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Deploy an automation runbook to automatically rebuild indexes" href="https://learn.microsoft.com/training/modules/manage-azure-paas-resources-using-automated-methods/7-exercise-deploy-automation-runbook-rebuild-indexes/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Configure geo replication for Azure SQL Database" href="https://learn.microsoft.com/training/modules/explore-iaas-paas-platform-tools-for-high-availability-disaster-recovery/7-exercise-plan-implement-high-availability-disaster-recovery/?WT.mc_id=studentamb_165290" /> 
+    <LinkCard title="Backup to URL" href="https://learn.microsoft.com/training/modules/backup-restore-databases/5-exercise-backup-url/?WT.mc_id=studentamb_165290" /> 
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Microsoft GitHub">
+
+:::note 
+Microsoft GitHub labs are series of labs designed to be used in Microsoft Instructor Lead Trainings delivered by Microsoft Certified Trainers where participants also have access to the environment to perform them. This means that for everyone else, it is necessary to bring your own environment to go through them. 
+:::
+    <LinkCard title="Setup your own environment" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/00-setup-environment.html" /> 
+
+  <CardGrid>
+    <LinkCard title="Provision SQL Server on an Azure Virtual Machine" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/01-provision-sql-vm.html" /> 
+    <LinkCard title="Provision an Azure SQL Database" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/02-provision-sql-database.html" /> 
+    <LinkCard title="Authorize access to Azure SQL Database with Microsoft Entra ID" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/03-authorize-access-azure-sql-database.html" /> 
+    <LinkCard title="Configure Azure SQL Database firewall rules" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/04-configure-firewall-rule.html" /> 
+    <LinkCard title="Enable Microsoft Defender for SQL and Data classification" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/05-enable-sql-defender-and-data-classification.html" /> 
+    <LinkCard title="Isolate performance problems through monitoring" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/06-isolate-performance-problems.html" /> 
+    <LinkCard title="Detect and correct fragmentation issues" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/07-detect-correct-fragmentation-issues.html" /> 
+    <LinkCard title="Identify and resolve blocking issues" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/08-identify-resolve-blocking-issues.html" /> 
+    <LinkCard title="Identify database design issues" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/09-identify-issues-database-design.html" /> 
+    <LinkCard title="Isolate problem areas in poorly performing queries in a SQL Database" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/10-isolate-problem-areas-poor-performing-queries.html" /> 
+    <LinkCard title="Deploy Azure SQL Database using Azure Resource Manager template" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/11-deploy-azure-database-using-template.html" /> 
+    <LinkCard title="Create a CPU status alert for a SQL Server" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/12-create-cpu-status-alert.html" /> 
+    <LinkCard title="Deploy an automation runbook to automatically rebuild indexes" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/13-deploy-automation-runbook-rebuild-indexes.html" /> 
+    <LinkCard title="Configure geo-replication for Azure SQL Database" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/14-configure-geo-replication-for-azure-sql-database.html" /> 
+    <LinkCard title="Backup to URL and Restore from URL" href="https://microsoftlearning.github.io/dp-300-database-administrator/Instructions/Labs/15-backup-url.html" /> 
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Guided Labs">
+
+:::note 
+Guided labs are short interactive videos that offer a free way to get familiar with the products being presented. They aren't as good as actually using the products but they provide a safe way to practice without the risk of messing something up or running up a bill.
+:::
+
+  <CardGrid>
+    <LinkCard title="" href="" /> 
+  </CardGrid>
+  </TabItem>
+</Tabs>
