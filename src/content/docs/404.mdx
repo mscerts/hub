@@ -1,16 +1,36 @@
 ---
 title: '404'
-template: splash
 editUrl: false
+tableOfContents: false
 hero:
-  title: '404'
-  tagline: Are you lost? It seems like it.
+  title: Error 404
+  tagline: You've stumbled upon a broken link.. or maybe a hidden treasure?
 ---
+import { LinkCard, CardGrid, Aside } from '@astrojs/starlight/components';
 
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+<div class="hide-on-mobile">
+  <LinkCard
+    title="Exam Study Materials Collection"
+    description="Our website is constantly being improved. Some links may currently be broken or removed, but you can find them again in our sidebar to the left."
+    href="/wiki"
+  />
+</div>
+
+<div class="hide-on-desktop">
+  <LinkCard
+    title="Exam Study Materials Collection"
+    description="Our website is constantly being improved. Some links may currently be broken or removed, but you can find them again in our menu on the top-right."
+    href="/wiki"
+  />
+</div>
+
 
 <LinkCard
-	title="Let's go back to where we started"
-	description="Our website is constantly being improved. Some links may currently be broken, but you can find them again in our documentation."
-	href="/"
+	title="Exam Voucher Collection"
+	href="/vouchers"
+/>
+
+<LinkCard
+	title="Certification Program Guide"
+	href="/guide/introduction"
 />

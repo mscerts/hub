@@ -13,7 +13,11 @@ const site = 'https://certs.msfthub.wiki/';
 export default defineConfig({
     site: 'https://certs.msfthub.wiki/',
     redirects: {
-        '/office': '/wiki',
+        '/office/mo-110/': '/office',
+        '/office/mo-111/': '/office',
+        '/office/mo-210/': '/office',
+        '/office/mo-211/': '/office',
+        '/office/mo-310/': '/office',
         '/guide': '/guide/introduction',
         '/m365': '/wiki',
         '/microsoft365': '/wiki',
@@ -130,10 +134,6 @@ export default defineConfig({
     },
     sidebar: [
         {
-            label: 'Updates Blog',
-            link: '/blog',
-        },
-        {
             label: 'Certification Program Guide',
             items: [
                 { label: 'Introduction', link: '/guide/introduction/' },
@@ -179,7 +179,6 @@ export default defineConfig({
                 { label: 'Security & Identity', collapsed:true, autogenerate: { directory: 'security', collaped:true },},
                 { label: 'Power Platform', collapsed:true, autogenerate: { directory: 'power', collaped:true },},
                 { label: 'Dynamics 365', collapsed:true, autogenerate: { directory: 'dynamics', collaped:true },},
-                { label: 'Office Apps', collapsed:true, autogenerate: { directory: 'office', collaped:true },},
 
             ],
         },
