@@ -39,7 +39,7 @@ export default defineConfig({
               title: {
                   en: "Have more questions?",
               },
-              href: "https://discord.gg/y7jXDE6NVf",
+              href: "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
               description: {
                   en: "Join our Discord server and ask away!",
               },
