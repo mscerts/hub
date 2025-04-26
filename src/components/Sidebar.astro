@@ -1,0 +1,18 @@
+---
+// SidebarPersister is not exported from Starlight
+// import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
+import PartnerBadge from './PartnerBadge.astro';
+export type { Props } from '@astrojs/starlight/props';
+---
+
+{/*<SidebarPersister {...Astro.props}>*/}
+<SidebarSublist sublist={Astro.locals.starlightRoute.sidebar} />
+{/*</SidebarPersister>*/}
+
+<PartnerBadge />
+
+<div class="md:sl-hidden">
+	<MobileMenuFooter {...Astro.props} />
+</div>

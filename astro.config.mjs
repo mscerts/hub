@@ -5,7 +5,6 @@ import partytown from '@astrojs/partytown'
 import starlightCoolerCredit from 'starlight-cooler-credit'
 import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
 import starlightBlog from 'starlight-blog';
-import starWarp from '@inox-tools/star-warp';
 
 const googleAnalyticsId = 'G-CDTP3TERKP'
 const clarityAnalyticsId = 'ke9gk0s2sg'
@@ -32,23 +31,22 @@ export default defineConfig({
         },
     }), starlight({
     plugins: [
-/*          starlightCoolerCredit({
+          starlightCoolerCredit({
           showImage: true,
           customImage: "./src/assets/mascot.png",
-          customImageAlt: "MSFT Cert Mascot",
+          customImageAlt: "MSFTHub Mascot",
           credit: {
               title: {
-                  en: "Have any exam feedback?",
+                  en: "Have more questions?",
               },
               href: "https://discord.gg/y7jXDE6NVf",
               description: {
-                  en: "Join our Discord server and share your feedback with us!",
+                  en: "Join our Discord server and ask away!",
               },
           },
-      }), */
+      }), 
       viewTransitions(),
       starlightImageZoom(),
-      starWarp(),
       starlightBlog({
         authors: {
           nighthouse: {
@@ -68,6 +66,7 @@ export default defineConfig({
     ], 
     components: {
         MarkdownContent: "./src/components/MarkdownContent.astro",
+        /* Sidebar: './src/components/Sidebar.astro', */
     }, 
     title: 'Microsoft Certification Hub',
     head: [

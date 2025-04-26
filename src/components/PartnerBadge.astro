@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets';
+import lightBadge from '../assets/Partner-badge-light-mode.png';
+import darkBadge from '../assets/Partner-badge-light-mode.png';
+---
+
+<center>
+	<a class="badge" target="_blank" href="https://measureup.com">
+		<Image class:list={['light:sl-hidden']} src={darkBadge} alt="badge" />
+		<Image class:list={['dark:sl-hidden']} src={lightBadge} alt="badge" />
+	</a>
+</center>
+
+<style>
+	img {
+		width: 100%;
+		height: auto;
+	}
+</style>
