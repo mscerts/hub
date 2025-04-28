@@ -35,7 +35,7 @@ export default defineConfig({
         },
     }), starlight({
     plugins: [
-          starlightCoolerCredit({
+       starlightCoolerCredit({
           showImage: true,
           customImage: "./src/assets/mascot.png",
           customImageAlt: "MSFTHub Mascot",
