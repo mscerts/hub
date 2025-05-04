@@ -1,7 +1,7 @@
 ---
 title: DP-420 Labs
-
 ---
+
 import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 import { Icon } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -61,12 +61,11 @@ Be careful of starting multiple sandboxes/visiting multiple sandbox URLs at the 
 Microsoft GitHub labs are series of labs designed to be used in Microsoft Instructor Lead Trainings delivered by Microsoft Certified Trainers where participants also have access to the environment to perform them. This means that for everyone else, it is necessary to bring your own environment to go through them. 
 :::
 
-<Tabs>
+ <Tabs>
   <TabItem label="C#">
     <LinkCard title="Create lab resource group" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/00-create-resource-group.html" /> 
     <LinkCard title="Setup lab environment" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/00-setup-environment.html" /> 
     <LinkCard title="Enable resource providers" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/00-update-resource-providers.html" /> 
-
     <CardGrid>
     <LinkCard title="Create an Azure Cosmos DB for NoSQL account" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/01-create-account.html" /> 
     <LinkCard title="Configure throughput for Azure Cosmos DB For NoSQL with the Azure portal" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/02-configure-throughput.html" /> 
@@ -100,44 +99,41 @@ Microsoft GitHub labs are series of labs designed to be used in Microsoft Instru
     <LinkCard title="Implement and then use user-defined functions with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/33-create-use-udf-sdk.html" /> 
   </CardGrid>
     </TabItem>
-</Tabs>
-  </TabItem>
-
   <TabItem label="GenAI">
 
     <LinkCard title="Create lab resource group" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/common/instructions/00-create-resource-group.html" /> 
     <LinkCard title="Setup lab environment" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/common/instructions/00-setup-cosmos-db.html" /> 
     <LinkCard title="Enable resource providers" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/common/instructions/00-update-resource-providers.html" /> 
-<Tabs>
-  <TabItem label="JavaScript">
-    <LinkCard title="Setup lab environment" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/00-setup-lab-environment.html" /> 
-
-    <CardGrid>
-    <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/01-sdk-connect.html" /> 
-    <LinkCard title="Configure the Azure Cosmos DB JavaScript SDK for Offline Development" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/02-sdk-offline.html" /> 
-    <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/03-sdk-crud.html" /> 
-    <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/04-sdk-batch.html" /> 
-    <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/05-sdk-queries.html" /> 
-    <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/06-sdk-pagination.html" /> 
-    </CardGrid>
-    </TabItem>
-
-  <TabItem label="Python">
-
-  <CardGrid>
-    <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/01-sdk-connect.html" /> 
-    <LinkCard title="Configure the Azure Cosmos DB Python SDK for Offline Development" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/02-sdk-offline.html" /> 
-    <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/03-sdk-crud.html" /> 
-    <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/04-sdk-batch.html" /> 
-    <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/05-sdk-queries.html" /> 
-    <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/06-sdk-pagination.html" /> 
-    <LinkCard title="Enable Vector Search for Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-01-enable-azure-cosmos-db-nosql-vector-search.html" /> 
-    <LinkCard title="Generate vector embeddings with Azure OpenAI and store them in Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-02-generate-and-store-vectors.html" /> 
-    <LinkCard title="Build a copilot with Python and Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-03-build-copilot.html" /> 
-    <LinkCard title="Implement RAG with LangChain and Azure Cosmos DB for NoSQL Vector Search" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-04-implement-rag-with-langchain.html" /> 
-  </CardGrid>
   </TabItem>
-</Tabs>
+    <Tabs>
+      <TabItem label="JavaScript">
+        <LinkCard title="Setup lab environment" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/00-setup-lab-environment.html" /> 
 
-</TabItem>
-</Tabs>
+        <CardGrid>
+          <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/01-sdk-connect.html" /> 
+          <LinkCard title="Configure the Azure Cosmos DB JavaScript SDK for Offline Development" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/02-sdk-offline.html" /> 
+          <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/03-sdk-crud.html" /> 
+          <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/04-sdk-batch.html" /> 
+          <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/05-sdk-queries.html" /> 
+          <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/06-sdk-pagination.html" /> 
+        </CardGrid>
+      </TabItem>
+
+      <TabItem label="Python">
+        <CardGrid>
+          <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/01-sdk-connect.html" /> 
+          <LinkCard title="Configure the Azure Cosmos DB Python SDK for Offline Development" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/02-sdk-offline.html" /> 
+          <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/03-sdk-crud.html" /> 
+          <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/04-sdk-batch.html" /> 
+          <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/05-sdk-queries.html" /> 
+          <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/06-sdk-pagination.html" /> 
+          <LinkCard title="Enable Vector Search for Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-01-enable-azure-cosmos-db-nosql-vector-search.html" /> 
+          <LinkCard title="Generate vector embeddings with Azure OpenAI and store them in Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-02-generate-and-store-vectors.html" /> 
+          <LinkCard title="Build a copilot with Python and Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-03-build-copilot.html" /> 
+          <LinkCard title="Implement RAG with LangChain and Azure Cosmos DB for NoSQL Vector Search" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-04-implement-rag-with-langchain.html" /> 
+        </CardGrid>
+          </TabItem>
+        </Tabs>
+      </Tabs>
+    </TabItem>
+  </Tabs>
