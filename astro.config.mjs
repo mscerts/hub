@@ -155,7 +155,6 @@ export default defineConfig({
         {
             label: 'Discounted Exam Vouchers',
             items: [
-                { label: 'Certification Week', link: '/vouchers/certificationweek/' ,badge: { text: '100%', variant: 'note' }, },   
                 { label: 'AI Skills Fest', link: '/vouchers/aiskillsfest/' ,badge: { text: '100%', variant: 'note' }, },   
 		        { label: 'DP-700 Discount', link: '/vouchers/dp-700discount/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
