@@ -69,7 +69,7 @@ export default defineConfig({
       }), 
     ], 
     components: {
-        MarkdownContent: "./src/components/MarkdownContent.astro",
+        /* MarkdownContent: "./src/components/MarkdownContent.astro", */
         /* Sidebar: './src/components/Sidebar.astro', */
     }, 
     title: 'Microsoft Certification Hub',
@@ -127,11 +127,11 @@ export default defineConfig({
         dark: '/src/assets/msftcertwhite.svg',
         replacesTitle: true,
     },
-    customCss: process.env.NO_GRADIENTS ? [	'./src/custom.css'] : ['./src/landing.css', 	'./src/custom.css'],
-    social: {
-        github: 'https://github.com/mscerts/hub',
-        discord: 'https://discord.gg/microsoft-certification-study-group-676990910176821270',
-    },
+    customCss: process.env.NO_GRADIENTS ? [	'./src/custom.css'] : ['./src/landing.css', './src/custom.css'],
+    social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/mscerts/hub', },
+        { icon: 'discord', label: 'Discord', href: 'https://discord.gg/microsoft-certification-study-group-676990910176821270', },
+    ],
     sidebar: [
         {
             label: 'Certification Program Guide',
