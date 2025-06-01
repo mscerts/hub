@@ -8,130 +8,131 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Tabs>
   <TabItem label="Microsoft Learn">
+    :::note 
+    Microsoft Learn sandboxes are interactive, temporary environments provided by Microsoft Learn that allow users to practice and explore Azure services and other Microsoft technologies without needing their own subscription. These sandboxes are free, time-limited, and isolated, offering a secure space to complete guided learning modules, tutorials, and hands-on exercises in a real-world setup.
 
-:::note 
-Microsoft Learn sandboxes are interactive, temporary environments provided by Microsoft Learn that allow users to practice and explore Azure services and other Microsoft technologies without needing their own subscription. These sandboxes are free, time-limited, and isolated, offering a secure space to complete guided learning modules, tutorials, and hands-on exercises in a real-world setup.
+    Occasionally, they require you to bring your own subscription or run the exercises locally on your computer.
+    :::
+    :::caution 
+    Be careful of starting multiple sandboxes/visiting multiple sandbox URLs at the same time as Microsoft Learn might suspend your access due to detected suspicious activity. 
+    :::
 
-Occasionally, they require you to bring your own subscription or run the exercises locally on your computer.
-:::
-:::caution 
-Be careful of starting multiple sandboxes/visiting multiple sandbox URLs at the same time as Microsoft Learn might suspend your access due to detected suspicious activity. 
-:::
-
-  <CardGrid>  
-    <LinkCard title="Create an Azure Cosmos DB for NoSQL account" href="https://learn.microsoft.com/training/modules/try-azure-cosmos-db-sql-api/4-exercise-create-account/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Configure throughput for Azure Cosmos DB for NoSQL with the Azure portal" href="https://learn.microsoft.com/training/modules/configure-azure-cosmos-db-sql-api/7-exercise-configure-throughput-for-azure-portal/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Migrate existing data using Azure Data Factory" href="https://learn.microsoft.com/training/modules/move-data-azure-cosmos-db-sql-api/6-exercise-migrate-existing-data-using-azure-data-factory/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://learn.microsoft.com/training/modules/use-azure-cosmos-db-sql-api-sdk/7-exercise-connect-to/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Configure the Azure Cosmos DB for NoSQL SDK for offline development" href="https://learn.microsoft.com/training/modules/configure-azure-cosmos-db-sql-api-sdk/6-exercise-for-offline-development/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/implement-azure-cosmos-db-sql-api-point-operations/8-exercise-create-update-documents-sdk/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/perform-cross-document-transactional-operations-azure-cosmos-db-sql-api/4-exercise-batch-multiple-point-operations-together-sdk/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Move multiple documents in bulk with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/process-bulk-data-azure-cosmos-db-sql-api/5-exercise-move-multiple-documents-bulk-sdk/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/query-azure-cosmos-db-sql-api/8-exercise-execute-sdk/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/author-complex-queries-azure-cosmos-db-sql-api/6-exercise-paginate-cross-product-query-results-sdk/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Enable the Azure Cosmos DB for NoSQL Vector Search feature" href="https://learn.microsoft.com/training/modules/build-generative-ai-applications-with-azure-cosmos-db-nosql/3-exercise-enable-azure-cosmos-db-nosql-vector-search/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Generate vector embeddings with Azure OpenAI and store them in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/build-generative-ai-applications-with-azure-cosmos-db-nosql/5-exercise-generate-and-store-vectors/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Build a Generative AI application with Python and Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/build-generative-ai-applications-with-azure-cosmos-db-nosql/8-exercise-build-generative-ai-applications/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Implement RAG with LangChain and Azure Cosmos DB for NoSQL Vector Search" href="https://learn.microsoft.com/training/modules/build-generative-ai-applications-with-azure-cosmos-db-nosql/10-exercise-implement-rag-with-langchain/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Review the default index policy for an Azure Cosmos DB for NoSQL container with the portal" href="https://learn.microsoft.com/training/modules/define-indexes-azure-cosmos-db-sql-api/5-exercise-review-default-index-policy-for-container-portal/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Configure an Azure Cosmos DB for NoSQL container's index policy with the portal" href="https://learn.microsoft.com/training/modules/customize-indexes-azure-cosmos-db-sql-api/4-exercise-configure-containers-index-policy-portal/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Process change feed events using the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/consume-azure-cosmos-db-sql-api-change-feed-use-sdk/6-exercise-process-change-feed-events-use-sdk/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Process Azure Cosmos DB for NoSQL data using Azure Functions" href="https://learn.microsoft.com/training/modules/handle-events-azure-functions-azure-cosmos-db-sql-api-change-feed/5-exercise-archive-data-using-azure-functions/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Search data using Azure Cognitive Search and Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/search-azure-cosmos-db-sql-api-data-azure-cognitive-search/5-exercise-search-data-use-azure-cognitive-search/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Measure performance for customer entities" href="https://learn.microsoft.com/training/modules/implement-non-relational-data-model/5-exercise-measure-performance-for-customer-entities/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Exercise advanced modeling patterns" href="https://learn.microsoft.com/training/modules/design-data-partitioning-strategy/7-exercise-advanced-modeling-patterns/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Connect different regions with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/configure-replication-manage-failovers-azure-cosmos-db/8-exercise-connect-different-regions-sql-api-sdk/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Configure consistency models in the portal and the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/use-consistency-models-azure-cosmos-db-sql-api/6-exercise-configure-consistency-models-portal-sdk/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Connect multi-region write account with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/configure-multi-region-write-azure-cosmos-db-sql-api/6-exercise-connect-multi-region-write-account-sdk/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Optimize an Azure Cosmos DB for NoSQL container's index policy for common operations" href="https://learn.microsoft.com/training/modules/choose-indexes-azure-cosmos-db-sql-api/5-exercise-optimize-containers-index-policy-common-operations/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Optimize an Azure Cosmos DB for NoSQL container's index policy for a specific query" href="https://learn.microsoft.com/training/modules/measure-index-azure-cosmos-db-sql-api/6-exercise-optimize-containers-index-policy-for-specific-query/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Use Azure Monitor to analyze an Azure Cosmos DB for NoSQL account" href="https://learn.microsoft.com/training/modules/measure-performance-azure-cosmos-db-sql-api/6-exercise-use-azure-monitor-to-analyze-account/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Troubleshoot an application using the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/monitor-responses-events-azure-cosmos-db-sql-api/7-exercise-troubleshoot-application-using-sdk/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Recover a database or container from a recovery point" href="https://learn.microsoft.com/training/modules/implement-backup-restore-for-azure-cosmos-db-sql-api/5-exercise-recover-database-container-from-recovery-point/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Store Azure Cosmos DB for NoSQL account keys in Azure Key Vault" href="https://learn.microsoft.com/training/modules/implement-security-azure-cosmos-db-sql-api/7-exercise-store-account-keys-azure-key-vault/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Adjust provisioned throughput using an Azure CLI script" href="https://learn.microsoft.com/training/modules/write-scripts-for-azure-cosmos-db-sql-api/8-exercise-adjust-provisioned-throughput-using-azure-cli-script/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Create an Azure Cosmos DB for NoSQL container using Azure Resource Manager templates" href="https://learn.microsoft.com/training/modules/create-resource-template-for-azure-cosmos-db-sql-api/7-exercise-create-container-using-azure-resource-manager-templates/?WT.mc_id=studentamb_165290" /> 
-    <LinkCard title="Create a stored procedure with the Azure portal" href="https://learn.microsoft.com/training/modules/build-multi-item-transactions-azure-cosmos-db-sql-api/6-exercise-create-stored-procedure-azure-portal/?WT.mc_id=studentamb_165290" /> 
-  </CardGrid>
+    <CardGrid>  
+      <LinkCard title="Create an Azure Cosmos DB for NoSQL account" href="https://learn.microsoft.com/training/modules/try-azure-cosmos-db-sql-api/4-exercise-create-account/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Configure throughput for Azure Cosmos DB for NoSQL with the Azure portal" href="https://learn.microsoft.com/training/modules/configure-azure-cosmos-db-sql-api/7-exercise-configure-throughput-for-azure-portal/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Migrate existing data using Azure Data Factory" href="https://learn.microsoft.com/training/modules/move-data-azure-cosmos-db-sql-api/6-exercise-migrate-existing-data-using-azure-data-factory/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://learn.microsoft.com/training/modules/use-azure-cosmos-db-sql-api-sdk/7-exercise-connect-to/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Configure the Azure Cosmos DB for NoSQL SDK for offline development" href="https://learn.microsoft.com/training/modules/configure-azure-cosmos-db-sql-api-sdk/6-exercise-for-offline-development/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/implement-azure-cosmos-db-sql-api-point-operations/8-exercise-create-update-documents-sdk/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/perform-cross-document-transactional-operations-azure-cosmos-db-sql-api/4-exercise-batch-multiple-point-operations-together-sdk/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Move multiple documents in bulk with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/process-bulk-data-azure-cosmos-db-sql-api/5-exercise-move-multiple-documents-bulk-sdk/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/query-azure-cosmos-db-sql-api/8-exercise-execute-sdk/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/author-complex-queries-azure-cosmos-db-sql-api/6-exercise-paginate-cross-product-query-results-sdk/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Enable the Azure Cosmos DB for NoSQL Vector Search feature" href="https://learn.microsoft.com/training/modules/build-generative-ai-applications-with-azure-cosmos-db-nosql/3-exercise-enable-azure-cosmos-db-nosql-vector-search/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Generate vector embeddings with Azure OpenAI and store them in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/build-generative-ai-applications-with-azure-cosmos-db-nosql/5-exercise-generate-and-store-vectors/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Build a Generative AI application with Python and Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/build-generative-ai-applications-with-azure-cosmos-db-nosql/8-exercise-build-generative-ai-applications/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Implement RAG with LangChain and Azure Cosmos DB for NoSQL Vector Search" href="https://learn.microsoft.com/training/modules/build-generative-ai-applications-with-azure-cosmos-db-nosql/10-exercise-implement-rag-with-langchain/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Review the default index policy for an Azure Cosmos DB for NoSQL container with the portal" href="https://learn.microsoft.com/training/modules/define-indexes-azure-cosmos-db-sql-api/5-exercise-review-default-index-policy-for-container-portal/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Configure an Azure Cosmos DB for NoSQL container's index policy with the portal" href="https://learn.microsoft.com/training/modules/customize-indexes-azure-cosmos-db-sql-api/4-exercise-configure-containers-index-policy-portal/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Process change feed events using the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/consume-azure-cosmos-db-sql-api-change-feed-use-sdk/6-exercise-process-change-feed-events-use-sdk/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Process Azure Cosmos DB for NoSQL data using Azure Functions" href="https://learn.microsoft.com/training/modules/handle-events-azure-functions-azure-cosmos-db-sql-api-change-feed/5-exercise-archive-data-using-azure-functions/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Search data using Azure Cognitive Search and Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/search-azure-cosmos-db-sql-api-data-azure-cognitive-search/5-exercise-search-data-use-azure-cognitive-search/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Measure performance for customer entities" href="https://learn.microsoft.com/training/modules/implement-non-relational-data-model/5-exercise-measure-performance-for-customer-entities/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Exercise advanced modeling patterns" href="https://learn.microsoft.com/training/modules/design-data-partitioning-strategy/7-exercise-advanced-modeling-patterns/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Connect different regions with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/configure-replication-manage-failovers-azure-cosmos-db/8-exercise-connect-different-regions-sql-api-sdk/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Configure consistency models in the portal and the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/use-consistency-models-azure-cosmos-db-sql-api/6-exercise-configure-consistency-models-portal-sdk/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Connect multi-region write account with the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/configure-multi-region-write-azure-cosmos-db-sql-api/6-exercise-connect-multi-region-write-account-sdk/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Optimize an Azure Cosmos DB for NoSQL container's index policy for common operations" href="https://learn.microsoft.com/training/modules/choose-indexes-azure-cosmos-db-sql-api/5-exercise-optimize-containers-index-policy-common-operations/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Optimize an Azure Cosmos DB for NoSQL container's index policy for a specific query" href="https://learn.microsoft.com/training/modules/measure-index-azure-cosmos-db-sql-api/6-exercise-optimize-containers-index-policy-for-specific-query/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Use Azure Monitor to analyze an Azure Cosmos DB for NoSQL account" href="https://learn.microsoft.com/training/modules/measure-performance-azure-cosmos-db-sql-api/6-exercise-use-azure-monitor-to-analyze-account/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Troubleshoot an application using the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/monitor-responses-events-azure-cosmos-db-sql-api/7-exercise-troubleshoot-application-using-sdk/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Recover a database or container from a recovery point" href="https://learn.microsoft.com/training/modules/implement-backup-restore-for-azure-cosmos-db-sql-api/5-exercise-recover-database-container-from-recovery-point/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Store Azure Cosmos DB for NoSQL account keys in Azure Key Vault" href="https://learn.microsoft.com/training/modules/implement-security-azure-cosmos-db-sql-api/7-exercise-store-account-keys-azure-key-vault/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Adjust provisioned throughput using an Azure CLI script" href="https://learn.microsoft.com/training/modules/write-scripts-for-azure-cosmos-db-sql-api/8-exercise-adjust-provisioned-throughput-using-azure-cli-script/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Create an Azure Cosmos DB for NoSQL container using Azure Resource Manager templates" href="https://learn.microsoft.com/training/modules/create-resource-template-for-azure-cosmos-db-sql-api/7-exercise-create-container-using-azure-resource-manager-templates/?WT.mc_id=studentamb_165290" /> 
+      <LinkCard title="Create a stored procedure with the Azure portal" href="https://learn.microsoft.com/training/modules/build-multi-item-transactions-azure-cosmos-db-sql-api/6-exercise-create-stored-procedure-azure-portal/?WT.mc_id=studentamb_165290" /> 
+    </CardGrid>
   </TabItem>
 
   <TabItem label="Microsoft GitHub">
+    :::note 
+    Microsoft GitHub labs are series of labs designed to be used in Microsoft Instructor Lead Trainings delivered by Microsoft Certified Trainers where participants also have access to the environment to perform them. This means that for everyone else, it is necessary to bring your own environment to go through them. 
+    :::
 
-:::note 
-Microsoft GitHub labs are series of labs designed to be used in Microsoft Instructor Lead Trainings delivered by Microsoft Certified Trainers where participants also have access to the environment to perform them. This means that for everyone else, it is necessary to bring your own environment to go through them. 
-:::
-
- <Tabs>
-  <TabItem label="C#">
-    <LinkCard title="Create lab resource group" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/00-create-resource-group.html" /> 
-    <LinkCard title="Setup lab environment" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/00-setup-environment.html" /> 
-    <LinkCard title="Enable resource providers" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/00-update-resource-providers.html" /> 
-    <CardGrid>
-    <LinkCard title="Create an Azure Cosmos DB for NoSQL account" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/01-create-account.html" /> 
-    <LinkCard title="Configure throughput for Azure Cosmos DB For NoSQL with the Azure portal" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/02-configure-throughput.html" /> 
-    <LinkCard title="Migrate existing data using Azure Data Factory" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/03-migrate-data.html" /> 
-    <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/04-sdk-connect.html" /> 
-    <LinkCard title="Configure the Azure Cosmos DB for NoSQL SDK for offline development" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/05-sdk-offline.html" /> 
-    <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/06-sdk-crud.html" /> 
-    <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/07-sdk-batch.html" /> 
-    <LinkCard title="Move multiple documents in bulk with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/08-sdk-bulk.html" /> 
-    <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/09-sdk-queries.html" /> 
-    <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/10-sdk-pagination.html" /> 
-    <LinkCard title="Review the default index policy for an Azure Cosmos DB for NoSQL container with the portal" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/11-default-indexing-policy.html" /> 
-    <LinkCard title="Configure an Azure Cosmos DB for NoSQL container’s index policy using the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/12-sdk-indexing-policy-custom.html" /> 
-    <LinkCard title="Process change feed events using the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/13-change-feed.html" /> 
-    <LinkCard title="Process Azure Cosmos DB for NoSQL data using Azure Functions" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/14-functions.html" /> 
-    <LinkCard title="Search data using Azure AI Search and Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/15-cognitive-search.html" /> 
-    <LinkCard title="Measure performance for customer entities" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/16-measure-performance.html" /> 
-    <LinkCard title="Cost of denormalizing data and aggregates and using the change feed for referential integrity" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/17-denormalize.html" /> 
-    <LinkCard title="Connect to different regions with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/20-sdk-regions.html" /> 
-    <LinkCard title="Configure consistency models in the portal and the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/21-sdk-consistency-model.html" /> 
-    <LinkCard title="Connect to a multi-region write account with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/22-sdk-multi-region.html" /> 
-    <LinkCard title="Optimize an Azure Cosmos DB for NoSQL container’s indexing policy for common operations" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/23-index-optimization.html" /> 
-    <LinkCard title="Optimize an Azure Cosmos DB for NoSQL container’s index policy for a specific query" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/24-query-optimization.html" /> 
-    <LinkCard title="Use Azure Monitor to analyze an Azure Cosmos DB for NoSQL account" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/25-monitor.html" /> 
-    <LinkCard title="Troubleshoot an application using the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/26-sdk-troubleshoot.html" /> 
-    <LinkCard title="Recover a database or container from a recovery point" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/27-backup-recover.html" /> 
-    <LinkCard title="Store Azure Cosmos DB for NoSQL account keys in Azure Key Vault" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/28-key-vault.html" /> 
-    <LinkCard title="Adjust provisioned throughput using an Azure CLI script" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/30-adjust-throughput-cli-script.html" /> 
-    <LinkCard title="Create an Azure Cosmos DB for NoSQL container using Azure Resource Manager templates" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/31-create-container-arm-template.html" /> 
-    <LinkCard title="Create a stored procedure with the Azure portal" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/32-create-sproc-portal.html" /> 
-    <LinkCard title="Implement and then use user-defined functions with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/33-create-use-udf-sdk.html" /> 
-  </CardGrid>
-    </TabItem>
-  <TabItem label="GenAI">
-
-    <LinkCard title="Create lab resource group" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/common/instructions/00-create-resource-group.html" /> 
-    <LinkCard title="Setup lab environment" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/common/instructions/00-setup-cosmos-db.html" /> 
-    <LinkCard title="Enable resource providers" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/common/instructions/00-update-resource-providers.html" /> 
-  </TabItem>
-      <TabItem label="JavaScript">
-        <LinkCard title="Setup lab environment" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/00-setup-lab-environment.html" /> 
-
+    <Tabs>
+      <TabItem label="C#">
+        <LinkCard title="Create lab resource group" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/00-create-resource-group.html" /> 
+        <LinkCard title="Setup lab environment" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/00-setup-environment.html" /> 
+        <LinkCard title="Enable resource providers" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/00-update-resource-providers.html" /> 
         <CardGrid>
-          <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/01-sdk-connect.html" /> 
-          <LinkCard title="Configure the Azure Cosmos DB JavaScript SDK for Offline Development" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/02-sdk-offline.html" /> 
-          <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/03-sdk-crud.html" /> 
-          <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/04-sdk-batch.html" /> 
-          <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/05-sdk-queries.html" /> 
-          <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/06-sdk-pagination.html" /> 
+          <LinkCard title="Create an Azure Cosmos DB for NoSQL account" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/01-create-account.html" /> 
+          <LinkCard title="Configure throughput for Azure Cosmos DB For NoSQL with the Azure portal" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/02-configure-throughput.html" /> 
+          <LinkCard title="Migrate existing data using Azure Data Factory" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/03-migrate-data.html" /> 
+          <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/04-sdk-connect.html" /> 
+          <LinkCard title="Configure the Azure Cosmos DB for NoSQL SDK for offline development" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/05-sdk-offline.html" /> 
+          <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/06-sdk-crud.html" /> 
+          <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/07-sdk-batch.html" /> 
+          <LinkCard title="Move multiple documents in bulk with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/08-sdk-bulk.html" /> 
+          <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/09-sdk-queries.html" /> 
+          <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/10-sdk-pagination.html" /> 
+          <LinkCard title="Review the default index policy for an Azure Cosmos DB for NoSQL container with the portal" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/11-default-indexing-policy.html" /> 
+          <LinkCard title="Configure an Azure Cosmos DB for NoSQL container’s index policy using the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/12-sdk-indexing-policy-custom.html" /> 
+          <LinkCard title="Process change feed events using the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/13-change-feed.html" /> 
+          <LinkCard title="Process Azure Cosmos DB for NoSQL data using Azure Functions" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/14-functions.html" /> 
+          <LinkCard title="Search data using Azure AI Search and Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/15-cognitive-search.html" /> 
+          <LinkCard title="Measure performance for customer entities" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/16-measure-performance.html" /> 
+          <LinkCard title="Cost of denormalizing data and aggregates and using the change feed for referential integrity" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/17-denormalize.html" /> 
+          <LinkCard title="Connect to different regions with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/20-sdk-regions.html" /> 
+          <LinkCard title="Configure consistency models in the portal and the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/21-sdk-consistency-model.html" /> 
+          <LinkCard title="Connect to a multi-region write account with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/22-sdk-multi-region.html" /> 
+          <LinkCard title="Optimize an Azure Cosmos DB for NoSQL container’s indexing policy for common operations" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/23-index-optimization.html" /> 
+          <LinkCard title="Optimize an Azure Cosmos DB for NoSQL container’s index policy for a specific query" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/24-query-optimization.html" /> 
+          <LinkCard title="Use Azure Monitor to analyze an Azure Cosmos DB for NoSQL account" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/25-monitor.html" /> 
+          <LinkCard title="Troubleshoot an application using the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/26-sdk-troubleshoot.html" /> 
+          <LinkCard title="Recover a database or container from a recovery point" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/27-backup-recover.html" /> 
+          <LinkCard title="Store Azure Cosmos DB for NoSQL account keys in Azure Key Vault" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/28-key-vault.html" /> 
+          <LinkCard title="Adjust provisioned throughput using an Azure CLI script" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/30-adjust-throughput-cli-script.html" /> 
+          <LinkCard title="Create an Azure Cosmos DB for NoSQL container using Azure Resource Manager templates" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/31-create-container-arm-template.html" /> 
+          <LinkCard title="Create a stored procedure with the Azure portal" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/32-create-sproc-portal.html" /> 
+          <LinkCard title="Implement and then use user-defined functions with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/instructions/33-create-use-udf-sdk.html" /> 
         </CardGrid>
       </TabItem>
+      <TabItem label="GenAI">
 
-      <TabItem label="Python">
-        <CardGrid>
-          <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/01-sdk-connect.html" /> 
-          <LinkCard title="Configure the Azure Cosmos DB Python SDK for Offline Development" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/02-sdk-offline.html" /> 
-          <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/03-sdk-crud.html" /> 
-          <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/04-sdk-batch.html" /> 
-          <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/05-sdk-queries.html" /> 
-          <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/06-sdk-pagination.html" /> 
-          <LinkCard title="Enable Vector Search for Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-01-enable-azure-cosmos-db-nosql-vector-search.html" /> 
-          <LinkCard title="Generate vector embeddings with Azure OpenAI and store them in Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-02-generate-and-store-vectors.html" /> 
-          <LinkCard title="Build a copilot with Python and Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-03-build-copilot.html" /> 
-          <LinkCard title="Implement RAG with LangChain and Azure Cosmos DB for NoSQL Vector Search" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-04-implement-rag-with-langchain.html" /> 
-        </CardGrid>
+        <LinkCard title="Create lab resource group" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/common/instructions/00-create-resource-group.html" /> 
+        <LinkCard title="Setup lab environment" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/common/instructions/00-setup-cosmos-db.html" /> 
+        <LinkCard title="Enable resource providers" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/common/instructions/00-update-resource-providers.html" /> 
+
+        <Tabs>
+          <TabItem label="JavaScript">
+            <LinkCard title="Setup lab environment" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/00-setup-lab-environment.html" /> 
+
+            <CardGrid>
+              <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/01-sdk-connect.html" /> 
+              <LinkCard title="Configure the Azure Cosmos DB JavaScript SDK for Offline Development" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/02-sdk-offline.html" /> 
+              <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/03-sdk-crud.html" /> 
+              <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/04-sdk-batch.html" /> 
+              <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/05-sdk-queries.html" /> 
+              <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/javascript/instructions/06-sdk-pagination.html" /> 
+            </CardGrid>
+          </TabItem>
+
+          <TabItem label="Python">
+            <CardGrid>
+              <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/01-sdk-connect.html" /> 
+              <LinkCard title="Configure the Azure Cosmos DB Python SDK for Offline Development" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/02-sdk-offline.html" /> 
+              <LinkCard title="Create and update documents with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/03-sdk-crud.html" /> 
+              <LinkCard title="Batch multiple point operations together with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/04-sdk-batch.html" /> 
+              <LinkCard title="Execute a query with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/05-sdk-queries.html" /> 
+              <LinkCard title="Paginate cross-product query results with the Azure Cosmos DB for NoSQL SDK" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/06-sdk-pagination.html" /> 
+              <LinkCard title="Enable Vector Search for Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-01-enable-azure-cosmos-db-nosql-vector-search.html" /> 
+              <LinkCard title="Generate vector embeddings with Azure OpenAI and store them in Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-02-generate-and-store-vectors.html" /> 
+              <LinkCard title="Build a copilot with Python and Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-03-build-copilot.html" /> 
+              <LinkCard title="Implement RAG with LangChain and Azure Cosmos DB for NoSQL Vector Search" href="https://microsoftlearning.github.io/dp-420-cosmos-db-dev/gen-ai/python/instructions/07-04-implement-rag-with-langchain.html" /> 
+            </CardGrid>
+          </TabItem>
+        </Tabs>
       </TabItem>
     </Tabs>
-    </TabItem>
-  </Tabs>
+  </TabItem>
+</Tabs>
