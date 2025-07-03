@@ -155,6 +155,8 @@ export default defineConfig({
         {
             label: 'Discounted Exam Vouchers',
             items: [
+                { label: 'PowerBi Birthday Voucher', link: '/vouchers/powerbibirthday/' ,badge: { text: '50%', variant: 'note' }, },
+
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '100%', variant: 'note' }, },						
