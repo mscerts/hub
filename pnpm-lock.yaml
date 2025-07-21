@@ -27,15 +27,18 @@ importers:
         specifier: ^0.33.5
         version: 0.33.5
       starlight-blog:
-        specifier: ^0.21.0
-        version: 0.21.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)))(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
+        specifier: ^0.24.0
+        version: 0.24.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)))(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
       starlight-cooler-credit:
         specifier: ^0.4.0
         version: 0.4.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)))
       starlight-image-zoom:
-        specifier: ^0.8.0
-        version: 0.8.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)))
+        specifier: ^0.12.0
+        version: 0.12.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)))
       starlight-showcases:
+        specifier: ^0.3.0
+        version: 0.3.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)))(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
+      starlight-videos:
         specifier: ^0.3.0
         version: 0.3.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)))(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
     devDependencies:
@@ -1165,6 +1168,9 @@ packages:
     resolution: {integrity: sha512-UcVfVfaK4Sc4m7X3dUSoHoozQGBEFeDC+zVo06t98xe8CzHSZZBekNXH+tu0NalHolcJ/QAGqS46Hef7QXBIMw==}
     engines: {node: '>=16'}
 
+  iso8601-duration@2.1.2:
+    resolution: {integrity: sha512-yXteYUiKv6x8seaDzyBwnZtPpmx766KfvQuaVNyPifYOjmPdOo3ajd4phDNa7Y5mTQGnXsNEcXFtVun1FjYXxQ==}
+
   js-yaml@4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
     hasBin: true
@@ -1667,8 +1673,12 @@ packages:
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
 
-  starlight-blog@0.21.0:
-    resolution: {integrity: sha512-ZA6y+LTbEr2aH8IOsQ3yIFRcqDNEDJjFG/OVTYbWgDuWuO3DWPGYjovsG4oSarbpxkP1k5OLPtL8Zmhy6DxiNQ==}
+  srt-parser-2@1.2.3:
+    resolution: {integrity: sha512-dANP1AyJTI503H0/kXwRza+7QxDB3BqeFvEKTF4MI9lQcBe8JbRUQTKVIGzGABJCwBovEYavZ2Qsdm/s8XKz8A==}
+    hasBin: true
+
+  starlight-blog@0.24.0:
+    resolution: {integrity: sha512-judPLTD+hyeKyiX//0x6adcOs4QR3EqmNxzFJNP+2sauUDA/ux1CS+wNzwMkHAadxdCir13rj9YsA3l8X0h9fQ==}
     engines: {node: '>=18.17.1'}
     peerDependencies:
       '@astrojs/starlight': '>=0.33.0'
@@ -1679,17 +1689,23 @@ packages:
     peerDependencies:
       '@astrojs/starlight': '>=0.32'
 
-  starlight-image-zoom@0.8.0:
-    resolution: {integrity: sha512-+YDqCyihQescGs9hJoyTQt+KHEq9s6zIv8ksBMjPjwOrVicXtY0pM4hHj8yO1r2znud4gTytyGt25kAOmRyP9A==}
+  starlight-image-zoom@0.12.0:
+    resolution: {integrity: sha512-Zt9DuqXEw4JBBRc67wL9EP7DE9cSa+o2nyjQU6Xq+gRp388Wcu9C9FPROLuaYXbxpE93bbj5oyrhhMaiEWOZzg==}
     engines: {node: '>=18'}
     peerDependencies:
-      '@astrojs/starlight': '>=0.22.0'
+      '@astrojs/starlight': '>=0.32.0'
 
   starlight-showcases@0.3.0:
     resolution: {integrity: sha512-jxKVE5IM0TZgRIni4YK1oKDh6C9pBh94oj2pKuhzg2/Cg1wjCrWy39U3i1bXkh6rL+Ly+ypQBPH3AD9cP6TLXA==}
     engines: {node: '>=18'}
     peerDependencies:
       '@astrojs/starlight': '>=0.30.0'
+
+  starlight-videos@0.3.0:
+    resolution: {integrity: sha512-1yvFUEn3P+ZjuGr5COswQp14cZdIvsGjg9lqDIyW5clCrZaBiDMSNPLYngyQozaDbrublEp6/V9HbJR6sGnSOA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.34.0'
 
   stream-replace-string@2.0.0:
     resolution: {integrity: sha512-TlnjJ1C0QrmxRNrON00JvaFFlNh5TTG00APw23j74ET7gkQpTASi6/L2fuiav8pzK715HXtUeClpBTw2NPSn6w==}
@@ -3309,6 +3325,8 @@ snapshots:
     dependencies:
       is-inside-container: 1.0.0
 
+  iso8601-duration@2.1.2: {}
+
   js-yaml@4.1.0:
     dependencies:
       argparse: 2.0.1
@@ -4226,8 +4244,11 @@ snapshots:
 
   space-separated-tokens@2.0.2: {}
 
-  starlight-blog@0.21.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)))(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)):
+  srt-parser-2@1.2.3: {}
+
+  starlight-blog@0.24.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)))(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)):
     dependencies:
+      '@astrojs/markdown-remark': 6.3.1
       '@astrojs/mdx': 4.2.3(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
       '@astrojs/rss': 4.0.11
       '@astrojs/starlight': 0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
@@ -4235,7 +4256,9 @@ snapshots:
       github-slugger: 2.0.0
       marked: 15.0.7
       marked-plaintify: 1.1.1(marked@15.0.7)
+      mdast-util-mdx-expression: 2.0.1
       ultrahtml: 1.6.0
+      unist-util-visit: 5.0.0
     transitivePeerDependencies:
       - astro
       - supports-color
@@ -4245,18 +4268,32 @@ snapshots:
       '@astrojs/starlight': 0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
       change-case: 5.4.4
 
-  starlight-image-zoom@0.8.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))):
+  starlight-image-zoom@0.12.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))):
     dependencies:
       '@astrojs/starlight': 0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
+      mdast-util-mdx-jsx: 3.2.0
       rehype-raw: 7.0.0
       unist-util-visit: 5.0.0
       unist-util-visit-parents: 6.0.1
+    transitivePeerDependencies:
+      - supports-color
 
   starlight-showcases@0.3.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)))(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)):
     dependencies:
       '@astro-community/astro-embed-twitter': 0.5.8(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
       '@astro-community/astro-embed-youtube': 0.5.6(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
       '@astrojs/starlight': 0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
+    transitivePeerDependencies:
+      - astro
+
+  starlight-videos@0.3.0(@astrojs/starlight@0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)))(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2)):
+    dependencies:
+      '@astro-community/astro-embed-youtube': 0.5.6(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
+      '@astrojs/starlight': 0.34.2(astro@5.7.10(rollup@4.39.0)(typescript@5.8.2))
+      hastscript: 9.0.1
+      iso8601-duration: 2.1.2
+      srt-parser-2: 1.2.3
+      unist-util-visit: 5.0.0
     transitivePeerDependencies:
       - astro
 

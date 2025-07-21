@@ -5,6 +5,7 @@ import partytown from '@astrojs/partytown'
 import starlightCoolerCredit from 'starlight-cooler-credit'
 import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
 import starlightBlog from 'starlight-blog';
+import starlightVideos from 'starlight-videos'
 
 const googleAnalyticsId = 'G-CDTP3TERKP'
 const clarityAnalyticsId = 'ke9gk0s2sg'
@@ -50,6 +51,7 @@ export default defineConfig({
           },
       }), 
       viewTransitions(),
+      starlightVideos(),
       starlightImageZoom(),
       starlightBlog({
         authors: {
@@ -69,7 +71,7 @@ export default defineConfig({
       }), 
     ], 
     components: {
-        /* MarkdownContent: "./src/components/MarkdownContent.astro", */
+        MarkdownContent: "./src/components/MarkdownContent.astro", 
         /* Sidebar: './src/components/Sidebar.astro', */
     }, 
     title: 'Microsoft Certification Hub',
@@ -117,6 +119,10 @@ export default defineConfig({
         {
             tag: 'meta',
             attrs: { property: 'og:url', content: 'https://certs.msfthub.wiki/' },
+        },
+        {
+            tag: 'meta',
+            attrs: { property: 'og:site_name', content: 'Microsoft Certification Hub' },
         },
     ],
     editLink: {
