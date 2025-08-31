@@ -162,6 +162,7 @@ export default defineConfig({
             label: 'Discounted Exam Vouchers',
             items: [
                 { label: 'Applied Skills Sweepstakes', link: '/vouchers/appliedskillssweepstakes/' ,badge: { text: '50%', variant: 'note' }, },
+				{ label: 'Partner Certification Week', link: '/vouchers/partnercertweek/' ,badge: { text: '100%', variant: 'note' }, },
 				{ label: 'PowerBi Birthday Voucher', link: '/vouchers/powerbibirthday/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '50%', variant: 'note' }, },
