@@ -161,13 +161,13 @@ export default defineConfig({
         {
             label: 'Discounted Exam Vouchers',
             items: [
-                { label: 'Applied Skills Sweepstakes', link: '/vouchers/appliedskillssweepstakes/' ,badge: { text: '50%', variant: 'tip' }, },
-				{ label: 'Partner Certification Week', link: '/vouchers/partnercertweek/' ,badge: { text: '100%', variant: 'tip' }, },
-				{ label: 'PowerBi Birthday Voucher', link: '/vouchers/powerbibirthday/' ,badge: { text: '50%', variant: 'note' }, },
+                { label: 'Applied Skills Sweepstakes', link: '/vouchers/appliedskillssweepstakes/' ,badge: { text: '*50%', variant: 'tip' }, },
+				{ label: 'Partner Certification Week', link: '/vouchers/partnercertweek/' ,badge: { text: '*100%', variant: 'tip' }, },
+				{ label: 'PowerBi Birthday Voucher', link: '/vouchers/powerbibirthday/' ,badge: { text: '50%', variant: 'tip' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
-                { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '50%', variant: 'note' }, },
-                { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '100%', variant: 'note' }, },						
-                { label: 'Beta Exams', link: '/vouchers/betaexams/' ,badge: { text: '80% + 25%', variant: 'note' }, },
+                { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '*50%', variant: 'note' }, },
+                { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '*100%', variant: 'note' }, },						
+                { label: 'Beta Exams', link: '/vouchers/betaexams/' ,badge: { text: '*80% + 25%', variant: 'note' }, },
 		        { label: 'Replay/Retake Vouchers', link: '/vouchers/mindhubreplayvoucherbundles/' },
 
             ],
