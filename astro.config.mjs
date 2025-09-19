@@ -177,6 +177,10 @@ export default defineConfig({
             link: '/wiki',
         },
         {
+            label: 'Exam Study Labs Collection',
+            link: '/labs',
+        },
+        {
             label: 'Exam Study Materials',
             collapsed: false,
             items: [
