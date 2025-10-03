@@ -163,7 +163,6 @@ export default defineConfig({
             items: [
                 { label: 'FabCon Vienna Offer', link: '/vouchers/fabricviennaoffer/' ,badge: { text: '50%', variant: 'tip' }, },
                 { label: 'Applied Skills Sweepstakes', link: '/vouchers/appliedskillssweepstakes/' ,badge: { text: '*50%', variant: 'tip' }, },
-				{ label: 'Partner Certification Week', link: '/vouchers/partnercertweek/' ,badge: { text: '*100%', variant: 'tip' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '*50%', variant: 'note' }, },
                 { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '*100%', variant: 'note' }, },						
