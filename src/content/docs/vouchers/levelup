@@ -1,0 +1,36 @@
+---
+title: LevelUp Partner Certification Courses
+description: LevelUp offers free certification courses for Microsoft Partner Employees. 
+---
+import { LinkButton } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+:::note
+Earn up to two 100% off exam vouchers
+:::
+:::caution
+Microsoft Partner Employees only
+:::
+
+<LinkButton
+  href="https://skillupwithlevelup.com/certification-prep-on-demand" target="_blank"
+  variant="primary"
+  icon="seti:windows"
+  iconPlacement="start"
+>
+  LevelUp Partner Certification Courses
+</LinkButton>
+
+<Steps>
+  1. [Register for LevelUp](https://skillupwithlevelup.com/register)
+  2. [Enroll in a course](https://skillupwithlevelup.com/certification-prep-on-demand)
+  3. Finish the course and associated practice test in 2 weeks from the date of enrollment (You have 2 attempts at the practice test and need to score at least 80%)
+  4. Wait for the voucher(s) to arrive in your email mailbox
+</Steps>
+
+:::danger
+Vouchers expire on December 31st 2025
+:::
+
+<LinkCard title="Microsoft Exam Study Materials Collection" href="https://certs.msfthub.wiki/wiki/" />
