@@ -165,6 +165,7 @@ export default defineConfig({
                 { label: 'FabCon Vienna Offer', link: '/vouchers/fabricviennaoffer/' ,badge: { text: '50%', variant: 'tip' }, },
                 { label: 'Applied Skills Sweepstakes', link: '/vouchers/appliedskillssweepstakes/' ,badge: { text: '*50%', variant: 'tip' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
+                { label: 'Microsoft x Coursera', link: '/vouchers/microsoftxcoursera/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '*50%', variant: 'note' }, },
                 { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '*100%', variant: 'note' }, },						
                 { label: 'Beta Exams', link: '/vouchers/betaexams/' ,badge: { text: '*80% + 25%', variant: 'note' }, },
