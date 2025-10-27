@@ -161,6 +161,7 @@ export default defineConfig({
         {
             label: 'Discounted Exam Vouchers',
             items: [
+            	{ label: 'Partner Certification Week', link: '/vouchers/partnercertweek/' ,badge: { text: '*100%', variant: 'tip' }, },
 				{ label: 'Microsoft Partner LevelUp', link: '/vouchers/levelup/' ,badge: { text: '*100%', variant: 'tip' }, },
                 { label: 'FabCon Vienna Offer', link: '/vouchers/fabricviennaoffer/' ,badge: { text: '50%', variant: 'tip' }, },
                 { label: 'Applied Skills Sweepstakes', link: '/vouchers/appliedskillssweepstakes/' ,badge: { text: '*50%', variant: 'tip' }, },
