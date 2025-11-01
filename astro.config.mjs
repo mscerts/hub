@@ -146,7 +146,7 @@ export default defineConfig({
                 { label: 'Overview', link: '/guide/overview/' },
                 { label: 'Scheduling an Exam', link: '/guide/schedulingexam/' },						
                 { label: 'Certification Dashboard', link: '/guide/certificationdashboard/' },
-                { label: 'Taking The Exam', link: '/guide/takingtheexams/' },
+                { label: 'Exam Experience', link: '/guide/takingtheexams/' },
                 { label: 'Official Study Materials', link: '/guide/officialstudymaterials/' },
                 { label: 'Opportunities for Students', link: '/guide/studentopportunities/' },
                 { label: 'Certification Renewal', link: '/guide/certificationrenewal/' },
@@ -163,11 +163,11 @@ export default defineConfig({
             items: [
             	{ label: 'Partner Certification Week', link: '/vouchers/partnercertweek/' ,badge: { text: '*100%', variant: 'tip' }, },
 				{ label: 'Microsoft Partner LevelUp', link: '/vouchers/levelup/' ,badge: { text: '*100%', variant: 'tip' }, },
-                { label: 'Microsoft x Coursera', link: '/vouchers/microsoftxcoursera/' ,badge: { text: '*50%', variant: 'tip' }, },
                 { label: 'FabCon Vienna Offer', link: '/vouchers/fabricviennaoffer/' ,badge: { text: '50%', variant: 'tip' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '*50%', variant: 'note' }, },
-                { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '*100%', variant: 'note' }, },						
+                { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '*100%', variant: 'note' }, },	
+                { label: 'Microsoft x Coursera', link: '/vouchers/microsoftxcoursera/' ,badge: { text: '*50%', variant: 'note' }, },					
                 { label: 'Beta Exams', link: '/vouchers/betaexams/' ,badge: { text: '*80% + 25%', variant: 'note' }, },
 		        { label: 'Replay/Retake Vouchers', link: '/vouchers/mindhubreplayvoucherbundles/' },
 
