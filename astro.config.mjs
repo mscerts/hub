@@ -164,7 +164,6 @@ export default defineConfig({
             	{ label: 'Fabric Data Days', link: '/vouchers/fabricdays/' ,badge: { text: '100%+50%', variant: 'tip' }, },
             	{ label: 'Partner Certification Week', link: '/vouchers/partnercertweek/' ,badge: { text: '*100%', variant: 'tip' }, },
 				{ label: 'Microsoft Partner LevelUp', link: '/vouchers/levelup/' ,badge: { text: '*100%', variant: 'tip' }, },
-                { label: 'FabCon Vienna Offer', link: '/vouchers/fabricviennaoffer/' ,badge: { text: '50%', variant: 'tip' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '*50%', variant: 'note' }, },
                 { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '*100%', variant: 'note' }, },	
