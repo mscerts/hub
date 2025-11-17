@@ -190,6 +190,7 @@ export default defineConfig({
             collapsed: false,
             items: [
                 { label: 'Azure', collapsed:true, autogenerate: { directory: 'azure', collaped:true },},
+                { label: 'GitHub', collapsed:true, autogenerate: { directory: 'github', collaped:true },},
                 { label: 'Microsoft 365', collapsed:true, autogenerate: { directory: 'microsoft365', collaped:true },},
                 { label: 'Security & Identity', collapsed:true, autogenerate: { directory: 'security', collaped:true },},
                 { label: 'Power Platform', collapsed:true, autogenerate: { directory: 'power', collaped:true },},
