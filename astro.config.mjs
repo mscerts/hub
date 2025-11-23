@@ -161,7 +161,6 @@ export default defineConfig({
         {
             label: 'Discounted Exam Vouchers',
             items: [
-            	{ label: 'AB-900 Beta', link: 'https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-365-certified-copilot-and-agent-administration-fundamentals/4428969?WT.mc_id=studentamb_165290' ,badge: { text: '*80%', variant: 'tip' }, },
             	{ label: 'AB-730 Beta', link: 'https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-ai-business-professional-certification/4428970?WT.mc_id=studentamb_165290' ,badge: { text: '*80%', variant: 'tip' }, },
             	{ label: 'AB-731 Beta', link: 'https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-ai-transformation-leader-certification/4428971?WT.mc_id=studentamb_165290' ,badge: { text: '*80%', variant: 'tip' }, },
             	{ label: 'Ignite Sweepstakes', link: '/vouchers/microsoftignite/' ,badge: { text: '50%', variant: 'tip' }, },
