@@ -164,7 +164,6 @@ export default defineConfig({
             	{ label: 'AB-730 Beta', link: 'https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-ai-business-professional-certification/4428970?WT.mc_id=studentamb_165290' ,badge: { text: '*80%', variant: 'tip' }, },
             	{ label: 'AB-731 Beta', link: 'https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-ai-transformation-leader-certification/4428971?WT.mc_id=studentamb_165290' ,badge: { text: '*80%', variant: 'tip' }, },
             	{ label: 'Ignite Sweepstakes', link: '/vouchers/microsoftignite/' ,badge: { text: '50%', variant: 'tip' }, },
-                { label: 'Fabric Data Days', link: '/vouchers/fabricdays/' ,badge: { text: '100%+50%', variant: 'tip' }, },
             	{ label: 'Partner Certification Week', link: '/vouchers/partnercertweek/' ,badge: { text: '*100%', variant: 'tip' }, },
 				{ label: 'Microsoft Partner LevelUp', link: '/vouchers/levelup/' ,badge: { text: '*100%', variant: 'tip' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
