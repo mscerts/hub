@@ -161,12 +161,8 @@ export default defineConfig({
         {
             label: 'Discounted Exam Vouchers',
             items: [
-            	{ label: 'AB-730 Beta', link: 'https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-ai-business-professional-certification/4428970?WT.mc_id=studentamb_165290' ,badge: { text: '*80%', variant: 'tip' }, },
-            	{ label: 'AB-731 Beta', link: 'https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-ai-transformation-leader-certification/4428971?WT.mc_id=studentamb_165290' ,badge: { text: '*80%', variant: 'tip' }, },
-            	{ label: 'Ignite Sweepstakes', link: '/vouchers/microsoftignite/' ,badge: { text: '50%', variant: 'tip' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '*50%', variant: 'note' }, },
-                { label: 'Power Up Program', link: '/vouchers/powerupprogram/' ,badge: { text: '*100%', variant: 'note' }, },	
                 { label: 'Microsoft x Coursera', link: '/vouchers/microsoftxcoursera/' ,badge: { text: '*50%', variant: 'note' }, },					
                 { label: 'Beta Exams', link: '/vouchers/betaexams/' ,badge: { text: '*80% + 25%', variant: 'note' }, },
 		        { label: 'Replay/Retake Vouchers', link: '/vouchers/mindhubreplayvoucherbundles/' },
