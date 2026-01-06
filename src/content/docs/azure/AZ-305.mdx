@@ -6,63 +6,27 @@ import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
-<LinkCard title="Explore additional resources below!" href="#studying-resources" />
-
 <Card title="Get Started" icon="star"> 
-  <LinkCard title="Exam AZ-305: Designing Microsoft Azure Infrastructure Solutions" href="https://learn.microsoft.com/credentials/certifications/azure-solutions-architect/?WT.mc_id=studentamb_165290" target="_blank"/>
-      Design and implement Azure infrastructure solutions including identity, governance, data storage, and monitoring solutions.
-  <LinkCard title="AZ-305 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-305?WT.mc_id=studentamb_165290" target="_blank"/>
-      Study guide contains topics and information you need to know to successfully prepare for the exam.
-  <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/certifications/exams/az-305?WT.mc_id=studentamb_165290" target="_blank"/>
-      This course teaches IT Professionals how to design Azure infrastructure solutions including identity, governance, and monitoring.
-  <LinkCard title="Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-az-305-design-identity-governance-and-monitoring-solutions-1-of-4?WT.mc_id=studentamb_165290" target="_blank"/>
-      Series of videos that explain what the exam tests you on so you don't miss any important topics.
-  <LinkCard title="Practice Assessment" href="https://learn.microsoft.com/certifications/exams/az-305/practice/assessment?assessment-type=practice&assessmentId=15&WT.mc_id=studentamb_165290" target="_blank"/>
-      Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than the real exam.
-  <LinkCard title="Exam Sandbox" href="https://aka.ms/examdemo" target="_blank"/>
-      Near exact copy of the exam environment you encouter during the real exam. Explore the sandbox to get familiar with how the exam looks so you save time and are not caught off guard. 
-  <LinkCard title="GitHub Case Studies" href="https://microsoftlearning.github.io/AZ-305-DesigningMicrosoftAzureInfrastructureSolutions/" target="_blank"/>
-      Collection of case studies on GitHub. 
-</Card>
 
-<Card title="Practice Tests" icon="open-book"> 
-<CardGrid>
-  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-az-305-designing-microsoft-azure-infrastructure-solutions.html#u44" target="_blank"/>
-  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-az-305-designing-microsoft-azure-infrastructure-solutions.html#u44" target="_blank"/>
-</CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
-</Card>
-
-### Studying Resources
-
+  <LinkCard title="Exam AZ-305: Designing Microsoft Azure Infrastructure Solutions" href="https://learn.microsoft.com/credentials/certifications/azure-solutions-architect/?WT.mc_id=studentamb_165290" target="_blank" description="Design and implement Azure infrastructure solutions including identity, governance, data storage, and monitoring solutions."/>
+      
+  <LinkCard title="AZ-305 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-305?WT.mc_id=studentamb_165290" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for the exam."/>
+  <LinkCard title="Exam Case Studies" href="https://microsoftlearning.github.io/AZ-305-DesigningMicrosoftAzureInfrastructureSolutions/" target="_blank" description="Collection of case studies on GitHub."/>
+     
+---
 <Tabs>
-
   <TabItem label="Text">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/certifications/exams/az-305" target="_blank"/>
-  </CardGrid>
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/certifications/exams/az-305?WT.mc_id=studentamb_165290" target="_blank" description="This course teaches IT Professionals how to design Azure infrastructure solutions including identity, governance, and monitoring."/>
   </TabItem>
 
   <TabItem label="Videos">
   <CardGrid>
-  	<LinkCard title="Microsoft Learn Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-az-305-design-identity-governance-and-monitoring-solutions-1-of-4/?WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="Microsoft Learn Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-az-305-design-identity-governance-and-monitoring-solutions-1-of-4/?WT.mc_id=studentamb_165290" target="_blank"/>
     <LinkCard title="On Demand Instructor-led Training Series" href="https://learn.microsoft.com/shows/on-demand-instructor-led-training-series/?terms=AZ-305&WT.mc_id=studentamb_165290" target="_blank"/>
     <LinkCard title="John Savill Study Cram" href="https://www.youtube.com/watch?v=vq9LuCM4YP4&list=PLlVtbbG169nH_CJl4wwKBfS1V8nMYr7xL&index=9&pp=iAQB" target="_blank"/>
     <LinkCard title="John Savill's Course" href="https://www.youtube.com/playlist?list=PLlVtbbG169nHSnaP4ae33yQUI3zcmP5nP" target="_blank"/>
     <LinkCard title="Freecodecamp's 305 Course" href="https://www.youtube.com/watch?v=i6NzKvGUsBs" target="_blank"/>
     <LinkCard title="Microsoft Enterprise Skills Initiative Intructor-led course" href="https://esi.microsoft.com/Search?q=AZ-305&avail=Available&learningoption=Advanced+Role+Based" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Paid">
-  <CardGrid>
-    <LinkCard title="Pluralsight Course" href="https://www.pluralsight.com/paths/az-305-designing-microsoft-azure-infrastructure-solutions" target="_blank"/>
-    <LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/certkit-az-305-designing-microsoft-azure-infrastructure-solutions.html#u44" target="_blank" />
   </CardGrid>
   </TabItem>
 
@@ -74,9 +38,32 @@ import { Aside } from '@astrojs/starlight/components';
   </CardGrid>
   </TabItem>
 
+  <TabItem label="Paid">
+  <CardGrid>
+    <LinkCard title="Pluralsight Course" href="https://www.pluralsight.com/paths/az-305-designing-microsoft-azure-infrastructure-solutions" target="_blank"/>
+    <LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/certkit-az-305-designing-microsoft-azure-infrastructure-solutions.html#u44" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
   <TabItem label="Misc">
   <CardGrid>
-    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/offers/ms-azr-0044p?WT.mc_id=studentamb_165290?WT.mc_id=studentamb_165290" target="_blank"/> 
+    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/offers/ms-azr-0044p?WT.mc_id=studentamb_165290?WT.mc_id=studentamb_165290" target="_blank"/>
   </CardGrid>
   </TabItem>
 </Tabs>
+
+---
+      </Card>
+
+<Card title="MeasureUp Practice Tests" icon="open-book"> 
+<CardGrid>
+  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-az-305-designing-microsoft-azure-infrastructure-solutions.html#u44" target="_blank"/>
+  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-az-305-designing-microsoft-azure-infrastructure-solutions.html#u44" target="_blank"/>
+</CardGrid>
+  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
+      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
+      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
+
+      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
+      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
+</Card>

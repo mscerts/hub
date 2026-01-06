@@ -6,46 +6,17 @@ import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
-<LinkCard title="Explore additional resources below!" href="#studying-resources" />
-
 <Card title="Get Started" icon="star"> 
-  <LinkCard title="Exam AZ-500: Microsoft Azure Security Technologies" href="https://learn.microsoft.com/credentials/certifications/azure-security-engineer/?WT.mc_id=studentamb_165290" target="_blank"/>
-      Learn to implement security controls, maintain the security posture, and manage identity and access within Microsoft Azure environments.
-  <LinkCard title="AZ-500 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-500?WT.mc_id=studentamb_165290" target="_blank"/>
-      Study guide contains topics and information you need to know to successfully prepare for the exam.
-  <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/credentials/certifications/exams/az-500?WT.mc_id=studentamb_165290" target="_blank"/>
-      Explore the official Microsoft Learn path to develop skills needed for the AZ-500 exam.
-  <LinkCard title="Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-az-500-manage-identity-and-access-1-of-4?WT.mc_id=studentamb_165290" target="_blank"/>
-      A series of videos that explain the key topics covered in the exam.
-  <LinkCard title="Practice Assessment" href="https://learn.microsoft.com/certifications/exams/az-500/practice/assessment?assessment-type=practice&assessmentId=57&WT.mc_id=studentamb_165290" target="_blank"/>
-      Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than the real exam.
-  <LinkCard title="Exam Sandbox" href="https://aka.ms/examdemo" target="_blank"/>
-      Near exact copy of the exam environment you encouter during the real exam. Explore the sandbox to get familiar with how the exam looks so you save time and are not caught off guard. 
-  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/azure/az-500/" target="_blank"/>
-      Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings and Applied Skills.
-</Card>
 
-<Card title="MeasureUp Practice Tests" icon="open-book"> 
-<CardGrid>
-  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-az-500-microsoft-azure-security-technologies.html#u44" target="_blank"/>
-  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-az-500-microsoft-azure-security-technologies.html#u44" target="_blank"/>
-</CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
-</Card>
-
-### Studying Resources
-
+  <LinkCard title="Exam AZ-500: Microsoft Azure Security Technologies" href="https://learn.microsoft.com/credentials/certifications/azure-security-engineer/?WT.mc_id=studentamb_165290" target="_blank" description="Learn to implement security controls, maintain the security posture, and manage identity and access within Microsoft Azure environments."/>
+      
+  <LinkCard title="AZ-500 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-500?WT.mc_id=studentamb_165290" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for the exam."/>
+  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/azure/az-500/" target="_blank" description="Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings and Applied Skills."/>
+     
+---
 <Tabs>
-
   <TabItem label="Text">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/credentials/certifications/exams/az-500?WT.mc_id=studentamb_165290" target="_blank"/>
-  </CardGrid>
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/credentials/certifications/exams/az-500?WT.mc_id=studentamb_165290" target="_blank" description="Explore the official Microsoft Learn path to develop skills needed for the AZ-500 exam."/>
   </TabItem>
 
   <TabItem label="Videos">
@@ -62,14 +33,6 @@ import { Aside } from '@astrojs/starlight/components';
   </CardGrid>
   </TabItem>
 
-  <TabItem label="Paid">
-  <CardGrid>
-    <LinkCard title="Pluralsight Course" href="https://www.pluralsight.com/paths/az-500-microsoft-azure-security-technologies" target="_blank"/>
-    <LinkCard title="Coursera Microsoft Azure Security Engineer Associate" href="https://www.coursera.org/professional-certificates/microsoft-azure-security-engineer-associate" target="_blank"/>
-    <LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/certkit-az-500-microsoft-azure-security-technologies.html#u44" target="_blank" />
-  </CardGrid>
-  </TabItem>
-
   <TabItem label="Tests">
   <CardGrid>
     <LinkCard title="Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/certifications/exams/az-400/practice/assessment?assessment-type=practice&assessmentId=56&WT.mc_id=studentamb_165290" target="_blank"/>
@@ -78,11 +41,35 @@ import { Aside } from '@astrojs/starlight/components';
   </CardGrid>
   </TabItem>
 
+  <TabItem label="Paid">
+  <CardGrid>
+    <LinkCard title="Pluralsight Course" href="https://www.pluralsight.com/paths/az-500-microsoft-azure-security-technologies" target="_blank"/>
+    <LinkCard title="Coursera Microsoft Azure Security Engineer Associate" href="https://www.coursera.org/professional-certificates/microsoft-azure-security-engineer-associate" target="_blank"/>
+    <LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/certkit-az-500-microsoft-azure-security-technologies.html#u44" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
   <TabItem label="Misc">
   <CardGrid>
-    <LinkCard title="Microsoft 365 E5 Developer Tenant" href="https://developer.microsoft.com/microsoft-365/dev-program?WT.mc_id=studentamb_165290" target="_blank"/> 
+    <LinkCard title="Microsoft 365 E5 Developer Tenant" href="https://developer.microsoft.com/microsoft-365/dev-program?WT.mc_id=studentamb_165290" target="_blank"/>
     <LinkCard title="Microsoft Sentinel Training Lab" href="https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/learning-with-the-microsoft-sentinel-training-lab/ba-p/2953403?WT.mc_id=studentamb_165290" target="_blank"/>
-    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/offers/ms-azr-0044p?WT.mc_id=studentamb_165290?WT.mc_id=studentamb_165290" target="_blank"/> 
+    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/offers/ms-azr-0044p?WT.mc_id=studentamb_165290?WT.mc_id=studentamb_165290" target="_blank"/>
   </CardGrid>
   </TabItem>
 </Tabs>
+
+---
+      </Card>
+
+<Card title="MeasureUp Practice Tests" icon="open-book"> 
+<CardGrid>
+  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-az-500-microsoft-azure-security-technologies.html#u44" target="_blank"/>
+  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-az-500-microsoft-azure-security-technologies.html#u44" target="_blank"/>
+</CardGrid>
+  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
+      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
+      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
+
+      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
+      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
+</Card>
