@@ -7,49 +7,22 @@ import { Icon } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
-<LinkCard title="Explore additional resources below!" href="#studying-resources" />
-
 <Card title="Get Started" icon="star"> 
-  <LinkCard title="Exam SC-900: Security, Compliance, and Identity Fundamentals" href="https://learn.microsoft.com/credentials/certifications/security-compliance-and-identity-fundamentals?WT.mc_id=studentamb_165290" target="_blank"/>
-      Demonstrate foundational knowledge on security, compliance, and identity concepts and related cloud-based Microsoft solutions.
-  <LinkCard title="SC-900 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-900?WT.mc_id=studentamb_165290" target="_blank"/>
-      Study guide contains topics and information you need to know to successfully prepare for the exam. 
-  <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/sc-900t00/?WT.mc_id=studentamb_165290" target="_blank"/>
-Explore Microsoft’s official learning path for SC-900 exam preparation.
-  <LinkCard title="Practice Assessment" href="https://learn.microsoft.com/credentials/certifications/security-compliance-and-identity-fundamentals/practice/assessment?assessment-type=practice&assessmentId=11&practice-assessment-type=certification&WT.mc_id=studentamb_165290" target="_blank"/>
-      Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than the real exam.
-  <LinkCard title="Exam Sandbox" href="https://aka.ms/examdemo" target="_blank"/>
-      Near exact copy of the exam environment you encouter during the real exam. Explore the sandbox to get familiar with how the exam looks so you save time and are not caught off guard. 
-  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/security/sc-900" target="_blank"/>
-      Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings.
-</Card>
 
-<Card title="MeasureUp Practice Tests" icon="open-book"> 
-<CardGrid>
-  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-sc-900-microsoft-security-compliance-and-identity-fundamentals.html#u44" target="_blank"/>
-  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-sc-900-microsoft-security-compliance-and-identity-fundamentals.html#u44" target="_blank"/>
-</CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
-</Card>
-
-### Studying Resources
-
+  <LinkCard title="Exam SC-900: Security, Compliance, and Identity Fundamentals" href="https://learn.microsoft.com/credentials/certifications/security-compliance-and-identity-fundamentals?WT.mc_id=studentamb_165290" target="_blank" description="Demonstrate foundational knowledge on security, compliance, and identity concepts and related cloud-based Microsoft solutions."/>
+      
+  <LinkCard title="SC-900 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-900?WT.mc_id=studentamb_165290" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for the exam."/>
+  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/security/sc-900" target="_blank" description="Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings."/>
+     
+---
 <Tabs>
-
   <TabItem label="Text">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/sc-900t00/?WT.mc_id=studentamb_165290" target="_blank"/>
-  </CardGrid>
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/sc-900t00/?WT.mc_id=studentamb_165290" target="_blank" description="Explore Microsoft's official learning path for SC-900 exam preparation."/>
   </TabItem>
 
   <TabItem label="Videos">
   <CardGrid>
-    <LinkCard title="On Demand Instructor-led Training Series" href="https://learn.microsoft.com/shows/on-demand-instructor-led-training-series/?terms=SC-900&WT.mc_id=studentamb_165290" target="_blank"/>
+  <LinkCard title="On Demand Instructor-led Training Series" href="https://learn.microsoft.com/shows/on-demand-instructor-led-training-series/?terms=SC-900&WT.mc_id=studentamb_165290" target="_blank"/>
     <LinkCard title="A Guide To Cloud SC-900 Course" href="https://www.youtube.com/watch?v=UHeZnZpmtJM&list=PLhLKc18P9YOCAt0hPdnPavwr9V4ADItcq" target="_blank"/>
     <LinkCard title="John Savill SC-900 Study Cram V2" href="https://www.youtube.com/watch?v=-FJqb60wPSY" target="_blank"/>
     <LinkCard title="Inside Cloud and Security Cram" href="https://www.youtube.com/watch?v=rDxtTM7cOPI" target="_blank"/>
@@ -68,8 +41,8 @@ Explore Microsoft’s official learning path for SC-900 exam preparation.
   <TabItem label="Paid">
   <CardGrid>
     <LinkCard title="Microsoft's Official Coursera Course" href="https://www.coursera.org/professional-certificates/microsoft-cybersecurity-analyst" target="_blank"/>
-    <LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/sc-900-microsoft-security-compliance-identity-fundamentals-certkit.html#u44" target="_blank" />
-</CardGrid>
+    <LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/sc-900-microsoft-security-compliance-identity-fundamentals-certkit.html#u44" target="_blank"/>
+  </CardGrid>
   </TabItem>
 
   <TabItem label="Misc">
@@ -77,4 +50,20 @@ Explore Microsoft’s official learning path for SC-900 exam preparation.
     <LinkCard title="Microsoft 365 E5 Developer Tenant" href="https://developer.microsoft.com/microsoft-365/dev-program" target="_blank"/> 
   </CardGrid>
   </TabItem>
-  </Tabs>
+</Tabs>
+
+---
+      </Card>
+
+<Card title="MeasureUp Practice Tests" icon="open-book"> 
+<CardGrid>
+  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-sc-900-microsoft-security-compliance-and-identity-fundamentals.html#u44" target="_blank"/>
+  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-sc-900-microsoft-security-compliance-and-identity-fundamentals.html#u44" target="_blank"/>
+</CardGrid>
+  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
+      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
+      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
+
+      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
+      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
+</Card>
