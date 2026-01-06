@@ -2,46 +2,23 @@
 title: SC-401 Study Materials
 description: Study Materials for the SC-401 Exam
 ---
-import { LinkCard, CardGrid, Card, Icon, Tabs, TabItem, LinkButton, Aside } from '@astrojs/starlight/components';
+import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
+import { Icon } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
 
-<Aside type="caution">Most resources copied from SC-400 due to there being a significant overlap and new resources not being created yet.</Aside>
+<Card title="Get Started" icon="star"> 
 
-<LinkCard title="Explore additional resources below!" href="#studying-resources" />
-
-<Card title="Get Started" icon="star" color="goldenrod"> 
-  <LinkCard title="Exam SC-401: Administering Information Security in Microsoft 365" href="https://learn.microsoft.com/credentials/certifications/information-security-administrator?WT.mc_id=studentamb_165290" target="_blank"/>
-Demonstrate the fundamentals of data security, lifecycle management, information security, and compliance to protect a Microsoft 365 deployment.
-  <LinkCard title="SC-401 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-401?WT.mc_id=studentamb_165290" target="_blank"/>
-      Study guide contains topics and information you need to know to successfully prepare for the exam.
-  <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/sc-401t00/?WT.mc_id=studentamb_165290" target="_blank"/>
-Explore Microsoft’s official learning path for SC-401 exam preparation.
-  <LinkCard title="Practice Assessment" href="https://learn.microsoft.com/credentials/certifications/information-security-administrator/practice/assessment?assessment-type=practice&assessmentId=1801497482&WT.mc_id=studentamb_165290" target="_blank"/>
-      Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than the real exam.
-  <LinkCard title="Exam Sandbox" href="https://aka.ms/examdemo" target="_blank"/>
-      Near exact copy of the exam environment you encounter during the real exam. Explore the sandbox to get familiar with how the exam looks so you save time and are not caught off guard.
-  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/security/sc-401" target="_blank"/>
-      Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings, and Applied Skills.
-</Card>
-
-<Card title="MeasureUp Practice Tests" icon="open-book"> 
-<CardGrid>
-  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/microsoft-sc-401-assessment.html#u44" target="_blank"/>
-  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-sc-401-practice-test.html#u44" target="_blank"/>
-</CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
-</Card>
-### Studying Resources
-
+  <LinkCard title="Exam SC-401: Administering Information Security in Microsoft 365" href="https://learn.microsoft.com/credentials/certifications/information-security-administrator?WT.mc_id=studentamb_165290" target="_blank" description="Demonstrate the fundamentals of data security, lifecycle management, information security, and compliance to protect a Microsoft 365 deployment."/>
+      
+  <LinkCard title="SC-401 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-401?WT.mc_id=studentamb_165290" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for the exam."/>
+  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/security/sc-401" target="_blank" description="Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Led Trainings, and Applied Skills."/>
+     
+---
 <Tabs>
-
   <TabItem label="Text">
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/sc-401t00/?WT.mc_id=studentamb_165290" target="_blank" description="Explore Microsoft's official learning path for SC-401 exam preparation."/>
   <CardGrid>
-    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/sc-401t00/?WT.mc_id=studentamb_165290" target="_blank"/>
     <LinkCard title="Microsoft Ninja - Data Loss Prevention" href="https://techcommunity.microsoft.com/t5/security-compliance-and-identity/the-microsoft-purview-data-loss-prevention-ninja-training-is/ba-p/3659015?WT.mc_id=studentamb_165290" target="_blank"/>
     <LinkCard title="Microsoft Ninja - Information Protection" href="https://techcommunity.microsoft.com/t5/security-compliance-and-identity/the-microsoft-purview-information-protection-ninja-training-is/ba-p/2887478?WT.mc_id=studentamb_165290" target="_blank"/>
     <LinkCard title="Microsoft Ninja - Insider Risk Management" href="https://techcommunity.microsoft.com/t5/security-compliance-and-identity/become-an-insider-risk-management-ninja/ba-p/3282306?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -51,7 +28,7 @@ Explore Microsoft’s official learning path for SC-401 exam preparation.
 
   <TabItem label="Videos">
   <CardGrid>
-    <LinkCard title="Mark Grimes Course" href="https://www.youtube.com/watch?v=al2u_pmBfzU&list=PLVY1cokqlbC4rvw4hjSdJn6RkM_30peTR" target="_blank"/>
+  <LinkCard title="Mark Grimes Course" href="https://www.youtube.com/watch?v=al2u_pmBfzU&list=PLVY1cokqlbC4rvw4hjSdJn6RkM_30peTR" target="_blank"/>
     <LinkCard title="Microsoft Security Virtual Training Day: Implement Data Security with Microsoft Purview​" href="https://www.microsoft.com/en-us/events/category/microsoft-virtual-training-days?filters=primary-language%3Aenglish&q=Implement+Data+Security+with+Microsoft+Purview%E2%80%8B&scenario=mvtd" target="_blank"/>
     <LinkCard title="Microsoft Purview Academy" href="https://microsoft.github.io/PartnerResources/skilling/microsoft-security-academy/purview-academy" target="_blank"/>
     <LinkCard title="Peter Rising MVP" href="https://www.youtube.com/playlist?list=PL9f-PbmksakACxw-D4ZSTav-Gl-uMBmVZ" target="_blank"/>
@@ -75,11 +52,26 @@ Explore Microsoft’s official learning path for SC-401 exam preparation.
   </CardGrid>
   </TabItem>
 
-
   <TabItem label="Misc">
   <CardGrid>
     <LinkCard title="Microsoft 365 E5 Developer Tenant" href="https://developer.microsoft.com/microsoft-365/dev-program?WT.mc_id=studentamb_165290" target="_blank"/> 
     <LinkCard title="Microsoft Log Analytics Workspace demo environment" href="https://aka.ms/lademo" target="_blank"/> 
   </CardGrid>
   </TabItem>
-  </Tabs>
+</Tabs>
+
+---
+      </Card>
+
+<Card title="MeasureUp Practice Tests" icon="open-book"> 
+<CardGrid>
+  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/microsoft-sc-401-assessment.html#u44" target="_blank"/>
+  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-sc-401-practice-test.html#u44" target="_blank"/>
+</CardGrid>
+  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
+      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
+      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
+
+      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
+      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
+</Card>
