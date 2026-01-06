@@ -7,20 +7,55 @@ import { Icon } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
-<LinkCard title="Explore additional resources below!" href="#studying-resources" />
-
 <Card title="Get Started" icon="star"> 
-  <LinkCard title="Exam AI-900: Microsoft Azure AI Fundamentals" href="https://learn.microsoft.com/credentials/certifications/azure-ai-fundamentals/?WT.mc_id=studentamb_165290" target="_blank"/>
-      Demonstrate fundamental AI concepts related to the development of software and services of Microsoft Azure to create AI solutions.
-  <LinkCard title="AI-900 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-900?WT.mc_id=studentamb_165290" target="_blank"/>
-      Study guide contains topics and information you need to know to successfully prepare for the exam.
-  <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/ai-900t00?WT.mc_id=studentamb_165290" target="_blank"/>
-      This course introduces fundamentals concepts related to artificial intelligence (AI), and the services in Microsoft Azure that can be used to create AI solutions. The course is not designed to teach students to become professional data scientists or software developers, but rather to build awareness of common AI workloads and the ability to identify Azure services to support them.
-  <LinkCard title="Practice Assessment" href="https://learn.microsoft.com/certifications/exams/ai-900/practice/assessment?assessment-type=practice&assessmentId=26&WT.mc_id=studentamb_165290" target="_blank"/>
-      Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than the real exam.
-  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/azure/ai-900" target="_blank"/>
-      Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Led Trainings and Microsoft Learn.
-</Card>
+
+  <LinkCard title="Exam AI-900: Microsoft Azure AI Fundamentals" href="https://learn.microsoft.com/credentials/certifications/azure-ai-fundamentals/?WT.mc_id=studentamb_165290" target="_blank" description="Demonstrate fundamental AI concepts related to the development of software and services of Microsoft Azure to create AI solutions."/>
+      
+  <LinkCard title="AI-900 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-900?WT.mc_id=studentamb_165290" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for the exam."/>
+  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/azure/ai-900" target="_blank" description="Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Led Trainings and Microsoft Learn."/>
+     
+---
+<Tabs>
+  <TabItem label="Text">
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/ai-900t00?WT.mc_id=studentamb_165290" target="_blank" description="This course introduces fundamentals concepts related to artificial intelligence (AI), and the services in Microsoft Azure that can be used to create AI solutions. The course is not designed to teach students to become professional data scientists or software developers, but rather to build awareness of common AI workloads and the ability to identify Azure services to support them."/>
+  </TabItem>
+
+  <TabItem label="Videos">
+  <CardGrid>
+  <LinkCard title="On Demand Instructor-led Training Series" href="https://learn.microsoft.com/shows/on-demand-instructor-led-training-series/ai-900-01-fy25/?WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="A Guide To Cloud AI-900 Course" href="https://www.youtube.com/watch?v=TOZZ0iWdrO0&pp=ygUNYWkgOTAwIGNvdXJzZQ%3D%3D" target="_blank"/>
+    <LinkCard title="John Savill AI-900 Study Guide" href="https://www.youtube.com/watch?v=E9aarWMLJw0&pp=ygUNYWkgOTAwIGNvdXJzZQ%3D%3D" target="_blank"/>
+    <LinkCard title="John Savill AI-900 - Learning About Generative AI" href="https://www.youtube.com/watch?v=Ch6KE7KxHGM" target="_blank"/>
+    <LinkCard title="Microsoft Virtual Training Day: Develop generative AI apps with Azure AI Foundry" href="https://www.microsoft.com/en-us/events/category/microsoft-virtual-training-days?filters=primary-language%3Aenglish%2Cproduct%3Aazure&scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Develop+generative+AI+apps+with+Azure+AI+Foundry" target="_blank"/>
+    <LinkCard title="Microsoft Enterprise Skills Initiative Intructor-led course" href="https://esi.microsoft.com/Search?q=AI-900&avail=Available&learningoption=Advanced+Role+Based" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Tests">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/certifications/exams/ai-900/practice/assessment?assessment-type=practice&assessmentId=26&WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-ai-900-microsoft-azure-ai-fundamentals.html#u44" target="_blank"/>
+    <LinkCard title="MeasureUp Practice Tests" href="https://www.measureup.com/microsoft-practice-test-ai-900-microsoft-azure-ai-fundamentals.html#u44" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Paid">
+  <CardGrid>
+    <LinkCard title="Scott Duffy's AI-900 Udemy Course" href="https://www.udemy.com/course/ai900-azure/" target="_blank"/>
+    <LinkCard title="Microsoft's Official Coursera Course" href="https://www.coursera.org/specializations/microsoft-azure-ai-900-ai-fundamentals" target="_blank"/>
+    <LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/certkit-ai-900-microsoft-azure-ai-fundamentals.html#u44" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Misc">
+  <CardGrid>
+    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/free?WT.mc_id=studentamb_165290" target="_blank"/> 
+  </CardGrid>
+  </TabItem>
+</Tabs>
+
+---
+      </Card>
 
 <Card title="MeasureUp Practice Tests" icon="open-book"> 
 <CardGrid>
@@ -34,47 +69,3 @@ import { Aside } from '@astrojs/starlight/components';
       MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
       <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
 </Card>
-
-### Studying Resources
-
-<Tabs>
-
-  <TabItem label="Text">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/certifications/exams/ai-900?WT.mc_id=studentamb_165290" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Videos">
-  <CardGrid>
-    <LinkCard title="On Demand Instructor-led Training Series" href="https://learn.microsoft.com/shows/on-demand-instructor-led-training-series/ai-900-01-fy25/?WT.mc_id=studentamb_165290" target="_blank"/>
-    <LinkCard title="A Guide To Cloud AI-900 Course" href="https://www.youtube.com/watch?v=TOZZ0iWdrO0&pp=ygUNYWkgOTAwIGNvdXJzZQ%3D%3D" target="_blank"/>
-    <LinkCard title="John Savill AI-900 Study Guide" href="https://www.youtube.com/watch?v=E9aarWMLJw0&pp=ygUNYWkgOTAwIGNvdXJzZQ%3D%3D" target="_blank"/>
-    <LinkCard title="John Savill AI-900 - Learning About Generative AI" href="https://www.youtube.com/watch?v=Ch6KE7KxHGM" target="_blank"/>
-    <LinkCard title="Microsoft Virtual Training Day: Develop generative AI apps with Azure AI Foundry" href="https://www.microsoft.com/en-us/events/category/microsoft-virtual-training-days?filters=primary-language%3Aenglish%2Cproduct%3Aazure&scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Develop+generative+AI+apps+with+Azure+AI+Foundry" target="_blank"/>
-    <LinkCard title="Microsoft Enterprise Skills Initiative Intructor-led course" href="https://esi.microsoft.com/Search?q=AI-900&avail=Available&learningoption=Advanced+Role+Based" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Paid">
-  <CardGrid>
-    <LinkCard title="Scott Duffy's AI-900 Udemy Course" href="https://www.udemy.com/course/ai900-azure/" target="_blank"/>
-    <LinkCard title="Microsoft's Official Coursera Course" href="https://www.coursera.org/specializations/microsoft-azure-ai-900-ai-fundamentals" target="_blank"/>
-    <LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/certkit-ai-900-microsoft-azure-ai-fundamentals.html#u44" target="_blank" />
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Tests">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/certifications/exams/ai-900/practice/assessment?assessment-type=practice&assessmentId=26&WT.mc_id=studentamb_165290" target="_blank"/>
-    <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-ai-900-microsoft-azure-ai-fundamentals.html#u44" target="_blank"/>
-    <LinkCard title="MeasureUp Practice Tests" href="https://www.measureup.com/microsoft-practice-test-ai-900-microsoft-azure-ai-fundamentals.html#u44" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Misc">
-  <CardGrid>
-    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/free?WT.mc_id=studentamb_165290" target="_blank"/> 
-  </CardGrid>
-  </TabItem>
-  </Tabs>
