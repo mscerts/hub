@@ -1,4 +1,4 @@
----
+﻿---
 title: DP-300 Study Materials
 description: Microsoft Azure Database Administrator Associate
 ---
@@ -6,24 +6,60 @@ import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
-<LinkCard title="Explore additional resources below!" href="#studying-resources" />
-
 <Card title="Get Started" icon="star"> 
-  <LinkCard title="Exam DP-300: Microsoft Azure Database Administrator Associate" href="https://learn.microsoft.com/credentials/certifications/azure-database-administrator-associate/?WT.mc_id=studentamb_165290" target="_blank"/>
-Administer an SQL Server database infrastructure for cloud, on-premises and hybrid relational databases using the Microsoft PaaS relational database offerings.  <LinkCard title="DP-300 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-300?WT.mc_id=studentamb_165290" target="_blank"/>
-      Study guide contains topics and information you need to know to successfully prepare for the exam.
-  <LinkCard title="Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-dp-300-plan-and-implement-data-platform-resources-1-of-5?WT.mc_id=studentamb_165290" target="_blank"/>
-      Series of videos that explain what the exam tests you on so you don't miss any important topics.
-  <LinkCard title="Practice Assessment" href="https://learn.microsoft.com/credentials/certifications/azure-database-administrator-associate/practice/assessment?assessment-type=practice&assessmentId=58&practice-assessment-type=certification&assessmentId=58&WT.mc_id=studentamb_165290" target="_blank"/>
-      Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than the real exam.
-  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/azure/dp-300/" target="_blank"/>
-      Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings, Applied Skills and Microsoft Learn.
-</Card>
+
+  <LinkCard title="Exam DP-300: Database Administrator" href="https://learn.microsoft.com/credentials/certifications/azure-database-administrator-associate?WT.mc_id=studentamb_165290" target="_blank" description="Manage and maintain the health and security of your on-premises and cloud databases using Azure SQL, SQL Server, and SQL Managed Instances."/>
+      
+  <LinkCard title="DP-300 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-300?WT.mc_id=studentamb_165290" target="_blank" description="Study guides contain topics and information you need to know to successfully prepare for the exam."/>
+  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/azure/dp-300" target="_blank" description="Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings."/>
+     
+---
+<Tabs>
+  <TabItem label="Text">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/paths/azure-sql-fundamentals?WT.mc_id=studentamb_165290" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Videos">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-dp-300-plan-and-implement-data-platform-resources-1-of-5?WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="On Demand Instructor-led Training Series" href="https://learn.microsoft.com/shows/on-demand-instructor-led-training-series/?terms=DP-300&WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="Microsoft Virtual Training Day" href="https://learn.microsoft.com/shows/on-demand-instructor-led-training-series/?terms=Azure%20SQL%20Database%20Administrator&WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="Microsoft Enterprise Skills Initiative" href="https://esi.microsoft.com/Search?q=DP-300&avail=Available&learningoption=Advanced+Role+Based" target="_blank"/>
+    <LinkCard title="John Savill YouTube Course" href="https://www.youtube.com/watch?v=tM14zl4XYvg" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Tests">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/certifications/exams/dp-300/practice/assessment?assessment-type=practice&assessmentId=33&WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="MeasureUp Practice Tests" href="https://www.measureup.com/microsoft-practice-test-dp-300-azure-database-administrator.html#u44" target="_blank"/>
+    <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-dp-300-azure-database-administrator.html#u44" target="_blank"/>
+    <LinkCard title="Whizlab Practice Tests" href="https://www.whizlabs.com/microsoft-azure-database-administrator-associate-dp-300-certification/" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Paid">
+  <CardGrid>
+    <LinkCard title="Pluralsight Course" href="https://www.pluralsight.com/paths/microsoft-azure-database-administrator-associate-dp-300" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Misc">
+  <CardGrid>
+    <LinkCard title="KodeKloud SQL DBA Practice" href="https://www.kodekloud.com/courses/sql-database-administrator-associate-dp-300/" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+</Tabs>
+
+---
+      </Card>
 
 <Card title="MeasureUp Practice Tests" icon="open-book"> 
 <CardGrid>
-  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-dp-300-administering-relational-databases-on-microsoft-azure.html#u44" target="_blank"/>
-  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-dp-300-administering-relational-databases-on-microsoft-azure.html#u44" target="_blank"/>
+  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-dp-300-azure-database-administrator.html#u44" target="_blank"/>
+  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-dp-300-azure-database-administrator.html#u44" target="_blank"/>
 </CardGrid>
   <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
       Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
@@ -32,45 +68,3 @@ Administer an SQL Server database infrastructure for cloud, on-premises and hybr
       MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
       <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
 </Card>
-
-### Studying Resources
-
-<Tabs>
-
-  <TabItem label="Text">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/certifications/exams/dp-300?WT.mc_id=studentamb_165290" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Videos">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-dp-300-plan-and-implement-data-platform-resources-1-of-5?WT.mc_id=studentamb_165290" target="_blank"/>
-    <LinkCard title="On Demand Instructor-led Training Series: Migrate SQL Server workloads to Azure SQL" href="https://learn.microsoft.com/shows/on-demand-instructor-led-training-series/?terms=DP-3001&WT.mc_id=studentamb_165290" target="_blank"/>
-    <LinkCard title="On Demand Instructor-led Training Series" href="https://learn.microsoft.com/collections/e4yzhxxqzyqpde?WT.mc_id=studentamb_165290" target="_blank"/>
-    <LinkCard title="Microsoft Azure Virtual Training Day: Migrate and Secure Windows Server and SQL Server Workloads" href="https://www.microsoft.com/en-us/events/category/microsoft-virtual-training-days?filters=primary-language%3Aenglish&q=Migrate+and+Secure+Windows+Server+and+SQL+Server+Workloads&scenario=mvtd" target="_blank"/>
-    <LinkCard title="Microsoft Enterprise Skills Initiative Intructor-led course" href="https://esi.microsoft.com/Search?q=DP-300&avail=Available&learningoption=Advanced+Role+Based" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Paid">
-  <CardGrid>
-    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/offers/ms-azr-0044p?WT.mc_id=studentamb_165290?WT.mc_id=studentamb_165290" target="_blank"/> 
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Tests">
-  <CardGrid>
-   <LinkCard title="Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/credentials/certifications/azure-database-administrator-associate/practice/assessment?assessment-type=practice&assessmentId=58&practice-assessment-type=certification&assessmentId=58&WT.mc_id=studentamb_165290" target="_blank"/>
-   <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-dp-300-administering-relational-databases-on-microsoft-azure.html#u44" target="_blank"/>
-   <LinkCard title="MeasureUp Practice Tests" href="https://www.measureup.com/microsoft-practice-test-dp-300-administering-relational-databases-on-microsoft-azure.html#u44" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Misc">
-  <CardGrid>
-    <LinkCard title="Applied Skills - Migrate SQL Server workloads to Azure SQL Database" href="https://learn.microsoft.com/credentials/applied-skills/migrate-sql-workloads-azure-sql-database?WT.mc_id=studentamb_165290" target="_blank"/> 
-    <LinkCard title="KodeKloud Azure Playground" href="https://kodekloud.com/cloud-playgrounds/azure" target="_blank"/> 
-  </CardGrid>
-  </TabItem>
-</Tabs>

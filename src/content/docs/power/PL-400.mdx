@@ -1,28 +1,57 @@
----
+﻿---
 title: PL-400 Study Materials
 description: Microsoft Power Platform Developer
 ---
 import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
-import { Icon } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
-<LinkCard title="Explore additional resources below!" href="#studying-resources" />
-
 <Card title="Get Started" icon="star"> 
-  <LinkCard title="Exam PL-400: Microsoft Power Platform Developer" href="https://learn.microsoft.com/credentials/certifications/power-platform-developer-associate?WT.mc_id=studentamb_165290" target="_blank"/>
-      Demonstrate how to simplify, automate, and transform business tasks and processes using Microsoft Power Platform Developer.
-  <LinkCard title="PL-400 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/pl-400?WT.mc_id=studentamb_165290" target="_blank"/>
-      Study guides contain topics and information you need to know to successfully prepare for the exam.
-  <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/pl-400t00/?WT.mc_id=studentamb_165290" target="_blank"/>
-      Explore Microsoft’s official learning path for PL-400 exam preparation.
-  <LinkCard title="Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-pl-400-create-a-technical-design/?WT.mc_id=studentamb_165290" target="_blank"/>
-      Series of videos that explain what the exam tests you on so you don't miss any important topic.
-  <LinkCard title="Practice Assessment" href="https://learn.microsoft.com/certifications/exams/pl-400/practice/assessment?assessment-type=practice&assessmentId=66&WT.mc_id=studentamb_165290" target="_blank"/>
-      Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than the real exam.
-  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/power/pl-400" target="_blank"/>
-      Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings.
-</Card>
+
+  <LinkCard title="Exam PL-400: Microsoft Power Platform Developer" href="https://learn.microsoft.com/credentials/certifications/power-platform-developer-associate?WT.mc_id=studentamb_165290" target="_blank" description="Demonstrate your capabilities to extend the Microsoft Power Platform to complete business requirements."/>
+      
+  <LinkCard title="PL-400 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/pl-400?WT.mc_id=studentamb_165290" target="_blank" description="Study guides contain topics and information you need to know to successfully prepare for the exam."/>
+  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/power/pl-400" target="_blank" description="Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings."/>
+     
+---
+<Tabs>
+  <TabItem label="Text">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/pl-400t00?WT.mc_id=studentamb_165290" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Videos">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/?terms=PL-400&WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="CRM Chap Exam Prep" href="https://www.youtube.com/playlist?list=PL-0x45utTwSoWlA6dHxgKVAIl0xSn1d-C" target="_blank"/>
+    <LinkCard title="Teams Learning Room Sessions" href="https://www.youtube.com/@TeamsLearningRoom/playlists" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Tests">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/certifications/exams/pl-400/practice/assessment?assessment-type=practice&assessmentId=49&WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="MeasureUp Practice Tests" href="https://www.measureup.com/microsoft-practice-test-pl-400-microsoft-power-platform-developer.html#u44" target="_blank"/>
+    <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-pl-400-microsoft-power-platform-developer.html#u44" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Paid">
+  <CardGrid>
+    <LinkCard title="Pluralsight Course" href="https://www.pluralsight.com/paths/microsoft-power-platform-developer-pl-400" target="_blank"/>
+    <LinkCard title="LinkedIn Learning Course" href="https://www.linkedin.com/learning/cert-prep-power-platform-developer-associate-pl-400" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Misc">
+  <CardGrid>
+  </CardGrid>
+  </TabItem>
+</Tabs>
+
+---
+      </Card>
 
 <Card title="MeasureUp Practice Tests" icon="open-book"> 
 <CardGrid>
@@ -36,45 +65,3 @@ import { Aside } from '@astrojs/starlight/components';
       MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
       <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
 </Card>
-
-
-### Studying Resources
-
-<Tabs>
-
-  <TabItem label="Text">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/pl-400t00/?WT.mc_id=studentamb_165290" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Videos">
-  <CardGrid>
-	  <LinkCard title="Microsoft Learn Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-pl-400-create-a-technical-design/?WT.mc_id=studentamb_165290" target="_blank"/>
-    <LinkCard title="CRM Chap Exam Prep" href="https://youtube.com/playlist?list=PLAuip8FYPopS-eY6AbOBNBzA4XM0g2a6b" target="_blank"/>
-    <LinkCard title="Microsoft Teams Learning Room by Julian Sharp (check the file tab once you have joined)" href="https://teams.microsoft.com/l/channel/19%3af47f5a017e9e44beb9340dfd21ac99ae%40thread.tacv2/Certification%2520Study%2520Groups?groupId=96c164d4-8ab0-400c-8f12-afeb32486a60&tenantId=b4c9f32e-da17-4ded-9c95-ce9da38f25d9" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Tests">
-    <CardGrid>
-      <LinkCard title="Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/certifications/exams/pl-400/practice/assessment?assessment-type=practice&assessmentId=66&WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-pl-400-microsoft-power-platform-developer.html#u44" target="_blank"/>
-      <LinkCard title="MeasureUp Practice Tests" href="https://www.measureup.com/microsoft-practice-test-pl-400-microsoft-power-platform-developer.html#u44" target="_blank"/>
-      <LinkCard title="Whizlab Practice Tests" href="https://www.whizlabs.com/microsoft-power-platform-developer-pl400/" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-
-  <TabItem label="Paid">
-  <CardGrid>
-    <LinkCard title="Pluralsight Course" href="https://www.pluralsight.com/paths/microsoft-power-platform-developer-pl-400" target="_blank"/>
-    <LinkCard title="LinkedIn Learning Course by Keith Atherton" href="https://www.linkedin.com/learning/cert-prep-power-platform-developer-associate-pl-400" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Misc">
-  <CardGrid>
-  </CardGrid>
-  </TabItem>
-
-</Tabs>

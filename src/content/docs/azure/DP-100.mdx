@@ -1,31 +1,64 @@
----
+﻿---
 title: DP-100 Study Materials
-description:  Microsoft Azure Data Scientist Associate
+description: Microsoft Azure Data Scientist Associate
 ---
 import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
-<LinkCard title="Explore additional resources below!" href="#studying-resources" />
-
 <Card title="Get Started" icon="star"> 
-  <LinkCard title="Exam DP-100: Microsoft Azure Data Scientist Associate" href="https://learn.microsoft.com/credentials/certifications/azure-data-scientist/?WT.mc_id=studentamb_165290" target="_blank"/>
-Manage data ingestion and preparation, model training and deployment, and machine learning solution monitoring with Python, Azure Machine Learning and MLflow.  <LinkCard title="DP-100 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-100?WT.mc_id=studentamb_165290" target="_blank"/>
-      Comprehensive study guide covering exam objectives and key concepts.
-  <LinkCard title="Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-dp-100-design-and-prepare-a-machine-learning-solution-1-of-4?WT.mc_id=studentamb_165290" target="_blank"/>
-      Series of videos that explain what the exam tests you on so you don't miss any important topics.
-  <LinkCard title="Practice Assessment" href="https://learn.microsoft.com/certifications/exams/dp-100/practice/assessment?assessment-type=practice&assessmentId=62&WT.mc_id=studentamb_165290" target="_blank"/>
-      Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than the real exam.
-  <LinkCard title="Exam Sandbox" href="https://aka.ms/examdemo" target="_blank"/>
-      Near exact copy of the exam environment you encouter during the real exam. Explore the sandbox to get familiar with how the exam looks so you save time and are not caught off guard. 
-  <LinkCard title="GitHub Labs" href="https://certs.msfthub.wiki/labs/azure/dp-100" target="_blank"/>
-      Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings and Microsoft Learn
-</Card>
+
+  <LinkCard title="Exam DP-100: Data Scientist" href="https://learn.microsoft.com/credentials/certifications/azure-data-scientist?WT.mc_id=studentamb_165290" target="_blank" description="Apply your knowledge of machine learning operations and Azure Machine Learning to train, deploy, and monitor machine learning models on Azure."/>
+      
+  <LinkCard title="DP-100 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-100?WT.mc_id=studentamb_165290" target="_blank" description="Study guides contain topics and information you need to know to successfully prepare for the exam."/>
+  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/azure/dp-100" target="_blank" description="Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings."/>
+     
+---
+<Tabs>
+  <TabItem label="Text">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/paths/explore-data-science-tools-in-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Videos">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-dp-100-create-classification-model-with-azureml-designer-1-of-5?WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="On Demand Instructor-led Training Series" href="https://learn.microsoft.com/shows/on-demand-instructor-led-training-series/?terms=DP-100&WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="Microsoft Enterprise Skills Initiative" href="https://esi.microsoft.com/Search?q=DP-100&avail=Available&learningoption=Advanced+Role+Based" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Tests">
+  <CardGrid>
+    <LinkCard title="Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/certifications/exams/dp-100/practice/assessment?assessment-type=practice&assessmentId=32&WT.mc_id=studentamb_165290" target="_blank"/>
+    <LinkCard title="MeasureUp Practice Tests" href="https://www.measureup.com/microsoft-practice-test-dp-100-data-scientist.html#u44" target="_blank"/>
+    <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-dp-100-data-scientist.html#u44" target="_blank"/>
+    <LinkCard title="Whizlab Practice Tests" href="https://www.whizlabs.com/microsoft-azure-data-scientist-dp-100-certification/" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Paid">
+  <CardGrid>
+    <LinkCard title="Pluralsight Course" href="https://www.pluralsight.com/paths/microsoft-azure-data-scientist-dp-100" target="_blank"/>
+    <LinkCard title="Coursera Professional Certificate" href="https://www.coursera.org/professional-certificates/azure-data-scientist" target="_blank"/>
+    <LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/certkit-dp-100-data-scientist.html#u44" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Misc">
+  <CardGrid>
+  </CardGrid>
+  </TabItem>
+</Tabs>
+
+---
+      </Card>
 
 <Card title="MeasureUp Practice Tests" icon="open-book"> 
 <CardGrid>
-  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-dp-100-designing-and-implementing-a-data-science-solution-on-azure.html#u44" target="_blank"/>
-  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-dp-100-designing-and-implementing-a-data-science-solution-on-azure.html#u44" target="_blank"/>
+  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-dp-100-data-scientist.html#u44" target="_blank"/>
+  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-dp-100-data-scientist.html#u44" target="_blank"/>
 </CardGrid>
   <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
       Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
@@ -34,44 +67,3 @@ Manage data ingestion and preparation, model training and deployment, and machin
       MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
       <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
 </Card>
-
-### Studying Resources
-
-<Tabs>
-
-  <TabItem label="Text">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/certifications/exams/dp-100?WT.mc_id=studentamb_165290" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Videos">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn Exam Readiness Zone" href="https://learn.microsoft.com/shows/exam-readiness-zone/preparing-for-dp-100-design-and-prepare-a-machine-learning-solution-1-of-4?WT.mc_id=studentamb_165290" target="_blank"/>
-    <LinkCard title="On Demand Instructor-led Training Series" href="https://learn.microsoft.com/shows/on-demand-instructor-led-training-series/?terms=DP-100&WT.mc_id=studentamb_165290" target="_blank"/>
-    <LinkCard title="Microsoft Enterprise Skills Initiative Intructor-led course" href="https://esi.microsoft.com/Search?q=DP-100&avail=Available&learningoption=Advanced+Role+Based" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Paid">
-  <CardGrid>
-    <LinkCard title="Pluralsight Course" href="https://www.pluralsight.com/paths/microsoft-exam-dp-100-designing-and-implementing-a-data-science-solution-on-azure" target="_blank"/>
-    <LinkCard title="Microsoft's Official Coursera Course" href="https://www.coursera.org/professional-certificates/azure-data-scientist" target="_blank"/>
-    <LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/certkit-dp-100-designing-and-implementing-a-data-science-solution-on-azure.html#u44" target="_blank" />
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Tests">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/certifications/exams/dp-100/practice/assessment?assessment-type=practice&assessmentId=62&WT.mc_id=studentamb_165290" target="_blank"/>
-    <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-az-900-microsoft-azure-fundamentals.html#u44" target="_blank"/>
-    <LinkCard title="MeasureUp Practice Tests" href="https://www.measureup.com/microsoft-practice-test-dp-100-designing-and-implementing-a-data-science-solution-on-azure.html#u44" target="_blank"/>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Misc">
-  <CardGrid>
-    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/offers/ms-azr-0044p?WT.mc_id=studentamb_165290?WT.mc_id=studentamb_165290" target="_blank"/> 
-  </CardGrid>
-  </TabItem>
-</Tabs>

@@ -1,9 +1,8 @@
----
+﻿---
 title: GH-300 Study Materials
 description: GitHub Copilot
 ---
 import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
-import { Icon } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
@@ -11,25 +10,20 @@ import { Aside } from '@astrojs/starlight/components';
 
   <LinkCard title="Exam GH-300: GitHub Copilot" href="https://learn.microsoft.com/en-us/credentials/certifications/github-copilot/?WT.mc_id=studentamb_165290" target="_blank" description="Evaluates your skill in using the AI-driven code completion tool in various programming languages."/>
       
-  <LinkCard title="GH-300 Study Guide" href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-300?WT.mc_id=studentamb_165290" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for and pass the exam. "/>
+  <LinkCard title="GH-300 Study Guide" href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-300?WT.mc_id=studentamb_165290" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for and pass the exam."/>
+  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/github/gh-300" target="_blank" description="Collection of all lab exercises that Microsoft offers."/>
      
 ---
 <Tabs>
   <TabItem label="Text">
   <CardGrid>
-    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/en-us/training/courses/gh-300t00?WT.mc_id=studentamb_165290" target="_blank" description="It equips users with the knowledge and skills to use Copilot effectively while mitigating potential ethical and operational risks associated with AI usage."/>
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/en-us/training/courses/gh-300t00?WT.mc_id=studentamb_165290" target="_blank" description="It equips users with the knowledge and skills to use Copilot effectively while mitigating potential ethical and operational risks."/>
   </CardGrid>
   </TabItem>
 
   <TabItem label="Videos">
   <CardGrid>
-  	<LinkCard title="GitHub: How to use Copilot" href="https://www.youtube.com/watch?v=SJqGYwRq0uc" target="_blank" />
-  </CardGrid>
-  </TabItem>
-
-    <TabItem label="Paid">
-  <CardGrid>
-  	<LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/microsoft-gh-300-github-copilot-certkit.html#u44" target="_blank" />
+  	<LinkCard title="GitHub: How to use Copilot" href="https://www.youtube.com/watch?v=SJqGYwRq0uc" target="_blank"/>
   </CardGrid>
   </TabItem>
 
@@ -41,8 +35,20 @@ import { Aside } from '@astrojs/starlight/components';
   </CardGrid>
   </TabItem>
 
+  <TabItem label="Paid">
+  <CardGrid>
+  	<LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/microsoft-gh-300-github-copilot-certkit.html#u44" target="_blank"/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Misc">
+  <CardGrid>
+  </CardGrid>
+  </TabItem>
 </Tabs>
-</Card>
+
+---
+      </Card>
 
 <Card title="MeasureUp Practice Tests" icon="open-book"> 
 <CardGrid>
@@ -56,6 +62,3 @@ import { Aside } from '@astrojs/starlight/components';
       MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
       <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
 </Card>
-
-
-
