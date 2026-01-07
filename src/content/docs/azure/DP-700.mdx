@@ -3,34 +3,21 @@ title: DP-700 Study Materials
 description: Fabric Data Engineer Associate
 ---
 import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
-import { Icon } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
 
-<LinkCard title="Explore additional resources below!" href="#studying-resources" />
-
 <Card title="Get Started" icon="star"> 
-  <LinkCard title="Exam DP-700: Implementing Data Engineering Solutions Using Microsoft Fabric" href="https://learn.microsoft.com/credentials/certifications/fabric-data-engineer-associate?WT.mc_id=studentamb_165290" target="_blank"/>
-      As a Fabric Data Engineer, you should have subject matter expertise with data loading patterns, data architectures, and orchestration processes.
-  <LinkCard title="DP-700 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-700?WT.mc_id=studentamb_165290" target="_blank"/>
-      Study guide contains topics and information you need to know to successfully prepare for the exam. 
-  <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/dp-700t00?WT.mc_id=studentamb_165290#course-syllabus" target="_blank"/>
-      This course covers methods and practices to implement data engineering solutions by using Microsoft Fabric.
-  <LinkCard title="Practice Assessment" href="https://learn.microsoft.com/credentials/certifications/fabric-data-engineer-associate/practice/assessment?assessment-type=practice&assessmentId=1704375541&WT.mc_id=studentamb_165290" target="_blank"/>
-      Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than the real exam.
-  <LinkCard title="Exam Sandbox" href="https://aka.ms/examdemo" target="_blank"/>
-      Near exact copy of the exam environment you encouter during the real exam. Explore the sandbox to get familiar with how the exam looks so you save time and are not caught off guard. 
-  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/azure/dp-700" target="_blank"/>
-      Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings, Applied Skills and Microsoft Learn.
-</Card>
 
-### Studying Resources
-
+  <LinkCard title="Exam DP-700: Fabric Data Engineer" href="https://learn.microsoft.com/credentials/certifications/fabric-data-engineer-associate?WT.mc_id=studentamb_165290" target="_blank" description="Demonstrate expertise in implementing data engineering solutions using Microsoft Fabric, including data loading patterns, data architectures, and orchestration processes."/>
+      
+  <LinkCard title="DP-700 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-700?WT.mc_id=studentamb_165290" target="_blank" description="Study guides contain topics and information you need to know to successfully prepare for the exam."/>
+  <LinkCard title="Exam Labs" href="https://certs.msfthub.wiki/labs/azure/dp-700" target="_blank" description="Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings."/>
+     
+---
 <Tabs>
-
   <TabItem label="Text">
+  <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/dp-700t00?WT.mc_id=studentamb_165290" target="_blank" description="This course covers methods and practices to implement data engineering solutions by using Microsoft Fabric. Students will learn how to design and develop effective data loading patterns, data architectures, and orchestration processes."/>
   <CardGrid>
-    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/dp-700t00?WT.mc_id=studentamb_165290#course-syllabus" target="_blank"/>
   </CardGrid>
   </TabItem>
 
@@ -38,25 +25,42 @@ import { Aside } from '@astrojs/starlight/components';
   <CardGrid>
     <LinkCard title="Aleksi Partanen - Master Microsoft Fabric" href="https://www.youtube.com/watch?v=jTDSP7KBavI" target="_blank"/>
     <LinkCard title="On Demand Instructor-led Training Series" href="https://aka.ms/DP-700onYouTube" target="_blank"/>
+  </CardGrid>
+  </TabItem>
 
+  <TabItem label="Tests">
+    <LinkCard title="Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/credentials/certifications/fabric-data-engineer-associate/practice/assessment?assessment-type=practice&assessmentId=1704375541&WT.mc_id=studentamb_165290" target="_blank" description="Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than real exams."/>
+  <CardGrid>
+    <LinkCard title="CertiAce Practice Tests" href="https://certiace.com/practice/DP-700" target="_blank"/>
+    <LinkCard title="MeasureUp Practice Tests" href="https://www.measureup.com/microsoft-practice-test-dp-700-fabric-data-engineer.html#u44" target="_blank"/>
   </CardGrid>
   </TabItem>
 
   <TabItem label="Paid">
   <CardGrid>
-  </CardGrid>
-  </TabItem>
-
-  <TabItem label="Tests">
-  <CardGrid>
-    <LinkCard title="Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/credentials/certifications/fabric-data-engineer-associate/practice/assessment?assessment-type=practice&assessmentId=1704375541&WT.mc_id=studentamb_165290" target="_blank"/>
-    <LinkCard title="CertiAce" href="https://certiace.com/practice/DP-700" target="_blank"/>
+    <LinkCard title="MeasureUp Certkit" href="https://www.measureup.com/certkit-dp-700-fabric-data-engineer.html#u44" target="_blank"/>
   </CardGrid>
   </TabItem>
 
   <TabItem label="Misc">
   <CardGrid>
-    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/offers/ms-azr-0044p?WT.mc_id=studentamb_165290" target="_blank"/> 
+    <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/free/" target="_blank"/>
   </CardGrid>
   </TabItem>
-  </Tabs>
+</Tabs>
+
+---
+      </Card>
+
+<Card title="MeasureUp Practice Tests" icon="open-book"> 
+<CardGrid>
+  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-dp-700-fabric-data-engineer.html#u44" target="_blank"/>
+  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-dp-700-fabric-data-engineer.html#u44" target="_blank"/>
+</CardGrid>
+  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
+      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps 
+      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
+
+      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months. 
+      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
+</Card>
