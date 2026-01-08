@@ -6,6 +6,7 @@ import starlightCoolerCredit from 'starlight-cooler-credit'
 import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
 import starlightBlog from 'starlight-blog';
 import starlightVideos from 'starlight-videos'
+import Icons from 'starlight-plugin-icons'
 
 const googleAnalyticsId = 'G-CDTP3TERKP'
 const clarityAnalyticsId = 'ke9gk0s2sg'
@@ -34,7 +35,12 @@ export default defineConfig({
         config: {
           forward: ["dataLayer.push", "gtag"],
         },
-    }), starlight({
+    }), 
+
+    Icons({
+    sidebar: true,
+    extractSafelist: true,
+    starlight: {
     plugins: [
        starlightCoolerCredit({
           showImage: true,
@@ -201,6 +207,7 @@ export default defineConfig({
         },
     ],
     lastUpdated: true,
-		}),
+		},
+    }),
     ],
 });
