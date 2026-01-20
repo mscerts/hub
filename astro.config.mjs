@@ -167,6 +167,7 @@ export default defineConfig({
         {
             label: 'Discounted Exam Vouchers',
             items: [
+	            { label: 'Get Fabric Certified', link: '/vouchers/getfabriccertified/' ,badge: { text: '100%', variant: 'tip' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '*50%', variant: 'note' }, },
                 { label: 'Microsoft x Coursera', link: '/vouchers/microsoftxcoursera/' ,badge: { text: '*50%', variant: 'note' }, },		
