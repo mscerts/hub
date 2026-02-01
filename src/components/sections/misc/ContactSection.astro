@@ -1,0 +1,69 @@
+---
+// Import the necessary dependencies.
+import ContactIconBlock from "@components/ui/blocks/ContactIconBlock.astro";
+import Icon from "@components/ui/icons/Icon.astro";
+
+// Define the variables that will be used in this component
+const title: string = "Contact us";
+const subTitle: string =
+  "Have questions or want to discuss a partnership/sponsership?";
+---
+
+<!-- Contact Us -->
+<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+  <div class="mx-auto max-w-2xl lg:max-w-5xl">
+    <div class="text-center">
+      <h1
+        class="text-balance text-2xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
+      >
+        {title}
+      </h1>
+      <p class="mt-1 text-pretty text-neutral-600 dark:text-neutral-400">
+        {subTitle}
+      </p>
+    </div>
+
+    <div class="mt-12 flex justify-center">
+      <!--ContactIconBlocks are used to display different methods of contacting, including visiting office, email, browsing knowledgebase, and FAQ.-->
+      <div class="w-full max-w-2xl divide-y divide-neutral-300 dark:divide-neutral-700">
+        <ContactIconBlock
+          heading="Contribution"
+          content="Read through our contribution guide to get started."
+          isLinkVisible={true}
+          linkTitle="Visit the guide"
+          linkURL="https://msfthub.com/contributing/"
+          isArrowVisible={true}
+          ><Icon name="question" />
+        </ContactIconBlock>
+
+        <ContactIconBlock
+          heading="Certification Feedback"
+          content="Do you have any feedback to share about Microsoft Certifications?"
+          isLinkVisible={true}
+          linkTitle="Make a ticket on Discord"
+          linkURL="https://discord.com/channels/676990910176821270/1224417876002472086/1224418310930825390"
+          isArrowVisible={true}
+          ><Icon name="chatBubble" />
+        </ContactIconBlock>
+
+        <ContactIconBlock
+          heading="Visit Our Community"
+          content="Microsoft Certification Hub"
+          isLinkVisible={true}
+          linkTitle="Join the Discord"
+          linkURL="https://discord.gg/microsoft-certification-study-group-676990910176821270"
+          ><Icon name="community" />
+        </ContactIconBlock>
+
+        <ContactIconBlock
+          heading="Contact Us By Email"
+          content="Prefer the written word? Drop us an email at"
+          isLinkVisible={true}
+          linkTitle="info@msfthub.wiki"
+          linkURL="mailto:info@msfthub.wiki"
+          ><Icon name="envelopeOpen" />
+        </ContactIconBlock>
+      </div>
+    </div>
+  </div>
+</section>

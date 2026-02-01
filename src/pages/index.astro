@@ -1,0 +1,113 @@
+---
+// Import the necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import HeroSection from "@components/sections/landing/HeroSection.astro";
+import ClientsSection from "@components/sections/landing/ClientsSection.astro";
+import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
+import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
+import FAQ from "@components/sections/misc/FAQ.astro";
+import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
+import heroImage from "@images/allplatforms.png";
+import faqs from "@data/faqs.json";
+import features from "@data/features.json";
+import featureImage from "@images/group.svg";
+import discord from "@images/discordo.avif";
+import blueprints from "@images/mch.png";
+import featuresImage from "@images/materials.png";
+import FeaturesStatsAlt from "@components/sections/features/FeaturesStatsAlt.astro";
+import TestimonialsSectionAlt from "@components/sections/testimonials/TestimonialsSectionAlt.astro";
+
+// Define avatar sources for the hero section
+const avatarSrcs: Array<string> = [
+  "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+];
+---
+
+<MainLayout>
+  <AnnouncementBanner
+    btnId="dismiss-button"
+    btnTitle="New GitHub Certifications on the Hub"
+    btnTitleMobile="New GitHub Certs"
+    url="https://msfthub.com/blog/githubexamsandignite/"
+  />
+
+  <HeroSection
+    title=`Empowering Every Step of Your <span
+        class="text-indigo-500 dark:text-indigo-400">Certification Journey</span>`
+    subTitle="Welcome to the Knowledge Hub for Microsoft Certifications"
+    primaryBtn="Start Learning"
+    primaryBtnURL="https://msfthub.com/guide/introduction/"
+    secondaryBtn="Join Our Community"
+    secondaryBtnURL="https://discord.gg/microsoft-certification-study-group-676990910176821270"
+    withReview={true}
+    avatars={avatarSrcs}
+    rating=`<span class="font-bold">42+ Certifications Available`
+    starCount={4}
+    reviews=`Helping over <span class="font-bold">80,000+</span> Students`
+    src={heroImage}
+    alt="Group of Microsoft product badges floating"
+  />
+
+  <FeaturesGeneral
+    title="Providing High Quality Resources"
+    subTitle="Master the unique challenges of cloud infrastructure. From foundational to expert-level certifications, our resources are designed to help you overcome obstacles and achieve your professional goals."
+    src={featureImage}
+    alt="Microsoft certification badges floating"
+    features={features}
+  />
+
+  <FeaturesNavs
+    title=`Customize <span class="text-indigo-500 dark:text-indigo-400">MSFTHub</span>'s offerings to perfectly suit your certification and learning needs.`
+    tabs={[
+      {
+        heading: "Certification Program Guide",
+        content:
+          "A step-by-step roadmap through the process from selecting the right track to scheduling your exam and renewing your credentials. We break down what to expect, how to prepare, and what comes after the badge.",
+        svg: "tools",
+        src: blueprints,
+        alt: "Certification roadmap and planning blueprints",
+        first: true,
+      },
+      {
+        heading: "Study Material Wiki",
+        content:
+          "A dynamic, crafted compendium of reference text resources, video links, practice tests and structured paths organized by exam and domain. Whether you're prepping your first fundamentals exam or aiming for an expert exam.",
+        svg: "dashboard",
+        src: featuresImage,
+        alt: "Study materials and learning features overview",
+      },
+      {
+        heading: "Community & Support",
+        content:
+          "Join our vibrant Discord community for real-time support, study groups, and collaboration. Connect with fellow certification seekers, share resources, and get answers from experienced professionals.",
+        svg: "discord",
+        src: discord,
+        alt: "MSFTHub community platform interface",
+      },
+    ]}
+  />
+
+  <FeaturesStatsAlt
+    title="Why Join The MSFTHub Community?"
+    subTitle="Our community is dedicated to empowering individuals on their Microsoft certification journey. By joining MSFTHub, you gain access to a wealth of resources, expert guidance, and a supportive network that will help you achieve your professional goals."
+    benefits={[
+      "Guidance from certified professionals and industry experts.",
+      "Get notified about the latest exam updates and changes.",
+      "Find study peers and collaborate on your certification journey.",
+    ]}
+    btnExists={true}
+    btnTitle="Join Us"
+    btnURL="https://discord.gg/microsoft-certification-study-group-676990910176821270"
+  />
+
+  <FAQ title="Frequently<br />asked questions" faqs={faqs} />
+
+
+{/*  <TestimonialsSectionAlt
+    title="What Our Customers Say"
+    testimonials={testimonials}
+  /> */}
+</MainLayout>

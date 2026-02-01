@@ -1,0 +1,229 @@
+---
+// Cookie Consent Modal Component
+// Provides a comprehensive UI for cookie consent management
+---
+
+<div id="cookie-consent-modal" class="cookie-consent-modal hidden">
+  <!-- Backdrop -->
+  <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-300" id="consent-backdrop"></div>
+  
+  <!-- Modal -->
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-neutral-800 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-neutral-200 dark:border-neutral-700">
+      <!-- Header -->
+      <div class="p-6 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
+            🍪 Cookie Preferences
+          </h2>
+          <button
+            id="close-modal"
+            class="text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors p-1"
+            aria-label="Close modal"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
+          We use cookies to enhance your browsing experience and analyze our traffic. Choose your preferences below.
+        </p>
+      </div>
+
+      <!-- Content -->
+      <div class="p-6 space-y-6">
+        <!-- Essential Cookies (Always Active) -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex-1">
+              <h3 class="font-medium text-neutral-900 dark:text-neutral-100">
+                Essential Cookies
+              </h3>
+              <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                Required for basic website functionality. These cannot be disabled.
+              </p>
+            </div>
+            <div class="flex items-center">
+              <span class="text-xs px-2 py-1 rounded-full dark:text-neutral-100">
+                Always Active
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics Cookies -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex-1">
+              <h3 class="font-medium text-neutral-900 dark:text-neutral-100">
+                Analytics Cookies
+              </h3>
+              <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                Help us understand how visitors interact with our website by collecting and reporting information anonymously.
+              </p>
+              <div class="mt-2 text-xs text-neutral-500 dark:text-neutral-500">
+                <span class="font-medium">Providers:</span> Microsoft Clarity and Google Analytics
+              </div>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                id="analytics-toggle"
+                class="sr-only peer"
+              >
+              <div class="w-11 h-6 bg-neutral-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-neutral-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-neutral-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Privacy Policy Link -->
+        <div class="bg-neutral-50 dark:bg-neutral-900 rounded-lg p-4">
+          <p class="text-xs text-neutral-600 dark:text-neutral-400">
+            For more information about how we use cookies, please read our 
+            <a href="/privacy" class="text-blue-600 dark:text-blue-400 hover:underline">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer Actions -->
+      <div class="p-6 border-t border-neutral-200 dark:border-neutral-700">
+        <div class="flex flex-col sm:flex-row gap-3 sm:justify-end">
+          <button
+            id="save-preferences"
+            class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
+          >
+            Save Preferences
+          </button>
+          <button
+            id="accept-all"
+            class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
+          >
+            Accept All
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-consent-modal {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .cookie-consent-modal.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Prevent body scroll when modal is open */
+  body.modal-open {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  import { cookieConsentManager } from '../../../utils/cookieConsent.ts';
+  
+  class CookieConsentModal {
+    private modal: HTMLElement;
+    private backdrop: HTMLElement;
+    private analyticsToggle: HTMLInputElement;
+
+    constructor() {
+      this.modal = document.getElementById('cookie-consent-modal')!;
+      this.backdrop = document.getElementById('consent-backdrop')!;
+      this.analyticsToggle = document.getElementById('analytics-toggle') as HTMLInputElement;
+
+      this.bindEvents();
+      this.loadCurrentPreferences();
+    }
+
+    private bindEvents(): void {
+      // Close modal events
+      document.getElementById('close-modal')?.addEventListener('click', () => this.hide());
+      this.backdrop.addEventListener('click', () => this.hide());
+
+      // Escape key to close
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.isVisible()) {
+          this.hide();
+        }
+      });
+
+      // Button events
+      document.getElementById('accept-all')?.addEventListener('click', () => {
+        cookieConsentManager.acceptAll();
+        this.hide();
+      });
+
+      document.getElementById('save-preferences')?.addEventListener('click', () => {
+        this.savePreferences();
+      });
+
+      // Toggle change events
+      this.analyticsToggle.addEventListener('change', () => {
+        this.updateToggleState();
+      });
+    }
+
+    private loadCurrentPreferences(): void {
+      const preferences = cookieConsentManager.getPreferences();
+      if (preferences) {
+        this.analyticsToggle.checked = preferences.analytics_storage === 'granted';
+      } else {
+        // Default to enabled for new users
+        this.analyticsToggle.checked = true;
+      }
+    }
+
+    private updateToggleState(): void {
+      // Visual feedback could be added here
+    }
+
+    private savePreferences(): void {
+      cookieConsentManager.setConsent({
+        analytics_storage: this.analyticsToggle.checked ? 'granted' : 'denied'
+      });
+      this.hide();
+    }
+
+    show(): void {
+      this.modal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+      
+      // Trigger reflow for animation
+      this.modal.offsetHeight;
+      
+      this.modal.classList.add('show');
+      this.loadCurrentPreferences();
+    }
+
+    hide(): void {
+      this.modal.classList.remove('show');
+      document.body.classList.remove('modal-open');
+      
+      setTimeout(() => {
+        this.modal.classList.add('hidden');
+      }, 300);
+    }
+
+    isVisible(): boolean {
+      return this.modal.classList.contains('show');
+    }
+  }
+
+  // Initialize modal when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = new CookieConsentModal();
+    
+    // Make modal globally available
+    (window as any).cookieConsentModal = modal;
+    
+    // Modal will only show when explicitly triggered from banner or button
+    // No auto-show behavior - let the banner handle initial consent
+  });
+</script>

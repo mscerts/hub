@@ -1,0 +1,229 @@
+---
+//Import relevant dependencies
+import ThemeIcon from "@components/ThemeIcon.astro";
+import NavLink from "@components/ui/links/NavLink.astro";
+import MegaMenuLink from "@components/ui/links/MegaMenuLink.astro";
+import enStrings from "@utils/navigation.ts";
+import BrandLogoLight from "../../../assets/images/logo_light.svg";
+import BrandLogoDark from "../../../assets/images/logo_dark.svg";
+
+// Use English strings
+const strings = enStrings;
+const homeUrl = "/";
+---
+
+<!-- Main header component -->
+<header
+  class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start"
+>
+  <!-- Navigation container -->
+  <nav
+    class="relative mx-2 w-full rounded-[36px] border border-yellow-100/40 bg-yellow-50/60 px-4 py-3 backdrop-blur-md dark:border-neutral-700/40 dark:bg-neutral-800/80 dark:backdrop-blur-md md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 xl:mx-auto"
+    aria-label="Global"
+  >
+    <div class="flex items-center justify-between">
+      <!-- Brand logo -->
+      <a
+        class="flex-none rounded-lg text-xl font-bold outline-hidden ring-zinc-500 focus-visible:ring-3 dark:ring-zinc-200 dark:focus:outline-hidden"
+        href={homeUrl}
+        aria-label="Brand"
+      >
+        <!-- Light theme logo (shown in light mode) -->
+        <img src={BrandLogoLight.src} alt="Brand Logo" class="h-auto w-35 block dark:hidden" />
+        <!-- Dark theme logo (shown in dark mode) -->
+        <img src={BrandLogoDark.src} alt="Brand Logo" class="h-auto w-35 hidden dark:block" />
+      </a>
+      <!-- Collapse toggle for smaller screens -->
+      <div class="ml-auto mr-5 md:hidden">
+        <button
+          type="button"
+          class="hs-collapse-toggle flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-neutral-600 transition duration-300 hover:bg-neutral-200 disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:outline-hidden"
+          data-hs-collapse="#navbar-collapse-with-animation"
+          aria-controls="navbar-collapse-with-animation"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            class="h-[1.25rem] w-[1.25rem] shrink-0 hs-collapse-open:hidden"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" x2="21" y1="6" y2="6"></line>
+            <line x1="3" x2="21" y1="12" y2="12"></line>
+            <line x1="3" x2="21" y1="18" y2="18"></line>
+          </svg>
+          <svg
+            class="hidden h-[1.25rem] w-[1.25rem] shrink-0 hs-collapse-open:block"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <!-- ThemeIcon component specifically for smaller screens -->
+      <span class="inline-block md:hidden">
+        <ThemeIcon />
+      </span>
+    </div>
+    <!-- Contains navigation links -->
+    <div
+      id="navbar-collapse-with-animation"
+      class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block"
+    >
+      <!-- Navigation links container -->
+      <div
+        class="mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-4 lg:gap-x-7 md:gap-y-0 md:ps-7"
+      >
+        <!-- Navigation links and Authentication component -->
+        {
+          strings.navBarLinks.map((link) => {
+            if (link.name === "Certifications") {
+              return <MegaMenuLink />;
+            } else {
+              return <NavLink url={link.url} name={link.name} />;
+            }
+          })
+        }
+
+        <!-- Discord Link -->
+        <a
+          href="https://discord.gg/microsoft-certification-study-group-676990910176821270"
+          target="_blank"
+          class="flex items-center gap-x-2 text-base md:text-sm font-medium text-neutral-600 ring-zinc-500 transition duration-300 focus-visible:ring-3 outline-hidden hover:text-orange-400 dark:hover:text-orange-300 dark:border-neutral-700 dark:text-neutral-400 dark:ring-zinc-200 dark:focus:outline-hidden md:my-6 md:border-s md:border-neutral-300 md:ps-6 2xl:text-base"
+        >
+          <svg
+            class="h-5 w-5 shrink-0"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.1.1 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.1 16.1 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02M8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12m6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12"></path>
+          </svg>
+        </a>
+        <!-- ThemeIcon component specifically for larger screens -->
+        <span class="hidden md:inline-block">
+          <ThemeIcon />
+        </span>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- Theme Appearance script to manage light/dark modes -->
+<script is:inline>
+  const HSThemeAppearance = {
+    init() {
+      const defaultTheme = "default";
+      let theme = localStorage.getItem("hs_theme") || defaultTheme;
+
+      if (document.querySelector("html").classList.contains("dark")) return;
+      this.setAppearance(theme);
+    },
+    _resetStylesOnLoad() {
+      const $resetStyles = document.createElement("style");
+      $resetStyles.innerText = `*{transition: unset !important;}`;
+      $resetStyles.setAttribute("data-hs-appearance-onload-styles", "");
+      document.head.appendChild($resetStyles);
+      return $resetStyles;
+    },
+    setAppearance(theme, saveInStore = true, dispatchEvent = true) {
+      const $resetStylesEl = this._resetStylesOnLoad();
+
+      if (saveInStore) {
+        localStorage.setItem("hs_theme", theme);
+      }
+
+      if (theme === "auto") {
+        theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "default";
+      }
+
+      document.querySelector("html").classList.remove("dark");
+      document.querySelector("html").classList.remove("default");
+      document.querySelector("html").classList.remove("auto");
+
+      document
+        .querySelector("html")
+        .classList.add(this.getOriginalAppearance());
+
+      setTimeout(() => {
+        $resetStylesEl.remove();
+      });
+
+      if (dispatchEvent) {
+        window.dispatchEvent(
+          new CustomEvent("on-hs-appearance-change", { detail: theme })
+        );
+      }
+    },
+    getAppearance() {
+      let theme = this.getOriginalAppearance();
+      if (theme === "auto") {
+        theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "default";
+      }
+      return theme;
+    },
+    getOriginalAppearance() {
+      const defaultTheme = "default";
+      return localStorage.getItem("hs_theme") || defaultTheme;
+    },
+  };
+  HSThemeAppearance.init();
+
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", () => {
+      if (HSThemeAppearance.getOriginalAppearance() === "auto") {
+        HSThemeAppearance.setAppearance("auto", false);
+      }
+    });
+
+  window.addEventListener("load", () => {
+    const $clickableThemes = document.querySelectorAll(
+      "[data-hs-theme-click-value]"
+    );
+    const $switchableThemes = document.querySelectorAll(
+      "[data-hs-theme-switch]"
+    );
+
+    $clickableThemes.forEach(($item) => {
+      $item.addEventListener("click", () =>
+        HSThemeAppearance.setAppearance(
+          $item.getAttribute("data-hs-theme-click-value"),
+          true,
+          $item
+        )
+      );
+    });
+
+    $switchableThemes.forEach(($item) => {
+      $item.addEventListener("change", (e) => {
+        HSThemeAppearance.setAppearance(e.target.checked ? "dark" : "default");
+      });
+
+      $item.checked = HSThemeAppearance.getAppearance() === "dark";
+    });
+
+    window.addEventListener("on-hs-appearance-change", (e) => {
+      $switchableThemes.forEach(($item) => {
+        $item.checked = e.detail === "dark";
+      });
+    });
+  });
+</script>

@@ -1,0 +1,35 @@
+---
+// Import the necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import ContactSection from "@components/sections/misc/ContactSection.astro";
+import { SITE } from "@data/constants";
+
+const pageTitle: string = `Contact | ${SITE.title}`;
+const metaDescription =
+  "Have questions or want to discuss something?";
+const ogTitle = "Contact Us | MSFTHub";
+---
+
+<MainLayout
+  title={pageTitle}
+  customDescription={metaDescription}
+  customOgTitle={ogTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://msfthub.com/contact",
+    url: "https://msfthub.com/contact",
+    name: "Contact Us | MSFTHub",
+    description:
+      "Have questions or want to discuss something? Reach out to the MSFTHub community.",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://msfthub.com",
+      name: "MSFTHub",
+      description: SITE.description,
+    },
+    inLanguage: "en-US",
+  }}
+>
+  <ContactSection />
+</MainLayout>

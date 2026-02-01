@@ -1,0 +1,144 @@
+---
+// Importing necessary components
+import Meta from "@components/Meta.astro";
+import Navbar from "@components/sections/navbar&footer/NavbarMegaMenu.astro";
+import FooterSection from "@components/sections/navbar&footer/FooterSection.astro";
+import CookieConsentBanner from "@components/ui/banners/CookieConsentBanner.astro";
+import CookieConsentModal from "@components/ui/modals/CookieConsentModal.astro";
+import { SITE } from "@data/constants";
+import "@styles/global.css";
+
+// Setting expected props
+const {
+  title = SITE.title,
+  meta,
+  structuredData,
+  lang = "en",
+  customDescription = null,
+  customOgTitle = null,
+} = Astro.props;
+
+// Interface to type-check the properties
+interface Props {
+  title?: string;
+  meta?: string;
+  structuredData?: object;
+  lang?: string;
+  customDescription?: string | null;
+  customOgTitle?: string | null;
+}
+
+const clarityAnalyticsId = 'u7pei4s9cq'
+const googleAnalyticsId = 'G-CDTP3TERKP'
+const googleTagManagerId = 'GTM-TMNHVD5B'
+---
+
+<html lang={lang} class="scrollbar-hide scroll-pt-16">
+  <head>
+    {/* Adding metadata to the HTML document */}
+    <Meta
+      meta={meta}
+      structuredData={structuredData}
+      customDescription={customDescription}
+      customOgTitle={customOgTitle}
+    />
+    {/* Define the title of the page */}
+    <title>{title}</title>
+    {/* Google Analytics */}
+    <script 
+      src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+      async
+    ></script>
+    <script is:inline define:vars={{ googleAnalyticsId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', googleAnalyticsId);
+    </script>
+    
+    {/* Microsoft Clarity Analytics */}
+    <script 
+      type="text/javascript" 
+      src={`https://www.clarity.ms/tag/${clarityAnalyticsId}`}
+      async
+    ></script>
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "u7pei4s9cq");
+    </script>
+    
+    {/* Google Tag Manager */}
+    <script is:inline define:vars={{ googleTagManagerId }}>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer',googleTagManagerId);
+    </script>
+    <script is:inline>
+      // Script to handle dark mode. It will check if the theme is stored in localStorage or if dark theme is preferred by system settings
+      if (
+        localStorage.getItem("hs_theme") === "dark" ||
+        (!("hs_theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <script>
+      import "@scripts/clarityIntegration.js";
+    </script>
+  </head>
+  <body
+    class="bg-neutral-200 selection:bg-yellow-400 selection:text-neutral-700 dark:bg-neutral-800 flex flex-col min-h-screen"
+  >
+    {/*
+    Setting up the main structure of the page.
+    The Navbar is placed at the top, with a slot for the main content and FooterSection at the bottom.
+    */}
+    <div class="w-full mx-auto max-w-(--breakpoint-2xl) px-4 sm:px-6 lg:px-8 flex-grow">
+      <Navbar />
+      <main>
+        <slot />
+      </main>
+    </div>
+    <FooterSection />
+    
+    <!-- Cookie Consent Components -->
+    <CookieConsentBanner />
+    <CookieConsentModal />
+    
+    <script>
+      // https://preline.co
+      import "preline/preline.js";
+    </script>
+    <script is:inline>
+      // Ensure Preline is initialized after page load
+      window.addEventListener('load', () => {
+        if (window.HSStaticMethods) {
+          window.HSStaticMethods.autoInit();
+        }
+      });
+    </script>
+    <noscript>
+      <iframe src={`https://www.googletagmanager.com/ns.html?id=${googleTagManagerId}`} height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <style>
+      /* CSS rules for the page scrollbar */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </body>
+</html>

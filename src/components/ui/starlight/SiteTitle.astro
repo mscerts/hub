@@ -1,0 +1,99 @@
+---
+import mainLogoLight from "../../../assets/images/logo_light.svg";
+import mainLogoDark from "../../../assets/images/logo_dark.svg";
+import docsLogo from "@images/starlight/certs.svg?raw";
+ import type { Props } from "@astrojs/starlight/props";
+
+
+const main = "/guide/introduction/";
+// const locale = Astro.props.locale ? Astro.props.locale + "/" : "";
+const locale = Astro.props.locale ? Astro.props.locale + "/" : "";
+const docs = "/" + locale + "guide/introduction/";
+---
+
+<span class="site-title flex">
+  <a class="main-logo" href={main} aria-label="MSFTHub">
+    <!-- Light theme logo (black logo for light backgrounds) -->
+    <img src={mainLogoLight.src} alt="MSFTHub Logo" class="logo-light" />
+    <!-- Dark theme logo (white logo for dark backgrounds) -->
+    <img src={mainLogoDark.src} alt="MSFTHub Logo" class="logo-dark" />
+  </a>
+  <!-- <a class="docs-logo" href={docs} set:html={docsLogo} aria-label="MSFTHub Certs" /> -->
+</span>
+
+<style>
+  .site-title {
+    gap: 1rem;
+    margin-right: 1rem;
+  }
+  .site-title a {
+    display: flex;
+  }
+  
+  .main-logo {
+    width: 140px;
+  }
+  
+  .main-logo img {
+    width: 140px;
+    height: auto;
+  }
+  
+  .docs-logo {
+    transform: translateY(0.13rem) translateX(-0.3rem);
+  }
+  
+  /* Show light logo by default, hide dark logo */
+  .logo-light {
+    display: block;
+  }
+  
+  .logo-dark {
+    display: none;
+  }
+  
+  /* When dark theme is active, show dark logo and hide light logo */
+  :global([data-theme="dark"]) .logo-light {
+    display: none;
+  }
+  
+  :global([data-theme="dark"]) .logo-dark {
+    display: block;
+  }
+  
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+  .site-title a:focus-visible {
+    outline: 0;
+  }
+  .site-title a:focus-visible > :global(*) {
+    transform: translateY(calc(.1rem * -1));
+    transition: transform 250ms cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  .site-title :global(svg) {
+    width: auto;
+    height: auto;
+  }
+  
+  .docs-logo :global(path) {
+    fill: #000;
+  }
+  
+  :global([data-theme="dark"]) .docs-logo :global(path) {
+    fill: #fff;
+  }
+  
+  .site-title a:hover :global(svg) {
+    transform: translateY(calc(.1rem * -1));
+    transition: transform 250ms cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  
+  @media (max-width: 768px) {
+    .docs-logo {
+      display: none;
+    }
+  }
+</style>

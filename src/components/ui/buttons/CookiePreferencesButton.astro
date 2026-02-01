@@ -1,0 +1,58 @@
+---
+// Cookie Preferences Button Component
+// Small button to open cookie settings
+const { 
+  text = "Cookie Settings",
+  variant = "secondary",
+  size = "sm"
+} = Astro.props;
+
+interface Props {
+  text?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+}
+
+const variants = {
+  primary: "bg-blue-600 hover:bg-blue-700 text-white",
+  secondary: "bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 text-neutral-700 dark:text-neutral-300",
+  ghost: "hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400"
+};
+
+const sizes = {
+  xs: "px-2 py-1 text-xs",
+  sm: "px-3 py-1.5 text-xs",
+  md: "px-4 py-2 text-sm",
+  lg: "px-6 py-3 text-base"
+};
+---
+
+<button
+  id="cookie-preferences-btn"
+  class={`inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-800 ${variants[variant]} ${sizes[size]}`}
+  type="button"
+  aria-label="Open cookie preferences"
+>
+  <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+  </svg>
+  {text}
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('cookie-preferences-btn');
+    
+    button?.addEventListener('click', () => {
+      // Try to open the modal first
+      const modal = (window as any).cookieConsentModal;
+      if (modal) {
+        modal.show();
+      } else {
+        // Fallback to cookie settings page
+        window.location.href = '/cookie-settings';
+      }
+    });
+  });
+</script>

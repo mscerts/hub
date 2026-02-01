@@ -1,0 +1,145 @@
+---
+// Cookie Consent Banner Component - Centered like announcement banner
+const { btnId = "cookie-dismiss-button" } = Astro.props;
+
+interface Props {
+  btnId?: string;
+}
+
+---
+
+<cookie-consent-banner btnId={btnId}>
+  <div
+    class="fixed bottom-0 start-1/2 z-50 mx-auto w-full -translate-x-1/2 transform p-6 sm:max-w-4xl"
+    role="region"
+    aria-label="Cookie Consent Banner"
+    id="cookie-consent-banner"
+    style="visibility: hidden; opacity: 0;"
+  >
+    <div
+      class="rounded-xl bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 shadow-2xl p-4 sm:p-6"
+    >
+      <!-- Mobile Layout -->
+      <div class="block sm:hidden">
+        <div class="flex items-center justify-start mb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🍪</span>
+            <p class="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+              We use cookies to improve your browsing experience
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <button
+            id="banner-accept-mobile"
+            class="w-full px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
+          >
+            Accept All
+          </button>
+          <button
+            id="banner-customize-mobile"
+            class="w-full px-3 py-2 text-xs font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
+          >
+            Customize
+          </button>
+        </div>
+      </div>
+
+      <!-- Desktop Layout -->
+      <div class="hidden sm:flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🍪</span>
+          <p class="text-base font-medium text-neutral-900 dark:text-neutral-100">
+            We use cookies to improve your browsing experience
+          </p>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <button
+            id="banner-customize-desktop"
+            class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
+          >
+            Customize
+          </button>
+          <button
+            id="banner-accept-desktop"
+            class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
+          >
+            Accept All
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</cookie-consent-banner>
+<script>
+  import { cookieConsentManager } from '../../../utils/cookieConsent.ts';
+  
+  class CookieConsentBanner extends HTMLElement {
+    connectedCallback() {
+      // Set up event handlers immediately like announcement banner
+      const acceptMobile = this.querySelector('#banner-accept-mobile');
+      const acceptDesktop = this.querySelector('#banner-accept-desktop');
+      const customizeMobile = this.querySelector('#banner-customize-mobile');
+      const customizeDesktop = this.querySelector('#banner-customize-desktop');
+      
+      // EXACT same pattern as announcement banner
+      if (acceptMobile != null) {
+        acceptMobile.addEventListener('click', () => {
+          console.log('Mobile Accept clicked - removing element');
+          this.remove();
+          console.log('Element removed, now accepting cookies');
+          cookieConsentManager.acceptAll();
+        });
+      }
+      
+      if (acceptDesktop != null) {
+        acceptDesktop.addEventListener('click', () => {
+          console.log('Desktop Accept clicked - removing element');
+          this.remove();
+          console.log('Element removed, now accepting cookies');
+          cookieConsentManager.acceptAll();
+        });
+      }
+
+      if (customizeMobile != null) {
+        customizeMobile.addEventListener('click', () => {
+          this.remove();
+          const modal = (window as any).cookieConsentModal;
+          if (modal) {
+            modal.show();
+          }
+        });
+      }
+      
+      if (customizeDesktop != null) {
+        customizeDesktop.addEventListener('click', () => {
+          this.remove();
+          const modal = (window as any).cookieConsentModal;
+          if (modal) {
+            modal.show();
+          }
+        });
+      }
+      
+      // Show the banner
+      this.showBannerIfNeeded();
+    }
+
+    showBannerIfNeeded() {
+      const state = cookieConsentManager.getState();
+      if (!state.preferences) {
+        setTimeout(() => {
+          const banner = this.querySelector('#cookie-consent-banner') as HTMLElement;
+          if (banner && !cookieConsentManager.getState().preferences) {
+            banner.style.visibility = 'visible';
+            banner.style.opacity = '1';
+            banner.style.transition = 'opacity 0.3s ease-in-out';
+          }
+        }, 1000);
+      }
+    }
+  }
+
+  customElements.define("cookie-consent-banner", CookieConsentBanner);
+</script>

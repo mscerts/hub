@@ -5,17 +5,27 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build && node process-html.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/mdx": "^4.3.13",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/sitemap": "^3.6.1",
     "@astrojs/starlight": "^0.37.2",
-    "@croct/plug": "^0.17.3",
-    "astro": "^5.16.7",
-    "sharp": "^0.33.5",
+    "@tailwindcss/vite": "^4.1.16",
+    "astro": "^5.16.9",
+    "astro-compressor": "^1.2.0",
+    "clipboard": "^2.0.11",
+    "globby": "^15.0.0",
+    "gsap": "^3.12.7",
+    "html-minifier-terser": "^7.2.0",
+    "preline": "^3.2.3",
+    "rimraf": "^6.0.1",
+    "sharp": "^0.34.4",
+    "sharp-ico": "^0.1.5",
     "starlight-blog": "^0.24.0",
     "starlight-cooler-credit": "^0.4.0",
     "starlight-image-zoom": "^0.12.0",
@@ -23,21 +33,19 @@
     "starlight-showcases": "^0.3.0",
     "starlight-ui-tweaks": "^0.2.0",
     "starlight-videos": "^0.3.0",
+    "tailwindcss": "^4.1.16",
     "unocss": "^66.5.12"
   },
   "devDependencies": {
     "@iconify-json/arcticons": "^1.2.44",
+    "@iconify-json/simple-icons": "^1.2.67",
     "@iconify-json/streamline": "^1.2.5",
+    "@tailwindcss/forms": "^0.5.10",
     "accessible-astro-components": "^2.4.0",
-    "astro-vtbot": "^2.1.2"
-  },
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "sharp"
-    ],
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ]
+    "astro-vtbot": "^2.1.2",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "typescript": "^5.9.3"
   }
 }

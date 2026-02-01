@@ -1,0 +1,186 @@
+---
+// Import the necessary components
+import MainLayout from "@/layouts/MainLayout.astro";
+import { SITE } from "@data/constants";
+
+const pageTitle: string = `Privacy Policy | ${SITE.title}`;
+const metaDescription =
+  "Learn about how MSFTHub collects, uses, and protects your personal information.";
+const ogTitle = "Privacy Policy | MSFTHub";
+---
+
+<MainLayout
+  title={pageTitle}
+  customDescription={metaDescription}
+  customOgTitle={ogTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://msfthub.com/privacy",
+    url: "https://msfthub.com/privacy",
+    name: "Privacy Policy | MSFTHub",
+    description: metaDescription,
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://msfthub.com",
+      name: "MSFTHub",
+      description: SITE.description,
+    },
+    inLanguage: "en-US",
+  }}
+>
+  <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <!-- Title -->
+    <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
+      <h1 class="text-balance text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight">
+        Privacy Policy
+      </h1>
+      <p class="mt-3 text-pretty text-neutral-600 dark:text-neutral-400">
+        Last Updated: January 13, 2026
+      </p>
+    </div>
+
+    <!-- Content -->
+    <div class="mx-auto max-w-4xl">
+      <div class="prose prose-neutral dark:prose-invert max-w-none">
+        <!-- Introduction -->
+        <div class="mb-8">
+          <p class="text-lg text-neutral-700 dark:text-neutral-300">
+            This Privacy Policy describes how we handle your data while using third-party services on our documentation website.
+          </p>
+        </div>
+
+        <!-- Consent -->
+        <div class="mb-10">
+          <h2 class="mb-4 text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+            Consent
+          </h2>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            By using our website, you hereby consent to our Privacy Policy and agree to its terms.
+          </p>
+        </div>
+
+        <!-- What Data We Collect -->
+        <div class="mb-10">
+          <h2 class="mb-4 text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+            What Data We Collect
+          </h2>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            The only data collection that occurs on our website is through third-party analytics services, which help us understand how visitors use our site to improve the user experience.
+          </p>
+        </div>
+
+        <!-- Personal Information Collection -->
+        <div class="mb-10">
+          <h2 class="mb-4 text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+            Contact Information
+          </h2>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            If you contact us directly, we may receive information such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide. This information is only used to respond to your inquiry and is not stored beyond what is necessary to provide support.
+          </p>
+        </div>
+
+        <!-- Analytics Data -->
+        <div class="mb-10">
+          <h2 class="mb-4 text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+            Analytics Data Collection
+          </h2>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            Through our third-party analytics partners, the following types of data may be collected:
+          </p>
+          <ul class="mb-4 list-disc space-y-2 pl-6 text-neutral-700 dark:text-neutral-300">
+            <li><strong>Usage data:</strong> Information about how you use our website, including pages visited, time spent on pages, and interactions with content</li>
+            <li><strong>Device information:</strong> IP address, browser type, device information, and operating system</li>
+            <li><strong>Cookies and similar technologies:</strong> Used to enhance your experience, understand usage patterns, and improve our website</li>
+          </ul>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            You can manage your cookie preferences through our Cookie settings found at the bottom of the page.
+          </p>
+        </div>
+
+        <!-- Usage of Third-party Analytics Tools -->
+        <div class="mb-10">
+          <h2 class="mb-4 text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+            Usage of Third-Party Analytics Tools
+          </h2>
+          
+          <h3 class="mb-3 mt-6 text-xl font-semibold text-neutral-800 dark:text-neutral-200">
+            Microsoft Clarity and Microsoft Advertising
+          </h3>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            We partner with Microsoft Clarity and Microsoft Advertising to capture how you use and interact with our website through behavioral metrics, heatmaps, and session replay to improve and market our products/services. Website usage data is captured using first and third-party cookies and other tracking technologies to determine the popularity of products/services and online activity. Additionally, we use this information for site optimization, fraud/security purposes, and advertising.
+          </p>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            For more information about how Microsoft collects and uses your data, visit the <a href="https://privacy.microsoft.com/en-us/privacystatement" target="_blank" rel="noopener noreferrer" class="font-medium text-orange-400 underline-offset-2 outline-none hover:underline focus-visible:underline">Microsoft Privacy Statement</a>.
+          </p>
+
+          <h3 class="mb-3 mt-6 text-xl font-semibold text-neutral-800 dark:text-neutral-200">
+            Google Analytics
+          </h3>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            We also partner with Google and Google Analytics which provide a web analytics service that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualize and personalize the ads of its own advertising network.
+          </p>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            For more information on the privacy practices of Google, please visit <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="font-medium text-orange-400 underline-offset-2 outline-none hover:underline focus-visible:underline">Google Privacy & Terms</a>.
+          </p>
+        </div>
+
+        <!-- Third Party Links -->
+        <div class="mb-10">
+          <h2 class="mb-4 text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+            Third-Party Links
+          </h2>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            Our website contains links to other third-party websites not owned or managed by Microsoft Certification Hub. This privacy policy applies to this website only. If you click a link to a third-party website, the privacy policy of that website will apply. We highly recommend that you read the privacy policies of other websites as they may be different from ours.
+          </p>
+        </div>
+
+        <!-- How We Use Information -->
+        <div class="mb-10">
+          <h2 class="mb-4 text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+            How We Use Information
+          </h2>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            We use the data collected through third-party analytics services to:
+          </p>
+          <ul class="mb-4 list-disc space-y-2 pl-6 text-neutral-700 dark:text-neutral-300">
+            <li>Understand how visitors use our documentation site</li>
+            <li>Improve our content and user experience</li>
+            <li>Optimize site performance and functionality</li>
+            <li>Detect and prevent technical issues or security concerns</li>
+          </ul>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            <strong>We do not sell, trade, or rent any user data to third parties.</strong> The only data sharing that occurs is through the analytics services mentioned above, which process data according to their own privacy policies.
+          </p>
+        </div>
+
+        <!-- Changes to This Privacy Policy -->
+        <div class="mb-10">
+          <h2 class="mb-4 text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+            Changes to This Privacy Policy
+          </h2>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date at the top. You are advised to review this Privacy Policy periodically for any changes.
+          </p>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="mb-10">
+          <h2 class="mb-4 text-2xl font-bold text-neutral-800 dark:text-neutral-200">
+            Contact Us
+          </h2>
+          <p class="mb-4 text-neutral-700 dark:text-neutral-300">
+            If you have any questions about this Privacy Policy, please feel free to <a href="/contact" class="font-medium text-orange-400 underline-offset-2 outline-none hover:underline focus-visible:underline">contact us</a>.
+          </p>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="mt-12 rounded-lg border border-neutral-300 bg-neutral-50 p-6 dark:border-neutral-700 dark:bg-neutral-800">
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">
+            <strong>Important:</strong> MSFTHub is a community-driven documentation website. We are committed to transparency and minimal data collection. The only data we collect is through third-party analytics tools to help us improve our content and user experience. We do not directly collect, store, or process any personal information.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
