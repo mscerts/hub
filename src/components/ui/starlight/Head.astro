@@ -7,7 +7,9 @@ import CookieConsentModal from "@components/ui/modals/CookieConsentModal.astro";
 ---
 
 <VtbotStarlight {...Astro.props} viewTransitionsFallback="animate">
-  <StarlightHead {...Astro.props}><slot /></StarlightHead>
+  <StarlightHead {...Astro.props}>
+    <slot />
+  </StarlightHead>
 </VtbotStarlight>
 
 <!-- Cookie Consent Components -->
@@ -25,6 +27,36 @@ import CookieConsentModal from "@components/ui/modals/CookieConsentModal.astro";
     overflow: hidden;
   }
 </style>
+
+<script is:inline>
+  // Force reload all stylesheets on navigation to fix CSS loading issues
+  document.addEventListener("astro:before-swap", (ev) => {
+    // Get all link elements with stylesheets
+    const oldStyles = [...document.querySelectorAll('link[rel="stylesheet"]')];
+    const newDoc = ev.newDocument;
+    const newStyles = [...newDoc.querySelectorAll('link[rel="stylesheet"]')];
+    
+    // Ensure new styles are loaded
+    newStyles.forEach((newStyle) => {
+      const href = newStyle.getAttribute('href');
+      const existing = oldStyles.find(s => s.getAttribute('href') === href);
+      if (!existing) {
+        // Add new stylesheet to current document before swap
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      }
+    });
+  });
+
+  document.addEventListener("astro:after-swap", () => {
+    // Force repaint to ensure styles are applied
+    document.documentElement.style.display = 'none';
+    document.documentElement.offsetHeight; // trigger reflow
+    document.documentElement.style.display = '';
+  });
+</script>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -46,5 +78,17 @@ import CookieConsentModal from "@components/ui/modals/CookieConsentModal.astro";
     if (rightSidebar) {
       rightSidebar.setAttribute("data-lenis-prevent", "");
     }
+
+    // Force full page reload for blog links
+    document.querySelectorAll('a[href*="/blog/"]').forEach((link) => {
+      link.setAttribute('data-astro-reload', '');
+    });
+  });
+
+  // Also handle dynamically added links
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll('a[href*="/blog/"]').forEach((link) => {
+      link.setAttribute('data-astro-reload', '');
+    });
   });
 </script>
