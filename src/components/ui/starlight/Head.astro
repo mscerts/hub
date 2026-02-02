@@ -4,6 +4,7 @@ import StarlightHead from "@astrojs/starlight/components/Head.astro";
 import VtbotStarlight from "astro-vtbot/components/starlight/Base.astro";
 import CookieConsentBanner from "@components/ui/banners/CookieConsentBanner.astro";
 import CookieConsentModal from "@components/ui/modals/CookieConsentModal.astro";
+import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
 ---
 
 <VtbotStarlight {...Astro.props} viewTransitionsFallback="animate">
@@ -15,7 +16,12 @@ import CookieConsentModal from "@components/ui/modals/CookieConsentModal.astro";
 <!-- Cookie Consent Components -->
 <CookieConsentBanner />
 <CookieConsentModal />
-
+  <AnnouncementBanner
+    btnId="dismiss-button"
+    btnTitle="New GitHub Certifications on the Hub"
+    btnTitleMobile="New GitHub Certs"
+    url="/blog/githubexamsandignite/"
+  />
 <style is:global>
   /* Slow down Chrome's default animation */
   ::view-transition-group(root) {
