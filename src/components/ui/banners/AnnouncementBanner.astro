@@ -1,5 +1,5 @@
 ---
-const { title, btnId, btnTitle, btnTitleMobile, url } = Astro.props;
+const { title, btnId, btnTitle, btnTitleMobile, url, version = "1" } = Astro.props;
 
 interface Props {
   title?: string;
@@ -7,10 +7,11 @@ interface Props {
   btnTitle: string;
   btnTitleMobile?: string;
   url: string;
+  version?: string;
 }
 ---
 
-<astro-banner btnId={btnId}>
+<astro-banner btnId={btnId} version={version}>
   <div
     class="fixed bottom-0 start-1/2 z-50 mx-auto w-full -translate-x-1/2 transform p-6 sm:max-w-4xl"
     role="region"
@@ -84,9 +85,22 @@ interface Props {
   class AstroBanner extends HTMLElement {
     connectedCallback() {
       const btnId = this.getAttribute("btnId");
+      const version = this.getAttribute("version") || "1";
+      const storageKey = `banner-dismissed-${btnId}-v${version}`;
+      
+      // Check if this version of the banner was previously dismissed
+      if (localStorage.getItem(storageKey)) {
+        this.remove();
+        return;
+      }
+
       const button = this.querySelector(`#${btnId}`);
       if (button != null) {
-        button.addEventListener("click", () => this.remove());
+        button.addEventListener("click", () => {
+          // Save dismissal state to localStorage with version
+          localStorage.setItem(storageKey, "true");
+          this.remove();
+        });
       }
     }
   }

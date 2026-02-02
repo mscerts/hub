@@ -113,7 +113,7 @@ export default defineConfig({
                 { label: 'Microsoft x Coursera', link: '/vouchers/microsoftxcoursera/' ,badge: { text: '*50%', variant: 'note' }, },		
                 { label: 'Microsoft x Datacamp', link: '/vouchers/microsoftxdatacamp/' ,badge: { text: '*50%', variant: 'note' }, },			
                 { label: 'Beta Exams', link: '/vouchers/betaexams/' ,badge: { text: '*80% + 25%', variant: 'note' }, },
-		        { label: 'Replay/Retake Vouchers', link: '/vouchers/mindhubreplayvoucherbundles/' },
+		            { label: 'Replay/Retake Vouchers', link: '/vouchers/mindhubreplayvoucherbundles/' },
 
             ],
         },
