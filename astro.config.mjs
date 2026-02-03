@@ -100,10 +100,6 @@ export default defineConfig({
             ],
         },
         {
-            label: 'Exam Voucher Collection',
-            link: '/vouchers',
-        },
-        {
             label: 'Discounted Exam Vouchers',
             items: [
 	              { label: 'Get Fabric Certified', link: '/vouchers/getfabriccertified/' ,badge: { text: '100%', variant: 'tip' }, },
@@ -122,15 +118,12 @@ export default defineConfig({
             link: '/wiki',
         },
         {
-            label: 'Exam Study Labs Collection',
-            link: '/labs',
-        },
-        {
             label: 'Exam Study Materials',
             collapsed: false,
             items: [
                 { label: 'Azure', collapsed:true, autogenerate: { directory: 'azure', collaped:true },},
                 { label: 'GitHub', collapsed:true, autogenerate: { directory: 'github', collaped:true },},
+                { label: 'AI & AB', collapsed:true, autogenerate: { directory: 'ai&ab', collaped:true },},
                 { label: 'Microsoft 365', collapsed:true, autogenerate: { directory: 'microsoft365', collaped:true },},
                 { label: 'Security & Identity', collapsed:true, autogenerate: { directory: 'security', collaped:true },},
                 { label: 'Power Platform', collapsed:true, autogenerate: { directory: 'power', collaped:true },},

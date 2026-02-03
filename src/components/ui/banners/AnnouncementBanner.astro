@@ -1,5 +1,5 @@
 ---
-const { title, btnId, btnTitle, btnTitleMobile, url, version = "1" } = Astro.props;
+const { title, btnId, btnTitle, btnTitleMobile, url, version = "1", rememberDismissal = true } = Astro.props;
 
 interface Props {
   title?: string;
@@ -8,10 +8,11 @@ interface Props {
   btnTitleMobile?: string;
   url: string;
   version?: string;
+  rememberDismissal?: boolean;
 }
 ---
 
-<astro-banner btnId={btnId} version={version}>
+<astro-banner btnId={btnId} version={version} rememberDismissal={rememberDismissal}>
   <div
     class="fixed bottom-0 start-1/2 z-50 mx-auto w-full -translate-x-1/2 transform p-6 sm:max-w-4xl"
     role="region"
@@ -86,10 +87,11 @@ interface Props {
     connectedCallback() {
       const btnId = this.getAttribute("btnId");
       const version = this.getAttribute("version") || "1";
+      const rememberDismissal = this.getAttribute("rememberDismissal") !== "false";
       const storageKey = `banner-dismissed-${btnId}-v${version}`;
       
-      // Check if this version of the banner was previously dismissed
-      if (localStorage.getItem(storageKey)) {
+      // Check if this version of the banner was previously dismissed (only if rememberDismissal is true)
+      if (rememberDismissal && localStorage.getItem(storageKey)) {
         this.remove();
         return;
       }
@@ -97,8 +99,10 @@ interface Props {
       const button = this.querySelector(`#${btnId}`);
       if (button != null) {
         button.addEventListener("click", () => {
-          // Save dismissal state to localStorage with version
-          localStorage.setItem(storageKey, "true");
+          // Save dismissal state to localStorage only if rememberDismissal is true
+          if (rememberDismissal) {
+            localStorage.setItem(storageKey, "true");
+          }
           this.remove();
         });
       }
