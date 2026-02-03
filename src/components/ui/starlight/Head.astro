@@ -92,6 +92,16 @@ const isBlogPage = Astro.url.pathname.includes('/blog/');
       rightSidebar.setAttribute("data-lenis-prevent", "");
     }
 
+    // Force full page reload for ALL links when on blog pages
+    if (window.location.pathname.includes('/blog/')) {
+      document.querySelectorAll('a').forEach((link) => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('#')) {
+          link.setAttribute('data-astro-reload', '');
+        }
+      });
+    }
+
     // Force full page reload for blog links
     document.querySelectorAll('a[href*="/blog/"]').forEach((link) => {
       link.setAttribute('data-astro-reload', '');
@@ -100,6 +110,16 @@ const isBlogPage = Astro.url.pathname.includes('/blog/');
 
   // Also handle dynamically added links
   document.addEventListener("astro:page-load", () => {
+    // Force full page reload for ALL links when on blog pages
+    if (window.location.pathname.includes('/blog/')) {
+      document.querySelectorAll('a').forEach((link) => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('#')) {
+          link.setAttribute('data-astro-reload', '');
+        }
+      });
+    }
+
     document.querySelectorAll('a[href*="/blog/"]').forEach((link) => {
       link.setAttribute('data-astro-reload', '');
     });
