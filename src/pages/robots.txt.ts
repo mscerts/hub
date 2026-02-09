@@ -17,6 +17,11 @@ Disallow:
 Allow: /
 Crawl-delay: 2
 
+User-agent: bingbot
+Disallow:
+Allow: /
+Crawl-delay: 2
+
 User-agent: archive.org_bot
 Disallow:
 Allow: /
