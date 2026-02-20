@@ -29,6 +29,7 @@ export default defineConfig({
         '/dynamics': '/wiki',
         '/azure/ai-900': '/aiab/ai-900',
         '/azure/ai-102': '/aiab/ai-102',
+        '/discord': 'https://discord.com/invite/microsoft-certification-study-group-676990910176821270',
     },
   image: {
     domains: ["images.unsplash.com"],
