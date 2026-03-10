@@ -106,6 +106,7 @@ export default defineConfig({
             label: 'Discounted Exam Vouchers',
             items: [
               	{ label: 'AI-300 beta', link: 'https://techcommunity.microsoft.com/blog/skills-hub-blog/new-certification-for-machine-learning-operations-mlops-engineers/4494111?WT.mc_id=studentamb_165290' ,badge: { text: '80%', variant: 'tip' }, },
+              	{ label: 'DP-750 beta', link: 'https://learn.microsoft.com/en-us/credentials/certifications/implementing-data-engineering-solutions-using-azure-databricks?WT.mc_id=studentamb_165290' ,badge: { text: '80%', variant: 'tip' }, },
 	              { label: 'Get Fabric Certified', link: '/vouchers/getfabriccertified/' ,badge: { text: '100%', variant: 'tip' }, },
                 { label: 'Virtual Training Days', link: '/vouchers/virtualtrainingdays/' ,badge: { text: '50%', variant: 'note' }, },
                 { label: 'Microsoft ESI', link: '/vouchers/microsoftesi/' ,badge: { text: '*50%', variant: 'note' }, },
