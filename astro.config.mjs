@@ -7,7 +7,6 @@ import starlightImageZoom from 'starlight-image-zoom'
 import partytown from '@astrojs/partytown'
 import starlightCoolerCredit from 'starlight-cooler-credit'
 import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
-import starlightBlog from 'starlight-blog';
 import starlightVideos from 'starlight-videos'
 import mdx from "@astrojs/mdx";
 
@@ -69,22 +68,6 @@ export default defineConfig({
       viewTransitions(),
       starlightVideos(),
       starlightImageZoom(),
-      starlightBlog({
-        authors: {
-          nighthouse: {
-            name: 'nighthouse',
-            title: 'Content & Site Editor',
-            picture: 'https://avatars.githubusercontent.com/u/121154936?v=4',
-            url: 'https://github.com/n1ghthouse',
-          },
-          teriaavibes: {
-            name: 'teriaavibes',
-            title: 'Content Editor',
-            picture: 'https://avatars.githubusercontent.com/u/68708075?v=4', 
-            url: 'https://github.com/teriaavibes',
-          },
-        },
-      }), 
     ], 
     sidebar: [
         {
