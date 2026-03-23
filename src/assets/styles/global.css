@@ -1,6 +1,7 @@
-@import 'tailwindcss';
-@import 'preline/variants.css';
-@plugin '@tailwindcss/forms';
+@import "tailwindcss";
+@import "preline/variants.css";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 

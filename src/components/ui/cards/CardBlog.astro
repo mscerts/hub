@@ -1,0 +1,62 @@
+---
+import AvatarBlog from "@components/ui/avatars/AvatarBlog.astro";
+import { Image } from "astro:assets";
+import { formatDate } from "@utils/utils";
+import type { CollectionEntry } from "astro:content";
+
+const { blogEntry } = Astro.props;
+
+interface Props {
+  blogEntry: CollectionEntry<"blog">;
+}
+---
+
+<a
+  class="group relative block rounded-xl outline-hidden ring-indigo-500 transition duration-500 focus-visible:ring-3 dark:ring-indigo-400 dark:focus:outline-hidden"
+  href={`/news/${blogEntry.id}/`}
+  data-astro-prefetch
+>
+  <!-- Cover image container with gradient overlay -->
+  <div
+    class="relative h-[350px] w-full shrink-0 overflow-hidden rounded-xl before:absolute before:inset-x-0 before:z-1 before:size-full before:bg-gradient-to-t before:from-neutral-900/70"
+  >
+    <Image
+      class="absolute start-0 top-0 size-full object-cover transition duration-500 group-hover:scale-110"
+      src={blogEntry.data.cardImage}
+      alt={blogEntry.data.cardImageAlt ?? blogEntry.data.title}
+      draggable={false}
+      loading="lazy"
+      format="avif"
+    />
+  </div>
+
+  <!-- Author info overlay at top-left -->
+  <div class="absolute top-0 left-0 z-10 p-4 sm:p-6">
+    <div class="flex items-center">
+      <AvatarBlog blogEntry={blogEntry} />
+      <div class="ms-2.5 sm:ms-4">
+        <h4 class="font-bold text-neutral-50">
+          {blogEntry.data.authors.map(a => a.name).join(" & ")}
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Date badge at top-right -->
+  <div class="absolute top-0 right-0 z-10 p-4 sm:p-6">
+    <div class="rounded-lg bg-neutral-900/70 backdrop-blur-sm px-3 py-1.5 text-sm font-medium text-neutral-50">
+      {formatDate(blogEntry.data.pubDate)}
+    </div>
+  </div>
+
+  <!-- Title and description overlay at bottom -->
+  <div class="absolute inset-x-0 bottom-0 z-10">
+    <div class="flex h-full flex-col p-4 sm:p-6">
+      <h3
+        class="text-balance text-lg font-bold text-neutral-50 group-hover:text-neutral-50/80 sm:text-3xl"
+      >
+        {blogEntry.data.title}
+      </h3>
+    </div>
+  </div>
+</a>

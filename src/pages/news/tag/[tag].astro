@@ -1,0 +1,112 @@
+---
+// Import necessary components, modules and types
+import MainLayout from "@/layouts/MainLayout.astro";
+import CardBlog from "@components/ui/cards/CardBlog.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { SITE } from "@data/constants";
+import { capitalize } from "@utils/utils";
+
+// Generate static paths for all tags
+export async function getStaticPaths() {
+  const blogPosts = await getCollection("blog", ({ data }) => {
+    return data.draft !== true;
+  });
+
+  // Get all unique tags
+  const allTags = new Set<string>();
+  blogPosts.forEach((post) => {
+    post.data.tags?.forEach((tag) => allTags.add(tag.toLowerCase()));
+  });
+
+  return Array.from(allTags).map((tag) => ({
+    params: { tag },
+    props: { tag },
+  }));
+}
+
+const { tag } = Astro.props;
+
+// Get all blog posts with this tag
+const allBlogEntries = await getCollection("blog", ({ data }) => {
+  return data.draft !== true && data.tags?.map((t) => t.toLowerCase()).includes(tag.toLowerCase());
+});
+
+const blogPosts: CollectionEntry<"blog">[] = allBlogEntries.sort(
+  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const displayTag = capitalize(tag);
+const pageTitle: string = `${displayTag} | News | ${SITE.title}`;
+const metaDescription = `Browse all articles tagged with "${displayTag}" on MSFTHub.`;
+---
+
+<MainLayout
+  title={pageTitle}
+  customDescription={metaDescription}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${SITE.url}/news/tag/${tag}`,
+    url: `${SITE.url}/news/tag/${tag}`,
+    name: `${displayTag} | News`,
+    description: metaDescription,
+    isPartOf: {
+      "@type": "WebSite",
+      url: SITE.url,
+      name: SITE.title,
+    },
+  }}
+>
+  <section
+    class="mx-auto max-w-[85rem] space-y-8 px-4 pt-16 sm:px-6 lg:px-8 2xl:max-w-full"
+  >
+    {/* Page header */}
+    <div class="mx-auto max-w-3xl text-left sm:text-center">
+      <a
+        href="/news"
+        class="inline-flex items-center gap-x-1.5 text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 mb-4"
+      >
+        <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+        Back to all posts
+      </a>
+      <h1
+        class="text-balance block text-4xl font-bold tracking-tight text-neutral-800 md:text-5xl dark:text-neutral-200"
+      >
+        Posts tagged "{displayTag}"
+      </h1>
+      <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+        {blogPosts.length} {blogPosts.length === 1 ? "article" : "articles"} found
+      </p>
+    </div>
+  </section>
+
+  {/* Blog posts grid */}
+  {
+    blogPosts.length > 0 && (
+      <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+        <div class="grid gap-6 lg:grid-cols-2">
+          {blogPosts.map((blogEntry) => (
+            <CardBlog blogEntry={blogEntry} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  {/* Empty state */}
+  {
+    blogPosts.length === 0 && (
+      <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+        <div class="text-center">
+          <p class="text-lg text-neutral-600 dark:text-neutral-400">
+            No posts found with this tag.
+          </p>
+        </div>
+      </section>
+    )
+  }
+</MainLayout>

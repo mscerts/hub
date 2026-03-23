@@ -1,0 +1,122 @@
+---
+// Import necessary components, modules and types
+import MainLayout from "@/layouts/MainLayout.astro";
+import CardBlog from "@components/ui/cards/CardBlog.astro";
+import CardBlogRecent from "@components/ui/cards/CardBlogRecent.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { SITE } from "@data/constants";
+
+// Get all blog posts and sort them based on publish date
+const allBlogEntries = await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
+
+const blogPosts: CollectionEntry<"blog">[] = allBlogEntries.sort(
+  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+// Separate the most recent post from others
+const mostRecentPost: CollectionEntry<"blog"> | undefined = blogPosts[0];
+const otherPosts: CollectionEntry<"blog">[] = blogPosts.slice(1);
+
+// Define variables for page content
+const title: string = "Microsoft Hub & Certification News";
+const subTitle: string =
+  "Stay up-to-date with the latest Microsoft certification news, study tips, exam updates, and insights from the MSFTHub community.";
+
+const pageTitle: string = `News | ${SITE.title}`;
+const metaDescription =
+  "Stay up-to-date with the latest Microsoft certification news, exam updates, study tips, and community insights at MSFTHub.";
+const ogTitle = "Microsoft Certification News | MSFTHub";
+---
+
+<MainLayout
+  title={pageTitle}
+  customDescription={metaDescription}
+  customOgTitle={ogTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${SITE.url}/news`,
+    url: `${SITE.url}/news`,
+    name: "News | MSFTHub",
+    description: metaDescription,
+    isPartOf: {
+      "@type": "WebSite",
+      url: SITE.url,
+      name: SITE.title,
+      description: SITE.description,
+    },
+    inLanguage: "en-US",
+    blogPost: blogPosts.slice(0, 10).map((post) => ({
+      "@type": "BlogPosting",
+      "@id": `${SITE.url}/news/${post.id}`,
+      url: `${SITE.url}/news/${post.id}`,
+      headline: post.data.title,
+      description: post.data.description,
+      datePublished: post.data.pubDate.toISOString(),
+      dateModified: post.data.updatedDate
+        ? post.data.updatedDate.toISOString()
+        : post.data.pubDate.toISOString(),
+      author: post.data.authors.map(a => ({
+        "@type": "Person",
+        name: a.name,
+      })),
+      image: post.data.cardImage?.src || "",
+    })),
+  }}
+>
+  <section
+    class="mx-auto max-w-[85rem] space-y-8 px-4 pt-16 sm:px-6 lg:px-8 2xl:max-w-full"
+  >
+    {/* Page header */}
+    <div class="mx-auto max-w-3xl text-left sm:text-center">
+      <h1
+        class="text-balance block text-4xl font-bold tracking-tight text-neutral-800 md:text-5xl lg:text-6xl dark:text-neutral-200"
+      >
+        {title}
+      </h1>
+
+      <p class="text-pretty mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+        {subTitle}
+      </p>
+    </div>
+  </section>
+
+  {/* Most recent blog post - featured */}
+  {
+    mostRecentPost && (
+      <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+        <CardBlogRecent blogEntry={mostRecentPost} />
+      </section>
+    )
+  }
+
+  {/* Blog posts grid */}
+  {
+    otherPosts.length > 0 && (
+      <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+        <div class="grid gap-6 lg:grid-cols-2">
+          {otherPosts.map((blogEntry) => (
+            <CardBlog blogEntry={blogEntry} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  {/* Empty state */}
+  {
+    blogPosts.length === 0 && (
+      <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+        <div class="text-center">
+          <p class="text-lg text-neutral-600 dark:text-neutral-400">
+            No blog posts available yet. Check back soon!
+          </p>
+        </div>
+      </section>
+    )
+  }
+</MainLayout>

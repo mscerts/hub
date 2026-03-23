@@ -2,7 +2,7 @@
 const navBarLinks = [
   { name: "Home", url: "/" },
   { name: "Wiki", url: "/wiki/" },
-  { name: "Blog", url: "/blog/" },
+  { name: "News", url: "/news/" },
   { name: "Vouchers", url: "/vouchers/" },
   { name: "Labs", url: "/labs/" },
 //  { name: "Certifications", url: "#" },

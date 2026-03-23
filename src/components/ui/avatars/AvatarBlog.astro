@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+const { blogEntry } = Astro.props;
+
+interface Props {
+  blogEntry: CollectionEntry<"blog">;
+}
+
+const authors = blogEntry.data.authors;
+---
+
+<div class="flex -space-x-2">
+  {authors.map((author, index) => (
+    <div 
+      class="relative flex size-10 shrink-0"
+      style={`z-index: ${authors.length - index}`}
+    >
+      {typeof author.image === "string" ? (
+        <img
+          class="size-10 rounded-full object-cover ring-2 ring-neutral-900/50"
+          src={author.image}
+          alt={author.imageAlt ?? `${author.name} avatar`}
+          loading="eager"
+        />
+      ) : (
+        <Image
+          class="size-10 rounded-full object-cover ring-2 ring-neutral-900/50"
+          src={author.image}
+          alt={author.imageAlt ?? `${author.name} avatar`}
+          draggable={false}
+          loading="eager"
+          format="avif"
+        />
+      )}
+    </div>
+  ))}
+</div>
