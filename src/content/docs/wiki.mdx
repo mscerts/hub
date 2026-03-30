@@ -5,26 +5,24 @@ next: false
 prev: false
 ---
 
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
-import { Icon } from '@astrojs/starlight/components';
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+import { Icon } from "@astrojs/starlight/components";
 
 <LinkCard
-	title="Certification Guide"
-	description="Explore our comprehensive guide on obtaining Microsoft certifications and discover how to navigate the certification program."
-	href="/guide/introduction/"
+  title="Certification Guide"
+  description="Explore our comprehensive guide on obtaining Microsoft certifications and discover how to navigate the certification program."
+  href="/guide/introduction/"
 />
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 <Tabs>
 	<TabItem label="Azure">
 	<CardGrid>
 	<LinkCard title="AZ-900: Microsoft Azure Fundamentals" href="/azure/az-900/" />
-	<LinkCard title="AI-900: Microsoft Azure AI Fundamentals" href="/azure/ai-900/" />
 	<LinkCard title="DP-900: Microsoft Azure Data Fundamentals" href="/azure/dp-900/" />
 	<LinkCard title="AZ-104: Microsoft Azure Administrator" href="/azure/az-104/" />
 	<LinkCard title="AZ-204: Developing Solutions for Microsoft Azure" href="/azure/az-204/" />
-	<LinkCard title="AI-102: Designing and Implementing a Microsoft Azure AI Solution" href="/azure/ai-102/" />
 	<LinkCard title="AZ-140: Configuring and Operating Microsoft Azure Virtual Desktop" href="/azure/az-140/" />
 	<LinkCard title="AZ-120: Planning and Administering Microsoft Azure for SAP Workloads" href="/azure/az-120/" />
 	<LinkCard title="AZ-400: Designing and Implementing Microsoft DevOps Solutions" href="/azure/az-400/" />
@@ -41,58 +39,66 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
     </CardGrid>
 	</TabItem>
 
-	<TabItem label="GitHub">
-	<CardGrid>
-	<LinkCard title="GH-900: GitHub Fundamentals" href="/github/gh-900/" />
-	<LinkCard title="GH-500: GitHub Advanced Security" href="/github/gh-500/" />
-	<LinkCard title="GH-300: GitHub Copilot" href="/github/gh-300/" />
-	<LinkCard title="GH-200: GitHub Actions" href="/github/gh-200/" />
-	<LinkCard title="GH-100: GitHub Administration" href="/github/gh-100/" />
-	</CardGrid>
-	</TabItem>
-
-	<TabItem label="Dynamics">
-	<CardGrid>
-	<LinkCard title="MB-230: Micrsooft Dynamics 365 Customer Service Functional Consultant" href="/dynamics/mb-230/" />
-	<LinkCard title="MB-240: Microsoft Dynamics 365 Field Service Functional Consultant" href="/dynamics/mb-240/" />
-	<LinkCard title="MB-280: Microsoft Dynamics 365 Customer Experience Analyst" href="/dynamics/mb-280/" />
-	<LinkCard title="MB-310: Microsoft Dynamics 365 Finance Functional Consultant" href="/dynamics/mb-310/" />
-	<LinkCard title="MB-330: Microsoft Dynamics 365 Supply Chain Management Functional Consultant" href="/dynamics/mb-330/" />
-     </CardGrid>
-	</TabItem>
-
-	<TabItem label="M365">
-	<CardGrid>
-	<LinkCard title="MS-900: Microsoft 365 Fundamentals" href="/microsoft365/ms-900/" />
-	<LinkCard title="MS-102: Microsoft 365 Administrator" href="/microsoft365/ms-102/" />
-	<LinkCard title="MD-102: Endpoint Administrator" href="/microsoft365/md-102/" />
-	<LinkCard title="MS-700: Managing Microsoft Teams" href="/microsoft365/ms-700/" />
-	<LinkCard title="MS-721: Collaboration Communications Systems Engineer" href="/microsoft365/ms-721/" />
-     </CardGrid>
-	</TabItem>
-
-	<TabItem label="Power">
-	<CardGrid>
-	<LinkCard title="PL-900: Microsoft Power Platform Fundamentals" href="/power/pl-900/" />
-	<LinkCard title="PL-200: Microsoft Power Platform Functional Consultant" href="/power/pl-200/" />
-	<LinkCard title="PL-300: Microsoft Power BI Data Analyst" href="/power/pl-300/" />
-	<LinkCard title="PL-400: Microsoft Power Platform Developer" href="/power/pl-400/" />
-	<LinkCard title="PL-500: Microsoft Power Automate RPA Developer" href="/power/pl-500/" />
-	<LinkCard title="PL-600: Microsoft Power Platform Solution Architect" href="/power/pl-600/" />
+    <TabItem label="GitHub">
+    <CardGrid>
+    <LinkCard title="GH-900: GitHub Fundamentals" href="/github/gh-900/" />
+    <LinkCard title="GH-500: GitHub Advanced Security" href="/github/gh-500/" />
+    <LinkCard title="GH-300: GitHub Copilot" href="/github/gh-300/" />
+    <LinkCard title="GH-200: GitHub Actions" href="/github/gh-200/" />
+    <LinkCard title="GH-100: GitHub Administration" href="/github/gh-100/" />
     </CardGrid>
-	</TabItem>
+    </TabItem>
 
-	<TabItem label="Security">
-	<CardGrid>
-	<LinkCard title="SC-900: Microsoft Security, Compliance, and Identity Fundamentals" href="/security/sc-900/" />
-	<LinkCard title="SC-100: Microsoft Cybersecurity Architect" href="/security/sc-100/" />
-	<LinkCard title="SC-200: Microsoft Security Operations Analyst" href="/security/sc-200/" />
-	<LinkCard title="SC-300: Microsoft Identity and Access Administrator" href="/security/sc-300/" />
-	<LinkCard title="SC-401: Administering Information Security in Microsoft 365" href="/security/sc-401/" />
+    <TabItem label="AI & AB">
+    <CardGrid>
+    <LinkCard title="AI-900: Microsoft Azure AI Fundamentals" href="/aiab/ai-900/" />
+    <LinkCard title="AI-102: Designing and Implementing a Microsoft Azure AI Solution" href="/aiab/ai-102/" />
+    <LinkCard title="AB-900: Microsoft Copilot and Agent Administration Fundamentals" href="/aiab/ab-900/" />
+    <LinkCard title="AB-100: Agentic AI Business Solutions Architect" href="/aiab/ab-100/" />
+    <LinkCard title="AB-730: Microsoft AI Business Professional" href="/aiab/ab-730/" />
+    <LinkCard title="AB-731: AI Transformation Leader" href="/aiab/ab-731/" />
+    </CardGrid>
+    </TabItem>
+
+    <TabItem label="Dynamics">
+    <CardGrid>
+    <LinkCard title="MB-230: Micrsooft Dynamics 365 Customer Service Functional Consultant" href="/dynamics/mb-230/" />
+    <LinkCard title="MB-240: Microsoft Dynamics 365 Field Service Functional Consultant" href="/dynamics/mb-240/" />
+    <LinkCard title="MB-280: Microsoft Dynamics 365 Customer Experience Analyst" href="/dynamics/mb-280/" />
+    <LinkCard title="MB-310: Microsoft Dynamics 365 Finance Functional Consultant" href="/dynamics/mb-310/" />
+    <LinkCard title="MB-330: Microsoft Dynamics 365 Supply Chain Management Functional Consultant" href="/dynamics/mb-330/" />
      </CardGrid>
-	</TabItem>
+    </TabItem>
+
+    <TabItem label="M365">
+    <CardGrid>
+    <LinkCard title="MS-900: Microsoft 365 Fundamentals" href="/microsoft365/ms-900/" />
+    <LinkCard title="MS-102: Microsoft 365 Administrator" href="/microsoft365/ms-102/" />
+    <LinkCard title="MD-102: Endpoint Administrator" href="/microsoft365/md-102/" />
+    <LinkCard title="MS-700: Managing Microsoft Teams" href="/microsoft365/ms-700/" />
+    <LinkCard title="MS-721: Collaboration Communications Systems Engineer" href="/microsoft365/ms-721/" />
+     </CardGrid>
+    </TabItem>
+
+    <TabItem label="Power">
+    <CardGrid>
+    <LinkCard title="PL-900: Microsoft Power Platform Fundamentals" href="/power/pl-900/" />
+    <LinkCard title="PL-200: Microsoft Power Platform Functional Consultant" href="/power/pl-200/" />
+    <LinkCard title="PL-300: Microsoft Power BI Data Analyst" href="/power/pl-300/" />
+    <LinkCard title="PL-400: Microsoft Power Platform Developer" href="/power/pl-400/" />
+    <LinkCard title="PL-500: Microsoft Power Automate RPA Developer" href="/power/pl-500/" />
+    <LinkCard title="PL-600: Microsoft Power Platform Solution Architect" href="/power/pl-600/" />
+    </CardGrid>
+    </TabItem>
+
+    <TabItem label="Security">
+    <CardGrid>
+    <LinkCard title="SC-900: Microsoft Security, Compliance, and Identity Fundamentals" href="/security/sc-900/" />
+    <LinkCard title="SC-100: Microsoft Cybersecurity Architect" href="/security/sc-100/" />
+    <LinkCard title="SC-200: Microsoft Security Operations Analyst" href="/security/sc-200/" />
+    <LinkCard title="SC-300: Microsoft Identity and Access Administrator" href="/security/sc-300/" />
+    <LinkCard title="SC-401: Administering Information Security in Microsoft 365" href="/security/sc-401/" />
+     </CardGrid>
+    </TabItem>
+
 </Tabs>
-
-
-
-
