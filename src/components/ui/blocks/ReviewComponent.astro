@@ -2,11 +2,12 @@
 import Avatar from "@components/ui/avatars/Avatar.astro";
 import FullStar from "@components/ui/stars/FullStar.astro";
 import HalfStar from "@components/ui/stars/HalfStar.astro";
+import type { ImageMetadata } from "astro";
 
 const { avatars, starCount = 0, rating, reviews } = Astro.props;
 
 interface Props {
-  avatars?: Array<string>;
+  avatars?: Array<string | ImageMetadata>;
   starCount?: number;
   rating?: string;
   reviews?: string;

@@ -1,6 +1,7 @@
 ---
 // Import the necessary dependencies
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 import SecondaryCTA from "@components/ui/buttons/SecondaryCTA.astro";
 import ReviewComponent from "@components/ui/blocks/ReviewComponent.astro";
@@ -31,7 +32,7 @@ interface Props {
   secondaryBtn?: string;
   secondaryBtnURL?: string;
   withReview?: boolean;
-  avatars?: Array<string>;
+  avatars?: Array<string | ImageMetadata>;
   starCount?: number;
   rating?: string;
   reviews?: string;
