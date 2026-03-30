@@ -1,8 +1,8 @@
 ---
 import type { Props } from '@astrojs/starlight/props'
-import StarlightVideo from 'starlight-videos/overrides/MarkdownContent.astro';
+import Default from '@astrojs/starlight/components/MarkdownContent.astro';
 import StarlightImageZoom from 'starlight-image-zoom/components/ImageZoom.astro';
 ---
 
 <StarlightImageZoom />
-<StarlightVideo><slot /></StarlightVideo>
+<Default><slot /></Default>

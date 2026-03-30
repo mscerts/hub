@@ -6,7 +6,7 @@ import CookieConsentBanner from "@components/ui/banners/CookieConsentBanner.astr
 import CookieConsentModal from "@components/ui/modals/CookieConsentModal.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
 
-const isBlogPage = Astro.url.pathname.includes('/blog/');
+// No blog-specific logic
 ---
 
 <VtbotStarlight {...Astro.props} viewTransitionsFallback="animate">
@@ -16,19 +16,15 @@ const isBlogPage = Astro.url.pathname.includes('/blog/');
 </VtbotStarlight>
 
 <!-- Cookie Consent Components -->
-{!isBlogPage && (
-  <>
-    <CookieConsentBanner />
-    <CookieConsentModal />
-    <AnnouncementBanner
-      btnId="dismiss-button"
-      btnTitle="New GitHub Certifications on the Hub"
-      btnTitleMobile="New GitHub Certs"
-      url="/news/github-exams-and-ignite/"
-      version="2"
-    />
-  </>
-)}
+<CookieConsentBanner />
+<CookieConsentModal />
+<AnnouncementBanner
+  btnId="dismiss-button"
+  btnTitle="New AI/AB Certifications on the Hub"
+  btnTitleMobile="New AI/AB Certs"
+  url="/wiki"
+  version="3"
+/>
 <style is:global>
   /* Slow down Chrome's default animation */
   ::view-transition-group(root) {
@@ -91,37 +87,5 @@ const isBlogPage = Astro.url.pathname.includes('/blog/');
     if (rightSidebar) {
       rightSidebar.setAttribute("data-lenis-prevent", "");
     }
-
-    // Force full page reload for ALL links when on blog pages
-    if (window.location.pathname.includes('/blog/')) {
-      document.querySelectorAll('a').forEach((link) => {
-        const href = link.getAttribute('href');
-        if (href && !href.startsWith('http') && !href.startsWith('#')) {
-          link.setAttribute('data-astro-reload', '');
-        }
-      });
-    }
-
-    // Force full page reload for blog links
-    document.querySelectorAll('a[href*="/blog/"]').forEach((link) => {
-      link.setAttribute('data-astro-reload', '');
-    });
-  });
-
-  // Also handle dynamically added links
-  document.addEventListener("astro:page-load", () => {
-    // Force full page reload for ALL links when on blog pages
-    if (window.location.pathname.includes('/blog/')) {
-      document.querySelectorAll('a').forEach((link) => {
-        const href = link.getAttribute('href');
-        if (href && !href.startsWith('http') && !href.startsWith('#')) {
-          link.setAttribute('data-astro-reload', '');
-        }
-      });
-    }
-
-    document.querySelectorAll('a[href*="/blog/"]').forEach((link) => {
-      link.setAttribute('data-astro-reload', '');
-    });
   });
 </script>

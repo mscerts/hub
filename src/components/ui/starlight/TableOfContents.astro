@@ -1,0 +1,44 @@
+---
+import Default from "@astrojs/starlight/components/TableOfContents.astro";
+import CreditCard from "./CreditCard.astro";
+
+const { toc } = Astro.locals.starlightRoute;
+---
+
+<Default><slot /></Default>
+
+{
+  toc && (
+    <>
+      <div class="starlight-cooler-credit-spacer" />
+      <div class="starlight-cooler-credit-bottom-wrapper">
+        <CreditCard />
+      </div>
+    </>
+  )
+}
+
+<style>
+  .starlight-cooler-credit-spacer {
+    flex-grow: 1;
+  }
+  .starlight-cooler-credit-bottom-wrapper {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+</style>
+
+<style is:global>
+  @media (min-width: 72rem) {
+    .right-sidebar-panel {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .right-sidebar-panel > .sl-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+  }
+</style>

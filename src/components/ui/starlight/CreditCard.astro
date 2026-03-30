@@ -1,0 +1,95 @@
+---
+import { Image } from "astro:assets";
+import mascotImage from "@/assets/images/mascot.png";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className, ...rest } = Astro.props;
+
+// Hardcoded config (replaces virtual:starlight-cooler-credit-config)
+const config = {
+  showImage: true,
+  title: "Have more questions?",
+  href: "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
+  description: "Join our Discord server and ask away!",
+  imageAlt: "MSFTHub Mascot",
+};
+---
+
+<aside
+  class={`not-content starlight-cooler-credit-aside ${className ?? ""}`}
+  {...rest}
+>
+  <a href={config.href} target="_blank" rel="noopener noreferrer">
+    <h2>{config.title}</h2>
+    <div>
+      <div>
+        {config.description && <p>{config.description}</p>}
+      </div>
+      {
+        config.showImage && (
+          <div>
+            <Image src={mascotImage} alt={config.imageAlt} width={180} />
+          </div>
+        )
+      }
+    </div>
+  </a>
+</aside>
+
+<style>
+  .starlight-cooler-credit-aside {
+    position: relative;
+    background-color: var(--sl-color-gray-6);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--sl-color-text-accent);
+    box-shadow: var(--sl-shadow-md);
+    overflow-y: hidden;
+  }
+  .starlight-cooler-credit-aside a:link {
+    text-decoration: none !important;
+  }
+  .starlight-cooler-credit-aside a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .starlight-cooler-credit-aside > a > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .starlight-cooler-credit-aside h2 {
+    color: var(--sl-color-white);
+    font-size: var(--sl-text-h5);
+    font-weight: 600;
+    text-decoration: none !important;
+    line-height: var(--sl-line-height-headings);
+    margin-bottom: 0.5rem;
+  }
+  .starlight-cooler-credit-aside p {
+    font-size: var(--sl-text-xs);
+    line-height: normal;
+    text-decoration: none !important;
+    color: var(--sl-color-gray-3);
+    overflow-wrap: anywhere;
+  }
+  .starlight-cooler-credit-aside > a > div > div:last-child {
+    display: flex;
+    align-items: end;
+  }
+  .starlight-cooler-credit-aside img {
+    margin-bottom: -1rem;
+    transition: transform 0.3s;
+    transform: translateY(2px);
+    width: 5.5rem;
+    height: auto;
+  }
+  .starlight-cooler-credit-aside:hover img {
+    transform: translateY(0px);
+  }
+</style>
