@@ -220,7 +220,6 @@ export default defineConfig({
                 { label: "MS-102", link: "/microsoft365/ms-102/" },
                 { label: "MS-700", link: "/microsoft365/ms-700/" },
                 { label: "MS-721", link: "/microsoft365/ms-721/" },
-                { label: "MS-900", link: "/microsoft365/ms-900/" },
               ],
             },
             {
