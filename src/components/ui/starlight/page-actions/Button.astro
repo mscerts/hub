@@ -2,12 +2,13 @@
 interface Props {
   id?: string;
   dataPath?: string;
+  class?: string;
 }
 
-const { id, dataPath } = Astro.props;
+const { id, dataPath, class: className } = Astro.props;
 ---
 
-<button class="action-button" id={id} data-path={dataPath}>
+<button class:list={["action-button", className]} id={id} data-path={dataPath}>
   <slot />
 </button>
 

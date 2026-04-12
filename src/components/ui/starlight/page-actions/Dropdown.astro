@@ -12,16 +12,15 @@ interface Props {
 }
 
 const { label, options, id } = Astro.props;
-const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
 ---
 
-<div class="dropdown" id={dropdownId}>
-  <Button id="dropdown-toggle">
+<starlight-page-action-dropdown class="dropdown">
+  <Button class="dropdown-toggle">
     <span>{label}</span>
     <Icon name="down-caret" size="1rem" />
   </Button>
 
-  <div id="dropdown-menu">
+  <div class="dropdown-menu">
     {
       options.map((option) => {
         return (
@@ -33,14 +32,15 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
       })
     }
   </div>
-</div>
+</starlight-page-action-dropdown>
 
 <style>
   .dropdown {
     position: relative;
+    display: inline-block;
   }
 
-  #dropdown-menu {
+  .dropdown-menu {
     position: absolute;
     top: calc(100% + 0.5rem);
     left: 0;
@@ -57,7 +57,7 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
     z-index: 10;
   }
 
-  #dropdown-menu.show {
+  .dropdown-menu.show {
     display: block;
   }
 
@@ -87,7 +87,7 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
   }
 
   @media (min-width: 425px) {
-    #dropdown-menu {
+    .dropdown-menu {
       left: 0;
       right: auto;
     }
@@ -95,32 +95,40 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
 </style>
 
 <script>
-  const allDropdownIds = ["dropdown-0", "dropdown-1"];
+  class StarlightPageActionDropdown extends HTMLElement {
+    constructor() {
+      super();
+      const toggle = this.querySelector('.dropdown-toggle') as HTMLButtonElement;
+      const menu = this.querySelector('.dropdown-menu') as HTMLElement;
 
-  const handleDropdownToggle = (dropdownId: string) => {
-    const dropdownToggle = document.querySelector(
-      `#${dropdownId} > #dropdown-toggle`
-    ) as HTMLButtonElement;
-    const dropdownMenu = document.querySelector(
-      `#${dropdownId} > #dropdown-menu`
-    ) as HTMLElement;
+      if (!toggle || !menu) return;
 
-    dropdownToggle?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      allDropdownIds.map((id) =>
-        document.querySelector(`#${id} > #dropdown-menu`)?.classList.remove("show")
-      );
-      dropdownMenu.classList.toggle("show");
-    });
+      toggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        
+        // Close all other dropdowns
+        document.querySelectorAll('starlight-page-action-dropdown .dropdown-menu').forEach((m) => {
+          if (m !== menu) m.classList.remove("show");
+        });
 
+        // Toggle current dropdown
+        menu.classList.toggle("show");
+      });
+
+      menu.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    }
+  }
+
+  if (!customElements.get('starlight-page-action-dropdown')) {
+    customElements.define('starlight-page-action-dropdown', StarlightPageActionDropdown);
+    
+    // Global listener for closing dropdowns when clicking outside
     document.addEventListener("click", () => {
-      dropdownMenu?.classList.remove("show");
+      document.querySelectorAll('starlight-page-action-dropdown .dropdown-menu').forEach((m) => {
+        m.classList.remove("show");
+      });
     });
-
-    dropdownMenu?.addEventListener("click", (e) => {
-      e.stopPropagation();
-    });
-  };
-
-  allDropdownIds.map((id) => handleDropdownToggle(id));
+  }
 </script>
