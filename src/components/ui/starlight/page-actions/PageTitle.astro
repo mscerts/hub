@@ -1,0 +1,136 @@
+---
+import DefaultPageTitle from "@astrojs/starlight/components/PageTitle.astro";
+import Dropdown from "./Dropdown.astro";
+
+// Hardcoded config - no virtual module needed
+const config = {
+  actions: {
+    chatgpt: true,
+    claude: true,
+    t3chat: true,
+  },
+  prompt: "Help me understand this page: {url}",
+  share: true,
+};
+
+interface ActionOption {
+  label: string;
+  href: string;
+}
+
+const currentUrl = Astro.url.href;
+const { title, pageActions } = (Astro.locals as any).starlightRoute.entry.data;
+
+// Build prompt with URL
+const prompt = config.prompt.includes("{url}")
+  ? config.prompt.replace("{url}", currentUrl)
+  : `${config.prompt} ${currentUrl}`;
+const encodedPrompt = encodeURIComponent(prompt);
+const encodedCurrentUrl = encodeURIComponent(currentUrl);
+const encodedTitle = encodeURIComponent(title as string);
+
+// AI Action options - only Claude, T3 Chat, ChatGPT (NO v0, NO markdown)
+const actionOptions: ActionOption[] = [];
+
+if (config.actions.claude) {
+  actionOptions.push({
+    label: "Open in Claude",
+    href: `https://claude.ai/new?q=${encodedPrompt}`,
+  });
+}
+
+if (config.actions.t3chat) {
+  actionOptions.push({
+    label: "Open in T3 Chat",
+    href: `https://t3.chat/new?q=${encodedPrompt}`,
+  });
+}
+
+if (config.actions.chatgpt) {
+  actionOptions.push({
+    label: "Open in ChatGPT",
+    href: `https://chatgpt.com/?q=${encodedPrompt}`,
+  });
+}
+
+// Share options
+const shareOptions: ActionOption[] = [
+  {
+    label: "LinkedIn",
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedCurrentUrl}`,
+  },
+  {
+    label: "X (Twitter)",
+    href: `https://x.com/intent/tweet?url=${encodedCurrentUrl}&text=${encodedTitle}`,
+  },
+  {
+    label: "Threads",
+    href: `https://threads.net/intent/post?url=${encodedCurrentUrl}&text=${encodedTitle}`,
+  },
+  {
+    label: "Bluesky",
+    href: `https://bsky.app/intent/compose?text=${encodedTitle}%20${encodedCurrentUrl}`,
+  },
+  {
+    label: "Facebook",
+    href: `https://www.facebook.com/sharer/sharer.php?u=${encodedCurrentUrl}`,
+  },
+  {
+    label: "Reddit",
+    href: `https://reddit.com/submit?url=${encodedCurrentUrl}&title=${encodedTitle}`,
+  },
+  {
+    label: "Hacker News",
+    href: `https://news.ycombinator.com/submitlink?u=${encodedCurrentUrl}&t=${encodedTitle}`,
+  },
+  {
+    label: "Email",
+    href: `mailto:?subject=${encodedTitle}&body=${encodedCurrentUrl}`,
+  },
+  {
+    label: "WhatsApp",
+    href: `https://wa.me/?text=${encodedTitle}%20${encodedCurrentUrl}`,
+  },
+];
+
+// Show actions if pageActions is true or undefined (default to showing)
+const showActions = pageActions || typeof pageActions === "undefined";
+---
+
+{
+  showActions ? (
+    <>
+      <DefaultPageTitle />
+      <div class="actions-container">
+        <div class="dropdown-container">
+          {actionOptions.length > 0 && (
+            <Dropdown label="Ask AI" options={actionOptions} id="0" />
+          )}
+          {config.share && (
+            <Dropdown label="Share" options={shareOptions} id="1" />
+          )}
+        </div>
+      </div>
+    </>
+  ) : (
+    <DefaultPageTitle />
+  )
+}
+
+<style>
+  .actions-container,
+  .dropdown-container {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .actions-container {
+    flex-direction: column;
+  }
+
+  @media (min-width: 425px) {
+    .actions-container {
+      flex-direction: row;
+    }
+  }
+</style>

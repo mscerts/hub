@@ -5,10 +5,7 @@ import compressor from "astro-compressor";
 import starlight from "@astrojs/starlight";
 import starlightImageZoom from "starlight-image-zoom";
 import partytown from "@astrojs/partytown";
-// BROKEN: starlightCoolerCredit causes zod _zod error with Astro 6
-// import starlightCoolerCredit from 'starlight-cooler-credit'
 import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
-// import starlightVideos from 'starlight-videos'
 import mdx from "@astrojs/mdx";
 
 const googleAnalyticsId = "G-CDTP3TERKP";
@@ -29,7 +26,7 @@ export default defineConfig({
     "/dynamics": "/wiki",
     "/azure/ai-900": "/aiab/ai-900",
     "/azure/ai-102": "/aiab/ai-102",
-    "/microsoft365/ms-900":  "/aiab/ab-900",
+    "/microsoft365/ms-900": "/aiab/ab-900",
     "/discord":
       "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
   },
@@ -302,6 +299,7 @@ export default defineConfig({
         MobileMenuFooter:
           "./src/components/ui/starlight/MobileMenuFooter.astro",
         TableOfContents: "./src/components/ui/starlight/TableOfContents.astro",
+        PageTitle: "./src/components/ui/starlight/page-actions/PageTitle.astro",
         /* ThemeSelect: "./src/components/ui/starlight/ThemeSelect.astro", */
         MarkdownContent: "./src/components/MarkdownContent.astro",
         /* Sidebar: './src/components/Sidebar.astro', */

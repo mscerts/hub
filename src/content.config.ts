@@ -4,8 +4,6 @@ import { z, defineCollection } from "astro:content";
 import { docsSchema } from "@astrojs/starlight/schema";
 import { glob } from "astro/loaders";
 import { docsLoader } from "@astrojs/starlight/loaders";
-// DISABLED: starlight-videos not compatible with Astro 6 / Zod 4 yet
-// import { videosSchema } from "starlight-videos/schemas";
 
 // Author schema for blog posts (supports local images or remote URLs)
 const authorSchema = (image: any) =>
