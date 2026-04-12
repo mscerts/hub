@@ -176,6 +176,16 @@ export default defineConfig({
                 { label: "DP-420", link: "/azure/dp-420/" },
                 { label: "DP-600", link: "/azure/dp-600/" },
                 { label: "DP-700", link: "/azure/dp-700/" },
+                {
+                  label: "DP-750",
+                  link: "/azure/dp-750/",
+                  badge: { text: "BETA", variant: "tip" },
+                },  
+                {
+                  label: "DP-800",
+                  link: "/azure/dp-800/",
+                  badge: { text: "BETA", variant: "tip" },
+                },  
                 { label: "DP-900", link: "/azure/dp-900/" },
               ],
             },
@@ -202,6 +212,11 @@ export default defineConfig({
                   label: "AI-102",
                   link: "/aiab/ai-102/",
                   badge: { text: "RETIRING", variant: "danger" },
+                },
+                {
+                  label: "AI-300",
+                  link: "/aiab/ai-300/",
+                  badge: { text: "BETA", variant: "tip" },
                 },
                 {
                   label: "AI-900",
