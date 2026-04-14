@@ -16,6 +16,7 @@ const footerLinks = [
       { name: "Labs", url: "/labs/" },
       { name: "Contributing", url: "/contributing/" },
       { name: "Privacy Policy", url: "/privacy" },
+      { name: "Contact", url: "/contact" },
     ],
   },
   {

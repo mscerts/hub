@@ -5,25 +5,19 @@ next: false
 prev: false
 ---
 
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
-import { Icon } from '@astrojs/starlight/components';
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+import { Icon } from "@astrojs/starlight/components";
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import VoucherList from "../../components/VoucherList.astro";
 
 ## 100% Exam Vouchers
-	<CardGrid>
-    </CardGrid>
+
+<VoucherList category="100%" />
 
 ## 50% Exam Vouchers
-	<CardGrid>
-	<LinkCard title="Virtual Training Days" href="/vouchers/virtualtrainingdays/" description="Microsoft Virtual Training Days Vouchers" />
-	<LinkCard title="Microsoft ESI" href="/vouchers/microsoftesi/" description="Discount opportunities for Microsoft customers or partners" />
-    </CardGrid>
+
+<VoucherList category="50%" />
 
 ## Special Exam Vouchers
-	<CardGrid>
-	<LinkCard title="Beta Exams" href="/vouchers/betaexams/" description="Microsoft offers 80% off vouchers for beta testing, but with potential delays and self-study prep required" />
-	<LinkCard title="Replay/Retake Voucher Bundles" href="/vouchers/mindhubreplayvoucherbundles/" description="Replay vouchers allow you to have second exam attempt if you fail the first time" />
-    </CardGrid>
 
-
-
+<VoucherList category="Special" />

@@ -33,7 +33,11 @@ const blogCollection = defineCollection({
 export const collections = {
   docs: defineCollection({
     loader: docsLoader(),
-    schema: docsSchema(),
+    schema: docsSchema({
+      extend: z.object({
+        voucherCategory: z.enum(["100%", "50%", "Special"]).optional(),
+      }),
+    }),
   }),
   blog: blogCollection,
 };

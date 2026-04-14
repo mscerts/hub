@@ -86,17 +86,17 @@ export default defineConfig({
           items: [
             {
               label: "AI-300 Beta",
-              link: "https://techcommunity.microsoft.com/blog/skills-hub-blog/new-certification-for-machine-learning-operations-mlops-engineers/4494111?WT.mc_id=studentamb_165290",
+              link: "/vouchers/ai300beta/",
               badge: { text: "80%", variant: "tip" },
             },
             {
               label: "DP-750 Beta",
-              link: "https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-azure-databricks-data-engineer-associate-certification/4494114?WT.mc_id=studentamb_165290",
+              link: "/vouchers/dp750beta/",
               badge: { text: "80%", variant: "tip" },
             },
             {
               label: "DP-800 Beta",
-              link: "https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-sql-ai-developer-associate-certification/4494113?WT.mc_id=studentamb_165290",
+              link: "/vouchers/dp800beta/",
               badge: { text: "80%", variant: "tip" },
             },
             {
@@ -180,12 +180,12 @@ export default defineConfig({
                   label: "DP-750",
                   link: "/azure/dp-750/",
                   badge: { text: "BETA", variant: "tip" },
-                },  
+                },
                 {
                   label: "DP-800",
                   link: "/azure/dp-800/",
                   badge: { text: "BETA", variant: "tip" },
-                },  
+                },
                 { label: "DP-900", link: "/azure/dp-900/" },
               ],
             },

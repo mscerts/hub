@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+
+interface Props {
+  category: "100%" | "50%" | "Special";
+}
+
+const { category } = Astro.props;
+
+// Fetch all docs
+const docs = await getCollection("docs");
+
+// Filter docs that have the requested voucherCategory in their frontmatter
+const vouchers = docs.filter(
+  (doc) => doc.data.voucherCategory === category
+);
+
+// Sort vouchers alphabetically by title for a cleaner list
+vouchers.sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+{
+  vouchers.length > 0 ? (
+    <CardGrid>
+      {vouchers.map((voucher) => {
+        // Construct the href. The id from the collection usually looks like 'vouchers/virtualtrainingdays'
+        // We ensure it starts with a slash and ends with a slash to match Starlight's conventions
+        const href = `/${voucher.id}/`;
+
+        return (
+          <LinkCard
+            title={voucher.data.title}
+            description={voucher.data.description || ""}
+            href={href}
+          />
+        );
+      })}
+    </CardGrid>
+  ) : (
+    <p>No vouchers currently available in this category.</p>
+  )
+}
