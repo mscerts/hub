@@ -50,7 +50,7 @@ export default defineConfig({
     }),
     starlight({
       title: "Microsoft Certification Hub",
-      plugins: [viewTransitions(), starlightImageZoom()],
+      plugins: [starlightImageZoom()],
       sidebar: [
         {
           label: "Certification Program Guide",
@@ -84,21 +84,6 @@ export default defineConfig({
         {
           label: "Discounted Exam Vouchers",
           items: [
-            {
-              label: "AI-300 Beta",
-              link: "/vouchers/ai300beta/",
-              badge: { text: "80%", variant: "tip" },
-            },
-            {
-              label: "DP-750 Beta",
-              link: "/vouchers/dp750beta/",
-              badge: { text: "80%", variant: "tip" },
-            },
-            {
-              label: "DP-800 Beta",
-              link: "/vouchers/dp800beta/",
-              badge: { text: "80%", variant: "tip" },
-            },
             {
               label: "Virtual Training Days",
               link: "/vouchers/virtualtrainingdays/",
