@@ -87,7 +87,7 @@ export default defineConfig({
             {
               label: "Partner Week",
               link: "/vouchers/partnerweek/",
-              badge: { text: "100%", variant: "note" },
+              badge: { text: "100%", variant: "tip" },
             },
             {
               label: "Virtual Training Days",
