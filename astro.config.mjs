@@ -90,6 +90,11 @@ export default defineConfig({
               badge: { text: "100%", variant: "tip" },
             },
             {
+              label: "AI-901 Beta",
+              link: "https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-azure-ai-fundamentals-certification/4494127?WT.mc_id=studentamb_165290",
+              badge: { text: "80%", variant: "tip" },
+            },
+            {
               label: "Virtual Training Days",
               link: "/vouchers/virtualtrainingdays/",
               badge: { text: "50%", variant: "note" },
