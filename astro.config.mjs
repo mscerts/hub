@@ -85,6 +85,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "Partner Week",
+              link: "/vouchers/partnerweek/",
+              badge: { text: "100%", variant: "note" },
+            },
+            {
               label: "Virtual Training Days",
               link: "/vouchers/virtualtrainingdays/",
               badge: { text: "50%", variant: "note" },
@@ -146,12 +151,14 @@ export default defineConfig({
                 {
                   label: "AZ-800",
                   link: "/azure/az-800/",
+                  badge: { text: "RETIRING", variant: "danger" },
                 },
                 {
                   label: "AZ-801",
                   link: "/azure/az-801/",
+                  badge: { text: "RETIRING", variant: "danger" },
                 },
-                { label: "AZ-900", link: "/azure/az-900/" },
+                { label: "AZ-900", link: "/azure/az-900/", },
                 {
                   label: "DP-100",
                   link: "/azure/dp-100/",
@@ -206,6 +213,7 @@ export default defineConfig({
                 {
                   label: "AI-900",
                   link: "/aiab/ai-900/",
+                  badge: { text: "RETIRING", variant: "danger" },
                 },
               ],
             },
