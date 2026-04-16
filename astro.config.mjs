@@ -220,6 +220,11 @@ export default defineConfig({
                   link: "/aiab/ai-900/",
                   badge: { text: "RETIRING", variant: "danger" },
                 },
+                {
+                  label: "AI-901",
+                  link: "/aiab/ai-901/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
               ],
             },
             {
