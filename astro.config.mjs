@@ -91,7 +91,7 @@ export default defineConfig({
             },
             {
               label: "AI-901 Beta",
-              link: "https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-azure-ai-fundamentals-certification/4494127?WT.mc_id=studentamb_165290",
+              link: "/vouchers/ai901beta/",
               badge: { text: "80%", variant: "tip" },
             },
             {
@@ -163,7 +163,7 @@ export default defineConfig({
                   link: "/azure/az-801/",
                   badge: { text: "RETIRING", variant: "danger" },
                 },
-                { label: "AZ-900", link: "/azure/az-900/", },
+                { label: "AZ-900", link: "/azure/az-900/" },
                 {
                   label: "DP-100",
                   link: "/azure/dp-100/",
