@@ -90,6 +90,11 @@ export default defineConfig({
               badge: { text: "100%", variant: "tip" },
             },
             {
+              label: "AI-103 Beta",
+              link: "/vouchers/ai103beta/",
+              badge: { text: "80%", variant: "tip" },
+            },
+            {
               label: "AI-901 Beta",
               link: "/vouchers/ai901beta/",
               badge: { text: "80%", variant: "tip" },
@@ -209,6 +214,11 @@ export default defineConfig({
                   label: "AI-102",
                   link: "/aiab/ai-102/",
                   badge: { text: "RETIRING", variant: "danger" },
+                },
+                {
+                  label: "AI-103",
+                  link: "/aiab/ai-103/",
+                  badge: { text: "BETA", variant: "tip" },
                 },
                 {
                   label: "AI-300",
