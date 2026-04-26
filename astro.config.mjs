@@ -90,18 +90,8 @@ export default defineConfig({
               badge: { text: "100%", variant: "tip" },
             },
             {
-              label: "AI-103 Beta",
-              link: "/vouchers/ai103beta/",
-              badge: { text: "80%", variant: "tip" },
-            },
-            {
               label: "AB-620 Beta",
               link: "/vouchers/ab620beta/",
-              badge: { text: "80%", variant: "tip" },
-            },
-            {
-              label: "AI-901 Beta",
-              link: "/vouchers/ai901beta/",
               badge: { text: "80%", variant: "tip" },
             },
             {
