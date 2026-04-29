@@ -24,9 +24,19 @@ export default defineConfig({
     "/powerplatform": "/wiki",
     "/security": "/wiki",
     "/dynamics": "/wiki",
-    "/azure/ai-900": "/aiab/ai-900",
-    "/azure/ai-102": "/aiab/ai-102",
-    "/microsoft365/ms-900": "/aiab/ab-900",
+
+    "/ai&ab/ai-900": "/azure/ai-900",
+    "/ai&ab/ai-102": "/azure/ai-102",
+    "/ai&ab/ai-103": "/azure/ai-103",
+    "/ai&ab/ai-300": "/azure/ai-300",
+    "/ai&ab/ai-901": "/azure/ai-901",
+
+    "/microsoft365/ms-900": "/aibusiness/ab-900",
+    "/aiab/ab-900/":"/aibusiness/ab-900/",
+    "/aiab/ab-100/":"/aibusiness/ab-100/",
+    "/aiab/ab-730/":"/aibusiness/ab-730/",
+    "/aiab/ab-731/":"/aibusiness/ab-731/",
+    
     "/discord":
       "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
   },
@@ -136,6 +146,7 @@ export default defineConfig({
             {
               label: "Azure",
               collapsed: true,
+              badge: { text: "AZ AI DP", variant: "note" },
               items: [
                 { label: "AZ-104", link: "/azure/az-104/" },
                 { label: "AZ-120", link: "/azure/az-120/" },
@@ -165,6 +176,31 @@ export default defineConfig({
                 },
                 { label: "AZ-900", link: "/azure/az-900/" },
                 {
+                  label: "AI-102",
+                  link: "/azure/ai-102/",
+                  badge: { text: "RETIRING", variant: "danger" },
+                },
+                {
+                  label: "AI-103",
+                  link: "/azure/ai-103/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
+                {
+                  label: "AI-300",
+                  link: "/azure/ai-300/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
+                {
+                  label: "AI-900",
+                  link: "/azure/ai-900/",
+                  badge: { text: "RETIRING", variant: "danger" },
+                },
+                {
+                  label: "AI-901",
+                  link: "/azure/ai-901/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
+                {
                   label: "DP-100",
                   link: "/azure/dp-100/",
                   badge: { text: "RETIRING", variant: "danger" },
@@ -189,6 +225,7 @@ export default defineConfig({
             {
               label: "GitHub",
               collapsed: true,
+              badge: { text: "GH", variant: "note" },
               items: [
                 { label: "GH-100", link: "/github/gh-100/" },
                 { label: "GH-200", link: "/github/gh-200/" },
@@ -198,43 +235,20 @@ export default defineConfig({
               ],
             },
             {
-              label: "AI & AB",
+              label: "AI Business",
+              badge: { text: "AB", variant: "note" },
               collapsed: true,
               items: [
-                { label: "AB-100", link: "/aiab/ab-100/" },
-                { label: "AB-730", link: "/aiab/ab-730/" },
-                { label: "AB-731", link: "/aiab/ab-731/" },
-                { label: "AB-900", link: "/aiab/ab-900/" },
-                {
-                  label: "AI-102",
-                  link: "/aiab/ai-102/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
-                {
-                  label: "AI-103",
-                  link: "/aiab/ai-103/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                {
-                  label: "AI-300",
-                  link: "/aiab/ai-300/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                {
-                  label: "AI-900",
-                  link: "/aiab/ai-900/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
-                {
-                  label: "AI-901",
-                  link: "/aiab/ai-901/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
+                { label: "AB-100", link: "/aibusiness/ab-100/" },
+                { label: "AB-730", link: "/aibusiness/ab-730/" },
+                { label: "AB-731", link: "/aibusiness/ab-731/" },
+                { label: "AB-900", link: "/aibusiness/ab-900/" },
               ],
             },
             {
               label: "Microsoft 365",
               collapsed: true,
+              badge: { text: "MS MD", variant: "note" },
               items: [
                 { label: "MD-102", link: "/microsoft365/md-102/" },
                 { label: "MS-102", link: "/microsoft365/ms-102/" },
@@ -244,6 +258,7 @@ export default defineConfig({
             },
             {
               label: "Security & Identity",
+              badge: { text: "SC", variant: "note" },
               collapsed: true,
               items: [
                 { label: "SC-100", link: "/security/sc-100/" },
@@ -255,6 +270,7 @@ export default defineConfig({
             },
             {
               label: "Power Platform",
+              badge: { text: "PL", variant: "note" },
               collapsed: true,
               items: [
                 { label: "PL-200", link: "/power/pl-200/" },
@@ -267,6 +283,7 @@ export default defineConfig({
             },
             {
               label: "Dynamics 365",
+              badge: { text: "MB", variant: "note" },
               collapsed: true,
               items: [
                 { label: "MB-230", link: "/dynamics/mb-230/" },
