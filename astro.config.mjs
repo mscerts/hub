@@ -97,7 +97,7 @@ export default defineConfig({
             {
               label: "Partner Week",
               link: "/vouchers/partnerweek/",
-              badge: { text: "100%", variant: "tip" },
+              badge: { text: "*100%", variant: "tip" },
             },
             {
               label: "AB-620 Beta",
