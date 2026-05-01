@@ -75,10 +75,6 @@ export default defineConfig({
             },
             { label: "Exam Experience", link: "/guide/takingtheexams/" },
             {
-              label: "Official Study Materials",
-              link: "/guide/officialstudymaterials/",
-            },
-            {
               label: "Opportunities for Students",
               link: "/guide/studentopportunities/",
             },
