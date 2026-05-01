@@ -36,6 +36,7 @@ export default defineConfig({
     "/aiab/ab-100/":"/aibusiness/ab-100/",
     "/aiab/ab-730/":"/aibusiness/ab-730/",
     "/aiab/ab-731/":"/aibusiness/ab-731/",
+    "/guide/officialstudymaterials/":"https://msfthub.com/wiki/",
     
     "/discord":
       "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
