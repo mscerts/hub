@@ -275,11 +275,23 @@ export default defineConfig({
               badge: { text: "PL", variant: "note" },
               collapsed: true,
               items: [
-                { label: "PL-200", link: "/power/pl-200/" },
+                {
+                  label: "PL-200",
+                  link: "/power/pl-200/",
+                  badge: { text: "RETIRING", variant: "danger" },
+                },
                 { label: "PL-300", link: "/power/pl-300/" },
                 { label: "PL-400", link: "/power/pl-400/" },
-                { label: "PL-500", link: "/power/pl-500/" },
-                { label: "PL-600", link: "/power/pl-600/" },
+                {
+                  label: "PL-500",
+                  link: "/power/pl-500/",
+                  badge: { text: "RETIRING", variant: "danger" },
+                },
+                {
+                  label: "PL-600",
+                  link: "/power/pl-600/",
+                  badge: { text: "RETIRING", variant: "danger" },
+                },
                 { label: "PL-900", link: "/power/pl-900/" },
               ],
             },
@@ -289,8 +301,16 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "MB-230", link: "/dynamics/mb-230/" },
-                { label: "MB-240", link: "/dynamics/mb-240/" },
-                { label: "MB-280", link: "/dynamics/mb-280/" },
+                {
+                  label: "MB-240",
+                  link: "/dynamics/mb-240/",
+                  badge: { text: "RETIRING", variant: "danger" },
+                },
+                {
+                  label: "MB-280",
+                  link: "/dynamics/mb-280/",
+                  badge: { text: "RETIRING", variant: "danger" },
+                },
                 { label: "MB-310", link: "/dynamics/mb-310/" },
                 { label: "MB-330", link: "/dynamics/mb-330/" },
               ],
