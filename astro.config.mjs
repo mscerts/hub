@@ -92,6 +92,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "Microsoft Partner LevelUp",
+              link: "/vouchers/levelup/",
+              badge: { text: "*100%", variant: "tip" },
+            },
+            {
               label: "Partner Week",
               link: "/vouchers/partnerweek/",
               badge: { text: "*100%", variant: "tip" },
