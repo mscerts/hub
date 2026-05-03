@@ -28,6 +28,7 @@ interface DocPage {
   description?: string;
   category: string;
   links: ResourceLink[];
+  body: string;
 }
 
 interface BlogPost {
@@ -121,6 +122,24 @@ function extractLinks(src: string): ResourceLink[] {
   return links;
 }
 
+function cleanDocBody(src: string): string {
+  return src
+    // Imports are MDX implementation detail, not useful content.
+    .replace(/^import\s+.*?;\s*$/gm, "")
+    // LinkCards are returned as structured resources separately.
+    .replace(/<LinkCard\s[^>]*?(?:\/>|>[\s\S]*?<\/LinkCard>)/g, "")
+    // Remove common Starlight layout/component wrappers but keep inner prose.
+    .replace(/<\/?(?:CardGrid|Card|Tabs|TabItem|Aside|Steps|FileTree|LinkButton|Badge|Icon)\b[^>]*>/g, "")
+    // Drop remaining self-closing JSX/HTML widgets.
+    .replace(/<\w+\b[^>]*\/>/g, "")
+    // Drop remaining opening/closing tags while preserving inner text.
+    .replace(/<\/?\w+\b[^>]*>/g, "")
+    // Normalize whitespace without destroying markdown lists/headings.
+    .replace(/[ \t]+$/gm, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 // ─── Build docs ─────────────────────────────────────────────────────────────
 
 function buildDocs(): DocPage[] {
@@ -136,6 +155,7 @@ function buildDocs(): DocPage[] {
         : {}),
       category: categoryFrom(file, docsDir),
       links: extractLinks(content),
+      body: cleanDocBody(content),
     };
   });
 }

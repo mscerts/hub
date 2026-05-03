@@ -11,6 +11,7 @@ export interface DocPage {
   description?: string;
   category: string;
   links: ResourceLink[];
+  body: string;
 }
 
 export interface BlogPost {

@@ -117,6 +117,7 @@ export function examTools(bundle: ContentBundle): RegisteredTool[] {
           description: doc.description,
           category: doc.category,
           url: `https://msfthub.com/${doc.slug}`,
+          content: doc.body,
           resources: grouped,
         });
       },

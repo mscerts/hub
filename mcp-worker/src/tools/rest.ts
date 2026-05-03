@@ -93,6 +93,7 @@ export function voucherTools(bundle: ContentBundle): RegisteredTool[] {
           title: doc.title,
           description: doc.description,
           url: `https://msfthub.com/${doc.slug}`,
+          content: doc.body,
           links: groupLinks(doc),
         });
       },
@@ -154,6 +155,7 @@ export function guideTools(bundle: ContentBundle): RegisteredTool[] {
           title: doc.title,
           description: doc.description,
           url: `https://msfthub.com/${doc.slug}`,
+          content: doc.body,
           links: doc.links,
         });
       },
@@ -200,6 +202,7 @@ export function labTools(bundle: ContentBundle): RegisteredTool[] {
           title: doc.title,
           description: doc.description,
           url: `https://msfthub.com/${doc.slug}`,
+          content: doc.body,
           labs: doc.links,
         });
       },

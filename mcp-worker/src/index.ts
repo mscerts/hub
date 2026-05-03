@@ -24,6 +24,19 @@ const app = new Hono();
 
 app.use("*", cors({ origin: "*", allowMethods: ["GET", "POST", "OPTIONS"] }));
 
+// ── Root info ────────────────────────────────────────────────────────────────
+app.get("/", (c) =>
+  c.json({
+    name: "msfthub MCP server",
+    status: "ok",
+    endpoints: {
+      health: "/health",
+      mcp: "/mcp",
+    },
+    note: "Configure MCP clients to use the /mcp endpoint.",
+  })
+);
+
 // ── Health check ─────────────────────────────────────────────────────────────
 app.get("/health", (c) =>
   c.json({
