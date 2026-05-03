@@ -1,0 +1,22 @@
+{
+  "name": "@msfthub/mcp-worker",
+  "version": "0.1.0",
+  "description": "Cloudflare Worker MCP server for msfthub",
+  "private": true,
+  "scripts": {
+    "bundle": "tsx scripts/bundle.ts",
+    "build": "wrangler deploy --dry-run",
+    "deploy": "pnpm bundle && wrangler deploy",
+    "dev": "pnpm bundle && wrangler dev"
+  },
+  "dependencies": {
+    "hono": "^4.7.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241127.0",
+    "gray-matter": "^4.0.3",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^3.109.0"
+  }
+}
