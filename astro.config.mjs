@@ -92,6 +92,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "AI-200 Beta",
+              link: "/vouchers/ai200beta/",
+              badge: { text: "80%", variant: "tip" },
+            },
+            {
               label: "Microsoft Partner LevelUp",
               link: "/vouchers/levelup/",
               badge: { text: "*100%", variant: "tip" },
