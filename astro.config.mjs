@@ -92,6 +92,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "SC-730 Beta",
+              link: "/vouchers/sc730beta/",
+              badge: { text: "80%", variant: "tip" },
+            },
+            {
               label: "DP-420 Sweepstakes",
               link: "/vouchers/dp-420sweepstakes/",
               badge: { text: "100%", variant: "tip" },
