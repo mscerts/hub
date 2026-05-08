@@ -15,6 +15,9 @@ const site = "https://msfthub.com/";
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    dangerouslyProcessSVG: true,
+  },
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
   site: "https://msfthub.com",
   redirects: {
