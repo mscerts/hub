@@ -15,9 +15,6 @@ const site = "https://msfthub.com/";
 
 // https://astro.build/config
 export default defineConfig({
-  image: {
-    dangerouslyProcessSVG: true,
-  },
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
   site: "https://msfthub.com",
   redirects: {
@@ -45,7 +42,8 @@ export default defineConfig({
       "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
   },
   image: {
-    domains: ["images.unsplash.com"],
+    domains: ["images.unsplash.com", 'msfthub.com'],
+    dangerouslyProcessSVG: true,
   },
   prefetch: true,
   integrations: [
