@@ -1,7 +1,11 @@
-name = "msfthub-mcp"
+name = "hubmcp"
 main = "src/index.ts"
 compatibility_date = "2024-11-01"
 compatibility_flags = ["nodejs_compat"]
+
+[observability.logs]
+enabled = true
+invocation_logs = true
 
 [build]
 command = "pnpm bundle"
