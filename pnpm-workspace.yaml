@@ -2,6 +2,10 @@ packages:
   - "."
   - "mcp-worker"
 
+allowBuilds:
+  esbuild: true
+  workerd: true
+
 onlyBuiltDependencies:
   - esbuild
   - sharp
