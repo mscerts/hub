@@ -93,6 +93,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "SC-500 Beta",
+              link: "/vouchers/sc500beta/",
+              badge: { text: "80%", variant: "tip" },
+            },
+            {
               label: "GH-600 Beta",
               link: "/vouchers/gh600beta/",
               badge: { text: "80%", variant: "tip" },
