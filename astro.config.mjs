@@ -93,6 +93,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "South Africa AI Skills",
+              link: "/vouchers/southafricaaiskills/",
+              badge: { text: "*100%", variant: "tip" },
+            },
+            {
               label: "SC-500 Beta",
               link: "/vouchers/sc500beta/",
               badge: { text: "80%", variant: "tip" },
