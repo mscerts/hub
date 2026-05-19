@@ -93,6 +93,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "AI Skills Fest",
+              link: "/vouchers/aiskillsfest/",
+              badge: { text: "Upcoming", variant: "caution" },
+            },
+            {
               label: "Get DP-800 Certified",
               link: "/vouchers/getsqlaidevelopercertified/",
               badge: { text: "*100%", variant: "tip" },
