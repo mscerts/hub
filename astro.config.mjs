@@ -123,11 +123,6 @@ export default defineConfig({
               badge: { text: "*100%", variant: "tip" },
             },
             {
-              label: "Partner Week",
-              link: "/vouchers/partnerweek/",
-              badge: { text: "*100%", variant: "tip" },
-            },
-            {
               label: "Virtual Training Days",
               link: "/vouchers/virtualtrainingdays/",
               badge: { text: "50%", variant: "note" },
