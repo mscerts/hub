@@ -150,7 +150,7 @@ export default defineConfig({
             {
               label: "Student Discount",
               link: "/vouchers/studentdiscount/",
-              badge: { text: "30%/45%", variant: "note" },
+              badge: { text: "30%/*45%", variant: "note" },
             },
             {
               label: "Replay/Retake Vouchers",
