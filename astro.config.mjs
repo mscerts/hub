@@ -235,7 +235,6 @@ export default defineConfig({
                 {
                   label: "DP-750",
                   link: "/azure/dp-750/",
-                  badge: { text: "BETA", variant: "tip" },
                 },
                 {
                   label: "DP-800",
