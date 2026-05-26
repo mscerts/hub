@@ -338,6 +338,10 @@ export default defineConfig({
           ],
         },
         {
+          label: "Support Us",
+          link: "/supportus",
+        },
+        {
           label: "Contributing",
           link: "/contributing",
         },

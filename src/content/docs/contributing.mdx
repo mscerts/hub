@@ -8,11 +8,15 @@ description: Learn how to contribute to the Hub
 ---
 import { FileTree, Aside, Badge, Steps } from '@astrojs/starlight/components';
 
-<Aside type="danger">This guide is currently outdated as per Feb 2026 and will be updated soon.</Aside>
+<Aside type="note">This guide has been updated as per May 2026.</Aside>
 
 If you're interested in supporting the Hub's development and are familiar with [Markdown](https://starlight.astro.build/guides/authoring-content/), read on to learn how to contribute to the project. 
 
 Contributions are very welcome and appreciated. Be sure to review [CONTRIBUTING.md](https://github.com/mscerts/hub/blob/main/.github/CONTRIBUTING.md) before getting started with your contribution!
+
+<Aside type="caution">
+Supply chain safety.  npm packages can be compromised in supply chain attacks. The Hub uses [Socket.dev](https://socket.dev) to detect malicious packages and recommends all contributors do the same. See the [Socket Firewall setup](#socketdev-firewall-optional) section below.
+</Aside>
 
 ### Project Structure
 
@@ -20,27 +24,40 @@ This is not the entire project structure, but it's the most important part of th
 
 <FileTree>
 
-- public (any image used on the hub is found here)
+- public (images and static assets)
    - ...
 - src
-  - assets (our official logos are here)
+  - assets (official logos)
     - ...
+  - components (reusable UI components)
   - content
-    - docs 
-      - azure/ (Azure exams are found here)
-      - blog/ (Blog posts are found here)
-      - dynamics/ (Dynamics exams are found here)
-      - guide/ (The guide is found here)
-      - microsoft365/ (Microsoft 365 exams are found here)
-      - power/ (Power Platform exams are found here)
-      - security/ (Security exams are found here)
-      - vouchers/ (voucher offers are found here)
-      - 404.mdx
+    - docs
+      - aibusiness/ (AI Business exams)
+      - azure/ (Azure exams)
+      - dynamics/ (Dynamics exams)
+      - github/ (GitHub exams)
+      - guide/ (certification guides)
+      - labs/ (hands-on lab guides)
+      - microsoft365/ (Microsoft 365 exams)
+      - power/ (Power Platform exams)
+      - security/ (Security exams)
+      - vouchers/ (voucher offers)
       - **contributing.mdx**
-      - index.mdx
-      - wiki.mdx (This is the Wiki collection)
-- astro.config.mjs (Astro configuration file)
-- package.json (Project dependencies)
+      - labs.mdx
+      - office.mdx
+      - privacy.mdx
+      - supportus.mdx
+      - vouchers.mdx
+      - welcome.mdx
+      - wiki.mdx (Wiki collection)
+    - blog (blog posts)
+  - layouts (page layouts)
+  - pages (routed pages: news, contact, etc.)
+  - utils (utility functions)
+- astro.config.mjs (Astro configuration)
+- package.json (project dependencies)
+- tsconfig.json (TypeScript configuration)
+- mcp-worker/ (MCP server worker)
 
 </FileTree>
 
@@ -85,31 +102,58 @@ This also allows you to preview your changes locally before submitting a pull re
 
 - Basic understanding of [Markdown](https://starlight.astro.build/guides/authoring-content/) and [Starlight Components](https://starlight.astro.build/components/using-components/)
 - Basic understanding of how to use GitHub
+- [Git](https://git-scm.com/downloads) installed on your machine
 - A brain and patience
 - A computer and an internet connection
 - A code editor like VSCode or a GitHub's Codespace
+- Optional: [Socket.dev CLI](https://socket.dev) for supply chain security
 
 ### Setting up the project
 
 
 <Steps>
 
-1. Fork the project, then clone it to your local machine. If you don't know what any of this means then refer to this [video here](https://youtu.be/CML6vfKjQss?t=106).
+1. Fork the project, then clone it to your local machine and `cd` into the directory.
+   If you don't know what any of this means, refer to this [video here](https://youtu.be/CML6vfKjQss?t=106).
 
-2. Install any package manager you want to use. We recommend pnpm due to it's performant and small size. 
-   You can install pnpm by visiting the [official website](https://pnpm.io/installation) and following the instructions. You will also need to install a JavaScript runtime      environment called Node.js which can be done via [this website](https://nodejs.org/en/download).
+2. Install Node.js and pnpm:
 
+   **macOS / Linux**
+   
+   We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions:
+   ```bash
+   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+   nvm install 22
+   ```
+   Then install pnpm:
+   ```bash
+   curl -fsSL https://get.pnpm.io/install.sh | sh -
+   ```
 
-3. Install the dependencies by running the following command in the terminal:
+   **Windows**
+   
+   Download Node.js from [nodejs.org](https://nodejs.org) or use [fnm](https://github.com/Schniz/fnm):
+   ```powershell
+   winget install Schniz.fnm
+   fnm install 22
+   ```
+   Then install pnpm:
+   ```powershell
+   iwr https://get.pnpm.io/install.ps1 -useb | iex
+   ```
 
+3. Install dependencies:
    ```bash
    pnpm install
+   pnpm approve-builds
    ```
-4. Run the project by running the following command in the terminal:
+   (`pnpm approve-builds` approves optional native build scripts required by some dependencies.)
 
+4. Start the dev server:
    ```bash
    pnpm dev
    ```
+
 5. Open your browser and navigate to `http://localhost:4321` to see the project running.
 
 6. After making changes, make sure you're not breaking anything by previewing your changes locally.
@@ -121,13 +165,57 @@ This also allows you to preview your changes locally before submitting a pull re
 
 </Steps>
 
+### Socket.dev Firewall (Optional)
+
+The Hub uses [Socket.dev](https://socket.dev) to detect supply chain attacks in npm packages. Setting up aliases lets you use `pnpm` as normal while scanning every install automatically.
+
+First, install the Socket CLI globally:
+
+```bash
+npm install -g @socketsecurity/cli
+```
+
+Then configure shell aliases for your platform:
+
+#### macOS / Linux (Bash / Zsh)
+
+Add to `~/.bashrc` or `~/.zshrc`:
+
+```bash
+alias pnpm='socket pnpm'
+alias npm='socket npm'
+alias npx='socket npx'
+```
+
+Then run `source ~/.bashrc` (or `~/.zshrc`) to apply.
+
+#### Windows (PowerShell)
+
+Add to your PowerShell profile (`$PROFILE`):
+
+```powershell
+function pnpm { socket pnpm @args }
+function npm { socket npm @args }
+function npx { socket npx @args }
+```
+
+Restart PowerShell to apply. Now `pnpm install` runs through Socket automatically.
+
+## VSCode Support
+
+We recommend using [VSCode](https://code.visualstudio.com) or [GitHub Codespaces](https://github.com/features/codespaces) for contributing. The repo includes a pre-configured `.vscode/settings.json` with Markdown paste and drop settings.
+
+Recommended extensions:
+
+- [Astro VSCode Extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode)
+- [MDX Extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx)
 
 ## Where to begin?
 
 If you're new to the project, you can start by fixing typos, adding new studying resources, or improving existing guides. 
 This will help you get familiar with the project structure and the way content is written.
 
-Here's a bunch of resources that will help you understand how the Hub works better:
+Here are some resources that will help you understand how the Hub works better:
 
 - [Starlight Documentation](https://starlight.astro.build/)
 - [Starlight Components](https://starlight.astro.build/components/using-components/)
