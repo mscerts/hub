@@ -118,11 +118,6 @@ export default defineConfig({
               badge: { text: "80%", variant: "tip" },
             },
             {
-              label: "Microsoft Partner LevelUp",
-              link: "/vouchers/levelup/",
-              badge: { text: "*100%", variant: "tip" },
-            },
-            {
               label: "Virtual Training Days",
               link: "/vouchers/virtualtrainingdays/",
               badge: { text: "50%", variant: "note" },
