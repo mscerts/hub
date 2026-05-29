@@ -172,7 +172,7 @@ The Hub uses [Socket.dev](https://socket.dev) to detect supply chain attacks in 
 First, install the Socket CLI globally:
 
 ```bash
-npm install -g @socketsecurity/cli
+npm i -g sfw
 ```
 
 Then configure shell aliases for your platform:
@@ -182,9 +182,10 @@ Then configure shell aliases for your platform:
 Add to `~/.bashrc` or `~/.zshrc`:
 
 ```bash
-alias pnpm='socket pnpm'
-alias npm='socket npm'
-alias npx='socket npx'
+alias npm="sfw npm"
+alias yarn="sfw yarn"
+alias pnpm="sfw pnpm"
+alias npx="sfw npx"
 ```
 
 Then run `source ~/.bashrc` (or `~/.zshrc`) to apply.
@@ -194,9 +195,9 @@ Then run `source ~/.bashrc` (or `~/.zshrc`) to apply.
 Add to your PowerShell profile (`$PROFILE`):
 
 ```powershell
-function pnpm { socket pnpm @args }
-function npm { socket npm @args }
-function npx { socket npx @args }
+function pnpm { sfw pnpm @args }
+function npm { sfw npm @args }
+function npx { sfw npx @args }
 ```
 
 Restart PowerShell to apply. Now `pnpm install` runs through Socket automatically.
