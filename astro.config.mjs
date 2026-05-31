@@ -1,11 +1,10 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
-import compressor from "astro-compressor";
 import starlight from "@astrojs/starlight";
 import starlightImageZoom from "starlight-image-zoom";
 import partytown from "@astrojs/partytown";
-import mdx from "@astrojs/mdx";
+import mdx from "@astrojs/mdx"; 
 
 const googleAnalyticsId = "G-CDTP3TERKP";
 const clarityAnalyticsId = "u7pei4s9cq";
@@ -461,10 +460,6 @@ export default defineConfig({
           },
         },
       ],
-    }),
-    compressor({
-      gzip: false,
-      brotli: true,
     }),
     mdx(),
   ],
