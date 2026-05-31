@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+
+interface Props {
+  category: "azure" | "github" | "aibusiness" | "dynamics" | "microsoft365" | "power" | "security";
+}
+
+const { category } = Astro.props;
+
+const docs = await getCollection("docs");
+
+const exams = docs.filter(
+  (doc) => doc.id.startsWith(`${category}/`)
+);
+
+exams.sort((a, b) => a.id.localeCompare(b.id));
+---
+
+{
+  exams.length > 0 ? (
+    <CardGrid>
+      {exams.map((exam) => {
+        const examCode = exam.id.split('/').pop()?.toUpperCase() ?? "";
+        const href = `/${exam.id}/`;
+        return (
+          <LinkCard
+            title={examCode}
+            description={exam.data.description || ""}
+            href={href}
+          />
+        );
+      })}
+    </CardGrid>
+  ) : (
+    <p>No study materials available in this category.</p>
+  )
+}
