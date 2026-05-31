@@ -31,9 +31,8 @@ const ogTitle = customOgTitle || OG.title;
 const ogDescription = customDescription || OG.description;
 
 // Define the metadata for your website and individual pages
-const URL = `${Astro.site}`; // Set the website URL in astro.config.mjs
+const URL = `${Astro.site}`;
 const canonical = Astro.url.href;
-const basePath = Astro.url.pathname;
 const socialImageRes = await getImage({
   src: OG.image,
   width: 1200,
@@ -48,11 +47,9 @@ const languages: { [key: string]: string } = {
   en: "",
 };
 
-function createHref(lang: string, prefix: string, path: string): string {
-  // Remove any existing language prefix
+function createHref(prefix: string, path: string): string {
   const cleanPath = path.replace(/^\/en\//, "/");
 
-  // Add the correct language prefix if needed
   const basePath = prefix ? `/${prefix}${cleanPath}` : cleanPath;
   const normalizedBasePath = basePath.replace(/\/\/+/g, "/");
 
@@ -64,7 +61,7 @@ const fullPath: string = Astro.url.pathname;
 const alternateLanguageLinks: string = Object.entries(languages)
   .map(([lang, prefix]: [string, string]) => {
     const cleanPath = fullPath.replace(/^\/en\//, "/");
-    const href: string = createHref(lang, prefix, cleanPath);
+    const href: string = createHref(prefix, cleanPath);
 
     return `<link rel="alternate" hreflang="${lang}" href="${href}" />`;
   })
@@ -90,6 +87,7 @@ const appleTouchIcon = await getImage({
     <script
       type="application/ld+json"
       set:html={JSON.stringify(structuredData)}
+      is:inline
     />
   )
 }

@@ -5,7 +5,6 @@ import compressor from "astro-compressor";
 import starlight from "@astrojs/starlight";
 import starlightImageZoom from "starlight-image-zoom";
 import partytown from "@astrojs/partytown";
-import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
 import mdx from "@astrojs/mdx";
 
 const googleAnalyticsId = "G-CDTP3TERKP";

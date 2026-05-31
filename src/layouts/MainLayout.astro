@@ -45,7 +45,8 @@ const googleTagManagerId = 'GTM-TMNHVD5B'
     {/* Define the title of the page */}
     <title>{title}</title>
     {/* Google Analytics */}
-    <script 
+    <script
+      is:inline
       src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
       async
     ></script>
@@ -58,12 +59,12 @@ const googleTagManagerId = 'GTM-TMNHVD5B'
     </script>
     
     {/* Microsoft Clarity Analytics */}
-    <script 
-      type="text/javascript" 
+    <script
+      is:inline
       src={`https://www.clarity.ms/tag/${clarityAnalyticsId}`}
       async
     ></script>
-    <script type="text/javascript">
+    <script is:inline>
       (function(c,l,a,r,i,t,y){
           c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
           t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;

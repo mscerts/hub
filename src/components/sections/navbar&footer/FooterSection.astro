@@ -1,20 +1,11 @@
 ---
-// Import the necessary dependencies
-import FooterSocialLink from "@components/ui/links/FooterSocialLink.astro";
 import enStrings from "@utils/navigation.ts";
-import Icon from "@components/ui/icons/Icon.astro";
 import BrandLogoLight from "../../../assets/images/logo_light.svg";
 import BrandLogoDark from "../../../assets/images/logo_dark.svg";
 import Offer from "../../../assets/images/mUmaycampaign2026.webp";
 import CookiePreferencesButton from "@components/ui/buttons/CookiePreferencesButton.astro";
-import { SITE } from "@data/constants";
 
-// Use English strings
 const strings = enStrings;
-
-// Define the variables that will be used in this component
-const sectionThreeTitle: string = "Stay up to date";
-const sectionThreeContent: string = "Stay updated with the latest tools and exclusive deals.";
 ---
 
 <footer class="w-full bg-neutral-300 dark:bg-neutral-900">
@@ -37,7 +28,7 @@ const sectionThreeContent: string = "Stay updated with the latest tools and excl
               {section.section}
             </h3>
             <ul class="mt-3 grid space-y-3">
-              {section.links.map((link, index) => (
+              {section.links.map((link, _index) => (
                 <li>
                   <a
                     href={link.url}

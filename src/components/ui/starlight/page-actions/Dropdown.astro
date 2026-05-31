@@ -8,10 +8,12 @@ interface Props {
     label: string;
     href: string;
   }[];
-  id?: "0" | "1";
+  id?: string;
 }
 
-const { label, options, id } = Astro.props;
+const { label, options } = Astro.props;
+
+// id is accepted via Astro.props but not destructured — it is used by the parent PageTitle component for referencing purposes
 ---
 
 <starlight-page-action-dropdown class="dropdown">
