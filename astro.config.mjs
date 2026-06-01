@@ -111,11 +111,6 @@ export default defineConfig({
               badge: { text: "*100%", variant: "tip" },
             },
             {
-              label: "GH-600 Beta",
-              link: "/vouchers/gh600beta/",
-              badge: { text: "80%", variant: "tip" },
-            },
-            {
               label: "Virtual Training Days",
               link: "/vouchers/virtualtrainingdays/",
               badge: { text: "50%", variant: "note" },
