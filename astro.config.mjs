@@ -28,6 +28,7 @@ export default defineConfig({
     "/ai&ab/ai-103": "/azure/ai-103",
     "/ai&ab/ai-300": "/azure/ai-300",
     "/ai&ab/ai-901": "/azure/ai-901",
+    "/azure/dp-100": "/azure/ai-300",
 
     "/microsoft365/ms-900": "/aibusiness/ab-900",
     "/aiab/ab-900/":"/aibusiness/ab-900/",
