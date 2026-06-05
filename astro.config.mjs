@@ -148,10 +148,6 @@ export default defineConfig({
           ],
         },
         {
-          label: "Exam Study Materials Collection",
-          link: "/wiki",
-        },
-        {
           label: "Exam Study Materials",
           collapsed: false,
           items: [
