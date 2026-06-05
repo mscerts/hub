@@ -212,11 +212,6 @@ export default defineConfig({
                   link: "/azure/ai-901/",
                   badge: { text: "BETA", variant: "tip" },
                 },
-                {
-                  label: "DP-100",
-                  link: "/azure/dp-100/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
                 { label: "DP-300", link: "/azure/dp-300/" },
                 { label: "DP-420", link: "/azure/dp-420/" },
                 { label: "DP-600", link: "/azure/dp-600/" },
