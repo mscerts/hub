@@ -106,6 +106,16 @@ interface Props {
           this.remove();
         });
       }
+
+      const link = this.querySelector(`a[href]`);
+      if (link != null) {
+        link.addEventListener("click", () => {
+          if (rememberDismissal) {
+            localStorage.setItem(storageKey, "true");
+          }
+          this.remove();
+        });
+      }
     }
   }
 
