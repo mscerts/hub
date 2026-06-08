@@ -26,7 +26,7 @@ exams.sort((a, b) => a.id.localeCompare(b.id));
         return (
           <LinkCard
             title={examCode}
-            description={exam.data.description || ""}
+            description={exam.data.description?.match(/exam [A-Z]+-\d+:\s*(.+?)\.\s*Contains/)?.[1] ?? ""}
             href={href}
           />
         );
