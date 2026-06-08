@@ -99,7 +99,7 @@ export default defineConfig({
             {
               label: "AI Skills Fest",
               link: "/vouchers/aiskillsfest/",
-              badge: { text: "Upcoming", variant: "caution" },
+              badge: { text: "*100%", variant: "tip" },
             },
             {
               label: "Get DP-800 Certified",
