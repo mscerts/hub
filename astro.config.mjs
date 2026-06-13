@@ -92,13 +92,13 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
-              label: "AI Skills Fest",
-              link: "/vouchers/aiskillsfest/",
-              badge: { text: "100%", variant: "tip" },
-            },
-            {
               label: "AB-250 Beta",
               link: "/vouchers/ab250beta/",
+              badge: { text: "80%", variant: "tip" },
+            },
+            {
+              label: "AB-410 Beta",
+              link: "/vouchers/ab410beta/",
               badge: { text: "80%", variant: "tip" },
             },
             {
