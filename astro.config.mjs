@@ -117,7 +117,7 @@ export default defineConfig({
               badge: { text: "50%", variant: "note" },
             },
             {
-              label: "Microsoft ESI",
+              label: "Organizational Skilling (ESI)",
               link: "/vouchers/microsoftesi/",
               badge: { text: "*50%", variant: "note" },
             },
