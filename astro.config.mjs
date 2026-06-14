@@ -92,6 +92,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "Fabric Data Days",
+              link: "/vouchers/fabricdatadays/",
+              badge: { text: "Upcoming", variant: "caution" },
+            },
+            {
               label: "AB-250 Beta",
               link: "/vouchers/ab250beta/",
               badge: { text: "80%", variant: "tip" },
