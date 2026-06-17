@@ -94,7 +94,7 @@ export default defineConfig({
             {
               label: "Fabric Data Days",
               link: "/vouchers/fabricdatadays/",
-              badge: { text: "Upcoming", variant: "caution" },
+              badge: { text: "100%", variant: "tip" },
             },
             {
               label: "AB-250 Beta",
