@@ -97,11 +97,6 @@ export default defineConfig({
               badge: { text: "100%", variant: "tip" },
             },
             {
-              label: "AB-410 Beta",
-              link: "/vouchers/ab410beta/",
-              badge: { text: "80%", variant: "tip" },
-            },
-            {
               label: "Get DP-800 Certified",
               link: "/vouchers/getsqlaidevelopercertified/",
               badge: { text: "*100%", variant: "tip" },
