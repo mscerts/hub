@@ -186,7 +186,6 @@ export default defineConfig({
                 {
                   label: "AI-103",
                   link: "/azure/ai-103/",
-                  badge: { text: "BETA", variant: "tip" },
                 },
                 {
                   label: "AI-300",
