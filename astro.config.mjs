@@ -177,6 +177,11 @@ export default defineConfig({
                   link: "/azure/az-801/",
                   badge: { text: "RETIRING", variant: "danger" },
                 },
+                {
+                  label: "AZ-802",
+                  link: "/azure/az-802/",
+                  badge: { text: "UPCOMING", variant: "caution" },
+                },
                 { label: "AZ-900", link: "/azure/az-900/" },
                 {
                   label: "AI-102",
@@ -226,6 +231,11 @@ export default defineConfig({
                 { label: "GH-200", link: "/github/gh-200/" },
                 { label: "GH-300", link: "/github/gh-300/" },
                 { label: "GH-500", link: "/github/gh-500/" },
+                {
+                  label: "GH-600",
+                  link: "/github/gh-600/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
                 { label: "GH-900", link: "/github/gh-900/" },
               ],
             },
@@ -235,6 +245,26 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "AB-100", link: "/aibusiness/ab-100/" },
+                {
+                  label: "AB-210",
+                  link: "/aibusiness/ab-210/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
+                {
+                  label: "AB-250",
+                  link: "/aibusiness/ab-250/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
+                {
+                  label: "AB-410",
+                  link: "/aibusiness/ab-410/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
+                {
+                  label: "AB-620",
+                  link: "/aibusiness/ab-620/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
                 { label: "AB-730", link: "/aibusiness/ab-730/" },
                 { label: "AB-731", link: "/aibusiness/ab-731/" },
                 { label: "AB-900", link: "/aibusiness/ab-900/" },
@@ -260,6 +290,16 @@ export default defineConfig({
                 { label: "SC-200", link: "/security/sc-200/" },
                 { label: "SC-300", link: "/security/sc-300/" },
                 { label: "SC-401", link: "/security/sc-401/" },
+                {
+                  label: "SC-500",
+                  link: "/security/sc-500/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
+                {
+                  label: "SC-730",
+                  link: "/security/sc-730/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
                 { label: "SC-900", link: "/security/sc-900/" },
               ],
             },
