@@ -94,7 +94,7 @@ export default defineConfig({
             {
               label: "AI Agent Skills Sweepstakes",
               link: "/vouchers/aiagentskillssweepstakes/",
-              badge: { text: "100%", variant: "tip" },
+              badge: { text: "*100%", variant: "tip" },
             },
             {
               label: "Fabric Data Days",
