@@ -92,6 +92,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "AI Agent Skills Sweepstakes",
+              link: "/vouchers/aiagentskillssweepstakes/",
+              badge: { text: "100%", variant: "tip" },
+            },
+            {
               label: "Fabric Data Days",
               link: "/vouchers/fabricdatadays/",
               badge: { text: "100%", variant: "tip" },
