@@ -36,6 +36,7 @@ export default defineConfig({
     "/aiab/ab-730/":"/aibusiness/ab-730/",
     "/aiab/ab-731/":"/aibusiness/ab-731/",
     "/guide/officialstudymaterials/":"https://msfthub.com/wiki/",
+    "/security/sc-730/":"security/sc-900/",
     
     "/discord":
       "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
@@ -298,11 +299,6 @@ export default defineConfig({
                 {
                   label: "SC-500",
                   link: "/security/sc-500/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                {
-                  label: "SC-730",
-                  link: "/security/sc-730/",
                   badge: { text: "BETA", variant: "tip" },
                 },
                 { label: "SC-900", link: "/security/sc-900/" },
