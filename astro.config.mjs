@@ -282,7 +282,11 @@ export default defineConfig({
               badge: { text: "MS MD", variant: "note" },
               items: [
                 { label: "MD-102", link: "/microsoft365/md-102/" },
-                { label: "MS-102", link: "/microsoft365/ms-102/" },
+                { 
+                  label: "MS-102", 
+                  link: "/microsoft365/ms-102/",
+                  badge: { text: "RETIRING", variant: "danger" },
+                },
                 { label: "MS-700", link: "/microsoft365/ms-700/" },
                 { label: "MS-721", link: "/microsoft365/ms-721/" },
               ],
