@@ -1,13 +1,30 @@
 ---
 import DefaultPageTitle from "@astrojs/starlight/components/PageTitle.astro";
+import { Icon } from "@astrojs/starlight/components";
 import Dropdown from "./Dropdown.astro";
+import Button from "./Button.astro";
+import ChatGPTIcon from "./icons/Chatgpt.astro";
+import ClaudeIcon from "./icons/Claude.astro";
+import CursorIcon from "./icons/Cursor.astro";
+import GitHubCopilotIcon from "./icons/GitHubCopilot.astro";
+import MarkdownIcon from "./icons/Markdown.astro";
+import LinkedInIcon from "./icons/LinkedIn.astro";
+import XIcon from "./icons/X.astro";
+import ThreadsIcon from "./icons/Threads.astro";
+import BlueskyIcon from "./icons/Bluesky.astro";
+import FacebookIcon from "./icons/Facebook.astro";
+import RedditIcon from "./icons/Reddit.astro";
+import HackerNewsIcon from "./icons/HackerNews.astro";
+import WhatsAppIcon from "./icons/WhatsApp.astro";
 
 // Hardcoded config - no virtual module needed
 const config = {
   actions: {
     chatgpt: true,
     claude: true,
-    t3chat: true,
+    cursor: true,
+    githubCopilot: true,
+    markdown: true,
   },
   prompt: "Help me understand this page: {url}",
   share: true,
@@ -16,9 +33,12 @@ const config = {
 interface ActionOption {
   label: string;
   href: string;
+  id: string;
+  icon?: typeof ChatGPTIcon;
 }
 
 const currentUrl = Astro.url.href;
+const currentPath = Astro.url.pathname.replace(/\/$/, "");
 const { title, pageActions } = (Astro.locals as any).starlightRoute.entry.data;
 
 // Build prompt with URL
@@ -29,63 +49,103 @@ const encodedPrompt = encodeURIComponent(prompt);
 const encodedCurrentUrl = encodeURIComponent(currentUrl);
 const encodedTitle = encodeURIComponent(title as string);
 
-// AI Action options - only Claude, T3 Chat, ChatGPT (NO v0, NO markdown)
+// AI Action options
 const actionOptions: ActionOption[] = [];
-
-if (config.actions.claude) {
-  actionOptions.push({
-    label: "Open in Claude",
-    href: `https://claude.ai/new?q=${encodedPrompt}`,
-  });
-}
-
-if (config.actions.t3chat) {
-  actionOptions.push({
-    label: "Open in T3 Chat",
-    href: `https://t3.chat/new?q=${encodedPrompt}`,
-  });
-}
 
 if (config.actions.chatgpt) {
   actionOptions.push({
     label: "Open in ChatGPT",
     href: `https://chatgpt.com/?q=${encodedPrompt}`,
+    id: "chatgpt",
+    icon: ChatGPTIcon,
   });
 }
 
-// Share options
+if (config.actions.claude) {
+  actionOptions.push({
+    label: "Open in Claude",
+    href: `https://claude.ai/new?q=${encodedPrompt}`,
+    id: "claude",
+    icon: ClaudeIcon,
+  });
+}
+
+if (config.actions.cursor) {
+  actionOptions.push({
+    label: "Open in Cursor",
+    href: `https://cursor.com/link/prompt?${encodedPrompt}`,
+    id: "cursor",
+    icon: CursorIcon,
+  });
+}
+
+if (config.actions.githubCopilot) {
+  actionOptions.push({
+    label: "Open in GitHub Copilot",
+    href: `https://github.com/copilot/?prompt=${encodedPrompt}`,
+    id: "githubCopilot",
+    icon: GitHubCopilotIcon,
+  });
+}
+
+if (config.actions.markdown) {
+  actionOptions.push({
+    label: "View as Markdown",
+    href: `${currentPath}.md`,
+    id: "markdown",
+    icon: MarkdownIcon,
+  });
+}
+
+// Share options with icons
 const shareOptions: ActionOption[] = [
   {
     label: "LinkedIn",
     href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedCurrentUrl}`,
+    id: "linkedin",
+    icon: LinkedInIcon,
   },
   {
     label: "X (Twitter)",
     href: `https://x.com/intent/tweet?url=${encodedCurrentUrl}&text=${encodedTitle}`,
+    id: "x",
+    icon: XIcon,
   },
   {
     label: "Threads",
     href: `https://threads.net/intent/post?url=${encodedCurrentUrl}&text=${encodedTitle}`,
+    id: "threads",
+    icon: ThreadsIcon,
   },
   {
     label: "Bluesky",
     href: `https://bsky.app/intent/compose?text=${encodedTitle}%20${encodedCurrentUrl}`,
+    id: "bluesky",
+    icon: BlueskyIcon,
   },
   {
     label: "Facebook",
     href: `https://www.facebook.com/sharer/sharer.php?u=${encodedCurrentUrl}`,
+    id: "facebook",
+    icon: FacebookIcon,
   },
   {
     label: "Reddit",
     href: `https://reddit.com/submit?url=${encodedCurrentUrl}&title=${encodedTitle}`,
+    id: "reddit",
+    icon: RedditIcon,
   },
   {
     label: "Hacker News",
     href: `https://news.ycombinator.com/submitlink?u=${encodedCurrentUrl}&t=${encodedTitle}`,
+    id: "hackernews",
+    icon: HackerNewsIcon,
   },
   {
     label: "WhatsApp",
     href: `https://wa.me/?text=${encodedTitle}%20${encodedCurrentUrl}`,
+    id: "whatsapp",
+    icon: WhatsAppIcon,
   },
 ];
 

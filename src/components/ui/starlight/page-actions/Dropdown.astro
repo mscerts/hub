@@ -2,31 +2,43 @@
 import { Icon } from "@astrojs/starlight/components";
 import Button from "./Button.astro";
 
+type IconComponent = (_props: Record<string, unknown>) => unknown;
+
 interface Props {
   label: string;
   options: {
     label: string;
     href: string;
+    id?: string;
+    icon?: IconComponent;
   }[];
-  id?: string;
+  id?: "0" | "1";
 }
 
-const { label, options } = Astro.props;
-
-// id is accepted via Astro.props but not destructured — it is used by the parent PageTitle component for referencing purposes
+const { label, options, id } = Astro.props;
+const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
 ---
 
-<starlight-page-action-dropdown class="dropdown">
-  <Button class="dropdown-toggle">
+<div class="dropdown" id={dropdownId}>
+  <Button id="dropdown-toggle">
     <span>{label}</span>
     <Icon name="down-caret" size="1rem" />
   </Button>
 
-  <div class="dropdown-menu">
+  <div id="dropdown-menu">
     {
       options.map((option) => {
+        const OptionIcon = option.icon;
+
         return (
           <a href={option.href} class="dropdown-item" target="_blank">
+            {OptionIcon && (
+              <OptionIcon
+                class="action-icon"
+                data-action-icon={option.id}
+                aria-hidden="true"
+              />
+            )}
             <span>{option.label}</span>
             <Icon name="external" size="1rem" class="external-icon" />
           </a>
@@ -34,15 +46,14 @@ const { label, options } = Astro.props;
       })
     }
   </div>
-</starlight-page-action-dropdown>
+</div>
 
 <style>
   .dropdown {
     position: relative;
-    display: inline-block;
   }
 
-  .dropdown-menu {
+  #dropdown-menu {
     position: absolute;
     top: calc(100% + 0.5rem);
     left: 0;
@@ -51,7 +62,7 @@ const { label, options } = Astro.props;
     border: 1px solid var(--sl-color-gray-5);
     border-radius: 0.25rem;
     padding: 0.25rem;
-    min-width: 201px;
+    width: 210px;
     box-shadow:
       0 4px 6px -1px rgba(0, 0, 0, 0.3),
       0 2px 4px -1px rgba(0, 0, 0, 0.2);
@@ -59,11 +70,12 @@ const { label, options } = Astro.props;
     z-index: 10;
   }
 
-  .dropdown-menu.show {
+  #dropdown-menu.show {
     display: block;
   }
 
   .dropdown-item {
+    --dropdown-item-bg: var(--sl-color-gray-6);
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -77,6 +89,7 @@ const { label, options } = Astro.props;
   }
 
   .dropdown-item:hover {
+    --dropdown-item-bg: var(--sl-color-gray-5);
     background-color: var(--sl-color-gray-5);
   }
 
@@ -84,53 +97,92 @@ const { label, options } = Astro.props;
     flex: 1;
   }
 
+  .dropdown-item :global(.action-icon) {
+    color: currentColor;
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 1rem;
+    transform-origin: center;
+  }
+
+  .dropdown-item :global(.action-icon [fill]:not([fill="none"])) {
+    fill: currentColor;
+  }
+
+  .dropdown-item :global(.action-icon [stroke]:not([stroke="none"])) {
+    stroke: currentColor;
+  }
+
+  .dropdown-item :global(.action-icon path:not([fill])),
+  .dropdown-item :global(.action-icon circle:not([fill])),
+  .dropdown-item :global(.action-icon ellipse:not([fill])),
+  .dropdown-item :global(.action-icon polygon:not([fill])),
+  .dropdown-item :global(.action-icon rect:not([fill])) {
+    fill: currentColor;
+  }
+
+  .dropdown-item :global(.action-icon[data-action-icon="t3chat"]) {
+    transform: scale(1.35);
+  }
+
+  .dropdown-item :global(.action-icon[data-action-icon="githubCopilot"]) {
+    transform: scale(1.12);
+  }
+
+  .dropdown-item :global(.action-icon[data-action-icon="markdown"]) {
+    transform: scale(1.2);
+  }
+
+  .dropdown-item :global(.action-icon[data-action-icon="markdown"] [stroke]) {
+    stroke-width: 10;
+  }
+
+  .dropdown-item :global(.action-icon[data-action-icon="cursor"]) {
+    transform: scale(0.92);
+  }
+
   .dropdown-item .external-icon {
     margin-left: auto;
   }
 
   @media (min-width: 425px) {
-    .dropdown-menu {
+    #dropdown-menu {
       left: 0;
       right: auto;
+      width: 236px;
     }
   }
 </style>
 
 <script>
-  class StarlightPageActionDropdown extends HTMLElement {
-    constructor() {
-      super();
-      const toggle = this.querySelector('.dropdown-toggle') as HTMLButtonElement;
-      const menu = this.querySelector('.dropdown-menu') as HTMLElement;
+  const allDropdownIds = ["dropdown-0", "dropdown-1"];
 
-      if (!toggle || !menu) return;
+  const handleDropdownToggle = (dropdownId: string) => {
+    const dropdownToggle = document.querySelector(
+      `#${dropdownId} > #dropdown-toggle`
+    ) as HTMLButtonElement;
+    const dropdownMenu = document.querySelector(
+      `#${dropdownId} > #dropdown-menu`
+    ) as HTMLElement;
 
-      toggle.addEventListener("click", (e) => {
-        e.stopPropagation();
-        
-        // Close all other dropdowns
-        document.querySelectorAll('starlight-page-action-dropdown .dropdown-menu').forEach((m) => {
-          if (m !== menu) m.classList.remove("show");
-        });
-
-        // Toggle current dropdown
-        menu.classList.toggle("show");
-      });
-
-      menu.addEventListener("click", (e) => {
-        e.stopPropagation();
-      });
-    }
-  }
-
-  if (!customElements.get('starlight-page-action-dropdown')) {
-    customElements.define('starlight-page-action-dropdown', StarlightPageActionDropdown);
-    
-    // Global listener for closing dropdowns when clicking outside
-    document.addEventListener("click", () => {
-      document.querySelectorAll('starlight-page-action-dropdown .dropdown-menu').forEach((m) => {
-        m.classList.remove("show");
-      });
+    dropdownToggle?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      allDropdownIds.map((id) =>
+        document
+          .querySelector(`#${id} > #dropdown-menu`)
+          ?.classList.remove("show")
+      );
+      dropdownMenu.classList.toggle("show");
     });
-  }
+
+    document.addEventListener("click", () => {
+      dropdownMenu?.classList.remove("show");
+    });
+
+    dropdownMenu?.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  };
+
+  allDropdownIds.map((id) => handleDropdownToggle(id));
 </script>
