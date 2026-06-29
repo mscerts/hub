@@ -66,16 +66,7 @@ const strings = enStrings;
       class="mt-9 grid gap-y-2 sm:mt-12 sm:flex sm:items-center sm:justify-between sm:gap-y-0"
     >
       <div class="flex items-center gap-4">
-        <!-- <p class="text-sm text-neutral-600 dark:text-neutral-400">
-          <span id="current-year"></span> {SITE.title}
-        </p> -->
         <CookiePreferencesButton text="Cookies" variant="ghost" size="xs" />
       </div>
-    </div>
-    <script>
-      const year = new Date().getFullYear();
-      const element = document.getElementById("current-year");
-      element!.innerText = year.toString();
-    </script>
   </div>
 </footer>

@@ -23,10 +23,21 @@ exams.sort((a, b) => a.id.localeCompare(b.id));
       {exams.map((exam) => {
         const examCode = exam.id.split('/').pop()?.toUpperCase() ?? "";
         const href = `/${exam.id}/`;
+        const desc = exam.data.description ?? "";
+        // Try primary pattern: "exam CODE: Name. Contains..."
+        let shortDesc = desc.match(/exam [A-Z]+-\d+:\s*(.+?)\.\s*Contains/)?.[1] ?? "";
+        // Fallback: text after "exam CODE:" up to first period
+        if (!shortDesc) {
+          shortDesc = desc.match(/exam [A-Z]+-\d+:\s*(.+?)\./)?.[1] ?? "";
+        }
+        // Fallback: first 80 chars
+        if (!shortDesc) {
+          shortDesc = desc.slice(0, 80).trim();
+        }
         return (
           <LinkCard
             title={examCode}
-            description={exam.data.description?.match(/exam [A-Z]+-\d+:\s*(.+?)\.\s*Contains/)?.[1] ?? ""}
+            description={shortDesc}
             href={href}
           />
         );
