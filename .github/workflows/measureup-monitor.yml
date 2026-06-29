@@ -1,0 +1,38 @@
+name: MeasureUp Monitor
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"  # Monday 06:00 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: measureup-monitor
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for new MeasureUp products
+        id: monitor
+        run: bash scripts/measureup-check.sh
+
+      - name: Create issue if new products found
+        if: steps.monitor.outputs.new_products == 'true'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "New MeasureUp Products Detected — ${{ github.run_id }}"
+          content-filepath: /tmp/measureup-report.md
+          labels: enhancement
+
+      - name: Alert on extraction failure
+        if: steps.monitor.outputs.extraction_failed == 'true'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "MeasureUp Monitor FAILED — ${{ github.run_id }}"
+          content-filepath: /tmp/measureup-error.md
+          labels: bug
