@@ -1,46 +1,16 @@
-// Microsoft Clarity Integration with Cookie Consent
-// This script initializes Clarity and handles consent properly
-
-// Clarity project ID - Replace with your actual Clarity project ID
-const CLARITY_PROJECT_ID = 'u7pei4s9cq'; // TODO: Replace with actual ID
-
-// Initialize Clarity script
-function initializeClarity() {
-  if (typeof window.clarity !== 'undefined') {
-    console.log('Clarity already initialized');
-    return;
-  }
-
-  // Create Clarity script
-  const script = document.createElement('script');
-  script.innerHTML = `
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "${CLARITY_PROJECT_ID}");
-  `;
-  
-  document.head.appendChild(script);
-  
-  console.log('Clarity script initialized');
-}
+// Microsoft Clarity Consent Integration
+// Clarity is loaded by MainLayout.astro — this script only handles consent.
 
 // Handle consent changes
 function handleConsentChange(preferences) {
   if (!preferences) return;
-  
-  // Initialize Clarity if not already done
-  if (typeof window.clarity === 'undefined') {
-    initializeClarity();
-  }
   
   // Wait for Clarity to be available, then send consent
   const sendConsent = () => {
     if (typeof window.clarity === 'function') {
       try {
         window.clarity('consentv2', {
-          ad_Storage: 'denied', // Always deny ad storage since we don't use advertising cookies
+          ad_Storage: 'denied',
           analytics_Storage: preferences.analytics_storage
         });
         
@@ -71,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       
-      // If consent already exists, initialize Clarity
+      // If consent already exists, send it
       const currentPreferences = cookieConsentManager.getPreferences();
       if (currentPreferences && cookieConsentManager.hasAnyConsent()) {
         handleConsentChange(currentPreferences);
@@ -91,4 +61,4 @@ window.addEventListener('consentGranted', (event) => {
 });
 
 // Export for use in other scripts
-export { initializeClarity, handleConsentChange };
+export { handleConsentChange };

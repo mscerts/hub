@@ -38,3 +38,9 @@ export const OG = {
   description: "MSFTHub is a community-driven knowledge hub for Microsoft Certifications, providing resources, guides, and a supportive environment for learners.",
   image: ogImageSrc,
 };
+
+export const ANALYTICS = {
+  googleAnalytics: "G-CDTP3TERKP",
+  clarity: "u7pei4s9cq",
+  googleTagManager: "GTM-TMNHVD5B",
+} as const;

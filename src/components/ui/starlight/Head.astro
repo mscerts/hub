@@ -4,6 +4,8 @@ import VtbotStarlight from "astro-vtbot/components/starlight/Base.astro";
 import CookieConsentBanner from "@components/ui/banners/CookieConsentBanner.astro";
 import CookieConsentModal from "@components/ui/modals/CookieConsentModal.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <VtbotStarlight {...Astro.props} viewTransitionsFallback="animate">
@@ -11,6 +13,8 @@ import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro"
     <slot />
   </StarlightHead>
 </VtbotStarlight>
+
+<meta property="og:url" content={canonicalUrl} />
 
 <!-- Cookie Consent Components -->
 <CookieConsentBanner />

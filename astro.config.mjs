@@ -459,10 +459,7 @@ export default defineConfig({
           tag: "meta",
           attrs: { property: "twitter:image", content: site + "og.jpg" },
         },
-        {
-          tag: "meta",
-          attrs: { property: "og:url", content: "https://msfthub.com/" },
-        },
+
         {
           tag: "meta",
           attrs: {
