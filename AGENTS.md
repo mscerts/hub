@@ -187,6 +187,37 @@ pnpm dev                        # Local preview
 
 ---
 
+## MeasureUp Monitor
+
+Automated weekly check for new Microsoft practice tests on MeasureUp.
+
+- **Workflow:** `.github/workflows/measureup-monitor.yml` — runs Monday 06:00 UTC + manual trigger
+- **Script:** `scripts/measureup-check.sh` — scrapes all pages, compares against baseline
+- **Baseline:** `src/data_files/measureup-products.json` — tracked product list (145 products as of 2026-06-29)
+- **On new products:** Opens a GitHub issue with a table of new tests
+- **On failure:** Opens a GitHub issue alerting that extraction broke (HTML structure change, site down, etc.)
+
+### How it works
+1. Fetches `measureup.com/microsoft.html` (all paginated pages)
+2. Extracts product data from `dl4Objects` JavaScript variable (structured JSON, not HTML parsing)
+3. Compares extracted product IDs against baseline
+4. If new products found → GitHub issue with details
+5. If extraction fails or >50% products are "new" → failure issue (likely HTML changed)
+6. Updates baseline JSON after each run
+
+### Failsafes
+- `< 100` products extracted → fails and alerts
+- `> 50%` products "new" → fails and alerts (HTML probably changed)
+- Curl failures → retries 3x, skips page if still failing
+- Corrupt baseline → fails and alerts
+
+### Running locally
+```bash
+GITHUB_OUTPUT=/tmp/github-output bash scripts/measureup-check.sh
+```
+
+---
+
 ## Task Prompts
 
 Detailed improvement tasks are defined in `.github/prompts/`. Each prompt file contains:

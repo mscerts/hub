@@ -19,16 +19,16 @@ echo "Started: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
 # --- Step 1: Fetch page 1, detect total pages ---
 echo "Fetching page 1..."
-PAGE1=$(curl -sL --max-time 20 --retry 3 --retry-delay 5 "$BASE_URL" 2>/dev/null)
+curl -sL --max-time 20 --retry 3 --retry-delay 5 "$BASE_URL" -o "$TEMP_DIR/page-1.html" 2>/dev/null
 
-if [ -z "$PAGE1" ]; then
+if [ ! -s "$TEMP_DIR/page-1.html" ]; then
   echo "ERROR: Failed to fetch page 1"
   echo "Failed to fetch MeasureUp page 1. Site may be down or blocking requests." > "$ERROR_FILE"
   echo "extraction_failed=true" >> "$GITHUB_OUTPUT"
   exit 1
 fi
 
-TOTAL=$(echo "$PAGE1" | grep -oP 'toolbar-number">\K\d+' | sed -n '3p')
+TOTAL=$(grep -oP 'toolbar-number">\K\d+' "$TEMP_DIR/page-1.html" | sed -n '3p')
 
 if [ -z "$TOTAL" ] || [ "$TOTAL" -lt "$MIN_PRODUCTS" ]; then
   echo "ERROR: Total=$TOTAL (expected >$MIN_PRODUCTS)."
@@ -42,14 +42,16 @@ echo "Found $TOTAL products across $PAGES pages"
 
 # --- Step 2: Extract products from all pages using Python ---
 extract_page() {
-  local html="$1"
-  echo "$html" | python3 -c "
-import sys, re, json
+  local page_file="$1"
+  python3 -c "
+import re, json
 
-html = sys.stdin.read()
+with open('$page_file') as f:
+    html = f.read()
+
 match = re.search(r'var dl4Objects = (\[.*?\]);', html, re.DOTALL)
 if not match:
-    sys.exit(0)
+    exit(0)
 
 try:
     data = json.loads(match.group(1))
@@ -65,11 +67,14 @@ try:
         elif 'CertKit' in category: ptype = 'certkit'
         elif 'Bundle' in category: ptype = 'bundle'
         
-        import re as re2
-        match = re2.search(r'([A-Z]{2,3}-\d+)', name)
+        # Skip retired products
+        if 'Retired' in name or 'retired' in name:
+            continue
+        
+        match = re.search(r'([A-Z]{2,3}-\d+)', name)
         exam_code = match.group(1) if match else ''
         
-        slug = re2.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')
+        slug = re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')
         url = f'https://www.measureup.com/{slug}.html'
         
         print(json.dumps({'name': name, 'id': item_id, 'examCode': exam_code, 'type': ptype, 'url': url}))
@@ -79,20 +84,20 @@ except:
 }
 
 echo "Extracting products from page 1..."
-extract_page "$PAGE1" >> "$ALL_PRODUCTS_FILE"
+extract_page "$TEMP_DIR/page-1.html" >> "$ALL_PRODUCTS_FILE"
 
 for p in $(seq 2 $PAGES); do
   echo "Fetching page $p/$PAGES..."
   sleep 2
   
-  PAGE_HTML=$(curl -sL --max-time 20 --retry 3 --retry-delay 5 "${BASE_URL}?p=$p" 2>/dev/null)
+  curl -sL --max-time 20 --retry 3 --retry-delay 5 "${BASE_URL}?p=$p" -o "$TEMP_DIR/page-$p.html" 2>/dev/null
   
-  if [ -z "$PAGE_HTML" ]; then
+  if [ ! -s "$TEMP_DIR/page-$p.html" ]; then
     echo "WARNING: Failed to fetch page $p, skipping"
     continue
   fi
   
-  extract_page "$PAGE_HTML" >> "$ALL_PRODUCTS_FILE"
+  extract_page "$TEMP_DIR/page-$p.html" >> "$ALL_PRODUCTS_FILE"
 done
 
 # Deduplicate by ID
