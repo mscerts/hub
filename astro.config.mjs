@@ -29,13 +29,16 @@ export default defineConfig({
     "/ai&ab/ai-300": "/azure/ai-300",
     "/ai&ab/ai-901": "/azure/ai-901",
     "/azure/dp-100": "/azure/ai-300",
+    "/azure/ai-102": "/azure/ai-103",
+    "/azure/ai-900": "/azure/ai-901",
+
 
     "/microsoft365/ms-900": "/aibusiness/ab-900",
     "/aiab/ab-900/":"/aibusiness/ab-900/",
     "/aiab/ab-100/":"/aibusiness/ab-100/",
     "/aiab/ab-730/":"/aibusiness/ab-730/",
     "/aiab/ab-731/":"/aibusiness/ab-731/",
-    "/guide/officialstudymaterials/":"https://msfthub.com/wiki/",
+    "/guide/officialstudymaterials/":"/wiki",
     "/security/sc-730/":"security/sc-900/",
     
     "/discord":
