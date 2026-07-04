@@ -23,14 +23,15 @@ export default defineConfig({
     "/security": "/wiki",
     "/dynamics": "/wiki",
 
-    "/ai&ab/ai-900": "/azure/ai-900",
-    "/ai&ab/ai-102": "/azure/ai-102",
+    "/ai&ab/ai-900": "/azure/ai-901",
+    "/ai&ab/ai-102": "/azure/ai-103",
     "/ai&ab/ai-103": "/azure/ai-103",
     "/ai&ab/ai-300": "/azure/ai-300",
     "/ai&ab/ai-901": "/azure/ai-901",
     "/azure/dp-100": "/azure/ai-300",
     "/azure/ai-102": "/azure/ai-103",
     "/azure/ai-900": "/azure/ai-901",
+    "/power/pl-600": "/aibusiness/ab-100",
 
 
     "/microsoft365/ms-900": "/aibusiness/ab-900",
@@ -198,11 +199,6 @@ export default defineConfig({
                 },
                 { label: "AZ-900", link: "/azure/az-900/" },
                 {
-                  label: "AI-102",
-                  link: "/azure/ai-102/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
-                {
                   label: "AI-103",
                   link: "/azure/ai-103/",
                 },
@@ -210,11 +206,6 @@ export default defineConfig({
                   label: "AI-300",
                   link: "/azure/ai-300/",
                   badge: { text: "BETA", variant: "tip" },
-                },
-                {
-                  label: "AI-900",
-                  link: "/azure/ai-900/",
-                  badge: { text: "RETIRING", variant: "danger" },
                 },
                 {
                   label: "AI-901",
@@ -328,16 +319,6 @@ export default defineConfig({
                 },
                 { label: "PL-300", link: "/power/pl-300/" },
                 { label: "PL-400", link: "/power/pl-400/" },
-                {
-                  label: "PL-500",
-                  link: "/power/pl-500/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
-                {
-                  label: "PL-600",
-                  link: "/power/pl-600/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
                 { label: "PL-900", link: "/power/pl-900/" },
               ],
             },
@@ -347,11 +328,6 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "MB-230", link: "/dynamics/mb-230/" },
-                {
-                  label: "MB-240",
-                  link: "/dynamics/mb-240/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
                 {
                   label: "MB-280",
                   link: "/dynamics/mb-280/",

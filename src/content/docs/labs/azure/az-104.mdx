@@ -1,5 +1,6 @@
 ---
 title: AZ-104 Labs
+description: "Lab exercises for AZ-104: Microsoft Azure Administrator. Includes Applied Skills, Microsoft Learn, and Microsoft GitHub labs."
 ---
 import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
@@ -31,11 +32,9 @@ Microsoft Learn Sandboxes require you to bring in your own subscription.
 <Tabs>
   <TabItem label="Prerequisites">
 <CardGrid>
-  <LinkCard title="Install Azure PowerShell" href="https://learn.microsoft.com/training/modules/automate-azure-tasks-with-powershell/4-exercise-install-azure-powershell/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Create an Azure Resource using scripts in Azure PowerShell" href="https://learn.microsoft.com/training/modules/automate-azure-tasks-with-powershell/6-exercise-create-resource-interactively/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Create and save scripts in Azure PowerShell" href="https://learn.microsoft.com/training/modules/automate-azure-tasks-with-powershell/8-exercise-create-resource-using-script/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Install and run the Azure CLI" href="https://learn.microsoft.com/training/modules/control-azure-services-with-cli/3-exercise-install-and-run-the-azure-cli/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Create an Azure website using the CLI" href="https://learn.microsoft.com/training/modules/control-azure-services-with-cli/5-exercise-create-website-using-the-cli/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Open Cloud Shell and explore the environment" href="https://learn.microsoft.com/training/modules/guided-project-manage-resources-cloud-shell-cli/2-exercise-open-cloud-shell/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Create and list resources with CLI commands" href="https://learn.microsoft.com/training/modules/guided-project-manage-resources-cloud-shell-cli/3-exercise-create-list-resources/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Tag, query, and clean up resources" href="https://learn.microsoft.com/training/modules/guided-project-manage-resources-cloud-shell-cli/4-exercise-tag-query-clean-up/?WT.mc_id=studentamb_165290" />
   <LinkCard title="Create and deploy an Azure Resource Manager template" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/3-exercise-create-and-deploy-template/?WT.mc_id=studentamb_165290" />
   <LinkCard title="Add parameters and outputs to your Azure Resource Manager template" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/5-exercise-parameters-output/?WT.mc_id=studentamb_165290" />
 </CardGrid>
@@ -43,9 +42,11 @@ Microsoft Learn Sandboxes require you to bring in your own subscription.
 
   <TabItem label="Identities">
 <CardGrid>
-  <LinkCard title="Add and delete users in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/create-users-and-groups-in-azure-active-directory/3-exercise-add-delete-users-azure-ad/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Assign users to Microsoft Entra groups" href="https://learn.microsoft.com/training/modules/create-users-and-groups-in-azure-active-directory/5-exercise-assign-users-azure-ad-groups/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Give guest users access in Microsoft Entra B2B" href="https://learn.microsoft.com/training/modules/create-users-and-groups-in-azure-active-directory/7-exercise-guest-user-access-azure-ad-b2b/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Assign licenses to users" href="https://learn.microsoft.com/training/modules/create-configure-manage-identities/3-exercise-assign-licenses-users/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Restore or remove deleted users" href="https://learn.microsoft.com/training/modules/create-configure-manage-identities/4-exercise-restore-remove-deleted-users/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Add groups in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/create-configure-manage-identities/6-exercise-add-groups-azure-active-directory/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Change group license assignments" href="https://learn.microsoft.com/training/modules/create-configure-manage-identities/9-exercise-change-group-license-assignments/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Change user license assignments" href="https://learn.microsoft.com/training/modules/create-configure-manage-identities/10-exercise-change-user-license-assignments/?WT.mc_id=studentamb_165290" />
   <LinkCard title="Grant access using Azure RBAC and the Azure portal" href="https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac/5-grant-access/?WT.mc_id=studentamb_165290" />
   <LinkCard title="List access using Azure RBAC and the Azure portal" href="https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac/4-list-access/?WT.mc_id=studentamb_165290" />
   <LinkCard title="View activity logs for Azure RBAC changes" href="https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac/6-view-activity-logs/?WT.mc_id=studentamb_165290" />
@@ -56,24 +57,16 @@ Microsoft Learn Sandboxes require you to bring in your own subscription.
 
 <TabItem label="Storage">
 <CardGrid>
-  <LinkCard title="Use stored access policies to delegate access to Azure Storage" href="https://learn.microsoft.com/training/modules/control-access-to-azure-storage-with-sas/6-exercise-use-stored-access-policies/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Use shared access signatures to delegate access to Azure Storage" href="https://learn.microsoft.com/training/modules/control-access-to-azure-storage-with-sas/4-exercise-use-shared-access-signatures/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Connect Azure Storage Explorer to Azure Data Lake Storage" href="https://learn.microsoft.com/training/modules/upload-download-and-manage-data-with-azure-storage-explorer/5-exercise-connect-cosmosdb-data-lake/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Connect Azure Storage Explorer to a storage account" href="https://learn.microsoft.com/training/modules/upload-download-and-manage-data-with-azure-storage-explorer/3-exercise-connect-storage-account/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Provide storage for the public website" href="https://learn.microsoft.com/training/modules/configure-blob-storage/9-simulation-blobs/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Manage Azure Storage security" href="https://learn.microsoft.com/training/modules/configure-storage-security/8-simulation-storage/?WT.mc_id=studentamb_165290" />
 </CardGrid>
 </TabItem>
 
 <TabItem label="Compute">
 <CardGrid>
-  <LinkCard title="Create a virtual machine" href="https://learn.microsoft.com/training/modules/manage-virtual-machines-with-azure-cli/2-create-a-vm/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Test your new virtual machine" href="https://learn.microsoft.com/training/modules/manage-virtual-machines-with-azure-cli/3-testing-the-vm/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Explore other VM images" href="https://learn.microsoft.com/training/modules/manage-virtual-machines-with-azure-cli/4-other-vm-images/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Sizing VMs properly" href="https://learn.microsoft.com/training/modules/manage-virtual-machines-with-azure-cli/5-sizing-vms/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Query system and runtime information about the VM" href="https://learn.microsoft.com/training/modules/manage-virtual-machines-with-azure-cli/6-querying-vms/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Start and stop your VM with the Azure CLI" href="https://learn.microsoft.com/training/modules/manage-virtual-machines-with-azure-cli/7-managing-vms/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Install software on your VM" href="https://learn.microsoft.com/training/modules/manage-virtual-machines-with-azure-cli/8-installing-software/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Create a Windows virtual machine" href="https://learn.microsoft.com/training/modules/create-windows-virtual-machine-in-azure/3-exercise-create-a-vm/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Connect to a Windows virtual machine using RDP" href="https://learn.microsoft.com/training/modules/create-windows-virtual-machine-in-azure/5-exercise-connect-to-a-windows-vm-using-rdp/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Create a VM using the Azure portal" href="https://learn.microsoft.com/training/modules/intro-to-azure-virtual-machines/3-create-a-vm/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Implement Azure Container Instances" href="https://learn.microsoft.com/training/modules/configure-azure-container-instances/6-simulation-containers/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Implement web apps with Azure App Service" href="https://learn.microsoft.com/training/modules/configure-azure-app-services/11-simulation-web-apps/?WT.mc_id=studentamb_165290" />
   <LinkCard title="Create a web app in the Azure portal" href="https://learn.microsoft.com/training/modules/host-a-web-app-with-azure-app-service/3-exercise-create-a-web-app-in-the-azure-portal/?WT.mc_id=studentamb_165290" />
   <LinkCard title="Write code to implement a web application" href="https://learn.microsoft.com/training/modules/host-a-web-app-with-azure-app-service/5-exercise-implement-a-web-application/?WT.mc_id=studentamb_165290" />
   <LinkCard title="Deploy your code to App Service" href="https://learn.microsoft.com/training/modules/host-a-web-app-with-azure-app-service/7-exercise-deploy-your-code-to-app-service/?WT.mc_id=studentamb_165290" />
@@ -82,24 +75,24 @@ Microsoft Learn Sandboxes require you to bring in your own subscription.
 
 <TabItem label="Networking">
 <CardGrid>
-  <LinkCard title="Design and implement IP addressing for Azure virtual networks" href="https://learn.microsoft.com/training/modules/design-ip-addressing-for-azure/5-exercise-implement-vnets/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Prepare virtual networks for peering by using Azure CLI commands" href="https://learn.microsoft.com/training/modules/integrate-vnets-with-vnet-peering/3-exercise-prepare-vnets-for-peering-using-azure-cli-commands/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Configure virtual network peering connections by using Azure CLI commands" href="https://learn.microsoft.com/training/modules/integrate-vnets-with-vnet-peering/4-exercise-configure-vnet-peering-connections-using-azure-cli-commands/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Verify virtual network peering by using SSH between Azure virtual machines" href="https://learn.microsoft.com/training/modules/integrate-vnets-with-vnet-peering/5-exercise-verify-vnet-peering/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Create and configure virtual networks" href="https://learn.microsoft.com/training/modules/configure-virtual-networks/9-simulation-create-networks/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Implement network security groups" href="https://learn.microsoft.com/training/modules/configure-network-security-groups/7-simulation-create-network-groups/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Implement intersite connectivity with virtual network peering" href="https://learn.microsoft.com/training/modules/configure-vnet-peering/6-simulation-peering/?WT.mc_id=studentamb_165290" />
   <LinkCard title="Create a DNS zone and an A record by using Azure DNS" href="https://learn.microsoft.com/training/modules/host-domain-azure-dns/4-exercise-create-dns-zone-a-record/?WT.mc_id=studentamb_165290" />
   <LinkCard title="Create alias records for Azure DNS" href="https://learn.microsoft.com/training/modules/host-domain-azure-dns/6-exercise-create-alias-records/?WT.mc_id=studentamb_165290" />
   <LinkCard title="Create custom routes" href="https://learn.microsoft.com/training/modules/control-network-traffic-flow-with-routes/3-exercise-create-custom-routes/?WT.mc_id=studentamb_165290" />
   <LinkCard title="Create an NVA and virtual machines" href="https://learn.microsoft.com/training/modules/control-network-traffic-flow-with-routes/5-exercise-create-nva-vm/?WT.mc_id=studentamb_165290" />
   <LinkCard title="Route traffic through the NVA" href="https://learn.microsoft.com/training/modules/control-network-traffic-flow-with-routes/6-exercise-route-traffic-through-nva/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Configure a public load balancer" href="https://learn.microsoft.com/training/modules/improve-app-scalability-resiliency-with-load-balancer/4-exercise-configure-public-load-balancer/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Create and configure an Azure load balancer" href="https://learn.microsoft.com/training/modules/load-balancing-non-https-traffic-azure/4-exercise-create-configure-azure-load-balancer/?WT.mc_id=studentamb_165290" />
 </CardGrid>
 </TabItem>
 
 <TabItem label="Monitor">
 <CardGrid>
-  <LinkCard title="Use metric alerts to alert on performance issues in your Azure environment" href="https://learn.microsoft.com/training/modules/incident-response-with-alerting-on-azure/4-exercise-metric-alerts/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Use an activity log alert and an action group to notify users about events in your Azure infrastructure" href="https://learn.microsoft.com/training/modules/incident-response-with-alerting-on-azure/8-exercise-activity-log-alerts/?WT.mc_id=studentamb_165290" />
-  <LinkCard title="Create basic Azure Monitor log queries to extract information from log data" href="https://learn.microsoft.com/training/modules/analyze-infrastructure-with-azure-monitor-logs/4-exercise-create-log-queries/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Monitor VM host data with Azure Monitor" href="https://learn.microsoft.com/training/modules/monitor-azure-vm-using-diagnostic-data/3-exercise-create-virtual-machine/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Create an action group" href="https://learn.microsoft.com/training/modules/guided-project-monitor-service-health-activity-alerts/2-exercise-create-action-group/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Create a Service Health alert" href="https://learn.microsoft.com/training/modules/guided-project-monitor-service-health-activity-alerts/3-exercise-create-service-health-alert/?WT.mc_id=studentamb_165290" />
+  <LinkCard title="Create an Activity Log alert" href="https://learn.microsoft.com/training/modules/guided-project-monitor-service-health-activity-alerts/4-exercise-create-activity-log-alert/?WT.mc_id=studentamb_165290" />
 </CardGrid>
 </TabItem>
 
