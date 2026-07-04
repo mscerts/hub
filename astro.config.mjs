@@ -96,6 +96,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "Partner Certification Week",
+              link: "/vouchers/partnerweek/",
+              badge: { text: "*100%", variant: "tip" },
+            },
+            {
               label: "AI Agent Skills Sweepstakes",
               link: "/vouchers/aiagentskillssweepstakes/",
               badge: { text: "*100%", variant: "tip" },
