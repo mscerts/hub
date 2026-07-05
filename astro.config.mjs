@@ -99,7 +99,7 @@ export default defineConfig({
             {
               label: "Partner Certification Week",
               link: "/vouchers/partnerweek/",
-              badge: { text: "*100%", variant: "tip" },
+              badge: { text: "***100%", variant: "tip" },
             },
             {
               label: "AI Agent Skills Sweepstakes",
