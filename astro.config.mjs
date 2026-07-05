@@ -112,11 +112,6 @@ export default defineConfig({
               badge: { text: "100%", variant: "tip" },
             },
             {
-              label: "Get DP-800 Certified",
-              link: "/vouchers/getsqlaidevelopercertified/",
-              badge: { text: "*100%", variant: "tip" },
-            },
-            {
               label: "South Africa AI Skills",
               link: "/vouchers/southafricaaiskills/",
               badge: { text: "*100%", variant: "tip" },
