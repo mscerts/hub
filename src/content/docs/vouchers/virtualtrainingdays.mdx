@@ -5,6 +5,7 @@ voucherCategory: "50%"
 ---
 import { LinkButton } from '@astrojs/starlight/components';
 import { Steps } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 :::note
 Get 50% exam voucher for all fundamental exams and MB-280, SC-200, AI-103, DP-300, SC-401.
@@ -31,13 +32,18 @@ Microsoft Virtual Training Days vouchers have returned! But this time the vouche
 
 ## Where to find the events:
 
+<Tabs>
+<TabItem label="Fundamental">
+:::note
+Voucher is confirmed to work for AB-900 while the page is still saying it applies to the retired MS-900.
+:::
 <LinkButton
-  href="https://www.microsoft.com/cs-cz/events/category/microsoft-virtual-training-days?filters=product%3Aazure%2Ctopic%3Ainfrastructure&scenario=mvtd&q=Introduction+to+Microsoft+Azure" target="_blank"
+  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?q=Microsoft+Virtual+Training+Day%3A+Introduction+to+Microsoft+365%2C+Copilot%2C+and+Agents" target="_blank"
   variant="primary"
   icon="document"
   iconPlacement="start"
 >
-  AZ-900: Azure Fundamentals
+  AB-900: Copilot and Agent Administration Fundamentals
 </LinkButton>
 
 <LinkButton
@@ -50,6 +56,15 @@ Microsoft Virtual Training Days vouchers have returned! But this time the vouche
 </LinkButton>
 
 <LinkButton
+  href="https://www.microsoft.com/cs-cz/events/category/microsoft-virtual-training-days?filters=product%3Aazure%2Ctopic%3Ainfrastructure&scenario=mvtd&q=Introduction+to+Microsoft+Azure" target="_blank"
+  variant="primary"
+  icon="document"
+  iconPlacement="start"
+>
+  AZ-900: Azure Fundamentals
+</LinkButton>
+
+<LinkButton
   href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Azure+Virtual+Training+Day%3A+Data+Fundamentals" target="_blank"
   variant="primary"
   icon="document"
@@ -57,17 +72,14 @@ Microsoft Virtual Training Days vouchers have returned! But this time the vouche
 >
   DP-900: Azure Data Fundamentals
 </LinkButton>
-:::note
-Voucher is confirmed to work for AB-900 while the page is still saying it applies to the retired MS-900.
-:::
+
 <LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?q=Microsoft+Virtual+Training+Day%3A+Introduction+to+Microsoft+365%2C+Copilot%2C+and+Agents" target="_blank"
+  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Introduction+to+Microsoft+Power+Platform" target="_blank"
   variant="primary"
   icon="document"
   iconPlacement="start"
 >
-  AB-900: Copilot and Agent Administration Fundamentals
-
+  PL-900: Power Platform Fundamentals
 </LinkButton>
 
 <LinkButton
@@ -79,13 +91,25 @@ Voucher is confirmed to work for AB-900 while the page is still saying it applie
   SC-900: Security, Compliance, and Identity Fundamentals
 </LinkButton>
 
+</TabItem>
+<TabItem label="Role-based">
+
 <LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Introduction+to+Microsoft+Power+Platform" target="_blank"
+  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Build+Agentic+AI+Solutions+with+Azure+AI+Foundry" target="_blank"
   variant="primary"
   icon="document"
   iconPlacement="start"
 >
-  PL-900: Power Platform Fundamentals
+  AI-103: Developing AI Apps and Agents on Azure
+</LinkButton>
+
+<LinkButton
+  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Migrate+and+Modernize+Foundation" target="_blank"
+  variant="primary"
+  icon="document"
+  iconPlacement="start"
+>
+  DP-300: Administering Microsoft Azure SQL Solutions
 </LinkButton>
 
 <LinkButton
@@ -107,24 +131,6 @@ Voucher is confirmed to work for AB-900 while the page is still saying it applie
 </LinkButton>
 
 <LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Build+Agentic+AI+Solutions+with+Azure+AI+Foundry" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  AI-103: Developing AI Apps and Agents on Azure
-</LinkButton>
-
-<LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Migrate+and+Modernize+Foundation" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  DP-300: Administering Microsoft Azure SQL Solutions
-</LinkButton>
-
-<LinkButton
   href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Protect+Sensitive+Information+in+the+AI+Era+with+Microsoft+Purview" target="_blank"
   variant="primary"
   icon="document"
@@ -141,3 +147,6 @@ Voucher is confirmed to work for AB-900 while the page is still saying it applie
 >
   SC-500: Implementing End-to-End Security Controls for Cloud and AI Workloads
 </LinkButton>
+
+</TabItem>
+</Tabs>
