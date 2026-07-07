@@ -97,6 +97,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "Microsoft Defender Sweepstakes",
+              link: "/vouchers/defendersweepstakes/",
+              badge: { text: "*50%", variant: "tip" },
+            },
+            {
               label: "Partner Certification Week",
               link: "/vouchers/partnerweek/",
               badge: { text: "*100%", variant: "tip" },
