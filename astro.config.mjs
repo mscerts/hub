@@ -208,6 +208,10 @@ export default defineConfig({
                   link: "/azure/ai-103/",
                 },
                 {
+                  label: "AI-200",
+                  link: "/azure/ai-200/",
+                },
+                {
                   label: "AI-300",
                   link: "/azure/ai-300/",
                   badge: { text: "BETA", variant: "tip" },
