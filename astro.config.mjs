@@ -97,6 +97,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "AZ-802 Beta Exam",
+              link: "/vouchers/az802beta/",
+              badge: { text: "*80%", variant: "tip" },
+            },
+            {
               label: "Microsoft Defender Sweepstakes",
               link: "/vouchers/defendersweepstakes/",
               badge: { text: "*50%", variant: "tip" },
@@ -140,11 +145,6 @@ export default defineConfig({
               label: "Microsoft x Datacamp",
               link: "/vouchers/microsoftxdatacamp/",
               badge: { text: "*50%", variant: "note" },
-            },
-            {
-              label: "AZ-802 Beta Exam",
-              link: "/vouchers/az802beta/",
-              badge: { text: "*80%", variant: "tip" },
             },
             {
               label: "Beta Exams",
