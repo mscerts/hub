@@ -189,7 +189,7 @@ pnpm dev                        # Local preview
 
 ## MeasureUp Monitor
 
-Automated weekly check for new Microsoft practice tests on MeasureUp.
+Automated weekly check for new Microsoft practice tests on MeasureUp. I must add that it doesn't track bundles thanks to MeasureUp devs.
 
 - **Workflow:** `.github/workflows/measureup-monitor.yml` — runs Monday 06:00 UTC + manual trigger
 - **Script:** `scripts/measureup-check.sh` — scrapes all pages, compares against baseline

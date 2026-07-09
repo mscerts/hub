@@ -142,6 +142,11 @@ export default defineConfig({
               badge: { text: "*50%", variant: "note" },
             },
             {
+              label: "AZ-802 Beta Exam",
+              link: "/vouchers/az802beta/",
+              badge: { text: "*80%", variant: "tip" },
+            },
+            {
               label: "Beta Exams",
               link: "/vouchers/betaexams/",
               badge: { text: "*80% + 25%", variant: "note" },
@@ -195,7 +200,7 @@ export default defineConfig({
                 {
                   label: "AZ-802",
                   link: "/azure/az-802/",
-                  badge: { text: "UPCOMING", variant: "caution" },
+                  badge: { text: "BETA", variant: "tip" },
                 },
                 { label: "AZ-900", link: "/azure/az-900/" },
                 {

@@ -39,32 +39,36 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 </style>
 
 <script is:inline>
-  // Force reload all stylesheets on navigation to fix CSS loading issues
+  // Handle View Transitions: fix stylesheets + remove dismissed banners before swap
   document.addEventListener("astro:before-swap", (ev) => {
-    // Get all link elements with stylesheets
-    const oldStyles = [...document.querySelectorAll('link[rel="stylesheet"]')];
     const newDoc = ev.newDocument;
+
+    // Remove dismissed banners from the new document before it swaps in
+    newDoc.querySelectorAll("astro-banner").forEach((banner) => {
+      const btnId = banner.getAttribute("btnId");
+      const version = banner.getAttribute("version") || "1";
+      const rememberDismissal = banner.getAttribute("rememberDismissal") !== "false";
+      if (rememberDismissal && btnId) {
+        const storageKey = `banner-dismissed-${btnId}-v${version}`;
+        if (localStorage.getItem(storageKey)) {
+          banner.remove();
+        }
+      }
+    });
+
+    // Ensure new stylesheets are loaded before swap
+    const oldStyles = [...document.querySelectorAll('link[rel="stylesheet"]')];
     const newStyles = [...newDoc.querySelectorAll('link[rel="stylesheet"]')];
-    
-    // Ensure new styles are loaded
     newStyles.forEach((newStyle) => {
       const href = newStyle.getAttribute('href');
       const existing = oldStyles.find(s => s.getAttribute('href') === href);
       if (!existing) {
-        // Add new stylesheet to current document before swap
         const link = document.createElement('link');
         link.rel = 'stylesheet';
         link.href = href;
         document.head.appendChild(link);
       }
     });
-  });
-
-  document.addEventListener("astro:after-swap", () => {
-    // Force repaint to ensure styles are applied
-    document.documentElement.style.display = 'none';
-    document.documentElement.offsetHeight; // trigger reflow
-    document.documentElement.style.display = '';
   });
 </script>
 
