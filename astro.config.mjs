@@ -259,11 +259,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "AB-100", link: "/aibusiness/ab-100/" },
-                {
-                  label: "AB-210",
-                  link: "/aibusiness/ab-210/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
+                { label: "AB-210", link: "/aibusiness/ab-210/" },
                 {
                   label: "AB-250",
                   link: "/aibusiness/ab-250/",
