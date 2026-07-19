@@ -39,11 +39,3 @@ jobs:
           title: "New MeasureUp Products Detected — ${{ github.run_id }}"
           content-filepath: /tmp/measureup-report.md
           labels: enhancement
-
-      - name: Alert on extraction failure
-        if: steps.monitor.outputs.extraction_failed == 'true'
-        uses: peter-evans/create-issue-from-file@v5
-        with:
-          title: "MeasureUp Monitor FAILED — ${{ github.run_id }}"
-          content-filepath: /tmp/measureup-error.md
-          labels: bug

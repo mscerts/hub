@@ -19,14 +19,43 @@ mkdir -p "$TEMP_DIR"
 echo "=== MeasureUp Monitor ==="
 echo "Started: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
+fetch_page() {
+    local url="$1"
+    local output_file="$2"
+    local label="$3"
+    local attempt
+
+    for attempt in 1 2 3; do
+        curl -sL --fail --max-time 30 --retry 2 --retry-delay 5 \
+            -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36" \
+            -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" \
+            "$url" -o "$output_file" 2>/dev/null || true
+
+        if [ -s "$output_file" ] && grep -q "var dl4Objects" "$output_file"; then
+            return 0
+        fi
+
+        echo "WARNING: $label fetch attempt $attempt did not contain product data"
+        sleep $((attempt * 5))
+    done
+
+    return 1
+}
+
+write_extraction_failure() {
+    local message="$1"
+    echo "$message" > "$ERROR_FILE"
+    echo "new_products=false" >> "$GITHUB_OUTPUT"
+    echo "extraction_failed=true" >> "$GITHUB_OUTPUT"
+    echo "baseline_updated=false" >> "$GITHUB_OUTPUT"
+}
+
 # --- Step 1: Fetch page 1, detect total pages ---
 echo "Fetching page 1..."
-curl -sL --max-time 20 --retry 3 --retry-delay 5 "$BASE_URL" -o "$TEMP_DIR/page-1.html" 2>/dev/null
 
-if [ ! -s "$TEMP_DIR/page-1.html" ]; then
+if ! fetch_page "$BASE_URL" "$TEMP_DIR/page-1.html" "page 1"; then
   echo "ERROR: Failed to fetch page 1"
-  echo "Failed to fetch MeasureUp page 1. Site may be down or blocking requests." > "$ERROR_FILE"
-  echo "extraction_failed=true" >> "$GITHUB_OUTPUT"
+    write_extraction_failure "Failed to fetch MeasureUp page 1 with product data. Site may be down, blocking requests, or returning incomplete content."
   exit 1
 fi
 
@@ -34,8 +63,7 @@ TOTAL=$(grep -oP 'toolbar-number">\K\d+' "$TEMP_DIR/page-1.html" | sed -n '3p')
 
 if [ -z "$TOTAL" ] || [ "$TOTAL" -lt "$MIN_PRODUCTS" ]; then
   echo "ERROR: Total=$TOTAL (expected >$MIN_PRODUCTS)."
-  echo "MeasureUp extraction failed. Got total=$TOTAL (expected >$MIN_PRODUCTS)." > "$ERROR_FILE"
-  echo "extraction_failed=true" >> "$GITHUB_OUTPUT"
+    write_extraction_failure "MeasureUp extraction failed. Got total=$TOTAL (expected >$MIN_PRODUCTS)."
   exit 1
 fi
 
@@ -92,10 +120,8 @@ for p in $(seq 2 $PAGES); do
   echo "Fetching page $p/$PAGES..."
   sleep 2
   
-  curl -sL --max-time 20 --retry 3 --retry-delay 5 "${BASE_URL}?p=$p" -o "$TEMP_DIR/page-$p.html" 2>/dev/null
-  
-  if [ ! -s "$TEMP_DIR/page-$p.html" ]; then
-    echo "WARNING: Failed to fetch page $p, skipping"
+    if ! fetch_page "${BASE_URL}?p=$p" "$TEMP_DIR/page-$p.html" "page $p"; then
+        echo "WARNING: Failed to fetch product data for page $p, skipping"
     continue
   fi
   
@@ -139,8 +165,7 @@ echo "Extracted $EXTRACTED_COUNT unique products"
 
 if [ "$EXTRACTED_COUNT" -lt "$MIN_PRODUCTS" ]; then
   echo "ERROR: Only $EXTRACTED_COUNT products (expected >$MIN_PRODUCTS)."
-  echo "MeasureUp extraction partially failed. Got $EXTRACTED_COUNT products (expected >$MIN_PRODUCTS)." > "$ERROR_FILE"
-  echo "extraction_failed=true" >> "$GITHUB_OUTPUT"
+    write_extraction_failure "MeasureUp extraction partially failed. Got $EXTRACTED_COUNT products (expected >$MIN_PRODUCTS). The scan was ignored so the baseline was not changed and no new-product notification was sent."
   exit 1
 fi
 
@@ -221,6 +246,7 @@ new_count = len(new_products)
 extracted_count = len(extracted)
 list_increased = extracted_count > baseline_count
 baseline_changed = {product_key(p) for p in extracted} != baseline_ids
+should_update_baseline = False
 
 if new_count > 0 and list_increased:
     new_pct = (new_count * 100) // extracted_count
@@ -234,10 +260,10 @@ if new_count > 0 and list_increased:
 
 if new_count == 0 or not list_increased:
     if new_count > 0:
-        print(f"Detected {new_count} product ID changes, but total did not increase ({baseline_count} -> {extracted_count}); no notification will be sent.")
+        print(f"Detected {new_count} product ID changes, but total did not increase ({baseline_count} -> {extracted_count}); no notification will be sent and baseline will remain unchanged.")
     else:
         print("No new products found.")
-    write_output(new_products=False, extraction_failed=False, baseline_updated=baseline_changed)
+    write_output(new_products=False, extraction_failed=False, baseline_updated=False)
 else:
     print(f"Found {new_count} new products!")
     with open(report_file, "w") as f:
@@ -251,8 +277,9 @@ else:
         f.write(f"- **Current scan:** {extracted_count} products\n")
         f.write(f"- **New products:** {new_count}\n")
     write_output(new_products=True, extraction_failed=False, baseline_updated=True)
+    should_update_baseline = True
 
-if baseline_changed:
+if should_update_baseline and baseline_changed:
     baseline["lastChecked"] = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     baseline["totalProducts"] = extracted_count
     baseline["products"] = extracted
