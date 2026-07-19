@@ -1,15 +1,17 @@
 #!/bin/bash
 set -euo pipefail
 
-BASE_URL="https://www.measureup.com/microsoft.html"
-BASELINE_FILE="src/data_files/measureup-products.json"
-TEMP_DIR="/tmp/measureup-scan"
-ALL_PRODUCTS_FILE="$TEMP_DIR/all-products.jsonl"
-REPORT_FILE="/tmp/measureup-report.md"
-ERROR_FILE="/tmp/measureup-error.md"
+BASE_URL="${BASE_URL:-https://www.measureup.com/microsoft.html}"
+BASELINE_FILE="${BASELINE_FILE:-src/data_files/measureup-products.json}"
+TEMP_DIR="${TEMP_DIR:-/tmp/measureup-scan}"
+ALL_PRODUCTS_FILE="${ALL_PRODUCTS_FILE:-$TEMP_DIR/all-products.jsonl}"
+REPORT_FILE="${REPORT_FILE:-/tmp/measureup-report.md}"
+ERROR_FILE="${ERROR_FILE:-/tmp/measureup-error.md}"
+GITHUB_OUTPUT="${GITHUB_OUTPUT:-/tmp/github-output}"
+export GITHUB_OUTPUT
 
-MIN_PRODUCTS=100
-MAX_NEW_PCT=50
+MIN_PRODUCTS="${MIN_PRODUCTS:-100}"
+MAX_NEW_PCT="${MAX_NEW_PCT:-50}"
 
 mkdir -p "$TEMP_DIR"
 > "$ALL_PRODUCTS_FILE"
@@ -100,8 +102,37 @@ for p in $(seq 2 $PAGES); do
   extract_page "$TEMP_DIR/page-$p.html" >> "$ALL_PRODUCTS_FILE"
 done
 
-# Deduplicate by ID
-sort -u "$ALL_PRODUCTS_FILE" -o "$ALL_PRODUCTS_FILE"
+# Deduplicate by normalized product identity
+python3 -c "
+import json
+
+def product_key(product):
+    product_id = str(product.get('id', '')).strip()
+    if product_id:
+        return product_id
+    name = product.get('name', '').strip().lower()
+    return product.get('type', '') + '|' + name
+
+seen = set()
+products = []
+
+with open('$ALL_PRODUCTS_FILE') as f:
+    for line in f:
+        line = line.strip()
+        if not line:
+            continue
+        product = json.loads(line)
+        product['id'] = str(product.get('id', '')).strip()
+        key = product_key(product)
+        if key in seen:
+            continue
+        seen.add(key)
+        products.append(product)
+
+with open('$ALL_PRODUCTS_FILE', 'w') as f:
+    for product in products:
+        print(json.dumps(product, sort_keys=True), file=f)
+"
 EXTRACTED_COUNT=$(wc -l < "$ALL_PRODUCTS_FILE")
 
 echo "Extracted $EXTRACTED_COUNT unique products"
@@ -137,6 +168,7 @@ print(f'Baseline created with {len(products)} products')
   
   echo "new_products=false" >> "$GITHUB_OUTPUT"
   echo "extraction_failed=false" >> "$GITHUB_OUTPUT"
+    echo "baseline_updated=true" >> "$GITHUB_OUTPUT"
   exit 0
 fi
 
@@ -153,39 +185,59 @@ error_file = os.environ["ERROR_FILE"]
 github_output = os.environ.get("GITHUB_OUTPUT", "/tmp/github-output")
 max_new_pct = int(os.environ["MAX_NEW_PCT"])
 
+def product_key(product):
+    product_id = str(product.get("id", "")).strip()
+    if product_id:
+        return product_id
+    name = product.get("name", "").strip().lower()
+    return product.get("type", "") + "|" + name
+
+def normalize_product(product):
+    normalized = dict(product)
+    normalized["id"] = str(normalized.get("id", "")).strip()
+    return normalized
+
+def write_output(**values):
+    with open(github_output, "a") as f:
+        for key, value in values.items():
+            f.write(f"{key}={str(value).lower()}\n")
+
 with open(baseline_file) as f:
     baseline = json.load(f)
 
-baseline_ids = {p["id"] for p in baseline["products"]}
+baseline_products = [normalize_product(p) for p in baseline["products"]]
+baseline_ids = {product_key(p) for p in baseline_products}
+baseline_count = len(baseline_products)
 
 extracted = []
 with open(extracted_file) as f:
     for line in f:
         line = line.strip()
         if line:
-            extracted.append(json.loads(line))
+            extracted.append(normalize_product(json.loads(line)))
 
-extracted_ids = {p["id"] for p in extracted}
-new_products = [p for p in extracted if p["id"] not in baseline_ids]
+new_products = [p for p in extracted if product_key(p) not in baseline_ids]
 new_count = len(new_products)
 extracted_count = len(extracted)
+list_increased = extracted_count > baseline_count
+baseline_changed = {product_key(p) for p in extracted} != baseline_ids
 
-if new_count > 0:
+if new_count > 0 and list_increased:
     new_pct = (new_count * 100) // extracted_count
     if new_pct > max_new_pct:
         print(f"ERROR: {new_count} new products ({new_pct}%) exceeds threshold ({max_new_pct}%)")
         with open(error_file, "w") as f:
             f.write(f"MeasureUp monitor detected {new_count} new products ({new_pct}% of total). "
                     f"This exceeds the {max_new_pct}% threshold, suggesting HTML structure may have changed.")
-        with open(github_output, "a") as f:
-            f.write("extraction_failed=true\n")
+        write_output(extraction_failed=True, baseline_updated=False)
         exit(1)
 
-if new_count == 0:
-    print("No new products found.")
-    with open(github_output, "a") as f:
-        f.write("new_products=false\n")
-        f.write("extraction_failed=false\n")
+if new_count == 0 or not list_increased:
+    if new_count > 0:
+        print(f"Detected {new_count} product ID changes, but total did not increase ({baseline_count} -> {extracted_count}); no notification will be sent.")
+    else:
+        print("No new products found.")
+    write_output(new_products=False, extraction_failed=False, baseline_updated=baseline_changed)
 else:
     print(f"Found {new_count} new products!")
     with open(report_file, "w") as f:
@@ -198,18 +250,19 @@ else:
         f.write(f"- **Previous baseline:** {baseline['totalProducts']} products\n")
         f.write(f"- **Current scan:** {extracted_count} products\n")
         f.write(f"- **New products:** {new_count}\n")
-    with open(github_output, "a") as f:
-        f.write("new_products=true\n")
-        f.write("extraction_failed=false\n")
+    write_output(new_products=True, extraction_failed=False, baseline_updated=True)
 
-baseline["lastChecked"] = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-baseline["totalProducts"] = extracted_count
-baseline["products"] = extracted
+if baseline_changed:
+    baseline["lastChecked"] = datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
+    baseline["totalProducts"] = extracted_count
+    baseline["products"] = extracted
 
-with open(baseline_file, "w") as f:
-    json.dump(baseline, f, indent=2)
+    with open(baseline_file, "w") as f:
+        json.dump(baseline, f, indent=2)
 
-print(f"Baseline updated with {extracted_count} products")
+    print(f"Baseline updated with {extracted_count} products")
+else:
+    print("Baseline unchanged")
 PYEOF
 
 echo "=== Done ==="

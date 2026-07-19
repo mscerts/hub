@@ -13,13 +13,24 @@ jobs:
   check:
     runs-on: ubuntu-latest
     permissions:
+      contents: write
       issues: write
     steps:
       - uses: actions/checkout@v4
 
       - name: Check for new MeasureUp products
         id: monitor
+        continue-on-error: true
         run: bash scripts/measureup-check.sh
+
+      - name: Commit updated MeasureUp baseline
+        if: steps.monitor.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/measureup-products.json
+          git diff --cached --quiet || git commit -m "Update MeasureUp product baseline"
+          git push
 
       - name: Create issue if new products found
         if: steps.monitor.outputs.new_products == 'true'
