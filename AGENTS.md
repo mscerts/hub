@@ -295,6 +295,15 @@ GITHUB_OUTPUT=/tmp/github-output bash scripts/measureup-check.sh
 
 ---
 
+## Repository Memory
+
+- Merge durable guidance from every `/memories/repo/` file into the relevant section of this `AGENTS.md` file.
+- When adding or changing repository memory, update `AGENTS.md` in the same task and consolidate overlapping guidance instead of duplicating it.
+- If a memory file conflicts with `AGENTS.md` or another memory file, ask the user which rule should take precedence before merging.
+- Do not merge temporary `/memories/session/` notes unless the user explicitly promotes them to durable repository guidance.
+
+---
+
 ## Task Prompts
 
 Detailed improvement tasks are defined in `.github/prompts/`. Each prompt file contains:
