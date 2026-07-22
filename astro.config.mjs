@@ -97,6 +97,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "Exam AI-500 (beta)",
+              link: "/vouchers/ai500beta/",
+              badge: { text: "*80%", variant: "tip" },
+            },
+            {
               label: "Microsoft Defender Sweepstakes",
               link: "/vouchers/defendersweepstakes/",
               badge: { text: "*50%", variant: "tip" },
@@ -204,6 +209,11 @@ export default defineConfig({
                 {
                   label: "AI-300",
                   link: "/azure/ai-300/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
+                {
+                  label: "AI-500",
+                  link: "/azure/ai-500/",
                   badge: { text: "BETA", variant: "tip" },
                 },
                 {
