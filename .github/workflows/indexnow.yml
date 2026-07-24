@@ -1,0 +1,127 @@
+name: Bing IndexNow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed content files
+        id: changes
+        run: |
+          SITE="https://msfthub.com"
+          URLS=""
+
+          # Use event.before for multi-commit pushes, fall back to HEAD~1
+          BASE="${{ github.event.before }}"
+          if [[ "$BASE" == "0000000000000000000000000000000000000000" || -z "$BASE" ]]; then
+            BASE="HEAD~1"
+          fi
+          HEAD="${{ github.event.after }}"
+          if [[ -z "$HEAD" ]]; then
+            HEAD="HEAD"
+          fi
+
+          while IFS=$'\t' read -r status src dst; do
+            file="$src"
+            old_file=""
+            # Handle renames — submit old URL too
+            if [[ "$status" == R* && -n "$dst" ]]; then
+              file="$dst"
+              old_file="$src"
+            fi
+
+            # Only process content files that map to real pages
+            url=""
+            if [[ "$file" == src/content/docs/wiki.mdx ]]; then
+              url="${SITE}/wiki/"
+            elif [[ "$file" == src/content/docs/prepare/*.mdx ]]; then
+              slug=$(basename "$file" .mdx)
+              url="${SITE}/prepare/${slug}/"
+            elif [[ "$file" == src/content/docs/guide/*.mdx ]]; then
+              slug=$(basename "$file" .mdx)
+              url="${SITE}/guide/${slug}/"
+            elif [[ "$file" == src/content/docs/vouchers/*.mdx ]]; then
+              slug=$(basename "$file" .mdx)
+              url="${SITE}/vouchers/${slug}/"
+            elif [[ "$file" == src/content/docs/labs/*/*.mdx ]]; then
+              area=$(echo "$file" | sed -n 's|src/content/docs/labs/\([^/]*\)/.*|\1|p')
+              code=$(basename "$file" .mdx)
+              url="${SITE}/labs/${area}/${code,,}/"
+            elif [[ "$file" == src/content/docs/*/*.mdx ]]; then
+              area=$(echo "$file" | sed -n 's|src/content/docs/\([^/]*\)/.*|\1|p')
+              code=$(basename "$file" .mdx)
+              url="${SITE}/${area}/${code,,}/"
+            elif [[ "$file" == src/content/blog/*.mdx ]]; then
+              slug=$(basename "$file" .mdx)
+              url="${SITE}/blog/${slug}/"
+            elif [[ "$file" == src/pages/index.astro ]]; then
+              url="${SITE}/"
+            fi
+
+            if [[ -n "$url" ]]; then
+              URLS="${URLS}${url}\n"
+            fi
+
+            # Handle renamed files — also submit old URL
+            if [[ "$status" == R* && -n "$old_file" ]]; then
+              old_url=""
+              if [[ "$old_file" == src/content/docs/prepare/*.mdx ]]; then
+                slug=$(basename "$old_file" .mdx)
+                old_url="${SITE}/prepare/${slug}/"
+              elif [[ "$old_file" == src/content/docs/guide/*.mdx ]]; then
+                slug=$(basename "$old_file" .mdx)
+                old_url="${SITE}/guide/${slug}/"
+              elif [[ "$old_file" == src/content/docs/vouchers/*.mdx ]]; then
+                slug=$(basename "$old_file" .mdx)
+                old_url="${SITE}/vouchers/${slug}/"
+              elif [[ "$old_file" == src/content/docs/labs/*/*.mdx ]]; then
+                area=$(echo "$old_file" | sed -n 's|src/content/docs/labs/\([^/]*\)/.*|\1|p')
+                code=$(basename "$old_file" .mdx)
+                old_url="${SITE}/labs/${area}/${code,,}/"
+              elif [[ "$old_file" == src/content/docs/*/*.mdx ]]; then
+                area=$(echo "$old_file" | sed -n 's|src/content/docs/\([^/]*\)/.*|\1|p')
+                code=$(basename "$old_file" .mdx)
+                old_url="${SITE}/${area}/${code,,}/"
+              elif [[ "$old_file" == src/content/blog/*.mdx ]]; then
+                slug=$(basename "$old_file" .mdx)
+                old_url="${SITE}/blog/${slug}/"
+              fi
+              if [[ -n "$old_url" ]]; then
+                URLS="${URLS}${old_url}\n"
+              fi
+            fi
+          done < <(git diff --name-status "$BASE" "$HEAD")
+
+          # Deduplicate URLs
+          URLS=$(echo -e "$URLS" | sort -u | grep -v '^$')
+
+          if [[ -z "$URLS" ]]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "No content changes to submit"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "URLs to submit:"
+            echo "$URLS"
+            # Store as JSON array
+            JSON_URLS=$(echo "$URLS" | jq -R -s -c 'split("\n") | map(select(length > 0))')
+            echo "urls=$JSON_URLS" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Submit to IndexNow
+        if: steps.changes.outputs.skip != 'true'
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" \
+            -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "msfthub.com",
+              "key": "f8a11c68fec74da9a136302d38546647",
+              "urlList": ${{ steps.changes.outputs.urls }}
+            }'
