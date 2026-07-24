@@ -175,7 +175,10 @@ export default defineConfig({
                   badge: { text: "RETIRING", variant: "danger" },
                 },
                 { label: "AZ-305", link: "/azure/az-305/" },
-                { label: "AZ-400", link: "/azure/az-400/" },
+                { label: "AZ-400", 
+                  link: "/azure/az-400/",
+                  badge: { text: "POTENTIALLY RETIRING", variant: "caution" },
+                },
                 {
                   label: "AZ-500",
                   link: "/azure/az-500/",
