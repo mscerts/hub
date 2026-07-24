@@ -1,7 +1,7 @@
 ---
 name: "Hub: Audit Assessment IDs & Dates"
 description: "Audit every exam page's practice assessmentId, retirement/beta dates, names, descriptions, and URLs against official Microsoft Learn."
-agent: agent
+agent: edit
 argument-hint: "Optional: limit to an area (e.g. azure) or a list of exam codes; default = all."
 ---
 

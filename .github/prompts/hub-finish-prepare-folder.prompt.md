@@ -1,7 +1,7 @@
 ---
 name: "Hub: Finish the prepare/ Folder"
 description: "Complete the orphaned prepare/ how-to-prepare pages (fill the studymaterials stub) and wire them into navigation."
-agent: agent
+agent: edit
 ---
 
 # Task: Complete & wire up the `prepare/` folder

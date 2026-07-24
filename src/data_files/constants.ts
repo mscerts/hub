@@ -44,3 +44,7 @@ export const ANALYTICS = {
   clarity: "u7pei4s9cq",
   googleTagManager: "GTM-TMNHVD5B",
 } as const;
+
+export const VERIFICATIONS = {
+  udemy: "aa360495-3579-450f-8ba8-51b90e774051",
+} as const;

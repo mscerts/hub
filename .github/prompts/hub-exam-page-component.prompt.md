@@ -1,7 +1,7 @@
 ---
 name: "Hub: Data-driven Exam Pages"
 description: "Refactor the repeated exam-page MDX into a data-driven <ExamPage> component to eliminate copy-paste bugs."
-agent: agent
+agent: edit
 argument-hint: "Optional: which exam(s) to migrate first (default AZ-800 + PL-200)."
 ---
 

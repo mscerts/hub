@@ -1,7 +1,7 @@
 ---
 name: "Hub: Related Certifications Block"
 description: "Add a consistent 'Related certifications / learning pathway' cross-link block to exam pages."
-agent: agent
+agent: edit
 argument-hint: "Optional: which area/pages to pilot first (default: Security or Azure AI)."
 ---
 

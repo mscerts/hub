@@ -1,7 +1,7 @@
 ---
 name: "Hub: Retirement/Beta Banner Components"
 description: "Create shared <RetirementBanner> and <BetaBanner> components to standardize exam retirement/beta notices."
-agent: agent
+agent: edit
 argument-hint: "Optional: which pages to migrate as examples (default AZ-800 retirement + AZ-802 beta)."
 ---
 

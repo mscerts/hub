@@ -1,7 +1,7 @@
 ---
 name: "Hub: CI Link Checker"
 description: "Add automated link-checking (broken/dead/malformed URLs) to CI for the mscerts/hub site."
-agent: agent
+agent: edit
 argument-hint: "Optional: preferred tool (lychee or linkinator) and whether external checks should block PRs."
 ---
 

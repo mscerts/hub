@@ -1,7 +1,7 @@
 ---
 name: "Hub: MeasureUp Card Component"
 description: "Create a shared <MeasureUpCard> component for the repeated MeasureUp practice-test block on exam pages."
-agent: agent
+agent: edit
 argument-hint: "Optional: which pages to migrate first (default AZ-800 + PL-200)."
 ---
 
