@@ -1,6 +1,6 @@
 ---
 import { getImage } from "astro:assets";
-import { OG, SEO, SITE } from "@data/constants";
+import { OG, SEO, SITE, VERIFICATIONS } from "@data/constants";
 import faviconSvgSrc from "@images/favicon.svg";
 import faviconSrc from "@images/favicon.svg";
 
@@ -135,3 +135,6 @@ const appleTouchIcon = await getImage({
 <link href={appleTouchIcon.src} rel="shortcut icon" />
 {/* Set theme color */}
 <meta name="theme-color" content="#60A5FA" />
+
+{/* Site verifications */}
+<meta name="impact-site-verification" content={VERIFICATIONS.udemy} />
