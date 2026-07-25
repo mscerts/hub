@@ -201,6 +201,32 @@ article.card {
   width: 0.875rem;
 }
 
+/* Standardize Starlight tab presentation across docs and exam pages */
+.sl-markdown-content starlight-tabs [role="tablist"] {
+  border-bottom: 1px solid var(--sl-color-gray-5) !important;
+  gap: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+
+.sl-markdown-content starlight-tabs [role="tab"] {
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-weight: 600;
+  padding: 0.5rem 0.85rem;
+}
+
+.sl-markdown-content starlight-tabs [role="tab"]:hover {
+  background-color: color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+}
+
+.sl-markdown-content starlight-tabs [role="tab"][aria-selected="true"] {
+  border-bottom-color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+}
+
+.sl-markdown-content starlight-tabs [role="tabpanel"] {
+  padding-top: 0.75rem;
+}
+
 @media screen and (max-width: 800px) {
   mobile-starlight-toc > nav {
     border-radius: 1rem;
