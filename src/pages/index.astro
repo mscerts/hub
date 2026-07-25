@@ -8,6 +8,7 @@ import FAQ from "@components/sections/misc/FAQ.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
 import heroImage from "@images/allplatforms.webp";
 import faqs from "@data/faqs.json";
+import { DISCORD_URL } from "@data/constants";
 import features from "@data/features.json";
 import featureImage from "@images/group.svg";
 import discord from "@images/discordo.webp";
@@ -40,7 +41,7 @@ const avatarSrcs = [avatar1, avatar2, avatar3, avatar4];
     primaryBtn="Start Learning"
     primaryBtnURL="/guide/introduction/"
     secondaryBtn="Join Our Community"
-    secondaryBtnURL="https://discord.gg/microsoft-certification-study-group-676990910176821270"
+    secondaryBtnURL={DISCORD_URL}
     withReview={true}
     avatars={avatarSrcs}
     rating=`<span class="font-bold">42+ Certifications Available`
@@ -99,7 +100,7 @@ const avatarSrcs = [avatar1, avatar2, avatar3, avatar4];
     ]}
     btnExists={true}
     btnTitle="Join Us"
-    btnURL="https://discord.gg/microsoft-certification-study-group-676990910176821270"
+    btnURL={DISCORD_URL}
   />
 
   <FAQ title="Frequently<br />asked questions" faqs={faqs} />

@@ -20,12 +20,12 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
 ---
 
 <div class="dropdown" id={dropdownId}>
-  <Button id="dropdown-toggle">
+  <Button id={`toggle-${dropdownId}`}>
     <span>{label}</span>
     <Icon name="down-caret" size="1rem" />
   </Button>
 
-  <div id="dropdown-menu">
+  <div id={`menu-${dropdownId}`}>
     {
       options.map((option) => {
         const OptionIcon = option.icon;
@@ -53,7 +53,7 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
     position: relative;
   }
 
-  #dropdown-menu {
+    [id^="menu-dropdown-"] {
     position: absolute;
     top: calc(100% + 0.5rem);
     left: 0;
@@ -70,7 +70,7 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
     z-index: 10;
   }
 
-  #dropdown-menu.show {
+  [id^="menu-dropdown-"].show {
     display: block;
   }
 
@@ -146,7 +146,7 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
   }
 
   @media (min-width: 425px) {
-    #dropdown-menu {
+  [id^="menu-dropdown-"] {
       left: 0;
       right: auto;
       width: 236px;
@@ -159,17 +159,17 @@ const dropdownId = id ? `dropdown-${id}` : "dropdown-0";
 
   const handleDropdownToggle = (dropdownId: string) => {
     const dropdownToggle = document.querySelector(
-      `#${dropdownId} > #dropdown-toggle`
+      `#toggle-${dropdownId}`
     ) as HTMLButtonElement;
     const dropdownMenu = document.querySelector(
-      `#${dropdownId} > #dropdown-menu`
+      `#menu-${dropdownId}`
     ) as HTMLElement;
 
     dropdownToggle?.addEventListener("click", (e) => {
       e.stopPropagation();
       allDropdownIds.map((id) =>
         document
-          .querySelector(`#${id} > #dropdown-menu`)
+          .querySelector(`#menu-${id}`)
           ?.classList.remove("show")
       );
       dropdownMenu.classList.toggle("show");

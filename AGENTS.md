@@ -9,6 +9,8 @@
 
 You are working on **msfthub.com** — a community site providing free study-material collections for Microsoft certification exams. Be direct, efficient, and preserve the existing code style.
 
+If you are an authorized agent, you will have access to the tasks repository which you should refer to.
+
 ---
 
 ## Project Context
@@ -184,7 +186,6 @@ Currently configured in `Head.astro` to promote AI/AB certifications, linking to
 
 ### Key Dependencies
 - **astro-vtbot** — View Transitions enhancement (used in Head.astro)
-- **@astrojs/partytown** — Offloads analytics scripts to web worker
 - **starlight-image-zoom** — Image zoom on Starlight pages
 - **sharp** + **sharp-ico** — Image processing
 - **preline** — UI components

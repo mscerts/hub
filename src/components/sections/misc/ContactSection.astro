@@ -2,6 +2,7 @@
 // Import the necessary dependencies.
 import ContactIconBlock from "@components/ui/blocks/ContactIconBlock.astro";
 import Icon from "@components/ui/icons/Icon.astro";
+import { DISCORD_URL } from "@data/constants";
 
 // Define the variables that will be used in this component
 const title: string = "Contact us";
@@ -51,7 +52,7 @@ const subTitle: string =
           content="Microsoft Certification Hub"
           isLinkVisible={true}
           linkTitle="Join the Discord"
-          linkURL="https://discord.gg/microsoft-certification-study-group-676990910176821270"
+          linkURL={DISCORD_URL}
           ><Icon name="community" />
         </ContactIconBlock>
 

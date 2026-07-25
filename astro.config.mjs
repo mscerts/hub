@@ -3,11 +3,10 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import starlight from "@astrojs/starlight";
 import starlightImageZoom from "starlight-image-zoom";
-import partytown from "@astrojs/partytown";
-import mdx from "@astrojs/mdx"; 
 
 const googleAnalyticsId = "G-CDTP3TERKP";
 const clarityAnalyticsId = "u7pei4s9cq";
+const discordUrl = "https://discord.gg/microsoft-certification-study-group-676990910176821270";
 const googleTagManagerId = "GTM-TMNHVD5B";
 const site = "https://msfthub.com/";
 
@@ -51,11 +50,6 @@ export default defineConfig({
   },
   prefetch: true,
   integrations: [
-    partytown({
-      config: {
-        forward: ["dataLayer.push", "gtag"],
-      },
-    }),
     sitemap({
       i18n: {
         defaultLocale: "en", // All urls that don't contain language prefix will be treated as default locale
@@ -394,7 +388,7 @@ export default defineConfig({
         {
           icon: "discord",
           label: "Discord",
-          href: "https://discord.gg/microsoft-certification-study-group-676990910176821270",
+          href: discordUrl,
         },
       ],
       disable404Route: true,
@@ -468,39 +462,9 @@ export default defineConfig({
              })(window,document,'script','dataLayer','${googleTagManagerId}');
             `,
         },
-        {
-          tag: "meta",
-          attrs: { property: "og:image", content: site + "og.jpg" },
-        },
-        {
-          tag: "meta",
-          attrs: { property: "twitter:image", content: site + "og.jpg" },
-        },
 
-        {
-          tag: "meta",
-          attrs: {
-            property: "og:site_name",
-            content: "Microsoft Certification Hub",
-          },
-        },
-        {
-          tag: "meta",
-          attrs: {
-            property: "og:image",
-            content: "https://msfthub.com" + "/og.jpg",
-          },
-        },
-        {
-          tag: "meta",
-          attrs: {
-            property: "twitter:image",
-            content: "https://msfthub.com" + "/og.jpg",
-          },
-        },
       ],
     }),
-    mdx(),
   ],
   experimental: {
     clientPrerender: true,

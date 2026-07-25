@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import mascotImage from "@/assets/images/mascot.png";
+import { DISCORD_URL } from "@data/constants";
 
 interface Props {
   class?: string;
@@ -12,7 +13,7 @@ const { class: className, ...rest } = Astro.props;
 const config = {
   showImage: true,
   title: "Have more questions?",
-  href: "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
+  href: DISCORD_URL,
   description: "Join our Discord server and ask away!",
   imageAlt: "MSFTHub Mascot",
 };
