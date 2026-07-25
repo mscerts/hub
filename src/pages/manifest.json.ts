@@ -48,5 +48,7 @@ export const GET: APIRoute = async () => {
     background_color: "#262626",
   };
 
-  return new Response(JSON.stringify(manifest));
+  return new Response(JSON.stringify(manifest), {
+    headers: { "Content-Type": "application/json" },
+  });
 };

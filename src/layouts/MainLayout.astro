@@ -60,12 +60,12 @@ interface Props {
       src={`https://www.clarity.ms/tag/${ANALYTICS.clarity}`}
       async
     ></script>
-    <script is:inline>
+    <script is:inline define:vars={{ clarityAnalyticsId: ANALYTICS.clarity }}>
       (function(c,l,a,r,i,t,y){
           c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
           t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
           y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "u7pei4s9cq");
+      })(window, document, "clarity", "script", clarityAnalyticsId);
     </script>
     
     {/* Google Tag Manager */}
@@ -77,16 +77,14 @@ interface Props {
       })(window,document,'script','dataLayer',googleTagManagerId);
     </script>
     <script is:inline>
-      // Script to handle dark mode. It will check if the theme is stored in localStorage or if dark theme is preferred by system settings
-      if (
-        localStorage.getItem("hs_theme") === "dark" ||
-        (!("hs_theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+      // Theme init: read from both localStorage keys, apply both .dark class and data-theme
+      (() => {
+        const raw = localStorage.getItem("hs_theme") || localStorage.getItem("starlight-theme");
+        const theme = (raw === "light" || raw === "dark") ? raw
+          : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.classList.toggle("dark", theme === "dark");
+        document.documentElement.dataset.theme = theme;
+      })();
     </script>
 
   </head>

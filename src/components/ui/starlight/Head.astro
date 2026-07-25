@@ -41,9 +41,16 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 </style>
 
 <script is:inline>
-  // Handle View Transitions: fix stylesheets + remove dismissed banners before swap
+  // Sync theme to new document before View Transition swap
   document.addEventListener("astro:before-swap", (ev) => {
     const newDoc = ev.newDocument;
+
+    // Sync theme: apply both .dark class and data-theme attribute
+    const raw = localStorage.getItem("hs_theme") || localStorage.getItem("starlight-theme");
+    const theme = (raw === "light" || raw === "dark") ? raw
+      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    newDoc.documentElement.classList.toggle("dark", theme === "dark");
+    newDoc.documentElement.dataset.theme = theme;
 
     // Remove dismissed banners from the new document before it swaps in
     newDoc.querySelectorAll("astro-banner").forEach((banner) => {
@@ -72,6 +79,19 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
       }
     });
   });
+</script>
+
+<script is:inline>
+  // Initial theme sync on page load (runs after Starlight's ThemeProvider)
+  (() => {
+    const raw = localStorage.getItem("hs_theme") || localStorage.getItem("starlight-theme");
+    const theme = (raw === "light" || raw === "dark") ? raw
+      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem("hs_theme", theme);
+    localStorage.setItem("starlight-theme", theme);
+  })();
 </script>
 
 <script>

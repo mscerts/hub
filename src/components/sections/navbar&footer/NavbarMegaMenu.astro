@@ -127,7 +127,7 @@ const homeUrl = "/";
   const HSThemeAppearance = {
     init() {
       const defaultTheme = "default";
-      let theme = localStorage.getItem("hs_theme") || defaultTheme;
+      let theme = localStorage.getItem("hs_theme") || localStorage.getItem("starlight-theme") || defaultTheme;
 
       if (document.querySelector("html").classList.contains("dark")) return;
       this.setAppearance(theme);
@@ -144,6 +144,7 @@ const homeUrl = "/";
 
       if (saveInStore) {
         localStorage.setItem("hs_theme", theme);
+        localStorage.setItem("starlight-theme", theme);
       }
 
       if (theme === "auto") {
@@ -159,6 +160,10 @@ const homeUrl = "/";
       document
         .querySelector("html")
         .classList.add(this.getOriginalAppearance());
+
+      // Sync data-theme attribute for Starlight CSS variables
+      document.documentElement.dataset.theme =
+        document.documentElement.classList.contains("dark") ? "dark" : "light";
 
       setTimeout(() => {
         $resetStylesEl.remove();
@@ -181,7 +186,7 @@ const homeUrl = "/";
     },
     getOriginalAppearance() {
       const defaultTheme = "default";
-      return localStorage.getItem("hs_theme") || defaultTheme;
+      return localStorage.getItem("hs_theme") || localStorage.getItem("starlight-theme") || defaultTheme;
     },
   };
   HSThemeAppearance.init();

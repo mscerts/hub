@@ -60,7 +60,9 @@
   // Function to set the theme
   function setTheme(theme: Theme): void {
     document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem("starlight-theme", theme);
+    localStorage.setItem("hs_theme", theme);
     updateButtons(theme);
   }
 
