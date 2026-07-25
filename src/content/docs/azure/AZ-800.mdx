@@ -5,16 +5,15 @@ description: "Collection of study materials for the certification exam AZ-800: A
 import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import MeasureUpCard from '../../../components/MeasureUpCard.astro';
+import RetirementBanner from '../../../components/RetirementBanner.astro';
 
-:::caution
-The exam is being retired on September 30, 2026. The certification will remain, meaning you can renew it if you already have it.
-
-It will be replaced by [AZ-802](/azure/az-802/), which consolidates AZ-800 and AZ-801 into a single Windows Server Hybrid Administrator exam.
-
-AZ-802 is currently available in beta.
-
-Microsoft Learn always takes a while to update with certification retirements so don't panic if you can't see it there yet.
-:::
+<RetirementBanner
+  retireDate="September 30, 2026"
+  certRetires={false}
+  replacementCode="AZ-802"
+  replacementArea="azure"
+  betaNote="AZ-802 is currently available in beta."
+/>
 
 <Card title="Get Started" icon="star">
 

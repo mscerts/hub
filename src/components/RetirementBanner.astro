@@ -1,0 +1,48 @@
+---
+import { Aside } from '@astrojs/starlight/components';
+
+interface Props {
+  retireDate: string;
+  certRetires: boolean;
+  replacementCode?: string;
+  replacementName?: string;
+  replacementArea?: string;
+  replacementHref?: string;
+  betaNote?: string;
+  note?: string;
+}
+
+const {
+  retireDate,
+  certRetires,
+  replacementCode,
+  replacementName,
+  replacementArea,
+  replacementHref,
+  betaNote,
+  note,
+} = Astro.props;
+
+const href = replacementHref ?? (replacementArea && replacementCode ? `/${replacementArea}/${replacementCode.toLowerCase()}/` : undefined);
+---
+
+<Aside type="caution">
+  {
+    certRetires
+      ? `Exam and its certification are being retired on ${retireDate}.`
+      : `The exam is being retired on ${retireDate}. The certification will remain, meaning you can renew it if you already have it.`
+  }
+
+  {
+    href && replacementCode
+      ? <>It will be replaced by <a href={href}>{replacementCode}{replacementName ? `: ${replacementName}` : ''}</a>.</>
+      : null
+  }
+
+  {betaNote ?? null}
+
+  {
+    note ??
+      `Microsoft Learn always takes a while to update with certification retirements so don't panic if you can't see it there yet.`
+  }
+</Aside>
