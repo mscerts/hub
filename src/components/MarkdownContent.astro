@@ -5,3 +5,33 @@ import StarlightImageZoom from 'starlight-image-zoom/components/ImageZoom.astro'
 
 <StarlightImageZoom />
 <Default><slot /></Default>
+<script is:inline>
+  const applyExternalLinkCardTargets = () => {
+    document.querySelectorAll(".sl-link-card a[href]").forEach((link) => {
+      const href = link.getAttribute("href");
+      if (!href || link.getAttribute("target")) {
+        return;
+      }
+
+      if (!URL.canParse(href, window.location.href)) {
+        return;
+      }
+
+      const url = new URL(href, window.location.href);
+      if (url.origin === window.location.origin) {
+        return;
+      }
+
+      link.setAttribute("target", "_blank");
+      const relValues = new Set(
+        (link.getAttribute("rel") ?? "").split(/\s+/).filter(Boolean),
+      );
+      relValues.add("noopener");
+      relValues.add("noreferrer");
+      link.setAttribute("rel", Array.from(relValues).join(" "));
+    });
+  };
+
+  document.addEventListener("astro:page-load", applyExternalLinkCardTargets);
+  applyExternalLinkCardTargets();
+</script>

@@ -1,0 +1,33 @@
+---
+import { CardGrid, LinkCard } from "@astrojs/starlight/components";
+import {
+  relatedCertsByExam,
+  type RelatedCertItem,
+} from "../data_files/related-certs";
+
+interface Props {
+  examCode: string;
+  items?: RelatedCertItem[];
+  title?: string;
+}
+
+const { examCode, items, title = "Related certifications" } = Astro.props;
+const relatedItems = items ?? relatedCertsByExam[examCode.toUpperCase()] ?? [];
+---
+
+{
+  relatedItems.length > 0 && (
+    <>
+      <h3>{title}</h3>
+      <CardGrid>
+        {relatedItems.map((item) => (
+          <LinkCard
+            title={item.code}
+            description={`${item.relation}: ${item.name}`}
+            href={`/${item.area}/${item.code.toLowerCase()}/`}
+          />
+        ))}
+      </CardGrid>
+    </>
+  )
+}

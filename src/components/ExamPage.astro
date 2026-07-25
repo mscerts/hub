@@ -1,0 +1,47 @@
+---
+import {
+  Aside,
+  Card,
+  CardGrid,
+  LinkCard,
+  TabItem,
+  Tabs,
+} from "@astrojs/starlight/components";
+import type { ExamPageData } from "../data_files/exam-pages";
+import RelatedCerts from "./RelatedCerts.astro";
+
+interface Props {
+  config: ExamPageData;
+}
+
+const { config } = Astro.props;
+---
+
+<Card title="Get Started" icon="star">
+  {config.getStartedLinks.map((link) => (
+    <LinkCard {...link} />
+  ))}
+  <RelatedCerts examCode={config.examCode} />
+
+---
+<Tabs>
+  {config.tabs.map((tab) => (
+    <TabItem label={tab.label}>
+      <CardGrid>
+        {tab.links.map((link) => (
+          <LinkCard {...link} />
+        ))}
+      </CardGrid>
+    </TabItem>
+  ))}
+</Tabs>
+---
+</Card>
+
+{
+  !config.measureUpReleased && (
+    <Aside type="tip">
+      MeasureUp has not released any material for this exam yet.
+    </Aside>
+  )
+}

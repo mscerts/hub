@@ -2,48 +2,7 @@
 title: AI-901 Study Materials
 description: "Collection of study materials for the certification exam AI-901: Microsoft Azure AI Fundamentals. Contains official Microsoft Learn materials, labs, videos, practice tests and paid courses."
 ---
-import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
-import { Tabs, TabItem } from '@astrojs/starlight/components';
-import { Aside } from '@astrojs/starlight/components';
+import ExamPage from '../../../components/ExamPage.astro';
+import { examPages } from '../../../data_files/exam-pages';
 
-<Card title="Get Started" icon="star">
-
-  <LinkCard title="Exam AI-901: Microsoft Azure AI Fundamentals" href="https://learn.microsoft.com/credentials/certifications/exams/ai-901/?WT.mc_id=studentamb_165290" target="_blank" description="This certification is intended for individuals who want to start working with AI solutions built on Azure. It is suitable for learners from technical backgrounds, including aspiring junior developers who are starting to incorporate AI capabilities into applications."/>
-
-  <LinkCard title="AI-901 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-901?WT.mc_id=studentamb_165290" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for the exam."/>
----
-<Tabs>
-  <TabItem label="Text">
-    <CardGrid>
-    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/ai-901t00/?WT.mc_id=studentamb_165290#course-syllabus" target="_blank" description="This course introduces fundamental concepts related to artificial intelligence (AI), and the services in Microsoft Azure that can be used to create AI solutions."/>
-    </CardGrid>
-  </TabItem>
-
-  <TabItem label="Videos">
-    <CardGrid>
-    <LinkCard title="Microsoft Virtual Training Day: Develop generative AI apps with Azure AI Foundry" href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?filters=primary-language%3Aenglish%2Cproduct%3Aazure&scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Develop+generative+AI+apps+with+Azure+AI+Foundry" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-
-  <TabItem label="Tests">
-    <CardGrid>
-    </CardGrid>
-  </TabItem>
-
-  <TabItem label="Paid">
-    <CardGrid>
-    <LinkCard title="John Christopher's Course on Udemy" href="https://trk.udemy.com/rEJP93" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-
-  <TabItem label="Misc">
-    <CardGrid>
-    </CardGrid>
-  </TabItem>
-</Tabs>
----
-</Card>
-
-:::tip
-MeasureUp has not released any material for this exam yet.
-:::
+<ExamPage config={examPages["AI-901"]} />

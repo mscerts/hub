@@ -3,12 +3,85 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import starlight from "@astrojs/starlight";
 import starlightImageZoom from "starlight-image-zoom";
+import { readdirSync } from "node:fs";
+import path from "node:path";
 
 const googleAnalyticsId = "G-CDTP3TERKP";
 const clarityAnalyticsId = "u7pei4s9cq";
 const discordUrl = "https://discord.gg/microsoft-certification-study-group-676990910176821270";
 const googleTagManagerId = "GTM-TMNHVD5B";
 const site = "https://msfthub.com/";
+
+const examBadges = {
+  azure: {
+    "AZ-204": { text: "RETIRING", variant: "danger" },
+    "AZ-400": { text: "Endangered", variant: "caution" },
+    "AZ-500": { text: "RETIRING", variant: "danger" },
+    "AZ-800": { text: "RETIRING", variant: "danger" },
+    "AZ-801": { text: "RETIRING", variant: "danger" },
+    "AZ-802": { text: "BETA", variant: "tip" },
+    "AI-300": { text: "BETA", variant: "tip" },
+    "AI-500": { text: "BETA", variant: "tip" },
+    "DP-800": { text: "BETA", variant: "tip" },
+  },
+  github: {
+    "GH-600": { text: "BETA", variant: "tip" },
+  },
+  aibusiness: {
+    "AB-250": { text: "BETA", variant: "tip" },
+    "AB-410": { text: "BETA", variant: "tip" },
+    "AB-620": { text: "BETA", variant: "tip" },
+    "AB-650": { text: "BETA", variant: "tip" },
+  },
+  microsoft365: {
+    "MS-102": { text: "RETIRING", variant: "danger" },
+  },
+  security: {
+    "SC-500": { text: "BETA", variant: "tip" },
+  },
+  power: {
+    "PL-200": { text: "RETIRING", variant: "danger" },
+  },
+  dynamics: {
+    "MB-280": { text: "RETIRING", variant: "danger" },
+  },
+};
+
+const areaPrefixOrder = {
+  azure: ["AZ", "AI", "DP"],
+  github: ["GH"],
+  aibusiness: ["AB"],
+  microsoft365: ["MD", "MS"],
+  security: ["SC"],
+  power: ["PL"],
+  dynamics: ["MB"],
+};
+
+function buildExamSidebarItems(area) {
+  const docsDir = path.resolve(process.cwd(), "src", "content", "docs", area);
+  const prefixOrder = areaPrefixOrder[area] ?? [];
+  const badges = examBadges[area] ?? {};
+  const entries = readdirSync(docsDir, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".mdx"))
+    .map((entry) => entry.name.replace(/\.mdx$/i, "").toUpperCase())
+    .filter((code) => /^[A-Z]{2,3}-\d{3}$/.test(code))
+    .sort((left, right) => {
+      const leftPrefix = left.split("-")[0];
+      const rightPrefix = right.split("-")[0];
+      const leftRank = prefixOrder.indexOf(leftPrefix);
+      const rightRank = prefixOrder.indexOf(rightPrefix);
+      if (leftRank !== rightRank) {
+        return (leftRank === -1 ? Number.MAX_SAFE_INTEGER : leftRank) - (rightRank === -1 ? Number.MAX_SAFE_INTEGER : rightRank);
+      }
+      return left.localeCompare(right, undefined, { numeric: true, sensitivity: "base" });
+    });
+
+  return entries.map((code) => ({
+    label: code,
+    link: `/${area}/${code.toLowerCase()}/`,
+    ...(badges[code] ? { badge: badges[code] } : {}),
+  }));
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -192,190 +265,43 @@ export default defineConfig({
               label: "Azure",
               collapsed: true,
               badge: { text: "AZ AI DP", variant: "note" },
-              items: [
-                { label: "AZ-104", link: "/azure/az-104/" },
-                { label: "AZ-120", link: "/azure/az-120/" },
-                { label: "AZ-140", link: "/azure/az-140/" },
-                {
-                  label: "AZ-204",
-                  link: "/azure/az-204/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
-                { label: "AZ-305", link: "/azure/az-305/" },
-                { label: "AZ-400", 
-                  link: "/azure/az-400/",
-                  badge: { text: "Endangered", variant: "caution" },
-                },
-                {
-                  label: "AZ-500",
-                  link: "/azure/az-500/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
-                { label: "AZ-700", link: "/azure/az-700/" },
-                {
-                  label: "AZ-800",
-                  link: "/azure/az-800/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
-                {
-                  label: "AZ-801",
-                  link: "/azure/az-801/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
-                {
-                  label: "AZ-802",
-                  link: "/azure/az-802/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                { label: "AZ-900", link: "/azure/az-900/" },
-                {
-                  label: "AI-103",
-                  link: "/azure/ai-103/",
-                },
-                {
-                  label: "AI-200",
-                  link: "/azure/ai-200/",
-                },
-                {
-                  label: "AI-300",
-                  link: "/azure/ai-300/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                {
-                  label: "AI-500",
-                  link: "/azure/ai-500/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                {
-                  label: "AI-901",
-                  link: "/azure/ai-901/",
-                },
-                { label: "DP-300", link: "/azure/dp-300/" },
-                { label: "DP-420", link: "/azure/dp-420/" },
-                { label: "DP-600", link: "/azure/dp-600/" },
-                { label: "DP-700", link: "/azure/dp-700/" },
-                {
-                  label: "DP-750",
-                  link: "/azure/dp-750/",
-                },
-                {
-                  label: "DP-800",
-                  link: "/azure/dp-800/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                { label: "DP-900", link: "/azure/dp-900/" },
-              ],
+              items: buildExamSidebarItems("azure"),
             },
             {
               label: "GitHub",
               collapsed: true,
               badge: { text: "GH", variant: "note" },
-              items: [
-                { label: "GH-100", link: "/github/gh-100/" },
-                { label: "GH-200", link: "/github/gh-200/" },
-                { label: "GH-300", link: "/github/gh-300/" },
-                { label: "GH-500", link: "/github/gh-500/" },
-                {
-                  label: "GH-600",
-                  link: "/github/gh-600/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                { label: "GH-900", link: "/github/gh-900/" },
-              ],
+              items: buildExamSidebarItems("github"),
             },
             {
               label: "AI Business",
               badge: { text: "AB", variant: "note" },
               collapsed: true,
-              items: [
-                { label: "AB-100", link: "/aibusiness/ab-100/" },
-                { label: "AB-210", link: "/aibusiness/ab-210/" },
-                {
-                  label: "AB-250",
-                  link: "/aibusiness/ab-250/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                {
-                  label: "AB-410",
-                  link: "/aibusiness/ab-410/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                {
-                  label: "AB-620",
-                  link: "/aibusiness/ab-620/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                {
-                  label: "AB-650",
-                  link: "/aibusiness/ab-650/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                { label: "AB-730", link: "/aibusiness/ab-730/" },
-                { label: "AB-731", link: "/aibusiness/ab-731/" },
-                { label: "AB-900", link: "/aibusiness/ab-900/" },
-              ],
+              items: buildExamSidebarItems("aibusiness"),
             },
             {
               label: "Microsoft 365",
               collapsed: true,
               badge: { text: "MS MD", variant: "note" },
-              items: [
-                { label: "MD-102", link: "/microsoft365/md-102/" },
-                { 
-                  label: "MS-102", 
-                  link: "/microsoft365/ms-102/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
-                { label: "MS-700", link: "/microsoft365/ms-700/" },
-                { label: "MS-721", link: "/microsoft365/ms-721/" },
-              ],
+              items: buildExamSidebarItems("microsoft365"),
             },
             {
               label: "Security & Identity",
               badge: { text: "SC", variant: "note" },
               collapsed: true,
-              items: [
-                { label: "SC-100", link: "/security/sc-100/" },
-                { label: "SC-200", link: "/security/sc-200/" },
-                { label: "SC-300", link: "/security/sc-300/" },
-                { label: "SC-401", link: "/security/sc-401/" },
-                {
-                  label: "SC-500",
-                  link: "/security/sc-500/",
-                  badge: { text: "BETA", variant: "tip" },
-                },
-                { label: "SC-900", link: "/security/sc-900/" },
-              ],
+              items: buildExamSidebarItems("security"),
             },
             {
               label: "Power Platform",
               badge: { text: "PL", variant: "note" },
               collapsed: true,
-              items: [
-                {
-                  label: "PL-200",
-                  link: "/power/pl-200/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
-                { label: "PL-300", link: "/power/pl-300/" },
-                { label: "PL-400", link: "/power/pl-400/" },
-                { label: "PL-900", link: "/power/pl-900/" },
-              ],
+              items: buildExamSidebarItems("power"),
             },
             {
               label: "Dynamics 365",
               badge: { text: "MB", variant: "note" },
               collapsed: true,
-              items: [
-                { label: "MB-230", link: "/dynamics/mb-230/" },
-                {
-                  label: "MB-280",
-                  link: "/dynamics/mb-280/",
-                  badge: { text: "RETIRING", variant: "danger" },
-                },
-                { label: "MB-310", link: "/dynamics/mb-310/" },
-                { label: "MB-330", link: "/dynamics/mb-330/" },
-              ],
+              items: buildExamSidebarItems("dynamics"),
             },
           ],
         },
