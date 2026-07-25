@@ -9,8 +9,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      issues: write
     steps:
       - uses: actions/checkout@v5
 
@@ -18,12 +17,10 @@ jobs:
         id: check
         run: bash scripts/voucher-expiry-check.sh
 
-      - name: Create PR for expired vouchers
+      - name: Create issue for expired vouchers
         if: steps.check.outputs.expired == 'true'
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-issue-from-file@v5
         with:
-          commit-message: "chore: mark expired vouchers"
-          title: "Mark expired vouchers"
-          body-path: /tmp/voucher-changes.md
+          title: "Expired Vouchers Detected"
+          content-filepath: /tmp/voucher-changes.md
           labels: content, automated
-          branch: fix/expired-vouchers
