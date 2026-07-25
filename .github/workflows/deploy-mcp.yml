@@ -29,7 +29,8 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        working-directory: .
+        run: pnpm install --frozen-lockfile --filter @msfthub/mcp-worker
 
       - name: Bundle content
         run: pnpm bundle
