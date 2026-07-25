@@ -1,6 +1,7 @@
 ---
 // Import the Image component from astro:assets
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 // Destructure the component properties from Astro.props
 const { id, aria, src, alt, first, second } = Astro.props;
@@ -9,7 +10,7 @@ const { id, aria, src, alt, first, second } = Astro.props;
 interface Props {
   id: string;
   aria: string;
-  src?: any;
+  src: ImageMetadata;
   alt: string;
   first?: boolean;
   second?: boolean;
@@ -48,7 +49,9 @@ This is the full example:
     alt={alt}
     class={secondClass}
     draggable={"false"}
-    format={"avif"}
-    loading={"eager"}
+    widths={[320, 480, 640, 770]}
+    sizes="(min-width: 1024px) 50vw, calc(100vw - 5rem)"
+    format="webp"
+    loading="lazy"
   />
 </div>

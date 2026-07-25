@@ -1,6 +1,6 @@
 ---
 // Import the necessary dependencies
-import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import IconBlock from "@components/ui/blocks/IconBlock.astro";
 import Icon from "@components/ui/icons/Icon.astro";
 
@@ -14,7 +14,7 @@ interface Props {
   title?: string;
   subTitle?: string;
   features?: Feature[];
-  src?: any;
+  src?: ImageMetadata;
   alt?: string;
 }
 // Define props from Astro
@@ -28,13 +28,15 @@ const { title, subTitle, src, alt, features } = Astro.props;
   <div class="relative mb-6 overflow-hidden md:mb-8 justify-center hidden lg:flex">
     {
       src && alt && (
-        <Image
-          src={src}
+        <img
+          src={src.src}
           alt={alt}
+          width={src.width}
+          height={src.height}
           class="h-auto w-256 object-cover object-center"
           draggable={"false"}
-          format={"svg"}
-          loading={"eager"}
+          loading="lazy"
+          decoding="async"
         />
       )
     }

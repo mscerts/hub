@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import product5 from "@images/discord.png";
+import product5 from "@images/discord.webp";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 
 // Define props from Astro
@@ -26,11 +26,14 @@ const ListItemMarker: string = `<svg fill="none" viewBox="0 0 24 24" stroke-widt
   <!-- Grid -->
   <div class="lg:grid lg:grid-cols-12 lg:items-center lg:gap-16">
     <div class="lg:col-span-7">
-      <Image 
-        class="rounded-xl shadow-lg" 
-        src={product5} 
-        alt="discord screenshot" 
-        loading="eager"
+      <Image
+        class="rounded-xl shadow-lg"
+        src={product5}
+        alt="MSFTHub Discord community"
+        widths={[480, 768, 1024, 1529]}
+        sizes="(min-width: 1024px) 58vw, calc(100vw - 2rem)"
+        format="webp"
+        loading="lazy"
       />
     </div>
     <div class="mt-5 sm:mt-10 lg:col-span-5 lg:mt-0">
