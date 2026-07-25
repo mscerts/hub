@@ -4,17 +4,16 @@ description: "Collection of study materials for the certification exam AZ-800: A
 ---
 import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
-import { Aside } from '@astrojs/starlight/components';
+import MeasureUpCard from '../../../components/MeasureUpCard.astro';
+import RetirementBanner from '../../../components/RetirementBanner.astro';
 
-:::caution
-The exam is being retired on September 30, 2026. The certification will remain, meaning you can renew it if you already have it.
-
-It will be replaced by [AZ-802](/azure/az-802/), which consolidates AZ-800 and AZ-801 into a single Windows Server Hybrid Administrator exam.
-
-AZ-802 is currently available in beta.
-
-Microsoft Learn always takes a while to update with certification retirements so don't panic if you can't see it there yet.
-:::
+<RetirementBanner
+  retireDate="September 30, 2026"
+  certRetires={false}
+  replacementCode="AZ-802"
+  replacementArea="azure"
+  betaNote="AZ-802 is currently available in beta."
+/>
 
 <Card title="Get Started" icon="star">
 
@@ -68,15 +67,7 @@ Microsoft Learn always takes a while to update with certification retirements so
 ---
       </Card>
 
-<Card title="MeasureUp Practice Tests" icon="open-book">
-<CardGrid>
-  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/microsoft-assessment-az-800-administering-windows-server-hybrid-core-infrastructure.html#u44" target="_blank"/>
-  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-az-800-administering-windows-server-hybrid-core-infrastructure.html#u44" target="_blank"/>
-</CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months.
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
-</Card>
+<MeasureUpCard
+  assessmentUrl="https://www.measureup.com/microsoft-assessment-az-800-administering-windows-server-hybrid-core-infrastructure.html#u44"
+  practiceTestUrl="https://www.measureup.com/microsoft-practice-test-az-800-administering-windows-server-hybrid-core-infrastructure.html#u44"
+/>

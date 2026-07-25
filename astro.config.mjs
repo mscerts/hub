@@ -94,6 +94,31 @@ export default defineConfig({
           ],
         },
         {
+          label: "How to Prepare",
+          items: [
+            {
+              label: "Navigating Study Materials",
+              link: "/prepare/studymaterials/",
+            },
+            {
+              label: "Business Exams",
+              link: "/prepare/business/",
+            },
+            {
+              label: "Fundamentals Exams",
+              link: "/prepare/fundamentals/",
+            },
+            {
+              label: "Role-Based Exams",
+              link: "/prepare/role-based/",
+            },
+            {
+              label: "How to Lab",
+              link: "/prepare/labs/",
+            },
+          ],
+        },
+        {
           label: "Discounted Exam Vouchers",
           items: [
             {

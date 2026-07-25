@@ -5,12 +5,12 @@ description: "Collection of study materials for the certification exam AZ-802: A
 import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import { Aside } from '@astrojs/starlight/components';
+import BetaBanner from '../../../components/BetaBanner.astro';
 
-:::tip
-This is a beta exam. The content is still being developed and there are not many resources available yet. We will update this page as we find more resources and as the exam content is finalized.
-
-If you have any resources that you would like to recommend, please let us know and we will add them.
-:::
+<BetaBanner
+  summary="This is a beta exam. The content is still being developed and there are not many resources available yet. We will update this page as we find more resources and as the exam content is finalized."
+  note="If you have any resources that you would like to recommend, please let us know and we will add them."
+/>
 
 <Card title="Get Started" icon="star">
 
