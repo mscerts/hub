@@ -86,7 +86,11 @@ interface Props {
         alt={alt}
         class="h-full w-full object-cover object-center"
         draggable={"false"}
+        widths={[320, 448, 600]}
+        sizes="(min-width: 768px) 448px, calc(100vw - 2rem)"
+        format="webp"
         loading={"eager"}
+        fetchpriority="high"
 	 />
 	}
     </div>
