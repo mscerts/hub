@@ -415,8 +415,8 @@ export default defineConfig({
             "./src/assets/styles/starlight.css",
           ],
       logo: {
-        light: "/src/images/logo_light.svg",
-        dark: "/src/images/logo_dark.svg",
+        light: "/src/assets/images/logo_light.svg",
+        dark: "/src/assets/images/logo_dark.svg",
         replacesTitle: true,
       },
       favicon: "/favicon.svg",
