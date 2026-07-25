@@ -44,7 +44,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         continue-on-error: true
         with:
-          fail: false
+          fail: true
           jobSummary: false
           args: >-
             --root-dir dist
