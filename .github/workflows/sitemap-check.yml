@@ -1,0 +1,38 @@
+name: Sitemap Validator
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Build site
+        run: pnpm install --frozen-lockfile && pnpm build
+
+      - name: Validate sitemap
+        id: check
+        run: bash scripts/sitemap-check.sh
+
+      - name: Create issue on failure
+        if: steps.check.outputs.has_issues == 'true'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Sitemap Validator Report"
+          content-filepath: /tmp/sitemap-report.md
+          labels: report, automated

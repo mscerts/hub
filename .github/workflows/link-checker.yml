@@ -1,0 +1,56 @@
+name: Link Checker
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Build site
+        run: pnpm install --frozen-lockfile && pnpm build
+
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: cache-lychee-${{ github.sha }}
+          restore-keys: cache-lychee-
+
+      - name: Check links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: false
+          args: >-
+            --root-dir "$(pwd)"
+            --cache
+            --max-cache-age 1d
+            --exclude-loopback
+            --timeout 30
+            --max-retries 3
+            'dist/**/*.html'
+          output: lychee/results.md
+
+      - name: Create issue on failure
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Link Checker Report"
+          content-filepath: ./lychee/results.md
+          labels: report, automated

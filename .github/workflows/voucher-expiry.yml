@@ -1,0 +1,29 @@
+name: Voucher Expiry Check
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Check for expired vouchers
+        id: check
+        run: bash scripts/voucher-expiry-check.sh
+
+      - name: Create PR for expired vouchers
+        if: steps.check.outputs.expired == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: mark expired vouchers"
+          title: "Mark expired vouchers"
+          body-path: /tmp/voucher-changes.md
+          labels: content, automated
+          branch: fix/expired-vouchers
