@@ -90,26 +90,26 @@ export default defineConfig({
           ],
         },
         {
-          label: "How to prepare for exams",
+          label: "How to Prepare",
           items: [
             {
-              label: "Navigating exam study materials",
+              label: "Navigating Study Materials",
               link: "/prepare/studymaterials/",
             },
             {
-              label: "Preparing for business Exams",
+              label: "Business Exams",
               link: "/prepare/business/",
             },
             {
-              label: "Preparing for fundamentals Exams",
+              label: "Fundamentals Exams",
               link: "/prepare/fundamentals/",
             },
             {
-              label: "Preparing for role-based Exams",
+              label: "Role-Based Exams",
               link: "/prepare/role-based/",
             },
             {
-              label: "Labbing in your exam preparation",
+              label: "How to Lab",
               link: "/prepare/labs/",
             },
           ],
