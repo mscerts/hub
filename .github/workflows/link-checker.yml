@@ -39,6 +39,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           fail: false
+          jobSummary: false
           args: >-
             --root-dir "$(pwd)"
             --cache
