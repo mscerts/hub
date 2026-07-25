@@ -1,0 +1,74 @@
+name: New Exam Page
+description: Request a new exam study-materials page to be added to the Hub
+title: "[New Exam] XX-000: Official Exam Name"
+labels: ["content", "new-exam"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping expand the Hub! Fill in the details below.
+        Before submitting, check that the page doesn't already exist on [msfthub.com/wiki](https://msfthub.com/wiki).
+
+  - type: input
+    id: exam-code
+    attributes:
+      label: Exam Code
+      description: The Microsoft exam code.
+      placeholder: "AZ-104"
+    validations:
+      required: true
+
+  - type: input
+    id: exam-name
+    attributes:
+      label: Official Exam Name
+      description: The exact name shown on Microsoft Learn (not the certification name).
+      placeholder: "Microsoft Azure Administrator"
+    validations:
+      required: true
+
+  - type: input
+    id: exam-url
+    attributes:
+      label: Microsoft Learn Exam URL
+      description: Link to the exam on Microsoft Learn. The exam page (not the certification page).
+      placeholder: "https://learn.microsoft.com/credentials/certifications/exams/az-104"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Exam Status
+      options:
+        - Generally available (GA)
+        - Beta
+        - Announced but not yet available
+    validations:
+      required: true
+
+  - type: textarea
+    id: resources
+    attributes:
+      label: Known Study Resources
+      description: |
+        List any resources you know of. Free resources are especially welcome.
+        Include the URL and a brief description.
+      placeholder: |
+        - Microsoft Learn course: https://learn.microsoft.com/training/courses/az-104t00
+        - John Savill study cram: https://www.youtube.com/watch?v=...
+        - MeasureUp practice test: https://www.measureup.com/...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Pre-submission checklist
+      options:
+        - label: I searched existing issues and PRs for this exam code
+          required: true
+        - label: I verified this page does not already exist on msfthub.com/wiki
+          required: true
+        - label: The exam URL I provided is confirmed to be live on Microsoft Learn
+          required: true
