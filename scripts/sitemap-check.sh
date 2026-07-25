@@ -1,5 +1,5 @@
 #!/bin/bash
-# Sitemap Validator — checks all URLs in the sitemap return 200
+# Sitemap Validator — checks all sitemap URLs resolve to a successful response
 set -euo pipefail
 
 SITEMAP_INDEX="dist/sitemap-index.xml"
@@ -49,7 +49,7 @@ BAD_URLS=""
 while IFS= read -r url; do
   [ -z "$url" ] && continue
   HTTP_CODE=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 15 "$url" 2>/dev/null || echo "000")
-  if [ "$HTTP_CODE" -ge 400 ] || [ "$HTTP_CODE" = "000" ]; then
+  if [[ ! "$HTTP_CODE" =~ ^2[0-9]{2}$ ]]; then
     BAD_URLS="${BAD_URLS}| $url | $HTTP_CODE |\n"
     ISSUES=$((ISSUES + 1))
     echo "  FAIL [$HTTP_CODE] $url"

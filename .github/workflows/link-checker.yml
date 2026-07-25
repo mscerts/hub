@@ -41,7 +41,7 @@ jobs:
           fail: false
           jobSummary: false
           args: >-
-            --root-dir "$(pwd)"
+            --root-dir dist
             --cache
             --max-cache-age 1d
             --exclude-loopback

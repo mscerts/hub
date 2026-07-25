@@ -20,7 +20,6 @@ jobs:
 
       - name: Check for new MeasureUp products
         id: monitor
-        continue-on-error: true
         run: bash scripts/measureup-check.sh
 
       - name: Commit updated MeasureUp baseline
