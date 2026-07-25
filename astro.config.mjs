@@ -59,6 +59,7 @@ export default defineConfig({
           en: "en", // The `defaultLocale` value must present in `locales` keys
         },
       },
+      filter: (page) => !page.includes("/news/"),
     }),
     starlight({
       title: "Microsoft Certification Hub",
