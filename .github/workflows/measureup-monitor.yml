@@ -16,7 +16,7 @@ jobs:
       contents: write
       issues: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Check for new MeasureUp products
         id: monitor
@@ -34,7 +34,7 @@ jobs:
 
       - name: Create issue if new products found
         if: steps.monitor.outputs.new_products == 'true'
-        uses: peter-evans/create-issue-from-file@v5
+        uses: peter-evans/create-issue-from-file@v6
         with:
           title: "New MeasureUp Products Detected — ${{ github.run_id }}"
           content-filepath: /tmp/measureup-report.md

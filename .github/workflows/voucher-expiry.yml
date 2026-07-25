@@ -11,7 +11,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Check for expired vouchers
         id: check
@@ -19,7 +19,7 @@ jobs:
 
       - name: Create issue for expired vouchers
         if: steps.check.outputs.expired == 'true'
-        uses: peter-evans/create-issue-from-file@v5
+        uses: peter-evans/create-issue-from-file@v6
         with:
           title: "Expired Vouchers Detected"
           content-filepath: /tmp/voucher-changes.md
