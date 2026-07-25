@@ -1,0 +1,24 @@
+---
+import { Aside, Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+interface Props {
+  assessmentUrl: string;
+  practiceTestUrl: string;
+}
+
+const { assessmentUrl, practiceTestUrl } = Astro.props;
+
+const ensureU44 = (url: string) => (url.includes('#u44') ? url : `${url}#u44`);
+---
+
+<Card title="MeasureUp Practice Tests" icon="open-book">
+  <CardGrid>
+    <LinkCard title="MeasureUp Assessment" href={ensureU44(assessmentUrl)} target="_blank" />
+    <LinkCard title="MeasureUp Practice Test" href={ensureU44(practiceTestUrl)} target="_blank" />
+  </CardGrid>
+  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank" />
+  Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
+
+  MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months.
+  <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
+</Card>
