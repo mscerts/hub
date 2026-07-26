@@ -6,64 +6,97 @@ import { LinkCard } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 :::tip
-Use this page when you are preparing for a role-based certification exam or when you just want to get more hands on experience with Microsoft products. 
-
-Browse the [exam lab collections](/labs/) for available Microsoft Learn and Microsoft GitHub exercises tied to individual exams.
+This page explains how to obtain and manage practice environments. Browse the [exam lab collections](/labs/) for Microsoft Learn, Microsoft GitHub, and Applied Skills exercises tied to individual exams.
 :::
 
-# Why lab for Microsoft Exams?
+## Why Lab for Microsoft Exams?
 
-Role-based Microsoft exams (associate, expert, specialty) test your ability to use Microsoft products and understand them. Labbing is the only way to get close to working with the products unless you actually work with them at your job. 
+Role-based exams include associate, expert, and specialty exams. They test your ability to apply product knowledge, make configuration decisions, and troubleshoot results. If you do not use the product at work, a lab environment gives you a place to practice the tasks in the study guide instead of only reading about them.
+
+Use dedicated test resources and synthetic data. Do not experiment in a production tenant, use real customer data, or change organizational settings unless you are authorized to do so.
+
 <Tabs>
   <TabItem label="Azure">
 
-  Labbing in Azure is one the easiest but also the most dangerous way to lab Microsoft Cloud. You can very easily set up a free or pay as you go account and start creating resources. 
-  
-  However, if you are not careful, you can easily create resources that will add up to a huge bill. Always make sure you are familiar with product pricing, set up cost controls, monitor your usage and delete resources when you are done.  
+  Azure is usually easier to provision for individual practice than Microsoft 365 because you can create your own subscription and resources. However, many Azure services use consumption-based billing. Before deploying anything, identify the pricing model, estimate the cost, configure alerts, and decide how you will remove the resources when the exercise is complete.
+
+  The Azure free account includes limited credits, free monthly service amounts, and spending protection under its current terms. Pay-as-you-go accounts can consume services beyond free amounts and do not have the same spending protection. Check the current offer and eligibility rules before signing up or upgrading.
+
+  <LinkCard title="Microsoft Azure Free Account" href="https://azure.microsoft.com/free/?WT.mc_id=studentamb_165290" target="_blank" description="Review current credits, free service limits, eligibility, and spending-protection terms."/>
 
   ## Product Pricing
 
-  ### [Official Pricelist](https://azure.microsoft.com/pricing#Pricing-by-product?WT.mc_id=studentamb_165290)
+  ### [Official Azure Pricing](https://azure.microsoft.com/pricing/?WT.mc_id=studentamb_165290)
 
-  Azure product pricing lists are publicly available. The prices are also shown in the Azure portal when you create a resource but they are usually incomplete because there are many features that don't have the pricing displayed. 
+  Review every billable component, including compute time, storage, backups, public IP addresses, network egress, supporting services, and Marketplace products. The price shown during resource creation may not represent the entire solution.
 
   ### [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator?WT.mc_id=studentamb_165290)
 
-  The Azure Pricing Calculator is a tool that allows you to estimate the cost of your Azure resources. You just select products you are interested in them, fill in the usage parameters, and it will provide an estimated cost.
-  
+  Use the calculator to estimate a complete lab configuration. Match the region, tier, runtime, storage, and expected usage to what you plan to deploy.
+
   ## Cost Controls
 
   ### [Budgets](https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets?WT.mc_id=studentamb_165290)
 
-  Budgets allow you to set alerts on your Azure subscription. These can be both for current cost and predicted cost by the end of month. I recommend setting up both types of alerts to make sure both your current and predicted cost makes sense. Besides normal alerting, you can also set up automations that will react on the alerts. For example some students have set up automation that automatically deleted everything in the subscription when they reach budget.  
+  Budgets can alert you about actual or forecast spending, but **a budget does not cap spending or stop resources**. Cost data and alerts can also be delayed. Configure low thresholds, monitor Cost Analysis directly, and never rely on an alert as your only protection.
+
+  Budgets can trigger action groups or other automation when a threshold is reached, but that response must be configured separately. Test any automated shutdown or deletion process carefully because dependencies, delayed cost data, and destructive actions can produce unexpected results.
+
   ### [Anomaly Cost Alerts](https://learn.microsoft.com/azure/cost-management-billing/understand/analyze-unexpected-charges#create-an-anomaly-alert?WT.mc_id=studentamb_165290)
 
-  Anomaly cost alerts work similarly to budgets but they alert you when there is anomaly cost increase in your subscription. This is useful to alert you in case you miscalculated product cost but it is also very sensitive if your baseline azure subscription price is really low and you deploy basically anything that costs money. 
-    <LinkCard title="Microsoft Azure Free account" href="https://azure.microsoft.com/free/?WT.mc_id=studentamb_165290" />
+  Anomaly alerts identify unusual changes relative to previous usage. A new lab deployment can legitimately trigger one, so investigate the underlying resources instead of assuming every alert is an error.
+
+  ## Cleanup Checklist
+
+  1. Delete the lab resource group when the exercise is complete.
+  2. Check **All resources** for anything created outside that group, including hidden or automatically created resources.
+  3. Review Marketplace or SaaS subscriptions and support plans separately because deleting an Azure resource group may not cancel them.
+  4. Review Cost Analysis again after cleanup because usage data can arrive later.
+  5. Cancel the Azure subscription if you no longer need it and understand the effect on retained data and the final bill.
+
+  <LinkCard title="Delete Azure Resource Groups" href="https://learn.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?WT.mc_id=studentamb_165290" target="_blank" description="Remove a resource group and the resources it contains after completing a lab."/>
+  <LinkCard title="Cancel an Azure Subscription" href="https://learn.microsoft.com/azure/cost-management-billing/manage/cancel-azure-subscription?WT.mc_id=studentamb_165290" target="_blank" description="Review cleanup, cancellation, final billing, retention, and subscription deletion guidance."/>
   </TabItem>
   <TabItem label="Microsoft 365">
 
-  Microsoft 365 labbing is a lot less accessible than Azure labbing because there is no way to just spin up an instance as part of your personal account. You need to create tenant and sign up for M365 trials or subscriptions. 
-  :::tip
-  Are you a Microsoft Partner employee or Visual Studio Subscriber? 
+  Microsoft 365 practice usually requires access to a separate tenant and suitable licenses. Availability depends on your organization, region, role, and eligibility for current trials or developer programs.
 
-  [Microsoft Partner employees](https://partner.microsoft.com/) get access to [MDX](https://cdx.transform.microsoft.com/) where you can spin up demo tenants.
+  Eligible members of Microsoft partner programs can check [Microsoft Demo Experiences](https://cdx.transform.microsoft.com/) for demo environments. Qualified Microsoft 365 Developer Program members, including eligible Visual Studio Professional or Enterprise subscribers, can apply for a renewable Microsoft 365 E5 developer subscription.
 
-  [Visual Studio Subscribers](https://visualstudio.microsoft.com/vs/pricing/?tab=paid-subscriptions) get access to [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program) where you can spin up a developer tenant. It is not full E5 but better than nothing.
-  :::
+  <LinkCard title="Microsoft 365 Developer Program" href="https://developer.microsoft.com/microsoft-365/dev-program" target="_blank" description="Check current qualification requirements for a Microsoft 365 E5 developer subscription."/>
+  <LinkCard title="Microsoft Customer Digital Experiences" href="https://cdx.transform.microsoft.com/" target="_blank" description="Access Microsoft demo content and environments when your partner account is eligible."/>
 
-  There are 2 ways to get a tenant. You can either sign up for a trial using one of the links below, or you can create a [fresh tenant](https://signup.microsoft.com/createaccount?culture=en-us&scenario=PartnerCenter&origin=pc). These are not all the available trial options, but they are some of the most useful ones for labbing.
-    <LinkCard title="Microsoft 365 E5 (no Teams) — 1 month" href="https://go.microsoft.com/fwlink/?linkid=2260943&clcid=0x409&culture=en-us&country=us" />
-    <LinkCard title="Teams Premium — 1 month" href="https://go.microsoft.com/fwlink/p/?linkid=2222651&clcid=0x409&culture=en-us&country=us" />
-    <LinkCard title="Microsoft Entra Suite — 1 month" href="https://aka.ms/EntraSuiteTrial?wt.mc_id=MVP_353010" />
-    <LinkCard title="Priva Privacy Risk Management — 3 month" href="https://signup.microsoft.com/get-started/signup?products=e6b633e0-1b1e-4d95-b414-3ce9e8023c39" />
-    <LinkCard title="Windows 11 Enterprise — 90 days" href="https://www.microsoft.com/evalcenter/evaluate-windows-11-enterprise" />
+  Product trials change frequently and may require an existing tenant, administrator permissions, a payment method, or recurring billing. Confirm the current duration, included products, conversion terms, and cancellation process on the offer page before starting.
 
-    Be extremely careful when creating tenants in M365 because your credit card will be tied to them and it is very easy to let licenses run and get charged for them. 
-    
-    M365 E5 license currently costs $60 a month and E7 $100 a month. Always make sure you cancel licenses before they convert to paid. Also be careful when buying subscription know what you are buying. 
-    
-    Microsoft offers discounts if you commit your licenses to a year (or 3 years) but it also means you won't be able to cancel and will be on the hook for the entire committed duration. 
+  If an eligible offer requires a tenant and you do not already have one, Microsoft provides a [work or school account signup flow](https://signup.microsoft.com/createaccount?culture=en-us&scenario=PartnerCenter&origin=pc). Creating the tenant does not itself provide the product licenses required by a lab, so confirm the license and administrator requirements before proceeding.
+
+  <LinkCard title="Microsoft 365 E5 Trial" href="https://go.microsoft.com/fwlink/?linkid=2260943&clcid=0x409&culture=en-us&country=us" target="_blank" description="Check current availability, eligibility, included services, duration, and billing terms."/>
+  <LinkCard title="Teams Premium Trial" href="https://go.microsoft.com/fwlink/p/?linkid=2222651&clcid=0x409&culture=en-us&country=us" target="_blank" description="Check current availability, eligibility, duration, and conversion terms."/>
+  <LinkCard title="Microsoft Entra Suite Trial" href="https://aka.ms/EntraSuiteTrial" target="_blank" description="Check current tenant requirements, included services, duration, and billing terms."/>
+  <LinkCard title="Windows 11 Enterprise Evaluation" href="https://www.microsoft.com/evalcenter/evaluate-windows-11-enterprise" target="_blank" description="Review the current Windows Enterprise evaluation and its expiration behavior."/>
+
+  Paid Microsoft 365 enterprise subscriptions can cost substantially more than a short Azure lab, especially when annual or multiyear commitments apply. Compare the required licenses, number of users, billing term, trial conversion behavior, and cancellation rights rather than comparing only the advertised monthly amount.
+
+  ## Cleanup Checklist
+
+  1. Record the trial end date, billing term, and recurring-billing status when you sign up.
+  2. Remove or export test data that you need to retain.
+  3. Cancel trials and subscriptions through the correct billing account before they convert or renew.
+  4. Confirm whether removing licenses actually ends the subscription; license assignment and billing are separate operations.
+  5. Review any annual or multiyear commitment before purchasing because reducing users or removing licenses may not remove the remaining payment obligation.
+  6. Delete test users, applications, connectors, and credentials when the environment is no longer needed.
+  </TabItem>
+  <TabItem label="Power Platform and Dynamics 365">
+
+  The Power Apps Developer Plan provides an environment for developing and testing Power Apps, Power Automate cloud flows, and Dataverse solutions. It requires an eligible work or school account, is not licensed for production use, has capacity limits, and can be disabled after inactivity.
+
+  <LinkCard title="Power Apps Developer Plan" href="https://learn.microsoft.com/power-platform/developer/plan?WT.mc_id=studentamb_165290" target="_blank" description="Review eligibility, development and test rights, capacity limits, and environment lifecycle rules."/>
+
+  The Power Apps Developer Plan does not include installable Dynamics 365 applications. For Dynamics 365 practice, use an app-specific official trial or an environment supplied by your employer, training provider, or eligible Microsoft program. Trial availability and duration vary by application and region.
+
+  <LinkCard title="Dynamics 365 Trials" href="https://dynamics.microsoft.com/dynamics-365-free-trial/" target="_blank" description="Review currently available app-specific Dynamics 365 trials and their eligibility requirements."/>
+
+  Use the same lifecycle discipline as other environments: keep synthetic data only, document dependencies, export anything you need, and delete or reset development environments when they are no longer required.
   </TabItem>
 </Tabs>
 
