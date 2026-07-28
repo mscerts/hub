@@ -304,6 +304,11 @@ export default defineConfig({
                   link: "/aibusiness/ab-620/",
                   badge: { text: "BETA", variant: "tip" },
                 },
+                {
+                  label: "AB-650",
+                  link: "/aibusiness/ab-650/",
+                  badge: { text: "BETA", variant: "tip" },
+                },
                 { label: "AB-730", link: "/aibusiness/ab-730/" },
                 { label: "AB-731", link: "/aibusiness/ab-731/" },
                 { label: "AB-900", link: "/aibusiness/ab-900/" },
