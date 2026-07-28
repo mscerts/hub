@@ -118,6 +118,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "Exam AB-650 (beta)",
+              link: "/vouchers/ab650beta/",
+              badge: { text: "*80%", variant: "tip" },
+            },
+            {
               label: "Exam AI-500 (beta)",
               link: "/vouchers/ai500beta/",
               badge: { text: "*80%", variant: "tip" },
