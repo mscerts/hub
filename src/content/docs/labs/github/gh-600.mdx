@@ -1,0 +1,32 @@
+---
+title: GH-600 Labs
+description: "Lab exercises for GH-600: Developing in Agentic AI Systems. Includes Microsoft Learn and Microsoft GitHub labs."
+---
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+  <TabItem label="Microsoft Learn">
+
+:::note
+Microsoft Learn Sandboxes require you to bring in your own subscription.
+:::
+
+  <CardGrid>
+    <LinkCard title="Microsoft Learn" href="https://learn.microsoft.com/training/courses/gh-600t00?WT.mc_id=studentamb_165290" target="_blank" description="Official Microsoft instructor-led training course that covers the skills measured on the exam."/>
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Microsoft GitHub">
+
+:::note
+These GitHub projects are the closest hands-on fit from Microsoft Learn's labs catalog for GH-600's GitHub-controlled agentic workflows.
+:::
+
+  <CardGrid>
+    <LinkCard title="GitHub Copilot CLI for Beginners" href="https://github.com/github/copilot-cli-for-beginners" target="_blank" description="AI-assisted development from the terminal, including code review, test generation, debugging, custom agents, and MCP integration with GitHub Copilot CLI."/>
+    <LinkCard title="Mastering GitHub Copilot for Paired Programming" href="https://github.com/microsoft/Mastering-GitHub-Copilot-for-Paired-Programming" target="_blank" description="Interactive project for real-time autonomous code execution, intelligent problem-solving, and workflow automation with GitHub Copilot."/>
+    <LinkCard title="AgenticOps with AKS-Lab-GitHubCopilot" href="https://github.com/microsoft/AKS-Lab-GitHubCopilot" target="_blank" description="Hands-on exercises for delivering an Azure Kubernetes Services-based multi-agent solution using GitHub Copilot Custom Coding Agents."/>
+  </CardGrid>
+  </TabItem>
+</Tabs>
