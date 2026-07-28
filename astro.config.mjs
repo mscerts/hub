@@ -40,6 +40,8 @@ export default defineConfig({
     "/aiab/ab-731/":"/aibusiness/ab-731/",
     "/guide/officialstudymaterials/":"/wiki",
     "/security/sc-730/":"/security/sc-900/",
+    "/vouchers/aichallenge/": "/vouchers/",
+    "/vouchers/microsoftignite/": "/vouchers/",
     
     "/discord":
       "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
