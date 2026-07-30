@@ -256,6 +256,18 @@ pnpm dev                        # Local preview
 
 ---
 
+## Link Checker
+
+Automated internal/external link validation, separate from the build.
+
+- **Workflow:** `.github/workflows/link-checker.yml`
+- **On pull requests** touching `src/content/**`, the workflow file, or `.lycheeignore`: builds the site, then runs `lychee` against `dist/**/*.html` to check internal links only (`--exclude 'https?://.*'`). A broken internal link **fails the PR** (`fail: true`, plus an explicit failing step).
+- **On schedule** (Monday 06:00 UTC) and manual trigger: also crawls the live site with `linkinator` to check external links, skipping known flaky domains (see `.lycheeignore`: measureup.com, discord.gg/discord.com, linkedin.com, x.com, threads.net, reddit.com). Opens a GitHub issue on failure.
+- Lychee results are cached (`.lycheecache`, keyed by commit SHA) to speed up repeated runs.
+- **Implication for content removal:** when deleting a page (voucher, exam, lab, etc.), search the whole repo — including `src/content/blog/**` — for internal links to it. Convert any remaining references to plain text instead of leaving a dangling `LinkCard`/Markdown link, since a broken internal link will fail the PR's link-checker run.
+
+---
+
 ## Key Components
 
 | Component | Purpose |
