@@ -197,11 +197,6 @@ export default defineConfig({
               badge: { text: "*80%", variant: "tip" },
             },
             {
-              label: "Exam AI-500 (beta)",
-              link: "/vouchers/ai500beta/",
-              badge: { text: "*80%", variant: "tip" },
-            },
-            {
               label: "Microsoft Defender Sweepstakes",
               link: "/vouchers/defendersweepstakes/",
               badge: { text: "*50%", variant: "tip" },
