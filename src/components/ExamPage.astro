@@ -21,9 +21,10 @@ const { config } = Astro.props;
   {config.getStartedLinks.map((link) => (
     <LinkCard {...link} />
   ))}
-  <RelatedCerts examCode={config.examCode} />
+</Card>
 
----
+<RelatedCerts examCode={config.examCode} />
+
 <Tabs>
   {config.tabs.map((tab) => (
     <TabItem label={tab.label}>
@@ -35,8 +36,6 @@ const { config } = Astro.props;
     </TabItem>
   ))}
 </Tabs>
----
-</Card>
 
 {
   !config.measureUpReleased && (

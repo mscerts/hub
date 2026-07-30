@@ -47,6 +47,7 @@ export const ANALYTICS = {
 
 export const VERIFICATIONS = {
   udemy: "aa360495-3579-450f-8ba8-51b90e774051",
+  mitgo: "364f0bc5-6aa7-4ab9-855f-7d320e200009",
 } as const;
 
 export const DISCORD_URL = "https://discord.gg/microsoft-certification-study-group-676990910176821270";
