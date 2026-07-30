@@ -2,9 +2,8 @@
 title: SC-100 Study Materials
 description: "Collection of study materials for the certification exam SC-100: Cybersecurity Architect. Contains official Microsoft Learn materials, labs, videos, practice tests and paid courses."
 ---
-import { LinkCard, CardGrid, Card } from '@astrojs/starlight/components';
-import { Tabs, TabItem } from '@astrojs/starlight/components';
-import { Aside } from '@astrojs/starlight/components';
+import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@astrojs/starlight/components';
+import RelatedCerts from '../../../components/RelatedCerts.astro';
 
 <Card title="Get Started" icon="star">
 
@@ -12,6 +11,7 @@ import { Aside } from '@astrojs/starlight/components';
 
   <LinkCard title="SC-100 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-100?WT.mc_id=studentamb_165290" target="_blank" description="Study guides contain topics and information you need to know to successfully prepare for the exam."/>
     <LinkCard title="GitHub Case Studies" href="https://github.com/Azure/AzureArchitectureExampleScenarios" target="_blank" description="Security architecture example scenarios, useful for practicing the design and case-study style questions on SC-100."/>
+  <RelatedCerts examCode="SC-100" />
 
 ---
 <Tabs>

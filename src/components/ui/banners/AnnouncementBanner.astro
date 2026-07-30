@@ -1,5 +1,14 @@
 ---
-const { title, btnId, btnTitle, btnTitleMobile, url, version = "1", rememberDismissal = true } = Astro.props;
+const {
+  title,
+  btnId,
+  btnTitle,
+  btnTitleMobile,
+  url,
+  version = "1",
+  rememberDismissal = true,
+  openInNewTab,
+} = Astro.props;
 
 interface Props {
   title?: string;
@@ -9,7 +18,11 @@ interface Props {
   url: string;
   version?: string;
   rememberDismissal?: boolean;
+  openInNewTab?: boolean;
 }
+
+const isExternalUrl = /^(https?:)?\/\//i.test(url);
+const shouldOpenInNewTab = openInNewTab ?? isExternalUrl;
 ---
 
 <astro-banner btnId={btnId} version={version} rememberDismissal={rememberDismissal}>
@@ -34,7 +47,8 @@ interface Props {
           <a
             class="group inline-flex items-center gap-x-2 rounded-full border-2 border-neutral-50 backdrop-brightness-75 sm:backdrop-brightness-100 px-3 py-2 text-sm font-semibold text-neutral-50 transition duration-300 hover:border-neutral-100/70 hover:text-neutral-50/70 disabled:pointer-events-none disabled:opacity-50"
             href={url}
-            target="_blank"
+            target={shouldOpenInNewTab ? "_blank" : undefined}
+            rel={shouldOpenInNewTab ? "noopener noreferrer" : undefined}
           >
             {btnTitleMobile ? (
               <>
@@ -109,11 +123,20 @@ interface Props {
 
       const link = this.querySelector(`a[href]`);
       if (link != null) {
-        link.addEventListener("click", () => {
+        link.addEventListener("click", (event) => {
           if (rememberDismissal) {
             localStorage.setItem(storageKey, "true");
           }
-          this.remove();
+          const mouseEvent = event as MouseEvent;
+          const opensNewTab =
+            link.getAttribute("target") === "_blank" ||
+            mouseEvent.metaKey ||
+            mouseEvent.ctrlKey ||
+            mouseEvent.shiftKey ||
+            mouseEvent.button === 1;
+          if (opensNewTab) {
+            this.remove();
+          }
         });
       }
     }

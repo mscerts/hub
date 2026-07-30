@@ -1,6 +1,11 @@
 name: Link Checker
 
 on:
+  pull_request:
+    paths:
+      - "src/content/**"
+      - ".github/workflows/link-checker.yml"
+      - ".lycheeignore"
   schedule:
     - cron: "0 6 * * 1"
   workflow_dispatch:
@@ -37,8 +42,9 @@ jobs:
       - name: Check internal links
         id: lychee
         uses: lycheeverse/lychee-action@v2
+        continue-on-error: true
         with:
-          fail: false
+          fail: true
           jobSummary: false
           args: >-
             --root-dir dist
@@ -51,8 +57,30 @@ jobs:
             'dist/**/*.html'
           output: lychee/results.md
 
+      - name: Fail PR on internal link errors
+        if: github.event_name == 'pull_request' && steps.lychee.outputs.exit_code != 0
+        run: exit 1
+
+      - name: Check external links on live site
+        if: github.event_name != 'pull_request'
+        run: >
+          npx --yes linkinator
+          "https://msfthub.com"
+          "https://msfthub.com/wiki/"
+          "https://msfthub.com/vouchers/"
+          "https://msfthub.com/guide/introduction/"
+          "https://msfthub.com/labs/"
+          --skip "https?://(www\\.)?(measureup\\.com|discord\\.gg|discord\\.com|linkedin\\.com|x\\.com|threads\\.net|reddit\\.com|news\\.ycombinator\\.com)"
+          --skip "news.ycombinator.com"
+          --status-code "403:warn"
+          --status-code "429:warn"
+          --timeout 10000
+          --retry
+          --retry-errors
+          --retry-errors-count 2
+
       - name: Create issue on failure
-        if: steps.lychee.outputs.exit_code != 0
+        if: github.event_name != 'pull_request' && steps.lychee.outputs.exit_code != 0
         uses: peter-evans/create-issue-from-file@v6
         with:
           title: "Link Checker Report"

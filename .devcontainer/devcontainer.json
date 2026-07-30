@@ -1,0 +1,44 @@
+{
+  "name": "Microsoft Certification Hub",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+
+  // Install pnpm and project dependencies when the container is created
+  "onCreateCommand": "npm install -g pnpm@11 && pnpm install --frozen-lockfile",
+
+  // Forward the Astro dev server port and open a live preview automatically
+  "forwardPorts": [4321],
+  "portsAttributes": {
+    "4321": {
+      "label": "Hub Dev Server",
+      "onAutoForward": "openPreview"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "astro-build.astro-vscode",
+        "unifiedjs.vscode-mdx",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "streetsidesoftware.code-spell-checker"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[astro]": {
+          "editor.defaultFormatter": "astro-build.astro-vscode"
+        },
+        "[mdx]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+      }
+    }
+  },
+
+  // Useful scripts available via npm run or pnpm
+  // Start the dev server yourself: pnpm dev
+  // Scaffold a new exam page:       node scripts/new-exam.mjs --code AZ-999 --name "Exam Name"
+  // Validate a production build:    pnpm build
+  "remoteUser": "node"
+}

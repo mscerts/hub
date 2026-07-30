@@ -43,7 +43,7 @@ interface Props {
 
 <!-- Defining a grid container that holds all the content -->
 <section
-  class="mx-auto grid max-w-[85rem] gap-4 px-4 py-14 sm:px-6 md:grid-cols-2 md:items-center md:gap-8 lg:px-8 2xl:max-w-full"
+  class="mx-auto grid max-w-[85rem] gap-8 px-4 pb-14 pt-8 sm:px-6 md:grid-cols-2 md:items-center lg:min-h-[calc(100vh-8rem)] lg:gap-10 lg:px-8 lg:pb-16 lg:pt-10"
 >
   <!-- Title and description -->
   <div>
@@ -78,8 +78,8 @@ interface Props {
 
   </div>
   <!-- Hero Image Section -->
-  <div class="flex w-full justify-center">
-      <div class="top-12 overflow-hidden max-w-md">
+  <div class="flex w-full justify-center md:justify-end">
+      <div class="max-w-md overflow-hidden md:max-w-lg">
 	{src && alt &&
 	<Image
         src={src}

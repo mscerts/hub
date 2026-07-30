@@ -1,0 +1,63 @@
+name: Content Error Report
+description: Report incorrect, outdated, or broken content on an exam page
+title: "[Content Error] XX-000: Short description"
+labels: ["content", "bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to report content errors: broken links, outdated resources,
+        wrong assessment IDs, incorrect retirement information, etc.
+
+  - type: input
+    id: exam-code
+    attributes:
+      label: Exam Code
+      description: Which exam page has the error?
+      placeholder: "AZ-104"
+    validations:
+      required: true
+
+  - type: input
+    id: page-url
+    attributes:
+      label: Page URL
+      description: Full URL of the page with the error.
+      placeholder: "https://msfthub.com/azure/az-104/"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: error-type
+    attributes:
+      label: Type of Error
+      options:
+        - Broken link
+        - Outdated resource (course/video removed or moved)
+        - Wrong assessment ID or practice test link
+        - Incorrect retirement/beta status information
+        - Missing resource worth adding
+        - Exam has been retired and page is not updated
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Error Description
+      description: What is wrong? Include the current (incorrect) value and the correct value if you know it.
+      placeholder: |
+        Current: The practice assessment link leads to a 404.
+        Correct: The current URL is https://learn.microsoft.com/credentials/...
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Source / Reference
+      description: If you have a link that proves the correct information, add it here.
+      placeholder: "https://learn.microsoft.com/credentials/certifications/..."
+    validations:
+      required: false

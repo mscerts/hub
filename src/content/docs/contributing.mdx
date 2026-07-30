@@ -202,9 +202,55 @@ function npx { sfw npx @args }
 
 Restart PowerShell to apply. Now `pnpm install` runs through Socket automatically.
 
+## GitHub Codespaces (browser-based editing with live preview)
+
+The repo ships with a pre-configured devcontainer so you can contribute entirely from your browser with a live preview — no local setup required.
+
+<Steps>
+
+1. Open the [mscerts/hub](https://github.com/mscerts/hub) repository on GitHub and click **Code → Codespaces → Create codespace on main** (or your fork's branch).
+
+2. Wait ~2 minutes for the container to build. VS Code opens in the browser with all extensions pre-installed and dependencies installed.
+
+3. In the integrated terminal, start the dev server:
+   ```bash
+   pnpm dev
+   ```
+   Port **4321** is forwarded automatically. Click the pop-up or navigate to the **Ports** panel to open a live preview of the Hub.
+
+4. Edit any MDX file in `src/content/docs/` and the browser preview refreshes automatically.
+
+5. When done, commit your changes via the Source Control panel and open a pull request.
+
+</Steps>
+
+This approach is equivalent to visual editing — you see the rendered result of every change in real time, without needing to install anything locally.
+
+## Scaffolding a new exam page
+
+Instead of copying an existing page and editing it manually, use the scaffold script to generate a correctly-structured starting point:
+
+```bash
+node scripts/new-exam.mjs --code AZ-999 --name "Microsoft Azure Whatever"
+```
+
+Optional flags:
+
+| Flag | Purpose |
+|------|---------|
+| `--beta` | Adds a beta status banner import |
+| `--labs` | Adds an Exam Labs link in the Get Started block |
+
+The script:
+- Validates the exam code format and determines the correct content area
+- Creates `src/content/docs/<area>/<CODE>.mdx` with all five required tabs
+- Prints a checklist of what to fill in next (exam URL description, training course link, etc.)
+
+The new page is automatically picked up by the sidebar — no manual `astro.config.mjs` edits needed.
+
 ## VSCode Support
 
-We recommend using [VSCode](https://code.visualstudio.com) or [GitHub Codespaces](https://github.com/features/codespaces) for contributing. The repo includes a pre-configured `.vscode/settings.json` with Markdown paste and drop settings.
+We recommend using [VSCode](https://code.visualstudio.com) or [GitHub Codespaces](https://github.com/features/codespaces) for contributing. The repo includes a pre-configured `.vscode/settings.json` with Markdown paste and drop settings, and a `.devcontainer` configuration for a one-click Codespaces setup.
 
 Recommended extensions:
 
