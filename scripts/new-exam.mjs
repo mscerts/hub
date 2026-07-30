@@ -88,6 +88,14 @@ if (existsSync(filePath)) {
   process.exit(1);
 }
 
+function escapeYaml(str) {
+  return str.replace(/"/g, '\\"');
+}
+
+function escapeJsxAttr(str) {
+  return str.replace(/"/g, '&quot;');
+}
+
 // ---------------------------------------------------------------------------
 // Build the MDX content
 // ---------------------------------------------------------------------------
@@ -102,18 +110,18 @@ const labsLink = hasLabs
   : "";
 
 const betaBanner = isBeta
-  ? `\nimport BetaBanner from '../../../components/BetaBanner.astro';\n\n<BetaBanner />`
+  ? `\nimport BetaBanner from '../../../components/BetaBanner.astro';\n\n<BetaBanner summary="This exam is currently in beta. Content and assessment structure may change before general availability." />`
   : "";
 
 const content = `---
 title: ${code} Study Materials
-description: "${description}"
+description: "${escapeYaml(description)}"
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@astrojs/starlight/components';${betaBanner}
 
 <Card title="Get Started" icon="star">
 
-  <LinkCard title="Exam ${code}: ${name}" href="${examUrl}" target="_blank" description=""/>
+  <LinkCard title="Exam ${code}: ${escapeJsxAttr(name)}" href="${examUrl}" target="_blank" description=""/>
 
   <LinkCard title="${code} Study Guide" href="${studyGuideUrl}" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for the exam."/>${labsLink}
 
@@ -144,8 +152,7 @@ import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@astrojs/starlig
   </TabItem>
 </Tabs>
 
----
-      </Card>
+</Card>
 
 :::tip
 MeasureUp has not released any material for this exam yet.
@@ -166,7 +173,7 @@ console.log(
 console.log(`       • Verify the exam URL and update the Get Started description`);
 console.log(`       • Confirm the training course URL exists and update the description`);
 if (isBeta) {
-  console.log(`       • Fill in BetaBanner props (announcementUrl, deadline, code, discount)`);
+  console.log(`       • Update BetaBanner summary and note props with exam-specific details`);
 }
 if (!hasLabs) {
   console.log(
