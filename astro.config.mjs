@@ -28,8 +28,6 @@ const examBadges = {
     "GH-600": { text: "BETA", variant: "tip" },
   },
   aibusiness: {
-    "AB-250": { text: "BETA", variant: "tip" },
-    "AB-410": { text: "BETA", variant: "tip" },
     "AB-620": { text: "BETA", variant: "tip" },
     "AB-650": { text: "BETA", variant: "tip" },
   },
