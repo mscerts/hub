@@ -5,7 +5,7 @@ import Navbar from "@components/sections/navbar&footer/NavbarMegaMenu.astro";
 import FooterSection from "@components/sections/navbar&footer/FooterSection.astro";
 import CookieConsentBanner from "@components/ui/banners/CookieConsentBanner.astro";
 import CookieConsentModal from "@components/ui/modals/CookieConsentModal.astro";
-import { SITE, ANALYTICS } from "@data/constants";
+import { SITE, ANALYTICS, VERIFICATIONS } from "@data/constants";
 import "@styles/global.css";
 
 // Setting expected props
@@ -40,6 +40,8 @@ interface Props {
     />
     {/* Define the title of the page */}
     <title>{title}</title>
+    <meta name="impact-site-verification" content={VERIFICATIONS.udemy} />
+    <meta name="mitgo-verification" content={VERIFICATIONS.mitgo} />
     {/* Google Analytics */}
     <script
       is:inline
