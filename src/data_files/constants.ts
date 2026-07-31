@@ -46,7 +46,7 @@ export const ANALYTICS = {
 } as const;
 
 export const VERIFICATIONS = {
-  udemy: "aa360495-3579-450f-8ba8-51b90e774051",
+  udemy: "0df7f987-fe91-4e6a-b461-bf165178d1a1",
   mitgo: "364f0bc5-6aa7-4ab9-855f-7d320e200009",
 } as const;
 
