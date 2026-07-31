@@ -184,6 +184,7 @@ export const GET: APIRoute = async ({ props }: any) => {
     status: is404 ? 404 : 200,
     headers: {
       'Content-Type': 'text/markdown; charset=utf-8',
+      'X-Robots-Tag': 'noindex, nofollow',
     },
   });
 };
