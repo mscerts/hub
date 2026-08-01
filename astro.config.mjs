@@ -14,7 +14,6 @@ const site = "https://msfthub.com/";
 
 const examBadges = {
   azure: {
-    "AZ-204": { text: "RETIRING", variant: "danger" },
     "AZ-400": { text: "Endangered", variant: "caution" },
     "AZ-500": { text: "RETIRING", variant: "danger" },
     "AZ-800": { text: "RETIRING", variant: "danger" },
@@ -40,9 +39,7 @@ const examBadges = {
   power: {
     "PL-200": { text: "RETIRING", variant: "danger" },
   },
-  dynamics: {
-    "MB-280": { text: "RETIRING", variant: "danger" },
-  },
+  dynamics: {},
 };
 
 const areaPrefixOrder = {
@@ -113,6 +110,8 @@ export default defineConfig({
     "/security/sc-730/":"/security/sc-900/",
     "/vouchers/aichallenge/": "/vouchers/",
     "/vouchers/microsoftignite/": "/vouchers/",
+    "/dynamics/mb-280": "/aibusiness/ab-210",
+    "/azure/az-204": "/azure/ai-200",
     
     "/discord":
       "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
