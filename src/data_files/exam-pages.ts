@@ -60,7 +60,15 @@ export const examPages: Record<string, ExamPageData> = {
           },
         ],
       },
-      { label: "Tests", links: [] },
+      { label: "Tests", links: [
+        {
+          title: "Microsoft Learn Practice Assessment (AI Skills Navigator)",
+          href: "https://aiskillsnavigator.microsoft.com/credentials/cert-83587e0a0754cfee561ade3e27d9fa1cdaf15ae03be52d2413b2b858d1b4eda4",
+          target: "_blank",
+          description:
+            "Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than real exams.",
+        },
+      ] },
       {
         label: "Paid",
         links: [
