@@ -5,42 +5,16 @@ import starlight from "@astrojs/starlight";
 import starlightImageZoom from "starlight-image-zoom";
 import { readdirSync } from "node:fs";
 import path from "node:path";
+import { examStatuses } from "./src/data_files/exam-status.mjs";
 
 const googleAnalyticsId = "G-CDTP3TERKP";
 const clarityAnalyticsId = "u7pei4s9cq";
-const discordUrl = "https://discord.gg/microsoft-certification-study-group-676990910176821270";
+const discordUrl =
+  "https://discord.gg/microsoft-certification-study-group-676990910176821270";
 const googleTagManagerId = "GTM-TMNHVD5B";
 const site = "https://msfthub.com/";
 
-const examBadges = {
-  azure: {
-    "AZ-400": { text: "Endangered", variant: "caution" },
-    "AZ-500": { text: "RETIRING", variant: "danger" },
-    "AZ-800": { text: "RETIRING", variant: "danger" },
-    "AZ-801": { text: "RETIRING", variant: "danger" },
-    "AZ-802": { text: "BETA", variant: "tip" },
-    "AI-300": { text: "BETA", variant: "tip" },
-    "AI-500": { text: "BETA", variant: "tip" },
-    "DP-800": { text: "BETA", variant: "tip" },
-  },
-  github: {
-    "GH-600": { text: "BETA", variant: "tip" },
-  },
-  aibusiness: {
-    "AB-620": { text: "BETA", variant: "tip" },
-    "AB-650": { text: "BETA", variant: "tip" },
-  },
-  microsoft365: {
-    "MS-102": { text: "RETIRING", variant: "danger" },
-  },
-  security: {
-    "SC-500": { text: "BETA", variant: "tip" },
-  },
-  power: {
-    "PL-200": { text: "RETIRING", variant: "danger" },
-  },
-  dynamics: {},
-};
+const examBadges = examStatuses;
 
 const areaPrefixOrder = {
   azure: ["AZ", "AI", "DP"],
@@ -57,7 +31,9 @@ function buildExamSidebarItems(area) {
   const prefixOrder = areaPrefixOrder[area] ?? [];
   const badges = examBadges[area] ?? {};
   const entries = readdirSync(docsDir, { withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".mdx"))
+    .filter(
+      (entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".mdx"),
+    )
     .map((entry) => entry.name.replace(/\.mdx$/i, "").toUpperCase())
     .filter((code) => /^[A-Z]{2,3}-\d{3}$/.test(code))
     .sort((left, right) => {
@@ -66,9 +42,15 @@ function buildExamSidebarItems(area) {
       const leftRank = prefixOrder.indexOf(leftPrefix);
       const rightRank = prefixOrder.indexOf(rightPrefix);
       if (leftRank !== rightRank) {
-        return (leftRank === -1 ? Number.MAX_SAFE_INTEGER : leftRank) - (rightRank === -1 ? Number.MAX_SAFE_INTEGER : rightRank);
+        return (
+          (leftRank === -1 ? Number.MAX_SAFE_INTEGER : leftRank) -
+          (rightRank === -1 ? Number.MAX_SAFE_INTEGER : rightRank)
+        );
       }
-      return left.localeCompare(right, undefined, { numeric: true, sensitivity: "base" });
+      return left.localeCompare(right, undefined, {
+        numeric: true,
+        sensitivity: "base",
+      });
     });
 
   return entries.map((code) => ({
@@ -100,24 +82,23 @@ export default defineConfig({
     "/azure/ai-900": "/azure/ai-901",
     "/power/pl-600": "/aibusiness/ab-100",
 
-
     "/microsoft365/ms-900": "/aibusiness/ab-900",
-    "/aiab/ab-900/":"/aibusiness/ab-900/",
-    "/aiab/ab-100/":"/aibusiness/ab-100/",
-    "/aiab/ab-730/":"/aibusiness/ab-730/",
-    "/aiab/ab-731/":"/aibusiness/ab-731/",
-    "/guide/officialstudymaterials/":"/wiki",
-    "/security/sc-730/":"/security/sc-900/",
+    "/aiab/ab-900/": "/aibusiness/ab-900/",
+    "/aiab/ab-100/": "/aibusiness/ab-100/",
+    "/aiab/ab-730/": "/aibusiness/ab-730/",
+    "/aiab/ab-731/": "/aibusiness/ab-731/",
+    "/guide/officialstudymaterials/": "/wiki",
+    "/security/sc-730/": "/security/sc-900/",
     "/vouchers/aichallenge/": "/vouchers/",
     "/vouchers/microsoftignite/": "/vouchers/",
     "/dynamics/mb-280": "/aibusiness/ab-210",
     "/azure/az-204": "/azure/ai-200",
-    
+
     "/discord":
       "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
   },
   image: {
-    domains: ["images.unsplash.com", 'msfthub.com'],
+    domains: ["images.unsplash.com", "msfthub.com"],
     dangerouslyProcessSVG: true,
   },
   prefetch: true,
@@ -393,7 +374,6 @@ export default defineConfig({
              })(window,document,'script','dataLayer','${googleTagManagerId}');
             `,
         },
-
       ],
     }),
   ],

@@ -1,6 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import Icon from "@components/ui/icons/Icon.astro";
+import {
+  examStatuses,
+  examStatusStyles,
+  voucherBadgeStyles,
+} from "@data/exam-status.mjs";
 
 const docs = await getCollection("docs");
 
@@ -27,51 +32,38 @@ const resourceLinks = [
 
 const communityLinks = [
   {
-    label: "Discord server",
+    label: "Microsoft Certification Hub",
     href: "https://discord.gg/microsoft-certification-study-group-676990910176821270",
+    icon: "discord",
   },
   {
     label: "r/O365Certification",
     href: "https://www.reddit.com/r/O365Certification/",
+    icon: "reddit",
   },
   {
     label: "r/SCICertifications",
     href: "https://www.reddit.com/r/SCICertifications/",
+    icon: "reddit",
   },
   {
     label: "r/AzureCertifications",
     href: "https://www.reddit.com/r/AzureCertifications/",
+    icon: "reddit",
   },
 ];
 
-type ExamStatus = "ENDANGERED" | "BETA" | "RETIRING";
+const statusChanges = Object.entries(examStatuses).flatMap(([area, exams]) =>
+  Object.entries(exams).map(([code, status]) => ({
+    code,
+    status: status.text,
+    href: `/${area}/${code.toLowerCase()}/`,
+  })),
+);
 
-const statusChanges: Array<{ code: string; status: ExamStatus; href: string }> =
-  [
-    { code: "AZ-400", status: "ENDANGERED", href: "/azure/az-400/" },
-    { code: "AZ-500", status: "RETIRING", href: "/azure/az-500/" },
-    { code: "AZ-800", status: "RETIRING", href: "/azure/az-800/" },
-    { code: "AZ-801", status: "RETIRING", href: "/azure/az-801/" },
-    { code: "AZ-802", status: "BETA", href: "/azure/az-802/" },
-    { code: "AI-300", status: "BETA", href: "/azure/ai-300/" },
-    { code: "AI-500", status: "BETA", href: "/azure/ai-500/" },
-    { code: "DP-800", status: "BETA", href: "/azure/dp-800/" },
-    { code: "GH-600", status: "BETA", href: "/github/gh-600/" },
-    { code: "AB-620", status: "BETA", href: "/aibusiness/ab-620/" },
-    { code: "AB-650", status: "BETA", href: "/aibusiness/ab-650/" },
-    { code: "MS-102", status: "RETIRING", href: "/microsoft365/ms-102/" },
-    { code: "SC-500", status: "BETA", href: "/security/sc-500/" },
-    { code: "PL-200", status: "RETIRING", href: "/power/pl-200/" },
-  ];
-
-const statusStyles: Record<ExamStatus, string> = {
-  ENDANGERED:
-    "bg-orange-100 text-orange-800 dark:bg-orange-400/15 dark:text-orange-300",
-  BETA: "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300",
-  RETIRING: "bg-red-100 text-red-800 dark:bg-red-400/15 dark:text-red-300",
-};
-
-const getStatusClass = (status: string) => statusStyles[status as ExamStatus];
+type ExamStatus = keyof typeof examStatusStyles;
+const getStatusClass = (status: string) =>
+  examStatusStyles[status as ExamStatus];
 
 const voucherLabels = {
   "100%": "100% off",
@@ -87,45 +79,18 @@ const getVoucherLabel = (category: string | undefined) => {
   return "Special";
 };
 
+const getVoucherBadgeClass = (category: string | undefined) => {
+  if (category === "100%" || category === "50%" || category === "Special") {
+    return voucherBadgeStyles[category];
+  }
+
+  return voucherBadgeStyles.Special;
+};
+
 const vouchers = docs
   .filter((doc) => doc.id.startsWith("vouchers/") && doc.data.voucherCategory)
-  .sort((left, right) => left.data.title.localeCompare(right.data.title));
-
-const areas = [
-  { label: "Azure", key: "azure", description: "Infrastructure, data, and AI" },
-  { label: "GitHub", key: "github", description: "Development and DevOps" },
-  {
-    label: "AI Business",
-    key: "aibusiness",
-    description: "AI and business applications",
-  },
-  {
-    label: "Dynamics 365",
-    key: "dynamics",
-    description: "Business applications",
-  },
-  {
-    label: "Microsoft 365",
-    key: "microsoft365",
-    description: "Productivity and collaboration",
-  },
-  {
-    label: "Power Platform",
-    key: "power",
-    description: "Apps, automation, and analytics",
-  },
-  {
-    label: "Security",
-    key: "security",
-    description: "Security, identity, and compliance",
-  },
-].map((area) => ({
-  ...area,
-  exams: docs
-    .filter((doc) => doc.id.startsWith(`${area.key}/`))
-    .sort((left, right) => left.id.localeCompare(right.id))
-    .slice(0, 4),
-}));
+  .sort((left, right) => left.data.title.localeCompare(right.data.title))
+  .slice(0, 8);
 ---
 
 <section
@@ -144,13 +109,39 @@ const areas = [
     >
       The shortest path to your next resource.
     </h1>
-    <p
-      class="mt-4 text-lg leading-relaxed text-pretty text-neutral-600 dark:text-neutral-400"
-    >
-      Exam-focused study materials, labs, updates, vouchers, and people to learn
-      with.
-    </p>
   </header>
+
+  <div
+    class="mt-6 w-full"
+    role="region"
+    aria-label="AI and business certification announcement"
+  >
+    <div
+      class="min-h-24 rounded-xl bg-neutral-800 bg-[url('/ab-banner.svg')] bg-cover bg-center bg-no-repeat p-4 text-center shadow-sm sm:p-6 dark:bg-blue-900"
+    >
+      <a
+        class="group inline-flex items-center gap-x-2 rounded-full border-2 border-neutral-50 px-4 py-2 text-sm font-semibold text-neutral-50 backdrop-brightness-75 transition duration-300 hover:border-neutral-100/70 hover:text-neutral-50/70 sm:backdrop-brightness-100"
+        href="/wiki/"
+      >
+        <span class="block sm:hidden">New AI/AB Certs</span>
+        <span class="hidden sm:block">New AI/AB Certifications on the Hub</span>
+        <svg
+          class="size-4 flex-shrink-0 transition duration-300 group-hover:translate-x-1"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m9 18 6-6-6-6"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
 
   <div class="mt-8 grid gap-4 lg:grid-cols-12 lg:items-start">
     <div class="grid gap-4 lg:col-span-7">
@@ -237,44 +228,52 @@ const areas = [
             <p
               class="text-xs font-semibold tracking-[0.16em] text-orange-500 uppercase dark:text-orange-300"
             >
-              Direct access
+              Offer board
             </p>
             <h2
               class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100"
             >
-              Browse by area
+              New vouchers
             </h2>
           </div>
           <a
-            href="/wiki/"
-            class="text-sm font-semibold text-neutral-600 underline decoration-neutral-300 underline-offset-4 hover:text-orange-500 dark:text-neutral-400 dark:decoration-neutral-600 dark:hover:text-orange-300"
-            >All exams</a
+            href="/vouchers/"
+            class="text-sm font-semibold text-neutral-600 hover:text-orange-500 dark:text-neutral-400 dark:hover:text-orange-300"
+            >All vouchers</a
           >
         </div>
-        <div class="mt-5 grid gap-3 sm:grid-cols-2">
+        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+          Categorized voucher pages appear here automatically as they are added.
+        </p>
+        <ul class="mt-5 divide-y divide-neutral-200 dark:divide-neutral-800">
           {
-            areas.map((area) => (
-              <article class="rounded-xl border border-neutral-200 p-4 dark:border-neutral-800">
-                <h3 class="font-semibold text-neutral-900 dark:text-neutral-100">
-                  {area.label}
-                </h3>
-                <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
-                  {area.description}
-                </p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  {area.exams.map((exam) => (
-                    <a
-                      href={`/${exam.id}/`}
-                      class="rounded-md bg-neutral-100 px-2 py-1 text-xs font-semibold text-neutral-700 hover:bg-orange-100 hover:text-orange-800 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-orange-400/15 dark:hover:text-orange-300"
-                    >
-                      {exam.id.split("/").pop()?.toUpperCase()}
-                    </a>
-                  ))}
-                </div>
-              </article>
+            vouchers.map((voucher) => (
+              <li>
+                <a
+                  href={`/${voucher.id}/`}
+                  class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-500 dark:text-neutral-200 dark:hover:text-orange-300"
+                >
+                  <span class="min-w-0 truncate">{voucher.data.title}</span>
+                  <span
+                    class={`shrink-0 rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${getVoucherBadgeClass(voucher.data.voucherCategory)}`}
+                  >
+                    {getVoucherLabel(voucher.data.voucherCategory)}
+                  </span>
+                </a>
+              </li>
             ))
           }
-        </div>
+          <li>
+            <a
+              href="/vouchers/"
+              class="flex items-center justify-center py-3 text-sm font-semibold text-orange-600 hover:text-orange-500 dark:text-orange-300 dark:hover:text-orange-200"
+            >
+              View more vouchers <span aria-hidden="true" class="ms-2"
+                >-&gt;</span
+              >
+            </a>
+          </li>
+        </ul>
       </section>
     </div>
 
@@ -313,7 +312,10 @@ const areas = [
                   rel="noopener noreferrer"
                   class="flex items-center justify-between gap-4 py-3 text-sm font-semibold text-neutral-800 transition hover:text-orange-500 dark:text-neutral-200 dark:hover:text-orange-300"
                 >
-                  {link.label}
+                  <span class="flex items-center gap-3">
+                    <Icon name={link.icon} />
+                    <span>{link.label}</span>
+                  </span>
                   <span aria-hidden="true">-&gt;</span>
                 </a>
               </li>
@@ -360,50 +362,6 @@ const areas = [
                     class={`rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide ${getStatusClass(exam.status)}`}
                   >
                     {exam.status}
-                  </span>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-
-      <section
-        class="rounded-2xl border border-neutral-300 bg-white p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
-      >
-        <div class="flex items-end justify-between gap-4">
-          <div>
-            <p
-              class="text-xs font-semibold tracking-[0.16em] text-orange-500 uppercase dark:text-orange-300"
-            >
-              Offer board
-            </p>
-            <h2
-              class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100"
-            >
-              New vouchers
-            </h2>
-          </div>
-          <a
-            href="/vouchers/"
-            class="text-sm font-semibold text-neutral-600 hover:text-orange-500 dark:text-neutral-400 dark:hover:text-orange-300"
-            >All vouchers</a
-          >
-        </div>
-        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-          Categorized voucher pages appear here automatically as they are added.
-        </p>
-        <ul class="mt-5 divide-y divide-neutral-200 dark:divide-neutral-800">
-          {
-            vouchers.map((voucher) => (
-              <li>
-                <a
-                  href={`/${voucher.id}/`}
-                  class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-500 dark:text-neutral-200 dark:hover:text-orange-300"
-                >
-                  <span class="min-w-0 truncate">{voucher.data.title}</span>
-                  <span class="shrink-0 rounded-full bg-blue-100 px-2 py-1 text-[0.65rem] font-bold tracking-wide text-blue-800 uppercase dark:bg-blue-400/15 dark:text-blue-300">
-                    {getVoucherLabel(voucher.data.voucherCategory)}
                   </span>
                 </a>
               </li>
