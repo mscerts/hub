@@ -20,7 +20,9 @@ jobs:
         run: bash scripts/voucher-expiry-check.sh
 
       - name: Create pull request for expired vouchers
+        id: create-pr
         if: steps.check.outputs.expired == 'true'
+        continue-on-error: true
         uses: peter-evans/create-pull-request@v7
         with:
           add-paths: src/content/docs/vouchers
@@ -29,3 +31,35 @@ jobs:
           title: "Mark expired vouchers"
           body-path: /tmp/voucher-changes.md
           labels: content, automated
+
+      - name: Report pull request permission failure
+        if: steps.check.outputs.expired == 'true' && steps.create-pr.outcome == 'failure'
+        run: |
+          {
+            echo "# Voucher Expiry Pull Request Blocked"
+            echo
+            echo "The voucher expiry changes were committed to the automation branch, but GitHub prevented this workflow from creating a pull request."
+            echo
+            echo "Organization Actions policy must allow workflows to create pull requests, or a repository secret with pull request creation permissions must be configured."
+            echo
+            echo "Automation branch: https://github.com/${{ github.repository }}/tree/automation/expired-vouchers"
+            echo
+            cat /tmp/voucher-changes.md
+          } > /tmp/voucher-pr-permission-report.md
+
+      - name: Create issue for pull request permission failure
+        id: create-permission-issue
+        if: steps.check.outputs.expired == 'true' && steps.create-pr.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh issue list --repo "${{ github.repository }}" --state open --search '"Voucher Expiry PR Blocked" in:title' --json number --jq 'length' | grep -q '^0$'; then
+            gh issue create \
+              --repo "${{ github.repository }}" \
+              --title "Voucher Expiry PR Blocked" \
+              --body-file /tmp/voucher-pr-permission-report.md \
+              --label report \
+              --label automated
+          else
+            echo "An open voucher expiry permission issue already exists"
+          fi
