@@ -1,74 +1,52 @@
 ---
-import enStrings from "@utils/navigation.ts";
-import BrandLogoLight from "../../../assets/images/logo_light.svg";
 import BrandLogoDark from "../../../assets/images/logo_dark.svg";
-import Offer from "../../../assets/images/mUsummerofcerts2026.webp";
 import CookiePreferencesButton from "@components/ui/buttons/CookiePreferencesButton.astro";
-
-const strings = enStrings;
 ---
 
-<footer class="w-full bg-neutral-300 dark:bg-neutral-900">
+<footer
+  class="w-full border-t border-[#343434] bg-[#1d1d1d] text-neutral-300"
+  aria-label="Site footer"
+>
   <div
-    class="mx-auto w-full max-w-[85rem] px-4 py-10 sm:px-6 lg:px-16 lg:pt-20 2xl:max-w-(--breakpoint-2xl)"
+    class="mx-auto flex min-h-16 w-full max-w-[85rem] flex-wrap items-center justify-between gap-x-8 gap-y-3 px-4 py-3 sm:px-6 lg:px-16 2xl:max-w-(--breakpoint-2xl)"
   >
-    <div class="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
-      <div class="col-span-full lg:col-span-1">
-        <!-- Brand Logo with theme switching -->
-        <!-- Light theme logo (black logo for light backgrounds) -->
-        <img src={BrandLogoLight.src} alt="Brand Logo" class="h-auto w-32 block dark:hidden" />
-        <!-- Dark theme logo (white logo for dark backgrounds) -->
-        <img src={BrandLogoDark.src} alt="Brand Logo" class="h-auto w-32 hidden dark:block" />
-      </div>
-      <!-- An array of links for Product and Company sections -->
-      {
-        strings.footerLinks.map((section) => (
-          <div class="col-span-1">
-            <h3 class="font-bold text-neutral-800 dark:text-neutral-200">
-              {section.section}
-            </h3>
-            <ul class="mt-3 grid space-y-3">
-              {section.links.map((link, _index) => (
-                <li>
-                  <a
-                    href={link.url}
-                    class="inline-flex gap-x-2 rounded-lg text-neutral-600 outline-hidden ring-zinc-500 transition duration-300 hover:text-neutral-500 focus-visible:ring-3 dark:text-neutral-400 dark:ring-zinc-200 dark:hover:text-neutral-300 dark:focus:outline-hidden"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))
-      }
-
-      <div class="col-span-2">
-        <div class="mt-2">
-          <div class="flex justify-center">
-            <a 
-              href="https://www.measureup.com/subscription-plans-for-individuals?source=banner&key=7&u=44" 
-              class="block transition-transform duration-300 hover:scale-105"
-              target="_blank"
-              aria-label="Black Friday Special Offer"
-            >
-              <img 
-                src={Offer.src} 
-                alt="Black Friday Special Offer" 
-                class="h-auto w-512 rounded-lg border border-neutral-400/30 bg-white/10 p-2 backdrop-blur-sm dark:border-neutral-600/30 dark:bg-black/10"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </div>
-        </div>
-      </div>    <div
-      class="mt-9 grid gap-y-2 sm:mt-12 sm:flex sm:items-center sm:justify-between sm:gap-y-0"
+    <a
+      href="/"
+      class="shrink-0 rounded-md outline-hidden transition-opacity hover:opacity-70 focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1d1d1d]"
+      aria-label="Microsoft Certification Hub home"
     >
-      <div class="flex items-center gap-4">
-        <CookiePreferencesButton text="Cookies" variant="ghost" size="xs" />
-      </div>
-    </div>
-    </div>
+      <img
+        src={BrandLogoDark.src}
+        alt="Microsoft Certification Hub"
+        class="block h-auto w-28"
+      />
+    </a>
+
+    <nav
+      aria-label="Footer links"
+      class="flex flex-wrap items-center gap-x-5 gap-y-2"
+    >
+      <a
+        href="/privacy/"
+        class="rounded-sm text-xs font-medium text-neutral-300 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:outline-none"
+      >
+        Privacy
+      </a>
+      <a
+        href="/contact/"
+        class="rounded-sm text-xs font-medium text-neutral-300 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:outline-none"
+      >
+        Contact
+      </a>
+      <a
+        href="/contributing/"
+        class="rounded-sm text-xs font-medium text-neutral-300 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:outline-none"
+      >
+        Contributing
+      </a>
+      <span class="hidden h-4 w-px bg-[#343434] sm:block" aria-hidden="true"
+      ></span>
+      <CookiePreferencesButton text="Cookies" variant="secondary" size="xs" />
+    </nav>
   </div>
 </footer>

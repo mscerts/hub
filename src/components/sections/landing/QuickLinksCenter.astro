@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Icon from "@components/ui/icons/Icon.astro";
+import MeasureUpBanner from "../../../assets/images/mUjulybanner.png";
 import {
   examStatuses,
   examStatusStyles,
@@ -370,5 +371,23 @@ const vouchers = docs
         </ul>
       </section>
     </aside>
+  </div>
+
+  <div class="mt-8 flex justify-center">
+    <a
+      href="https://www.measureup.com/subscription-plans-for-individuals?source=banner&key=7&u=44"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="block w-full max-w-4xl overflow-hidden rounded-xl border border-neutral-300/80 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 dark:border-neutral-700 dark:bg-neutral-900"
+      aria-label="MeasureUp subscription plans"
+    >
+      <img
+        src={MeasureUpBanner.src}
+        alt="MeasureUp subscription plans"
+        class="h-auto w-full"
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
   </div>
 </section>
