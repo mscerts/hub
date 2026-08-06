@@ -35,6 +35,12 @@ export const examPages: Record<string, ExamPageData> = {
         description:
           "Study guide contains topics and information you need to know to successfully prepare for the exam.",
       },
+      {
+        title: "How to Prepare for Fundamentals Exams",
+        href: "/prepare/fundamentals/",
+        description:
+          "Guidance on study time, resources, and readiness for Microsoft Fundamentals exams.",
+      },
     ],
     tabs: [
       {
@@ -106,6 +112,12 @@ export const examPages: Record<string, ExamPageData> = {
         target: "_blank",
         description:
           "Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings.",
+      },
+      {
+        title: "How to Prepare for Role-Based Exams",
+        href: "/prepare/role-based/",
+        description:
+          "Guidance on hands-on practice, documentation, and readiness for Microsoft role-based exams.",
       },
     ],
     tabs: [
