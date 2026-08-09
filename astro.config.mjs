@@ -166,6 +166,7 @@ export default defineConfig({
             {
               label: "Navigating Study Materials",
               link: "/prepare/studymaterials/",
+              badge: { text: "WIP", variant: "caution" },
             },
             {
               label: "Business Exams",
