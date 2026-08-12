@@ -110,6 +110,7 @@ export default defineConfig({
     "/security/sc-730/":"/security/sc-900/",
     "/vouchers/aichallenge/": "/vouchers/",
     "/vouchers/microsoftignite/": "/vouchers/",
+    "/vouchers/fabricdatadays/": "/vouchers/",
     "/dynamics/mb-280": "/aibusiness/ab-210",
     "/azure/az-204": "/azure/ai-200",
     
@@ -203,11 +204,6 @@ export default defineConfig({
               label: "Partner Certification Week",
               link: "/vouchers/partnerweek/",
               badge: { text: "*100%", variant: "tip" },
-            },
-            {
-              label: "Fabric Data Days",
-              link: "/vouchers/fabricdatadays/",
-              badge: { text: "100%", variant: "tip" },
             },
             {
               label: "South Africa AI Skills",
