@@ -53,6 +53,7 @@ export default defineConfig({
     "/security/sc-730/": "/certs/security/sc-900/",
     "/vouchers/aichallenge/": "/certs/vouchers/",
     "/vouchers/microsoftignite/": "/certs/vouchers/",
+    "/vouchers/fabricdatadays/": "/certs/vouchers/",
     "/dynamics/mb-280": "/certs/aibusiness/ab-210/",
     "/azure/az-204": "/certs/azure/ai-200/",
     "/discord":
