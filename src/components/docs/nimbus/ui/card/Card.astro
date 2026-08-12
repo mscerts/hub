@@ -1,0 +1,46 @@
+---
+import { Icon } from "astro-icon/components";
+import { cn } from "@/lib/cn";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"article"> {
+  title: string;
+  /** Iconify icon name, e.g. `ph:lightning`. */
+  icon?: string;
+}
+
+const { title, icon, class: className, ...attrs } = Astro.props;
+---
+
+<article
+  class={cn("docs-card my-5 rounded-xl border border-border bg-card p-5 shadow-sm", className)}
+  {...attrs}
+>
+  <div class="flex items-center gap-3">
+    {icon && (
+      <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-muted">
+        <Icon name={icon} class="block h-5 w-5 text-foreground" />
+      </span>
+    )}
+    <h3 class="m-0 text-base font-semibold leading-snug text-foreground">{title}</h3>
+  </div>
+  <div class:list={["text-sm leading-relaxed text-muted-foreground", icon ? "mt-4" : "mt-2"]}>
+    <slot />
+  </div>
+</article>
+
+<style>
+  .docs-card { font-family: "DM Sans", "Avenir Next", "Segoe UI", sans-serif; }
+  .docs-card :global(h3) { font-family: inherit; }
+  .docs-card > :global(div:last-child) { color: var(--nb-muted-foreground); }
+  .docs-card > :global(div:last-child) :global(p),
+  .docs-card > :global(div:last-child) :global(li) {
+    color: inherit !important;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  .docs-card :global(p:first-child) { margin-top: 0; }
+  .docs-card :global(p:last-child) { margin-bottom: 0; }
+  article :global(a > p) { display: contents; }
+  .docs-card :global(a) { color: inherit; text-decoration: none; }
+</style>

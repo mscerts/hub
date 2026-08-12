@@ -1,0 +1,29 @@
+---
+import DocsShell from "../DocsShell.astro";
+import { docsSidebar } from "@data/docs-sidebar";
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  headings: Heading[];
+}
+
+const { title, description, headings } = Astro.props;
+
+---
+
+<DocsShell
+  sectionLabel="Certification Program Guide"
+  sidebarItems={docsSidebar}
+  {title}
+  {description}
+  {headings}
+>
+  <slot />
+</DocsShell>

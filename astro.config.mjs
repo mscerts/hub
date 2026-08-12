@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import starlight from "@astrojs/starlight";
 import starlightImageZoom from "starlight-image-zoom";
+import astroIcon from "astro-icon";
 import { readdirSync } from "node:fs";
 import path from "node:path";
 import { examStatuses } from "./src/data_files/exam-status.mjs";
@@ -103,6 +104,7 @@ export default defineConfig({
   },
   prefetch: true,
   integrations: [
+    astroIcon(),
     sitemap({
       i18n: {
         defaultLocale: "en", // All urls that don't contain language prefix will be treated as default locale

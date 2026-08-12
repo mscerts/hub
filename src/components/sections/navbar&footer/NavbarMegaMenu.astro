@@ -1,6 +1,7 @@
 ---
 //Import relevant dependencies
 import ThemeIcon from "@components/ThemeIcon.astro";
+import Icon from "@components/ui/icons/Icon.astro";
 import NavLink from "@components/ui/links/NavLink.astro";
 import MegaMenuLink from "@components/ui/links/MegaMenuLink.astro";
 import enStrings from "@utils/navigation.ts";
@@ -11,40 +12,59 @@ import { DISCORD_URL } from "@data/constants";
 // Use English strings
 const strings = enStrings;
 const homeUrl = "/";
+const redditLinks = [
+  {
+    name: "r/O365Certification",
+    url: "https://www.reddit.com/r/O365Certification/",
+  },
+  {
+    name: "r/SCICertifications",
+    url: "https://www.reddit.com/r/SCICertifications/",
+  },
+  {
+    name: "r/AzureCertifications",
+    url: "https://www.reddit.com/r/AzureCertifications/",
+  },
+];
 ---
 
 <!-- Main header component -->
-<header
-  class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start"
->
-  <!-- Navigation container -->
+<header class="sticky inset-x-0 top-0 z-50 flex w-full flex-wrap text-sm">
   <nav
-    class="relative mx-2 w-full rounded-[36px] border border-yellow-100/40 bg-yellow-50/60 px-4 py-3 backdrop-blur-md dark:border-neutral-700/40 dark:bg-neutral-800/80 dark:backdrop-blur-md md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 xl:mx-auto"
+    class="relative mx-0 w-full border-x border-b border-neutral-300/80 bg-white/95 px-4 py-3 shadow-sm backdrop-blur-md md:flex md:min-h-16 md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 dark:border-neutral-700/80 dark:bg-[#1d1d1d]/95"
     aria-label="Global"
   >
     <div class="flex items-center justify-between">
       <!-- Brand logo -->
       <a
-        class="flex-none rounded-lg text-xl font-bold outline-hidden ring-zinc-500 focus-visible:ring-3 dark:ring-zinc-200 dark:focus:outline-hidden"
+        class="flex-none rounded-lg text-xl font-bold ring-orange-500 outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:ring-orange-300 dark:focus-visible:ring-offset-[#1d1d1d]"
         href={homeUrl}
         aria-label="Brand"
       >
         <!-- Light theme logo (shown in light mode) -->
-        <img src={BrandLogoLight.src} alt="Brand Logo" class="h-auto w-35 block dark:hidden" />
+        <img
+          src={BrandLogoLight.src}
+          alt="Microsoft Certification Hub"
+          class="block h-auto w-32 dark:hidden"
+        />
         <!-- Dark theme logo (shown in dark mode) -->
-        <img src={BrandLogoDark.src} alt="Brand Logo" class="h-auto w-35 hidden dark:block" />
+        <img
+          src={BrandLogoDark.src}
+          alt="Microsoft Certification Hub"
+          class="hidden h-auto w-32 dark:block"
+        />
       </a>
       <!-- Collapse toggle for smaller screens -->
-      <div class="ml-auto mr-5 md:hidden">
+      <div class="mr-2 ml-auto md:hidden">
         <button
           type="button"
-          class="hs-collapse-toggle flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-neutral-600 transition duration-300 hover:bg-neutral-200 disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:outline-hidden"
+          class="hs-collapse-toggle flex size-9 items-center justify-center rounded-lg text-sm font-bold text-neutral-600 transition duration-300 hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:outline-hidden"
           data-hs-collapse="#navbar-collapse-with-animation"
           aria-controls="navbar-collapse-with-animation"
           aria-label="Toggle navigation"
         >
           <svg
-            class="h-[1.25rem] w-[1.25rem] shrink-0 hs-collapse-open:hidden"
+            class="hs-collapse-open:hidden h-[1.25rem] w-[1.25rem] shrink-0"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -59,7 +79,7 @@ const homeUrl = "/";
             <line x1="3" x2="21" y1="18" y2="18"></line>
           </svg>
           <svg
-            class="hidden h-[1.25rem] w-[1.25rem] shrink-0 hs-collapse-open:block"
+            class="hs-collapse-open:block hidden h-[1.25rem] w-[1.25rem] shrink-0"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -82,11 +102,11 @@ const homeUrl = "/";
     <!-- Contains navigation links -->
     <div
       id="navbar-collapse-with-animation"
-      class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block"
+      class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block md:overflow-visible"
     >
       <!-- Navigation links container -->
       <div
-        class="mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-4 lg:gap-x-7 md:gap-y-0 md:ps-7"
+        class="mt-4 flex flex-col gap-x-1 gap-y-1 border-t border-neutral-200 pt-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-y-0 md:border-t-0 md:ps-7 md:pt-0 dark:border-neutral-700"
       >
         <!-- Navigation links and Authentication component -->
         {
@@ -99,22 +119,79 @@ const homeUrl = "/";
           })
         }
 
-        <!-- Discord Link -->
-        <a
-          href={DISCORD_URL}
-          target="_blank"
-          class="flex items-center gap-x-2 text-base md:text-sm font-medium text-neutral-600 ring-zinc-500 transition duration-300 focus-visible:ring-3 outline-hidden hover:text-orange-400 dark:hover:text-orange-300 dark:border-neutral-700 dark:text-neutral-400 dark:ring-zinc-200 dark:focus:outline-hidden md:my-6 md:border-s md:border-neutral-300 md:ps-6 2xl:text-base"
-        >
-          <svg
-            class="h-5 w-5 shrink-0"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="currentColor"
+        <!-- Community links -->
+        <div class="flex items-center gap-1 md:ml-2">
+          <a
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex size-9 items-center justify-center rounded-lg text-neutral-600 ring-orange-500 outline-hidden transition hover:text-[#5865F2] focus-visible:ring-2 dark:text-neutral-300 dark:hover:text-[#7289DA]"
+            aria-label="Join the Microsoft Certification Hub Discord"
           >
-            <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.1.1 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.1 16.1 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02M8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12m6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12"></path>
-          </svg>
-        </a>
+            <svg
+              class="h-5 w-5 shrink-0"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.1.1 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.1 16.1 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02M8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12m6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12"
+              ></path>
+            </svg>
+          </a>
+          <div class="relative">
+            <button
+              id="reddit-menu-toggle"
+              data-reddit-menu-toggle
+              type="button"
+              class="group flex size-9 items-center justify-center rounded-lg text-neutral-600 ring-orange-500 outline-hidden transition hover:text-[#FF4500] focus-visible:ring-2 dark:text-neutral-300 dark:hover:text-[#FF5700]"
+              aria-label="Open Microsoft certification subreddits"
+              aria-controls="reddit-menu"
+              aria-expanded="false"
+            >
+              <Icon
+                name="reddit"
+                class="!fill-neutral-600 transition-colors group-hover:!fill-[#FF4500] dark:!fill-neutral-300 dark:group-hover:!fill-[#FF5700]"
+              />
+            </button>
+            <div
+              id="reddit-menu"
+              data-reddit-menu
+              hidden
+              class="absolute top-[calc(100%+1rem)] right-0 z-50 w-72 rounded-2xl border border-neutral-200 bg-white p-3 shadow-2xl shadow-neutral-950/15 dark:border-neutral-700 dark:bg-[#1d1d1d] dark:shadow-black/40"
+              role="menu"
+            >
+              <div
+                class="border-b border-neutral-200 px-3 pb-3 dark:border-neutral-700"
+              >
+                <p
+                  class="text-xs font-semibold tracking-[0.12em] text-neutral-500 uppercase dark:text-neutral-400"
+                >
+                  Certification communities
+                </p>
+                <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                  Join the conversation on Reddit.
+                </p>
+              </div>
+              <div class="mt-2 grid gap-1">
+                {
+                  redditLinks.map((link) => (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      role="menuitem"
+                      class="rounded-xl px-3 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-100 hover:text-[#FF4500] focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:outline-none dark:text-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-[#FF5700]"
+                    >
+                      {link.name}
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- ThemeIcon component specifically for larger screens -->
         <span class="hidden md:inline-block">
           <ThemeIcon />
@@ -123,12 +200,54 @@ const homeUrl = "/";
     </div>
   </nav>
 </header>
+<script>
+  const closeRedditMenus = () => {
+    document
+      .querySelectorAll<HTMLElement>("[data-reddit-menu]")
+      .forEach((menu) => {
+        menu.hidden = true;
+      });
+    document
+      .querySelectorAll<HTMLElement>("[data-reddit-menu-toggle]")
+      .forEach((toggle) => {
+        toggle.setAttribute("aria-expanded", "false");
+      });
+  };
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+
+    const toggle = event.target.closest<HTMLElement>(
+      "[data-reddit-menu-toggle]",
+    );
+    if (toggle) {
+      const menuId = toggle.getAttribute("aria-controls");
+      const menu = menuId ? document.getElementById(menuId) : null;
+      if (!menu) return;
+
+      const isOpen = !menu.hidden;
+      closeRedditMenus();
+      menu.hidden = isOpen;
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+      return;
+    }
+
+    if (!event.target.closest("[data-reddit-menu]")) closeRedditMenus();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeRedditMenus();
+  });
+</script>
 <!-- Theme Appearance script to manage light/dark modes -->
 <script is:inline>
   const HSThemeAppearance = {
     init() {
       const defaultTheme = "default";
-      let theme = localStorage.getItem("hs_theme") || localStorage.getItem("starlight-theme") || defaultTheme;
+      let theme =
+        localStorage.getItem("hs_theme") ||
+        localStorage.getItem("starlight-theme") ||
+        defaultTheme;
 
       if (document.querySelector("html").classList.contains("dark")) return;
       this.setAppearance(theme);
@@ -172,7 +291,7 @@ const homeUrl = "/";
 
       if (dispatchEvent) {
         window.dispatchEvent(
-          new CustomEvent("on-hs-appearance-change", { detail: theme })
+          new CustomEvent("on-hs-appearance-change", { detail: theme }),
         );
       }
     },
@@ -187,7 +306,11 @@ const homeUrl = "/";
     },
     getOriginalAppearance() {
       const defaultTheme = "default";
-      return localStorage.getItem("hs_theme") || localStorage.getItem("starlight-theme") || defaultTheme;
+      return (
+        localStorage.getItem("hs_theme") ||
+        localStorage.getItem("starlight-theme") ||
+        defaultTheme
+      );
     },
   };
   HSThemeAppearance.init();
@@ -202,10 +325,10 @@ const homeUrl = "/";
 
   window.addEventListener("load", () => {
     const $clickableThemes = document.querySelectorAll(
-      "[data-hs-theme-click-value]"
+      "[data-hs-theme-click-value]",
     );
     const $switchableThemes = document.querySelectorAll(
-      "[data-hs-theme-switch]"
+      "[data-hs-theme-switch]",
     );
 
     $clickableThemes.forEach(($item) => {
@@ -213,8 +336,8 @@ const homeUrl = "/";
         HSThemeAppearance.setAppearance(
           $item.getAttribute("data-hs-theme-click-value"),
           true,
-          $item
-        )
+          $item,
+        ),
       );
     });
 

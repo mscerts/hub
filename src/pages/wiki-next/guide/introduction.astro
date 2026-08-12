@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from "astro:content";
+import MainLayout from "@/layouts/MainLayout.astro";
+import GuidePage from "@components/docs/templates/GuidePage.astro";
+
+const docs = await getCollection("docs");
+const entry = docs.find((doc) => doc.id === "guide/introduction");
+
+if (!entry) {
+  throw new Error("Guide introduction content entry was not found.");
+}
+
+const { Content, headings } = await render(entry);
+---
+
+<MainLayout
+  title={`${entry.data.title} | Microsoft Certification Hub`}
+  customDescription={entry.data.description ?? ""}
+  wide
+>
+  <GuidePage
+    title={entry.data.title}
+    description={entry.data.description ?? ""}
+    headings={headings}
+  >
+    <Content />
+  </GuidePage>
+</MainLayout>

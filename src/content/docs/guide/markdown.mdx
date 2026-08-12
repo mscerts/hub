@@ -1,0 +1,184 @@
+---
+title: Markdown
+description: "A visual test page for Markdown rendering and the custom documentation components."
+---
+import { Aside, Button, Card, CardGrid, LinkButton, LinkCard, Step, Steps, TabItem, Tabs, TabsContent, TabsList, TabsTrigger } from '@components/docs';
+
+This page is a deliberately busy rendering test. It covers the Markdown syntax and components that editors are likely to use in the wiki.
+
+## Typography
+
+### Headings and inline formatting
+
+Regular text can contain **strong text**, *emphasis*, ~~strikethrough~~, `inline code`, and [a normal link](https://learn.microsoft.com/).
+
+Use <mark>highlighted text</mark>, <kbd>Ctrl</kbd> + <kbd>K</kbd>, and <small>small supporting text</small> when the context calls for it.
+
+#### A fourth-level heading
+
+> Documentation should be clear enough to use and honest enough to trust.
+>
+> This is a multi-paragraph blockquote with a [quoted link](https://msfthub.com/).
+
+---
+
+## Lists
+
+Unordered lists support nesting:
+
+- Microsoft Azure
+  - Compute
+  - Storage
+  - Networking
+- Microsoft 365
+- Security, Compliance, and Identity
+
+Ordered lists support nesting too:
+
+1. Choose a path.
+2. Read the study guide.
+   1. Review the skills measured.
+   2. Identify the gaps.
+3. Practice deliberately.
+
+Task lists are useful for editorial checklists:
+
+- [x] Confirm the page title
+- [x] Check the mobile layout
+- [ ] Review external links before publishing
+
+## Tables and media
+
+| Resource | Audience | Status |
+| :--- | :---: | ---: |
+| Study guide | Everyone | Ready |
+| Practice assessment | Candidates | Review |
+| Hands-on lab | Practitioners | Useful |
+
+![A placeholder landscape image for testing image sizing](https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80)
+
+<details>
+  <summary>Expandable HTML content</summary>
+
+  This native disclosure block is useful for optional background information.
+</details>
+
+## Callouts
+
+<Aside type="note">
+  Notes provide context without interrupting the reader's flow.
+</Aside>
+
+<Aside type="tip" title="A quieter tip">
+  Tips should feel helpful, not like an alert. They can contain **formatted text**, links, and `inline code`.
+</Aside>
+
+<Aside type="caution">
+  Confirm dates, exam names, and registration requirements against the official source before publishing.
+</Aside>
+
+<Aside type="danger" title="Do not publish exam dumps">
+  This site does not publish stolen or unauthorized exam content.
+</Aside>
+
+## Cards and buttons
+
+<Card title="A regular card" icon="ph:book-open-text">
+  Cards can contain paragraphs, lists, and actions.
+
+  - Keep the content focused.
+  - Do not nest another `Card` inside this one.
+
+  <LinkButton href="https://learn.microsoft.com/" target="_blank" rel="noopener" variant="primary" icon>
+    Read Microsoft Learn
+  </LinkButton>
+</Card>
+
+<CardGrid>
+  <LinkCard title="A link card" description="Cards work well for related destinations." href="/wiki-next/guide/introduction/" />
+  <LinkCard title="Another destination" description="The arrow and hover state are interactive." href="/wiki-next/guide/overview/" />
+</CardGrid>
+
+<div class="flex flex-wrap gap-3">
+  <Button variant="primary" icon="ph:arrow-right">Primary action</Button>
+  <Button variant="secondary">Secondary action</Button>
+  <Button variant="outline">Outline action</Button>
+  <Button variant="ghost">Quiet action</Button>
+  <Button variant="destructive" size="sm">Destructive action</Button>
+  <Button variant="outline" shape="square" icon="ph:gear" aria-label="Settings" />
+</div>
+
+## Steps
+
+<Steps>
+1. **Select an exam.** Start with the skills measured on the official page.
+2. **Build a study loop.** Mix reading, practice, and hands-on work.
+3. **Review the gaps.** Return to the topics that still feel unfamiliar.
+</Steps>
+
+<Steps start={4}>
+  <Step title="Validate the result">Use a legitimate practice assessment.</Step>
+  <Step title="Schedule carefully">
+    Check the delivery options and accommodations before booking.
+  </Step>
+</Steps>
+
+## Tabs
+
+<Tabs syncKey="markdown-demo">
+  <TabItem label="Markdown">
+    This panel is authored with Markdown and includes **bold text**.
+
+    ```md
+    ## A heading
+    **Formatted content**
+    ```
+  </TabItem>
+  <TabItem label="PowerShell">
+    ```powershell
+    Get-AzResource -ResourceGroupName "study-lab"
+    ```
+  </TabItem>
+  <TabItem label="Nested card">
+    <Card title="A card inside a tab">
+      Components can be composed when the resulting hierarchy remains clear.
+    </Card>
+  </TabItem>
+</Tabs>
+
+### Manual tabs
+
+<div class="my-5" data-nb-tabs>
+  <TabsList>
+    <TabsTrigger value="one">First view</TabsTrigger>
+    <TabsTrigger value="two">Second view</TabsTrigger>
+  </TabsList>
+  <div class="mt-3">
+    <TabsContent value="one">The first manually composed panel.</TabsContent>
+    <TabsContent value="two">The second manually composed panel.</TabsContent>
+  </div>
+</div>
+
+## Code samples
+
+Inline code: `pnpm astro check`.
+
+```ts
+const page = {
+  title: "Markdown",
+  components: ["Aside", "Card", "Tabs"],
+};
+
+console.log(page.title);
+```
+
+```json
+{
+  "route": "/wiki-next/guide/markdown/",
+  "tested": true
+}
+```
+
+## Final paragraph
+
+This page intentionally combines standard Markdown with the local components. It should remain a convenient place to check visual regressions before changing the wider wiki experience.

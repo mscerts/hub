@@ -1,0 +1,53 @@
+---
+/**
+ * LinkCard — link-styled card with title, optional description, and
+ * trailing arrow that nudges on hover. Title shifts to primary on hover.
+ *
+ *   <LinkCard title="Get started" description="5-min intro" href="/start" />
+ *   <LinkCard title="Title only" href="/x" />
+ */
+import { Icon } from "astro-icon/components";
+import { cn } from "@/lib/cn";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  title: string;
+  description?: string;
+  href: string;
+}
+
+const { title, description, href, class: className, ...attrs } = Astro.props;
+---
+
+<a
+  href={href}
+  class={cn(
+    "docs-link-card group flex items-center justify-between gap-4 rounded-xl border border-border bg-card p-5 shadow-sm no-underline text-inherit transition-all hover:-translate-y-0.5 hover:border-border-strong hover:shadow-default",
+    className,
+  )}
+  {...attrs}
+>
+  <div class="min-w-0">
+    <h3 class="m-0 text-base font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">{title}</h3>
+    {description && <p class="mt-1 text-sm leading-normal text-muted-foreground">{description}</p>}
+  </div>
+  <Icon
+    name="ph:caret-right"
+    class="shrink-0 w-4 h-4 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-primary"
+    is:inline
+  />
+</a>
+
+<style>
+  .docs-link-card {
+    font-family: "DM Sans", "Avenir Next", "Segoe UI", sans-serif;
+    text-decoration: none !important;
+  }
+  .docs-link-card :global(h3) { font-family: inherit; text-decoration: none; }
+  .docs-link-card :global(p) {
+    margin: 0;
+    color: var(--nb-muted-foreground) !important;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+</style>
