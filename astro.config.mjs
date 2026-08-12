@@ -15,6 +15,7 @@ const site = "https://msfthub.com/";
 const examBadges = {
   azure: {
     "AZ-400": { text: "Endangered", variant: "caution" },
+    "DP-420": { text: "Endangered", variant: "caution" },
     "AZ-500": { text: "RETIRING", variant: "danger" },
     "AZ-800": { text: "RETIRING", variant: "danger" },
     "AZ-801": { text: "RETIRING", variant: "danger" },
