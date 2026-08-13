@@ -105,8 +105,8 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 ### Exam Page Anatomy (canonical structure)
 1. Frontmatter: `title: "<CODE> Study Materials"`, `description`
 2. Imports from `@astrojs/starlight/components`: `LinkCard`, `CardGrid`, `Card`, `Tabs`, `TabItem`, `Aside`
-3. Optional status banner: `:::tip` for beta/resource scarcity; `:::caution` for retirement and replacement details
-4. `<Card title="Get Started" icon="star">` → Exam link, Study Guide link, and Exam Labs link only when the matching lab page exists
+3. Optional status banner: `:::tip` for beta/resource scarcity; `:::caution` for retirement, or for an unconfirmed "Endangered" change (see below)
+4. `<Card title="Get Started" icon="star">` → Exam link, Study Guide link, Exam Labs link only when the matching lab page exists, then a How to Prepare LinkCard (see below) as the last item
 5. `<Tabs>` with `TabItem`s: Text, Videos, Tests, Paid, Misc
 6. Closing `</Card>`, then bottom `<Card title="MeasureUp Practice Tests" icon="open-book">` block with `<Aside>` for MSFTHUB discount; if no products exist, use a tip stating that MeasureUp has not released material yet
 
@@ -115,10 +115,29 @@ Resource placement:
 - **Videos:** Verified video courses, exam reviews, and directly relevant technical sessions.
 - **Tests:** Free practice assessments and legitimate free tests.
 - **Paid:** Paid courses, assessments, and practice-test products.
-- **Misc:** Repositories, tools, communities, reference implementations, and supporting standards.
+- **Misc:** Repositories, tools, communities, reference implementations, and supporting standards. Microsoft Agent Academy (`https://microsoft.github.io/agent-academy/`) belongs here only on exam pages where Copilot Studio / Copilot-and-agent building or administration is a core, named topic (not an incidental mention, and not a different Copilot product like GitHub Copilot) — currently AB-410, AB-620, AB-650, AB-730, AB-900.
 - Keep all five exam tabs, even if some are empty. Sparse beta pages are expected.
 - If an announced official course is future-dated, include its verified availability date in the description.
 - Retiring pages retain valid existing resources and link to the verified replacement exam.
+
+### How to Prepare LinkCard (all exam pages)
+- Every exam page's "Get Started" card ends with a `LinkCard` to the matching `/prepare/` guide: the last `LinkCard`-type resource (after Exam Labs/Exam Case Studies/GitHub Case Studies if present, otherwise right after Study Guide) and before any `RelatedCerts` component.
+- Classification (verify against Microsoft Learn for any new exam before assuming):
+  - **Fundamentals** → `/prepare/fundamentals/`: exam name contains "Fundamentals" (AI-901, AZ-900, DP-900, PL-900, SC-900), GitHub's "Foundations" tier (GH-900), and AB-900.
+  - **Business** → `/prepare/business/`: AB-730, AB-731 (non-technical AI Business Professional/Leader tier).
+  - **Role-based** → `/prepare/role-based/`: everything else (Associate/Expert/Specialty, all areas) — one page covers all three tiers.
+- Wording:
+  - Fundamentals: `title="How to Prepare for Fundamentals Exams" href="/prepare/fundamentals/" description="Guidance on study time, resources, and readiness for Microsoft Fundamentals exams."`
+  - Business: `title="How to Prepare for Business Exams" href="/prepare/business/" description="Guidance on study time, resources, and readiness for Microsoft Business exams."`
+  - Role-based: `title="How to Prepare for Role-Based Exams" href="/prepare/role-based/" description="Guidance on hands-on practice, documentation, and readiness for Microsoft role-based exams."`
+- No `target="_blank"` (internal link). Add this LinkCard, with the correct classification, to any new exam page.
+
+### Endangered Exam Treatment (unconfirmed change — distinct from Retiring)
+- Use when Microsoft signals a *possible* future change (a new exam, a level change, an objective-domain/blueprint survey) but nothing is confirmed — do not use RETIRING language or badges for these.
+- Add a `:::caution` banner at the top citing the concrete evidence (announcement post, survey, etc.) with a source link. Keep it terse and structurally consistent: new exam code + title (if known), "may replace X", "could mean retirement", "neither confirmed", one source link.
+- Sidebar badge: `{ text: "Endangered", variant: "caution" }` in the `examBadges` map (astro.config.mjs, keyed by area then exam code).
+- Examples: AZ-400 (potential AZ-401: Designing and Implementing Microsoft Agentic DevOps), DP-420 (potential DP-421: Building Data-Driven AI Applications with Azure Cosmos DB).
+- Keep all existing resources intact; this is an informational heads-up, not a retirement.
 
 ### Lab Pages
 - Files are lowercase at `src/content/docs/labs/<area>/<code>.mdx`; routes are `/labs/<area>/<code>/`.
@@ -131,7 +150,7 @@ Resource placement:
 - Starlight directives (`:::note`, `:::tip`, `:::caution`) remain flush at column 0 even inside tabs.
 - Strip trailing whitespace. Historical pages are not fully uniform, so normalize touched blocks only unless broad cleanup is requested.
 - Preserve the known SC-900 setup `LinkCard` outside its `CardGrid`; it is an intentional out-of-scope legacy exception.
-- Known verified resources: AZ-120 has three Learn exercises from `explore-azure-center-sap-solutions`; AZ-900 uses `MicrosoftLearning/AZ-900-Microsoft-Azure-Fundamentals`; SC-401 already includes `MicrosoftLearning/SC-401T00-Information-Security-Administrator`. Do not duplicate them.
+- Known verified resources: AZ-120 has three Learn exercises from `explore-azure-center-sap-solutions`; AZ-900 uses `MicrosoftLearning/AZ-900-Microsoft-Azure-Fundamentals`; SC-401 already includes `MicrosoftLearning/SC-401T00-Information-Security-Administrator`; the Azure Monitor Lab (Learn labs index) is a good cross-fit for monitoring-heavy Azure exams and is already used on AZ-104, AZ-204, AZ-500, AZ-700, and AZ-801. Do not duplicate them.
 - Old claims that AZ-140, MD-102, MS-102, MS-700, or SC-900 have zero Learn exercises are unverified and must not be relied on.
 
 ### Lab Page Workflow
@@ -214,10 +233,9 @@ Custom CSS files (loaded conditionally via `NO_GRADIENTS` env var):
 - Favicon: `/favicon.svg`
 
 ### Sidebar
-- **Hand-maintained** in `astro.config.mjs` under `starlight({ sidebar: [...] })`
-- Pages only appear in nav if explicitly added there
-- Per-exam badges: `RETIRING`, `BETA`, `UPCOMING`
-- Keep exam entries in code order. GA exams have no badge; beta uses `{ text: "BETA", variant: "tip" }`; retiring uses `{ text: "RETIRING", variant: "danger" }`.
+- **Per-exam entries are auto-generated**: `buildExamSidebarItems(area)` (top of `astro.config.mjs`) reads the `.mdx` filenames directly from `src/content/docs/<area>/`, sorts them by an area-specific prefix order then alphanumerically, and maps each to a sidebar item — a new exam page needs no manual sidebar entry, it appears automatically once the file exists.
+- **Badges are still hand-maintained** via the `examBadges` map (top of `astro.config.mjs`, keyed by area then exam code): `{ text: "BETA", variant: "tip" }`, `{ text: "RETIRING", variant: "danger" }` (confirmed replacement exists), `{ text: "Endangered", variant: "caution" }` (possible but unconfirmed change — see Endangered Exam Treatment above). GA exams have no entry in `examBadges[area]`.
+- **Hand-maintained sections** of the `sidebar` array itself: Certification Program Guide, How to Prepare, Discounted Exam Vouchers, Support Us, and the top-level area-group structure (labels/badges/collapsed state) under Exam Study Materials.
 - Wiki pages are separate from the sidebar: `WikiList.astro` auto-discovers exam pages by area prefix, sorts collection IDs, and extracts a short name from the canonical exam-description template.
 - `VoucherList.astro` filters docs by `voucherCategory`, sorts by title, and constructs `/${doc.id}/` routes.
 
@@ -253,6 +271,7 @@ pnpm dev                        # Local preview
 - The build does **not** validate external link availability, tracking parameters, assessment IDs, exam names, voucher accuracy, or duplicate content. Verify these manually against authoritative sources.
 - When redirects change, test the old route against the dev server.
 - Use `pnpm install --frozen-lockfile` for reproducible installs; commit `pnpm-lock.yaml` when dependencies change.
+- No environment variables or secrets are required to build the site; analytics IDs (Google Analytics, Clarity, GTM) are hardcoded in astro.config.mjs.
 
 ---
 
