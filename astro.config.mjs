@@ -192,6 +192,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "Partner LevelUp",
+              link: "/vouchers/levelup/",
+              badge: { text: "*100%", variant: "tip" },
+            },
+            {
               label: "Exam AB-650 (beta)",
               link: "/vouchers/ab650beta/",
               badge: { text: "*80%", variant: "tip" },
