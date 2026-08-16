@@ -192,6 +192,11 @@ export default defineConfig({
           label: "Discounted Exam Vouchers",
           items: [
             {
+              label: "Partner Certification Week",
+              link: "/vouchers/partnerweek/",
+              badge: { text: "*100%", variant: "tip" },
+            },
+            {
               label: "Partner LevelUp",
               link: "/vouchers/levelup/",
               badge: { text: "*100%", variant: "tip" },
@@ -205,11 +210,6 @@ export default defineConfig({
               label: "Microsoft Defender Sweepstakes",
               link: "/vouchers/defendersweepstakes/",
               badge: { text: "*50%", variant: "tip" },
-            },
-            {
-              label: "Partner Certification Week",
-              link: "/vouchers/partnerweek/",
-              badge: { text: "*100%", variant: "tip" },
             },
             {
               label: "South Africa AI Skills",
