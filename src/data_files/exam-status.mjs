@@ -28,8 +28,18 @@ export const examStatuses = {
   dynamics: {},
 };
 
+// Statuses describe the current exam lifecycle state. Add an exam here when
+// Microsoft confirms that it has moved from beta to general availability.
+export const examStatusNames = {
+  BETA: "Beta",
+  GA: "Generally Available",
+  ENDANGERED: "Endangered",
+  RETIRING: "Retiring",
+};
+
 export const examStatusStyles = {
   BETA: "bg-purple-100 text-purple-800 dark:bg-purple-400/15 dark:text-purple-300",
+  GA: "bg-green-100 text-green-800 dark:bg-green-400/15 dark:text-green-300",
   ENDANGERED:
     "bg-orange-100 text-orange-800 dark:bg-orange-400/15 dark:text-orange-300",
   RETIRING: "bg-red-100 text-red-800 dark:bg-red-400/15 dark:text-red-300",

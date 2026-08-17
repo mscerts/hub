@@ -2,6 +2,7 @@
 //Import relevant dependencies
 import ThemeIcon from "@components/ThemeIcon.astro";
 import Icon from "@components/ui/icons/Icon.astro";
+import { Icon as PackIcon } from "astro-icon/components";
 import NavLink from "@components/ui/links/NavLink.astro";
 import MegaMenuLink from "@components/ui/links/MegaMenuLink.astro";
 import enStrings from "@utils/navigation.ts";
@@ -120,7 +121,11 @@ const redditLinks = [
         }
 
         <!-- Community links -->
-        <div class="flex items-center gap-1 md:ml-2">
+        <span
+          class="mx-3 hidden h-5 w-px bg-neutral-200 md:block dark:bg-neutral-700"
+          aria-hidden="true"
+        ></span>
+        <div class="flex items-center gap-1">
           <a
             href={DISCORD_URL}
             target="_blank"
@@ -191,6 +196,18 @@ const redditLinks = [
               </div>
             </div>
           </div>
+        </div>
+        <span
+          class="mx-2 hidden h-5 w-px bg-neutral-200 md:block dark:bg-neutral-700"
+          aria-hidden="true"
+        ></span>
+        <div class="flex items-center gap-1" aria-label="Quick actions">
+          <span class="flex size-9 items-center justify-center rounded-lg text-neutral-600 dark:text-neutral-300" aria-hidden="true">
+            <PackIcon name="ph:envelope-simple-fill" class="size-5" />
+          </span>
+          <span class="flex size-9 items-center justify-center rounded-lg text-neutral-600 dark:text-neutral-300" aria-hidden="true">
+            <PackIcon name="ph:bookmark-simple-fill" class="size-5" />
+          </span>
         </div>
         <!-- ThemeIcon component specifically for larger screens -->
         <span class="hidden md:inline-block">

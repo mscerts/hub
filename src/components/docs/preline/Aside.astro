@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"aside"> {
+  type?: "note" | "tip" | "caution" | "danger";
+  title?: string;
+}
+
+const { type = "note", title, class: className, ...attrs } = Astro.props;
+const config = {
+  note: { label: "Note", icon: "ph:info", classes: "border-blue-200 bg-blue-50 text-blue-800 dark:border-blue-900/60 dark:bg-blue-950/30 dark:text-blue-200" },
+  tip: { label: "Tip", icon: "ph:lightbulb", classes: "border-green-200 bg-green-50 text-green-800 dark:border-green-900/60 dark:bg-green-950/30 dark:text-green-200" },
+  caution: { label: "Caution", icon: "ph:warning", classes: "border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200" },
+  danger: { label: "Danger", icon: "ph:warning-circle", classes: "border-red-200 bg-red-50 text-red-800 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-200" },
+} as const;
+const c = config[type] ?? config.note;
+const displayTitle = title ?? c.label;
+---
+
+<aside
+  role="note"
+  aria-label={displayTitle}
+  class:list={[
+    "not-prose my-5 flex gap-x-3 rounded-lg border p-4",
+    c.classes,
+    className,
+  ]}
+  {...attrs}
+>
+  <Icon name={c.icon} class="mt-0.5 size-5 shrink-0" aria-hidden="true" />
+  <div class="min-w-0 text-sm leading-6">
+    <p class="m-0 font-semibold">{displayTitle}</p>
+    <div class="mt-1 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0"><slot /></div>
+  </div>
+</aside>

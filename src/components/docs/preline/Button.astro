@@ -1,0 +1,40 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+
+type Variant = "primary" | "secondary" | "ghost" | "destructive" | "secondary-destructive" | "outline";
+type Size = "xs" | "sm" | "base" | "lg";
+type Shape = "base" | "square" | "circle";
+
+interface Props extends Omit<HTMLAttributes<"button">, "size"> {
+  variant?: Variant;
+  size?: Size;
+  shape?: Shape;
+  icon?: string;
+  loading?: boolean;
+}
+
+const { variant = "secondary", size = "base", shape = "base", icon, loading = false, type = "button", disabled, class: className, ...attrs } = Astro.props;
+const variants: Record<Variant, string> = {
+  primary: "bg-blue-600 text-white hover:bg-blue-700 focus:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600",
+  secondary: "border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700",
+  ghost: "text-gray-600 hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white",
+  destructive: "bg-red-600 text-white hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600",
+  "secondary-destructive": "border border-gray-200 bg-white text-red-600 hover:bg-red-50 dark:border-gray-700 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-red-950/30",
+  outline: "border border-gray-200 text-gray-800 hover:bg-gray-50 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800",
+};
+const sizes: Record<Size, string> = { xs: "h-7 gap-1 px-2 text-xs", sm: "h-8 gap-1 px-3 text-xs", base: "h-9 gap-1.5 px-4 text-sm", lg: "h-10 gap-2 px-5 text-sm" };
+const compact: Record<Size, string> = { xs: "size-7", sm: "size-8", base: "size-9", lg: "size-10" };
+const iconSizes: Record<Size, string> = { xs: "size-3.5", sm: "size-3.5", base: "size-4", lg: "size-[1.125rem]" };
+const shapeClass = shape === "base" ? sizes[size] : `${compact[size]} p-0 ${shape === "circle" ? "rounded-full" : ""}`;
+---
+
+<button
+  type={type}
+  disabled={disabled || loading}
+  class:list={["group not-prose inline-flex shrink-0 items-center justify-center rounded-lg font-medium whitespace-nowrap transition focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50", variants[variant], shapeClass, className]}
+  {...attrs}
+>
+  {loading ? <Icon name="ph:circle-notch" class:list={["animate-spin", iconSizes[size]]} /> : icon && <Icon name={icon} class={iconSizes[size]} />}
+  <slot />
+</button>

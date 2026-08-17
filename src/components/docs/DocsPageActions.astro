@@ -1,0 +1,79 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Action {
+  label: string;
+  href: string;
+  icon: string;
+}
+
+const currentUrl = Astro.url.href;
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const encodedUrl = encodeURIComponent(currentUrl);
+const encodedTitle = encodeURIComponent(Astro.props.title ?? "Microsoft Certification Hub");
+const prompt = encodeURIComponent(`Help me understand this page: ${currentUrl}`);
+
+const aiActions: Action[] = [
+  { label: "Open in ChatGPT", href: `https://chatgpt.com/?q=${prompt}`, icon: "openai" },
+  { label: "Open in Claude", href: `https://claude.ai/new?q=${prompt}`, icon: "anthropic" },
+  { label: "Open in Cursor", href: `https://cursor.com/link/prompt?${prompt}`, icon: "cursor" },
+  { label: "Open in GitHub Copilot", href: `https://github.com/copilot/?prompt=${prompt}`, icon: "githubcopilot" },
+  { label: "View as Markdown", href: `${currentPath}.md`, icon: "markdown" },
+];
+
+const shareActions: Action[] = [
+  { label: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`, icon: "linkedin" },
+  { label: "X (Twitter)", href: `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`, icon: "x" },
+  { label: "Threads", href: `https://threads.net/intent/post?url=${encodedUrl}&text=${encodedTitle}`, icon: "threads" },
+  { label: "Bluesky", href: `https://bsky.app/intent/compose?text=${encodedTitle}%20${encodedUrl}`, icon: "bluesky" },
+  { label: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, icon: "facebook" },
+  { label: "Reddit", href: `https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`, icon: "reddit" },
+  { label: "Hacker News", href: `https://news.ycombinator.com/submitlink?u=${encodedUrl}&t=${encodedTitle}`, icon: "ycombinator" },
+  { label: "WhatsApp", href: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`, icon: "whatsapp" },
+];
+
+---
+
+<div class="mt-5 flex flex-wrap gap-2" aria-label="Page actions">
+  <div class="hs-dropdown relative inline-flex">
+    <button
+      type="button"
+      class="hs-dropdown-toggle inline-flex h-8 items-center gap-x-2 rounded-md border border-gray-700 bg-gray-800 px-3 text-xs font-semibold text-gray-100 transition hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
+      aria-haspopup="menu"
+      aria-expanded="false"
+    >
+      Ask AI
+      <Icon name="ph:caret-down" class="size-3.5" aria-hidden="true" />
+    </button>
+    <div class="hs-dropdown-menu z-20 mt-2 hidden w-60 rounded-lg border border-gray-700 bg-gray-800 p-1 opacity-0 shadow-xl transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:divide-gray-700" role="menu">
+      {aiActions.map((action) => (
+        <a href={action.href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-x-3 rounded-md px-3 py-2.5 text-sm text-gray-100 no-underline transition hover:bg-gray-700 focus-visible:bg-gray-700 focus-visible:outline-none" role="menuitem">
+          <Icon name={`simple-icons:${action.icon}`} class="size-4 shrink-0" aria-hidden="true" />
+          <span class="min-w-0 flex-1">{action.label}</span>
+          <Icon name="ph:arrow-square-out" class="size-4 shrink-0 text-gray-400" aria-hidden="true" />
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <div class="hs-dropdown relative inline-flex">
+    <button
+      type="button"
+      class="hs-dropdown-toggle inline-flex h-8 items-center gap-x-2 rounded-md border border-gray-700 bg-gray-800 px-3 text-xs font-semibold text-gray-100 transition hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
+      aria-haspopup="menu"
+      aria-expanded="false"
+    >
+      Share
+      <Icon name="ph:caret-down" class="size-3.5" aria-hidden="true" />
+    </button>
+    <div class="hs-dropdown-menu z-20 mt-2 hidden w-60 rounded-lg border border-gray-700 bg-gray-800 p-1 opacity-0 shadow-xl transition-[opacity,margin] hs-dropdown-open:opacity-100" role="menu">
+      {shareActions.map((action) => (
+        <a href={action.href} target="_blank" rel="noopener noreferrer" class="flex items-center gap-x-3 rounded-md px-3 py-2.5 text-sm text-gray-100 no-underline transition hover:bg-gray-700 focus-visible:bg-gray-700 focus-visible:outline-none" role="menuitem">
+          <Icon name={`simple-icons:${action.icon}`} class="size-4 shrink-0" aria-hidden="true" />
+          <span class="min-w-0 flex-1">{action.label}</span>
+          <Icon name="ph:arrow-square-out" class="size-4 shrink-0 text-gray-400" aria-hidden="true" />
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

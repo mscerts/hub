@@ -1,1 +1,13 @@
-export * from "./nimbus/index";
+export { default as Aside } from "./preline/Aside.astro";
+export { default as Button } from "./preline/Button.astro";
+export { default as Card } from "./preline/Card.astro";
+export { default as CardGrid } from "./preline/CardGrid.astro";
+export { default as LinkButton } from "./preline/LinkButton.astro";
+export { default as LinkCard } from "./preline/LinkCard.astro";
+export { default as Step } from "./preline/Step.astro";
+export { default as Steps } from "./preline/Steps.astro";
+export { default as TabItem } from "./preline/TabItem.astro";
+export { default as Tabs } from "./preline/Tabs.astro";
+export { default as TabsContent } from "./preline/TabsContent.astro";
+export { default as TabsList } from "./preline/TabsList.astro";
+export { default as TabsTrigger } from "./preline/TabsTrigger.astro";

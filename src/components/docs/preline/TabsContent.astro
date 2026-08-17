@@ -1,0 +1,7 @@
+---
+import type { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"div"> { value: string; }
+const { value, class: className, ...attrs } = Astro.props;
+const id = `docs-manual-${value.replace(/[^a-z0-9]+/gi, "-")}`;
+---
+<div id={id} data-docs-tabs-content role="tabpanel" class:list={["text-sm leading-6 text-gray-600 dark:text-gray-300", className]} {...attrs}><slot /></div>

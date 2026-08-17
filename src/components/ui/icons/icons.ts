@@ -484,6 +484,34 @@ export const Icons = {
     strokeLinejoin: "round",
     stroke: "currentColor",
   },
+  money: {
+    paths: [
+      {
+        d: "M12 6v12m3.75-9.75h-5.25a2.25 2.25 0 0 0 0 4.5h3a2.25 2.25 0 0 1 0 4.5H8.25M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0Z",
+      },
+    ],
+    class: "mt-1 size-5 shrink-0",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    stroke: "currentColor",
+  },
+  exclamation: {
+    paths: [
+      {
+        d: "M12 9v3.75m0 3h.007v.008H12v-.008ZM21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0Z",
+      },
+    ],
+    class: "mt-1 size-5 shrink-0",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    stroke: "currentColor",
+  },
   rocket: {
     paths: [
       {

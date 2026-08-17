@@ -150,12 +150,14 @@ interface Props {
       import "preline";
     </script>
     <script is:inline>
-      // Ensure Preline is initialized after page load
-      window.addEventListener("load", () => {
+      // Initialize Preline for both full loads and Astro page swaps.
+      const initPreline = () => {
         if (window.HSStaticMethods) {
           window.HSStaticMethods.autoInit();
         }
-      });
+      };
+      window.addEventListener("load", initPreline, { once: true });
+      document.addEventListener("astro:page-load", initPreline);
     </script>
     <noscript>
       <iframe

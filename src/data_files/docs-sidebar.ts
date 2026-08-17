@@ -4,7 +4,7 @@ import { examStatuses } from "./exam-status.mjs";
 
 export interface DocsSidebarBadge {
   text: string;
-  variant: "note" | "tip" | "caution" | "danger";
+  variant: "note" | "tip" | "success" | "caution" | "danger";
 }
 
 export interface DocsSidebarItem {

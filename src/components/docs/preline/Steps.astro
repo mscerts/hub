@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"div"> { start?: number; }
+const { start, class: className, ...attrs } = Astro.props;
+---
+<div data-docs-steps class:list={["not-prose my-6", className]} style={start !== undefined ? `--steps-start: ${start};` : undefined} {...attrs}><slot /></div>
+
+<style>
+  [data-docs-steps] { --steps-start: 1; counter-reset: docs-step calc(var(--steps-start) - 1); }
+  [data-docs-steps] :global(ol) { counter-reset: docs-step calc(var(--steps-start) - 1); list-style: none; margin: 0; padding: 0; }
+  [data-docs-steps] :global(ol > li), [data-docs-steps] :global([data-step]) { counter-increment: docs-step; position: relative; min-height: 2rem; margin: 0; padding: 0 0 1.5rem 3rem; }
+  [data-docs-steps] :global(ol > li:last-child), [data-docs-steps] :global([data-step]:last-child) { padding-bottom: 0; }
+  [data-docs-steps] :global(ol > li)::before, [data-docs-steps] :global([data-step])::before { content: counter(docs-step); position: absolute; top: 0; left: 0; display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid rgb(191 219 254); border-radius: 9999px; background: rgb(239 246 255); color: rgb(29 78 216); font-size: 0.75rem; font-weight: 600; }
+  [data-docs-steps] :global(ol > li:not(:last-child))::after, [data-docs-steps] :global([data-step]:not(:last-child))::after { content: ""; position: absolute; top: 2rem; bottom: 0; left: 1rem; width: 1px; background: rgb(229 231 235); }
+  :global(.dark) [data-docs-steps] :global(ol > li)::before, :global(.dark) [data-docs-steps] :global([data-step])::before { border-color: rgb(30 64 175); background: rgb(23 37 84); color: rgb(147 197 253); }
+  :global(.dark) [data-docs-steps] :global(ol > li:not(:last-child))::after, :global(.dark) [data-docs-steps] :global([data-step]:not(:last-child))::after { background: rgb(55 65 81); }
+  [data-docs-steps] :global(ol > li > p) { margin: 0; }
+</style>

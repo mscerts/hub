@@ -1,0 +1,10 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"a"> { title: string; description?: string; href: string; }
+const { title, description, href, class: className, ...attrs } = Astro.props;
+---
+<a href={href} class:list={["group not-prose flex items-center justify-between gap-4 rounded-xl border border-gray-200 bg-white p-5 no-underline shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-blue-700", className]} {...attrs}>
+  <span class="min-w-0"><span class="block text-base font-semibold leading-snug text-gray-800 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">{title}</span>{description && <span class="mt-1 block text-sm leading-normal text-gray-600 dark:text-gray-300">{description}</span>}</span>
+  <Icon name="ph:caret-right" class="size-4 shrink-0 text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-600" aria-hidden="true" />
+</a>

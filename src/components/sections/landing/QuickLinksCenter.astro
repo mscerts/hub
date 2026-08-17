@@ -1,9 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import Icon from "@components/ui/icons/Icon.astro";
+import { Icon as PackIcon } from "astro-icon/components";
 import MeasureUpBanner from "../../../assets/images/mUjulybanner.png";
 import {
   examStatuses,
+  examStatusNames,
   examStatusStyles,
   voucherBadgeStyles,
 } from "@data/exam-status.mjs";
@@ -15,19 +17,22 @@ const resourceLinks = [
     label: "Labs",
     description: "Hands-on exercises from Microsoft Learn and GitHub.",
     href: "/labs/",
-    icon: "tools",
+    icon: "ph:puzzle-piece-fill",
+    iconClass: "text-blue-300",
   },
   {
     label: "Vouchers",
     description: "Current discounts and official exam opportunities.",
     href: "/vouchers/",
-    icon: "bookmark",
+    icon: "ph:currency-circle-dollar-fill",
+    iconClass: "text-orange-300",
   },
   {
     label: "Latest updates",
     description: "Exam changes, certification news, and community posts.",
     href: "/news/",
-    icon: "verified",
+    icon: "ph:warning-circle-fill",
+    iconClass: "text-blue-300",
   },
 ];
 
@@ -65,6 +70,8 @@ const statusChanges = Object.entries(examStatuses).flatMap(([area, exams]) =>
 type ExamStatus = keyof typeof examStatusStyles;
 const getStatusClass = (status: string) =>
   examStatusStyles[status as ExamStatus];
+const getStatusName = (status: string) =>
+  examStatusNames[status as keyof typeof examStatusNames] ?? status;
 
 const voucherLabels = {
   "100%": "100% off",
@@ -209,7 +216,7 @@ const vouchers = docs
               href={link.href}
               class="group rounded-2xl border border-neutral-300 bg-white p-5 transition hover:-translate-y-0.5 hover:border-orange-400 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 dark:border-neutral-700 dark:bg-neutral-900/60 dark:hover:border-orange-300"
             >
-              <Icon name={link.icon} />
+              <PackIcon name={link.icon} class:list={["size-7", link.iconClass]} />
               <h2 class="mt-5 font-semibold text-neutral-900 dark:text-neutral-100">
                 {link.label}
               </h2>
@@ -362,7 +369,7 @@ const vouchers = docs
                   <span
                     class={`rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide ${getStatusClass(exam.status)}`}
                   >
-                    {exam.status}
+                    <span title={getStatusName(exam.status)}>{exam.status}</span>
                   </span>
                 </a>
               </li>

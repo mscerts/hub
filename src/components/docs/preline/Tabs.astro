@@ -1,0 +1,60 @@
+---
+import type { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"div"> { syncKey?: string; }
+const { syncKey, class: className, ...attrs } = Astro.props;
+---
+<div data-docs-tabs data-docs-sync-key={syncKey} class:list={["not-prose", className]} {...attrs}>
+  <div data-docs-tabs-list class="flex overflow-x-auto border-b border-gray-200 dark:border-gray-700" role="tablist"></div>
+  <div class="mt-3"><slot /></div>
+</div>
+<script>
+  function initDocsTabs() {
+    document.querySelectorAll<HTMLElement>("[data-docs-tabs]").forEach((root) => {
+      if (root.dataset.docsTabsReady) return;
+      const panels = Array.from(root.querySelectorAll<HTMLElement>("[data-docs-tabs-content]"));
+      const list = root.querySelector<HTMLElement>("[data-docs-tabs-list]");
+      if (!list || panels.length === 0) return;
+      const activate = (active: number) => {
+        panels.forEach((panel, index) => {
+          const trigger = list.children[index] as HTMLElement;
+          const selected = index === active;
+          trigger.setAttribute("aria-selected", String(selected));
+          trigger.tabIndex = selected ? 0 : -1;
+          panel.hidden = !selected;
+        });
+        const key = root.dataset.docsSyncKey;
+        if (key) localStorage.setItem(`docs-tabs__${key}`, String(active));
+      };
+      const existingTriggers = Array.from(list.querySelectorAll<HTMLElement>("[data-docs-tabs-trigger]"));
+      if (existingTriggers.length === 0) {
+        panels.forEach((panel, index) => {
+          const label = panel.dataset.docsTabLabel ?? `Tab ${index + 1}`;
+          const id = `${root.id || "docs-tabs"}-${index}-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+          panel.id = id;
+          const trigger = document.createElement("button");
+          trigger.type = "button";
+          trigger.id = `${id}-tab`;
+          trigger.setAttribute("role", "tab");
+          trigger.setAttribute("aria-controls", id);
+          trigger.dataset.hsTab = `#${id}`;
+          trigger.className = "-mb-px shrink-0 border-b-2 border-transparent px-4 py-3 text-sm font-medium text-gray-500 transition hover:border-gray-300 hover:text-gray-700 aria-selected:border-blue-600 aria-selected:text-blue-600 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:text-gray-200 dark:aria-selected:border-blue-400 dark:aria-selected:text-blue-400";
+          trigger.textContent = label;
+          list.append(trigger);
+        });
+      }
+      const triggers = Array.from(list.querySelectorAll<HTMLElement>("[role='tab'], [data-docs-tabs-trigger]"));
+      panels.forEach((panel, index) => {
+        const trigger = triggers[index];
+        if (!trigger) return;
+        panel.setAttribute("role", "tabpanel");
+        panel.setAttribute("aria-labelledby", trigger.id || `docs-tab-${index}`);
+        trigger.addEventListener("click", () => activate(index));
+      });
+      const stored = Number(localStorage.getItem(`docs-tabs__${root.dataset.docsSyncKey}`));
+      activate(Number.isInteger(stored) && stored >= 0 && stored < panels.length ? stored : 0);
+      root.dataset.docsTabsReady = "true";
+    });
+  }
+  initDocsTabs();
+  document.addEventListener("astro:page-load", initDocsTabs);
+</script>

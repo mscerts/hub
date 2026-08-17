@@ -4,9 +4,11 @@ import type { DocsSidebarBadge, DocsSidebarItem } from "@data/docs-sidebar";
 interface Props {
   items: DocsSidebarItem[];
   currentPath: string;
+  idPrefix?: string;
+  path?: string;
 }
 
-const { items, currentPath } = Astro.props;
+const { items, currentPath, idPrefix = "docs", path = "0" } = Astro.props;
 
 function containsCurrent(item: DocsSidebarItem): boolean {
   return item.href === currentPath || Boolean(item.children?.some(containsCurrent));
@@ -19,110 +21,85 @@ function badgeClass(badge: DocsSidebarBadge) {
   if (badge.variant === "tip") {
     return isVoucher
       ? isHighDiscount
-        ? "border-[#d946ef] bg-[#d946ef]/15 text-[#f0abfc]"
-        : "border-[#3b82f6] bg-[#3b82f6]/15 text-[#93c5fd]"
-      : "border-[#d946ef] bg-[#d946ef]/15 text-[#f0abfc]";
+        ? "border-[#d946ef]/60 bg-[#d946ef]/15 text-[#f0abfc]"
+        : "border-[#3b82f6]/60 bg-[#3b82f6]/15 text-[#93c5fd]"
+      : "border-[#d946ef]/60 bg-[#d946ef]/15 text-[#f0abfc]";
+  }
+
+  if (badge.text === "GA" || badge.variant === "success") {
+    return "border-[#22c55e]/60 bg-[#22c55e]/15 text-[#86efac]";
   }
 
   if (badge.variant === "caution") {
-    return "border-[#f59e0b] bg-[#f59e0b]/15 text-[#fcd34d]";
+    return "border-[#f59e0b]/60 bg-[#f59e0b]/15 text-[#fcd34d]";
   }
 
   if (badge.variant === "danger") {
-    return "border-[#ec4899] bg-[#ec4899]/15 text-[#f9a8d4]";
+    return "border-[#ec4899]/60 bg-[#ec4899]/15 text-[#f9a8d4]";
   }
 
   return isVoucher && !isHighDiscount
-    ? "border-[#3b82f6] bg-[#3b82f6]/15 text-[#93c5fd]"
+    ? "border-[#3b82f6]/60 bg-[#3b82f6]/15 text-[#93c5fd]"
     : isVoucher
-      ? "border-[#d946ef] bg-[#d946ef]/15 text-[#f0abfc]"
-      : "border-[#7f8da0]/45 bg-[#2d3949] text-[#bbc3cd]";
+      ? "border-[#d946ef]/60 bg-[#d946ef]/15 text-[#f0abfc]"
+      : "border-[#7f8da0]/60 bg-[#2d3949] text-[#bbc3cd]";
+}
+
+function groupId(item: DocsSidebarItem, index: number) {
+  const slug = item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  return `${idPrefix}-${path}-${index}-${slug}`;
 }
 ---
 
-<ul class="docs-sidebar-list" data-docs-sidebar>
-  {items.map((item) => {
+<ul class="m-0 grid list-none gap-1 p-0" data-docs-sidebar>
+  {items.map((item, index) => {
     const hasChildren = Boolean(item.children?.length);
     const isCurrent = item.href === currentPath;
     const isOpen = hasChildren && (item.collapsed === false || containsCurrent(item));
+    const id = groupId(item, index);
 
     return (
-      <li class="docs-sidebar-item">
+      <li class="m-0" data-docs-nav-group={hasChildren ? "true" : undefined}>
         {hasChildren ? (
-          <details open={isOpen} class="docs-sidebar-group">
-            <summary class:list={["docs-sidebar-group-label", containsCurrent(item) && "is-active"]}>
-              <span class="docs-sidebar-group-text">
-                <span>{item.label}</span>
-                {item.badge && <span class:list={["docs-sidebar-badge", badgeClass(item.badge)]}>{item.badge.text}</span>}
-              </span>
-              <span class="docs-sidebar-caret" aria-hidden="true">›</span>
-            </summary>
-            <div class="docs-sidebar-children">
-              <Astro.self items={item.children ?? []} currentPath={currentPath} />
+          <div class:list={["hs-accordion", isOpen && "active"]} id={id}>
+            <button
+              type="button"
+              id={`${id}-toggle`}
+              class:list={[
+                "hs-accordion-toggle group flex w-full items-center gap-x-2 rounded-md px-3 py-2 text-left text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white",
+                containsCurrent(item) && "text-gray-900 dark:text-white",
+              ]}
+              aria-expanded={isOpen ? "true" : "false"}
+              aria-controls={`${id}-content`}
+            >
+              <span class="min-w-0 flex-1 break-words">{item.label}</span>
+              {item.badge && <span class:list={["rounded-full border px-1.5 py-0.5 text-[0.6rem] font-bold leading-none tracking-wide", badgeClass(item.badge)]}>{item.badge.text}</span>}
+              <svg class="size-3.5 shrink-0 transition-transform hs-accordion-active:rotate-180" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" /></svg>
+            </button>
+            <div id={`${id}-content`} class:list={["hs-accordion-content w-full overflow-hidden transition-[height] duration-300", !isOpen && "hidden"]} role="region" aria-labelledby={`${id}-toggle`}>
+              <div class="ms-3 mt-1 border-s border-gray-200 ps-2 dark:border-gray-700">
+                <Astro.self items={item.children ?? []} currentPath={currentPath} idPrefix={idPrefix} path={`${path}-${index}`} />
+              </div>
             </div>
-          </details>
+          </div>
         ) : item.href ? (
           <a
             href={item.href}
             data-docs-nav-item
             data-docs-nav-label={item.label}
             aria-current={isCurrent ? "page" : undefined}
-            class:list={["docs-sidebar-link", isCurrent && "is-active"]}
+            class:list={[
+              "flex min-h-9 items-center justify-between gap-x-2 rounded-md px-3 py-2 text-sm font-medium text-gray-600 no-underline transition hover:bg-gray-100 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white",
+              isCurrent && "border border-gray-400 bg-gray-100 text-gray-900 dark:border-gray-600 dark:bg-[#2a2a2a] dark:text-white",
+            ]}
           >
-            <span>{item.label}</span>
-            {item.badge && <span class:list={["docs-sidebar-badge", badgeClass(item.badge)]}>{item.badge.text}</span>}
+            <span class="min-w-0 break-words">{item.label}</span>
+            {item.badge && <span class:list={["shrink-0 rounded-full border px-1.5 py-0.5 text-[0.6rem] font-bold leading-none tracking-wide", badgeClass(item.badge)]}>{item.badge.text}</span>}
           </a>
         ) : (
-          <span class="docs-sidebar-link is-placeholder" data-docs-nav-item data-docs-nav-label={item.label}>
-            {item.label}
-          </span>
+          <span class="flex min-h-9 items-center rounded-md px-3 py-2 text-sm font-medium text-gray-400 dark:text-gray-500" data-docs-nav-item data-docs-nav-label={item.label}>{item.label}</span>
         )}
       </li>
     );
   })}
 </ul>
-
-<style>
-  .docs-sidebar-list { display: grid; gap: 0.125rem; margin: 0; padding: 0; list-style: none; }
-  .docs-sidebar-group { margin: 0; }
-  .docs-sidebar-group-label,
-  .docs-sidebar-link {
-    display: flex;
-    min-height: 2.25rem;
-    align-items: center;
-    gap: 0.5rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    color: #737373;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    line-height: 1.25;
-    text-decoration: none;
-    transition: background-color 150ms ease, color 150ms ease;
-  }
-  .docs-sidebar-group-label { cursor: pointer; list-style: none; }
-  .docs-sidebar-group-label::-webkit-details-marker { display: none; }
-  .docs-sidebar-group-label:hover,
-  .docs-sidebar-link:hover { background: #e5e5e5; color: #171717; }
-  .docs-sidebar-group-label.is-active,
-  .docs-sidebar-link.is-active { color: #171717; font-weight: 650; }
-  .docs-sidebar-link.is-active { border-left: 2px solid #9aaec1; padding-left: calc(0.75rem - 2px); background: #e5e5e5; }
-  .docs-sidebar-link.is-placeholder { cursor: default; opacity: 0.55; }
-  .docs-sidebar-group-text { display: flex; min-width: 0; flex: 1; align-items: center; gap: 0.5rem; }
-  .docs-sidebar-group-text > span:first-child,
-  .docs-sidebar-link > span:first-child { min-width: 0; overflow-wrap: anywhere; }
-  .docs-sidebar-badge { border: 1px solid; border-radius: 999px; padding: 0.125rem 0.375rem; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.03em; line-height: 1.2; white-space: nowrap; }
-  .docs-sidebar-caret { margin-left: auto; color: #999; font-size: 1.25rem; line-height: 1; transform: rotate(0deg); transition: transform 150ms ease; }
-  details[open] > .docs-sidebar-group-label .docs-sidebar-caret { transform: rotate(90deg); }
-  .docs-sidebar-children { margin: 0.125rem 0 0.25rem 0.75rem; border-left: 1px solid #d4d4d4; padding-left: 0.5rem; }
-  .docs-sidebar-children .docs-sidebar-group-label,
-  .docs-sidebar-children .docs-sidebar-link { min-height: 2rem; padding-top: 0.375rem; padding-bottom: 0.375rem; }
-
-  :global(.dark) .docs-sidebar-group-label,
-  :global(.dark) .docs-sidebar-link { color: #b8b8b8; }
-  :global(.dark) .docs-sidebar-group-label:hover,
-  :global(.dark) .docs-sidebar-link:hover,
-  :global(.dark) .docs-sidebar-group-label.is-active,
-  :global(.dark) .docs-sidebar-link.is-active { background: #2a2a2a; color: #f4f4f4; }
-  :global(.dark) .docs-sidebar-children { border-color: #383838; }
-</style>
