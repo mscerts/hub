@@ -133,7 +133,17 @@ export const examPages: Record<string, ExamPageData> = {
           },
         ],
       },
-      { label: "Videos", links: [] },
+      {
+        label: "Videos",
+        links: [
+          {
+            title: "AI-103 Study Cram",
+            href: "https://www.youtube.com/watch?v=WK2BvjOYTCQ",
+            target: "_blank",
+            description: "John Savill's AI-103 Study Cram.",
+          },
+        ],
+      },
       { label: "Tests", links: [] },
       { label: "Paid", links: [] },
       {
