@@ -1,0 +1,292 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+  variant?: "desktop" | "mobile";
+}
+
+const { headings, variant = "desktop" } = Astro.props;
+---
+
+{headings.length > 0 && (
+  <div
+    data-docs-toc
+    data-docs-toc-variant={variant}
+    class="docs-toc"
+  >
+    <h2 class="text-[0.68rem] font-bold tracking-[0.18em] text-neutral-500 uppercase dark:text-[#9aa7b5]">
+      On this page
+    </h2>
+    <nav class="docs-toc-nav mt-4" aria-label="On this page">
+      <span class="docs-toc-rail" aria-hidden="true"></span>
+      <span class="docs-toc-rail-active" data-docs-toc-active aria-hidden="true"></span>
+      <ul class="m-0 list-none p-0">
+        {headings.map((heading) => (
+          <li>
+            <a
+              href={`#${heading.slug}`}
+              data-docs-toc-link
+              data-docs-toc-slug={heading.slug}
+              class:list={[
+                "docs-toc-link block py-1.5 text-sm leading-snug text-neutral-500 no-underline transition-colors duration-150 hover:text-neutral-900 dark:text-[#9aa7b5] dark:hover:text-[#f4f4f4]",
+                heading.depth === 3 && "pl-3",
+              ]}
+            >
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+)}
+
+<style>
+  .docs-toc-nav {
+    position: relative;
+  }
+
+  .docs-toc-nav ul {
+    position: relative;
+  }
+
+  .docs-toc-link {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .docs-toc-link[data-docs-toc-active="true"] {
+    color: #f4f4f4;
+    font-weight: 600;
+  }
+
+  .docs-toc-link[data-docs-toc-active="true"]::before {
+    background: #9bb4d0;
+    box-shadow: 0 0 0 3px rgb(155 180 208 / 0.14), 0 0 12px rgb(155 180 208 / 0.45);
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .docs-toc-link::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 999px;
+    background: transparent;
+    content: "";
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  .docs-toc-rail,
+  .docs-toc-rail-active {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    border-radius: 999px;
+  }
+
+  .docs-toc-rail {
+    background: #383838;
+  }
+
+  .docs-toc-rail-active {
+    height: var(--toc-active-y, 0px);
+    background: #9bb4d0;
+    box-shadow: 0 0 8px rgb(155 180 208 / 0.35);
+    transition: height 260ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  :global(html.dark) .docs-toc-link[data-docs-toc-active="true"] {
+    color: #f4f4f4;
+  }
+
+  :global(html:not(.dark)) .docs-toc-link[data-docs-toc-active="true"] {
+    color: #1f2937;
+  }
+
+  :global(html:not(.dark)) .docs-toc-rail {
+    background: #d1d5db;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .docs-toc-link::before,
+    .docs-toc-rail-active {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  type TocInstance = {
+    destroy: () => void;
+  };
+
+  const instances: TocInstance[] = [];
+  let globalsBound = false;
+
+  const prefersReducedMotion = () =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const initToc = (root: HTMLElement): TocInstance => {
+    const nav = root.querySelector<HTMLElement>(".docs-toc-nav");
+    const activeRail = root.querySelector<HTMLElement>("[data-docs-toc-active]");
+    const links = Array.from(root.querySelectorAll<HTMLElement>("[data-docs-toc-link]"));
+
+    if (!nav || !activeRail || links.length === 0) return { destroy: () => {} };
+
+    const headings = links
+      .map((link, index) => ({
+        index,
+        link,
+        element: document.getElementById(link.dataset.docsTocSlug ?? ""),
+      }))
+      .filter((heading): heading is typeof heading & { element: HTMLElement } => Boolean(heading.element));
+
+    if (headings.length === 0) return { destroy: () => {} };
+
+    const controller = new AbortController();
+    const inBand = new Set<number>();
+    let activeIndex = -1;
+    let pinnedIndex: number | null = null;
+    let releaseTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const setActive = (index: number) => {
+      if (index < 0 || index >= links.length || index === activeIndex) return;
+      activeIndex = index;
+      links.forEach((link, linkIndex) => {
+        if (linkIndex === index) {
+          link.dataset.docsTocActive = "true";
+          link.setAttribute("aria-current", "location");
+        } else {
+          delete link.dataset.docsTocActive;
+          link.removeAttribute("aria-current");
+        }
+      });
+
+      const activeLink = links[index];
+      if (activeLink) {
+        const y = activeLink.offsetTop + activeLink.offsetHeight / 2;
+        root.style.setProperty("--toc-active-y", `${y}px`);
+      }
+    };
+
+    const resolveActive = () => {
+      if (pinnedIndex !== null) {
+        setActive(pinnedIndex);
+        return;
+      }
+
+      if (inBand.size > 0) {
+        setActive(Math.max(...inBand));
+        return;
+      }
+
+      const bandTop = window.innerHeight * 0.22;
+      let nextIndex = 0;
+      headings.forEach((heading) => {
+        if (heading.element.getBoundingClientRect().top <= bandTop) nextIndex = heading.index;
+      });
+      setActive(nextIndex);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const heading = headings.find((item) => item.element === entry.target);
+          if (!heading) return;
+          if (entry.isIntersecting) inBand.add(heading.index);
+          else inBand.delete(heading.index);
+        });
+        resolveActive();
+      },
+      { rootMargin: "0px 0px -78% 0px", threshold: 0 },
+    );
+
+    headings.forEach((heading) => observer.observe(heading.element));
+
+    const updateLayout = () => {
+      if (activeIndex >= 0) {
+        const activeLink = links[activeIndex];
+        root.style.setProperty(
+          "--toc-active-y",
+          `${activeLink.offsetTop + activeLink.offsetHeight / 2}px`,
+        );
+      }
+      resolveActive();
+    };
+
+    let frame = 0;
+    const onScroll = () => {
+      if (pinnedIndex !== null) {
+        pinnedIndex = null;
+        if (releaseTimer) clearTimeout(releaseTimer);
+      }
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        resolveActive();
+        frame = 0;
+      });
+    };
+
+    const onClick = (event: MouseEvent) => {
+      const link = (event.target as Element | null)?.closest<HTMLElement>("[data-docs-toc-link]");
+      if (!link) return;
+      const index = links.indexOf(link);
+      if (index < 0) return;
+      pinnedIndex = index;
+      setActive(index);
+      if (releaseTimer) clearTimeout(releaseTimer);
+      releaseTimer = setTimeout(() => {
+        pinnedIndex = null;
+        resolveActive();
+      }, 900);
+
+      const target = document.getElementById(link.dataset.docsTocSlug ?? "");
+      if (target) {
+        event.preventDefault();
+        target.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth" });
+        history.pushState(null, "", `#${link.dataset.docsTocSlug}`);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true, signal: controller.signal });
+    window.addEventListener("resize", updateLayout, { signal: controller.signal });
+    nav.addEventListener("click", onClick, { signal: controller.signal });
+    updateLayout();
+
+    return {
+      destroy: () => {
+        controller.abort();
+        observer.disconnect();
+        if (releaseTimer) clearTimeout(releaseTimer);
+        if (frame) cancelAnimationFrame(frame);
+      },
+    };
+  };
+
+  const initialize = () => {
+    instances.splice(0).forEach((instance) => instance.destroy());
+    document.querySelectorAll<HTMLElement>("[data-docs-toc]").forEach((root) => {
+      instances.push(initToc(root));
+    });
+  };
+
+  if (!globalsBound) {
+    globalsBound = true;
+    document.addEventListener("astro:page-load", initialize);
+    document.addEventListener("astro:before-swap", () => {
+      instances.splice(0).forEach((instance) => instance.destroy());
+    });
+  }
+
+  initialize();
+</script>

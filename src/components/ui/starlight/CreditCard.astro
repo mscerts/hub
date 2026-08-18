@@ -5,9 +5,10 @@ import { DISCORD_URL } from "@data/constants";
 
 interface Props {
   class?: string;
+  variant?: "default" | "docs-next";
 }
 
-const { class: className, ...rest } = Astro.props;
+const { class: className, variant = "default", ...rest } = Astro.props;
 
 // Hardcoded config (replaces virtual:starlight-cooler-credit-config)
 const config = {
@@ -20,7 +21,11 @@ const config = {
 ---
 
 <aside
-  class={`not-content starlight-cooler-credit-aside ${className ?? ""}`}
+  class:list={[
+    "not-content starlight-cooler-credit-aside",
+    variant === "docs-next" && "docs-next-credit",
+    className,
+  ]}
   {...rest}
 >
   <a href={config.href} target="_blank" rel="noopener noreferrer">
@@ -92,5 +97,39 @@ const config = {
   }
   .starlight-cooler-credit-aside:hover img {
     transform: translateY(0px);
+  }
+
+  .docs-next-credit {
+    background: rgb(29 39 53 / 0.86);
+    border-color: rgb(155 180 208 / 0.9);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.18);
+    font-family: inherit;
+    padding: 1rem;
+  }
+
+  .docs-next-credit a:focus-visible {
+    border-radius: 0.375rem;
+    outline: 2px solid #b9cde2;
+    outline-offset: 2px;
+  }
+
+  .docs-next-credit h2 {
+    color: #f4f4f4;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .docs-next-credit p {
+    color: #9aa7b5;
+    font-family: inherit;
+    font-size: 0.75rem;
+    line-height: 1.1rem;
+  }
+
+  .docs-next-credit img {
+    width: 4.75rem;
   }
 </style>

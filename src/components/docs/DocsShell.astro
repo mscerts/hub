@@ -15,6 +15,8 @@ interface Props {
 
 import DocsSidebar from "./DocsSidebar.astro";
 import DocsPageActions from "./DocsPageActions.astro";
+import DocsTableOfContents from "./DocsTableOfContents.astro";
+import CreditCard from "@components/ui/starlight/CreditCard.astro";
 
 const { sectionLabel, sidebarItems, title, description, headings } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -38,31 +40,9 @@ const visibleHeadings = headings.filter((heading) => heading.depth <= 3);
         <p class="mt-3 text-sm font-semibold text-neutral-900 dark:text-[#f4f4f4]">
           {sectionLabel}
         </p>
-        <label class="relative mt-5 block">
-          <span class="sr-only">Filter guide pages</span>
-          <svg
-            class="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-neutral-400 dark:text-[#8c8c8c]"
-            viewBox="0 0 20 20"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="m14.5 14.5 3 3m-1.75-8.25a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-            />
-          </svg>
-          <input
-            type="search"
-            data-docs-filter
-             placeholder="Filter documentation"
-            class="w-full rounded-lg border border-neutral-300 bg-white py-2 pr-3 pl-9 text-sm text-neutral-900 outline-none placeholder:text-neutral-400 focus:border-[#8da2b6] focus:ring-2 focus:ring-[#8da2b6]/20 dark:border-[#414141] dark:bg-[#262626] dark:text-[#f4f4f4] dark:placeholder:text-[#858585] dark:focus:border-[#9aaec1]"
-          />
-        </label>
         <nav class="mt-5" data-docs-nav aria-label="Documentation navigation">
-           <DocsSidebar items={sidebarItems} currentPath={currentPath} idPrefix="desktop" />
-        </nav>
+            <DocsSidebar items={sidebarItems} currentPath={currentPath} idPrefix="desktop" />
+          </nav>
       </div>
     </aside>
 
@@ -109,13 +89,13 @@ const visibleHeadings = headings.filter((heading) => heading.depth <= 3);
           >
             Browse documentation
           </summary>
-          <nav
-            class="mt-3 grid gap-1"
-            aria-label="Documentation mobile navigation"
-          >
-             <DocsSidebar items={sidebarItems} currentPath={currentPath} idPrefix="mobile" />
-          </nav>
-        </details>
+           <nav
+             class="mt-3 grid gap-1"
+             aria-label="Documentation mobile navigation"
+           >
+              <DocsSidebar items={sidebarItems} currentPath={currentPath} idPrefix="mobile" />
+           </nav>
+         </details>
 
         {
           visibleHeadings.length > 0 && (
@@ -123,25 +103,16 @@ const visibleHeadings = headings.filter((heading) => heading.depth <= 3);
               <summary class="cursor-pointer text-sm font-semibold text-neutral-800 dark:text-[#f4f4f4]">
                 On this page
               </summary>
-              <nav class="mt-3 grid gap-2" aria-label="On this page">
-                {visibleHeadings.map((heading) => (
-                  <a
-                    href={`#${heading.slug}`}
-                    class:list={[
-                      "text-sm text-neutral-600 hover:text-[#6e8499] dark:text-[#b8b8b8] dark:hover:text-[#b0c0cf]",
-                      heading.depth === 3 && "pl-4",
-                    ]}
-                  >
-                    {heading.text}
-                  </a>
-                ))}
-              </nav>
+              <div class="mt-3">
+                <DocsTableOfContents headings={visibleHeadings} variant="mobile" />
+              </div>
             </details>
           )
         }
 
         <article
           class="docs-next-content prose prose-neutral dark:prose-invert mt-10 max-w-none"
+          data-pagefind-body
         >
           <slot />
         </article>
@@ -155,26 +126,10 @@ const visibleHeadings = headings.filter((heading) => heading.depth <= 3);
       <div
         class="sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-12"
       >
-        <p
-          class="text-[0.68rem] font-bold tracking-[0.18em] text-neutral-500 uppercase dark:text-[#9aa7b5]"
-        >
-          On this page
-        </p>
-        <nav class="mt-4 grid gap-3">
-          {
-            visibleHeadings.map((heading) => (
-              <a
-                href={`#${heading.slug}`}
-                class:list={[
-                  "text-sm text-neutral-600 hover:text-[#6e8499] dark:text-[#b8b8b8] dark:hover:text-[#b0c0cf]",
-                  heading.depth === 3 && "pl-3",
-                ]}
-              >
-                {heading.text}
-              </a>
-            ))
-          }
-        </nav>
+        <DocsTableOfContents headings={visibleHeadings} />
+        <div class="mt-8">
+          <CreditCard variant="docs-next" />
+        </div>
       </div>
     </aside>
   </div>
@@ -368,35 +323,3 @@ const visibleHeadings = headings.filter((heading) => heading.depth <= 3);
     border-color: #383838;
   }
 </style>
-
-<script>
-  function initDocsSidebarFilters() {
-    document.querySelectorAll<HTMLInputElement>("[data-docs-filter]").forEach((filter) => {
-      if (filter.dataset.docsFilterReady) return;
-
-      const sidebars = Array.from(document.querySelectorAll<HTMLElement>("[data-docs-sidebar]"));
-      const update = () => {
-        const query = filter.value.trim().toLowerCase();
-
-        sidebars.forEach((sidebar) => {
-          const items = Array.from(sidebar.querySelectorAll<HTMLElement>("[data-docs-nav-item]"));
-          items.forEach((item) => {
-            const label = item.dataset.docsNavLabel?.toLowerCase() ?? "";
-            item.hidden = query.length > 0 && !label.includes(query);
-          });
-
-          sidebar.querySelectorAll<HTMLElement>("[data-docs-nav-group]").forEach((group) => {
-            const leaves = Array.from(group.querySelectorAll<HTMLElement>("[data-docs-nav-item]"));
-            group.hidden = query.length > 0 && leaves.length > 0 && leaves.every((item) => item.hidden);
-          });
-        });
-      };
-
-      filter.addEventListener("input", update);
-      filter.dataset.docsFilterReady = "true";
-    });
-  }
-
-  initDocsSidebarFilters();
-  document.addEventListener("astro:page-load", initDocsSidebarFilters);
-</script>

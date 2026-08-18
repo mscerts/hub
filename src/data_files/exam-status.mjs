@@ -1,6 +1,6 @@
 export const examStatuses = {
   azure: {
-    "AZ-400": { text: "ENDANGERED", variant: "caution" },
+    "AZ-400": { text: "AT RISK", variant: "caution" },
     "AZ-500": { text: "RETIRING", variant: "danger" },
     "AZ-800": { text: "RETIRING", variant: "danger" },
     "AZ-801": { text: "RETIRING", variant: "danger" },
@@ -33,15 +33,14 @@ export const examStatuses = {
 export const examStatusNames = {
   BETA: "Beta",
   GA: "Generally Available",
-  ENDANGERED: "Endangered",
+  AT_RISK: "At risk",
   RETIRING: "Retiring",
 };
 
 export const examStatusStyles = {
-  BETA: "bg-purple-100 text-purple-800 dark:bg-purple-400/15 dark:text-purple-300",
+  BETA: "bg-[#a855f7]/15 text-[#d8b4fe]",
   GA: "bg-green-100 text-green-800 dark:bg-green-400/15 dark:text-green-300",
-  ENDANGERED:
-    "bg-orange-100 text-orange-800 dark:bg-orange-400/15 dark:text-orange-300",
+  AT_RISK: "bg-amber-400/15 text-amber-300",
   RETIRING: "bg-red-100 text-red-800 dark:bg-red-400/15 dark:text-red-300",
 };
 

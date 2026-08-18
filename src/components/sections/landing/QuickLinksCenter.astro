@@ -6,8 +6,6 @@ import MeasureUpBanner from "../../../assets/images/mUjulybanner.png";
 import {
   examStatuses,
   examStatusNames,
-  examStatusStyles,
-  voucherBadgeStyles,
 } from "@data/exam-status.mjs";
 
 const docs = await getCollection("docs");
@@ -67,9 +65,20 @@ const statusChanges = Object.entries(examStatuses).flatMap(([area, exams]) =>
   })),
 );
 
-type ExamStatus = keyof typeof examStatusStyles;
-const getStatusClass = (status: string) =>
-  examStatusStyles[status as ExamStatus];
+const getStatusClass = (status: string) => {
+  switch (status) {
+    case "BETA":
+      return "bg-[#a855f7]/15 text-[#d8b4fe]";
+    case "GA":
+      return "bg-green-400/15 text-green-300";
+    case "AT RISK":
+      return "bg-amber-400/15 text-amber-300";
+    case "RETIRING":
+      return "bg-red-400/15 text-red-300";
+    default:
+      return "bg-slate-400/15 text-slate-300";
+  }
+};
 const getStatusName = (status: string) =>
   examStatusNames[status as keyof typeof examStatusNames] ?? status;
 
@@ -88,11 +97,15 @@ const getVoucherLabel = (category: string | undefined) => {
 };
 
 const getVoucherBadgeClass = (category: string | undefined) => {
-  if (category === "100%" || category === "50%" || category === "Special") {
-    return voucherBadgeStyles[category];
+  switch (category) {
+    case "100%":
+      return "bg-[#a855f7]/15 text-[#d8b4fe]";
+    case "50%":
+      return "bg-blue-400/15 text-blue-300";
+    case "Special":
+    default:
+      return "bg-blue-400/15 text-blue-300";
   }
-
-  return voucherBadgeStyles.Special;
 };
 
 const vouchers = docs
@@ -277,7 +290,7 @@ const vouchers = docs
               class="flex items-center justify-center py-3 text-sm font-semibold text-orange-600 hover:text-orange-500 dark:text-orange-300 dark:hover:text-orange-200"
             >
               View more vouchers <span aria-hidden="true" class="ms-2"
-                >-&gt;</span
+                ></span
               >
             </a>
           </li>
@@ -355,7 +368,7 @@ const vouchers = docs
           >
         </div>
         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-          Exams currently carrying a beta, endangered, or retiring marker.
+           Exams currently carrying a beta, at-risk, or retiring marker.
         </p>
         <ul class="mt-5 divide-y divide-neutral-200 dark:divide-neutral-800">
           {
@@ -367,7 +380,7 @@ const vouchers = docs
                 >
                   <span>{exam.code}</span>
                   <span
-                    class={`rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide ${getStatusClass(exam.status)}`}
+                     class={`rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${getStatusClass(exam.status)}`}
                   >
                     <span title={getStatusName(exam.status)}>{exam.status}</span>
                   </span>

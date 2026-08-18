@@ -5,6 +5,7 @@ import Icon from "@components/ui/icons/Icon.astro";
 import { Icon as PackIcon } from "astro-icon/components";
 import NavLink from "@components/ui/links/NavLink.astro";
 import MegaMenuLink from "@components/ui/links/MegaMenuLink.astro";
+import SiteSearch from "@components/ui/SiteSearch.astro";
 import enStrings from "@utils/navigation.ts";
 import BrandLogoLight from "../../../assets/images/logo_light.svg";
 import BrandLogoDark from "../../../assets/images/logo_dark.svg";
@@ -110,6 +111,7 @@ const redditLinks = [
         class="mt-4 flex flex-col gap-x-1 gap-y-1 border-t border-neutral-200 pt-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-y-0 md:border-t-0 md:ps-7 md:pt-0 dark:border-neutral-700"
       >
         <!-- Navigation links and Authentication component -->
+        <SiteSearch />
         {
           strings.navBarLinks.map((link) => {
             if (link.name === "Certifications") {
