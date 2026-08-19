@@ -202,11 +202,6 @@ export default defineConfig({
               badge: { text: "*100%", variant: "tip" },
             },
             {
-              label: "Exam AB-650 (beta)",
-              link: "/vouchers/ab650beta/",
-              badge: { text: "*80%", variant: "tip" },
-            },
-            {
               label: "Microsoft Defender Sweepstakes",
               link: "/vouchers/defendersweepstakes/",
               badge: { text: "*50%", variant: "tip" },
