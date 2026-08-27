@@ -74,6 +74,11 @@ export const examPages: Record<string, ExamPageData> = {
           description:
             "Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than real exams.",
         },
+        {
+          title: "Whizlab Practice Tests",
+          href: "https://www.whizlabs.com/ai-901-microsoft-azure-ai-fundamentals/",
+          target: "_blank",
+        },
       ] },
       {
         label: "Paid",
