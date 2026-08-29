@@ -1,0 +1,70 @@
+---
+title: SC-500 Labs
+description: "Lab exercises for SC-500: Implementing End-to-End Security Controls for Cloud and AI Workloads. Includes Applied Skills, Microsoft Learn, and Microsoft GitHub labs."
+---
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+  <TabItem label="Applied Skills">
+
+:::note 
+Applied Skills on Microsoft Learn are practical, hands-on exercises designed to help users build and demonstrate proficiency in specific technologies or tasks. These small labs focus on solving real-world scenarios, reinforcing learning through direct application of skills, and preparing users for industry roles or certifications.
+:::
+
+  <CardGrid>
+    <LinkCard title="Get started with cloud security and monitoring tasks" href="https://learn.microsoft.com/credentials/applied-skills/get-started-with-cloud-security-and-monitoring-tasks/?WT.mc_id=studentamb_165290" />
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Microsoft Learn">
+
+:::note 
+Microsoft Learn Sandboxes require you to bring in your own subscription. 
+:::
+:::tip
+This is a beta exam. Labs below are drawn from the closest-matching Microsoft Learn modules while dedicated SC-500 training content is still being developed.
+:::
+
+  <CardGrid>
+    <LinkCard title="Assign a sponsor and owner to an agent identity" href="https://learn.microsoft.com/training/modules/establish-agent-identities-entra-agent-id/4-exercise-assign-sponsor-owner-agent-identity/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Apply Conditional Access to an agent identity blueprint" href="https://learn.microsoft.com/training/modules/establish-agent-identities-entra-agent-id/8-exercise-apply-conditional-access-agent-blueprint/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Manage secrets with Azure Key Vault" href="https://learn.microsoft.com/training/modules/manage-app-secrets-key-vault/6-exercise-manage-secrets/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Configure Key Vault networking settings" href="https://learn.microsoft.com/training/modules/configure-azure-key-vault-networking-settings/6-use-azure-portal-to-create-azure-key-vault/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="List access using Azure RBAC" href="https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac/4-list-access/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Grant access using Azure RBAC" href="https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac/5-grant-access/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Connect to an Azure SQL server using an Azure Private Endpoint" href="https://learn.microsoft.com/training/modules/connect-azure-server-private-endpoint-using-azure-portal/4-connect-to-an-azure-sql-server-using-an-azure-private-endpoint/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Implement virtual networking with network security groups" href="https://learn.microsoft.com/training/modules/configure-network-security-groups/7-simulation-create-network-groups/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Deploy API Management for generative AI APIs" href="https://learn.microsoft.com/training/modules/api-management/3-exercise-api-management/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Enable just-in-time access on virtual machines" href="https://learn.microsoft.com/training/modules/just-in-time-access/4-activate-just-in-time-access-on-your-virtual-machines-from-azure-portal/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Back up an Azure virtual machine" href="https://learn.microsoft.com/training/modules/protect-virtual-machines-with-azure-backup/4-exercise-back-up-azure-virtual-machine/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Restore Azure virtual machine data" href="https://learn.microsoft.com/training/modules/protect-virtual-machines-with-azure-backup/6-exercise-restore-virtual-machine-data/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Create and use a container registry" href="https://learn.microsoft.com/training/modules/deploy-use-azure-container-registry/2-create-container-registry/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Diagnose and fix a failing container app deployment" href="https://learn.microsoft.com/training/modules/manage-containers-azure-container-apps/7-exercise-diagnose-fix-failing-deployment/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Enable Defender for Cloud on your Azure subscription" href="https://learn.microsoft.com/training/modules/set-up-microsoft-defender-cloud/6-upgrade-microsoft-defender-for-cloud/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Investigate and respond with Security Copilot" href="https://learn.microsoft.com/training/modules/accelerate-endpoint-remediation-response-security-copilot/5-exercise-investigate-respond/?WT.mc_id=studentamb_165290" />
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Microsoft GitHub">
+
+  <CardGrid>
+    <LinkCard title="Configure Privileged Identity Management" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Lab-1A-Configure-PIM.html" target="_blank" description="Configure PIM-eligible role assignments, activation settings, and approval workflows to enforce just-in-time privileged access to Microsoft Entra roles."/>
+    <LinkCard title="Deploy and Secure Azure Key Vault" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Lab-1C-Secure-KeyVault.html" target="_blank" description="Deploy an Azure Key Vault using RBAC, store secrets and keys, and apply network firewall rules and Defender for Key Vault protection."/>
+    <LinkCard title="Configure Azure Policy and Role-Based Access Control" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Lab-1D-Configure-Policy-RBAC.html" target="_blank" description="Assign Azure Policy, create a custom Azure role, and remediate an overprivileged role assignment using an Entra ID Access Review."/>
+    <LinkCard title="Enforce MFA with Conditional Access" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Supplemental_Lab-1B-Enforce-CA.html" target="_blank" description="Create a Conditional Access policy that enforces MFA, validate it in Report-only mode, and register an application with scoped API permissions."/>
+    <LinkCard title="Secure Azure Storage" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Lab-2A-Secure-Storage.html" target="_blank" description="Restrict network access to a storage account, generate a SAS token, and enable Defender for Storage."/>
+    <LinkCard title="Secure Azure SQL Database" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Lab-2B-Secure-Database.html" target="_blank" description="Replace SQL authentication with Entra ID group-based authentication, restrict access via Private Endpoint, and enable Defender for Databases."/>
+    <LinkCard title="Configure Network Security Controls" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Lab-2C-Configure-Network-Sec.html" target="_blank" description="Apply NSG rules with Application Security Groups, deploy Azure Firewall, and validate configuration with Network Watcher."/>
+    <LinkCard title="Configure AI Gateway and Foundry Security Controls" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Lab-3C-Foundry-Security.html" target="_blank" description="Configure token rate limiting in API Management, create a Prompt Shield content safety guardrail, and enable Defender for AI Services."/>
+    <LinkCard title="Monitor AI Security with Defender for Cloud" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Lab-3D-Monitor-AI-Security-DfC.html" target="_blank" description="Review the Microsoft Defender for Cloud Data and AI security dashboard for AI workload protection findings."/>
+    <LinkCard title="Identify AI Data Risks with Microsoft Purview" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Supplemental_Lab-3A-Purview-AI-Risks.html" target="_blank" description="Navigate the Microsoft Purview DSPM for AI dashboard to identify SharePoint oversharing risks and unlabeled sensitive data."/>
+    <LinkCard title="Secure Microsoft Entra Agent Identities" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Supplemental_Lab-3B-Secure-Entra-AgentID.html" target="_blank" description="Create Conditional Access policies scoped to agent identities, analyze blast radius in Defender XDR, and enable real-time protection in Copilot Studio."/>
+    <LinkCard title="Secure Container Workloads with AKS and Defender for Containers" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Lab-4B-Secure-AKS-Defender.html" target="_blank" description="Enable Defender for Containers on an AKS cluster and remediate access and network security gaps in Azure Container Registry."/>
+    <LinkCard title="Secure Azure App Services and API Management" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Lab-4C-Secure-Azure-Apps-Svc.html" target="_blank" description="Use WAF detection controls, configure Microsoft Entra authentication for app services, and enforce API subscription key protection."/>
+    <LinkCard title="Explore Defender for Cloud Security Posture and CSPM" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Lab-4D-Defender-CSPM.html" target="_blank" description="Review Defender CSPM posture, compliance, secret scanning, attack paths, and governance workflows."/>
+    <LinkCard title="Configure Microsoft Sentinel Data Collection and Automation" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Supplemental_Lab-4E-Configure-Sentinel-Data.html" target="_blank" description="Connect Microsoft Defender XDR and Azure Activity data into Sentinel and configure automation rules that trigger a playbook."/>
+    <LinkCard title="Configure and Use Microsoft Security Copilot" href="https://microsoftlearning.github.io/mslearn-sec-identity/Instructions/Labs/Supplemental_Lab-4F-Configure-Security-Copilot.html" target="_blank" description="Provision Security Copilot capacity, configure roles, enable core security plugins, and run grounded security prompts."/>
+  </CardGrid>
+  </TabItem>
+</Tabs>

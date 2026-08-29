@@ -1,0 +1,63 @@
+---
+title: AI-500 Labs
+description: "Lab exercises for AI-500: Designing and Implementing Multi-Agent AI Solutions. Includes Microsoft Learn and Microsoft GitHub labs."
+---
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+  {/* <TabItem label="Applied Skills">
+
+  <CardGrid>
+    <LinkCard title="" href="" />
+  </CardGrid>
+  </TabItem> */}
+
+  <TabItem label="Microsoft Learn">
+
+:::note
+Microsoft Learn Sandboxes require you to bring in your own subscription.
+:::
+
+  <CardGrid>
+    <LinkCard title="Develop an Azure AI agent with the Microsoft Agent Framework SDK" href="https://learn.microsoft.com/training/modules/develop-ai-agent-with-semantic-kernel/5-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Build an agent with custom tools" href="https://learn.microsoft.com/training/modules/build-agent-with-custom-tools/5-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Connect MCP tools to Azure AI Agents" href="https://learn.microsoft.com/training/modules/connect-agent-to-mcp-tools/5-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Create an MCP server with Azure Functions" href="https://learn.microsoft.com/training/modules/build-backends-azure-functions/7-exercise-create-mcp-server/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Develop a multi-agent solution" href="https://learn.microsoft.com/training/modules/orchestrate-semantic-kernel-multi-agent-solution/9-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Connect to remote Azure AI Agents with the A2A protocol" href="https://learn.microsoft.com/training/modules/discover-agents-with-a2a/6-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Evaluate and compare AI agent versions" href="https://learn.microsoft.com/training/modules/evaluate-optimize-agents/5-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Text guardrails" href="https://learn.microsoft.com/training/modules/moderate-content-detect-harm-azure-ai-content-safety-studio/5-exercise-text-moderation/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Groundedness detection" href="https://learn.microsoft.com/training/modules/moderate-content-detect-harm-azure-ai-content-safety-studio/7-exercise-groundedness-detection/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Prompt shields" href="https://learn.microsoft.com/training/modules/moderate-content-detect-harm-azure-ai-content-safety-studio/8-exercise-prompt-shields/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Manage secrets with Azure Key Vault" href="https://learn.microsoft.com/training/modules/manage-app-secrets-key-vault/6-exercise-manage-secrets/?WT.mc_id=studentamb_165290" />
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Microsoft GitHub">
+
+:::note
+This repo is under active development alongside the beta exam; new labs may be added over time.
+:::
+
+  <CardGrid>
+    <LinkCard title="Design stateful agentic loops" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/01-contoso-capital-stateful-agentic-loops.html" target="_blank" description="Design and test stateful agentic loops for the Contoso Capital Investment Research Platform."/>
+    <LinkCard title="Implement advanced multi-agent orchestration" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/02-contoso-capital-advanced-orchestration.html" target="_blank" description="Implement and test advanced multi-agent orchestration for the Contoso Capital Investment Research Platform."/>
+    <LinkCard title="Apply task decomposition and collaboration" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/03-contoso-capital-task-decomposition.html" target="_blank" description="Apply and test task decomposition and agent collaboration for the Contoso Capital Investment Research Platform."/>
+    <LinkCard title="Design enterprise agent-to-agent communication" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/04-contoso-capital-a2a-communication.html" target="_blank" description="Design and test enterprise agent-to-agent communication for the Contoso Capital Investment Research Platform."/>
+    <LinkCard title="Design advanced prompting strategies" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/05-northwind-health-advanced-prompting.html" target="_blank" description="Design and test advanced prompting strategies for the Northwind Health Clinical Intelligence System."/>
+    <LinkCard title="Build enterprise tool ecosystems with MCP" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/06-northwind-health-mcp-tools.html" target="_blank" description="Build and test an enterprise Model Context Protocol tool ecosystem for the Northwind Health Clinical Intelligence System."/>
+    <LinkCard title="Implement advanced RAG with Azure AI Search" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/07-northwind-health-advanced-rag.html" target="_blank" description="Implement and test advanced retrieval-augmented generation with Azure AI Search for the Northwind Health Clinical Intelligence System."/>
+    <LinkCard title="Design multi-agent memory architectures" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/08-northwind-health-multi-agent-memory.html" target="_blank" description="Design and test a multi-agent memory architecture for the Northwind Health Clinical Intelligence System."/>
+    <LinkCard title="Implement CI/CD for multi-agent systems" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/09-fabrikam-multi-agent-cicd.html" target="_blank" description="Implement and test CI/CD controls for the Fabrikam Code Review and Deployment Agent System."/>
+    <LinkCard title="Secure multi-agent systems with zero trust" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/10-fabrikam-zero-trust-security.html" target="_blank" description="Design and test zero-trust security controls for the Fabrikam Code Review and Deployment Agent System."/>
+    <LinkCard title="Scale responsible AI governance" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/11-fabrikam-responsible-ai-governance.html" target="_blank" description="Design and test responsible AI governance controls for the Fabrikam Code Review and Deployment Agent System."/>
+    <LinkCard title="Govern the enterprise agent lifecycle" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/12-fabrikam-agent-lifecycle-governance.html" target="_blank" description="Design and test enterprise agent lifecycle governance for the Fabrikam Code Review and Deployment Agent System."/>
+    <LinkCard title="Implement distributed observability" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/13-adventure-works-distributed-observability.html" target="_blank" description="Implement and test distributed observability for the Adventure Works Customer Intelligence Platform."/>
+    <LinkCard title="Design multi-agent evaluation frameworks" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/14-adventure-works-evaluation-frameworks.html" target="_blank" description="Design and test a multi-agent evaluation framework for the Adventure Works Customer Intelligence Platform."/>
+    <LinkCard title="Optimize multi-agent performance and cost" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/15-adventure-works-performance-cost.html" target="_blank" description="Design and test performance and cost controls for the Adventure Works Customer Intelligence Platform."/>
+    <LinkCard title="Design human-in-the-loop approval workflows" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/16-adventure-works-human-approval.html" target="_blank" description="Design and test human-in-the-loop approval workflows for the Adventure Works Customer Intelligence Platform."/>
+    <LinkCard title="Debug multi-agent production incidents" href="https://microsoftlearning.github.io/mslearn-ai-multi-agents/Instructions/Labs/17-adventure-works-incident-response.html" target="_blank" description="Diagnose and test multi-agent production incident response for the Adventure Works Customer Intelligence Platform."/>
+  </CardGrid>
+  </TabItem>
+</Tabs>

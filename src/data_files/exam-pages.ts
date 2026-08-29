@@ -36,6 +36,13 @@ export const examPages: Record<string, ExamPageData> = {
           "Study guide contains topics and information you need to know to successfully prepare for the exam.",
       },
       {
+        title: "Exam Labs",
+        href: "/labs/azure/ai-901/",
+        target: "_blank",
+        description:
+          "Collection of all lab exercises that Microsoft offers. Includes Labs for Microsoft Learn.",
+      },
+      {
         title: "How to Prepare for Fundamentals Exams",
         href: "/prepare/fundamentals/",
         description:
