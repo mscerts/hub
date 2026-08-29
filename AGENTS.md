@@ -57,6 +57,7 @@ src/
 │   ├── constants.ts          # Site metadata (title, description, SEO, OG)
 │   ├── faqs.json
 │   ├── features.json
+│   ├── learn-catalog.json    # Cache of MS Learn modules (see Learn Catalog Cache section)
 │   └── mega_link.ts
 ├── content.config.ts         # Content schemas (docs + blog collections)
 astro.config.mjs              # Sidebar, redirects, integrations, component overrides
@@ -334,6 +335,60 @@ Automated weekly check for new Microsoft practice tests on MeasureUp. I must add
 ### Running locally
 ```bash
 GITHUB_OUTPUT=/tmp/github-output bash scripts/measureup-check.sh
+```
+
+---
+
+## Learn Catalog Cache
+
+Local, AI-queryable cache of Microsoft Learn training modules (name, product category, product(s), subjects, unit names), so an agent can find "all modules about product X" without re-scraping Learn each time.
+
+- **Data file:** `src/data_files/learn-catalog.json` — not imported by the site; a pure reference dataset for content research.
+- **Script:** `scripts/learn-catalog-sync.mjs` — Node (ESM, zero dependencies, uses global `fetch`). Run with `node scripts/learn-catalog-sync.mjs`.
+- **Workflow:** `.github/workflows/learn-catalog-monitor.yml` — runs Monday 07:00 UTC + manual trigger; commits the refreshed file directly (no PR, same pattern as MeasureUp) and opens an issue only if the sync fails.
+- **Source:** `https://learn.microsoft.com/api/catalog/` (`type=modules,units,products,subjects`).
+
+### Catalog API shape (important — not obvious from the API itself)
+- `?type=products` and `?type=subjects` each return a **flat top-level list where every entry has `parent_uid: null`**; the real hierarchy lives in a `children: [{id, name}]` array on each top-level entry, 2 levels deep. No child id is duplicated under multiple parents.
+- A module's `products` array can mix top-level ids (e.g. `github`) and child ids (e.g. `azure-cosmos-db`) from *different* parents in the same module — modules are not confined to one category.
+- The `product=<id>` query filter matches **only the literal tag**, not the category hierarchy (filtering `product=azure` excludes a module tagged only `azure-devops`, even though DevOps is a child of Azure). Reliable category classification requires pulling the full unfiltered catalog and resolving each module's product ids against the children map yourself — don't rely on the query filter for "everything in category X".
+- `units` is a **separate top-level array** in the catalog response (uid, title, duration, locale, last_modified) — a module only lists ordered unit *uids*; resolve titles via this array instead of fetching each module/unit individually.
+- Full unfiltered catalog (as of 2026-08-29): 3,425 modules, 27,557 units, 60 top-level products (220 child products); ~5.5MB modules + ~5.8MB units + ~15KB products, all `locale: en-us` by default.
+
+### Category filter
+`ALLOWED_CATEGORIES` in `scripts/learn-catalog-sync.mjs` is an explicit allowlist of top-level product ids (50 of 60). It covers every cert-tracked area (Azure, M365 family, Dynamics 365, Power Platform, GitHub, Fabric, Entra, Sentinel, Defender, Purview, Priva, Security Copilot, Copilot, Intune/MEM, Viva, Teams, agent-365/agent-framework, SQL Server, Windows, SharePoint, Exchange, Industry Solutions, Graph) plus generic dev/productivity categories (.NET, ASP.NET/ASP.NET Core, Visual Studio/VS Code/App Center, Bing, Microsoft Edge, Microsoft Authentication Library, Sysinternals, Windows Server, Microsoft Search, Microsoft Whiteboard, Adaptive Cards, Microsoft Forms, and the standalone Office apps: Excel, Word, PowerPoint, Outlook, OneNote, OneDrive, plus the generic `office` and `m365-ems-advanced-threat-analytics` tags). This keeps 3,357 of 3,425 modules. Only 10 categories remain excluded as not relevant to any tracked content: Consumer, HoloLens, Microsoft MakeCode, Minecraft, Mixed Reality Toolkit, Quantum Development Kit, Surface, Xbox, `ms-website` (a small ~11-module bucket for AppSource/Azure Marketplace/Microsoft Education Center partner-publishing content), and `playwright` (a single Learn module about the open-source Playwright test framework — no Microsoft cert exists for it). Edit the array directly to add/remove a category — no other code changes needed.
+
+### Module record schema
+```json
+{
+  "uid": "learn.wwl.introduction-development-operations-principles-for-machine-learn",
+  "title": "Introduction to DevOps principles for machine learning",
+  "url": "https://learn.microsoft.com/training/modules/.../?WT.mc_id=studentamb_165290",
+  "categories": ["Azure", "GitHub"],
+  "products": ["Azure DevOps", "GitHub", "Machine Learning"],
+  "subjects": ["DevOps"],
+  "units": ["Introduction", "...", "Summary"]
+}
+```
+- `categories` = resolved top-level parent name(s), restricted to `ALLOWED_CATEGORIES` matches; `products` = every tagged product's display name (parent- or child-level, whichever was tagged), unrestricted.
+- `units` are titles only (no uids), in module order; a small number (~120 of ~19,000 as of the initial run) fall back to the raw unit uid because the catalog's `units` array didn't include that uid — a minor upstream data inconsistency, not a bug.
+- URLs are normalized the same way as content pages: `/en-us/` stripped, `WT.mc_id` rewritten to `studentamb_165290`.
+- Records are sorted by `uid` for stable, minimal diffs between refreshes.
+
+### Subject enrichment
+Microsoft's own `subjects` tagging is sparse and inconsistent (as of the 2026-08-29 snapshot, 415 of 3,357 modules have zero subjects at all, down from 638 before enrichment; near-duplicate modules can also be tagged differently — e.g. "Introduction to Azure Firewall" had no "Networking" tag despite being a firewall module, while a similar Firewall module did). `PRODUCT_SUBJECT_HINTS` in `scripts/learn-catalog-sync.mjs` is a deterministic product-id → subject-id table that adds a subject when a module has a well-known, unambiguous product (networking appliances, specific databases, AI services, identity/Defender/Purview products, device management, Power BI/Power Automate/Fabric, containers, Azure DevOps, monitoring/backup, automation/serverless, app-development frameworks, Education) and Microsoft's own tag is missing it. It only **adds** subjects, never removes Microsoft's own tags, and covers ~80 high-confidence product ids — it is not a full content classification of every module, so gaps can still remain for products not in the table (see "Known residual gaps" below).
+- **Verified empirically, not just by code review**: cross-checked all 3,357 modules' official `subjects` against the generated cache — 0 violations (every official tag survives; the merge is `new Set(mod.subjects)` + `.add()` only, never `.delete()`/reassignment). Re-run this check after touching the merge logic: fetch `?type=modules,subjects`, resolve each module's raw subject ids to names, and confirm every one is present in that module's cache entry.
+- **Custom subjects** (`CUSTOM_SUBJECTS` in the script): ids invented because no official Microsoft Learn subject fits, merged into the same resolution map as official ones so they're indistinguishable in the output format. Currently one: `education` → "Education" (Microsoft Learn's `?type=subjects` taxonomy has no education-related entry at all, yet `m365-education`-tagged modules — K-12/higher-ed content — are a large, clean, consistent cluster: 68 modules, was 93% zero-subject before this tag).
+- **Products considered and deliberately rejected** after sampling actual module titles (high-level "% missing" stats looked compelling but the products turned out to be broad co-tags on unrelated content, so adding the hint would have been inaccurate): `power-apps` (Custom app development — diluted by Copilot Studio/AI Builder modules that aren't app-building), `dataverse` (databases — same dilution), `office-sp`/SharePoint (Collaboration — tiny, weak sample), `office-exchange`/Exchange (Communication — sampled modules were actually about Purview/Defender compliance auditing, not messaging), `office-teams`/Teams (Collaboration/Communication — diluted by Power Platform/Copilot extension modules built on top of Teams), `ms-copilot` and `agent-365` (chatbots/generative-ai — used as a broad co-tag across modules that are really about the underlying platform, e.g. "Build a Power Apps canvas app... with Copilot in Power Apps" is a Power Apps module, not a chatbot-building one). Don't re-add these without re-sampling real module titles first — the aggregate gap % alone is not sufficient evidence.
+- **Known residual gaps (deliberately left unfixed)**: a per-product zero-subject report (group all modules by product, sort by zero-subject count) shows the bare umbrella tags `Azure` (759 modules, 118 zero — 93 of those have *no other product tag at all*), `Windows`, `windows-11`, `Office 365`, and `Windows Server` are each too heterogeneous for one hint (samples span everything from accessibility to Active Directory to IIS to K-12 classroom content within the same tag). Fixing these would need either fragile title-keyword matching or non-durable per-uid overrides (which would just be silently discarded on the next resync, since the file always regenerates from the live API) — neither meets the bar used for every other entry in this table. Re-derive this report (`group by product → count, zero-subject count`) before investing more time here rather than guessing which products still have gaps.
+- Extend the table (grouped by category, values are subject ids from `?type=subjects`, or a new `CUSTOM_SUBJECTS` entry if nothing fits) if you spot another consistent, undiluted gap — sample several real modules with that product before adding a rule, the same way the accepted entries above were checked.
+
+### Failsafe
+Script aborts (`process.exit(1)`, nothing written) if fewer than `MIN_MODULES` (2,800) modules match after filtering — signals the catalog API schema likely changed.
+
+### Running locally
+```bash
+node scripts/learn-catalog-sync.mjs
 ```
 
 ---
