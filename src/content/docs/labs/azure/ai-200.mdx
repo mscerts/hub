@@ -1,0 +1,58 @@
+---
+title: AI-200 Labs
+description: "Lab exercises for AI-200: Developing AI Cloud Solutions on Azure. Includes Microsoft Learn and Microsoft GitHub labs."
+---
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+  {/* <TabItem label="Applied Skills">
+
+  <CardGrid>
+    <LinkCard title="" href="" />
+  </CardGrid>
+  </TabItem> */}
+
+  <TabItem label="Microsoft Learn">
+
+:::note
+Microsoft Learn Sandboxes require you to bring in your own subscription.
+:::
+
+  <CardGrid>
+    <LinkCard title="Deploy and use Azure Container Registry" href="https://learn.microsoft.com/training/modules/deploy-use-azure-container-registry/6-run-image-from-registry/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Deploy a containerized backend API to Container Apps" href="https://learn.microsoft.com/training/modules/deploy-containers-azure-container-apps/7-exercise-deploy-backend-api/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Deploy applications to Azure Kubernetes Service" href="https://learn.microsoft.com/training/modules/project-deploy-applications-azure-kubernetes-service/2-exercise-provision-azure-container-registry-azure-kubernet/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Scale the node count in an Azure Kubernetes Service cluster" href="https://learn.microsoft.com/training/modules/configure-scaling-azure-kubernetes-service/6-autoscaler-node-pool/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Connect to Azure Cosmos DB for NoSQL with the SDK" href="https://learn.microsoft.com/training/modules/use-azure-cosmos-db-sql-api-sdk/7-exercise-connect-to/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Build a semantic search application with Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/implement-vector-search-azure-cosmos-db/6-exercise-build-semantic-search/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Optimize an Azure Cosmos DB for NoSQL container's index policy" href="https://learn.microsoft.com/training/modules/choose-indexes-azure-cosmos-db-sql-api/5-exercise-optimize-containers-index-policy-common-operations/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Process Azure Cosmos DB for NoSQL data using Azure Functions" href="https://learn.microsoft.com/training/modules/handle-events-azure-functions-azure-cosmos-db-sql-api-change-feed/5-exercise-archive-data-using-azure-functions/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Implement vector search on Azure Database for PostgreSQL" href="https://learn.microsoft.com/training/modules/implement-vector-search-azure-database-postgresql/7-exercise-implement-vector-search/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Implement semantic search in Azure Managed Redis" href="https://learn.microsoft.com/training/modules/implement-vector-storage-azure-managed-redis/5-exercise-semantic-search-azure-managed-redis/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Perform data operations in Azure Managed Redis" href="https://learn.microsoft.com/training/modules/implement-data-operations-azure-managed-redis/5-exercise-data-operations/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Process messages with Azure Service Bus" href="https://learn.microsoft.com/training/modules/queue-process-operations-service-bus/6-exercise-process-messages/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Publish and receive events with Azure Event Grid" href="https://learn.microsoft.com/training/modules/event-driven-workflows-event-grid/6-exercise-publish-receive-events/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Create an MCP server with Azure Functions" href="https://learn.microsoft.com/training/modules/build-backends-azure-functions/7-exercise-create-mcp-server/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Manage secrets with Azure Key Vault" href="https://learn.microsoft.com/training/modules/manage-app-secrets-key-vault/6-exercise-manage-secrets/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Retrieve settings and secrets from Azure App Configuration" href="https://learn.microsoft.com/training/modules/manage-app-settings-app-config/6-exercise-retrieve-settings/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Instrument an app with the OpenTelemetry SDK" href="https://learn.microsoft.com/training/modules/instrument-app-opentelemetry/7-exercise-instrument-app-opentelemetry/?WT.mc_id=studentamb_165290" />
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Microsoft GitHub">
+
+  <CardGrid>
+    <LinkCard title="Deploy a containerized backend API to Container Apps" href="https://microsoftlearning.github.io/mslearn-azure-ai/instructions/azure-container-apps/01-aca-deploy-containers.html" target="_blank" description="Deploy a container image from Azure Container Registry to Azure Container Apps using a managed identity."/>
+    <LinkCard title="Diagnose and fix a failing deployment" href="https://microsoftlearning.github.io/mslearn-azure-ai/instructions/azure-container-apps/02-aca-manage-containers.html" target="_blank" description="Troubleshoot Azure Container Apps by diagnosing missing environment variables and ingress misconfigurations."/>
+    <LinkCard title="Configure autoscaling for an API using KEDA" href="https://microsoftlearning.github.io/mslearn-azure-ai/instructions/azure-container-apps/03-aca-scale-containers.html" target="_blank" description="Configure KEDA-based autoscaling in Azure Container Apps using HTTP concurrency triggers."/>
+    <LinkCard title="Build and run a container image with ACR Tasks" href="https://microsoftlearning.github.io/mslearn-azure-ai/instructions/container-hosting/01-acr-tasks.html" target="_blank" description="Use Azure Container Registry Tasks to build and manage container images entirely in the cloud."/>
+    <LinkCard title="Deploy an AI inference API to Azure Kubernetes Service" href="https://microsoftlearning.github.io/mslearn-azure-ai/instructions/azure-kubernetes-service/01-aks-deploy-container.html" target="_blank" description="Create Kubernetes deployment and service manifests to deploy an AI inference API container to AKS."/>
+    <LinkCard title="Troubleshoot apps on Azure Kubernetes Service" href="https://microsoftlearning.github.io/mslearn-azure-ai/instructions/azure-kubernetes-service/03-aks-troubleshoot-container.html" target="_blank" description="Diagnose and resolve common Kubernetes issues including label mismatches and CrashLoopBackOff errors."/>
+    <LinkCard title="Build an agent tool backend on Azure Database for PostgreSQL" href="https://microsoftlearning.github.io/mslearn-azure-ai/instructions/azure-database-postgresql/01-build-agent-tool-backend.html" target="_blank" description="Build persistent memory storage for AI agents using Azure Database for PostgreSQL."/>
+    <LinkCard title="Build a RAG document store on Azure Cosmos DB for NoSQL" href="https://microsoftlearning.github.io/mslearn-azure-ai/instructions/cosmosdb/01-build-rag-document-store.html" target="_blank" description="Build a document storage backend for retrieval-augmented generation using Azure Cosmos DB for NoSQL."/>
+    <LinkCard title="Publish and subscribe to events in Azure Managed Redis" href="https://microsoftlearning.github.io/mslearn-azure-ai/instructions/azure-managed-redis/02-amr-pub-sub.html" target="_blank" description="Build a Flask web app that implements pub/sub messaging patterns in Azure Managed Redis."/>
+    <LinkCard title="Query logs with KQL" href="https://microsoftlearning.github.io/mslearn-azure-ai/instructions/instrument-observe/02-query-logs-kql.html" target="_blank" description="Query requests, exceptions, and dependencies using KQL in Application Insights."/>
+  </CardGrid>
+  </TabItem>
+</Tabs>
