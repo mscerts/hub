@@ -55,6 +55,7 @@ src/
 │   ├── faqs.json
 │   ├── features.json
 │   ├── learn-catalog.json    # Cache of MS Learn modules (see Learn Catalog Cache section)
+│   ├── docs-catalog.json     # Cache of MS Learn docs pages (see Docs Catalog Cache section)
 │   └── mega_link.ts
 ├── content.config.ts         # Content schemas (docs + blog collections)
 astro.config.mjs              # Redirects and Astro integrations
@@ -375,6 +376,104 @@ Script aborts (`process.exit(1)`, nothing written) if fewer than `MIN_MODULES` (
 ### Running locally
 ```bash
 node scripts/learn-catalog-sync.mjs
+```
+
+---
+
+## Docs Catalog Cache
+
+Local, AI-queryable cache of Microsoft Learn **documentation** pages (title, url, product, subproduct, description) — the docs-portal sibling of the Learn Catalog Cache above, which only covers training modules. Documentation has no bulk API, so this is built by shallow-cloning each product's public docs repo on GitHub instead.
+
+- **Data file:** `src/data_files/docs-catalog.json` — not imported by the site; a pure reference dataset for content research, same role as `learn-catalog.json`.
+- **Script:** `scripts/docs-catalog-sync.mjs` — Node (ESM, zero dependencies, uses `git` via `execSync`). Run with `node scripts/docs-catalog-sync.mjs`.
+- **Workflow:** `.github/workflows/docs-catalog-monitor.yml` — runs Monday 08:00 UTC + manual trigger; commits the refreshed file directly (no PR, same pattern as MeasureUp/Learn Catalog) and opens an issue if any repo fails or the sync falls below the failsafe threshold. The commit step runs even if the sync step reports failure (`if: ${{ !cancelled() }}`), so a partial failure (one repo down) still commits the data gathered from the repos that succeeded.
+- **Source:** one `git clone --filter=blob:none --sparse --depth 1 --no-checkout` per repo in the `REPOS` array in the script, sequentially (not parallel — clones are fast enough, ~2-30s each, that parallelizing isn't worth the added complexity; see AGENTS.md's general preference for simple, single-script/single-workflow automation matching the Learn Catalog and MeasureUp patterns).
+
+### Why git clone instead of an API
+Microsoft's Learn Platform API and `/api/catalog/` only cover Modules/Units/Learning Paths/Applied Skills/Certifications/Exams/Instructor-Led Courses — not documentation. Documentation lives in ~dozens of open-source `MicrosoftDocs/*` GitHub repos (CC BY 4.0 content, MIT code, public-contribution repos — safe to cache metadata from). A blobless/sparse/shallow clone avoids the GitHub REST API's rate limits entirely (it uses git's smart HTTP protocol, not `api.github.com`) and is fast: azure-docs (the largest repo used), at 159MB/~15K files with full history, clones and checks out in under 30 seconds when filtered this way.
+
+### Repo config shape and the critical gotcha
+Each `REPOS` entry is `{ name, repoUrl, targets: [{ sourceFolder, baseUrlPath }] }`. A repo can have multiple `targets` (multiple docsets sharing one clone) — `defender-docs` has 15. Optional per-repo overrides exist for repos that don't follow the docfx/Microsoft Learn convention: `domain` (default `learn.microsoft.com`), `descriptionField` (default `description`, the frontmatter key to read for the description), and `productFromPath` (derive `product` from the first path segment under `sourceFolder` instead of an `ms.service`-style frontmatter tag). See the `github-docs` section below for the one repo that uses all three.
+
+**`baseUrlPath` must be manually verified against a real live page fetch — never trust a repo's `.openpublishing.publish.config.json` → `docsets_to_publish[].build_output_subfolder` literally.** That value is frequently an internal build alias, not the public URL segment. Confirmed mismatches found while building this cache:
+| Repo/docset | `build_output_subfolder` (wrong) | Real live URL base (verified) |
+|---|---|---|
+| entra-docs | `entra-docs` | `entra` |
+| fabric-docs | `fabric-docs` | `fabric` |
+| windowsserverdocs | `WindowsServerDocs-VSTS` | `windows-server` |
+| defender-docs: sentinel | `sentinel-azure` | `azure/sentinel` (nested under Azure) |
+| defender-docs: defender-for-cloud | `defender-for-cloud` | `azure/defender-for-cloud` (nested under Azure) |
+| defender-docs: easm | `easm-azure` | `azure/external-attack-surface-management` |
+| defender-docs: exposure-management | `exposure-management` | `security-exposure-management` |
+| defender-docs: defender-for-identity | `ATP-Docs` (legacy alias) | `defender-for-identity` |
+| defender-docs: defender (landing/overview docset) | `defender` | `unified-secops` |
+| defender-docs: defender-for-iot / d4iot-azure | `defender-for-iot` / `d4iot-azure` | both publish under `azure/defender-for-iot` |
+| microsoft-365-docs: copilot | `microsoft-365-copilot` | `microsoft-365/copilot` (canonicalUrl nests it under the same `microsoft-365/` prefix as the repo's other docset, not a separate top-level path) |
+
+Roughly half of `defender-docs`' docsets needed correction this way, while `defender-endpoint`, `defender-cloud-apps`, `defender-xdr`, `defender-business`, `defender-office-365`, `defender-vulnerability-management`, and `unified-secops-platform` all matched their literal config value. There's no reliable way to predict which case a new repo/docset falls into — always spot-check a sample file's constructed URL with `microsoft_docs_fetch` (or equivalent) before adding it, the same way every repo in the current list was verified. `power-platform` also has an unrelated second docset (`project-sophia`/`ps-docs`) deliberately excluded as out of scope, and `defender-docs`' `advanced-threat-analytics` (ATA) docset is excluded as a legacy/retired product superseded by Defender for Identity.
+
+### Dynamics 365 tier: a shared namespace, not per-repo aliases
+Dynamics 365 documentation is fragmented across ~10 separate `MicrosoftDocs/*` repos (one per product area, found via `github.com/orgs/MicrosoftDocs/repositories?q=dynamics`), and most publish under a **shared `dynamics365/` URL namespace** rather than a distinct per-repo segment — each repo's `.openpublishing.publish.config.json` `build_output_subfolder` (e.g. `customer-engagement`, `d365F-O`, `dynamics365-contact-center`, `dynamics-365-order-management`, `dynamics365guidance`) is **never** the real live path.
+
+**The critical distinction is whether the product name survives as a real folder *inside* the sourceFolder, or whether the sourceFolder itself *is* the product** (confirmed live, then re-confirmed by a duplicate-URL audit across the whole generated catalog — see below):
+- `dynamics-365-customer-engagement` (`sourceFolder: "ce"`) and `dynamics-365-unified-operations-public` (`sourceFolder: "articles"`) are generic containers holding *multiple* product subfolders (`ce/sales/`, `ce/customer-service/`, `articles/finance/`, `articles/supply-chain/`, etc.) — those subfolder names become the URL segment for free, so `baseUrlPath: "dynamics365"` alone is correct.
+- Every other single-product repo uses its product name (or an alias of it) *as* the `sourceFolder` itself (`contact-center`, `mr-docs`, `topics`, `guidance`, `articles`-for-project-operations) — using it as `sourceFolder` strips it from the relative path, so it **must be re-added explicitly** to `baseUrlPath`, e.g. `dynamics365/contact-center`, `dynamics365/guidance`, `dynamics365/project-operations`, `dynamics365/intelligent-order-management`. `dynamics-365-mixed-reality` is the trickiest case: its folder is named `mr-docs`, but the real live segment is `mixed-reality` — folder name and URL segment don't always match, so verify each one, don't infer from the folder name. The Business Central pair follows the same rule: `dynamics365/business-central` (`dynamics365smb-docs`) and `dynamics365/business-central/dev-itpro` (`dynamics365smb-devitpro-pb`, a *separate* repo from `dynamics365smb-docs` despite covering the same product).
+
+**This was originally implemented wrong** for 5 repos (`dynamics-365-project-operations`, `dynamics-365-contact-center`, `dynamics-365-mixed-reality`, `dynamics-365-intelligent-order-management`, `dynamics365-guidance`) — each had `baseUrlPath: "dynamics365"` alone, producing URLs missing the product segment entirely (e.g. `dynamics365/administer/...` instead of `dynamics365/contact-center/administer/...`). It surfaced only because two of the broken URLs happened to collide (`dynamics365/overview` and `dynamics365/whats-new/whats-new-home-page`, each claimed by two different repos' root-level files) and got caught by a **whole-catalog duplicate-URL check** (`Group-Object url | Where Count -gt 1`) — run this check after adding or changing any repo, since a passing `pnpm build` and a plausible-looking entry count do not catch wrong-but-well-formed URLs.
+
+Excluded from this tier as legacy/retired (no current cert relevance, docs frozen or product discontinued): `msftdynamicsgpdocs` (Dynamics GP), `DynamicsAX2012-technet`/`-msdn` (AX 2012), `nav-content` (Dynamics NAV, Business Central's predecessor), `dynamics365-docs-templates` (archived, templates only), `dynamics-365-supply-chain-insights` (stale since 2022, folded into `dynamics-365-unified-operations-public`), `dynamics-365-ai` (stale since Nov 2024, superseded by per-app Copilot content), and **`dynamics-365-fraud-protection`** — confirmed via the repo's own `includes/deprecation.md` that support ended February 3, 2026 and the product is no longer purchasable; it no longer appears in the live Dynamics 365 documentation hub page at all. `dynamics365-industry-solutions` has no `.openpublishing.publish.config.json`; it's a generic community repo, not a docs source. Also note: `dynamics-365-mixed-reality` (Guides and Remote Assist) is included since it's still live, but Microsoft has announced both products retire December 31, 2026 — revisit after that date.
+
+### Branch handling
+The script uses a bare `git checkout` (no branch name) after the `--no-checkout` clone, which resolves to each repo's actual default branch automatically — confirmed necessary since not all repos use `main` (`microsoft-365-docs` uses `public`). Do not hardcode a branch name per repo.
+
+### m365copilot-docs and the Purview/Priva dead end
+`m365copilot-docs` (Microsoft 365 Copilot **extensibility**/developer docs — declarative agents, plugins, adaptive cards, Agent Builder) is a distinct repo from `microsoft-365-docs`' own `copilot/` folder (which covers agent *governance*: `agent-essentials/`, `copilot-control-system/`). Both share the `microsoft-365/copilot/` URL prefix with no overlapping subfolders (`extensibility/` vs. `agent-essentials/`/`copilot-control-system/`), confirmed via canonicalUrl, so no duplicate entries. Normal docfx repo, no overrides needed beyond `baseUrlPath: "microsoft-365/copilot/extensibility"`.
+
+By contrast, **Purview and Priva were investigated and confirmed to have no public repo**, correcting an earlier assumption that their content was folded into `microsoft-365-docs`' `security/` folder — that folder actually contains only 2 real content files (checked directly, not just repo-searched). A live Purview/Priva page's own frontmatter (`original_content_git_url`) reveals the true source repos are `Purview-pr` and `OfficeDocs-Privacy-pr` — but only the `-pr` (internal/staging) forms exist; the expected public counterparts (`Purview`, `OfficeDocs-Privacy`, dropping the `-pr` suffix per the pattern every other repo in this cache follows) both 404, and neither turns up in an org-wide repo search for "purview", "priva", or "compliance" either. Same closed status as the Office-suite family and Windows client docs — revisit only if Microsoft changes its publishing model.
+
+### github-docs: a different org, domain, and pipeline entirely
+`github/docs` (the open-source repo behind docs.github.com, GH-* exam content) is not a MicrosoftDocs/docfx repo at all — it's Next.js + Liquid templating, so it needed three repo-level overrides instead of the usual `baseUrlPath` verification: `domain: "docs.github.com"`, `descriptionField: "intro"` (its frontmatter uses `intro` where docfx repos use `description`), and `productFromPath: true` (there's no `ms.service`-equivalent tag, so `product` is the top-level `content/` folder name, e.g. `actions`, `copilot`, `codespaces`). No locale prefix is needed — `docs.github.com/<path>` resolves the same as `/en/<path>`.
+
+Raw frontmatter text also contains unresolved Liquid tags like `{% data variables.product.github %}` (54% of `intro` values had at least one, sampled against the full repo). A `stripLiquidTags()` helper resolves the handful of common `variables.product.*` tags to "GitHub" and strips any other `{%...%}` tag outright — applied to both `title` and `description` for every repo (harmless no-op for docfx repos, which never contain this syntax). This cleans 99.9% of entries; a small number (3 of 3,741, all product-name tags like `variables.copilot.copilot_cli` with no text around them) fall back to the raw tag in the title so it's never blank — a known, accepted gap, not worth a full per-variable resolution table for 0.08% of entries.
+
+### Entry schema
+```json
+{
+  "title": "Import SOAP API to Azure API Management",
+  "url": "https://learn.microsoft.com/azure/api-management/import-soap-api",
+  "product": "azure-api-management",
+  "subproduct": null,
+  "description": "Learn how to import a SOAP API to Azure API Management as a WSDL specification..."
+}
+```
+- `title`/`description`/`product`/`subproduct` come from a file's frontmatter (`title`, `description`, `ms.service`, `ms.subservice`) via a simple line-based parser (not a full YAML parser — would break on multi-line block-scalar values, though none were observed in practice). Files without a parseable `title` are skipped.
+- `url` is built from the file's path relative to its target's `sourceFolder`, joined to the verified `baseUrlPath` (see gotcha above) — no `/en-us/`, no `.md` extension.
+- Frontmatter is inconsistently tagged across repos: expect a meaningful fraction of entries with `product: null` (varies by repo, roughly a quarter to a third overall) — this mirrors the same sparsity seen in the Learn Catalog's official `subjects` tagging and isn't a bug.
+
+### Current scope: easy + medium + Dynamics 365 done (as of 2026-08-30)
+Repos are added in tiers of increasing topology complexity — verify and pilot each tier before moving to the next:
+- ✅ **Easy tier (done):** one repo each, single or small number of clean docsets — `azure-docs`, `entra-docs`, `fabric-docs`, `sql-docs`, `power-platform`, `memdocs` (Intune + Autopilot), `windowsserverdocs`, `defender-docs` (15 docsets, see table above), `github-docs` (GH-* exam content — the original plan called for this repo but it was initially missed; added later, see dedicated section above). **46,830 entries** (43,089 initial + 3,741 `github-docs`), 13.2 MB before `github-docs`.
+- ✅ **Medium tier (done):** `microsoft-365-docs` — a real repo but narrower in scope than its name implies: covers `microsoft-365/` (admin, security, backup, business-premium, frontline, managed-desktop, migration, loop, whiteboard, commerce, lighthouse, bookings, and more — nearly all top-level subfolders, ~20 of them) plus `copilot/` (Agent 365 governance content under `agent-essentials/` and `copilot-control-system/`). It does **not** contain Teams, Viva, Exchange, or SharePoint content despite the repo name. **1,170 entries** (1,006 + 164).
+- ✅ **Dynamics 365 (done, part of the former hard tier):** ~10 repos, all resolving to a shared `dynamics365/` namespace — see the dedicated section above for the URL-pattern discovery and exclusions. `dynamics-365-customer-engagement` (4,526), `dynamics-365-unified-operations-public` (5,862), `dynamics365smb-docs` (2,111), `dynamics365smb-devitpro-pb` (5,809), `dynamics-365-project-operations` (878), `dynamics-365-contact-center` (169), `dynamics-365-mixed-reality` (248), `dynamics-365-intelligent-order-management` (83), `dynamics365-guidance` (583). **21,439 entries** added this tier.
+- ✅ **AI Business / Copilot extensibility (done):** `m365copilot-docs` — **265 entries**, see dedicated section above. Its sibling products, Purview and Priva, were investigated and confirmed to have no public repo (see same section) — same closed status as Office-suite/Windows client below.
+- **Office-suite family — confirmed to have no dedicated repo at all (investigated 2026-08-30):** Teams, Exchange, SharePoint, Outlook, Viva, Word/Excel/PowerPoint, OneDrive, and OneNote admin/end-user documentation has **no clean canonical public GitHub source repo**, unlike every product added so far. Searched exhaustively via `github.com/orgs/MicrosoftDocs/repositories?q=<term>` per product plus direct repo-name guesses; every lead was one of:
+  - **Developer-only**, not admin/end-user docs: `msteams-docs` and `Microsoft-teams-docs` (Teams developer platform), `office-developer-exchange-docs`, `office-developer-client-docs`, `office-developer-word-pia-ref-dotnet`, `office-developer-excel-pia-ref-dotnet`, `office-developer-outlook-pia-ref-dotnet`, `office-developer-sharepoint-server-2013-ref-dotnet` (most of these are also legacy/archived, e.g. SharePoint Server 2013).
+  - **A narrow utility repo, not general docs**: `OfficeDocs-SharePoint-PowerShell` is a PowerShell cmdlet reference only.
+  - **Legacy/archived locale-only content with no unsuffixed canonical repo**: `OfficeDocs-SkypeForBusiness.de-DE` / `-pr.<locale>` (Teams predecessor content), `OfficeDocs-Exchange-Test-pr.<locale>`, `office-shared-outlook.<locale>`, `OfficeDocs-O365SecComp-pr.<locale>` (likely predecessor to security/compliance content, now split across Purview/Priva's own private-only repos — see the `m365copilot-docs` section above) — every one of these is locale-suffixed or `-pr`-suffixed (internal staging) with no plain unsuffixed repo behind it.
+  - **Zero matches at all**: Viva, OneDrive, OneNote.
+  - Direct guesses for a plain canonical name (`OfficeDocs-SkypeForBusiness`, `OfficeDocs-Exchange`, `OfficeDocs-SharePoint`, `OfficeDocs-Outlook`) all 404.
+  - `microsoft-365-docs` itself was double-checked as a fallback (its `microsoft-365/topics/` folder, the one unexplained generic-sounding subfolder) — contains only 2 meta-articles about a "topics" system migration, not Teams/Exchange/SharePoint/Outlook content.
+  
+  **Conclusion: this tier is closed, not merely deferred.** These products' admin docs likely use a different, non-public-contribution authoring pipeline than the ~20 repos already integrated. Re-check only if Microsoft changes its publishing model for these products.
+- **Also confirmed to have no dedicated repo:** Windows client IT-pro/admin docs (11 `windows*` repos found, all developer/driver/API-reference-focused — genuinely no admin-docs repo exists) and Agent 365 (no standalone repo — content lives inside `microsoft-365-docs`' `copilot/` folder and likely `entra-docs`, both already in scope).
+- **Final total: 68,534 entries, 21.3 MB.** All planned tiers are now done or confirmed closed — no further repos are currently known to be addable.
+
+### Failsafe
+Script aborts (`process.exit(1)`, nothing written) if total entries across all repos fall below `MIN_ENTRIES` (20,000) — signals systemic breakage (e.g., the git clone technique stops working), as opposed to one repo having a transient issue.
+
+### Running locally
+```bash
+node scripts/docs-catalog-sync.mjs
 ```
 
 ---
