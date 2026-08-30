@@ -15,4 +15,10 @@
   "markdown.copyFiles.destination": {
     "/src/content/**/*": "/src/assets/images/content/${documentBaseName}/"
   },
+  "chat.tools.terminal.autoApprove": {
+    "/^pwsh -File \"c:\\\\Users\\\\micha\\\\OneDrive\\\\Desktop\\\\hub-1\\\\scripts\\\\_tmp-repo-check8\\.ps1\"$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  },
 }

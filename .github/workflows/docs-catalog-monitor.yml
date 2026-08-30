@@ -1,0 +1,56 @@
+name: Docs Catalog Monitor
+
+on:
+  schedule:
+    - cron: "0 8 * * 1" # Monday 08:00 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: docs-catalog-monitor
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Sync Microsoft docs catalog cache
+        run: node scripts/docs-catalog-sync.mjs
+
+      - name: Commit updated catalog cache
+        if: ${{ !cancelled() }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/docs-catalog.json
+          git diff --cached --quiet || git commit -m "Update Microsoft docs catalog cache"
+          git diff --cached --quiet || git push
+
+      - name: Write failure report
+        if: failure()
+        run: |
+          {
+            echo "# Microsoft Docs Catalog Sync Failed"
+            echo
+            echo "The scheduled sync of \`src/data_files/docs-catalog.json\` failed, or one or more source repos in \`scripts/docs-catalog-sync.mjs\` could not be cloned/parsed."
+            echo "A source repo may have been renamed/removed, or its folder structure changed."
+            echo
+            echo "Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > /tmp/docs-catalog-error.md
+
+      - name: Create issue on sync failure
+        if: failure()
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Microsoft Docs Catalog Sync Failed — ${{ github.run_id }}"
+          content-filepath: /tmp/docs-catalog-error.md
+          labels: enhancement
