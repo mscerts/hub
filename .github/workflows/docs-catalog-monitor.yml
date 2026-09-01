@@ -31,7 +31,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data_files/docs-catalog.json
+          git add src/data_files/docs-catalog.json src/data_files/docs-catalog-invalid.json
           git diff --cached --quiet || git commit -m "Update Microsoft docs catalog cache"
           git diff --cached --quiet || git push
 
@@ -41,8 +41,10 @@ jobs:
           {
             echo "# Microsoft Docs Catalog Sync Failed"
             echo
-            echo "The scheduled sync of \`src/data_files/docs-catalog.json\` failed, or one or more source repos in \`scripts/docs-catalog-sync.mjs\` could not be cloned/parsed."
-            echo "A source repo may have been renamed/removed, or its folder structure changed."
+            echo "The scheduled sync of \`src/data_files/docs-catalog.json\` failed: a source repo in"
+            echo "\`scripts/docs-catalog-sync.mjs\` could not be cloned/parsed (renamed, removed, or its"
+            echo "folder structure changed). Broken URLs alone no longer fail this job -- they're"
+            echo "quarantined into \`src/data_files/docs-catalog-invalid.json\` instead (see AGENTS.md)."
             echo
             echo "Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           } > /tmp/docs-catalog-error.md
