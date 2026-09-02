@@ -157,7 +157,12 @@ const REPOS = [
       },
       {
         sourceFolder: "defender-for-iot",
-        baseUrlPath: "azure/defender-for-iot",
+        baseUrlPath: "defender-for-iot",
+      },
+      {
+        sourceFolder: "defender",
+        baseUrlPath: "unified-secops",
+        pathMappings: [{ sourcePath: "threat-intelligence", baseUrlPath: "defender/threat-intelligence" }],
       },
     ],
   },
@@ -482,6 +487,13 @@ function buildUrl(filePath, sourceRoot, baseUrlPath, domain) {
     : `https://${domain}/${rel}`;
 }
 
+function resolveBaseUrlPath(target, relativePath) {
+  const mapping = target.pathMappings?.find(
+    ({ sourcePath }) => relativePath === sourcePath || relativePath.startsWith(`${sourcePath}/`)
+  );
+  return mapping?.baseUrlPath || target.baseUrlPath;
+}
+
 function processRepo(repo, entries) {
   const domain = repo.domain || "learn.microsoft.com";
   const descriptionField = repo.descriptionField || "description";
@@ -495,14 +507,12 @@ function processRepo(repo, entries) {
       for (const file of files) {
         const content = readFileSync(file, "utf-8");
         const fm = parseFrontmatter(content);
-        if (!fm || !fm.title) continue;
+        if (!fm || !fm.title || /\bNOINDEX\b/i.test(fm.ROBOTS || "")) continue;
         const rel = relative(sourceRoot, file).replace(/\\/g, "/");
         entries.push({
           title: cleanTitle(stripLiquidTags(fm.title) || fm.title),
-          url: buildUrl(file, sourceRoot, target.baseUrlPath, domain),
-          product: repo.productFromPath
-            ? rel.split("/")[0]
-            : fm["ms.service"] || null,
+          url: buildUrl(file, sourceRoot, resolveBaseUrlPath(target, rel), domain),
+          product: repo.productFromPath ? rel.split("/")[0] : fm["ms.service"] || null,
           subproduct: repo.productFromPath ? null : fm["ms.subservice"] || null,
           description: stripLiquidTags(fm[descriptionField]),
         });
