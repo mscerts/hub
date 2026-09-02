@@ -16,7 +16,6 @@ const examBadges = {
   azure: {
     "AZ-400": { text: "Endangered", variant: "caution" },
     "DP-420": { text: "Endangered", variant: "caution" },
-    "AZ-500": { text: "RETIRING", variant: "danger" },
     "AZ-800": { text: "RETIRING", variant: "danger" },
     "AZ-801": { text: "RETIRING", variant: "danger" },
     "AZ-802": { text: "BETA", variant: "tip" },
@@ -37,9 +36,7 @@ const examBadges = {
   security: {
     "SC-500": { text: "BETA", variant: "tip" },
   },
-  power: {
-    "PL-200": { text: "RETIRING", variant: "danger" },
-  },
+  power: {},
   dynamics: {},
 };
 
@@ -100,6 +97,14 @@ export default defineConfig({
     "/azure/ai-102": "/azure/ai-103",
     "/azure/ai-900": "/azure/ai-901",
     "/power/pl-600": "/aibusiness/ab-100",
+    "/power/pl-200": "/aibusiness/ab-410",
+    "/power/pl-200/": "/aibusiness/ab-410/",
+    "/labs/power/pl-200": "/labs/aibusiness/ab-410",
+    "/labs/power/pl-200/": "/labs/aibusiness/ab-410/",
+    "/azure/az-500": "/security/sc-500",
+    "/azure/az-500/": "/security/sc-500/",
+    "/labs/azure/az-500": "/labs/security/sc-500",
+    "/labs/azure/az-500/": "/labs/security/sc-500/",
 
 
     "/microsoft365/ms-900": "/aibusiness/ab-900",

@@ -26,7 +26,7 @@ export const relatedCertsByExam: Record<string, RelatedCertItem[]> = {
   ],
   "AZ-305": [
     { code: "AZ-104", name: "Microsoft Azure Administrator", area: "azure", relation: "Prerequisite" },
-    { code: "AZ-500", name: "Microsoft Azure Security Technologies", area: "azure", relation: "Sibling" },
+    { code: "SC-500", name: "Implementing End-to-End Security Controls for Cloud and AI Workloads", area: "security", relation: "Sibling" },
     { code: "AZ-700", name: "Designing and Implementing Microsoft Azure Networking Solutions", area: "azure", relation: "Sibling" },
   ],
   "AI-901": [
@@ -40,7 +40,7 @@ export const relatedCertsByExam: Record<string, RelatedCertItem[]> = {
   "SC-900": [
     { code: "SC-200", name: "Microsoft Security Operations Analyst", area: "security", relation: "Next step" },
     { code: "SC-300", name: "Microsoft Identity and Access Administrator", area: "security", relation: "Next step" },
-    { code: "AZ-500", name: "Microsoft Azure Security Technologies", area: "azure", relation: "Next step" },
+    { code: "SC-500", name: "Implementing End-to-End Security Controls for Cloud and AI Workloads", area: "security", relation: "Next step" },
     { code: "SC-100", name: "Cybersecurity Architect", area: "security", relation: "Next step" },
   ],
   "SC-200": [
@@ -56,6 +56,6 @@ export const relatedCertsByExam: Record<string, RelatedCertItem[]> = {
   "SC-100": [
     { code: "SC-200", name: "Microsoft Security Operations Analyst", area: "security", relation: "Prerequisite" },
     { code: "SC-300", name: "Microsoft Identity and Access Administrator", area: "security", relation: "Prerequisite" },
-    { code: "AZ-500", name: "Microsoft Azure Security Technologies", area: "azure", relation: "Sibling" },
+    { code: "SC-500", name: "Implementing End-to-End Security Controls for Cloud and AI Workloads", area: "security", relation: "Sibling" },
   ],
 };
