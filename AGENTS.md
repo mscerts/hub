@@ -79,8 +79,8 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 
 ### Exam Pages
 - One MDX file per exam at `src/content/docs/<area>/<CODE>.mdx`
-- Routes are lowercase: `/azure/az-800/`, `/power/pl-200/`
-- Filenames are uppercase: `AZ-800.mdx`, `PL-200.mdx`
+- Routes are lowercase: `/azure/az-800/`, `/power/pl-300/`
+- Filenames are uppercase: `AZ-800.mdx`, `PL-300.mdx`
 - `<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`
 - Area mapping: `azure` = AZ-*, AI-*, DP-*; `aibusiness` = AB-*; `dynamics` = MB-*; `github` = GH-*; `microsoft365` = MS-* and MD-*; `power` = PL-*; `security` = SC-*.
 - Astro collection IDs preserve filename case (for example, `azure/AZ-800`), while rendered routes are lowercase.
@@ -131,7 +131,7 @@ Resource placement:
 - Docs directives (`:::note`, `:::tip`, `:::caution`) remain flush at column 0 even inside tabs.
 - Strip trailing whitespace. Historical pages are not fully uniform, so normalize touched blocks only unless broad cleanup is requested.
 - Preserve the known SC-900 setup `LinkCard` outside its `CardGrid`; it is an intentional out-of-scope legacy exception.
-- Known verified resources: AZ-120 has three Learn exercises from `explore-azure-center-sap-solutions`; AZ-900 uses `MicrosoftLearning/AZ-900-Microsoft-Azure-Fundamentals`; SC-401 already includes `MicrosoftLearning/SC-401T00-Information-Security-Administrator`; the Azure Monitor Lab (Learn labs index) is a good cross-fit for monitoring-heavy Azure exams and is already used on AZ-104, AZ-204, AZ-500, AZ-700, and AZ-801. Do not duplicate them.
+- Known verified resources: AZ-120 has three Learn exercises from `explore-azure-center-sap-solutions`; AZ-900 uses `MicrosoftLearning/AZ-900-Microsoft-Azure-Fundamentals`; SC-401 already includes `MicrosoftLearning/SC-401T00-Information-Security-Administrator`; the Azure Monitor Lab (Learn labs index) is a good cross-fit for monitoring-heavy Azure exams and is already used on AZ-104, AZ-204, AZ-700, and AZ-801. Do not duplicate them.
 - More known verified GitHub repos (all under `MicrosoftLearning`, GitHub Pages exercise index at `microsoftlearning.github.io/<repo>/`): AI-901 uses `mslearn-ai-fundamentals` (current successor to the archived `AI-900-AIFundamentals`); AI-200 uses `mslearn-azure-ai`; AI-500 uses `mslearn-ai-multi-agents`; SC-500 uses `mslearn-sec-identity`; AB-900 uses `Administer-and-Secure-agents-with-Microsoft-Agent-365`. When a repo has been superseded (older repo's README says "please use \<new-repo\>"), always use the new one. GitHub's own certifications (GH-*) do not have dedicated GitHub-org lab repos — their official prep path is Microsoft Learn only (per `resources.github.com/learn/certifications/`); do not invent one. Only two GitHub-tagged Applied Skills exist as of this writing: "Accelerate app development by using GitHub Copilot" (matches GH-300) and "Automate Azure Load Testing by using GitHub Actions" (matches GH-200).
 - When searching GitHub for a course's lab repo, `github.com/search?q=...` rate-limits quickly (HTTP 429); prefer `github.com/orgs/MicrosoftLearning/repositories?q=<term>` instead, which is not rate-limited and searches the same repo set by keyword.
 - Old claims that AZ-140, MD-102, MS-102, MS-700, or SC-900 have zero Learn exercises are unverified and must not be relied on.
