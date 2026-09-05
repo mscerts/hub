@@ -19,7 +19,7 @@ If you are an authorized agent, you will have access to the tasks repository whi
 - **Site:** https://msfthub.com
 - **Stack:** Astro 6 + Starlight (`@astrojs/starlight` ^0.39), MDX, Tailwind
 - **Package manager:** pnpm (do not use npm or yarn)
-- **Build:** `pnpm build` = `astro check && astro build` → static output in `dist/`
+- **Build:** `pnpm build` = `astro check && astro build --force` → static output in `dist/` (`--force` clears the content-layer cache; see Build & Verify)
 - **Preview:** `pnpm dev` for local development
 
 ---
@@ -86,7 +86,7 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 - Filenames are uppercase: `AZ-800.mdx`, `PL-300.mdx`
 - `<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`
 - Area mapping: `azure` = AZ-*, AI-*, DP-*; `aibusiness` = AB-*; `dynamics` = MB-*; `github` = GH-*; `microsoft365` = MS-* and MD-*; `power` = PL-*; `security` = SC-*.
-- Astro collection IDs and rendered routes are lowercase regardless of filename case (`AZ-800.mdx` → id `azure/az-800`, route `/azure/az-800/`), so changing only a filename's case never changes its URL and needs no redirect.
+- Astro collection IDs and rendered routes are lowercase regardless of filename case (`AZ-800.mdx` → id `azure/az-800`, route `/azure/az-800/`), so changing only a filename's case never changes its URL and needs no redirect. It does, however, poison Astro's incremental content-layer cache: the entry keeps the same ID and content digest, so the loader reuses the cached *old* `filePath`, which then fails to resolve on case-sensitive Linux (Cloudflare restores `node_modules/.astro` between builds). `pnpm build` passes `--force` to clear that cache, which is what makes such renames safe.
 - Frontmatter title is `<CODE> Study Materials`.
 - Frontmatter description must use the exact template: `Collection of study materials for the certification exam <CODE>: <Exam Name>. Contains official Microsoft Learn materials, labs, videos, practice tests and paid courses.`
 - Use the official exam name, not the certification name. Verify it against Microsoft Learn; these names often differ.
@@ -275,11 +275,12 @@ Custom CSS files (loaded conditionally via `NO_GRADIENTS` env var):
 
 ```bash
 pnpm install --frozen-lockfile  # Install deps
-pnpm build                      # astro check + astro build
+pnpm build                      # astro check + astro build --force
 pnpm dev                        # Local preview
 ```
 
 - Build must pass with 0 errors before committing.
+- `astro build --force` clears the content-layer data store (`node_modules/.astro/data-store.json`) on every build. Cloudflare Pages restores that directory from its build cache, and the incremental loader keys entries on ID + content digest, so a file whose path changed but whose content did not (e.g. a case-only rename) would otherwise keep a stale `filePath` and fail with `Rolldown failed to resolve import "astro:content-layer-deferred-module?...fileName=<old path>"`. The full resync costs about one second on this site; do not remove the flag.
 - `astro check` reports Zod deprecation hints (20 total) — these are upstream, ignore them.
 - The build validates frontmatter/schema types, MDX syntax, TypeScript, collection uniqueness, and static rendering.
 - The build does **not** validate external link availability, tracking parameters, assessment IDs, exam names, voucher accuracy, or duplicate content. Verify these manually against authoritative sources.
