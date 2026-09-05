@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build && pnpm search:index && pnpm search:verify",
+    "build": "astro check && astro build --force && pnpm search:index && pnpm search:verify",
     "preview": "astro preview",
     "search:index": "pagefind --site dist",
     "search:verify": "node scripts/verify-pagefind.mjs",
