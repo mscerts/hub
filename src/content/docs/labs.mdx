@@ -1,79 +1,39 @@
 ---
 title: Microsoft Exams Labs
-description: "Free hands-on lab collections for Microsoft certification exams across Azure, Microsoft 365, Dynamics 365, Power Platform, and Security."
+description: "Free hands-on lab collections for Microsoft certification exams across Azure, GitHub, AI Business, Microsoft 365, Dynamics 365, Power Platform, and Security."
 next: false
 prev: false
 ---
 
-import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+import { Tabs, TabItem } from '@components/docs';
+import LabList from '../../components/LabList.astro';
 
 <Tabs>
-	<TabItem label="Azure">
-	<CardGrid>
-	<LinkCard title="AZ-900: Microsoft Azure Fundamentals" href="/certs/labs/azure/az-900/" />
-	<LinkCard title="DP-900: Microsoft Azure Data Fundamentals" href="/certs/labs/azure/dp-900/" />
-	<LinkCard title="AZ-104: Microsoft Azure Administrator" href="/certs/labs/azure/az-104/" />
-	<LinkCard title="AI-103: Developing AI Apps and Agents on Azure" href="/certs/labs/azure/ai-103/" />
-	<LinkCard title="AI-300: Operationalizing Machine Learning and Generative AI Solutions" href="/certs/labs/azure/ai-300/" />
-	<LinkCard title="AZ-140: Configuring and Operating Microsoft Azure Virtual Desktop" href="/certs/labs/azure/az-140/" />
-	<LinkCard title="AZ-120: Planning and Administering Microsoft Azure for SAP Workloads" href="/certs/labs/azure/az-120/" />
-	<LinkCard title="AZ-400: Designing and Implementing Microsoft DevOps Solutions" href="/certs/labs/azure/az-400/" />
-	<LinkCard title="AZ-801: Configuring Windows Server Hybrid Advanced Services" href="/certs/labs/azure/az-801/" />
-	<LinkCard title="AZ-800: Administering Windows Server Hybrid Core Infrastructure" href="/certs/labs/azure/az-800/" />
-	<LinkCard title="AZ-700: Designing and Implementing Microsoft Azure Networking Solutions" href="/certs/labs/azure/az-700/" />
-	<LinkCard title="DP-420: Designing and Implementing Cloud-Native Applications" href="/certs/labs/azure/dp-420/" />
-	<LinkCard title="DP-300: Administering Microsoft Azure SQL Solutions" href="/certs/labs/azure/dp-300/" />
-	<LinkCard title="DP-600: Implementing Analytics Solutions Using Microsoft Fabric" href="/certs/labs/azure/dp-600/" />
-	<LinkCard title="DP-700: Implementing Data Engineering Solutions Using Microsoft Fabric" href="/certs/labs/azure/dp-700/" />
-	<LinkCard title="DP-750: Implementing Data Engineering Solutions Using Azure Databricks" href="/certs/labs/azure/dp-750/" />
-	<LinkCard title="DP-800: Developing AI-Enabled Database Solutions" href="/certs/labs/azure/dp-800/" />
-    </CardGrid>
-	</TabItem>
+  <TabItem label="Azure">
+    <LabList category="azure" />
+  </TabItem>
 
-	<TabItem label="AI Business">
-	<CardGrid>
-	<LinkCard title="AB-210: Dynamics 365 Sales AI Consultant" href="/certs/labs/aibusiness/ab-210/" />
-	<LinkCard title="AB-250: Dynamics 365 Contact Center AI Engineer" href="/certs/labs/aibusiness/ab-250/" />
-	<LinkCard title="AB-410: Building Intelligent Applications" href="/certs/labs/aibusiness/ab-410/" />
-	<LinkCard title="AB-620: Designing and Building Integrated AI Solutions in Copilot Studio" href="/certs/labs/aibusiness/ab-620/" />
-	<LinkCard title="AB-650: Administering Microsoft 365 and AI Services" href="/certs/labs/aibusiness/ab-650/" />
-	<LinkCard title="AB-730: Microsoft AI Business Professional" href="/certs/labs/aibusiness/ab-730/" />
-	</CardGrid>
-	</TabItem>
+  <TabItem label="GitHub">
+    <LabList category="github" />
+  </TabItem>
 
-	<TabItem label="M365">
-	<CardGrid>
-	<LinkCard title="MS-102: Microsoft 365 Administrator" href="/certs/labs/microsoft365/ms-102/" />
-	<LinkCard title="MD-102: Endpoint Administrator" href="/certs/labs/microsoft365/md-102/" />
-	<LinkCard title="MS-700: Managing Microsoft Teams" href="/certs/labs/microsoft365/ms-700/" />
-	<LinkCard title="MS-721: Collaboration Communications Systems Engineer" href="/certs/labs/microsoft365/ms-721/" />
-	</CardGrid>
-	</TabItem>
+  <TabItem label="AI Business">
+    <LabList category="aibusiness" />
+  </TabItem>
 
-	<TabItem label="Power">
-	<CardGrid>
-	<LinkCard title="PL-900: Microsoft Power Platform Fundamentals" href="/certs/labs/power/pl-900/" />
-	<LinkCard title="PL-300: Microsoft Power BI Data Analyst" href="/certs/labs/power/pl-300/" />
-	<LinkCard title="PL-400: Microsoft Power Platform Developer" href="/certs/labs/power/pl-400/" />
-    </CardGrid>
-	</TabItem>
+  <TabItem label="M365">
+    <LabList category="microsoft365" />
+  </TabItem>
 
-	<TabItem label="Security">
-	<CardGrid>
-	<LinkCard title="SC-900: Microsoft Security, Compliance, and Identity Fundamentals" href="/certs/labs/security/sc-900/" />
-	<LinkCard title="SC-200: Microsoft Security Operations Analyst" href="/certs/labs/security/sc-200/" />
-	<LinkCard title="SC-300: Microsoft Identity and Access Administrator" href="/certs/labs/security/sc-300/" />
-	<LinkCard title="SC-401: Administering Information Security in Microsoft 365" href="/certs/labs/security/sc-401/" />
-	</CardGrid>
-	</TabItem>
+  <TabItem label="Power">
+    <LabList category="power" />
+  </TabItem>
 
-	<TabItem label="Dynamics">
-	<CardGrid>
-	<LinkCard title="MB-230: Dynamics 365 Customer Service Functional Consultant" href="/certs/labs/dynamics/mb-230/" />
-	<LinkCard title="MB-310: Dynamics 365 Finance Functional Consultant" href="/certs/labs/dynamics/mb-310/" />
-	<LinkCard title="MB-330: Dynamics 365 Supply Chain Management Functional Consultant" href="/certs/labs/dynamics/mb-330/" />
-	</CardGrid>
-	</TabItem>
+  <TabItem label="Security">
+    <LabList category="security" />
+  </TabItem>
+
+  <TabItem label="Dynamics">
+    <LabList category="dynamics" />
+  </TabItem>
 </Tabs>
-
-
