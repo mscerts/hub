@@ -63,10 +63,12 @@ function walkDir(dir: string): string[] {
 }
 
 function slugFrom(filePath: string, base: string): string {
+  // Site routes are lowercase regardless of filename case (e.g. AZ-104.mdx -> /azure/az-104/)
   return path
     .relative(base, filePath)
     .replace(/\.mdx?$/, "")
-    .replace(/\\/g, "/");
+    .replace(/\\/g, "/")
+    .toLowerCase();
 }
 
 function categoryFrom(filePath: string, base: string): string {

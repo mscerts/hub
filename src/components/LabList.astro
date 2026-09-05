@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+
+interface Props {
+  category: "azure" | "github" | "aibusiness" | "dynamics" | "microsoft365" | "power" | "security";
+}
+
+const { category } = Astro.props;
+
+const docs = await getCollection("docs");
+
+// Only per-exam lab pages (labs/<area>/<code>), not index/template pages under labs/
+const labs = docs.filter(
+  (doc) => doc.id.startsWith(`labs/${category}/`) && /\/[a-z]{2,3}-\d{3}$/i.test(doc.id)
+);
+
+labs.sort((a, b) => a.id.localeCompare(b.id));
+---
+
+{
+  labs.length > 0 ? (
+    <CardGrid>
+      {labs.map((lab) => {
+        const examCode = lab.id.split("/").pop()?.toUpperCase() ?? "";
+        const href = `/${lab.id}/`;
+        const desc = lab.data.description ?? "";
+        // Primary pattern: "Lab exercises for CODE: Name. Includes..."
+        let examName = desc.match(/for [A-Z]+-\d+:\s*(.+?)\.\s*Includes/)?.[1] ?? "";
+        if (!examName) {
+          examName = desc.match(/[A-Z]+-\d+:\s*(.+?)\./)?.[1] ?? "";
+        }
+        const title = examName ? `${examCode}: ${examName}` : lab.data.title;
+        return <LinkCard title={title} href={href} />;
+      })}
+    </CardGrid>
+  ) : (
+    <p>No lab collections available in this category.</p>
+  )
+}
