@@ -32,9 +32,9 @@ const { headings, variant = "desktop" } = Astro.props;
               href={`#${heading.slug}`}
               data-docs-toc-link
               data-docs-toc-slug={heading.slug}
+              data-docs-toc-depth={heading.depth}
               class:list={[
                 "docs-toc-link block py-1.5 text-sm leading-snug text-neutral-500 no-underline transition-colors duration-150 hover:text-neutral-900 dark:text-[#9aa7b5] dark:hover:text-[#f4f4f4]",
-                heading.depth === 3 && "pl-3",
               ]}
             >
               {heading.text}
@@ -58,6 +58,16 @@ const { headings, variant = "desktop" } = Astro.props;
   .docs-toc-link {
     position: relative;
     padding-left: 1rem;
+  }
+
+  .docs-toc-link[data-docs-toc-depth="3"] {
+    padding-left: 2rem;
+    font-size: 0.8125rem;
+  }
+
+  .docs-toc-link[data-docs-toc-depth="4"] {
+    padding-left: 3rem;
+    font-size: 0.75rem;
   }
 
   .docs-toc-link[data-docs-toc-active="true"] {

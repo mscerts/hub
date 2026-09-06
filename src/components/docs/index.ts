@@ -2,6 +2,8 @@ export { default as Aside } from "./preline/Aside.astro";
 export { default as Button } from "./preline/Button.astro";
 export { default as Card } from "./preline/Card.astro";
 export { default as CardGrid } from "./preline/CardGrid.astro";
+export { default as Badge } from "./preline/Badge.astro";
+export { default as FileTree } from "./preline/FileTree.astro";
 export { default as LinkButton } from "./preline/LinkButton.astro";
 export { default as LinkCard } from "./preline/LinkCard.astro";
 export { default as Step } from "./preline/Step.astro";

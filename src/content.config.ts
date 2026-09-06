@@ -1,15 +1,14 @@
 // https://docs.astro.build/en/guides/content-collections/#defining-collections
 
-import { z, defineCollection } from "astro:content";
-import { docsSchema } from "@astrojs/starlight/schema";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
-import { docsLoader } from "@astrojs/starlight/loaders";
 
 // Author schema for blog posts (supports local images or remote URLs)
 const authorSchema = (image: any) =>
   z.object({
     name: z.string(),
-    image: z.union([image(), z.string().url()]),
+    image: z.union([image(), z.url()]),
     imageAlt: z.string().optional(),
   });
 
@@ -32,11 +31,19 @@ const blogCollection = defineCollection({
 
 export const collections = {
   docs: defineCollection({
-    loader: docsLoader(),
-    schema: docsSchema({
-      extend: z.object({
-        voucherCategory: z.enum(["100%", "50%", "Special"]).optional(),
-      }),
+    loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/docs" }),
+    schema: z.looseObject({
+      title: z.string(),
+      description: z.string().optional(),
+      draft: z.boolean().optional(),
+      voucherCategory: z.enum(["100%", "50%", "Special"]).optional(),
+      editUrl: z.union([z.string(), z.boolean()]).optional(),
+      lastUpdated: z.union([z.date(), z.boolean()]).optional(),
+      next: z.union([z.string(), z.boolean()]).optional(),
+      prev: z.union([z.string(), z.boolean()]).optional(),
+      tableOfContents: z.boolean().optional(),
+      template: z.string().optional(),
+      hero: z.unknown().optional(),
     }),
   }),
   blog: blogCollection,

@@ -1,0 +1,39 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import DocsPage from "@components/docs/templates/DocsPage.astro";
+import { CardGrid, LinkCard } from "@components/docs";
+---
+
+<MainLayout
+  title="Microsoft Certification Wiki | Microsoft Certification Hub"
+  customDescription="Guides, study materials, labs, and exam resources for Microsoft certifications."
+  wide
+>
+  <DocsPage
+    title="Microsoft Certification Wiki"
+    description="Guides, study materials, labs, and practical resources for Microsoft certification candidates."
+    headings={[]}
+    sectionLabel="Microsoft Certification Wiki"
+  >
+    <p>
+      This wiki is being reorganized. Use the links below to continue into the current documentation.
+    </p>
+    <CardGrid>
+      <LinkCard
+        title="Certification Program Guide"
+        description="Understand Microsoft certifications, scheduling, exam day, and renewal."
+        href="/wiki/guide/introduction/"
+      />
+      <LinkCard
+        title="How to Prepare"
+        description="Build a study plan and choose useful learning resources."
+        href="/wiki/prepare/studymaterials/"
+      />
+      <LinkCard
+        title="Exam Study Materials"
+        description="Start with the Azure fundamentals study-material collection."
+        href="/wiki/azure/az-900/"
+      />
+    </CardGrid>
+  </DocsPage>
+</MainLayout>

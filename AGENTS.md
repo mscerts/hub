@@ -17,7 +17,7 @@ If you are an authorized agent, you will have access to the tasks repository whi
 
 - **Repo:** https://github.com/mscerts/hub
 - **Site:** https://msfthub.com
-- **Stack:** Astro 6 + Starlight (`@astrojs/starlight` ^0.39), MDX, Tailwind
+- **Stack:** Astro 7, native MDX content collections, Tailwind
 - **Package manager:** pnpm (do not use npm or yarn)
 - **Build:** `pnpm build` = `astro check && astro build` → static output in `dist/`
 - **Preview:** `pnpm dev` for local development
@@ -30,13 +30,10 @@ If you are an authorized agent, you will have access to the tasks repository whi
 src/
 ├── components/
 │   ├── sections/              # Landing page sections (features, testimonials, navbar&footer, misc)
-│   ├── ui/
-│   │   ├── starlight/        # Starlight component overrides (Head, SiteTitle, TableOfContents, etc.)
-│   │   ├── banners/          # AnnouncementBanner, CookieConsentBanner
-│   │   └── modals/           # CookieConsentModal
+│   ├── docs/                 # Docs shell, navigation, templates, and MDX components
+│   ├── ui/                   # Shared site UI
 │   ├── WikiList.astro        # Auto-generates wiki cards by directory prefix
 │   ├── VoucherList.astro     # Auto-generates voucher cards by voucherCategory frontmatter
-│   ├── MarkdownContent.astro # Custom markdown wrapper
 │   └── PartnerBadge.astro
 ├── content/
 │   ├── docs/
@@ -51,21 +48,21 @@ src/
 │   │   ├── prepare/          # How-to-prepare pages (5 pages)
 │   │   ├── vouchers/         # Discounted exam voucher pages
 │   │   ├── labs/             # Lab collections (per-exam lab pages, parallel to exam structure)
-│   │   └── wiki.mdx          # Wiki index page (uses WikiList component)
 │   └── blog/                 # Blog collection (authors, pubDate, cardImage, readTime, tags)
+├── pages/wiki/               # Canonical wiki index, docs renderer, and Markdown endpoint
 ├── data_files/
 │   ├── constants.ts          # Site metadata (title, description, SEO, OG)
 │   ├── faqs.json
 │   ├── features.json
 │   └── mega_link.ts
 ├── content.config.ts         # Content schemas (docs + blog collections)
-astro.config.mjs              # Sidebar, redirects, integrations, component overrides
+astro.config.mjs              # Redirects and Astro integrations
 ```
 
 ## Content Collections
 
 ### `docs` collection
-Extends Starlight's `docsSchema` with one custom field:
+Uses the local schema in `src/content.config.ts`, including:
 ```ts
 voucherCategory: z.enum(["100%", "50%", "Special"]).optional()
 ```
@@ -98,13 +95,13 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 - **No `/en-us/`** locale segments. Keep `?WT.mc_id=studentamb_165290` tracking params.
 - **MeasureUp links** keep `#u44` fragment (code **MSFTHUB**).
 - **Training course:** `https://learn.microsoft.com/training/courses/<code>t00?WT.mc_id=studentamb_165290` only after verifying that the course exists.
-- **Internal links:** lowercase paths with a leading slash and normally a trailing slash, for example `/labs/azure/az-800/`; preserve established top-level routes such as `/wiki`.
+- **Internal links:** canonical docs paths start with `/wiki/`, use lowercase, and normally have a trailing slash, for example `/wiki/labs/azure/az-800/`.
 - Third-party links such as GitHub and YouTube do not receive Microsoft tracking parameters.
 - Practice assessment IDs are exam-specific and have no reliable public registry; obtain and verify each ID from Microsoft Learn.
 
 ### Exam Page Anatomy (canonical structure)
 1. Frontmatter: `title: "<CODE> Study Materials"`, `description`
-2. Imports from `@astrojs/starlight/components`: `LinkCard`, `CardGrid`, `Card`, `Tabs`, `TabItem`, `Aside`
+2. Imports from `@components/docs`: `LinkCard`, `CardGrid`, `Card`, `Tabs`, `TabItem`, `Aside`
 3. Optional status banner: `:::tip` for beta/resource scarcity; `:::caution` for retirement and replacement details
 4. `<Card title="Get Started" icon="star">` → Exam link, Study Guide link, and Exam Labs link only when the matching lab page exists
 5. `<Tabs>` with `TabItem`s: Text, Videos, Tests, Paid, Misc
@@ -121,14 +118,14 @@ Resource placement:
 - Retiring pages retain valid existing resources and link to the verified replacement exam.
 
 ### Lab Pages
-- Files are lowercase at `src/content/docs/labs/<area>/<code>.mdx`; routes are `/labs/<area>/<code>/`.
+- Files are lowercase at `src/content/docs/labs/<area>/<code>.mdx`; routes are `/wiki/labs/<area>/<code>/`.
 - Required title: `<CODE> Labs`. When a description is present, use the verified exam name, for example: `Lab exercises for <CODE>: <Exam Name>. Includes Microsoft Learn and Microsoft GitHub labs.`
 - No blank line before the closing frontmatter fence, between frontmatter and imports, or between `<Tabs>` and the first `<TabItem>`.
-- Import only used Starlight components. Common imports are `LinkCard`, `CardGrid`, `Card`, `Tabs`, and `TabItem`.
+- Import only used docs components from `@components/docs`. Common imports are `LinkCard`, `CardGrid`, `Card`, `Tabs`, and `TabItem`.
 - Canonical tab order: Applied Skills, Microsoft Learn, Microsoft GitHub. Guided Labs was removed and must not be reintroduced.
 - Always preserve a commented-out tab placeholder when a category has no real resources; do not use an active empty tab or blank active `LinkCard` placeholder.
 - Indent using two-space nesting: outer `<Tabs>` at column 0; `<TabItem>` and `<CardGrid>` at 2 spaces; `<LinkCard>` at 4 spaces. Add 2 spaces per nested Tabs level.
-- Starlight directives (`:::note`, `:::tip`, `:::caution`) remain flush at column 0 even inside tabs.
+- Docs directives (`:::note`, `:::tip`, `:::caution`) remain flush at column 0 even inside tabs.
 - Strip trailing whitespace. Historical pages are not fully uniform, so normalize touched blocks only unless broad cleanup is requested.
 - Preserve the known SC-900 setup `LinkCard` outside its `CardGrid`; it is an intentional out-of-scope legacy exception.
 - Known verified resources: AZ-120 has three Learn exercises from `explore-azure-center-sap-solutions`; AZ-900 uses `MicrosoftLearning/AZ-900-Microsoft-Azure-Fundamentals`; SC-401 already includes `MicrosoftLearning/SC-401T00-Information-Security-Administrator`. Do not duplicate them.
@@ -153,10 +150,10 @@ To discover genuine Microsoft Learn exercise units:
 5. Build the unit URL as `<module-base-url>/<1-based-unit-position>-<unit-slug>/?WT.mc_id=studentamb_165290`, remove `/en-us/`, and use the catalog's unit title as display text.
 
 ### Voucher Pages
-- Files are lowercase slugs at `src/content/docs/vouchers/<slug>.mdx`; routes are `/vouchers/<slug>/`.
+- Files are lowercase slugs at `src/content/docs/vouchers/<slug>.mdx`; routes are `/wiki/vouchers/<slug>/`.
 - Frontmatter requires `title`, `description`, and `voucherCategory`, with category exactly `"100%"`, `"50%"`, or `"Special"`.
 - `VoucherList.astro` automatically includes categorized pages on the voucher index, sorted by title. The sidebar remains hand-maintained.
-- Common content uses `LinkButton`, `Steps`, `CardGrid`, and Starlight directives. Use notes for the core offer, cautions/dangers for restrictions, and clear CTA buttons.
+- Common content uses `LinkButton`, `Steps`, `CardGrid`, and docs directives. Use notes for the core offer, cautions/dangers for restrictions, and clear CTA buttons.
 - Voucher sidebar badges show the discount. An asterisk (for example, `*80%`) indicates limited availability or conditions.
 
 Beta voucher format:
@@ -168,45 +165,38 @@ Beta voucher format:
 6. `## How to claim the 80% discount` with registration, deadline, and code steps.
 7. Closing `:::tip` covering first-come availability and country exclusions.
 8. Add a caution when a verified scheduling URL is broken, with the working URL.
-9. Add a secondary button to `/vouchers/betaexams/` for general beta-exam information.
+9. Add a secondary button to `/wiki/vouchers/betaexams/` for general beta-exam information.
 
 Verify all voucher percentages, codes, limits, deadlines, exclusions, announcement links, and scheduling links from the official source. These facts are time-sensitive; do not record changing inventory totals in this file.
 
 ### Components
 - Local components live in `src/components/*.astro`
 - MDX can import `.astro` components directly
-- Use `@astrojs/starlight/components` for `LinkCard`, `CardGrid`, `Card`, `Tabs`, `TabItem`, `Aside`
+- Use the `@components/docs` barrel for docs components.
 - Do not nest `Card` components inside other cards.
 - Use `CardGrid` for groups of `LinkCard`s. Empty grids are tolerated on canonical exam tabs but should not be introduced on lab tabs.
 - External `LinkCard` and `LinkButton` targets use `target="_blank"`; internal links generally do not need it.
 - `LinkCard` requires `title` and `href`; `description` is optional and should stay concise.
 - For new exam tab blocks, prefer two-space increments (`TabItem` 2, `CardGrid` 4, `LinkCard` 6) without reformatting unrelated legacy content.
 
-### Starlight Component Overrides
-Defined in `astro.config.mjs` under `starlight({ components: { ... } })`:
-- `SiteTitle` → `./src/components/ui/starlight/SiteTitle.astro`
-- `Head` → `./src/components/ui/starlight/Head.astro` (meta, scripts, banners)
-- `MobileMenuFooter` → `./src/components/ui/starlight/MobileMenuFooter.astro`
-- `TableOfContents` → `./src/components/ui/starlight/TableOfContents.astro`
-- `PageTitle` → `./src/components/ui/starlight/page-actions/PageTitle.astro`
-- `MarkdownContent` → `./src/components/MarkdownContent.astro`
+### Docs Rendering
+- `/wiki/` is owned by `src/pages/wiki/index.astro`.
+- `/wiki/<content-id>/` is rendered by `src/pages/wiki/[...slug].astro` through `DocsPage.astro` and `DocsShell.astro`.
+- Legacy content paths and `/wiki-next/*` redirect permanently to `/wiki/*`.
+- `remark-callouts.mjs` converts `:::note`, `:::tip`, `:::caution`, and `:::danger` directives to the local `Aside` component.
 
 ### Banner System
 `AnnouncementBanner.astro` — dismissible banner with localStorage persistence (versioned via `version` prop).
-Currently configured in `Head.astro` to promote AI/AB certifications, linking to `/wiki`.
+Rendered by `MainLayout.astro` when enabled.
 
 ### Key Dependencies
-- **astro-vtbot** — View Transitions enhancement (used in Head.astro)
-- **starlight-image-zoom** — Image zoom on Starlight pages
+- **@astrojs/mdx** + **@astrojs/markdown-remark** — MDX and Unified remark processing
 - **sharp** + **sharp-ico** — Image processing
 - **preline** — UI components
 - **tailwindcss v4** + **@tailwindcss/typography** + **@tailwindcss/forms**
 
 ### CSS
-Custom CSS files (loaded conditionally via `NO_GRADIENTS` env var):
-- `./src/landing.css` — Landing page styles
-- `./src/custom.css` — Global custom styles
-- `./src/assets/styles/starlight.css` — Starlight overrides
+Global styles are in `src/assets/styles/global.css`; docs-specific styles are scoped to the canonical docs components.
 
 ### Logo
 - Light: `/src/images/logo_light.svg`
@@ -214,7 +204,7 @@ Custom CSS files (loaded conditionally via `NO_GRADIENTS` env var):
 - Favicon: `/favicon.svg`
 
 ### Sidebar
-- **Hand-maintained** in `astro.config.mjs` under `starlight({ sidebar: [...] })`
+- **Hand-maintained** in `src/data_files/docs-sidebar.ts`
 - Pages only appear in nav if explicitly added there
 - Per-exam badges: `RETIRING`, `BETA`, `UPCOMING`
 - Keep exam entries in code order. GA exams have no badge; beta uses `{ text: "BETA", variant: "tip" }`; retiring uses `{ text: "RETIRING", variant: "danger" }`.

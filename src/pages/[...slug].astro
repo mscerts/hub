@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const docs = await getCollection("docs");
+
+  return docs
+    .filter((entry) => entry.id !== "wiki" && entry.id !== "privacy" && entry.data.draft !== true)
+    .map((entry) => ({
+      params: { slug: entry.id.toLowerCase() },
+    }));
+}
+
+return Astro.redirect(`/wiki/${Astro.params.slug}/`, 301);
+---

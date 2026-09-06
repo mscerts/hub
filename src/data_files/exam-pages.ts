@@ -102,7 +102,7 @@ export const examPages: Record<string, ExamPageData> = {
       },
       {
         title: "Exam Labs",
-        href: "/labs/azure/ai-103/",
+        href: "/wiki/labs/azure/ai-103/",
         target: "_blank",
         description:
           "Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings.",

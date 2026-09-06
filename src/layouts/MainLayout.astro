@@ -98,7 +98,6 @@ interface Props {
       })(window, document, "script", "dataLayer", googleTagManagerId);
     </script>
     <script is:inline>
-      // Theme init: read from both localStorage keys, apply both .dark class and data-theme
       (() => {
         const raw =
           localStorage.getItem("hs_theme") ||
@@ -109,6 +108,8 @@ interface Props {
             : window.matchMedia("(prefers-color-scheme: dark)").matches
               ? "dark"
               : "light";
+        localStorage.setItem("hs_theme", theme);
+        localStorage.removeItem("starlight-theme");
         document.documentElement.classList.toggle("dark", theme === "dark");
         document.documentElement.dataset.theme = theme;
       })();

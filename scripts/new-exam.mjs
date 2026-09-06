@@ -117,7 +117,7 @@ const content = `---
 title: ${code} Study Materials
 description: "${escapeYaml(description)}"
 ---
-import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@astrojs/starlight/components';${betaBanner}
+import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';${betaBanner}
 
 <Card title="Get Started" icon="star">
 

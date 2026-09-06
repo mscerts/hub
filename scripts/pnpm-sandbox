@@ -1,0 +1,158 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+SCRIPT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
+PROJECT_ROOT="$SCRIPT_ROOT"
+CONFIG="$PROJECT_ROOT/.sandbox/project.env"
+[[ -f "$CONFIG" ]] || { printf 'missing %s\n' "$CONFIG" >&2; exit 1; }
+# This file is project-owned configuration, not an untrusted package input.
+# shellcheck disable=SC1090
+source "$CONFIG"
+
+PROJECT_ID="${PROJECT_ID:-$(basename "$PROJECT_ROOT")}" 
+PROJECT_ID="$(printf '%s' "$PROJECT_ID" | tr '[:upper:]_' '[:lower:]-' | tr -cd 'a-z0-9-')"
+[[ -n "$PROJECT_ID" ]] || { printf 'PROJECT_ID is empty\n' >&2; exit 1; }
+PNPM_VERSION="${PNPM_VERSION:-11.15.1}"
+DEV_PORT="${DEV_PORT:-4321}"
+DEV_CONTAINER_NAME="${PROJECT_ID}-pnpm-dev"
+IMAGE="localhost/${PROJECT_ID}-pnpm-sandbox:node${NODE_VERSION:-22}-pnpm${PNPM_VERSION}"
+STORE_VOLUME="${PROJECT_ID}-pnpm-store"
+MODULES_VOLUME="${PROJECT_ID}-node-modules"
+SOURCE_VOLUME="${PROJECT_ID}-generated-source"
+NEXT_VOLUME="${PROJECT_ID}-build"
+RUNTIME_ROOT="${XDG_RUNTIME_DIR:-/tmp}/${PROJECT_ID}-pnpm-sandbox-${UID}"
+
+die() { printf 'pnpm-sandbox: %s\n' "$*" >&2; exit 1; }
+
+check_host() {
+  [[ "$EUID" -ne 0 ]] || die 'refusing to run as root'
+  command -v podman >/dev/null 2>&1 || die 'podman is not installed'
+  [[ "$(podman info --format '{{.Host.Security.Rootless}}')" == true ]] || die 'Podman is not rootless'
+  [[ -f "$PROJECT_ROOT/package.json" && -f "$PROJECT_ROOT/pnpm-lock.yaml" ]] || die 'package.json and pnpm-lock.yaml are required'
+  mkdir -p "$RUNTIME_ROOT"
+  chmod 700 "$RUNTIME_ROOT"
+  [[ -e "$RUNTIME_ROOT/empty-env" ]] || : > "$RUNTIME_ROOT/empty-env"
+  mkdir -p "$RUNTIME_ROOT/empty-git"
+  chmod 600 "$RUNTIME_ROOT/empty-env"
+  chmod 500 "$RUNTIME_ROOT/empty-git"
+}
+
+require_image() { podman image exists "$IMAGE" || die "image missing; run $0 image"; }
+
+ensure_volumes() {
+  local volume
+  for volume in "$STORE_VOLUME" "$MODULES_VOLUME" "$SOURCE_VOLUME" "$NEXT_VOLUME"; do
+    podman volume exists "$volume" || podman volume create "$volume" >/dev/null
+  done
+}
+
+run_sandbox() {
+  local mode="$1" network="$2" with_next="$3"; shift 3
+  local name="${CONTAINER_NAME:-${PROJECT_ID}-pnpm-${$}-${RANDOM}}"
+  local args=(
+    run --rm --init --name "$name" --pull never
+    --userns keep-id --user "$(id -u):$(id -g)"
+    --cap-drop all --security-opt no-new-privileges --read-only
+    --pids-limit 512 --memory 6g --memory-swap 6g --cpus 6
+    --timeout 1800 --stop-timeout 10 --shm-size 128m
+    --ulimit nofile=4096:4096 --ipc private --pid private
+    --network "$network" --http-proxy=false --log-driver "${LOG_DRIVER:-none}"
+    --env CI=true --env HOME=/tmp/home --env XDG_CACHE_HOME=/tmp/cache
+    --env pnpm_config_store_dir=/pnpm/store
+    --tmpfs /tmp:rw,nosuid,nodev,size=4g,mode=1777
+    --tmpfs /opt/safe-chain/certs:rw,nosuid,nodev,size=1m,mode=1777
+    --workdir /workspace
+    --volume "$PROJECT_ROOT:/workspace:${mode}"
+    --volume "$STORE_VOLUME:/pnpm/store:rw"
+    --volume "$MODULES_VOLUME:/workspace/node_modules:rw"
+    --volume "$SOURCE_VOLUME:/workspace/.source:rw"
+    --volume "$NEXT_VOLUME:/workspace/.next:rw"
+    --mount "type=bind,src=$RUNTIME_ROOT/empty-env,target=/workspace/.env,ro=true"
+    --mount "type=bind,src=$RUNTIME_ROOT/empty-env,target=/workspace/.env.local,ro=true"
+    --mount "type=bind,src=$RUNTIME_ROOT/empty-git,target=/workspace/.git,ro=true"
+  )
+  if [[ -n "${PUBLISH_PORT:-}" ]]; then
+    args+=(--publish "$PUBLISH_PORT:${PUBLISH_CONTAINER_PORT:-4321}")
+  fi
+  local variable
+  for variable in $BUILD_ENV; do args+=(--env "$variable"); done
+  for variable in $EXTRA_TMPFS; do args+=(--tmpfs "$variable"); done
+  podman "${args[@]}" "$IMAGE" "$@"
+}
+
+run_configured() {
+  local command_name="$1" network="$2" mode="$3"; shift 3
+  local command_value="${!command_name:-}"
+  [[ -n "$command_value" ]] || { printf '%s is not configured; skipping\n' "$command_name"; return 0; }
+  # Word splitting is intentional: commands are simple project-owned CLI args.
+  read -r -a command_args <<< "$command_value"
+  run_sandbox "$mode" "$network" yes "${command_args[@]}" "$@"
+}
+
+stop_dev() {
+  local containers
+  mapfile -t containers < <(podman ps --format '{{.Names}}\t{{.Ports}}' | awk -F '\t' '$2 ~ /4321->4321/ { print $1 }')
+  if [[ "${#containers[@]}" -eq 0 ]]; then
+    printf '%s\n' 'No sandbox dev server is running'
+    return 0
+  fi
+  podman stop --time 10 "${containers[@]}"
+}
+
+dev_status() {
+  if ! podman container exists "$DEV_CONTAINER_NAME"; then
+    printf '%s\n' 'No sandbox dev server is running'
+    return 0
+  fi
+  podman inspect "$DEV_CONTAINER_NAME" --format 'Status={{.State.Status}} Port={{(index (index .NetworkSettings.Ports "4321/tcp") 0).HostPort}}'
+}
+
+dev_logs() {
+  podman container exists "$DEV_CONTAINER_NAME" || die 'sandbox dev container does not exist'
+  podman logs --follow "$DEV_CONTAINER_NAME"
+}
+
+usage() {
+  printf '%s\n' 'Usage: pnpm-sandbox {image|install|update|audit|run|dev [stop|status|logs]|exec|status}'
+}
+
+check_host
+case "${1:-}" in
+  image)
+    podman build --pull=never --build-arg "PNPM_VERSION=$PNPM_VERSION" --tag "$IMAGE" --file "$SCRIPT_ROOT/containers/pnpm/Containerfile" "$SCRIPT_ROOT/containers/pnpm" ;;
+  install)
+    require_image; ensure_volumes; run_sandbox O 'slirp4netns:allow_host_loopback=false' yes install --frozen-lockfile ;;
+  update)
+    require_image; ensure_volumes; shift; run_sandbox rw 'slirp4netns:allow_host_loopback=false' no update "$@" --ignore-scripts ;;
+  audit)
+    require_image; ensure_volumes; run_configured AUDIT_COMMAND 'slirp4netns:allow_host_loopback=false' O ;;
+  run)
+    require_image; ensure_volumes; shift
+    case "${1:-}" in
+      lint) run_configured LINT_COMMAND none O ;;
+      types:check) run_configured TYPECHECK_COMMAND none O ;;
+      build) run_configured BUILD_COMMAND none O ;;
+      all) run_configured LINT_COMMAND none O; run_configured TYPECHECK_COMMAND none O; run_configured BUILD_COMMAND none O ;;
+      *) usage >&2; exit 1 ;;
+    esac ;;
+  dev)
+    require_image; ensure_volumes; shift
+    case "${1:-}" in
+      stop) stop_dev ;;
+      status) dev_status ;;
+      logs) dev_logs ;;
+      *)
+        mapfile -t running_dev_containers < <(podman ps --format '{{.Names}}\t{{.Ports}}' | awk -F '\t' '$2 ~ /4321->4321/ { print $1 }')
+        [[ "${#running_dev_containers[@]}" -eq 0 ]] || die "dev server already running; use ./scripts/pnpm-sandbox dev logs or dev stop"
+        if podman container exists "$DEV_CONTAINER_NAME"; then podman rm "$DEV_CONTAINER_NAME" >/dev/null; fi
+        CONTAINER_NAME="$DEV_CONTAINER_NAME" LOG_DRIVER=k8s-file PUBLISH_PORT="$DEV_PORT" PUBLISH_CONTAINER_PORT="$DEV_PORT" run_sandbox rw 'slirp4netns:allow_host_loopback=true' yes dev --host 0.0.0.0 --port "$DEV_PORT" --ignore-lock "$@"
+        ;;
+    esac ;;
+  exec)
+    require_image; ensure_volumes; shift; [[ "$#" -gt 0 ]] || die 'exec requires a command'; run_sandbox O none yes exec "$@" ;;
+  status)
+    printf 'Image: '; podman image exists "$IMAGE" && podman image inspect "$IMAGE" --format '{{.Id}}' || printf 'missing\n'
+    podman volume ls --format '{{.Name}}' | awk -v p="$PROJECT_ID-" '$0 ~ "^" p { print }' ;;
+  -h|--help|help|'') usage ;;
+  *) usage >&2; exit 1 ;;
+esac

@@ -1,6 +1,7 @@
 import { readdirSync } from "node:fs";
 import path from "node:path";
 import { examStatuses } from "./exam-status.mjs";
+import { docsPath } from "@utils/docs";
 
 export interface DocsSidebarBadge {
   text: string;
@@ -45,44 +46,57 @@ function buildExamItems(area: keyof typeof examStatuses): DocsSidebarItem[] {
 
   return codes.map((code) => ({
     label: code,
-    href: `/${area}/${code.toLowerCase()}/`,
+    href: docsPath(`${area}/${code}`),
     ...(statuses[code] ? { badge: statuses[code] } : {}),
   }));
 }
 
+function buildLabItems(area: string): DocsSidebarItem[] {
+  const docsDir = path.resolve(process.cwd(), "src", "content", "docs", "labs", area);
+  const codes = readdirSync(docsDir)
+    .filter((entry) => entry.toLowerCase().endsWith(".mdx"))
+    .map((entry) => entry.replace(/\.mdx$/i, ""))
+    .sort((left, right) => left.localeCompare(right, undefined, { numeric: true, sensitivity: "base" }));
+
+  return codes.map((code) => ({
+    label: code.toUpperCase(),
+    href: docsPath(`labs/${area}/${code}`),
+  }));
+}
+
 const guideItems: DocsSidebarItem[] = [
-  { label: "Markdown", href: "/wiki-next/guide/markdown/" },
-  { label: "Introduction", href: "/wiki-next/guide/introduction/" },
-  { label: "Overview", href: "/wiki-next/guide/overview/" },
-  { label: "Scheduling an Exam", href: "/wiki-next/guide/schedulingexam/" },
-  { label: "Certification Dashboard", href: "/wiki-next/guide/certificationdashboard/" },
-  { label: "Exam Experience", href: "/wiki-next/guide/takingtheexams/" },
-  { label: "Opportunities for Students", href: "/wiki-next/guide/studentopportunities/" },
-  { label: "Certification Renewal", href: "/wiki-next/guide/certificationrenewal/" },
-  { label: "Microsoft Partner Employees", href: "/wiki-next/guide/partneremployees/" },
+  { label: "Markdown", href: docsPath("guide/markdown") },
+  { label: "Introduction", href: docsPath("guide/introduction") },
+  { label: "Overview", href: docsPath("guide/overview") },
+  { label: "Scheduling an Exam", href: docsPath("guide/schedulingexam") },
+  { label: "Certification Dashboard", href: docsPath("guide/certificationdashboard") },
+  { label: "Exam Experience", href: docsPath("guide/takingtheexams") },
+  { label: "Opportunities for Students", href: docsPath("guide/studentopportunities") },
+  { label: "Certification Renewal", href: docsPath("guide/certificationrenewal") },
+  { label: "Microsoft Partner Employees", href: docsPath("guide/partneremployees") },
 ];
 
 const prepareItems: DocsSidebarItem[] = [
-  { label: "Navigating Study Materials", href: "/prepare/studymaterials/" },
-  { label: "Business Exams", href: "/prepare/business/" },
-  { label: "Fundamentals Exams", href: "/prepare/fundamentals/" },
-  { label: "Role-Based Exams", href: "/prepare/role-based/" },
-  { label: "How to Lab", href: "/prepare/labs/" },
+  { label: "Navigating Study Materials", href: docsPath("prepare/studymaterials") },
+  { label: "Business Exams", href: docsPath("prepare/business") },
+  { label: "Fundamentals Exams", href: docsPath("prepare/fundamentals") },
+  { label: "Role-Based Exams", href: docsPath("prepare/role-based") },
+  { label: "How to Lab", href: docsPath("prepare/labs") },
 ];
 
 const voucherItems: DocsSidebarItem[] = [
-  { label: "Exam AB-650 (beta)", href: "/vouchers/ab650beta/", badge: { text: "*80%", variant: "tip" } },
-  { label: "Microsoft Defender Sweepstakes", href: "/vouchers/defendersweepstakes/", badge: { text: "*50%", variant: "tip" } },
-  { label: "Partner Certification Week", href: "/vouchers/partnerweek/", badge: { text: "*100%", variant: "tip" } },
-  { label: "Fabric Data Days", href: "/vouchers/fabricdatadays/", badge: { text: "100%", variant: "tip" } },
-  { label: "South Africa AI Skills", href: "/vouchers/southafricaaiskills/", badge: { text: "*100%", variant: "tip" } },
-  { label: "Virtual Training Days", href: "/vouchers/virtualtrainingdays/", badge: { text: "50%", variant: "note" } },
-  { label: "Organizational Skilling (ESI)", href: "/vouchers/microsoftesi/", badge: { text: "*50%", variant: "note" } },
-  { label: "Microsoft x Coursera", href: "/vouchers/microsoftxcoursera/", badge: { text: "*50%", variant: "note" } },
-  { label: "Microsoft x Datacamp", href: "/vouchers/microsoftxdatacamp/", badge: { text: "*50%", variant: "note" } },
-  { label: "Beta Exams", href: "/vouchers/betaexams/", badge: { text: "*80% + 25%", variant: "note" } },
-  { label: "Student Discount", href: "/vouchers/studentdiscount/", badge: { text: "30%/*45%", variant: "note" } },
-  { label: "Replay/Retake Vouchers", href: "/vouchers/mindhubreplayvoucherbundles/" },
+  { label: "Exam AB-650 (beta)", href: docsPath("vouchers/ab650beta"), badge: { text: "*80%", variant: "tip" } },
+  { label: "Microsoft Defender Sweepstakes", href: docsPath("vouchers/defendersweepstakes"), badge: { text: "*50%", variant: "tip" } },
+  { label: "Partner Certification Week", href: docsPath("vouchers/partnerweek"), badge: { text: "*100%", variant: "tip" } },
+  { label: "Fabric Data Days", href: docsPath("vouchers/fabricdatadays"), badge: { text: "100%", variant: "tip" } },
+  { label: "South Africa AI Skills", href: docsPath("vouchers/southafricaaiskills"), badge: { text: "*100%", variant: "tip" } },
+  { label: "Virtual Training Days", href: docsPath("vouchers/virtualtrainingdays"), badge: { text: "50%", variant: "note" } },
+  { label: "Organizational Skilling (ESI)", href: docsPath("vouchers/microsoftesi"), badge: { text: "*50%", variant: "note" } },
+  { label: "Microsoft x Coursera", href: docsPath("vouchers/microsoftxcoursera"), badge: { text: "*50%", variant: "note" } },
+  { label: "Microsoft x Datacamp", href: docsPath("vouchers/microsoftxdatacamp"), badge: { text: "*50%", variant: "note" } },
+  { label: "Beta Exams", href: docsPath("vouchers/betaexams"), badge: { text: "*80% + 25%", variant: "note" } },
+  { label: "Student Discount", href: docsPath("vouchers/studentdiscount"), badge: { text: "30%/*45%", variant: "note" } },
+  { label: "Replay/Retake Vouchers", href: docsPath("vouchers/mindhubreplayvoucherbundles") },
 ];
 
 export const docsSidebar: DocsSidebarItem[] = [
@@ -102,7 +116,20 @@ export const docsSidebar: DocsSidebarItem[] = [
       { label: "Dynamics 365", badge: { text: "MB", variant: "note" }, children: buildExamItems("dynamics"), collapsed: true },
     ],
   },
-  { label: "Support Us", href: "/supportus/" },
-  { label: "Contributing", href: "/contributing/" },
-  { label: "Privacy Policy", href: "/privacy/" },
+  {
+    label: "Exam Labs",
+    collapsed: true,
+    children: [
+      { label: "Azure", children: buildLabItems("azure"), collapsed: true },
+      { label: "AI Business", children: buildLabItems("aibusiness"), collapsed: true },
+      { label: "Dynamics 365", children: buildLabItems("dynamics"), collapsed: true },
+      { label: "GitHub", children: buildLabItems("github"), collapsed: true },
+      { label: "Microsoft 365", children: buildLabItems("microsoft365"), collapsed: true },
+      { label: "Power Platform", children: buildLabItems("power"), collapsed: true },
+      { label: "Security & Identity", children: buildLabItems("security"), collapsed: true },
+    ],
+  },
+  { label: "Support Us", href: docsPath("supportus") },
+  { label: "Contributing", href: docsPath("contributing") },
+  { label: "Privacy Policy", href: docsPath("privacy") },
 ];

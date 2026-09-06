@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&display=swap");
 @import "tailwindcss";
 @import "preline/variants.css";
 @plugin "@tailwindcss/forms";
@@ -5,8 +6,23 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html,
+body {
+  font-family: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "IBM Plex Serif", Georgia, serif;
+}
+
 /* Nimbus component tokens. These stay local to the copied docs primitives. */
 :root {
+  color-scheme: light;
   --nb-background: oklch(0.99 0 0);
   --nb-foreground: oklch(0.21 0 0);
   --nb-card: oklch(1 0 0);
@@ -35,6 +51,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --nb-background: oklch(0.085 0 0);
   --nb-foreground: oklch(0.97 0 0);
   --nb-card: #0f0f0f;

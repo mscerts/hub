@@ -4,7 +4,7 @@ import { DISCORD_URL } from "@data/constants";
 const navBarLinks = [
   { name: "Home", url: "/" },
   { name: "News", url: "/news/" },
-  { name: "Wiki", url: "/wiki-next/guide/introduction/" },
+  { name: "Wiki", url: "/wiki/" },
 //  { name: "Certifications", url: "#" },
 ];
 // An array of links for footer
@@ -12,9 +12,9 @@ const footerLinks = [
   {
     section: "Resources",
     links: [
-      { name: "Study Materials", url: "/wiki" },
-      { name: "Labs", url: "/labs/" },
-      { name: "Contributing", url: "/contributing/" },
+      { name: "Study Materials", url: "/wiki/" },
+      { name: "Labs", url: "/wiki/labs/" },
+      { name: "Contributing", url: "/wiki/contributing/" },
       { name: "Privacy Policy", url: "/privacy" },
       { name: "Contact", url: "/contact" },
     ],

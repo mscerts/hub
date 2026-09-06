@@ -13,13 +13,13 @@ exam, duplicate/incorrect `assessmentId`s, wrong cross-links, malformed URLs. Mo
 structure into a single component (plus typed data) so these bugs become structurally impossible.
 
 ## Project context
-- **Repo:** Microsoft Certification Hub — https://github.com/mscerts/hub, https://msfthub.com. Astro 6 + Starlight (`@astrojs/starlight` ^0.39), MDX, Tailwind. Package manager **pnpm**.
+- **Repo:** Microsoft Certification Hub — https://github.com/mscerts/hub, https://msfthub.com. Astro 7 + native MDX, Tailwind. Package manager **pnpm**.
 - **Run/build:** `pnpm dev` (preview), `pnpm build` = `astro check && astro build`.
-- **Exam pages:** one MDX per exam at `src/content/docs/<area>/<CODE>.mdx`, `<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`. Filenames usually upper-case (`AZ-800.mdx`); routes lower-case (`/azure/az-800/`).
+- **Exam pages:** one MDX per exam at `src/content/docs/<area>/<CODE>.mdx`, `<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`. Filenames usually upper-case (`AZ-800.mdx`); routes lower-case (`/wiki/azure/az-800/`).
 - **Local components** live in `src/components/*.astro` (e.g. `VoucherList.astro`, `WikiList.astro`) — match their conventions. MDX can import `.astro` components.
 - **Reference page (canonical structure):** `src/content/docs/azure/AZ-800.mdx`. Anatomy:
   1. Frontmatter `title: "<CODE> Study Materials"`, `description`.
-  2. Imports from `@astrojs/starlight/components` (`LinkCard, CardGrid, Card, Tabs, TabItem, Aside`).
+  2. Imports from `@components/docs` (`LinkCard, CardGrid, Card, Tabs, TabItem, Aside`).
   3. Optional `:::caution` retirement/beta banner.
   4. `<Card title="Get Started" icon="star">` → Exam link, Study Guide link, Exam Labs link.
   5. `<Tabs>` with `TabItem`s `Text`, `Videos`, `Tests`, `Paid`, `Misc` (each a mix of `<LinkCard>` and `<CardGrid>`).
@@ -29,7 +29,7 @@ structure into a single component (plus typed data) so these bugs become structu
   - Study guide: `https://learn.microsoft.com/credentials/certifications/resources/study-guides/<code>?WT...`.
   - Practice assessment: `https://learn.microsoft.com/credentials/certifications/exams/<code>/practice/assessment?assessment-type=practice&assessmentId=<ID>&WT...`.
   - **No `/en-us/`** (or any) locale segment. Microsoft links carry `?WT.mc_id=studentamb_165290`; MeasureUp links carry `#u44` (code **MSFTHUB**).
-- **Content schema** is in `src/content.config.ts` (the `docs` collection extends Starlight's `docsSchema` — it already adds `voucherCategory`). This is where new exam frontmatter fields would go.
+- **Content schema** is in `src/content.config.ts` (the `docs` collection uses a local Zod schema — it already adds `voucherCategory`). This is where new exam frontmatter fields would go.
 
 ## Recommended approach (incremental — do NOT mass-migrate blindly)
 1. **Design the data shape.** Per exam capture: `code`, `name`, `area`, `examUrl` (or `certSlug`), `studyGuideUrl` (or derive from `code`), `assessmentId` (derive the practice URL), `labsPath`, optional `retirement`/`beta` info, and arrays for `text` / `videos` / `tests` / `paid` / `misc` resources (`{ title, href, description? }`). Decide between:

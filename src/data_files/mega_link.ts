@@ -52,6 +52,6 @@ export const successStoriesData = [
     alt: "Image Description",
     description:
       "We have a dedicated certification guide covering everything you need to know to get started.",
-    learnMoreUrl: "/guide/introduction/",
+    learnMoreUrl: "/wiki/guide/introduction/",
   },
 ];

@@ -16,60 +16,48 @@ interface Props {
 import DocsSidebar from "./DocsSidebar.astro";
 import DocsPageActions from "./DocsPageActions.astro";
 import DocsTableOfContents from "./DocsTableOfContents.astro";
-import CreditCard from "@components/ui/starlight/CreditCard.astro";
+import DocsCreditCard from "./DocsCreditCard.astro";
 
 const { sectionLabel, sidebarItems, title, description, headings } = Astro.props;
 const currentPath = Astro.url.pathname;
-const visibleHeadings = headings.filter((heading) => heading.depth <= 3);
+const visibleHeadings = headings.filter((heading) => heading.depth >= 2 && heading.depth <= 4);
+const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
 ---
 
-<div data-docs-next class="w-full bg-neutral-50 dark:bg-[#222222]">
+<div data-docs class="w-full bg-neutral-50 dark:bg-[#222222]">
   <div class="flex min-h-[calc(100vh-4rem)] w-full">
     <aside
-      class="docs-next-sidebar hidden w-72 shrink-0 border-r border-neutral-200 bg-neutral-100/70 lg:block dark:border-[#383838] dark:bg-[#1d1d1d]"
+      class="docs-sidebar hidden min-h-[calc(100vh-4rem)] w-72 shrink-0 border-r border-neutral-200 bg-neutral-100/70 lg:block dark:border-[#383838] dark:bg-[#1d1d1d]"
       aria-label={`${sectionLabel} navigation`}
     >
       <div
         class="sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-8"
       >
-        <p
-          class="text-[0.68rem] font-bold tracking-[0.18em] text-neutral-500 uppercase dark:text-[#9aa7b5]"
-        >
-          Get started
-        </p>
-        <p class="mt-3 text-sm font-semibold text-neutral-900 dark:text-[#f4f4f4]">
-          {sectionLabel}
-        </p>
-        <nav class="mt-5" data-docs-nav aria-label="Documentation navigation">
+        <nav data-docs-nav aria-label="Documentation navigation">
             <DocsSidebar items={sidebarItems} currentPath={currentPath} idPrefix="desktop" />
           </nav>
       </div>
     </aside>
 
     <main id="main-content" class="min-w-0 flex-1">
-       <div class="mx-auto max-w-5xl px-5 py-8 sm:px-8 sm:py-12 lg:px-12">
+        <div class="mx-auto max-w-4xl px-5 py-8 sm:px-8 sm:py-12 lg:px-10">
         <nav
             class="text-xs font-medium text-neutral-500 dark:text-[#9aa7b5]"
           aria-label="Breadcrumb"
         >
           <a
-            href="/wiki-next/"
+            href="/wiki/"
             class="hover:text-[#7890a6] dark:hover:text-[#b0c0cf]">Wiki</a
           >
           <span class="px-2" aria-hidden="true">/</span>
-          <span>{sectionLabel}</span>
+          <span>{breadcrumbLabel}</span>
         </nav>
 
         <header
           class="mt-6 border-b border-neutral-200 pb-8 dark:border-[#383838]"
         >
-          <p
-            class="text-sm font-bold tracking-[0.16em] text-[#6e8499] uppercase dark:text-[#9aaec1]"
-          >
-            {sectionLabel}
-          </p>
           <h1
-            class="mt-3 text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl dark:text-[#f4f4f4]"
+            class="text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl dark:text-[#f4f4f4]"
           >
             {title}
           </h1>
@@ -82,7 +70,7 @@ const visibleHeadings = headings.filter((heading) => heading.depth <= 3);
         </header>
 
         <details
-          class="docs-next-mobile-nav mt-6 rounded-xl border border-neutral-200 bg-neutral-100 p-4 lg:hidden dark:border-[#383838] dark:bg-[#1d1d1d]"
+          class="docs-mobile-nav mt-6 rounded-xl border border-neutral-200 bg-neutral-100 p-4 lg:hidden dark:border-[#383838] dark:bg-[#1d1d1d]"
         >
           <summary
             class="cursor-pointer text-sm font-semibold text-neutral-800 dark:text-[#f4f4f4]"
@@ -99,7 +87,7 @@ const visibleHeadings = headings.filter((heading) => heading.depth <= 3);
 
         {
           visibleHeadings.length > 0 && (
-            <details class="docs-next-mobile-toc mt-4 rounded-xl border border-neutral-200 bg-neutral-100 p-4 xl:hidden dark:border-[#383838] dark:bg-[#1d1d1d]">
+            <details class="docs-mobile-toc mt-4 rounded-xl border border-neutral-200 bg-neutral-100 p-4 xl:hidden dark:border-[#383838] dark:bg-[#1d1d1d]">
               <summary class="cursor-pointer text-sm font-semibold text-neutral-800 dark:text-[#f4f4f4]">
                 On this page
               </summary>
@@ -111,7 +99,7 @@ const visibleHeadings = headings.filter((heading) => heading.depth <= 3);
         }
 
         <article
-          class="docs-next-content prose prose-neutral dark:prose-invert mt-10 max-w-none"
+          class="docs-content mt-10 max-w-none"
           data-pagefind-body
         >
           <slot />
@@ -120,7 +108,7 @@ const visibleHeadings = headings.filter((heading) => heading.depth <= 3);
     </main>
 
     <aside
-      class="docs-next-toc hidden w-64 shrink-0 border-l border-neutral-200 xl:block dark:border-[#383838]"
+      class="docs-toc hidden min-h-[calc(100vh-4rem)] w-64 shrink-0 border-l border-neutral-200 xl:block dark:border-[#383838]"
       aria-label="On this page"
     >
       <div
@@ -128,198 +116,241 @@ const visibleHeadings = headings.filter((heading) => heading.depth <= 3);
       >
         <DocsTableOfContents headings={visibleHeadings} />
         <div class="mt-8">
-          <CreditCard variant="docs-next" />
+          <DocsCreditCard />
         </div>
       </div>
     </aside>
   </div>
 </div>
 
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap");
+<script>
+  import { headingAnchors } from "./client/heading-anchors";
 
-  :global([data-docs-next]) {
-    font-family: "DM Sans", "Avenir Next", "Segoe UI", sans-serif;
+  headingAnchors();
+</script>
+
+<style>
+  :global([data-docs]) {
+    font-family: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
   }
 
-  :global([data-docs-next] h1),
-  :global([data-docs-next] h2),
-  :global([data-docs-next] h3) {
-    font-family: "Newsreader", Georgia, serif;
+  :global([data-docs] h1),
+  :global([data-docs] h2),
+  :global([data-docs] h3) {
+    font-family: "IBM Plex Serif", Georgia, serif;
     letter-spacing: -0.02em;
   }
 
-  .docs-next-sidebar,
-  .docs-next-toc,
-  .docs-next-mobile-nav,
-  .docs-next-mobile-toc {
+  .docs-sidebar,
+  .docs-toc,
+  .docs-mobile-nav,
+  .docs-mobile-toc {
     display: none;
   }
 
-  .docs-next-mobile-nav,
-  .docs-next-mobile-toc {
+  .docs-mobile-nav,
+  .docs-mobile-toc {
     display: block;
   }
 
   @media (min-width: 64rem) {
-    .docs-next-sidebar {
+    .docs-sidebar {
       display: block;
     }
 
-    .docs-next-mobile-nav {
+    .docs-mobile-nav {
       display: none;
     }
   }
 
   @media (min-width: 80rem) {
-    .docs-next-toc {
+    .docs-toc {
       display: block;
     }
 
-    .docs-next-mobile-toc {
+    .docs-mobile-toc {
       display: none;
     }
   }
 
-  .docs-next-content :global(.sl-link-button) {
-    margin-block: 0.5rem;
+  .docs-content {
+    color: #c5c5c5;
+    font-size: 1rem;
+    line-height: 1.75;
   }
 
-  .docs-next-content :global(.sl-markdown-content) {
-    color: inherit;
+  .docs-content :global(.card .body) {
+    color: #c5c5c5;
   }
 
-  .docs-next-content :global(img) {
+  .docs-content :global(img) {
     height: auto;
     max-width: 100%;
   }
 
-  .docs-next-content :global(h2:not([class])) {
-    display: inline-block;
+  .docs-content :global(h2:not([class])) {
+    display: block;
     margin-top: 2.5rem;
     margin-bottom: 0.75rem;
-    color: #1f2937;
+    color: var(--nb-foreground);
     font-size: 1.75rem;
     font-weight: 700;
     line-height: 1.2;
   }
 
-  .docs-next-content :global(h3:not([class])) {
-    display: inline-block;
+  .docs-content :global(h3:not([class])) {
+    display: block;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    color: #1f2937;
+    color: var(--nb-foreground);
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 1.3;
   }
 
-  .docs-next-content :global(h4:not([class])) {
-    display: inline-block;
+  .docs-content :global(h4:not([class])) {
+    display: block;
     margin-top: 1.75rem;
     margin-bottom: 0.5rem;
-    color: #1f2937;
+    color: var(--nb-foreground);
     font-size: 1.05rem;
     font-weight: 700;
     line-height: 1.35;
   }
 
-  .docs-next-content :global(:is(h2, h3, h4):not([class]) + .sl-anchor-link) {
-    display: inline-flex;
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-left: 0.4rem;
-    vertical-align: middle;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.35rem;
-    color: #7890a6;
-    opacity: 0;
-    text-decoration: none;
-    transform: translateY(-0.08em);
-    transition: color 150ms ease, background-color 150ms ease, opacity 150ms ease;
-  }
-
-  .docs-next-content :global(:is(h2, h3, h4):not([class]):hover + .sl-anchor-link),
-  .docs-next-content :global(.sl-anchor-link:hover),
-  .docs-next-content :global(.sl-anchor-link:focus-visible) {
-    opacity: 1;
-  }
-
-  .docs-next-content :global(.sl-anchor-link:hover) {
-    background: color-mix(in oklch, #7890a6 12%, transparent);
-    color: #536d85;
-  }
-
-  .docs-next-content :global(.sl-anchor-link:focus-visible) {
-    outline: 2px solid #7890a6;
-    outline-offset: 2px;
-  }
-
-  .docs-next-content :global(.sl-anchor-icon) {
-    display: inline-flex;
-  }
-
-  .docs-next-content > :global(p),
-  .docs-next-content > :global(li) {
-    color: #374151;
+  .docs-content > :global(p),
+  .docs-content > :global(li) {
+    color: var(--nb-foreground);
     font-size: 1rem;
     line-height: 1.75;
   }
 
-  .docs-next-content > :global(p) {
+  .docs-content > :global(p) {
     margin-block: 1rem;
   }
 
-  .docs-next-content :global(ul),
-  .docs-next-content :global(ol) {
+  .docs-content :global(ul),
+  .docs-content :global(ol) {
     margin-block: 1rem;
     padding-left: 1.5rem;
   }
 
-  .docs-next-content :global(ul) {
+  .docs-content :global(ul) {
     list-style: disc;
   }
 
-  .docs-next-content :global(ol) {
+  .docs-content :global(ol) {
     list-style: decimal;
   }
 
-  .docs-next-content > :global(a:not(.sl-link-button):not([data-docs-link-button])) {
-    color: #5f7890;
+  .docs-content > :global(a:not([data-docs-link-button])) {
+    color: var(--nb-info);
     text-decoration: underline;
     text-underline-offset: 0.15em;
   }
 
-  .docs-next-content > :global(a:not(.sl-link-button):not([data-docs-link-button])):hover {
-    color: #49657d;
+  .docs-content > :global(a:not([data-docs-link-button])):hover {
+    color: var(--nb-primary-hover);
   }
 
-  .docs-next-content :global(hr) {
+  .docs-content :global(hr) {
     margin-block: 2.5rem;
-    border-color: #d1d5db;
+    border-color: var(--nb-border);
   }
 
-  :global(.dark) .docs-next-content :global(h2:not([class])),
-  :global(.dark) .docs-next-content :global(h3:not([class])),
-  :global(.dark) .docs-next-content :global(h4:not([class])) {
-    color: #f4f4f4;
+  .docs-content :global(.sl-heading-wrapper > .sl-anchor-link) {
+    display: none;
   }
 
-  :global(.dark) .docs-next-content > :global(p),
-  :global(.dark) .docs-next-content > :global(li) {
-    color: #c5c5c5;
+  .docs-content :global(table) {
+    display: block;
+    width: 100%;
+    margin-block: 1.5rem 2rem;
+    overflow-x: auto;
+    border-spacing: 0;
+    border-collapse: separate;
+    border: 1px solid var(--nb-border);
+    border-radius: 0.75rem;
+    background: var(--nb-card);
   }
 
-  :global(.dark) .docs-next-content > :global(a:not(.sl-link-button):not([data-docs-link-button])) {
-    color: #a9bac9;
+  .docs-content :global(thead),
+  .docs-content :global(tbody) {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
   }
 
-  :global(.dark) .docs-next-content > :global(a:not(.sl-link-button):not([data-docs-link-button])):hover {
-    color: #c4d2df;
+  .docs-content :global(thead) {
+    background: var(--nb-muted);
   }
 
-  :global(.dark) .docs-next-content :global(hr) {
-    border-color: #383838;
+  .docs-content :global(th),
+  .docs-content :global(td) {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--nb-border);
+    text-align: left;
+    vertical-align: top;
   }
+
+  .docs-content :global(th) {
+    color: var(--nb-foreground);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .docs-content :global(td) {
+    color: var(--nb-muted-foreground);
+  }
+
+  .docs-content :global(tr:last-child td) {
+    border-bottom: 0;
+  }
+
+  .docs-content :global(.heading-anchor) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .docs-content :global(.heading-anchor-label) {
+    min-width: 0;
+  }
+
+  .docs-content :global(.heading-anchor-icon) {
+    flex: 0 0 auto;
+    color: var(--nb-muted-foreground);
+    font-family: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
+    font-size: 0.82em;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateX(-0.35rem);
+    transition: opacity 160ms ease, transform 160ms ease, color 160ms ease;
+  }
+
+  .docs-content :global(.heading-anchor-icon svg) {
+    display: block;
+    width: 1em;
+    height: 1em;
+  }
+
+  .docs-content :global(.heading-anchor:hover .heading-anchor-icon),
+  .docs-content :global(.heading-anchor:focus-visible .heading-anchor-icon) {
+    color: var(--nb-primary);
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .docs-content :global(.heading-anchor-icon) {
+      transition: none;
+    }
+  }
+
 </style>

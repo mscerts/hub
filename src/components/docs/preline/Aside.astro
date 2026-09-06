@@ -9,10 +9,10 @@ interface Props extends HTMLAttributes<"aside"> {
 
 const { type = "note", title, class: className, ...attrs } = Astro.props;
 const config = {
-  note: { label: "Note", icon: "ph:info", classes: "border-blue-200 bg-blue-50 text-blue-800 dark:border-blue-900/60 dark:bg-blue-950/30 dark:text-blue-200" },
-  tip: { label: "Tip", icon: "ph:lightbulb", classes: "border-green-200 bg-green-50 text-green-800 dark:border-green-900/60 dark:bg-green-950/30 dark:text-green-200" },
-  caution: { label: "Caution", icon: "ph:warning", classes: "border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200" },
-  danger: { label: "Danger", icon: "ph:warning-circle", classes: "border-red-200 bg-red-50 text-red-800 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-200" },
+  note: { label: "Note", icon: "ph:info", classes: "border-info/30 bg-info-muted text-info" },
+  tip: { label: "Tip", icon: "ph:lightbulb", classes: "border-success/30 bg-success-muted text-success" },
+  caution: { label: "Caution", icon: "ph:warning", classes: "border-warning/30 bg-warning-muted text-warning" },
+  danger: { label: "Danger", icon: "ph:warning-circle", classes: "border-danger/30 bg-danger-muted text-danger" },
 } as const;
 const c = config[type] ?? config.note;
 const displayTitle = title ?? c.label;

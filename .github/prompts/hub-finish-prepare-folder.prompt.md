@@ -11,8 +11,8 @@ in the sidebar and not linked from anywhere, and its main page is a stub. Finish
 it reachable. (The old `guide/howtoprepare.mdx` page was deleted in favour of this folder.)
 
 ## Project context
-- **Repo:** Microsoft Certification Hub — https://github.com/mscerts/hub, https://msfthub.com. Astro 6 + Starlight (`@astrojs/starlight` ^0.39), MDX. Package manager **pnpm**. Build: `pnpm build` = `astro check && astro build`; preview: `pnpm dev`.
-- **Content** lives in `src/content/docs/`. The **sidebar is hand-maintained** in `astro.config.mjs` (`starlight({ sidebar: [...] })`) — pages only appear in nav if added there. **Redirects** are in the same file under `redirects: { ... }`.
+- **Repo:** Microsoft Certification Hub — https://github.com/mscerts/hub, https://msfthub.com. Astro 7 + native MDX. Package manager **pnpm**. Build: `pnpm build` = `astro check && astro build`; preview: `pnpm dev`.
+- **Content** lives in `src/content/docs/`. The **sidebar is hand-maintained** in `src/data_files/docs-sidebar.ts` — pages only appear in nav if added there. **Redirects** are in `astro.config.mjs` and the legacy catch-all routes.
 - **Existing guide pages** are in `src/content/docs/guide/` (Introduction, Overview, Scheduling an Exam, Certification Dashboard, Exam Experience, Opportunities for Students, Certification Renewal, Microsoft Partner Employees) — these are in the sidebar's "Certification Program Guide" group. Match their tone/structure.
 - **The `/wiki` page** is the big curated list of study materials; `prepare/` pages should link out to `/wiki` and to relevant exam pages rather than duplicating everything.
 

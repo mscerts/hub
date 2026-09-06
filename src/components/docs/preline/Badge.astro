@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"span"> {
+  text?: string;
+  variant?: "note" | "tip" | "caution" | "danger";
+}
+
+const { text, variant = "note", class: className, ...attrs } = Astro.props;
+const variants = {
+  note: "border-info/30 bg-info-muted text-info",
+  tip: "border-success/30 bg-success-muted text-success",
+  caution: "border-warning/30 bg-warning-muted text-warning",
+  danger: "border-danger/30 bg-danger-muted text-danger",
+};
+---
+
+<span
+  class:list={["inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-semibold", variants[variant], className]}
+  {...attrs}
+>
+  {text ?? <slot />}
+</span>

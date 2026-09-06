@@ -203,7 +203,7 @@ const redditLinks = [
           class="mx-2 hidden h-5 w-px bg-neutral-200 md:block dark:bg-neutral-700"
           aria-hidden="true"
         ></span>
-        <div class="flex items-center gap-1" aria-label="Quick actions">
+        <div class="flex items-center gap-1" role="group" aria-label="Quick actions">
           <span class="flex size-9 items-center justify-center rounded-lg text-neutral-600 dark:text-neutral-300" aria-hidden="true">
             <PackIcon name="ph:envelope-simple-fill" class="size-5" />
           </span>
@@ -267,6 +267,8 @@ const redditLinks = [
         localStorage.getItem("hs_theme") ||
         localStorage.getItem("starlight-theme") ||
         defaultTheme;
+      localStorage.setItem("hs_theme", theme);
+      localStorage.removeItem("starlight-theme");
 
       if (document.querySelector("html").classList.contains("dark")) return;
       this.setAppearance(theme);
@@ -283,7 +285,7 @@ const redditLinks = [
 
       if (saveInStore) {
         localStorage.setItem("hs_theme", theme);
-        localStorage.setItem("starlight-theme", theme);
+        localStorage.removeItem("starlight-theme");
       }
 
       if (theme === "auto") {
@@ -300,7 +302,6 @@ const redditLinks = [
         .querySelector("html")
         .classList.add(this.getOriginalAppearance());
 
-      // Sync data-theme attribute for Starlight CSS variables
       document.documentElement.dataset.theme =
         document.documentElement.classList.contains("dark") ? "dark" : "light";
 
@@ -327,7 +328,6 @@ const redditLinks = [
       const defaultTheme = "default";
       return (
         localStorage.getItem("hs_theme") ||
-        localStorage.getItem("starlight-theme") ||
         defaultTheme
       );
     },
