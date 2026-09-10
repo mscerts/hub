@@ -1,5 +1,4 @@
 ---
-import BrandLogoDark from "../../../assets/images/logo_dark.svg";
 import CookiePreferencesButton from "@components/ui/buttons/CookiePreferencesButton.astro";
 ---
 
@@ -10,17 +9,7 @@ import CookiePreferencesButton from "@components/ui/buttons/CookiePreferencesBut
   <div
     class="mx-auto flex min-h-16 w-full max-w-[85rem] flex-wrap items-center justify-between gap-x-8 gap-y-3 px-4 py-3 sm:px-6 lg:px-16 2xl:max-w-(--breakpoint-2xl)"
   >
-    <a
-      href="/"
-      class="shrink-0 rounded-md outline-hidden transition-opacity hover:opacity-70 focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1d1d1d]"
-      aria-label="Microsoft Certification Hub home"
-    >
-      <img
-        src={BrandLogoDark.src}
-        alt="Microsoft Certification Hub"
-        class="block h-auto w-28"
-      />
-    </a>
+    <CookiePreferencesButton text="Cookies" variant="secondary" size="xs" />
 
     <nav
       aria-label="Footer links"
@@ -44,9 +33,6 @@ import CookiePreferencesButton from "@components/ui/buttons/CookiePreferencesBut
       >
         Contributing
       </a>
-      <span class="hidden h-4 w-px bg-[#343434] sm:block" aria-hidden="true"
-      ></span>
-      <CookiePreferencesButton text="Cookies" variant="secondary" size="xs" />
     </nav>
   </div>
 </footer>

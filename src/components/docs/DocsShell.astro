@@ -17,6 +17,7 @@ import DocsSidebar from "./DocsSidebar.astro";
 import DocsPageActions from "./DocsPageActions.astro";
 import DocsTableOfContents from "./DocsTableOfContents.astro";
 import DocsCreditCard from "./DocsCreditCard.astro";
+import CodeBlocks from "./CodeBlocks.astro";
 
 const { sectionLabel, sidebarItems, title, description, headings } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -25,6 +26,7 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
 ---
 
 <div data-docs class="w-full bg-neutral-50 dark:bg-[#222222]">
+  <CodeBlocks />
   <div class="flex min-h-[calc(100vh-4rem)] w-full">
     <aside
       class="docs-sidebar hidden min-h-[calc(100vh-4rem)] w-72 shrink-0 border-r border-neutral-200 bg-neutral-100/70 lg:block dark:border-[#383838] dark:bg-[#1d1d1d]"

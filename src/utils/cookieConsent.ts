@@ -35,6 +35,10 @@ export class CookieConsentManager {
 
   // Load consent state from localStorage
   private loadConsentState(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     try {
       const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
       if (stored) {
@@ -60,6 +64,10 @@ export class CookieConsentManager {
 
   // Save consent state to localStorage
   private saveConsentState(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     try {
       localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify({
         ...this.state,
@@ -106,6 +114,7 @@ export class CookieConsentManager {
   setConsent(preferences: ConsentPreferences): void {
     this.state = {
       ...this.state,
+      isInitialized: true,
       preferences,
       showBanner: false,
       timestamp: Date.now()
@@ -116,7 +125,7 @@ export class CookieConsentManager {
     this.sendConsentToClarity(preferences);
 
     // Dispatch custom event
-    window.dispatchEvent(new CustomEvent('consentGranted', {
+    window.dispatchEvent(new CustomEvent('consentChanged', {
       detail: preferences
     }));
   }
@@ -150,18 +159,24 @@ export class CookieConsentManager {
   // Clear all consent data
   clearConsent(): void {
     this.state = { ...defaultConsentState };
-    localStorage.removeItem(CONSENT_STORAGE_KEY);
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.removeItem(CONSENT_STORAGE_KEY);
+      } catch (error) {
+        console.warn('Failed to clear consent state:', error);
+      }
+    }
     this.notifyListeners();
 
     // Clear Clarity cookies
-    if (typeof window.clarity === 'function') {
+    if (typeof window !== 'undefined' && typeof window.clarity === 'function') {
       window.clarity('consent', false);
     }
   }
 
   // Send consent to Microsoft Clarity
   private sendConsentToClarity(preferences: ConsentPreferences): void {
-    if (typeof window.clarity === 'function') {
+    if (typeof window !== 'undefined' && typeof window.clarity === 'function') {
       try {
         window.clarity('consentv2', {
           ad_Storage: 'denied', // Always deny ad storage since we don't use advertising cookies
