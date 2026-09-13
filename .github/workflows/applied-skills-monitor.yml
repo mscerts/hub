@@ -1,0 +1,57 @@
+name: Applied Skills Monitor
+
+on:
+  schedule:
+    - cron: "30 6 * * 1"  # Monday 06:30 UTC (offset from the MeasureUp monitor so both can push)
+  workflow_dispatch:
+
+concurrency:
+  group: applied-skills-monitor
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/applied-skills-report.md
+      ERROR_FILE: /tmp/applied-skills-error.md
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          package-manager-cache: false
+
+      - name: Sync Applied Skills cache
+        id: sync
+        run: node scripts/applied-skills-sync.mjs
+
+      - name: Commit updated Applied Skills cache
+        if: steps.sync.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/applied-skills-cache.json
+          git diff --cached --quiet || git commit -m "Update Applied Skills cache"
+          git pull --rebase
+          git push
+
+      - name: Create issue if Applied Skills changed
+        if: steps.sync.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Applied Skills Changes Detected — ${{ github.run_id }}"
+          content-filepath: /tmp/applied-skills-report.md
+          labels: enhancement
+
+      - name: Create issue if sync failed
+        if: failure() && steps.sync.outputs.extraction_failed == 'true'
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Applied Skills Monitor Failed — ${{ github.run_id }}"
+          content-filepath: /tmp/applied-skills-error.md
+          labels: bug
