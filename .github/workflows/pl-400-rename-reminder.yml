@@ -1,0 +1,74 @@
+name: PL-400 Rename Reminder
+
+on:
+  schedule:
+    - cron: "17 7 16 10 *"
+  workflow_dispatch:
+
+concurrency:
+  group: pl-400-rename-reminder
+  cancel-in-progress: false
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO: ${{ github.repository }}
+      ISSUE_TITLE: "Rename PL-400 -> AB-400 (effective 2026-10-16)"
+    steps:
+      - name: Check date window
+        id: guard
+        run: |
+          set -euo pipefail
+          year="$(date -u +%Y)"
+          today="$(date -u +%Y-%m-%d)"
+          if [[ "$year" != "2026" ]]; then
+            echo "Outside the 2026 rename window (today: $today UTC). No-op."
+            echo "in_window=false" >> "$GITHUB_OUTPUT"
+          elif [[ "$today" < "2026-10-16" ]]; then
+            echo "Before the 2026-10-16 effective date (today: $today UTC). No-op."
+            echo "in_window=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "On or after 2026-10-16, in 2026 (today: $today UTC). Proceeding."
+            echo "in_window=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check for existing reminder issue
+        id: dedup
+        if: steps.guard.outputs.in_window == 'true'
+        run: |
+          set -euo pipefail
+          count="$(gh api --paginate "repos/$REPO/issues?state=all&per_page=100" \
+            | jq -s --arg title "$ISSUE_TITLE" '[.[][] | select(.pull_request == null and .title == $title)] | length')"
+          echo "Existing matching issues (open + closed): $count"
+          if [[ "$count" -gt 0 ]]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create rename reminder issue
+        if: steps.guard.outputs.in_window == 'true' && steps.dedup.outputs.exists == 'false'
+        run: |
+          set -euo pipefail
+          gh issue create --repo "$REPO" --title "$ISSUE_TITLE" --body-file - <<'BODY'
+          PL-400 is confirmed renamed to **AB-400: Extending Microsoft Power Platform Solutions with Code and AI**, effective 2026-10-16.
+
+          This issue is a task reminder only. No rename has been performed automatically.
+
+          - [ ] Verify the rename and official exam name on Microsoft Learn: https://learn.microsoft.com/credentials/certifications/resources/study-guides/pl-400
+          - [ ] Move `src/content/docs/power/PL-400.mdx` to `src/content/docs/aibusiness/AB-400.mdx`
+          - [ ] Move `src/content/docs/labs/power/pl-400.mdx` to `src/content/docs/labs/aibusiness/ab-400.mdx`
+          - [ ] Use the official new exam name/title throughout the migrated page(s)
+          - [ ] Update internal references to PL-400 (sidebar/config, related pages, links)
+          - [ ] Remove the temporary effective-date notice already added to the PL-400 page
+          - [ ] Add redirects from `/power/pl-400/` and `/labs/power/pl-400/` to the new AB-400 routes in `astro.config.mjs`
+          - [ ] Preserve existing external PL-400 resource URLs unless a verified AB-400 replacement exists
+          - [ ] Keep the `/prepare/role-based/` How to Prepare link (AB-400 is role-based, not the AB-730/731 non-technical business tier)
+          - [ ] Re-run `node scripts/applied-skills-sync.mjs` and `node scripts/audit-missing-resources.mjs`, and commit the regenerated JSON
+          - [ ] Run `pnpm build` and test the new redirects
+          - [ ] Delete `.github/workflows/pl-400-rename-reminder.yml` once this issue is resolved
+          BODY
