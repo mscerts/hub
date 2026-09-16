@@ -1,0 +1,57 @@
+name: Partner Designations Monitor
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"  # Monday 08:00 UTC (offset from the other Monday monitors so all can push)
+  workflow_dispatch:
+
+concurrency:
+  group: partner-designations-monitor
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/partner-designations-report.md
+      ERROR_FILE: /tmp/partner-designations-error.md
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          package-manager-cache: false
+
+      - name: Check partner designation pages
+        id: check
+        run: node scripts/partner-designations-check.mjs
+
+      - name: Commit updated partner designations tracker
+        if: steps.check.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/partner-designations.json
+          git diff --cached --quiet || git commit -m "Update partner designations tracker"
+          git pull --rebase
+          git push
+
+      - name: Create issue if a partner designation page changed
+        if: steps.check.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Partner Designation Page Changed — ${{ github.run_id }}"
+          content-filepath: /tmp/partner-designations-report.md
+          labels: enhancement
+
+      - name: Create issue if check failed
+        if: failure() && steps.check.outputs.extraction_failed == 'true'
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Partner Designations Monitor Failed — ${{ github.run_id }}"
+          content-filepath: /tmp/partner-designations-error.md
+          labels: bug

@@ -465,6 +465,20 @@ When an exam newly becomes beta or retiring (i.e. you're adding `{ text: "BETA",
 
 ---
 
+## Partner Designation Skilling Requirements
+
+Tracks the Microsoft Partner solution-area pages that back the three-level skilling tabs on `src/content/docs/guide/partneremployees.mdx` ("New Microsoft Partner designations" section), and alerts when Microsoft changes one of those pages so the static tab content can be re-verified. Not rendered on the site itself, not part of the build.
+
+- **File:** `src/data_files/partner-designations.json` — `{ lastSynced, pages: [{ label, url, areas, contentHash, lastChanged? }] }`
+- **Monitor workflow:** `.github/workflows/partner-designations-monitor.yml` — runs Monday 08:00 UTC + manual trigger; script `scripts/partner-designations-check.mjs` fetches each tracked Partner Center page, strips it to normalized plain text, and hashes it (SHA-256). It does **not** attempt to re-parse certification names or point values automatically — the prose formatting differs too much page to page (mandatory-gate steps for the three Azure areas and Security vs. flat per-person lists for Business Applications and Modern Work) to parse reliably without silent breakage. A hash mismatch just means "this page's content changed since we last checked" and needs a human to re-read it.
+- **Tracked pages:** the Azure solutions page covers three areas at once (Data & AI, Digital & App Innovation, Infrastructure), so it's tracked as a single entry with all three listed in `areas`; Security, Business Applications, and Modern Work are each their own entry.
+- **On first run for a page** (`contentHash` is `null`): the current hash is recorded as the baseline silently — no issue is opened, since there's nothing to compare against yet.
+- **On a real change:** opens a GitHub issue (`enhancement`) naming the page(s)/area(s) that changed; updates `contentHash`/`lastChanged` so the same change isn't reported again next run.
+- **On failure:** opens a GitHub issue (`bug`) only when every tracked page's fetch failed (site down or blocking requests); a single page's fetch failure is logged as a warning and skipped that run.
+- **Working the list:** open the page's URL, re-read its "Skilling" category (mandatory-gate certifications, scored certifications, and the per-tier point values/caps), and update the matching Level 1/2/3 tabs in `partneremployees.mdx` to match — including the "Total skilling points: X/70" line for that area. Also update the certification lists' retirement footnotes if Microsoft added or resolved one.
+
+---
+
 ## Microsoft Learn Content Research Caches
 
 The local, AI-queryable JSON caches of Microsoft Learn training modules and
