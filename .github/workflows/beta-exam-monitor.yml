@@ -1,0 +1,57 @@
+name: Beta Exam Monitor
+
+on:
+  schedule:
+    - cron: "0 7 * * *"  # Daily 07:00 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: beta-exam-monitor
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/beta-exam-report.md
+      ERROR_FILE: /tmp/beta-exam-error.md
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          package-manager-cache: false
+
+      - name: Check tracked beta exams
+        id: check
+        run: node scripts/beta-exam-check.mjs
+
+      - name: Commit updated beta exam tracker
+        if: steps.check.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/beta-exams.json
+          git diff --cached --quiet || git commit -m "Update beta exam tracker"
+          git pull --rebase
+          git push
+
+      - name: Create issue if a beta exam went GA
+        if: steps.check.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Beta Exam Status Change Detected — ${{ github.run_id }}"
+          content-filepath: /tmp/beta-exam-report.md
+          labels: enhancement
+
+      - name: Create issue if check failed
+        if: failure() && steps.check.outputs.extraction_failed == 'true'
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Beta Exam Monitor Failed — ${{ github.run_id }}"
+          content-filepath: /tmp/beta-exam-error.md
+          labels: bug

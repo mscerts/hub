@@ -1,0 +1,57 @@
+name: Retiring Exam Monitor
+
+on:
+  schedule:
+    - cron: "0 5 * * *"  # Daily 05:00 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: retiring-exam-monitor
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/retiring-exam-report.md
+      ERROR_FILE: /tmp/retiring-exam-error.md
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          package-manager-cache: false
+
+      - name: Check retiring exam dates
+        id: check
+        run: node scripts/retiring-exam-check.mjs
+
+      - name: Commit updated retiring exam tracker
+        if: steps.check.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/retiring-exams.json
+          git diff --cached --quiet || git commit -m "Update retiring exam tracker"
+          git pull --rebase
+          git push
+
+      - name: Create issue for newly retired exams
+        if: steps.check.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Exam Retirement Notification — ${{ github.run_id }}"
+          content-filepath: /tmp/retiring-exam-report.md
+          labels: enhancement
+
+      - name: Create issue if check failed
+        if: failure() && steps.check.outputs.extraction_failed == 'true'
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Retiring Exam Monitor Failed — ${{ github.run_id }}"
+          content-filepath: /tmp/retiring-exam-error.md
+          labels: bug
