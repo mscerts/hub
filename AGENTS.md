@@ -413,6 +413,31 @@ Only whether the button is present **on our page** — it does not verify that t
 
 ---
 
+## Beta and Retiring Exam Tracking
+
+Two small trackers, populated once from `examBadges` in `astro.config.mjs` and maintained by hand from then on, back automated notifications for exam lifecycle changes. Neither file is rendered on the site, part of the build, or re-synced from `astro.config.mjs` automatically — the one-time sync scripts exist only for bootstrapping or a full manual resync.
+
+### Beta exam tracker
+- **File:** `src/data_files/beta-exams.json` — `{ lastSynced, exams: [{ code, area, name, url, flaggedGA, flaggedAt? }] }`
+- **Sync script (one-time/manual):** `scripts/beta-exams-sync.mjs` — rebuilds the file from every `examBadges[area][code]` entry with `{ text: "BETA", variant: "tip" }`, pulling the exam name from that page's frontmatter `description` and building the canonical `https://learn.microsoft.com/credentials/certifications/exams/<code>?WT.mc_id=studentamb_165290` URL (fall back to the page's verified certification-slug URL if that 404s). Run with `node scripts/beta-exams-sync.mjs` only to bootstrap or force a full resync — it overwrites the file.
+- **Monitor workflow:** `.github/workflows/beta-exam-monitor.yml` — runs daily 07:00 UTC + manual trigger; script `scripts/beta-exam-check.mjs` fetches each untracked-as-GA exam's Microsoft Learn URL and checks whether the page `<title>` still contains `(beta)` (Microsoft appends this to the exam and certification name for the duration of the beta, e.g. "Microsoft 365 Certified: Microsoft 365 and AI Services Administrator Associate (beta)").
+- **On a beta exam going GA:** opens a GitHub issue (`enhancement`) naming the exam(s); marks the entry `flaggedGA: true` so it isn't reported again. A fetch failure is never treated as "went GA" — only a successful fetch confirming the `(beta)` marker is gone triggers the flag.
+- **On failure:** opens a GitHub issue (`bug`) only when every tracked exam's fetch failed (site down or blocking requests); a single exam's fetch failure is logged as a warning and skipped that run.
+- **Working the list:** verify the exam is genuinely GA on Microsoft Learn, remove its `BETA` badge from `examBadges` in `astro.config.mjs`, update the exam page's `:::tip` beta banner and Get Started card, then delete its entry from `beta-exams.json` (or leave it `flaggedGA: true` if you'd rather keep history — the monitor will not re-report it either way).
+
+### Retiring exam tracker
+- **File:** `src/data_files/retiring-exams.json` — `{ lastSynced, exams: [{ code, area, name, retirementDate, replacementCode?, notified, notifiedAt? }] }`; `retirementDate` is `YYYY-MM-DD`.
+- **Sync script (one-time/manual):** `scripts/retiring-exams-sync.mjs` — rebuilds the file from every `examBadges[area][code]` entry with `{ text: "RETIRING", variant: "danger" }`, pulling the exam name from that page's frontmatter `description` and the retirement date from its `<RetirementBanner retireDate="...">` prop or inline `:::caution` text (whichever the page uses), normalized to ISO. Run with `node scripts/retiring-exams-sync.mjs` only to bootstrap or force a full resync — it overwrites the file, but preserves any existing `notified`/`notifiedAt` state.
+- **Monitor workflow:** `.github/workflows/retiring-exam-monitor.yml` — runs daily 05:00 UTC + manual trigger; script `scripts/retiring-exam-check.mjs` does pure date math against the tracker (no network calls) and flags any exam whose `retirementDate` is yesterday (UTC) or earlier and not yet `notified`.
+- **On a retirement notification:** opens a GitHub issue (`enhancement`) naming the exam(s) and their retirement date; marks the entry `notified: true` so it fires exactly once, even if a workflow run is missed for a day or two.
+- **On failure:** opens a GitHub issue (`bug`) only when the tracker file itself is corrupt/unreadable.
+- **Working the list:** confirm the exam is actually retired (Microsoft Learn, the page's `RetirementBanner`/`:::caution` text), update the exam page to reflect retirement, then either remove the `RETIRING` badge from `examBadges` (if replaced by a new exam already tracked separately) or leave the entry in `retiring-exams.json` as a historical record — the monitor will not re-notify a `notified: true` entry.
+
+### Adding a new exam to either tracker
+When an exam newly becomes beta or retiring (i.e. you're adding `{ text: "BETA", variant: "tip" }` or `{ text: "RETIRING", variant: "danger" }` to `examBadges` in `astro.config.mjs` for the first time), also add a matching entry directly to `src/data_files/beta-exams.json` or `src/data_files/retiring-exams.json` by hand — the sync scripts are not re-run automatically for single additions.
+
+---
+
 ## Microsoft Learn Content Research Caches
 
 The local, AI-queryable JSON caches of Microsoft Learn training modules and
