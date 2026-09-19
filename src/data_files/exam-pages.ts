@@ -86,6 +86,11 @@ export const examPages: Record<string, ExamPageData> = {
           href: "https://www.whizlabs.com/ai-901-microsoft-azure-ai-fundamentals/",
           target: "_blank",
         },
+        {
+          title: "CertiAce Practice Tests",
+          href: "https://certiace.com/practice/AI-901",
+          target: "_blank",
+        },
       ] },
       {
         label: "Paid",
@@ -145,8 +150,27 @@ export const examPages: Record<string, ExamPageData> = {
           },
         ],
       },
-      { label: "Videos", links: [] },
-      { label: "Tests", links: [] },
+      {
+        label: "Videos",
+        links: [
+          {
+            title: "AI-103 Study Cram",
+            href: "https://www.youtube.com/watch?v=WK2BvjOYTCQ",
+            target: "_blank",
+            description: "John Savill's AI-103 Study Cram.",
+          },
+        ],
+      },
+      {
+        label: "Tests",
+        links: [
+          {
+            title: "CertiAce Practice Tests",
+            href: "https://certiace.com/practice/AI-103",
+            target: "_blank",
+          },
+        ],
+      },
       { label: "Paid", links: [] },
       {
         label: "Misc",
