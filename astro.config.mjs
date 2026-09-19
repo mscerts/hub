@@ -109,6 +109,7 @@ export default defineConfig({
     "/vouchers/aichallenge/": "/vouchers/",
     "/vouchers/microsoftignite/": "/vouchers/",
     "/vouchers/fabricdatadays/": "/vouchers/",
+    "/vouchers/defendersweepstakes/": "/vouchers/",
     "/dynamics/mb-280": "/aibusiness/ab-210",
     "/azure/az-204": "/azure/ai-200",
     
@@ -192,16 +193,6 @@ export default defineConfig({
               label: "Partner Certification Week",
               link: "/vouchers/partnerweek/",
               badge: { text: "*100%", variant: "tip" },
-            },
-            {
-              label: "Partner LevelUp",
-              link: "/vouchers/levelup/",
-              badge: { text: "*100%", variant: "tip" },
-            },
-            {
-              label: "Microsoft Defender Sweepstakes",
-              link: "/vouchers/defendersweepstakes/",
-              badge: { text: "*50%", variant: "tip" },
             },
             {
               label: "South Africa AI Skills",
