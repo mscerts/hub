@@ -29,7 +29,10 @@ const { tag } = Astro.props;
 
 // Get all blog posts with this tag
 const allBlogEntries = await getCollection("blog", ({ data }) => {
-  return data.draft !== true && data.tags?.map((t) => t.toLowerCase()).includes(tag.toLowerCase());
+  return (
+    data.draft !== true &&
+    data.tags?.map((t) => t.toLowerCase()).includes(tag.toLowerCase())
+  );
 });
 
 const blogPosts: CollectionEntry<"blog">[] = allBlogEntries.sort(
@@ -48,13 +51,13 @@ const metaDescription = `Browse all articles tagged with "${displayTag}" on MSFT
   structuredData={{
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": `${SITE.url}/news/tag/${tag}`,
-    url: `${SITE.url}/news/tag/${tag}`,
+    "@id": `${SITE.url}/news/tag/${tag}/`,
+    url: `${SITE.url}/news/tag/${tag}/`,
     name: `${displayTag} | News`,
     description: metaDescription,
     isPartOf: {
       "@type": "WebSite",
-      url: SITE.url,
+      url: `${SITE.url}/`,
       name: SITE.title,
     },
   }}
@@ -66,20 +69,30 @@ const metaDescription = `Browse all articles tagged with "${displayTag}" on MSFT
     <div class="mx-auto max-w-3xl text-left sm:text-center">
       <a
         href="/news"
-        class="inline-flex items-center gap-x-1.5 text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 mb-4"
+        class="mb-4 inline-flex items-center gap-x-1.5 text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
       >
-        <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        <svg
+          class="size-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
         </svg>
         Back to all posts
       </a>
       <h1
-        class="text-balance block text-4xl font-bold tracking-tight text-neutral-800 md:text-5xl dark:text-neutral-200"
+        class="block text-4xl font-bold tracking-tight text-balance text-neutral-800 md:text-5xl dark:text-neutral-200"
       >
         Posts tagged "{displayTag}"
       </h1>
       <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
-        {blogPosts.length} {blogPosts.length === 1 ? "article" : "articles"} found
+        {blogPosts.length}
+        {blogPosts.length === 1 ? "article" : "articles"} found
       </p>
     </div>
   </section>

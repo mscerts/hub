@@ -7,28 +7,35 @@ import { SITE } from "@data/constants";
 // Define variables for page content
 const pageTitle = `Page Not Found | ${SITE.title}`;
 const subTitle = "You've stumbled upon a broken link..";
-const content = "This page has likely been retired or deleted. Please refer back to our site for the updated content.";
+const content =
+  "This page has likely been retired or deleted. Please refer back to our site for the updated content.";
 const btnTitle = "Go Back";
 ---
 
-<MainLayout title={pageTitle}>
+<MainLayout
+  title={pageTitle}
+  customDescription={content}
+  customOgTitle={pageTitle}
+  noindex
+  structuredData={false}
+>
   <section class="grid h-svh place-content-center">
     <div class="mx-auto max-w-(--breakpoint-xl) px-4 py-8 lg:px-6 lg:py-16">
       <div class="mx-auto max-w-(--breakpoint-sm) text-center">
         <h1
-          class="text-dark mb-4 text-7xl font-extrabold text-indigo-500 dark:text-indigo-400 lg:text-9xl"
+          class="text-dark mb-4 text-7xl font-extrabold text-indigo-500 lg:text-9xl dark:text-indigo-400"
         >
           404
         </h1>
         <p
           id="subtitle"
-          class="mb-4 text-balance text-3xl font-bold tracking-tight text-neutral-700 dark:text-neutral-300 md:text-4xl"
+          class="mb-4 text-3xl font-bold tracking-tight text-balance text-neutral-700 md:text-4xl dark:text-neutral-300"
         >
           {subTitle}
         </p>
         <p
           id="content"
-          class="mb-4 text-pretty text-lg text-neutral-600 dark:text-neutral-400"
+          class="mb-4 text-lg text-pretty text-neutral-600 dark:text-neutral-400"
         >
           {content}
         </p>
