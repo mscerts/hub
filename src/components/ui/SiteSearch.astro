@@ -8,14 +8,18 @@ const searchId = "site-search-dialog";
   data-search-trigger
   data-pagefind-ignore
   type="button"
-  class="group flex h-9 w-9 items-center justify-center gap-2 rounded-lg border border-transparent text-neutral-600 outline-hidden transition hover:bg-neutral-100 hover:text-[#7890a6] focus-visible:ring-2 focus-visible:ring-[#8da2b6] md:w-72 md:justify-start md:border-neutral-200 md:bg-neutral-50/70 md:px-3 lg:absolute lg:left-1/2 lg:w-[22rem] lg:-translate-x-1/2 2xl:w-[26rem] dark:text-neutral-300 dark:hover:bg-neutral-800 dark:md:border-neutral-700 dark:md:bg-[#252525] dark:hover:text-[#b0c0cf]"
+  class="group hidden h-9 w-9 items-center justify-center gap-2 rounded-lg border border-transparent text-neutral-600 outline-hidden transition hover:bg-neutral-100 hover:text-[#7890a6] focus-visible:ring-2 focus-visible:ring-[#8da2b6] md:flex md:w-72 md:justify-start md:border-neutral-200 md:bg-neutral-50/70 md:px-3 lg:absolute lg:left-1/2 lg:w-[22rem] lg:-translate-x-1/2 2xl:w-[26rem] dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-[#b0c0cf] dark:md:border-neutral-700 dark:md:bg-[#252525]"
   aria-label="Search documentation"
   aria-keyshortcuts="Control+K"
   aria-controls={searchId}
 >
   <Icon name="ph:magnifying-glass" class="size-4 shrink-0" aria-hidden="true" />
-  <span class="hidden flex-1 text-left text-sm font-medium md:block">Search</span>
-  <kbd class="hidden items-center gap-0.5 rounded border border-neutral-300 bg-white/60 px-1.5 py-0.5 text-[0.625rem] font-medium text-neutral-500 md:inline-flex dark:border-neutral-600 dark:bg-[#2d2d2d] dark:text-neutral-400">
+  <span class="hidden flex-1 text-left text-sm font-medium md:block"
+    >Search</span
+  >
+  <kbd
+    class="hidden items-center gap-0.5 rounded border border-neutral-300 bg-white/60 px-1.5 py-0.5 text-[0.625rem] font-medium text-neutral-500 md:inline-flex dark:border-neutral-600 dark:bg-[#2d2d2d] dark:text-neutral-400"
+  >
     <span data-shortcut-key>Ctrl</span> K
   </kbd>
 </button>
@@ -27,11 +31,24 @@ const searchId = "site-search-dialog";
   class="fixed inset-0 z-[100] m-0 h-full max-h-full w-full max-w-full bg-transparent p-0 backdrop:bg-black/70"
   aria-label="Search documentation"
 >
-  <div data-search-overlay class="flex min-h-full items-start justify-center overflow-y-auto p-4 pt-[10vh] sm:p-6 sm:pt-[12vh]">
-    <div class="w-full max-w-xl overflow-hidden rounded-lg border border-neutral-700 bg-[#171717] text-neutral-100 shadow-2xl shadow-black/50 ring-1 ring-neutral-600/40">
-      <div class="flex flex-col overflow-hidden rounded-t-lg border-b border-neutral-700 bg-[#222222]">
-        <div class="flex items-center gap-3 border-b border-neutral-700 px-4 py-3">
-          <Icon name="ph:magnifying-glass" class="size-4 shrink-0 text-neutral-400" aria-hidden="true" />
+  <div
+    data-search-overlay
+    class="flex min-h-full items-start justify-center overflow-y-auto p-4 pt-[10vh] sm:p-6 sm:pt-[12vh]"
+  >
+    <div
+      class="w-full max-w-xl overflow-hidden rounded-lg border border-neutral-700 bg-[#171717] text-neutral-100 shadow-2xl ring-1 shadow-black/50 ring-neutral-600/40"
+    >
+      <div
+        class="flex flex-col overflow-hidden rounded-t-lg border-b border-neutral-700 bg-[#222222]"
+      >
+        <div
+          class="flex items-center gap-3 border-b border-neutral-700 px-4 py-3"
+        >
+          <Icon
+            name="ph:magnifying-glass"
+            class="size-4 shrink-0 text-neutral-400"
+            aria-hidden="true"
+          />
           <input
             data-search-input
             role="combobox"
@@ -63,7 +80,10 @@ const searchId = "site-search-dialog";
           aria-orientation="vertical"
           class="max-h-[min(32rem,55vh)] min-h-40 overflow-y-auto p-2"
         >
-          <p data-search-empty class="py-8 text-center text-sm text-neutral-500">
+          <p
+            data-search-empty
+            class="py-8 text-center text-sm text-neutral-500"
+          >
             Type to search...
           </p>
         </div>
@@ -121,15 +141,22 @@ const searchId = "site-search-dialog";
   const loadPagefind = async () => {
     if (pagefind) return pagefind;
 
-    const baseUrl = new URL(import.meta.env.BASE_URL ?? "/", window.location.origin);
+    const baseUrl = new URL(
+      import.meta.env.BASE_URL ?? "/",
+      window.location.origin,
+    );
     const pagefindUrl = new URL("pagefind/pagefind.js", baseUrl);
-    pagefind = (await import(/* @vite-ignore */ pagefindUrl.href)) as PagefindApi;
+    pagefind = (await import(
+      /* @vite-ignore */ pagefindUrl.href
+    )) as PagefindApi;
     await pagefind.init();
     return pagefind;
   };
 
   const clearResults = (input: HTMLInputElement, results: HTMLElement) => {
-    results.querySelectorAll<HTMLElement>("[role='option']").forEach((result) => result.remove());
+    results
+      .querySelectorAll<HTMLElement>("[role='option']")
+      .forEach((result) => result.remove());
     input.setAttribute("aria-expanded", "false");
     input.removeAttribute("aria-activedescendant");
   };
@@ -138,17 +165,20 @@ const searchId = "site-search-dialog";
     const option = document.createElement("div");
     option.id = `search-result-${index}`;
     option.setAttribute("role", "option");
-    option.className = "cursor-pointer rounded-lg px-2 py-2 transition-colors hover:bg-[#2d2d2d] focus-within:bg-[#2d2d2d]";
+    option.className =
+      "cursor-pointer rounded-lg px-2 py-2 transition-colors hover:bg-[#2d2d2d] focus-within:bg-[#2d2d2d]";
 
     const link = document.createElement("a");
     link.href = result.url;
-    link.className = "block truncate text-sm font-medium text-neutral-100 no-underline outline-none";
+    link.className =
+      "block truncate text-sm font-medium text-neutral-100 no-underline outline-none";
     link.textContent = result.title;
     option.appendChild(link);
 
     if (result.snippet) {
       const snippet = document.createElement("p");
-      snippet.className = "mt-1 line-clamp-2 text-xs leading-relaxed text-neutral-400";
+      snippet.className =
+        "mt-1 line-clamp-2 text-xs leading-relaxed text-neutral-400";
       snippet.innerHTML = result.snippet;
       option.appendChild(snippet);
     }
@@ -159,7 +189,8 @@ const searchId = "site-search-dialog";
       result.subResults.slice(0, 3).forEach((subResult) => {
         const subLink = document.createElement("a");
         subLink.href = subResult.url;
-        subLink.className = "block truncate py-0.5 text-xs text-neutral-500 no-underline hover:text-neutral-200";
+        subLink.className =
+          "block truncate py-0.5 text-xs text-neutral-500 no-underline hover:text-neutral-200";
         subLink.textContent = subResult.title;
         subList.appendChild(subLink);
       });
@@ -176,29 +207,54 @@ const searchId = "site-search-dialog";
 
   const initializeSearch = () => {
     const { dialog, input, results, empty, overlay } = getElements();
-    const trigger = document.querySelector<HTMLButtonElement>("[data-search-trigger]");
-    const closeButton = document.querySelector<HTMLButtonElement>("[data-search-close]");
+    const triggers = Array.from(
+      document.querySelectorAll<HTMLButtonElement>("[data-search-trigger]"),
+    );
+    const closeButton = document.querySelector<HTMLButtonElement>(
+      "[data-search-close]",
+    );
 
-    if (!dialog || !input || !results || !empty || !overlay || !trigger || !closeButton || dialog.dataset.ready) return;
+    if (
+      !dialog ||
+      !input ||
+      !results ||
+      !empty ||
+      !overlay ||
+      triggers.length === 0 ||
+      !closeButton ||
+      dialog.dataset.ready
+    )
+      return;
+    document.body.append(dialog);
     dialog.dataset.ready = "true";
     const closeButtonElement = closeButton;
 
-    const nav = navigator as Navigator & { userAgentData?: { platform?: string } };
+    const nav = navigator as Navigator & {
+      userAgentData?: { platform?: string };
+    };
     const platform = nav.userAgentData?.platform ?? navigator.userAgent;
     if (/mac|iphone|ipod|ipad/i.test(platform)) {
-      trigger.setAttribute("aria-keyshortcuts", "Meta+K");
-      trigger.querySelector<HTMLElement>("[data-shortcut-key]")!.textContent = "⌘";
+      triggers.forEach((trigger) => {
+        trigger.setAttribute("aria-keyshortcuts", "Meta+K");
+        trigger
+          .querySelector<HTMLElement>("[data-shortcut-key]")
+          ?.replaceChildren("⌘");
+      });
     }
 
     let activeIndex = -1;
     let searchTimer: ReturnType<typeof setTimeout> | undefined;
     let activeController: AbortController | undefined;
 
-    const options = () => Array.from(results.querySelectorAll<HTMLElement>("[role='option']"));
+    const options = () =>
+      Array.from(results.querySelectorAll<HTMLElement>("[role='option']"));
 
     const updateActive = (nextIndex: number) => {
       const items = options();
-      activeIndex = items.length === 0 ? -1 : Math.max(-1, Math.min(nextIndex, items.length - 1));
+      activeIndex =
+        items.length === 0
+          ? -1
+          : Math.max(-1, Math.min(nextIndex, items.length - 1));
       items.forEach((item, index) => {
         if (index === activeIndex) {
           item.dataset.highlighted = "true";
@@ -234,13 +290,16 @@ const searchId = "site-search-dialog";
         if (signal.aborted) return;
         const response = await api.search(query);
         if (signal.aborted) return;
-        const data = await Promise.all(response.results.slice(0, 10).map((result) => result.data()));
+        const data = await Promise.all(
+          response.results.slice(0, 10).map((result) => result.data()),
+        );
         const mapped: SearchResult[] = data.map((result) => ({
           title: result.meta?.title ?? "Untitled",
           url: result.url,
           snippet: result.excerpt,
           subResults: (result.sub_results ?? []).filter(
-            (subResult): subResult is Required<PagefindSubResult> => Boolean(subResult.title && subResult.url),
+            (subResult): subResult is Required<PagefindSubResult> =>
+              Boolean(subResult.title && subResult.url),
           ),
         }));
 
@@ -252,7 +311,9 @@ const searchId = "site-search-dialog";
 
         empty.hidden = true;
         input.setAttribute("aria-expanded", "true");
-        mapped.forEach((result, index) => results.appendChild(buildResult(result, index)));
+        mapped.forEach((result, index) =>
+          results.appendChild(buildResult(result, index)),
+        );
       } catch {
         if (signal.aborted) return;
         empty.hidden = false;
@@ -270,7 +331,7 @@ const searchId = "site-search-dialog";
       if (dialog.open) dialog.close();
     };
 
-    trigger.addEventListener("click", open);
+    triggers.forEach((trigger) => trigger.addEventListener("click", open));
     closeButtonElement.addEventListener("click", close);
     overlay.addEventListener("click", (event) => {
       if (event.target === overlay) close();
@@ -311,12 +372,18 @@ const searchId = "site-search-dialog";
     if (globalsBound) return;
     globalsBound = true;
     window.addEventListener("keydown", (event) => {
-      if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "k") return;
-      const dialog = document.querySelector<HTMLDialogElement>("[data-search-dialog]");
+      if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "k")
+        return;
+      const dialog = document.querySelector<HTMLDialogElement>(
+        "[data-search-dialog]",
+      );
       if (!dialog) return;
       event.preventDefault();
       if (dialog.open) dialog.close();
-      else document.querySelector<HTMLButtonElement>("[data-search-trigger]")?.click();
+      else
+        document
+          .querySelector<HTMLButtonElement>("[data-search-trigger]")
+          ?.click();
     });
   };
 

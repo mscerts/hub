@@ -14,6 +14,7 @@ import { DISCORD_URL } from "@data/constants";
 // Use English strings
 const strings = enStrings;
 const homeUrl = "/";
+const isDocsPage = Astro.url.pathname.startsWith("/wiki/");
 const redditLinks = [
   {
     name: "r/O365Certification",
@@ -36,7 +37,7 @@ const redditLinks = [
     class="relative mx-0 w-full border-x border-b border-neutral-300/80 bg-white/95 px-4 py-3 shadow-sm backdrop-blur-md md:flex md:min-h-16 md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 dark:border-neutral-700/80 dark:bg-[#1d1d1d]/95"
     aria-label="Global"
   >
-    <div class="flex items-center justify-between">
+    <div class="flex items-center gap-1">
       <!-- Brand logo -->
       <a
         class="flex-none rounded-lg text-xl font-bold ring-orange-500 outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:ring-orange-300 dark:focus-visible:ring-offset-[#1d1d1d]"
@@ -56,8 +57,39 @@ const redditLinks = [
           class="hidden h-auto w-32 dark:block"
         />
       </a>
+      <span class="ml-auto md:hidden" aria-hidden="true"></span>
+      {
+        isDocsPage && (
+          <button
+            type="button"
+            data-docs-drawer-open
+            class="group flex h-9 items-center gap-1.5 rounded-lg border border-[#8da2b6]/45 bg-[#7890a6]/10 px-2.5 text-xs font-semibold text-[#516a80] outline-hidden transition hover:border-[#7890a6]/70 hover:bg-[#7890a6]/15 focus-visible:ring-2 focus-visible:ring-[#8da2b6] md:hidden dark:border-[#8da2b6]/35 dark:bg-[#8da2b6]/10 dark:text-[#c4d0db] dark:hover:border-[#8da2b6]/60 dark:hover:bg-[#8da2b6]/15"
+            aria-label="Browse documentation"
+            aria-controls="docs-mobile-drawer"
+            aria-expanded="false"
+          >
+            <PackIcon name="ph:book-open-text" class="size-4" aria-hidden="true" />
+            <span class="hidden min-[380px]:inline">Docs</span>
+          </button>
+        )
+      }
+      <button
+        type="button"
+        data-search-trigger
+        data-pagefind-ignore
+        class="flex size-9 items-center justify-center rounded-lg text-neutral-600 outline-hidden transition hover:bg-neutral-100 hover:text-[#7890a6] focus-visible:ring-2 focus-visible:ring-[#8da2b6] md:hidden dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-[#b0c0cf]"
+        aria-label="Search documentation"
+        aria-keyshortcuts="Control+K"
+        aria-controls="site-search-dialog"
+      >
+        <PackIcon
+          name="ph:magnifying-glass"
+          class="size-5"
+          aria-hidden="true"
+        />
+      </button>
       <!-- Collapse toggle for smaller screens -->
-      <div class="mr-2 ml-auto md:hidden">
+      <div class="mr-2 md:hidden">
         <button
           type="button"
           class="hs-collapse-toggle flex size-9 items-center justify-center rounded-lg text-sm font-bold text-neutral-600 transition duration-300 hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:outline-hidden"
@@ -122,51 +154,73 @@ const redditLinks = [
           })
         }
 
-        <!-- Community links -->
-        <span
-          class="mx-3 hidden h-5 w-px bg-neutral-200 md:block dark:bg-neutral-700"
-          aria-hidden="true"
-        ></span>
-        <div class="flex items-center gap-1">
-          <a
-            href={DISCORD_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex size-9 items-center justify-center rounded-lg text-neutral-600 ring-orange-500 outline-hidden transition hover:text-[#5865F2] focus-visible:ring-2 dark:text-neutral-300 dark:hover:text-[#7289DA]"
-            aria-label="Join the Microsoft Certification Hub Discord"
-          >
-            <svg
-              class="h-5 w-5 shrink-0"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path
-                d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.1.1 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.1 16.1 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02M8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12m6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12"
-              ></path>
-            </svg>
-          </a>
-          <div class="relative">
-            <button
-              id="reddit-menu-toggle"
-              data-reddit-menu-toggle
-              type="button"
-              class="group flex size-9 items-center justify-center rounded-lg text-neutral-600 ring-orange-500 outline-hidden transition hover:text-[#FF4500] focus-visible:ring-2 dark:text-neutral-300 dark:hover:text-[#FF5700]"
-              aria-label="Open Microsoft certification subreddits"
-              aria-controls="reddit-menu"
-              aria-expanded="false"
-            >
-              <Icon
-                name="reddit"
-                class="!fill-neutral-600 transition-colors group-hover:!fill-[#FF4500] dark:!fill-neutral-300 dark:group-hover:!fill-[#FF5700]"
-              />
-            </button>
+        <div class="flex shrink-0 items-center gap-1 md:contents">
+          <!-- Community links -->
+          <span
+            class="mx-3 hidden h-5 w-px bg-neutral-200 md:block dark:bg-neutral-700"
+            aria-hidden="true"></span>
+          <div class="relative w-full md:w-auto">
+            <div class="flex shrink-0 items-center gap-1">
+              <a
+                href={DISCORD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex size-9 items-center justify-center rounded-lg text-neutral-600 ring-orange-500 outline-hidden transition hover:text-[#5865F2] focus-visible:ring-2 dark:text-neutral-300 dark:hover:text-[#7289DA]"
+                aria-label="Join the Microsoft Certification Hub Discord"
+              >
+                <svg
+                  class="h-5 w-5 shrink-0"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.1.1 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.1 16.1 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02M8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12m6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12"
+                  ></path>
+                </svg>
+              </a>
+              <button
+                id="reddit-menu-toggle"
+                data-reddit-menu-toggle
+                type="button"
+                class="group flex size-9 items-center justify-center rounded-lg text-neutral-600 ring-orange-500 outline-hidden transition hover:text-[#FF4500] focus-visible:ring-2 dark:text-neutral-300 dark:hover:text-[#FF5700]"
+                aria-label="Open Microsoft certification subreddits"
+                aria-controls="reddit-menu"
+                aria-expanded="false"
+              >
+                <Icon
+                  name="reddit"
+                  class="!fill-neutral-600 transition-colors group-hover:!fill-[#FF4500] dark:!fill-neutral-300 dark:group-hover:!fill-[#FF5700]"
+                />
+              </button>
+              <span
+                class="mx-2 hidden h-5 w-px bg-neutral-200 md:block dark:bg-neutral-700"
+                aria-hidden="true"></span>
+              <div
+                class="flex shrink-0 items-center gap-1"
+                role="group"
+                aria-label="Quick actions"
+              >
+                <span
+                  class="flex size-9 items-center justify-center rounded-lg text-neutral-600 dark:text-neutral-300"
+                  aria-hidden="true"
+                >
+                  <PackIcon name="ph:envelope-simple-fill" class="size-5" />
+                </span>
+                <span
+                  class="flex size-9 items-center justify-center rounded-lg text-neutral-600 dark:text-neutral-300"
+                  aria-hidden="true"
+                >
+                  <PackIcon name="ph:bookmark-simple-fill" class="size-5" />
+                </span>
+              </div>
+            </div>
             <div
               id="reddit-menu"
               data-reddit-menu
               hidden
-              class="absolute top-[calc(100%+1rem)] right-0 z-50 w-72 rounded-2xl border border-neutral-200 bg-white p-3 shadow-2xl shadow-neutral-950/15 dark:border-neutral-700 dark:bg-[#1d1d1d] dark:shadow-black/40"
+              class="mt-2 w-full rounded-xl border border-neutral-200 bg-white p-3 shadow-2xl shadow-neutral-950/15 md:absolute md:top-[calc(100%+1rem)] md:right-0 md:z-50 md:mt-0 md:w-72 md:rounded-2xl dark:border-neutral-700 dark:bg-[#1d1d1d] dark:shadow-black/40"
               role="menu"
             >
               <div
@@ -198,18 +252,6 @@ const redditLinks = [
               </div>
             </div>
           </div>
-        </div>
-        <span
-          class="mx-2 hidden h-5 w-px bg-neutral-200 md:block dark:bg-neutral-700"
-          aria-hidden="true"
-        ></span>
-        <div class="flex items-center gap-1" role="group" aria-label="Quick actions">
-          <span class="flex size-9 items-center justify-center rounded-lg text-neutral-600 dark:text-neutral-300" aria-hidden="true">
-            <PackIcon name="ph:envelope-simple-fill" class="size-5" />
-          </span>
-          <span class="flex size-9 items-center justify-center rounded-lg text-neutral-600 dark:text-neutral-300" aria-hidden="true">
-            <PackIcon name="ph:bookmark-simple-fill" class="size-5" />
-          </span>
         </div>
         <!-- ThemeIcon component specifically for larger screens -->
         <span class="hidden md:inline-block">
@@ -326,10 +368,7 @@ const redditLinks = [
     },
     getOriginalAppearance() {
       const defaultTheme = "default";
-      return (
-        localStorage.getItem("hs_theme") ||
-        defaultTheme
-      );
+      return localStorage.getItem("hs_theme") || defaultTheme;
     },
   };
   HSThemeAppearance.init();
