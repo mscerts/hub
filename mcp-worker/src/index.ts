@@ -51,25 +51,16 @@ app.get("/health", (c) =>
 );
 
 // ── MCP endpoint ──────────────────────────────────────────────────────────────
-// Handles GET (capability discovery) and POST (JSON-RPC requests).
-app.get("/mcp", (c) => {
-  // Some MCP clients do a GET first to check if the endpoint exists.
-  return c.json(
-    {
-      jsonrpc: "2.0",
-      result: {
-        protocolVersion: "2024-11-05",
-        serverInfo: { name: "msfthub", version: "0.1.0" },
-      },
-    },
-    200,
-  );
-});
+// This stateless server does not expose a standalone SSE listening stream.
+app.get("/mcp", (c) => c.body(null, 405, { Allow: "POST" }));
 
 app.post("/mcp", async (c) => {
   // MCP Streamable HTTP requires Accept: application/json, text/event-stream
   const accept = c.req.header("accept") ?? "";
-  if (!accept.includes("text/event-stream") && !accept.includes("*/*")) {
+  if (
+    !accept.includes("application/json") ||
+    !accept.includes("text/event-stream")
+  ) {
     return c.json(
       {
         jsonrpc: "2.0",

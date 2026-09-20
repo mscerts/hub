@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "bundle": "tsx scripts/bundle.ts",
-    "check": "pnpm bundle && tsc --noEmit",
+    "check": "pnpm test && tsc --noEmit",
+    "test": "pnpm bundle && tsx --test tests/*.test.ts",
     "build": "wrangler deploy --dry-run",
     "deploy": "pnpm bundle && wrangler deploy",
     "dev": "pnpm bundle && wrangler dev"
@@ -14,7 +15,7 @@
     "hono": "^4.12.31"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20260702.1",
+    "@cloudflare/workers-types": "5.20260721.1",
     "gray-matter": "^4.0.3",
     "tsx": "^4.23.1",
     "typescript": "^5.9.3",
