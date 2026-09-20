@@ -29,32 +29,32 @@ const legacyDocsPrefixes = [
 export default defineConfig({
   site: "https://msfthub.com",
   redirects: {
-    "/guide": "/wiki/guide/introduction/",
-    "/microsoft365": "/wiki/",
-    "/azure": "/wiki/",
-    "/powerplatform": "/wiki/",
-    "/security": "/wiki/",
-    "/dynamics": "/wiki/",
-    "/ai&ab/ai-900": "/wiki/azure/ai-901/",
-    "/ai&ab/ai-102": "/wiki/azure/ai-103/",
-    "/ai&ab/ai-103": "/wiki/azure/ai-103/",
-    "/ai&ab/ai-300": "/wiki/azure/ai-300/",
-    "/ai&ab/ai-901": "/wiki/azure/ai-901/",
-    "/azure/dp-100": "/wiki/azure/ai-300/",
-    "/azure/ai-102": "/wiki/azure/ai-103/",
-    "/azure/ai-900": "/wiki/azure/ai-901/",
-    "/power/pl-600": "/wiki/aibusiness/ab-100/",
-    "/microsoft365/ms-900": "/wiki/aibusiness/ab-900/",
-    "/aiab/ab-900/": "/wiki/aibusiness/ab-900/",
-    "/aiab/ab-100/": "/wiki/aibusiness/ab-100/",
-    "/aiab/ab-730/": "/wiki/aibusiness/ab-730/",
-    "/aiab/ab-731/": "/wiki/aibusiness/ab-731/",
-    "/guide/officialstudymaterials/": "/wiki/",
-    "/security/sc-730/": "/wiki/security/sc-900/",
-    "/vouchers/aichallenge/": "/wiki/vouchers/",
-    "/vouchers/microsoftignite/": "/wiki/vouchers/",
-    "/dynamics/mb-280": "/wiki/aibusiness/ab-210/",
-    "/azure/az-204": "/wiki/azure/ai-200/",
+    "/guide": "/certs/guide/introduction/",
+    "/microsoft365": "/certs/",
+    "/azure": "/certs/",
+    "/powerplatform": "/certs/",
+    "/security": "/certs/",
+    "/dynamics": "/certs/",
+    "/ai&ab/ai-900": "/certs/azure/ai-901/",
+    "/ai&ab/ai-102": "/certs/azure/ai-103/",
+    "/ai&ab/ai-103": "/certs/azure/ai-103/",
+    "/ai&ab/ai-300": "/certs/azure/ai-300/",
+    "/ai&ab/ai-901": "/certs/azure/ai-901/",
+    "/azure/dp-100": "/certs/azure/ai-300/",
+    "/azure/ai-102": "/certs/azure/ai-103/",
+    "/azure/ai-900": "/certs/azure/ai-901/",
+    "/power/pl-600": "/certs/aibusiness/ab-100/",
+    "/microsoft365/ms-900": "/certs/aibusiness/ab-900/",
+    "/aiab/ab-900/": "/certs/aibusiness/ab-900/",
+    "/aiab/ab-100/": "/certs/aibusiness/ab-100/",
+    "/aiab/ab-730/": "/certs/aibusiness/ab-730/",
+    "/aiab/ab-731/": "/certs/aibusiness/ab-731/",
+    "/guide/officialstudymaterials/": "/certs/",
+    "/security/sc-730/": "/certs/security/sc-900/",
+    "/vouchers/aichallenge/": "/certs/vouchers/",
+    "/vouchers/microsoftignite/": "/certs/vouchers/",
+    "/dynamics/mb-280": "/certs/aibusiness/ab-210/",
+    "/azure/az-204": "/certs/azure/ai-200/",
     "/discord":
       "https://discord.com/invite/microsoft-certification-study-group-676990910176821270",
   },
@@ -77,11 +77,12 @@ export default defineConfig({
       filter: (page) => {
         const pathname = new URL(page).pathname;
         const isLegacyDoc = legacyDocsPrefixes.some(
-          (prefix) => pathname === `/${prefix}/` || pathname.startsWith(`/${prefix}/`),
+          (prefix) =>
+            pathname === `/${prefix}/` || pathname.startsWith(`/${prefix}/`),
         );
 
         return (
-          !pathname.startsWith("/news/") &&
+          !pathname.startsWith("/wiki/") &&
           !pathname.startsWith("/wiki-next/") &&
           !pathname.endsWith(".md") &&
           !isLegacyDoc

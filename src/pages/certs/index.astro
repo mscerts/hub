@@ -1,0 +1,39 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import DocsPage from "@components/docs/templates/DocsPage.astro";
+import { CardGrid, LinkCard } from "@components/docs";
+---
+
+<MainLayout
+  title="Microsoft Certification Hub | Microsoft Certification Hub"
+  customDescription="Guides, study materials, labs, and exam resources for Microsoft certifications."
+  wide
+>
+  <DocsPage
+    title="Microsoft Certification Hub"
+    description="Guides, study materials, labs, and practical resources for Microsoft certification candidates."
+    headings={[]}
+    sectionLabel="Microsoft Certification Hub"
+  >
+    <p>
+      Explore certification guides, study materials, labs, and voucher resources.
+    </p>
+    <CardGrid>
+      <LinkCard
+        title="Certification Program Guide"
+        description="Understand Microsoft certifications, scheduling, exam day, and renewal."
+        href="/certs/guide/introduction/"
+      />
+      <LinkCard
+        title="How to Prepare"
+        description="Build a study plan and choose useful learning resources."
+        href="/certs/prepare/studymaterials/"
+      />
+      <LinkCard
+        title="Exam Study Materials"
+        description="Start with the Azure fundamentals study-material collection."
+        href="/certs/azure/az-900/"
+      />
+    </CardGrid>
+  </DocsPage>
+</MainLayout>

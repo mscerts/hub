@@ -64,7 +64,9 @@ interface Props {
   <body
     class:list={[
       "flex min-h-screen flex-col selection:bg-yellow-400 selection:text-neutral-700",
-      wide ? "bg-neutral-50 dark:bg-[#222222]" : "bg-neutral-200 dark:bg-neutral-800",
+      wide
+        ? "bg-neutral-50 dark:bg-[#222222]"
+        : "bg-neutral-200 dark:bg-neutral-800",
     ]}
   >
     {
@@ -82,7 +84,7 @@ interface Props {
       ]}
     >
       <Navbar />
-      <main>
+      <main id="main-content">
         <slot />
       </main>
     </div>
@@ -125,13 +127,17 @@ interface Props {
       };
 
       const loadAnalytics = () => {
-        if (analyticsLoaded || !cookieConsentManager.hasConsent("analytics_storage")) {
+        if (
+          analyticsLoaded ||
+          !cookieConsentManager.hasConsent("analytics_storage")
+        ) {
           return;
         }
 
         analyticsLoaded = true;
         analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
-        const gtag = (...args: unknown[]) => analyticsWindow.dataLayer?.push(args);
+        const gtag = (...args: unknown[]) =>
+          analyticsWindow.dataLayer?.push(args);
         analyticsWindow.gtag = gtag;
         gtag("js", new Date());
         gtag("config", ANALYTICS.googleAnalytics);
@@ -147,9 +153,17 @@ interface Props {
         addScript(
           `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.googleAnalytics}`,
         );
-        addScript(`https://www.clarity.ms/tag/${ANALYTICS.clarity}`, syncClarityConsent);
-        analyticsWindow.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
-        addScript(`https://www.googletagmanager.com/gtm.js?id=${ANALYTICS.googleTagManager}`);
+        addScript(
+          `https://www.clarity.ms/tag/${ANALYTICS.clarity}`,
+          syncClarityConsent,
+        );
+        analyticsWindow.dataLayer.push({
+          "gtm.start": Date.now(),
+          event: "gtm.js",
+        });
+        addScript(
+          `https://www.googletagmanager.com/gtm.js?id=${ANALYTICS.googleTagManager}`,
+        );
       };
 
       cookieConsentManager.subscribe(loadAnalytics);

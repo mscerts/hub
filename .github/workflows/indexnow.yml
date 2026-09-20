@@ -39,28 +39,28 @@ jobs:
 
             # Only process content files that map to real pages
             url=""
-            if [[ "$file" == src/content/docs/wiki.mdx ]]; then
-              url="${SITE}/wiki/"
+            if [[ "$file" == src/pages/certs/index.astro ]]; then
+              url="${SITE}/certs/"
             elif [[ "$file" == src/content/docs/prepare/*.mdx ]]; then
               slug=$(basename "$file" .mdx)
-              url="${SITE}/prepare/${slug}/"
+              url="${SITE}/certs/prepare/${slug,,}/"
             elif [[ "$file" == src/content/docs/guide/*.mdx ]]; then
               slug=$(basename "$file" .mdx)
-              url="${SITE}/guide/${slug}/"
+              url="${SITE}/certs/guide/${slug,,}/"
             elif [[ "$file" == src/content/docs/vouchers/*.mdx ]]; then
               slug=$(basename "$file" .mdx)
-              url="${SITE}/vouchers/${slug}/"
+              url="${SITE}/certs/vouchers/${slug,,}/"
             elif [[ "$file" == src/content/docs/labs/*/*.mdx ]]; then
               area=$(echo "$file" | sed -n 's|src/content/docs/labs/\([^/]*\)/.*|\1|p')
               code=$(basename "$file" .mdx)
-              url="${SITE}/labs/${area}/${code,,}/"
+              url="${SITE}/certs/labs/${area}/${code,,}/"
             elif [[ "$file" == src/content/docs/*/*.mdx ]]; then
               area=$(echo "$file" | sed -n 's|src/content/docs/\([^/]*\)/.*|\1|p')
               code=$(basename "$file" .mdx)
-              url="${SITE}/${area}/${code,,}/"
+              url="${SITE}/certs/${area}/${code,,}/"
             elif [[ "$file" == src/content/blog/*.mdx ]]; then
               slug=$(basename "$file" .mdx)
-              url="${SITE}/blog/${slug}/"
+              url="${SITE}/news/${slug}/"
             elif [[ "$file" == src/pages/index.astro ]]; then
               url="${SITE}/"
             fi
@@ -74,24 +74,24 @@ jobs:
               old_url=""
               if [[ "$old_file" == src/content/docs/prepare/*.mdx ]]; then
                 slug=$(basename "$old_file" .mdx)
-                old_url="${SITE}/prepare/${slug}/"
+                old_url="${SITE}/certs/prepare/${slug,,}/"
               elif [[ "$old_file" == src/content/docs/guide/*.mdx ]]; then
                 slug=$(basename "$old_file" .mdx)
-                old_url="${SITE}/guide/${slug}/"
+                old_url="${SITE}/certs/guide/${slug,,}/"
               elif [[ "$old_file" == src/content/docs/vouchers/*.mdx ]]; then
                 slug=$(basename "$old_file" .mdx)
-                old_url="${SITE}/vouchers/${slug}/"
+                old_url="${SITE}/certs/vouchers/${slug,,}/"
               elif [[ "$old_file" == src/content/docs/labs/*/*.mdx ]]; then
                 area=$(echo "$old_file" | sed -n 's|src/content/docs/labs/\([^/]*\)/.*|\1|p')
                 code=$(basename "$old_file" .mdx)
-                old_url="${SITE}/labs/${area}/${code,,}/"
+                old_url="${SITE}/certs/labs/${area}/${code,,}/"
               elif [[ "$old_file" == src/content/docs/*/*.mdx ]]; then
                 area=$(echo "$old_file" | sed -n 's|src/content/docs/\([^/]*\)/.*|\1|p')
                 code=$(basename "$old_file" .mdx)
-                old_url="${SITE}/${area}/${code,,}/"
+                old_url="${SITE}/certs/${area}/${code,,}/"
               elif [[ "$old_file" == src/content/blog/*.mdx ]]; then
                 slug=$(basename "$old_file" .mdx)
-                old_url="${SITE}/blog/${slug}/"
+                old_url="${SITE}/news/${slug}/"
               fi
               if [[ -n "$old_url" ]]; then
                 URLS="${URLS}${old_url}\n"

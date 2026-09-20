@@ -13,13 +13,13 @@ extends the cross-linking already added inside retirement banners.
 
 ## Project context
 - **Repo:** Microsoft Certification Hub — https://github.com/mscerts/hub, https://msfthub.com. Astro 7 + native MDX. Package manager **pnpm**. Build: `pnpm build` = `astro check && astro build`; preview: `pnpm dev`.
-- **Exam pages:** `src/content/docs/<area>/<CODE>.mdx`; `<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`. Routes are lower-case (`/wiki/azure/az-104/`).
+- **Exam pages:** `src/content/docs/<area>/<CODE>.mdx`; `<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`. Routes are lower-case (`/certs/azure/az-104/`).
 - **The set of existing exam pages** = the files under `src/content/docs/<area>/` and the entries in the hand-maintained sidebar in `astro.config.mjs`. Only link to pages that actually exist.
 - **Local components** live in `src/components/*.astro` (e.g. `VoucherList.astro`, `WikiList.astro`) — match their conventions. Small shared data/maps live under `src/data_files/` (e.g. `constants.ts`). MDX can import `.astro` components.
-- Markdown links work inside docs components/admonitions, e.g. `[AZ-305: ...](/wiki/azure/az-305/)`.
+- Markdown links work inside docs components/admonitions, e.g. `[AZ-305: ...](/certs/azure/az-305/)`.
 
 ## What to do
-1. **Build `<RelatedCerts>`** (in `src/components/`) that takes an array of related exams — e.g. `items={[{ code: "AZ-104", name: "...", area: "azure" }, ...]}` — and renders a compact, clearly-labelled block (heading like "Related certifications" or "Learning pathway") of internal links to `/wiki/<area>/<code>/`. Keep it visually consistent with existing cards (consider `<LinkCard>`/`<CardGrid>` from `@components/docs`). Optionally show the relationship type (prerequisite / next step / sibling).
+1. **Build `<RelatedCerts>`** (in `src/components/`) that takes an array of related exams — e.g. `items={[{ code: "AZ-104", name: "...", area: "azure" }, ...]}` — and renders a compact, clearly-labelled block (heading like "Related certifications" or "Learning pathway") of internal links to `/certs/<area>/<code>/`. Keep it visually consistent with existing cards (consider `<LinkCard>`/`<CardGrid>` from `@components/docs`). Optionally show the relationship type (prerequisite / next step / sibling).
 2. **(Optional) central relationship map.** Instead of hand-listing on every page, consider a map keyed by exam code in `src/data_files/` (e.g. `related.ts`) so relationships live in one place; the component looks up the current code. Start simple if that's faster.
 3. **Pilot on one area first** (default Security or Azure AI) to nail the format and placement (top vs bottom of the page), then expand. Example relationships to model (verify each target page exists before linking):
    - Security: `SC-900` (fundamentals) → `SC-200` / `SC-300` / `AZ-500` (associate) → `SC-100` (expert).

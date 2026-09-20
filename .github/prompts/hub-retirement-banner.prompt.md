@@ -14,11 +14,11 @@ small components that enforce one consistent, correct format.
 
 ## Project context
 - **Repo:** Microsoft Certification Hub — https://github.com/mscerts/hub, https://msfthub.com. Astro 7 + native MDX. Package manager **pnpm**. Build: `pnpm build` = `astro check && astro build`; preview: `pnpm dev`.
-- **Exam pages:** `src/content/docs/<area>/<CODE>.mdx` (`<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`); routes are lower-case (`/wiki/azure/az-800/`).
+- **Exam pages:** `src/content/docs/<area>/<CODE>.mdx` (`<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`); routes are lower-case (`/certs/azure/az-800/`).
 - **Local components** live in `src/components/*.astro`. MDX can `import` and use `.astro` components.
 - **Current banner format** (see `src/content/docs/azure/AZ-800.mdx` and `src/content/docs/power/PL-200.mdx`) — a `:::caution` block containing, in order:
   1. A retirement sentence + date (e.g. "The exam is being retired on September 30, 2026."). Some say the **certification remains/renewable** even though the exam retires — that distinction matters and must be preserved.
-  2. "It will be replaced by `[CODE: Name](/wiki/<area>/<code>/)`." (a Markdown link — these **do** render inside admonitions/components).
+  2. "It will be replaced by `[CODE: Name](/certs/<area>/<code>/)`." (a Markdown link — these **do** render inside admonitions/components).
   3. A beta line (e.g. "AZ-802 is coming to beta in June 2026." / "AB-410 entered beta in April 2026.").
   4. The reassurance line: "Microsoft Learn always takes a while to update with certification retirements so don't panic if you can't see it there yet."
 - The docs renderer transforms `:::caution` as `<Aside type="caution">`; `:::note` as `<Aside type="note">`. Importing `Aside` from `@components/docs` lets a component emit the same box.
@@ -26,7 +26,7 @@ small components that enforce one consistent, correct format.
 ## What to do
 1. **`<RetirementBanner>`** (in `src/components/`) with props such as:
    - `retireDate` (string), `certRetires` (boolean — true = exam **and** certification retire; false = exam retires but cert remains/renewable),
-   - `replacementCode`, `replacementName`, `replacementArea` (or a full `replacementHref`) → builds the `/wiki/<area>/<code>/` Markdown-style link,
+   - `replacementCode`, `replacementName`, `replacementArea` (or a full `replacementHref`) → builds the `/certs/<area>/<code>/` Markdown-style link,
    - optional `betaDate`, optional `note`.
    It should render an `<Aside type="caution">` with the four-part structure above, including the working internal link and the reassurance line. Allow "no direct replacement" gracefully (omit the replacement sentence).
 2. **`<BetaBanner>`** with props like `code`, `name`, `betaDate`/`betaSince`, optional `note` → renders an `<Aside type="note">` (or `caution`) indicating the exam is in beta / upcoming. Reference page: `src/content/docs/azure/AZ-802.mdx` (an UPCOMING exam).
@@ -38,7 +38,7 @@ The sidebar in `astro.config.mjs` carries **parallel** per-exam badges (`RETIRIN
 
 ## Ground rules
 - **Never invent** dates, replacement exams, or names. Use only values already present on the page; if a value looks wrong/unverifiable, flag it rather than guessing or "fixing" it here.
-- Internal links must point to **existing** pages (`/wiki/<area>/<code>/` that resolves to a file in `src/content/docs/<area>/`).
+- Internal links must point to **existing** pages (`/certs/<area>/<code>/` that resolves to a file in `src/content/docs/<area>/`).
 - Edit with the editor, not terminal redirection. Re-read files right before editing.
 - Keep output equivalent; don't redesign the admonition. Don't create markdown docs to summarize work.
 

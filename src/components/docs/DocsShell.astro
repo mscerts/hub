@@ -48,15 +48,15 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
       </div>
     </aside>
 
-    <main id="main-content" class="min-w-0 flex-1">
+    <div class="min-w-0 flex-1">
       <div class="mx-auto max-w-4xl px-5 py-8 sm:px-8 sm:py-12 lg:px-10">
         <nav
           class="text-xs font-medium text-neutral-500 dark:text-[#9aa7b5]"
           aria-label="Breadcrumb"
         >
           <a
-            href="/wiki/"
-            class="hover:text-[#7890a6] dark:hover:text-[#b0c0cf]">Wiki</a
+            href="/certs/"
+            class="hover:text-[#7890a6] dark:hover:text-[#b0c0cf]">Certification Hub</a
           >
           <span class="px-2" aria-hidden="true">/</span>
           <span>{breadcrumbLabel}</span>
@@ -160,7 +160,7 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
           <slot />
         </article>
       </div>
-    </main>
+    </div>
 
     <aside
       class="docs-toc hidden min-h-[calc(100vh-4rem)] w-64 shrink-0 border-l border-neutral-200 xl:block dark:border-[#383838]"

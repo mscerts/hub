@@ -49,7 +49,7 @@ src/
 │   │   ├── vouchers/         # Discounted exam voucher pages
 │   │   ├── labs/             # Lab collections (per-exam lab pages, parallel to exam structure)
 │   └── blog/                 # Blog collection (authors, pubDate, cardImage, readTime, tags)
-├── pages/wiki/               # Canonical wiki index, docs renderer, and Markdown endpoint
+├── pages/certs/               # Canonical wiki index, docs renderer, and Markdown endpoint
 ├── data_files/
 │   ├── constants.ts          # Site metadata (title, description, SEO, OG)
 │   ├── faqs.json
@@ -95,7 +95,7 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 - **No `/en-us/`** locale segments. Keep `?WT.mc_id=studentamb_165290` tracking params.
 - **MeasureUp links** keep `#u44` fragment (code **MSFTHUB**).
 - **Training course:** `https://learn.microsoft.com/training/courses/<code>t00?WT.mc_id=studentamb_165290` only after verifying that the course exists.
-- **Internal links:** canonical docs paths start with `/wiki/`, use lowercase, and normally have a trailing slash, for example `/wiki/labs/azure/az-800/`.
+- **Internal links:** canonical docs paths start with `/certs/`, use lowercase, and normally have a trailing slash, for example `/certs/labs/azure/az-800/`.
 - Third-party links such as GitHub and YouTube do not receive Microsoft tracking parameters.
 - Practice assessment IDs are exam-specific and have no reliable public registry; obtain and verify each ID from Microsoft Learn.
 
@@ -118,7 +118,7 @@ Resource placement:
 - Retiring pages retain valid existing resources and link to the verified replacement exam.
 
 ### Lab Pages
-- Files are lowercase at `src/content/docs/labs/<area>/<code>.mdx`; routes are `/wiki/labs/<area>/<code>/`.
+- Files are lowercase at `src/content/docs/labs/<area>/<code>.mdx`; routes are `/certs/labs/<area>/<code>/`.
 - Required title: `<CODE> Labs`. When a description is present, use the verified exam name, for example: `Lab exercises for <CODE>: <Exam Name>. Includes Microsoft Learn and Microsoft GitHub labs.`
 - No blank line before the closing frontmatter fence, between frontmatter and imports, or between `<Tabs>` and the first `<TabItem>`.
 - Import only used docs components from `@components/docs`. Common imports are `LinkCard`, `CardGrid`, `Card`, `Tabs`, and `TabItem`.
@@ -150,7 +150,7 @@ To discover genuine Microsoft Learn exercise units:
 5. Build the unit URL as `<module-base-url>/<1-based-unit-position>-<unit-slug>/?WT.mc_id=studentamb_165290`, remove `/en-us/`, and use the catalog's unit title as display text.
 
 ### Voucher Pages
-- Files are lowercase slugs at `src/content/docs/vouchers/<slug>.mdx`; routes are `/wiki/vouchers/<slug>/`.
+- Files are lowercase slugs at `src/content/docs/vouchers/<slug>.mdx`; routes are `/certs/vouchers/<slug>/`.
 - Frontmatter requires `title`, `description`, and `voucherCategory`, with category exactly `"100%"`, `"50%"`, or `"Special"`.
 - `VoucherList.astro` automatically includes categorized pages on the voucher index, sorted by title. The sidebar remains hand-maintained.
 - Common content uses `LinkButton`, `Steps`, `CardGrid`, and docs directives. Use notes for the core offer, cautions/dangers for restrictions, and clear CTA buttons.
@@ -165,7 +165,7 @@ Beta voucher format:
 6. `## How to claim the 80% discount` with registration, deadline, and code steps.
 7. Closing `:::tip` covering first-come availability and country exclusions.
 8. Add a caution when a verified scheduling URL is broken, with the working URL.
-9. Add a secondary button to `/wiki/vouchers/betaexams/` for general beta-exam information.
+9. Add a secondary button to `/certs/vouchers/betaexams/` for general beta-exam information.
 
 Verify all voucher percentages, codes, limits, deadlines, exclusions, announcement links, and scheduling links from the official source. These facts are time-sensitive; do not record changing inventory totals in this file.
 
@@ -180,9 +180,9 @@ Verify all voucher percentages, codes, limits, deadlines, exclusions, announceme
 - For new exam tab blocks, prefer two-space increments (`TabItem` 2, `CardGrid` 4, `LinkCard` 6) without reformatting unrelated legacy content.
 
 ### Docs Rendering
-- `/wiki/` is owned by `src/pages/wiki/index.astro`.
-- `/wiki/<content-id>/` is rendered by `src/pages/wiki/[...slug].astro` through `DocsPage.astro` and `DocsShell.astro`.
-- Legacy content paths and `/wiki-next/*` redirect permanently to `/wiki/*`.
+- `/certs/` is owned by `src/pages/certs/index.astro`.
+- `/certs/<content-id>/` is rendered by `src/pages/certs/[...slug].astro` through `DocsPage.astro` and `DocsShell.astro`.
+- Legacy content paths and `/wiki-next/*` redirect permanently to `/certs/*`.
 - `remark-callouts.mjs` converts `:::note`, `:::tip`, `:::caution`, and `:::danger` directives to the local `Aside` component.
 
 ### Banner System

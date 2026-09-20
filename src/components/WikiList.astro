@@ -22,7 +22,7 @@ exams.sort((a, b) => a.id.localeCompare(b.id));
     <CardGrid>
       {exams.map((exam) => {
         const examCode = exam.id.split('/').pop()?.toUpperCase() ?? "";
-        const href = `/wiki/${exam.id}/`;
+        const href = `/certs/${exam.id}/`;
         const desc = exam.data.description ?? "";
         // Try primary pattern: "exam CODE: Name. Contains..."
         let shortDesc = desc.match(/exam [A-Z]+-\d+:\s*(.+?)\.\s*Contains/)?.[1] ?? "";

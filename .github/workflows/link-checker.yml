@@ -66,10 +66,10 @@ jobs:
         run: >
           npx --yes linkinator
           "https://msfthub.com"
-          "https://msfthub.com/wiki/"
-          "https://msfthub.com/vouchers/"
-          "https://msfthub.com/guide/introduction/"
-          "https://msfthub.com/labs/"
+          "https://msfthub.com/certs/"
+          "https://msfthub.com/certs/vouchers/"
+          "https://msfthub.com/certs/guide/introduction/"
+          "https://msfthub.com/certs/labs/"
           --skip "https?://(www\\.)?(measureup\\.com|discord\\.gg|discord\\.com|linkedin\\.com|x\\.com|threads\\.net|reddit\\.com|news\\.ycombinator\\.com)"
           --skip "news.ycombinator.com"
           --status-code "403:warn"

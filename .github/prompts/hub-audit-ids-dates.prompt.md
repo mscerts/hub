@@ -23,7 +23,7 @@ page's metadata against official Microsoft Learn and applies only **verified** c
 
 ## For each exam page, verify against official Microsoft Learn
 1. **`assessmentId`** in the practice-assessment URL — open the exam's **official** practice assessment and confirm the numeric `assessmentId` matches. Wrong/duplicate IDs (copied from another exam) are the most common bug.
-2. **Retirement / beta dates** in the `:::caution` banner — confirm against the official certification/exam page and study guide. Confirm the **replacement** exam is correct and its internal link `/wiki/<area>/<code>/` resolves to an existing page.
+2. **Retirement / beta dates** in the `:::caution` banner — confirm against the official certification/exam page and study guide. Confirm the **replacement** exam is correct and its internal link `/certs/<area>/<code>/` resolves to an existing page.
 3. **Exam name / title** and the **frontmatter `description`** — confirm they describe *this* exam (catch text copy-pasted from a different exam).
 4. **Exam URL & study-guide URL** — confirm they resolve and use the canonical normalized forms above.
 5. **Sidebar vs banner consistency** — cross-check the badge in `astro.config.mjs` (`RETIRING`/`BETA`/`UPCOMING`) against the page's banner; flag mismatches (e.g. retirement banner present but no `RETIRING` badge, or a `BETA` badge with no beta note).

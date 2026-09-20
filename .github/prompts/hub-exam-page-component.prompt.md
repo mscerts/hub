@@ -15,7 +15,7 @@ structure into a single component (plus typed data) so these bugs become structu
 ## Project context
 - **Repo:** Microsoft Certification Hub — https://github.com/mscerts/hub, https://msfthub.com. Astro 7 + native MDX, Tailwind. Package manager **pnpm**.
 - **Run/build:** `pnpm dev` (preview), `pnpm build` = `astro check && astro build`.
-- **Exam pages:** one MDX per exam at `src/content/docs/<area>/<CODE>.mdx`, `<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`. Filenames usually upper-case (`AZ-800.mdx`); routes lower-case (`/wiki/azure/az-800/`).
+- **Exam pages:** one MDX per exam at `src/content/docs/<area>/<CODE>.mdx`, `<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`. Filenames usually upper-case (`AZ-800.mdx`); routes lower-case (`/certs/azure/az-800/`).
 - **Local components** live in `src/components/*.astro` (e.g. `VoucherList.astro`, `WikiList.astro`) — match their conventions. MDX can import `.astro` components.
 - **Reference page (canonical structure):** `src/content/docs/azure/AZ-800.mdx`. Anatomy:
   1. Frontmatter `title: "<CODE> Study Materials"`, `description`.

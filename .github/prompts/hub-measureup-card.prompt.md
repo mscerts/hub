@@ -13,7 +13,7 @@ into a component so the boilerplate (paragraph, subscriptions link, discount not
 
 ## Project context
 - **Repo:** Microsoft Certification Hub — https://github.com/mscerts/hub, https://msfthub.com. Astro 7 + native MDX. Package manager **pnpm**. Build: `pnpm build` = `astro check && astro build`; preview: `pnpm dev`.
-- **Exam pages:** `src/content/docs/<area>/<CODE>.mdx`; routes lower-case (`/wiki/azure/az-800/`).
+- **Exam pages:** `src/content/docs/<area>/<CODE>.mdx`; routes lower-case (`/certs/azure/az-800/`).
 - **Local components** live in `src/components/*.astro`. MDX can `import` and use `.astro` components.
 - **The repeated block** (see the bottom of `src/content/docs/azure/AZ-800.mdx` and `src/content/docs/power/PL-200.mdx`):
   ```mdx

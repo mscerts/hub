@@ -24,7 +24,7 @@ vouchers.sort((a, b) => a.data.title.localeCompare(b.data.title));
   vouchers.length > 0 ? (
     <CardGrid>
       {vouchers.map((voucher) => {
-        const href = `/wiki/${voucher.id}/`;
+        const href = `/certs/${voucher.id}/`;
 
         return (
           <LinkCard

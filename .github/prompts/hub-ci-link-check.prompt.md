@@ -15,8 +15,8 @@ links) is caught by CI instead of by humans.
 - **Repo:** Microsoft Certification Hub — https://github.com/mscerts/hub, deployed at https://msfthub.com. A community site of free study-material collections for Microsoft certification exams.
 - **Stack:** Astro 7 + native MDX content, Tailwind. Package manager: **pnpm** (see `pnpm-lock.yaml`).
 - **Run/build:** `pnpm dev` (local preview); `pnpm build` = `astro check && astro build` → static output in `dist/`; `pnpm preview` serves the build.
-- **Content lives in** `src/content/docs/**/*.mdx`. Internal links are Astro routes like `/wiki/azure/az-800/`, `/wiki/labs/azure/az-800/`, `/wiki/vouchers/...`, `/wiki/`. These only resolve against the **built site**, so validating internal links by scanning raw MDX would produce false positives — crawl `dist/` (or `astro preview`) instead.
-- **Redirects** are defined in `astro.config.mjs` under `redirects: { ... }` (e.g. `"/guide": "/guide/introduction"`). The checker must **follow redirects**.
+- **Content lives in** `src/content/docs/**/*.mdx`. Internal links are Astro routes like `/certs/azure/az-800/`, `/certs/labs/azure/az-800/`, `/certs/vouchers/...`, `/certs/`. These only resolve against the **built site**, so validating internal links by scanning raw MDX would produce false positives — crawl `dist/` (or `astro preview`) instead.
+- **Redirects** are defined in `astro.config.mjs` under `redirects: { ... }` (e.g. `"/guide": "/certs/guide/introduction/"`). The checker must **follow redirects**.
 - **Lots of external hosts:** `learn.microsoft.com`, `measureup.com`, `youtube.com`, `amzn.to` (affiliate), `pluralsight.com`, `udemy.com`, `linkedin.com/learning`, `whizlabs.com`, `comptia.org`, `esi.microsoft.com`. Some of these (LinkedIn, Udemy) routinely return 403/999 to bots even though the page is fine.
 
 ## What to do

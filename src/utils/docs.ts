@@ -1,5 +1,5 @@
 export function docsPath(id: string): string {
-  return id === "wiki" ? "/wiki/" : `/wiki/${id.toLowerCase()}/`;
+  return id === "wiki" || id === "certs" ? "/certs/" : `/certs/${id.toLowerCase()}/`;
 }
 
 export function docsSectionLabel(id: string): string {
@@ -25,6 +25,6 @@ export function docsSectionLabel(id: string): string {
     case "security":
       return "Exam Study Materials";
     default:
-      return "Microsoft Certification Wiki";
+      return "Microsoft Certification Hub";
   }
 }
