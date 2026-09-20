@@ -161,6 +161,31 @@ const searchId = "site-search-dialog";
     input.removeAttribute("aria-activedescendant");
   };
 
+  const appendSafeSnippetNode = (node: Node, parent: Node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      parent.appendChild(document.createTextNode(node.textContent ?? ""));
+      return;
+    }
+
+    if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+    const element = node as Element;
+    const target =
+      element.tagName.toLowerCase() === "mark"
+        ? document.createElement("mark")
+        : parent;
+
+    if (target !== parent) parent.appendChild(target);
+    element.childNodes.forEach((child) => appendSafeSnippetNode(child, target));
+  };
+
+  const renderSafeSnippet = (container: HTMLElement, excerpt: string) => {
+    const parsed = new DOMParser().parseFromString(excerpt, "text/html");
+    parsed.body.childNodes.forEach((node) =>
+      appendSafeSnippetNode(node, container),
+    );
+  };
+
   const buildResult = (result: SearchResult, index: number) => {
     const option = document.createElement("div");
     option.id = `search-result-${index}`;
@@ -179,7 +204,7 @@ const searchId = "site-search-dialog";
       const snippet = document.createElement("p");
       snippet.className =
         "mt-1 line-clamp-2 text-xs leading-relaxed text-neutral-400";
-      snippet.innerHTML = result.snippet;
+      renderSafeSnippet(snippet, result.snippet);
       option.appendChild(snippet);
     }
 

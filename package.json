@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && pnpm search:index && pnpm search:verify",
     "preview": "astro preview",
+    "search:index": "pagefind --site dist",
+    "search:verify": "node scripts/verify-pagefind.mjs",
     "astro": "astro"
   },
   "dependencies": {
@@ -42,6 +44,7 @@
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
+    "pagefind": "1.5.2",
     "typescript": "^6.0.2"
   }
 }

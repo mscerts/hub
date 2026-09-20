@@ -233,11 +233,13 @@ Global styles are in `src/assets/styles/global.css`; docs-specific styles are sc
 
 ```bash
 pnpm install --frozen-lockfile  # Install deps
-pnpm build                      # astro check + astro build
+pnpm build                      # astro check + Astro build + Pagefind index
 pnpm dev                        # Local preview
 ```
 
 - Build must pass with 0 errors before committing.
+- `pnpm build` generates and verifies `dist/pagefind/pagefind.js`; use `pnpm preview` to test site search locally.
+- Plain `pnpm dev` does not generate a Pagefind index, so search requires a completed production build.
 - `astro check` reports Zod deprecation hints (20 total) — these are upstream, ignore them.
 - The build validates frontmatter/schema types, MDX syntax, TypeScript, collection uniqueness, and static rendering.
 - The build does **not** validate external link availability, tracking parameters, assessment IDs, exam names, voucher accuracy, or duplicate content. Verify these manually against authoritative sources.
