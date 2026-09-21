@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
- * One-time/manual sync of the retiring exam tracker from astro.config.mjs.
+ * One-time/manual sync of the retiring exam tracker from exam-status.mjs.
  *
  * Usage:
  *   node scripts/retiring-exams-sync.mjs
  *
- * Reads every `examBadges[area][code]` entry in astro.config.mjs with
+ * Reads every `examStatuses[area][code]` entry in src/data_files/exam-status.mjs with
  * `{ text: "RETIRING", variant: "danger" }`, pulls the exam name from that
  * page's frontmatter `description` and the retirement date from its
  * <RetirementBanner retireDate="..."> prop or inline `:::caution` text
@@ -18,18 +18,17 @@
  * retiring-exams.json by hand (see AGENTS.md), not by re-running this.
  *
  * Env overrides (defaults shown):
- *   CONFIG_FILE   astro.config.mjs
  *   OUTPUT_FILE   src/data_files/retiring-exams.json
  */
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { examStatuses } from "../src/data_files/exam-status.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 
-const CONFIG_FILE = process.env.CONFIG_FILE ?? join(root, "astro.config.mjs");
 const OUTPUT_FILE =
   process.env.OUTPUT_FILE ??
   join(root, "src", "data_files", "retiring-exams.json");
@@ -49,55 +48,6 @@ const MONTHS = {
   november: "11",
   december: "12",
 };
-
-// ---------------------------------------------------------------------------
-// Parse `const examBadges = { ... }` out of astro.config.mjs without eval.
-// (identical helper to scripts/beta-exams-sync.mjs)
-// ---------------------------------------------------------------------------
-function extractBraceBlock(text, openIndex) {
-  let depth = 0;
-  for (let i = openIndex; i < text.length; i++) {
-    if (text[i] === "{") depth++;
-    else if (text[i] === "}") {
-      depth--;
-      if (depth === 0) return text.slice(openIndex, i + 1);
-    }
-  }
-  throw new Error("Unbalanced braces while parsing examBadges");
-}
-
-function parseExamBadges(configText) {
-  const marker = "const examBadges = ";
-  const start = configText.indexOf(marker);
-  if (start === -1)
-    throw new Error("Could not find `const examBadges = ` in astro.config.mjs");
-
-  const block = extractBraceBlock(configText, configText.indexOf("{", start));
-  const badges = {};
-
-  const areaRe = /(\w+):\s*\{/g;
-  let areaMatch;
-  while ((areaMatch = areaRe.exec(block))) {
-    const area = areaMatch[1];
-    const subBlockStart = areaMatch.index + areaMatch[0].length - 1;
-    const subBlock = extractBraceBlock(block, subBlockStart);
-    badges[area] = {};
-
-    const entryRe =
-      /"([A-Z]{2,3}-\d{3})":\s*\{\s*text:\s*"([^"]+)",\s*variant:\s*"([^"]+)"\s*\}/g;
-    let entryMatch;
-    while ((entryMatch = entryRe.exec(subBlock))) {
-      badges[area][entryMatch[1]] = {
-        text: entryMatch[2],
-        variant: entryMatch[3],
-      };
-    }
-
-    areaRe.lastIndex = subBlockStart + subBlock.length;
-  }
-
-  return badges;
-}
 
 // ---------------------------------------------------------------------------
 // Area directory + exam-name/retirement-date lookup
@@ -169,12 +119,10 @@ function loadExisting(file) {
 function main() {
   console.log("=== Retiring Exam Tracker Sync ===");
 
-  const configText = readFileSync(CONFIG_FILE, "utf8");
-  const badges = parseExamBadges(configText);
   const existing = loadExisting(OUTPUT_FILE);
 
   const exams = [];
-  for (const [area, entries] of Object.entries(badges)) {
+  for (const [area, entries] of Object.entries(examStatuses)) {
     for (const [code, badge] of Object.entries(entries)) {
       if (badge.variant !== "danger" || badge.text !== "RETIRING") continue;
 

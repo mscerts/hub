@@ -81,11 +81,11 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 
 ### Exam Pages
 - One MDX file per exam at `src/content/docs/<area>/<CODE>.mdx`
-- Routes are lowercase: `/azure/az-800/`, `/power/pl-300/`
+- Canonical routes are lowercase under `/certs/`: `/certs/azure/az-800/`, `/certs/power/pl-300/`
 - Filenames are uppercase: `AZ-800.mdx`, `PL-300.mdx`
 - `<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`
 - Area mapping: `azure` = AZ-*, AI-*, DP-*; `aibusiness` = AB-*; `dynamics` = MB-*; `github` = GH-*; `microsoft365` = MS-* and MD-*; `power` = PL-*; `security` = SC-*.
-- Astro collection IDs and rendered routes are lowercase regardless of filename case (`AZ-800.mdx` -> id `azure/az-800`, route `/azure/az-800/`), so changing only a filename's case never changes its URL and needs no redirect. It does, however, poison Astro's incremental content-layer cache; `pnpm build` passes `--force` to clear that cache, which makes such renames safe.
+- Astro collection IDs are lowercase regardless of filename case (`AZ-800.mdx` -> id `azure/az-800`), and the canonical renderer exposes them at `/certs/azure/az-800/`. Changing only a filename's case never changes its URL and needs no redirect. It does, however, poison Astro's incremental content-layer cache; `pnpm build` passes `--force` to clear that cache, which makes such renames safe.
 - Frontmatter title is `<CODE> Study Materials`.
 - Frontmatter description must use the exact template: `Collection of study materials for the certification exam <CODE>: <Exam Name>. Contains official Microsoft Learn materials, labs, videos, practice tests and paid courses.`
 - Use the official exam name, not the certification name. Verify it against Microsoft Learn; these names often differ.
@@ -107,8 +107,8 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 ### Exam Page Anatomy (canonical structure)
 1. Frontmatter: `title: "<CODE> Study Materials"`, `description`
 2. Imports from `@components/docs`: `LinkCard`, `CardGrid`, `Card`, `Tabs`, `TabItem`, `Aside`
-3. Optional status banner: `:::tip` for beta/resource scarcity; `:::caution` for retirement and replacement details
-4. `<Card title="Get Started" icon="star">` → Exam link, Study Guide link, and Exam Labs link only when the matching lab page exists
+3. Optional status banner: `:::tip` for beta/resource scarcity; `:::caution` for retirement, replacement details, or an unconfirmed at-risk change
+4. `<Card title="Get Started" icon="star">` -> Exam link, Study Guide link, optional Exam Labs/Case Studies link, and the matching How to Prepare LinkCard as the final resource
 5. `<Tabs>` with `TabItem`s: Text, Videos, Tests, Paid, Misc
 6. Closing `</Card>`, then bottom `<Card title="MeasureUp Practice Tests" icon="open-book">` block with `<Aside>` for MSFTHUB discount; if no products exist, use a tip stating that MeasureUp has not released material yet
 
@@ -123,21 +123,21 @@ Resource placement:
 - Retiring pages retain valid existing resources and link to the verified replacement exam.
 
 ### How to Prepare LinkCard (all exam pages)
-- Every exam page's "Get Started" card ends with a `LinkCard` to the matching `/prepare/` guide: the last `LinkCard`-type resource (after Exam Labs/Exam Case Studies/GitHub Case Studies if present, otherwise right after Study Guide) and before any `RelatedCerts` component.
+- Every exam page's "Get Started" card ends with a `LinkCard` to the matching `/certs/prepare/` guide: the last `LinkCard`-type resource (after Exam Labs/Exam Case Studies/GitHub Case Studies if present, otherwise right after Study Guide) and before any `RelatedCerts` component.
 - Classification (verify against Microsoft Learn for any new exam before assuming):
-  - **Fundamentals** → `/prepare/fundamentals/`: exam name contains "Fundamentals" (AI-901, AZ-900, DP-900, PL-900, SC-900), GitHub's "Foundations" tier (GH-900), and AB-900.
-  - **Business** → `/prepare/business/`: AB-730, AB-731 (non-technical AI Business Professional/Leader tier).
-  - **Role-based** → `/prepare/role-based/`: everything else (Associate/Expert/Specialty, all areas) — one page covers all three tiers.
+  - **Fundamentals** -> `/certs/prepare/fundamentals/`: exam name contains "Fundamentals" (AI-901, AZ-900, DP-900, PL-900, SC-900), GitHub's "Foundations" tier (GH-900), and AB-900.
+  - **Business** -> `/certs/prepare/business/`: AB-730, AB-731 (non-technical AI Business Professional/Leader tier).
+  - **Role-based** -> `/certs/prepare/role-based/`: everything else (Associate/Expert/Specialty, all areas) — one page covers all three tiers.
 - Wording:
-  - Fundamentals: `title="How to Prepare for Fundamentals Exams" href="/prepare/fundamentals/" description="Guidance on study time, resources, and readiness for Microsoft Fundamentals exams."`
-  - Business: `title="How to Prepare for Business Exams" href="/prepare/business/" description="Guidance on study time, resources, and readiness for Microsoft Business exams."`
-  - Role-based: `title="How to Prepare for Role-Based Exams" href="/prepare/role-based/" description="Guidance on hands-on practice, documentation, and readiness for Microsoft role-based exams."`
+  - Fundamentals: `title="How to Prepare for Fundamentals Exams" href="/certs/prepare/fundamentals/" description="Guidance on study time, resources, and readiness for Microsoft Fundamentals exams."`
+  - Business: `title="How to Prepare for Business Exams" href="/certs/prepare/business/" description="Guidance on study time, resources, and readiness for Microsoft Business exams."`
+  - Role-based: `title="How to Prepare for Role-Based Exams" href="/certs/prepare/role-based/" description="Guidance on hands-on practice, documentation, and readiness for Microsoft role-based exams."`
 - No `target="_blank"` (internal link). Add this LinkCard, with the correct classification, to any new exam page.
 
 ### Endangered Exam Treatment (unconfirmed change — distinct from Retiring)
 - Use when Microsoft signals a *possible* future change (a new exam, a level change, an objective-domain/blueprint survey) but nothing is confirmed — do not use RETIRING language or badges for these.
 - Add a `:::caution` banner at the top citing the concrete evidence (announcement post, survey, etc.) with a source link. Keep it terse and structurally consistent: new exam code + title (if known), "may replace X", "could mean retirement", "neither confirmed", one source link.
-- Sidebar badge: `{ text: "Endangered", variant: "caution" }` in the `examBadges` map (astro.config.mjs, keyed by area then exam code).
+- Sidebar badge: `{ text: "AT RISK", variant: "caution" }` in `src/data_files/exam-status.mjs`, keyed by area then exam code.
 - Examples: AZ-400 (potential AZ-401: Designing and Implementing Microsoft Agentic DevOps), DP-420 (potential DP-421: Building Data-Driven AI Applications with Azure Cosmos DB).
 - Keep all existing resources intact; this is an informational heads-up, not a retirement.
 
@@ -242,12 +242,12 @@ Global styles are in `src/assets/styles/global.css`; docs-specific styles are sc
 - Favicon: `/favicon.svg`
 
 ### Sidebar
-- **Hand-maintained** in `src/data_files/docs-sidebar.ts`
-- Pages only appear in nav if explicitly added there
-- Per-exam badges: `RETIRING`, `BETA`, `UPCOMING`
+- Guide, preparation, voucher, and top-level area groups are hand-maintained in `src/data_files/docs-sidebar.ts`.
+- Exam entries are generated from the matching `src/content/docs/<area>/` directory by `buildExamItems()`; new exam pages appear automatically.
+- Exam status badges are maintained in `src/data_files/exam-status.mjs`: `RETIRING`, `BETA`, and `AT RISK`.
 - Keep exam entries in code order. GA exams have no badge; beta uses `{ text: "BETA", variant: "tip" }`; retiring uses `{ text: "RETIRING", variant: "danger" }`.
 - Wiki pages are separate from the sidebar: `WikiList.astro` auto-discovers exam pages by area prefix, sorts collection IDs, and extracts a short name from the canonical exam-description template.
-- `VoucherList.astro` filters docs by `voucherCategory`, sorts by title, and constructs `/${doc.id}/` routes.
+- `VoucherList.astro` filters docs by `voucherCategory`, sorts by title, and constructs `/certs/${voucher.id}/` routes.
 
 ### Redirects
 - Defined in `astro.config.mjs` under `redirects: { ... }`
@@ -307,7 +307,7 @@ Automated internal/external link validation, separate from the build.
 | `WikiList.astro` | Auto-generates wiki cards by directory prefix |
 | `LabList.astro` | Auto-generates lab index cards from `labs/<area>/<code>.mdx` pages |
 | `VoucherList.astro` | Auto-generates voucher cards by `voucherCategory` frontmatter |
-| `Head.astro` | Global head (meta, scripts, banner) |
+| `MainLayout.astro` | Global document shell, metadata, scripts, and banner integration |
 | `MainLayout.astro` | Main layout wrapper |
 
 ---
@@ -436,26 +436,26 @@ Only whether the button is present **on our page** — it does not verify that t
 
 ## Beta and Retiring Exam Tracking
 
-Two small trackers, populated once from `examBadges` in `astro.config.mjs` and maintained by hand from then on, back automated notifications for exam lifecycle changes. Neither file is rendered on the site, part of the build, or re-synced from `astro.config.mjs` automatically — the one-time sync scripts exist only for bootstrapping or a full manual resync.
+Two small trackers, populated once from `examStatuses` in `src/data_files/exam-status.mjs` and maintained by hand from then on, back automated notifications for exam lifecycle changes. Neither file is rendered on the site, part of the build, or re-synced automatically — the one-time sync scripts exist only for bootstrapping or a full manual resync.
 
 ### Beta exam tracker
 - **File:** `src/data_files/beta-exams.json` — `{ lastSynced, exams: [{ code, area, name, url, flaggedGA, flaggedAt? }] }`
-- **Sync script (one-time/manual):** `scripts/beta-exams-sync.mjs` — rebuilds the file from every `examBadges[area][code]` entry with `{ text: "BETA", variant: "tip" }`, pulling the exam name from that page's frontmatter `description` and building the canonical `https://learn.microsoft.com/credentials/certifications/exams/<code>?WT.mc_id=studentamb_165290` URL (fall back to the page's verified certification-slug URL if that 404s). Run with `node scripts/beta-exams-sync.mjs` only to bootstrap or force a full resync — it overwrites the file.
+- **Sync script (one-time/manual):** `scripts/beta-exams-sync.mjs` — rebuilds the file from every `examStatuses[area][code]` entry with `{ text: "BETA", variant: "tip" }`, pulling the exam name from that page's frontmatter `description` and building the canonical `https://learn.microsoft.com/credentials/certifications/exams/<code>?WT.mc_id=studentamb_165290` URL (fall back to the page's verified certification-slug URL if that 404s). Run with `node scripts/beta-exams-sync.mjs` only to bootstrap or force a full resync — it overwrites the file.
 - **Monitor workflow:** `.github/workflows/beta-exam-monitor.yml` — runs daily 07:00 UTC + manual trigger; script `scripts/beta-exam-check.mjs` fetches each untracked-as-GA exam's Microsoft Learn URL and checks whether the page `<title>` still contains `(beta)` (Microsoft appends this to the exam and certification name for the duration of the beta, e.g. "Microsoft 365 Certified: Microsoft 365 and AI Services Administrator Associate (beta)").
 - **On a beta exam going GA:** opens a GitHub issue (`enhancement`) naming the exam(s); marks the entry `flaggedGA: true` so it isn't reported again. A fetch failure is never treated as "went GA" — only a successful fetch confirming the `(beta)` marker is gone triggers the flag.
 - **On failure:** opens a GitHub issue (`bug`) only when every tracked exam's fetch failed (site down or blocking requests); a single exam's fetch failure is logged as a warning and skipped that run.
-- **Working the list:** verify the exam is genuinely GA on Microsoft Learn, remove its `BETA` badge from `examBadges` in `astro.config.mjs`, update the exam page's `:::tip` beta banner and Get Started card, then delete its entry from `beta-exams.json` (or leave it `flaggedGA: true` if you'd rather keep history — the monitor will not re-report it either way).
+- **Working the list:** verify the exam is genuinely GA on Microsoft Learn, remove its `BETA` status from `src/data_files/exam-status.mjs`, update the exam page's `:::tip` beta banner and Get Started card, then delete its entry from `beta-exams.json` (or leave it `flaggedGA: true` if you'd rather keep history — the monitor will not re-report it either way).
 
 ### Retiring exam tracker
 - **File:** `src/data_files/retiring-exams.json` — `{ lastSynced, exams: [{ code, area, name, retirementDate, replacementCode?, notified, notifiedAt? }] }`; `retirementDate` is `YYYY-MM-DD`.
-- **Sync script (one-time/manual):** `scripts/retiring-exams-sync.mjs` — rebuilds the file from every `examBadges[area][code]` entry with `{ text: "RETIRING", variant: "danger" }`, pulling the exam name from that page's frontmatter `description` and the retirement date from its `<RetirementBanner retireDate="...">` prop or inline `:::caution` text (whichever the page uses), normalized to ISO. Run with `node scripts/retiring-exams-sync.mjs` only to bootstrap or force a full resync — it overwrites the file, but preserves any existing `notified`/`notifiedAt` state.
+- **Sync script (one-time/manual):** `scripts/retiring-exams-sync.mjs` — rebuilds the file from every `examStatuses[area][code]` entry with `{ text: "RETIRING", variant: "danger" }`, pulling the exam name from that page's frontmatter `description` and the retirement date from its `<RetirementBanner retireDate="...">` prop or inline `:::caution` text (whichever the page uses), normalized to ISO. Run with `node scripts/retiring-exams-sync.mjs` only to bootstrap or force a full resync — it overwrites the file, but preserves any existing `notified`/`notifiedAt` state.
 - **Monitor workflow:** `.github/workflows/retiring-exam-monitor.yml` — runs daily 05:00 UTC + manual trigger; script `scripts/retiring-exam-check.mjs` does pure date math against the tracker (no network calls) and flags any exam whose `retirementDate` is yesterday (UTC) or earlier and not yet `notified`.
 - **On a retirement notification:** opens a GitHub issue (`enhancement`) naming the exam(s) and their retirement date; marks the entry `notified: true` so it fires exactly once, even if a workflow run is missed for a day or two.
 - **On failure:** opens a GitHub issue (`bug`) only when the tracker file itself is corrupt/unreadable.
-- **Working the list:** confirm the exam is actually retired (Microsoft Learn, the page's `RetirementBanner`/`:::caution` text), update the exam page to reflect retirement, then either remove the `RETIRING` badge from `examBadges` (if replaced by a new exam already tracked separately) or leave the entry in `retiring-exams.json` as a historical record — the monitor will not re-notify a `notified: true` entry.
+- **Working the list:** confirm the exam is actually retired (Microsoft Learn, the page's `RetirementBanner`/`:::caution` text), update the exam page to reflect retirement, then either remove the `RETIRING` status from `src/data_files/exam-status.mjs` (if replaced by a new exam already tracked separately) or leave the entry in `retiring-exams.json` as a historical record — the monitor will not re-notify a `notified: true` entry.
 
 ### Adding a new exam to either tracker
-When an exam newly becomes beta or retiring (i.e. you're adding `{ text: "BETA", variant: "tip" }` or `{ text: "RETIRING", variant: "danger" }` to `examBadges` in `astro.config.mjs` for the first time), also add a matching entry directly to `src/data_files/beta-exams.json` or `src/data_files/retiring-exams.json` by hand — the sync scripts are not re-run automatically for single additions.
+When an exam newly becomes beta or retiring (i.e. you're adding `{ text: "BETA", variant: "tip" }` or `{ text: "RETIRING", variant: "danger" }` to `examStatuses` in `src/data_files/exam-status.mjs` for the first time), also add a matching entry directly to `src/data_files/beta-exams.json` or `src/data_files/retiring-exams.json` by hand — the sync scripts are not re-run automatically for single additions.
 
 ---
 
