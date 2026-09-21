@@ -33,7 +33,11 @@ interface Props {
 }
 ---
 
-<html lang={lang} class:list={["scroll-pt-16", !wide && "scrollbar-hide"]}>
+<html
+  lang={lang}
+  data-layout={wide ? "wide" : "default"}
+  class:list={["scroll-pt-16", !wide && "scrollbar-hide"]}
+>
   <head>
     {/* Adding metadata to the HTML document */}
     <Meta
@@ -62,8 +66,35 @@ interface Props {
         localStorage.removeItem("starlight-theme");
         document.documentElement.classList.toggle("dark", theme === "dark");
         document.documentElement.dataset.theme = theme;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute("content", theme === "dark" ? "#222222" : "#e5e5e5");
       })();
     </script>
+    <style is:inline>
+      /* Paint the correct canvas before the bundled stylesheet arrives. */
+      html {
+        color-scheme: light;
+        background: #e5e5e5;
+      }
+
+      html[data-layout="wide"] {
+        background: #f9fafb;
+      }
+
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        background: #262626;
+      }
+
+      html[data-layout="wide"][data-theme="dark"] {
+        background: #222222;
+      }
+
+      body {
+        background: transparent;
+      }
+    </style>
   </head>
   <body
     class:list={[
