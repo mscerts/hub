@@ -39,7 +39,13 @@
  * Writes GITHUB_OUTPUT keys: changes_found, baseline_updated, extraction_failed.
  */
 
-import { readFileSync, writeFileSync, appendFileSync, existsSync, readdirSync } from "node:fs";
+import {
+  readFileSync,
+  writeFileSync,
+  appendFileSync,
+  existsSync,
+  readdirSync,
+} from "node:fs";
 import { isAbsolute, join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
@@ -58,11 +64,14 @@ const LISTING_URL =
   process.env.LISTING_URL ??
   "https://learn.microsoft.com/api/contentbrowser/search/credentials?locale=en-us&%24filter=credential_types%2Fany(t%3A%20t%20eq%20'applied%20skills')&%24top=100";
 const BASELINE_FILE = resolveFromRoot(
-  process.env.BASELINE_FILE ?? "src/data_files/applied-skills-cache.json"
+  process.env.BASELINE_FILE ?? "src/data_files/applied-skills-cache.json",
 );
-const REPORT_FILE = process.env.REPORT_FILE ?? join(tmpdir(), "applied-skills-report.md");
-const ERROR_FILE = process.env.ERROR_FILE ?? join(tmpdir(), "applied-skills-error.md");
-const GITHUB_OUTPUT = process.env.GITHUB_OUTPUT ?? join(tmpdir(), "github-output");
+const REPORT_FILE =
+  process.env.REPORT_FILE ?? join(tmpdir(), "applied-skills-report.md");
+const ERROR_FILE =
+  process.env.ERROR_FILE ?? join(tmpdir(), "applied-skills-error.md");
+const GITHUB_OUTPUT =
+  process.env.GITHUB_OUTPUT ?? join(tmpdir(), "github-output");
 
 const MIN_SKILLS = Number(process.env.MIN_SKILLS ?? 10);
 const MAX_RETIRED_PCT = Number(process.env.MAX_RETIRED_PCT ?? 50);
@@ -89,7 +98,11 @@ function writeOutput(obj) {
 function fail(message) {
   console.error(`ERROR: ${message}`);
   writeFileSync(ERROR_FILE, `${message}\n`);
-  writeOutput({ changes_found: false, baseline_updated: false, extraction_failed: true });
+  writeOutput({
+    changes_found: false,
+    baseline_updated: false,
+    extraction_failed: true,
+  });
   process.exit(1);
 }
 
@@ -113,7 +126,11 @@ async function fetchText(url, { attempts = 3, retryOn404 = false } = {}) {
       });
 
       if (response.ok) {
-        return { ok: true, status: response.status, text: await response.text() };
+        return {
+          ok: true,
+          status: response.status,
+          text: await response.text(),
+        };
       }
 
       if (response.status === 404 && !retryOn404) {
@@ -121,10 +138,14 @@ async function fetchText(url, { attempts = 3, retryOn404 = false } = {}) {
       }
 
       lastStatus = response.status;
-      console.error(`WARNING: ${url} attempt ${attempt} failed (${response.status})`);
+      console.error(
+        `WARNING: ${url} attempt ${attempt} failed (${response.status})`,
+      );
     } catch (error) {
       lastError = error;
-      console.error(`WARNING: ${url} attempt ${attempt} failed (${error.message})`);
+      console.error(
+        `WARNING: ${url} attempt ${attempt} failed (${error.message})`,
+      );
     }
 
     if (attempt < attempts) await sleep(attempt * 5000);
@@ -143,7 +164,9 @@ function decodeEntities(str) {
     .replace(/&apos;/g, "'")
     .replace(/&nbsp;/g, " ")
     .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
-    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCharCode(parseInt(code, 16)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) =>
+      String.fromCharCode(parseInt(code, 16)),
+    )
     .replace(/&amp;/g, "&");
 }
 
@@ -177,13 +200,17 @@ function isDraft(content) {
 }
 
 function stripComments(text) {
-  return text.replace(/\{\/\*[\s\S]*?\*\/\}/g, "").replace(/<!--[\s\S]*?-->/g, "");
+  return text
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, "")
+    .replace(/<!--[\s\S]*?-->/g, "");
 }
 
 function sortByName(entries) {
   return [...entries].sort((a, b) => {
     const byName = a.name.localeCompare(b.name, "en", { numeric: true });
-    return byName !== 0 ? byName : a.url.localeCompare(b.url, "en", { numeric: true });
+    return byName !== 0
+      ? byName
+      : a.url.localeCompare(b.url, "en", { numeric: true });
   });
 }
 
@@ -197,7 +224,10 @@ async function fetchListing() {
   let page;
 
   do {
-    const url = pagesFetched === 0 ? LISTING_URL : `${LISTING_URL}&%24skip=${results.length}`;
+    const url =
+      pagesFetched === 0
+        ? LISTING_URL
+        : `${LISTING_URL}&%24skip=${results.length}`;
     const response = await fetchText(url, { attempts: 3, retryOn404: true });
     pagesFetched++;
 
@@ -205,7 +235,7 @@ async function fetchListing() {
       fail(
         `Failed to fetch the Applied Skills listing from Microsoft Learn (status ${
           response.status ?? "network error"
-        }). The API may be down, blocking requests, or its shape may have changed.`
+        }). The API may be down, blocking requests, or its shape may have changed.`,
       );
       return null;
     }
@@ -215,7 +245,7 @@ async function fetchListing() {
     } catch {
       fail(
         "Failed to fetch the Applied Skills listing from Microsoft Learn (invalid JSON response). " +
-          "The API may be down, blocking requests, or its shape may have changed."
+          "The API may be down, blocking requests, or its shape may have changed.",
       );
       return null;
     }
@@ -225,7 +255,7 @@ async function fetchListing() {
     if (!Array.isArray(page.results)) {
       fail(
         "Failed to fetch the Applied Skills listing from Microsoft Learn (missing results array). " +
-          "The API may be down, blocking requests, or its shape may have changed."
+          "The API may be down, blocking requests, or its shape may have changed.",
       );
       return null;
     }
@@ -248,12 +278,14 @@ async function fetchListing() {
   if (map.size < MIN_SKILLS) {
     fail(
       `Applied Skills listing returned only ${map.size} skills (expected at least ${MIN_SKILLS}). ` +
-        "The API shape or filter may have changed; the cache was not modified."
+        "The API shape or filter may have changed; the cache was not modified.",
     );
     return null;
   }
 
-  console.log(`Fetched ${results.length} listing entries (${map.size} visible skills).`);
+  console.log(
+    `Fetched ${results.length} listing entries (${map.size} visible skills).`,
+  );
   return map;
 }
 
@@ -276,14 +308,20 @@ function loadBaseline() {
   try {
     parsed = JSON.parse(raw);
   } catch {
-    fail(`Corrupt baseline at ${relative(root, BASELINE_FILE)} (invalid JSON). The cache was not modified.`);
+    fail(
+      `Corrupt baseline at ${relative(root, BASELINE_FILE)} (invalid JSON). The cache was not modified.`,
+    );
     return null;
   }
 
-  if (!Array.isArray(parsed.active) || !Array.isArray(parsed.new) || !Array.isArray(parsed.retiring)) {
+  if (
+    !Array.isArray(parsed.active) ||
+    !Array.isArray(parsed.new) ||
+    !Array.isArray(parsed.retiring)
+  ) {
     fail(
       `Corrupt baseline at ${relative(root, BASELINE_FILE)} (missing active/new/retiring array). ` +
-        "The cache was not modified."
+        "The cache was not modified.",
     );
     return null;
   }
@@ -297,7 +335,9 @@ function indexBaseline(baseline) {
     for (const entry of baseline[category]) {
       const slug = slugFromUrl(entry.url);
       if (!slug) {
-        console.error(`WARNING: baseline entry "${entry.name}" has no resolvable slug; skipping.`);
+        console.error(
+          `WARNING: baseline entry "${entry.name}" has no resolvable slug; skipping.`,
+        );
         continue;
       }
       map.set(slug, { category, entry });
@@ -328,11 +368,13 @@ function scanLabPages() {
     if (isDraft(raw)) continue;
 
     const content = stripComments(raw);
-    const pageId = relative(DOCS_DIR, file).replace(/\\/g, "/").replace(/\.mdx?$/, "");
+    const pageId = relative(DOCS_DIR, file)
+      .replace(/\\/g, "/")
+      .replace(/\.mdx?$/, "");
 
     // `/applied-skills/resources/study-guides/...` is a study-guide path, not a skill slug.
     for (const match of content.matchAll(
-      /credentials\/applied-skills\/(?!resources\b)([a-z0-9][a-z0-9-]*)/gi
+      /credentials\/applied-skills\/(?!resources\b)([a-z0-9][a-z0-9-]*)/gi,
     )) {
       const slug = match[1].toLowerCase();
       if (!bySlug.has(slug)) bySlug.set(slug, new Set());
@@ -342,10 +384,15 @@ function scanLabPages() {
 
   const result = new Map();
   for (const [slug, pages] of bySlug) {
-    result.set(slug, [...pages].sort((a, b) => a.localeCompare(b, "en", { numeric: true })));
+    result.set(
+      slug,
+      [...pages].sort((a, b) => a.localeCompare(b, "en", { numeric: true })),
+    );
   }
 
-  console.log(`Scanned ${files.length} lab pages; ${result.size} distinct Applied Skills linked.`);
+  console.log(
+    `Scanned ${files.length} lab pages; ${result.size} distinct Applied Skills linked.`,
+  );
   return result;
 }
 
@@ -365,7 +412,9 @@ function parseSkillPage(html) {
   }
 
   // Delisted skills often lack the warning box but always carry this meta tag.
-  const dateMatch = html.match(/<meta name="retirementDate" content="(\d{4}-\d{2}-\d{2})[^"]*"/i);
+  const dateMatch = html.match(
+    /<meta name="retirementDate" content="(\d{4}-\d{2}-\d{2})[^"]*"/i,
+  );
   const retirementDate = dateMatch ? dateMatch[1] : null;
   const retired =
     /<div class="WARNING">[\s\S]*?has been retired/i.test(html) ||
@@ -381,7 +430,9 @@ function isLive(slug, listing, details) {
 async function fetchSkillDetails(universe, listing, baseline) {
   const details = new Map();
   let pageFailures = 0;
-  const slugs = [...universe].sort((a, b) => a.localeCompare(b, "en", { numeric: true }));
+  const slugs = [...universe].sort((a, b) =>
+    a.localeCompare(b, "en", { numeric: true }),
+  );
 
   for (let i = 0; i < slugs.length; i++) {
     const slug = slugs[i];
@@ -400,11 +451,15 @@ async function fetchSkillDetails(universe, listing, baseline) {
     if (response.status !== 404) pageFailures++;
 
     const fallbackName = listed ? listed.title : prev ? prev.entry.name : slug;
-    const fallbackProducts = prev ? prev.entry.products : listed ? listed.displayProducts : [];
+    const fallbackProducts = prev
+      ? prev.entry.products
+      : listed
+        ? listed.displayProducts
+        : [];
     console.error(
       `WARNING: could not read Applied Skills page for "${slug}" (status ${
         response.status ?? "network error"
-      }); using fallback data.`
+      }); using fallback data.`,
     );
     details.set(slug, {
       name: fallbackName,
@@ -419,12 +474,14 @@ async function fetchSkillDetails(universe, listing, baseline) {
     fail(
       `${pageFailures} of ${slugs.length} Applied Skills detail-page fetches failed ` +
         `(${failurePct.toFixed(1)}%), exceeding MAX_PAGE_FAILURE_PCT. The site may be blocking ` +
-        "requests; the cache was not modified."
+        "requests; the cache was not modified.",
     );
     return null;
   }
 
-  console.log(`Fetched ${slugs.length} Applied Skills detail pages (${pageFailures} failures).`);
+  console.log(
+    `Fetched ${slugs.length} Applied Skills detail pages (${pageFailures} failures).`,
+  );
   return details;
 }
 
@@ -438,7 +495,9 @@ function categorize(universe, listing, baseline, labScan, details) {
   const newlyNew = [];
   const newlyRetiring = [];
 
-  const slugs = [...universe].sort((a, b) => a.localeCompare(b, "en", { numeric: true }));
+  const slugs = [...universe].sort((a, b) =>
+    a.localeCompare(b, "en", { numeric: true }),
+  );
 
   for (const slug of slugs) {
     const detail = details.get(slug);
@@ -449,18 +508,24 @@ function categorize(universe, listing, baseline, labScan, details) {
       url: skillUrl(slug),
       products: detail.products,
       labPages,
-      ...(detail.retirementDate ? { retirementDate: detail.retirementDate } : {}),
+      ...(detail.retirementDate
+        ? { retirementDate: detail.retirementDate }
+        : {}),
     };
 
     if (isLive(slug, listing, details)) {
       if (prev === "active") {
         active.push(entry);
       } else if (prev === "retiring") {
-        console.log(`"${entry.name}" re-appeared in the listing; moved from retiring back to active.`);
+        console.log(
+          `"${entry.name}" re-appeared in the listing; moved from retiring back to active.`,
+        );
         active.push(entry);
       } else if (prev === "new") {
         if (labPages.length > 0) {
-          console.log(`"${entry.name}" promoted from new to active (now linked from a lab page).`);
+          console.log(
+            `"${entry.name}" promoted from new to active (now linked from a lab page).`,
+          );
           active.push(entry);
         } else {
           newArr.push(entry);
@@ -476,11 +541,14 @@ function categorize(universe, listing, baseline, labScan, details) {
 
     if (prev === undefined && labPages.length === 0) continue;
 
-    const isNewlyRetiring = prev === undefined || prev === "active" || prev === "new";
+    const isNewlyRetiring =
+      prev === undefined || prev === "active" || prev === "new";
     if (isNewlyRetiring) newlyRetiring.push(entry);
 
     if (labPages.length === 0) {
-      console.log(`Dropped "${entry.name}" from the cache (no longer listed, no lab-page references left).`);
+      console.log(
+        `Dropped "${entry.name}" from the cache (no longer listed, no lab-page references left).`,
+      );
       continue;
     }
 
@@ -493,18 +561,28 @@ function categorize(universe, listing, baseline, labScan, details) {
 // ---------------------------------------------------------------------------
 // Step 6: Write cache + outputs
 // ---------------------------------------------------------------------------
-function buildReport({ newlyNew, newlyRetiring, listedCount, active, newArr, retiring }) {
+function buildReport({
+  newlyNew,
+  newlyRetiring,
+  listedCount,
+  active,
+  newArr,
+  retiring,
+}) {
   const sections = ["## Applied Skills changes detected"];
 
   if (newlyNew.length > 0) {
     const rows = sortByName(newlyNew)
-      .map((entry) => `| ${entry.name} | ${entry.products.join(", ") || "—"} | [Link](${entry.url}) |`)
+      .map(
+        (entry) =>
+          `| ${entry.name} | ${entry.products.join(", ") || "—"} | [Link](${entry.url}) |`,
+      )
       .join("\n");
     sections.push(
       `### New Applied Skills (${newlyNew.length}) — add to matching lab pages\n` +
         "| Applied Skill | Products | URL |\n" +
         "|---------------|----------|-----|\n" +
-        rows
+        rows,
     );
   }
 
@@ -513,26 +591,26 @@ function buildReport({ newlyNew, newlyRetiring, listedCount, active, newArr, ret
       .map(
         (entry) =>
           `| ${entry.name} | ${entry.retirementDate ?? "—"} | ${entry.labPages.join(", ") || "—"} | ` +
-          `[Link](${entry.url}) |`
+          `[Link](${entry.url}) |`,
       )
       .join("\n");
     sections.push(
       `### Retired Applied Skills (${newlyRetiring.length}) — remove from lab pages\n` +
         "| Applied Skill | Retired on | Lab pages | URL |\n" +
         "|---------------|------------|-----------|-----|\n" +
-        rows
+        rows,
     );
   }
 
   sections.push(
     `---\n- **Listed on Microsoft Learn:** ${listedCount}\n` +
       `- **Active:** ${active.length} · **New (to process):** ${newArr.length} · ` +
-      `**Retiring (to process):** ${retiring.length}`
+      `**Retiring (to process):** ${retiring.length}`,
   );
 
   sections.push(
     'See `src/data_files/applied-skills-cache.json` and the "Applied Skills Monitor" section of ' +
-      "`AGENTS.md` for how to process these."
+      "`AGENTS.md` for how to process these.",
   );
 
   return sections.join("\n\n") + "\n";
@@ -555,7 +633,11 @@ async function main() {
   console.log("Scanning lab pages...");
   const labScan = scanLabPages();
 
-  const universe = new Set([...listing.keys(), ...baseline.keys(), ...labScan.keys()]);
+  const universe = new Set([
+    ...listing.keys(),
+    ...baseline.keys(),
+    ...labScan.keys(),
+  ]);
   console.log(`Universe: ${universe.size} distinct Applied Skills slugs.`);
 
   console.log("Fetching Applied Skills detail pages...");
@@ -576,7 +658,7 @@ async function main() {
       fail(
         `${newlyRetiring.length} of ${baselineKnownCount} previously known Applied Skills disappeared ` +
           `from the listing at once (${pct.toFixed(1)}%), exceeding MAX_RETIRED_PCT — the listing API ` +
-          "probably changed; the cache was not modified."
+          "probably changed; the cache was not modified.",
       );
       return;
     }
@@ -595,7 +677,11 @@ async function main() {
     new: sortByName(rawBaseline.new),
     retiring: sortByName(rawBaseline.retiring),
   });
-  const nextComparable = JSON.stringify({ active: next.active, new: next.new, retiring: next.retiring });
+  const nextComparable = JSON.stringify({
+    active: next.active,
+    new: next.new,
+    retiring: next.retiring,
+  });
   const changed = !baselineExists || baselineComparable !== nextComparable;
 
   if (changed) {
@@ -607,19 +693,32 @@ async function main() {
   if (changesFound) {
     writeFileSync(
       REPORT_FILE,
-      buildReport({ newlyNew, newlyRetiring, listedCount: listing.size, active, newArr, retiring }),
-      "utf8"
+      buildReport({
+        newlyNew,
+        newlyRetiring,
+        listedCount: listing.size,
+        active,
+        newArr,
+        retiring,
+      }),
+      "utf8",
     );
   }
 
-  writeOutput({ changes_found: changesFound, baseline_updated: changed, extraction_failed: false });
+  writeOutput({
+    changes_found: changesFound,
+    baseline_updated: changed,
+    extraction_failed: false,
+  });
 
   console.log(
-    `Listed: ${listing.size} · Active: ${active.length} · New: ${newArr.length} · Retiring: ${retiring.length}`
+    `Listed: ${listing.size} · Active: ${active.length} · New: ${newArr.length} · Retiring: ${retiring.length}`,
   );
-  console.log(`New this run: ${newlyNew.length > 0 ? newlyNew.map((e) => e.name).join(", ") : "—"}`);
   console.log(
-    `Retired this run: ${newlyRetiring.length > 0 ? newlyRetiring.map((e) => e.name).join(", ") : "—"}`
+    `New this run: ${newlyNew.length > 0 ? newlyNew.map((e) => e.name).join(", ") : "—"}`,
+  );
+  console.log(
+    `Retired this run: ${newlyRetiring.length > 0 ? newlyRetiring.map((e) => e.name).join(", ") : "—"}`,
   );
   console.log(changed ? "Cache updated" : "Cache unchanged");
   console.log("=== Done ===");
