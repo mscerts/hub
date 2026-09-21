@@ -2,7 +2,7 @@ name: Beta Exam Monitor
 
 on:
   schedule:
-    - cron: "0 7 * * *"  # Daily 07:00 UTC
+    - cron: "0 7 * * *" # Daily 07:00 UTC
   workflow_dispatch:
 
 concurrency:

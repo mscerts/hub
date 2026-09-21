@@ -25,7 +25,12 @@
  * Writes GITHUB_OUTPUT keys: changes_found, baseline_updated, extraction_failed.
  */
 
-import { readFileSync, writeFileSync, appendFileSync, existsSync } from "node:fs";
+import {
+  readFileSync,
+  writeFileSync,
+  appendFileSync,
+  existsSync,
+} from "node:fs";
 import { isAbsolute, join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
@@ -38,10 +43,15 @@ function resolveFromRoot(path) {
   return isAbsolute(path) ? path : join(root, path);
 }
 
-const TRACKER_FILE = resolveFromRoot(process.env.TRACKER_FILE ?? "src/data_files/partner-designations.json");
-const REPORT_FILE = process.env.REPORT_FILE ?? join(tmpdir(), "partner-designations-report.md");
-const ERROR_FILE = process.env.ERROR_FILE ?? join(tmpdir(), "partner-designations-error.md");
-const GITHUB_OUTPUT = process.env.GITHUB_OUTPUT ?? join(tmpdir(), "github-output");
+const TRACKER_FILE = resolveFromRoot(
+  process.env.TRACKER_FILE ?? "src/data_files/partner-designations.json",
+);
+const REPORT_FILE =
+  process.env.REPORT_FILE ?? join(tmpdir(), "partner-designations-report.md");
+const ERROR_FILE =
+  process.env.ERROR_FILE ?? join(tmpdir(), "partner-designations-error.md");
+const GITHUB_OUTPUT =
+  process.env.GITHUB_OUTPUT ?? join(tmpdir(), "github-output");
 const FETCH_DELAY_MS = Number(process.env.FETCH_DELAY_MS ?? 500);
 
 const USER_AGENT =
@@ -57,7 +67,11 @@ function writeOutput(obj) {
 function fail(message) {
   console.error(`ERROR: ${message}`);
   writeFileSync(ERROR_FILE, `${message}\n`);
-  writeOutput({ changes_found: false, baseline_updated: false, extraction_failed: true });
+  writeOutput({
+    changes_found: false,
+    baseline_updated: false,
+    extraction_failed: true,
+  });
   process.exit(1);
 }
 
@@ -77,13 +91,22 @@ async function fetchText(url, { attempts = 3 } = {}) {
         signal: AbortSignal.timeout(30000),
       });
 
-      if (response.ok) return { ok: true, status: response.status, text: await response.text() };
+      if (response.ok)
+        return {
+          ok: true,
+          status: response.status,
+          text: await response.text(),
+        };
 
       lastStatus = response.status;
-      console.error(`WARNING: ${url} attempt ${attempt} failed (${response.status})`);
+      console.error(
+        `WARNING: ${url} attempt ${attempt} failed (${response.status})`,
+      );
     } catch (error) {
       lastError = error;
-      console.error(`WARNING: ${url} attempt ${attempt} failed (${error.message})`);
+      console.error(
+        `WARNING: ${url} attempt ${attempt} failed (${error.message})`,
+      );
     }
 
     if (attempt < attempts) await sleep(attempt * 5000);
@@ -102,14 +125,19 @@ function decodeEntities(str) {
     .replace(/&apos;/g, "'")
     .replace(/&nbsp;/g, " ")
     .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
-    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCharCode(parseInt(code, 16)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) =>
+      String.fromCharCode(parseInt(code, 16)),
+    )
     .replace(/&amp;/g, "&");
 }
 
 function normalizedText(html) {
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
   const body = bodyMatch ? bodyMatch[1] : html;
-  const withoutScripts = body.replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, "");
+  const withoutScripts = body.replace(
+    /<(script|style)[^>]*>[\s\S]*?<\/\1>/gi,
+    "",
+  );
   return decodeEntities(withoutScripts.replace(/<[^>]*>/g, " "))
     .replace(/\s+/g, " ")
     .trim();
@@ -129,12 +157,16 @@ function loadTracker() {
   try {
     parsed = JSON.parse(readFileSync(TRACKER_FILE, "utf8"));
   } catch {
-    fail(`Corrupt tracker file at ${relative(root, TRACKER_FILE)} (invalid JSON).`);
+    fail(
+      `Corrupt tracker file at ${relative(root, TRACKER_FILE)} (invalid JSON).`,
+    );
     return null;
   }
 
   if (!Array.isArray(parsed.pages)) {
-    fail(`Corrupt tracker file at ${relative(root, TRACKER_FILE)} (missing pages array).`);
+    fail(
+      `Corrupt tracker file at ${relative(root, TRACKER_FILE)} (missing pages array).`,
+    );
     return null;
   }
 
@@ -143,7 +175,10 @@ function loadTracker() {
 
 function buildReport(changed) {
   const rows = changed
-    .map((page) => `| ${page.label} | ${page.areas.join(", ")} | [Link](${page.url}) |`)
+    .map(
+      (page) =>
+        `| ${page.label} | ${page.areas.join(", ")} | [Link](${page.url}) |`,
+    )
     .join("\n");
 
   return (
@@ -173,7 +208,9 @@ async function main() {
     const response = await fetchText(page.url);
     if (!response.ok) {
       fetchFailures++;
-      console.error(`WARNING: could not fetch "${page.label}" (${page.url}); skipping this run.`);
+      console.error(
+        `WARNING: could not fetch "${page.label}" (${page.url}); skipping this run.`,
+      );
       continue;
     }
 
@@ -185,14 +222,18 @@ async function main() {
     }
 
     if (!page.contentHash) {
-      console.log(`"${page.label}" has no baseline hash yet — recording the current content as the baseline.`);
+      console.log(
+        `"${page.label}" has no baseline hash yet — recording the current content as the baseline.`,
+      );
       page.contentHash = hash;
       page.lastChanged = new Date().toISOString().slice(0, 10);
       baselineRecorded = true;
       continue;
     }
 
-    console.log(`"${page.label}" changed (hash mismatch) — flagging for review.`);
+    console.log(
+      `"${page.label}" changed (hash mismatch) — flagging for review.`,
+    );
     page.contentHash = hash;
     page.lastChanged = new Date().toISOString().slice(0, 10);
     changed.push(page);
@@ -201,14 +242,18 @@ async function main() {
   if (fetchFailures === tracker.pages.length) {
     fail(
       `All ${tracker.pages.length} tracked Partner Center page fetch(es) failed. The site may be down ` +
-        "or blocking requests; the tracker was not modified."
+        "or blocking requests; the tracker was not modified.",
     );
     return;
   }
 
   if (changed.length === 0 && !baselineRecorded) {
     console.log("No partner designation pages changed this run.");
-    writeOutput({ changes_found: false, baseline_updated: false, extraction_failed: false });
+    writeOutput({
+      changes_found: false,
+      baseline_updated: false,
+      extraction_failed: false,
+    });
     return;
   }
 
@@ -222,7 +267,11 @@ async function main() {
     console.log("Recorded initial baseline hash(es); nothing to report.");
   }
 
-  writeOutput({ changes_found: changed.length > 0, baseline_updated: true, extraction_failed: false });
+  writeOutput({
+    changes_found: changed.length > 0,
+    baseline_updated: true,
+    extraction_failed: false,
+  });
 }
 
 main();
