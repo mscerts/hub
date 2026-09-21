@@ -1,3 +1,3 @@
 export const languages = {
-    en: "English"
+  en: "English",
 };

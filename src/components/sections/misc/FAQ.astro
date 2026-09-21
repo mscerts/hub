@@ -21,7 +21,7 @@ interface Props {
   faqs: FaqGroup;
 }
 // Define a helper function to generate ids dynamically.
-const makeId = (base: any, index: any) => `${base}${index + 1}`;
+const makeId = (base: string, index: number) => `${base}${index + 1}`;
 ---
 
 <!-- Main container that holds all content. Customized for different viewport sizes. -->

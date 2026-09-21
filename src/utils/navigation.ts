@@ -5,7 +5,7 @@ const navBarLinks = [
   { name: "Home", url: "/" },
   { name: "News", url: "/news/" },
   { name: "Certification Hub", url: "/certs/" },
-//  { name: "Certifications", url: "#" },
+  //  { name: "Certifications", url: "#" },
 ];
 // An array of links for footer
 const footerLinks = [

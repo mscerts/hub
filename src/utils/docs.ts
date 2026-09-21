@@ -1,5 +1,7 @@
 export function docsPath(id: string): string {
-  return id === "wiki" || id === "certs" ? "/certs/" : `/certs/${id.toLowerCase()}/`;
+  return id === "wiki" || id === "certs"
+    ? "/certs/"
+    : `/certs/${id.toLowerCase()}/`;
 }
 
 export function docsSectionLabel(id: string): string {

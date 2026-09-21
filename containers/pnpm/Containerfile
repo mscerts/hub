@@ -1,4 +1,4 @@
-FROM docker.io/library/node:22-bookworm@sha256:0557ac14e0d45d02ed563067b82856ca5e7aa3437fa28d98d4350ea9c3d9494a
+FROM docker.io/library/node:24-bookworm@sha256:5a750d3be5e5c80275f8c9a5367c3aed99c2875656590c8d0701c7ee687f5f0a
 
 ARG PNPM_VERSION=11.15.1
 ARG SAFE_CHAIN_VERSION=1.5.15

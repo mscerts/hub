@@ -13,6 +13,13 @@
     "preview": "astro preview",
     "search:index": "pagefind --site dist",
     "search:verify": "node scripts/verify-pagefind.mjs",
+    "format": "prettier --write package.json astro.config.mjs 'scripts/*.mjs' 'tests/**/*.mjs' '.github/workflows/*.yml' src/content.config.ts 'src/utils/*.ts' 'src/components/docs/preline/{LinkCard,LinkButton}.astro' 'src/components/ui/icons/*.{astro,ts}'",
+    "format:check": "prettier --check package.json astro.config.mjs 'scripts/*.mjs' 'tests/**/*.mjs' '.github/workflows/*.yml' src/content.config.ts 'src/utils/*.ts' 'src/components/docs/preline/{LinkCard,LinkButton}.astro' 'src/components/ui/icons/*.{astro,ts}'",
+    "typecheck": "astro check",
+    "lint": "bash -n scripts/*.sh scripts/pnpm-sandbox && pnpm typecheck",
+    "test:scripts": "node --test tests/scripts/*.test.mjs",
+    "test:mcp": "pnpm --dir mcp-worker test",
+    "test": "pnpm test:scripts && pnpm test:mcp",
     "astro": "astro"
   },
   "dependencies": {

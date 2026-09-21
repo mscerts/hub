@@ -1,6 +1,7 @@
 ---
 // Import the required modules
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 // Extract properties from Astro.props
 const {
@@ -23,10 +24,13 @@ interface Props {
   btnTitle?: string;
   btnURL?: string;
   single?: boolean;
-  imgOne?: any;
-  imgOneAlt?: any;
-  imgTwo?: any;
-  imgTwoAlt?: any;
+  imgOne: ImageMetadata;
+  imgOneAlt: string;
+  imgTwo?: ImageMetadata;
+  imgTwoAlt?: string;
+}
+if (!single && (!imgTwo || imgTwoAlt === undefined)) {
+  throw new Error("RightSection requires a second image and alt text when single is false");
 }
 ---
 <!-- Root section of the component -->
@@ -74,8 +78,8 @@ interface Props {
         <!-- Second image in a two-image layout -->
         <Image
           class="mt-4 w-full rounded-xl lg:mt-10"
-          src={imgTwo}
-          alt={imgTwoAlt}
+          src={imgTwo!}
+          alt={imgTwoAlt!}
           draggable={"false"}
           format={"avif"}
         />

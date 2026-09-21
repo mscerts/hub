@@ -37,7 +37,7 @@ if IFS= read -r -d '' value < "$CONFIG"; then die 'NUL byte in config'; fi
 
 # Literal assignments only: no shell evaluation, expansion, or inherited defaults.
 PROJECT_ID="${PROJECT_ROOT##*/}"
-NODE_VERSION=22
+NODE_VERSION=24
 PNPM_VERSION=11.15.1
 AUDIT_COMMAND='audit --audit-level=high'
 LINT_COMMAND=
@@ -67,7 +67,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   printf -v "$key" '%s' "$value"
 done < "$CONFIG"
 [[ "$PROJECT_ID" =~ ^[a-z0-9][a-z0-9-]{0,47}$ ]] || die 'PROJECT_ID must be 1-48 lowercase letters, digits or hyphens'
-[[ "$NODE_VERSION" == 22 ]] || die 'NODE_VERSION must be 22 (pinned Containerfile)'
+[[ "$NODE_VERSION" == 24 ]] || die 'NODE_VERSION must be 24 (pinned Containerfile)'
 [[ "$PNPM_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || die 'PNPM_VERSION must be an exact stable version'
 [[ "$DEV_PORT" =~ ^[1-9][0-9]{0,4}$ ]] && (( DEV_PORT <= 65535 )) || die 'invalid DEV_PORT'
 BUILD_ENV_ARGS=() TMPFS_ARGS=()
@@ -93,7 +93,7 @@ done
 ROOT_HASH="$(printf '%s' "$PROJECT_ROOT" | sha256sum)"
 ROOT_HASH="${ROOT_HASH:0:16}"
 PREFIX="$PROJECT_ID-$ROOT_HASH"
-IMAGE="localhost/${PREFIX}-pnpm-sandbox:node22-pnpm${PNPM_VERSION}"
+IMAGE="localhost/${PREFIX}-pnpm-sandbox:node24-pnpm${PNPM_VERSION}"
 STORE_VOLUME="$PREFIX-pnpm-store"
 MODULES_VOLUME="$PREFIX-node-modules"
 SOURCE_VOLUME="$PREFIX-generated-source"

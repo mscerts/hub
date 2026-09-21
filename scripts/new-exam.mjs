@@ -191,6 +191,6 @@ console.log(
   `  2. If this exam is BETA or RETIRING, add it to src/data_files/exam-status.mjs`,
 );
 console.log(
-    `  3. Run: pnpm dev — then visit http://localhost:4321/certs/${area}/${codeLC}/`,
+  `  3. Run: pnpm dev — then visit http://localhost:4321/certs/${area}/${codeLC}/`,
 );
 console.log(`  4. Run: pnpm build — to verify the page passes type checking`);

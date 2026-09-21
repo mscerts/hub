@@ -80,9 +80,10 @@ const ogTitle = `${post.data.title} | News | ${SITE.title}`;
     author: post.data.authors.map((a) => ({
       "@type": "Person",
       name: a.name,
-      image: a.image?.src
-        ? new URL(a.image.src, `${SITE.url}/`).href
-        : undefined,
+      image:
+        typeof a.image === "string"
+          ? a.image
+          : new URL(a.image.src, `${SITE.url}/`).href,
     })),
     publisher: {
       "@type": "Organization",

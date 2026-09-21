@@ -237,19 +237,25 @@
     }
   }
 
+  declare global {
+    interface Window {
+      cookieConsentModal?: CookieConsentModal;
+    }
+  }
+
   const initializeCookieConsentModal = () => {
-    if ((window as any).cookieConsentModal) return;
+    if (window.cookieConsentModal) return;
 
      const modal = new CookieConsentModal();
     
     // Make modal globally available
-    (window as any).cookieConsentModal = modal;
+    window.cookieConsentModal = modal;
     
   };
 
   window.addEventListener('openCookiePreferences', () => {
     initializeCookieConsentModal();
-    (window as any).cookieConsentModal?.show();
+    window.cookieConsentModal?.show();
   });
 
   if (document.readyState === 'loading') {
