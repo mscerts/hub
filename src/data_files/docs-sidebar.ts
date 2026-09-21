@@ -88,7 +88,6 @@ const voucherItems: DocsSidebarItem[] = [
   { label: "Exam AB-650 (beta)", href: docsPath("vouchers/ab650beta"), badge: { text: "*80%", variant: "tip" } },
   { label: "Microsoft Defender Sweepstakes", href: docsPath("vouchers/defendersweepstakes"), badge: { text: "*50%", variant: "tip" } },
   { label: "Partner Certification Week", href: docsPath("vouchers/partnerweek"), badge: { text: "*100%", variant: "tip" } },
-  { label: "Fabric Data Days", href: docsPath("vouchers/fabricdatadays"), badge: { text: "100%", variant: "tip" } },
   { label: "South Africa AI Skills", href: docsPath("vouchers/southafricaaiskills"), badge: { text: "*100%", variant: "tip" } },
   { label: "Virtual Training Days", href: docsPath("vouchers/virtualtrainingdays"), badge: { text: "50%", variant: "note" } },
   { label: "Organizational Skilling (ESI)", href: docsPath("vouchers/microsoftesi"), badge: { text: "*50%", variant: "note" } },
