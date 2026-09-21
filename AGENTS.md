@@ -117,10 +117,29 @@ Resource placement:
 - **Videos:** Verified video courses, exam reviews, and directly relevant technical sessions.
 - **Tests:** Free practice assessments and legitimate free tests.
 - **Paid:** Paid courses, assessments, and practice-test products.
-- **Misc:** Repositories, tools, communities, reference implementations, and supporting standards.
+- **Misc:** Repositories, tools, communities, reference implementations, and supporting standards. Microsoft Agent Academy (`https://microsoft.github.io/agent-academy/`) belongs here only on exam pages where Copilot Studio / Copilot-and-agent building or administration is a core, named topic (not an incidental mention, and not a different Copilot product like GitHub Copilot) — currently AB-410, AB-620, AB-650, AB-730, AB-900.
 - Keep all five exam tabs, even if some are empty. Sparse beta pages are expected.
 - If an announced official course is future-dated, include its verified availability date in the description.
 - Retiring pages retain valid existing resources and link to the verified replacement exam.
+
+### How to Prepare LinkCard (all exam pages)
+- Every exam page's "Get Started" card ends with a `LinkCard` to the matching `/prepare/` guide: the last `LinkCard`-type resource (after Exam Labs/Exam Case Studies/GitHub Case Studies if present, otherwise right after Study Guide) and before any `RelatedCerts` component.
+- Classification (verify against Microsoft Learn for any new exam before assuming):
+  - **Fundamentals** → `/prepare/fundamentals/`: exam name contains "Fundamentals" (AI-901, AZ-900, DP-900, PL-900, SC-900), GitHub's "Foundations" tier (GH-900), and AB-900.
+  - **Business** → `/prepare/business/`: AB-730, AB-731 (non-technical AI Business Professional/Leader tier).
+  - **Role-based** → `/prepare/role-based/`: everything else (Associate/Expert/Specialty, all areas) — one page covers all three tiers.
+- Wording:
+  - Fundamentals: `title="How to Prepare for Fundamentals Exams" href="/prepare/fundamentals/" description="Guidance on study time, resources, and readiness for Microsoft Fundamentals exams."`
+  - Business: `title="How to Prepare for Business Exams" href="/prepare/business/" description="Guidance on study time, resources, and readiness for Microsoft Business exams."`
+  - Role-based: `title="How to Prepare for Role-Based Exams" href="/prepare/role-based/" description="Guidance on hands-on practice, documentation, and readiness for Microsoft role-based exams."`
+- No `target="_blank"` (internal link). Add this LinkCard, with the correct classification, to any new exam page.
+
+### Endangered Exam Treatment (unconfirmed change — distinct from Retiring)
+- Use when Microsoft signals a *possible* future change (a new exam, a level change, an objective-domain/blueprint survey) but nothing is confirmed — do not use RETIRING language or badges for these.
+- Add a `:::caution` banner at the top citing the concrete evidence (announcement post, survey, etc.) with a source link. Keep it terse and structurally consistent: new exam code + title (if known), "may replace X", "could mean retirement", "neither confirmed", one source link.
+- Sidebar badge: `{ text: "Endangered", variant: "caution" }` in the `examBadges` map (astro.config.mjs, keyed by area then exam code).
+- Examples: AZ-400 (potential AZ-401: Designing and Implementing Microsoft Agentic DevOps), DP-420 (potential DP-421: Building Data-Driven AI Applications with Azure Cosmos DB).
+- Keep all existing resources intact; this is an informational heads-up, not a retirement.
 
 ### Lab Pages
 - Files are lowercase at `src/content/docs/labs/<area>/<code>.mdx`; routes are `/certs/labs/<area>/<code>/`.
@@ -265,6 +284,7 @@ pnpm dev                        # Local preview
 - The build does **not** validate external link availability, tracking parameters, assessment IDs, exam names, voucher accuracy, or duplicate content. Verify these manually against authoritative sources.
 - When redirects change, test the old route against the dev server.
 - Use `pnpm install --frozen-lockfile` for reproducible installs; commit `pnpm-lock.yaml` when dependencies change.
+- No environment variables or secrets are required to build the site; analytics IDs (Google Analytics, Clarity, GTM) are hardcoded in astro.config.mjs.
 
 ---
 
