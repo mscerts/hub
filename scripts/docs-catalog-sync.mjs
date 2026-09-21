@@ -23,7 +23,13 @@
  */
 
 import { execSync } from "node:child_process";
-import { readFileSync, writeFileSync, rmSync, mkdtempSync, readdirSync } from "node:fs";
+import {
+  readFileSync,
+  writeFileSync,
+  rmSync,
+  mkdtempSync,
+  readdirSync,
+} from "node:fs";
 import { join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
@@ -61,7 +67,9 @@ const REPOS = [
     name: "power-platform",
     repoUrl: "https://github.com/MicrosoftDocs/power-platform.git",
     // repo also has a "project-sophia"/ps-docs docset -- unrelated internal project, excluded
-    targets: [{ sourceFolder: "power-platform", baseUrlPath: "power-platform" }],
+    targets: [
+      { sourceFolder: "power-platform", baseUrlPath: "power-platform" },
+    ],
   },
   {
     name: "memdocs",
@@ -74,7 +82,9 @@ const REPOS = [
   {
     name: "windowsserverdocs",
     repoUrl: "https://github.com/MicrosoftDocs/windowsserverdocs.git",
-    targets: [{ sourceFolder: "WindowsServerDocs", baseUrlPath: "windows-server" }],
+    targets: [
+      { sourceFolder: "WindowsServerDocs", baseUrlPath: "windows-server" },
+    ],
   },
   {
     name: "defender-docs",
@@ -82,20 +92,50 @@ const REPOS = [
     // repo also has an "advanced-threat-analytics" (ATA) docset -- legacy/retired product, superseded by defender-for-identity, excluded
     targets: [
       { sourceFolder: "defender-endpoint", baseUrlPath: "defender-endpoint" },
-      { sourceFolder: "defender-for-cloud-apps", baseUrlPath: "defender-cloud-apps" },
+      {
+        sourceFolder: "defender-for-cloud-apps",
+        baseUrlPath: "defender-cloud-apps",
+      },
       { sourceFolder: "defender-xdr", baseUrlPath: "defender-xdr" },
       { sourceFolder: "defender-business", baseUrlPath: "defender-business" },
-      { sourceFolder: "defender-office-365", baseUrlPath: "defender-office-365" },
-      { sourceFolder: "defender-vulnerability-management", baseUrlPath: "defender-vulnerability-management" },
-      { sourceFolder: "defender-for-identity", baseUrlPath: "defender-for-identity" },
-      { sourceFolder: "defender-for-cloud", baseUrlPath: "azure/defender-for-cloud" },
+      {
+        sourceFolder: "defender-office-365",
+        baseUrlPath: "defender-office-365",
+      },
+      {
+        sourceFolder: "defender-vulnerability-management",
+        baseUrlPath: "defender-vulnerability-management",
+      },
+      {
+        sourceFolder: "defender-for-identity",
+        baseUrlPath: "defender-for-identity",
+      },
+      {
+        sourceFolder: "defender-for-cloud",
+        baseUrlPath: "azure/defender-for-cloud",
+      },
       { sourceFolder: "sentinel", baseUrlPath: "azure/sentinel" },
-      { sourceFolder: "easm", baseUrlPath: "azure/external-attack-surface-management" },
-      { sourceFolder: "exposure-management", baseUrlPath: "security-exposure-management" },
-      { sourceFolder: "unified-secops-platform", baseUrlPath: "unified-secops-platform" },
+      {
+        sourceFolder: "easm",
+        baseUrlPath: "azure/external-attack-surface-management",
+      },
+      {
+        sourceFolder: "exposure-management",
+        baseUrlPath: "security-exposure-management",
+      },
+      {
+        sourceFolder: "unified-secops-platform",
+        baseUrlPath: "unified-secops-platform",
+      },
       { sourceFolder: "defender", baseUrlPath: "unified-secops" },
-      { sourceFolder: "defender-for-iot-azure", baseUrlPath: "azure/defender-for-iot" },
-      { sourceFolder: "defender-for-iot", baseUrlPath: "azure/defender-for-iot" },
+      {
+        sourceFolder: "defender-for-iot-azure",
+        baseUrlPath: "azure/defender-for-iot",
+      },
+      {
+        sourceFolder: "defender-for-iot",
+        baseUrlPath: "azure/defender-for-iot",
+      },
     ],
   },
   {
@@ -124,50 +164,83 @@ const REPOS = [
   // it's a community repo, not a docs source.
   {
     name: "dynamics-365-customer-engagement",
-    repoUrl: "https://github.com/MicrosoftDocs/dynamics-365-customer-engagement.git",
+    repoUrl:
+      "https://github.com/MicrosoftDocs/dynamics-365-customer-engagement.git",
     targets: [{ sourceFolder: "ce", baseUrlPath: "dynamics365" }],
   },
   {
     name: "dynamics-365-unified-operations-public",
-    repoUrl: "https://github.com/MicrosoftDocs/dynamics-365-unified-operations-public.git",
+    repoUrl:
+      "https://github.com/MicrosoftDocs/dynamics-365-unified-operations-public.git",
     targets: [{ sourceFolder: "articles", baseUrlPath: "dynamics365" }],
   },
   {
     name: "dynamics365smb-docs",
     repoUrl: "https://github.com/MicrosoftDocs/dynamics365smb-docs.git",
-    targets: [{ sourceFolder: "business-central", baseUrlPath: "dynamics365/business-central" }],
+    targets: [
+      {
+        sourceFolder: "business-central",
+        baseUrlPath: "dynamics365/business-central",
+      },
+    ],
   },
   {
     name: "dynamics365smb-devitpro-pb",
     repoUrl: "https://github.com/MicrosoftDocs/dynamics365smb-devitpro-pb.git",
-    targets: [{ sourceFolder: "dev-itpro", baseUrlPath: "dynamics365/business-central/dev-itpro" }],
+    targets: [
+      {
+        sourceFolder: "dev-itpro",
+        baseUrlPath: "dynamics365/business-central/dev-itpro",
+      },
+    ],
   },
   {
     name: "dynamics-365-project-operations",
-    repoUrl: "https://github.com/MicrosoftDocs/dynamics-365-project-operations.git",
-    targets: [{ sourceFolder: "articles", baseUrlPath: "dynamics365/project-operations" }],
+    repoUrl:
+      "https://github.com/MicrosoftDocs/dynamics-365-project-operations.git",
+    targets: [
+      {
+        sourceFolder: "articles",
+        baseUrlPath: "dynamics365/project-operations",
+      },
+    ],
   },
   {
     name: "dynamics-365-contact-center",
     repoUrl: "https://github.com/MicrosoftDocs/dynamics-365-contact-center.git",
-    targets: [{ sourceFolder: "contact-center", baseUrlPath: "dynamics365/contact-center" }],
+    targets: [
+      {
+        sourceFolder: "contact-center",
+        baseUrlPath: "dynamics365/contact-center",
+      },
+    ],
   },
   {
     // Dynamics 365 Guides and Remote Assist retire Dec 31, 2026 -- still live, revisit after that date
     name: "dynamics-365-mixed-reality",
     repoUrl: "https://github.com/MicrosoftDocs/dynamics-365-mixed-reality.git",
     // real live segment is "mixed-reality", NOT the "mr-docs" folder name
-    targets: [{ sourceFolder: "mr-docs", baseUrlPath: "dynamics365/mixed-reality" }],
+    targets: [
+      { sourceFolder: "mr-docs", baseUrlPath: "dynamics365/mixed-reality" },
+    ],
   },
   {
     name: "dynamics-365-intelligent-order-management",
-    repoUrl: "https://github.com/MicrosoftDocs/dynamics-365-intelligent-order-management.git",
-    targets: [{ sourceFolder: "topics", baseUrlPath: "dynamics365/intelligent-order-management" }],
+    repoUrl:
+      "https://github.com/MicrosoftDocs/dynamics-365-intelligent-order-management.git",
+    targets: [
+      {
+        sourceFolder: "topics",
+        baseUrlPath: "dynamics365/intelligent-order-management",
+      },
+    ],
   },
   {
     name: "dynamics365-guidance",
     repoUrl: "https://github.com/MicrosoftDocs/dynamics365-guidance.git",
-    targets: [{ sourceFolder: "guidance", baseUrlPath: "dynamics365/guidance" }],
+    targets: [
+      { sourceFolder: "guidance", baseUrlPath: "dynamics365/guidance" },
+    ],
   },
   {
     // Copilot extensibility/developer docs (declarative agents, plugins, adaptive cards) --
@@ -176,7 +249,12 @@ const REPOS = [
     // no overlapping subfolders, so no duplicate entries.
     name: "m365copilot-docs",
     repoUrl: "https://github.com/MicrosoftDocs/m365copilot-docs.git",
-    targets: [{ sourceFolder: "docs", baseUrlPath: "microsoft-365/copilot/extensibility" }],
+    targets: [
+      {
+        sourceFolder: "docs",
+        baseUrlPath: "microsoft-365/copilot/extensibility",
+      },
+    ],
   },
   {
     // Different org (github, not MicrosoftDocs), different domain, and a Next.js-based
@@ -193,21 +271,32 @@ const REPOS = [
   },
 ];
 
-const SKIP_DIRS = new Set(["includes", "media", "_themes", "breadcrumb", "archive"]);
+const SKIP_DIRS = new Set([
+  "includes",
+  "media",
+  "_themes",
+  "breadcrumb",
+  "archive",
+]);
 
 function cloneRepo(repo, targetDir) {
   console.log(`  Cloning ${repo.name} (blobless, sparse, shallow)...`);
   const t0 = Date.now();
   execSync(
     `git clone --filter=blob:none --sparse --depth 1 --no-checkout --quiet ${repo.repoUrl} "${targetDir}"`,
-    { stdio: "inherit" }
+    { stdio: "inherit" },
   );
   const sparsePaths = repo.targets
     .flatMap((t) => [`"${t.sourceFolder}/**/*.md"`, `"${t.sourceFolder}/*.md"`])
     .join(" ");
-  execSync(`git sparse-checkout set --no-cone ${sparsePaths}`, { cwd: targetDir, stdio: "inherit" });
+  execSync(`git sparse-checkout set --no-cone ${sparsePaths}`, {
+    cwd: targetDir,
+    stdio: "inherit",
+  });
   execSync(`git checkout --quiet`, { cwd: targetDir, stdio: "inherit" }); // no branch arg: resolves to each repo's actual default branch (not always "main")
-  console.log(`  Clone + checkout took ${((Date.now() - t0) / 1000).toFixed(1)}s`);
+  console.log(
+    `  Clone + checkout took ${((Date.now() - t0) / 1000).toFixed(1)}s`,
+  );
 }
 
 function walkMarkdownFiles(dir, results = []) {
@@ -231,7 +320,10 @@ function parseFrontmatter(content) {
     const m = line.match(/^([A-Za-z0-9_.]+):\s*(.*)$/);
     if (!m) continue;
     let value = m[2].trim();
-    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
       value = value.slice(1, -1);
     }
     fm[m[1]] = value;
@@ -240,7 +332,9 @@ function parseFrontmatter(content) {
 }
 
 function cleanTitle(title) {
-  return title.replace(/\s*[|\-]\s*Microsoft (Docs|Learn|Azure)\s*$/i, "").trim();
+  return title
+    .replace(/\s*[|\-]\s*Microsoft (Docs|Learn|Azure)\s*$/i, "")
+    .trim();
 }
 
 // github/docs (Next.js/Liquid pipeline, unlike every other docfx-based repo here) embeds
@@ -248,7 +342,10 @@ function cleanTitle(title) {
 function stripLiquidTags(text) {
   if (!text) return text;
   const cleaned = text
-    .replace(/\{%\s*data\s+variables\.product\.(?:github|prodname_dotcom|prodname_ghe_cloud|prodname_ghe_server)\s*%\}/gi, "GitHub")
+    .replace(
+      /\{%\s*data\s+variables\.product\.(?:github|prodname_dotcom|prodname_ghe_cloud|prodname_ghe_server)\s*%\}/gi,
+      "GitHub",
+    )
     .replace(/\{%[^%]*%\}/g, "")
     .replace(/\s{2,}/g, " ")
     .trim();
@@ -256,8 +353,12 @@ function stripLiquidTags(text) {
 }
 
 function buildUrl(filePath, sourceRoot, baseUrlPath, domain) {
-  const rel = relative(sourceRoot, filePath).replace(/\\/g, "/").replace(/\.md$/, "");
-  return baseUrlPath ? `https://${domain}/${baseUrlPath}/${rel}` : `https://${domain}/${rel}`;
+  const rel = relative(sourceRoot, filePath)
+    .replace(/\\/g, "/")
+    .replace(/\.md$/, "");
+  return baseUrlPath
+    ? `https://${domain}/${baseUrlPath}/${rel}`
+    : `https://${domain}/${rel}`;
 }
 
 function processRepo(repo, entries) {
@@ -278,13 +379,17 @@ function processRepo(repo, entries) {
         entries.push({
           title: cleanTitle(stripLiquidTags(fm.title) || fm.title),
           url: buildUrl(file, sourceRoot, target.baseUrlPath, domain),
-          product: repo.productFromPath ? rel.split("/")[0] : fm["ms.service"] || null,
+          product: repo.productFromPath
+            ? rel.split("/")[0]
+            : fm["ms.service"] || null,
           subproduct: repo.productFromPath ? null : fm["ms.subservice"] || null,
           description: stripLiquidTags(fm[descriptionField]),
         });
         added++;
       }
-      console.log(`  ${target.sourceFolder}/ -> ${target.baseUrlPath}/ (${added} entries)`);
+      console.log(
+        `  ${target.sourceFolder}/ -> ${target.baseUrlPath}/ (${added} entries)`,
+      );
     }
   } finally {
     rmSync(tmpDir, { recursive: true, force: true });
@@ -305,15 +410,22 @@ for (const repo of REPOS) {
 }
 
 console.log(`\nTotal entries: ${entries.length}`);
-if (failedRepos.length) console.log(`Repos that failed: ${failedRepos.join(", ")}`);
+if (failedRepos.length)
+  console.log(`Repos that failed: ${failedRepos.join(", ")}`);
 
 if (entries.length < MIN_ENTRIES) {
-  console.error(`Aborting write: only ${entries.length} entries, expected at least ${MIN_ENTRIES}.`);
+  console.error(
+    `Aborting write: only ${entries.length} entries, expected at least ${MIN_ENTRIES}.`,
+  );
   process.exit(1);
 }
 
 writeFileSync(OUTPUT_FILE, JSON.stringify(entries));
-const sizeMB = (Buffer.byteLength(JSON.stringify(entries)) / 1024 / 1024).toFixed(1);
+const sizeMB = (
+  Buffer.byteLength(JSON.stringify(entries)) /
+  1024 /
+  1024
+).toFixed(1);
 console.log(`Wrote ${OUTPUT_FILE} (${sizeMB} MB)`);
 
 if (failedRepos.length) process.exit(1); // still commits (file already written above); signals CI to open an issue

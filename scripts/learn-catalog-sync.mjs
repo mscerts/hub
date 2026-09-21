@@ -130,7 +130,7 @@ const PRODUCT_SUBJECT_HINTS = {
   "azure-translator-text": ["natural-language-processing"],
 
   // Identity & security
-  "entra": ["identity-access"],
+  entra: ["identity-access"],
   "entra-id": ["identity-access"],
   "entra-id-protection": ["identity-access"],
   "entra-identity-governance": ["identity-access"],
@@ -153,10 +153,10 @@ const PRODUCT_SUBJECT_HINTS = {
   "defender-xdr": ["threat-protection"],
   "azure-information-protection": ["information-protection-governance"],
   "microsoft-purview": ["information-protection-governance", "compliance"],
-  "priva": ["compliance"],
+  priva: ["compliance"],
 
   // Device management
-  "intune": ["device-management"],
+  intune: ["device-management"],
 
   // Power Platform / data platform (only products with one clear, undiluted
   // subject on manual review — e.g. Power Apps/Dataverse were dropped because
@@ -164,7 +164,7 @@ const PRODUCT_SUBJECT_HINTS = {
   // that aren't really about app development or databases)
   "power-bi": ["data-visualization"],
   "power-automate": ["automation"],
-  "fabric": ["data-engineering"],
+  fabric: ["data-engineering"],
 
   // Containers & DevOps
   "azure-kubernetes-service": ["containers"],
@@ -192,9 +192,9 @@ const PRODUCT_SUBJECT_HINTS = {
   // App development frameworks (bare "dotnet"/"vs"/"vs-code" were deliberately
   // left unmapped — sampling showed those generic tags span web/desktop/mobile/
   // cloud content with no single fitting subject)
-  "aspnet": ["backend-development"],
+  aspnet: ["backend-development"],
   "aspnet-core": ["backend-development"],
-  "blazor": ["frontend-development"],
+  blazor: ["frontend-development"],
   "dotnet-maui": ["mobile-development"],
   "ms-graph": ["backend-development"],
 
@@ -219,8 +219,11 @@ async function fetchJson(url, attempts = 3) {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return await res.json();
     } catch (err) {
-      if (attempt === attempts) throw new Error(`Failed to fetch ${url}: ${err.message}`);
-      console.warn(`  retry ${attempt}/${attempts - 1} for ${url} (${err.message})`);
+      if (attempt === attempts)
+        throw new Error(`Failed to fetch ${url}: ${err.message}`);
+      console.warn(
+        `  retry ${attempt}/${attempts - 1} for ${url} (${err.message})`,
+      );
       await new Promise((r) => setTimeout(r, attempt * 2000));
     }
   }
@@ -243,13 +246,16 @@ function flattenTaxonomy(entries) {
 
 function normalizeUrl(url) {
   if (!url) return url;
-  return url.replace("/en-us/", "/").replace(/([?&])WT\.mc_id=[^&]*/, "$1WT.mc_id=studentamb_165290");
+  return url
+    .replace("/en-us/", "/")
+    .replace(/([?&])WT\.mc_id=[^&]*/, "$1WT.mc_id=studentamb_165290");
 }
 
 async function main() {
   console.log("Fetching product taxonomy...");
   const { products } = await fetchJson(`${CATALOG_BASE}?type=products`);
-  const { nameById: productNameById, topIdById: productTopIdById } = flattenTaxonomy(products);
+  const { nameById: productNameById, topIdById: productTopIdById } =
+    flattenTaxonomy(products);
 
   console.log("Fetching subject taxonomy...");
   const { subjects } = await fetchJson(`${CATALOG_BASE}?type=subjects`);
@@ -259,11 +265,15 @@ async function main() {
   }
 
   console.log("Fetching modules and units (large download, ~10MB)...");
-  const { modules, units } = await fetchJson(`${CATALOG_BASE}?type=modules,units&locale=en-us`);
+  const { modules, units } = await fetchJson(
+    `${CATALOG_BASE}?type=modules,units&locale=en-us`,
+  );
   const unitTitleByUid = new Map(units.map((u) => [u.uid, u.title]));
 
   const allowedTopIds = new Set(ALLOWED_CATEGORIES);
-  const categoryNameByTopId = new Map(ALLOWED_CATEGORIES.map((id) => [id, productNameById.get(id) ?? id]));
+  const categoryNameByTopId = new Map(
+    ALLOWED_CATEGORIES.map((id) => [id, productNameById.get(id) ?? id]),
+  );
 
   const result = [];
   let missingUnitTitles = 0;
@@ -316,7 +326,9 @@ async function main() {
       url: normalizeUrl(mod.url),
       categories,
       products: [...productNames].sort(),
-      subjects: [...subjectIds].map((id) => subjectNameById.get(id) ?? id).sort(),
+      subjects: [...subjectIds]
+        .map((id) => subjectNameById.get(id) ?? id)
+        .sort(),
       units: unitTitles,
     });
   }
@@ -325,7 +337,7 @@ async function main() {
 
   if (result.length < MIN_MODULES) {
     console.error(
-      `Only ${result.length} modules matched (expected >= ${MIN_MODULES}). Aborting without writing — the catalog API schema may have changed.`
+      `Only ${result.length} modules matched (expected >= ${MIN_MODULES}). Aborting without writing — the catalog API schema may have changed.`,
     );
     process.exit(1);
   }
@@ -341,10 +353,20 @@ async function main() {
   writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2) + "\n");
 
   console.log(`Wrote ${result.length} modules to ${OUTPUT_FILE}`);
-  console.log(`  (${modules.length} modules seen total, ${modules.length - result.length} excluded by category filter)`);
-  console.log(`  ${modulesWithHintedSubjects} modules got a subject added via PRODUCT_SUBJECT_HINTS`);
-  if (missingUnitTitles) console.warn(`  ${missingUnitTitles} unit titles could not be resolved (fell back to uid)`);
-  if (unresolvedProducts) console.warn(`  ${unresolvedProducts} product ids could not be resolved to a category`);
+  console.log(
+    `  (${modules.length} modules seen total, ${modules.length - result.length} excluded by category filter)`,
+  );
+  console.log(
+    `  ${modulesWithHintedSubjects} modules got a subject added via PRODUCT_SUBJECT_HINTS`,
+  );
+  if (missingUnitTitles)
+    console.warn(
+      `  ${missingUnitTitles} unit titles could not be resolved (fell back to uid)`,
+    );
+  if (unresolvedProducts)
+    console.warn(
+      `  ${unresolvedProducts} product ids could not be resolved to a category`,
+    );
 }
 
 main().catch((err) => {
