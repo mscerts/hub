@@ -9,10 +9,10 @@ interface Props extends HTMLAttributes<"aside"> {
 
 const { type = "note", title, class: className, ...attrs } = Astro.props;
 const config = {
-  note: { label: "Note", icon: "ph:info", classes: "border-info/30 bg-info-muted text-info" },
-  tip: { label: "Tip", icon: "ph:lightbulb", classes: "border-success/30 bg-success-muted text-success" },
-  caution: { label: "Caution", icon: "ph:warning", classes: "border-warning/30 bg-warning-muted text-warning" },
-  danger: { label: "Danger", icon: "ph:warning-circle", classes: "border-danger/30 bg-danger-muted text-danger" },
+  note: { label: "Note", icon: "ph:info", classes: "border-info/30 bg-info-muted", tone: "text-info" },
+  tip: { label: "Tip", icon: "ph:lightbulb", classes: "border-success/30 bg-success-muted", tone: "text-success" },
+  caution: { label: "Caution", icon: "ph:warning", classes: "border-warning/30 bg-warning-muted", tone: "text-warning" },
+  danger: { label: "Danger", icon: "ph:warning-circle", classes: "border-danger/30 bg-danger-muted", tone: "text-danger" },
 } as const;
 const c = config[type] ?? config.note;
 const displayTitle = title ?? c.label;
@@ -28,9 +28,9 @@ const displayTitle = title ?? c.label;
   ]}
   {...attrs}
 >
-  <Icon name={c.icon} class="mt-0.5 size-5 shrink-0" aria-hidden="true" />
-  <div class="min-w-0 text-sm leading-6">
-    <p class="m-0 font-semibold">{displayTitle}</p>
+  <Icon name={c.icon} class:list={["mt-0.5 size-5 shrink-0", c.tone]} aria-hidden="true" />
+  <div class="min-w-0 text-sm leading-6 text-foreground">
+    <p class:list={["m-0 font-semibold", c.tone]}>{displayTitle}</p>
     <div class="mt-1 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0"><slot /></div>
   </div>
 </aside>

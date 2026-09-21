@@ -56,31 +56,6 @@ function buildExamItems(area: keyof typeof examStatuses): DocsSidebarItem[] {
   }));
 }
 
-function buildLabItems(area: string): DocsSidebarItem[] {
-  const docsDir = path.resolve(
-    process.cwd(),
-    "src",
-    "content",
-    "docs",
-    "labs",
-    area,
-  );
-  const codes = readdirSync(docsDir)
-    .filter((entry) => entry.toLowerCase().endsWith(".mdx"))
-    .map((entry) => entry.replace(/\.mdx$/i, ""))
-    .sort((left, right) =>
-      left.localeCompare(right, undefined, {
-        numeric: true,
-        sensitivity: "base",
-      }),
-    );
-
-  return codes.map((code) => ({
-    label: code.toUpperCase(),
-    href: docsPath(`labs/${area}/${code}`),
-  }));
-}
-
 const guideItems: DocsSidebarItem[] = [
   { label: "Introduction", href: docsPath("guide/introduction") },
   { label: "Overview", href: docsPath("guide/overview") },
@@ -218,39 +193,6 @@ export const docsSidebar: DocsSidebarItem[] = [
         label: "Dynamics 365",
         badge: { text: "MB", variant: "note" },
         children: buildExamItems("dynamics"),
-        collapsed: true,
-      },
-    ],
-  },
-  {
-    label: "Exam Labs",
-    collapsed: true,
-    children: [
-      { label: "Azure", children: buildLabItems("azure"), collapsed: true },
-      {
-        label: "AI Business",
-        children: buildLabItems("aibusiness"),
-        collapsed: true,
-      },
-      {
-        label: "Dynamics 365",
-        children: buildLabItems("dynamics"),
-        collapsed: true,
-      },
-      { label: "GitHub", children: buildLabItems("github"), collapsed: true },
-      {
-        label: "Microsoft 365",
-        children: buildLabItems("microsoft365"),
-        collapsed: true,
-      },
-      {
-        label: "Power Platform",
-        children: buildLabItems("power"),
-        collapsed: true,
-      },
-      {
-        label: "Security & Identity",
-        children: buildLabItems("security"),
         collapsed: true,
       },
     ],
