@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Cloudflare Worker MCP server for msfthub",
   "private": true,
+  "engines": {
+    "node": ">=24 <25"
+  },
   "scripts": {
     "bundle": "tsx scripts/bundle.ts",
     "check": "pnpm test && tsc --noEmit",

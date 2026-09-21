@@ -1,9 +1,9 @@
 {
   "name": "Microsoft Certification Hub",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
 
   // Install pnpm and project dependencies when the container is created
-  "onCreateCommand": "npm install -g pnpm@11 && pnpm install --frozen-lockfile",
+  "onCreateCommand": "npm install -g pnpm@11.15.1 && pnpm install --frozen-lockfile",
 
   // Forward the Astro dev server port and open a live preview automatically
   "forwardPorts": [4321],

@@ -19,7 +19,7 @@ If you are an authorized agent, you will have access to the tasks repository whi
 - **Site:** https://msfthub.com
 - **Stack:** Astro 7, native MDX content collections, Tailwind
 - **Package manager:** pnpm (do not use npm or yarn)
-- **Build:** `pnpm build` = `astro check && astro build` → static output in `dist/`
+- **Build:** `pnpm build` = Astro checks, static build, and Pagefind indexing → output in `dist/`
 - **Preview:** `pnpm dev` for local development
 
 ---
@@ -276,7 +276,7 @@ Automated internal/external link validation, separate from the build.
 - **Platform:** Cloudflare Pages
 - **Build command:** `pnpm build`
 - **Output directory:** `dist`
-- **Node version:** 20
+- **Node version:** 24 (current LTS)
 
 ---
 

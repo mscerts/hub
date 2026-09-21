@@ -3,6 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "packageManager": "pnpm@11.15.1",
+  "engines": {
+    "node": ">=24 <25"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -41,6 +44,7 @@
     "@iconify-json/simple-icons": "^1.2.75",
     "@iconify-json/streamline": "^1.2.5",
     "@tailwindcss/forms": "^0.5.11",
+    "linkinator": "8.1.0",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",

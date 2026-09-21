@@ -4,133 +4,143 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   submit:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
 
       - name: Get changed content files
         id: changes
+        env:
+          EVENT_BEFORE: ${{ github.event.before }}
+          EVENT_AFTER: ${{ github.event.after }}
         run: |
           SITE="https://msfthub.com"
-          URLS=""
+          EMPTY_TREE=$(git hash-object -t tree /dev/null)
+          BASE="$EVENT_BEFORE"
+          HEAD="${EVENT_AFTER:-HEAD}"
 
-          # Use event.before for multi-commit pushes, fall back to HEAD~1
-          BASE="${{ github.event.before }}"
-          if [[ "$BASE" == "0000000000000000000000000000000000000000" || -z "$BASE" ]]; then
-            BASE="HEAD~1"
+          if [[ -z "$BASE" || "$BASE" == "0000000000000000000000000000000000000000" ]]; then
+            BASE="$EMPTY_TREE"
+          else
+            git cat-file -e "${BASE}^{commit}"
           fi
-          HEAD="${{ github.event.after }}"
-          if [[ -z "$HEAD" ]]; then
-            HEAD="HEAD"
-          fi
+          git cat-file -e "${HEAD}^{commit}"
+
+          map_url() {
+            local file="$1" area code slug remainder
+            if [[ "$file" == src/pages/certs/index.astro ]]; then
+              printf '%s/certs/\n' "$SITE"
+            elif [[ "$file" == src/content/docs/prepare/*.mdx ]]; then
+              slug=$(basename -- "$file" .mdx)
+              printf '%s/certs/prepare/%s/\n' "$SITE" "${slug,,}"
+            elif [[ "$file" == src/content/docs/guide/*.mdx ]]; then
+              slug=$(basename -- "$file" .mdx)
+              printf '%s/certs/guide/%s/\n' "$SITE" "${slug,,}"
+            elif [[ "$file" == src/content/docs/vouchers/*.mdx ]]; then
+              slug=$(basename -- "$file" .mdx)
+              printf '%s/certs/vouchers/%s/\n' "$SITE" "${slug,,}"
+            elif [[ "$file" == src/content/docs/labs/*/*.mdx ]]; then
+              remainder=${file#src/content/docs/labs/}
+              area=${remainder%%/*}
+              code=$(basename -- "$file" .mdx)
+              printf '%s/certs/labs/%s/%s/\n' "$SITE" "$area" "${code,,}"
+            elif [[ "$file" == src/content/docs/*/*.mdx ]]; then
+              remainder=${file#src/content/docs/}
+              area=${remainder%%/*}
+              code=$(basename -- "$file" .mdx)
+              printf '%s/certs/%s/%s/\n' "$SITE" "$area" "${code,,}"
+            elif [[ "$file" == src/content/blog/*.mdx ]]; then
+              slug=$(basename -- "$file" .mdx)
+              printf '%s/news/%s/\n' "$SITE" "$slug"
+            elif [[ "$file" == src/pages/index.astro ]]; then
+              printf '%s/\n' "$SITE"
+            fi
+          }
+
+          CHANGES_FILE="$RUNNER_TEMP/indexnow-changes.tsv"
+          URLS_FILE="$RUNNER_TEMP/indexnow-urls.txt"
+          git diff --name-status --find-renames "$BASE" "$HEAD" > "$CHANGES_FILE"
+          : > "$URLS_FILE"
 
           while IFS=$'\t' read -r status src dst; do
-            file="$src"
-            old_file=""
-            # Handle renames — submit old URL too
             if [[ "$status" == R* && -n "$dst" ]]; then
-              file="$dst"
-              old_file="$src"
+              map_url "$src" >> "$URLS_FILE"
+              map_url "$dst" >> "$URLS_FILE"
+            else
+              map_url "$src" >> "$URLS_FILE"
             fi
+          done < "$CHANGES_FILE"
 
-            # Only process content files that map to real pages
-            url=""
-            if [[ "$file" == src/pages/certs/index.astro ]]; then
-              url="${SITE}/certs/"
-            elif [[ "$file" == src/content/docs/prepare/*.mdx ]]; then
-              slug=$(basename "$file" .mdx)
-              url="${SITE}/certs/prepare/${slug,,}/"
-            elif [[ "$file" == src/content/docs/guide/*.mdx ]]; then
-              slug=$(basename "$file" .mdx)
-              url="${SITE}/certs/guide/${slug,,}/"
-            elif [[ "$file" == src/content/docs/vouchers/*.mdx ]]; then
-              slug=$(basename "$file" .mdx)
-              url="${SITE}/certs/vouchers/${slug,,}/"
-            elif [[ "$file" == src/content/docs/labs/*/*.mdx ]]; then
-              area=$(echo "$file" | sed -n 's|src/content/docs/labs/\([^/]*\)/.*|\1|p')
-              code=$(basename "$file" .mdx)
-              url="${SITE}/certs/labs/${area}/${code,,}/"
-            elif [[ "$file" == src/content/docs/*/*.mdx ]]; then
-              area=$(echo "$file" | sed -n 's|src/content/docs/\([^/]*\)/.*|\1|p')
-              code=$(basename "$file" .mdx)
-              url="${SITE}/certs/${area}/${code,,}/"
-            elif [[ "$file" == src/content/blog/*.mdx ]]; then
-              slug=$(basename "$file" .mdx)
-              url="${SITE}/news/${slug}/"
-            elif [[ "$file" == src/pages/index.astro ]]; then
-              url="${SITE}/"
-            fi
+          sort -u -o "$URLS_FILE" "$URLS_FILE"
+          sed -i '/^$/d' "$URLS_FILE"
 
-            if [[ -n "$url" ]]; then
-              URLS="${URLS}${url}\n"
-            fi
-
-            # Handle renamed files — also submit old URL
-            if [[ "$status" == R* && -n "$old_file" ]]; then
-              old_url=""
-              if [[ "$old_file" == src/content/docs/prepare/*.mdx ]]; then
-                slug=$(basename "$old_file" .mdx)
-                old_url="${SITE}/certs/prepare/${slug,,}/"
-              elif [[ "$old_file" == src/content/docs/guide/*.mdx ]]; then
-                slug=$(basename "$old_file" .mdx)
-                old_url="${SITE}/certs/guide/${slug,,}/"
-              elif [[ "$old_file" == src/content/docs/vouchers/*.mdx ]]; then
-                slug=$(basename "$old_file" .mdx)
-                old_url="${SITE}/certs/vouchers/${slug,,}/"
-              elif [[ "$old_file" == src/content/docs/labs/*/*.mdx ]]; then
-                area=$(echo "$old_file" | sed -n 's|src/content/docs/labs/\([^/]*\)/.*|\1|p')
-                code=$(basename "$old_file" .mdx)
-                old_url="${SITE}/certs/labs/${area}/${code,,}/"
-              elif [[ "$old_file" == src/content/docs/*/*.mdx ]]; then
-                area=$(echo "$old_file" | sed -n 's|src/content/docs/\([^/]*\)/.*|\1|p')
-                code=$(basename "$old_file" .mdx)
-                old_url="${SITE}/certs/${area}/${code,,}/"
-              elif [[ "$old_file" == src/content/blog/*.mdx ]]; then
-                slug=$(basename "$old_file" .mdx)
-                old_url="${SITE}/news/${slug}/"
-              fi
-              if [[ -n "$old_url" ]]; then
-                URLS="${URLS}${old_url}\n"
-              fi
-            fi
-          done < <(git diff --name-status "$BASE" "$HEAD") || true
-
-          # Deduplicate URLs
-          URLS=$(printf '%b' "$URLS" | sort -u | sed '/^$/d')
-
-          if [[ -z "$URLS" ]]; then
+          if [[ ! -s "$URLS_FILE" ]]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
             echo "No content changes to submit"
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-            echo "URLs to submit:"
-            echo "$URLS"
-            # Store as JSON array
-            JSON_URLS=$(echo "$URLS" | jq -R -s -c 'split("\n") | map(select(length > 0))')
-            echo "urls=$JSON_URLS" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+
+          JSON_URLS=$(jq -R -s -c 'split("\n") | map(select(length > 0))' "$URLS_FILE")
+          URL_COUNT=$(jq 'length' <<< "$JSON_URLS")
+          if (( URL_COUNT > 10000 )); then
+            echo "::error::IndexNow URL count exceeds the 10,000 URL request limit"
+            exit 1
+          fi
+
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+          echo "urls=$JSON_URLS" >> "$GITHUB_OUTPUT"
+          echo "URLs to submit ($URL_COUNT):"
+          cat "$URLS_FILE"
 
       - name: Submit to IndexNow
         if: steps.changes.outputs.skip != 'true'
+        env:
+          URLS_JSON: ${{ steps.changes.outputs.urls }}
         run: |
-          RESPONSE=$(curl -s -w "\n%{http_code}" \
-            -X POST "https://api.indexnow.org/indexnow" \
-            -H "Content-Type: application/json; charset=utf-8" \
-            --fail-with-body \
-            -d '{
-              "host": "msfthub.com",
-              "key": "f8a11c68fec74da9a136302d38546647",
-              "urlList": ${{ steps.changes.outputs.urls }}
-            }')
-          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
-          BODY=$(echo "$RESPONSE" | head -n -1)
+          RESPONSE_FILE="$RUNNER_TEMP/indexnow-response.txt"
+          PAYLOAD=$(jq -cn \
+            --arg host "msfthub.com" \
+            --arg key "f8a11c68fec74da9a136302d38546647" \
+            --argjson urls "$URLS_JSON" \
+            '{host: $host, key: $key, urlList: $urls}')
+
+          set +e
+          HTTP_CODE=$(curl \
+            --silent \
+            --show-error \
+            --output "$RESPONSE_FILE" \
+            --write-out '%{http_code}' \
+            --connect-timeout 10 \
+            --max-time 60 \
+            --retry 3 \
+            --retry-delay 2 \
+            --retry-all-errors \
+            --request POST \
+            --header "Content-Type: application/json; charset=utf-8" \
+            --data "$PAYLOAD" \
+            "https://api.indexnow.org/indexnow")
+          CURL_EXIT=$?
+          set -e
+
           echo "HTTP $HTTP_CODE"
-          echo "$BODY"
-          if [[ "$HTTP_CODE" -ge 400 ]]; then
+          cat "$RESPONSE_FILE"
+          if (( CURL_EXIT != 0 )); then
+            echo "::error::IndexNow request failed with curl exit code $CURL_EXIT"
+            exit 1
+          fi
+          if [[ ! "$HTTP_CODE" =~ ^2[0-9][0-9]$ ]]; then
             echo "::error::IndexNow returned HTTP $HTTP_CODE"
             exit 1
           fi

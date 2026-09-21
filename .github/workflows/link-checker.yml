@@ -13,27 +13,29 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
+      contents: read
       issues: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
         with:
           version: 11.15.1
 
       - name: Setup Node
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version: 22
+          node-version-file: .node-version
           cache: pnpm
 
       - name: Build site
         run: pnpm install --frozen-lockfile && pnpm build
 
       - name: Restore lychee cache
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: .lycheecache
           key: cache-lychee-${{ github.sha }}
@@ -41,7 +43,7 @@ jobs:
 
       - name: Check internal links
         id: lychee
-        uses: lycheeverse/lychee-action@v2
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
         continue-on-error: true
         with:
           fail: true
@@ -62,27 +64,35 @@ jobs:
         run: exit 1
 
       - name: Check external links on live site
+        id: external
         if: github.event_name != 'pull_request'
-        run: >
-          npx --yes linkinator
-          "https://msfthub.com"
-          "https://msfthub.com/certs/"
-          "https://msfthub.com/certs/vouchers/"
-          "https://msfthub.com/certs/guide/introduction/"
-          "https://msfthub.com/certs/labs/"
-          --skip "https?://(www\\.)?(measureup\\.com|discord\\.gg|discord\\.com|linkedin\\.com|x\\.com|threads\\.net|reddit\\.com|news\\.ycombinator\\.com)"
-          --skip "news.ycombinator.com"
-          --status-code "403:warn"
-          --status-code "429:warn"
-          --timeout 10000
-          --retry
-          --retry-errors
-          --retry-errors-count 2
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          pnpm exec linkinator \
+            "https://msfthub.com" \
+            "https://msfthub.com/certs/" \
+            "https://msfthub.com/certs/vouchers/" \
+            "https://msfthub.com/certs/guide/introduction/" \
+            "https://msfthub.com/certs/labs/" \
+            --skip "https?://(www\\.)?(measureup\\.com|discord\\.gg|discord\\.com|linkedin\\.com|x\\.com|threads\\.net|reddit\\.com|news\\.ycombinator\\.com)" \
+            --skip "news.ycombinator.com" \
+            --status-code "403:warn" \
+            --status-code "429:warn" \
+            --timeout 10000 \
+            --retry \
+            --retry-errors \
+            --retry-errors-count 2 \
+            2>&1 | tee /tmp/linkinator-report.md
 
-      - name: Create issue on failure
-        if: github.event_name != 'pull_request' && steps.lychee.outputs.exit_code != 0
-        uses: peter-evans/create-issue-from-file@v6
+      - name: Create issue on external-link failure
+        if: always() && github.event_name != 'pull_request' && steps.external.outcome == 'failure'
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
         with:
-          title: "Link Checker Report"
-          content-filepath: ./lychee/results.md
+          title: "External Link Checker Report"
+          content-filepath: /tmp/linkinator-report.md
           labels: report, automated
+
+      - name: Fail on external-link errors
+        if: always() && github.event_name != 'pull_request' && steps.external.outcome == 'failure'
+        run: exit 1
