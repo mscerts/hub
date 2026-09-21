@@ -30,4 +30,5 @@ export interface ContentBundle {
   docs: DocPage[];
   blog: BlogPost[];
   generatedAt: string;
+  contentTrust: "untrusted";
 }

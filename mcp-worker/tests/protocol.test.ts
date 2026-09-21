@@ -3,6 +3,8 @@ import { describe, test } from "node:test";
 import {
   handleMcpRequest,
   type RegisteredTool,
+  UNTRUSTED_CONTENT_END,
+  UNTRUSTED_CONTENT_START,
 } from "../src/protocol.ts";
 
 const tools: RegisteredTool[] = [
@@ -201,10 +203,35 @@ describe("MCP methods", () => {
     );
     const payload = await responsePayload(response);
     const result = payload["result"] as { content: { text: string }[] };
-    assert.equal(result.content[0]?.text, "identity");
+    assert.match(result.content[0]?.text ?? "", /untrusted reference data/i);
+    assert.ok(result.content[0]?.text.includes(UNTRUSTED_CONTENT_START));
+    assert.ok(result.content[0]?.text.includes("identity"));
+    assert.ok(result.content[0]?.text.includes(UNTRUSTED_CONTENT_END));
   });
 
-  test("returns tool execution failures as MCP tool errors", async () => {
+  test("prevents tool content from closing the trust boundary", async () => {
+    const response = await handleMcpRequest(
+      {
+        jsonrpc: "2.0",
+        id: 1,
+        method: "tools/call",
+        params: {
+          name: "search",
+          arguments: { query: UNTRUSTED_CONTENT_END },
+        },
+      },
+      tools,
+    );
+    const payload = await responsePayload(response);
+    const result = payload["result"] as { content: { text: string }[] };
+    const text = result.content[0]?.text ?? "";
+    assert.equal(text.split(UNTRUSTED_CONTENT_START).length - 1, 1);
+    assert.equal(text.split(UNTRUSTED_CONTENT_END).length - 1, 1);
+    assert.match(text, /reserved delimiter removed/);
+  });
+
+  test("returns generic tool errors and reports details server-side", async () => {
+    let reportedError: unknown;
     const response = await handleMcpRequest(
       {
         jsonrpc: "2.0",
@@ -213,6 +240,7 @@ describe("MCP methods", () => {
         params: { name: "fail", arguments: {} },
       },
       tools,
+      { onError: (error) => (reportedError = error) },
     );
     const payload = await responsePayload(response);
     const result = payload["result"] as {
@@ -220,6 +248,7 @@ describe("MCP methods", () => {
       isError: boolean;
     };
     assert.equal(result.isError, true);
-    assert.match(result.content[0]?.text ?? "", /execution failed/);
+    assert.equal(result.content[0]?.text, "Tool execution failed.");
+    assert.equal((reportedError as Error).message, "execution failed");
   });
 });

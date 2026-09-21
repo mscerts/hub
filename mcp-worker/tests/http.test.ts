@@ -7,8 +7,20 @@ const headers = {
   "content-type": "application/json",
 };
 
-function post(body: string) {
-  return app.request("/mcp", { method: "POST", headers, body });
+const allowBindings = {
+  MCP_RATE_LIMITER: { limit: async () => ({ success: true }) },
+};
+
+function post(
+  body: string,
+  bindings = allowBindings,
+  requestHeaders: Record<string, string> = headers,
+) {
+  return app.request(
+    "/mcp",
+    { method: "POST", headers: requestHeaders, body },
+    bindings,
+  );
 }
 
 async function ssePayload(response: Response) {
@@ -38,9 +50,67 @@ describe("MCP HTTP endpoint", () => {
         method: "POST",
         headers: { ...headers, accept },
         body: '{"jsonrpc":"2.0","id":1,"method":"ping"}',
-      });
+      }, allowBindings);
       assert.equal(response.status, 406);
     }
+  });
+
+  test("requires JSON request content", async () => {
+    const response = await post(
+      '{"jsonrpc":"2.0","id":1,"method":"ping"}',
+      allowBindings,
+      { ...headers, "content-type": "text/plain" },
+    );
+    assert.equal(response.status, 415);
+  });
+
+  test("rejects cross-origin browser requests", async () => {
+    const response = await post(
+      '{"jsonrpc":"2.0","id":1,"method":"ping"}',
+      allowBindings,
+      { ...headers, origin: "https://attacker.example" },
+    );
+    assert.equal(response.status, 403);
+  });
+
+  test("rejects oversized request bodies", async () => {
+    const response = await post(`{"padding":"${"x".repeat(65_536)}"}`);
+    assert.equal(response.status, 413);
+    const payload = (await response.json()) as { error: { message: string } };
+    assert.equal(payload.error.message, "Request body too large");
+  });
+
+  test("rate limits repeated calls", async () => {
+    let calls = 0;
+    const bindings = {
+      MCP_RATE_LIMITER: {
+        limit: async () => ({ success: ++calls <= 2 }),
+      },
+    };
+    const body = '{"jsonrpc":"2.0","id":1,"method":"ping"}';
+
+    assert.equal((await post(body, bindings)).status, 200);
+    assert.equal((await post(body, bindings)).status, 200);
+    const response = await post(body, bindings);
+    assert.equal(response.status, 429);
+    assert.equal(response.headers.get("retry-after"), "60");
+  });
+
+  test("does not write request bodies or credentials to logs", async () => {
+    const original = console.info;
+    const messages: string[] = [];
+    console.info = (message) => messages.push(String(message));
+
+    try {
+      const response = await post(
+        '{"jsonrpc":"2.0","id":1,"method":"ping","params":{"token":"endpoint-secret"}}',
+      );
+      assert.equal(response.status, 200);
+    } finally {
+      console.info = original;
+    }
+
+    assert.doesNotMatch(messages.join("\n"), /endpoint-secret|"token"/);
   });
 
   test("returns -32700 for malformed JSON", async () => {

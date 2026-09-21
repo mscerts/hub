@@ -9,5 +9,13 @@ preview_urls = false
 enabled = true
 invocation_logs = true
 
+[[ratelimits]]
+name = "MCP_RATE_LIMITER"
+namespace_id = "2026092101"
+
+  [ratelimits.simple]
+  limit = 60
+  period = 60
+
 [build]
 command = "pnpm bundle"
