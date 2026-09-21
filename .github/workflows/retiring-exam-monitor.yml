@@ -2,7 +2,7 @@ name: Retiring Exam Monitor
 
 on:
   schedule:
-    - cron: "0 5 * * *"  # Daily 05:00 UTC
+    - cron: "0 5 * * *" # Daily 05:00 UTC
   workflow_dispatch:
 
 concurrency:

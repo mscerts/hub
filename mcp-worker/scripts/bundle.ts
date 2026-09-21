@@ -8,6 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { fileURLToPath } from "node:url";
+import { assertSafeBundledContent } from "./content-safety.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CONTENT_ROOT = path.resolve(__dirname, "../../src/content");
@@ -47,6 +48,7 @@ interface ContentBundle {
   docs: DocPage[];
   blog: BlogPost[];
   generatedAt: string;
+  contentTrust: "untrusted";
 }
 
 // ─── Helpers ───────────────────────────────────────────────────────────────
@@ -148,6 +150,7 @@ function buildDocs(): DocPage[] {
   const docsDir = path.join(CONTENT_ROOT, "docs");
   return walkDir(docsDir).map((file) => {
     const raw = fs.readFileSync(file, "utf8");
+    assertSafeBundledContent(raw, path.relative(CONTENT_ROOT, file));
     const { data, content } = matter(raw);
     return {
       slug: slugFrom(file, docsDir),
@@ -169,6 +172,7 @@ function buildBlog(): BlogPost[] {
   if (!fs.existsSync(blogDir)) return [];
   return walkDir(blogDir).map((file) => {
     const raw = fs.readFileSync(file, "utf8");
+    assertSafeBundledContent(raw, path.relative(CONTENT_ROOT, file));
     const { data, content } = matter(raw);
     const authors = Array.isArray(data["authors"])
       ? (data["authors"] as { name: string }[]).map((a) => ({ name: a.name }))
@@ -195,6 +199,7 @@ const bundle: ContentBundle = {
   docs: buildDocs(),
   blog: buildBlog(),
   generatedAt: new Date().toISOString(),
+  contentTrust: "untrusted",
 };
 
 fs.writeFileSync(OUT_FILE, JSON.stringify(bundle, null, 2));

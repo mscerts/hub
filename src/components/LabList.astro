@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+import { LinkCard, CardGrid } from "@components/docs";
 
 interface Props {
   category: "azure" | "github" | "aibusiness" | "dynamics" | "microsoft365" | "power" | "security";
@@ -23,7 +23,7 @@ labs.sort((a, b) => a.id.localeCompare(b.id));
     <CardGrid>
       {labs.map((lab) => {
         const examCode = lab.id.split("/").pop()?.toUpperCase() ?? "";
-        const href = `/${lab.id}/`;
+  const href = `/certs/${lab.id}/`;
         const desc = lab.data.description ?? "";
         // Primary pattern: "Lab exercises for CODE: Name. Includes..."
         let examName = desc.match(/for [A-Z]+-\d+:\s*(.+?)\.\s*Includes/)?.[1] ?? "";

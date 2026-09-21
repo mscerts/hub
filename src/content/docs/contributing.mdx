@@ -6,11 +6,11 @@ next: false
 prev: false
 description: "How to contribute study materials, exam labs, and content updates to the Microsoft Certification Hub, a free open-source community project."
 ---
-import { FileTree, Aside, Badge, Steps } from '@astrojs/starlight/components';
+import { FileTree, Badge, Aside, Steps } from '@components/docs';
 
 <Aside type="note">This guide has been updated as per May 2026.</Aside>
 
-If you're interested in supporting the Hub's development and are familiar with [Markdown](https://starlight.astro.build/guides/authoring-content/), read on to learn how to contribute to the project. 
+If you're interested in supporting the Hub's development and are familiar with [Markdown and MDX](https://docs.astro.build/en/guides/markdown-content/), read on to learn how to contribute to the project. 
 
 Contributions are very welcome and appreciated. Be sure to review [CONTRIBUTING.md](https://github.com/mscerts/hub/blob/main/.github/CONTRIBUTING.md) before getting started with your contribution!
 
@@ -49,7 +49,6 @@ This is not the entire project structure, but it's the most important part of th
       - supportus.mdx
       - vouchers.mdx
       - welcome.mdx
-      - wiki.mdx (Wiki collection)
     - blog (blog posts)
   - layouts (page layouts)
   - pages (routed pages: news, contact, etc.)
@@ -68,7 +67,7 @@ While this method is limited in terms of what you should contribute, you can sti
 
 ### Requirements 
 
-- Good understanding of [Markdown](https://starlight.astro.build/guides/authoring-content/)
+- Good understanding of [Markdown and MDX](https://docs.astro.build/en/guides/markdown-content/)
 - Basic understanding of how to use GitHub
 - A brain and patience
 - A computer and an internet connection
@@ -100,7 +99,7 @@ This also allows you to preview your changes locally before submitting a pull re
 
 ### Requirements 
 
-- Basic understanding of [Markdown](https://starlight.astro.build/guides/authoring-content/) and [Starlight Components](https://starlight.astro.build/components/using-components/)
+- Basic understanding of [Markdown and MDX](https://docs.astro.build/en/guides/markdown-content/) and the local components exported by `@components/docs`
 - Basic understanding of how to use GitHub
 - [Git](https://git-scm.com/downloads) installed on your machine
 - A brain and patience
@@ -264,10 +263,8 @@ This will help you get familiar with the project structure and the way content i
 
 Here are some resources that will help you understand how the Hub works better:
 
-- [Starlight Documentation](https://starlight.astro.build/)
-- [Starlight Components](https://starlight.astro.build/components/using-components/)
-- [Starlight Markdown Guide](https://starlight.astro.build/guides/authoring-content/)
+- [Astro Markdown and MDX Guide](https://docs.astro.build/en/guides/markdown-content/)
+- [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/)
 - [Astro Documentation](https://docs.astro.build/)
 
  
-

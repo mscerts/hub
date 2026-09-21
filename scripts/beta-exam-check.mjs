@@ -22,7 +22,12 @@
  * Writes GITHUB_OUTPUT keys: changes_found, baseline_updated, extraction_failed.
  */
 
-import { readFileSync, writeFileSync, appendFileSync, existsSync } from "node:fs";
+import {
+  readFileSync,
+  writeFileSync,
+  appendFileSync,
+  existsSync,
+} from "node:fs";
 import { isAbsolute, join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
@@ -34,10 +39,15 @@ function resolveFromRoot(path) {
   return isAbsolute(path) ? path : join(root, path);
 }
 
-const EXAMS_FILE = resolveFromRoot(process.env.EXAMS_FILE ?? "src/data_files/beta-exams.json");
-const REPORT_FILE = process.env.REPORT_FILE ?? join(tmpdir(), "beta-exam-report.md");
-const ERROR_FILE = process.env.ERROR_FILE ?? join(tmpdir(), "beta-exam-error.md");
-const GITHUB_OUTPUT = process.env.GITHUB_OUTPUT ?? join(tmpdir(), "github-output");
+const EXAMS_FILE = resolveFromRoot(
+  process.env.EXAMS_FILE ?? "src/data_files/beta-exams.json",
+);
+const REPORT_FILE =
+  process.env.REPORT_FILE ?? join(tmpdir(), "beta-exam-report.md");
+const ERROR_FILE =
+  process.env.ERROR_FILE ?? join(tmpdir(), "beta-exam-error.md");
+const GITHUB_OUTPUT =
+  process.env.GITHUB_OUTPUT ?? join(tmpdir(), "github-output");
 const FETCH_DELAY_MS = Number(process.env.FETCH_DELAY_MS ?? 500);
 
 const USER_AGENT =
@@ -53,7 +63,11 @@ function writeOutput(obj) {
 function fail(message) {
   console.error(`ERROR: ${message}`);
   writeFileSync(ERROR_FILE, `${message}\n`);
-  writeOutput({ changes_found: false, baseline_updated: false, extraction_failed: true });
+  writeOutput({
+    changes_found: false,
+    baseline_updated: false,
+    extraction_failed: true,
+  });
   process.exit(1);
 }
 
@@ -73,13 +87,22 @@ async function fetchText(url, { attempts = 3 } = {}) {
         signal: AbortSignal.timeout(30000),
       });
 
-      if (response.ok) return { ok: true, status: response.status, text: await response.text() };
+      if (response.ok)
+        return {
+          ok: true,
+          status: response.status,
+          text: await response.text(),
+        };
 
       lastStatus = response.status;
-      console.error(`WARNING: ${url} attempt ${attempt} failed (${response.status})`);
+      console.error(
+        `WARNING: ${url} attempt ${attempt} failed (${response.status})`,
+      );
     } catch (error) {
       lastError = error;
-      console.error(`WARNING: ${url} attempt ${attempt} failed (${error.message})`);
+      console.error(
+        `WARNING: ${url} attempt ${attempt} failed (${error.message})`,
+      );
     }
 
     if (attempt < attempts) await sleep(attempt * 5000);
@@ -104,12 +127,16 @@ function loadExams() {
   try {
     parsed = JSON.parse(readFileSync(EXAMS_FILE, "utf8"));
   } catch {
-    fail(`Corrupt tracker file at ${relative(root, EXAMS_FILE)} (invalid JSON).`);
+    fail(
+      `Corrupt tracker file at ${relative(root, EXAMS_FILE)} (invalid JSON).`,
+    );
     return null;
   }
 
   if (!Array.isArray(parsed.exams)) {
-    fail(`Corrupt tracker file at ${relative(root, EXAMS_FILE)} (missing exams array).`);
+    fail(
+      `Corrupt tracker file at ${relative(root, EXAMS_FILE)} (missing exams array).`,
+    );
     return null;
   }
 
@@ -117,7 +144,9 @@ function loadExams() {
 }
 
 function buildReport(wentGA) {
-  const rows = wentGA.map((exam) => `| ${exam.code} | ${exam.name} | [Link](${exam.url}) |`).join("\n");
+  const rows = wentGA
+    .map((exam) => `| ${exam.code} | ${exam.name} | [Link](${exam.url}) |`)
+    .join("\n");
 
   return (
     "## Beta exam(s) now generally available\n\n" +
@@ -139,7 +168,11 @@ async function main() {
 
   if (pending.length === 0) {
     console.log("No untracked-as-GA beta exams to check.");
-    writeOutput({ changes_found: false, baseline_updated: false, extraction_failed: false });
+    writeOutput({
+      changes_found: false,
+      baseline_updated: false,
+      extraction_failed: false,
+    });
     return;
   }
 
@@ -153,13 +186,17 @@ async function main() {
     const response = await fetchText(exam.url);
     if (!response.ok) {
       fetchFailures++;
-      console.error(`WARNING: could not fetch ${exam.code} (${exam.url}); skipping this run.`);
+      console.error(
+        `WARNING: could not fetch ${exam.code} (${exam.url}); skipping this run.`,
+      );
       continue;
     }
 
     const stillBeta = isStillBeta(response.text);
     if (stillBeta === null) {
-      console.error(`WARNING: could not find a <title> on ${exam.code}'s page; skipping this run.`);
+      console.error(
+        `WARNING: could not find a <title> on ${exam.code}'s page; skipping this run.`,
+      );
       continue;
     }
 
@@ -177,20 +214,28 @@ async function main() {
   if (fetchFailures === pending.length) {
     fail(
       `All ${pending.length} tracked beta exam page fetch(es) failed. Microsoft Learn may be down ` +
-        "or blocking requests; the tracker was not modified."
+        "or blocking requests; the tracker was not modified.",
     );
     return;
   }
 
   if (wentGA.length === 0) {
     console.log("No beta exams changed status this run.");
-    writeOutput({ changes_found: false, baseline_updated: false, extraction_failed: false });
+    writeOutput({
+      changes_found: false,
+      baseline_updated: false,
+      extraction_failed: false,
+    });
     return;
   }
 
   writeFileSync(EXAMS_FILE, JSON.stringify(tracker, null, 2) + "\n");
   writeFileSync(REPORT_FILE, buildReport(wentGA));
-  writeOutput({ changes_found: true, baseline_updated: true, extraction_failed: false });
+  writeOutput({
+    changes_found: true,
+    baseline_updated: true,
+    extraction_failed: false,
+  });
   console.log(`${wentGA.length} beta exam(s) flagged as GA.`);
 }
 

@@ -13,10 +13,10 @@ links) is caught by CI instead of by humans.
 
 ## Project context
 - **Repo:** Microsoft Certification Hub — https://github.com/mscerts/hub, deployed at https://msfthub.com. A community site of free study-material collections for Microsoft certification exams.
-- **Stack:** Astro 6 + Starlight (`@astrojs/starlight` ^0.39), MDX content, Tailwind. Package manager: **pnpm** (see `pnpm-lock.yaml`).
+- **Stack:** Astro 7 + native MDX content, Tailwind. Package manager: **pnpm** (see `pnpm-lock.yaml`).
 - **Run/build:** `pnpm dev` (local preview); `pnpm build` = `astro check && astro build` → static output in `dist/`; `pnpm preview` serves the build.
-- **Content lives in** `src/content/docs/**/*.mdx`. Internal links are Astro routes like `/azure/az-800/`, `/labs/azure/az-800/`, `/vouchers/...`, `/wiki`. These only resolve against the **built site**, so validating internal links by scanning raw MDX would produce false positives — crawl `dist/` (or `astro preview`) instead.
-- **Redirects** are defined in `astro.config.mjs` under `redirects: { ... }` (e.g. `"/guide": "/guide/introduction"`). The checker must **follow redirects**.
+- **Content lives in** `src/content/docs/**/*.mdx`. Internal links are Astro routes like `/certs/azure/az-800/`, `/certs/labs/azure/az-800/`, `/certs/vouchers/...`, `/certs/`. These only resolve against the **built site**, so validating internal links by scanning raw MDX would produce false positives — crawl `dist/` (or `astro preview`) instead.
+- **Redirects** are defined in `astro.config.mjs` under `redirects: { ... }` (e.g. `"/guide": "/certs/guide/introduction/"`). The checker must **follow redirects**.
 - **Lots of external hosts:** `learn.microsoft.com`, `measureup.com`, `youtube.com`, `amzn.to` (affiliate), `pluralsight.com`, `udemy.com`, `linkedin.com/learning`, `whizlabs.com`, `comptia.org`, `esi.microsoft.com`. Some of these (LinkedIn, Udemy) routinely return 403/999 to bots even though the page is fine.
 
 ## What to do
@@ -24,7 +24,7 @@ links) is caught by CI instead of by humans.
 2. **Split into two concerns:**
    - **Internal link integrity** (blocking on PRs): build the site, then check that every internal/relative link resolves in `dist/`. This must be reliable and fast.
    - **External URL liveness** (non-blocking / scheduled): check external URLs on a weekly `cron` (and `workflow_dispatch`), since external hosts are flaky and rate-limited. Failing PRs on a transient LinkedIn 999 would be noise.
-3. **Add the workflow** at `.github/workflows/link-check.yml`. Use `pnpm/action-setup` + `actions/setup-node` (Node 20, pnpm cache), `pnpm install --frozen-lockfile`, `pnpm build`, then run the checker against `./dist/**/*.html` with `--base ./dist` so relative routes resolve. A reasonable starting point (verify the action version before committing):
+3. **Add the workflow** at `.github/workflows/link-check.yml`. Use `pnpm/action-setup` + `actions/setup-node` (Node 22, pnpm cache), `pnpm install --frozen-lockfile`, `pnpm build`, then run the checker against `./dist/**/*.html` with `--base ./dist` so relative routes resolve. A reasonable starting point (verify the action version before committing):
    ```yaml
    name: Link Check
    on:

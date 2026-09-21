@@ -15,6 +15,8 @@ MAX_NEW_PCT="${MAX_NEW_PCT:-50}"
 
 mkdir -p "$TEMP_DIR"
 > "$ALL_PRODUCTS_FILE"
+: > "$REPORT_FILE"
+: > "$ERROR_FILE"
 
 echo "=== MeasureUp Monitor ==="
 echo "Started: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -59,7 +61,7 @@ if ! fetch_page "$BASE_URL" "$TEMP_DIR/page-1.html" "page 1"; then
   exit 1
 fi
 
-TOTAL=$(grep -oP 'toolbar-number">\K\d+' "$TEMP_DIR/page-1.html" | sed -n '3p')
+TOTAL=$(grep -oP 'toolbar-number">\K\d+' "$TEMP_DIR/page-1.html" | sed -n '3p' || true)
 
 if [ -z "$TOTAL" ] || [ "$TOTAL" -lt "$MIN_PRODUCTS" ]; then
   echo "ERROR: Total=$TOTAL (expected >$MIN_PRODUCTS)."
@@ -73,64 +75,68 @@ echo "Found $TOTAL products across $PAGES pages"
 # --- Step 2: Extract products from all pages using Python ---
 extract_page() {
   local page_file="$1"
-  python3 -c "
+  python3 - "$page_file" <<'PYEOF'
 import re, json
+import sys
 
-with open('$page_file') as f:
+with open(sys.argv[1]) as f:
     html = f.read()
 
 match = re.search(r'var dl4Objects = (\[.*?\]);', html, re.DOTALL)
 if not match:
-    exit(0)
+    raise ValueError('missing dl4Objects product data')
 
-try:
-    data = json.loads(match.group(1))
-    items = data[0]['ecommerce']['items']
-    for item in items:
-        name = item.get('item_name', '')
-        item_id = item.get('item_id', '')
-        category = item.get('item_category3', '')
-        
-        ptype = 'unknown'
-        if 'Assessment' in category: ptype = 'assessment'
-        elif 'Practice Test' in category: ptype = 'practice-test'
-        elif 'CertKit' in category: ptype = 'certkit'
-        elif 'Bundle' in category: ptype = 'bundle'
-        
-        # Skip retired products
-        if 'Retired' in name or 'retired' in name:
-            continue
-        
-        match = re.search(r'([A-Z]{2,3}-\d+)', name)
-        exam_code = match.group(1) if match else ''
-        
-        slug = re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')
-        url = f'https://www.measureup.com/{slug}.html'
-        
-        print(json.dumps({'name': name, 'id': item_id, 'examCode': exam_code, 'type': ptype, 'url': url}))
-except:
-    pass
-"
+data = json.loads(match.group(1))
+items = data[0]['ecommerce']['items']
+if not isinstance(items, list):
+    raise TypeError('ecommerce.items must be a list')
+for item in items:
+    name = item.get('item_name', '')
+    item_id = item.get('item_id', '')
+    category = item.get('item_category3', '')
+
+    ptype = 'unknown'
+    if 'Assessment' in category: ptype = 'assessment'
+    elif 'Practice Test' in category: ptype = 'practice-test'
+    elif 'CertKit' in category: ptype = 'certkit'
+    elif 'Bundle' in category: ptype = 'bundle'
+
+    if 'Retired' in name or 'retired' in name:
+        continue
+
+    match = re.search(r'([A-Z]{2,3}-\d+)', name)
+    exam_code = match.group(1) if match else ''
+    slug = re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')
+    url = f'https://www.measureup.com/{slug}.html'
+    print(json.dumps({'name': name, 'id': item_id, 'examCode': exam_code, 'type': ptype, 'url': url}))
+PYEOF
 }
 
 echo "Extracting products from page 1..."
-extract_page "$TEMP_DIR/page-1.html" >> "$ALL_PRODUCTS_FILE"
+if ! extract_page "$TEMP_DIR/page-1.html" >> "$ALL_PRODUCTS_FILE"; then
+    write_extraction_failure "MeasureUp product data on page 1 was malformed."
+    exit 1
+fi
 
 for p in $(seq 2 $PAGES); do
   echo "Fetching page $p/$PAGES..."
   sleep 2
   
     if ! fetch_page "${BASE_URL}?p=$p" "$TEMP_DIR/page-$p.html" "page $p"; then
-        echo "WARNING: Failed to fetch product data for page $p, skipping"
-    continue
+        write_extraction_failure "MeasureUp scan was incomplete because page $p could not be fetched."
+        exit 1
   fi
   
-  extract_page "$TEMP_DIR/page-$p.html" >> "$ALL_PRODUCTS_FILE"
+  if ! extract_page "$TEMP_DIR/page-$p.html" >> "$ALL_PRODUCTS_FILE"; then
+      write_extraction_failure "MeasureUp product data on page $p was malformed."
+      exit 1
+  fi
 done
 
 # Deduplicate by normalized product identity
-python3 -c "
+if ! ALL_PRODUCTS_FILE="$ALL_PRODUCTS_FILE" python3 <<'PYEOF'
 import json
+import os
 
 def product_key(product):
     product_id = str(product.get('id', '')).strip()
@@ -142,7 +148,8 @@ def product_key(product):
 seen = set()
 products = []
 
-with open('$ALL_PRODUCTS_FILE') as f:
+products_file = os.environ['ALL_PRODUCTS_FILE']
+with open(products_file) as f:
     for line in f:
         line = line.strip()
         if not line:
@@ -155,10 +162,14 @@ with open('$ALL_PRODUCTS_FILE') as f:
         seen.add(key)
         products.append(product)
 
-with open('$ALL_PRODUCTS_FILE', 'w') as f:
+with open(products_file, 'w') as f:
     for product in products:
         print(json.dumps(product, sort_keys=True), file=f)
-"
+PYEOF
+then
+    write_extraction_failure "MeasureUp product deduplication failed because extracted data was invalid."
+    exit 1
+fi
 EXTRACTED_COUNT=$(wc -l < "$ALL_PRODUCTS_FILE")
 
 echo "Extracted $EXTRACTED_COUNT unique products"
@@ -173,10 +184,10 @@ fi
 if [ ! -f "$BASELINE_FILE" ] || [ ! -s "$BASELINE_FILE" ]; then
   echo "No baseline found. Creating initial baseline..."
   
-  python3 -c "
-import json
+  if ! ALL_PRODUCTS_FILE="$ALL_PRODUCTS_FILE" BASELINE_FILE="$BASELINE_FILE" python3 <<PYEOF
+import json, os
 products = []
-with open('$ALL_PRODUCTS_FILE') as f:
+with open(os.environ['ALL_PRODUCTS_FILE']) as f:
     for line in f:
         line = line.strip()
         if line:
@@ -186,10 +197,14 @@ baseline = {
     'totalProducts': len(products),
     'products': products
 }
-with open('$BASELINE_FILE', 'w') as f:
+with open(os.environ['BASELINE_FILE'], 'w') as f:
     json.dump(baseline, f, indent=2)
 print(f'Baseline created with {len(products)} products')
-"
+PYEOF
+  then
+    write_extraction_failure "MeasureUp could not create a baseline from the extracted product data."
+    exit 1
+  fi
   
   echo "new_products=false" >> "$GITHUB_OUTPUT"
   echo "extraction_failed=false" >> "$GITHUB_OUTPUT"
@@ -200,7 +215,7 @@ fi
 # --- Step 4: Compare and generate report ---
 echo "Comparing against baseline..."
 
-BASELINE_FILE="$BASELINE_FILE" ALL_PRODUCTS_FILE="$ALL_PRODUCTS_FILE" REPORT_FILE="$REPORT_FILE" ERROR_FILE="$ERROR_FILE" MAX_NEW_PCT="$MAX_NEW_PCT" python3 << 'PYEOF'
+if ! BASELINE_FILE="$BASELINE_FILE" ALL_PRODUCTS_FILE="$ALL_PRODUCTS_FILE" REPORT_FILE="$REPORT_FILE" ERROR_FILE="$ERROR_FILE" MAX_NEW_PCT="$MAX_NEW_PCT" python3 << 'PYEOF'
 import json, os, datetime
 
 baseline_file = os.environ["BASELINE_FILE"]
@@ -291,5 +306,15 @@ if should_update_baseline and baseline_changed:
 else:
     print("Baseline unchanged")
 PYEOF
+then
+    if [ -s "$ERROR_FILE" ]; then
+        echo "new_products=false" >> "$GITHUB_OUTPUT"
+        echo "extraction_failed=true" >> "$GITHUB_OUTPUT"
+        echo "baseline_updated=false" >> "$GITHUB_OUTPUT"
+    else
+        write_extraction_failure "MeasureUp comparison failed because the baseline or extracted product data was invalid."
+    fi
+    exit 1
+fi
 
 echo "=== Done ==="

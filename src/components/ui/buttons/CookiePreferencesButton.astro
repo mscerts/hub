@@ -41,18 +41,20 @@ const sizes = {
 </button>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  const initializeCookiePreferencesButton = () => {
     const button = document.getElementById('cookie-preferences-btn');
-    
-    button?.addEventListener('click', () => {
-      // Try to open the modal first
-      const modal = (window as any).cookieConsentModal;
-      if (modal) {
-        modal.show();
-      } else {
-        // Fallback to cookie settings page
-        window.location.href = '/cookie-settings';
-      }
+    if (!button || button.dataset.initialized === 'true') return;
+
+    button.dataset.initialized = 'true';
+    button.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('openCookiePreferences'));
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeCookiePreferencesButton, { once: true });
+  } else {
+    initializeCookiePreferencesButton();
+  }
+  document.addEventListener('astro:page-load', initializeCookiePreferencesButton);
 </script>

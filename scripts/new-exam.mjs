@@ -9,7 +9,7 @@
  *   --code   Exam code (e.g. AZ-104, SC-900)      [required]
  *   --name   Official exam name from Microsoft Learn [required]
  *   --beta   Mark page with BETA status banner
- *   --labs   Include an Exam Labs link (assumes /labs/<area>/<code>/ exists)
+ *   --labs   Include an Exam Labs link (assumes /certs/labs/<area>/<code>/ exists)
  */
 
 import { writeFileSync, existsSync } from "node:fs";
@@ -27,7 +27,8 @@ const raw = process.argv.slice(2);
 for (let i = 0; i < raw.length; i++) {
   if (raw[i].startsWith("--")) {
     const key = raw[i].slice(2);
-    const value = raw[i + 1] && !raw[i + 1].startsWith("--") ? raw[i + 1] : true;
+    const value =
+      raw[i + 1] && !raw[i + 1].startsWith("--") ? raw[i + 1] : true;
     args[key] = value;
     if (value !== true) i++;
   }
@@ -42,7 +43,7 @@ if (!code || !name) {
   console.error(
     'Usage: node scripts/new-exam.mjs --code AZ-999 --name "Microsoft Azure Whatever"\n' +
       "       Optional: --beta  (marks page as beta)\n" +
-      "                 --labs  (adds Exam Labs link)"
+      "                 --labs  (adds Exam Labs link)",
   );
   process.exit(1);
 }
@@ -52,7 +53,7 @@ if (!code || !name) {
 // ---------------------------------------------------------------------------
 if (!/^[A-Z]{2,3}-\d{3}$/.test(code)) {
   console.error(
-    `❌  Invalid exam code: "${code}". Expected format: AZ-104, SC-900, GH-100, etc.`
+    `❌  Invalid exam code: "${code}". Expected format: AZ-104, SC-900, GH-100, etc.`,
   );
   process.exit(1);
 }
@@ -75,7 +76,7 @@ const AREA_MAP = {
 const area = AREA_MAP[prefix];
 if (!area) {
   console.error(
-    `❌  Unknown prefix "${prefix}". Supported prefixes: ${Object.keys(AREA_MAP).join(", ")}`
+    `❌  Unknown prefix "${prefix}". Supported prefixes: ${Object.keys(AREA_MAP).join(", ")}`,
   );
   process.exit(1);
 }
@@ -84,7 +85,9 @@ const codeLC = code.toLowerCase();
 const filePath = join(root, "src", "content", "docs", area, `${code}.mdx`);
 
 if (existsSync(filePath)) {
-  console.error(`❌  File already exists: src/content/docs/${area}/${code}.mdx`);
+  console.error(
+    `❌  File already exists: src/content/docs/${area}/${code}.mdx`,
+  );
   process.exit(1);
 }
 
@@ -93,7 +96,7 @@ function escapeYaml(str) {
 }
 
 function escapeJsxAttr(str) {
-  return str.replace(/"/g, '&quot;');
+  return str.replace(/"/g, "&quot;");
 }
 
 // ---------------------------------------------------------------------------
@@ -106,7 +109,7 @@ const studyGuideUrl = `https://learn.microsoft.com/credentials/certifications/re
 const learnUrl = `https://learn.microsoft.com/training/courses/${codeLC}t00?WT.mc_id=studentamb_165290`;
 
 const labsLink = hasLabs
-  ? `\n  <LinkCard title="Exam Labs" href="/labs/${area}/${codeLC}/" target="_blank" description="Collection of all lab exercises that Microsoft offers."/>`
+  ? `\n  <LinkCard title="Exam Labs" href="/certs/labs/${area}/${codeLC}/" description="Collection of all lab exercises that Microsoft offers."/>`
   : "";
 
 const betaBanner = isBeta
@@ -117,7 +120,7 @@ const content = `---
 title: ${code} Study Materials
 description: "${escapeYaml(description)}"
 ---
-import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@astrojs/starlight/components';${betaBanner}
+import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';${betaBanner}
 
 <Card title="Get Started" icon="star">
 
@@ -167,23 +170,27 @@ writeFileSync(filePath, content, "utf8");
 console.log(`✅  Created: src/content/docs/${area}/${code}.mdx`);
 console.log("");
 console.log("Next steps:");
+console.log(`  1. Open src/content/docs/${area}/${code}.mdx and:`);
 console.log(
-  `  1. Open src/content/docs/${area}/${code}.mdx and:`
+  `       • Verify the exam URL and update the Get Started description`,
 );
-console.log(`       • Verify the exam URL and update the Get Started description`);
-console.log(`       • Confirm the training course URL exists and update the description`);
+console.log(
+  `       • Confirm the training course URL exists and update the description`,
+);
 if (isBeta) {
-  console.log(`       • Update BetaBanner summary and note props with exam-specific details`);
+  console.log(
+    `       • Update BetaBanner summary and note props with exam-specific details`,
+  );
 }
 if (!hasLabs) {
   console.log(
-    `       • If a lab page exists at /labs/${area}/${codeLC}/, add it with --labs next time or add it manually`
+    `       • If a lab page exists at /certs/labs/${area}/${codeLC}/, add it with --labs next time or add it manually`,
   );
 }
 console.log(
-  `  2. If this exam is BETA or RETIRING, add it to examBadges in astro.config.mjs`
+  `  2. If this exam is BETA or RETIRING, add it to src/data_files/exam-status.mjs`,
 );
 console.log(
-  `  3. Run: pnpm dev — then visit http://localhost:4321/${area}/${codeLC}/`
+  `  3. Run: pnpm dev — then visit http://localhost:4321/certs/${area}/${codeLC}/`,
 );
 console.log(`  4. Run: pnpm build — to verify the page passes type checking`);

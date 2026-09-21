@@ -45,16 +45,20 @@ const RESOURCE_TYPES = [
   },
   {
     key: "MS Learn Practice Assessment",
-    test: ({ titles }) => titles.some((t) => t.startsWith("Microsoft Learn Practice Assessment")),
+    test: ({ titles }) =>
+      titles.some((t) => t.startsWith("Microsoft Learn Practice Assessment")),
   },
   {
     key: "MS Learn Exam Readiness Zone",
-    test: ({ titles }) => titles.some((t) => t === "Microsoft Learn Exam Readiness Zone"),
+    test: ({ titles }) =>
+      titles.some((t) => t === "Microsoft Learn Exam Readiness Zone"),
   },
   {
     key: "MS Learn On-Demand Instructor-led Training",
     test: ({ titles }) =>
-      titles.some((t) => t.startsWith("On Demand Instructor-led Training Series")),
+      titles.some((t) =>
+        t.startsWith("On Demand Instructor-led Training Series"),
+      ),
   },
   {
     key: "Exam Labs",
@@ -63,15 +67,18 @@ const RESOURCE_TYPES = [
   {
     key: "GitHub Labs",
     test: ({ labText }) => {
-      const tab = labText.match(/<TabItem label="Microsoft GitHub"[^>]*>([\s\S]*?)<\/TabItem>/);
+      const tab = labText.match(
+        /<TabItem label="Microsoft GitHub"[^>]*>([\s\S]*?)<\/TabItem>/,
+      );
       return !!tab && /<LinkCard\b/.test(tab[1]);
     },
   },
   {
     key: "MeasureUp",
     test: ({ titles, dataDrivenSlice }) =>
-      titles.some((t) => t.startsWith("MeasureUp ") && t !== "MeasureUp Subscriptions") ||
-      /measureUpReleased:\s*true/.test(dataDrivenSlice),
+      titles.some(
+        (t) => t.startsWith("MeasureUp ") && t !== "MeasureUp Subscriptions",
+      ) || /measureUpReleased:\s*true/.test(dataDrivenSlice),
   },
   {
     key: "Whizlabs",
@@ -100,13 +107,17 @@ function isDraft(content) {
 }
 
 function stripComments(text) {
-  return text.replace(/\{\/\*[\s\S]*?\*\/\}/g, "").replace(/<!--[\s\S]*?-->/g, "");
+  return text
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, "")
+    .replace(/<!--[\s\S]*?-->/g, "");
 }
 
 // Data-driven pages (AI-103, AI-901) render from src/data_files/exam-pages.ts;
 // return the matching entry's slice so its titles count toward detection.
 function getDataDrivenSlice(content, code) {
-  const dataDrivenMatch = content.match(/examPages\[["']([A-Z]{2,3}-\d{3})["']\]/);
+  const dataDrivenMatch = content.match(
+    /examPages\[["']([A-Z]{2,3}-\d{3})["']\]/,
+  );
   if (!dataDrivenMatch) return "";
 
   const dataCode = dataDrivenMatch[1];
@@ -116,7 +127,7 @@ function getDataDrivenSlice(content, code) {
   const startIdx = tsContent.indexOf(startMarker);
   if (startIdx === -1) {
     console.error(
-      `Warning: could not find ${startMarker} in src/data_files/exam-pages.ts for ${code}`
+      `Warning: could not find ${startMarker} in src/data_files/exam-pages.ts for ${code}`,
     );
     return "";
   }
@@ -138,12 +149,21 @@ const TS_TITLE_RE = /title:\s*"([^"]*)"/g;
 function collectTitles(examMdx, dataDrivenSlice) {
   const titles = [];
   for (const m of examMdx.matchAll(LINKCARD_TITLE_RE)) titles.push(m[1].trim());
-  for (const m of dataDrivenSlice.matchAll(TS_TITLE_RE)) titles.push(m[1].trim());
+  for (const m of dataDrivenSlice.matchAll(TS_TITLE_RE))
+    titles.push(m[1].trim());
   return titles;
 }
 
 function buildLabText(area, codeLower) {
-  const labPath = join(root, "src", "content", "docs", "labs", area, `${codeLower}.mdx`);
+  const labPath = join(
+    root,
+    "src",
+    "content",
+    "docs",
+    "labs",
+    area,
+    `${codeLower}.mdx`,
+  );
   if (!existsSync(labPath)) return "";
   return stripComments(normalize(readFileSync(labPath, "utf8")));
 }
@@ -183,7 +203,9 @@ for (const area of AREAS) {
 }
 
 if (scannedCount === 0) {
-  console.error("❌  No exam pages found. Check the area directories under src/content/docs/.");
+  console.error(
+    "❌  No exam pages found. Check the area directories under src/content/docs/.",
+  );
   process.exit(1);
 }
 

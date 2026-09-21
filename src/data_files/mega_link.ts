@@ -7,40 +7,42 @@ export const servicesData = [
     description:
       "Cloud computing platform for building, deploying, and managing applications and services",
     icon: "azure",
-    url: "#",
+    url: "/certs/",
   },
   {
     title: "GitHub",
     description:
       "World's leading platform for version control, collaboration, and DevOps workflows",
     icon: "githubAlt",
-    url: "#",
+    url: "/certs/",
   },
   {
     title: "Microsoft 365",
-    description: "Complete suite of productivity and collaboration tools including Teams, Office apps, and cloud storage",
+    description:
+      "Complete suite of productivity and collaboration tools including Teams, Office apps, and cloud storage",
     icon: "microsoft365",
-    url: "#",
+    url: "/certs/",
   },
   {
     title: "Security & Identity",
     description:
       "Comprehensive security solutions and identity management to protect your organization and users",
     icon: "security",
-    url: "#",
+    url: "/certs/",
   },
   {
     title: "Power Platform",
     description:
       "Low-code development platform for building apps, automating workflows, and analyzing data",
     icon: "powerPlatform",
-    url: "#",
+    url: "/certs/",
   },
   {
     title: "Dynamics 365",
-    description: "Intelligent business applications for CRM, ERP, and modern business operations",
+    description:
+      "Intelligent business applications for CRM, ERP, and modern business operations",
     icon: "dynamics365",
-    url: "#",
+    url: "/certs/",
   },
 ];
 
@@ -50,6 +52,6 @@ export const successStoriesData = [
     alt: "Image Description",
     description:
       "We have a dedicated certification guide covering everything you need to know to get started.",
-    learnMoreUrl: "/guide/introduction/",
+    learnMoreUrl: "/certs/guide/introduction/",
   },
 ];

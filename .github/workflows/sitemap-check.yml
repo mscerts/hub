@@ -8,20 +8,22 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
+      contents: read
       issues: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
         with:
           version: 11.15.1
 
       - name: Setup Node
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version: 22
+          node-version-file: .node-version
           cache: pnpm
 
       - name: Build site
@@ -29,12 +31,22 @@ jobs:
 
       - name: Validate sitemap
         id: check
-        run: bash scripts/sitemap-check.sh
+        continue-on-error: true
+        run: |
+          python3 -m http.server 4321 --directory dist >/tmp/sitemap-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 1
+          CHECK_ORIGIN=http://127.0.0.1:4321 bash scripts/sitemap-check.sh
 
       - name: Create issue on failure
-        if: steps.check.outputs.has_issues == 'true'
-        uses: peter-evans/create-issue-from-file@v6
+        if: always() && steps.check.outcome == 'failure'
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
         with:
           title: "Sitemap Validator Report"
           content-filepath: /tmp/sitemap-report.md
           labels: report, automated
+
+      - name: Fail on sitemap errors
+        if: always() && steps.check.outcome == 'failure'
+        run: exit 1

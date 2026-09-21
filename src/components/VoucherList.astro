@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+import { LinkCard, CardGrid } from "@components/docs";
 
 interface Props {
   category: "100%" | "50%" | "Special";
@@ -24,9 +24,7 @@ vouchers.sort((a, b) => a.data.title.localeCompare(b.data.title));
   vouchers.length > 0 ? (
     <CardGrid>
       {vouchers.map((voucher) => {
-        // Construct the href. The id from the collection usually looks like 'vouchers/virtualtrainingdays'
-        // We ensure it starts with a slash and ends with a slash to match Starlight's conventions
-        const href = `/${voucher.id}/`;
+        const href = `/certs/${voucher.id}/`;
 
         return (
           <LinkCard

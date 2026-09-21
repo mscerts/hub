@@ -28,7 +28,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 
 const CONFIG_FILE = process.env.CONFIG_FILE ?? join(root, "astro.config.mjs");
-const OUTPUT_FILE = process.env.OUTPUT_FILE ?? join(root, "src", "data_files", "beta-exams.json");
+const OUTPUT_FILE =
+  process.env.OUTPUT_FILE ?? join(root, "src", "data_files", "beta-exams.json");
 const DOCS_DIR = join(root, "src", "content", "docs");
 const TRACKING = "?WT.mc_id=studentamb_165290";
 
@@ -50,7 +51,8 @@ function extractBraceBlock(text, openIndex) {
 function parseExamBadges(configText) {
   const marker = "const examBadges = ";
   const start = configText.indexOf(marker);
-  if (start === -1) throw new Error("Could not find `const examBadges = ` in astro.config.mjs");
+  if (start === -1)
+    throw new Error("Could not find `const examBadges = ` in astro.config.mjs");
 
   const block = extractBraceBlock(configText, configText.indexOf("{", start));
   const badges = {};
@@ -63,10 +65,14 @@ function parseExamBadges(configText) {
     const subBlock = extractBraceBlock(block, subBlockStart);
     badges[area] = {};
 
-    const entryRe = /"([A-Z]{2,3}-\d{3})":\s*\{\s*text:\s*"([^"]+)",\s*variant:\s*"([^"]+)"\s*\}/g;
+    const entryRe =
+      /"([A-Z]{2,3}-\d{3})":\s*\{\s*text:\s*"([^"]+)",\s*variant:\s*"([^"]+)"\s*\}/g;
     let entryMatch;
     while ((entryMatch = entryRe.exec(subBlock))) {
-      badges[area][entryMatch[1]] = { text: entryMatch[2], variant: entryMatch[3] };
+      badges[area][entryMatch[1]] = {
+        text: entryMatch[2],
+        variant: entryMatch[3],
+      };
     }
 
     areaRe.lastIndex = subBlockStart + subBlock.length;
@@ -85,9 +91,13 @@ function findExamPage(area, code) {
 
 function examNameFromPage(file, code) {
   const content = readFileSync(file, "utf8");
-  const match = content.match(new RegExp(`certification exam ${code}:\\s*([^.]+)\\.`, "i"));
+  const match = content.match(
+    new RegExp(`certification exam ${code}:\\s*([^.]+)\\.`, "i"),
+  );
   if (!match) {
-    throw new Error(`Could not find the exam name in ${file}'s description frontmatter`);
+    throw new Error(
+      `Could not find the exam name in ${file}'s description frontmatter`,
+    );
   }
   return match[1].trim();
 }
@@ -108,7 +118,9 @@ function main() {
 
       const page = findExamPage(area, code);
       if (!page) {
-        console.error(`WARNING: no exam page found for ${code} in ${area}; skipping.`);
+        console.error(
+          `WARNING: no exam page found for ${code} in ${area}; skipping.`,
+        );
         continue;
       }
 

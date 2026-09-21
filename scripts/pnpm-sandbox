@@ -1,0 +1,302 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+export LC_ALL=C
+IFS=$' \t\n'
+umask 077
+ASTRO=true
+
+die() { printf 'pnpm-sandbox: %s\n' "$*" >&2; exit 1; }
+usage() {
+  printf '%s\n' 'Usage: pnpm-sandbox {image|install|update <add|remove|update|install> [args...]|audit|run <lint|types:check|build|all>|exec <command> [args...]|status}'
+  if $ASTRO; then printf '%s\n' '       pnpm-sandbox dev [stop|status|logs]'; fi
+  printf '%s\n' 'Execution uses current Git-tracked files only; git add new source first.' 'Updates export untrusted metadata for manual review, never edit the checkout.'
+}
+[[ "$EUID" -ne 0 ]] || die 'refusing to run as root'
+case "${1:-}" in
+  -h|--help|help|'') [[ "$#" -le 1 ]] || die 'help takes no arguments'; usage; exit 0 ;;
+esac
+case "$1" in
+  image|install|audit|status) [[ "$#" -eq 1 ]] || die 'unexpected arguments' ;;
+  update) [[ "$#" -ge 2 ]] || die 'update requires an action'
+    case "$2" in add|remove|update|install) ;; *) die 'unsupported update action' ;; esac ;;
+  exec) [[ "$#" -ge 2 ]] || die 'exec requires a command' ;;
+  run) [[ "$#" -eq 2 ]] || die 'run requires exactly one target'
+    case "$2" in lint|types:check|build|all) ;; *) die 'unknown run target' ;; esac ;;
+  dev) $ASTRO || die 'unknown command'
+    [[ "$#" -le 2 ]] || die 'unexpected dev arguments'
+    case "${2:-}" in ''|stop|status|logs) ;; *) die 'unknown dev control' ;; esac ;;
+  *) die 'unknown command' ;;
+esac
+
+PROJECT_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
+[[ "$PROJECT_ROOT" =~ ^/[a-zA-Z0-9_./-]+$ ]] || die 'unsupported project path characters'
+[[ "$(git -C "$PROJECT_ROOT" rev-parse --show-toplevel)" == "$PROJECT_ROOT" ]] || die 'wrapper must be at the Git repository root'
+CONFIG="$PROJECT_ROOT/.sandbox/project.env"
+[[ ! -L "$PROJECT_ROOT/.sandbox" && ! -L "$CONFIG" && -f "$CONFIG" ]] || die 'missing or unsafe .sandbox/project.env'
+if IFS= read -r -d '' value < "$CONFIG"; then die 'NUL byte in config'; fi
+
+# Literal assignments only: no shell evaluation, expansion, or inherited defaults.
+PROJECT_ID="${PROJECT_ROOT##*/}"
+NODE_VERSION=24
+PNPM_VERSION=11.15.1
+AUDIT_COMMAND='audit --audit-level=high'
+LINT_COMMAND=
+TYPECHECK_COMMAND=
+BUILD_COMMAND=build
+BUILD_ENV=
+EXTRA_TMPFS=
+DEV_PORT=4321
+declare -A seen=()
+while IFS= read -r line || [[ -n "$line" ]]; do
+  [[ "$line" =~ ^[[:space:]]*(#.*)?$ ]] && continue
+  [[ "$line" =~ ^([A-Z_]+)=(.*)$ ]] || die 'malformed config assignment'
+  key="${BASH_REMATCH[1]}" value="${BASH_REMATCH[2]}"
+  case "$key" in
+    PROJECT_ID|NODE_VERSION|PNPM_VERSION|AUDIT_COMMAND|LINT_COMMAND|TYPECHECK_COMMAND|BUILD_COMMAND|BUILD_ENV|EXTRA_TMPFS) ;;
+    DEV_PORT) $ASTRO || die 'unknown config key: DEV_PORT' ;;
+    *) die "unknown config key: $key" ;;
+  esac
+  [[ ! -v "seen[$key]" ]] || die "duplicate config key: $key"
+  seen[$key]=1
+  if [[ "${value:0:1}" == '"' || "${value:0:1}" == "'" ]]; then
+    [[ "${#value}" -ge 2 && "${value: -1}" == "${value:0:1}" ]] || die "unmatched config quotes: $key"
+    value="${value:1:${#value}-2}"
+  fi
+  [[ "$value" != *[!\ -~]* ]] || die "control characters in config: $key"
+  [[ "$value" =~ ^[a-zA-Z0-9_./:@%+,=\ -]*$ ]] || die "unsafe config value: $key"
+  printf -v "$key" '%s' "$value"
+done < "$CONFIG"
+[[ "$PROJECT_ID" =~ ^[a-z0-9][a-z0-9-]{0,47}$ ]] || die 'PROJECT_ID must be 1-48 lowercase letters, digits or hyphens'
+[[ "$NODE_VERSION" == 24 ]] || die 'NODE_VERSION must be 24 (pinned Containerfile)'
+[[ "$PNPM_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || die 'PNPM_VERSION must be an exact stable version'
+[[ "$DEV_PORT" =~ ^[1-9][0-9]{0,4}$ ]] && (( DEV_PORT <= 65535 )) || die 'invalid DEV_PORT'
+BUILD_ENV_ARGS=() TMPFS_ARGS=()
+read -r -a env_words <<< "$BUILD_ENV"
+for value in "${env_words[@]}"; do
+  [[ "$value" =~ ^[a-zA-Z_][a-zA-Z0-9_]*=[a-zA-Z0-9_./:@%+,=-]*$ ]] || die 'BUILD_ENV requires explicit NAME=value assignments'
+  BUILD_ENV_ARGS+=(--env "$value")
+done
+read -r -a tmpfs_words <<< "$EXTRA_TMPFS"
+for value in "${tmpfs_words[@]}"; do
+  # One bounded, canonical option grammar; no arbitrary Podman mount options.
+  [[ "$value" =~ ^/workspace/([a-zA-Z0-9_-]+/)*[a-zA-Z0-9_.-]+:rw,nosuid,nodev,size=([1-9][0-9]{0,3})m$ ]] || die 'EXTRA_TMPFS requires /workspace/subdir:rw,nosuid,nodev,size=Nm (1-4096 MiB)'
+  (( BASH_REMATCH[2] <= 4096 )) || die 'EXTRA_TMPFS size exceeds 4096 MiB'
+  target="${value%%:*}"
+  case "$target/" in */../*|*/./*|*/.git/*|*/.sandbox/*|*/node_modules/*|*/.source/*|*/.next/*) die 'unsafe EXTRA_TMPFS target' ;; esac
+  TMPFS_ARGS+=(--tmpfs "$value")
+done
+for key in AUDIT_COMMAND LINT_COMMAND TYPECHECK_COMMAND BUILD_COMMAND; do
+  value="${!key}"
+  [[ -z "$value" || "$value" =~ ^[a-zA-Z0-9][a-zA-Z0-9_./:@%+,=\ -]*$ ]] || die "invalid command: $key"
+done
+
+ROOT_HASH="$(printf '%s' "$PROJECT_ROOT" | sha256sum)"
+ROOT_HASH="${ROOT_HASH:0:16}"
+PREFIX="$PROJECT_ID-$ROOT_HASH"
+IMAGE="localhost/${PREFIX}-pnpm-sandbox:node24-pnpm${PNPM_VERSION}"
+STORE_VOLUME="$PREFIX-pnpm-store"
+MODULES_VOLUME="$PREFIX-node-modules"
+SOURCE_VOLUME="$PREFIX-generated-source"
+NEXT_VOLUME="$PREFIX-build"
+DEV_CONTAINER_NAME="$PREFIX-pnpm-dev"
+PROJECT_LABEL=io.pnpm-sandbox.project
+RUN_LABEL=io.pnpm-sandbox.run
+command -v podman >/dev/null 2>&1 || die 'podman is not installed'
+[[ "$(podman info --format '{{.Host.Security.Rootless}}')" == true ]] || die 'Podman is not rootless'
+
+verify_dev() {
+  [[ "$(podman inspect --format "{{index .Config.Labels \"$PROJECT_LABEL\"}}" "$DEV_CONTAINER_NAME")" == "$PROJECT_ROOT" ]] || die 'dev container project label mismatch'
+}
+remove_owned() {
+  local cid="$1" status=0
+  podman container exists "$cid" || status=$?
+  [[ "$status" -ne 1 ]] || return 0
+  [[ "$status" -eq 0 ]] || return "$status"
+  [[ "$(podman inspect --format "{{index .Config.Labels \"$PROJECT_LABEL\"}}" "$cid")" == "$PROJECT_ROOT" &&
+     "$(podman inspect --format "{{index .Config.Labels \"$RUN_LABEL\"}}" "$cid")" == "${RUN_DIR##*/}" ]] || return 1
+  if [[ "$ACTIVE_KIND" == dev ]]; then
+    [[ "$(podman inspect --format '{{.Name}}' "$cid")" == "$DEV_CONTAINER_NAME" ]] || return 1
+  fi
+  podman rm --force --time 10 "$cid" >/dev/null
+}
+if [[ "$1" == dev && "$#" -eq 2 ]]; then
+  if ! podman container exists "$DEV_CONTAINER_NAME"; then
+    printf '%s\n' 'No sandbox dev container exists'; exit 1
+  fi
+  verify_dev
+  case "$2" in
+    stop) podman stop --time 10 "$DEV_CONTAINER_NAME" ;;
+    status) podman inspect --format 'Status={{.State.Status}}' "$DEV_CONTAINER_NAME"; podman port "$DEV_CONTAINER_NAME" ;;
+    logs) podman logs --follow "$DEV_CONTAINER_NAME" ;;
+  esac
+  exit 0
+fi
+if [[ "$1" == status ]]; then
+  printf 'Image: '
+  if podman image exists "$IMAGE"; then podman image inspect "$IMAGE" --format '{{.Id}}'; else printf 'missing\n'; fi
+  for volume in "$STORE_VOLUME" "$MODULES_VOLUME" "$SOURCE_VOLUME" "$NEXT_VOLUME"; do
+    if podman volume exists "$volume"; then printf '%s\n' "$volume"; fi
+  done
+  exit 0
+fi
+
+# /tmp must be the real, root-owned sticky directory. Never trust TMPDIR/XDG_RUNTIME_DIR.
+[[ ! -L /tmp && "$(stat -c '%u:%a' /tmp)" == 0:1777 ]] || die 'unsafe /tmp'
+RUNTIME_ROOT="/tmp/pnpm-sandbox-$EUID"
+if ! mkdir -m 700 -- "$RUNTIME_ROOT" 2>/dev/null; then
+  [[ ! -L "$RUNTIME_ROOT" && -d "$RUNTIME_ROOT" && "$(stat -c '%u:%a' "$RUNTIME_ROOT")" == "$EUID:700" ]] || die 'unsafe runtime directory'
+fi
+LOCK="$RUNTIME_ROOT/$ROOT_HASH.lock"
+[[ ! -L "$LOCK" && ( ! -e "$LOCK" || ( -f "$LOCK" && -O "$LOCK" ) ) ]] || die 'unsafe runtime lock'
+exec {LOCK_FD}> "$LOCK"
+flock -x "$LOCK_FD"
+RUN_DIR= CANDIDATE= CREATE_PID= CLIENT_PID= ACTIVE_KIND=
+cleanup() {
+  local result=$? cid
+  trap '' INT TERM HUP
+  trap - EXIT
+  if [[ -n "$CREATE_PID" ]]; then wait "$CREATE_PID" || :; fi
+  if [[ -n "$RUN_DIR" && -f "$RUN_DIR/cid" ]]; then
+    IFS= read -r cid < "$RUN_DIR/cid" || [[ -n "$cid" ]]
+    [[ "$cid" =~ ^[a-f0-9]{64}$ ]] || { printf 'Invalid container ID; retaining %s\n' "$RUN_DIR" >&2; exit 1; }
+    # Keep the lock and staging until removal succeeds, including on interrupts.
+    until remove_owned "$cid"; do
+      printf '%s\n' 'Container cleanup failed; retaining snapshot and lock, retrying in 2 seconds' >&2
+      sleep 2
+    done
+  fi
+  if [[ -n "$CLIENT_PID" ]]; then wait "$CLIENT_PID" || :; fi
+  if [[ -n "$RUN_DIR" ]]; then chmod -R u+rwX -- "$RUN_DIR" 2>/dev/null || :; rm -rf -- "$RUN_DIR"; fi
+  if [[ -n "$CANDIDATE" ]]; then chmod -R u+rwX -- "$CANDIDATE" 2>/dev/null || :; rm -rf -- "$CANDIDATE"; fi
+  exit "$result"
+}
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+trap 'exit 129' HUP
+
+if [[ "$1" == image ]]; then
+  podman build --pull=never --build-arg "PNPM_VERSION=$PNPM_VERSION" --tag "$IMAGE" --file "$PROJECT_ROOT/containers/pnpm/Containerfile" "$PROJECT_ROOT/containers/pnpm"
+  exit 0
+fi
+podman image exists "$IMAGE" || die 'image missing; run pnpm-sandbox image'
+for volume in "$STORE_VOLUME" "$MODULES_VOLUME" "$SOURCE_VOLUME" "$NEXT_VOLUME"; do
+  podman volume exists "$volume" || podman volume create "$volume" >/dev/null
+done
+RUN_DIR="$(mktemp -d /tmp/pnpm-sandbox-run.XXXXXX)"
+SNAPSHOT="$RUN_DIR/workspace"
+mkdir -- "$SNAPSHOT"
+git -C "$PROJECT_ROOT" ls-files --cached -z > "$RUN_DIR/tracked" || die 'git ls-files failed'
+METADATA=()
+validate_file() {
+  local base="$1" path="$2" part current="$1" pattern='^[][a-zA-Z0-9_@+./()& -]+$'
+  local -a parts=()
+  [[ "$path" =~ $pattern && "$path" != /* ]] || die 'unsupported tracked path characters'
+  IFS=/ read -r -a parts <<< "$path"
+  for part in "${parts[@]}"; do
+    [[ -n "$part" && "$part" != . && "$part" != .. ]] || die 'noncanonical tracked path'
+    current+="/$part"
+    [[ ! -L "$current" ]] || die "symlink rejected: $path"
+  done
+  [[ -f "$current" && "$(realpath -e -- "$current")" == "$base/$path" ]] || die "missing or nonregular file: $path"
+}
+while IFS= read -r -d '' path; do
+  case "/$path/" in
+    */.git/*|*/.sandbox/*|*/.env/*|*/.env.*/*|*/.npmrc/*|*/.ssh/*|*/.gnupg/*|*/node_modules/*|*/.next/*|*/.astro/*|*/.source/*|*/dist/*) continue ;;
+  esac
+  case "$path" in scripts/pnpm-sandbox|containers/*) continue ;; esac
+  validate_file "$PROJECT_ROOT" "$path"
+  mkdir -p -- "$SNAPSHOT/$(dirname -- "$path")"
+  cp --no-dereference --preserve=mode -- "$PROJECT_ROOT/$path" "$SNAPSHOT/$path"
+  validate_file "$SNAPSHOT" "$path"
+  case "$path" in package.json|*/package.json|pnpm-lock.yaml|pnpm-workspace.yaml) METADATA+=("$path") ;; esac
+done < "$RUN_DIR/tracked"
+[[ -f "$SNAPSHOT/package.json" && -f "$SNAPSHOT/pnpm-lock.yaml" ]] || die 'tracked package.json and pnpm-lock.yaml must be in snapshot'
+
+run_sandbox() {
+  local network="$1" kind="$2"; shift 2
+  local name="$PREFIX-${RUN_DIR##*/}" cid result=0
+  ACTIVE_KIND="$kind"
+  if [[ "$kind" == dev ]]; then name="$DEV_CONTAINER_NAME"; fi
+  local -a args=(create --init --name "$name" --pull never
+    --cidfile "$RUN_DIR/cid" --label "$PROJECT_LABEL=$PROJECT_ROOT" --label "$RUN_LABEL=${RUN_DIR##*/}"
+    --userns keep-id --user "$(id -u):$(id -g)"
+    --cap-drop all --security-opt no-new-privileges --read-only
+    --pids-limit 512 --memory 6g --memory-swap 6g --cpus 6
+    --stop-timeout 10 --shm-size 128m --ulimit nofile=4096:4096 --ipc private --pid private
+    --network "$network" --http-proxy=false
+    --env CI=true --env HOME=/tmp/home --env XDG_CACHE_HOME=/tmp/cache --env pnpm_config_store_dir=/pnpm/store
+    --tmpfs /tmp:rw,nosuid,nodev,size=4g,mode=1777
+    --tmpfs /opt/safe-chain/certs:rw,nosuid,nodev,size=1m,mode=1777
+    --workdir /workspace --volume "$SNAPSHOT:/workspace:rw"
+    --volume "$STORE_VOLUME:/pnpm/store:rw" --volume "$MODULES_VOLUME:/workspace/node_modules:rw"
+    --volume "$SOURCE_VOLUME:/workspace/.source:rw" --volume "$NEXT_VOLUME:/workspace/.next:rw")
+  if [[ "$kind" == dev ]]; then
+    if podman container exists "$DEV_CONTAINER_NAME"; then
+      verify_dev
+      [[ "$(podman inspect --format '{{.State.Running}}' "$DEV_CONTAINER_NAME")" == false ]] || die 'dev container already running; use dev stop or dev logs'
+      podman rm "$DEV_CONTAINER_NAME" >/dev/null
+    fi
+    args+=(--log-driver k8s-file --log-opt max-size=10mb --publish "127.0.0.1:$DEV_PORT:$DEV_PORT")
+  else
+    args+=(--timeout 1800 --log-driver none)
+  fi
+  args+=("${BUILD_ENV_ARGS[@]}" "${TMPFS_ARGS[@]}")
+  podman "${args[@]}" "$IMAGE" "$@" &
+  CREATE_PID=$!
+  wait "$CREATE_PID" || result=$?
+  CREATE_PID=
+  (( result == 0 )) || return "$result"
+  IFS= read -r cid < "$RUN_DIR/cid" || [[ -n "$cid" ]]
+  [[ "$cid" =~ ^[a-f0-9]{64}$ ]] || die 'invalid container ID'
+  podman start --attach "$cid" &
+  CLIENT_PID=$!
+  wait "$CLIENT_PID" || result=$?
+  CLIENT_PID=
+  # No container process may race candidate validation/copy or the next command.
+  remove_owned "$cid"
+  rm -f -- "$RUN_DIR/cid"
+  return "$result"
+}
+run_configured() {
+  local key="$1" network="$2" skip="${3:-false}" value
+  local -a command_args=()
+  value="${!key}"
+  if [[ -z "$value" ]]; then
+    if "$skip"; then printf '%s is not configured; skipping\n' "$key"; return; fi
+    die "$key is not configured"
+  fi
+  read -r -a command_args <<< "$value"
+  run_sandbox "$network" batch "${command_args[@]}"
+}
+ONLINE=slirp4netns:allow_host_loopback=false
+case "$1" in
+  install) run_sandbox "$ONLINE" batch install --frozen-lockfile ;;
+  update)
+    shift
+    for value in "$@"; do [[ "$value" != -- ]] || die 'update does not accept -- (it would disable mandatory safety flags)'; done
+    run_sandbox "$ONLINE" batch "$@" --ignore-scripts --ignore-pnpmfile --no-frozen-lockfile
+    # Paths were captured before execution. Never export new manifests or scripts.
+    for path in "${METADATA[@]}"; do validate_file "$SNAPSHOT" "$path"; done
+    CANDIDATE="$(mktemp -d /tmp/pnpm-sandbox-update.XXXXXX)"
+    for path in "${METADATA[@]}"; do
+      validate_file "$SNAPSHOT" "$path"
+      mkdir -p -- "$CANDIDATE/$(dirname -- "$path")"
+      cp --no-dereference --preserve=mode -- "$SNAPSHOT/$path" "$CANDIDATE/$path"
+      validate_file "$CANDIDATE" "$path"
+    done
+    printf 'Untrusted update candidate: %s\n' "$CANDIDATE"
+    printf '%s\n' 'Review every file, including package scripts and workspace settings, before manually applying metadata. The checkout is unchanged.'
+    CANDIDATE=
+    ;;
+  audit) run_configured AUDIT_COMMAND "$ONLINE" ;;
+  run)
+    case "$2" in
+       lint) run_configured LINT_COMMAND "$ONLINE" ;;
+       types:check) run_configured TYPECHECK_COMMAND "$ONLINE" ;;
+       build) run_configured BUILD_COMMAND "$ONLINE" ;;
+       all) run_configured LINT_COMMAND "$ONLINE" true; run_configured TYPECHECK_COMMAND "$ONLINE" true; run_configured BUILD_COMMAND "$ONLINE" true ;;
+    esac ;;
+  exec) shift; run_sandbox none batch exec "$@" ;;
+  dev) run_sandbox "$ONLINE" dev dev --host 0.0.0.0 --port "$DEV_PORT" --ignore-lock ;;
+esac

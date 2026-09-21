@@ -4,9 +4,22 @@ on:
   push:
     paths:
       - "mcp-worker/**"
+      - "src/content/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".node-version"
+      - ".github/workflows/deploy-mcp.yml"
     branches:
       - main
   workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-mcp-production
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -16,27 +29,31 @@ jobs:
       run:
         working-directory: mcp-worker
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
         with:
           version: 11.15.1
 
       - name: Setup Node
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version: 22
+          node-version-file: .node-version
+          cache: pnpm
 
       - name: Install dependencies
         working-directory: .
-        run: pnpm install --frozen-lockfile --filter @msfthub/mcp-worker
+        run: pnpm install --frozen-lockfile
 
-      - name: Bundle content
-        run: pnpm bundle
+      - name: Test and type-check worker
+        run: pnpm check
+
+      - name: Build worker
+        run: pnpm build
 
       - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v4
+        uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

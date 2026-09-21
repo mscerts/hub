@@ -1,0 +1,30 @@
+FROM docker.io/library/node:24-bookworm@sha256:5a750d3be5e5c80275f8c9a5367c3aed99c2875656590c8d0701c7ee687f5f0a
+
+ARG PNPM_VERSION=11.15.1
+ARG SAFE_CHAIN_VERSION=1.5.15
+ARG SAFE_CHAIN_SHA256=de0565e3d6346407a604e84e639e95fea8758748063da2216bbfdca5feda5dd2
+
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends ca-certificates curl git python3 make g++ \
+    && curl --fail --silent --show-error --location \
+      "https://github.com/AikidoSec/safe-chain/releases/download/${SAFE_CHAIN_VERSION}/install-safe-chain.sh" \
+      --output /tmp/install-safe-chain.sh \
+    && echo "${SAFE_CHAIN_SHA256}  /tmp/install-safe-chain.sh" | sha256sum --check --strict - \
+    && sh /tmp/install-safe-chain.sh --ci --install-dir /opt/safe-chain \
+    && rm -- /tmp/install-safe-chain.sh \
+    && npm install --global "pnpm@${PNPM_VERSION}" \
+    && /opt/safe-chain/bin/safe-chain --version \
+    && chown -R node:node /opt/safe-chain/certs \
+    && npm cache clean --force \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /workspace /pnpm/store \
+    && chown -R node:node /workspace /pnpm
+
+ENV PNPM_STORE_DIR=/pnpm/store
+ENV PATH=/opt/safe-chain/shims:/opt/safe-chain/bin:${PATH}
+
+USER node
+WORKDIR /workspace
+
+ENTRYPOINT ["pnpm"]
+CMD ["--version"]

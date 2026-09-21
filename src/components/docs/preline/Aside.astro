@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"aside"> {
+  type?: "note" | "tip" | "caution" | "danger";
+  title?: string;
+}
+
+const { type = "note", title, class: className, ...attrs } = Astro.props;
+const config = {
+  note: { label: "Note", icon: "ph:info", classes: "border-info/30 bg-info-muted text-info" },
+  tip: { label: "Tip", icon: "ph:lightbulb", classes: "border-success/30 bg-success-muted text-success" },
+  caution: { label: "Caution", icon: "ph:warning", classes: "border-warning/30 bg-warning-muted text-warning" },
+  danger: { label: "Danger", icon: "ph:warning-circle", classes: "border-danger/30 bg-danger-muted text-danger" },
+} as const;
+const c = config[type] ?? config.note;
+const displayTitle = title ?? c.label;
+---
+
+<aside
+  role="note"
+  aria-label={displayTitle}
+  class:list={[
+    "not-prose my-5 flex gap-x-3 rounded-lg border p-4",
+    c.classes,
+    className,
+  ]}
+  {...attrs}
+>
+  <Icon name={c.icon} class="mt-0.5 size-5 shrink-0" aria-hidden="true" />
+  <div class="min-w-0 text-sm leading-6">
+    <p class="m-0 font-semibold">{displayTitle}</p>
+    <div class="mt-1 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0"><slot /></div>
+  </div>
+</aside>

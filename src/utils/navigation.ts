@@ -3,20 +3,18 @@ import { DISCORD_URL } from "@data/constants";
 // An array of links for navigation bar
 const navBarLinks = [
   { name: "Home", url: "/" },
-  { name: "Wiki", url: "/wiki/" },
   { name: "News", url: "/news/" },
-  { name: "Vouchers", url: "/vouchers/" },
-  { name: "Labs", url: "/labs/" },
-//  { name: "Certifications", url: "#" },
+  { name: "Certification Hub", url: "/certs/" },
+  //  { name: "Certifications", url: "#" },
 ];
 // An array of links for footer
 const footerLinks = [
   {
     section: "Resources",
     links: [
-      { name: "Study Materials", url: "/wiki" },
-      { name: "Labs", url: "/labs/" },
-      { name: "Contributing", url: "/contributing/" },
+      { name: "Study Materials", url: "/certs/" },
+      { name: "Labs", url: "/certs/labs/" },
+      { name: "Contributing", url: "/certs/contributing/" },
       { name: "Privacy Policy", url: "/privacy" },
       { name: "Contact", url: "/contact" },
     ],
@@ -24,9 +22,18 @@ const footerLinks = [
   {
     section: "Community",
     links: [
-      { name: "r/O365Certification", url: "https://www.reddit.com/r/O365Certification/" },
-      { name: "r/SCICertifications", url: "https://www.reddit.com/r/SCICertifications/" },
-      { name: "r/AzureCertifications", url: "https://www.reddit.com/r/AzureCertifications/" },
+      {
+        name: "r/O365Certification",
+        url: "https://www.reddit.com/r/O365Certification/",
+      },
+      {
+        name: "r/SCICertifications",
+        url: "https://www.reddit.com/r/SCICertifications/",
+      },
+      {
+        name: "r/AzureCertifications",
+        url: "https://www.reddit.com/r/AzureCertifications/",
+      },
       { name: "Discord Server", url: DISCORD_URL },
     ],
   },

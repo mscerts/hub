@@ -30,13 +30,24 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 
 const CONFIG_FILE = process.env.CONFIG_FILE ?? join(root, "astro.config.mjs");
-const OUTPUT_FILE = process.env.OUTPUT_FILE ?? join(root, "src", "data_files", "retiring-exams.json");
+const OUTPUT_FILE =
+  process.env.OUTPUT_FILE ??
+  join(root, "src", "data_files", "retiring-exams.json");
 const DOCS_DIR = join(root, "src", "content", "docs");
 
 const MONTHS = {
-  january: "01", february: "02", march: "03", april: "04",
-  may: "05", june: "06", july: "07", august: "08",
-  september: "09", october: "10", november: "11", december: "12",
+  january: "01",
+  february: "02",
+  march: "03",
+  april: "04",
+  may: "05",
+  june: "06",
+  july: "07",
+  august: "08",
+  september: "09",
+  october: "10",
+  november: "11",
+  december: "12",
 };
 
 // ---------------------------------------------------------------------------
@@ -58,7 +69,8 @@ function extractBraceBlock(text, openIndex) {
 function parseExamBadges(configText) {
   const marker = "const examBadges = ";
   const start = configText.indexOf(marker);
-  if (start === -1) throw new Error("Could not find `const examBadges = ` in astro.config.mjs");
+  if (start === -1)
+    throw new Error("Could not find `const examBadges = ` in astro.config.mjs");
 
   const block = extractBraceBlock(configText, configText.indexOf("{", start));
   const badges = {};
@@ -71,10 +83,14 @@ function parseExamBadges(configText) {
     const subBlock = extractBraceBlock(block, subBlockStart);
     badges[area] = {};
 
-    const entryRe = /"([A-Z]{2,3}-\d{3})":\s*\{\s*text:\s*"([^"]+)",\s*variant:\s*"([^"]+)"\s*\}/g;
+    const entryRe =
+      /"([A-Z]{2,3}-\d{3})":\s*\{\s*text:\s*"([^"]+)",\s*variant:\s*"([^"]+)"\s*\}/g;
     let entryMatch;
     while ((entryMatch = entryRe.exec(subBlock))) {
-      badges[area][entryMatch[1]] = { text: entryMatch[2], variant: entryMatch[3] };
+      badges[area][entryMatch[1]] = {
+        text: entryMatch[2],
+        variant: entryMatch[3],
+      };
     }
 
     areaRe.lastIndex = subBlockStart + subBlock.length;
@@ -92,8 +108,13 @@ function findExamPage(area, code) {
 }
 
 function examNameFromPage(content, code) {
-  const match = content.match(new RegExp(`certification exam ${code}:\\s*([^.]+)\\.`, "i"));
-  if (!match) throw new Error(`Could not find the exam name in the description frontmatter for ${code}`);
+  const match = content.match(
+    new RegExp(`certification exam ${code}:\\s*([^.]+)\\.`, "i"),
+  );
+  if (!match)
+    throw new Error(
+      `Could not find the exam name in the description frontmatter for ${code}`,
+    );
   return match[1].trim();
 }
 
@@ -107,21 +128,29 @@ function isoDateFromHumanDate(humanDate) {
 }
 
 function retirementDateFromPage(content, code) {
-  const bannerMatch = content.match(/<RetirementBanner[^>]*\bretireDate="([^"]+)"/);
+  const bannerMatch = content.match(
+    /<RetirementBanner[^>]*\bretireDate="([^"]+)"/,
+  );
   if (bannerMatch) return isoDateFromHumanDate(bannerMatch[1]);
 
-  const inlineMatch = content.match(/retir(?:ed|ing|es?)[^.\n]*?\bon\s+([A-Za-z]+\s+\d{1,2},\s*\d{4})/i);
+  const inlineMatch = content.match(
+    /retir(?:ed|ing|es?)[^.\n]*?\bon\s+([A-Za-z]+\s+\d{1,2},\s*\d{4})/i,
+  );
   if (inlineMatch) return isoDateFromHumanDate(inlineMatch[1]);
 
   // MS-102-style pages that mention a pushed-back date after an initial strikethrough estimate.
-  const updateMatch = content.match(/pushed the retirement date to\s+([A-Za-z]+\s+\d{1,2},\s*\d{4})/i);
+  const updateMatch = content.match(
+    /pushed the retirement date to\s+([A-Za-z]+\s+\d{1,2},\s*\d{4})/i,
+  );
   if (updateMatch) return isoDateFromHumanDate(updateMatch[1]);
 
   throw new Error(`Could not find a retirement date on the ${code} exam page`);
 }
 
 function replacementCodeFromPage(content) {
-  const bannerMatch = content.match(/<RetirementBanner[^>]*\breplacementCode="([^"]+)"/);
+  const bannerMatch = content.match(
+    /<RetirementBanner[^>]*\breplacementCode="([^"]+)"/,
+  );
   if (bannerMatch) return bannerMatch[1];
 
   const inlineMatch = content.match(/replaced by \[([A-Z]{2,3}-\d{3})/i);
@@ -151,7 +180,9 @@ function main() {
 
       const page = findExamPage(area, code);
       if (!page) {
-        console.error(`WARNING: no exam page found for ${code} in ${area}; skipping.`);
+        console.error(
+          `WARNING: no exam page found for ${code} in ${area}; skipping.`,
+        );
         continue;
       }
 
@@ -170,7 +201,9 @@ function main() {
         notified: prev?.notified ?? false,
         ...(prev?.notifiedAt ? { notifiedAt: prev.notifiedAt } : {}),
       });
-      console.log(`Found retiring exam: ${code} (${area}) — retires ${retirementDate}`);
+      console.log(
+        `Found retiring exam: ${code} (${area}) — retires ${retirementDate}`,
+      );
     }
   }
 

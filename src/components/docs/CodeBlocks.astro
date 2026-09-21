@@ -1,0 +1,159 @@
+<script>
+  const languageNames: Record<string, string> = {
+    bash: "Bash",
+    css: "CSS",
+    html: "HTML",
+    javascript: "JavaScript",
+    js: "JavaScript",
+    json: "JSON",
+    md: "Markdown",
+    mdx: "MDX",
+    powershell: "PowerShell",
+    py: "Python",
+    python: "Python",
+    sh: "Shell",
+    sql: "SQL",
+    ts: "TypeScript",
+    tsx: "TSX",
+    typescript: "TypeScript",
+    yaml: "YAML",
+    yml: "YAML",
+  };
+
+  const getLanguage = (block: HTMLElement) => {
+    const language = block.dataset.language || `${block.className} ${block.querySelector("code")?.className ?? ""}`.match(/language-([\w-]+)/)?.[1];
+    return language ? languageNames[language] ?? language : "Code";
+  };
+
+  async function copyCode(code: string) {
+    if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(code);
+        return;
+      } catch {
+        // Fall back when the browser denies clipboard permission.
+      }
+    }
+    const textarea = document.createElement("textarea");
+    textarea.value = code;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.append(textarea);
+    textarea.select();
+    if (!document.execCommand("copy")) throw new Error("Copy command failed");
+    textarea.remove();
+  }
+
+  function initCodeBlocks() {
+    document.querySelectorAll<HTMLElement>(".docs-content pre.astro-code").forEach((block) => {
+      if (block.parentElement?.dataset.docsCodeBlock) return;
+      const wrapper = document.createElement("div");
+      wrapper.dataset.docsCodeBlock = "true";
+      wrapper.className = "docs-code-block";
+      block.replaceWith(wrapper);
+      wrapper.append(block);
+
+      const toolbar = document.createElement("div");
+      toolbar.className = "docs-code-toolbar";
+      const language = document.createElement("span");
+      language.className = "docs-code-language";
+      language.textContent = getLanguage(block);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "docs-code-copy";
+      button.textContent = "Copy";
+      button.addEventListener("click", async () => {
+        button.disabled = true;
+        try {
+          await copyCode(block.querySelector("code")?.textContent ?? block.textContent ?? "");
+          button.textContent = "Copied";
+        } catch {
+          button.textContent = "Unable to copy";
+        }
+        window.setTimeout(() => {
+          button.textContent = "Copy";
+          button.disabled = false;
+        }, 1600);
+      });
+      toolbar.append(language, button);
+      wrapper.prepend(toolbar);
+    });
+  }
+
+  initCodeBlocks();
+  document.addEventListener("astro:page-load", initCodeBlocks);
+</script>
+
+<style is:global>
+  .docs-code-block {
+    position: relative;
+    margin-block: 1.5rem;
+    overflow: hidden;
+    border: 1px solid var(--nb-border);
+    border-radius: 0.75rem;
+    background: #0d1117;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .docs-code-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 2.5rem;
+    padding: 0.45rem 0.7rem 0.45rem 1rem;
+    border-bottom: 1px solid rgb(255 255 255 / 0.1);
+    background: rgb(255 255 255 / 0.045);
+  }
+
+  .docs-code-language {
+    color: #a9b4c2;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .docs-code-copy {
+    padding: 0.3rem 0.55rem;
+    border: 1px solid rgb(255 255 255 / 0.16);
+    border-radius: 0.35rem;
+    color: #d8dee9;
+    font-size: 0.75rem;
+    line-height: 1;
+    transition: background-color 140ms ease, border-color 140ms ease;
+  }
+
+  .docs-code-copy:hover,
+  .docs-code-copy:focus-visible {
+    border-color: rgb(255 255 255 / 0.3);
+    background: rgb(255 255 255 / 0.1);
+  }
+
+  .docs-code-copy:focus-visible {
+    outline: 2px solid var(--nb-info);
+    outline-offset: 2px;
+  }
+
+  .docs-code-block > pre.astro-code {
+    max-height: 36rem;
+    margin: 0;
+    overflow: auto;
+    padding: 1rem 1.1rem;
+    border: 0;
+    border-radius: 0;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+
+  .docs-code-block > pre.astro-code code {
+    display: block;
+    min-width: max-content;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .docs-code-copy {
+      transition: none;
+    }
+  }
+</style>

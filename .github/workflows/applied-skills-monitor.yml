@@ -2,7 +2,7 @@ name: Applied Skills Monitor
 
 on:
   schedule:
-    - cron: "30 6 * * 1"  # Monday 06:30 UTC (offset from the MeasureUp monitor so both can push)
+    - cron: "30 6 * * 1" # Monday 06:30 UTC (offset from the MeasureUp monitor so both can push)
   workflow_dispatch:
 
 concurrency:

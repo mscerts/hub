@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Thanks for helping expand the Hub! Fill in the details below.
-        Before submitting, check that the page doesn't already exist on [msfthub.com/wiki](https://msfthub.com/wiki).
+        Before submitting, check that the page doesn't already exist on [msfthub.com/certs](https://msfthub.com/certs).
 
   - type: input
     id: exam-code
@@ -68,7 +68,7 @@ body:
       options:
         - label: I searched existing issues and PRs for this exam code
           required: true
-        - label: I verified this page does not already exist on msfthub.com/wiki
+        - label: I verified this page does not already exist on msfthub.com/certs
           required: true
         - label: The exam URL I provided is confirmed to be live on Microsoft Learn
           required: true

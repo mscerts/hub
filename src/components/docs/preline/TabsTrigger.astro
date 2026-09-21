@@ -1,0 +1,7 @@
+---
+import type { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"button"> { value: string; }
+const { value, class: className, ...attrs } = Astro.props;
+const target = `docs-manual-${value.replace(/[^a-z0-9]+/gi, "-")}`;
+---
+<button type="button" role="tab" data-docs-tabs-trigger data-hs-tab={`#${target}`} aria-controls={target} class:list={["-mb-px shrink-0 border-b-2 border-transparent px-4 py-3 text-sm font-medium text-muted-foreground transition hover:border-border-strong hover:text-foreground", className]} {...attrs}><slot /></button>

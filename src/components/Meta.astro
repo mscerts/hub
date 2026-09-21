@@ -1,47 +1,53 @@
 ---
 import { getImage } from "astro:assets";
-import { OG, SEO, SITE, VERIFICATIONS } from "@data/constants";
+import { OG, SITE } from "@data/constants";
 import faviconSvgSrc from "@images/favicon.svg";
 import faviconSrc from "@images/favicon.svg";
 
-// Default properties for the Meta component. These values are used if props are not provided.
-// 'meta' sets a default description meta tag to describe the page content.
-// 'structuredData' defines default structured data in JSON-LD format to enhance search engine understanding of the page (for SEO purposes).
-const defaultProps = {
-  meta: SITE.description,
-  structuredData: SEO.structuredData,
-  customDescription: null,
-  customOgTitle: null,
-};
-
-// Extract props with default values assigned from defaultProps. Values can be overridden when the component is used.
-// For example:
-// <MainLayout title="Custom Title" meta="Custom description." />
 const {
-  meta = defaultProps.meta,
-  structuredData = defaultProps.structuredData,
-  customDescription = defaultProps.customDescription,
-  customOgTitle = defaultProps.customOgTitle,
+  title = SITE.title,
+  meta = SITE.description,
+  structuredData,
+  noindex = false,
+  customDescription = null,
+  customOgTitle = null,
 } = Astro.props;
 
-// Use custom description if provided, otherwise use default meta
 const description = customDescription || meta;
-// Use custom OG title if provided, otherwise use default OG title
-const ogTitle = customOgTitle || OG.title;
-const ogDescription = customDescription || OG.description;
+const ogTitle = customOgTitle || title;
+const ogDescription = customDescription || meta;
 
-// Define the metadata for your website and individual pages
-const URL = `${Astro.site}`;
-const canonical = Astro.url.href;
+const siteUrl = (Astro.site ?? Astro.url.origin).toString().replace(/\/$/, "");
+const pathname = Astro.url.pathname.endsWith("/")
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+const canonical = new URL(pathname, `${siteUrl}/`).href;
+const defaultStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  inLanguage: "en-US",
+  "@id": canonical,
+  url: canonical,
+  name: title,
+  description,
+  isPartOf: {
+    "@type": "WebSite",
+    url: `${siteUrl}/`,
+    name: SITE.title,
+    description: SITE.description,
+  },
+};
+const pageStructuredData =
+  structuredData === false ? null : (structuredData ?? defaultStructuredData);
 const socialImageRes = await getImage({
   src: OG.image,
   width: 1200,
   height: 600,
-  format: 'png'
+  format: "png",
 });
-const socialImage = socialImageRes.src.startsWith('http') 
-  ? socialImageRes.src 
-  : `${Astro.url.origin}${socialImageRes.src}`; // Get the full URL of the image
+const socialImage = socialImageRes.src.startsWith("http")
+  ? socialImageRes.src
+  : new URL(socialImageRes.src, `${Astro.url.origin}/`).href;
 
 const languages: { [key: string]: string } = {
   en: "",
@@ -53,7 +59,7 @@ function createHref(prefix: string, path: string): string {
   const basePath = prefix ? `/${prefix}${cleanPath}` : cleanPath;
   const normalizedBasePath = basePath.replace(/\/\/+/g, "/");
 
-  return `${URL.slice(0, -1)}${normalizedBasePath}`;
+  return `${siteUrl}${normalizedBasePath}`;
 }
 
 const fullPath: string = Astro.url.pathname;
@@ -81,12 +87,14 @@ const appleTouchIcon = await getImage({
 });
 ---
 
-{/*  Inject structured data into the page if provided. This data is formatted as JSON-LD, a method recommended by Google for structured data pass:
-     https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data */}{
-  structuredData && (
+{
+  /*  Inject structured data into the page if provided. This data is formatted as JSON-LD, a method recommended by Google for structured data pass:
+     https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data */
+}{
+  pageStructuredData && (
     <script
       type="application/ld+json"
-      set:html={JSON.stringify(structuredData)}
+      set:html={JSON.stringify(pageStructuredData)}
       is:inline
     />
   )
@@ -94,6 +102,7 @@ const appleTouchIcon = await getImage({
 {/* Define the character set, description, author, and viewport settings */}
 <meta charset="utf-8" />
 <meta content={description} name="description" />
+{noindex && <meta name="robots" content="noindex, follow" />}
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"

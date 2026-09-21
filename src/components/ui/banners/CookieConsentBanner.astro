@@ -32,15 +32,24 @@ interface Props {
         <div class="flex flex-col gap-2">
           <button
             id="banner-accept-mobile"
+            type="button"
             class="w-full px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
           >
             Accept All
           </button>
           <button
             id="banner-customize-mobile"
+            type="button"
             class="w-full px-3 py-2 text-xs font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
           >
             Customize
+          </button>
+          <button
+            id="banner-reject-mobile"
+            type="button"
+            class="w-full px-3 py-2 text-xs font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
+          >
+            Reject All
           </button>
         </div>
       </div>
@@ -57,12 +66,21 @@ interface Props {
         <div class="flex items-center gap-3">
           <button
             id="banner-customize-desktop"
+            type="button"
             class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
           >
             Customize
           </button>
           <button
+            id="banner-reject-desktop"
+            type="button"
+            class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
+          >
+            Reject All
+          </button>
+          <button
             id="banner-accept-desktop"
+            type="button"
             class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
           >
             Accept All
@@ -80,65 +98,82 @@ interface Props {
       // Set up event handlers immediately like announcement banner
       const acceptMobile = this.querySelector('#banner-accept-mobile');
       const acceptDesktop = this.querySelector('#banner-accept-desktop');
-      const customizeMobile = this.querySelector('#banner-customize-mobile');
-      const customizeDesktop = this.querySelector('#banner-customize-desktop');
+       const customizeMobile = this.querySelector('#banner-customize-mobile');
+       const customizeDesktop = this.querySelector('#banner-customize-desktop');
+       const rejectMobile = this.querySelector('#banner-reject-mobile');
+       const rejectDesktop = this.querySelector('#banner-reject-desktop');
       
-      // EXACT same pattern as announcement banner
-      if (acceptMobile != null) {
-        acceptMobile.addEventListener('click', () => {
-          console.log('Mobile Accept clicked - removing element');
-          this.remove();
-          console.log('Element removed, now accepting cookies');
-          cookieConsentManager.acceptAll();
+       if (acceptMobile != null) {
+         acceptMobile.addEventListener('click', () => {
+           this.hideBanner();
+           cookieConsentManager.acceptAll();
         });
       }
       
-      if (acceptDesktop != null) {
-        acceptDesktop.addEventListener('click', () => {
-          console.log('Desktop Accept clicked - removing element');
-          this.remove();
-          console.log('Element removed, now accepting cookies');
-          cookieConsentManager.acceptAll();
+       if (acceptDesktop != null) {
+         acceptDesktop.addEventListener('click', () => {
+           this.hideBanner();
+           cookieConsentManager.acceptAll();
         });
       }
 
-      if (customizeMobile != null) {
-        customizeMobile.addEventListener('click', () => {
-          this.remove();
-          const modal = (window as any).cookieConsentModal;
-          if (modal) {
-            modal.show();
-          }
+       if (customizeMobile != null) {
+         customizeMobile.addEventListener('click', () => {
+           this.hideBanner();
+           window.dispatchEvent(new CustomEvent('openCookiePreferences'));
         });
       }
       
-      if (customizeDesktop != null) {
-        customizeDesktop.addEventListener('click', () => {
-          this.remove();
-          const modal = (window as any).cookieConsentModal;
-          if (modal) {
-            modal.show();
-          }
-        });
-      }
-      
-      // Show the banner
-      this.showBannerIfNeeded();
-    }
+       if (customizeDesktop != null) {
+         customizeDesktop.addEventListener('click', () => {
+           this.hideBanner();
+           window.dispatchEvent(new CustomEvent('openCookiePreferences'));
+         });
+       }
 
-    showBannerIfNeeded() {
-      const state = cookieConsentManager.getState();
-      if (!state.preferences) {
-        setTimeout(() => {
-          const banner = this.querySelector('#cookie-consent-banner') as HTMLElement;
-          if (banner && !cookieConsentManager.getState().preferences) {
-            banner.style.visibility = 'visible';
-            banner.style.opacity = '1';
-            banner.style.transition = 'opacity 0.3s ease-in-out';
-          }
-        }, 1000);
-      }
-    }
+       if (rejectMobile != null) {
+         rejectMobile.addEventListener('click', () => {
+           this.hideBanner();
+           cookieConsentManager.rejectAll();
+         });
+       }
+
+       if (rejectDesktop != null) {
+         rejectDesktop.addEventListener('click', () => {
+           this.hideBanner();
+           cookieConsentManager.rejectAll();
+         });
+       }
+      
+       this.showBannerIfNeeded();
+       window.addEventListener('cookiePreferencesClosed', () => this.showBannerIfNeeded());
+     }
+
+     showBannerIfNeeded() {
+       const state = cookieConsentManager.getState();
+       const banner = this.querySelector('#cookie-consent-banner') as HTMLElement;
+       if (!banner) return;
+
+       if (!state.preferences) {
+         setTimeout(() => {
+           if (!cookieConsentManager.getState().preferences) {
+             banner.style.visibility = 'visible';
+             banner.style.opacity = '1';
+             banner.style.transition = 'opacity 0.3s ease-in-out';
+           }
+         }, 1000);
+       } else {
+         this.hideBanner();
+       }
+     }
+
+     hideBanner() {
+       const banner = this.querySelector('#cookie-consent-banner') as HTMLElement;
+       if (banner) {
+         banner.style.visibility = 'hidden';
+         banner.style.opacity = '0';
+       }
+     }
   }
 
   customElements.define("cookie-consent-banner", CookieConsentBanner);

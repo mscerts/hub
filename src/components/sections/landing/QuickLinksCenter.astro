@@ -1,0 +1,409 @@
+---
+import { getCollection } from "astro:content";
+import Icon from "@components/ui/icons/Icon.astro";
+import { Icon as PackIcon } from "astro-icon/components";
+import MeasureUpBanner from "../../../assets/images/mUjulybanner.png";
+import {
+  examStatuses,
+  examStatusNames,
+} from "@data/exam-status.mjs";
+
+const docs = await getCollection("docs");
+
+const resourceLinks = [
+  {
+    label: "Labs",
+    description: "Hands-on exercises from Microsoft Learn and GitHub.",
+    href: "/certs/labs/",
+    icon: "ph:puzzle-piece-fill",
+    iconClass: "text-blue-300",
+  },
+  {
+    label: "Vouchers",
+    description: "Current discounts and official exam opportunities.",
+    href: "/certs/vouchers/",
+    icon: "ph:currency-circle-dollar-fill",
+    iconClass: "text-orange-300",
+  },
+  {
+    label: "Latest updates",
+    description: "Exam changes, certification news, and community posts.",
+    href: "/news/",
+    icon: "ph:warning-circle-fill",
+    iconClass: "text-blue-300",
+  },
+];
+
+const communityLinks = [
+  {
+    label: "Microsoft Certification Hub",
+    href: "https://discord.gg/microsoft-certification-study-group-676990910176821270",
+    icon: "discord",
+  },
+  {
+    label: "r/O365Certification",
+    href: "https://www.reddit.com/r/O365Certification/",
+    icon: "reddit",
+  },
+  {
+    label: "r/SCICertifications",
+    href: "https://www.reddit.com/r/SCICertifications/",
+    icon: "reddit",
+  },
+  {
+    label: "r/AzureCertifications",
+    href: "https://www.reddit.com/r/AzureCertifications/",
+    icon: "reddit",
+  },
+];
+
+const statusChanges = Object.entries(examStatuses).flatMap(([area, exams]) =>
+  Object.entries(exams).map(([code, status]) => ({
+    code,
+    status: status.text,
+    href: `/${area}/${code.toLowerCase()}/`,
+  })),
+);
+
+const getStatusClass = (status: string) => {
+  switch (status) {
+    case "BETA":
+      return "bg-[#a855f7]/15 text-[#d8b4fe]";
+    case "GA":
+      return "bg-green-400/15 text-green-300";
+    case "AT RISK":
+      return "bg-amber-400/15 text-amber-300";
+    case "RETIRING":
+      return "bg-red-400/15 text-red-300";
+    default:
+      return "bg-slate-400/15 text-slate-300";
+  }
+};
+const getStatusName = (status: string) =>
+  examStatusNames[status as keyof typeof examStatusNames] ?? status;
+
+const voucherLabels = {
+  "100%": "100% off",
+  "50%": "50% off",
+  Special: "Special",
+};
+
+const getVoucherLabel = (category: string | undefined) => {
+  if (category === "100%" || category === "50%" || category === "Special") {
+    return voucherLabels[category];
+  }
+
+  return "Special";
+};
+
+const getVoucherBadgeClass = (category: string | undefined) => {
+  switch (category) {
+    case "100%":
+      return "bg-[#a855f7]/15 text-[#d8b4fe]";
+    case "50%":
+      return "bg-blue-400/15 text-blue-300";
+    case "Special":
+    default:
+      return "bg-blue-400/15 text-blue-300";
+  }
+};
+
+const vouchers = docs
+  .filter((doc) => doc.id.startsWith("vouchers/") && doc.data.voucherCategory)
+  .sort((left, right) => left.data.title.localeCompare(right.data.title))
+  .slice(0, 8);
+---
+
+<section
+  class="mx-auto max-w-[85rem] px-4 pt-10 pb-16 sm:px-6 lg:px-8 lg:pt-14 lg:pb-20"
+>
+  <header
+    class="max-w-3xl border-b border-neutral-300 pb-8 dark:border-neutral-700"
+  >
+    <p
+      class="text-sm font-semibold tracking-[0.18em] text-orange-500 uppercase dark:text-orange-300"
+    >
+      Microsoft Certification Hub
+    </p>
+    <h1
+      class="mt-3 text-3xl font-bold tracking-tight text-balance text-neutral-900 sm:text-5xl dark:text-neutral-100"
+    >
+      The shortest path to your next resource.
+    </h1>
+  </header>
+
+  <div
+    class="mt-6 w-full"
+    role="region"
+    aria-label="AI and business certification announcement"
+  >
+    <div
+      class="min-h-24 rounded-xl bg-neutral-800 bg-[url('/ab-banner.svg')] bg-cover bg-center bg-no-repeat p-4 text-center shadow-sm sm:p-6 dark:bg-blue-900"
+    >
+      <a
+        class="group inline-flex items-center gap-x-2 rounded-full border-2 border-neutral-50 px-4 py-2 text-sm font-semibold text-neutral-50 backdrop-brightness-75 transition duration-300 hover:border-neutral-100/70 hover:text-neutral-50/70 sm:backdrop-brightness-100"
+        href="/certs/"
+      >
+        <span class="block sm:hidden">New AI/AB Certs</span>
+        <span class="hidden sm:block">New AI/AB Certifications on the Hub</span>
+        <svg
+          class="size-4 flex-shrink-0 transition duration-300 group-hover:translate-x-1"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m9 18 6-6-6-6"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-8 grid gap-4 lg:grid-cols-12 lg:items-start">
+    <div class="grid gap-4 lg:col-span-7">
+      <article
+        class="relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 p-6 text-neutral-100 shadow-xl sm:p-8 dark:border-neutral-700"
+      >
+        <div class="relative max-w-xl">
+          <div class="flex items-center gap-3 text-orange-300">
+            <Icon name="dashboard" />
+            <span class="text-sm font-semibold tracking-[0.16em] uppercase"
+              >New here?</span
+            >
+          </div>
+          <h2 class="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+            Get oriented without reading the whole site.
+          </h2>
+          <p class="mt-4 max-w-lg text-base leading-relaxed text-neutral-300">
+            Start with the certification guide, find your exam, then move
+            directly into the resources that match your goal.
+          </p>
+          <div class="mt-8 grid gap-3 sm:grid-cols-3">
+            <a
+              href="/certs/guide/introduction/"
+              class="rounded-xl border border-white/15 bg-white/10 p-4 transition hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-300"
+            >
+              <span
+                class="block text-xs font-semibold tracking-wide text-orange-300 uppercase"
+                >01</span
+              >
+              <span class="mt-2 block font-semibold">Read the guide</span>
+            </a>
+            <a
+              href="/certs/"
+              class="rounded-xl border border-white/15 bg-white/10 p-4 transition hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-300"
+            >
+              <span
+                class="block text-xs font-semibold tracking-wide text-orange-300 uppercase"
+                >02</span
+              >
+              <span class="mt-2 block font-semibold">Find your exam</span>
+            </a>
+            <a
+              href="/certs/prepare/studymaterials/"
+              class="rounded-xl border border-white/15 bg-white/10 p-4 transition hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-300"
+            >
+              <span
+                class="block text-xs font-semibold tracking-wide text-orange-300 uppercase"
+                >03</span
+              >
+              <span class="mt-2 block font-semibold">Prepare efficiently</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <div class="grid gap-4 sm:grid-cols-3">
+        {
+          resourceLinks.map((link) => (
+            <a
+              href={link.href}
+              class="group rounded-2xl border border-neutral-300 bg-white p-5 transition hover:-translate-y-0.5 hover:border-orange-400 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 dark:border-neutral-700 dark:bg-neutral-900/60 dark:hover:border-orange-300"
+            >
+              <PackIcon name={link.icon} class:list={["size-7", link.iconClass]} />
+              <h2 class="mt-5 font-semibold text-neutral-900 dark:text-neutral-100">
+                {link.label}
+              </h2>
+              <p class="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                {link.description}
+              </p>
+            </a>
+          ))
+        }
+      </div>
+
+      <section
+        class="rounded-2xl border border-neutral-300 bg-white p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
+      >
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <p
+              class="text-xs font-semibold tracking-[0.16em] text-orange-500 uppercase dark:text-orange-300"
+            >
+              Offer board
+            </p>
+            <h2
+              class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100"
+            >
+              New vouchers
+            </h2>
+          </div>
+          <a
+            href="/certs/vouchers/"
+            class="text-sm font-semibold text-neutral-600 hover:text-orange-500 dark:text-neutral-400 dark:hover:text-orange-300"
+            >All vouchers</a
+          >
+        </div>
+        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+          Categorized voucher pages appear here automatically as they are added.
+        </p>
+        <ul class="mt-5 divide-y divide-neutral-200 dark:divide-neutral-800">
+          {
+            vouchers.map((voucher) => (
+              <li>
+                <a
+                  href={`/${voucher.id}/`}
+                  class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-500 dark:text-neutral-200 dark:hover:text-orange-300"
+                >
+                  <span class="min-w-0 truncate">{voucher.data.title}</span>
+                  <span
+                    class={`shrink-0 rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${getVoucherBadgeClass(voucher.data.voucherCategory)}`}
+                  >
+                    {getVoucherLabel(voucher.data.voucherCategory)}
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a
+              href="/certs/vouchers/"
+              class="flex items-center justify-center py-3 text-sm font-semibold text-orange-600 hover:text-orange-500 dark:text-orange-300 dark:hover:text-orange-200"
+            >
+              View more vouchers <span aria-hidden="true" class="ms-2"
+                ></span
+              >
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <aside class="grid gap-4 lg:col-span-5">
+      <section
+        class="rounded-2xl border border-neutral-300 bg-white p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
+      >
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p
+              class="text-xs font-semibold tracking-[0.16em] text-orange-500 uppercase dark:text-orange-300"
+            >
+              Study together
+            </p>
+            <h2
+              class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100"
+            >
+              Community
+            </h2>
+          </div>
+          <Icon name="groups" />
+        </div>
+        <p
+          class="mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400"
+        >
+          Ask questions, compare study plans, and keep up with certification
+          changes.
+        </p>
+        <ul class="mt-5 divide-y divide-neutral-200 dark:divide-neutral-800">
+          {
+            communityLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-between gap-4 py-3 text-sm font-semibold text-neutral-800 transition hover:text-orange-500 dark:text-neutral-200 dark:hover:text-orange-300"
+                >
+                  <span class="flex items-center gap-3">
+                    <Icon name={link.icon} />
+                    <span>{link.label}</span>
+                  </span>
+                  <span aria-hidden="true">-&gt;</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section
+        class="rounded-2xl border border-neutral-300 bg-white p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
+      >
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <p
+              class="text-xs font-semibold tracking-[0.16em] text-orange-500 uppercase dark:text-orange-300"
+            >
+              Watch the catalog
+            </p>
+            <h2
+              class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100"
+            >
+              Recent status changes
+            </h2>
+          </div>
+          <a
+            href="/certs/"
+            class="text-sm font-semibold text-neutral-600 hover:text-orange-500 dark:text-neutral-400 dark:hover:text-orange-300"
+            >All exams</a
+          >
+        </div>
+        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+           Exams currently carrying a beta, at-risk, or retiring marker.
+        </p>
+        <ul class="mt-5 divide-y divide-neutral-200 dark:divide-neutral-800">
+          {
+            statusChanges.map((exam) => (
+              <li>
+                <a
+                  href={exam.href}
+                  class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-500 dark:text-neutral-200 dark:hover:text-orange-300"
+                >
+                  <span>{exam.code}</span>
+                  <span
+                     class={`rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${getStatusClass(exam.status)}`}
+                  >
+                    <span title={getStatusName(exam.status)}>{exam.status}</span>
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <div class="mt-8 flex justify-center">
+    <a
+      href="https://www.measureup.com/subscription-plans-for-individuals?source=banner&key=7&u=44"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="block w-full max-w-4xl overflow-hidden rounded-xl border border-neutral-300/80 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 dark:border-neutral-700 dark:bg-neutral-900"
+      aria-label="MeasureUp subscription plans"
+    >
+      <img
+        src={MeasureUpBanner.src}
+        alt="MeasureUp subscription plans"
+        class="h-auto w-full"
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
+  </div>
+</section>

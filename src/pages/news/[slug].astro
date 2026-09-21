@@ -51,9 +51,7 @@ const relatedPosts: CollectionEntry<"blog">[] = allBlogPosts
     // Include posts without tags as potential related content
     return true;
   })
-  .sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-  )
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 4); // Limit to 4 related posts
 
 const pageTitle: string = `${post.data.title} | ${SITE.title}`;
@@ -68,19 +66,24 @@ const ogTitle = `${post.data.title} | News | ${SITE.title}`;
   structuredData={{
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "@id": `${SITE.url}/news/${post.id}`,
-    url: `${SITE.url}/news/${post.id}`,
+    "@id": `${SITE.url}/news/${post.id}/`,
+    url: `${SITE.url}/news/${post.id}/`,
     headline: post.data.title,
     description: post.data.description,
-    image: post.data.cardImage?.src || `${SITE.url}/social.png`,
+    image: post.data.cardImage?.src
+      ? new URL(post.data.cardImage.src, `${SITE.url}/`).href
+      : `${SITE.url}/social.png`,
     datePublished: post.data.pubDate.toISOString(),
     dateModified: post.data.updatedDate
       ? post.data.updatedDate.toISOString()
       : post.data.pubDate.toISOString(),
-    author: post.data.authors.map(a => ({
+    author: post.data.authors.map((a) => ({
       "@type": "Person",
       name: a.name,
-      image: a.image?.src,
+      image:
+        typeof a.image === "string"
+          ? a.image
+          : new URL(a.image.src, `${SITE.url}/`).href,
     })),
     publisher: {
       "@type": "Organization",
@@ -92,11 +95,11 @@ const ogTitle = `${post.data.title} | News | ${SITE.title}`;
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${SITE.url}/news/${post.id}`,
+      "@id": `${SITE.url}/news/${post.id}/`,
     },
   }}
 >
-  <article class="mx-auto max-w-3xl px-4 pb-12 pt-6 sm:px-6 lg:px-8 lg:pt-10">
+  <article class="mx-auto max-w-3xl px-4 pt-6 pb-12 sm:px-6 lg:px-8 lg:pt-10">
     <div class="max-w-2xl">
       {/* Author and metadata section */}
       <div class="mb-6 flex items-center justify-between">
@@ -107,7 +110,7 @@ const ogTitle = `${post.data.title} | News | ${SITE.title}`;
               <div>
                 {/* Author name(s) */}
                 <span class="font-bold text-neutral-700 dark:text-neutral-300">
-                  {post.data.authors.map(a => a.name).join(" & ")}
+                  {post.data.authors.map((a) => a.name).join(" & ")}
                 </span>
                 {/* Post metadata */}
                 <ul class="text-xs text-neutral-500">
@@ -148,7 +151,7 @@ const ogTitle = `${post.data.title} | News | ${SITE.title}`;
           <Image
             class="mb-6 w-full rounded-xl object-cover"
             src={post.data.cardImage}
-            alt={post.data.title}
+            alt={post.data.cardImageAlt ?? post.data.title}
             draggable={false}
             format="avif"
             loading="eager"
@@ -157,9 +160,7 @@ const ogTitle = `${post.data.title} | News | ${SITE.title}`;
       }
 
       {/* Blog post content - MDX */}
-      <div
-        class="prose prose-lg prose-neutral max-w-none dark:prose-invert"
-      >
+      <div class="prose prose-lg prose-neutral dark:prose-invert max-w-none">
         <Content />
       </div>
 
@@ -175,7 +176,7 @@ const ogTitle = `${post.data.title} | News | ${SITE.title}`;
             post.data.tags?.map((tag: string) => (
               <a
                 href={`/news/tag/${tag.toLowerCase()}/`}
-                class="inline-flex items-center gap-x-1.5 rounded-lg bg-neutral-400/30 px-3 py-1.5 text-xs font-medium text-neutral-700 hover:bg-neutral-400/50 dark:bg-neutral-700/60 dark:text-neutral-300 dark:hover:bg-neutral-700/80 transition-colors"
+                class="inline-flex items-center gap-x-1.5 rounded-lg bg-neutral-400/30 px-3 py-1.5 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-400/50 dark:bg-neutral-700/60 dark:text-neutral-300 dark:hover:bg-neutral-700/80"
               >
                 {capitalize(tag)}
               </a>
@@ -200,7 +201,7 @@ const ogTitle = `${post.data.title} | News | ${SITE.title}`;
     relatedPosts.length > 0 && (
       <section class="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div class="mb-10 max-w-2xl">
-          <h2 class="text-balance text-2xl font-bold text-neutral-800 md:text-4xl md:leading-tight dark:text-neutral-200">
+          <h2 class="text-2xl font-bold text-balance text-neutral-800 md:text-4xl md:leading-tight dark:text-neutral-200">
             Related articles
           </h2>
         </div>

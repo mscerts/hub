@@ -2,7 +2,7 @@
 // This module handles all cookie consent logic and Microsoft Clarity integration
 
 export interface ConsentPreferences {
-  analytics_storage: 'granted' | 'denied';
+  analytics_storage: "granted" | "denied";
 }
 
 export interface ConsentState {
@@ -17,11 +17,11 @@ const defaultConsentState: ConsentState = {
   isInitialized: false,
   showBanner: true,
   preferences: null,
-  timestamp: null
+  timestamp: null,
 };
 
 // Storage keys
-const CONSENT_STORAGE_KEY = 'msft_cookie_consent';
+const CONSENT_STORAGE_KEY = "msft_cookie_consent";
 const CONSENT_EXPIRY_DAYS = 365;
 
 // Cookie consent manager class
@@ -35,11 +35,15 @@ export class CookieConsentManager {
 
   // Load consent state from localStorage
   private loadConsentState(): void {
+    if (typeof window === "undefined") {
+      return;
+    }
+
     try {
       const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        
+
         // Check if consent has expired
         if (parsed.timestamp && this.isConsentExpired(parsed.timestamp)) {
           this.clearConsent();
@@ -49,30 +53,37 @@ export class CookieConsentManager {
         this.state = {
           ...parsed,
           isInitialized: true,
-          showBanner: !parsed.preferences
+          showBanner: !parsed.preferences,
         };
       }
     } catch (error) {
-      console.warn('Failed to load consent state:', error);
+      console.warn("Failed to load consent state:", error);
       this.clearConsent();
     }
   }
 
   // Save consent state to localStorage
   private saveConsentState(): void {
+    if (typeof window === "undefined") {
+      return;
+    }
+
     try {
-      localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify({
-        ...this.state,
-        timestamp: Date.now()
-      }));
+      localStorage.setItem(
+        CONSENT_STORAGE_KEY,
+        JSON.stringify({
+          ...this.state,
+          timestamp: Date.now(),
+        }),
+      );
     } catch (error) {
-      console.warn('Failed to save consent state:', error);
+      console.warn("Failed to save consent state:", error);
     }
   }
 
   // Check if consent has expired
   private isConsentExpired(timestamp: number): boolean {
-    const expiryTime = timestamp + (CONSENT_EXPIRY_DAYS * 24 * 60 * 60 * 1000);
+    const expiryTime = timestamp + CONSENT_EXPIRY_DAYS * 24 * 60 * 60 * 1000;
     return Date.now() > expiryTime;
   }
 
@@ -84,10 +95,10 @@ export class CookieConsentManager {
   // Subscribe to state changes
   subscribe(listener: (state: ConsentState) => void): () => void {
     this.listeners.push(listener);
-    
+
     // Immediately call with current state
     listener(this.getState());
-    
+
     // Return unsubscribe function
     return () => {
       const index = this.listeners.indexOf(listener);
@@ -99,16 +110,17 @@ export class CookieConsentManager {
 
   // Notify all listeners of state changes
   private notifyListeners(): void {
-    this.listeners.forEach(listener => listener(this.getState()));
+    this.listeners.forEach((listener) => listener(this.getState()));
   }
 
   // Set consent preferences
   setConsent(preferences: ConsentPreferences): void {
     this.state = {
       ...this.state,
+      isInitialized: true,
       preferences,
       showBanner: false,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
 
     this.saveConsentState();
@@ -116,22 +128,24 @@ export class CookieConsentManager {
     this.sendConsentToClarity(preferences);
 
     // Dispatch custom event
-    window.dispatchEvent(new CustomEvent('consentGranted', {
-      detail: preferences
-    }));
+    window.dispatchEvent(
+      new CustomEvent("consentChanged", {
+        detail: preferences,
+      }),
+    );
   }
 
   // Accept all cookies
   acceptAll(): void {
     this.setConsent({
-      analytics_storage: 'granted'
+      analytics_storage: "granted",
     });
   }
 
   // Reject all cookies
   rejectAll(): void {
     this.setConsent({
-      analytics_storage: 'denied'
+      analytics_storage: "denied",
     });
   }
 
@@ -150,34 +164,42 @@ export class CookieConsentManager {
   // Clear all consent data
   clearConsent(): void {
     this.state = { ...defaultConsentState };
-    localStorage.removeItem(CONSENT_STORAGE_KEY);
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.removeItem(CONSENT_STORAGE_KEY);
+      } catch (error) {
+        console.warn("Failed to clear consent state:", error);
+      }
+    }
     this.notifyListeners();
 
     // Clear Clarity cookies
-    if (typeof window.clarity === 'function') {
-      window.clarity('consent', false);
+    if (typeof window !== "undefined" && typeof window.clarity === "function") {
+      window.clarity("consent", false);
     }
   }
 
   // Send consent to Microsoft Clarity
   private sendConsentToClarity(preferences: ConsentPreferences): void {
-    if (typeof window.clarity === 'function') {
+    if (typeof window !== "undefined" && typeof window.clarity === "function") {
       try {
-        window.clarity('consentv2', {
-          ad_Storage: 'denied', // Always deny ad storage since we don't use advertising cookies
-          analytics_Storage: preferences.analytics_storage
+        window.clarity("consentv2", {
+          ad_Storage: "denied", // Always deny ad storage since we don't use advertising cookies
+          analytics_Storage: preferences.analytics_storage,
         });
-        
-        console.log('Consent sent to Clarity:', preferences);
+
+        console.log("Consent sent to Clarity:", preferences);
       } catch (error) {
-        console.warn('Failed to send consent to Clarity:', error);
+        console.warn("Failed to send consent to Clarity:", error);
       }
     } else {
-      console.warn('Clarity is not available. Consent will be sent when Clarity loads.');
-      
+      console.warn(
+        "Clarity is not available. Consent will be sent when Clarity loads.",
+      );
+
       // Store consent for when Clarity becomes available
-      window.addEventListener('load', () => {
-        if (typeof window.clarity === 'function') {
+      window.addEventListener("load", () => {
+        if (typeof window.clarity === "function") {
           this.sendConsentToClarity(preferences);
         }
       });
@@ -186,12 +208,12 @@ export class CookieConsentManager {
 
   // Check if specific consent is granted
   hasConsent(type: keyof ConsentPreferences): boolean {
-    return this.state.preferences?.[type] === 'granted' || false;
+    return this.state.preferences?.[type] === "granted" || false;
   }
 
   // Check if any consent is granted
   hasAnyConsent(): boolean {
-    return this.hasConsent('analytics_storage');
+    return this.hasConsent("analytics_storage");
   }
 
   // Get consent preferences
@@ -206,12 +228,12 @@ export const cookieConsentManager = new CookieConsentManager();
 // Extend Window interface for TypeScript
 declare global {
   interface Window {
-    clarity: (command: string, ...args: any[]) => void;
+    clarity: (command: string, ...args: unknown[]) => void;
     cookieConsentManager: CookieConsentManager;
   }
 }
 
 // Make manager globally available
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   window.cookieConsentManager = cookieConsentManager;
 }

@@ -1,0 +1,57 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+import { linkRel } from "../../../utils/link-rel";
+interface Props extends HTMLAttributes<"a"> {
+  title: string;
+  description?: string;
+  href: string;
+}
+const {
+  title,
+  description,
+  href,
+  target,
+  rel,
+  class: className,
+  ...attrs
+} = Astro.props;
+const isExternal = /^(?:https?:)?\/\//i.test(href);
+const resolvedRel = linkRel(target, rel);
+---
+
+<a
+  href={href}
+  target={target}
+  rel={resolvedRel}
+  class:list={[
+    "docs-link-card group not-prose border-border bg-card hover:border-border-strong hover:shadow-default flex items-center justify-between gap-4 rounded-xl border p-5 text-inherit no-underline shadow-sm transition hover:-translate-y-0.5",
+    className,
+  ]}
+  {...attrs}
+>
+  <span class="min-w-0"
+    ><span
+      class="text-card-foreground group-hover:text-primary block text-base leading-snug font-semibold transition-colors"
+      >{title}</span
+    >{
+      description && (
+        <span class="text-muted-foreground mt-1 block text-sm leading-normal">
+          {description}
+        </span>
+      )
+    }</span
+  >
+  <Icon
+    name={isExternal ? "ph:arrow-up-right" : "ph:caret-right"}
+    class="text-muted-foreground group-hover:text-primary size-4 shrink-0 transition-transform group-hover:translate-x-0.5"
+    aria-hidden="true"
+  />
+</a>
+
+<style>
+  .docs-link-card,
+  .docs-link-card :global(*) {
+    text-decoration: none !important;
+  }
+</style>

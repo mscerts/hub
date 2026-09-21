@@ -5,7 +5,7 @@ import Navbar from "@components/sections/navbar&footer/NavbarMegaMenu.astro";
 import FooterSection from "@components/sections/navbar&footer/FooterSection.astro";
 import CookieConsentBanner from "@components/ui/banners/CookieConsentBanner.astro";
 import CookieConsentModal from "@components/ui/modals/CookieConsentModal.astro";
-import { SITE, ANALYTICS, VERIFICATIONS } from "@data/constants";
+import { SITE, VERIFICATIONS } from "@data/constants";
 import "@styles/global.css";
 
 // Setting expected props
@@ -13,116 +13,180 @@ const {
   title = SITE.title,
   meta,
   structuredData,
+  noindex = false,
   lang = "en",
   customDescription = null,
   customOgTitle = null,
+  wide = false,
 } = Astro.props;
 
 // Interface to type-check the properties
 interface Props {
   title?: string;
   meta?: string;
-  structuredData?: object;
+  structuredData?: object | false;
+  noindex?: boolean;
   lang?: string;
   customDescription?: string | null;
   customOgTitle?: string | null;
+  wide?: boolean;
 }
 ---
 
-<html lang={lang} class="scrollbar-hide scroll-pt-16">
+<html lang={lang} class:list={["scroll-pt-16", !wide && "scrollbar-hide"]}>
   <head>
     {/* Adding metadata to the HTML document */}
     <Meta
+      title={title}
       meta={meta}
       structuredData={structuredData}
+      noindex={noindex}
       customDescription={customDescription}
       customOgTitle={customOgTitle}
     />
     {/* Define the title of the page */}
     <title>{title}</title>
     <meta name="mitgo-verification" content={VERIFICATIONS.mitgo} />
-    {/* Google Analytics */}
-    <script
-      is:inline
-      src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.googleAnalytics}`}
-      async
-    ></script>
-    <script is:inline define:vars={{ googleAnalyticsId: ANALYTICS.googleAnalytics }}>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      
-      gtag('config', googleAnalyticsId);
-    </script>
-    
-    {/* Microsoft Clarity Analytics */}
-    <script
-      is:inline
-      src={`https://www.clarity.ms/tag/${ANALYTICS.clarity}`}
-      async
-    ></script>
-    <script is:inline define:vars={{ clarityAnalyticsId: ANALYTICS.clarity }}>
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", clarityAnalyticsId);
-    </script>
-    
-    {/* Google Tag Manager */}
-    <script is:inline define:vars={{ googleTagManagerId: ANALYTICS.googleTagManager }}>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer',googleTagManagerId);
-    </script>
     <script is:inline>
-      // Theme init: read from both localStorage keys, apply both .dark class and data-theme
       (() => {
-        const raw = localStorage.getItem("hs_theme") || localStorage.getItem("starlight-theme");
-        const theme = (raw === "light" || raw === "dark") ? raw
-          : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        const raw =
+          localStorage.getItem("hs_theme") ||
+          localStorage.getItem("starlight-theme");
+        const theme =
+          raw === "light" || raw === "dark"
+            ? raw
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        localStorage.setItem("hs_theme", theme);
+        localStorage.removeItem("starlight-theme");
         document.documentElement.classList.toggle("dark", theme === "dark");
         document.documentElement.dataset.theme = theme;
       })();
     </script>
-
   </head>
   <body
-    class="bg-neutral-200 selection:bg-yellow-400 selection:text-neutral-700 dark:bg-neutral-800 flex flex-col min-h-screen"
+    class:list={[
+      "flex min-h-screen flex-col selection:bg-yellow-400 selection:text-neutral-700",
+      wide
+        ? "bg-neutral-50 dark:bg-[#222222]"
+        : "bg-neutral-200 dark:bg-neutral-800",
+    ]}
   >
-    {/*
+    {
+      /*
     Setting up the main structure of the page.
     The Navbar is placed at the top, with a slot for the main content and FooterSection at the bottom.
-    */}
-    <div class="w-full mx-auto max-w-(--breakpoint-2xl) px-4 sm:px-6 lg:px-8 flex-grow">
+    */
+    }
+    <div
+      class:list={[
+        "flex-grow",
+        wide
+          ? "w-full"
+          : "mx-auto w-full max-w-(--breakpoint-2xl) px-4 sm:px-6 lg:px-8",
+      ]}
+    >
       <Navbar />
-      <main>
+      <main id="main-content">
         <slot />
       </main>
     </div>
     <FooterSection />
-    
+
     <!-- Cookie Consent Components -->
     <CookieConsentBanner />
     <CookieConsentModal />
-    
+
+    <script>
+      import { cookieConsentManager } from "@utils/cookieConsent";
+      import { ANALYTICS } from "@data/constants";
+
+      type AnalyticsWindow = Window & {
+        dataLayer?: unknown[];
+        gtag?: (...args: unknown[]) => void;
+        clarity?: ((command: string, ...args: unknown[]) => void) & {
+          q?: unknown[][];
+        };
+      };
+
+      const analyticsWindow = window as AnalyticsWindow;
+      let analyticsLoaded = false;
+
+      const addScript = (src: string, onLoad?: () => void) => {
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = src;
+        if (onLoad) script.addEventListener("load", onLoad, { once: true });
+        document.head.appendChild(script);
+      };
+
+      const syncClarityConsent = () => {
+        if (typeof analyticsWindow.clarity === "function") {
+          analyticsWindow.clarity("consentv2", {
+            ad_Storage: "denied",
+            analytics_Storage: "granted",
+          });
+        }
+      };
+
+      const loadAnalytics = () => {
+        if (
+          analyticsLoaded ||
+          !cookieConsentManager.hasConsent("analytics_storage")
+        ) {
+          return;
+        }
+
+        analyticsLoaded = true;
+        analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
+        const gtag = (...args: unknown[]) =>
+          analyticsWindow.dataLayer?.push(args);
+        analyticsWindow.gtag = gtag;
+        gtag("js", new Date());
+        gtag("config", ANALYTICS.googleAnalytics);
+
+        if (!analyticsWindow.clarity) {
+          const clarityStub = ((...args: unknown[]) => {
+            clarityStub.q?.push(args);
+          }) as AnalyticsWindow["clarity"];
+          clarityStub.q = [];
+          analyticsWindow.clarity = clarityStub;
+        }
+
+        addScript(
+          `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.googleAnalytics}`,
+        );
+        addScript(
+          `https://www.clarity.ms/tag/${ANALYTICS.clarity}`,
+          syncClarityConsent,
+        );
+        analyticsWindow.dataLayer.push({
+          "gtm.start": Date.now(),
+          event: "gtm.js",
+        });
+        addScript(
+          `https://www.googletagmanager.com/gtm.js?id=${ANALYTICS.googleTagManager}`,
+        );
+      };
+
+      cookieConsentManager.subscribe(loadAnalytics);
+    </script>
+
     <script>
       // https://preline.co
       import "preline";
     </script>
     <script is:inline>
-      // Ensure Preline is initialized after page load
-      window.addEventListener('load', () => {
+      // Initialize Preline for both full loads and Astro page swaps.
+      const initPreline = () => {
         if (window.HSStaticMethods) {
           window.HSStaticMethods.autoInit();
         }
-      });
+      };
+      window.addEventListener("load", initPreline, { once: true });
+      document.addEventListener("astro:page-load", initPreline);
     </script>
-    <noscript>
-      <iframe src={`https://www.googletagmanager.com/ns.html?id=${ANALYTICS.googleTagManager}`} height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
     <style>
       /* CSS rules for the page scrollbar */
       .scrollbar-hide::-webkit-scrollbar {

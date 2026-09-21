@@ -39,32 +39,34 @@ const ogTitle = "Microsoft Certification News | MSFTHub";
   structuredData={{
     "@context": "https://schema.org",
     "@type": "Blog",
-    "@id": `${SITE.url}/news`,
-    url: `${SITE.url}/news`,
+    "@id": `${SITE.url}/news/`,
+    url: `${SITE.url}/news/`,
     name: "News | MSFTHub",
     description: metaDescription,
     isPartOf: {
       "@type": "WebSite",
-      url: SITE.url,
+      url: `${SITE.url}/`,
       name: SITE.title,
       description: SITE.description,
     },
     inLanguage: "en-US",
     blogPost: blogPosts.slice(0, 10).map((post) => ({
       "@type": "BlogPosting",
-      "@id": `${SITE.url}/news/${post.id}`,
-      url: `${SITE.url}/news/${post.id}`,
+      "@id": `${SITE.url}/news/${post.id}/`,
+      url: `${SITE.url}/news/${post.id}/`,
       headline: post.data.title,
       description: post.data.description,
       datePublished: post.data.pubDate.toISOString(),
       dateModified: post.data.updatedDate
         ? post.data.updatedDate.toISOString()
         : post.data.pubDate.toISOString(),
-      author: post.data.authors.map(a => ({
+      author: post.data.authors.map((a) => ({
         "@type": "Person",
         name: a.name,
       })),
-      image: post.data.cardImage?.src || "",
+      image: post.data.cardImage?.src
+        ? new URL(post.data.cardImage.src, `${SITE.url}/`).href
+        : `${SITE.url}/social.png`,
     })),
   }}
 >
@@ -74,12 +76,14 @@ const ogTitle = "Microsoft Certification News | MSFTHub";
     {/* Page header */}
     <div class="mx-auto max-w-3xl text-left sm:text-center">
       <h1
-        class="text-balance block text-4xl font-bold tracking-tight text-neutral-800 md:text-5xl lg:text-6xl dark:text-neutral-200"
+        class="block text-4xl font-bold tracking-tight text-balance text-neutral-800 md:text-5xl lg:text-6xl dark:text-neutral-200"
       >
         {title}
       </h1>
 
-      <p class="text-pretty mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+      <p
+        class="mt-4 text-lg text-pretty text-neutral-600 dark:text-neutral-400"
+      >
         {subTitle}
       </p>
     </div>

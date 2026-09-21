@@ -21,7 +21,12 @@
  * Writes GITHUB_OUTPUT keys: changes_found, baseline_updated, extraction_failed.
  */
 
-import { readFileSync, writeFileSync, appendFileSync, existsSync } from "node:fs";
+import {
+  readFileSync,
+  writeFileSync,
+  appendFileSync,
+  existsSync,
+} from "node:fs";
 import { isAbsolute, join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
@@ -33,10 +38,15 @@ function resolveFromRoot(path) {
   return isAbsolute(path) ? path : join(root, path);
 }
 
-const EXAMS_FILE = resolveFromRoot(process.env.EXAMS_FILE ?? "src/data_files/retiring-exams.json");
-const REPORT_FILE = process.env.REPORT_FILE ?? join(tmpdir(), "retiring-exam-report.md");
-const ERROR_FILE = process.env.ERROR_FILE ?? join(tmpdir(), "retiring-exam-error.md");
-const GITHUB_OUTPUT = process.env.GITHUB_OUTPUT ?? join(tmpdir(), "github-output");
+const EXAMS_FILE = resolveFromRoot(
+  process.env.EXAMS_FILE ?? "src/data_files/retiring-exams.json",
+);
+const REPORT_FILE =
+  process.env.REPORT_FILE ?? join(tmpdir(), "retiring-exam-report.md");
+const ERROR_FILE =
+  process.env.ERROR_FILE ?? join(tmpdir(), "retiring-exam-error.md");
+const GITHUB_OUTPUT =
+  process.env.GITHUB_OUTPUT ?? join(tmpdir(), "github-output");
 
 function writeOutput(obj) {
   const lines = Object.entries(obj)
@@ -48,13 +58,21 @@ function writeOutput(obj) {
 function fail(message) {
   console.error(`ERROR: ${message}`);
   writeFileSync(ERROR_FILE, `${message}\n`);
-  writeOutput({ changes_found: false, baseline_updated: false, extraction_failed: true });
+  writeOutput({
+    changes_found: false,
+    baseline_updated: false,
+    extraction_failed: true,
+  });
   process.exit(1);
 }
 
 function yesterdayUTC() {
   const now = new Date();
-  const utcToday = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const utcToday = Date.UTC(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+  );
   return new Date(utcToday - 86400000).toISOString().slice(0, 10);
 }
 
@@ -68,12 +86,16 @@ function loadExams() {
   try {
     parsed = JSON.parse(readFileSync(EXAMS_FILE, "utf8"));
   } catch {
-    fail(`Corrupt tracker file at ${relative(root, EXAMS_FILE)} (invalid JSON).`);
+    fail(
+      `Corrupt tracker file at ${relative(root, EXAMS_FILE)} (invalid JSON).`,
+    );
     return null;
   }
 
   if (!Array.isArray(parsed.exams)) {
-    fail(`Corrupt tracker file at ${relative(root, EXAMS_FILE)} (missing exams array).`);
+    fail(
+      `Corrupt tracker file at ${relative(root, EXAMS_FILE)} (missing exams array).`,
+    );
     return null;
   }
 
@@ -82,7 +104,10 @@ function loadExams() {
 
 function buildReport(retired) {
   const rows = retired
-    .map((exam) => `| ${exam.code} | ${exam.name} | ${exam.retirementDate} | ${exam.replacementCode ?? "—"} |`)
+    .map(
+      (exam) =>
+        `| ${exam.code} | ${exam.name} | ${exam.retirementDate} | ${exam.replacementCode ?? "—"} |`,
+    )
     .join("\n");
 
   return (
@@ -101,13 +126,21 @@ function main() {
 
   const tracker = loadExams();
   const cutoff = yesterdayUTC();
-  console.log(`Notifying for any retirement date on or before ${cutoff} (UTC).`);
+  console.log(
+    `Notifying for any retirement date on or before ${cutoff} (UTC).`,
+  );
 
-  const newlyRetired = tracker.exams.filter((exam) => !exam.notified && exam.retirementDate <= cutoff);
+  const newlyRetired = tracker.exams.filter(
+    (exam) => !exam.notified && exam.retirementDate <= cutoff,
+  );
 
   if (newlyRetired.length === 0) {
     console.log("No exams retired since the last check.");
-    writeOutput({ changes_found: false, baseline_updated: false, extraction_failed: false });
+    writeOutput({
+      changes_found: false,
+      baseline_updated: false,
+      extraction_failed: false,
+    });
     return;
   }
 
@@ -120,7 +153,11 @@ function main() {
 
   writeFileSync(EXAMS_FILE, JSON.stringify(tracker, null, 2) + "\n");
   writeFileSync(REPORT_FILE, buildReport(newlyRetired));
-  writeOutput({ changes_found: true, baseline_updated: true, extraction_failed: false });
+  writeOutput({
+    changes_found: true,
+    baseline_updated: true,
+    extraction_failed: false,
+  });
   console.log(`${newlyRetired.length} exam(s) newly retired.`);
 }
 

@@ -2,7 +2,7 @@ name: Partner Designations Monitor
 
 on:
   schedule:
-    - cron: "0 8 * * 1"  # Monday 08:00 UTC (offset from the other Monday monitors so all can push)
+    - cron: "0 8 * * 1" # Monday 08:00 UTC (offset from the other Monday monitors so all can push)
   workflow_dispatch:
 
 concurrency:

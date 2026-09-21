@@ -1,0 +1,6 @@
+---
+import type { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"div"> {}
+const { class: className, ...attrs } = Astro.props;
+---
+<div class:list={["not-prose my-5 grid grid-cols-1 gap-4 sm:grid-cols-2 [&>*]:my-0", className]} {...attrs}><slot /></div>

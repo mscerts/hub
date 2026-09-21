@@ -125,7 +125,7 @@ export const examPages: Record<string, ExamPageData> = {
       },
       {
         title: "Exam Labs",
-        href: "/labs/azure/ai-103/",
+        href: "/certs/labs/azure/ai-103/",
         target: "_blank",
         description:
           "Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings.",
@@ -161,13 +161,16 @@ export const examPages: Record<string, ExamPageData> = {
           },
         ],
       },
-      { label: "Tests", links: [
-        {
-          title: "CertiAce Practice Tests",
-          href: "https://certiace.com/practice/AI-103",
-          target: "_blank",
-        },
-      ] },
+      {
+        label: "Tests",
+        links: [
+          {
+            title: "CertiAce Practice Tests",
+            href: "https://certiace.com/practice/AI-103",
+            target: "_blank",
+          },
+        ],
+      },
       { label: "Paid", links: [] },
       {
         label: "Misc",

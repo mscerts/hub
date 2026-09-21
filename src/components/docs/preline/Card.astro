@@ -1,0 +1,20 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"article"> { title: string; icon?: string; }
+const { title, icon, class: className, ...attrs } = Astro.props;
+const iconName = {
+  star: "ph:star",
+  "open-book": "ph:book-open",
+  external: "ph:arrow-square-out",
+  "add-document": "ph:file-plus",
+  "approve-check-circle": "ph:check-circle",
+}[icon ?? ""] ?? icon;
+---
+<article class:list={["not-prose my-5 rounded-xl border border-border bg-card p-10 shadow-sm", className]} {...attrs}>
+  <div class="flex items-center gap-3">
+    {iconName && <span class="grid size-9 shrink-0 place-items-center rounded-lg border border-border bg-muted text-foreground"><Icon name={iconName} class="size-5" aria-hidden="true" /></span>}
+    <h3 class="m-0 text-xl font-semibold leading-snug text-card-foreground">{title}</h3>
+  </div>
+  <div class:list={["text-base leading-7 text-muted-foreground", icon ? "mt-6" : "mt-3", "[&_p]:mt-4 [&_p:first-child]:mt-0 [&_p+p]:mt-4 [&_p:last-child]:mb-0"]}><slot /></div>
+</article>
