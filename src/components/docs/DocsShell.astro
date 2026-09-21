@@ -56,7 +56,8 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
         >
           <a
             href="/certs/"
-            class="hover:text-[#7890a6] dark:hover:text-[#b0c0cf]">Certification Hub</a
+            class="hover:text-[#7890a6] dark:hover:text-[#b0c0cf]"
+            >Certification Hub</a
           >
           <span class="px-2" aria-hidden="true">/</span>
           <span>{breadcrumbLabel}</span>
@@ -448,13 +449,18 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
     list-style: decimal;
   }
 
-  .docs-content > :global(a:not([data-docs-link-button])) {
+  .docs-content
+    :global(
+      a:not([data-docs-link-button]):not(.docs-link-card):not(.heading-anchor)
+    ) {
     color: var(--nb-info);
-    text-decoration: underline;
-    text-underline-offset: 0.15em;
+    text-decoration: none;
   }
 
-  .docs-content > :global(a:not([data-docs-link-button])):hover {
+  .docs-content
+    :global(
+      a:not([data-docs-link-button]):not(.docs-link-card):not(.heading-anchor)
+    ):hover {
     color: var(--nb-primary-hover);
   }
 
@@ -507,7 +513,7 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
   }
 
   .docs-content :global(td) {
-    color: var(--nb-muted-foreground);
+    color: var(--nb-foreground);
   }
 
   .docs-content :global(tr:last-child td) {
