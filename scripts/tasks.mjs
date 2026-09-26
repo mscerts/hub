@@ -135,13 +135,15 @@ function fieldKey(name) {
   return name.charAt(0).toLowerCase() + name.slice(1);
 }
 
-// Project item ids look like PVTI_xxxxxxxxxxxxxxxxx-yyyyyyy: everything after
-// the last "-" is the part unique to this item. Using that (instead of a
-// fixed-length tail) guarantees a ref never starts with "-", which a CLI
-// arg parser would otherwise mistake for an option -- forcing a `--`
-// workaround on every single command that takes a ref.
+// Project item ids look like PVTI_xxxxxxxxxxxxxxxxx-yyyyyyy, where the
+// yyyyyyy suffix is base64url and can itself legitimately contain "-" or "_"
+// -- so splitting on the *last* "-" can cut into the suffix instead of
+// before it (e.g. "...-zg843-E" would wrongly yield "E", a 1-character ref
+// below resolveItem's 6-character minimum, i.e. unreferenceable). The shared
+// prefix before the delimiter is never itself dash-containing, so split on
+// the *first* "-" instead to keep the whole suffix intact.
 function shortRef(id) {
-  const dash = id.lastIndexOf("-");
+  const dash = id.indexOf("-");
   return dash === -1 ? id.slice(-8) : id.slice(dash + 1);
 }
 
