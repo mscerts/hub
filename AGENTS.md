@@ -9,7 +9,57 @@
 
 You are working on **msfthub.com** — a community site providing free study-material collections for Microsoft certification exams. Be direct, efficient, and preserve the existing code style.
 
-If you are an authorized agent, you will have access to the tasks repository which you should refer to.
+Maintainers plan work on a private task board. If `.tasks.local.json` exists in the repository root, follow the Task Board section below; otherwise ignore it.
+
+---
+
+## Task Board (private)
+
+The board is a private GitHub Projects board. It is the source of truth for what to work on and for handoffs between sessions, agents, and people. Use it only through the helper, run from the repository root:
+
+```bash
+node scripts/tasks.mjs <command>
+```
+
+| Command | Purpose |
+|---------|---------|
+| `list` | Open items (`--all` includes Done, `--mine` shows only yours) |
+| `show <ref>` | Title, status, priority, due date, owner, link, and the item's Log |
+| `start <ref>` | Claim the item: sets you as assignee |
+| `note <ref> "<text>"` | Append a timestamped line to the item's Log |
+| `add "<title>" --body "<text>"` | Create a new item (default Status, or `--status`/`--priority`/`--due`) |
+| `link <ref> <pr-url>` | Record the pull request on the item |
+| `status <ref> "<option>"` / `priority <ref> "<P0\|P1\|P2>"` / `due <ref> "<date>"` | Set the item's category, urgency, or due date |
+| `done <ref>` | Move the item to Done |
+| `unclaim <ref>` | Release your claim: clears the assignee |
+| `archive <ref>` | Archive the item (hides it from `list`) |
+
+`<ref>` is the REF column from `list`. Run `node scripts/tasks.mjs help` for all options.
+
+### Workflow
+
+1. At the start of a session, run `list`. If the user named a task, `show` it and read its Log; otherwise ask which item to take instead of picking one yourself.
+2. Before editing files for an item, run `start <ref>`. If it reports the item is claimed by someone else, stop and tell the user. If the item names a task prompt from `.github/prompts/`, follow that prompt.
+3. Run `note` when you make a decision, hit a blocker, or end a session: what changed, what is left, and what the next agent needs to know. The Log is the only handoff between sessions and tools, so write it for a reader with no other context. If you can't finish it and won't be returning to it, also run `unclaim` so someone else can pick it up.
+4. After opening a pull request, run `link <ref> <pr-url>` and `note` that it's ready for review. Run `done` only when the user confirms the work is finished.
+5. If you notice something worth doing outside the current task, don't add it to the board immediately — see "Surfacing things you notice" below.
+
+If a board command fails (not configured, authentication, missing option), stop and report the error. Don't edit `.tasks.local.json`, change `gh` authentication, or modify `scripts/tasks.mjs` to work around it.
+
+### Surfacing things you notice
+
+While working on anything else, if you find room for improvement or an issue unrelated to the task at hand, present it to the user before continuing — describe what you found and why it matters — instead of silently fixing it or filing it away.
+
+- If the user approves or rejects it, that's the end of it either way. Don't create a board item.
+- If the user ignores it (moves on without addressing it, changes topic, ends the session), gather as much context as you can — what you found, where, why it matters, and how you noticed it — and file it on the board yourself. See `.tasks.lifecycle.md` for which column and exact command to use.
+
+### Column lifecycle and priority
+
+Items follow an intended path as they go from idea to done, and once structured, each needs a priority (how urgent) alongside its column (what kind of work) — some moves need the user's confirmation first. This is documented in `.tasks.lifecycle.md` in the repository root — a local, gitignored file, not part of this public repository, since it names the board's private column structure and priority scheme. Read it before creating or moving any board item, or before setting a priority. If it doesn't exist on your machine, ask the user for the column names and rules instead of guessing. These rules describe normal operation — an explicit instruction from the user overrides any of them.
+
+### Board content stays private
+
+This repository is public. Never copy task titles, bodies, Log notes, plans, or refs/IDs into anything that reaches this repository or its GitHub pages: commit messages, branch names, pull request titles and descriptions, code comments, content pages, issues, or review comments. Describe public changes by what they do (for example, "Fix broken lab links on the SC-300 page"), not by the plan behind them. Links go one way: the board may point to public pull requests; public content never points to the board.
 
 ---
 
@@ -259,6 +309,7 @@ Global styles are in `src/assets/styles/global.css`; docs-specific styles are sc
 
 - **No exam dumps.** Ever.
 - **No inventing** URLs, IDs, dates, names, or course titles. Verify against Microsoft Learn.
+- Use the Microsoft Learn MCP tools (`microsoft_docs_search`, `microsoft_docs_fetch`, `microsoft_code_sample_search`) for that verification when they are available. If you could not verify something, say so instead of guessing.
 - Preserve all tracking params (`?WT.mc_id=studentamb_165290`, `#u44`).
 - Prefer official Microsoft resources and Microsoft-maintained GitHub repositories. Third-party resources must be reputable and directly relevant.
 - Verify exact resource titles and destination URLs before adding them. Never infer labs, courses, assessment IDs, release dates, voucher details, or MeasureUp products from URL patterns alone.
