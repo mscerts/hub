@@ -62,6 +62,7 @@ export default defineConfig({
     "/vouchers/aichallenge/": "/certs/vouchers/",
     "/vouchers/microsoftignite/": "/certs/vouchers/",
     "/vouchers/fabricdatadays/": "/certs/vouchers/",
+    "/vouchers/defendersweepstakes/": "/certs/vouchers/",
     "/dynamics/mb-280": "/certs/aibusiness/ab-210/",
     "/azure/az-204": "/certs/azure/ai-200/",
     "/discord":

@@ -62,11 +62,11 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0
       sharp:
-        specifier: ^0.34.5
-        version: 0.34.5
+        specifier: ^0.35.4
+        version: 0.35.4(@types/node@24.13.3)
       sharp-ico:
         specifier: ^0.1.5
-        version: 0.1.5
+        version: 0.1.5(@types/node@24.13.3)
       tailwind-merge:
         specifier: ^3.6.0
         version: 3.6.0
@@ -5923,11 +5923,13 @@ snapshots:
 
   semver@7.8.5: {}
 
-  sharp-ico@0.1.5:
+  sharp-ico@0.1.5(@types/node@24.13.3):
     dependencies:
       decode-ico: 0.4.1
       ico-endec: 0.1.6
-      sharp: 0.34.5
+      sharp: 0.35.4(@types/node@24.13.3)
+    transitivePeerDependencies:
+      - '@types/node'
 
   sharp@0.34.5:
     dependencies:
@@ -5992,7 +5994,6 @@ snapshots:
       '@img/sharp-win32-ia32': 0.35.4
       '@img/sharp-win32-x64': 0.35.4
       '@types/node': 24.13.3
-    optional: true
 
   shiki@4.4.3:
     dependencies:

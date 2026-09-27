@@ -4,24 +4,16 @@ export const examStatuses = {
     "AZ-500": { text: "RETIRING", variant: "danger" },
     "AZ-800": { text: "RETIRING", variant: "danger" },
     "AZ-801": { text: "RETIRING", variant: "danger" },
-    "AZ-802": { text: "BETA", variant: "tip" },
-    "AI-300": { text: "BETA", variant: "tip" },
     "AI-500": { text: "BETA", variant: "tip" },
-    "DP-800": { text: "BETA", variant: "tip" },
   },
-  github: {
-    "GH-600": { text: "BETA", variant: "tip" },
-  },
+  github: {},
   aibusiness: {
-    "AB-620": { text: "BETA", variant: "tip" },
     "AB-650": { text: "BETA", variant: "tip" },
   },
   microsoft365: {
     "MS-102": { text: "RETIRING", variant: "danger" },
   },
-  security: {
-    "SC-500": { text: "BETA", variant: "tip" },
-  },
+  security: {},
   power: {
     "PL-200": { text: "RETIRING", variant: "danger" },
   },

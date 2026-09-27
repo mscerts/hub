@@ -9,7 +9,57 @@
 
 You are working on **msfthub.com** — a community site providing free study-material collections for Microsoft certification exams. Be direct, efficient, and preserve the existing code style.
 
-If you are an authorized agent, you will have access to the tasks repository which you should refer to.
+Maintainers plan work on a private task board. If `.tasks.local.json` exists in the repository root, follow the Task Board section below; otherwise ignore it.
+
+---
+
+## Task Board (private)
+
+The board is a private GitHub Projects board. It is the source of truth for what to work on and for handoffs between sessions, agents, and people. Use it only through the helper, run from the repository root:
+
+```bash
+node scripts/tasks.mjs <command>
+```
+
+| Command | Purpose |
+|---------|---------|
+| `list` | Open items (`--all` includes Done, `--mine` shows only yours) |
+| `show <ref>` | Title, status, priority, due date, owner, link, and the item's Log |
+| `start <ref>` | Claim the item: sets you as assignee |
+| `note <ref> "<text>"` | Append a timestamped line to the item's Log |
+| `add "<title>" --body "<text>"` | Create a new item (default Status, or `--status`/`--priority`/`--due`) |
+| `link <ref> <pr-url>` | Record the pull request on the item |
+| `status <ref> "<option>"` / `priority <ref> "<P0\|P1\|P2>"` / `due <ref> "<date>"` | Set the item's category, urgency, or due date |
+| `done <ref>` | Move the item to Done |
+| `unclaim <ref>` | Release your claim: clears the assignee |
+| `archive <ref>` | Archive the item (hides it from `list`) |
+
+`<ref>` is the REF column from `list`. Run `node scripts/tasks.mjs help` for all options.
+
+### Workflow
+
+1. At the start of a session, run `list`. If the user named a task, `show` it and read its Log; otherwise ask which item to take instead of picking one yourself.
+2. Before editing files for an item, run `start <ref>`. If it reports the item is claimed by someone else, stop and tell the user. If the item names a task prompt from `.github/prompts/`, follow that prompt.
+3. Run `note` when you make a decision, hit a blocker, or end a session: what changed, what is left, and what the next agent needs to know. The Log is the only handoff between sessions and tools, so write it for a reader with no other context. If you can't finish it and won't be returning to it, also run `unclaim` so someone else can pick it up.
+4. After opening a pull request, run `link <ref> <pr-url>` and `note` that it's ready for review. Run `done` only when the user confirms the work is finished.
+5. If you notice something worth doing outside the current task, don't add it to the board immediately — see "Surfacing things you notice" below.
+
+If a board command fails (not configured, authentication, missing option), stop and report the error. Don't edit `.tasks.local.json`, change `gh` authentication, or modify `scripts/tasks.mjs` to work around it.
+
+### Surfacing things you notice
+
+While working on anything else, if you find room for improvement or an issue unrelated to the task at hand, present it to the user before continuing — describe what you found and why it matters — instead of silently fixing it or filing it away.
+
+- If the user approves or rejects it, that's the end of it either way. Don't create a board item.
+- If the user ignores it (moves on without addressing it, changes topic, ends the session), gather as much context as you can — what you found, where, why it matters, and how you noticed it — and file it on the board yourself. See `.tasks.lifecycle.md` for which column and exact command to use.
+
+### Column lifecycle and priority
+
+Items follow an intended path as they go from idea to done, and once structured, each needs a priority (how urgent) alongside its column (what kind of work) — some moves need the user's confirmation first. This is documented in `.tasks.lifecycle.md` in the repository root — a local, gitignored file, not part of this public repository, since it names the board's private column structure and priority scheme. Read it before creating or moving any board item, or before setting a priority. If it doesn't exist on your machine, ask the user for the column names and rules instead of guessing. These rules describe normal operation — an explicit instruction from the user overrides any of them.
+
+### Board content stays private
+
+This repository is public. Never copy task titles, bodies, Log notes, plans, or refs/IDs into anything that reaches this repository or its GitHub pages: commit messages, branch names, pull request titles and descriptions, code comments, content pages, issues, or review comments. Describe public changes by what they do (for example, "Fix broken lab links on the SC-300 page"), not by the plan behind them. Links go one way: the board may point to public pull requests; public content never points to the board.
 
 ---
 
@@ -81,11 +131,11 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 
 ### Exam Pages
 - One MDX file per exam at `src/content/docs/<area>/<CODE>.mdx`
-- Routes are lowercase: `/azure/az-800/`, `/power/pl-300/`
+- Canonical routes are lowercase under `/certs/`: `/certs/azure/az-800/`, `/certs/power/pl-300/`
 - Filenames are uppercase: `AZ-800.mdx`, `PL-300.mdx`
 - `<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`
 - Area mapping: `azure` = AZ-*, AI-*, DP-*; `aibusiness` = AB-*; `dynamics` = MB-*; `github` = GH-*; `microsoft365` = MS-* and MD-*; `power` = PL-*; `security` = SC-*.
-- Astro collection IDs and rendered routes are lowercase regardless of filename case (`AZ-800.mdx` -> id `azure/az-800`, route `/azure/az-800/`), so changing only a filename's case never changes its URL and needs no redirect. It does, however, poison Astro's incremental content-layer cache; `pnpm build` passes `--force` to clear that cache, which makes such renames safe.
+- Astro collection IDs are lowercase regardless of filename case (`AZ-800.mdx` -> id `azure/az-800`), and the canonical renderer exposes them at `/certs/azure/az-800/`. Changing only a filename's case never changes its URL and needs no redirect. It does, however, poison Astro's incremental content-layer cache; `pnpm build` passes `--force` to clear that cache, which makes such renames safe.
 - Frontmatter title is `<CODE> Study Materials`.
 - Frontmatter description must use the exact template: `Collection of study materials for the certification exam <CODE>: <Exam Name>. Contains official Microsoft Learn materials, labs, videos, practice tests and paid courses.`
 - Use the official exam name, not the certification name. Verify it against Microsoft Learn; these names often differ.
@@ -107,8 +157,8 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 ### Exam Page Anatomy (canonical structure)
 1. Frontmatter: `title: "<CODE> Study Materials"`, `description`
 2. Imports from `@components/docs`: `LinkCard`, `CardGrid`, `Card`, `Tabs`, `TabItem`, `Aside`
-3. Optional status banner: `:::tip` for beta/resource scarcity; `:::caution` for retirement and replacement details
-4. `<Card title="Get Started" icon="star">` → Exam link, Study Guide link, and Exam Labs link only when the matching lab page exists
+3. Optional status banner: `:::tip` for beta/resource scarcity; `:::caution` for retirement, replacement details, or an unconfirmed at-risk change
+4. `<Card title="Get Started" icon="star">` -> Exam link, Study Guide link, optional Exam Labs/Case Studies link, and the matching How to Prepare LinkCard as the final resource
 5. `<Tabs>` with `TabItem`s: Text, Videos, Tests, Paid, Misc
 6. Closing `</Card>`, then bottom `<Card title="MeasureUp Practice Tests" icon="open-book">` block with `<Aside>` for MSFTHUB discount; if no products exist, use a tip stating that MeasureUp has not released material yet
 
@@ -123,21 +173,21 @@ Resource placement:
 - Retiring pages retain valid existing resources and link to the verified replacement exam.
 
 ### How to Prepare LinkCard (all exam pages)
-- Every exam page's "Get Started" card ends with a `LinkCard` to the matching `/prepare/` guide: the last `LinkCard`-type resource (after Exam Labs/Exam Case Studies/GitHub Case Studies if present, otherwise right after Study Guide) and before any `RelatedCerts` component.
+- Every exam page's "Get Started" card ends with a `LinkCard` to the matching `/certs/prepare/` guide: the last `LinkCard`-type resource (after Exam Labs/Exam Case Studies/GitHub Case Studies if present, otherwise right after Study Guide) and before any `RelatedCerts` component.
 - Classification (verify against Microsoft Learn for any new exam before assuming):
-  - **Fundamentals** → `/prepare/fundamentals/`: exam name contains "Fundamentals" (AI-901, AZ-900, DP-900, PL-900, SC-900), GitHub's "Foundations" tier (GH-900), and AB-900.
-  - **Business** → `/prepare/business/`: AB-730, AB-731 (non-technical AI Business Professional/Leader tier).
-  - **Role-based** → `/prepare/role-based/`: everything else (Associate/Expert/Specialty, all areas) — one page covers all three tiers.
+  - **Fundamentals** -> `/certs/prepare/fundamentals/`: exam name contains "Fundamentals" (AI-901, AZ-900, DP-900, PL-900, SC-900), GitHub's "Foundations" tier (GH-900), and AB-900.
+  - **Business** -> `/certs/prepare/business/`: AB-730, AB-731 (non-technical AI Business Professional/Leader tier).
+  - **Role-based** -> `/certs/prepare/role-based/`: everything else (Associate/Expert/Specialty, all areas) — one page covers all three tiers.
 - Wording:
-  - Fundamentals: `title="How to Prepare for Fundamentals Exams" href="/prepare/fundamentals/" description="Guidance on study time, resources, and readiness for Microsoft Fundamentals exams."`
-  - Business: `title="How to Prepare for Business Exams" href="/prepare/business/" description="Guidance on study time, resources, and readiness for Microsoft Business exams."`
-  - Role-based: `title="How to Prepare for Role-Based Exams" href="/prepare/role-based/" description="Guidance on hands-on practice, documentation, and readiness for Microsoft role-based exams."`
+  - Fundamentals: `title="How to Prepare for Fundamentals Exams" href="/certs/prepare/fundamentals/" description="Guidance on study time, resources, and readiness for Microsoft Fundamentals exams."`
+  - Business: `title="How to Prepare for Business Exams" href="/certs/prepare/business/" description="Guidance on study time, resources, and readiness for Microsoft Business exams."`
+  - Role-based: `title="How to Prepare for Role-Based Exams" href="/certs/prepare/role-based/" description="Guidance on hands-on practice, documentation, and readiness for Microsoft role-based exams."`
 - No `target="_blank"` (internal link). Add this LinkCard, with the correct classification, to any new exam page.
 
 ### Endangered Exam Treatment (unconfirmed change — distinct from Retiring)
 - Use when Microsoft signals a *possible* future change (a new exam, a level change, an objective-domain/blueprint survey) but nothing is confirmed — do not use RETIRING language or badges for these.
 - Add a `:::caution` banner at the top citing the concrete evidence (announcement post, survey, etc.) with a source link. Keep it terse and structurally consistent: new exam code + title (if known), "may replace X", "could mean retirement", "neither confirmed", one source link.
-- Sidebar badge: `{ text: "Endangered", variant: "caution" }` in the `examBadges` map (astro.config.mjs, keyed by area then exam code).
+- Sidebar badge: `{ text: "AT RISK", variant: "caution" }` in `src/data_files/exam-status.mjs`, keyed by area then exam code.
 - Examples: AZ-400 (potential AZ-401: Designing and Implementing Microsoft Agentic DevOps), DP-420 (potential DP-421: Building Data-Driven AI Applications with Azure Cosmos DB).
 - Keep all existing resources intact; this is an informational heads-up, not a retirement.
 
@@ -242,12 +292,12 @@ Global styles are in `src/assets/styles/global.css`; docs-specific styles are sc
 - Favicon: `/favicon.svg`
 
 ### Sidebar
-- **Hand-maintained** in `src/data_files/docs-sidebar.ts`
-- Pages only appear in nav if explicitly added there
-- Per-exam badges: `RETIRING`, `BETA`, `UPCOMING`
+- Guide, preparation, voucher, and top-level area groups are hand-maintained in `src/data_files/docs-sidebar.ts`.
+- Exam entries are generated from the matching `src/content/docs/<area>/` directory by `buildExamItems()`; new exam pages appear automatically.
+- Exam status badges are maintained in `src/data_files/exam-status.mjs`: `RETIRING`, `BETA`, and `AT RISK`.
 - Keep exam entries in code order. GA exams have no badge; beta uses `{ text: "BETA", variant: "tip" }`; retiring uses `{ text: "RETIRING", variant: "danger" }`.
 - Wiki pages are separate from the sidebar: `WikiList.astro` auto-discovers exam pages by area prefix, sorts collection IDs, and extracts a short name from the canonical exam-description template.
-- `VoucherList.astro` filters docs by `voucherCategory`, sorts by title, and constructs `/${doc.id}/` routes.
+- `VoucherList.astro` filters docs by `voucherCategory`, sorts by title, and constructs `/certs/${voucher.id}/` routes.
 
 ### Redirects
 - Defined in `astro.config.mjs` under `redirects: { ... }`
@@ -259,6 +309,7 @@ Global styles are in `src/assets/styles/global.css`; docs-specific styles are sc
 
 - **No exam dumps.** Ever.
 - **No inventing** URLs, IDs, dates, names, or course titles. Verify against Microsoft Learn.
+- Use the Microsoft Learn MCP tools (`microsoft_docs_search`, `microsoft_docs_fetch`, `microsoft_code_sample_search`) for that verification when they are available. If you could not verify something, say so instead of guessing.
 - Preserve all tracking params (`?WT.mc_id=studentamb_165290`, `#u44`).
 - Prefer official Microsoft resources and Microsoft-maintained GitHub repositories. Third-party resources must be reputable and directly relevant.
 - Verify exact resource titles and destination URLs before adding them. Never infer labs, courses, assessment IDs, release dates, voucher details, or MeasureUp products from URL patterns alone.
@@ -307,7 +358,7 @@ Automated internal/external link validation, separate from the build.
 | `WikiList.astro` | Auto-generates wiki cards by directory prefix |
 | `LabList.astro` | Auto-generates lab index cards from `labs/<area>/<code>.mdx` pages |
 | `VoucherList.astro` | Auto-generates voucher cards by `voucherCategory` frontmatter |
-| `Head.astro` | Global head (meta, scripts, banner) |
+| `MainLayout.astro` | Global document shell, metadata, scripts, and banner integration |
 | `MainLayout.astro` | Main layout wrapper |
 
 ---
@@ -436,26 +487,26 @@ Only whether the button is present **on our page** — it does not verify that t
 
 ## Beta and Retiring Exam Tracking
 
-Two small trackers, populated once from `examBadges` in `astro.config.mjs` and maintained by hand from then on, back automated notifications for exam lifecycle changes. Neither file is rendered on the site, part of the build, or re-synced from `astro.config.mjs` automatically — the one-time sync scripts exist only for bootstrapping or a full manual resync.
+Two small trackers, populated once from `examStatuses` in `src/data_files/exam-status.mjs` and maintained by hand from then on, back automated notifications for exam lifecycle changes. Neither file is rendered on the site, part of the build, or re-synced automatically — the one-time sync scripts exist only for bootstrapping or a full manual resync.
 
 ### Beta exam tracker
 - **File:** `src/data_files/beta-exams.json` — `{ lastSynced, exams: [{ code, area, name, url, flaggedGA, flaggedAt? }] }`
-- **Sync script (one-time/manual):** `scripts/beta-exams-sync.mjs` — rebuilds the file from every `examBadges[area][code]` entry with `{ text: "BETA", variant: "tip" }`, pulling the exam name from that page's frontmatter `description` and building the canonical `https://learn.microsoft.com/credentials/certifications/exams/<code>?WT.mc_id=studentamb_165290` URL (fall back to the page's verified certification-slug URL if that 404s). Run with `node scripts/beta-exams-sync.mjs` only to bootstrap or force a full resync — it overwrites the file.
+- **Sync script (one-time/manual):** `scripts/beta-exams-sync.mjs` — rebuilds the file from every `examStatuses[area][code]` entry with `{ text: "BETA", variant: "tip" }`, pulling the exam name from that page's frontmatter `description` and building the canonical `https://learn.microsoft.com/credentials/certifications/exams/<code>?WT.mc_id=studentamb_165290` URL (fall back to the page's verified certification-slug URL if that 404s). Run with `node scripts/beta-exams-sync.mjs` only to bootstrap or force a full resync — it overwrites the file.
 - **Monitor workflow:** `.github/workflows/beta-exam-monitor.yml` — runs daily 07:00 UTC + manual trigger; script `scripts/beta-exam-check.mjs` fetches each untracked-as-GA exam's Microsoft Learn URL and checks whether the page `<title>` still contains `(beta)` (Microsoft appends this to the exam and certification name for the duration of the beta, e.g. "Microsoft 365 Certified: Microsoft 365 and AI Services Administrator Associate (beta)").
 - **On a beta exam going GA:** opens a GitHub issue (`enhancement`) naming the exam(s); marks the entry `flaggedGA: true` so it isn't reported again. A fetch failure is never treated as "went GA" — only a successful fetch confirming the `(beta)` marker is gone triggers the flag.
 - **On failure:** opens a GitHub issue (`bug`) only when every tracked exam's fetch failed (site down or blocking requests); a single exam's fetch failure is logged as a warning and skipped that run.
-- **Working the list:** verify the exam is genuinely GA on Microsoft Learn, remove its `BETA` badge from `examBadges` in `astro.config.mjs`, update the exam page's `:::tip` beta banner and Get Started card, then delete its entry from `beta-exams.json` (or leave it `flaggedGA: true` if you'd rather keep history — the monitor will not re-report it either way).
+- **Working the list:** verify the exam is genuinely GA on Microsoft Learn, remove its `BETA` status from `src/data_files/exam-status.mjs`, update the exam page's `:::tip` beta banner and Get Started card, then delete its entry from `beta-exams.json` (or leave it `flaggedGA: true` if you'd rather keep history — the monitor will not re-report it either way).
 
 ### Retiring exam tracker
 - **File:** `src/data_files/retiring-exams.json` — `{ lastSynced, exams: [{ code, area, name, retirementDate, replacementCode?, notified, notifiedAt? }] }`; `retirementDate` is `YYYY-MM-DD`.
-- **Sync script (one-time/manual):** `scripts/retiring-exams-sync.mjs` — rebuilds the file from every `examBadges[area][code]` entry with `{ text: "RETIRING", variant: "danger" }`, pulling the exam name from that page's frontmatter `description` and the retirement date from its `<RetirementBanner retireDate="...">` prop or inline `:::caution` text (whichever the page uses), normalized to ISO. Run with `node scripts/retiring-exams-sync.mjs` only to bootstrap or force a full resync — it overwrites the file, but preserves any existing `notified`/`notifiedAt` state.
+- **Sync script (one-time/manual):** `scripts/retiring-exams-sync.mjs` — rebuilds the file from every `examStatuses[area][code]` entry with `{ text: "RETIRING", variant: "danger" }`, pulling the exam name from that page's frontmatter `description` and the retirement date from its `<RetirementBanner retireDate="...">` prop or inline `:::caution` text (whichever the page uses), normalized to ISO. Run with `node scripts/retiring-exams-sync.mjs` only to bootstrap or force a full resync — it overwrites the file, but preserves any existing `notified`/`notifiedAt` state.
 - **Monitor workflow:** `.github/workflows/retiring-exam-monitor.yml` — runs daily 05:00 UTC + manual trigger; script `scripts/retiring-exam-check.mjs` does pure date math against the tracker (no network calls) and flags any exam whose `retirementDate` is yesterday (UTC) or earlier and not yet `notified`.
 - **On a retirement notification:** opens a GitHub issue (`enhancement`) naming the exam(s) and their retirement date; marks the entry `notified: true` so it fires exactly once, even if a workflow run is missed for a day or two.
 - **On failure:** opens a GitHub issue (`bug`) only when the tracker file itself is corrupt/unreadable.
-- **Working the list:** confirm the exam is actually retired (Microsoft Learn, the page's `RetirementBanner`/`:::caution` text), update the exam page to reflect retirement, then either remove the `RETIRING` badge from `examBadges` (if replaced by a new exam already tracked separately) or leave the entry in `retiring-exams.json` as a historical record — the monitor will not re-notify a `notified: true` entry.
+- **Working the list:** confirm the exam is actually retired (Microsoft Learn, the page's `RetirementBanner`/`:::caution` text), update the exam page to reflect retirement, then either remove the `RETIRING` status from `src/data_files/exam-status.mjs` (if replaced by a new exam already tracked separately) or leave the entry in `retiring-exams.json` as a historical record — the monitor will not re-notify a `notified: true` entry.
 
 ### Adding a new exam to either tracker
-When an exam newly becomes beta or retiring (i.e. you're adding `{ text: "BETA", variant: "tip" }` or `{ text: "RETIRING", variant: "danger" }` to `examBadges` in `astro.config.mjs` for the first time), also add a matching entry directly to `src/data_files/beta-exams.json` or `src/data_files/retiring-exams.json` by hand — the sync scripts are not re-run automatically for single additions.
+When an exam newly becomes beta or retiring (i.e. you're adding `{ text: "BETA", variant: "tip" }` or `{ text: "RETIRING", variant: "danger" }` to `examStatuses` in `src/data_files/exam-status.mjs` for the first time), also add a matching entry directly to `src/data_files/beta-exams.json` or `src/data_files/retiring-exams.json` by hand — the sync scripts are not re-run automatically for single additions.
 
 ---
 
@@ -504,24 +555,3 @@ above), clone that repo or fetch the file directly from its `main` branch.
 - When adding or changing repository memory, update `AGENTS.md` in the same task and consolidate overlapping guidance instead of duplicating it.
 - If a memory file conflicts with `AGENTS.md` or another memory file, ask the user which rule should take precedence before merging.
 - Do not merge temporary `/memories/session/` notes unless the user explicitly promotes them to durable repository guidance.
-
----
-
-## Task Prompts
-
-Detailed improvement tasks are defined in `.github/prompts/`. Each prompt file contains:
-- Project context and conventions
-- Step-by-step instructions
-- Ground rules and verification steps
-
-Available prompts:
-- `hub-audit-ids-dates` — Audit assessment IDs and dates against Microsoft Learn
-- `hub-ci-link-check` — Add automated link checking to CI
-- `hub-exam-page-component` — Data-driven exam pages
-- `hub-finish-prepare-folder` — Complete orphaned prepare/ folder
-- `hub-measureup-card` — Shared MeasureUp card component
-- `hub-related-certs-block` — Related certifications cross-link block
-- `hub-retirement-banner` — Shared retirement/beta banner components
-
-Skills provide specialized instructions and workflows for specific tasks.
-Use the skill tool to load a skill when a task matches its description.

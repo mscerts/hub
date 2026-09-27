@@ -3,7 +3,7 @@ title: Virtual Training Days
 description: Microsoft Virtual Training Days Vouchers. Learn how to get 50% exam discount for Microsoft Fundamental exams (and few associate exams) to save money. 
 voucherCategory: "50%"
 ---
-import { LinkButton } from '@components/docs';
+import { LinkCard, CardGrid } from '@components/docs';
 import { Steps } from '@components/docs';
 import { Tabs, TabItem } from '@components/docs';
 
@@ -37,107 +37,25 @@ Microsoft Virtual Training Days vouchers have returned! But this time the vouche
 :::note
 Voucher is confirmed to work for AB-900 while the page is still saying it applies to the retired MS-900.
 :::
-<LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?q=Microsoft+Virtual+Training+Day%3A+Introduction+to+Microsoft+365%2C+Copilot%2C+and+Agents" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  AB-900: Copilot and Agent Administration Fundamentals
-</LinkButton>
-
-<LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Develop+generative+AI+apps+with+Azure+AI+Foundry" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  AI-901: Azure AI Fundamentals
-</LinkButton>
-
-<LinkButton
-  href="https://www.microsoft.com/cs-cz/events/category/microsoft-virtual-training-days?filters=product%3Aazure%2Ctopic%3Ainfrastructure&scenario=mvtd&q=Introduction+to+Microsoft+Azure" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  AZ-900: Azure Fundamentals
-</LinkButton>
-
-<LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Azure+Virtual+Training+Day%3A+Data+Fundamentals" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  DP-900: Azure Data Fundamentals
-</LinkButton>
-
-<LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Introduction+to+Microsoft+Power+Platform" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  PL-900: Power Platform Fundamentals
-</LinkButton>
-
-<LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Introduction+to+Microsoft+Security" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  SC-900: Security, Compliance, and Identity Fundamentals
-</LinkButton>
+<CardGrid>
+  <LinkCard title="AB-900: Copilot and Agent Administration Fundamentals" href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?q=Microsoft+Virtual+Training+Day%3A+Introduction+to+Microsoft+365%2C+Copilot%2C+and+Agents" target="_blank" />
+  <LinkCard title="AI-901: Azure AI Fundamentals" href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Develop+generative+AI+apps+with+Azure+AI+Foundry" target="_blank" />
+  <LinkCard title="AZ-900: Azure Fundamentals" href="https://www.microsoft.com/cs-cz/events/category/microsoft-virtual-training-days?filters=product%3Aazure%2Ctopic%3Ainfrastructure&scenario=mvtd&q=Introduction+to+Microsoft+Azure" target="_blank" />
+  <LinkCard title="DP-900: Azure Data Fundamentals" href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Azure+Virtual+Training+Day%3A+Data+Fundamentals" target="_blank" />
+  <LinkCard title="PL-900: Power Platform Fundamentals" href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Introduction+to+Microsoft+Power+Platform" target="_blank" />
+  <LinkCard title="SC-900: Security, Compliance, and Identity Fundamentals" href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Introduction+to+Microsoft+Security" target="_blank" />
+</CardGrid>
 
 </TabItem>
 <TabItem label="Role-based">
 
-<LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Build+Agentic+AI+Solutions+with+Azure+AI+Foundry" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  AI-103: Developing AI Apps and Agents on Azure
-</LinkButton>
-
-<LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Migrate+and+Modernize+Foundation" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  DP-300: Administering Microsoft Azure SQL Solutions
-</LinkButton>
-
-<LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Predict+and+Defend+Against+Cybersecurity+Threats" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  SC-200: Microsoft Security Operations Analyst
-</LinkButton>
-
-<LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Protect+Sensitive+Information+in+the+AI+Era+with+Microsoft+Purview" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  SC-401: Administering Information Security in Microsoft 365 
-</LinkButton>
-
-<LinkButton
-  href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Security+Virtual+Training+Day%3A+Strengthen+Cloud+Security+with+Microsoft+Defender+for+Cloud" target="_blank"
-  variant="primary"
-  icon="document"
-  iconPlacement="start"
->
-  SC-500: Implementing End-to-End Security Controls for Cloud and AI Workloads
-</LinkButton>
+<CardGrid>
+  <LinkCard title="AI-103: Developing AI Apps and Agents on Azure" href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Build+Agentic+AI+Solutions+with+Azure+AI+Foundry" target="_blank" />
+  <LinkCard title="DP-300: Administering Microsoft Azure SQL Solutions" href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Migrate+and+Modernize+Foundation" target="_blank" />
+  <LinkCard title="SC-200: Microsoft Security Operations Analyst" href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Virtual+Training+Day%3A+Predict+and+Defend+Against+Cybersecurity+Threats" target="_blank" />
+  <LinkCard title="SC-401: Administering Information Security in Microsoft 365" href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Protect+Sensitive+Information+in+the+AI+Era+with+Microsoft+Purview" target="_blank" />
+  <LinkCard title="SC-500: Implementing End-to-End Security Controls for Cloud and AI Workloads" href="https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Microsoft+Security+Virtual+Training+Day%3A+Strengthen+Cloud+Security+with+Microsoft+Defender+for+Cloud" target="_blank" />
+</CardGrid>
 
 </TabItem>
 </Tabs>

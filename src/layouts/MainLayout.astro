@@ -51,7 +51,7 @@ interface Props {
     {/* Define the title of the page */}
     <title>{title}</title>
     <meta name="mitgo-verification" content={VERIFICATIONS.mitgo} />
-    <script is:inline>
+    <script is:inline data-cfasync="false">
       (() => {
         const raw =
           localStorage.getItem("hs_theme") ||
