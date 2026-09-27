@@ -40,7 +40,7 @@ const aiActions: Action[] = [
   },
 ];
 
-if (currentPath !== "/certs") {
+if (currentPath !== "/certs" && currentPath !== "/wiki") {
   aiActions.push({
     label: "View as Markdown",
     href: `${currentPath}.md`,
