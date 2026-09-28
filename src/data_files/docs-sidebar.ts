@@ -97,6 +97,7 @@ const prepareItems: DocsSidebarItem[] = [
   {
     label: "Navigating Study Materials",
     href: docsPath("prepare/studymaterials"),
+    badge: { text: "WIP", variant: "caution" },
   },
   { label: "Business Exams", href: docsPath("prepare/business") },
   { label: "Fundamentals Exams", href: docsPath("prepare/fundamentals") },
@@ -105,6 +106,11 @@ const prepareItems: DocsSidebarItem[] = [
 ];
 
 const voucherItems: DocsSidebarItem[] = [
+  {
+    label: "GitHub Universe 2026 - GH-700",
+    href: docsPath("vouchers/githubuniverse2026"),
+    badge: { text: "N/A", variant: "tip" },
+  },
   {
     label: "Partner Certification Week",
     href: docsPath("vouchers/partnerweek"),

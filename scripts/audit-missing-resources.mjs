@@ -32,9 +32,8 @@ const EXAM_FILE_RE = /^([A-Z]{2,3}-\d{3})\.mdx$/;
 
 // ---------------------------------------------------------------------------
 // Resource types — table keys live here. Matching is against LinkCard button
-// titles exactly as they appear in the `title="..."` attribute (or the
-// data-driven TS slice's `title` fields), not hrefs. Add a new type by adding
-// the button title it should look for.
+// titles exactly as they appear in the `title="..."` attribute, not hrefs.
+// Add a new type by adding the button title it should look for.
 // Buttons borrowed from a predecessor exam (`AZ-800: MeasureUp Assessment` on
 // AZ-802) intentionally do not count — the page still lacks its own resource.
 // ---------------------------------------------------------------------------
@@ -75,10 +74,10 @@ const RESOURCE_TYPES = [
   },
   {
     key: "MeasureUp",
-    test: ({ titles, dataDrivenSlice }) =>
+    test: ({ titles }) =>
       titles.some(
         (t) => t.startsWith("MeasureUp ") && t !== "MeasureUp Subscriptions",
-      ) || /measureUpReleased:\s*true/.test(dataDrivenSlice),
+      ),
   },
   {
     key: "Whizlabs",
@@ -112,45 +111,13 @@ function stripComments(text) {
     .replace(/<!--[\s\S]*?-->/g, "");
 }
 
-// Data-driven pages (AI-103, AI-901) render from src/data_files/exam-pages.ts;
-// return the matching entry's slice so its titles count toward detection.
-function getDataDrivenSlice(content, code) {
-  const dataDrivenMatch = content.match(
-    /examPages\[["']([A-Z]{2,3}-\d{3})["']\]/,
-  );
-  if (!dataDrivenMatch) return "";
-
-  const dataCode = dataDrivenMatch[1];
-  const tsPath = join(root, "src", "data_files", "exam-pages.ts");
-  const tsContent = normalize(readFileSync(tsPath, "utf8"));
-  const startMarker = `"${dataCode}": {`;
-  const startIdx = tsContent.indexOf(startMarker);
-  if (startIdx === -1) {
-    console.error(
-      `Warning: could not find ${startMarker} in src/data_files/exam-pages.ts for ${code}`,
-    );
-    return "";
-  }
-
-  const rest = tsContent.slice(startIdx + startMarker.length);
-  const nextEntry = rest.match(/^  "[A-Z]{2,3}-\d{3}": \{/m);
-  const endIdx = nextEntry
-    ? startIdx + startMarker.length + nextEntry.index
-    : tsContent.length;
-
-  return tsContent.slice(startIdx, endIdx);
-}
-
 // LinkCard `title="..."` attributes are buttons; `<Card title=...>` and
 // `<TabItem label=...>` are not, so only the former is matched.
 const LINKCARD_TITLE_RE = /<LinkCard\b[^>]*?\btitle="([^"]*)"/g;
-const TS_TITLE_RE = /title:\s*"([^"]*)"/g;
 
-function collectTitles(examMdx, dataDrivenSlice) {
+function collectTitles(examMdx) {
   const titles = [];
   for (const m of examMdx.matchAll(LINKCARD_TITLE_RE)) titles.push(m[1].trim());
-  for (const m of dataDrivenSlice.matchAll(TS_TITLE_RE))
-    titles.push(m[1].trim());
   return titles;
 }
 
@@ -191,10 +158,9 @@ for (const area of AREAS) {
     scannedCount++;
 
     const examMdx = stripComments(raw);
-    const dataDrivenSlice = getDataDrivenSlice(raw, code);
-    const titles = collectTitles(examMdx, dataDrivenSlice);
+    const titles = collectTitles(examMdx);
     const labText = buildLabText(area, code.toLowerCase());
-    const ctx = { titles, dataDrivenSlice, labText };
+    const ctx = { titles, labText };
 
     for (const { key, test } of RESOURCE_TYPES) {
       if (!test(ctx)) results[key].push(code);

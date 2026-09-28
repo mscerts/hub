@@ -469,7 +469,6 @@ Only whether the button is present **on our page** — it does not verify that t
 - Only `<LinkCard>` titles are read; `<Card title="MeasureUp Practice Tests">` containers and `<TabItem label>`s are ignored.
 - Buttons borrowed from a predecessor exam (`AZ-800: MeasureUp Assessment` on AZ-802, `AZ-500: Pluralsight Course` on SC-500) intentionally do **not** count — the page still lacks its own resource, which is exactly what the periodic sweep should look for.
 - Because detection is name-based, new buttons must use the canonical titles above (e.g. `John Christopher's Course on Udemy`, not `John Christopher SC-200 Course`) or they will be reported as missing.
-- Data-driven pages (`examPages["<CODE>"]` from `src/data_files/exam-pages.ts`) are checked against the `title:` fields of their entry in that file.
 - To track a new resource type, add one entry to `RESOURCE_TYPES` in the script with the button title it should look for, and re-run.
 
 ### Working the list
