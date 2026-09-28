@@ -2,7 +2,7 @@
 title: AI-901 Study Materials
 description: "Collection of study materials for the certification exam AI-901: Microsoft Azure AI Fundamentals. Contains official Microsoft Learn materials, labs, videos, practice tests and paid courses."
 ---
-import { LinkCard, CardGrid, Card, Aside, Tabs, TabItem } from '@components/docs';
+import { LinkCard, CardGrid, Card, Tabs, TabItem } from '@components/docs';
 import RelatedCerts from '../../../components/RelatedCerts.astro';
 
 <Card title="Get Started" icon="star">
@@ -12,11 +12,8 @@ import RelatedCerts from '../../../components/RelatedCerts.astro';
   <LinkCard title="AI-901 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-901?WT.mc_id=studentamb_165290" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for the exam."/>
   <LinkCard title="Exam Labs" href="/certs/labs/azure/ai-901/" target="_blank" description="Collection of all lab exercises that Microsoft offers. Includes Labs for Microsoft Learn."/>
   <LinkCard title="How to Prepare for Fundamentals Exams" href="/prepare/fundamentals/" description="Guidance on study time, resources, and readiness for Microsoft Fundamentals exams."/>
-
-</Card>
-
-<RelatedCerts examCode="AI-901" />
-
+  <RelatedCerts examCode="AI-901" />
+---
 <Tabs>
   <TabItem label="Text">
     <CardGrid>
@@ -50,5 +47,9 @@ import RelatedCerts from '../../../components/RelatedCerts.astro';
     </CardGrid>
   </TabItem>
 </Tabs>
+---
+</Card>
 
-<Aside type="tip">MeasureUp has not released any material for this exam yet.</Aside>
+:::tip
+MeasureUp has not released any material for this exam yet.
+:::
