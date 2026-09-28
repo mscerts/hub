@@ -83,6 +83,7 @@ const prepareItems: DocsSidebarItem[] = [
   {
     label: "Navigating Study Materials",
     href: docsPath("prepare/studymaterials"),
+    badge: { text: "WIP", variant: "caution" },
   },
   { label: "Business Exams", href: docsPath("prepare/business") },
   { label: "Fundamentals Exams", href: docsPath("prepare/fundamentals") },
