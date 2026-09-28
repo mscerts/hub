@@ -112,7 +112,7 @@ function stripComments(text) {
     .replace(/<!--[\s\S]*?-->/g, "");
 }
 
-// Data-driven pages (AI-103, AI-901) render from src/data_files/exam-pages.ts;
+// Data-driven pages (currently AI-901) render from src/data_files/exam-pages.ts;
 // return the matching entry's slice so its titles count toward detection.
 function getDataDrivenSlice(content, code) {
   const dataDrivenMatch = content.match(

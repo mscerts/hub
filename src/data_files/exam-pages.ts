@@ -100,88 +100,14 @@ export const examPages: Record<string, ExamPageData> = {
             href: "https://trk.udemy.com/rEJP93",
             target: "_blank",
           },
+          {
+            title: "Pluralsight Course",
+            href: "https://www.pluralsight.com/paths/ai-901-microsoft-azure-ai-fundamentals",
+            target: "_blank",
+          },
         ],
       },
       { label: "Misc", links: [] },
-    ],
-    measureUpReleased: false,
-  },
-  "AI-103": {
-    examCode: "AI-103",
-    getStartedLinks: [
-      {
-        title: "Exam AI-103: Developing AI Apps and Agents on Azure",
-        href: "https://learn.microsoft.com/credentials/certifications/azure-ai-apps-and-agents-developer-associate?WT.mc_id=studentamb_165290",
-        target: "_blank",
-        description:
-          "As a candidate for this Microsoft Certification, you’re an Azure AI engineer who builds, manages, and deploys agents and AI solutions that take advantage of Microsoft Foundry.",
-      },
-      {
-        title: "AI-103 Study Guide",
-        href: "https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-103?WT.mc_id=studentamb_165290",
-        target: "_blank",
-        description:
-          "Study guide contains topics and information you need to know to successfully prepare for the exam.",
-      },
-      {
-        title: "Exam Labs",
-        href: "/certs/labs/azure/ai-103/",
-        target: "_blank",
-        description:
-          "Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings.",
-      },
-      {
-        title: "How to Prepare for Role-Based Exams",
-        href: "/prepare/role-based/",
-        description:
-          "Guidance on hands-on practice, documentation, and readiness for Microsoft role-based exams.",
-      },
-    ],
-    tabs: [
-      {
-        label: "Text",
-        links: [
-          {
-            title: "Microsoft Learn",
-            href: "https://learn.microsoft.com/training/courses/ai-103t00/?WT.mc_id=studentamb_165290#course-syllabus",
-            target: "_blank",
-            description:
-              "This course is intended for software developers wanting to build AI infused applications that leverage Microsoft Foundry. Topics in this course include developing generative AI apps, building AI agents, and solutions that implement knowledge connections or tools in your agentic applications.",
-          },
-        ],
-      },
-      {
-        label: "Videos",
-        links: [
-          {
-            title: "AI-103 Study Cram",
-            href: "https://www.youtube.com/watch?v=WK2BvjOYTCQ",
-            target: "_blank",
-            description: "John Savill's AI-103 Study Cram.",
-          },
-        ],
-      },
-      {
-        label: "Tests",
-        links: [
-          {
-            title: "CertiAce Practice Tests",
-            href: "https://certiace.com/practice/AI-103",
-            target: "_blank",
-          },
-        ],
-      },
-      { label: "Paid", links: [] },
-      {
-        label: "Misc",
-        links: [
-          {
-            title: "Absolute Beginner Guide to Python, John Savill",
-            href: "https://www.youtube.com/watch?v=VE1HAjJB7cs",
-            target: "_blank",
-          },
-        ],
-      },
     ],
     measureUpReleased: false,
   },
