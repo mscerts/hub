@@ -28,15 +28,16 @@ const visibleHeadings = headings.filter(
 const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
 ---
 
-<div data-docs class="w-full bg-neutral-50 dark:bg-[#222222]">
+<div data-docs class="w-full bg-neutral-50 dark:bg-neutral-900">
   <CodeBlocks />
   <div class="flex min-h-[calc(100vh-4rem)] w-full">
     <aside
-      class="docs-sidebar hidden min-h-[calc(100vh-4rem)] w-72 shrink-0 border-r border-neutral-200 bg-neutral-100/70 lg:block dark:border-[#383838] dark:bg-[#1d1d1d]"
+      class="docs-sidebar hidden min-h-[calc(100vh-4rem)] w-80 shrink-0 border-r border-neutral-200 bg-neutral-100/70 lg:block dark:border-neutral-700 dark:bg-neutral-900"
       aria-label={`${sectionLabel} navigation`}
     >
       <div
-        class="sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-8"
+        class="subtle-scrollbar sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-8"
+        data-subtle-scrollbar
       >
         <nav data-docs-nav aria-label="Documentation navigation">
           <DocsSidebar
@@ -54,9 +55,7 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
           class="text-xs font-medium text-neutral-500 dark:text-[#9aa7b5]"
           aria-label="Breadcrumb"
         >
-          <a
-            href="/certs/"
-            class="hover:text-[#7890a6] dark:hover:text-[#b0c0cf]"
+          <a href="/certs/" class="hover:text-blue-700 dark:hover:text-blue-300"
             >Certification Hub</a
           >
           <span class="px-2" aria-hidden="true">/</span>
@@ -64,7 +63,7 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
         </nav>
 
         <header
-          class="mt-6 border-b border-neutral-200 pb-8 dark:border-[#383838]"
+          class="mt-6 border-b border-neutral-200 pb-8 dark:border-neutral-700"
         >
           <h1
             class="text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl dark:text-[#f4f4f4]"
@@ -79,71 +78,9 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
           </p>
         </header>
 
-        <div
-          class="docs-mobile-drawer-layer dark"
-          data-docs-drawer-layer
-          aria-hidden="true"
-        >
-          <button
-            type="button"
-            class="docs-mobile-drawer-backdrop"
-            data-docs-drawer-close
-            tabindex="-1"
-            aria-label="Close documentation navigation"></button>
-          <div
-            id="docs-mobile-drawer"
-            class="docs-mobile-drawer"
-            data-docs-drawer
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${sectionLabel} navigation`}
-            aria-hidden="true"
-            inert
-          >
-            <div
-              class="flex items-center justify-between border-b border-neutral-200 px-5 py-4 dark:border-[#383838]"
-            >
-              <h2
-                class="m-0 text-base font-semibold text-neutral-950 dark:text-[#f4f4f4]"
-              >
-                Documentation
-              </h2>
-              <button
-                type="button"
-                class="flex size-9 items-center justify-center rounded-lg text-neutral-500 transition hover:bg-neutral-200 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:text-neutral-400 dark:hover:bg-[#303030] dark:hover:text-white"
-                data-docs-drawer-close
-                aria-label="Close documentation navigation"
-              >
-                <svg
-                  class="size-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="m6 6 12 12M18 6 6 18"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-width="1.8"></path>
-                </svg>
-              </button>
-            </div>
-            <nav
-              class="min-h-0 flex-1 overflow-y-auto px-4 py-5"
-              aria-label="Documentation mobile navigation"
-            >
-              <DocsSidebar
-                items={sidebarItems}
-                currentPath={currentPath}
-                idPrefix="mobile"
-              />
-            </nav>
-          </div>
-        </div>
-
         {
           visibleHeadings.length > 0 && (
-            <details class="docs-mobile-toc mt-4 rounded-xl border border-neutral-200 bg-neutral-100 p-4 xl:hidden dark:border-[#383838] dark:bg-[#1d1d1d]">
+            <details class="docs-mobile-toc mt-4 rounded-xl border border-neutral-200 bg-neutral-100 p-4 xl:hidden dark:border-neutral-700 dark:bg-neutral-900">
               <summary class="cursor-pointer text-sm font-semibold text-neutral-800 dark:text-[#f4f4f4]">
                 On this page
               </summary>
@@ -164,11 +101,12 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
     </div>
 
     <aside
-      class="docs-toc hidden min-h-[calc(100vh-4rem)] w-64 shrink-0 border-l border-neutral-200 xl:block dark:border-[#383838]"
+      class="docs-toc hidden min-h-[calc(100vh-4rem)] w-64 shrink-0 border-l border-neutral-200 xl:block dark:border-neutral-700"
       aria-label="On this page"
     >
       <div
-        class="sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-12"
+        class="subtle-scrollbar sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-12"
+        data-subtle-scrollbar
       >
         <DocsTableOfContents headings={visibleHeadings} />
         <div class="mt-8">
@@ -183,95 +121,6 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
   import { headingAnchors } from "./client/heading-anchors";
 
   headingAnchors();
-
-  const initializeDocsDrawer = () => {
-    const layer = document.querySelector<HTMLElement>(
-      "[data-docs-drawer-layer]",
-    );
-    const drawer = document.querySelector<HTMLElement>("[data-docs-drawer]");
-    const openButton = document.querySelector<HTMLButtonElement>(
-      "[data-docs-drawer-open]",
-    );
-    const closeButtons = Array.from(
-      document.querySelectorAll<HTMLButtonElement>("[data-docs-drawer-close]"),
-    );
-
-    if (
-      !layer ||
-      !drawer ||
-      !openButton ||
-      closeButtons.length === 0 ||
-      layer.dataset.ready
-    )
-      return;
-    layer.dataset.ready = "true";
-
-    let previousFocus: HTMLElement | null = null;
-    const desktopQuery = window.matchMedia("(min-width: 64rem)");
-
-    const setOpen = (open: boolean, restoreFocus = true) => {
-      layer.dataset.open = String(open);
-      layer.setAttribute("aria-hidden", String(!open));
-      drawer.setAttribute("aria-hidden", String(!open));
-      drawer.toggleAttribute("inert", !open);
-      openButton.setAttribute("aria-expanded", String(open));
-      document.body.classList.toggle("docs-drawer-open", open);
-
-      if (open) {
-        previousFocus =
-          document.activeElement instanceof HTMLElement
-            ? document.activeElement
-            : openButton;
-        drawer.querySelector<HTMLElement>("button, a")?.focus();
-      } else if (restoreFocus) {
-        previousFocus?.focus();
-        previousFocus = null;
-      }
-    };
-
-    openButton.addEventListener("click", () => setOpen(true));
-    closeButtons.forEach((button) =>
-      button.addEventListener("click", () => setOpen(false)),
-    );
-    drawer
-      .querySelectorAll("a")
-      .forEach((link) => link.addEventListener("click", () => setOpen(false)));
-    document.addEventListener("keydown", (event) => {
-      if (layer.dataset.open !== "true") return;
-      if (event.key === "Escape") {
-        setOpen(false);
-        return;
-      }
-      if (event.key !== "Tab") return;
-
-      const focusable = Array.from(
-        drawer.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
-        ),
-      );
-      const first = focusable[0];
-      const last = focusable.at(-1);
-      if (!first || !last) return;
-
-      if (
-        event.shiftKey &&
-        (document.activeElement === first ||
-          !drawer.contains(document.activeElement))
-      ) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    });
-    desktopQuery.addEventListener("change", (event) => {
-      if (event.matches && layer.dataset.open === "true") setOpen(false, false);
-    });
-  };
-
-  initializeDocsDrawer();
-  document.addEventListener("astro:page-load", initializeDocsDrawer);
 </script>
 
 <style>
@@ -296,76 +145,9 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
     display: block;
   }
 
-  .docs-mobile-drawer-layer {
-    display: none;
-  }
-
-  @media (max-width: 63.999rem) {
-    .docs-mobile-drawer-layer {
-      position: fixed;
-      inset: 0;
-      z-index: 80;
-      display: block;
-      pointer-events: none;
-    }
-
-    .docs-mobile-drawer-layer[data-open="true"] {
-      pointer-events: auto;
-    }
-
-    .docs-mobile-drawer-backdrop {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      border: 0;
-      background: rgb(0 0 0 / 0.62);
-      opacity: 0;
-      transition: opacity 220ms ease-out;
-    }
-
-    .docs-mobile-drawer {
-      position: absolute;
-      top: 0;
-      right: 0;
-      display: flex;
-      flex-direction: column;
-      width: min(88vw, 25rem);
-      height: 100%;
-      overflow: hidden;
-      border-left: 1px solid #383838;
-      background: #1d1d1d;
-      box-shadow: -1rem 0 3rem rgb(0 0 0 / 0.28);
-      transform: translateX(100%);
-      transition: transform 250ms cubic-bezier(0.32, 0.72, 0, 1);
-    }
-
-    .docs-mobile-drawer-layer[data-open="true"] .docs-mobile-drawer-backdrop {
-      opacity: 1;
-    }
-
-    .docs-mobile-drawer-layer[data-open="true"] .docs-mobile-drawer {
-      transform: translateX(0);
-    }
-
-    :global(body.docs-drawer-open) {
-      overflow: hidden;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .docs-mobile-drawer,
-      .docs-mobile-drawer-backdrop {
-        transition: none;
-      }
-    }
-  }
-
   @media (min-width: 64rem) {
     .docs-sidebar {
       display: block;
-    }
-
-    .docs-mobile-drawer-layer {
-      display: none;
     }
   }
 
@@ -380,13 +162,17 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
   }
 
   .docs-content {
-    color: #c5c5c5;
+    color: var(--nb-foreground);
     font-size: 1rem;
     line-height: 1.75;
   }
 
   .docs-content :global(.card .body) {
-    color: #c5c5c5;
+    color: var(--nb-foreground);
+  }
+
+  .docs-content :global(li) {
+    color: var(--nb-foreground);
   }
 
   .docs-content :global(img) {
@@ -454,7 +240,9 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
       a:not([data-docs-link-button]):not(.docs-link-card):not(.heading-anchor)
     ) {
     color: var(--nb-info);
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
   }
 
   .docs-content

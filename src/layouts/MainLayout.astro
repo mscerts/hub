@@ -59,9 +59,7 @@ interface Props {
         const theme =
           raw === "light" || raw === "dark"
             ? raw
-            : window.matchMedia("(prefers-color-scheme: dark)").matches
-              ? "dark"
-              : "light";
+            : "dark";
         localStorage.setItem("hs_theme", theme);
         localStorage.removeItem("starlight-theme");
         document.documentElement.classList.toggle("dark", theme === "dark");
@@ -74,11 +72,20 @@ interface Props {
     <style is:inline>
       /* Paint the correct canvas before the bundled stylesheet arrives. */
       html {
+        color-scheme: dark;
+        background: #262626;
+      }
+
+      html[data-layout="wide"] {
+        background: #222222;
+      }
+
+      html[data-theme="light"] {
         color-scheme: light;
         background: #e5e5e5;
       }
 
-      html[data-layout="wide"] {
+      html[data-layout="wide"][data-theme="light"] {
         background: #f9fafb;
       }
 
@@ -98,12 +105,13 @@ interface Props {
   </head>
   <body
     class:list={[
-      "flex min-h-screen flex-col selection:bg-yellow-400 selection:text-neutral-700",
+      "flex min-h-screen flex-col selection:bg-blue-400 selection:text-neutral-900",
       wide
-        ? "bg-neutral-50 dark:bg-[#222222]"
+        ? "bg-neutral-50 dark:bg-neutral-900"
         : "bg-neutral-200 dark:bg-neutral-800",
     ]}
   >
+    <a class="skip-to-main" href="#main-content">Skip to main content</a>
     {
       /*
     Setting up the main structure of the page.
@@ -119,7 +127,7 @@ interface Props {
       ]}
     >
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" tabindex="-1">
         <slot />
       </main>
     </div>
@@ -219,6 +227,26 @@ interface Props {
       document.addEventListener("astro:page-load", initPreline);
     </script>
     <style>
+      .skip-to-main {
+        position: fixed;
+        top: 0.75rem;
+        left: 0.75rem;
+        z-index: 100;
+        transform: translateY(calc(-100% - 1rem));
+        border-radius: 0.5rem;
+        background: #fff;
+        padding: 0.75rem 1rem;
+        color: #181818;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
+      }
+
+      .skip-to-main:focus-visible {
+        transform: translateY(0);
+        outline: 3px solid #2563eb;
+        outline-offset: 2px;
+      }
+
       /* CSS rules for the page scrollbar */
       .scrollbar-hide::-webkit-scrollbar {
         display: none;

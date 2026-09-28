@@ -96,6 +96,7 @@ PREFIX="$PROJECT_ID-$ROOT_HASH"
 IMAGE="localhost/${PREFIX}-pnpm-sandbox:node24-pnpm${PNPM_VERSION}"
 STORE_VOLUME="$PREFIX-pnpm-store"
 MODULES_VOLUME="$PREFIX-node-modules"
+MCP_MODULES_VOLUME="$PREFIX-mcp-node-modules"
 SOURCE_VOLUME="$PREFIX-generated-source"
 NEXT_VOLUME="$PREFIX-build"
 DEV_CONTAINER_NAME="$PREFIX-pnpm-dev"
@@ -134,7 +135,7 @@ fi
 if [[ "$1" == status ]]; then
   printf 'Image: '
   if podman image exists "$IMAGE"; then podman image inspect "$IMAGE" --format '{{.Id}}'; else printf 'missing\n'; fi
-  for volume in "$STORE_VOLUME" "$MODULES_VOLUME" "$SOURCE_VOLUME" "$NEXT_VOLUME"; do
+  for volume in "$STORE_VOLUME" "$MODULES_VOLUME" "$MCP_MODULES_VOLUME" "$SOURCE_VOLUME" "$NEXT_VOLUME"; do
     if podman volume exists "$volume"; then printf '%s\n' "$volume"; fi
   done
   exit 0
@@ -150,12 +151,13 @@ LOCK="$RUNTIME_ROOT/$ROOT_HASH.lock"
 [[ ! -L "$LOCK" && ( ! -e "$LOCK" || ( -f "$LOCK" && -O "$LOCK" ) ) ]] || die 'unsafe runtime lock'
 exec {LOCK_FD}> "$LOCK"
 flock -x "$LOCK_FD"
-RUN_DIR= CANDIDATE= CREATE_PID= CLIENT_PID= ACTIVE_KIND=
+RUN_DIR= CANDIDATE= CREATE_PID= CLIENT_PID= WATCH_PID= ACTIVE_KIND=
 cleanup() {
   local result=$? cid
   trap '' INT TERM HUP
   trap - EXIT
   if [[ -n "$CREATE_PID" ]]; then wait "$CREATE_PID" || :; fi
+  if [[ -n "$WATCH_PID" ]]; then kill "$WATCH_PID" 2>/dev/null || :; wait "$WATCH_PID" || :; fi
   if [[ -n "$RUN_DIR" && -f "$RUN_DIR/cid" ]]; then
     IFS= read -r cid < "$RUN_DIR/cid" || [[ -n "$cid" ]]
     [[ "$cid" =~ ^[a-f0-9]{64}$ ]] || { printf 'Invalid container ID; retaining %s\n' "$RUN_DIR" >&2; exit 1; }
@@ -180,7 +182,7 @@ if [[ "$1" == image ]]; then
   exit 0
 fi
 podman image exists "$IMAGE" || die 'image missing; run pnpm-sandbox image'
-for volume in "$STORE_VOLUME" "$MODULES_VOLUME" "$SOURCE_VOLUME" "$NEXT_VOLUME"; do
+  for volume in "$STORE_VOLUME" "$MODULES_VOLUME" "$MCP_MODULES_VOLUME" "$SOURCE_VOLUME" "$NEXT_VOLUME"; do
   podman volume exists "$volume" || podman volume create "$volume" >/dev/null
 done
 RUN_DIR="$(mktemp -d /tmp/pnpm-sandbox-run.XXXXXX)"
@@ -226,11 +228,18 @@ run_sandbox() {
     --stop-timeout 10 --shm-size 128m --ulimit nofile=4096:4096 --ipc private --pid private
     --network "$network" --http-proxy=false
     --env CI=true --env HOME=/tmp/home --env XDG_CACHE_HOME=/tmp/cache --env pnpm_config_store_dir=/pnpm/store
-    --tmpfs /tmp:rw,nosuid,nodev,size=4g,mode=1777
-    --tmpfs /opt/safe-chain/certs:rw,nosuid,nodev,size=1m,mode=1777
-    --workdir /workspace --volume "$SNAPSHOT:/workspace:rw"
-    --volume "$STORE_VOLUME:/pnpm/store:rw" --volume "$MODULES_VOLUME:/workspace/node_modules:rw"
-    --volume "$SOURCE_VOLUME:/workspace/.source:rw" --volume "$NEXT_VOLUME:/workspace/.next:rw")
+     --tmpfs /tmp:rw,nosuid,nodev,size=4g,mode=1777
+     --tmpfs /opt/safe-chain/certs:rw,nosuid,nodev,size=1m,mode=1777
+     --tmpfs /workspace/.astro:rw,nosuid,nodev,size=1g
+     --workdir /workspace
+     --volume "$STORE_VOLUME:/pnpm/store:rw" --volume "$MODULES_VOLUME:/workspace/node_modules:rw"
+     --volume "$MCP_MODULES_VOLUME:/workspace/mcp-worker/node_modules:rw"
+     --volume "$SOURCE_VOLUME:/workspace/.source:rw" --volume "$NEXT_VOLUME:/workspace/.next:rw")
+  if [[ "$kind" == dev ]]; then
+    args+=(--volume "$SNAPSHOT:/workspace:ro")
+  else
+    args+=(--volume "$SNAPSHOT:/workspace:rw")
+  fi
   if [[ "$kind" == dev ]]; then
     if podman container exists "$DEV_CONTAINER_NAME"; then
       verify_dev
@@ -241,7 +250,63 @@ run_sandbox() {
   else
     args+=(--timeout 1800 --log-driver none)
   fi
-  args+=("${BUILD_ENV_ARGS[@]}" "${TMPFS_ARGS[@]}")
+  [[ "$kind" == build ]] && args+=("${BUILD_ENV_ARGS[@]}")
+  args+=("${TMPFS_ARGS[@]}")
+  if [[ "$kind" == dev ]]; then
+    python3 - "$PROJECT_ROOT" "$SNAPSHOT" "$RUN_DIR/tracked" >"$RUN_DIR/watcher.log" 2>&1 <<'PY' &
+import os
+import shutil
+import sys
+import tempfile
+import time
+
+root, snapshot, tracked_file = sys.argv[1:]
+excluded = (".git/", ".sandbox/", ".env/", ".env.", ".npmrc/", ".ssh/", ".gnupg/", "node_modules/", ".next/", ".astro/", ".source/", "dist/")
+
+def tracked():
+    data = open(tracked_file, "rb").read().split(b"\0")
+    return {p.decode() for p in data if p}
+
+def valid(path):
+    if not path or path.startswith("/") or "\0" in path or any(part in ("", ".", "..") for part in path.split("/")):
+        return False
+    if any(path == item.rstrip("/") or path.startswith(item) for item in excluded):
+        return False
+    source = os.path.join(root, path)
+    return os.path.isfile(source) and not os.path.islink(source) and os.path.realpath(source) == os.path.join(root, path)
+
+def sync(previous):
+    current = {path for path in tracked() if valid(path)}
+    for path in previous - current:
+        target = os.path.join(snapshot, path)
+        if os.path.isfile(target) and not os.path.islink(target):
+            os.unlink(target)
+    for path in current:
+        source = os.path.join(root, path)
+        target = os.path.join(snapshot, path)
+        if os.path.exists(target) and not os.path.islink(target) and os.path.getmtime(source) <= os.path.getmtime(target) and os.path.getsize(source) == os.path.getsize(target):
+            continue
+        os.makedirs(os.path.dirname(target), exist_ok=True)
+        fd, temporary = tempfile.mkstemp(prefix=".sync-", dir=os.path.dirname(target))
+        os.close(fd)
+        try:
+            shutil.copy2(source, temporary, follow_symlinks=False)
+            os.replace(temporary, target)
+        finally:
+            if os.path.exists(temporary):
+                os.unlink(temporary)
+    return current
+
+previous = set()
+while True:
+    try:
+        previous = sync(previous)
+        time.sleep(0.4)
+    except (FileNotFoundError, OSError):
+        time.sleep(0.4)
+PY
+    WATCH_PID=$!
+  fi
   podman "${args[@]}" "$IMAGE" "$@" &
   CREATE_PID=$!
   wait "$CREATE_PID" || result=$?
@@ -259,7 +324,7 @@ run_sandbox() {
   return "$result"
 }
 run_configured() {
-  local key="$1" network="$2" skip="${3:-false}" value
+  local key="$1" network="$2" kind="${3:-batch}" skip="${4:-false}" value
   local -a command_args=()
   value="${!key}"
   if [[ -z "$value" ]]; then
@@ -267,9 +332,9 @@ run_configured() {
     die "$key is not configured"
   fi
   read -r -a command_args <<< "$value"
-  run_sandbox "$network" batch "${command_args[@]}"
+  run_sandbox "$network" "$kind" "${command_args[@]}"
 }
-ONLINE=slirp4netns:allow_host_loopback=false
+ONLINE=pasta
 case "$1" in
   install) run_sandbox "$ONLINE" batch install --frozen-lockfile ;;
   update)
@@ -289,13 +354,13 @@ case "$1" in
     printf '%s\n' 'Review every file, including package scripts and workspace settings, before manually applying metadata. The checkout is unchanged.'
     CANDIDATE=
     ;;
-  audit) run_configured AUDIT_COMMAND "$ONLINE" ;;
+  audit) run_configured AUDIT_COMMAND "$ONLINE" batch ;;
   run)
     case "$2" in
-       lint) run_configured LINT_COMMAND "$ONLINE" ;;
-       types:check) run_configured TYPECHECK_COMMAND "$ONLINE" ;;
-       build) run_configured BUILD_COMMAND "$ONLINE" ;;
-       all) run_configured LINT_COMMAND "$ONLINE" true; run_configured TYPECHECK_COMMAND "$ONLINE" true; run_configured BUILD_COMMAND "$ONLINE" true ;;
+        lint) run_configured LINT_COMMAND none batch ;;
+        types:check) run_configured TYPECHECK_COMMAND none batch ;;
+        build) run_configured BUILD_COMMAND none build ;;
+        all) run_configured LINT_COMMAND none batch true; run_configured TYPECHECK_COMMAND none batch true; run_configured BUILD_COMMAND none build true ;;
     esac ;;
   exec) shift; run_sandbox none batch exec "$@" ;;
   dev) run_sandbox "$ONLINE" dev dev --host 0.0.0.0 --port "$DEV_PORT" --ignore-lock ;;

@@ -16,21 +16,21 @@ const resourceLinks = [
     description: "Hands-on exercises from Microsoft Learn and GitHub.",
     href: "/certs/labs/",
     icon: "ph:puzzle-piece-fill",
-    iconClass: "text-blue-300",
+    iconClass: "text-blue-700 dark:text-blue-300",
   },
   {
     label: "Vouchers",
     description: "Current discounts and official exam opportunities.",
     href: "/certs/vouchers/",
     icon: "ph:currency-circle-dollar-fill",
-    iconClass: "text-orange-300",
+    iconClass: "text-blue-700 dark:text-blue-300",
   },
   {
     label: "Latest updates",
     description: "Exam changes, certification news, and community posts.",
     href: "/news/",
     icon: "ph:warning-circle-fill",
-    iconClass: "text-blue-300",
+    iconClass: "text-blue-700 dark:text-blue-300",
   },
 ];
 
@@ -39,21 +39,25 @@ const communityLinks = [
     label: "Microsoft Certification Hub",
     href: "https://discord.gg/microsoft-certification-study-group-676990910176821270",
     icon: "discord",
+    iconClass: "!fill-[#5865F2] dark:!fill-[#7289DA]",
   },
   {
     label: "r/O365Certification",
     href: "https://www.reddit.com/r/O365Certification/",
     icon: "reddit",
+    iconClass: "!fill-[#FF4500] dark:!fill-[#FF5700]",
   },
   {
     label: "r/SCICertifications",
     href: "https://www.reddit.com/r/SCICertifications/",
     icon: "reddit",
+    iconClass: "!fill-[#FF4500] dark:!fill-[#FF5700]",
   },
   {
     label: "r/AzureCertifications",
     href: "https://www.reddit.com/r/AzureCertifications/",
     icon: "reddit",
+    iconClass: "!fill-[#FF4500] dark:!fill-[#FF5700]",
   },
 ];
 
@@ -68,15 +72,15 @@ const statusChanges = Object.entries(examStatuses).flatMap(([area, exams]) =>
 const getStatusClass = (status: string) => {
   switch (status) {
     case "BETA":
-      return "bg-[#a855f7]/15 text-[#d8b4fe]";
+      return "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300";
     case "GA":
-      return "bg-green-400/15 text-green-300";
+      return "bg-green-100 text-green-800 dark:bg-green-400/15 dark:text-green-300";
     case "AT RISK":
-      return "bg-amber-400/15 text-amber-300";
+      return "bg-amber-100 text-amber-950 dark:bg-amber-400/15 dark:text-amber-300";
     case "RETIRING":
-      return "bg-red-400/15 text-red-300";
+      return "bg-red-100 text-red-800 dark:bg-red-400/15 dark:text-red-300";
     default:
-      return "bg-slate-400/15 text-slate-300";
+      return "bg-gray-100 text-gray-700 dark:bg-[#64748b]/15 dark:text-[#cbd5e1]";
   }
 };
 const getStatusName = (status: string) =>
@@ -99,12 +103,12 @@ const getVoucherLabel = (category: string | undefined) => {
 const getVoucherBadgeClass = (category: string | undefined) => {
   switch (category) {
     case "100%":
-      return "bg-[#a855f7]/15 text-[#d8b4fe]";
+      return "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300";
     case "50%":
-      return "bg-blue-400/15 text-blue-300";
+      return "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300";
     case "Special":
     default:
-      return "bg-blue-400/15 text-blue-300";
+      return "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300";
   }
 };
 
@@ -121,7 +125,7 @@ const vouchers = docs
     class="max-w-3xl border-b border-neutral-300 pb-8 dark:border-neutral-700"
   >
     <p
-      class="text-sm font-semibold tracking-[0.18em] text-orange-500 uppercase dark:text-orange-300"
+      class="text-sm font-semibold tracking-[0.18em] text-orange-800 uppercase dark:text-orange-300"
     >
       Microsoft Certification Hub
     </p>
@@ -223,7 +227,7 @@ const vouchers = docs
           resourceLinks.map((link) => (
             <a
               href={link.href}
-              class="group rounded-2xl border border-neutral-300 bg-white p-5 transition hover:-translate-y-0.5 hover:border-orange-400 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 dark:border-neutral-700 dark:bg-neutral-900/60 dark:hover:border-orange-300"
+              class="group rounded-2xl border border-neutral-300 bg-white p-5 transition hover:-translate-y-0.5 hover:border-orange-700 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:hover:border-orange-300 dark:focus-visible:outline-orange-300"
             >
               <PackIcon name={link.icon} class:list={["size-7", link.iconClass]} />
               <h2 class="mt-5 font-semibold text-neutral-900 dark:text-neutral-100">
@@ -243,7 +247,7 @@ const vouchers = docs
         <div class="flex items-end justify-between gap-4">
           <div>
             <p
-              class="text-xs font-semibold tracking-[0.16em] text-orange-500 uppercase dark:text-orange-300"
+              class="text-xs font-semibold tracking-[0.16em] text-orange-800 uppercase dark:text-orange-300"
             >
               Offer board
             </p>
@@ -255,7 +259,7 @@ const vouchers = docs
           </div>
           <a
             href="/certs/vouchers/"
-            class="text-sm font-semibold text-neutral-600 hover:text-orange-500 dark:text-neutral-400 dark:hover:text-orange-300"
+            class="text-sm font-semibold text-neutral-600 hover:text-orange-800 dark:text-neutral-400 dark:hover:text-orange-300"
             >All vouchers</a
           >
         </div>
@@ -268,7 +272,7 @@ const vouchers = docs
               <li>
                 <a
                   href={`/${voucher.id}/`}
-                  class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-500 dark:text-neutral-200 dark:hover:text-orange-300"
+                  class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-800 dark:text-neutral-200 dark:hover:text-orange-300"
                 >
                   <span class="min-w-0 truncate">{voucher.data.title}</span>
                   <span
@@ -283,7 +287,7 @@ const vouchers = docs
           <li>
             <a
               href="/certs/vouchers/"
-              class="flex items-center justify-center py-3 text-sm font-semibold text-orange-600 hover:text-orange-500 dark:text-orange-300 dark:hover:text-orange-200"
+              class="flex items-center justify-center py-3 text-sm font-semibold text-orange-800 hover:text-orange-900 dark:text-orange-300 dark:hover:text-orange-200"
             >
               View more vouchers <span aria-hidden="true" class="ms-2"
                 ></span
@@ -301,7 +305,7 @@ const vouchers = docs
         <div class="flex items-start justify-between gap-4">
           <div>
             <p
-              class="text-xs font-semibold tracking-[0.16em] text-orange-500 uppercase dark:text-orange-300"
+              class="text-xs font-semibold tracking-[0.16em] text-orange-800 uppercase dark:text-orange-300"
             >
               Study together
             </p>
@@ -327,10 +331,10 @@ const vouchers = docs
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center justify-between gap-4 py-3 text-sm font-semibold text-neutral-800 transition hover:text-orange-500 dark:text-neutral-200 dark:hover:text-orange-300"
+                  class="flex items-center justify-between gap-4 py-3 text-sm font-semibold text-neutral-800 transition hover:text-orange-800 dark:text-neutral-200 dark:hover:text-orange-300"
                 >
                   <span class="flex items-center gap-3">
-                    <Icon name={link.icon} />
+                    <Icon name={link.icon} class={link.iconClass} />
                     <span>{link.label}</span>
                   </span>
                   <span aria-hidden="true">-&gt;</span>
@@ -347,7 +351,7 @@ const vouchers = docs
         <div class="flex items-end justify-between gap-4">
           <div>
             <p
-              class="text-xs font-semibold tracking-[0.16em] text-orange-500 uppercase dark:text-orange-300"
+              class="text-xs font-semibold tracking-[0.16em] text-orange-800 uppercase dark:text-orange-300"
             >
               Watch the catalog
             </p>
@@ -359,7 +363,7 @@ const vouchers = docs
           </div>
           <a
             href="/certs/"
-            class="text-sm font-semibold text-neutral-600 hover:text-orange-500 dark:text-neutral-400 dark:hover:text-orange-300"
+            class="text-sm font-semibold text-neutral-600 hover:text-orange-800 dark:text-neutral-400 dark:hover:text-orange-300"
             >All exams</a
           >
         </div>
@@ -372,11 +376,11 @@ const vouchers = docs
               <li>
                 <a
                   href={exam.href}
-                  class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-500 dark:text-neutral-200 dark:hover:text-orange-300"
+                  class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-800 dark:text-neutral-200 dark:hover:text-orange-300"
                 >
                   <span>{exam.code}</span>
                   <span
-                     class={`rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${getStatusClass(exam.status)}`}
+                      class={`rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${getStatusClass(exam.status)}`}
                   >
                     <span title={getStatusName(exam.status)}>{exam.status}</span>
                   </span>
@@ -394,7 +398,7 @@ const vouchers = docs
       href="https://www.measureup.com/subscription-plans-for-individuals?source=banner&key=7&u=44"
       target="_blank"
       rel="noopener noreferrer"
-      class="block w-full max-w-4xl overflow-hidden rounded-xl border border-neutral-300/80 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 dark:border-neutral-700 dark:bg-neutral-900"
+      class="block w-full max-w-4xl overflow-hidden rounded-xl border border-neutral-300/80 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700 dark:border-neutral-700 dark:bg-neutral-900 dark:focus-visible:outline-orange-300"
       aria-label="MeasureUp subscription plans"
     >
       <img
