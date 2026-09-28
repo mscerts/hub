@@ -6,7 +6,9 @@ export const examStatuses = {
     "AZ-801": { text: "RETIRING", variant: "danger" },
     "AI-500": { text: "BETA", variant: "tip" },
   },
-  github: {},
+  github: {
+    "GH-700": { text: "UPCOMING", variant: "note" },
+  },
   aibusiness: {
     "AB-650": { text: "BETA", variant: "tip" },
   },
@@ -27,6 +29,7 @@ export const examStatusNames = {
   GA: "Generally Available",
   AT_RISK: "At risk",
   RETIRING: "Retiring",
+  UPCOMING: "Upcoming",
 };
 
 export const examStatusStyles = {
@@ -34,6 +37,7 @@ export const examStatusStyles = {
   GA: "bg-green-100 text-green-800 dark:bg-green-400/15 dark:text-green-300",
   AT_RISK: "bg-amber-400/15 text-amber-300",
   RETIRING: "bg-red-100 text-red-800 dark:bg-red-400/15 dark:text-red-300",
+  UPCOMING: "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300",
 };
 
 export const voucherBadgeStyles = {
