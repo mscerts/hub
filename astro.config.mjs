@@ -58,6 +58,7 @@ export default defineConfig({
     "/aiab/ab-730/": "/certs/aibusiness/ab-730/",
     "/aiab/ab-731/": "/certs/aibusiness/ab-731/",
     "/guide/officialstudymaterials/": "/certs/",
+    "/guide/howtoprepare/": "/certs/prepare/studymaterials/",
     "/security/sc-730/": "/certs/security/sc-900/",
     "/vouchers/aichallenge/": "/certs/vouchers/",
     "/vouchers/microsoftignite/": "/certs/vouchers/",
