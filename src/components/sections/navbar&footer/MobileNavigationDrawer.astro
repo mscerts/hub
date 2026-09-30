@@ -59,12 +59,7 @@ const redditLinks = [
         data-mobile-nav-close-button
         aria-label="Close site navigation"
       >
-        <svg
-          class="size-5"
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden="true"
-        >
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
             d="m6 6 12 12M18 6 6 18"
             stroke="currentColor"
@@ -84,18 +79,16 @@ const redditLinks = [
               link.name === "Certifications" ? (
                 <MegaMenuLink />
               ) : (
-                <NavLink
-                  url={link.url}
-                  name={link.name}
-                  idPrefix="mobile-"
-                />
+                <NavLink url={link.url} name={link.name} idPrefix="mobile-" />
               ),
             )
           }
         </div>
       </nav>
 
-      <section class="mt-5 border-t border-neutral-200 pt-4 dark:border-neutral-700">
+      <section
+        class="mt-5 border-t border-neutral-200 pt-4 dark:border-neutral-700"
+      >
         <h3
           class="mb-2 px-3 text-xs font-semibold tracking-wide text-neutral-500 uppercase dark:text-neutral-400"
         >
@@ -109,7 +102,12 @@ const redditLinks = [
             class="flex size-9 items-center justify-center rounded-lg text-neutral-600 outline-hidden transition hover:bg-neutral-100 hover:text-blue-700 focus-visible:ring-2 focus-visible:ring-orange-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-blue-300 dark:focus-visible:ring-orange-300"
             aria-label="Join the Microsoft Certification Hub Discord"
           >
-            <span aria-hidden="true"><Icon name="discord" /></span>
+            <span aria-hidden="true">
+              <Icon
+                name="discord"
+                class="!fill-[#5865F2] dark:!fill-[#7289DA]"
+              />
+            </span>
           </a>
           <button
             type="button"
@@ -123,7 +121,7 @@ const redditLinks = [
             <span aria-hidden="true">
               <Icon
                 name="reddit"
-                class="!fill-neutral-600 transition-colors group-hover:!fill-blue-700 dark:!fill-neutral-300 dark:group-hover:!fill-blue-300"
+                class="!fill-[#FF4500] transition-colors dark:!fill-[#FF5700]"
               />
             </span>
           </button>
@@ -173,8 +171,12 @@ const redditLinks = [
 
 <script>
   const initializeMobileNavigation = () => {
-    const layer = document.querySelector<HTMLElement>("[data-mobile-nav-layer]");
-    const drawer = document.querySelector<HTMLElement>("[data-mobile-nav-drawer]");
+    const layer = document.querySelector<HTMLElement>(
+      "[data-mobile-nav-layer]",
+    );
+    const drawer = document.querySelector<HTMLElement>(
+      "[data-mobile-nav-drawer]",
+    );
     const openButton = document.querySelector<HTMLButtonElement>(
       "[data-mobile-nav-open]",
     );

@@ -16,10 +16,15 @@ const { headings, variant = "desktop" } = Astro.props;
 {
   headings.length > 0 && (
     <div data-docs-toc data-docs-toc-variant={variant} class="docs-toc">
-      <h2 class="text-[0.68rem] font-bold tracking-[0.18em] text-neutral-500 uppercase dark:text-neutral-300">
-        On this page
-      </h2>
-      <nav class="docs-toc-nav mt-4" aria-label="On this page">
+      {variant === "desktop" && (
+        <h2 class="text-[0.68rem] font-bold tracking-[0.18em] text-neutral-500 uppercase dark:text-neutral-300">
+          On this page
+        </h2>
+      )}
+      <nav
+        class:list={["docs-toc-nav", variant === "desktop" && "mt-4"]}
+        aria-label="Table of contents"
+      >
         <span class="docs-toc-rail" aria-hidden="true" />
         <span
           class="docs-toc-rail-active"

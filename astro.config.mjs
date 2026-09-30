@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 import astroIcon from "astro-icon";
 import remarkDirective from "remark-directive";
 import remarkCallouts from "./src/utils/markdown/remark-callouts.mjs";
+import rehypeWrapTables from "./src/utils/markdown/rehype-wrap-tables.mjs";
 
 const legacyDocsPrefixes = [
   "aibusiness",
@@ -70,7 +71,10 @@ export default defineConfig({
     dangerouslyProcessSVG: true,
   },
   markdown: {
-    processor: unified({ remarkPlugins: [remarkDirective, remarkCallouts] }),
+    processor: unified({
+      remarkPlugins: [remarkDirective, remarkCallouts],
+      rehypePlugins: [rehypeWrapTables],
+    }),
   },
   prefetch: true,
   integrations: [
