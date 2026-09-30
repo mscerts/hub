@@ -84,7 +84,7 @@ const { syncKey, class: className, ...attrs } = Astro.props;
             trigger.setAttribute("aria-controls", id);
             trigger.dataset.hsTab = `#${id}`;
             trigger.className =
-              "-mb-px shrink-0 border-b-2 border-transparent px-4 py-3 text-sm font-medium text-muted-foreground transition hover:border-border-strong hover:text-foreground aria-selected:border-primary aria-selected:text-primary";
+              "-mb-px shrink-0 border-b-2 border-transparent px-5 py-3.5 text-base font-medium text-muted-foreground transition hover:border-border-strong hover:text-foreground aria-selected:border-primary aria-selected:text-primary";
             trigger.textContent = label;
             trigger.dataset.docsTabHash = hash;
             list.append(trigger);

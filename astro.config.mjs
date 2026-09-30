@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 import astroIcon from "astro-icon";
 import remarkDirective from "remark-directive";
 import remarkCallouts from "./src/utils/markdown/remark-callouts.mjs";
+import rehypeWrapTables from "./src/utils/markdown/rehype-wrap-tables.mjs";
 
 const legacyDocsPrefixes = [
   "aibusiness",
@@ -45,13 +46,9 @@ export default defineConfig({
     "/azure/ai-900": "/certs/azure/ai-901/",
     "/power/pl-600": "/certs/aibusiness/ab-100/",
     "/power/pl-200": "/certs/aibusiness/ab-410/",
-    "/power/pl-200/": "/certs/aibusiness/ab-410/",
     "/labs/power/pl-200": "/certs/labs/aibusiness/ab-410/",
-    "/labs/power/pl-200/": "/certs/labs/aibusiness/ab-410/",
     "/azure/az-500": "/certs/security/sc-500/",
-    "/azure/az-500/": "/certs/security/sc-500/",
     "/labs/azure/az-500": "/certs/labs/security/sc-500/",
-    "/labs/azure/az-500/": "/certs/labs/security/sc-500/",
     "/microsoft365/ms-900": "/certs/aibusiness/ab-900/",
     "/aiab/ab-900/": "/certs/aibusiness/ab-900/",
     "/aiab/ab-100/": "/certs/aibusiness/ab-100/",
@@ -74,7 +71,10 @@ export default defineConfig({
     dangerouslyProcessSVG: true,
   },
   markdown: {
-    processor: unified({ remarkPlugins: [remarkDirective, remarkCallouts] }),
+    processor: unified({
+      remarkPlugins: [remarkDirective, remarkCallouts],
+      rehypePlugins: [rehypeWrapTables],
+    }),
   },
   prefetch: true,
   integrations: [
