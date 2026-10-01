@@ -4,7 +4,6 @@ export const examStatuses = {
     "AZ-500": { text: "RETIRING", variant: "danger" },
     "AZ-800": { text: "RETIRING", variant: "danger" },
     "AZ-801": { text: "RETIRING", variant: "danger" },
-    "AI-500": { text: "BETA", variant: "tip" },
   },
   github: {
     "GH-700": { text: "UPCOMING", variant: "note" },
