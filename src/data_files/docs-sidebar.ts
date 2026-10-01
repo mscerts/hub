@@ -3,6 +3,19 @@ import path from "node:path";
 import { examStatuses } from "./exam-status.mjs";
 import { docsPath } from "@utils/docs";
 
+type DocsSidebarIcon =
+  | "ph:book-open-text"
+  | "ph:graduation-cap"
+  | "ph:ticket"
+  | "ph:books"
+  | "simple-icons:microsoftazure"
+  | "simple-icons:github"
+  | "ph:sparkle"
+  | "simple-icons:microsoftoffice"
+  | "ph:shield-check"
+  | "ph:puzzle-piece"
+  | "simple-icons:dynamics365";
+
 export interface DocsSidebarBadge {
   text: string;
   variant: "note" | "tip" | "success" | "caution" | "danger";
@@ -11,6 +24,7 @@ export interface DocsSidebarBadge {
 export interface DocsSidebarItem {
   label: string;
   href?: string;
+  icon?: DocsSidebarIcon;
   badge?: DocsSidebarBadge;
   children?: DocsSidebarItem[];
   collapsed?: boolean;
@@ -146,57 +160,72 @@ const voucherItems: DocsSidebarItem[] = [
 export const docsSidebar: DocsSidebarItem[] = [
   {
     label: "Certification Program Guide",
+    icon: "ph:book-open-text",
     children: guideItems,
     collapsed: false,
   },
-  { label: "How to Prepare", children: prepareItems, collapsed: true },
   {
-    label: "Discounted Exam Vouchers",
-    children: voucherItems,
+    label: "How to Prepare",
+    icon: "ph:graduation-cap",
+    children: prepareItems,
     collapsed: true,
   },
   {
+    label: "Discounted Exam Vouchers",
+    icon: "ph:ticket",
+    children: voucherItems,
+    collapsed: false,
+  },
+  {
     label: "Exam Study Materials",
+    icon: "ph:books",
     collapsed: false,
     children: [
       {
         label: "Azure",
+        icon: "simple-icons:microsoftazure",
         badge: { text: "AZ AI DP", variant: "note" },
         children: buildExamItems("azure"),
         collapsed: true,
       },
       {
         label: "GitHub",
+        icon: "simple-icons:github",
         badge: { text: "GH", variant: "note" },
         children: buildExamItems("github"),
         collapsed: true,
       },
       {
         label: "AI Business",
+        icon: "ph:sparkle",
         badge: { text: "AB", variant: "note" },
         children: buildExamItems("aibusiness"),
         collapsed: true,
       },
       {
         label: "Microsoft 365",
+        icon: "simple-icons:microsoftoffice",
         badge: { text: "MS MD", variant: "note" },
         children: buildExamItems("microsoft365"),
         collapsed: true,
       },
       {
         label: "Security & Identity",
+        icon: "ph:shield-check",
         badge: { text: "SC", variant: "note" },
         children: buildExamItems("security"),
         collapsed: true,
       },
       {
         label: "Power Platform",
+        icon: "ph:puzzle-piece",
         badge: { text: "PL", variant: "note" },
         children: buildExamItems("power"),
         collapsed: true,
       },
       {
         label: "Dynamics 365",
+        icon: "simple-icons:dynamics365",
         badge: { text: "MB", variant: "note" },
         children: buildExamItems("dynamics"),
         collapsed: true,

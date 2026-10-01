@@ -31,12 +31,12 @@ h6 {
   --nb-muted-foreground: oklch(0.556 0 0);
   --nb-accent: oklch(0.967 0 0);
   --nb-accent-foreground: var(--nb-foreground);
-  --nb-primary: oklch(0.145 0 0);
-  --nb-primary-foreground: oklch(0.97 0 0);
-  --nb-primary-hover: oklch(0.371 0 0);
+  --nb-primary: #1d4ed8;
+  --nb-primary-foreground: #fff;
+  --nb-primary-hover: #1e40af;
   --nb-border: oklch(0.935 0 0);
   --nb-border-strong: oklch(0.87 0 0);
-  --nb-ring: oklch(0.145 0 0 / 0.35);
+  --nb-ring: oklch(0.488 0.243 264.376 / 0.5);
   --nb-info: oklch(0.45 0.18 255);
   --nb-info-muted: oklch(0.965 0.015 255);
   --nb-success: oklch(0.42 0.14 152);
@@ -60,12 +60,12 @@ h6 {
   --nb-muted-foreground: oklch(0.68 0 0);
   --nb-accent: oklch(0.269 0 0);
   --nb-accent-foreground: var(--nb-foreground);
-  --nb-primary: oklch(0.9 0 0);
-  --nb-primary-foreground: oklch(0.085 0 0);
-  --nb-primary-hover: oklch(0.7 0 0);
+  --nb-primary: #93c5fd;
+  --nb-primary-foreground: #0f0f0f;
+  --nb-primary-hover: #bfdbfe;
   --nb-border: oklch(0.269 0 0);
   --nb-border-strong: oklch(0.371 0 0);
-  --nb-ring: oklch(0.9 0 0 / 0.35);
+  --nb-ring: oklch(0.809 0.105 251.813 / 0.6);
   --nb-info: oklch(0.75 0.12 255);
   --nb-info-muted: oklch(0.17 0.03 260);
   --nb-success: oklch(0.72 0.12 150);
@@ -77,6 +77,43 @@ h6 {
   --nb-shadow-sm: 0 1px 2px oklch(0 0 0 / 0.2);
   --nb-shadow: 0 1px 3px oklch(0 0 0 / 0.3), 0 1px 2px oklch(0 0 0 / 0.2);
   --nb-shadow-lg: 0 4px 12px oklch(0 0 0 / 0.4), 0 2px 4px oklch(0 0 0 / 0.2);
+}
+
+.subtle-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.subtle-scrollbar::-webkit-scrollbar {
+  width: 0.375rem;
+  height: 0.375rem;
+}
+
+.subtle-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.subtle-scrollbar::-webkit-scrollbar-thumb {
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  background-color: transparent;
+  background-clip: content-box;
+}
+
+.subtle-scrollbar[data-scrolling="true"] {
+  scrollbar-color: var(--nb-border-strong) transparent;
+}
+
+.subtle-scrollbar[data-scrolling="true"]::-webkit-scrollbar-thumb {
+  background-color: var(--nb-border-strong);
+}
+
+.subtle-scrollbar[data-scrolling="true"]:hover {
+  scrollbar-color: var(--nb-info) transparent;
+}
+
+.subtle-scrollbar[data-scrolling="true"]:hover::-webkit-scrollbar-thumb {
+  background-color: var(--nb-info);
 }
 
 @theme {

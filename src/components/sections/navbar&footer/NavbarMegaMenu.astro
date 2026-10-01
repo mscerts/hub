@@ -6,6 +6,7 @@ import { Icon as PackIcon } from "astro-icon/components";
 import NavLink from "@components/ui/links/NavLink.astro";
 import MegaMenuLink from "@components/ui/links/MegaMenuLink.astro";
 import SiteSearch from "@components/ui/SiteSearch.astro";
+import MobileNavigationDrawer from "./MobileNavigationDrawer.astro";
 import enStrings from "@utils/navigation.ts";
 import BrandLogoLight from "../../../assets/images/logo_light.svg";
 import BrandLogoDark from "../../../assets/images/logo_dark.svg";
@@ -34,13 +35,13 @@ const redditLinks = [
 <!-- Main header component -->
 <header class="sticky inset-x-0 top-0 z-50 flex w-full flex-wrap text-sm">
   <nav
-    class="relative mx-0 w-full border-x border-b border-neutral-300/80 bg-white/95 px-4 py-3 shadow-sm backdrop-blur-md md:flex md:min-h-16 md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 dark:border-neutral-700/80 dark:bg-[#1d1d1d]/95"
+    class="relative mx-0 flex w-full flex-wrap border-x border-b border-neutral-300/80 bg-white/95 px-4 py-3 shadow-sm backdrop-blur-md xl:grid xl:min-h-16 xl:grid-cols-[minmax(0,1fr)_18rem_auto] xl:items-center xl:gap-x-3 xl:px-8 xl:py-0 dark:border-neutral-700/80 dark:bg-neutral-900/95"
     aria-label="Global"
   >
-    <div class="flex items-center gap-1">
+    <div class="flex w-full items-center gap-1">
       <!-- Brand logo -->
       <a
-        class="flex-none rounded-lg text-xl font-bold ring-orange-500 outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:ring-orange-300 dark:focus-visible:ring-offset-[#1d1d1d]"
+        class="flex-none rounded-lg text-xl font-bold ring-orange-700 outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:ring-orange-300 dark:focus-visible:ring-offset-neutral-900"
         href={homeUrl}
         aria-label="Brand"
       >
@@ -57,27 +58,12 @@ const redditLinks = [
           class="hidden h-auto w-32 dark:block"
         />
       </a>
-      <span class="ml-auto md:hidden" aria-hidden="true"></span>
-      {
-        isDocsPage && (
-          <button
-            type="button"
-            data-docs-drawer-open
-            class="group flex h-9 items-center gap-1.5 rounded-lg border border-[#8da2b6]/45 bg-[#7890a6]/10 px-2.5 text-xs font-semibold text-[#516a80] outline-hidden transition hover:border-[#7890a6]/70 hover:bg-[#7890a6]/15 focus-visible:ring-2 focus-visible:ring-[#8da2b6] md:hidden dark:border-[#8da2b6]/35 dark:bg-[#8da2b6]/10 dark:text-[#c4d0db] dark:hover:border-[#8da2b6]/60 dark:hover:bg-[#8da2b6]/15"
-            aria-label="Browse documentation"
-            aria-controls="docs-mobile-drawer"
-            aria-expanded="false"
-          >
-            <PackIcon name="ph:book-open-text" class="size-4" aria-hidden="true" />
-            <span class="hidden min-[380px]:inline">Docs</span>
-          </button>
-        )
-      }
+      <span class="ml-auto xl:hidden" aria-hidden="true"></span>
       <button
         type="button"
         data-search-trigger
         data-pagefind-ignore
-        class="flex size-9 items-center justify-center rounded-lg text-neutral-600 outline-hidden transition hover:bg-neutral-100 hover:text-[#7890a6] focus-visible:ring-2 focus-visible:ring-[#8da2b6] md:hidden dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-[#b0c0cf]"
+        class="flex size-9 items-center justify-center rounded-lg text-neutral-600 outline-hidden transition hover:bg-neutral-100 hover:text-blue-700 focus-visible:ring-2 focus-visible:ring-blue-600 xl:hidden dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-blue-300"
         aria-label="Search documentation"
         aria-keyshortcuts="Control+K"
         aria-controls="site-search-dialog"
@@ -88,17 +74,22 @@ const redditLinks = [
           aria-hidden="true"
         />
       </button>
-      <!-- Collapse toggle for smaller screens -->
-      <div class="mr-2 md:hidden">
+      <span class="inline-block xl:hidden">
+        <ThemeIcon />
+      </span>
+      <!-- Mobile navigation toggle stays at the far right. -->
+      <div class="xl:hidden">
         <button
           type="button"
-          class="hs-collapse-toggle flex size-9 items-center justify-center rounded-lg text-sm font-bold text-neutral-600 transition duration-300 hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:outline-hidden"
-          data-hs-collapse="#navbar-collapse-with-animation"
-          aria-controls="navbar-collapse-with-animation"
-          aria-label="Toggle navigation"
+          class="flex size-9 items-center justify-center rounded-lg text-neutral-600 transition hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus-visible:outline-orange-300"
+          data-mobile-nav-open
+          aria-controls="mobile-site-navigation-drawer"
+          aria-label="Open site navigation"
+          aria-expanded="false"
         >
           <svg
-            class="hs-collapse-open:hidden h-[1.25rem] w-[1.25rem] shrink-0"
+            class="size-5"
+            data-mobile-nav-menu-icon
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -113,7 +104,8 @@ const redditLinks = [
             <line x1="3" x2="21" y1="18" y2="18"></line>
           </svg>
           <svg
-            class="hs-collapse-open:block hidden h-[1.25rem] w-[1.25rem] shrink-0"
+            class="hidden size-5"
+            data-mobile-nav-close-icon
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -128,22 +120,17 @@ const redditLinks = [
           </svg>
         </button>
       </div>
-      <!-- ThemeIcon component specifically for smaller screens -->
-      <span class="inline-block md:hidden">
-        <ThemeIcon />
-      </span>
     </div>
+    <SiteSearch />
     <!-- Contains navigation links -->
     <div
-      id="navbar-collapse-with-animation"
-      class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block md:overflow-visible"
+      class="hidden min-w-0 xl:col-start-3 xl:row-start-1 xl:block"
     >
       <!-- Navigation links container -->
       <div
-        class="mt-4 flex flex-col gap-x-1 gap-y-1 border-t border-neutral-200 pt-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-y-0 md:border-t-0 md:ps-7 md:pt-0 dark:border-neutral-700"
+        class="mt-4 flex flex-col gap-x-1 gap-y-1 border-t border-neutral-200 pt-4 xl:mt-0 xl:flex-row xl:flex-nowrap xl:items-center xl:justify-end xl:gap-y-0 xl:border-t-0 xl:pt-0 dark:border-neutral-700"
       >
         <!-- Navigation links and Authentication component -->
-        <SiteSearch />
         {
           strings.navBarLinks.map((link) => {
             if (link.name === "Certifications") {
@@ -154,18 +141,18 @@ const redditLinks = [
           })
         }
 
-        <div class="flex shrink-0 items-center gap-1 md:contents">
+        <div class="flex shrink-0 items-center gap-1 xl:contents">
           <!-- Community links -->
           <span
-            class="mx-3 hidden h-5 w-px bg-neutral-200 md:block dark:bg-neutral-700"
+            class="mx-3 hidden h-5 w-px bg-neutral-200 xl:block dark:bg-neutral-700"
             aria-hidden="true"></span>
-          <div class="relative w-full md:w-auto">
+          <div class="relative w-full xl:w-auto">
             <div class="flex shrink-0 items-center gap-1">
               <a
                 href={DISCORD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex size-9 items-center justify-center rounded-lg text-neutral-600 ring-orange-500 outline-hidden transition hover:text-[#5865F2] focus-visible:ring-2 dark:text-neutral-300 dark:hover:text-[#7289DA]"
+                class="flex size-9 items-center justify-center rounded-lg text-neutral-600 ring-orange-700 outline-hidden transition hover:text-blue-700 focus-visible:ring-2 dark:ring-orange-300 dark:text-neutral-300 dark:hover:text-blue-300"
                 aria-label="Join the Microsoft Certification Hub Discord"
               >
                 <svg
@@ -184,18 +171,18 @@ const redditLinks = [
                 id="reddit-menu-toggle"
                 data-reddit-menu-toggle
                 type="button"
-                class="group flex size-9 items-center justify-center rounded-lg text-neutral-600 ring-orange-500 outline-hidden transition hover:text-[#FF4500] focus-visible:ring-2 dark:text-neutral-300 dark:hover:text-[#FF5700]"
+                class="group flex size-9 items-center justify-center rounded-lg text-neutral-600 ring-orange-700 outline-hidden transition hover:text-blue-700 focus-visible:ring-2 dark:ring-orange-300 dark:text-neutral-300 dark:hover:text-blue-300"
                 aria-label="Open Microsoft certification subreddits"
                 aria-controls="reddit-menu"
                 aria-expanded="false"
               >
                 <Icon
                   name="reddit"
-                  class="!fill-neutral-600 transition-colors group-hover:!fill-[#FF4500] dark:!fill-neutral-300 dark:group-hover:!fill-[#FF5700]"
+                  class="!fill-neutral-600 transition-colors group-hover:!fill-blue-700 dark:!fill-neutral-300 dark:group-hover:!fill-blue-300"
                 />
               </button>
               <span
-                class="mx-2 hidden h-5 w-px bg-neutral-200 md:block dark:bg-neutral-700"
+                class="mx-2 hidden h-5 w-px bg-neutral-200 xl:block dark:bg-neutral-700"
                 aria-hidden="true"></span>
               <div
                 class="flex shrink-0 items-center gap-1"
@@ -220,7 +207,7 @@ const redditLinks = [
               id="reddit-menu"
               data-reddit-menu
               hidden
-              class="mt-2 w-full rounded-xl border border-neutral-200 bg-white p-3 shadow-2xl shadow-neutral-950/15 md:absolute md:top-[calc(100%+1rem)] md:right-0 md:z-50 md:mt-0 md:w-72 md:rounded-2xl dark:border-neutral-700 dark:bg-[#1d1d1d] dark:shadow-black/40"
+              class="mt-2 w-full rounded-xl border border-neutral-200 bg-white p-3 shadow-2xl shadow-neutral-950/15 xl:absolute xl:top-[calc(100%+1rem)] xl:right-0 xl:z-50 xl:mt-0 xl:w-72 xl:rounded-2xl dark:border-neutral-700 dark:bg-neutral-900 dark:shadow-black/40"
               role="menu"
             >
               <div
@@ -243,7 +230,7 @@ const redditLinks = [
                       target="_blank"
                       rel="noopener noreferrer"
                       role="menuitem"
-                      class="rounded-xl px-3 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-100 hover:text-[#FF4500] focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:outline-none dark:text-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-[#FF5700]"
+                      class="rounded-xl px-3 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-100 hover:text-blue-700 focus-visible:ring-2 focus-visible:ring-orange-700 focus-visible:outline-none dark:text-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-blue-300 dark:focus-visible:ring-orange-300"
                     >
                       {link.name}
                     </a>
@@ -254,12 +241,16 @@ const redditLinks = [
           </div>
         </div>
         <!-- ThemeIcon component specifically for larger screens -->
-        <span class="hidden md:inline-block">
+        <span class="hidden xl:inline-block">
           <ThemeIcon />
         </span>
       </div>
     </div>
   </nav>
+  <MobileNavigationDrawer
+    currentPath={Astro.url.pathname}
+    isDocsPage={isDocsPage}
+  />
 </header>
 <script>
   const closeRedditMenus = () => {

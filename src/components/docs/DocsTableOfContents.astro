@@ -16,10 +16,15 @@ const { headings, variant = "desktop" } = Astro.props;
 {
   headings.length > 0 && (
     <div data-docs-toc data-docs-toc-variant={variant} class="docs-toc">
-      <h2 class="text-[0.68rem] font-bold tracking-[0.18em] text-neutral-500 uppercase dark:text-[#9aa7b5]">
-        On this page
-      </h2>
-      <nav class="docs-toc-nav mt-4" aria-label="On this page">
+      {variant === "desktop" && (
+        <h2 class="text-[0.68rem] font-bold tracking-[0.18em] text-neutral-500 uppercase dark:text-neutral-300">
+          On this page
+        </h2>
+      )}
+      <nav
+        class:list={["docs-toc-nav", variant === "desktop" && "mt-4"]}
+        aria-label="Table of contents"
+      >
         <span class="docs-toc-rail" aria-hidden="true" />
         <span
           class="docs-toc-rail-active"
@@ -78,10 +83,10 @@ const { headings, variant = "desktop" } = Astro.props;
   }
 
   .docs-toc-link[data-docs-toc-active="true"]::before {
-    background: #9bb4d0;
+    background: #3b82f6;
     box-shadow:
-      0 0 0 3px rgb(155 180 208 / 0.14),
-      0 0 12px rgb(155 180 208 / 0.45);
+      0 0 0 3px rgb(59 130 246 / 0.14),
+      0 0 12px rgb(59 130 246 / 0.45);
     transform: translate(-50%, -50%) scale(1);
   }
 
@@ -112,13 +117,13 @@ const { headings, variant = "desktop" } = Astro.props;
   }
 
   .docs-toc-rail {
-    background: #383838;
+    background: var(--nb-border);
   }
 
   .docs-toc-rail-active {
     height: var(--toc-active-y, 0px);
-    background: #9bb4d0;
-    box-shadow: 0 0 8px rgb(155 180 208 / 0.35);
+    background: #3b82f6;
+    box-shadow: 0 0 8px rgb(59 130 246 / 0.35);
     transition: height 260ms cubic-bezier(0.32, 0.72, 0, 1);
   }
 

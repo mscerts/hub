@@ -23,10 +23,10 @@
           </h2>
           <button
             id="close-modal"
-            class="text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors p-1"
+            class="text-neutral-400 hover:text-neutral-600 transition-colors p-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 dark:text-neutral-300 dark:hover:text-white dark:focus-visible:outline-blue-300"
             aria-label="Close modal"
           >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
@@ -98,21 +98,21 @@
            <button
              id="save-preferences"
              type="button"
-            class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
+            class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-300"
           >
              Save Preferences
            </button>
            <button
              id="reject-all"
              type="button"
-             class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
+              class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-300"
            >
              Reject All
            </button>
            <button
              id="accept-all"
              type="button"
-            class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
+             class="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 dark:focus-visible:outline-blue-300"
           >
             Accept All
           </button>
@@ -126,12 +126,20 @@
   .cookie-consent-modal {
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
   }
 
   .cookie-consent-modal.show {
     opacity: 1;
     visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cookie-consent-modal,
+    #consent-backdrop {
+      transition: none !important;
+    }
   }
 
   /* Prevent body scroll when modal is open */
@@ -147,6 +155,7 @@
     private modal: HTMLElement;
     private backdrop: HTMLElement;
     private analyticsToggle: HTMLInputElement;
+    private previousFocus: HTMLElement | null = null;
 
     constructor() {
       this.modal = document.getElementById('cookie-consent-modal')!;
@@ -164,8 +173,44 @@
 
       // Escape key to close
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && this.isVisible()) {
+        if (!this.isVisible()) return;
+
+        if (e.key === 'Escape') {
+          e.preventDefault();
           this.hide();
+          return;
+        }
+
+        if (e.key !== 'Tab') return;
+
+        const dialog = this.modal.querySelector<HTMLElement>('[role="dialog"]');
+        const focusable = dialog
+          ? Array.from(
+              dialog.querySelectorAll<HTMLElement>(
+                'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+              ),
+            ).filter((element) => element.getClientRects().length > 0)
+          : [];
+        const first = focusable[0];
+        const last = focusable.at(-1);
+
+        if (!first || !last || !dialog) {
+          e.preventDefault();
+          return;
+        }
+
+        if (
+          e.shiftKey &&
+          (document.activeElement === first || !dialog.contains(document.activeElement))
+        ) {
+          e.preventDefault();
+          last.focus();
+        } else if (
+          !e.shiftKey &&
+          (document.activeElement === last || !dialog.contains(document.activeElement))
+        ) {
+          e.preventDefault();
+          first.focus();
         }
       });
 
@@ -211,25 +256,48 @@
     }
 
     show(): void {
+      if (this.isVisible()) return;
+
+      this.previousFocus =
+        document.activeElement instanceof HTMLElement &&
+        !this.modal.contains(document.activeElement)
+          ? document.activeElement
+          : null;
       this.modal.classList.remove('hidden');
       document.body.classList.add('modal-open');
       
       // Trigger reflow for animation
       this.modal.offsetHeight;
       
-       this.modal.classList.add('show');
-       this.loadCurrentPreferences();
-       document.getElementById('close-modal')?.focus();
+      this.modal.classList.add('show');
+      this.loadCurrentPreferences();
+      const closeButton = this.modal.querySelector<HTMLButtonElement>("#close-modal");
+      closeButton?.focus({ preventScroll: true });
+      requestAnimationFrame(() => {
+        if (this.isVisible()) closeButton?.focus({ preventScroll: true });
+      });
     }
 
     hide(): void {
       this.modal.classList.remove('show');
       document.body.classList.remove('modal-open');
-      
-       setTimeout(() => {
-         this.modal.classList.add('hidden');
-       }, 300);
-       window.dispatchEvent(new CustomEvent('cookiePreferencesClosed'));
+
+      const restoreFocus = () => {
+        this.modal.classList.add('hidden');
+        const previous = this.previousFocus;
+        this.previousFocus = null;
+        const previousIsVisible =
+          previous?.isConnected &&
+          previous.getClientRects().length > 0 &&
+          getComputedStyle(previous).visibility !== 'hidden';
+        const fallback = document.getElementById('cookie-preferences-btn');
+        (previousIsVisible ? previous : fallback)?.focus();
+      };
+      const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 0
+        : 300;
+      window.setTimeout(restoreFocus, duration);
+      window.dispatchEvent(new CustomEvent('cookiePreferencesClosed'));
     }
 
     isVisible(): boolean {

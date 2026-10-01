@@ -8,17 +8,17 @@ const searchId = "site-search-dialog";
   data-search-trigger
   data-pagefind-ignore
   type="button"
-  class="group hidden h-9 w-9 items-center justify-center gap-2 rounded-lg border border-transparent text-neutral-600 outline-hidden transition hover:bg-neutral-100 hover:text-[#7890a6] focus-visible:ring-2 focus-visible:ring-[#8da2b6] md:flex md:w-72 md:justify-start md:border-neutral-200 md:bg-neutral-50/70 md:px-3 lg:absolute lg:left-1/2 lg:w-[22rem] lg:-translate-x-1/2 2xl:w-[26rem] dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-[#b0c0cf] dark:md:border-neutral-700 dark:md:bg-[#252525]"
+  class="group hidden h-9 w-full min-w-0 items-center justify-start gap-2 rounded-lg border border-neutral-200 bg-neutral-50/70 px-3 text-neutral-600 outline-hidden transition hover:bg-neutral-100 hover:text-blue-700 focus-visible:ring-2 focus-visible:ring-blue-600 xl:flex dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-blue-300 dark:xl:border-neutral-700 dark:xl:bg-neutral-800"
   aria-label="Search documentation"
   aria-keyshortcuts="Control+K"
   aria-controls={searchId}
 >
   <Icon name="ph:magnifying-glass" class="size-4 shrink-0" aria-hidden="true" />
-  <span class="hidden flex-1 text-left text-sm font-medium md:block"
+  <span class="hidden min-w-0 flex-1 text-left text-sm font-medium xl:block"
     >Search</span
   >
   <kbd
-    class="hidden items-center gap-0.5 rounded border border-neutral-300 bg-white/60 px-1.5 py-0.5 text-[0.625rem] font-medium text-neutral-500 md:inline-flex dark:border-neutral-600 dark:bg-[#2d2d2d] dark:text-neutral-400"
+    class="hidden shrink-0 items-center gap-0.5 rounded border border-neutral-300 bg-white/60 px-1.5 py-0.5 text-[0.625rem] font-medium text-neutral-500 xl:inline-flex dark:border-neutral-600 dark:bg-[#2d2d2d] dark:text-neutral-400"
   >
     <span data-shortcut-key>Ctrl</span> K
   </kbd>
@@ -39,7 +39,7 @@ const searchId = "site-search-dialog";
       class="w-full max-w-xl overflow-hidden rounded-lg border border-neutral-700 bg-[#171717] text-neutral-100 shadow-2xl ring-1 shadow-black/50 ring-neutral-600/40"
     >
       <div
-        class="flex flex-col overflow-hidden rounded-t-lg border-b border-neutral-700 bg-[#222222]"
+        class="flex flex-col overflow-hidden rounded-t-lg border-b border-neutral-700 bg-neutral-900"
       >
         <div
           class="flex items-center gap-3 border-b border-neutral-700 px-4 py-3"
@@ -67,7 +67,7 @@ const searchId = "site-search-dialog";
           <button
             type="button"
             data-search-close
-            class="rounded border border-neutral-700 bg-[#2a2a2a] px-1.5 py-0.5 text-xs font-medium text-neutral-400 transition-colors hover:bg-[#343434] hover:text-neutral-100 focus-visible:ring-2 focus-visible:ring-[#8da2b6] focus-visible:outline-none"
+            class="rounded border border-neutral-700 bg-neutral-800 px-1.5 py-0.5 text-xs font-medium text-neutral-400 transition-colors hover:bg-neutral-700 hover:text-neutral-100 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
           >
             Esc
           </button>
@@ -433,7 +433,7 @@ const searchId = "site-search-dialog";
 
   [data-search-results] a:focus-visible {
     border-radius: 0.25rem;
-    outline: 2px solid #9bb4d0;
+    outline: 2px solid #60a5fa;
     outline-offset: 2px;
   }
 </style>
