@@ -75,8 +75,7 @@ jobs:
             "https://msfthub.com/certs/vouchers/" \
             "https://msfthub.com/certs/guide/introduction/" \
             "https://msfthub.com/certs/labs/" \
-            --skip "https?://(www\\.)?(measureup\\.com|discord\\.gg|discord\\.com|linkedin\\.com|x\\.com|threads\\.net|reddit\\.com|news\\.ycombinator\\.com)" \
-            --skip "news.ycombinator.com" \
+            --skip "https?://(www\\.)?(measureup\\.com|discord\\.gg|discord\\.com|linkedin\\.com|x\\.com|threads\\.net|reddit\\.com|news\\.ycombinator\\.com|chatgpt\\.com|claude\\.ai)" \
             --status-code "403:warn" \
             --status-code "429:warn" \
             --timeout 10000 \
