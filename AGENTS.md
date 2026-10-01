@@ -523,6 +523,31 @@ Tracks the Microsoft Partner solution-area pages that back the three-level skill
 
 ---
 
+## Voucher Challenge Monitor
+
+Weekly check for new Microsoft "voucher challenge" / sweepstakes pages — limited-time promotions (tied to events like Ignite, Build, or a product launch) that give away discounted or free certification exam vouchers. Not rendered on the site, not part of the build.
+
+- **Workflow:** `.github/workflows/voucher-challenge-monitor.yml` — runs Monday 09:00 UTC + manual trigger
+- **Script:** `scripts/voucher-challenge-sync.mjs` — Node, no dependencies; run with `node scripts/voucher-challenge-sync.mjs`
+- **Tracker:** `src/data_files/voucher-challenges.json` — `{ lastSynced, challenges: [{ title, href, firstSeen }] }`, append-only (entries are never removed, since Microsoft appears to keep old campaign pages in the nav indefinitely rather than retiring them)
+- **On a new challenge:** opens a GitHub issue (`enhancement`) naming the page(s) found
+- **On failure:** opens a GitHub issue (`bug`) — TOC fetch failed, response shape changed, or too many previously-known entries vanished at once (likely a schema change, not real retirements)
+
+### How it works
+These promotional pages have no dedicated API or feed. They show up as entries in the Microsoft Learn "Credentials support" left-nav tree (the sidebar on pages like `https://learn.microsoft.com/credentials/support/microsoft-ignite-challenge-official-rules`), alongside the site's permanent/evergreen help sections (exam accommodations, scheduling, renewal, etc.).
+
+1. Fetch `https://learn.microsoft.com/en-us/credentials/toc.json` — the TOC backing that whole nav tree.
+2. Filter the **top-level** items only (`toc_title` matching `/challenge|voucher|sweepstake/i`). Evergreen sections are always nested with children of their own unrelated topic (e.g. "Credentials help" contains "Vouchers and redeeming discounts"), while every genuine promotional page observed so far is itself a bare top-level node — either a flat leaf (e.g. "Microsoft Defender Skilling Challenge") or a top-level group whose children are exactly Official Rules/FAQ/How to redeem (e.g. "Microsoft Ignite Challenge Sweepstakes"). Matching top-level items by keyword has had zero observed false positives/negatives against the full current tree.
+3. For a grouped item, resolve its "Official Rules" child's `href` as the canonical URL (falling back to the first child if no page is literally titled that); a flat leaf uses its own `href`.
+4. Diff resolved hrefs against the tracker; anything not already known is reported as new.
+
+### Working the list
+1. Open the linked page and verify the details: discount amount, deadline, candidate limit, country exclusions, and the redemption code/process (also check its FAQ/"How to redeem" siblings if it has any).
+2. Decide whether it's worth a voucher page per the Voucher Pages conventions above — most of these fit the Beta voucher format or a plain `100%`/`50%`/`Special` category page depending on the offer.
+3. If it's time-boxed to a specific already-past event, or duplicates an existing tracked offer, no page is needed — the entry stays in the tracker either way (it's a historical record, not a to-do list).
+
+---
+
 ## Microsoft Learn Content Research Caches
 
 The local, AI-queryable JSON caches of Microsoft Learn training modules and

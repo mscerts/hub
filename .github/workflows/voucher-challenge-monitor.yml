@@ -1,0 +1,57 @@
+name: Voucher Challenge Monitor
+
+on:
+  schedule:
+    - cron: "0 9 * * 1" # Monday 09:00 UTC (offset from the other Monday monitors)
+  workflow_dispatch:
+
+concurrency:
+  group: voucher-challenge-monitor
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/voucher-challenge-report.md
+      ERROR_FILE: /tmp/voucher-challenge-error.md
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          package-manager-cache: false
+
+      - name: Sync voucher challenge tracker
+        id: sync
+        run: node scripts/voucher-challenge-sync.mjs
+
+      - name: Commit updated voucher challenge tracker
+        if: steps.sync.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/voucher-challenges.json
+          git diff --cached --quiet || git commit -m "Update voucher challenge tracker"
+          git pull --rebase
+          git push
+
+      - name: Create issue if a new voucher challenge was found
+        if: steps.sync.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "New Voucher Challenge Detected — ${{ github.run_id }}"
+          content-filepath: /tmp/voucher-challenge-report.md
+          labels: enhancement
+
+      - name: Create issue if sync failed
+        if: failure() && steps.sync.outputs.extraction_failed == 'true'
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Voucher Challenge Monitor Failed — ${{ github.run_id }}"
+          content-filepath: /tmp/voucher-challenge-error.md
+          labels: bug
