@@ -40,6 +40,11 @@ const areaPrefixOrder: Record<string, string[]> = {
   dynamics: ["MB"],
 };
 
+// Exam pages that stay live (direct link, search, lab index) but are hidden
+// from this sidebar listing. AZ-800/AZ-801 are retiring into the merged
+// AZ-802, so new sidebar navigation points there instead.
+const HIDDEN_FROM_SIDEBAR = new Set(["AZ-800", "AZ-801"]);
+
 function buildExamItems(area: keyof typeof examStatuses): DocsSidebarItem[] {
   const docsDir = path.resolve(process.cwd(), "src", "content", "docs", area);
   const prefixOrder = areaPrefixOrder[area] ?? [];
@@ -48,6 +53,7 @@ function buildExamItems(area: keyof typeof examStatuses): DocsSidebarItem[] {
     .filter((entry) => entry.toLowerCase().endsWith(".mdx"))
     .map((entry) => entry.replace(/\.mdx$/i, "").toUpperCase())
     .filter((code) => /^[A-Z]{2,3}-\d{3}$/.test(code))
+    .filter((code) => !HIDDEN_FROM_SIDEBAR.has(code))
     .sort((left, right) => {
       const leftRank = prefixOrder.indexOf(left.split("-")[0]);
       const rightRank = prefixOrder.indexOf(right.split("-")[0]);
