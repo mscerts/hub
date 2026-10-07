@@ -1,0 +1,101 @@
+name: Learn URL Check
+
+# Checks every learn.microsoft.com URL in this repo against mscerts/learnsync and
+# opens an issue for links that no longer work. It must run AFTER learnsync has
+# synced. GitHub starts learnsync's scheduled runs 6-8 hours after their cron
+# time (learn catalog Mon 07:00 UTC, docs catalog Mon 08:00 UTC, docs job limit
+# 120 min), so this runs the next morning and the script also waits while a
+# learnsync sync is queued or running, or until learnsync's data/status.json
+# heartbeat shows both syncs finished this week. learnsync can trigger this
+# workflow right after a sync with a repository_dispatch event of type
+# "learnsync-synced".
+#
+# Two sources (CHECK_SOURCE, chosen in the "Choose the check source" step):
+#   changes  every run except the monthly one. Reads only learnsync's two small
+#            change files (data/changes/removed.json and moved.json) through a
+#            sparse checkout, so the multi-MB caches are never downloaded. Reports
+#            what learnsync has recorded as removed or moved.
+#   cache    the monthly FULL AUDIT: the scheduled run on day 1-7 of the month
+#            (the first Tuesday), or any manual run with full_audit enabled. Clones
+#            all of learnsync and validates every URL against the complete caches,
+#            which also covers what the change files never list (shows,
+#            collections, practice assessments, legacy /certifications/ paths,
+#            credentials support pages, typos, brand-new pages).
+# The day-of-month rule is computed in that step (the script's chooseCheckSource),
+# not in the cron expression.
+on:
+  schedule:
+    - cron: "0 6 * * 2" # Tuesday 06:00 UTC, after Monday's learnsync runs
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Report only: do not create issues or update the tracker"
+        type: boolean
+        default: false
+      wait_for_sync:
+        description: "Wait for a queued, running or overdue learnsync sync first"
+        type: boolean
+        default: false
+      full_audit:
+        description: "Full audit: validate every URL against the complete learnsync caches instead of the change files (this runs monthly on the first Tuesday anyway)"
+        type: boolean
+        default: false
+  repository_dispatch:
+    types: [learnsync-synced]
+
+concurrency:
+  group: learn-url-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/learn-url-check-report.md
+      ERROR_FILE: /tmp/learn-url-check-error.md
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          package-manager-cache: false
+
+      - name: Choose the check source
+        id: source
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          FULL_AUDIT: ${{ inputs.full_audit }}
+        run: node scripts/learn-url-check.mjs --choose-source | tee -a "$GITHUB_OUTPUT"
+
+      - name: Check Learn URLs against learnsync (${{ steps.source.outputs.source }})
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHECK_SOURCE: ${{ steps.source.outputs.source }}
+          CREATE_ISSUES: "1"
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+          WAIT_FOR_SYNC: ${{ (github.event_name != 'workflow_dispatch' || inputs.wait_for_sync) && '1' || '0' }}
+        run: node scripts/learn-url-check.mjs
+
+      - name: Commit updated tracker
+        if: steps.check.outputs.tracker_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/learn-url-check.json
+          git diff --cached --quiet || git commit -m "Update Learn URL check tracker"
+          git pull --rebase
+          git push
+
+      - name: Create issue if the check failed
+        if: failure() && steps.check.outputs.check_failed == 'true'
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Learn URL Check Failed — ${{ github.run_id }}"
+          content-filepath: /tmp/learn-url-check-error.md
+          labels: bug
