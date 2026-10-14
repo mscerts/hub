@@ -3,6 +3,7 @@
 import { defineCollection, type ImageFunction } from "astro:content";
 import { z } from "astro/zod";
 import { glob } from "astro/loaders";
+import { voucherReviewFields } from "./utils/voucher-fields.ts";
 
 // Author schema for blog posts (supports local images or remote URLs)
 const authorSchema = (image: ImageFunction) =>
@@ -37,6 +38,9 @@ export const collections = {
       description: z.string().optional(),
       draft: z.boolean().optional(),
       voucherCategory: z.enum(["100%", "50%", "Special"]).optional(),
+      // Optional dates and the linked exam read by the daily voucher review
+      // (scripts/voucher-review-check.mjs); see "Voucher Pages" in AGENTS.md.
+      ...voucherReviewFields,
       editUrl: z.union([z.string(), z.boolean()]).optional(),
       lastUpdated: z.union([z.date(), z.boolean()]).optional(),
       next: z.union([z.string(), z.boolean()]).optional(),

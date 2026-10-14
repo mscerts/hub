@@ -19,6 +19,10 @@ function badgeClass(badge: DocsSidebarBadge) {
   const isVoucher = badge.text.includes("%");
   const isHighDiscount = isVoucher && !badge.text.includes("50%");
 
+  if (badge.text === "RETIRED") {
+    return "border-gray-300 bg-gray-100 text-gray-700 dark:border-[#7f8da0]/60 dark:bg-[#64748b]/15 dark:text-[#cbd5e1]";
+  }
+
   if (badge.variant === "tip") {
     return isVoucher
       ? isHighDiscount

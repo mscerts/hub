@@ -41,17 +41,17 @@ export const relatedCertsByExam: Record<string, RelatedCertItem[]> = {
     { code: "SC-200", name: "Microsoft Security Operations Analyst", area: "security", relation: "Next step" },
     { code: "SC-300", name: "Microsoft Identity and Access Administrator", area: "security", relation: "Next step" },
     { code: "SC-500", name: "Implementing End-to-End Security Controls for Cloud and AI Workloads", area: "security", relation: "Next step" },
-    { code: "SC-100", name: "Cybersecurity Architect", area: "security", relation: "Next step" },
+    { code: "SC-100", name: "Microsoft Cybersecurity Architect", area: "security", relation: "Next step" },
   ],
   "SC-200": [
-    { code: "SC-900", name: "Security, Compliance, and Identity Fundamentals", area: "security", relation: "Prerequisite" },
+    { code: "SC-900", name: "Microsoft Security, Compliance, and Identity Fundamentals", area: "security", relation: "Prerequisite" },
     { code: "SC-300", name: "Microsoft Identity and Access Administrator", area: "security", relation: "Sibling" },
-    { code: "SC-100", name: "Cybersecurity Architect", area: "security", relation: "Next step" },
+    { code: "SC-100", name: "Microsoft Cybersecurity Architect", area: "security", relation: "Next step" },
   ],
   "SC-300": [
-    { code: "SC-900", name: "Security, Compliance, and Identity Fundamentals", area: "security", relation: "Prerequisite" },
+    { code: "SC-900", name: "Microsoft Security, Compliance, and Identity Fundamentals", area: "security", relation: "Prerequisite" },
     { code: "SC-200", name: "Microsoft Security Operations Analyst", area: "security", relation: "Sibling" },
-    { code: "SC-100", name: "Cybersecurity Architect", area: "security", relation: "Next step" },
+    { code: "SC-100", name: "Microsoft Cybersecurity Architect", area: "security", relation: "Next step" },
   ],
   "SC-100": [
     { code: "SC-200", name: "Microsoft Security Operations Analyst", area: "security", relation: "Prerequisite" },

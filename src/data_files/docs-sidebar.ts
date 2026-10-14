@@ -41,8 +41,9 @@ const areaPrefixOrder: Record<string, string[]> = {
 };
 
 // Exam pages that stay live (direct link, search, lab index) but are hidden
-// from this sidebar listing. AZ-800/AZ-801 are retiring into the merged
-// AZ-802, so new sidebar navigation points there instead.
+// from this sidebar listing. AZ-800/AZ-801 retired on September 30, 2026 into
+// the merged AZ-802, so sidebar navigation points there instead. Their RETIRED
+// badge therefore shows only on the landing page's status list.
 const HIDDEN_FROM_SIDEBAR = new Set(["AZ-800", "AZ-801"]);
 
 function buildExamItems(area: keyof typeof examStatuses): DocsSidebarItem[] {
@@ -126,11 +127,6 @@ const voucherItems: DocsSidebarItem[] = [
     label: "South Africa AI Skills",
     href: docsPath("vouchers/southafricaaiskills"),
     badge: { text: "*100%", variant: "tip" },
-  },
-  {
-    label: "Virtual Training Days",
-    href: docsPath("vouchers/virtualtrainingdays"),
-    badge: { text: "50%", variant: "note" },
   },
   {
     label: "Organizational Skilling (ESI)",
