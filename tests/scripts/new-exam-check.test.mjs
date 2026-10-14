@@ -19,7 +19,6 @@ import {
   DRIFT_ISSUE_TITLE,
   IGNORED_PREFIXES,
   addDays,
-  applyAcknowledgements,
   applyGuideResults,
   areaForCode,
   buildDriftComment,
@@ -35,7 +34,6 @@ import {
   evaluateDrift,
   evidenceOf,
   examCodeFromUid,
-  extractEffectiveDates,
   formatDate,
   hashLines,
   htmlToLines,
@@ -50,7 +48,6 @@ import {
   mergeTracker,
   noticeBoxes,
   normalizeTracker,
-  parseAcknowledged,
   parseCertificationPage,
   parseCredentialsSitemap,
   parseDates,
@@ -62,7 +59,6 @@ import {
   parseStudyGuide,
   guideProbeTargets,
   probeTargets,
-  reconcileEffectiveDates,
   renderDiff,
   runDriftCheck,
   selectAlerts,
@@ -3002,13 +2998,8 @@ const CONFIG_KEYS = [
   "EXAM_STATUS_FILE",
   "BETA_EXAMS_FILE",
   "RETIRING_EXAMS_FILE",
-  "DRIFT_ACKNOWLEDGED_FILE",
   "MAX_DRIFT",
-  "MAX_DRIFT_DATES",
   "FORCE_DRIFT",
-  "EFFECTIVE_LEAD_DAYS",
-  "EFFECTIVE_GRACE_DAYS",
-  "EFFECTIVE_HORIZON_DAYS",
   "CERT_RENAME_DAYS",
   "PROBE_DEADLINE_MS",
   "CREATE_ISSUES",
@@ -6262,94 +6253,6 @@ test("notice boxes are read from the stored guide text, under the Notices headin
   assert.deepEqual(noticeBoxes(undefined), []);
 });
 
-test("effective dates come from the skills heading, the exam updates text and the notices that announce nothing else", () => {
-  const lines = [
-    "## Notices",
-    "Note",
-    "Registration for the new version closes on October 20, 2026.",
-    "Warning",
-    "This exam will retire on November 30, 2026.",
-    "## Updates to the exam",
-    "The objectives change on November 3, 2026, and we updated them on September 1, 2025.",
-    "A sentence with no date.",
-    "#### Note",
-    "The bullets are examples.",
-    "## Skills measured as of October 14, 2026",
-    "- Do things (2026-10-14)",
-    "## Skills measured prior to October 14, 2026",
-  ];
-  assert.deepEqual(extractEffectiveDates(lines), [
-    {
-      date: "2026-10-14",
-      sentence: "Skills measured as of October 14, 2026",
-    },
-    {
-      date: "2026-10-20",
-      sentence: "Registration for the new version closes on October 20, 2026.",
-    },
-  ]);
-  // "November 3" is not announced with a word that says when something takes
-  // effect, and the retirement box belongs to the notice checks.
-  assert.deepEqual(extractEffectiveDates(undefined), []);
-});
-
-test("effective dates in the tracker keep their first sight, are rebuilt only from verified guides, and stay within the window", () => {
-  const guide = (code, heading) => ({
-    code,
-    lines: [`## ${heading}`],
-  });
-  const base = {
-    today: "2026-10-09",
-    horizonDays: 30,
-    graceDays: 2,
-  };
-  const first = reconcileEffectiveDates({
-    ...base,
-    previous: [],
-    guides: [
-      guide("AZ-1", "Skills measured as of October 14, 2026"),
-      guide("AZ-2", "Skills measured as of December 31, 2026"), // beyond the horizon
-      guide("AZ-3", "Skills measured as of October 1, 2026"), // long past
-      guide("AZ-4", "Skills measured as of October 8, 2026"), // still in the grace period
-    ],
-    verified: new Set(["AZ-1", "AZ-2", "AZ-3", "AZ-4"]),
-  });
-  assert.deepEqual(
-    first.map(({ code, date, firstSeen }) => ({ code, date, firstSeen })),
-    [
-      { code: "AZ-1", date: "2026-10-14", firstSeen: "2026-10-09" },
-      { code: "AZ-4", date: "2026-10-08", firstSeen: "2026-10-09" },
-    ],
-  );
-
-  // A later day: the first sight stays, a guide that was not verified (its fetch
-  // failed) keeps what it had, a verified guide that dropped the date loses it.
-  const later = reconcileEffectiveDates({
-    ...base,
-    today: "2026-10-10",
-    previous: first,
-    guides: [
-      guide("AZ-1", "Skills measured as of October 14, 2026"),
-      guide("AZ-4", "Skills measured"),
-    ],
-    verified: new Set(["AZ-4"]),
-  });
-  assert.deepEqual(
-    later.map(({ code, date, firstSeen }) => ({ code, date, firstSeen })),
-    [{ code: "AZ-1", date: "2026-10-14", firstSeen: "2026-10-09" }],
-  );
-  // The date entered the horizon on its own day: AZ-2 is picked up then.
-  const entered = reconcileEffectiveDates({
-    ...base,
-    today: "2026-12-01",
-    previous: [],
-    guides: [guide("AZ-2", "Skills measured as of December 31, 2026")],
-    verified: new Set(["AZ-2"]),
-  });
-  assert.equal(entered.length, 1);
-  assert.equal(entered[0].firstSeen, "2026-12-01");
-});
-
 test("a certification whose title changed is an event of its own, kept for a while and replaced by a newer rename", () => {
   const previous = normalizeTracker(
     {
@@ -6488,19 +6391,13 @@ function trackedGuide(code, { name, headingName, lines } = {}) {
   };
 }
 
-function makeTracker({
-  exams = [],
-  guides = [],
-  certRenames = [],
-  effectiveDates = [],
-} = {}) {
+function makeTracker({ exams = [], guides = [], certRenames = [] } = {}) {
   return normalizeTracker(
     {
       certifications: [],
       exams: exams.map((exam) => ({ name: "", ...exam })),
       studyGuides: guides,
       certRenames,
-      effectiveDates,
     },
     DRIFT_TODAY,
   );
@@ -6677,10 +6574,11 @@ test("drift: the beta state, from the evidence the pages gave, against the hub b
     );
   }
 
-  // Only a callout says beta while the exam card / title do not: unclear, said so.
+  // Only a callout says beta while the exam card / title do not: information
+  // only (a stale callout is the usual reason), never a row to act on.
   const unclear = learn("AB-9", ["callout:beta"], makeHub({ pages: [page] }));
-  assert.deepEqual(kinds(unclear), ["check:beta:AB-9"]);
-  assert.match(unclear[0].summary, /Unclear/);
+  assert.deepEqual(kinds(unclear), ["info:beta:AB-9"]);
+  assert.match(unclear[0].summary, /stale callout/);
   assert.equal(unclear[0].id, "beta:AB-9:unclear");
   assert.ok(
     unclear[0].edit.includes("node scripts/beta-note.mjs --code AB-9"),
@@ -7375,19 +7273,32 @@ test("drift: an AT RISK banner is judged on its own wording, and an exam never c
     "fix:at-risk:AZ-400",
   ]);
 
-  // Each word that makes a banner "unconfirmed" counts on its own.
+  // A banner that still calls the exam "potential" or says Microsoft is
+  // "exploring" it is stale once Learn lists the exam.
   for (const text of [
     "A potential exam, AZ-401, is mentioned.",
     "Microsoft is exploring AZ-401.",
+  ]) {
+    assert.deepEqual(
+      kinds(drift(risk(banner(text)), listed("AZ-401"))),
+      ["fix:at-risk:AZ-400"],
+      text,
+    );
+  }
+  // A banner that already says the exam is listed and nothing is confirmed (the
+  // AZ-400 banner today) is up to date: "not confirmed", "neither", "may
+  // replace" and a survey mentioned in an announcement link are no reason.
+  for (const text of [
     "AZ-401 has not been confirmed.",
     "AZ-401 is not confirmed.",
     "Neither AZ-400 nor AZ-401 is final.",
     "AZ-401 may replace this exam.",
     "A survey about AZ-401 is open.",
+    "Microsoft Learn lists AZ-401. It may replace AZ-400, but neither is confirmed. [Announcement](https://example.com/potential-exploring-survey)",
   ]) {
     assert.deepEqual(
       kinds(drift(risk(banner(text)), listed("AZ-401"))),
-      ["fix:at-risk:AZ-400"],
+      [],
       text,
     );
   }
@@ -7464,48 +7375,15 @@ test("drift: a certification rename since the last run, and the certification na
   assert.match(text[0].summary, /may be quoting the former name on purpose/);
 });
 
-test("drift: a dated change is listed from a week before until two days after, once per exam and date", () => {
-  const entry = {
-    code: "SC-9",
-    date: "2026-10-14",
-    sentence: "Skills measured as of October 14, 2026",
-    firstSeen: "2026-10-01",
-  };
-  const hub = makeHub({ pages: [hubPage("SC-9", { name: "X" })] });
-  const at = (today, entries = [entry]) =>
-    drift(hub, makeTracker({ effectiveDates: entries }), { today });
-  assert.deepEqual(at("2026-10-06"), []); // eight days ahead
-  for (const today of ["2026-10-07", "2026-10-14", "2026-10-16"]) {
-    const items = at(today);
-    assert.deepEqual(kinds(items), ["check:effective:SC-9"], today);
-    assert.equal(items[0].id, "effective:SC-9:2026-10-14");
-    assert.match(
-      items[0].summary,
-      /takes effect on October 14, 2026: "Skills measured as of October 14, 2026"/,
-    );
-  }
-  assert.deepEqual(at("2026-10-17"), []);
-  // Two dates of one exam are two rows; the same entry twice is one.
-  assert.equal(
-    at("2026-10-13", [entry, { ...entry, date: "2026-10-15" }, entry]).length,
-    2,
-  );
-  // An exam the hub has no page for is never listed.
-  assert.deepEqual(
-    drift(makeHub(), makeTracker({ effectiveDates: [entry] }), {
-      today: "2026-10-13",
-    }),
-    [],
-  );
-});
-
 test("drift: the rows are sorted fix, check, information; then by kind and exam", () => {
   const hub = makeHub({
     pages: [
       hubPage("AZ-1", { name: "Old" }),
       hubPage("AZ-2", { name: "Old" }),
       hubPage("AZ-3", { name: "Same" }),
+      hubPage("AZ-4", { name: "Same" }),
     ],
+    statuses: { "AZ-4": "BETA" },
   });
   const tracker = makeTracker({
     guides: [
@@ -7514,41 +7392,32 @@ test("drift: the rows are sorted fix, check, information; then by kind and exam"
       trackedGuide("AZ-3", { name: "Same", headingName: "Other" }),
     ],
     exams: [{ code: "AZ-2", betaEvidence: ["callout:beta"] }],
-    effectiveDates: [
-      {
-        code: "AZ-1",
-        date: "2026-10-10",
-        sentence: "s",
-        firstSeen: DRIFT_TODAY,
-      },
-    ],
   });
+  // AZ-4 is BETA on the hub and no page shows a beta marker: a row to check.
+  // AZ-2 is only called beta by a callout: information, never a row to act on.
   assert.deepEqual(kinds(drift(hub, tracker)), [
     "fix:name:AZ-1",
     "fix:name:AZ-2",
-    "check:beta:AZ-2",
-    "check:effective:AZ-1",
+    "check:beta:AZ-4",
     "info:name:AZ-3",
+    "info:beta:AZ-2",
   ]);
 });
 
 // --- the issue text --------------------------------------------------------------
 function sampleItems() {
   const hub = makeHub({
-    pages: [hubPage("AZ-1", { name: "Old" }), hubPage("AZ-2", { name: "X" })],
+    pages: [
+      hubPage("AZ-1", { name: "Old" }),
+      hubPage("AZ-2", { name: "X" }),
+      hubPage("AZ-3", { name: "Z" }),
+    ],
+    statuses: { "AZ-3": "BETA" },
   });
   const tracker = makeTracker({
     guides: [
       trackedGuide("AZ-1", { name: "New" }),
       trackedGuide("AZ-2", { name: "X", headingName: "Y" }),
-    ],
-    effectiveDates: [
-      {
-        code: "AZ-1",
-        date: "2026-10-10",
-        sentence: "Skills measured as of October 10, 2026",
-        firstSeen: DRIFT_TODAY,
-      },
     ],
   });
   return drift(hub, tracker);
@@ -7646,8 +7515,7 @@ test("text from a Learn page cannot ping, link, render HTML or break the table o
 test("a long list of drift rows shrinks before it is cut, and stays under GitHub's limit", () => {
   const pages = [];
   const guides = [];
-  const entries = [];
-  for (let i = 0; i < 700; i++) {
+  for (let i = 0; i < 1500; i++) {
     const code = `AZ-${String(100 + i)}`;
     pages.push(
       hubPage(code, {
@@ -7659,18 +7527,9 @@ test("a long list of drift rows shrinks before it is cut, and stays under GitHub
         name: "New name that is also quite a bit longer than usual ".repeat(3),
       }),
     );
-    entries.push({
-      code,
-      date: "2026-10-10",
-      sentence: "Skills measured as of October 10, 2026 ".repeat(8),
-      firstSeen: DRIFT_TODAY,
-    });
   }
-  const items = drift(
-    makeHub({ pages }),
-    makeTracker({ guides, effectiveDates: entries }),
-  );
-  assert.ok(items.length >= 800, String(items.length));
+  const items = drift(makeHub({ pages }), makeTracker({ guides }));
+  assert.ok(items.length >= 1500, String(items.length));
   const { body, signature } = buildDriftReport({ items, today: DRIFT_TODAY });
   assert.ok(body.length <= 60000, String(body.length));
   assert.match(body, /shortened|cut at the size limit/);
@@ -7704,7 +7563,7 @@ test("the comment on a changed list names what was added and what is no longer l
     comment,
     /The list changed on 2026-10-09: 1 added, 1 no longer listed, 2 open now\./,
   );
-  assert.match(comment, /Added:\n- Takes effect AZ-1:/);
+  assert.match(comment, /Added:\n- Beta status AZ-3:/);
   assert.match(comment, /No longer listed[^\n]*\n- Exam name AZ-9/);
   assert.match(
     comment,
@@ -7732,296 +7591,26 @@ test("the exam pages worth a look are those of the BETA and UPCOMING exams the h
   assert.deepEqual(probeTargets(hub, 1), ["AB-2"]);
 });
 
-// --- acknowledged drift ---------------------------------------------------------------
-const ACK = (over = {}) => ({
-  code: "AB-9",
-  kind: "beta",
-  reason: "maintainer: GA, Learn callout is stale",
-  since: "2026-10-14",
-  ...over,
-});
-
-test("the acknowledged drift file is validated: a valid list is read, anything else stops the check", () => {
-  assert.deepEqual(parseAcknowledged("[]"), []);
-  assert.deepEqual(
-    parseAcknowledged(
-      JSON.stringify([
-        ACK(),
-        ACK({ code: "AB-9", kind: "name", reason: "  second reason  " }),
-        ACK({ code: "MB-230", kind: "status" }),
-      ]),
-    ),
-    [
-      ACK(),
-      ACK({ kind: "name", reason: "second reason" }),
-      ACK({ code: "MB-230", kind: "status" }),
-    ],
-  );
-
-  const bad = (value, pattern, why) =>
-    assert.throws(
-      () =>
-        parseAcknowledged(
-          typeof value === "string" ? value : JSON.stringify(value),
-        ),
-      (error) => {
-        assert.match(error.message, pattern, why);
-        assert.match(error.message, /drift-acknowledged\.json/, why);
-        return true;
-      },
-      why,
-    );
-  bad("{ not json", /not valid JSON/, "corrupt file");
-  bad("", /not valid JSON/, "empty file");
-  bad({ code: "AB-9" }, /must be a list/, "an object, not a list");
-  bad("null", /must be a list/, "null");
-  bad([null], /entry 1 must be an object/, "null entry");
-  bad(["AB-9"], /entry 1 must be an object/, "string entry");
-  bad([[]], /entry 1 must be an object/, "list entry");
-  bad(
-    [{ ...ACK(), why: "x" }],
-    /entry 1 has the unknown key\(s\) why/,
-    "a typo",
-  );
-  for (const key of ["code", "kind", "reason", "since"]) {
-    const missing = ACK();
-    delete missing[key];
-    bad([missing], new RegExp(`needs a non-empty text for "${key}"`), key);
-    bad([ACK({ [key]: "  " })], new RegExp(`"${key}"`), `${key} blank`);
-    bad([ACK({ [key]: 7 })], new RegExp(`"${key}"`), `${key} not text`);
-  }
-  bad(
-    [ACK({ code: "ab-9" })],
-    /not an exam code in capitals/,
-    "lower case code",
-  );
-  bad([ACK({ code: "AB210" })], /not an exam code in capitals/, "no hyphen");
-  bad(
-    [ACK({ kind: "banana" })],
-    /not one of name, beta, notice, status/,
-    "unknown kind",
-  );
-  bad(
-    [ACK({ since: "2026-02-31" })],
-    /not a day written YYYY-MM-DD/,
-    "impossible day",
-  );
-  bad(
-    [ACK({ since: "14 Oct 2026" })],
-    /not a day written YYYY-MM-DD/,
-    "other format",
-  );
-  bad(
-    [ACK(), ACK({ reason: "again" })],
-    /entry 2 repeats the acknowledgement of beta drift for AB-9/,
-    "duplicate",
-  );
-  // a later entry is named by its position
-  bad(
-    [ACK(), ACK({ kind: "name" }), { code: "AB-9" }],
-    /entry 3 needs a non-empty text for "kind"/,
-    "position",
-  );
-  // every kind the drift check produces can be acknowledged
-  for (const kind of [
-    "name",
-    "beta",
-    "notice",
-    "status",
-    "upcoming",
-    "at-risk",
-    "certification",
-    "effective",
-  ]) {
-    assert.equal(
-      parseAcknowledged(JSON.stringify([ACK({ kind })]))[0].kind,
-      kind,
-    );
-  }
-});
-
-test("the committed acknowledged drift file is valid and acknowledges AB-210 as GA", () => {
-  const entries = parseAcknowledged(
-    readFileSync(
-      join(root, "src", "data_files", "drift-acknowledged.json"),
-      "utf8",
-    ),
-  );
-  assert.deepEqual(
-    entries.find((entry) => entry.code === "AB-210"),
-    {
-      code: "AB-210",
-      kind: "beta",
-      reason: "maintainer: GA, Learn callout is stale",
-      since: "2026-10-14",
-    },
-  );
-});
-
-test("an acknowledgement silences one kind of one exam and nothing else, and says what it suppressed", () => {
-  const item = (kind, code, extra = {}) => ({
-    id: `${kind}:${code}:x`,
-    kind,
-    severity: "check",
-    code,
-    summary: `${kind} of ${code}`,
-    ...extra,
-  });
-  const items = [
-    item("beta", "AB-9"),
-    item("beta", "AB-8"),
-    item("name", "AB-9"),
-    item("beta", "AB-9", { id: "beta:AB-9:other" }),
-    item("effective", "AB-7"),
-  ];
-  const entries = [ACK(), ACK({ code: "AB-5", kind: "status" })];
-  const { kept, acknowledged, unmatched } = applyAcknowledgements(
-    items,
-    entries,
-  );
-  // every beta item of AB-9 is gone; AB-8's beta item and AB-9's name item stay, in order
-  assert.deepEqual(
-    kept.map((i) => `${i.kind}:${i.code}`),
-    ["beta:AB-8", "name:AB-9", "effective:AB-7"],
-  );
-  assert.equal(acknowledged.length, 1);
-  assert.equal(acknowledged[0].entry, entries[0]);
-  assert.deepEqual(
-    acknowledged[0].items.map((i) => i.id),
-    ["beta:AB-9:x", "beta:AB-9:other"],
-  );
-  // an acknowledgement that matched nothing today is reported, not dropped
-  assert.deepEqual(unmatched, [entries[1]]);
-  // no acknowledgements, no change
-  assert.deepEqual(applyAcknowledgements(items), {
-    kept: items,
-    acknowledged: [],
-    unmatched: [],
-  });
-});
-
-test("the AB-210 case: a callout-only beta signal is acknowledged, the same signal of another exam is not", () => {
-  const exams = makeTracker({
-    exams: [
-      { code: "AB-9", betaEvidence: ["callout:beta"] },
-      { code: "AB-8", betaEvidence: ["callout:beta"] },
-    ],
-  });
-  const hub = makeHub({
-    pages: [hubPage("AB-9", { name: "X" }), hubPage("AB-8", { name: "X" })],
-  });
-  assert.deepEqual(kinds(drift(hub, exams)), [
-    "check:beta:AB-8",
-    "check:beta:AB-9",
-  ]);
-
-  const memory = memoryGh();
-  const result = runDriftCheck(enabledCfg(), {
-    hub: { ...hub, acknowledged: [ACK()] },
-    tracker: exams,
-    gh: memory.gh,
-  });
-  assert.equal(result.failure, null);
-  assert.deepEqual(kinds(result.items), ["check:beta:AB-8"]);
-  assert.equal(result.acknowledged.length, 1);
-  assert.equal(result.acknowledged[0].entry.code, "AB-9");
-  assert.match(result.acknowledged[0].items[0].summary, /Unclear/);
-  assert.deepEqual(result.unmatchedAcknowledgements, []);
-  // the issue lists AB-8 only
-  assert.equal(result.issue.action, "created");
-  const body = memory.issues[0].body;
-  assert.match(body, /\| AB-8 \| Beta status \|/);
-  assert.doesNotMatch(body, /AB-9/);
-
-  // With AB-8 acknowledged too, nothing is left: no issue is created at all.
-  const quiet = memoryGh();
-  const none = runDriftCheck(enabledCfg(), {
-    hub: { ...hub, acknowledged: [ACK(), ACK({ code: "AB-8" })] },
-    tracker: exams,
-    gh: quiet.gh,
-  });
-  assert.deepEqual(none.items, []);
-  assert.equal(none.acknowledged.length, 2);
-  assert.equal(none.report, null);
-  assert.equal(none.issue.action, "none");
-  assert.deepEqual(quiet.writes(), []);
-});
-
-test("acknowledged drift does not count towards the failsafe, and an acknowledgement that matches nothing is listed", () => {
-  const codes = ["AZ-1", "AZ-2", "AZ-3"];
-  const tracker = makeTracker({
-    guides: codes.map((code) => trackedGuide(code, { name: "Learn Name" })),
-  });
-  const hub = makeHub({
-    pages: codes.map((code) => hubPage(code, { name: "Hub Name" })),
-  });
-  const cfg = enabledCfg({ maxDrift: 1 });
-  // three new rows at once with MAX_DRIFT 1: a naming change, not news
-  const tripped = runDriftCheck(cfg, { hub, tracker, gh: memoryGh().gh });
-  assert.match(tripped.failure, /3 new drift items \(limit MAX_DRIFT 1\)/);
-  // two of them acknowledged: one visible row, no failsafe
-  const quiet = runDriftCheck(cfg, {
-    hub: {
-      ...hub,
-      acknowledged: [
-        ACK({ code: "AZ-1", kind: "name" }),
-        ACK({ code: "AZ-2", kind: "name" }),
-        ACK({ code: "AZ-9", kind: "name" }),
-      ],
-    },
-    tracker,
-    gh: memoryGh().gh,
-  });
-  assert.equal(quiet.failure, null);
-  assert.deepEqual(kinds(quiet.items), ["fix:name:AZ-3"]);
-  assert.deepEqual(
-    quiet.acknowledged.map(({ entry }) => entry.code),
-    ["AZ-1", "AZ-2"],
-  );
-  assert.deepEqual(
-    quiet.unmatchedAcknowledgements.map((entry) => entry.code),
-    ["AZ-9"],
-  );
-});
-
 test("the drift settings have sensible defaults and are all overridable", () => {
   const cfg = loadConfig({});
-  assert.match(
-    cfg.driftAcknowledgedFile.replace(/\\/g, "/"),
-    /src\/data_files\/drift-acknowledged\.json$/,
-  );
-  assert.equal(
-    loadConfig({ DRIFT_ACKNOWLEDGED_FILE: "/tmp/ack.json" })
-      .driftAcknowledgedFile.replace(/\\/g, "/")
-      .endsWith("/tmp/ack.json"),
-    true,
-  );
   assert.equal(cfg.maxDrift, 25);
-  assert.equal(cfg.maxDriftDates, 40);
   assert.equal(cfg.forceDrift, false);
   assert.equal(cfg.driftCheck, true);
   assert.equal(cfg.createIssues, false);
   assert.equal(cfg.dryRun, false);
-  assert.equal(cfg.effectiveLeadDays, 7);
-  assert.equal(cfg.effectiveGraceDays, 2);
-  assert.equal(cfg.effectiveHorizonDays, 30);
   assert.equal(cfg.certRenameDays, 30);
   const set = loadConfig({
     MAX_DRIFT: "3",
-    MAX_DRIFT_DATES: "4",
     FORCE_DRIFT: "1",
     DRIFT_CHECK: "0",
     CREATE_ISSUES: "1",
     DRY_RUN: "1",
-    EFFECTIVE_LEAD_DAYS: "10",
   });
   assert.equal(set.maxDrift, 3);
-  assert.equal(set.maxDriftDates, 4);
   assert.equal(set.forceDrift, true);
   assert.equal(set.driftCheck, false);
   assert.equal(set.createIssues, true);
   assert.equal(set.dryRun, true);
-  assert.equal(set.effectiveLeadDays, 10);
 });
 
 // --- the running issue, through an in-memory `gh` -------------------------------------
@@ -8178,39 +7767,6 @@ test("when the set of rows changes the text is edited and a comment says what ch
   assert.match(memory.issues[0].body, /a=- b=- h=closed/);
   assert.equal(syncWith(memory, items).action, "created");
   assert.equal(memory.issues.length, 2);
-});
-
-test("a dated reminder that merely runs out is a silent edit, while an added dated reminder is announced", () => {
-  const memory = memoryGh();
-  const items = sampleItems();
-  syncWith(memory, items);
-  const dated = items.find((item) => item.kind === "effective");
-  const withoutDate = items.filter((item) => item !== dated);
-
-  // The date passed: the row leaves the text, nobody is notified.
-  const quiet = syncWith(memory, withoutDate);
-  assert.equal(quiet.action, "edited");
-  assert.equal(memory.issues[0].comments.length, 0);
-  assert.doesNotMatch(memory.issues[0].body, /Takes effect/);
-  assert.deepEqual(
-    parseDriftMarker(memory.issues[0].body).ids,
-    withoutDate.filter((i) => i.severity !== "info").map((i) => i.id),
-  );
-
-  // The next dated row arrives a week before its date: that is announced.
-  const loud = syncWith(memory, items);
-  assert.equal(loud.action, "commented");
-  assert.equal(memory.issues[0].comments.length, 1);
-  assert.match(memory.issues[0].comments[0], /Added:\n- Takes effect AZ-1/);
-
-  // An ordinary row that leaves together with the dated one is still announced.
-  const onlyDated = items.filter((item) => item.kind === "effective");
-  assert.equal(syncWith(memory, onlyDated).action, "commented");
-  assert.equal(memory.issues[0].comments.length, 2);
-  assert.match(
-    memory.issues[0].comments[1],
-    /No longer listed[^\n]*\n- Exam name AZ-1/,
-  );
 });
 
 test("an issue a maintainer closed by hand is not recreated every day: held for the reminder days unless a row is new", () => {
@@ -8634,23 +8190,6 @@ test("the failsafe: many new rows at once are a naming or markup change, not new
     memory.issues.find((issue) => issue.title === DRIFT_ISSUE_TITLE).state,
     "open",
   );
-
-  // The dated reminders are counted apart, with a limit of their own.
-  const entries = Array.from({ length: 6 }, (_, i) => ({
-    code: `AZ-${900 + i}`,
-    date: "2026-10-10",
-    sentence: "Skills measured as of October 10, 2026",
-    firstSeen: DRIFT_TODAY,
-  }));
-  const dated = runDriftCheck(enabledCfg({ maxDrift: 100, maxDriftDates: 5 }), {
-    hub,
-    tracker: makeTracker({ guides, effectiveDates: entries }),
-    gh: memoryGh().gh,
-  });
-  assert.match(
-    dated.failure,
-    /6 new dated reminders \(limit MAX_DRIFT_DATES 5\)/,
-  );
 });
 
 test("the failsafe also remembers the rows of an issue a maintainer closed by hand, for as long as the hold lasts", () => {
@@ -8846,8 +8385,6 @@ const driftEnv = (box, extra = {}) => ({
   EXAM_STATUS_FILE: join(box.dir, "exam-status.mjs"),
   BETA_EXAMS_FILE: join(box.dir, "beta-exams.json"),
   RETIRING_EXAMS_FILE: join(box.dir, "retiring-exams.json"),
-  // Absent in the sandbox unless a test writes it: an empty list.
-  DRIFT_ACKNOWLEDGED_FILE: join(box.dir, "drift-acknowledged.json"),
   DRIFT_REPORT_FILE: join(box.dir, "drift-report.md"),
   DRIFT_ERROR_FILE: join(box.dir, "drift-error.md"),
   CREATE_ISSUES: "1",
@@ -9346,43 +8883,6 @@ test("drift end to end: an UPCOMING exam that Learn names only in the callout of
   }
 });
 
-test("drift end to end: a dated change is a row from a week before, once, and goes away after the date", async () => {
-  const { learn, box } = await driftWorld({
-    guides: { "AZ-903": { heading: "Skills measured as of October 12, 2026" } },
-  });
-  try {
-    const first = await runDrift(box, learn);
-    assert.equal(first.outputs.drift_items, "1");
-    const tracker = await readTracker(box);
-    assert.deepEqual(tracker.effectiveDates, [
-      {
-        code: "AZ-903",
-        date: "2026-10-12",
-        sentence: "Skills measured as of October 12, 2026",
-        firstSeen: "2026-10-09",
-      },
-    ]);
-    const [issue] = await openDrift(box);
-    assert.match(issue.body, /\| AZ-903 \| Takes effect \|/);
-    assert.match(issue.body, /takes effect on October 12, 2026/);
-
-    // The next day: the same row is not reported again, and the tracker is byte-identical.
-    const before = await readFile(box.tracker);
-    const second = await runDrift(box, learn, { TODAY: "2026-10-10" });
-    assert.equal(second.outputs.baseline_updated, "false");
-    assert.deepEqual(await readFile(box.tracker), before);
-    assert.deepEqual(await ghWrites(box), ["issue create"]);
-
-    // Three days after the date it has served its purpose.
-    const late = await runDrift(box, learn, { TODAY: "2026-10-15" });
-    assert.equal(late.outputs.drift_items, "0");
-    assert.equal((await openDrift(box)).length, 0);
-    assert.deepEqual((await readTracker(box)).effectiveDates, []);
-  } finally {
-    await learn.close();
-  }
-});
-
 test("drift end to end: a certification renamed on Learn is a row with old -> new while the hub page still shows the old name", async () => {
   const oldName = "Microsoft Certified: Azure Cosmos DB Developer Specialty";
   const newName = "Microsoft Certified: Azure Cosmos DB AI Developer Associate";
@@ -9561,116 +9061,6 @@ test("drift end to end: unreadable hub files stop only the drift check, with an 
 
     const healthy = await runDrift(box, learn, { TODAY: "2026-10-10" });
     assert.equal(healthy.outputs.drift_check_failed, "false");
-    assert.equal(
-      (await ghIssues(box)).find((i) => i.title === DRIFT_FAILED_ISSUE_TITLE)
-        .state,
-      "closed",
-    );
-  } finally {
-    await learn.close();
-  }
-});
-
-test("drift end to end: an acknowledged drift kind is out of the issue and listed as acknowledged in the job summary, and a corrupt file stops the check loudly", async () => {
-  const { world, learn, box } = await driftWorld();
-  // AZ-902 has a classic page: only a callout calls it beta, the AB-210 case.
-  world.certs[1].announcement = "https://aka.ms/AZ902CertificationBetaBlog";
-  const summary = join(box.dir, "summary.md");
-  const file = join(box.dir, "drift-acknowledged.json");
-  const entry = (over = {}) => ({
-    code: "AZ-902",
-    kind: "beta",
-    reason: "maintainer: GA, Learn callout is stale",
-    since: "2026-10-14",
-    ...over,
-  });
-  try {
-    // Not acknowledged yet: a row to check.
-    const first = await runDrift(box, learn, { GITHUB_STEP_SUMMARY: summary });
-    assert.equal(first.code, 0, first.stderr);
-    assert.equal(first.outputs.drift_items, "1");
-    const [issue] = await openDrift(box);
-    assert.match(issue.body, /\| AZ-902 \| Beta status \|/);
-    assert.match(issue.body, /Unclear/);
-
-    // Acknowledged: no row, the issue closes, and the summary says what was suppressed.
-    await writeFile(
-      file,
-      JSON.stringify([entry(), entry({ code: "AZ-903", kind: "name" })]),
-    );
-    const quiet = await runDrift(box, learn, {
-      TODAY: "2026-10-10",
-      GITHUB_STEP_SUMMARY: summary,
-    });
-    assert.equal(quiet.code, 0, quiet.stderr);
-    assert.equal(quiet.outputs.drift_items, "0");
-    assert.equal(quiet.outputs.drift_check_failed, "false");
-    assert.equal((await openDrift(box)).length, 0);
-    assert.match(
-      quiet.stdout,
-      /\[acknowledged\] beta AZ-902 \(since 2026-10-14; maintainer: GA, Learn callout is stale\): 1 not reported\./,
-    );
-    assert.match(
-      quiet.stdout,
-      /\[acknowledged\] name AZ-903 \(since 2026-10-14\): nothing to suppress today\./,
-    );
-    const text = await readFile(summary, "utf8");
-    assert.match(
-      text,
-      /\*\*Acknowledged\*\*, not reported: `AZ-902` beta drift since 2026-10-14 \(maintainer: GA, Learn callout is stale\)\. Suppressed today: Only a callout on the certification page calls AZ-902 a beta exam/,
-    );
-    assert.match(
-      text,
-      /\*\*Acknowledged\*\*, but nothing to suppress today: `AZ-903` name drift since 2026-10-14/,
-    );
-
-    // Another exam is not affected by it.
-    await writeHub(box, {
-      pages: agreeing({ "AZ-901": { name: "Old Name" } }),
-    });
-    const other = await runDrift(box, learn, { TODAY: "2026-10-11" });
-    assert.equal(other.outputs.drift_items, "1");
-    const [again] = await openDrift(box);
-    assert.match(again.body, /\| AZ-901 \| Exam name \|/);
-    assert.doesNotMatch(again.body, /AZ-902/);
-
-    // A corrupt file, an unknown kind or a typo in a key never silences anything by accident:
-    // the drift check does not run, says why, and leaves the running issue alone.
-    for (const [content, pattern] of [
-      ["[{ not json", /drift-acknowledged\.json is not valid JSON/],
-      [
-        JSON.stringify([entry({ kind: "banana" })]),
-        /"kind" is "banana", not one of name, beta/,
-      ],
-      [
-        JSON.stringify([{ ...entry(), reson: "typo" }]),
-        /has the unknown key\(s\) reson/,
-      ],
-      [JSON.stringify({ code: "AZ-902" }), /must be a list/],
-    ]) {
-      await writeFile(file, content);
-      const broken = await runDrift(box, learn, { TODAY: "2026-10-12" });
-      assert.equal(broken.code, 0, broken.stderr);
-      assert.equal(broken.outputs.drift_check_failed, "true", content);
-      assert.equal(broken.outputs.drift_items, "0", content);
-      assert.match(
-        await readFile(join(box.dir, "drift-error.md"), "utf8"),
-        new RegExp(
-          `The hub files could not be read, so nothing was compared: .*${pattern.source}`,
-        ),
-      );
-      assert.equal((await openDrift(box)).length, 1, "the running issue stays");
-    }
-    const failure = (await ghIssues(box)).find(
-      (i) => i.title === DRIFT_FAILED_ISSUE_TITLE,
-    );
-    assert.equal(failure.state, "open");
-
-    // Repaired: healthy again, the failure issue closes.
-    await writeFile(file, JSON.stringify([entry()]));
-    const healthy = await runDrift(box, learn, { TODAY: "2026-10-13" });
-    assert.equal(healthy.outputs.drift_check_failed, "false");
-    assert.equal(healthy.outputs.drift_items, "1");
     assert.equal(
       (await ghIssues(box)).find((i) => i.title === DRIFT_FAILED_ISSUE_TITLE)
         .state,

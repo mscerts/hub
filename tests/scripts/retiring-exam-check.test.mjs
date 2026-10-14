@@ -15,7 +15,6 @@ import {
   FINDINGS_ISSUE_TITLE,
   PAGES,
   PAGES_ISSUE_TITLE,
-  REMINDER_OFFSETS,
   RETIREMENT_BADGES,
   ROLL_OFF_DAYS,
   SCHEDULE_FORMAT,
@@ -24,7 +23,6 @@ import {
   buildAnnouncementReport,
   buildFindingsReport,
   buildPagesReport,
-  buildReminderReport,
   buildRetiredReport,
   classifyHeading,
   computeAnnouncements,
@@ -54,7 +52,6 @@ import {
   parseLearnDate,
   parseRetirementPage,
   parseTable,
-  pruneReminders,
   quoteRow,
   readPage,
   replacementFromPage,
@@ -64,7 +61,6 @@ import {
   run,
   safeText,
   scheduleContent,
-  selectReminders,
   selectReports,
   selectRetired,
   slugCodeMap,
@@ -1087,7 +1083,6 @@ test("the committed retiring-exams.json is valid for the monitor and is written 
 
 test("entries are written in one key order, whatever order the script added keys in", () => {
   const entry = {
-    remindedAt: { 30: "2026-10-31" },
     notifiedAt: "2026-12-01",
     notified: true,
     retirementDate: "2026-11-30",
@@ -1100,7 +1095,6 @@ test("entries are written in one key order, whatever order the script added keys
     "retirementDate",
     "notified",
     "notifiedAt",
-    "remindedAt",
     "extra",
   ]);
   assert.ok(text.startsWith('{\n  "lastSynced": "x",'));
@@ -1108,7 +1102,7 @@ test("entries are written in one key order, whatever order the script added keys
 });
 
 // ---------------------------------------------------------------------------
-// Reminders and the notification after the date
+// The notification after the date
 // ---------------------------------------------------------------------------
 const E = (over = {}) => ({
   code: "MS-102",
@@ -1118,149 +1112,6 @@ const E = (over = {}) => ({
   replacementCode: "AB-650",
   notified: false,
   ...over,
-});
-
-test("the offsets are 30, 7 and 1 days", () => {
-  assert.deepEqual(REMINDER_OFFSETS, [30, 7, 1]);
-});
-
-test("a reminder is due on the day each offset is reached, and only once", () => {
-  const dayOf = (offset) =>
-    new Date(Date.parse("2026-11-30T00:00:00Z") - offset * 86_400_000)
-      .toISOString()
-      .slice(0, 10);
-  let exams = [E()];
-  const seen = [];
-  // walk every day from 40 days out to the day itself
-  for (let left = 40; left >= 0; left--) {
-    const today = dayOf(left);
-    const out = selectReminders(exams, today);
-    exams = out.exams;
-    for (const due of out.due) seen.push([left, due.offset, due.daysLeft]);
-  }
-  assert.deepEqual(seen, [
-    [30, 30, 30],
-    [7, 7, 7],
-    [1, 1, 1],
-  ]);
-  assert.deepEqual(exams[0].remindedAt, {
-    30: "2026-10-31",
-    7: "2026-11-23",
-    1: "2026-11-29",
-  });
-  // integer-like keys: JSON writes them in ascending order, whatever order they were added in
-  assert.deepEqual(Object.keys(exams[0].remindedAt), ["1", "7", "30"]);
-  assert.equal(
-    JSON.stringify(exams[0].remindedAt),
-    '{"1":"2026-11-29","7":"2026-11-23","30":"2026-10-31"}',
-  );
-});
-
-test("nothing is due earlier than 30 days, and entries that are notified or past are left alone", () => {
-  const far = selectReminders([E()], "2026-10-14");
-  assert.equal(far.due.length, 0);
-  assert.deepEqual(far.exams, [E()]);
-
-  const notified = selectReminders(
-    [E({ notified: true, retirementDate: "2026-11-30" })],
-    "2026-11-29",
-  );
-  assert.equal(notified.due.length, 0);
-
-  const past = selectReminders(
-    [E({ retirementDate: "2026-09-30" })],
-    "2026-10-14",
-  );
-  assert.equal(past.due.length, 0);
-  assert.equal(past.exams[0].remindedAt, undefined);
-});
-
-test("a late first sighting sends ONE reminder, and a missed run still sends the next day", () => {
-  // first seen 5 days out: the 30 and 7 day reminders are both reached
-  const late = selectReminders([E()], "2026-11-25");
-  assert.equal(late.due.length, 1);
-  assert.equal(late.due[0].offset, 7);
-  assert.equal(late.due[0].daysLeft, 5);
-  assert.deepEqual(late.exams[0].remindedAt, {
-    30: "2026-11-25",
-    7: "2026-11-25",
-  });
-  // the 7-day run (2026-11-23) was missed: the run 6 days out still sends it
-  const missed = selectReminders(
-    [E({ remindedAt: { 30: "2026-10-31" } })],
-    "2026-11-24",
-  );
-  assert.equal(missed.due.length, 1);
-  assert.equal(missed.due[0].offset, 7);
-  assert.equal(missed.due[0].daysLeft, 6);
-  // on the day itself the 1-day reminder is still owed
-  const today = selectReminders(
-    [E({ remindedAt: { 30: "2026-10-31", 7: "2026-11-23" } })],
-    "2026-11-30",
-  );
-  assert.equal(today.due[0].offset, 1);
-  assert.equal(today.due[0].daysLeft, 0);
-});
-
-test("one issue lists every exam that is due the same day", () => {
-  const out = selectReminders(
-    [
-      E(),
-      E({ code: "AZ-801", retirementDate: "2026-11-30" }),
-      E({ code: "MB-1", retirementDate: "2027-03-01" }),
-    ],
-    "2026-10-31",
-  );
-  assert.deepEqual(
-    out.due.map((d) => d.entry.code),
-    ["MS-102", "AZ-801"],
-  );
-});
-
-test("moving the date re-arms the reminders without any other edit", () => {
-  const sent = { 30: "2026-10-31", 7: "2026-11-23", 1: "2026-11-29" };
-  // same date: all three are kept
-  assert.deepEqual(pruneReminders(E({ remindedAt: sent })), sent);
-  // a day earlier, still inside the 30 days the reminder was meant for
-  assert.deepEqual(
-    pruneReminders(
-      E({ retirementDate: "2026-11-29", remindedAt: { 30: "2026-10-31" } }),
-    ),
-    { 30: "2026-10-31" },
-  );
-  // a day later the reminder was sent 31 days before the new date: it is owed again
-  assert.deepEqual(
-    pruneReminders(
-      E({ retirementDate: "2026-12-01", remindedAt: { 30: "2026-10-31" } }),
-    ),
-    {},
-  );
-  // pushed by two months: the reminders were for another date
-  assert.deepEqual(
-    pruneReminders(E({ retirementDate: "2027-01-31", remindedAt: sent })),
-    {},
-  );
-  // pulled forward before the day it was sent
-  assert.deepEqual(
-    pruneReminders(E({ retirementDate: "2026-11-20", remindedAt: sent })),
-    { 30: "2026-10-31" },
-  );
-  // junk is dropped
-  assert.deepEqual(
-    pruneReminders(E({ remindedAt: { 5: "2026-11-25", 30: "soon" } })),
-    {},
-  );
-
-  const moved = [E({ retirementDate: "2027-01-31", remindedAt: sent })];
-  // 31 days before the new date: nothing is owed yet, and the old reminders are forgotten
-  const early = selectReminders(moved, "2026-12-31");
-  assert.equal(early.due.length, 0);
-  assert.equal(early.exams[0].remindedAt, undefined);
-  // 30 days before the new date the first reminder is due again
-  const rearmed = selectReminders(moved, "2027-01-01");
-  assert.equal(rearmed.due.length, 1);
-  assert.equal(rearmed.due[0].offset, 30);
-  assert.deepEqual(rearmed.exams[0].remindedAt, { 30: "2027-01-01" });
 });
 
 test("the notification after the date keeps the old cut-off: yesterday or earlier", () => {
@@ -2699,12 +2550,12 @@ test("text from Learn cannot ping, link, open a block or inject markup", () => {
 
 test("titles name the codes and never pass 200 characters", () => {
   assert.equal(
-    titleWithCodes("Exam retirement approaching: ", ["MS-102"]),
-    "Exam retirement approaching: MS-102",
+    titleWithCodes("Exam retirement notification: ", ["MS-102"]),
+    "Exam retirement notification: MS-102",
   );
   assert.equal(titleWithCodes("T: ", ["A-1", "B-2"]), "T: A-1, B-2");
   const many = Array.from({ length: 200 }, (_, i) => `AZ-${100 + i}`);
-  const title = titleWithCodes("Exam retirement approaching: ", many);
+  const title = titleWithCodes("Exam retirement notification: ", many);
   assert.ok(title.length <= 200);
   assert.match(title, /and \d+ more$/);
 });
@@ -2928,43 +2779,6 @@ test("a huge findings report is cut under GitHub's size limit and says so", () =
   assert.ok(text.includes("AZ-1000"));
 });
 
-test("the reminder says what the page should already show, with the repository checked", () => {
-  const ctx = reportCtx();
-  ctx.evidence = evidenceByCode([L()], ctx.hub);
-  const { due } = selectReminders([E()], "2026-11-23");
-  const text = buildReminderReport(ctx, due);
-  assert.match(text, /^## Exam retirement approaching/);
-  assert.match(text, /\| MS-102 \| November 30, 2026 \| 7 \| AB-650 \|/);
-  assert.match(text, /### MS-102 retires in 7 days \(November 30, 2026\)/);
-  assert.match(text, /The 7-day reminder for Microsoft 365 Administrator\./);
-  assert.match(
-    text,
-    /badge RETIRING in `exam-status.mjs`: yes; retirement banner on the page: yes/,
-  );
-  assert.match(
-    text,
-    /Learn: listed as scheduled to retire on November 30, 2026 \(same date as the tracker\)\./,
-  );
-  assert.match(text, /link to the replacement `AB-650`/);
-  assert.match(text, /the reminders re-arm themselves/);
-
-  // a page without badge or banner is called out
-  const bare = fakeHub({ exams: ["MS-102"], statuses: {} });
-  const bareCtx = reportCtx({ hub: bare });
-  bareCtx.evidence = new Map();
-  const missing = buildReminderReport(
-    bareCtx,
-    selectReminders([E({ remindedAt: { 30: "2026-10-31" } })], "2026-11-29")
-      .due,
-  );
-  assert.match(missing, /### MS-102 retires tomorrow/);
-  assert.match(
-    missing,
-    /badge RETIRING in `exam-status.mjs`: \*\*missing\*\*; retirement banner on the page: \*\*missing\*\*/,
-  );
-  assert.match(missing, /Learn: not listed on the retirement pages/);
-});
-
 test("the notification after the date confirms it against Learn", () => {
   const ctx = reportCtx();
   ctx.evidence = evidenceByCode(
@@ -3032,19 +2846,6 @@ test("the notification tells the maintainer to switch the badge to RETIRED and k
     buildRetiredReport(ctx, retired),
     /badge RETIRED in `exam-status.mjs`: yes/,
   );
-});
-
-test("a reminder before the date still asks for RETIRING, and RETIRED is the wrong badge then", () => {
-  const ctx = reportCtx();
-  ctx.evidence = evidenceByCode([L()], ctx.hub);
-  ctx.hub.statuses.set("MS-102", { area: "microsoft365", text: "RETIRED" });
-  const { due } = selectReminders([E()], "2026-11-23");
-  const text = buildReminderReport(ctx, due);
-  assert.match(
-    text,
-    /badge RETIRING in `exam-status.mjs`: \*\*missing\*\* \(it says `RETIRED`\)/,
-  );
-  assert.match(text, /1\. The `RETIRING` badge for `MS-102`/);
 });
 
 const quietCfg = loadConfig({ CREATE_ISSUES: "1", TODAY: "2026-10-14" });
@@ -3172,10 +2973,10 @@ test("issues are not touched when disabled; a failure is fatal only when the iss
   );
 });
 
-test("event issues (reminders, notifications) are new issues with the codes in the title", () => {
+test("event issues (the notification after the date) are new issues with the codes in the title", () => {
   const gh = stubGh();
   const out = createEventIssue(quietCfg, gh, {
-    title: "Exam retirement approaching: MS-102",
+    title: "Exam retirement notification: MS-102",
     body: "B",
   });
   assert.deepEqual(out, { action: "created", number: 77 });
@@ -3183,7 +2984,7 @@ test("event issues (reminders, notifications) are new issues with the codes in t
     "issue",
     "create",
     "--title",
-    "Exam retirement approaching: MS-102",
+    "Exam retirement notification: MS-102",
     "--label",
     "enhancement",
   ]);
@@ -3302,7 +3103,7 @@ test("the stable issues: findings, unreadable pages, failed check", () => {
   );
   assert.match(
     made.calls[2].input,
-    /Reminders and the notification after the date still work/,
+    /The notification after the date still works/,
   );
   const again = stubGh({ open: [{ number: 5, title: PAGES_ISSUE_TITLE }] });
   assert.equal(
@@ -3696,7 +3497,7 @@ test("end to end: an unchanged Learn is no churn on any later day, however its r
       skills: [AGENT_SKILL],
     });
     learn.state.html.exams = reordered;
-    // the last day is 31 days before MS-102 retires: the first reminder is due the day after
+    // all of these days are well before MS-102 retires: nothing is due
     for (const day of ["2026-10-15", "2026-10-20", "2026-10-30"]) {
       const result = await runScript(repo, learn, day);
       assert.equal(result.code, 0, result.stderr);
@@ -4258,46 +4059,27 @@ test("end to end: a failed announcement issue loses nothing, the next run announ
   }
 });
 
-test("end to end: reminders at 30, 7 and 1 days, once each, as new issues", async () => {
+test("end to end: the notification and the tracker write are ordered the same way", async () => {
   const repo = await makeRepo();
   const learn = await startLearn();
   const gh = await withIssues(repo);
   try {
     await runScript(repo, learn, "2026-10-14", gh.env);
-    const titles = [];
-    for (const day of [
-      "2026-10-30",
-      "2026-10-31",
-      "2026-11-01",
-      "2026-11-22",
-      "2026-11-23",
-      "2026-11-23",
-      "2026-11-29",
-      "2026-11-30",
-    ]) {
-      const result = await runScript(repo, learn, day, gh.env);
-      assert.equal(result.code, 0, `${day}: ${result.stderr}`);
-      if (result.output.changes_found === "true")
-        titles.push([day, result.output.issue_title]);
-    }
-    // 30, 7 and 1 days out; the second run on 2026-11-23 and the day itself add nothing
-    assert.deepEqual(titles, [
-      ["2026-10-31", "Exam retirement approaching: MS-102"],
-      ["2026-11-23", "Exam retirement approaching: MS-102"],
-      ["2026-11-29", "Exam retirement approaching: MS-102"],
-    ]);
-    const issues = gh.issues().filter((i) => /approaching/.test(i.title));
-    assert.equal(issues.length, 3);
-    assert.match(
-      issues[0].body,
-      /The 30-day reminder for Microsoft 365 Administrator\./,
+    const before = repo.exams();
+    gh.env.FAKE_GH_FAIL = "issue create";
+    const failed = await runScript(repo, learn, "2026-12-01", gh.env);
+    assert.equal(failed.code, 1);
+    assert.equal(
+      failed.exams,
+      before,
+      "notified was not recorded, so the notification is sent again",
     );
-    assert.match(issues[1].body, /retires in 7 days/);
-    assert.match(issues[2].body, /retires tomorrow/);
-    assert.deepEqual(
-      JSON.parse(repo.exams()).exams.find((e) => e.code === "MS-102")
-        .remindedAt,
-      { 30: "2026-10-31", 7: "2026-11-23", 1: "2026-11-29" },
+    gh.env.FAKE_GH_FAIL = "";
+    const retry = await runScript(repo, learn, "2026-12-01", gh.env);
+    assert.equal(retry.output.changes_found, "true");
+    assert.equal(
+      JSON.parse(retry.exams).exams.find((e) => e.code === "MS-102").notified,
+      true,
     );
   } finally {
     await learn.close();
@@ -4310,9 +4092,14 @@ test("end to end: the notification after the date, confirmed against Learn, exac
   const gh = await withIssues(repo);
   try {
     await runScript(repo, learn, "2026-10-14", gh.env);
-    // the day itself: not retired yet, only the 1-day reminder is owed
+    // the day itself: not retired yet, so nothing is raised (no reminder before the date)
     const onTheDay = await runScript(repo, learn, "2026-11-30", gh.env);
-    assert.match(onTheDay.output.issue_title, /approaching/);
+    assert.equal(onTheDay.output.issue_title, "");
+    assert.equal(
+      gh.issues().filter((i) => /notification|approaching/.test(i.title))
+        .length,
+      0,
+    );
     assert.equal(
       JSON.parse(onTheDay.exams).exams.find((e) => e.code === "MS-102")
         .notified,
@@ -4409,35 +4196,6 @@ test("end to end: the issue comes BEFORE the trackers are written, and a failed 
   }
 });
 
-test("end to end: the reminder and the tracker write are ordered the same way", async () => {
-  const repo = await makeRepo();
-  const learn = await startLearn();
-  const gh = await withIssues(repo);
-  try {
-    await runScript(repo, learn, "2026-10-14", gh.env);
-    const before = repo.exams();
-    gh.env.FAKE_GH_FAIL = "issue create";
-    const failed = await runScript(repo, learn, "2026-10-31", gh.env);
-    assert.equal(failed.code, 1);
-    assert.equal(
-      failed.exams,
-      before,
-      "remindedAt was not recorded, so the reminder is sent again",
-    );
-    gh.env.FAKE_GH_FAIL = "";
-    const retry = await runScript(repo, learn, "2026-10-31", gh.env);
-    assert.equal(retry.output.changes_found, "true");
-    assert.match(
-      JSON.parse(retry.exams).exams.find((e) => e.code === "MS-102").remindedAt[
-        "30"
-      ],
-      /2026-10-31/,
-    );
-  } finally {
-    await learn.close();
-  }
-});
-
 test("end to end: a page that fails only warns, keeps the old rows and never creates a finding", async () => {
   const repo = await makeRepo();
   const learn = await startLearn();
@@ -4528,15 +4286,15 @@ test("end to end: with both pages down on the first run the monitor still works 
   try {
     learn.state.status.exams = 500;
     learn.state.status.credentials = 404;
-    const result = await runScript(repo, learn, "2026-10-31", gh.env);
+    const result = await runScript(repo, learn, "2026-12-01", gh.env);
     assert.equal(result.code, 0, result.stderr);
-    // the reminder needs no Learn page
+    // the notification needs no Learn page
     assert.equal(
       result.output.issue_title,
-      "Exam retirement approaching: MS-102",
+      "Exam retirement notification: MS-102",
     );
     assert.match(
-      gh.issues().find((i) => /approaching/.test(i.title)).body,
+      gh.issues().find((i) => /notification/.test(i.title)).body,
       /not listed on the retirement pages/,
     );
     const schedule = JSON.parse(result.schedule);
@@ -4799,14 +4557,6 @@ test("a manual run can force the baseline, with the wording the failsafe message
   assert.match(readFileSync(script, "utf8"), /force_baseline/);
 });
 
-test("the resync script keeps the reminders that were already sent", () => {
-  const source = readFileSync(
-    join(root, "scripts", "retiring-exams-sync.mjs"),
-    "utf8",
-  );
-  assert.match(source, /remindedAt: prev\.remindedAt/);
-});
-
 test("the resync script keeps every RETIRING and RETIRED exam in the tracker, with the notified state it had", async () => {
   const { examStatuses } = await import(
     pathToFileURL(join(root, "src", "data_files", "exam-status.mjs")).href
@@ -4835,7 +4585,6 @@ test("the resync script keeps every RETIRING and RETIRED exam in the tracker, wi
         retirementDate: "2026-09-30",
         notified: true,
         notifiedAt: "2026-10-01",
-        remindedAt: { 30: "2026-08-31" },
       })),
     }),
   );
@@ -4853,7 +4602,6 @@ test("the resync script keeps every RETIRING and RETIRED exam in the tracker, wi
   for (const exam of synced) {
     assert.equal(exam.notified, true, exam.code);
     assert.equal(exam.notifiedAt, "2026-10-01", exam.code);
-    assert.deepEqual(exam.remindedAt, { 30: "2026-08-31" }, exam.code);
     assert.match(exam.retirementDate, /^\d{4}-\d{2}-\d{2}$/);
   }
   // the log says which of them are history

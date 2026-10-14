@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Daily Retiring Exam Monitor: finds retirements on Microsoft Learn, reminds
- * before a tracked retirement and notifies after it.
+ * Daily Retiring Exam Monitor: finds retirements on Microsoft Learn and
+ * notifies once a tracked retirement has passed.
  *
  * Usage:
  *   node scripts/retiring-exam-check.mjs
@@ -17,7 +17,7 @@
  *       "Certifications scheduled to retire", "Recently retired Certifications"
  *       and the Applied Skills credential sections
  *
- * and keeps four kinds of alert (details under "Issues"):
+ * and keeps three kinds of alert (details under "Issues"):
  *
  *   1. Findings, from comparing Learn's rows with the hub. A row concerns the hub
  *      when it names an exam that has a hub page (src/content/docs/<area>/<CODE>.mdx)
@@ -30,12 +30,10 @@
  *      says RETIRING or RETIRED for an exam the tracker does not know, and when a lab page
  *      links an Applied Skill that Learn lists as retiring or retired. Rows that do
  *      not concern the hub are only recorded.
- *   2. Reminders 30, 7 and 1 days before the date of every tracked entry that is
- *      not notified yet (the offsets sent are kept in `remindedAt`), saying what
- *      the exam page should already show and checking the repository for it.
- *   3. The notification AFTER the date (yesterday UTC or earlier) the monitor always
- *      sent, now confirmed against Learn's tables.
- *   4. An informational announcement for a certification row that appeared (or
+ *   2. The notification AFTER the date (yesterday UTC or earlier) the monitor always
+ *      sent, now confirmed against Learn's tables. There is deliberately no
+ *      reminder before the date: the issue on the day is the one that matters.
+ *   3. An informational announcement for a certification row that appeared (or
  *      changed date) as "scheduled to retire" and that no reliable mapping ties to
  *      an exam (the row has no exam code and its certification address is not the
  *      one an exam row, a hub exam page or the Learn exam tracker links to an exam).
@@ -43,7 +41,7 @@
  *
  * Trackers (this script is the only writer):
  *   src/data_files/retiring-exams.json     the hand-kept list; the script sets
- *                                          `notified`, `notifiedAt` and `remindedAt`
+ *                                          `notified` and `notifiedAt`
  *   src/data_files/retirement-schedule.json  { lastSynced, format, failures, reported, rows }
  *       format    SCHEDULE_FORMAT, the version of what the rows were extracted with
  *       rows      every parsed Learn row { source, kind, status, code?, slug?, name,
@@ -81,9 +79,6 @@
  *     never alert.
  *   - The date arithmetic is whole UTC days. "Retired" keeps the old cut-off:
  *     retirementDate is yesterday (UTC) or earlier, so a missed run never skips it.
- *   - Reminders are keyed by the date they were sent: a reminder counts for the
- *     current retirementDate only when it was sent within `offset` days before it.
- *     Moving the date therefore re-arms the reminders without any other edit.
  *
  * Issues (only with CREATE_ISSUES=1 and not DRY_RUN=1; the gh CLI, GH_TOKEN). They
  * are made inside this script BEFORE the trackers are written, so a failed issue
@@ -93,12 +88,10 @@
  *   - "Exam retirement schedule: hub does not match Microsoft Learn" (enhancement):
  *     ONE running issue for the findings, created with the report, a comment for
  *     every later report, closed with a comment when no finding is left.
- *   - "Exam retirement approaching: <codes>" (enhancement): one issue per day with
- *     every reminder that is due.
  *   - "Exam retirement notification: <codes>" (enhancement): one issue per day
  *     with the exams that passed their date.
  *   - "Microsoft Learn announced a retirement: <names>" (enhancement): one issue per
- *     day with the new rows no exam could be mapped to (alert 4 above).
+ *     day with the new rows no exam could be mapped to (alert 3 above).
  *   - "Retiring Exam Monitor: Microsoft Learn retirement pages cannot be read" and
  *     "Retiring Exam Monitor: the check failed" (bug): one issue each, a comment
  *     for every further failing day instead of an issue per run, closed after a
@@ -161,9 +154,6 @@ function resolveFromRoot(path) {
  * re-baselined silently instead of showing the change of the extraction as news.
  */
 export const SCHEDULE_FORMAT = 1;
-
-/** Reminders go out this many days before the date (each at most once per date). */
-export const REMINDER_OFFSETS = [30, 7, 1];
 
 /** Learn lists a retirement for 12 months; a row older than this is expected to leave. */
 export const ROLL_OFF_DAYS = 366;
@@ -963,7 +953,7 @@ export function loadRetiringExams(file) {
   return parsed;
 }
 
-/** The key order retiring-exams-sync.mjs writes, with the reminders last; other keys follow. */
+/** The key order retiring-exams-sync.mjs writes; other keys follow. */
 const ENTRY_KEYS = [
   "code",
   "area",
@@ -972,7 +962,6 @@ const ENTRY_KEYS = [
   "replacementCode",
   "notified",
   "notifiedAt",
-  "remindedAt",
 ];
 
 export function examsContent(tracker) {
@@ -990,66 +979,8 @@ export function examsContent(tracker) {
 }
 
 // ---------------------------------------------------------------------------
-// Reminders and notifications (retiring-exams.json)
+// Notifications (retiring-exams.json)
 // ---------------------------------------------------------------------------
-
-/** Drops the reminders that were sent for another date (see the rules at the top). */
-export function pruneReminders(entry, offsets = REMINDER_OFFSETS) {
-  const kept = {};
-  for (const [key, sent] of Object.entries(entry.remindedAt ?? {})) {
-    const offset = Number(key);
-    if (
-      offsets.includes(offset) &&
-      isRealIsoDate(sent) &&
-      daysBetween(sent, entry.retirementDate) >= 0 &&
-      daysBetween(sent, entry.retirementDate) <= offset
-    ) {
-      kept[offset] = sent;
-    }
-  }
-  return kept;
-}
-
-/**
- * Which reminders are due today. Returns { due, exams } where `exams` is a copy of
- * the entries with `remindedAt` pruned and updated. Per entry, every offset that is
- * reached (daysLeft <= offset) and not sent yet is due; ONE reminder is made for
- * the entry (with the smallest such offset) and all of them are recorded, so a
- * late first sighting sends one reminder, not three, and a missed run still sends
- * the reminder the next day.
- */
-export function selectReminders(exams, today, offsets = REMINDER_OFFSETS) {
-  const due = [];
-  const next = exams.map((entry) => {
-    if (entry.notified === true) return entry;
-    const daysLeft = daysBetween(today, entry.retirementDate);
-    const copy = { ...entry };
-    const remindedAt = daysLeft >= 0 ? pruneReminders(entry, offsets) : {};
-    if (daysLeft < 0) {
-      // already past: leave the history as it is
-      return entry;
-    }
-    const reached = offsets.filter(
-      (offset) => daysLeft <= offset && !(offset in remindedAt),
-    );
-    if (reached.length > 0) {
-      for (const offset of reached) remindedAt[offset] = today;
-      due.push({
-        entry: copy,
-        daysLeft,
-        offset: Math.min(...reached),
-      });
-    }
-    if (Object.keys(remindedAt).length > 0) {
-      // integer-like keys: JSON.stringify writes them in ascending order ("1", "7", "30")
-      copy.remindedAt = remindedAt;
-    } else {
-      delete copy.remindedAt;
-    }
-    return copy;
-  });
-  return { due, exams: next };
-}
 
 /** Marks every entry whose date is yesterday (UTC) or earlier as notified. */
 export function selectRetired(exams, today) {
@@ -1776,7 +1707,7 @@ function examEdits(finding, ctx) {
   const entry = finding.entry;
   edits.push(
     entry
-      ? `${code("src/data_files/retiring-exams.json")}: set \`retirementDate\` of ${code(code_)} to ${code(date)} (the reminders re-arm themselves).`
+      ? `${code("src/data_files/retiring-exams.json")}: set \`retirementDate\` of ${code(code_)} to ${code(date)} .`
       : `${code("src/data_files/retiring-exams.json")}: add this entry (keep the list in exam-code order${retired ? "; this issue is the notification, so it is already marked as notified" : ""}). ${replacement ? `\`replacementCode\` is what the exam page itself names; check it against Microsoft's announcement.` : "Fill `replacementCode` only from Microsoft's announcement or the exam's study guide, never by guess."}\n\n${indent(entrySnippet(code_, area, name, date, retired, replacement))}`,
   );
   // RETIRING until the date has passed, RETIRED after it.
@@ -1829,7 +1760,7 @@ function describeFinding(finding, ctx) {
       lines.push(
         row.status === "retired"
           ? `Microsoft Learn lists ${code(finding.subject)} as **retired** on ${when}, and \`retiring-exams.json\` has no entry for it.`
-          : `Microsoft Learn schedules ${code(finding.subject)} to retire on ${when}, and \`retiring-exams.json\` has no entry for it, so nothing will remind or notify.`,
+          : `Microsoft Learn schedules ${code(finding.subject)} to retire on ${when}, and \`retiring-exams.json\` has no entry for it, so nothing will notify.`,
       );
       if (finding.via === "certification") {
         lines.push(
@@ -1999,43 +1930,6 @@ function learnStateLine(code_, entryDate, ctx) {
   return `Learn: listed as ${row.status === "retired" ? "retired" : "scheduled to retire"} on ${row.date ? formatLongDate(row.date) : safeText(row.dateText)} (${same}).`;
 }
 
-export function buildReminderReport(ctx, due) {
-  const lines = [
-    `## Exam retirement approaching`,
-    "",
-    `Reminder for ${plural(due.length, "exam", "exams")}, sent ${ctx.today}. A reminder comes 30, 7 and 1 days before the date in \`retiring-exams.json\`; after the date this monitor opens the notification. The exam page, the badge and the banner should already tell visitors.`,
-    "",
-    "| Exam | Retires | Days left | Replacement |",
-    "|------|---------|-----------|-------------|",
-    ...due.map(
-      ({ entry, daysLeft }) =>
-        `| ${safeText(entry.code)} | ${formatLongDate(entry.retirementDate)} | ${daysLeft} | ${entry.replacementCode ? safeText(entry.replacementCode) : "none recorded"} |`,
-    ),
-  ];
-  for (const { entry, daysLeft, offset } of due) {
-    const facts = hubFacts(entry.code, ctx, entry.retirementDate);
-    lines.push(
-      "",
-      `### ${entry.code} retires ${daysLeft === 0 ? "today" : daysLeft === 1 ? "tomorrow" : `in ${daysLeft} days`} (${formatLongDate(entry.retirementDate)})`,
-      "",
-      `The ${offset}-day reminder${entry.name ? ` for ${safeText(entry.name)}` : ""}.`,
-      "",
-      `- Hub page: ${facts.page ? code(facts.page.path) : "**no exam page found**"}`,
-      `- ${bannerLine(facts, entry.retirementDate, ctx.today)}`,
-      `- ${learnStateLine(entry.code, entry.retirementDate, ctx)}`,
-      "",
-      "What the page should already show:",
-      "",
-      `1. The \`RETIRING\` badge for ${code(entry.code)} in ${code("src/data_files/exam-status.mjs")}.`,
-      `2. A retirement banner at the top of the page with the date ${formatLongDate(entry.retirementDate)}${entry.replacementCode ? ` and a link to the replacement ${code(entry.replacementCode)}` : ""} (the \`RetirementBanner\` component, or a \`:::caution\` box).`,
-      "3. The Get Started links and the resources still valid until the date (retiring pages keep their resources).",
-      "",
-      "If Microsoft moved the date, change `retirementDate` in the entry and the banner; the reminders re-arm themselves.",
-    );
-  }
-  return lines.join("\n");
-}
-
 export function buildRetiredReport(ctx, retired) {
   const lines = [
     "## Exam(s) retired",
@@ -2105,7 +1999,7 @@ export function buildAnnouncementReport(ctx, rows) {
 
 export function buildPagesReport(cfg, failing) {
   const lines = [
-    "The Retiring Exam Monitor could not read a Microsoft Learn retirement page for several days in a row. While a page is unreadable the monitor keeps the rows it recorded earlier, so a new or changed retirement on that page is **not** seen. Reminders and the notification after the date still work, because they only use `retiring-exams.json`.",
+    "The Retiring Exam Monitor could not read a Microsoft Learn retirement page for several days in a row. While a page is unreadable the monitor keeps the rows it recorded earlier, so a new or changed retirement on that page is **not** seen. The notification after the date still works, because it only uses `retiring-exams.json`.",
     "",
     "| Page | Failing since | Days in a row | Why (this run) |",
     "|------|---------------|---------------|----------------|",
@@ -2204,7 +2098,7 @@ export function syncIssue({
 
 const runLink = (cfg) => (cfg.runUrl ? `\n\nRun: ${cfg.runUrl}` : "");
 
-/** A per-event issue (a reminder day, a retirement day): always a new issue. */
+/** A per-event issue (a retirement day): always a new issue. */
 export function createEventIssue(cfg, gh, { title, body }) {
   if (!(cfg.createIssues && !cfg.dryRun)) {
     return { action: "skipped", number: null };
@@ -2257,7 +2151,7 @@ export function syncFailureIssue(cfg, gh, message) {
     label: BUG_LABEL,
     active: failed,
     body: failed
-      ? `The Retiring Exam Monitor could not run on ${cfg.today}. No reminder, notification or finding was produced and the trackers were not written, so nothing was lost: the next healthy run continues where the last one stopped.\n\n**Why:** ${message}${runLink(cfg)}\n\nThis issue gets one comment per failed run and closes itself after the next healthy run.`
+      ? `The Retiring Exam Monitor could not run on ${cfg.today}. No notification or finding was produced and the trackers were not written, so nothing was lost: the next healthy run continues where the last one stopped.\n\n**Why:** ${message}${runLink(cfg)}\n\nThis issue gets one comment per failed run and closes itself after the next healthy run.`
       : "",
     commentBody: failed
       ? `The Retiring Exam Monitor failed again on ${cfg.today}:\n\n${message}${runLink(cfg)}`
@@ -2359,17 +2253,14 @@ export async function run(cfg) {
         })
       : [];
 
-  // 4. Reminders, then the notification after the date.
-  const reminders = selectReminders(tracker.exams, cfg.today);
-  const retired = selectRetired(reminders.exams, cfg.today);
+  // 4. The notification after the date.
+  const retired = selectRetired(tracker.exams, cfg.today);
 
   // 5. Report texts.
   const findingsBody =
     reports.reportNow.length > 0
       ? buildFindingsReport(ctx, reports.reportNow)
       : "";
-  const reminderBody =
-    reminders.due.length > 0 ? buildReminderReport(ctx, reminders.due) : "";
   const retiredBody =
     retired.retired.length > 0 ? buildRetiredReport(ctx, retired.retired) : "";
   const announcementBody =
@@ -2399,12 +2290,10 @@ export async function run(cfg) {
     findings,
     reportNow: reports.reportNow,
     allClear: findings.length === 0,
-    dueReminders: reminders.due,
     retired: retired.retired,
     announcements,
     failing,
     findingsBody,
-    reminderBody,
     retiredBody,
     announcementBody,
     nextSchedule,
@@ -2441,7 +2330,7 @@ function summaryText(result, cfg) {
   }
   lines.push(
     `- Findings: ${result.findings.length} open, ${result.reportNow.length} reported today`,
-    `- Reminders due: ${result.dueReminders.length}; retired today: ${result.retired.length}; new rows no exam maps to: ${result.announcements.length}`,
+    `- Retired today: ${result.retired.length}; new rows no exam maps to: ${result.announcements.length}`,
     `- Run date used: ${cfg.today}`,
   );
   return lines.join("\n");
@@ -2469,7 +2358,7 @@ async function main(cfg) {
     `${plural(result.findings.length, "finding", "findings")} open, ${result.reportNow.length} to report today.`,
   );
   console.log(
-    `${plural(result.dueReminders.length, "reminder", "reminders")} due; ${plural(result.retired.length, "exam", "exams")} past the date.`,
+    `${plural(result.retired.length, "exam", "exams")} past the date.`,
   );
 
   if (result.announcements.length > 0) {
@@ -2480,7 +2369,6 @@ async function main(cfg) {
 
   const parts = [
     result.findingsBody,
-    result.reminderBody,
     result.retiredBody,
     result.announcementBody,
   ].filter(Boolean);
@@ -2513,18 +2401,6 @@ async function main(cfg) {
     );
   }
 
-  if (result.dueReminders.length > 0) {
-    const title = titleWithCodes(
-      "Exam retirement approaching: ",
-      result.dueReminders.map((d) => d.entry.code),
-    );
-    const issue = createEventIssue(cfg, gh, {
-      title,
-      body: result.reminderBody,
-    });
-    console.log(describeIssue(`Reminder issue "${title}"`, issue, cfg));
-    headline.push(title);
-  }
   if (result.retired.length > 0) {
     const title = titleWithCodes(
       "Exam retirement notification: ",

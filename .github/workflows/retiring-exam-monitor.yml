@@ -37,9 +37,8 @@ jobs:
       # The script reads the two Microsoft Learn retirement pages and
       # retiring-exams.json, and opens the issues itself, BEFORE the trackers are
       # committed below: the findings (one running issue, a comment for every
-      # later report, closed when Learn and the hub agree), a reminder issue 30, 7
-      # and 1 days before a tracked retirement, the notification after the date,
-      # and ONE issue per kind of failure (a Learn page unreadable for 3 days, the
+      # later report, closed when Learn and the hub agree), the notification after
+      # the date, and ONE issue per kind of failure (a Learn page unreadable for 3 days, the
       # check itself failing) that gets a comment per further failed day instead of
       # a new issue per run id. The script writes the trackers only after the
       # issues succeeded, so when an issue step fails this step fails, the commit

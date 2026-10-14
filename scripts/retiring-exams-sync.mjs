@@ -17,9 +17,8 @@
  *
  * This is a bootstrap/full-resync tool, not part of any scheduled workflow.
  * It overwrites the tracker file entirely, but preserves `notified`/`notifiedAt`
- * and `remindedAt` (the reminders scripts/retiring-exam-check.mjs already sent)
- * for exams that are still present so a resync never re-fires a notification
- * or a reminder. A tracker entry whose exam has neither badge any more is
+ * for exams that are still present so a resync never re-fires a notification.
+ * A tracker entry whose exam has neither badge any more is
  * dropped, with a warning naming it.
  * New retiring exams found after the initial sync should be added to
  * retiring-exams.json by hand (see docs/monitors/beta-and-retiring-exams.md), not by re-running this.
@@ -178,7 +177,6 @@ function main() {
         ...(replacementCode ? { replacementCode } : {}),
         notified: prev?.notified ?? false,
         ...(prev?.notifiedAt ? { notifiedAt: prev.notifiedAt } : {}),
-        ...(prev?.remindedAt ? { remindedAt: prev.remindedAt } : {}),
       });
       console.log(
         `Found ${badge.text === "RETIRED" ? "retired" : "retiring"} exam: ${code} (${area}) — ${badge.text === "RETIRED" ? "retired" : "retires"} ${retirementDate}`,

@@ -183,31 +183,16 @@
  *   - UPCOMING / AT RISK: an UPCOMING exam that shows up on Learn (exam page,
  *     certification page, study guide in the sitemap or as a page of its own,
  *     listing), an AT RISK banner that calls an
- *     exam "potential" that Learn lists now;
- *   - EFFECTIVE DATES: dated statements of the notices, "Updates to the exam" and
- *     the skills heading ("Skills measured as of <date>", "registration closes
- *     <date>") are stored; a row appears EFFECTIVE_LEAD_DAYS before the date and
- *     leaves EFFECTIVE_GRACE_DAYS after it.
- * Acknowledged drift: src/data_files/drift-acknowledged.json is a hand-kept list
- * of [{ code, kind, reason, since }] ("AB-210", "beta", "maintainer: GA, Learn
- * callout is stale", "2026-10-14") that silences one drift kind (name, beta,
- * notice, status, upcoming, at-risk, certification, effective) for one exam when
- * the maintainers have decided that the hub is right and Learn is stale or
- * wrong. Every item of that kind for that exam is dropped from the issue, the
- * failsafe count and drift_items; each run lists what it suppressed as
- * "acknowledged" in the log and the job summary, and an acknowledgement that
- * matched nothing is listed as well, so none is forgotten. The file is validated
- * on every run: invalid JSON, a missing or unknown key, an unknown kind, a code
- * that is not an exam code, a `since` that is not a real day or a duplicate
- * (code, kind) pair is a DriftInputError, i.e. the drift check does not run and
- * the "could not run" issue says why (loud, never a silent no-op). A missing
- * file is an empty list.
+ *     exam "potential" that Learn lists now.
+ * There is deliberately no "takes effect" reminder: a dated skills update
+ * ("Skills measured as of <date>") is not drift between the hub and Learn, and
+ * the study guide check already reports the text of a guide when it changes.
  * A fetch failure, a guide carried forward from an earlier read or a missing
  * field is never drift. The first run reports the problems that already exist
  * (only the NEW-exam alerts are silent then). Failsafe: more than MAX_DRIFT new
  * rows (rows the running issue does not list yet, or the one a maintainer closed
- * by hand while it still holds a new issue back, see below), or MAX_DRIFT_DATES
- * new dated reminders, at once = a naming or markup change, not news: the
+ * by hand while it still holds a new issue back, see below) at once = a naming
+ * or markup change, not news: the
  * running issue is not touched and a bug issue ("Learn drift: the check could
  * not run") says so (drift_check_failed=true, DRIFT_ERROR_FILE); FORCE_DRIFT=1
  * accepts the list.
@@ -227,8 +212,7 @@
  *     certifications, products, url, announcements, firstSeen, lastSeen }],
  *     studyGuides: [{ code, name?, headingName?, lastmod, hash, updatedAt,
  *     lastModified?, firstSeen, lastChanged, missing?, lines? }],
- *     certRenames: [{ slug, from, to, firstSeen }],
- *     effectiveDates: [{ code, date, sentence, firstSeen }] }
+ *     certRenames: [{ slug, from, to, firstSeen }] }
  *   The file is only rewritten when something other than lastSynced / lastSeen
  *   changed, so an unchanged Learn never produces a daily diff. `lastSeen` is
  *   refreshed whenever the file is rewritten for another reason: it means
@@ -256,10 +240,8 @@
  *   "exam-page:ga"; unlike `beta` it is not sticky, except that the exam-page
  *   tags of an exam whose exam page probe got no answer stay: a failed probe is
  *   never evidence); `certRenames` are the
- *   certification title changes seen, kept CERT_RENAME_DAYS days;
- *   `effectiveDates` are the dated statements of the covered guides from
- *   EFFECTIVE_GRACE_DAYS ago to EFFECTIVE_HORIZON_DAYS ahead. A tracker written
- *   before the drift check has none of these and loads fine.
+ *   certification title changes seen, kept CERT_RENAME_DAYS days. A tracker
+ *   written before the drift check has none of these and loads fine.
  *
  * Env overrides (defaults shown):
  *   LEARN_BASE_URL       https://learn.microsoft.com
@@ -309,8 +291,6 @@
  *   EXAM_STATUS_FILE     src/data_files/exam-status.mjs (hub badges)
  *   BETA_EXAMS_FILE      src/data_files/beta-exams.json
  *   RETIRING_EXAMS_FILE  src/data_files/retiring-exams.json
- *   DRIFT_ACKNOWLEDGED_FILE src/data_files/drift-acknowledged.json (drift kinds
- *                        the maintainers silenced for an exam; may be absent)
  *   CREATE_ISSUES        unset (1 = the drift step may create, edit, comment on
  *                        and close its issues through `gh`; the workflow sets it
  *                        and a GH_TOKEN; DRY_RUN=1 wins and touches nothing)
@@ -321,14 +301,10 @@
  *   DRIFT_ERROR_FILE     <tmpdir>/new-exam-drift-error.md (why the check did
  *                        not run: unreadable hub files, the failsafe)
  *   MAX_DRIFT            25  (new rows at once before the failsafe stops the
- *                        drift step; dated reminders are counted apart)
- *   MAX_DRIFT_DATES      40  (new dated reminders at once)
+ *                        drift step)
  *   FORCE_DRIFT          unset (1 = skip the drift failsafe and write the full
  *                        list; the workflow sets it from `force_drift`)
- *   EFFECTIVE_LEAD_DAYS  7   (a dated statement is listed this many days before)
- *   EFFECTIVE_GRACE_DAYS 2   (... and until this many days after its date)
- *   EFFECTIVE_HORIZON_DAYS 30 (dates further ahead are picked up later)
- *   CERT_RENAME_DAYS     30  (how long a certification rename stays a row)
+ *   CERT_RENAME_DAYS    30  (how long a certification rename stays a row)
  *   DRIFT_REMINDER_DAYS  7   (a new drift issue is held back this long after one
  *                        was closed by hand, while no row is new; 0 = never;
  *                        the rows of that issue do not count for the failsafe
@@ -473,22 +449,15 @@ export function loadConfig(env = process.env) {
     retiringExamsFile: resolveFromRoot(
       env.RETIRING_EXAMS_FILE ?? "src/data_files/retiring-exams.json",
     ),
-    driftAcknowledgedFile: resolveFromRoot(
-      env.DRIFT_ACKNOWLEDGED_FILE ?? "src/data_files/drift-acknowledged.json",
-    ),
     driftReportFile:
       env.DRIFT_REPORT_FILE ?? join(tmpdir(), "new-exam-drift-report.md"),
     driftErrorFile:
       env.DRIFT_ERROR_FILE ?? join(tmpdir(), "new-exam-drift-error.md"),
     maxDrift: num("MAX_DRIFT", 25),
-    maxDriftDates: num("MAX_DRIFT_DATES", 40),
     forceDrift: env.FORCE_DRIFT === "1",
     // DRIFT_CHECK=0 switches the hub-vs-Learn comparison off (tests of the
     // exam and study guide checks, local debugging). It touches no issue.
     driftCheck: env.DRIFT_CHECK !== "0",
-    effectiveLeadDays: num("EFFECTIVE_LEAD_DAYS", 7),
-    effectiveGraceDays: num("EFFECTIVE_GRACE_DAYS", 2),
-    effectiveHorizonDays: num("EFFECTIVE_HORIZON_DAYS", 30),
     certRenameDays: num("CERT_RENAME_DAYS", 30),
     // How long after a maintainer closed the drift issue by hand a new one is
     // held back while no row is new (0 = never held back).
@@ -1214,7 +1183,6 @@ function emptyTracker() {
     exams: [],
     studyGuides: [],
     certRenames: [],
-    effectiveDates: [],
   };
 }
 
@@ -1332,24 +1300,6 @@ export function normalizeTracker(parsed, today) {
           byCodePoint(a.slug, b.slug) ||
           byCodePoint(a.firstSeen, b.firstSeen) ||
           byCodePoint(a.to, b.to),
-      ),
-    effectiveDates: (Array.isArray(parsed.effectiveDates)
-      ? parsed.effectiveDates
-      : []
-    )
-      .filter(
-        (entry) =>
-          typeof entry?.code === "string" &&
-          /^\d{4}-\d{2}-\d{2}$/.test(entry.date ?? ""),
-      )
-      .map((entry) => ({
-        code: entry.code.toUpperCase(),
-        date: entry.date,
-        sentence: collapse(entry.sentence),
-        firstSeen: entry.firstSeen ?? today,
-      }))
-      .sort(
-        (a, b) => byCodePoint(a.code, b.code) || byCodePoint(a.date, b.date),
       ),
   };
 }
@@ -1671,7 +1621,6 @@ export function trackerContent(tracker) {
     exams: tracker.exams.map(({ lastSeen, ...rest }) => rest),
     studyGuides: tracker.studyGuides ?? [],
     certRenames: tracker.certRenames ?? [],
-    effectiveDates: tracker.effectiveDates ?? [],
   });
 }
 
@@ -3465,130 +3414,6 @@ export async function loadHubContext(cfg) {
     beta,
     retiring,
     pages,
-    acknowledged: loadAcknowledged(cfg),
-  };
-}
-
-// --- acknowledged drift -------------------------------------------------------
-const ACKNOWLEDGED_LABEL = "src/data_files/drift-acknowledged.json";
-const ACKNOWLEDGED_KEYS = ["code", "kind", "reason", "since"];
-
-/**
- * The acknowledged drift of a drift-acknowledged.json text: [{ code, kind,
- * reason, since }], each a decision of the maintainers that one kind of drift of
- * one exam is not to be reported (the hub is right, Learn is stale). Throws
- * DriftInputError for anything it does not understand: a file that silently
- * stopped suppressing (or suppressed too much) would be worse than a loud stop.
- */
-export function parseAcknowledged(source, label = ACKNOWLEDGED_LABEL) {
-  let parsed;
-  try {
-    parsed = JSON.parse(source);
-  } catch (error) {
-    throw new DriftInputError(`${label} is not valid JSON (${error.message})`);
-  }
-  if (!Array.isArray(parsed)) {
-    throw new DriftInputError(
-      `${label} must be a list of { code, kind, reason, since } entries`,
-    );
-  }
-  const seen = new Set();
-  return parsed.map((entry, index) => {
-    const where = `${label}, entry ${index + 1}`;
-    if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
-      throw new DriftInputError(
-        `${where} must be an object { code, kind, reason, since }`,
-      );
-    }
-    const unknown = Object.keys(entry).filter(
-      (key) => !ACKNOWLEDGED_KEYS.includes(key),
-    );
-    if (unknown.length > 0) {
-      throw new DriftInputError(
-        `${where} has the unknown key(s) ${unknown.join(", ")} (allowed: ${ACKNOWLEDGED_KEYS.join(", ")})`,
-      );
-    }
-    for (const key of ACKNOWLEDGED_KEYS) {
-      if (typeof entry[key] !== "string" || entry[key].trim() === "") {
-        throw new DriftInputError(
-          `${where} needs a non-empty text for "${key}"`,
-        );
-      }
-    }
-    if (!/^[A-Z0-9]{2,5}-\d{1,4}[A-Z]?$/.test(entry.code)) {
-      throw new DriftInputError(
-        `${where}: "code" is ${JSON.stringify(entry.code)}, not an exam code in capitals such as AB-210`,
-      );
-    }
-    if (!KIND_ORDER.includes(entry.kind)) {
-      throw new DriftInputError(
-        `${where}: "kind" is ${JSON.stringify(entry.kind)}, not one of ${KIND_ORDER.join(", ")}`,
-      );
-    }
-    if (!isRealIsoDate(entry.since)) {
-      throw new DriftInputError(
-        `${where}: "since" is ${JSON.stringify(entry.since)}, not a day written YYYY-MM-DD`,
-      );
-    }
-    const key = `${entry.kind}:${entry.code}`;
-    if (seen.has(key)) {
-      throw new DriftInputError(
-        `${where} repeats the acknowledgement of ${entry.kind} drift for ${entry.code}`,
-      );
-    }
-    seen.add(key);
-    return {
-      code: entry.code,
-      kind: entry.kind,
-      reason: entry.reason.trim(),
-      since: entry.since,
-    };
-  });
-}
-
-/** The acknowledged drift the file holds; an absent file is an empty list. */
-function loadAcknowledged(cfg) {
-  if (!existsSync(cfg.driftAcknowledgedFile)) return [];
-  let source;
-  try {
-    source = readFileSync(cfg.driftAcknowledgedFile, "utf8");
-  } catch (error) {
-    throw new DriftInputError(
-      `${ACKNOWLEDGED_LABEL} could not be read (${error.message})`,
-    );
-  }
-  return parseAcknowledged(source);
-}
-
-/**
- * Drops the acknowledged drift from the items: { kept, acknowledged, unmatched }.
- * `acknowledged` is [{ entry, items }] for each acknowledgement that suppressed
- * something (in the order of the file), `unmatched` the ones that suppressed
- * nothing today (the hub and Learn agree now, or the exam has no page): both
- * are shown in the job summary so an acknowledgement is not forgotten. A
- * different exam or a different kind is never affected.
- */
-export function applyAcknowledgements(items, entries = []) {
-  const byKey = new Map(
-    entries.map((entry) => [`${entry.kind}:${entry.code}`, entry]),
-  );
-  const hits = new Map();
-  const kept = [];
-  for (const item of items) {
-    const entry = byKey.get(`${item.kind}:${item.code}`);
-    if (!entry) {
-      kept.push(item);
-      continue;
-    }
-    if (!hits.has(entry)) hits.set(entry, []);
-    hits.get(entry).push(item);
-  }
-  return {
-    kept,
-    acknowledged: entries
-      .filter((entry) => hits.has(entry))
-      .map((entry) => ({ entry, items: hits.get(entry) })),
-    unmatched: entries.filter((entry) => !hits.has(entry)),
   };
 }
 
@@ -3720,99 +3545,6 @@ export function classifyNotice(box) {
     });
   }
   return found;
-}
-
-// --- dated statements (the effective dates) ---------------------------------
-const EFFECTIVE_WORDS_RE =
-  /\b(?:as of|effective|beginning|begins?|starting|starts?|closes?|opens?|through|until|take[s]? effect|go(?:es)? into effect)\b/i;
-
-/**
- * Statements of a stored guide text that say when something takes effect:
- * [{ date, sentence }], one per date, from the headings ("Skills measured as of
- * October 27, 2026"), the "Updates to the exam" text and the notice boxes that
- * do not announce a retirement, transition, rename or cancellation (those are
- * the notice checks' business). The sentence is the line of the guide that
- * carries the date; it is never an exam date or a beta start date.
- */
-export function extractEffectiveDates(lines) {
-  const list = lines ?? [];
-  const candidates = [];
-
-  // Headings anywhere (the skills version heading carries the day).
-  for (const line of list) {
-    if (/^#{1,6} /.test(line)) candidates.push(line.replace(/^#{1,6} /, ""));
-  }
-  // "Updates to the exam" text.
-  const updates = list.indexOf("## Updates to the exam");
-  if (updates >= 0) {
-    for (let i = updates + 1; i < list.length; i++) {
-      if (/^## /.test(list[i]) || /^#{3,6} /.test(list[i])) break;
-      candidates.push(list[i]);
-    }
-  }
-  // Notice boxes that announce no retirement, transition, rename or cancellation.
-  for (const box of noticeBoxes(list)) {
-    if (classifyNotice(box).length > 0) continue;
-    candidates.push(...box.lines);
-  }
-
-  const byDate = new Map();
-  for (const line of candidates) {
-    const sentence = normalizeName(line.replace(/^- /, ""));
-    if (!EFFECTIVE_WORDS_RE.test(sentence)) continue;
-    for (const { iso } of parseDates(sentence)) {
-      if (!byDate.has(iso)) {
-        byDate.set(iso, clip(sentence, DATED_STATEMENT_MAX_CHARS));
-      }
-    }
-  }
-  return [...byDate]
-    .map(([date, sentence]) => ({ date, sentence }))
-    .sort((a, b) => byCodePoint(a.date, b.date));
-}
-
-/**
- * The tracker's effectiveDates after a run: for guides whose text was verified
- * this run (read in full or confirmed unchanged) the entries are rebuilt from
- * the text; every other guide keeps its entries. Only dates from `grace` days
- * ago up to `horizon` days ahead are kept: an older date has nothing left to
- * remind of, a date further out is picked up when it comes within the horizon.
- */
-export function reconcileEffectiveDates({
-  previous,
-  guides,
-  verified,
-  today,
-  horizonDays,
-  graceDays,
-}) {
-  const earliest = addDays(today, -graceDays);
-  const latest = addDays(today, horizonDays);
-  const inRange = (date) => date >= earliest && date <= latest;
-  const kept = new Map(
-    previous
-      .filter((entry) => !verified.has(entry.code) && entry.date >= earliest)
-      .map((entry) => [`${entry.code}|${entry.date}`, entry]),
-  );
-  const before = new Map(
-    previous.map((entry) => [`${entry.code}|${entry.date}`, entry]),
-  );
-  for (const guide of guides) {
-    if (!verified.has(guide.code) || !Array.isArray(guide.lines)) continue;
-    for (const { date, sentence } of extractEffectiveDates(guide.lines)) {
-      if (!inRange(date)) continue;
-      const key = `${guide.code}|${date}`;
-      kept.set(key, {
-        code: guide.code,
-        date,
-        sentence,
-        firstSeen: before.get(key)?.firstSeen ?? today,
-      });
-    }
-  }
-  return [...kept.values()].sort(
-    (a, b) => byCodePoint(a.code, b.code) || byCodePoint(a.date, b.date),
-  );
 }
 
 /**
@@ -3978,7 +3710,6 @@ const KIND_ORDER = [
   "upcoming",
   "at-risk",
   "certification",
-  "effective",
 ];
 const KIND_LABELS = {
   name: "Exam name",
@@ -3988,7 +3719,6 @@ const KIND_LABELS = {
   upcoming: "Upcoming exam",
   "at-risk": "AT RISK banner",
   certification: "Certification",
-  effective: "Takes effect",
 };
 const BETA_EVIDENCE_WORDS = {
   "card:beta": 'the exam card on the certification page is marked "(beta)"',
@@ -4182,10 +3912,10 @@ function betaItems({ code, page, status, exam, betaEntry }) {
   if (!hubBeta && weakBeta && !ga) {
     return [
       make(
-        "check",
+        "info",
         "unclear",
-        `Only a callout on the certification page calls ${code} a beta exam (${words}); neither the exam card nor the exam page title says beta. The hub shows it as ${hubSays}. Unclear, check the exam page and the announcement.`,
-        `Open the certification page and the announcement it links. If the exam is in beta, handle it like any beta exam (exam-status.mjs badge, beta-exams.json entry with betaStart and announcement, :::tip and :::note boxes with the note printed by node scripts/beta-note.mjs --code ${code}, voucher page); if the callout is stale, nothing to do.`,
+        `Only a callout on the certification page calls ${code} a beta exam (${words}); neither the exam card nor the exam page title says beta. The hub shows it as ${hubSays}. A stale callout is the usual reason; nothing to do unless the exam card or the exam page title starts saying beta.`,
+        `If the exam really is in beta, handle it like any beta exam (exam-status.mjs badge, beta-exams.json entry with betaStart and announcement, :::tip and :::note boxes with the note printed by node scripts/beta-note.mjs --code ${code}, voucher page); if the callout is stale, nothing to do.`,
       ),
     ];
   }
@@ -4505,13 +4235,12 @@ function upcomingItems({ code, page, status, exam, guide, probe }) {
 
 function atRiskItems({ code, page, status, exams }) {
   if (status !== "AT RISK" || !page.caution) return [];
-  if (
-    !/\b(?:potential|exploring|not (?:been )?confirmed|neither|may replace|survey)\b/i.test(
-      page.caution,
-    )
-  ) {
-    return [];
-  }
+  // Only a banner that still talks about a "potential" or "explored" exam is
+  // stale. One that already says the exam is listed on Learn and that nothing is
+  // confirmed (the AZ-400 banner) is up to date; link targets are not prose
+  // ("blueprint-survey-opportunity" is part of an announcement URL).
+  const prose = page.caution.replace(/\]\([^)]*\)/g, "]");
+  if (!/\b(?:potential|exploring)\b/i.test(prose)) return [];
   const items = [];
   const codes = new Set(
     [...page.caution.matchAll(new RegExp(`\\b(${CODE_SOURCE})\\b`, "g"))].map(
@@ -4627,34 +4356,6 @@ function certificationItems({
   return items;
 }
 
-function effectiveItems({ entries, hub, today, leadDays, graceDays }) {
-  const items = [];
-  for (const entry of entries) {
-    const page = hub.pages.get(entry.code);
-    if (!page) continue;
-    if (
-      today < addDays(entry.date, -leadDays) ||
-      today > addDays(entry.date, graceDays)
-    ) {
-      continue;
-    }
-    items.push({
-      ...driftItem({
-        kind: "effective",
-        severity: "check",
-        code: entry.code,
-        detail: entry.date,
-        summary: `Learn says a change takes effect on ${formatDate(entry.date)}: "${entry.sentence}"`,
-        hubFiles: [page.path, ...(page.labPath ? [page.labPath] : [])],
-        learn: [{ label: "Study guide", url: studyGuideUrl(entry.code) }],
-        edit: `Re-check ${page.path} against the study guide on that day: the skills measured, the courses, labs and tests, and the Get Started links. Nothing to edit if it is already current.`,
-      }),
-      date: entry.date,
-    });
-  }
-  return items;
-}
-
 /**
  * Every difference between the hub and what Microsoft Learn says now, as
  * [{ id, kind, severity, code, summary, hubFiles, learn, edit }], sorted
@@ -4670,8 +4371,6 @@ export function evaluateDrift({
   hub,
   tracker,
   probes = new Map(),
-  leadDays = 7,
-  graceDays = 2,
   renameDays = 30,
 }) {
   const exams = new Map(tracker.exams.map((exam) => [exam.code, exam]));
@@ -4711,15 +4410,6 @@ export function evaluateDrift({
       }),
     );
   }
-  items.push(
-    ...effectiveItems({
-      entries: tracker.effectiveDates ?? [],
-      hub,
-      today,
-      leadDays,
-      graceDays,
-    }),
-  );
 
   const unique = new Map();
   for (const item of items) if (!unique.has(item.id)) unique.set(item.id, item);
@@ -4903,9 +4593,6 @@ export function driftChanges(items, previousIds) {
   };
 }
 
-/** A "Takes effect" row is a dated reminder: it leaves on its own once the date has passed. */
-const isDatedRowId = (id) => id.startsWith("effective:");
-
 /** The comment that goes with a change of the list. */
 export function buildDriftComment({ items, previousIds, today, runUrl }) {
   const { now, added, resolved } = driftChanges(items, previousIds);
@@ -5072,14 +4759,13 @@ export function syncDriftIssue(cfg, gh, { items, report }) {
       report.body,
     );
     if (!marker || marker.a !== sig.a) {
-      // A comment is the notification: it goes out when a row was added or an
-      // ordinary row left, not when a dated reminder merely ran out (that
-      // would add a comment for every date that passes).
+      // A comment is the notification: it goes out when a row was added or
+      // a row left.
       const changes = driftChanges(items, marker ? marker.ids : null);
       const news =
         marker?.ids == null ||
         changes.added.length > 0 ||
-        changes.resolved.some((id) => !isDatedRowId(id));
+        changes.resolved.length > 0;
       if (news) {
         gh(
           ["issue", "comment", String(issue.number), "--body-file", "-"],
@@ -5276,15 +4962,9 @@ function heldIssueIds(cfg, gh) {
 const unlistedRows = (items, known) =>
   items.filter((item) => item.severity !== "info" && !known?.has(item.id));
 
-// The failsafe counts dated reminders apart from the other rows.
+// The failsafe counts the rows the running issue does not list yet.
 function driftFlood(cfg, rows) {
-  const dated = rows.filter((item) => item.kind === "effective").length;
-  const others = rows.length - dated;
-  return {
-    dated,
-    others,
-    over: others > cfg.maxDrift || dated > cfg.maxDriftDates,
-  };
+  return { count: rows.length, over: rows.length > cfg.maxDrift };
 }
 
 /**
@@ -5303,11 +4983,6 @@ export function runDriftCheck(
 ) {
   const result = {
     items: [],
-    // Drift the maintainers acknowledged (drift-acknowledged.json): [{ entry,
-    // items }] for what was suppressed today, and the entries that suppressed
-    // nothing. Neither is a row of the issue; both go to the log and the summary.
-    acknowledged: [],
-    unmatchedAcknowledgements: [],
     failure: null,
     report: null,
     issue: issueResult("none"),
@@ -5338,21 +5013,13 @@ export function runDriftCheck(
     result.failure = `The hub files could not be read, so nothing was compared: ${inputError}.`;
   } else {
     try {
-      const found = evaluateDrift({
+      result.items = evaluateDrift({
         today: cfg.today,
         hub,
         tracker,
         probes,
-        leadDays: cfg.effectiveLeadDays,
-        graceDays: cfg.effectiveGraceDays,
         renameDays: cfg.certRenameDays,
       });
-      // What the maintainers acknowledged is neither a row of the issue nor
-      // counted by the failsafe; the summary lists it so it is not forgotten.
-      const split = applyAcknowledgements(found, hub.acknowledged ?? []);
-      result.items = split.kept;
-      result.acknowledged = split.acknowledged;
-      result.unmatchedAcknowledgements = split.unmatched;
     } catch (error) {
       result.failure = `Unexpected error while comparing the hub with Learn: ${error?.stack ?? error}`;
     }
@@ -5379,12 +5046,11 @@ export function runDriftCheck(
     }
     if (!cfg.forceDrift && flood.over) {
       const examples = fresh
-        .filter((item) => item.kind !== "effective")
         .slice(0, 6)
         .map((item) => `${item.kind} ${item.code}`)
         .join(", ");
       result.failure =
-        `${flood.others} new drift items (limit MAX_DRIFT ${cfg.maxDrift}) and ${flood.dated} new dated reminders (limit MAX_DRIFT_DATES ${cfg.maxDriftDates}) appeared at once. ` +
+        `${flood.count} new drift items (limit MAX_DRIFT ${cfg.maxDrift}) appeared at once. ` +
         "That points to a naming or markup change on Microsoft Learn or in the hub pages, not news, so the running issue " +
         `"${DRIFT_ISSUE_TITLE}" was not touched. Examples: ${examples || "none"}. ` +
         "If the differences are real, run the workflow manually with `force_drift` enabled (or run the script locally with FORCE_DRIFT=1): " +
@@ -5437,16 +5103,6 @@ function reportDrift(cfg, result) {
         `  [${item.severity}] ${item.kind} ${item.code}: ${clip(item.summary, 220)}`,
       );
     }
-    for (const { entry, items } of result.acknowledged ?? []) {
-      console.log(
-        `  [acknowledged] ${entry.kind} ${entry.code} (since ${entry.since}; ${clip(safeText(entry.reason), 120)}): ${items.length} not reported.`,
-      );
-    }
-    for (const entry of result.unmatchedAcknowledgements ?? []) {
-      console.log(
-        `  [acknowledged] ${entry.kind} ${entry.code} (since ${entry.since}): nothing to suppress today.`,
-      );
-    }
   }
   const describe = (label, issue) => {
     if (issue.action === "skipped") {
@@ -5494,20 +5150,6 @@ function reportDrift(cfg, result) {
     for (const item of result.items.filter((i) => i.severity === "info")) {
       lines.push(
         `- For information, ${item.kind} ${item.code}: ${safeText(clip(item.summary, 300))}`,
-      );
-    }
-    // Acknowledged drift never reaches the issue, so this is the only place it
-    // shows: an acknowledgement is a decision to re-read now and then.
-    for (const { entry, items } of result.acknowledged ?? []) {
-      lines.push(
-        `- **Acknowledged**, not reported: \`${entry.code}\` ${entry.kind} drift since ${entry.since} (${safeText(clip(entry.reason, 200))}). Suppressed today: ${items
-          .map((item) => safeText(clip(item.summary, 220)))
-          .join(" | ")}`,
-      );
-    }
-    for (const entry of result.unmatchedAcknowledgements ?? []) {
-      lines.push(
-        `- **Acknowledged**, but nothing to suppress today: \`${entry.code}\` ${entry.kind} drift since ${entry.since} (${safeText(clip(entry.reason, 200))}). Remove the entry from \`src/data_files/drift-acknowledged.json\` when it is no longer needed.`,
       );
     }
   }
@@ -5951,29 +5593,7 @@ async function main(cfg) {
       today: cfg.today,
       days: cfg.certRenameDays,
     }),
-    effectiveDates: [],
   };
-  // Dated statements are rebuilt from the text of the guides that were read in
-  // full or confirmed unchanged this run; every other guide keeps its entries.
-  const verifiedGuides = new Set();
-  if (guideRun && !guideRun.failsafe) {
-    const unverified = new Set(
-      [...guideRun.failed, ...guideRun.unparsed, ...guideRun.degraded].map(
-        (entry) => entry.code,
-      ),
-    );
-    for (const { code } of guideRun.selected) {
-      if (!unverified.has(code)) verifiedGuides.add(code);
-    }
-  }
-  next.effectiveDates = reconcileEffectiveDates({
-    previous: previous.effectiveDates,
-    guides: next.studyGuides,
-    verified: verifiedGuides,
-    today: cfg.today,
-    horizonDays: cfg.effectiveHorizonDays,
-    graceDays: cfg.effectiveGraceDays,
-  });
   const changed = trackerContent(previous) !== trackerContent(next);
   if (changed) {
     mkdirSync(dirname(cfg.trackerFile), { recursive: true });
@@ -6053,8 +5673,6 @@ async function main(cfg) {
       })
     : {
         items: [],
-        acknowledged: [],
-        unmatchedAcknowledgements: [],
         failure: null,
         report: null,
         issue: issueResult("none"),

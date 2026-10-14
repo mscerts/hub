@@ -112,11 +112,7 @@ test("the repo scan finds Learn URLs with locations and skips generated trackers
 
 test("every tracker a script writes is skipped by the repo scan, the hand-edited lists are not", async () => {
   // The data files the scripts name, minus the lists a person edits.
-  const handEdited = new Set([
-    "watched-sources",
-    "lab-repos-ignore",
-    "drift-acknowledged",
-  ]);
+  const handEdited = new Set(["watched-sources", "lab-repos-ignore"]);
   const named = new Set();
   const scriptsDir = resolve(import.meta.dirname, "../../scripts");
   for (const file of readdirSync(scriptsDir).filter((f) =>
