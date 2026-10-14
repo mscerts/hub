@@ -1988,6 +1988,12 @@ async function runScript(repo, today, extraEnv = {}) {
     cwd: root,
     env: {
       ...process.env,
+      // A GitHub runner sets these; the script would then add a run link to its comments.
+      GITHUB_ACTIONS: "",
+      GITHUB_REPOSITORY: "",
+      GITHUB_RUN_ID: "",
+      GITHUB_SERVER_URL: "",
+      GITHUB_STEP_SUMMARY: "",
       ...repo.env,
       TODAY: today,
       REPORT_ALL: "",
