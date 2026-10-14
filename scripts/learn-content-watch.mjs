@@ -414,6 +414,20 @@ export function parseLinkCards(text) {
   return cards;
 }
 
+/**
+ * An AI Skills Navigator address without query, fragment or trailing slash, or
+ * null for any other link. Two links to the same credential compare equal.
+ */
+export function asnAddress(href) {
+  try {
+    const url = new URL(href);
+    if (url.protocol !== "https:" || url.hostname !== ASN_HOST) return null;
+    return `${url.origin}${url.pathname}`.replace(/\/+$/, "");
+  } catch {
+    return null;
+  }
+}
+
 function slugsAfter(text, segment) {
   const slugs = new Set();
   const re = new RegExp(`/training/${segment}/([A-Za-z0-9._-]+)`, "g");
@@ -477,6 +491,11 @@ export function parseHubPage(raw, code, area) {
       )
       .map((card) => card.title),
     examPath: examPagePath(cards, code),
+    // The AI Skills Navigator credentials this page links, to tell an address
+    // that belongs to this exam from one that Learn repeats for other exams.
+    asnUrls: [
+      ...new Set(cards.map((card) => asnAddress(card.href)).filter(Boolean)),
+    ],
     // The page text without comments: whether it states a date is checked when
     // a course's availability date changes.
     text,
@@ -1330,6 +1349,60 @@ async function observePractice(cfg, page, ctx, deadline) {
 }
 
 /**
+ * An AI Skills Navigator address is one credential. When Learn offers the same
+ * address for several exams, or offers one that another exam's hub page
+ * already links, it cannot be this exam's: checked 2026-10-14, the Learn pages
+ * of AB-210, AB-250, AB-410 and AB-620 all point at the address that AI-300's
+ * card links, so suggesting it four times would hand the maintainers a wrong
+ * card to paste. Such an observation is demoted to unknown / `shared-link`
+ * (the candidate address is kept for the log). Pure.
+ *
+ * `entries` is [{ code, observation }]; `hubPages` is every parsed hub page.
+ * Returns { entries, demoted: [{ code, address, sharedWith }] }.
+ */
+export function demoteSharedAsnLinks(entries, hubPages) {
+  const users = new Map(); // address -> Set of exam codes using it
+  const use = (address, code) => {
+    if (!users.has(address)) users.set(address, new Set());
+    users.get(address).add(code);
+  };
+  for (const page of hubPages) {
+    for (const address of page.asnUrls ?? []) use(address, page.code);
+  }
+  const addressOf = (observation) =>
+    observation?.state === "link" && observation.kind === "asn"
+      ? asnAddress(observation.url)
+      : null;
+  for (const { code, observation } of entries) {
+    const address = addressOf(observation);
+    if (address) use(address, code);
+  }
+  const demoted = [];
+  const next = entries.map((entry) => {
+    const address = addressOf(entry.observation);
+    if (!address) return entry;
+    const sharedWith = [...users.get(address)]
+      .filter((other) => other !== entry.code)
+      .sort();
+    if (sharedWith.length === 0) return entry;
+    demoted.push({ code: entry.code, address, sharedWith });
+    const { routeLive, pageUrl, url } = entry.observation;
+    return {
+      ...entry,
+      observation: {
+        state: "unknown",
+        detail: "shared-link",
+        kind: "asn",
+        candidateUrl: url,
+        routeLive,
+        pageUrl,
+      },
+    };
+  });
+  return { entries: next, demoted };
+}
+
+/**
  * One exam's practice record and alert from the previous record and a fresh
  * observation. Pure.
  */
@@ -1506,6 +1579,8 @@ const DETAIL_TEXT = {
   "no-learn-page": "no Learn page for the exam",
   unreadable: "the Learn page could not be read yet",
   ambiguous: "practice assessments of an unspecified exam",
+  "shared-link":
+    "the AI Skills Navigator address is also used for other exams, so it is not this exam's",
   "link-not-resolving": "a link that does not resolve",
   "exam-not-listed": "the page does not list the exam",
 };
@@ -2078,23 +2153,34 @@ export async function main(cfg) {
   }
   const practiceRecords = [];
   const practiceAlerts = [];
+  const observed = [];
   for (const page of targets) {
-    const previousRecord = prevPractice.get(page.code);
     let observation;
     if (deadline.expired()) {
       observation = { failed: true, reason: "run deadline reached" };
     } else {
       observation = await observePractice(cfg, page, ctx, deadline);
     }
+    observed.push({ code: page.code, observation });
+  }
+  // An AI Skills Navigator address that other exams use too is not suggested.
+  const shared = demoteSharedAsnLinks(observed, hub.values());
+  for (const item of shared.demoted) {
+    const message = `${item.code}: the AI Skills Navigator address on its Learn page (${item.address}) is also used for ${item.sharedWith.join(", ")}, so it is not suggested as this exam's practice assessment.`;
+    console.log(message);
+    summaryLines.push(`- ${message}`);
+  }
+  for (const { code, observation } of shared.entries) {
+    const previousRecord = prevPractice.get(code);
     const result = evaluatePractice({
-      code: page.code,
+      code,
       previous: previousRecord,
       observation,
       today: cfg.today,
       failureDays: cfg.failureDays,
     });
     if (result.carried) {
-      const message = `${page.code}: the Learn page could not be evaluated (${result.carried}); its previous state was kept.`;
+      const message = `${code}: the Learn page could not be evaluated (${result.carried}); its previous state was kept.`;
       warnLoud(message, { title: ANNOTATION_TITLE });
       summaryLines.push(`- ${message}`);
     }

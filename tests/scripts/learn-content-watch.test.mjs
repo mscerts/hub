@@ -13,12 +13,14 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import test, { after } from "node:test";
 import {
+  asnAddress,
   availabilityDate,
   availabilityNote,
   buildIssueTitle,
   buildReport,
   classifyPracticePage,
   courseSlug,
+  demoteSharedAsnLinks,
   evaluateCourses,
   evaluatePractice,
   examPagePath,
@@ -795,6 +797,125 @@ test("a link that does not resolve and an ambiguous page are reported once", () 
   const amb = step(unavailable, ambiguous);
   assert.match(amb.alert.reasons.join(" "), /does not say which exam/);
   assert.equal(step(amb.record, ambiguous).alert, null);
+});
+
+// An AI Skills Navigator credential is one certification. Learn's pages repeat
+// one address for several exams (checked 2026-10-14: AB-210, AB-250, AB-410 and
+// AB-620 all point at the address AI-300's card links), so it is never
+// suggested as the practice assessment of an exam that shares it.
+const ASN_A =
+  "https://aiskillsnavigator.microsoft.com/credentials/cert-6e7fcf9954d1620318e5d199346ace3b7bd84edc8be79e735bcdc09ada8437bf";
+const ASN_B =
+  "https://aiskillsnavigator.microsoft.com/credentials/cert-f7c226fff388981b97e2bafd239786aba2d62e74bf8e3d50b04d341899bd55f4";
+const asnObs = (url) => obs("link", { kind: "asn", url, spaHost: true });
+
+test("asnAddress compares AI Skills Navigator links by credential and nothing else", () => {
+  assert.equal(asnAddress(ASN_A), ASN_A);
+  assert.equal(asnAddress(`${ASN_A}/?x=1#top`), ASN_A);
+  assert.equal(asnAddress("https://learn.microsoft.com/x"), null);
+  assert.equal(asnAddress("http://aiskillsnavigator.microsoft.com/x"), null);
+  assert.equal(asnAddress("not a url"), null);
+  assert.equal(asnAddress(undefined), null);
+});
+
+test("a hub page lists the AI Skills Navigator credentials its cards link", () => {
+  const page = parseHubPage(
+    [
+      "---",
+      'title: "AI-300 Study Materials"',
+      "---",
+      `<LinkCard title="Microsoft Learn Practice Assessment (AI Skills Navigator)" href="${ASN_A}?x=1" />`,
+      `<LinkCard title="Again" href="${ASN_A}" />`,
+      '<LinkCard title="Elsewhere" href="https://learn.microsoft.com/x" />',
+      "",
+    ].join("\n"),
+    "AI-300",
+    "azure",
+  );
+  assert.deepEqual(page.asnUrls, [ASN_A]);
+});
+
+test("an AI Skills Navigator address offered for several exams is suggested for none", () => {
+  const entries = [
+    { code: "AB-210", observation: asnObs(ASN_A) },
+    { code: "AB-250", observation: asnObs(ASN_A) },
+    { code: "AB-410", observation: asnObs(ASN_B) },
+  ];
+  const { entries: next, demoted } = demoteSharedAsnLinks(entries, []);
+  assert.deepEqual(
+    demoted,
+    [
+      { code: "AB-210", address: ASN_A, sharedWith: ["AB-250"] },
+      { code: "AB-250", address: ASN_A, sharedWith: ["AB-210"] },
+    ],
+    "only the two that share the address are demoted",
+  );
+  for (const code of ["AB-210", "AB-250"]) {
+    const { observation } = next.find((entry) => entry.code === code);
+    assert.equal(observation.state, "unknown");
+    assert.equal(observation.detail, "shared-link");
+    assert.equal(observation.candidateUrl, ASN_A);
+    assert.equal(observation.url, undefined, "no address is offered as a link");
+  }
+  assert.equal(next[2].observation.state, "link", "a unique address stays");
+  assert.equal(entries[0].observation.state, "link", "the input is untouched");
+});
+
+test("an address that another exam's hub page already links is not this exam's", () => {
+  const hubPages = [
+    { code: "AI-300", asnUrls: [ASN_A] },
+    { code: "AB-410", asnUrls: [] },
+  ];
+  const { entries, demoted } = demoteSharedAsnLinks(
+    [{ code: "AB-410", observation: asnObs(`${ASN_A}?x=1`) }],
+    hubPages,
+  );
+  assert.deepEqual(demoted, [
+    { code: "AB-410", address: ASN_A, sharedWith: ["AI-300"] },
+  ]);
+  assert.equal(entries[0].observation.detail, "shared-link");
+  // The exam's own page linking the address is not sharing.
+  const own = demoteSharedAsnLinks(
+    [{ code: "AI-300", observation: asnObs(ASN_A) }],
+    hubPages,
+  );
+  assert.deepEqual(own.demoted, []);
+  assert.equal(own.entries[0].observation.state, "link");
+});
+
+test("only AI Skills Navigator links are compared, and failed or unknown reads are left alone", () => {
+  const learn = obs("link", {
+    kind: "learn",
+    assessmentId: "1",
+    url: "https://learn.microsoft.com/a",
+  });
+  const failed = { failed: true, reason: "status 503" };
+  const unknown = obs("unknown", { detail: "no-mention" });
+  const entries = [
+    { code: "AB-1", observation: learn },
+    { code: "AB-2", observation: learn },
+    { code: "AB-3", observation: failed },
+    { code: "AB-4", observation: unknown },
+  ];
+  const { entries: next, demoted } = demoteSharedAsnLinks(entries, []);
+  assert.deepEqual(demoted, []);
+  assert.deepEqual(next, entries);
+});
+
+test("a demoted exam is recorded quietly: no alert on first sight, none later", () => {
+  const demoted = {
+    state: "unknown",
+    detail: "shared-link",
+    kind: "asn",
+    candidateUrl: ASN_A,
+    routeLive: false,
+    pageUrl: "https://learn.microsoft.com/credentials/certifications/x/",
+  };
+  const first = step(undefined, demoted);
+  assert.equal(first.alert, null);
+  assert.equal(first.record.state, "unknown");
+  assert.equal(first.record.detail, "shared-link");
+  assert.equal(step(first.record, demoted).alert, null);
 });
 
 test("the practice route answering 200 is an early signal, reported when it turns on", () => {
