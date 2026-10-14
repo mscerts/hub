@@ -1,0 +1,107 @@
+{
+  "total": 612,
+  "unique": 431,
+  "successful": 600,
+  "unknown": 0,
+  "unsupported": 0,
+  "timeouts": 1,
+  "redirects": 3,
+  "remaps": 0,
+  "excludes": 4120,
+  "errors": 4,
+  "cached": 0,
+  "success_map": {},
+  "error_map": {
+    "dist/certs/security/sc-100/index.html": [
+      {
+        "url": "https://github.com/Azure/AzureArchitectureExampleScenarios",
+        "status": {
+          "text": "Rejected status code: 404 Not Found",
+          "code": 404
+        },
+        "span": {
+          "line": 171,
+          "column": 4021
+        },
+        "duration": {
+          "secs": 0,
+          "nanos": 240000000
+        }
+      },
+      {
+        "url": "https://www.pluralsight.com/paths/microsoft-azure-administrator-az-104",
+        "status": {
+          "text": "Rejected status code: 403 Forbidden",
+          "code": 403
+        },
+        "span": {
+          "line": 171,
+          "column": 5120
+        },
+        "duration": {
+          "secs": 1,
+          "nanos": 0
+        }
+      }
+    ],
+    "dist/certs/azure/az-104/index.html": [
+      {
+        "url": "https://old-trainer.example.net/az-104",
+        "status": {
+          "text": "Network error: DNS resolution failed - check hostname spelling (error sending request for url (https://old-trainer.example.net/az-104))",
+          "details": "DNS resolution failed - check hostname spelling"
+        },
+        "span": {
+          "line": 171,
+          "column": 880
+        },
+        "duration": {
+          "secs": 0,
+          "nanos": 12000000
+        }
+      },
+      {
+        "url": "https://www.pluralsight.com/paths/microsoft-azure-administrator-az-104",
+        "status": {
+          "text": "Rejected status code: 403 Forbidden",
+          "code": 403
+        },
+        "span": {
+          "line": 171,
+          "column": 3100
+        },
+        "duration": {
+          "secs": 1,
+          "nanos": 0
+        }
+      }
+    ]
+  },
+  "timeout_map": {
+    "dist/certs/azure/az-104/index.html": [
+      {
+        "url": "https://slow.example.org/",
+        "status": {
+          "text": "Timeout",
+          "details": "Request timed out"
+        },
+        "span": {
+          "line": 171,
+          "column": 4400
+        },
+        "duration": {
+          "secs": 30,
+          "nanos": 0
+        }
+      }
+    ]
+  },
+  "suggestion_map": {},
+  "redirect_map": {},
+  "excluded_map": {},
+  "duration": {
+    "secs": 211,
+    "nanos": 0
+  },
+  "detailed_stats": false
+}

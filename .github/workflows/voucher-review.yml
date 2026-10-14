@@ -1,0 +1,75 @@
+name: Voucher Review
+
+on:
+  schedule:
+    # Daily 07:30 UTC, not on the hour (the Beta Exam Monitor has 07:00, the New
+    # Exam Monitor 06:45). A start time of its own is only a convenience: the push
+    # retry below is the protection.
+    - cron: "30 7 * * *"
+  workflow_dispatch:
+    inputs:
+      report_all:
+        description: "Report every open finding now, ignoring what an earlier run already reported (also on the very first run)"
+        type: boolean
+        default: false
+
+# A run is never cancelled half way through (a newer run waits instead): the
+# issue and the tracker commit below belong together.
+concurrency:
+  group: voucher-review
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/voucher-review-report.md
+      ERROR_FILE: /tmp/voucher-review-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      # The script opens the issue itself, BEFORE the tracker is committed below.
+      # ONE running issue "Voucher review: pages need attention" gets the report as
+      # its text the first time and as a comment afterwards (a reminder never piles
+      # up as a new issue per week), and the script closes it with a comment when no
+      # page has a problem. A voucher page that declares no date and no linked exam
+      # is a stable offer: nothing is asked of it and no report lists it. A failing
+      # check raises ONE issue "Voucher review: the check failed" (a comment per further
+      # failed run, closed by the next healthy run) instead of one issue per run.
+      # The tracker holds the date each page was last reported, so when the issue
+      # step fails this step fails, the commit below is skipped (it has no
+      # status-check function in its condition), main keeps the old tracker, and the
+      # next run (or "Re-run failed jobs") reports the same pages again. Committing
+      # first would lose the alert: the pages would already count as reported.
+      - name: Review the voucher pages
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CREATE_ISSUES: "1"
+          REPORT_ALL: ${{ inputs.report_all && '1' || '' }}
+        run: node scripts/voucher-review-check.mjs
+
+      - name: Commit updated voucher review tracker
+        if: steps.check.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/voucher-review.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update voucher review tracker"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1

@@ -1,0 +1,93 @@
+name: Learn Content Watch
+
+on:
+  schedule:
+    # Daily 09:20 UTC. No other workflow that pushes to main starts at the same
+    # time (a test over all of them keeps it that way), and the push below is
+    # retried on top of whatever landed meanwhile.
+    - cron: "20 9 * * *"
+  workflow_dispatch:
+    inputs:
+      force_baseline:
+        description: "Record everything this run finds silently (no issue) and skip the too-many-changes failsafe, for example after the failsafe stopped a run because Microsoft Learn reshuffled many courses or pages at once. Read the job summary for what was swallowed"
+        type: boolean
+        default: false
+
+# A run is never cancelled half way through (a newer run waits instead): the
+# issue and the tracker commit below belong together.
+concurrency:
+  group: learn-content-watch
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/learn-content-watch-report.md
+      ERROR_FILE: /tmp/learn-content-watch-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      - name: Check Microsoft Learn for new official content
+        id: check
+        env:
+          FORCE_BASELINE: ${{ inputs.force_baseline && '1' || '' }}
+        run: node scripts/learn-content-watch.mjs
+
+      # The issue comes BEFORE the tracker commit on purpose. What the issue
+      # reports (a practice assessment that appeared, a course the exam page
+      # does not link, a changed learning path list) is also recorded in the
+      # tracker, so a report is only made once. When opening the issue fails,
+      # the commit below is skipped (it has no status-check function in its
+      # condition), main keeps the old tracker, and the next run (or "Re-run
+      # failed jobs") reports the same items again. Committing first would lose
+      # the alert: the items would already count as reported.
+      - name: Create issue if new official content was found
+        id: issue
+        if: steps.check.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
+        with:
+          title: "${{ steps.check.outputs.issue_title }}"
+          content-filepath: /tmp/learn-content-watch-report.md
+          labels: enhancement
+
+      - name: Commit updated Learn content tracker
+        if: steps.check.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/learn-content-watch.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update Learn content tracker"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1
+
+      # ONE issue with a stable title for a failing check: a comment for every
+      # further failed run, closed by the next healthy run.
+      - name: Create issue if the check failed
+        if: failure() && steps.check.outputs.extraction_failed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs raise --title "Learn Content Watch Failed" --label bug --file /tmp/learn-content-watch-error.md
+
+      - name: Close the failure issue once the check runs again
+        if: steps.check.outputs.extraction_failed == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs clear --title "Learn Content Watch Failed" --label bug --comment "The Learn Content Watch ran normally again. Closing this issue."

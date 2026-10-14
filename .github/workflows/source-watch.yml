@@ -1,0 +1,93 @@
+name: Source Watch
+
+on:
+  schedule:
+    # Daily 08:20 UTC. No other workflow that pushes to main starts at the same
+    # time (a test over all of them keeps it that way), and the push below is
+    # retried on top of whatever landed meanwhile.
+    - cron: "20 8 * * *"
+  workflow_dispatch:
+    inputs:
+      force_baseline:
+        description: "Accept every changed source silently as the new baseline (use after the 'Many sources changed at once' hold: read the issue and the job summary first, nothing is reported for the accepted sources)"
+        type: boolean
+        default: false
+
+# A run is never cancelled half way through (a newer run waits instead): the
+# issue and the tracker commit below belong together.
+concurrency:
+  group: source-watch
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/source-watch-report.md
+      ATTENTION_FILE: /tmp/source-watch-attention.md
+      ERROR_FILE: /tmp/source-watch-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      # The script reads the watched pages and PDFs (src/data_files/watched-sources.json,
+      # about 50 requests, one at a time) and looks after the two RUNNING issues itself,
+      # BEFORE it writes the tracker:
+      #  - "Source Watch: sources need attention" (label bug): a source that could not be
+      #    read for 3 days in a row, many sources changing at once (held back, see
+      #    force_baseline), a watched source no hub page cites. Created when the list
+      #    becomes non-empty, a comment when the list changes, closed with a comment when
+      #    nothing is left.
+      #  - "Source Watch: the check failed" (label bug): no source could be read at all.
+      #    A comment per further failed run, closed by the next healthy run.
+      # Both are best effort for a FAILED check and mandatory otherwise: when the issue
+      # cannot be created the step fails, the commit below is skipped and the next run
+      # reports the same things again.
+      - name: Check the watched sources
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CREATE_ISSUES: "1"
+          FORCE_BASELINE: ${{ inputs.force_baseline && '1' || '' }}
+        run: node scripts/source-watch.mjs
+
+      # The change issue comes BEFORE the tracker commit on purpose. A changed source
+      # stays "changed" until the tracker that records its new text is on main, so when
+      # opening the issue fails the commit below is skipped (it has no status-check
+      # function in its condition) and the source is reported again by the next run or
+      # by "Re-run failed jobs". Committing first would lose the alert: the new text
+      # would already be tracked, and nothing would report the failed issue. The price
+      # is a possible duplicate issue when the commit step fails after the issue was
+      # opened; a duplicate beats a lost alert.
+      - name: Create issue if a watched source changed
+        id: issue
+        if: steps.check.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
+        with:
+          title: "${{ steps.check.outputs.issue_title }}"
+          content-filepath: /tmp/source-watch-report.md
+          labels: enhancement
+
+      - name: Commit updated source watch tracker
+        if: steps.check.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/source-watch.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update source watch tracker"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1

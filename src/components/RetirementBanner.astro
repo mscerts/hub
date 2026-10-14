@@ -23,26 +23,56 @@ const {
   note,
 } = Astro.props;
 
-const href = replacementHref ?? (replacementArea && replacementCode ? `/${replacementArea}/${replacementCode.toLowerCase()}/` : undefined);
+const href = replacementHref ?? (replacementArea && replacementCode ? `/certs/${replacementArea}/${replacementCode.toLowerCase()}/` : undefined);
+
+// The wording is chosen when the site is built, not in the visitor's browser: a page
+// only flips from "is being retired" to "was retired" on the first deploy after
+// retireDate. The cut-off is the same one scripts/retiring-exam-check.mjs uses: the
+// exam counts as retired once retireDate is yesterday (UTC) or earlier. A retireDate
+// that cannot be parsed keeps the "is being retired" wording.
+const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+
+function parseRetireDate(value: string): number | null {
+  const match = value.match(/([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})/);
+  if (!match) return null;
+  const month = MONTHS.indexOf(match[1].toLowerCase());
+  if (month === -1) return null;
+  return Date.UTC(Number(match[3]), month, Number(match[2]));
+}
+
+const retireTime = parseRetireDate(retireDate);
+const now = new Date();
+const todayUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+const retired = retireTime !== null && retireTime < todayUtc;
+
+// The closing sentence is dropped once the exam is retired, unless a custom note is passed.
+const closingNote =
+  note ??
+  (retired
+    ? null
+    : "Microsoft Learn always takes a while to update with certification retirements so don't panic if you can't see it there yet.");
 ---
 
 <Aside type="caution">
-  {
-    certRetires
-      ? `Exam and its certification are being retired on ${retireDate}.`
-      : `The exam is being retired on ${retireDate}. The certification will remain, meaning you can renew it if you already have it.`
-  }
+  <p>
+    {
+      retired
+        ? certRetires
+          ? `Exam and its certification were retired on ${retireDate}.`
+          : `The exam was retired on ${retireDate}. The certification remains, meaning you can renew it if you already have it.`
+        : certRetires
+          ? `Exam and its certification are being retired on ${retireDate}.`
+          : `The exam is being retired on ${retireDate}. The certification will remain, meaning you can renew it if you already have it.`
+    }
+  </p>
 
   {
     href && replacementCode
-      ? <>It will be replaced by <a href={href}>{replacementCode}{replacementName ? `: ${replacementName}` : ''}</a>.</>
+      ? <p>{retired ? "It was replaced by " : "It will be replaced by "}<a href={href}>{replacementCode}{replacementName ? `: ${replacementName}` : ""}</a>.</p>
       : null
   }
 
-  {betaNote ?? null}
+  {betaNote ? <p>{betaNote}</p> : null}
 
-  {
-    note ??
-      `Microsoft Learn always takes a while to update with certification retirements so don't panic if you can't see it there yet.`
-  }
+  {closingNote ? <p>{closingNote}</p> : null}
 </Aside>

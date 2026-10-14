@@ -5,17 +5,24 @@
  * Usage:
  *   node scripts/retiring-exams-sync.mjs
  *
- * Reads every `examStatuses[area][code]` entry in src/data_files/exam-status.mjs with
- * `{ text: "RETIRING", variant: "danger" }`, pulls the exam name from that
+ * Reads every `examStatuses[area][code]` entry in src/data_files/exam-status.mjs
+ * whose badge is RETIRING (`{ text: "RETIRING", variant: "danger" }`) or RETIRED
+ * (`{ text: "RETIRED", variant: "note" }`), pulls the exam name from that
  * page's frontmatter `description` and the retirement date from its
  * <RetirementBanner retireDate="..."> prop or inline `:::caution` text
  * (whichever the page uses), and writes src/data_files/retiring-exams.json.
+ * A RETIRED exam stays in the tracker as history: when its page no longer gives
+ * a name or date (a banner reworded past tense) the entry the tracker already
+ * has is kept as it is instead of failing the resync.
  *
  * This is a bootstrap/full-resync tool, not part of any scheduled workflow.
  * It overwrites the tracker file entirely, but preserves `notified`/`notifiedAt`
- * for exams that are still present so a resync never re-fires a notification.
+ * and `remindedAt` (the reminders scripts/retiring-exam-check.mjs already sent)
+ * for exams that are still present so a resync never re-fires a notification
+ * or a reminder. A tracker entry whose exam has neither badge any more is
+ * dropped, with a warning naming it.
  * New retiring exams found after the initial sync should be added to
- * retiring-exams.json by hand (see AGENTS.md), not by re-running this.
+ * retiring-exams.json by hand (see docs/monitors/beta-and-retiring-exams.md), not by re-running this.
  *
  * Env overrides (defaults shown):
  *   OUTPUT_FILE   src/data_files/retiring-exams.json
@@ -33,6 +40,10 @@ const OUTPUT_FILE =
   process.env.OUTPUT_FILE ??
   join(root, "src", "data_files", "retiring-exams.json");
 const DOCS_DIR = join(root, "src", "content", "docs");
+
+// The two badges of a retirement: RETIRING until the date has passed, RETIRED
+// after it (see src/data_files/exam-status.mjs).
+const RETIREMENT_BADGES = new Set(["RETIRING", "RETIRED"]);
 
 const MONTHS = {
   january: "01",
@@ -124,10 +135,23 @@ function main() {
   const exams = [];
   for (const [area, entries] of Object.entries(examStatuses)) {
     for (const [code, badge] of Object.entries(entries)) {
-      if (badge.variant !== "danger" || badge.text !== "RETIRING") continue;
+      if (!RETIREMENT_BADGES.has(badge.text)) continue;
+
+      const prev = existing.get(code);
+      // A RETIRED exam is history: keep the entry the tracker has when the page
+      // can no longer be read for it, instead of losing the record.
+      const keepHistory = (reason) => {
+        if (badge.text !== "RETIRED" || !prev) return false;
+        console.error(
+          `WARNING: ${reason}; ${code} is RETIRED, so its existing tracker entry is kept as history.`,
+        );
+        exams.push(prev);
+        return true;
+      };
 
       const page = findExamPage(area, code);
       if (!page) {
+        if (keepHistory(`no exam page found for ${code} in ${area}`)) continue;
         console.error(
           `WARNING: no exam page found for ${code} in ${area}; skipping.`,
         );
@@ -135,10 +159,16 @@ function main() {
       }
 
       const content = readFileSync(page, "utf8");
-      const name = examNameFromPage(content, code);
-      const retirementDate = retirementDateFromPage(content, code);
+      let name;
+      let retirementDate;
+      try {
+        name = examNameFromPage(content, code);
+        retirementDate = retirementDateFromPage(content, code);
+      } catch (error) {
+        if (keepHistory(error.message)) continue;
+        throw error;
+      }
       const replacementCode = replacementCodeFromPage(content);
-      const prev = existing.get(code);
 
       exams.push({
         code,
@@ -148,9 +178,19 @@ function main() {
         ...(replacementCode ? { replacementCode } : {}),
         notified: prev?.notified ?? false,
         ...(prev?.notifiedAt ? { notifiedAt: prev.notifiedAt } : {}),
+        ...(prev?.remindedAt ? { remindedAt: prev.remindedAt } : {}),
       });
       console.log(
-        `Found retiring exam: ${code} (${area}) — retires ${retirementDate}`,
+        `Found ${badge.text === "RETIRED" ? "retired" : "retiring"} exam: ${code} (${area}) — ${badge.text === "RETIRED" ? "retired" : "retires"} ${retirementDate}`,
+      );
+    }
+  }
+
+  const kept = new Set(exams.map((exam) => exam.code));
+  for (const [code, prev] of existing) {
+    if (!kept.has(code)) {
+      console.error(
+        `WARNING: ${code} (retires ${prev.retirementDate}) is in the tracker but has neither a RETIRING nor a RETIRED badge in exam-status.mjs; this resync drops it.`,
       );
     }
   }

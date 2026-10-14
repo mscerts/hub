@@ -1,0 +1,103 @@
+# lychee configuration for the scheduled EXTERNAL link check (see
+# docs/monitors/link-checker.md). It is not read automatically: pass it with
+# --config. The internal-link check of pull requests does not use it.
+#
+#   lychee --config lychee-external.toml --root-dir dist --format json \
+#     --output lychee/external.json 'dist/**/*.html'
+#
+# The check looks only at the hosts allowlisted in `include` below, in the built
+# pages (dist/**/*.html). learn.microsoft.com is not on the list on purpose: the
+# Learn URL Check owns it. lychee exits with 2 when a link fails; the result is
+# judged by scripts/link-failures.mjs, which reads lychee/external.json (a link
+# has to fail on two consecutive runs before it is reported).
+#
+# How lychee reads these filters (checked against lychee v0.24.2, lychee-lib
+# filter/mod.rs): a URL that matches `include` is checked, even when an `exclude`
+# (this file's catch-all or a .lycheeignore line) matches it too; a URL that
+# matches no `include` is skipped only because the catch-all `exclude` below
+# matches it. Without that catch-all, .lycheeignore alone would make every
+# unlisted host checked.
+
+# Only web links; links to the site's own files are the job of the internal
+# check (and file:// links never match `include`).
+scheme = ["https", "http"]
+
+exclude = ['^https?://']
+
+include = [
+  # --- code and lab repositories --------------------------------------------
+  # owner/repo links only. A bare github.com/<name>/ page is skipped on purpose:
+  # every exam page carries a github.com/copilot/?prompt=... share button.
+  '^https?://(www\.)?github\.com/[^/?#]+/[^/?#]+',
+  '^https?://raw\.githubusercontent\.com/',
+  '^https?://microsoftlearning\.github\.io/',
+  '^https?://microsoft\.github\.io/',
+
+  # --- video ------------------------------------------------------------------
+  # YouTube answers 200 for a deleted video, so this only notices removed
+  # channels and a host that stops answering, not dead videos.
+  '^https?://((www|m)\.)?youtube\.com/',
+  '^https?://youtu\.be/',
+
+  # --- Microsoft, except learn.microsoft.com --------------------------------
+  '^https?://aka\.ms/',
+  '^https?://go\.microsoft\.com/',
+  '^https?://(www\.)?microsoft\.com/',
+  '^https?://(esi|techcommunity|azure|aiskillsnavigator|developer|cdx\.transform)\.microsoft\.com/',
+
+  # --- third-party training and practice resources (5 or more links) ----------
+  '^https?://(www\.)?whizlabs\.com/',
+  '^https?://(www\.)?pluralsight\.com/',
+  '^https?://(www\.)?skillupwithlevelup\.com',
+  '^https?://(www\.)?certiace\.com/',
+  '^https?://(www\.)?coursera\.org/',
+  '^https?://(www\.)?edx\.org/',
+  '^https?://certweeks\.fastlane\.net/',
+  '^https?://(www\.)?cloudguides\.com/',
+]
+
+# Left out on purpose (not on the list above):
+#   measureup.com and the social/share hosts   .lycheeignore (flaky or bot-blocked)
+#   trk.udemy.com, amzn.to                     affiliate links: a weekly automated
+#                                              click is not harmless, and Udemy
+#                                              answers 403 to every non-browser
+#   msfthub.com                                 the site itself (internal check)
+#   hosts with fewer than 5 links               not worth a request budget; add
+#                                              a line above when one grows
+
+# Be polite and tolerate slow hosts. 403, 429 and 5xx answers and timeouts are NOT failures:
+# scripts/link-failures.mjs reports them as warnings that never advance a link's streak, and a
+# dead link needs two runs in a row anyway, so a retry buys nothing: max_retries is 0 (and there
+# is no retry_wait_time, which is only the wait before a retry: add it back with any retries).
+# lychee writes its JSON report only when it has finished, and the workflow stops the step after
+# 25 minutes: no report means "external check failed". So a link on a host that never answers
+# must cost one timeout and no more: 15 s (it was 155 s with a timeout of 30 and 3 retries
+# waiting 5, 10 and 20 s). A host whose links all stay silent takes ceil(links / lanes) x 15 s,
+# the lanes being host_concurrency or the concurrency of its [hosts."..."] table below, and the
+# hosts run side by side (links counted in the built site on 2026-10-14 with
+# `node scripts/link-failures.mjs list`):
+#   microsoftlearning.github.io   338 links, 4 lanes   85 x 15 s   about 21 min
+#   github.com                    111 links, 2 lanes   56 x 15 s   about 14 min
+#   www.youtube.com                87 links, 2 lanes   44 x 15 s   about 11 min
+no_progress = true
+# lychee lists the chain of every redirect in its JSON report (`redirect_map`) only when it runs
+# verbose: the redirect check of scripts/link-failures.mjs reads it, an empty `redirect_map` means
+# "no information", never "nothing redirects". stderr gets one `[200] url (at line:col)` line
+# per link.
+verbose = "info"
+max_retries = 0
+timeout = 15
+max_redirects = 10
+max_concurrency = 16
+host_concurrency = 4
+host_request_interval = "500ms"
+user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36 msfthub-link-checker"
+
+# Hosts that rate-limit anonymous visitors quickly get two lanes and a slower pace.
+[hosts."github.com"]
+concurrency = 2
+request_interval = "1s"
+
+[hosts."www.youtube.com"]
+concurrency = 2
+request_interval = "1s"

@@ -2,16 +2,19 @@ name: Partner Designations Monitor
 
 on:
   schedule:
-    - cron: "0 8 * * 1" # Monday 08:00 UTC (offset from the other Monday monitors so all can push)
+    - cron: "0 8 * * 1" # Monday 08:00 UTC (a start time of its own; the push retry below is the protection)
   workflow_dispatch:
 
+# A run is never cancelled half way through (a newer run waits instead): the
+# issue and the tracker commit below belong together.
 concurrency:
   group: partner-designations-monitor
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: write
       issues: write
@@ -19,16 +22,34 @@ jobs:
       REPORT_FILE: /tmp/partner-designations-report.md
       ERROR_FILE: /tmp/partner-designations-error.md
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version: 20
+          node-version-file: .node-version
           package-manager-cache: false
 
       - name: Check partner designation pages
         id: check
         run: node scripts/partner-designations-check.mjs
+
+      # The issue comes BEFORE the tracker commit on purpose. A changed page
+      # stays "changed" until the tracker that records its new text is on main,
+      # so when opening the issue fails the commit below is skipped (it has no
+      # status-check function in its condition) and the page is reported again
+      # by the next run or by "Re-run failed jobs". Committing first would lose
+      # the alert: the new text would already be tracked, and nothing would
+      # report the failed issue. The price is a possible duplicate issue when
+      # the commit step fails after the issue was opened; a duplicate beats a
+      # lost alert.
+      - name: Create issue if a partner designation page changed
+        id: issue
+        if: steps.check.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
+        with:
+          title: "${{ steps.check.outputs.issue_title }}"
+          content-filepath: /tmp/partner-designations-report.md
+          labels: enhancement
 
       - name: Commit updated partner designations tracker
         if: steps.check.outputs.baseline_updated == 'true'
@@ -36,21 +57,19 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/data_files/partner-designations.json
-          git diff --cached --quiet || git commit -m "Update partner designations tracker"
-          git pull --rebase
-          git push
-
-      - name: Create issue if a partner designation page changed
-        if: steps.check.outputs.changes_found == 'true'
-        uses: peter-evans/create-issue-from-file@v6
-        with:
-          title: "Partner Designation Page Changed — ${{ github.run_id }}"
-          content-filepath: /tmp/partner-designations-report.md
-          labels: enhancement
+          git diff --cached --quiet && exit 0
+          git commit -m "Update partner designations tracker"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1
 
       - name: Create issue if check failed
         if: failure() && steps.check.outputs.extraction_failed == 'true'
-        uses: peter-evans/create-issue-from-file@v6
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
         with:
           title: "Partner Designations Monitor Failed — ${{ github.run_id }}"
           content-filepath: /tmp/partner-designations-error.md

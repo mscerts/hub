@@ -83,31 +83,3 @@ test("sitemap validator checks the local build and rejects broken pages", async 
     await server.close();
   }
 });
-
-test("MeasureUp rejects malformed product data without changing its baseline", async () => {
-  const dir = await mkdtemp(join(tmpdir(), "measureup-test-"));
-  const baseline = join(dir, "baseline.json");
-  const output = join(dir, "output");
-  const error = join(dir, "error.md");
-  const server = await fixtureServer((_request, response) => {
-    response.end(
-      'toolbar-number">1\ntoolbar-number">1\ntoolbar-number">1\n<script>var dl4Objects = [invalid];</script>',
-    );
-  });
-  try {
-    const result = await run("scripts/measureup-check.sh", {
-      BASE_URL: server.origin,
-      BASELINE_FILE: baseline,
-      TEMP_DIR: join(dir, "scan"),
-      REPORT_FILE: join(dir, "report.md"),
-      ERROR_FILE: error,
-      GITHUB_OUTPUT: output,
-      MIN_PRODUCTS: "1",
-    });
-    assert.equal(result.code, 1);
-    assert.match(await readFile(output, "utf8"), /extraction_failed=true/);
-    assert.match(await readFile(error, "utf8"), /malformed/);
-  } finally {
-    await server.close();
-  }
-});

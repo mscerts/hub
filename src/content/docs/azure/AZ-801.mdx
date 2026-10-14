@@ -3,16 +3,16 @@ title: AZ-801 Study Materials
 description: "Collection of study materials for the certification exam AZ-801: Configuring Windows Server Hybrid Advanced Services. Contains official Microsoft Learn materials, labs, videos, practice tests and paid courses."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import RetirementBanner from '../../../components/RetirementBanner.astro';
 
-:::caution
-The exam is being retired on September 30, 2026. The certification will remain, meaning you can renew it if you already have it.
-
-It will be replaced by [AZ-802](/certs/azure/az-802/), which consolidates AZ-800 and AZ-801 into a single Windows Server Hybrid Administrator exam.
-
-AZ-802 is currently available in beta.
-
-Microsoft Learn always takes a while to update with certification retirements so don't panic if you can't see it there yet.
-:::
+<RetirementBanner
+  retireDate="September 30, 2026"
+  certRetires={false}
+  replacementCode="AZ-802"
+  replacementName="Administering Windows Server"
+  replacementArea="azure"
+  note="AZ-802 consolidates AZ-800 and AZ-801 into a single exam."
+/>
 
 <Card title="Get Started" icon="star">
 

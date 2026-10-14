@@ -1,0 +1,272 @@
+<!-- Trimmed copy of https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/gh-500 fetched 2026-10-09 (real markup; long lists, tables and skill groups shortened). Note the stray <h2> inside the skills text. -->
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+	<head>
+		<title>Study guide for Exam GH-500: GitHub Advanced Security | Microsoft Learn</title>
+		<meta charset="utf-8" />
+		<meta name="locale" content="en-us" />
+		<meta name="page_type" content="conceptual" />
+		<meta name="ms.date" content="2026-04-26T00:00:00Z" />
+		<meta name="updated_at" content="2026-05-14T16:18:00Z" />
+	</head>
+	<body>
+		<main id="main">
+<div class="content"><h1 id="study-guide-for-exam-gh-500-github-advanced-security">Study guide for Exam GH-500: GitHub Advanced Security</h1></div>
+
+		<div
+			id="article-metadata"
+			data-bi-name="article-metadata"
+			data-test-id="article-metadata"
+			class="page-metadata-container display-flex gap-xxs justify-content-space-between align-items-center flex-wrap-wrap"
+		>
+
+				<div
+					id="user-feedback"
+					class="margin-block-xxs display-none display-none-print"
+					hidden
+					data-hide-on-archived
+				>
+
+		<button
+			id="user-feedback-button"
+			data-test-id="conceptual-feedback-button"
+			class="button button-sm button-clear button-primary display-none"
+			type="button"
+			data-bi-name="user-feedback-button"
+			data-user-feedback-button
+			hidden
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-like"></span>
+			</span>
+			<span>Feedback</span>
+		</button>
+
+				</div>
+
+		</div>
+
+		<div data-id="ai-summary" class="display-none-print">
+			<div id="ms--ai-summary-cta" class="margin-top-xs display-flex align-items-center">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-sparkle-fill gradient-text-vivid"></span>
+				</span>
+				<button
+					id="ms--ai-summary"
+					type="button"
+					class="tag tag-sm tag-suggestion margin-left-xxs"
+					data-test-id="ai-summary-cta"
+					data-bi-name="ai-summary-cta"
+					data-an="ai-summary"
+				>
+					<span class="ai-summary-cta-text">
+						Summarize this article for me
+					</span>
+				</button>
+			</div>
+			<!-- Slot where the client will render the summary card after the user clicks the CTA -->
+			<div id="ms--ai-summary-header" class="margin-top-xs"></div>
+		</div>
+
+		<nav
+			id="center-doc-outline"
+			class="doc-outline display-none-desktop display-none-print margin-bottom-sm"
+			data-bi-name="intopic toc"
+			aria-label="In this article"
+		>
+			<h2 id="ms--in-this-article" class="title is-6 margin-block-xs">
+				In this article
+			</h2>
+		</nav>
+	 <div class="content"><h2 id="purpose-of-this-document">Purpose of this document</h2>
+<p>This study guide should help you understand what to expect on the exam
+and includes a summary of the topics the exam might cover and links to
+additional resources. The information and materials in this document
+should help you focus your studies as you prepare for the exam.</p>
+<table>
+<thead>
+<tr>
+<th>Useful links</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/en-us/credentials/certifications/renew-your-microsoft-certification" data-linktype="absolute-path">Certification renewal</a></td>
+<td>Microsoft associate, expert, and specialty certifications expire annually. You can renew by passing a free online assessment on Microsoft Learn.</td>
+</tr>
+<tr>
+<td><a href="/en-us/users" data-linktype="absolute-path">Your Microsoft Learn profile</a></td>
+<td>Connecting your certification profile to Microsoft Learn allows you to schedule and renew exams and share and print certificates.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="about-the-exam">About the exam</h2>
+<p>Some exams are localized into other languages, and those are updated
+approximately eight weeks after the English version is updated. While
+Microsoft makes every effort to update localized versions as noted,
+there may be times when the localized versions of an exam are not
+updated on this schedule. Other available languages are listed in the
+<strong>Schedule Exam</strong> section of the <strong>Exam Details</strong> webpage. If the exam
+isn't available in your preferred language, you can request an
+additional 30 minutes to complete the exam.</p>
+<h4 id="note">Note</h4>
+<p>The bullets that follow each of the skills measured are intended to
+illustrate how we are assessing that skill. Related topics may be
+covered in the exam.</p>
+<h4 id="note-1">Note</h4>
+<p>Most questions cover features that are general availability (GA). The
+exam may contain questions on Preview features if those features are
+commonly used.</p>
+<h2 id="skills-measured-as-of-july-2026">Skills measured as of July 2026</h2>
+<h3 id="audience-profile">Audience profile</h3>
+<p>Candidates for this exam have experience using GitHub Advanced Security
+(GHAS) to secure code, secrets, and dependencies across the software
+development lifecycle. They can configure security features, triage and
+remediate alerts, and apply prevention-first practices using policies,
+workflows, and automation. Candidates are familiar with GitHub
+fundamentals, CI/CD, and secure development concepts.</p>
+<h3 id="skills-at-a-glance">Skills at a glance</h3>
+<ul>
+<li><p>Describe GitHub Security suites, features, and ecosystem (15–20%)</p>
+</li>
+<li><p>Configure and use Secret Protection (formerly secret scanning)
+(15–20%)</p>
+</li>
+</ul>
+<h3 id="describe-github-security-suites-features-and-ecosystem-1520">Describe GitHub Security suites, features, and ecosystem (15–20%)</h3>
+<h4 id="understand-github-security-suites-and-architecture">Understand GitHub Security suites and architecture</h4>
+<ul>
+<li><p>Describe GitHub Security suite structure and navigation</p>
+</li>
+<li><p>Contrast Code Security, Secret Protection, and Supply Chain Security</p>
+</li>
+</ul>
+<h4 id="apply-secure-sdlc-and-security-strategies">Apply secure SDLC and security strategies</h4>
+<ul>
+<li><p>Explain differences and interplay between Secret Protection and Code
+Security</p>
+</li>
+<li><p>Describe end-to-end secure SDLC using GitHub Security suites</p>
+</li>
+</ul>
+<h4 id="detect-manage-and-respond-to-security-alerts">Detect, manage, and respond to security alerts</h4>
+<ul>
+<li><p>Identify vulnerability and secret detection mechanisms</p>
+</li>
+<li><p>Choose and act on security alerts (alert management, policies,
+workflows)</p>
+</li>
+</ul>
+<h4 id="manage-access-governance-and-supply-chain-security">Manage access, governance, and supply chain security</h4>
+<ul>
+<li><p>Explain alert access management, roles, delegated bypass, and
+enforcement</p>
+</li>
+<li><p>Describe supply chain security concepts and alert information across
+the SDLC</p>
+</li>
+</ul>
+<h3 id="configure-and-use-secret-protection-formerly-secret-scanning-1520">Configure and use Secret Protection (formerly secret scanning) (15–20%)</h3>
+<h4 id="enable-and-configure-secret-protection">Enable and configure Secret Protection</h4>
+<ul>
+<li><p>Enable GitHub Secret Protection at the repository and organization
+levels</p>
+</li>
+<li><p>Configure Secret Protection settings and feature availability</p>
+</li>
+<li><p>Contrast Secret Protection behavior for public vs. private/enterprise
+repositories</p>
+</li>
+</ul>
+<h4 id="prevent-secret-exposure">Prevent secret exposure</h4>
+<ul>
+<li><p>Explain Push Protection and how it prevents secrets at the source</p>
+</li>
+<li><p>Describe validity checks and prioritized alerting for high-confidence
+secrets</p>
+</li>
+</ul>
+<h2 id="manage-and-respond-to-secret-protection-alerts">Manage and respond to Secret Protection alerts</h2>
+<ul>
+<li><p>Describe the Secret Protection alert lifecycle (creation, status,
+dismissal)</p>
+</li>
+<li><p>Respond to secret alerts and apply appropriate remediation actions</p>
+</li>
+<li><p>Explain implications and best practices for dismissing or ignoring
+alerts</p>
+</li>
+</ul>
+<h4 id="control-access-policies-and-customization">Control access, policies, and customization</h4>
+<ul>
+<li><p>Explain role-based and delegated bypass policies in Secret Protection</p>
+</li>
+<li><p>Configure alert recipients and exclusions</p>
+</li>
+<li><p>Create and manage custom secret patterns</p>
+</li>
+</ul>
+<h2 id="study-resources">Study resources</h2>
+<p>We recommend that you train and get hands-on experience before you take
+the exam. We offer self-study options and classroom training as well as
+links to documentation, community sites, and videos.</p>
+<table>
+<thead>
+<tr>
+<th>Study resources</th>
+<th>Links to learning and documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Get trained</td>
+<td>Choose from self-paced learning paths and modules or take an instructor-led course on Microsoft Learn – <a href="/en-us/training/paths/github-advanced-security/" data-linktype="absolute-path">GitHub Advanced Security Part 1</a> and <a href="/en-us/training/paths/github-advanced-security-2/" data-linktype="absolute-path">GitHub Advanced Security Part 2</a></td>
+</tr>
+<tr>
+<td>Find documentation</td>
+<td><a href="https://docs.github.com/get-started/learning-about-github/about-github-advanced-security" data-linktype="external">Describe the GHAS security features and functionality</a><br><a href="https://docs.github.com/code-security/secret-scanning" data-linktype="external">Configure and use secret scanning</a><br><a href="https://docs.github.com/code-security/getting-started/dependabot-quickstart-guide" data-linktype="external">Configure and use Dependabot</a> and <a href="https://docs.github.com/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review" data-linktype="external">Dependency Review</a><br><a href="https://docs.github.com/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning" data-linktype="external">Configure and use Code Scanning with CodeQL</a><br><a href="/en-us/training/modules/introduction-github-advanced-security/" data-linktype="absolute-path">Describe GitHub Advanced Security best practices, results, and how to take corrective measures</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="change-log">Change log</h2>
+<p>This exam has changed significantly (e.g., new objectives were added,
+some were removed, existing objectives may have moved to different
+functional groups, and all were reworded) on July, 2026.</p>
+</div>
+
+		<div
+			id="ms--inline-notifications"
+			class="margin-block-xs"
+			data-bi-name="inline-notification"
+		></div>
+
+		<div
+			id="assertive-live-region"
+			role="alert"
+			aria-live="assertive"
+			class="visually-hidden"
+			aria-relevant="additions"
+			aria-atomic="true"
+		></div>
+		<div
+			id="polite-live-region"
+			role="status"
+			aria-live="polite"
+			class="visually-hidden"
+			aria-relevant="additions"
+			aria-atomic="true"
+		></div>
+
+
+				</div>
+
+		<div id="ms--additional-resources-mobile" class="display-none-print">
+			<hr class="hr" hidden />
+			<h2 id="ms--additional-resources-mobile-heading" class="title is-3" hidden>
+				Additional resources
+			</h2>
+		</div>
+		</main>
+	</body>
+</html>
