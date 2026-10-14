@@ -1,0 +1,16 @@
+version: 2
+
+updates:
+  # Keeps the full-SHA pins of the actions in .github/workflows current: a pin
+  # is only as good as the way it gets updated. Dependabot rewrites the SHA and
+  # the "# vN" comment after it, and one weekly pull request covers all actions.
+  # The npm ecosystem is deliberately not listed (not decided yet).
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      github-actions:
+        patterns:
+          - "*"

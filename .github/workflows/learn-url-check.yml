@@ -5,10 +5,25 @@ name: Learn URL Check
 # synced. GitHub starts learnsync's scheduled runs 6-8 hours after their cron
 # time (learn catalog Mon 07:00 UTC, docs catalog Mon 08:00 UTC, docs job limit
 # 120 min), so this runs the next morning and the script also waits while a
-# learnsync sync is queued or running, or until learnsync's data/status.json
-# heartbeat shows both syncs finished this week. learnsync can trigger this
+# learnsync sync is queued or running (up to 150 minutes), or up to 30 minutes
+# for a late-starting one when learnsync's data/status.json heartbeat does not yet
+# show both syncs finished this week; it does not wait for a sync whose latest
+# run already failed, because nothing will refresh the data. learnsync can trigger this
 # workflow right after a sync with a repository_dispatch event of type
-# "learnsync-synced".
+# "learnsync-synced". That needs the repository secret HUB_DISPATCH_TOKEN in
+# learnsync, which is optional: without it this workflow simply runs on its own
+# Tuesday schedule below, and nothing else depends on the secret.
+#
+# When learnsync stops syncing, this workflow says so. After the wait, the check
+# step judges the data it is about to use (a Learn or docs heartbeat older than
+# LEARNSYNC_STALE_DAYS, 6 by default; a sync whose latest run failed after the
+# last good heartbeat; docs.complete false; change files whose source stamps are
+# stale) and opens ONE issue (label bug) titled
+# "Learn URL Check: learnsync data is stale", comments on it while the data
+# stays stale (one comment per run) and closes it with a comment once the data
+# is fresh again. learnsync's own failure alerts are issues in that repository,
+# which nobody watches, so this is the alert that reaches this repository. The
+# check still runs on the data it has; its findings carry the stale-data caveat.
 #
 # Two sources (CHECK_SOURCE, chosen in the "Choose the check source" step):
 #   changes  every run except the monthly one. Reads only learnsync's two small
@@ -16,13 +31,19 @@ name: Learn URL Check
 #            sparse checkout, so the multi-MB caches are never downloaded. Reports
 #            what learnsync has recorded as removed or moved.
 #   cache    the monthly FULL AUDIT: the scheduled run on day 1-7 of the month
-#            (the first Tuesday), or any manual run with full_audit enabled. Clones
-#            all of learnsync and validates every URL against the complete caches,
-#            which also covers what the change files never list (shows,
-#            collections, practice assessments, legacy /certifications/ paths,
-#            credentials support pages, typos, brand-new pages).
-# The day-of-month rule is computed in that step (the script's chooseCheckSource),
-# not in the cron expression.
+#            (the first Tuesday), a later scheduled run when no full audit is on
+#            record (the tracker's lastFullAudit is empty: the first scheduled run) or
+#            the last one is more than 35 days old, so a dropped or failed
+#            first-Tuesday run is made up at the next scheduled run, or any manual run
+#            with full_audit enabled. A full audit that fails records nothing, so the
+#            next scheduled run does it again: one that keeps failing fails every
+#            Tuesday until it passes. Clones all of learnsync and validates every URL
+#            against the complete caches, which also covers what the change files
+#            never list (shows, collections, practice assessments, legacy
+#            /certifications/ paths, credentials support pages, typos, brand-new
+#            pages).
+# The day-of-month and the age rule are computed in that step (the script's
+# chooseCheckSource), not in the cron expression.
 on:
   schedule:
     - cron: "0 6 * * 2" # Tuesday 06:00 UTC, after Monday's learnsync runs
@@ -56,13 +77,14 @@ jobs:
       issues: write
     env:
       REPORT_FILE: /tmp/learn-url-check-report.md
+      STALE_REPORT_FILE: /tmp/learn-url-check-stale.md
       ERROR_FILE: /tmp/learn-url-check-error.md
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version: 22
+          node-version-file: .node-version
           package-manager-cache: false
 
       - name: Choose the check source
@@ -72,6 +94,12 @@ jobs:
           FULL_AUDIT: ${{ inputs.full_audit }}
         run: node scripts/learn-url-check.mjs --choose-source | tee -a "$GITHUB_OUTPUT"
 
+      # The issues are created inside this step and the tracker commit below only
+      # runs when it succeeded (its condition has no status-check function), so a
+      # failed issue step (the stale-data issue comes first, then the broken-link
+      # issue) leaves the tracker uncommitted and a re-run reports everything again.
+      # Committing the tracker first would lose the alert: the links would already
+      # be tracked as reported.
       - name: Check Learn URLs against learnsync (${{ steps.source.outputs.source }})
         id: check
         env:
@@ -88,13 +116,23 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/data_files/learn-url-check.json
-          git diff --cached --quiet || git commit -m "Update Learn URL check tracker"
-          git pull --rebase
-          git push
+          git diff --cached --quiet && exit 0
+          git commit -m "Update Learn URL check tracker"
+          # The issues above are already open, so a push that fails because another
+          # monitor pushed meanwhile must retry on top of it: a failed job would make
+          # the re-run report the same links again in a second issue.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1
 
       - name: Create issue if the check failed
-        if: failure() && steps.check.outputs.check_failed == 'true'
-        uses: peter-evans/create-issue-from-file@v6
+        # A report-only dispatch (dry_run) touches no issue, so a failing one opens no failure
+        # issue either (inputs.dry_run is empty on schedule and repository_dispatch runs).
+        if: failure() && steps.check.outputs.check_failed == 'true' && !inputs.dry_run
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
         with:
           title: "Learn URL Check Failed — ${{ github.run_id }}"
           content-filepath: /tmp/learn-url-check-error.md

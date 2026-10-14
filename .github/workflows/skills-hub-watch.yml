@@ -1,0 +1,120 @@
+name: Skills Hub Watch
+
+on:
+  schedule:
+    # Every 6 hours at minute 20: 00:20, 06:20, 12:20 and 18:20 UTC. One line
+    # per run time on purpose (the tests of the other monitors read one hour per
+    # line). No other workflow that pushes to main starts at the same time
+    # (other monitors start at minute 20 too, at other hours), and a test over
+    # all of them keeps it that way. GitHub often starts a scheduled run hours
+    # late, so the push retry below is the real protection.
+    - cron: "20 0 * * *"
+    - cron: "20 6 * * *"
+    - cron: "20 12 * * *"
+    - cron: "20 18 * * *"
+  workflow_dispatch:
+    inputs:
+      force_baseline:
+        description: "Record every post of the feed silently (no issue), skip the too-many-new-posts failsafe, for example after the failsafe stopped the check because the feed changed shape"
+        type: boolean
+        default: false
+
+# A run is never cancelled half way through (a newer run waits instead): the
+# issue and the tracker commit below belong together.
+concurrency:
+  group: skills-hub-watch
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/skills-hub-report.md
+      ERROR_FILE: /tmp/skills-hub-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      - name: Check the Skills Hub blog feed
+        id: check
+        env:
+          FORCE_BASELINE: ${{ inputs.force_baseline && '1' || '' }}
+        run: node scripts/skills-hub-watch.mjs
+
+      # The issues come BEFORE the tracker commit on purpose. A new post stays
+      # "new" until the tracker that records it is on main, so when opening an
+      # issue fails the commit below is skipped (it has no status-check function
+      # in its condition) and the post is reported again by the next run or by
+      # "Re-run failed jobs". Committing first would lose the alert: the post
+      # would already be tracked, and nothing would report the failed issue.
+      # The same holds for the counter of an unreadable feed. The price is a
+      # possible duplicate issue when the commit step fails after an issue was
+      # opened; a duplicate beats a lost alert.
+      - name: Create issue if the Skills Hub blog has new relevant posts
+        id: issue
+        if: steps.check.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
+        with:
+          title: "${{ steps.check.outputs.issue_title }}"
+          content-filepath: /tmp/skills-hub-report.md
+          labels: enhancement
+
+      # Raised when the feed has been unreadable for long enough (the script
+      # decides and repeats it weekly), and when the check itself failed (corrupt
+      # tracker, too many new posts at once). It must also run when the check step
+      # failed, hence !cancelled() instead of the implicit success(). ONE issue with
+      # a stable title: a further failed run adds a comment (at most one a day: the
+      # check runs every 6 hours and a failsafe that stays tripped would otherwise
+      # add four a day), the first healthy run closes it.
+      - name: Create issue if the check failed
+        if: ${{ !cancelled() && steps.check.outputs.extraction_failed == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs raise --title "Skills Hub Watch Failed" --label bug --file /tmp/skills-hub-error.md --repeat-hours 24
+
+      - name: Commit updated Skills Hub tracker
+        if: steps.check.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/skills-hub-posts.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update Skills Hub posts tracker"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1
+
+      # Healthy: the check READ a usable feed and nothing failed (feed_read). A run
+      # that could not read it is no evidence of health, so it must not close the
+      # issue: a first or second bad read is only counted (extraction_failed and
+      # feed_problem are both false then), and a failure raised by the too-many-posts
+      # failsafe or a corrupt tracker would otherwise be closed by it and opened again
+      # by the next run. A feed that is still unreadable keeps the issue open too,
+      # even on a day the script does not repeat the alert.
+      - name: Close the failure issue once the check runs again
+        if: steps.check.outputs.extraction_failed == 'false' && steps.check.outputs.feed_read == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs clear --title "Skills Hub Watch Failed" --label bug --comment "The Skills Hub Watch ran normally again and the feed is readable. Closing this issue."
+
+      # An unreadable feed that has lasted long enough ends the run red, so the
+      # status of the workflow tells the truth between the weekly issues.
+      - name: Fail the run while the feed cannot be read
+        if: steps.check.outputs.feed_problem == 'true'
+        run: |
+          echo "::error title=Skills Hub Watch::The Skills Hub blog feed has not been readable for several runs. See the job summary and the Skills Hub Watch Failed issue."
+          exit 1

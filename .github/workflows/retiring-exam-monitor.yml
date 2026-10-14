@@ -4,14 +4,22 @@ on:
   schedule:
     - cron: "0 5 * * *" # Daily 05:00 UTC
   workflow_dispatch:
+    inputs:
+      force_baseline:
+        description: "Record the rows of both Microsoft Learn retirement pages as they are now, skipping the failsafe that stops a run when a page looks restructured (use it after checking that the pages really changed)"
+        type: boolean
+        default: false
 
+# A run is never cancelled half way through (a newer run waits instead): the
+# issues and the tracker commit below belong together.
 concurrency:
   group: retiring-exam-monitor
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
       issues: write
@@ -19,39 +27,45 @@ jobs:
       REPORT_FILE: /tmp/retiring-exam-report.md
       ERROR_FILE: /tmp/retiring-exam-error.md
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version: 20
+          node-version-file: .node-version
           package-manager-cache: false
 
-      - name: Check retiring exam dates
+      # The script reads the two Microsoft Learn retirement pages and
+      # retiring-exams.json, and opens the issues itself, BEFORE the trackers are
+      # committed below: the findings (one running issue, a comment for every
+      # later report, closed when Learn and the hub agree), a reminder issue 30, 7
+      # and 1 days before a tracked retirement, the notification after the date,
+      # and ONE issue per kind of failure (a Learn page unreadable for 3 days, the
+      # check itself failing) that gets a comment per further failed day instead of
+      # a new issue per run id. The script writes the trackers only after the
+      # issues succeeded, so when an issue step fails this step fails, the commit
+      # below is skipped (it has no status-check function in its condition), main
+      # keeps the old trackers and the next run (or "Re-run failed jobs") reports
+      # the same things again. Committing first would lose the alert.
+      - name: Check Microsoft Learn and the retiring exam tracker
         id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CREATE_ISSUES: "1"
+          FORCE_BASELINE: ${{ inputs.force_baseline && '1' || '' }}
         run: node scripts/retiring-exam-check.mjs
 
-      - name: Commit updated retiring exam tracker
+      - name: Commit updated retiring exam trackers
         if: steps.check.outputs.baseline_updated == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data_files/retiring-exams.json
-          git diff --cached --quiet || git commit -m "Update retiring exam tracker"
-          git pull --rebase
-          git push
-
-      - name: Create issue for newly retired exams
-        if: steps.check.outputs.changes_found == 'true'
-        uses: peter-evans/create-issue-from-file@v6
-        with:
-          title: "Exam Retirement Notification — ${{ github.run_id }}"
-          content-filepath: /tmp/retiring-exam-report.md
-          labels: enhancement
-
-      - name: Create issue if check failed
-        if: failure() && steps.check.outputs.extraction_failed == 'true'
-        uses: peter-evans/create-issue-from-file@v6
-        with:
-          title: "Retiring Exam Monitor Failed — ${{ github.run_id }}"
-          content-filepath: /tmp/retiring-exam-error.md
-          labels: bug
+          git add src/data_files/retiring-exams.json src/data_files/retirement-schedule.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update retiring exam trackers"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1

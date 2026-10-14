@@ -1,0 +1,135 @@
+{
+  "total": 608,
+  "unique": 604,
+  "successful": 600,
+  "unknown": 0,
+  "unsupported": 0,
+  "timeouts": 0,
+  "redirects": 0,
+  "remaps": 0,
+  "excludes": 4120,
+  "errors": 8,
+  "cached": 4,
+  "success_map": {},
+  "error_map": {
+    "dist/certs/azure/az-104/index.html": [
+      {
+        "url": "http://127.0.0.1:9/closed",
+        "status": {
+          "text": "Network error: Connection refused - server may be down or port blocked (error sending request for url (http://127.0.0.1:9/closed))",
+          "details": "Connection refused - server may be down or port blocked"
+        },
+        "span": {
+          "line": 171,
+          "column": 880
+        },
+        "duration": {
+          "secs": 0,
+          "nanos": 1200000
+        }
+      },
+      {
+        "url": "https://example.com/does-not-exist",
+        "status": {
+          "text": "Rejected status code: 404 Not Found",
+          "code": 404
+        },
+        "span": {
+          "line": 171,
+          "column": 1210
+        },
+        "duration": {
+          "secs": 0,
+          "nanos": 310000000
+        }
+      },
+      {
+        "url": "http://this-domain-should-not-exist-9f8e7d6c5b4a.com/page",
+        "status": {
+          "text": "Network error: Connection failed. Check network connectivity and firewall settings (error sending request for url (http://this-domain-should-not-exist-9f8e7d6c5b4a.com/page))",
+          "details": "Connection failed. Check network connectivity and firewall settings"
+        },
+        "span": {
+          "line": 171,
+          "column": 1540
+        },
+        "duration": {
+          "secs": 0,
+          "nanos": 41000000
+        }
+      },
+      {
+        "url": "https://expired.badssl.com/",
+        "status": {
+          "text": "Network error: SSL certificate expired. Site needs to renew certificate (error sending request for url (https://expired.badssl.com/))",
+          "details": "SSL certificate expired. Site needs to renew certificate"
+        },
+        "span": {
+          "line": 171,
+          "column": 1870
+        },
+        "duration": {
+          "secs": 0,
+          "nanos": 520000000
+        }
+      }
+    ],
+    "dist/certs/security/sc-100/index.html": [
+      {
+        "url": "http://127.0.0.1:9/closed",
+        "status": {
+          "text": "Error (cached)",
+          "details": "Error (cached)"
+        },
+        "span": {
+          "line": 171,
+          "column": 4021
+        }
+      },
+      {
+        "url": "https://example.com/does-not-exist",
+        "status": {
+          "text": "Rejected status code: 404 Not Found",
+          "code": 404
+        },
+        "span": {
+          "line": 171,
+          "column": 4350
+        }
+      }
+    ],
+    "dist/certs/power/pl-300/index.html": [
+      {
+        "url": "http://127.0.0.1:9/closed",
+        "status": {
+          "text": "Error (cached)",
+          "details": "Error (cached)"
+        },
+        "span": {
+          "line": 171,
+          "column": 3100
+        }
+      },
+      {
+        "url": "https://example.com/does-not-exist",
+        "status": {
+          "text": "Rejected status code: 404 Not Found",
+          "code": 404
+        },
+        "span": {
+          "line": 171,
+          "column": 3430
+        }
+      }
+    ]
+  },
+  "timeout_map": {},
+  "suggestion_map": {},
+  "redirect_map": {},
+  "excluded_map": {},
+  "duration": {
+    "secs": 142,
+    "nanos": 0
+  },
+  "detailed_stats": false
+}

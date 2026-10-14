@@ -1,0 +1,156 @@
+name: New Exam Monitor
+
+on:
+  schedule:
+    # Daily 06:45 UTC (the Applied Skills monitor has 06:30 on Mondays). Distinct
+    # start times are only a convenience, GitHub often starts runs hours late: the
+    # push retry below, which every pusher has, is the protection.
+    - cron: "45 6 * * *"
+  workflow_dispatch:
+    inputs:
+      force_baseline:
+        description: "Record every new exam and certification silently (no issue), skip the too-many-new failsafes, and also re-read every covered study guide and record its text silently, for example after Microsoft Learn renamed many pages at once"
+        type: boolean
+        default: false
+      force_guide_baseline:
+        description: "Re-read every covered study guide in full and record its text silently (a lost section included) after the study guide failsafe stopped the guide check, for example after Microsoft Learn changed many guides or their markup at once; new exams and certifications are still reported"
+        type: boolean
+        default: false
+      force_drift:
+        description: "Create or update the running Learn drift issue with the full list of differences between the hub pages and Microsoft Learn, even when more of them appeared at once than the drift failsafe allows (a naming or markup change on Learn looks like that), for example after the drift check reported that it could not run"
+        type: boolean
+        default: false
+
+# A run is never cancelled half way through (a newer run waits instead): the
+# issue and the tracker commit below belong together.
+concurrency:
+  group: new-exam-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/new-exam-report.md
+      ERROR_FILE: /tmp/new-exam-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      # Besides new exams and changed study guides the script compares the hub
+      # exam pages with what Learn says now (names, certification titles, beta
+      # state, retirement and transition notices, an UPCOMING exam that shows up,
+      # dated changes that are about to take effect) and keeps ONE running issue
+      # "Learn drift: hub pages need updating" in line with the differences, with
+      # `gh` (CREATE_ISSUES and the job token): it creates the issue, edits its
+      # text and comments when the list changes, and closes it when nothing is
+      # left. A drift check that cannot run raises ONE issue "Learn drift: the
+      # check could not run" (a comment per further failed run, closed by the next
+      # healthy run). A `gh` failure while those issues are kept up to date does
+      # NOT fail this step: the exam issue and the tracker commit below must not
+      # wait for it. The step sets drift_issue_failed instead and the last step of
+      # the job fails the run, so it is seen; the drift is derived from the hub
+      # files and the tracker, so the next run does the same work again.
+      - name: Check Microsoft Learn for new exams
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CREATE_ISSUES: "1"
+          FORCE_BASELINE: ${{ inputs.force_baseline && '1' || '' }}
+          FORCE_GUIDE_BASELINE: ${{ inputs.force_guide_baseline && '1' || '' }}
+          FORCE_DRIFT: ${{ inputs.force_drift && '1' || '' }}
+        run: node scripts/new-exam-check.mjs
+
+      # The issue comes BEFORE the tracker commit on purpose. A new exam stays
+      # "new" until the tracker that records it is on main, so when opening the
+      # issue fails the commit below is skipped (it has no status-check function
+      # in its condition) and the exam is reported again by the next run or by
+      # "Re-run failed jobs". Committing first would lose the alert: the exam
+      # would already be tracked, and nothing would report the failed issue.
+      # The same holds for a changed study guide: its new text hash is part of
+      # the tracker, so it is reported again until the tracker is on main. One
+      # issue covers new exams, new certifications and changed study guides.
+      - name: Create issue if a new exam, certification or study guide update was found
+        id: issue
+        if: steps.check.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
+        with:
+          title: "${{ steps.check.outputs.issue_title }}"
+          content-filepath: /tmp/new-exam-report.md
+          labels: enhancement
+
+      - name: Commit updated Learn exam tracker
+        if: steps.check.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/learn-exams.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update Learn exam tracker"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1
+
+      # The study guide failsafe stops only the guide part of a run: the exam
+      # check and its issue above ran as usual and the run succeeded. This issue
+      # tells the maintainers that no guide is being checked until they run the
+      # workflow with force_guide_baseline. It is ONE issue with a stable title: a
+      # comment for every further day the check stays stopped (no new issue per
+      # run), closed by the first run whose guide check works again.
+      # guide_check_failed has three values: 'true' (the failsafe stopped the guide
+      # check), 'false' (the guide check ran) and 'skipped' (it did not run, for
+      # example because the sitemap could not be read). Each step below compares it
+      # with one value: only 'true' raises the issue and only 'false' closes it, so a
+      # day without a guide check leaves the issue as it is.
+      - name: Create issue if the study guide check stopped
+        if: steps.check.outputs.guide_check_failed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs raise --title "New Exam Monitor: study guide check stopped" --label bug --file /tmp/new-exam-error.md
+
+      - name: Close the study guide issue once the guide check runs again
+        if: steps.check.outputs.guide_check_failed == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs clear --title "New Exam Monitor: study guide check stopped" --label bug --comment "The study guide check ran normally again. Closing this issue."
+
+      # One issue for a failing check, a comment for every further failed run,
+      # closed by the next healthy run (the same pattern as the monitors that look
+      # after their own issues).
+      - name: Create issue if the check failed
+        if: failure() && steps.check.outputs.extraction_failed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs raise --title "New Exam Monitor Failed" --label bug --file /tmp/new-exam-error.md
+
+      - name: Close the failure issue once the check runs again
+        if: steps.check.outputs.extraction_failed == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs clear --title "New Exam Monitor Failed" --label bug --comment "The New Exam Monitor ran normally again. Closing this issue."
+
+      # The drift issues could not be kept up to date because `gh` failed. The
+      # exam issue and the tracker commit above ran regardless; failing here makes
+      # the run red so that it is seen (the job summary has the message). The next
+      # run does the drift work again.
+      - name: Fail the run if the drift issue could not be kept up to date
+        if: ${{ !cancelled() && steps.check.outputs.drift_issue_failed == 'true' }}
+        run: |
+          echo "::error title=New Exam Monitor::The Learn drift issue could not be kept up to date because the GitHub CLI failed. The exam and study guide checks and the tracker commit ran as usual; see the job summary. The next run tries again."
+          exit 1

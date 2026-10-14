@@ -37,10 +37,11 @@
  * Writes GITHUB_OUTPUT keys: changes_found, baseline_updated, extraction_failed.
  */
 
-import { readFileSync, writeFileSync, appendFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { isAbsolute, join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
+import { writeOutput } from "./lib/actions.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -53,7 +54,8 @@ function resolveFromRoot(path) {
 }
 
 const TOC_URL =
-  process.env.TOC_URL ?? "https://learn.microsoft.com/en-us/credentials/toc.json";
+  process.env.TOC_URL ??
+  "https://learn.microsoft.com/en-us/credentials/toc.json";
 const BASELINE_FILE = resolveFromRoot(
   process.env.BASELINE_FILE ?? "src/data_files/voucher-challenges.json",
 );
@@ -75,17 +77,15 @@ const USER_AGENT =
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-function writeOutput(obj) {
-  const lines = Object.entries(obj)
-    .map(([key, value]) => `${key}=${String(value).toLowerCase()}\n`)
-    .join("");
-  appendFileSync(GITHUB_OUTPUT, lines);
+// The workflows compare these with "true" and "false": every value is lower-cased.
+function writeOutputs(values) {
+  writeOutput(GITHUB_OUTPUT, values, { lowercase: true });
 }
 
 function fail(message) {
   console.error(`ERROR: ${message}`);
   writeFileSync(ERROR_FILE, `${message}\n`);
-  writeOutput({
+  writeOutputs({
     changes_found: false,
     baseline_updated: false,
     extraction_failed: true,
@@ -174,7 +174,9 @@ async function fetchChallenges() {
       href = (officialRules ?? item.children[0])?.href;
     }
     if (!href) {
-      console.error(`WARNING: "${title}" matched but has no resolvable href; skipping.`);
+      console.error(
+        `WARNING: "${title}" matched but has no resolvable href; skipping.`,
+      );
       continue;
     }
 
@@ -244,7 +246,9 @@ function diff(current, baseline) {
   // Append-only: keep any baseline entries that didn't show up in this run's
   // top-level scan (Microsoft appears to keep old campaign pages in the nav
   // indefinitely, but don't assume that holds forever).
-  const stillMissing = baseline.challenges.filter((c) => !seenHrefs.has(c.href));
+  const stillMissing = baseline.challenges.filter(
+    (c) => !seenHrefs.has(c.href),
+  );
   merged.push(...stillMissing);
 
   return { merged: sortByHref(merged), newlyFound, stillMissing };
@@ -266,7 +270,7 @@ function buildReport(newlyFound) {
     rows +
     "\n\nVerify the details (discount, deadline, eligibility, country exclusions) on the linked " +
     "page, then decide whether it's worth a voucher page per the Voucher Pages conventions in " +
-    "`AGENTS.md`. See the \"Voucher Challenge Monitor\" section there for the full process.\n"
+    '`AGENTS.md`. See the "Voucher Challenge Monitor" runbook (`docs/monitors/voucher-challenge.md`) for the full process.\n'
   );
 }
 
@@ -298,7 +302,10 @@ async function main() {
     }
   }
 
-  const next = { lastSynced: new Date().toISOString().replace(/\.\d{3}Z$/, "Z"), challenges: merged };
+  const next = {
+    lastSynced: new Date().toISOString().replace(/\.\d{3}Z$/, "Z"),
+    challenges: merged,
+  };
 
   const baselineExists = existsSync(BASELINE_FILE);
   const changed =
@@ -314,7 +321,7 @@ async function main() {
     writeFileSync(REPORT_FILE, buildReport(newlyFound), "utf8");
   }
 
-  writeOutput({
+  writeOutputs({
     changes_found: changesFound,
     baseline_updated: changed,
     extraction_failed: false,
