@@ -117,6 +117,16 @@ const prepareItems: DocsSidebarItem[] = [
 
 const voucherItems: DocsSidebarItem[] = [
   {
+    label: "Exam AZ-401 (beta)",
+    href: docsPath("vouchers/az401beta"),
+    badge: { text: "*80%", variant: "tip" },
+  },
+  {
+    label: "Exam GH-700 (beta)",
+    href: docsPath("vouchers/gh700beta"),
+    badge: { text: "*80%", variant: "tip" },
+  },
+  {
     label: "GitHub Universe 2026 - GH-700",
     href: docsPath("vouchers/githubuniverse2026"),
     badge: { text: "N/A", variant: "tip" },

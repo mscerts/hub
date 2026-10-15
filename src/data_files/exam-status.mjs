@@ -2,7 +2,7 @@ export const examStatuses = {
   azure: {
     "AI-300": { text: "NEW", variant: "success", since: "2026-09-24" },
     "AI-500": { text: "NEW", variant: "success", since: "2026-09-30" },
-    "AZ-400": { text: "AT RISK", variant: "caution" },
+    "AZ-400": { text: "RETIRING", variant: "danger" },
     "AZ-401": { text: "BETA", variant: "tip" },
     "AZ-800": { text: "RETIRED", variant: "note" },
     "AZ-801": { text: "RETIRED", variant: "note" },

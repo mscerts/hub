@@ -2119,6 +2119,10 @@ test("every link to a program host in the guide, prepare and voucher pages is wa
       "a certification page: the New Exam Monitor reads it",
     ],
     [
+      "learn.microsoft.com/credentials/certifications/agentic-ai-business-professional",
+      "a certification page: the New Exam Monitor reads it",
+    ],
+    [
       "learn.microsoft.com/credentials/certifications/azure-solutions-architect",
       "a certification page: the New Exam Monitor reads it",
     ],
@@ -2132,6 +2136,10 @@ test("every link to a program host in the guide, prepare and voucher pages is wa
     ],
     [
       "learn.microsoft.com/credentials/certifications/exams/az-400",
+      "an exam page: the New Exam Monitor and its study guide check own it",
+    ],
+    [
+      "learn.microsoft.com/credentials/certifications/exams/az-401",
       "an exam page: the New Exam Monitor and its study guide check own it",
     ],
     [
