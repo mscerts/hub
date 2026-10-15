@@ -149,7 +149,10 @@ function buildReport(wentGA) {
     "|------|------|-----|\n" +
     `${rows}\n\n` +
     'See the "Beta and Retiring Exam Tracking" runbook (`docs/monitors/beta-and-retiring-exams.md`) for how to process these ' +
-    "(remove the BETA badge in `src/data_files/exam-status.mjs`, remove the beta `:::tip` and `:::note` from the exam page and update its Get Started card).\n"
+    "(replace the BETA badge in `src/data_files/exam-status.mjs` with " +
+    `\`{ text: "NEW", variant: "success", since: "${new Date().toISOString().slice(0, 10)}" }\`, ` +
+    "which the site hides by itself after 90 days (use the day Microsoft announced the exam as generally available if you know it), " +
+    "remove the beta `:::tip` and `:::note` from the exam page and update its Get Started card).\n"
   );
 }
 

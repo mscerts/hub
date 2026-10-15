@@ -1,6 +1,6 @@
 import { readdirSync } from "node:fs";
 import path from "node:path";
-import { examStatuses } from "./exam-status.mjs";
+import { examStatuses, visibleExamStatuses } from "./exam-status.mjs";
 import { docsPath } from "@utils/docs";
 
 type DocsSidebarIcon =
@@ -46,10 +46,13 @@ const areaPrefixOrder: Record<string, string[]> = {
 // badge therefore shows only on the landing page's status list.
 const HIDDEN_FROM_SIDEBAR = new Set(["AZ-800", "AZ-801"]);
 
+// The statuses as of this build: a NEW badge that has run its 90 days is left out.
+const shownStatuses = visibleExamStatuses();
+
 function buildExamItems(area: keyof typeof examStatuses): DocsSidebarItem[] {
   const docsDir = path.resolve(process.cwd(), "src", "content", "docs", area);
   const prefixOrder = areaPrefixOrder[area] ?? [];
-  const statuses = examStatuses[area] as Record<string, DocsSidebarBadge>;
+  const statuses = shownStatuses[area] as Record<string, DocsSidebarBadge>;
   const codes = readdirSync(docsDir)
     .filter((entry) => entry.toLowerCase().endsWith(".mdx"))
     .map((entry) => entry.replace(/\.mdx$/i, "").toUpperCase())
