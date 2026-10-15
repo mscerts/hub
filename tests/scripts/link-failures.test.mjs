@@ -2472,7 +2472,12 @@ test("the tracker file keeps its old shape until a link redirects to a parent pa
     join(repoRoot, "src/data_files/link-failures.json"),
     "utf8",
   );
-  assert.deepEqual(parseTracker(committed), { failing: {} });
+  // the Link Checker commits this file after every run, so it holds whatever
+  // is failing then: it only has to be valid and written back unchanged
+  assert.equal(
+    serializeTracker(parseTracker(committed)),
+    committed.replace(/\r\n/g, "\n"),
+  );
   // a file of the old shape loads without the new key and is written back byte for byte
   const old = '{\n  "failing": {}\n}\n';
   assert.equal(serializeTracker(parseTracker(old)), old);

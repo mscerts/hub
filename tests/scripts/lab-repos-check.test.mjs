@@ -1261,14 +1261,15 @@ test("the tracker is validated and written in a fixed order", async () => {
   const dir = await tempDir();
   const file = join(dir, "tracker.json");
   assert.deepEqual(loadTracker(file), emptyTracker());
+  // The workflow commits this file after every run, so it holds whatever the last
+  // run found: it only has to be valid and already in the written form.
+  const committed = JSON.parse(
+    readFileSync(join(root, "src", "data_files", "lab-repos.json"), "utf8"),
+  );
   assert.deepEqual(
-    normalizeTracker(
-      JSON.parse(
-        readFileSync(join(root, "src", "data_files", "lab-repos.json"), "utf8"),
-      ),
-    ),
-    emptyTracker(),
-    "the committed starting file is the empty state",
+    normalizeTracker(committed),
+    committed,
+    "the committed tracker is not in the form the monitor writes",
   );
 
   const valid = {
@@ -2847,10 +2848,8 @@ test("the committed data files are valid and every ignored repository has a prob
     const entry = ignored.find((e) => e.repo === repo);
     assert.deepEqual([...(entry?.problems ?? [])], ["notice"], repo);
   }
-  assert.deepEqual(
-    loadTracker(join(root, "src", "data_files", "lab-repos.json")),
-    emptyTracker(),
-  );
+  // the tracker is rewritten by every run, so only its validity is a fact (it throws otherwise)
+  loadTracker(join(root, "src", "data_files", "lab-repos.json"));
   assert.ok(KINDS.includes("new-repo") && KINDS[0] === "gone");
 });
 
