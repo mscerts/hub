@@ -2154,11 +2154,38 @@ test("every link to a program host in the guide, prepare and voucher pages is wa
       watched.add(urlKeys(url).path);
   }
   const gaps = new Set();
-  for (const found of scanContentUrls(join(root, "src/content"))) {
+  const links = scanContentUrls(join(root, "src/content"));
+  // The exam and certification pages that a hub exam page links, and the exam page
+  // of every hub exam, are read by the New Exam Monitor and its study guide check:
+  // a voucher page that links the same page needs no entry above (a beta voucher
+  // page links the page of its exam).
+  const examPage =
+    /^src\/content\/docs\/(aibusiness|azure|dynamics|github|microsoft365|power|security)\/([^/]+)\.mdx$/;
+  const owned = new Set();
+  for (const found of links) {
+    const page = examPage.exec(found.file);
+    if (!page) continue;
+    owned.add(
+      `learn.microsoft.com/credentials/certifications/exams/${page[2].toLowerCase()}`,
+    );
+    if (
+      /^learn\.microsoft\.com\/credentials\/certifications\/(?!resources\/)[^/]+(\/[^/]+)?$/.test(
+        found.keys.path,
+      ) &&
+      !/\/practice\//.test(found.keys.path)
+    )
+      owned.add(found.keys.path);
+  }
+  for (const found of links) {
     if (!/^src\/content\/docs\/(guide|prepare|vouchers)\//.test(found.file))
       continue;
     const key = found.keys.path;
-    if (programHost.test(key) && !watched.has(key) && !excluded.has(key))
+    if (
+      programHost.test(key) &&
+      !watched.has(key) &&
+      !excluded.has(key) &&
+      !owned.has(key)
+    )
       gaps.add(`${key} (${found.file}:${found.line})`);
   }
   assert.deepEqual([...gaps], [], "cited but neither watched nor excluded");

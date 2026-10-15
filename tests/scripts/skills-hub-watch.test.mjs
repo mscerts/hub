@@ -1911,7 +1911,7 @@ test("a new post that is the announcement a beta exam waits for starts with an A
     "`betaStart` stays 2026-10-14 unless the post states another day the beta period began (the day the post was published is not that date unless the post says so).",
     '- [ ] Regenerate the note with `node scripts/beta-note.mjs --code AZ-401 --expects "<Microsoft\'s go-live wording from the post, if it gives one>"` (leave `--expects` out when the post gives no go-live date or month)',
     "replace the `:::note` that follows the beta `:::tip` on `src/content/docs/azure/AZ-401.mdx` with its output.",
-    '- [ ] Add the beta voucher page ("Beta voucher format" under "Voucher Pages" in `AGENTS.md`, with `voucherEnds` and `linkedExam: AZ-401`) and link it from the exam page.',
+    '- [ ] Add the beta voucher page (`node scripts/new-beta-voucher.mjs`, "Beta voucher format" under "Voucher Pages" in `AGENTS.md`, with `voucherEnds` and `linkedExam: AZ-401`) and link it from the exam page.',
     "- [ ] Re-run the tests (`pnpm test:scripts`).",
   ]) {
     assert.ok(report.includes(step), step);

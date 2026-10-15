@@ -1481,7 +1481,7 @@ function betaAction(post, exam, ctx) {
     [
       `- [ ] Set \`announcement\` of ${span} in \`${BETA_TRACKER_DISPLAY}\` to the URL of this post${url ? `: \`${url}\`` : ` (its address with \`?${TRACKING_PARAM}\` added)`}. ${start}`,
       `- [ ] Regenerate the note with \`node scripts/beta-note.mjs --code ${code} --expects "<Microsoft's go-live wording from the post, if it gives one>"\` (leave \`--expects\` out when the post gives no go-live date or month) and replace the \`:::note\` that follows the beta \`:::tip\` on ${page} with its output.`,
-      `- [ ] Add the beta voucher page ("Beta voucher format" under "Voucher Pages" in \`AGENTS.md\`, with \`voucherEnds\` and \`linkedExam: ${code}\`) and link it from the exam page.`,
+      `- [ ] Add the beta voucher page (\`node scripts/new-beta-voucher.mjs\`, "Beta voucher format" under "Voucher Pages" in \`AGENTS.md\`, with \`voucherEnds\` and \`linkedExam: ${code}\`) and link it from the exam page.`,
       "- [ ] Re-run the tests (`pnpm test:scripts`).",
     ].join("\n"),
   ].join("\n\n");
