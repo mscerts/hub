@@ -16,8 +16,9 @@
  * has is kept as it is instead of failing the resync.
  *
  * This is a bootstrap/full-resync tool, not part of any scheduled workflow.
- * It overwrites the tracker file entirely, but preserves `notified`/`notifiedAt`
- * for exams that are still present so a resync never re-fires a notification.
+ * It overwrites the tracker file entirely, but preserves `notifiedOnDay`/
+ * `notifiedOnDayAt` and `notified`/`notifiedAt` for exams that are still present
+ * so a resync never re-fires a notification.
  * A tracker entry whose exam has neither badge any more is
  * dropped, with a warning naming it.
  * New retiring exams found after the initial sync should be added to
@@ -175,6 +176,10 @@ function main() {
         name,
         retirementDate,
         ...(replacementCode ? { replacementCode } : {}),
+        ...(prev?.notifiedOnDay ? { notifiedOnDay: prev.notifiedOnDay } : {}),
+        ...(prev?.notifiedOnDayAt
+          ? { notifiedOnDayAt: prev.notifiedOnDayAt }
+          : {}),
         notified: prev?.notified ?? false,
         ...(prev?.notifiedAt ? { notifiedAt: prev.notifiedAt } : {}),
       });

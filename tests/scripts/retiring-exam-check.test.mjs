@@ -24,6 +24,7 @@ import {
   buildFindingsReport,
   buildPagesReport,
   buildRetiredReport,
+  buildRetiresTodayReport,
   classifyHeading,
   computeAnnouncements,
   computeFindings,
@@ -63,6 +64,7 @@ import {
   scheduleContent,
   selectReports,
   selectRetired,
+  selectRetiresToday,
   slugCodeMap,
   sortRows,
   storedRow,
@@ -1270,6 +1272,80 @@ async function makeRepo({
       ),
   };
 }
+
+test("the notification on the retirement day: today only, once, and never for an entry that was already told", () => {
+  const exams = [
+    E({ code: "A-1", retirementDate: "2026-10-14" }),
+    E({ code: "B-2", retirementDate: "2026-10-15" }),
+    E({ code: "C-3", retirementDate: "2026-10-13" }),
+    E({ code: "D-4", retirementDate: "2026-10-14", notifiedOnDay: true }),
+    E({ code: "E-5", retirementDate: "2026-10-14", notified: true }),
+  ];
+  const out = selectRetiresToday(exams, "2026-10-14");
+  assert.deepEqual(
+    out.retiresToday.map((e) => e.code),
+    ["A-1"],
+  );
+  const a = out.exams.find((e) => e.code === "A-1");
+  assert.equal(a.notifiedOnDay, true);
+  assert.equal(a.notifiedOnDayAt, "2026-10-14");
+  assert.equal(a.notified, false, "the follow-up is still to come");
+  // a day that was missed is not announced late by this one
+  assert.equal(
+    out.exams.find((e) => e.code === "C-3").notifiedOnDay,
+    undefined,
+  );
+  assert.equal(
+    out.exams.find((e) => e.code === "B-2").notifiedOnDay,
+    undefined,
+  );
+});
+
+test("the follow-up needs Learn to list the exam as retired and the hub not to say RETIRED yet", () => {
+  const exams = [
+    E({ code: "A-1", retirementDate: "2026-10-13" }),
+    E({ code: "B-2", retirementDate: "2026-10-13" }),
+    E({ code: "C-3", retirementDate: "2026-10-13" }),
+    E({ code: "D-4", retirementDate: "2026-10-14" }),
+  ];
+  const out = selectRetired(exams, "2026-10-14", {
+    learnRetired: (code) => code !== "B-2",
+    hubRetired: (code) => code === "C-3",
+  });
+  // reported: Learn says retired, the hub does not
+  assert.deepEqual(
+    out.retired.map((e) => e.code),
+    ["A-1"],
+  );
+  // switched by hand already: marked as notified, no issue
+  assert.deepEqual(
+    out.quiet.map((e) => e.code),
+    ["C-3"],
+  );
+  assert.equal(out.exams.find((e) => e.code === "C-3").notified, true);
+  // Learn does not list it yet: left alone until it does
+  assert.equal(out.exams.find((e) => e.code === "B-2").notified, false);
+  // the retirement day itself is not retired yet
+  assert.equal(out.exams.find((e) => e.code === "D-4").notified, false);
+});
+
+test("the retirement-day issue says the exam is still RETIRING and names what comes next", () => {
+  const ctx = reportCtx();
+  ctx.evidence = evidenceByCode([L({})], ctx.hub);
+  const entry = E({ retirementDate: "2026-10-14" });
+  const text = buildRetiresTodayReport(ctx, [entry]);
+  assert.match(text, /^## Exam\(s\) retiring today/);
+  assert.match(
+    text,
+    /\| MS-102 \| Microsoft 365 Administrator \| 2026-10-14 \| AB-650 \|/,
+  );
+  assert.match(text, /the exam is still `RETIRING` today/);
+  assert.match(
+    text,
+    /opens a second issue when Microsoft Learn lists the exam as retired/,
+  );
+  assert.match(text, /If you switch it first, no second issue is opened/);
+});
 
 test("the exam name comes from the standard description, banners and replacements from the page", () => {
   const text = examMdx("AZ-104", "Microsoft Azure Administrator");
@@ -4067,18 +4143,19 @@ test("end to end: the notification and the tracker write are ordered the same wa
     await runScript(repo, learn, "2026-10-14", gh.env);
     const before = repo.exams();
     gh.env.FAKE_GH_FAIL = "issue create";
-    const failed = await runScript(repo, learn, "2026-12-01", gh.env);
+    const failed = await runScript(repo, learn, "2026-11-30", gh.env);
     assert.equal(failed.code, 1);
     assert.equal(
       failed.exams,
       before,
-      "notified was not recorded, so the notification is sent again",
+      "notifiedOnDay was not recorded, so the notification is sent again",
     );
     gh.env.FAKE_GH_FAIL = "";
-    const retry = await runScript(repo, learn, "2026-12-01", gh.env);
+    const retry = await runScript(repo, learn, "2026-11-30", gh.env);
     assert.equal(retry.output.changes_found, "true");
     assert.equal(
-      JSON.parse(retry.exams).exams.find((e) => e.code === "MS-102").notified,
+      JSON.parse(retry.exams).exams.find((e) => e.code === "MS-102")
+        .notifiedOnDay,
       true,
     );
   } finally {
@@ -4086,26 +4163,45 @@ test("end to end: the notification and the tracker write are ordered the same wa
   }
 });
 
-test("end to end: the notification after the date, confirmed against Learn, exactly once", async () => {
+test("end to end: the notification on the retirement day, then the follow-up once Learn lists the exam as retired, each exactly once", async () => {
   const repo = await makeRepo();
   const learn = await startLearn();
   const gh = await withIssues(repo);
+  const ms102 = (result) =>
+    JSON.parse(result.exams).exams.find((e) => e.code === "MS-102");
   try {
     await runScript(repo, learn, "2026-10-14", gh.env);
-    // the day itself: not retired yet, so nothing is raised (no reminder before the date)
-    const onTheDay = await runScript(repo, learn, "2026-11-30", gh.env);
-    assert.equal(onTheDay.output.issue_title, "");
-    assert.equal(
-      gh.issues().filter((i) => /notification|approaching/.test(i.title))
-        .length,
-      0,
-    );
-    assert.equal(
-      JSON.parse(onTheDay.exams).exams.find((e) => e.code === "MS-102")
-        .notified,
-      false,
-    );
 
+    // the day before: nothing (there is deliberately no reminder before the date)
+    const before = await runScript(repo, learn, "2026-11-29", gh.env);
+    assert.equal(before.output.issue_title, "");
+
+    // the retirement day: one issue, and the exam is still RETIRING that day
+    const onTheDay = await runScript(repo, learn, "2026-11-30", gh.env);
+    assert.equal(onTheDay.code, 0, onTheDay.stderr);
+    assert.equal(onTheDay.output.issue_title, "Exam retires today: MS-102");
+    assert.equal(ms102(onTheDay).notifiedOnDay, true);
+    assert.equal(ms102(onTheDay).notifiedOnDayAt, "2026-11-30");
+    assert.equal(ms102(onTheDay).notified, false);
+    const dayIssue = gh
+      .issues()
+      .find((i) => /^Exam retires today/.test(i.title));
+    assert.match(
+      dayIssue.body,
+      /\| MS-102 \| Microsoft 365 Administrator \| 2026-11-30 \| AB-650 \|/,
+    );
+    assert.match(dayIssue.body, /the exam is still `RETIRING` today/);
+
+    // the same day again: not repeated
+    const again = await runScript(repo, learn, "2026-11-30", gh.env);
+    assert.equal(again.output.changes_found, "false");
+
+    // the day after, Learn does not list it as retired yet: the follow-up waits
+    const waiting = await runScript(repo, learn, "2026-12-01", gh.env);
+    assert.equal(waiting.output.issue_title, "");
+    assert.equal(ms102(waiting).notified, false);
+
+    // Learn lists it as retired and the hub still says RETIRING: the follow-up
     learn.state.html.exams = examsPage({
       retired: [MS102, AZ800, AZ801, AI102],
       skills: [AGENT_SKILL],
@@ -4122,16 +4218,14 @@ test("end to end: the notification after the date, confirmed against Learn, exac
       baseline_updated: "true",
       issue_title: "Exam retirement notification: MS-102",
     });
-    const entry = JSON.parse(after.exams).exams.find(
-      (e) => e.code === "MS-102",
-    );
-    assert.equal(entry.notified, true);
-    assert.equal(entry.notifiedAt, "2026-12-01");
+    assert.equal(ms102(after).notified, true);
+    assert.equal(ms102(after).notifiedAt, "2026-12-01");
     const issue = gh.issues().find((i) => /notification/.test(i.title));
     assert.match(
       issue.body,
       /\| MS-102 \| Microsoft 365 Administrator \| 2026-11-30 \| AB-650 \|/,
     );
+    assert.match(issue.body, /Microsoft Learn lists them as retired/);
     assert.match(
       issue.body,
       /Learn: listed as retired on November 30, 2026 \(same date as the tracker\)\./,
@@ -4145,13 +4239,57 @@ test("end to end: the notification after the date, confirmed against Learn, exac
       issue.body,
       /switch it from `RETIRING` to `RETIRED` in `src\/data_files\/exam-status\.mjs`/,
     );
-    // and never again
+    // and never again, for either
     const later = await runScript(repo, learn, "2026-12-02", gh.env);
     assert.equal(later.output.changes_found, "false");
     assert.equal(
       gh.issues().filter((i) => /notification/.test(i.title)).length,
       1,
     );
+    assert.equal(
+      gh.issues().filter((i) => /^Exam retires today/.test(i.title)).length,
+      1,
+    );
+  } finally {
+    await learn.close();
+  }
+});
+
+test("end to end: an exam the hub already switched to RETIRED gets no follow-up issue, only the notified mark", async () => {
+  const repo = await makeRepo({
+    statuses: {
+      azure: {
+        "AZ-800": { text: "RETIRING", variant: "danger" },
+        "AZ-801": { text: "RETIRING", variant: "danger" },
+      },
+      microsoft365: { "MS-102": { text: "RETIRED", variant: "note" } },
+      aibusiness: { "AB-650": { text: "BETA", variant: "tip" } },
+    },
+  });
+  const learn = await startLearn();
+  const gh = await withIssues(repo);
+  try {
+    learn.state.html.exams = examsPage({
+      retired: [MS102, AZ800, AZ801, AI102],
+      skills: [AGENT_SKILL],
+    });
+    learn.state.html.credentials = credentialsPage({
+      retired: [certRow(MS102), certRow(AZ800), certRow(AI102)],
+      skillsRetired: [AGENT_SKILL],
+    });
+    await runScript(repo, learn, "2026-10-14", gh.env);
+    const result = await runScript(repo, learn, "2026-12-01", gh.env);
+    assert.equal(result.code, 0, result.stderr);
+    assert.equal(result.output.issue_title, "");
+    assert.equal(
+      gh.issues().filter((i) => /notification/.test(i.title)).length,
+      0,
+    );
+    const entry = JSON.parse(result.exams).exams.find(
+      (e) => e.code === "MS-102",
+    );
+    assert.equal(entry.notified, true);
+    assert.equal(entry.notifiedAt, "2026-12-01");
   } finally {
     await learn.close();
   }
@@ -4286,15 +4424,12 @@ test("end to end: with both pages down on the first run the monitor still works 
   try {
     learn.state.status.exams = 500;
     learn.state.status.credentials = 404;
-    const result = await runScript(repo, learn, "2026-12-01", gh.env);
+    const result = await runScript(repo, learn, "2026-11-30", gh.env);
     assert.equal(result.code, 0, result.stderr);
-    // the notification needs no Learn page
-    assert.equal(
-      result.output.issue_title,
-      "Exam retirement notification: MS-102",
-    );
+    // the notification on the retirement day needs no Learn page
+    assert.equal(result.output.issue_title, "Exam retires today: MS-102");
     assert.match(
-      gh.issues().find((i) => /notification/.test(i.title)).body,
+      gh.issues().find((i) => /^Exam retires today/.test(i.title)).body,
       /not listed on the retirement pages/,
     );
     const schedule = JSON.parse(result.schedule);
@@ -4303,6 +4438,14 @@ test("end to end: with both pages down on the first run the monitor still works 
       "credentials",
       "exams",
     ]);
+    // the follow-up waits for Learn, which is still unreadable: nothing the day after
+    const next = await runScript(repo, learn, "2026-12-01", gh.env);
+    assert.equal(next.code, 0, next.stderr);
+    assert.equal(next.output.issue_title, "");
+    assert.equal(
+      JSON.parse(next.exams).exams.find((e) => e.code === "MS-102").notified,
+      false,
+    );
   } finally {
     await learn.close();
   }
@@ -4583,6 +4726,8 @@ test("the resync script keeps every RETIRING and RETIRED exam in the tracker, wi
         area,
         name: "Old",
         retirementDate: "2026-09-30",
+        notifiedOnDay: true,
+        notifiedOnDayAt: "2026-09-30",
         notified: true,
         notifiedAt: "2026-10-01",
       })),
@@ -4600,6 +4745,8 @@ test("the resync script keeps every RETIRING and RETIRED exam in the tracker, wi
     withBadge.map(({ code }) => code).sort(),
   );
   for (const exam of synced) {
+    assert.equal(exam.notifiedOnDay, true, exam.code);
+    assert.equal(exam.notifiedOnDayAt, "2026-09-30", exam.code);
     assert.equal(exam.notified, true, exam.code);
     assert.equal(exam.notifiedAt, "2026-10-01", exam.code);
     assert.match(exam.retirementDate, /^\d{4}-\d{2}-\d{2}$/);

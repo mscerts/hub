@@ -10,10 +10,11 @@
  *   1. An issue titled ISSUE_TITLE in ANY state (open or closed) means "already
  *      raised": exit 0, nothing else is read or written.
  *   2. For every monitor in MONITORS: the oldest issue whose title is one of its
- *      ALERT titles (its failure/bug issues are left out on purpose; titles from
- *      before a monitor was rewritten are in, so past real alerts count), and the
- *      number of successful scheduled runs of its workflow. A workflow that is not
- *      on GitHub yet is "not deployed" and counts as not fired.
+ *      ALERT titles and that was opened on or after COUNT_FROM (its failure/bug
+ *      issues are left out on purpose; alerts of the code before the rewrite are
+ *      left out too, because they say nothing about the monitor as it runs now),
+ *      and the number of successful scheduled runs of its workflow. A workflow
+ *      that is not on GitHub yet is "not deployed" and counts as not fired.
  *   3. The evidence table is printed (and added to the job summary). The issue is
  *      raised when EVERY monitor has fired, or when BACKSTOP_DATE has passed (the
  *      UTC date of the run is after it).
@@ -22,6 +23,9 @@
  *   GH_TOKEN             the job token (issues: write, actions: read, contents: read)
  *   GITHUB_REPOSITORY    owner/name (default mscerts/hub)
  *   BACKSTOP_DATE        YYYY-MM-DD (default 2027-01-12, 90 days after 2026-10-14)
+ *   COUNT_FROM           YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ: only alerts opened on
+ *                        or after it count (default 2026-10-14T22:41:29Z, when the
+ *                        reworked monitors were merged)
  *   TODAY                YYYY-MM-DD, the date the run pretends it is
  *   CREATE_ISSUES        1 = really create the issue (the workflow sets it)
  *   DRY_RUN              1 = never create; print the issue instead
@@ -46,6 +50,7 @@ const env = process.env;
 const ISSUE_TITLE = "Monitor tests: decide whether to remove them";
 const REPO = env.GITHUB_REPOSITORY || "mscerts/hub";
 const BACKSTOP_DATE = env.BACKSTOP_DATE || "2027-01-12";
+const COUNT_FROM = env.COUNT_FROM || "2026-10-14T22:41:29Z";
 const TODAY = env.TODAY || new Date().toISOString().slice(0, 10);
 const DRY_RUN = env.DRY_RUN === "1";
 const CREATE_ISSUES = env.CREATE_ISSUES === "1";
@@ -67,24 +72,18 @@ const MONITORS = [
   [
     "Retiring Exam Monitor",
     "retiring-exam-monitor.yml",
-    // The old "Exam Retirement Notification — <run id>" and the current titles.
-    /^(Exam Retirement Notification\b|Exam retirement (schedule|approaching): |Microsoft Learn announced a retirement: )/i,
+    /^(Exam retirement (schedule|notification): |Exam retires today: |Microsoft Learn announced a retirement: )/i,
   ],
   [
     "Applied Skills Monitor",
     "applied-skills-monitor.yml",
     /^Applied Skills Changes Detected\b/,
   ],
-  [
-    "MeasureUp Monitor",
-    "measureup-monitor.yml",
-    /^(New MeasureUp Products Detected\b|MeasureUp: )/,
-  ],
+  ["MeasureUp Monitor", "measureup-monitor.yml", /^MeasureUp: /],
   [
     "Partner Designations Monitor",
     "partner-designations-monitor.yml",
-    // The old "Partner Designation Page Changed — <run id>" and the current titles.
-    /^(Partner Center pages? changed: |Partner Designation Page Changed\b)/,
+    /^Partner Center pages? changed: /,
   ],
   [
     "Voucher Challenge Monitor",
@@ -104,12 +103,7 @@ const MONITORS = [
     /^(New Microsoft Learn (exams?|certifications?): |Microsoft Learn study guide updated: |Learn drift: hub pages need updating$)/,
   ],
   ["Learn URL Check", "learn-url-check.yml", /^Broken Microsoft Learn links: /],
-  [
-    "Link Checker",
-    "link-checker.yml",
-    // The current title and the two reports of the version before the rewrite.
-    /^(Link Checker: dead external links$|(External )?Link Checker Report$)/,
-  ],
+  ["Link Checker", "link-checker.yml", /^Link Checker: dead external links$/],
   [
     "Skills Hub Watch",
     "skills-hub-watch.yml",
@@ -286,7 +280,7 @@ function buildBody(rows, reason) {
     "",
     evidenceTable(rows),
     "",
-    `"First real alert" is the oldest issue (open or closed) with one of the monitor's alert titles; its failure issues do not count, titles from before a monitor was rewritten do. "not deployed" means the workflow is not on GitHub yet, which counts as not fired.`,
+    `"First real alert" is the oldest issue (open or closed) with one of the monitor's alert titles opened on or after ${COUNT_FROM} (when the reworked monitors were merged); its failure issues do not count, and neither do alerts of the code from before that. "not deployed" means the workflow is not on GitHub yet, which counts as not fired.`,
     "",
     "## What the tests are",
     "",
@@ -328,6 +322,11 @@ function main() {
       throw new Error(`${name} must be YYYY-MM-DD, got "${value}".`);
     }
   }
+  if (!/^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}:\d{2}Z)?$/.test(COUNT_FROM)) {
+    throw new Error(
+      `COUNT_FROM must be YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ, got "${COUNT_FROM}".`,
+    );
+  }
   if (FORCE_ALL_FIRED && CREATE_ISSUES && !DRY_RUN) {
     throw new Error(
       "FORCE_ALL_FIRED=1 is a proof override: it must not run with CREATE_ISSUES=1 unless DRY_RUN=1.",
@@ -361,7 +360,10 @@ function main() {
   const deployed = deployedWorkflows();
   const rows = MONITORS.map(([name, workflow, title]) => {
     const alert = issues
-      .filter((issue) => title.test(issue.title.trim()))
+      .filter(
+        (issue) =>
+          title.test(issue.title.trim()) && issue.createdAt >= COUNT_FROM,
+      )
       .sort(oldestFirst)[0];
     const runs = deployed.has(workflow) ? scheduledSuccesses(workflow) : null;
     const fired = FORCE_ALL_FIRED || (runs !== null && Boolean(alert));

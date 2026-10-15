@@ -30,9 +30,14 @@
  *      says RETIRING or RETIRED for an exam the tracker does not know, and when a lab page
  *      links an Applied Skill that Learn lists as retiring or retired. Rows that do
  *      not concern the hub are only recorded.
- *   2. The notification AFTER the date (yesterday UTC or earlier) the monitor always
- *      sent, now confirmed against Learn's tables. There is deliberately no
- *      reminder before the date: the issue on the day is the one that matters.
+ *   2. Two notifications for a tracked retirement, each sent exactly once. One ON the
+ *      retirement day itself ("Exam retires today"; the exam is still RETIRING that
+ *      day). One AFTER the date (yesterday UTC or earlier), only when Microsoft
+ *      Learn's tables list the exam as retired and the hub does not show RETIRED
+ *      yet; an exam the hub already switched is marked as notified without an issue,
+ *      and one Learn does not list as retired yet waits until it does. There is
+ *      deliberately no reminder before the date: the issue on the day is the one
+ *      that matters.
  *   3. An informational announcement for a certification row that appeared (or
  *      changed date) as "scheduled to retire" and that no reliable mapping ties to
  *      an exam (the row has no exam code and its certification address is not the
@@ -41,6 +46,7 @@
  *
  * Trackers (this script is the only writer):
  *   src/data_files/retiring-exams.json     the hand-kept list; the script sets
+ *                                          `notifiedOnDay`, `notifiedOnDayAt`,
  *                                          `notified` and `notifiedAt`
  *   src/data_files/retirement-schedule.json  { lastSynced, format, failures, reported, rows }
  *       format    SCHEDULE_FORMAT, the version of what the rows were extracted with
@@ -88,8 +94,11 @@
  *   - "Exam retirement schedule: hub does not match Microsoft Learn" (enhancement):
  *     ONE running issue for the findings, created with the report, a comment for
  *     every later report, closed with a comment when no finding is left.
+ *   - "Exam retires today: <codes>" (enhancement): one issue per day with the
+ *     exams whose retirement date is today (`notifiedOnDay` is set, once).
  *   - "Exam retirement notification: <codes>" (enhancement): one issue per day
- *     with the exams that passed their date.
+ *     with the exams that passed their date, are listed as retired on Learn and
+ *     are not RETIRED on the hub yet (`notified` is set, once).
  *   - "Microsoft Learn announced a retirement: <names>" (enhancement): one issue per
  *     day with the new rows no exam could be mapped to (alert 3 above).
  *   - "Retiring Exam Monitor: Microsoft Learn retirement pages cannot be read" and
@@ -960,6 +969,8 @@ const ENTRY_KEYS = [
   "name",
   "retirementDate",
   "replacementCode",
+  "notifiedOnDay",
+  "notifiedOnDayAt",
   "notified",
   "notifiedAt",
 ];
@@ -982,17 +993,59 @@ export function examsContent(tracker) {
 // Notifications (retiring-exams.json)
 // ---------------------------------------------------------------------------
 
-/** Marks every entry whose date is yesterday (UTC) or earlier as notified. */
-export function selectRetired(exams, today) {
+/**
+ * The notification ON the retirement day: every entry whose date is today (UTC) and
+ * that nobody was told about yet gets `notifiedOnDay`. An entry whose day was missed
+ * (the monitor did not run, or the entry was added late) is not announced here: the
+ * follow-up below covers it.
+ */
+export function selectRetiresToday(exams, today) {
+  const retiresToday = [];
+  const next = exams.map((entry) => {
+    if (
+      entry.retirementDate !== today ||
+      entry.notifiedOnDay === true ||
+      entry.notified === true
+    ) {
+      return entry;
+    }
+    const copy = { ...entry, notifiedOnDay: true, notifiedOnDayAt: today };
+    retiresToday.push(copy);
+    return copy;
+  });
+  return { retiresToday, exams: next };
+}
+
+/**
+ * The follow-up after the date (yesterday UTC or earlier, the old cut-off, so a missed
+ * run never skips it): an entry that was not notified yet is reported only when
+ * Microsoft Learn lists the exam as retired AND the hub does not say RETIRED yet.
+ * An exam the hub already switched to RETIRED is marked as notified without an issue,
+ * and one Learn does not list as retired yet is left alone until it does.
+ * `learnRetired` and `hubRetired` are `(code) => boolean`; without them the old
+ * behaviour is kept (every entry past its date is reported).
+ */
+export function selectRetired(
+  exams,
+  today,
+  { learnRetired = () => true, hubRetired = () => false } = {},
+) {
   const cutoff = dayBefore(today);
   const retired = [];
+  const quiet = [];
   const next = exams.map((entry) => {
     if (entry.notified === true || entry.retirementDate > cutoff) return entry;
+    if (hubRetired(entry.code)) {
+      const copy = { ...entry, notified: true, notifiedAt: today };
+      quiet.push(copy);
+      return copy;
+    }
+    if (!learnRetired(entry.code)) return entry;
     const copy = { ...entry, notified: true, notifiedAt: today };
     retired.push(copy);
     return copy;
   });
-  return { retired, exams: next };
+  return { retired, quiet, exams: next };
 }
 
 // ---------------------------------------------------------------------------
@@ -1934,7 +1987,7 @@ export function buildRetiredReport(ctx, retired) {
   const lines = [
     "## Exam(s) retired",
     "",
-    "The following exam(s) passed their retirement date:",
+    "The following exam(s) passed their retirement date, Microsoft Learn lists them as retired, and the hub does not show them as `RETIRED` yet:",
     "",
     "| Code | Name | Retirement date | Replacement |",
     "|------|------|------------------|-------------|",
@@ -1956,7 +2009,39 @@ export function buildRetiredReport(ctx, retired) {
   }
   lines.push(
     "",
-    'See the "Beta and Retiring Exam Tracking" runbook (`docs/monitors/beta-and-retiring-exams.md`) for how to process these. **What to do** for each exam above: confirm on Microsoft Learn that the exam is retired, then switch it from `RETIRING` to `RETIRED` in `src/data_files/exam-status.mjs` (`{ text: "RETIRED", variant: "note" }`). Keep the `retiring-exams.json` entry as history: the monitor sets `notified` itself and never notifies again for it. The `RetirementBanner` on the page already words itself in the past tense once the date has passed; a hand-written `:::caution` banner has to be reworded.',
+    'See the "Beta and Retiring Exam Tracking" runbook (`docs/monitors/beta-and-retiring-exams.md`) for how to process these. **What to do** for each exam above: switch it from `RETIRING` to `RETIRED` in `src/data_files/exam-status.mjs` (`{ text: "RETIRED", variant: "note" }`). Keep the `retiring-exams.json` entry as history: the monitor sets `notified` itself and never notifies again for it. The `RetirementBanner` on the page already words itself in the past tense once the date has passed; a hand-written `:::caution` banner has to be reworded.',
+  );
+  return lines.join("\n");
+}
+
+/** The issue on the retirement day itself. */
+export function buildRetiresTodayReport(ctx, retiresToday) {
+  const lines = [
+    "## Exam(s) retiring today",
+    "",
+    "The following exam(s) have today as their retirement date:",
+    "",
+    "| Code | Name | Retirement date | Replacement |",
+    "|------|------|------------------|-------------|",
+    ...retiresToday.map(
+      (entry) =>
+        `| ${safeText(entry.code)} | ${safeText(entry.name)} | ${entry.retirementDate} | ${entry.replacementCode ? safeText(entry.replacementCode) : "—"} |`,
+    ),
+  ];
+  for (const entry of retiresToday) {
+    const facts = hubFacts(entry.code, ctx, entry.retirementDate);
+    lines.push(
+      "",
+      `### ${entry.code}`,
+      "",
+      `- Hub page: ${facts.page ? code(facts.page.path) : "no exam page found"}`,
+      `- ${bannerLine(facts, entry.retirementDate, ctx.today)}`,
+      `- ${learnStateLine(entry.code, entry.retirementDate, ctx)}`,
+    );
+  }
+  lines.push(
+    "",
+    'See the "Beta and Retiring Exam Tracking" runbook (`docs/monitors/beta-and-retiring-exams.md`) for how to process these. **What to do:** the exam is still `RETIRING` today (the badge turns `RETIRED` once the date is before today, the same cut-off as the `RetirementBanner`), so nothing has to change on the hub yet: check that the exam page, its banner and its replacement are ready. The monitor opens a second issue when Microsoft Learn lists the exam as retired and the hub still shows `RETIRING`; then switch the badge to `RETIRED` in `src/data_files/exam-status.mjs` (`{ text: "RETIRED", variant: "note" }`) and keep the `retiring-exams.json` entry as history. If you switch it first, no second issue is opened.',
   );
   return lines.join("\n");
 }
@@ -2253,13 +2338,23 @@ export async function run(cfg) {
         })
       : [];
 
-  // 4. The notification after the date.
-  const retired = selectRetired(tracker.exams, cfg.today);
+  // 4. The notification on the retirement day, then the follow-up after it: an exam
+  // Learn lists as retired that the hub does not show as RETIRED yet.
+  const onDay = selectRetiresToday(tracker.exams, cfg.today);
+  const retired = selectRetired(onDay.exams, cfg.today, {
+    learnRetired: (code_) =>
+      learnRowsFor(code_, ctx).some((row) => row.status === "retired"),
+    hubRetired: (code_) => hub.statuses.get(code_)?.text === "RETIRED",
+  });
 
   // 5. Report texts.
   const findingsBody =
     reports.reportNow.length > 0
       ? buildFindingsReport(ctx, reports.reportNow)
+      : "";
+  const retiresTodayBody =
+    onDay.retiresToday.length > 0
+      ? buildRetiresTodayReport(ctx, onDay.retiresToday)
       : "";
   const retiredBody =
     retired.retired.length > 0 ? buildRetiredReport(ctx, retired.retired) : "";
@@ -2290,10 +2385,13 @@ export async function run(cfg) {
     findings,
     reportNow: reports.reportNow,
     allClear: findings.length === 0,
+    retiresToday: onDay.retiresToday,
     retired: retired.retired,
+    retiredQuietly: retired.quiet,
     announcements,
     failing,
     findingsBody,
+    retiresTodayBody,
     retiredBody,
     announcementBody,
     nextSchedule,
@@ -2330,7 +2428,7 @@ function summaryText(result, cfg) {
   }
   lines.push(
     `- Findings: ${result.findings.length} open, ${result.reportNow.length} reported today`,
-    `- Retired today: ${result.retired.length}; new rows no exam maps to: ${result.announcements.length}`,
+    `- Retiring today: ${result.retiresToday.length}; retired on Learn, not yet on the hub: ${result.retired.length}; new rows no exam maps to: ${result.announcements.length}`,
     `- Run date used: ${cfg.today}`,
   );
   return lines.join("\n");
@@ -2358,8 +2456,16 @@ async function main(cfg) {
     `${plural(result.findings.length, "finding", "findings")} open, ${result.reportNow.length} to report today.`,
   );
   console.log(
-    `${plural(result.retired.length, "exam", "exams")} past the date.`,
+    `${plural(result.retiresToday.length, "exam", "exams")} retiring today.`,
   );
+  console.log(
+    `${plural(result.retired.length, "exam", "exams")} past the date that Learn lists as retired and the hub does not show as RETIRED.`,
+  );
+  if (result.retiredQuietly.length > 0) {
+    console.log(
+      `${plural(result.retiredQuietly.length, "exam", "exams")} past the date already marked RETIRED on the hub (${result.retiredQuietly.map((e) => e.code).join(", ")}): marked as notified without an issue.`,
+    );
+  }
 
   if (result.announcements.length > 0) {
     console.log(
@@ -2369,6 +2475,7 @@ async function main(cfg) {
 
   const parts = [
     result.findingsBody,
+    result.retiresTodayBody,
     result.retiredBody,
     result.announcementBody,
   ].filter(Boolean);
@@ -2401,6 +2508,18 @@ async function main(cfg) {
     );
   }
 
+  if (result.retiresToday.length > 0) {
+    const title = titleWithCodes(
+      "Exam retires today: ",
+      result.retiresToday.map((e) => e.code),
+    );
+    const issue = createEventIssue(cfg, gh, {
+      title,
+      body: result.retiresTodayBody,
+    });
+    console.log(describeIssue(`Retirement-day issue "${title}"`, issue, cfg));
+    headline.push(title);
+  }
   if (result.retired.length > 0) {
     const title = titleWithCodes(
       "Exam retirement notification: ",
