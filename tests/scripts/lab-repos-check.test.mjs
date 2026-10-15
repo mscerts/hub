@@ -2826,11 +2826,27 @@ test("every environment variable the script reads is documented in its header", 
   }
 });
 
-test("the committed data files are valid and the ignore list starts empty", () => {
-  assert.deepEqual(
-    loadIgnore(join(root, "src", "data_files", "lab-repos-ignore.json")),
-    [],
+test("the committed data files are valid and every ignored repository has a problem list and a reason", () => {
+  // loadIgnore throws on a malformed file, an unknown problem kind or a missing reason
+  const ignored = loadIgnore(
+    join(root, "src", "data_files", "lab-repos-ignore.json"),
   );
+  for (const entry of ignored) {
+    assert.ok(entry.problems.size > 0, `${entry.repo}: no problems listed`);
+    assert.ok(
+      entry.reasons.every((reason) => reason.length > 0),
+      `${entry.repo}: empty reason`,
+    );
+  }
+  // the retiring AZ-800 and AZ-801 repos stay linked until they are archived or
+  // removed, which the check reports again (their README notice is all it covers)
+  for (const repo of [
+    "MicrosoftLearning/AZ-800-Administering-Windows-Server-Hybrid-Core-Infrastructure",
+    "MicrosoftLearning/AZ-801-Configuring-Windows-Server-Hybrid-Advanced-Services",
+  ]) {
+    const entry = ignored.find((e) => e.repo === repo);
+    assert.deepEqual([...(entry?.problems ?? [])], ["notice"], repo);
+  }
   assert.deepEqual(
     loadTracker(join(root, "src", "data_files", "lab-repos.json")),
     emptyTracker(),

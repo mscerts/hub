@@ -4,9 +4,10 @@ import Icon from "@components/ui/icons/Icon.astro";
 import { Icon as PackIcon } from "astro-icon/components";
 import MeasureUpBanner from "../../../assets/images/mUjulybanner.png";
 import {
-  visibleExamStatuses,
+  recentExamStatuses,
   examStatusNames,
 } from "@data/exam-status.mjs";
+import retiringExams from "@data/retiring-exams.json";
 
 const docs = await getCollection("docs");
 
@@ -61,7 +62,11 @@ const communityLinks = [
   },
 ];
 
-const statusChanges = Object.entries(visibleExamStatuses()).flatMap(([area, exams]) =>
+const retirementDates = Object.fromEntries(
+  retiringExams.exams.map((exam) => [exam.code, exam.retirementDate]),
+);
+
+const statusChanges = Object.entries(recentExamStatuses(retirementDates)).flatMap(([area, exams]) =>
   Object.entries(exams).map(([code, status]) => ({
     code,
     status: status.text,

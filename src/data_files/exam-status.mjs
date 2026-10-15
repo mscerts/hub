@@ -98,6 +98,40 @@ export function visibleExamStatuses(today = new Date()) {
   );
 }
 
+/**
+ * How long a retired exam stays in the landing page's "Recent status changes"
+ * list: counted from its retirement date (day 0, when the exam is still
+ * RETIRING), so the last day listed is the date + 89. The RETIRED badge itself
+ * stays in the sidebar and on the page for good.
+ */
+export const RETIRED_LISTED_DAYS = 90;
+
+/**
+ * visibleExamStatuses as the landing page's "Recent status changes" list shows
+ * them: a RETIRED exam is only listed for RETIRED_LISTED_DAYS days after its
+ * retirement date. `retirementDates` maps an exam code to the retirementDate
+ * (YYYY-MM-DD) of its retiring-exams.json entry; a RETIRED exam without a real
+ * date there, or whose date is still ahead, is left out of the list (the
+ * Retiring Exam Monitor reports a RETIRED badge without a tracker entry).
+ */
+export function recentExamStatuses(retirementDates, today = new Date()) {
+  const now = todayDay(today);
+  return Object.fromEntries(
+    Object.entries(visibleExamStatuses(today)).map(([area, exams]) => [
+      area,
+      Object.fromEntries(
+        Object.entries(exams).filter(([code, status]) => {
+          if (status.text !== "RETIRED") return true;
+          const retired = utcDay(retirementDates?.[code]);
+          if (retired === null) return false;
+          const age = Math.round((now - retired) / DAY_MS);
+          return age >= 0 && age < RETIRED_LISTED_DAYS;
+        }),
+      ),
+    ]),
+  );
+}
+
 export const examStatusNames = {
   NEW: "New",
   BETA: "Beta",
