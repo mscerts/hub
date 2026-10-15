@@ -414,6 +414,7 @@ Global styles are in `src/assets/styles/global.css`; docs-specific styles are sc
 ### Redirects
 - Defined in `astro.config.mjs` under `redirects: { ... }`
 - Add redirects when exams are renamed/moved or certification structures change; retain legacy routes to avoid broken inbound links.
+- When Microsoft renames an exam in place (PL-400 became AB-400 on 2026-10-16, same certification, an updated exam), move the exam page and its lab page to the new code and area (`git mv`, so the history follows), redirect the canonical and the legacy address of both (`/certs/power/pl-400`, `/power/pl-400`, `/certs/labs/power/pl-400`, `/labs/power/pl-400`) in `astro.config.mjs` and, for a real 301, `public/_redirects`, update the internal links, put a note at the top of the page saying what happened, mark the new exam NEW, and keep the resources made for the old exam with its code in their titles (like `AZ-500: Pluralsight Course` on SC-500) until equivalents for the new one exist. An exam that is only retired, with a replacement page of its own, keeps its page and gets the retirement treatment instead.
 
 ---
 

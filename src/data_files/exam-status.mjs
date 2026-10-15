@@ -14,6 +14,7 @@ export const examStatuses = {
     "GH-700": { text: "BETA", variant: "tip" },
   },
   aibusiness: {
+    "AB-400": { text: "NEW", variant: "success", since: "2026-10-16" },
     "AB-620": { text: "NEW", variant: "success", since: "2026-09-24" },
     "AB-650": { text: "BETA", variant: "tip" },
   },
