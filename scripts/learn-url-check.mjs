@@ -6,6 +6,13 @@
  * Usage:
  *   node scripts/learn-url-check.mjs
  *   node scripts/learn-url-check.mjs --choose-source   (prints source=changes|cache for the workflow)
+ *   node scripts/learn-url-check.mjs --check           (the read-only half: writes PLAN_FILE, touches no issue and no tracker)
+ *   node scripts/learn-url-check.mjs --publish         (the write half: reads PLAN_FILE, opens/updates/closes the issues, writes the tracker)
+ *
+ * Without --check or --publish both halves run in one process (a local run, the tests). The
+ * workflow runs them as two jobs, so the long job that waits for learnsync and reads Learn holds
+ * no token that can write issues or push: the plan is plain JSON passed as an artifact (stale-data
+ * alert, inputs of the broken-link issue, what the tracker write needs; see runCheck).
  *
  * This script is a thin client: the logic that knows what a Learn URL is, what
  * changed and where it went lives in learnsync (scripts/lib/*.mjs, documented in
@@ -104,6 +111,7 @@
  *   CHANGES_STALE_DAYS   10        (changes: a change-file source stamp older than this is stale)
  *   LEARNSYNC_STALE_DAYS 6         (heartbeat age that raises the "learnsync data is stale" issue, both modes)
  *   STALE_REPORT_FILE    <tmpdir>/learn-url-check-stale.md   (the stale-data issue text, written whenever the data is stale)
+ *   PLAN_FILE            <tmpdir>/learn-url-check-plan.json  (--check writes it, --publish reads it)
  *   PROBE_UNVERIFIABLE   1         (cache: probe page kinds no cache covers)
  *   LIVE_CONCURRENCY     3
  *   LIVE_DELAY_MS        500
@@ -117,7 +125,7 @@
  *   --choose-source reads EVENT_NAME (github.event_name), FULL_AUDIT (the full_audit input) and the
  *   tracker's lastFullAudit.
  *
- * Writes GITHUB_OUTPUT keys: tracker_updated, new_count, check_failed, learnsync_stale.
+ * Writes GITHUB_OUTPUT keys: tracker_updated, new_count, check_failed, learnsync_stale (and plan_written with --check).
  */
 
 import {
@@ -176,6 +184,7 @@ const CONFIG = {
   errorFile: env.ERROR_FILE ?? join(tmpdir(), "learn-url-check-error.md"),
   staleReportFile:
     env.STALE_REPORT_FILE ?? join(tmpdir(), "learn-url-check-stale.md"),
+  planFile: env.PLAN_FILE ?? join(tmpdir(), "learn-url-check-plan.json"),
   githubOutput: env.GITHUB_OUTPUT ?? join(tmpdir(), "github-output"),
   waitForSync: (env.WAIT_FOR_SYNC ?? "1") !== "0",
   syncWaitMinutes: Number(env.SYNC_WAIT_MINUTES ?? 150),
@@ -1519,7 +1528,12 @@ async function fetchLearnsyncContext(runsRead) {
  * nothing written. The issue text is also written to STALE_REPORT_FILE whenever
  * the data is stale, so a dry run shows what would be sent.
  */
-async function handleStaleData({ heartbeat, staleDays, today, runUrl }) {
+/**
+ * The check half of the stale-data alert: is learnsync's data stale, and what would the issue
+ * say? Reads learnsync (two read-only API calls) and writes STALE_REPORT_FILE, but never
+ * touches an issue: `applyStaleIssue` does that, in the job that may write issues.
+ */
+async function assessStaleData({ heartbeat, staleDays, today, runUrl }) {
   // learnsync's runs are read on every run (two read-only API calls): a sync that
   // failed after the last good heartbeat is a stale cause in its own right
   const runsRead = await readSyncRuns();
@@ -1531,7 +1545,6 @@ async function handleStaleData({ heartbeat, staleDays, today, runUrl }) {
     maxDataAgeHours: CONFIG.maxDataAgeHours,
     ledgerMaxAgeDays: CONFIG.changesStaleDays,
   });
-  const enabled = CONFIG.createIssues && !CONFIG.dryRun;
   let issueBody = "";
   let commentBody = "";
   if (staleness.stale) {
@@ -1546,13 +1559,25 @@ async function handleStaleData({ heartbeat, staleDays, today, runUrl }) {
   } else {
     console.log("learnsync data is fresh.");
   }
-  const result = reconcileStaleIssue({
+  return {
     stale: staleness.stale,
-    enabled,
-    gh,
+    problemIds: staleness.problems.map((p) => p.id),
     issueBody,
     commentBody,
     closeComment: buildFreshComment({ staleness, today, runUrl }),
+  };
+}
+
+/** The write half of the stale-data alert: open, comment on or close the one hub issue that says so. */
+function applyStaleIssue(stale) {
+  const enabled = CONFIG.createIssues && !CONFIG.dryRun;
+  const result = reconcileStaleIssue({
+    stale: stale.stale,
+    enabled,
+    gh,
+    issueBody: stale.issueBody,
+    commentBody: stale.commentBody,
+    closeComment: stale.closeComment,
   });
   if (result.action === "skipped") {
     console.log(
@@ -1571,12 +1596,12 @@ async function handleStaleData({ heartbeat, staleDays, today, runUrl }) {
       `Stale-data issue ${result.action}${result.number ? ` (#${result.number})` : ""}`,
     );
   }
-  if (staleness.stale) {
+  if (stale.stale) {
     annotateRun(
-      `learnsync data is stale: ${staleness.problems.map((p) => p.id).join(", ")}${result.number ? `; see issue #${result.number}` : ""}.`,
+      `learnsync data is stale: ${stale.problemIds.join(", ")}${result.number ? `; see issue #${result.number}` : ""}.`,
     );
   }
-  return { staleness, result };
+  return result;
 }
 
 function git(args, opts = {}) {
@@ -1884,7 +1909,21 @@ function annotateRun(message) {
   }
 }
 
-async function main() {
+/** The version of the plan file that `--check` writes and `--publish` reads. */
+export const PLAN_VERSION = 1;
+
+/**
+ * The check half of a run: reads the repo and learnsync, decides what to report and writes
+ * nothing to GitHub and nothing to the tracker. What it returns is the PLAN, plain JSON
+ * (`--check` saves it to PLAN_FILE; the default run hands it straight to `applyPlan`):
+ *   stale    what the stale-data issue would say (`assessStaleData`)
+ *   notes    the notes the broken-link issue carries
+ *   failure  null, or { message } when the systemic-failure guard tripped
+ *   report   null, or the inputs of the broken-link issue: the new findings, data, summary, coverage
+ *   tracker  null, or what the tracker write needs: the tracker as read, the findings, the URLs
+ *            carried over and the new ones, learnsync's commit and data stamps
+ */
+async function runCheck() {
   const today = new Date().toISOString().slice(0, 10);
   const source = selectCheckSource(env.CHECK_SOURCE);
   const staleDays = parseStaleAlertDays(env.LEARNSYNC_STALE_DAYS);
@@ -1919,21 +1958,24 @@ async function main() {
     const { findings, summary, coverage, dataInfo } = run;
     notes.forEach((note) => annotateRun(note));
 
-    // 2b. is learnsync's data stale? Open, comment on or close the one hub issue
-    // that says so. This comes BEFORE the broken-link issue and the tracker write:
-    // when it fails, the run fails with nothing written and a re-run starts over.
-    const stale = await handleStaleData({
+    // 2b. is learnsync's data stale? What the one hub issue that says so would carry.
+    const stale = await assessStaleData({
       heartbeat: run.heartbeat,
       staleDays,
       today,
       runUrl,
     });
-    // the caveat is always there; the pointer only when an issue exists to point at
-    if (stale.staleness.stale) {
-      notes.push(
-        `learnsync's data is stale, so this report may be incomplete${stale.result.number ? `: see #${stale.result.number}` : ""}.`,
-      );
-    }
+    const plan = {
+      version: PLAN_VERSION,
+      today,
+      source,
+      runUrl,
+      stale,
+      notes,
+      failure: null,
+      report: null,
+      tracker: null,
+    };
 
     // 3. systemic-failure guard (moved pages never count)
     const brokenCount = findings.filter((f) => f.kind !== "moved").length;
@@ -1944,18 +1986,12 @@ async function main() {
     if (brokenCount > limit) {
       const msg = `The Learn URL check flagged ${brokenCount} of ${run.total} URLs as broken in one run (limit ${limit}). That looks like ${run.systemicCause} rather than real breakage, so no per-link issue was created. ${run.systemicRemedy} and spot-check a few links.\n`;
       writeFileSync(CONFIG.errorFile, msg);
-      setOutputs({
-        check_failed: true,
-        new_count: 0,
-        tracker_updated: false,
-        learnsync_stale: stale.staleness.stale,
-      });
       console.error(msg);
-      process.exitCode = 1;
-      return;
+      plan.failure = { message: msg };
+      return plan;
     }
 
-    // 4. tracker diff, issues, tracker write
+    // 4. tracker diff: what is new, what is resolved, what a changes run keeps open
     const flaggedUrls = findings.map((f) => f.url);
     const present = new Set([...repoUrls.values()].flatMap((v) => [...v.raws]));
     const diff = diffTracker(tracker.open, flaggedUrls, present);
@@ -1980,108 +2016,204 @@ async function main() {
         ` - [${f.kind}] ${f.url}\n   ${f.reason}${f.suggestion ? `\n   suggested: ${f.suggestion}` : ""}`,
       );
     }
-
-    let issueNumber = null;
     if (newFindings.length) {
-      const report = buildReport({
+      plan.report = {
         findings: newFindings,
         data: dataInfo,
         summary,
-        today,
-        runUrl,
-        notes,
-        mode: source,
         coverage,
-      });
-      writeFileSync(CONFIG.reportFile, report);
-      if (CONFIG.createIssues && !CONFIG.dryRun) {
-        gh([
-          "label",
-          "create",
-          CONFIG.label,
-          "--color",
-          "D93F0B",
-          "--description",
-          "A link on the site no longer works",
-          "--force",
-        ]);
-        const out = gh([
-          "issue",
-          "create",
-          "--title",
-          issueTitle(newFindings, today),
-          "--label",
-          CONFIG.label,
-          "--body-file",
-          CONFIG.reportFile,
-        ]);
-        issueNumber = Number(out.match(/\/issues\/(\d+)/)?.[1]);
-        console.log(`Created issue #${issueNumber}`);
-      }
-    }
-
-    // update the tracker
-    const nextOpen = {};
-    for (const f of findings) {
-      nextOpen[f.url] = tracker.open[f.url] ?? {
-        firstSeen: today,
-        issue: issueNumber,
       };
-      nextOpen[f.url].lastSeen = today;
-      nextOpen[f.url].kind = f.kind;
-      nextOpen[f.url].reason = f.reason;
     }
-    for (const u of carried) nextOpen[u] ??= tracker.open[u];
-    const nextIssues = { ...tracker.issues };
-    if (issueNumber) nextIssues[issueNumber] = newFindings.map((f) => f.url);
-    // close issues whose URLs are all resolved
-    for (const [num, urls] of Object.entries(nextIssues)) {
-      if (urls.every((u) => !(u in nextOpen))) {
-        if (CONFIG.createIssues && !CONFIG.dryRun) {
-          try {
-            gh([
-              "issue",
-              "close",
-              num,
-              "--comment",
-              `All links in this report are fixed or no longer present as of the ${today} check.`,
-            ]);
-            console.log(`Closed issue #${num}`);
-          } catch (err) {
-            console.error(err.message);
-          }
-        }
-        delete nextIssues[num];
-      }
-    }
-    const next = {
-      lastRun: today,
-      lastMode: source,
-      lastFullAudit: source === "cache" ? today : tracker.lastFullAudit,
+    plan.tracker = {
+      before: tracker,
+      findings: findings.map((f) => ({
+        url: f.url,
+        kind: f.kind,
+        reason: f.reason,
+      })),
+      carried,
+      newUrls: newFindings.map((f) => f.url),
       learnsync: {
         sha: ls.sha,
         learnGeneratedAt: dataInfo.learnGeneratedAt,
         docsGeneratedAt: dataInfo.docsGeneratedAt,
       },
-      open: nextOpen,
-      issues: nextIssues,
     };
-    const before = JSON.stringify({ ...tracker, lastRun: null });
-    const after = JSON.stringify({ ...next, lastRun: null });
-    let updated = false;
-    if (!CONFIG.dryRun && before !== after) {
-      writeFileSync(CONFIG.trackerFile, JSON.stringify(next, null, 2) + "\n");
-      updated = true;
-    }
-    setOutputs({
-      tracker_updated: updated,
-      new_count: newFindings.length,
-      check_failed: false,
-      learnsync_stale: stale.staleness.stale,
-    });
+    return plan;
   } finally {
     ls.cleanup();
   }
+}
+
+/**
+ * The write half of a run: everything that touches GitHub or the tracker file, in the order the
+ * workflow relies on. The stale-data issue comes first, then the broken-link issue, then the
+ * tracker: a failed issue step throws, so nothing is written and a re-run reports everything again
+ * (committing the tracker first would lose the alert: the links would already be tracked).
+ */
+async function applyPlan(plan) {
+  const enabled = CONFIG.createIssues && !CONFIG.dryRun;
+  const stale = applyStaleIssue(plan.stale);
+
+  if (plan.failure) {
+    setOutputs({
+      check_failed: true,
+      new_count: 0,
+      tracker_updated: false,
+      learnsync_stale: plan.stale.stale,
+    });
+    return;
+  }
+
+  // the caveat is always there; the pointer only when an issue exists to point at
+  const notes = [...plan.notes];
+  if (plan.stale.stale) {
+    notes.push(
+      `learnsync's data is stale, so this report may be incomplete${stale.number ? `: see #${stale.number}` : ""}.`,
+    );
+  }
+  const { today, source } = plan;
+  const t = plan.tracker;
+  let issueNumber = null;
+  if (plan.report) {
+    const report = buildReport({
+      ...plan.report,
+      today,
+      runUrl: plan.runUrl,
+      notes,
+      mode: source,
+    });
+    writeFileSync(CONFIG.reportFile, report);
+    if (enabled) {
+      gh([
+        "label",
+        "create",
+        CONFIG.label,
+        "--color",
+        "D93F0B",
+        "--description",
+        "A link on the site no longer works",
+        "--force",
+      ]);
+      const out = gh([
+        "issue",
+        "create",
+        "--title",
+        issueTitle(plan.report.findings, today),
+        "--label",
+        CONFIG.label,
+        "--body-file",
+        CONFIG.reportFile,
+      ]);
+      issueNumber = Number(out.match(/\/issues\/(\d+)/)?.[1]);
+      console.log(`Created issue #${issueNumber}`);
+    }
+  }
+
+  // update the tracker
+  const tracker = t.before;
+  const nextOpen = {};
+  for (const f of t.findings) {
+    nextOpen[f.url] = tracker.open[f.url] ?? {
+      firstSeen: today,
+      issue: issueNumber,
+    };
+    nextOpen[f.url].lastSeen = today;
+    nextOpen[f.url].kind = f.kind;
+    nextOpen[f.url].reason = f.reason;
+  }
+  for (const u of t.carried) nextOpen[u] ??= tracker.open[u];
+  const nextIssues = { ...tracker.issues };
+  if (issueNumber) nextIssues[issueNumber] = t.newUrls;
+  // close issues whose URLs are all resolved
+  for (const [num, urls] of Object.entries(nextIssues)) {
+    if (urls.every((u) => !(u in nextOpen))) {
+      if (enabled) {
+        try {
+          gh([
+            "issue",
+            "close",
+            num,
+            "--comment",
+            `All links in this report are fixed or no longer present as of the ${today} check.`,
+          ]);
+          console.log(`Closed issue #${num}`);
+        } catch (err) {
+          console.error(err.message);
+        }
+      }
+      delete nextIssues[num];
+    }
+  }
+  const next = {
+    lastRun: today,
+    lastMode: source,
+    lastFullAudit: source === "cache" ? today : tracker.lastFullAudit,
+    learnsync: t.learnsync,
+    open: nextOpen,
+    issues: nextIssues,
+  };
+  const before = JSON.stringify({ ...tracker, lastRun: null });
+  const after = JSON.stringify({ ...next, lastRun: null });
+  let updated = false;
+  if (!CONFIG.dryRun && before !== after) {
+    writeFileSync(CONFIG.trackerFile, JSON.stringify(next, null, 2) + "\n");
+    updated = true;
+  }
+  setOutputs({
+    tracker_updated: updated,
+    new_count: t.newUrls.length,
+    check_failed: false,
+    learnsync_stale: plan.stale.stale,
+  });
+}
+
+/** The default run (a local run, the tests): check, then apply, in one process. */
+async function main() {
+  const plan = await runCheck();
+  await applyPlan(plan);
+  if (plan.failure) process.exitCode = 1;
+}
+
+/** `--check`: the read-only half. Saves the plan for `--publish` and fails the job when the guard tripped. */
+async function mainCheck() {
+  const plan = await runCheck();
+  writeFileSync(CONFIG.planFile, JSON.stringify(plan) + "\n");
+  setOutputs({
+    plan_written: true,
+    check_failed: Boolean(plan.failure),
+    new_count: plan.tracker?.newUrls.length ?? 0,
+    tracker_updated: false,
+    learnsync_stale: plan.stale.stale,
+  });
+  console.log(`Plan written to ${CONFIG.planFile}`);
+  if (plan.failure) process.exitCode = 1;
+}
+
+/**
+ * `--publish`: the half that may write issues and the tracker. A guard failure is already a red
+ * job (the check job failed), so it only opens the stale-data issue here and still exits 0.
+ */
+async function mainPublish() {
+  if (!existsSync(CONFIG.planFile)) {
+    console.log(
+      `No plan at ${CONFIG.planFile}: the check did not get far enough to write one, so there is nothing to publish.`,
+    );
+    setOutputs({
+      tracker_updated: false,
+      new_count: 0,
+      check_failed: false,
+      learnsync_stale: false,
+    });
+    return;
+  }
+  const plan = JSON.parse(readFileSync(CONFIG.planFile, "utf8"));
+  if (plan.version !== PLAN_VERSION) {
+    throw new Error(
+      `The plan at ${CONFIG.planFile} has version ${plan.version}, this script reads version ${PLAN_VERSION}.`,
+    );
+  }
+  await applyPlan(plan);
 }
 
 if (
@@ -2099,7 +2231,12 @@ if (
   process.argv[1] &&
   import.meta.url === pathToFileURL(process.argv[1]).href
 ) {
-  main().catch((err) => {
+  const phase = process.argv.includes("--check")
+    ? mainCheck
+    : process.argv.includes("--publish")
+      ? mainPublish
+      : main;
+  phase().catch((err) => {
     const msg = `The Learn URL check failed: ${err.stack ?? err.message}\n`;
     try {
       writeFileSync(CONFIG.errorFile, msg);

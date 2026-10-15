@@ -2313,6 +2313,10 @@ async function scenario({
   // the tracker file as text, for a file that is not JSON
   trackerText = null,
   withChangeFiles = true,
+  // the command line of the script: ["--check"], ["--publish"] or none (both halves in one run)
+  args = [],
+  // a plan file (text) that is there before the run, for --publish
+  planText = null,
   env = {},
 }) {
   const base = await mkdtemp(join(tmpdir(), "learn-url-e2e-"));
@@ -2356,6 +2360,7 @@ async function scenario({
     report: join(base, "report.md"),
     staleReport: join(base, "stale-report.md"),
     error: join(base, "error.md"),
+    plan: join(base, "plan.json"),
     output: join(base, "output.txt"),
     probes: join(base, "probes.log"),
     fakeGh: join(base, "fake-gh.mjs"),
@@ -2392,37 +2397,43 @@ async function scenario({
       ),
   );
   await writeFile(paths.probes, "");
+  if (planText !== null) await writeFile(paths.plan, planText);
   // an async spawn: the API stand-in above lives in this process and must keep answering
   const res = await new Promise((done) => {
-    const child = spawn(process.execPath, ["scripts/learn-url-check.mjs"], {
-      cwd: join(import.meta.dirname, "..", ".."),
-      stdio: ["ignore", "pipe", "pipe"],
-      env: {
-        ...process.env,
-        GITHUB_ACTIONS: "",
-        GH_TOKEN: "",
-        GITHUB_TOKEN: "",
-        CREATE_ISSUES: "0",
-        DRY_RUN: "0",
-        WAIT_FOR_SYNC: "0",
-        REPO_ROOT: hub,
-        LEARNSYNC_DIR: learnsync,
-        TRACKER_FILE: paths.tracker,
-        REPORT_FILE: paths.report,
-        STALE_REPORT_FILE: paths.staleReport,
-        ERROR_FILE: paths.error,
-        GITHUB_OUTPUT: paths.output,
-        GITHUB_API_URL: `http://127.0.0.1:${server.address().port}`,
-        RAW_GITHUB_URL: `http://127.0.0.1:${server.address().port}`,
-        GH_CLI_SCRIPT: paths.fakeGh,
-        GH_LOG: paths.ghLog,
-        FAKE_GH_OPEN: "",
-        FAKE_GH_FAIL: "",
-        FAKE_GH_PAD: "",
-        PROBE_LOG: paths.probes,
-        ...env,
+    const child = spawn(
+      process.execPath,
+      ["scripts/learn-url-check.mjs", ...args],
+      {
+        cwd: join(import.meta.dirname, "..", ".."),
+        stdio: ["ignore", "pipe", "pipe"],
+        env: {
+          ...process.env,
+          GITHUB_ACTIONS: "",
+          GH_TOKEN: "",
+          GITHUB_TOKEN: "",
+          CREATE_ISSUES: "0",
+          DRY_RUN: "0",
+          WAIT_FOR_SYNC: "0",
+          REPO_ROOT: hub,
+          LEARNSYNC_DIR: learnsync,
+          TRACKER_FILE: paths.tracker,
+          REPORT_FILE: paths.report,
+          STALE_REPORT_FILE: paths.staleReport,
+          ERROR_FILE: paths.error,
+          PLAN_FILE: paths.plan,
+          GITHUB_OUTPUT: paths.output,
+          GITHUB_API_URL: `http://127.0.0.1:${server.address().port}`,
+          RAW_GITHUB_URL: `http://127.0.0.1:${server.address().port}`,
+          GH_CLI_SCRIPT: paths.fakeGh,
+          GH_LOG: paths.ghLog,
+          FAKE_GH_OPEN: "",
+          FAKE_GH_FAIL: "",
+          FAKE_GH_PAD: "",
+          PROBE_LOG: paths.probes,
+          ...env,
+        },
       },
-    });
+    );
     let stdout = "";
     let stderr = "";
     child.stdout.on("data", (chunk) => (stdout += chunk));
@@ -2445,6 +2456,8 @@ async function scenario({
     report: read(paths.report),
     staleReport: read(paths.staleReport),
     error: read(paths.error),
+    planText: read(paths.plan),
+    plan: read(paths.plan) === null ? null : JSON.parse(read(paths.plan)),
     output: read(paths.output) ?? "",
     tracker: trackerText === null ? JSON.parse(read(paths.tracker)) : null,
     trackerFile: read(paths.tracker),
@@ -3886,29 +3899,68 @@ test("LEARNSYNC_STALE_DAYS moves the limit, and a typo in it fails the run inste
   assert.match(typo.output, /check_failed=true/);
 });
 
-test("the workflow raises the stale-data alert inside the check step, ahead of the tracker commit", () => {
-  const workflow = readFileSync(
-    join(
-      import.meta.dirname,
-      "..",
-      "..",
-      ".github",
-      "workflows",
-      "learn-url-check.yml",
-    ),
-    "utf8",
+const WORKFLOW = readFileSync(
+  join(
+    import.meta.dirname,
+    "..",
+    "..",
+    ".github",
+    "workflows",
+    "learn-url-check.yml",
+  ),
+  "utf8",
+);
+
+/** The text of one job of the workflow, from its key to the next job (or the end). */
+function jobText(name) {
+  const start = WORKFLOW.indexOf(`\n  ${name}:\n`);
+  assert.ok(start > 0, `no job ${name}`);
+  const next = WORKFLOW.slice(start + 3).search(/\n {2}[a-z][\w-]*:\n/);
+  return next < 0
+    ? WORKFLOW.slice(start)
+    : WORKFLOW.slice(start, start + 3 + next);
+}
+
+test("the check job is read-only and the publish job raises the alerts ahead of the tracker commit", () => {
+  const check = jobText("check");
+  const publish = jobText("publish");
+  // the long job holds no token that can write issues or push
+  assert.match(check, /permissions:\n {6}contents: read\n/);
+  assert.doesNotMatch(check, /issues: write|contents: write|CREATE_ISSUES/);
+  assert.match(check, /persist-credentials: false/);
+  assert.match(check, /run: node scripts\/learn-url-check\.mjs --check/);
+  // its plan reaches the publish job, also when the check failed
+  const upload = check.slice(
+    check.indexOf("- name: Hand the plan to the publish job"),
   );
-  const check = workflow.indexOf("name: Check Learn URLs against learnsync");
-  const commit = workflow.indexOf("name: Commit updated tracker");
-  assert.ok(check > 0 && commit > check);
-  // the tracker commit only runs when the check step succeeded: no always()/failure() in its condition
-  const commitStep = workflow.slice(
+  assert.match(upload, /if: always\(\)/);
+  assert.match(upload, /actions\/upload-artifact@[0-9a-f]{40}/);
+  assert.match(check, /\/tmp\/learn-url-check-plan\.json/);
+  assert.match(check, /\/tmp\/learn-url-check-error\.md/);
+  // the publish job is the only one that writes, and it runs after a failed check too
+  assert.match(publish, /needs: check/);
+  assert.match(publish, /if: \$\{\{ !cancelled\(\) \}\}/);
+  assert.match(
+    publish,
+    /permissions:\n {6}contents: write\n {6}issues: write\n/,
+  );
+  assert.match(publish, /actions\/download-artifact@[0-9a-f]{40}/);
+  assert.match(publish, /run: node scripts\/learn-url-check\.mjs --publish/);
+  // the issues are created inside the publish step, ahead of the tracker commit
+  const issueStep = publish.indexOf(
+    "name: Open the issues and write the tracker",
+  );
+  const commit = publish.indexOf("name: Commit updated tracker");
+  assert.ok(issueStep > 0 && commit > issueStep);
+  assert.match(publish, /CREATE_ISSUES: "1"/);
+  // the tracker commit only runs when the publish step succeeded: no always()/failure() in its condition
+  const commitStep = publish.slice(
     commit,
-    workflow.indexOf("- name:", commit + 10),
+    publish.indexOf("- name:", commit + 10),
   );
   assert.match(
     commitStep,
-    /if: steps\.check\.outputs\.tracker_updated == 'true'/,
+    /if: steps\.publish\.outputs\.tracker_updated == 'true'/,
   );
   assert.ok(!/always\(\)|failure\(\)/.test(commitStep));
   // the issues are already open when the commit runs: a rejected push is retried on top of
@@ -3921,51 +3973,230 @@ test("the workflow raises the stale-data alert inside the check step, ahead of t
   assert.match(commitStep, /git diff --cached --quiet && exit 0/);
   // the stale limit named in the workflow comment is the script's default
   assert.match(
-    workflow,
+    WORKFLOW,
     new RegExp(`LEARNSYNC_STALE_DAYS, ${DEFAULT_STALE_ALERT_DAYS} by default`),
   );
   // issues can be listed, opened, commented on and closed with the job token
-  assert.match(workflow, /issues: write/);
-  assert.match(workflow, /GH_TOKEN: \$\{\{ github\.token \}\}/);
-  assert.match(workflow, /STALE_REPORT_FILE: \/tmp\/learn-url-check-stale\.md/);
+  assert.match(publish, /GH_TOKEN: \$\{\{ github\.token \}\}/);
+  assert.match(WORKFLOW, /STALE_REPORT_FILE: \/tmp\/learn-url-check-stale\.md/);
   // the dispatch token is documented as optional
-  assert.match(workflow, /HUB_DISPATCH_TOKEN/);
-  assert.match(workflow, /optional/i);
-  assert.match(workflow, /learnsync data is stale/);
+  assert.match(WORKFLOW, /HUB_DISPATCH_TOKEN/);
+  assert.match(WORKFLOW, /optional/i);
+  assert.match(WORKFLOW, /learnsync data is stale/);
 });
 
 test("a report-only dispatch that errors opens no failure issue; a scheduled run and a normal dispatch do", () => {
-  const workflow = readFileSync(
-    join(
-      import.meta.dirname,
-      "..",
-      "..",
-      ".github",
-      "workflows",
-      "learn-url-check.yml",
-    ),
-    "utf8",
-  );
-  const step = workflow.slice(
-    workflow.indexOf("- name: Create issue if the check failed"),
+  const publish = jobText("publish");
+  const step = publish.slice(
+    publish.indexOf("- name: Create issue if the check failed"),
   );
   const condition = step.match(/^\s+if: (.+)$/m)[1];
-  // The condition is evaluated like the runner does: failure(), the outputs of the check step and
-  // the inputs, where dry_run is a boolean for a manual run and empty for every other event.
-  const opens = ({ failed = true, checkFailed = "true", dryRun }) =>
-    new Function("failure", "steps", "inputs", `return Boolean(${condition});`)(
+  // The condition is evaluated like the runner does: failure() (also true when the check job, an
+  // ancestor, failed), the check job's output, the publish step's output and the inputs, where
+  // dry_run is a boolean for a manual run and empty for every other event.
+  const opens = ({
+    failed = true,
+    checkJob = "true",
+    publishStep = "false",
+    dryRun,
+  }) =>
+    new Function(
+      "failure",
+      "needs",
+      "steps",
+      "inputs",
+      `return Boolean(${condition});`,
+    )(
       () => failed,
-      { check: { outputs: { check_failed: checkFailed } } },
+      { check: { outputs: { check_failed: checkJob } } },
+      { publish: { outputs: { check_failed: publishStep } } },
       { dry_run: dryRun },
     );
   assert.equal(opens({ dryRun: undefined }), true, "a scheduled run");
   assert.equal(opens({ dryRun: false }), true, "a manual run, issues on");
   assert.equal(opens({ dryRun: true }), false, "a report-only run");
   assert.equal(opens({ dryRun: false, failed: false }), false);
-  assert.equal(opens({ dryRun: false, checkFailed: "false" }), false);
-  // the check step reads the same input the same way, so a dry run never touches the issues
-  assert.match(
-    workflow,
-    /DRY_RUN: \$\{\{ inputs\.dry_run && '1' \|\| '0' \}\}/,
+  assert.equal(
+    opens({ dryRun: false, checkJob: "false", publishStep: "false" }),
+    false,
+    "nothing failed in the check",
   );
+  assert.equal(
+    opens({ dryRun: false, checkJob: "false", publishStep: "true" }),
+    true,
+    "the publish step itself reported a failure",
+  );
+  // the publish step reads the same input the same way, so a dry run never touches the issues
+  assert.match(publish, /DRY_RUN: \$\{\{ inputs\.dry_run && '1' \|\| '0' \}\}/);
+});
+
+// ---------------------------------------------------------------------------
+// The two halves of a run: --check writes a plan, --publish applies it
+// ---------------------------------------------------------------------------
+const SPLIT_INPUT = () => ({
+  links: ["/training/modules/recent-gone", "/training/modules/fine"],
+  removed: [learnEntry("/training/modules/recent-gone", "gone")],
+  status: staleLearnStatus(),
+  api: learnsyncApi(),
+  tracker: openTracker(),
+});
+
+test("--check reads and decides but touches no issue and no tracker, and leaves a plan", async () => {
+  const r = await scenario({
+    ...SPLIT_INPUT(),
+    args: ["--check"],
+    // even with issue creation switched on by mistake, this half never calls gh
+    env: { CREATE_ISSUES: "1" },
+  });
+  assert.equal(r.status, 0, r.stderr + r.stdout);
+  assert.deepEqual(r.ghCommands, []);
+  assert.deepEqual(JSON.parse(r.trackerFile), r.originalTracker);
+  assert.equal(
+    r.report,
+    null,
+    "the broken-link issue text is written by the publish half",
+  );
+  assert.match(r.output, /plan_written=true/);
+  assert.match(r.output, /check_failed=false/);
+  assert.match(r.output, /tracker_updated=false/);
+  assert.match(r.output, /new_count=1/);
+  assert.match(r.output, /learnsync_stale=true/);
+  // the plan is plain data: what the stale-data issue says, the new finding, what the tracker needs
+  const plan = r.plan;
+  assert.equal(plan.version, 1);
+  assert.equal(plan.source, "changes");
+  assert.equal(plan.failure, null);
+  assert.equal(plan.stale.stale, true);
+  assert.match(plan.stale.issueBody, /last good Learn sync finished/);
+  assert.deepEqual(
+    plan.report.findings.map((f) => f.url),
+    [T("/training/modules/recent-gone")],
+  );
+  assert.deepEqual(plan.tracker.newUrls, [T("/training/modules/recent-gone")]);
+  assert.deepEqual(plan.tracker.before, r.originalTracker);
+  assert.equal(
+    r.staleReport,
+    plan.stale.issueBody,
+    "the stale text is still written by the check",
+  );
+});
+
+test("--check then --publish does exactly what one run does: the same issues in the same order, the same tracker", async () => {
+  const whole = await scenario({
+    ...SPLIT_INPUT(),
+    env: { CREATE_ISSUES: "1" },
+  });
+  assert.equal(whole.status, 0, whole.stderr + whole.stdout);
+  const checked = await scenario({ ...SPLIT_INPUT(), args: ["--check"] });
+  assert.equal(checked.status, 0, checked.stderr + checked.stdout);
+  const published = await scenario({
+    links: [],
+    args: ["--publish"],
+    planText: checked.planText,
+    tracker: openTracker(),
+    env: { CREATE_ISSUES: "1" },
+  });
+  assert.equal(published.status, 0, published.stderr + published.stdout);
+  assert.deepEqual(published.ghCommands, whole.ghCommands);
+  // two runs of the scenario differ only by the folders they use and the time they were made
+  const same = (text) =>
+    String(text ?? "")
+      .replace(/\d{4}-\d{2}-\d{2}T[\d:.]+Z/g, "<time>")
+      .replace(/[A-Za-z]:\\\S*learn-url-e2e-\w+\\/g, "<dir>/");
+  assert.deepEqual(
+    published.ghCalls.map((c) => [same(c.args.join(" ")), same(c.body)]),
+    whole.ghCalls.map((c) => [same(c.args.join(" ")), same(c.body)]),
+  );
+  assert.equal(same(published.report), same(whole.report));
+  const trackerOf = (r) => JSON.parse(same(JSON.stringify(r.tracker)));
+  assert.deepEqual(trackerOf(published), trackerOf(whole));
+  assert.match(published.output, /tracker_updated=true/);
+  assert.match(published.output, /new_count=1/);
+  assert.match(published.output, /check_failed=false/);
+  // the pointer to the stale-data issue is added by the publish half, once the number is known
+  assert.match(
+    published.report,
+    /learnsync's data is stale, so this report may be incomplete: see #100\./,
+  );
+});
+
+test("--publish with DRY_RUN touches no issue and no tracker, but still writes the text it would send", async () => {
+  const checked = await scenario({ ...SPLIT_INPUT(), args: ["--check"] });
+  const r = await scenario({
+    links: [],
+    args: ["--publish"],
+    planText: checked.planText,
+    tracker: openTracker(),
+    env: { CREATE_ISSUES: "1", DRY_RUN: "1" },
+  });
+  assert.equal(r.status, 0, r.stderr + r.stdout);
+  assert.deepEqual(r.ghCommands, []);
+  assert.deepEqual(r.tracker, r.originalTracker);
+  assert.match(r.report, /^The weekly Microsoft Learn URL check found/);
+  assert.match(r.output, /tracker_updated=false/);
+});
+
+test("a tripped systemic guard fails the check half, and the publish half still raises the stale-data issue and exits 0", async () => {
+  const input = {
+    ...SPLIT_INPUT(),
+    removed: Array.from({ length: 4 }, (_, i) =>
+      learnEntry(`/training/modules/gone-${i}`, "gone"),
+    ),
+    links: Array.from({ length: 4 }, (_, i) => `/training/modules/gone-${i}`),
+    env: { MAX_FLAGGED: "1" },
+  };
+  const checked = await scenario({ ...input, args: ["--check"] });
+  assert.equal(checked.status, 1);
+  assert.match(checked.output, /check_failed=true/);
+  assert.match(checked.output, /plan_written=true/);
+  assert.match(
+    checked.error,
+    /flagged 4 of 4 URLs as broken in one run \(limit 1\)/,
+  );
+  assert.match(checked.plan.failure.message, /limit 1/);
+  assert.equal(checked.plan.report, null);
+  assert.equal(checked.plan.tracker, null);
+
+  const published = await scenario({
+    links: [],
+    args: ["--publish"],
+    planText: checked.planText,
+    tracker: openTracker(),
+    env: { CREATE_ISSUES: "1" },
+  });
+  // only the stale-data issue: no broken-link issue, no tracker write; the job is already red because of the check
+  assert.equal(published.status, 0, published.stderr + published.stdout);
+  assert.deepEqual(published.ghCommands, [
+    "issue list",
+    "label create",
+    "issue create",
+  ]);
+  assert.deepEqual(published.tracker, published.originalTracker);
+  assert.match(published.output, /check_failed=true/);
+  assert.match(published.output, /tracker_updated=false/);
+});
+
+test("--publish with no plan says so and publishes nothing; a plan of another version is refused", async () => {
+  const none = await scenario({
+    links: [],
+    args: ["--publish"],
+    env: { CREATE_ISSUES: "1" },
+  });
+  assert.equal(none.status, 0, none.stderr + none.stdout);
+  assert.match(none.stdout, /No plan at .*nothing to publish/);
+  assert.deepEqual(none.ghCommands, []);
+  assert.match(none.output, /tracker_updated=false/);
+
+  const checked = await scenario({ ...SPLIT_INPUT(), args: ["--check"] });
+  const plan = { ...checked.plan, version: 99 };
+  const wrong = await scenario({
+    links: [],
+    args: ["--publish"],
+    planText: JSON.stringify(plan),
+    tracker: openTracker(),
+    env: { CREATE_ISSUES: "1" },
+  });
+  assert.equal(wrong.status, 1);
+  assert.match(wrong.error, /has version 99, this script reads version 1/);
+  assert.deepEqual(wrong.ghCommands, []);
 });

@@ -18,7 +18,7 @@ name: Learn URL Check
 # step judges the data it is about to use (a Learn or docs heartbeat older than
 # LEARNSYNC_STALE_DAYS, 6 by default; a sync whose latest run failed after the
 # last good heartbeat; docs.complete false; change files whose source stamps are
-# stale) and opens ONE issue (label bug) titled
+# stale) and the publish job opens ONE issue (label bug) titled
 # "Learn URL Check: learnsync data is stale", comments on it while the data
 # stays stale (one comment per run) and closes it with a comment once the data
 # is fresh again. learnsync's own failure alerts are issues in that repository,
@@ -69,18 +69,27 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Two jobs, so that the long one holds no write access. `check` waits for learnsync, reads
+  # the repo and Learn's data with a read-only token and writes a PLAN (plain JSON: what the
+  # stale-data issue and the broken-link issue would say, and what the tracker write needs).
+  # `publish` is short: it opens, comments on and closes the issues from the plan and then
+  # commits the tracker. It is the only job that can write issues or push.
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 240
     permissions:
-      contents: write
-      issues: write
+      contents: read
+    outputs:
+      source: ${{ steps.source.outputs.source }}
+      check_failed: ${{ steps.check.outputs.check_failed }}
     env:
-      REPORT_FILE: /tmp/learn-url-check-report.md
+      PLAN_FILE: /tmp/learn-url-check-plan.json
       STALE_REPORT_FILE: /tmp/learn-url-check-stale.md
       ERROR_FILE: /tmp/learn-url-check-error.md
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
@@ -94,24 +103,75 @@ jobs:
           FULL_AUDIT: ${{ inputs.full_audit }}
         run: node scripts/learn-url-check.mjs --choose-source | tee -a "$GITHUB_OUTPUT"
 
+      # Read-only: this step touches no issue and no tracker, it only writes the plan. A check
+      # that cannot judge (too many broken links at once, a crash) fails this job; the
+      # publish job still opens the stale-data issue and reports the failure.
+      - name: Check Learn URLs against learnsync (${{ steps.source.outputs.source }})
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHECK_SOURCE: ${{ steps.source.outputs.source }}
+          WAIT_FOR_SYNC: ${{ (github.event_name != 'workflow_dispatch' || inputs.wait_for_sync) && '1' || '0' }}
+        run: node scripts/learn-url-check.mjs --check
+
+      - name: Hand the plan to the publish job
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: learn-url-check
+          path: |
+            /tmp/learn-url-check-plan.json
+            /tmp/learn-url-check-error.md
+          if-no-files-found: ignore
+          retention-days: 7
+
+  publish:
+    needs: check
+    # also after a failed check: the stale-data issue and the failure issue still have to be raised
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      issues: write
+    env:
+      PLAN_FILE: /tmp/learn-url-check-plan.json
+      REPORT_FILE: /tmp/learn-url-check-report.md
+      STALE_REPORT_FILE: /tmp/learn-url-check-stale.md
+      ERROR_FILE: /tmp/learn-url-check-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      # No artifact means the check job died before it could write a plan: the script then
+      # says so and publishes nothing, and the failure issue below reports what went wrong.
+      - name: Fetch the plan
+        continue-on-error: true
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: learn-url-check
+          path: /tmp
+
       # The issues are created inside this step and the tracker commit below only
       # runs when it succeeded (its condition has no status-check function), so a
       # failed issue step (the stale-data issue comes first, then the broken-link
       # issue) leaves the tracker uncommitted and a re-run reports everything again.
       # Committing the tracker first would lose the alert: the links would already
       # be tracked as reported.
-      - name: Check Learn URLs against learnsync (${{ steps.source.outputs.source }})
-        id: check
+      - name: Open the issues and write the tracker
+        id: publish
         env:
           GH_TOKEN: ${{ github.token }}
-          CHECK_SOURCE: ${{ steps.source.outputs.source }}
           CREATE_ISSUES: "1"
           DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
-          WAIT_FOR_SYNC: ${{ (github.event_name != 'workflow_dispatch' || inputs.wait_for_sync) && '1' || '0' }}
-        run: node scripts/learn-url-check.mjs
+        run: node scripts/learn-url-check.mjs --publish
 
       - name: Commit updated tracker
-        if: steps.check.outputs.tracker_updated == 'true'
+        if: steps.publish.outputs.tracker_updated == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -131,7 +191,8 @@ jobs:
       - name: Create issue if the check failed
         # A report-only dispatch (dry_run) touches no issue, so a failing one opens no failure
         # issue either (inputs.dry_run is empty on schedule and repository_dispatch runs).
-        if: failure() && steps.check.outputs.check_failed == 'true' && !inputs.dry_run
+        # failure() is also true when the check job, an ancestor of this one, failed.
+        if: failure() && (needs.check.outputs.check_failed == 'true' || steps.publish.outputs.check_failed == 'true') && !inputs.dry_run
         uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
         with:
           title: "Learn URL Check Failed — ${{ github.run_id }}"
