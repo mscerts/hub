@@ -4102,7 +4102,7 @@ test("--check then --publish does exactly what one run does: the same issues in 
   const same = (text) =>
     String(text ?? "")
       .replace(/\d{4}-\d{2}-\d{2}T[\d:.]+Z/g, "<time>")
-      .replace(/[A-Za-z]:\\\S*learn-url-e2e-\w+\\/g, "<dir>/");
+      .replace(/\S*learn-url-e2e-\w+[\\/]/g, "<dir>/");
   assert.deepEqual(
     published.ghCalls.map((c) => [same(c.args.join(" ")), same(c.body)]),
     whole.ghCalls.map((c) => [same(c.args.join(" ")), same(c.body)]),
