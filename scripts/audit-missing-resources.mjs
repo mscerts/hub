@@ -6,7 +6,8 @@
  *   node scripts/audit-missing-resources.mjs
  *
  * Re-run after creating/editing any exam page (e.g. after scripts/new-exam.mjs)
- * and commit the regenerated JSON. Detection matches LinkCard button titles
+ * and commit the regenerated JSON. Exams that cannot have a resource on purpose
+ * are left out of its list, with the reason, in scripts/lib/audit-exemptions.mjs. Detection matches LinkCard button titles
  * (the `title="..."` attribute) — it does NOT consult hrefs, and it does NOT
  * verify the resource exists on the vendor site.
  */
@@ -14,6 +15,7 @@
 import { readdirSync, readFileSync, existsSync, writeFileSync } from "node:fs";
 import { join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
+import { hasGithubLabsTab, isExempt } from "./lib/audit-exemptions.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -68,12 +70,7 @@ const RESOURCE_TYPES = [
   },
   {
     key: "GitHub Labs",
-    test: ({ labText }) => {
-      const tab = labText.match(
-        /<TabItem label="Microsoft GitHub"[^>]*>([\s\S]*?)<\/TabItem>/,
-      );
-      return !!tab && /<LinkCard\b/.test(tab[1]);
-    },
+    test: ({ labText }) => hasGithubLabsTab(labText),
   },
   {
     key: "MeasureUp",
@@ -142,7 +139,11 @@ function buildLabText(area, codeLower) {
 // Scan
 // ---------------------------------------------------------------------------
 const results = {};
-for (const { key } of RESOURCE_TYPES) results[key] = [];
+const exempted = {};
+for (const { key } of RESOURCE_TYPES) {
+  results[key] = [];
+  exempted[key] = 0;
+}
 
 let scannedCount = 0;
 
@@ -166,7 +167,10 @@ for (const area of AREAS) {
     const ctx = { titles, labText };
 
     for (const { key, test } of RESOURCE_TYPES) {
-      if (!test(ctx)) results[key].push(code);
+      if (test(ctx)) continue;
+      // left out on purpose, with the reason in scripts/lib/audit-exemptions.mjs
+      if (isExempt(key, code)) exempted[key]++;
+      else results[key].push(code);
     }
   }
 }
@@ -190,6 +194,8 @@ writeFileSync(outPath, JSON.stringify(results, null, 2) + "\n", "utf8");
 
 console.log(`Scanned ${scannedCount} exam pages.`);
 for (const [key, codes] of Object.entries(results)) {
-  console.log(`${key}: ${codes.length} missing`);
+  console.log(
+    `${key}: ${codes.length} missing${exempted[key] ? ` (${exempted[key]} exempt)` : ""}`,
+  );
 }
 console.log(relative(root, outPath));
