@@ -954,6 +954,39 @@ test("Dependabot keeps the pinned actions current, in one pull request", async (
   );
 });
 
+test("Dependabot watches the npm packages of every workspace package, with a cooldown and without bundling major releases", () => {
+  const text = read(join(root, ".github", "dependabot.yml"));
+  const entry = text
+    .split(/^ {2}- /m)
+    .find((part) => /^package-ecosystem: npm$/m.test(part));
+  assert.ok(entry, "no update entry for the npm ecosystem");
+  assert.match(entry, /^ {4}schedule:\n {6}interval: weekly$/m);
+  assert.match(entry, /^ {4}open-pull-requests-limit: 5$/m);
+  // A week of waiting keeps a freshly published (or hijacked) release out of a
+  // pull request; security updates ignore the cooldown.
+  assert.match(entry, /^ {4}cooldown:\n {6}default-days: 7$/m);
+  // Only minor and patch releases are grouped: a major release needs a person
+  // to read the changelog, so it gets a pull request of its own.
+  const group = entry.match(/^ {4}groups:\n {6}[\w-]+:\n((?: {8}.*\n?)+)/m);
+  assert.ok(group, "no group for the npm updates");
+  assert.match(group[1], /^ {8}update-types:\n {10}- minor\n {10}- patch$/m);
+  assert.doesNotMatch(group[1], /\bmajor\b/);
+  // Every package of the pnpm workspace is a directory Dependabot looks at,
+  // so a package added to pnpm-workspace.yaml cannot go unwatched.
+  const watched = [...entry.matchAll(/^ {6}- "([^"]+)"$/gm)].map((m) => m[1]);
+  const workspace = read(join(root, "pnpm-workspace.yaml"));
+  const packages = [...workspace.matchAll(/^ {2}- "([^"]+)"$/gm)].map((m) =>
+    m[1] === "." ? "/" : `/${m[1]}`,
+  );
+  assert.ok(packages.length >= 2, "pnpm-workspace.yaml lists no packages");
+  for (const directory of packages) {
+    assert.ok(
+      watched.includes(directory),
+      `${directory} is a pnpm workspace package that Dependabot does not watch`,
+    );
+  }
+});
+
 test("the format scripts quote their globs so that cmd.exe, PowerShell and sh pass them on to Prettier alike", () => {
   const { scripts } = JSON.parse(read(join(root, "package.json")));
   const patterns = (name) =>

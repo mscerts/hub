@@ -4,7 +4,6 @@ updates:
   # Keeps the full-SHA pins of the actions in .github/workflows current: a pin
   # is only as good as the way it gets updated. Dependabot rewrites the SHA and
   # the "# vN" comment after it, and one weekly pull request covers all actions.
-  # The npm ecosystem is deliberately not listed (not decided yet).
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
@@ -14,3 +13,25 @@ updates:
       github-actions:
         patterns:
           - "*"
+
+  # The npm packages of the pnpm workspace (pnpm-workspace.yaml lists the site
+  # and mcp-worker; both are covered by the lockfile in the root). A release
+  # must be a week old before Dependabot proposes it, so a freshly published
+  # (or hijacked) version does not reach a pull request on its first day;
+  # security updates ignore the cooldown. Minor and patch releases arrive in
+  # one weekly pull request, every major release gets a pull request of its
+  # own because it needs a person to read the changelog (Astro, Tailwind).
+  - package-ecosystem: npm
+    directories:
+      - "/"
+      - "/mcp-worker"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7
+    groups:
+      npm-minor-patch:
+        update-types:
+          - minor
+          - patch
