@@ -61,7 +61,10 @@ const RESOURCE_TYPES = [
   },
   {
     key: "Exam Labs",
-    test: ({ titles }) => titles.some((t) => t === "Exam Labs"),
+    // SC-100 is the one exam whose lab page also holds case studies (an
+    // architect-level exam), so its button is called "Labs and Case Studies".
+    test: ({ titles }) =>
+      titles.some((t) => t === "Exam Labs" || t === "Labs and Case Studies"),
   },
   {
     key: "GitHub Labs",
