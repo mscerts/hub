@@ -69,17 +69,24 @@ function todayDay(today) {
 }
 
 /**
+ * A maintainer writes `since` as their own calendar day and the checks count in
+ * UTC, so a `since` up to this many days ahead of the UTC day still counts as
+ * today (for someone in UTC+2 the day starts two hours before UTC's does).
+ */
+export const NEW_BADGE_SKEW_DAYS = 1;
+
+/**
  * Whether a status is shown today. Every status is, except NEW: it needs a real
  * `since` day and is shown while fewer than NEW_BADGE_DAYS days have passed
  * since it (the day itself is day 0). A NEW without a valid `since`, or dated
- * in the future, is not shown.
+ * more than NEW_BADGE_SKEW_DAYS ahead of the UTC day, is not shown.
  */
 export function isExamStatusVisible(status, today = new Date()) {
   if (status?.text !== "NEW") return true;
   const since = utcDay(status.since);
   if (since === null) return false;
   const age = Math.round((todayDay(today) - since) / DAY_MS);
-  return age >= 0 && age < NEW_BADGE_DAYS;
+  return age >= -NEW_BADGE_SKEW_DAYS && age < NEW_BADGE_DAYS;
 }
 
 /**

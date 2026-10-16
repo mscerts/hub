@@ -4,6 +4,7 @@ import { join } from "node:path";
 import test from "node:test";
 import {
   NEW_BADGE_DAYS,
+  NEW_BADGE_SKEW_DAYS,
   RETIRED_LISTED_DAYS,
   examStatusNames,
   examStatusStyles,
@@ -39,7 +40,7 @@ test("a NEW badge is shown for 90 days: the since day is day 0, the 90th day hid
   );
 });
 
-test("a NEW badge without a real since day, or dated in the future, is never shown", () => {
+test("a NEW badge without a real since day, or dated more than a day ahead, is never shown", () => {
   for (const since of [
     undefined,
     null,
@@ -56,8 +57,22 @@ test("a NEW badge without a real since day, or dated in the future, is never sho
       String(since),
     );
   }
-  assert.equal(isExamStatusVisible(NEW("2026-10-16"), "2026-10-15"), false);
+  assert.equal(isExamStatusVisible(NEW("2026-10-17"), "2026-10-15"), false);
   assert.equal(isExamStatusVisible(NEW("2026-10-15"), "2026-10-15"), true);
+});
+
+test("a since day one day ahead counts as today: a maintainer's calendar day can start before the UTC day", () => {
+  assert.equal(NEW_BADGE_SKEW_DAYS, 1);
+  // 23:57 UTC on October 15 is already October 16 in Prague (UTC+2)
+  assert.equal(isExamStatusVisible(NEW("2026-10-16"), "2026-10-15"), true);
+  assert.equal(
+    isExamStatusVisible(NEW("2026-10-16"), new Date("2026-10-15T23:57:00Z")),
+    true,
+  );
+  assert.equal(isExamStatusVisible(NEW("2026-10-17"), "2026-10-15"), false);
+  // the 90 days still count from the since day
+  assert.equal(isExamStatusVisible(NEW("2026-10-16"), "2027-01-13"), true);
+  assert.equal(isExamStatusVisible(NEW("2026-10-16"), "2027-01-14"), false);
 });
 
 test("every other status is always shown, and a bad today is an error, not 'never'", () => {
@@ -102,7 +117,10 @@ test("visibleExamStatuses keeps the shape, drops expired NEW entries and the sin
 });
 
 test("the NEW entries of the data file are valid: a real past since day, success variant, an existing exam page", () => {
-  const today = new Date().toISOString().slice(0, 10);
+  // today's UTC day plus the skew a maintainer's own calendar day can have
+  const today = new Date(Date.now() + NEW_BADGE_SKEW_DAYS * 86_400_000)
+    .toISOString()
+    .slice(0, 10);
   const news = Object.entries(examStatuses).flatMap(([area, exams]) =>
     Object.entries(exams)
       .filter(([, status]) => status.text === "NEW")
@@ -119,7 +137,7 @@ test("the NEW entries of the data file are valid: a real past since day, success
     );
     assert.ok(
       status.since <= today,
-      `${code}: since ${status.since} is in the future (the badge would not show yet)`,
+      `${code}: since ${status.since} is more than a day ahead of today (UTC), so the badge would not show yet`,
     );
     const page = join(root, "src", "content", "docs", area, `${code}.mdx`);
     assert.ok(existsSync(page), `${code}: ${page} does not exist`);
