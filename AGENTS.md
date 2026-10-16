@@ -502,7 +502,9 @@ Only whether the button is present **on our page** — it does not verify that t
 | Whizlabs | starting with `Whizlab`/`Whizlabs` (case-insensitive) |
 | Pluralsight | starting with `Pluralsight` |
 | Udemy | containing the word `Udemy` anywhere |
+| Microsoft ESI | starting with `Microsoft Enterprise Skills Initiative` (a suffix such as `Instructor-led course` is fine) |
 
+- **ESI is checked by hand.** `esi.microsoft.com` is not public and its page is a script shell, so no monitor can tell whether ESI has training for an exam (the Link Checker and Source Watch cannot read it either, see `docs/monitors/source-watch.md`). The card is a search by exam code, `https://esi.microsoft.com/Search?q=<CODE>&avail=Available&learningoption=Advanced+Role+Based`, so a maintainer with ESI access opens it for each exam of the list and adds the card (Videos tab, next to the other instructor-led training) only when the search returns training. The ESI voucher page (`src/content/docs/vouchers/microsoftesi.mdx`) names the exams the 50% voucher covers (Azure, Security/Compliance/Identity, Power Platform, Dynamics 365 except MB-335); it does not say which exams have ESI training, so the list is not narrowed to those areas.
 - MDX (`{/* */}`) and HTML (`<!-- -->`) comments are stripped first, so commented-out placeholders count as missing.
 - Only `<LinkCard>` titles are read; `<Card title="MeasureUp Practice Tests">` containers and `<TabItem label>`s are ignored.
 - Buttons borrowed from a predecessor exam (`AZ-800: MeasureUp Assessment` on AZ-802, `AZ-500: Pluralsight Course` on SC-500) intentionally do **not** count — the page still lacks its own resource, which is exactly what the periodic sweep should look for.
