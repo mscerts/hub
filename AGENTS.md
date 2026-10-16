@@ -125,6 +125,8 @@ astro.config.mjs              # Redirects and Astro integrations
 scripts/
 ├── lib/                      # Shared plumbing of the monitor scripts: gh.mjs, actions.mjs, retry.mjs, areas.mjs, beta-note.mjs (see docs/monitors/README.md > Shared plumbing)
 ├── beta-note.mjs             # Prints the :::note timeline of a beta exam page (see Beta Exam Pages)
+├── course-source.mjs         # Parses a study guide into domain / skill group / task and builds the exam scope map (see docs/course-source.md)
+├── course-file.mjs           # Validates a course file (src/data_files/courses/<CODE>.json) and renders the course page (see docs/courses.md)
 └── *.mjs, *.sh               # One dependency-free script per monitor, plus new-exam.mjs and the audits
 tests/
 ├── scripts/                  # Offline tests of the scripts, the workflows and the docs claims (pnpm test:scripts)
