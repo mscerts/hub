@@ -1,1 +1,5 @@
+# Normalise text files to LF in the repository and in every checkout (Windows included):
+# the formatters, the monitor scripts' hashed text and the Linux CI all expect LF.
+* text=auto eol=lf
+
 *.sh text eol=lf

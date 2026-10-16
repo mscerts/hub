@@ -1,0 +1,45 @@
+name: Tests Review Reminder
+
+on:
+  schedule:
+    # Monday 11:20 UTC. This workflow makes no commit, so it needs no slot of its own
+    # among the monitors that push to main; the minute is simply free.
+    - cron: "20 11 * * 1"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print the evidence table and the issue that would be raised, but create nothing"
+        type: boolean
+        default: false
+
+# A run waits for the one in progress instead of cancelling it.
+concurrency:
+  group: tests-review-reminder
+  cancel-in-progress: false
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      # ONE-TIME: raises the issue "Monitor tests: decide whether to remove them" when
+      # every monitor has raised a real alert or the backstop date has passed, and
+      # does nothing once an issue with that title exists in any state. No tracker,
+      # no commit: GitHub (the issues and the workflow runs) is the state.
+      - name: Check whether the monitors have shown they work
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CREATE_ISSUES: "1"
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node scripts/tests-review-reminder.mjs

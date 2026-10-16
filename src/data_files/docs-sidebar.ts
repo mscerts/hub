@@ -1,6 +1,6 @@
 import { readdirSync } from "node:fs";
 import path from "node:path";
-import { examStatuses } from "./exam-status.mjs";
+import { examStatuses, visibleExamStatuses } from "./exam-status.mjs";
 import { docsPath } from "@utils/docs";
 
 type DocsSidebarIcon =
@@ -40,14 +40,24 @@ const areaPrefixOrder: Record<string, string[]> = {
   dynamics: ["MB"],
 };
 
+// Exam pages that stay live (direct link, search, lab index) but are hidden
+// from this sidebar listing. AZ-800/AZ-801 retired on September 30, 2026 into
+// the merged AZ-802, so sidebar navigation points there instead. Their RETIRED
+// badge therefore shows only on the landing page's status list.
+const HIDDEN_FROM_SIDEBAR = new Set(["AZ-800", "AZ-801"]);
+
+// The statuses as of this build: a NEW badge that has run its 90 days is left out.
+const shownStatuses = visibleExamStatuses();
+
 function buildExamItems(area: keyof typeof examStatuses): DocsSidebarItem[] {
   const docsDir = path.resolve(process.cwd(), "src", "content", "docs", area);
   const prefixOrder = areaPrefixOrder[area] ?? [];
-  const statuses = examStatuses[area] as Record<string, DocsSidebarBadge>;
+  const statuses = shownStatuses[area] as Record<string, DocsSidebarBadge>;
   const codes = readdirSync(docsDir)
     .filter((entry) => entry.toLowerCase().endsWith(".mdx"))
     .map((entry) => entry.replace(/\.mdx$/i, "").toUpperCase())
     .filter((code) => /^[A-Z]{2,3}-\d{3}$/.test(code))
+    .filter((code) => !HIDDEN_FROM_SIDEBAR.has(code))
     .sort((left, right) => {
       const leftRank = prefixOrder.indexOf(left.split("-")[0]);
       const rightRank = prefixOrder.indexOf(right.split("-")[0]);
@@ -107,6 +117,16 @@ const prepareItems: DocsSidebarItem[] = [
 
 const voucherItems: DocsSidebarItem[] = [
   {
+    label: "Exam AZ-401 (beta)",
+    href: docsPath("vouchers/az401beta"),
+    badge: { text: "*80%", variant: "tip" },
+  },
+  {
+    label: "Exam GH-700 (beta)",
+    href: docsPath("vouchers/gh700beta"),
+    badge: { text: "*80%", variant: "tip" },
+  },
+  {
     label: "GitHub Universe 2026 - GH-700",
     href: docsPath("vouchers/githubuniverse2026"),
     badge: { text: "N/A", variant: "tip" },
@@ -120,11 +140,6 @@ const voucherItems: DocsSidebarItem[] = [
     label: "South Africa AI Skills",
     href: docsPath("vouchers/southafricaaiskills"),
     badge: { text: "*100%", variant: "tip" },
-  },
-  {
-    label: "Virtual Training Days",
-    href: docsPath("vouchers/virtualtrainingdays"),
-    badge: { text: "50%", variant: "note" },
   },
   {
     label: "Organizational Skilling (ESI)",

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html class="hasSidebar" lang="en-us" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<title>Solutions Partner for Security - Partner Center | Microsoft Learn</title>
+<meta name="ms.date" content="2025-04-14T00:00:00Z" />
+<meta name="document_id" content="7beed221-4d14-9e17-ff88-f94105fd0dd0" />
+<meta name="updated_at" content="2026-08-31T16:04:00Z" />
+<meta name="git_commit_id" content="438e0fb518651a1976072b16b5b60d81d3c4e77f" />
+</head>
+<body class="theme-light">
+<header class="header">
+<a href="#main" class="skip-to-main">Skip to main content</a>
+<nav aria-label="Primary"><a href="/en-us/">Microsoft Learn</a> <a href="/en-us/docs/">Documentation</a> <a href="/en-us/training/">Training</a></nav>
+</header>
+<div class="layout-body">
+<div class="layout-body-menu"><nav aria-label="Table of contents"><a href="solutions-partner-security">Solutions Partner for Security</a><a href="solutions-partner-azure">Solutions Partner for Azure</a></nav></div>
+<main
+					id="main"
+					role="main"
+					class="layout-body-main "
+					data-bi-name="content"
+					lang="en-us"
+					dir="ltr"
+				>
+					
+			<div
+		id="ms--content-header"
+		class="content-header default-focus border-bottom-none"
+		data-bi-name="content-header"
+	>
+		<div class="content-header-controls margin-xxs margin-inline-sm-tablet">
+			<button
+				type="button"
+				class="contents-button button button-sm margin-right-xxs"
+				data-bi-name="contents-expand"
+				aria-haspopup="true"
+				data-contents-button
+			>
+				<span class="icon" aria-hidden="true"><span class="docon docon-menu"></span></span>
+				<span class="contents-expand-title"> Table of contents </span>
+			</button>
+			<button
+				type="button"
+				class="ap-collapse-behavior ap-expanded button button-sm"
+				data-bi-name="ap-collapse"
+				aria-controls="action-panel"
+			>
+				<span class="icon" aria-hidden="true"><span class="docon docon-exit-mode"></span></span>
+				<span>Exit editor mode</span>
+			</button>
+		</div>
+	</div> 
+		<div
+			id="action-panel"
+			role="region"
+			aria-label="Action Panel"
+			class="action-panel"
+			tabindex="-1"
+		></div>
+	
+			<div
+				data-main-column
+				class="reading-width margin-inline-auto layout-padding padding-top-none padding-top-sm-tablet padding-bottom-sm"
+			>
+				<div>
+					
+		<div id="article-header" class="background-color-body margin-bottom-xs display-none-print">
+			<div class="display-flex align-items-center justify-content-space-between">
+				
+		<details
+			id="article-header-breadcrumbs-overflow-popover"
+			class="popover popover-left"
+			data-for="article-header-breadcrumbs"
+		>
+			<summary
+				class="button button-clear button-primary button-sm inner-focus"
+				aria-label="All breadcrumbs"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-more"></span>
+				</span>
+			</summary>
+			<div id="article-header-breadcrumbs-overflow" class="popover-content"></div>
+		</details>
+
+		<bread-crumbs
+			id="article-header-breadcrumbs"
+			role="group"
+			aria-label="Breadcrumbs"
+			data-test-id="article-header-breadcrumbs"
+			class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop margin-left-negative-xxs padding-left-xxs"
+		></bread-crumbs>
+	 
+		<div
+			id="article-header-page-actions"
+			class="opacity-none margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch"
+		>
+			
+		<button
+			class="button button-sm border-none inner-focus display-none-tablet flex-shrink-0 "
+			data-bi-name="ask-learn-assistant-entry"
+			data-test-id="ask-learn-assistant-modal-entry-mobile"
+			data-ask-learn-modal-entry
+			
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-label="Ask Learn"
+			hidden
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+		</button>
+		<button
+			class="button button-sm display-none display-inline-flex-tablet display-none-desktop flex-shrink-0 margin-right-xxs border-color-ask-learn "
+			data-bi-name="ask-learn-assistant-entry"
+			
+			data-test-id="ask-learn-assistant-modal-entry-tablet"
+			data-ask-learn-modal-entry
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+		<button
+			class="button button-sm display-none flex-shrink-0 display-inline-flex-desktop margin-right-xxs border-color-ask-learn "
+			data-bi-name="ask-learn-assistant-entry"
+			
+			data-test-id="ask-learn-assistant-flyout-entry"
+			data-ask-learn-flyout-entry
+			data-flyout-button="toggle"
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-controls="ask-learn-flyout"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+	 
+
+			<details class="popover popover-right" id="article-header-page-actions-overflow">
+				<summary
+					class="justify-content-flex-start button button-clear button-sm button-primary inner-focus"
+					aria-label="More actions"
+					aria-expanded="false"
+					title="More actions"
+				>
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-more-vertical"></span>
+					</span>
+				</summary>
+				<div class="popover-content">
+					
+		<button
+			type="button"
+			id="ms--focus-mode-button"
+			data-focus-mode
+			data-bi-name="focus-mode-entry"
+			data-page-action-item="overflow-all"
+			data-popover-close
+			class="button button-clear button-sm button-block justify-content-flex-start text-align-left inner-focus display-none display-inline-flex-tablet"
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-glasses"></span>
+			</span>
+			<span>Reading mode</span>
+		</button>
+	 
+		<button
+			data-page-action-item="overflow-mobile"
+			type="button"
+			class="display-block-layout-menu-collapsed button-block button-sm inner-focus button button-clear display-none-tablet justify-content-flex-start text-align-left"
+			data-bi-name="contents-expand"
+			data-contents-button
+			data-popover-close
+		>
+			<span class="icon" aria-hidden="true"
+				><span class="docon docon-editor-list-bullet"></span
+			></span>
+			<span class="contents-expand-title">Table of contents</span>
+		</button>
+	 
+		<a
+			id="lang-link-overflow"
+			class="button-sm inner-focus button button-clear button-block justify-content-flex-start text-align-left"
+			data-bi-name="language-toggle"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-read-in-link
+			href="#"
+			hidden
+		>
+			<span class="icon" aria-hidden="true" data-read-in-link-icon>
+				<span class="docon docon-locale-globe"></span>
+			</span>
+			<span data-read-in-link-text>Read in English</span>
+		</a>
+	
+					
+		<button
+			type="button"
+			class="collection button button-clear button-sm button-block justify-content-flex-start text-align-left inner-focus"
+			data-list-type="collection"
+			data-bi-name="collection"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-popover-close
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-circle-addition"></span>
+			</span>
+			<span class="collection-status">Add</span>
+		</button>
+	 
+		<button
+			type="button"
+			class="collection button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+			data-list-type="plan"
+			data-bi-name="plan"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			data-popover-close
+			hidden
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-circle-addition"></span>
+			</span>
+			<span class="plan-status">Add to Plans</span>
+		</button>
+	 
+					
+		<a
+			data-contenteditbtn
+			class="button button-clear button-block button-sm inner-focus justify-content-flex-start text-align-left text-decoration-none"
+			data-bi-name="edit"
+			data-page-action-item="overflow-all"
+			data-check-hidden="true"
+			hidden
+			href=""
+			data-original_content_git_url="https://github.com/MicrosoftDocs/partner-center-pr/blob/live/partner-center/membership/solutions-partner-security.md"
+			data-original_content_git_url_template="{repo}/blob/{branch}/partner-center/membership/solutions-partner-security.md"
+			data-pr_repo=""
+			data-pr_branch=""
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-edit-outline"></span>
+			</span>
+			<span>Edit</span>
+		</a>
+	  
+		<hr class="margin-block-xxs" />
+		
+				<button
+					class="button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+					type="button"
+					data-bi-name="copy-markdown"
+					data-page-action-item="overflow-all"
+					data-copy-markdown
+					data-copy-state="idle"
+					data-check-hidden="true"
+				>
+					<span class="icon color-primary" aria-hidden="true">
+						<span data-show-when="idle" class="docon docon-code-lang"></span>
+						<span data-show-when="loading" class="loader" hidden></span>
+						<span data-show-when="success" class="docon docon-check-mark" hidden></span>
+					</span>
+					<span>Copy Markdown</span>
+				</button>
+		   
+				<button
+					class="button button-block button-clear button-sm justify-content-flex-start text-align-left inner-focus"
+					type="button"
+					data-bi-name="print"
+					data-page-action-item="overflow-all"
+					data-popover-close
+					data-print-page
+					data-check-hidden="true"
+				>
+					<span class="icon color-primary" aria-hidden="true">
+						<span class="docon docon-print"></span>
+					</span>
+					<span>Print</span>
+				</button>
+		  
+	
+				</div>
+			</details>
+		</div>
+	
+			</div>
+		</div>
+	  
+		<!-- privateUnauthorizedTemplate is hidden by default -->
+		<div unauthorized-private-section data-bi-name="permission-content-unauthorized-private" hidden>
+			<hr class="hr margin-top-xs margin-bottom-sm" />
+			<div class="notification notification-info">
+				<div class="notification-content">
+					<p class="margin-top-none notification-title">
+						<span class="icon" aria-hidden="true"
+							><span class="docon docon-exclamation-circle-solid"></span
+						></span>
+						<span>Note</span>
+					</p>
+					<p class="margin-top-none authentication-determined not-authenticated">
+						Access to this page requires authorization. You can try <a class="docs-sign-in" href="#" data-bi-name="permission-content-sign-in">signing in</a> or <a  class="docs-change-directory" data-bi-name="permisson-content-change-directory">changing directories</a>.
+					</p>
+					<p class="margin-top-none authentication-determined authenticated">
+						Access to this page requires authorization. You can try <a class="docs-change-directory" data-bi-name="permisson-content-change-directory">changing directories</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+	
+					<div class="content"><h1 id="solutions-partner-for-security">Solutions Partner for Security</h1></div>
+					
+		<div
+			id="article-metadata"
+			data-bi-name="article-metadata"
+			data-test-id="article-metadata"
+			class="page-metadata-container display-flex gap-xxs justify-content-space-between align-items-center flex-wrap-wrap"
+		>
+			 
+				<div
+					id="user-feedback"
+					class="margin-block-xxs display-none display-none-print"
+					hidden
+					data-hide-on-archived
+				>
+					
+		<button
+			id="user-feedback-button"
+			data-test-id="conceptual-feedback-button"
+			class="button button-sm button-clear button-primary display-none"
+			type="button"
+			data-bi-name="user-feedback-button"
+			data-user-feedback-button
+			hidden
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-like"></span>
+			</span>
+			<span>Feedback</span>
+		</button>
+	
+				</div>
+		  
+		</div>
+	 
+		<div data-id="ai-summary" class="display-none-print">
+			<div id="ms--ai-summary-cta" class="margin-top-xs display-flex align-items-center">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-sparkle-fill gradient-text-vivid"></span>
+				</span>
+				<button
+					id="ms--ai-summary"
+					type="button"
+					class="tag tag-sm tag-suggestion margin-left-xxs"
+					data-test-id="ai-summary-cta"
+					data-bi-name="ai-summary-cta"
+					data-an="ai-summary"
+				>
+					<span class="ai-summary-cta-text">
+						Summarize this article for me
+					</span>
+				</button>
+			</div>
+			<!-- Slot where the client will render the summary card after the user clicks the CTA -->
+			<div id="ms--ai-summary-header" class="margin-top-xs"></div>
+		</div>
+	 
+		<nav
+			id="center-doc-outline"
+			class="doc-outline display-none-desktop display-none-print margin-bottom-sm"
+			data-bi-name="intopic toc"
+			aria-label="In this article"
+		>
+			<h2 id="ms--in-this-article" class="title is-6 margin-block-xs">
+				In this article
+			</h2>
+		</nav>
+	 <div class="content"><p><strong>Appropriate roles</strong>: Microsoft AI Cloud Partner Program partner admin</p>
+<p>To earn the designation <em>Solutions Partner for Security</em>, your <a href="partner-capability-score" data-linktype="relative-path">partner capability score</a> for security must meet the qualification requirements. The partner capability score derives from partner <a href="#performance-category" data-linktype="self-bookmark">performance</a>, <a href="#skilling-category" data-linktype="self-bookmark">skilling</a>, and <a href="#customer-success-category" data-linktype="self-bookmark">customer success</a>, and results from data already recorded in Partner Center.</p>
+<p>To attain a Solutions Partner for Security designation, you must earn a minimum of 70 points and must have one or more points for each of the four metrics:</p>
+<ul>
+<li>Performance - Net customer adds</li>
+<li>Skilling - Intermediate certifications</li>
+<li>Customer success - Usage growth</li>
+<li>Customer success - Deployments</li>
+</ul>
+<p>Security partners can target providing services and solutions on Microsoft 365 workloads or on Azure services. So, valuation requirements focus on both Microsoft 365 usage and performance, and on Azure revenue.</p>
+<h2 id="two-attainment-paths-enterprise-and-small-and-medium-business">Two attainment paths: Enterprise and small and medium business</h2>
+<p>Microsoft offers two distinct paths for achieving the Solutions Partner for Security designation: the Enterprise path and the Small and Medium Business (SMB) path, each with its own set of criteria. This dual-path approach lets partners select the path that aligns with their customer focus, whether it be SMB or Enterprise customers.</p>
+<p>Microsoft evaluates partners on both paths and selects the highest score from either path. Microsoft selects the highest score at the solution area level, rather than at the individual metric level, to determine qualification. This process helps to ensure that partners can use the path that best suits their business strategy.</p>
+<h2 id="partner-capability-score-for-security">Partner capability score for Security</h2>
+<p>The partner capability score for security has four metrics in three categories:</p>
+<ul>
+<li><strong><a href="#performance-category" data-linktype="self-bookmark">Performance</a></strong> category
+<ul>
+<li><a href="#net-customer-adds" data-linktype="self-bookmark">Net customer adds</a> metric</li>
+</ul>
+</li>
+<li><strong><a href="#skilling-category" data-linktype="self-bookmark">Skilling</a></strong> category
+<ul>
+<li><em><a href="#intermediate-certifications-metric" data-linktype="self-bookmark">Intermediate certifications</a></em> metric</li>
+</ul>
+</li>
+<li><strong><a href="#customer-success-category" data-linktype="self-bookmark">Customer success</a></strong> category
+<ul>
+<li><em><a href="#deployments" data-linktype="self-bookmark">Deployments</a></em> metric</li>
+<li><em><a href="#usage-growth" data-linktype="self-bookmark">Usage growth</a></em> metric</li>
+</ul>
+</li>
+</ul>
+<p>Read the following sections to understand the detailed requirements for each of these metrics. Calculations for Azure and Microsoft 365 are completed individually and then totaled together for the final four metric scores. One eligible customer can contribute points to both Azure and Microsoft 365 calculations.</p>
+<h2 id="skilling-category">Skilling category</h2>
+<p>The <em>skilling</em> category measures the capability and skills acquired by a partner through the number of certified individuals in their organization.</p>
+<p>For Security, there's one metric in the <em>Skilling</em> category:</p>
+<ul>
+<li><a href="#intermediate-certifications-metric" data-linktype="self-bookmark">Intermediate certifications</a></li>
+</ul>
+<h2 id="intermediate-certifications-metric">Intermediate certifications metric</h2>
+<h3 id="enterprise-track">Enterprise track</h3>
+<h4 id="step-1-required">STEP 1 (Required)</h4>
+<p>At least two people must complete one of the following certifications:</p>
+<ul>
+<li><a href="/en-us/certifications/azure-security-engineer/" data-linktype="absolute-path">Azure Security Engineer Associate</a>*</li>
+<li><a href="/en-us/credentials/certifications/cloud-and-ai-security-engineer-associate/" data-linktype="absolute-path">Cloud and AI Security Engineer Associate</a></li>
+</ul>
+<p>*The Azure Security Engineer Associate certification retires on August 31, 2026. If you complete it before retirement, it remains valid for one year.</p>
+<p>Completing this step doesn't earn points, but it's mandatory before points are awarded for step 3.</p>
+<h4 id="step-2-required">STEP 2 (Required)</h4>
+<p>At least 2 people must complete the <a href="/en-us/certifications/security-operations-analyst/" data-linktype="absolute-path">Microsoft Security Operations Analyst</a> certification.</p>
+<p>Completing this step does not earn points, but it is mandatory before points are awarded for step 3.</p>
+<h4 id="step-3">STEP 3</h4>
+<p>Certified individuals (same as step 1 or step 2) must complete at least one of the following certifications:</p>
+<ul>
+<li><p><a href="/en-us/certifications/cybersecurity-architect-expert/" data-linktype="absolute-path">Microsoft Cybersecurity Architect expert</a></p>
+</li>
+<li><p><a href="/en-us/certifications/identity-and-access-administrator/" data-linktype="absolute-path">Microsoft Identity and Access Administrator</a></p>
+</li>
+<li><p><a href="/en-us/certifications/information-protection-administrator/" data-linktype="absolute-path">Microsoft Information Protection Administrator</a>*</p>
+</li>
+<li><p><a href="/en-us/credentials/certifications/information-security-administrator/" data-linktype="absolute-path">Microsoft Certified: Information Security Administrator Associate</a></p>
+</li>
+</ul>
+<p>Each certified individual adds 6.67 points in Step 3.</p>
+<p>** This certification is retired on May 31, 2025. If the certification is passed before retirement, it will remain valid for one year.*</p>
+<h3 id="important-considerations">Important Considerations</h3>
+<p>Step 1 and step 2 are mandatory. You must complete step 1 and step 2 before earning any points in step 3.</p>
+<p>Individuals can be counted across steps. A person can count toward multiple steps, but only once per step.</p>
+<p><a href="#partner-capability-score-for-security" data-linktype="self-bookmark">Return to top</a></p>
+<h2 id="related-content">Related content</h2>
+<ul>
+<li><a href="link-partner-id-for-azure-performance-pal-dpor" data-linktype="relative-path">Link a PartnerID for PAL</a></li>
+<li><a href="../incentives/submit-osa-claim" data-linktype="relative-path">Link a PartnerID for CPOR</a></li>
+<li><a href="https://partner.microsoft.com/membership/competencies" data-linktype="external">Learn how to improve your score</a></li>
+</ul>
+</div>
+					
+		<div
+			<div
+			id="ms--inline-notifications"
+			class="margin-block-xs"
+			data-bi-name="inline-notification"
+		></div>
+	 
+		<div
+			id="assertive-live-region"
+			role="alert"
+			aria-live="assertive"
+			class="visually-hidden"
+			aria-relevant="additions"
+			aria-atomic="true"
+		></div>
+		<div
+			id="polite-live-region"
+			role="status"
+			aria-live="polite"
+			class="visually-hidden"
+			aria-relevant="additions"
+			aria-atomic="true"
+		></div>
+	
+					
+		<!-- feedback section -->
+		<section
+			id="site-user-feedback-footer"
+			class="font-size-sm margin-top-md display-none-print display-none-desktop"
+			data-test-id="site-user-feedback-footer"
+			data-bi-name="site-feedback-section"
+		>
+			<hr class="hr" />
+			<h2 id="ms--feedback" class="title is-3">Feedback</h2>
+			<div class="display-flex flex-wrap-wrap align-items-center">
+				<p class="font-weight-semibold margin-xxs margin-left-none">
+					Was this page helpful?
+				</p>
+				<div class="buttons">
+					<button
+						class="thumb-rating-button like button button-primary button-sm"
+						data-test-id="footer-rating-yes"
+						data-binary-rating-response="rating-yes"
+						type="button"
+						title="This article is helpful"
+						data-bi-name="button-rating-yes"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-like"></span>
+						</span>
+						<span>Yes</span>
+					</button>
+					<button
+						class="thumb-rating-button dislike button button-primary button-sm"
+						id="standard-rating-no-button"
+						hidden
+						data-test-id="footer-rating-no"
+						data-binary-rating-response="rating-no"
+						type="button"
+						title="This article is not helpful"
+						data-bi-name="button-rating-no"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-dislike"></span>
+						</span>
+						<span>No</span>
+					</button>
+					<details
+						class="popover popover-top"
+						id="mobile-help-popover"
+						data-test-id="footer-feedback-popover"
+					>
+						<summary
+							class="thumb-rating-button dislike button button-primary button-sm"
+							data-test-id="details-footer-rating-no"
+							data-binary-rating-response="rating-no"
+							title="This article is not helpful"
+							data-bi-name="button-rating-no"
+							aria-pressed="false"
+							data-bi-an="feedback-unhelpful-popover"
+						>
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-dislike"></span>
+							</span>
+							<span>No</span>
+						</summary>
+						<div
+							class="popover-content width-200 width-300-tablet"
+							role="dialog"
+							aria-labelledby="popover-heading"
+							aria-describedby="popover-description"
+						>
+							<p id="popover-heading" class="font-size-lg margin-bottom-xxs font-weight-semibold">
+								Need help with this topic?
+							</p>
+							<p id="popover-description" class="font-size-sm margin-bottom-xs">
+								Want to try using Ask Learn to clarify or guide you through this topic?
+							</p>
+							
+		<div class="buttons flex-direction-row flex-wrap justify-content-center gap-xxs">
+			<div>
+		<button
+			class="button button-sm border inner-focus display-none margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-test-id="ask-learn-assistant-modal-entry-mobile-feedback"
+			data-ask-learn-modal-entry-feedback
+			data-bi-an=feedback-unhelpful-popover
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-label="Ask Learn"
+			hidden
+		>
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+		</button>
+		<button
+			class="button button-sm display-inline-flex display-none-desktop flex-shrink-0 margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-modal-entry-tablet-feedback"
+			data-ask-learn-modal-entry-feedback
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+		<button
+			class="button button-sm display-none flex-shrink-0 display-inline-flex-desktop margin-right-xxs border-color-ask-learn margin-right-xxs"
+			data-bi-name="ask-learn-assistant-entry-troubleshoot"
+			data-bi-an=feedback-unhelpful-popover
+			data-test-id="ask-learn-assistant-flyout-entry-feedback"
+			data-ask-learn-flyout-entry-show-only
+			data-flyout-button="toggle"
+			type="button"
+			style="min-width: max-content;"
+			aria-expanded="false"
+			aria-controls="ask-learn-flyout"
+			hidden
+		>
+			<span class="icon font-size-lg" aria-hidden="true">
+				<span class="docon docon-chat-sparkle-fill gradient-ask-learn-logo"></span>
+			</span>
+			<span>Ask Learn</span>
+		</button>
+	</div>
+			<button
+				type="button"
+				class="button button-sm margin-right-xxs"
+				data-help-option="suggest-fix"
+				data-bi-name="feedback-suggest"
+				data-bi-an="feedback-unhelpful-popover"
+				data-test-id="suggest-fix"
+			>
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-feedback"></span>
+				</span>
+				<span> Suggest a fix? </span>
+			</button>
+		</div>
+	
+						</div>
+					</details>
+				</div>
+			</div>
+		</section>
+		<!-- end feedback section -->
+	
+				</div>
+				
+		<div id="ms--additional-resources-mobile" class="display-none-print">
+			<hr class="hr" hidden />
+			<h2 id="ms--additional-resources-mobile-heading" class="title is-3" hidden>
+				Additional resources
+			</h2>
+			
+		<section
+			id="right-rail-recommendations-mobile"
+			class=""
+			data-bi-name="recommendations"
+			hidden
+		></section>
+	 
+		<section
+			id="right-rail-training-mobile"
+			class=""
+			data-bi-name="learning-resource-card"
+			hidden
+		></section>
+	 
+		<section
+			id="right-rail-events-mobile"
+			class=""
+			data-bi-name="events-card"
+			hidden
+		></section>
+	
+		</div>
+	 
+		<div
+			id="article-metadata-footer"
+			data-bi-name="article-metadata-footer"
+			data-test-id="article-metadata-footer"
+			class="page-metadata-container"
+		>
+			<hr class="hr" />
+			<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+				<li class="visibility-hidden-visual-diff">
+			<span class="badge badge-sm text-wrap-pretty">
+				<span>Last updated on <local-time format="twoDigitNumeric"
+		datetime="2026-07-31T16:04:00.000Z"
+		data-article-date-source="calculated"
+		class="is-invisible"
+	>
+		2026-07-31
+	</local-time></span>
+			</span>
+		</li>
+			</ul>
+		</div>
+	
+			</div>
+		
+				</main>
+
+				<aside
+					id="layout-body-aside"
+					class="layout-body-aside  "
+					data-bi-name="aside"
+					aria-label="Additional resources"
+			  >
+					
+		<div
+			id="ms--additional-resources"
+			class="right-container padding-sm display-none display-block-desktop height-full"
+			data-bi-name="pageactions"
+		>
+			<div id="affixed-right-container" data-bi-name="right-column">
+				
+		<nav
+			id="side-doc-outline"
+			class="doc-outline border-bottom padding-bottom-xs margin-bottom-xs scrollbar-width-thin"
+			data-bi-name="intopic toc"
+			aria-label="In this article"
+		>
+			<h3>In this article</h3>
+		</nav>
+	
+				<!-- Feedback -->
+				
+		<section
+			id="ms--site-user-feedback-right-rail"
+			class="font-size-sm display-none-print"
+			data-test-id="site-user-feedback-right-rail"
+			data-bi-name="site-feedback-right-rail"
+		>
+			<div class="display-flex flex-wrap-wrap align-items-center">
+				<p class="font-weight-semibold margin-xxs margin-left-none">
+					Was this page helpful?
+				</p>
+				<div class="display-flex flex-wrap-nowrap">
+					<button
+						class="thumb-rating-button like inner-focus"
+						data-test-id="right-rail-rating-yes"
+						data-binary-rating-response="rating-yes"
+						type="button"
+						title="This article is helpful"
+						aria-label="This article is helpful"
+						data-bi-name="button-rating-yes"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-like"></span>
+						</span>
+					</button>
+					<button
+						class="thumb-rating-button dislike inner-focus"
+						id="right-rail-no-button"
+						hidden
+						data-test-id="right-rail-rating-no"
+						data-binary-rating-response="rating-no"
+						type="button"
+						title="This article is not helpful"
+						aria-label="This article is not helpful"
+						data-bi-name="button-rating-no"
+						aria-pressed="false"
+					>
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-dislike"></span>
+						</span>
+					</button>
+					<details class="popover popover-right" id="help-popover" data-test-id="feedback-popover">
+						<summary
+							tabindex="0"
+							class="thumb-rating-button dislike inner-focus"
+							data-test-id="details-right-rail-rating-no"
+							data-binary-rating-response="rating-no"
+							title="This article is not helpful"
+							aria-label="This article is not helpful"
+							data-bi-name="button-rating-no"
+							aria-pressed="false"
+							data-bi-an="feedback-unhelpful-popover"
+						>
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-dislike"></span>
+</div>
+<footer class="footer"><a href="/en-us/previous-versions/">Previous Versions</a> <a href="https://go.microsoft.com/fwlink/?LinkId=521839">Privacy</a> <span>&copy; Microsoft 2026</span></footer>
+</body>
+</html>

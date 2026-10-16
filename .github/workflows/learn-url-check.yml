@@ -1,0 +1,200 @@
+name: Learn URL Check
+
+# Checks every learn.microsoft.com URL in this repo against mscerts/learnsync and
+# opens an issue for links that no longer work. It must run AFTER learnsync has
+# synced. GitHub starts learnsync's scheduled runs 6-8 hours after their cron
+# time (learn catalog Mon 07:00 UTC, docs catalog Mon 08:00 UTC, docs job limit
+# 120 min), so this runs the next morning and the script also waits while a
+# learnsync sync is queued or running (up to 150 minutes), or up to 30 minutes
+# for a late-starting one when learnsync's data/status.json heartbeat does not yet
+# show both syncs finished this week; it does not wait for a sync whose latest
+# run already failed, because nothing will refresh the data. learnsync can trigger this
+# workflow right after a sync with a repository_dispatch event of type
+# "learnsync-synced". That needs the repository secret HUB_DISPATCH_TOKEN in
+# learnsync, which is optional: without it this workflow simply runs on its own
+# Tuesday schedule below, and nothing else depends on the secret.
+#
+# When learnsync stops syncing, this workflow says so. After the wait, the check
+# step judges the data it is about to use (a Learn or docs heartbeat older than
+# LEARNSYNC_STALE_DAYS, 6 by default; a sync whose latest run failed after the
+# last good heartbeat; docs.complete false; change files whose source stamps are
+# stale) and the publish job opens ONE issue (label bug) titled
+# "Learn URL Check: learnsync data is stale", comments on it while the data
+# stays stale (one comment per run) and closes it with a comment once the data
+# is fresh again. learnsync's own failure alerts are issues in that repository,
+# which nobody watches, so this is the alert that reaches this repository. The
+# check still runs on the data it has; its findings carry the stale-data caveat.
+#
+# Two sources (CHECK_SOURCE, chosen in the "Choose the check source" step):
+#   changes  every run except the monthly one. Reads only learnsync's two small
+#            change files (data/changes/removed.json and moved.json) through a
+#            sparse checkout, so the multi-MB caches are never downloaded. Reports
+#            what learnsync has recorded as removed or moved.
+#   cache    the monthly FULL AUDIT: the scheduled run on day 1-7 of the month
+#            (the first Tuesday), a later scheduled run when no full audit is on
+#            record (the tracker's lastFullAudit is empty: the first scheduled run) or
+#            the last one is more than 35 days old, so a dropped or failed
+#            first-Tuesday run is made up at the next scheduled run, or any manual run
+#            with full_audit enabled. A full audit that fails records nothing, so the
+#            next scheduled run does it again: one that keeps failing fails every
+#            Tuesday until it passes. Clones all of learnsync and validates every URL
+#            against the complete caches, which also covers what the change files
+#            never list (shows, collections, practice assessments, legacy
+#            /certifications/ paths, credentials support pages, typos, brand-new
+#            pages).
+# The day-of-month and the age rule are computed in that step (the script's
+# chooseCheckSource), not in the cron expression.
+on:
+  schedule:
+    - cron: "0 6 * * 2" # Tuesday 06:00 UTC, after Monday's learnsync runs
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Report only: do not create issues or update the tracker"
+        type: boolean
+        default: false
+      wait_for_sync:
+        description: "Wait for a queued, running or overdue learnsync sync first"
+        type: boolean
+        default: false
+      full_audit:
+        description: "Full audit: validate every URL against the complete learnsync caches instead of the change files (this runs monthly on the first Tuesday anyway)"
+        type: boolean
+        default: false
+  repository_dispatch:
+    types: [learnsync-synced]
+
+concurrency:
+  group: learn-url-check
+  cancel-in-progress: false
+
+jobs:
+  # Two jobs, so that the long one holds no write access. `check` waits for learnsync, reads
+  # the repo and Learn's data with a read-only token and writes a PLAN (plain JSON: what the
+  # stale-data issue and the broken-link issue would say, and what the tracker write needs).
+  # `publish` is short: it opens, comments on and closes the issues from the plan and then
+  # commits the tracker. It is the only job that can write issues or push.
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    permissions:
+      contents: read
+    outputs:
+      source: ${{ steps.source.outputs.source }}
+      check_failed: ${{ steps.check.outputs.check_failed }}
+    env:
+      PLAN_FILE: /tmp/learn-url-check-plan.json
+      STALE_REPORT_FILE: /tmp/learn-url-check-stale.md
+      ERROR_FILE: /tmp/learn-url-check-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      - name: Choose the check source
+        id: source
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          FULL_AUDIT: ${{ inputs.full_audit }}
+        run: node scripts/learn-url-check.mjs --choose-source | tee -a "$GITHUB_OUTPUT"
+
+      # Read-only: this step touches no issue and no tracker, it only writes the plan. A check
+      # that cannot judge (too many broken links at once, a crash) fails this job; the
+      # publish job still opens the stale-data issue and reports the failure.
+      - name: Check Learn URLs against learnsync (${{ steps.source.outputs.source }})
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHECK_SOURCE: ${{ steps.source.outputs.source }}
+          WAIT_FOR_SYNC: ${{ (github.event_name != 'workflow_dispatch' || inputs.wait_for_sync) && '1' || '0' }}
+        run: node scripts/learn-url-check.mjs --check
+
+      - name: Hand the plan to the publish job
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: learn-url-check
+          path: |
+            /tmp/learn-url-check-plan.json
+            /tmp/learn-url-check-error.md
+          if-no-files-found: ignore
+          retention-days: 7
+
+  publish:
+    needs: check
+    # also after a failed check: the stale-data issue and the failure issue still have to be raised
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      issues: write
+    env:
+      PLAN_FILE: /tmp/learn-url-check-plan.json
+      REPORT_FILE: /tmp/learn-url-check-report.md
+      STALE_REPORT_FILE: /tmp/learn-url-check-stale.md
+      ERROR_FILE: /tmp/learn-url-check-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      # No artifact means the check job died before it could write a plan: the script then
+      # says so and publishes nothing, and the failure issue below reports what went wrong.
+      - name: Fetch the plan
+        continue-on-error: true
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: learn-url-check
+          path: /tmp
+
+      # The issues are created inside this step and the tracker commit below only
+      # runs when it succeeded (its condition has no status-check function), so a
+      # failed issue step (the stale-data issue comes first, then the broken-link
+      # issue) leaves the tracker uncommitted and a re-run reports everything again.
+      # Committing the tracker first would lose the alert: the links would already
+      # be tracked as reported.
+      - name: Open the issues and write the tracker
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CREATE_ISSUES: "1"
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+        run: node scripts/learn-url-check.mjs --publish
+
+      - name: Commit updated tracker
+        if: steps.publish.outputs.tracker_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/learn-url-check.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update Learn URL check tracker"
+          # The issues above are already open, so a push that fails because another
+          # monitor pushed meanwhile must retry on top of it: a failed job would make
+          # the re-run report the same links again in a second issue.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1
+
+      - name: Create issue if the check failed
+        # A report-only dispatch (dry_run) touches no issue, so a failing one opens no failure
+        # issue either (inputs.dry_run is empty on schedule and repository_dispatch runs).
+        # failure() is also true when the check job, an ancestor of this one, failed.
+        if: failure() && (needs.check.outputs.check_failed == 'true' || steps.publish.outputs.check_failed == 'true') && !inputs.dry_run
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
+        with:
+          title: "Learn URL Check Failed — ${{ github.run_id }}"
+          content-filepath: /tmp/learn-url-check-error.md
+          labels: bug

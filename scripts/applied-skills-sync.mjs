@@ -39,16 +39,11 @@
  * Writes GITHUB_OUTPUT keys: changes_found, baseline_updated, extraction_failed.
  */
 
-import {
-  readFileSync,
-  writeFileSync,
-  appendFileSync,
-  existsSync,
-  readdirSync,
-} from "node:fs";
+import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";
 import { isAbsolute, join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
+import { writeOutput } from "./lib/actions.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -88,17 +83,15 @@ const USER_AGENT =
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-function writeOutput(obj) {
-  const lines = Object.entries(obj)
-    .map(([key, value]) => `${key}=${String(value).toLowerCase()}\n`)
-    .join("");
-  appendFileSync(GITHUB_OUTPUT, lines);
+// The workflows compare these with "true" and "false": every value is lower-cased.
+function writeOutputs(values) {
+  writeOutput(GITHUB_OUTPUT, values, { lowercase: true });
 }
 
 function fail(message) {
   console.error(`ERROR: ${message}`);
   writeFileSync(ERROR_FILE, `${message}\n`);
-  writeOutput({
+  writeOutputs({
     changes_found: false,
     baseline_updated: false,
     extraction_failed: true,
@@ -609,8 +602,8 @@ function buildReport({
   );
 
   sections.push(
-    'See `src/data_files/applied-skills-cache.json` and the "Applied Skills Monitor" section of ' +
-      "`AGENTS.md` for how to process these.",
+    'See `src/data_files/applied-skills-cache.json` and the "Applied Skills Monitor" runbook ' +
+      "(`docs/monitors/applied-skills.md`) for how to process these.",
   );
 
   return sections.join("\n\n") + "\n";
@@ -705,7 +698,7 @@ async function main() {
     );
   }
 
-  writeOutput({
+  writeOutputs({
     changes_found: changesFound,
     baseline_updated: changed,
     extraction_failed: false,

@@ -1,32 +1,58 @@
 name: Link Checker
 
+# Two independent jobs over the same build of the site:
+#
+#   internal  every pull request that touches the content, the data files, the components, the
+#             pages, the site config or the public files (every place a link of the built site
+#             comes from), and the weekly run. Checks the links between the pages of the built
+#             site (dist/) with lychee. A broken internal link fails the job on every event
+#             (it used to be ignored on the schedule, which hid broken sidebar links for weeks).
+#   external  the weekly run and manual runs only. Checks the external resource links
+#             (GitHub, lab sites, YouTube, training providers, ...) of the host allowlist in
+#             lychee-external.toml and opens ONE deduplicated issue for links that failed on
+#             two runs in a row (scripts/link-failures.mjs, tracker
+#             src/data_files/link-failures.json). learn.microsoft.com is not checked here:
+#             the Learn URL Check owns it.
+#
+# The build takes about a minute, so each job simply builds its own copy.
 on:
   pull_request:
     paths:
       - "src/content/**"
       - ".github/workflows/link-checker.yml"
       - ".lycheeignore"
+      - "src/data_files/**"
+      - "src/components/**"
+      - "src/pages/**"
+      - "astro.config.mjs"
+      - "public/**"
   schedule:
-    - cron: "0 6 * * 1"
+    # Monday 10:30 UTC, a slot of its own (the MeasureUp monitor has 06:00). That is only a
+    # convenience, runs often start hours late: the push retry in the commit step is the protection.
+    - cron: "30 10 * * 1"
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Report only: do not create or change issues and do not update the tracker"
+        type: boolean
+        default: false
 
 jobs:
-  check:
+  internal:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
       contents: read
-      issues: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Install pnpm
-        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
         with:
           version: 11.15.1
 
       - name: Setup Node
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version-file: .node-version
           cache: pnpm
@@ -42,9 +68,7 @@ jobs:
           restore-keys: cache-lychee-
 
       - name: Check internal links
-        id: lychee
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
-        continue-on-error: true
         with:
           fail: true
           jobSummary: false
@@ -59,40 +83,109 @@ jobs:
             'dist/**/*.html'
           output: lychee/results.md
 
-      - name: Fail PR on internal link errors
-        if: github.event_name == 'pull_request' && steps.lychee.outputs.exit_code != 0
-        run: exit 1
-
-      - name: Check external links on live site
-        id: external
-        if: github.event_name != 'pull_request'
-        continue-on-error: true
-        run: |
-          set -o pipefail
-          pnpm exec linkinator \
-            "https://msfthub.com" \
-            "https://msfthub.com/certs/" \
-            "https://msfthub.com/certs/vouchers/" \
-            "https://msfthub.com/certs/guide/introduction/" \
-            "https://msfthub.com/certs/labs/" \
-            --skip "https?://(www\\.)?(measureup\\.com|discord\\.gg|discord\\.com|linkedin\\.com|x\\.com|threads\\.net|reddit\\.com|news\\.ycombinator\\.com)" \
-            --skip "news.ycombinator.com" \
-            --status-code "403:warn" \
-            --status-code "429:warn" \
-            --timeout 10000 \
-            --retry \
-            --retry-errors \
-            --retry-errors-count 2 \
-            2>&1 | tee /tmp/linkinator-report.md
-
-      - name: Create issue on external-link failure
-        if: always() && github.event_name != 'pull_request' && steps.external.outcome == 'failure'
-        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
+  external:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    # build about 1 minute, lychee about 5 (about 800 links, one lane per host), a slow or
+    # blocked host can stretch that; the lychee step has its own limit below
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      issues: write
+    # two runs must not judge and commit the tracker at the same time
+    concurrency:
+      group: link-checker-external
+      cancel-in-progress: false
+    env:
+      REPORT_FILE: /tmp/link-failures-report.md
+      ERROR_FILE: /tmp/link-failures-error.md
+    steps:
+      # The job may push (the tracker) and then installs and runs the whole build
+      # toolchain of the site. The default checkout leaves the job token in
+      # .git/config, where any dependency run by pnpm install or pnpm build could use
+      # it to push to main (which Cloudflare Pages deploys). So the checkout keeps no
+      # credential and only the commit step below, which runs nothing but git,
+      # gets the token.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          title: "External Link Checker Report"
-          content-filepath: /tmp/linkinator-report.md
-          labels: report, automated
+          persist-credentials: false
 
-      - name: Fail on external-link errors
-        if: always() && github.event_name != 'pull_request' && steps.external.outcome == 'failure'
-        run: exit 1
+      - name: Install pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          version: 11.15.1
+
+      - name: Setup Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+
+      - name: Build site
+        id: build
+        run: pnpm install --frozen-lockfile && pnpm build
+
+      # No cache: the runs are a week apart (the internal job's --max-cache-age 1d would
+      # discard it anyway) and a cached "ok" must never hide a link that died since.
+      # lychee exits with 2 when a link fails, which is normal here: fail is off and the
+      # next step judges the report. lychee-external.toml holds the allowlist and the rate
+      # limits; the options below are the same as in the documented local command.
+      # lychee writes its report only when it has finished, so the step must end inside its
+      # 25 minutes: the toml gives a silent link one timeout (15 s) and zero retries, which keeps
+      # even the biggest host (about 340 links on 4 lanes, all silent) at about 21 minutes.
+      - name: Check external links
+        id: lychee
+        timeout-minutes: 25
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
+        with:
+          lycheeVersion: v0.24.2
+          fail: false
+          failIfEmpty: false
+          jobSummary: false
+          checkbox: false
+          format: json
+          output: lychee/external.json
+          args: >-
+            --config lychee-external.toml
+            --root-dir dist
+            'dist/**/*.html'
+
+      # The issue is created (or edited, commented on, closed) inside this step and the
+      # tracker commit below only runs when it succeeded: its condition has no status-check
+      # function. A failed issue step therefore leaves the tracker uncommitted and the next
+      # run reports the same links again. Committing the tracker first would lose the alert.
+      # A run that cannot be trusted (lychee failed, no report, far too few answers, far too many
+      # dead or timing-out links, an unreadable tracker, a crash of the judging itself) fails
+      # this step after raising its own "external check failed" issue (one issue, a comment per
+      # further failed run); the issue and the job summary name the failing hosts.
+      - name: Judge the report and update the issue
+        id: judge
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        timeout-minutes: 10
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LYCHEE_EXIT_CODE: ${{ steps.lychee.outputs.exit_code }}
+          CREATE_ISSUES: "1"
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+        run: node scripts/link-failures.mjs
+
+      - name: Commit updated link tracker
+        if: steps.judge.outputs.tracker_updated == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # The checkout kept no credential (persist-credentials: false): push with the
+          # job token, set here and only here.
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/link-failures.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update link failure tracker"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1

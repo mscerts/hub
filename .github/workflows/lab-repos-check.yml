@@ -1,0 +1,89 @@
+name: Lab Repo Check
+
+on:
+  schedule:
+    # Daily 08:50 UTC. Every pusher starts at a different minute (a test keeps it that
+    # way); that is only a convenience as runs often start hours late. The push retry
+    # below is the protection.
+    - cron: "50 8 * * *"
+  workflow_dispatch:
+    inputs:
+      report_all:
+        description: "Also list, once, the hub-code repositories that exist but are not linked by any page (normally recorded silently as the baseline), and report even if nothing changed since the last report"
+        type: boolean
+        default: false
+      force_baseline:
+        description: "Accept every hub-code repository of the organisation as the new baseline silently (use after the 'unlinked hub-code repositories appeared at once' failsafe stopped a run, and read the job summary for what was swallowed)"
+        type: boolean
+        default: false
+      max_problems:
+        description: "Raise the limit of problems on linked repositories that one run accepts (default 20; more at once is treated as an API or authentication problem). Leave empty for the default"
+        type: string
+        default: ""
+
+# A run is never cancelled half way through (a newer run waits instead): the
+# issue and the tracker commit below belong together.
+concurrency:
+  group: lab-repos-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/lab-repos-report.md
+      ERROR_FILE: /tmp/lab-repos-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      # The script reads the GitHub REST API with the workflow token (about 130
+      # requests, one at a time) and opens the issue itself, BEFORE the tracker is
+      # committed below.
+      #
+      # The running issue is titled "Lab repos: linked repositories need attention"
+      # and lists what is wrong now: it is created when the list becomes non-empty,
+      # gets a comment when the list changes (and a reminder issue after 7 days when
+      # somebody closed it while problems remain) and is closed with a comment when
+      # nothing is left.
+      #
+      # A failing check raises one issue titled "Lab repos: the check failed" (a
+      # comment per further failed run, closed by the next healthy run).
+      #
+      # The tracker holds the discovery baseline, the first-detected dates and what
+      # was last reported, so when the issue step fails this step fails, the commit
+      # below is skipped (it has no status-check function in its condition), main
+      # keeps the old tracker, and the next run derives the same state again.
+      - name: Check the linked lab repositories
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CREATE_ISSUES: "1"
+          REPORT_ALL: ${{ inputs.report_all && '1' || '' }}
+          FORCE_BASELINE: ${{ inputs.force_baseline && '1' || '' }}
+          MAX_PROBLEMS: ${{ inputs.max_problems }}
+        run: node scripts/lab-repos-check.mjs
+
+      - name: Commit updated lab repo tracker
+        if: steps.check.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/lab-repos.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update lab repo tracker"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1

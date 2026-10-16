@@ -1,0 +1,241 @@
+{
+  "total": 7,
+  "unique": 7,
+  "successful": 7,
+  "unknown": 0,
+  "unsupported": 0,
+  "timeouts": 0,
+  "redirects": 5,
+  "remaps": 0,
+  "excludes": 0,
+  "errors": 0,
+  "cached": 0,
+  "success_map": {
+    "dist/certs/azure/az-900/index.html": [
+      {
+        "url": "https://youtu.be/jNQXAC9IVRw",
+        "status": {
+          "text": "200 OK",
+          "code": 200
+        },
+        "span": {
+          "line": 6,
+          "column": 10
+        },
+        "duration": {
+          "secs": 0,
+          "nanos": 107130096
+        }
+      },
+      {
+        "url": "https://www.microsoft.com/events/category/microsoft-virtual-training-days",
+        "status": {
+          "text": "200 OK",
+          "code": 200
+        },
+        "redirects": {
+          "origin": "https://www.microsoft.com/events/category/microsoft-virtual-training-days",
+          "redirects": [
+            {
+              "url": "https://www.microsoft.com/cs-cz/events/category/microsoft-virtual-training-days",
+              "code": 302
+            },
+            {
+              "url": "https://www.microsoft.com/cs-cz/events",
+              "code": 301
+            }
+          ]
+        },
+        "span": {
+          "line": 3,
+          "column": 10
+        },
+        "duration": {
+          "secs": 6,
+          "nanos": 612338509
+        }
+      },
+      {
+        "url": "http://github.com/microsoft",
+        "status": {
+          "text": "200 OK",
+          "code": 200
+        },
+        "redirects": {
+          "origin": "http://github.com/microsoft",
+          "redirects": [
+            {
+              "url": "https://github.com/microsoft",
+              "code": 301
+            }
+          ]
+        },
+        "span": {
+          "line": 5,
+          "column": 10
+        },
+        "duration": {
+          "secs": 0,
+          "nanos": 731265661
+        }
+      },
+      {
+        "url": "https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Introduction+to+Microsoft+Azure",
+        "status": {
+          "text": "200 OK",
+          "code": 200
+        },
+        "redirects": {
+          "origin": "https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Introduction+to+Microsoft+Azure",
+          "redirects": [
+            {
+              "url": "https://www.microsoft.com/cs-cz/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Introduction+to+Microsoft+Azure",
+              "code": 302
+            },
+            {
+              "url": "https://www.microsoft.com/cs-cz/events?scenario=mvtd&q=Introduction+to+Microsoft+Azure?scenario=mvtd&q=Introduction+to+Microsoft+Azure",
+              "code": 301
+            }
+          ]
+        },
+        "span": {
+          "line": 2,
+          "column": 10
+        },
+        "duration": {
+          "secs": 7,
+          "nanos": 285788432
+        }
+      },
+      {
+        "url": "https://github.com/MicrosoftLearning/mslearn-ai-fundamentals",
+        "status": {
+          "text": "200 OK",
+          "code": 200
+        },
+        "span": {
+          "line": 8,
+          "column": 10
+        },
+        "duration": {
+          "secs": 0,
+          "nanos": 843001219
+        }
+      },
+      {
+        "url": "https://microsoftlearning.github.io/mslearn-ai-fundamentals",
+        "status": {
+          "text": "200 OK",
+          "code": 200
+        },
+        "redirects": {
+          "origin": "https://microsoftlearning.github.io/mslearn-ai-fundamentals",
+          "redirects": [
+            {
+              "url": "https://microsoftlearning.github.io/mslearn-ai-fundamentals/",
+              "code": 301
+            }
+          ]
+        },
+        "span": {
+          "line": 7,
+          "column": 10
+        },
+        "duration": {
+          "secs": 0,
+          "nanos": 390798466
+        }
+      },
+      {
+        "url": "https://aka.ms/MVTD_FAQ_EN",
+        "status": {
+          "text": "200 OK",
+          "code": 200
+        },
+        "redirects": {
+          "origin": "https://aka.ms/MVTD_FAQ_EN",
+          "redirects": [
+            {
+              "url": "https://arch-center.azureedge.net/Credentials/microsoft-mvtd-cert-faq-en-us.pdf",
+              "code": 301
+            }
+          ]
+        },
+        "span": {
+          "line": 4,
+          "column": 10
+        },
+        "duration": {
+          "secs": 0,
+          "nanos": 488895119
+        }
+      }
+    ]
+  },
+  "error_map": {},
+  "timeout_map": {},
+  "suggestion_map": {},
+  "redirect_map": {
+    "dist/certs/azure/az-900/index.html": [
+      {
+        "origin": "https://microsoftlearning.github.io/mslearn-ai-fundamentals",
+        "redirects": [
+          {
+            "url": "https://microsoftlearning.github.io/mslearn-ai-fundamentals/",
+            "code": 301
+          }
+        ]
+      },
+      {
+        "origin": "http://github.com/microsoft",
+        "redirects": [
+          {
+            "url": "https://github.com/microsoft",
+            "code": 301
+          }
+        ]
+      },
+      {
+        "origin": "https://www.microsoft.com/events/category/microsoft-virtual-training-days",
+        "redirects": [
+          {
+            "url": "https://www.microsoft.com/cs-cz/events/category/microsoft-virtual-training-days",
+            "code": 302
+          },
+          {
+            "url": "https://www.microsoft.com/cs-cz/events",
+            "code": 301
+          }
+        ]
+      },
+      {
+        "origin": "https://www.microsoft.com/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Introduction+to+Microsoft+Azure",
+        "redirects": [
+          {
+            "url": "https://www.microsoft.com/cs-cz/events/category/microsoft-virtual-training-days?scenario=mvtd&q=Introduction+to+Microsoft+Azure",
+            "code": 302
+          },
+          {
+            "url": "https://www.microsoft.com/cs-cz/events?scenario=mvtd&q=Introduction+to+Microsoft+Azure?scenario=mvtd&q=Introduction+to+Microsoft+Azure",
+            "code": 301
+          }
+        ]
+      },
+      {
+        "origin": "https://aka.ms/MVTD_FAQ_EN",
+        "redirects": [
+          {
+            "url": "https://arch-center.azureedge.net/Credentials/microsoft-mvtd-cert-faq-en-us.pdf",
+            "code": 301
+          }
+        ]
+      }
+    ]
+  },
+  "excluded_map": {},
+  "duration": {
+    "secs": 7,
+    "nanos": 286751182
+  },
+  "detailed_stats": true
+}

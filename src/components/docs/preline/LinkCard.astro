@@ -38,18 +38,16 @@ const resolvedRel = linkRel(target, rel);
     >
       <Icon name={linkSourceIcon(href)} class="size-4.5" />
     </span>
-    <span class="min-w-0"
-      ><span
-        class="text-card-foreground group-hover:text-primary block text-base leading-snug font-semibold transition-colors"
-        >{title}</span
-      >{
-        description && (
-          <span class="text-muted-foreground mt-1 block text-sm leading-normal">
-            {description}
-          </span>
-        )
-      }</span
-    >
+    <span class="min-w-0">
+      <span class="text-card-foreground group-hover:text-primary block text-base leading-snug font-semibold transition-colors">
+        {title}
+      </span>
+      {description && (
+        <span class="text-muted-foreground mt-1 block text-sm leading-normal">
+          {description}
+        </span>
+      )}
+    </span>
   </span>
   <Icon
     name={isExternal ? "ph:arrow-up-right" : "ph:caret-right"}

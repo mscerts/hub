@@ -2,16 +2,19 @@ name: Applied Skills Monitor
 
 on:
   schedule:
-    - cron: "30 6 * * 1" # Monday 06:30 UTC (offset from the MeasureUp monitor so both can push)
+    - cron: "30 6 * * 1" # Monday 06:30 UTC (a start time of its own; the push retry below is the protection)
   workflow_dispatch:
 
+# A run is never cancelled half way through (a newer run waits instead): the
+# issue and the cache commit below belong together.
 concurrency:
   group: applied-skills-monitor
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
       issues: write
@@ -19,16 +22,34 @@ jobs:
       REPORT_FILE: /tmp/applied-skills-report.md
       ERROR_FILE: /tmp/applied-skills-error.md
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
-          node-version: 20
+          node-version-file: .node-version
           package-manager-cache: false
 
       - name: Sync Applied Skills cache
         id: sync
         run: node scripts/applied-skills-sync.mjs
+
+      # The issue comes BEFORE the cache commit on purpose. A skill is reported
+      # as new or retiring only until the cache that records it is on main, so
+      # when opening the issue fails the commit below is skipped (it has no
+      # status-check function in its condition) and the skill is reported again
+      # by the next run or by "Re-run failed jobs". Committing first would lose
+      # the alert: the skill would already be in the cache, and nothing would
+      # report the failed issue. The price is a possible duplicate issue when
+      # the commit step fails after the issue was opened; a duplicate beats a
+      # lost alert.
+      - name: Create issue if Applied Skills changed
+        id: issue
+        if: steps.sync.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
+        with:
+          title: "Applied Skills Changes Detected — ${{ github.run_id }}"
+          content-filepath: /tmp/applied-skills-report.md
+          labels: enhancement
 
       - name: Commit updated Applied Skills cache
         if: steps.sync.outputs.baseline_updated == 'true'
@@ -36,21 +57,19 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/data_files/applied-skills-cache.json
-          git diff --cached --quiet || git commit -m "Update Applied Skills cache"
-          git pull --rebase
-          git push
-
-      - name: Create issue if Applied Skills changed
-        if: steps.sync.outputs.changes_found == 'true'
-        uses: peter-evans/create-issue-from-file@v6
-        with:
-          title: "Applied Skills Changes Detected — ${{ github.run_id }}"
-          content-filepath: /tmp/applied-skills-report.md
-          labels: enhancement
+          git diff --cached --quiet && exit 0
+          git commit -m "Update Applied Skills cache"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1
 
       - name: Create issue if sync failed
         if: failure() && steps.sync.outputs.extraction_failed == 'true'
-        uses: peter-evans/create-issue-from-file@v6
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
         with:
           title: "Applied Skills Monitor Failed — ${{ github.run_id }}"
           content-filepath: /tmp/applied-skills-error.md

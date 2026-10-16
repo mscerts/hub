@@ -1,0 +1,76 @@
+---
+title: SC-100 Labs
+description: "Case studies and lab exercises for SC-100: Microsoft Cybersecurity Architect. Includes Case Studies, Applied Skills and Microsoft GitHub labs."
+---
+import { LinkCard, CardGrid } from '@components/docs';
+import { Tabs, TabItem } from '@components/docs';
+
+:::note
+SC-100 is an architect-level exam. It is about designing security solutions and understanding the architecture behind them, so knowing architecture is what matters most. Hands-on technical experience helps, but the exam does not primarily test it and doing labs is not required. Labs can still support your preparation by making the services you design with more concrete, so use the case studies first to practise design decisions and treat the Applied Skills and labs as optional extras.
+:::
+
+<Tabs>
+  <TabItem label="Case Studies">
+
+:::note
+These interactive case studies are part of the SC-100 course on Microsoft Learn. Each one is a business scenario in which you analyze the design requirements, answer conceptual and technical questions, and design a solution.
+:::
+
+  <CardGrid>
+    <LinkCard title="Interactive case study: Modernizing identity and data security" href="https://learn.microsoft.com/training/modules/case-study-identity-data-security/?WT.mc_id=studentamb_165290" target="_blank" description="Learning path: Design security operations, identity, and compliance capabilities" />
+    <LinkCard title="Interactive case study: Modernizing user access control and threat resilience" href="https://learn.microsoft.com/training/modules/case-study-access-control-threat-resilience/?WT.mc_id=studentamb_165290" target="_blank" description="Learning path: Design security operations, identity, and compliance capabilities" />
+    <LinkCard title="Interactive case study: Securing endpoints and infrastructure" href="https://learn.microsoft.com/training/modules/case-study-endpoints-infrastructure/?WT.mc_id=studentamb_165290" target="_blank" description="Learning path: Design security solutions for infrastructure" />
+    <LinkCard title="Interactive case study: Securing apps and data" href="https://learn.microsoft.com/training/modules/case-study-apps-data/?WT.mc_id=studentamb_165290" target="_blank" description="Learning path: Design security solutions for applications and data" />
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Applied Skills">
+
+:::note
+Applied Skills on Microsoft Learn are practical, hands-on exercises designed to help users build and demonstrate proficiency in specific technologies or tasks. These small labs focus on solving real-world scenarios, reinforcing learning through direct application of skills, and preparing users for industry roles or certifications.
+:::
+
+  <CardGrid>
+    <LinkCard title="Get started with identities and access using Microsoft Entra" href="https://learn.microsoft.com/credentials/applied-skills/get-started-with-identities-and-access-using-microsoft-entra/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Defend against cyberthreats with Microsoft Defender XDR" href="https://learn.microsoft.com/credentials/applied-skills/defend-against-cyberthreats-with-microsoft-defender-xdr/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Secure Azure services and workloads with Microsoft Defender for Cloud regulatory compliance controls" href="https://learn.microsoft.com/credentials/applied-skills/secure-azure-services-and-workloads-with-microsoft-defender-for-cloud-regulatory-compliance-controls/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Implement information protection and data loss prevention by using Microsoft Purview" href="https://learn.microsoft.com/credentials/applied-skills/implement-information-protection-and-data-loss-prevention-by-using-microsoft-purview/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Protect information in Microsoft 365 Copilot by using Microsoft Purview" href="https://learn.microsoft.com/credentials/applied-skills/protect-information-in-microsoft-365-copilot-by-using-microsoft-purview/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Implement retention, eDiscovery, and Communication Compliance in Microsoft Purview" href="https://learn.microsoft.com/credentials/applied-skills/implement-retention-ediscovery-and-communication-compliance-in-microsoft-purview/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="Secure AI solutions in the cloud" href="https://learn.microsoft.com/credentials/applied-skills/secure-ai-solutions-in-the-cloud/?WT.mc_id=studentamb_165290" />
+  </CardGrid>
+  </TabItem>
+
+  {/* <TabItem label="Microsoft Learn">
+
+:::note
+Microsoft Learn Sandboxes require you to bring in your own subscription.
+:::
+
+  <CardGrid>
+    <LinkCard title="" href="" />
+  </CardGrid>
+  </TabItem> */}
+
+  <TabItem label="Microsoft GitHub">
+
+:::note
+Microsoft GitHub labs are series of labs designed to be used in Microsoft Instructor Lead Trainings delivered by Microsoft Certified Trainers where participants also have access to the environment to perform them. This means that for everyone else, it is necessary to bring your own environment to go through them.
+:::
+
+  <CardGrid>
+    <LinkCard title="Compliance assessment" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/01-LAB_SC_100_Lab3_Ex1_Compliance_Assessment.md" />
+    <LinkCard title="Configure Entra ID" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/02-LAB_SC_100_Lab2_Ex1_Entra_ID_policies.md" />
+    <LinkCard title="Conditional Access" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/03-LAB_SC_100_Lab2_Ex2_Conditional_Access.md" />
+    <LinkCard title="Cross-tenant Synchronization" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/04-LAB_SC_100_Lab2_Ex3_B2B_collaboration.md" />
+    <LinkCard title="Security Operations Center" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/05-LAB_SC_100_Lab1_Ex1_Sentinel.md" />
+    <LinkCard title="Shadow-IT" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/06-LAB_SC_100_Lab2_Ex4_Shadow_IT.md" />
+    <LinkCard title="Data classification framework" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/07-LAB_SC_100_Lab3_Ex2_Data%20classification%20framework.md" />
+    <LinkCard title="Retention policies" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/08-LAB_SC_100_Lab3_Ex3_Retention_policies.md" />
+    <LinkCard title="Managing External Attack Surface" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/09-LAB_SC_100_Lab1_Ex2_DfEASM.md" />
+    <LinkCard title="Secure Infrastructure" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/10-LAB_SC_100_Lab1_Ex3_Secure_Infrastructure.md" />
+    <LinkCard title="Security Posture Management" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/11-LAB_SC_100_Lab4_Ex1_SecureScore.md" />
+    <LinkCard title="Endpoint Security" href="https://github.com/MicrosoftLearning/SC-100-Microsoft-Cybersecurity-Architect/blob/master/Instructions/Labs/12-LAB_SC_100_Lab4_Ex4_Endpoint_Security.md" />
+  </CardGrid>
+  </TabItem>
+</Tabs>

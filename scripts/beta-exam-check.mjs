@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Weekly check of tracked beta exams against Microsoft Learn.
+ * Daily check of tracked beta exams against Microsoft Learn.
  *
  * Usage:
  *   node scripts/beta-exam-check.mjs
@@ -22,15 +22,11 @@
  * Writes GITHUB_OUTPUT keys: changes_found, baseline_updated, extraction_failed.
  */
 
-import {
-  readFileSync,
-  writeFileSync,
-  appendFileSync,
-  existsSync,
-} from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { isAbsolute, join, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
+import { writeOutput } from "./lib/actions.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -53,17 +49,15 @@ const FETCH_DELAY_MS = Number(process.env.FETCH_DELAY_MS ?? 500);
 const USER_AGENT =
   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36";
 
-function writeOutput(obj) {
-  const lines = Object.entries(obj)
-    .map(([key, value]) => `${key}=${String(value).toLowerCase()}\n`)
-    .join("");
-  appendFileSync(GITHUB_OUTPUT, lines);
+// The workflows compare these with "true" and "false": every value is lower-cased.
+function writeOutputs(values) {
+  writeOutput(GITHUB_OUTPUT, values, { lowercase: true });
 }
 
 function fail(message) {
   console.error(`ERROR: ${message}`);
   writeFileSync(ERROR_FILE, `${message}\n`);
-  writeOutput({
+  writeOutputs({
     changes_found: false,
     baseline_updated: false,
     extraction_failed: true,
@@ -154,8 +148,11 @@ function buildReport(wentGA) {
     "| Code | Name | URL |\n" +
     "|------|------|-----|\n" +
     `${rows}\n\n` +
-    'See the "Beta and Retiring Exam Tracking" section of `AGENTS.md` for how to process these ' +
-    "(remove the BETA badge in `astro.config.mjs`, update the exam page's beta banner and Get Started card).\n"
+    'See the "Beta and Retiring Exam Tracking" runbook (`docs/monitors/beta-and-retiring-exams.md`) for how to process these ' +
+    "(replace the BETA badge in `src/data_files/exam-status.mjs` with " +
+    `\`{ text: "NEW", variant: "success", since: "${new Date().toISOString().slice(0, 10)}" }\`, ` +
+    "which the site hides by itself after 90 days (use the day Microsoft announced the exam as generally available if you know it), " +
+    "remove the beta `:::tip` and `:::note` from the exam page and update its Get Started card).\n"
   );
 }
 
@@ -168,7 +165,7 @@ async function main() {
 
   if (pending.length === 0) {
     console.log("No untracked-as-GA beta exams to check.");
-    writeOutput({
+    writeOutputs({
       changes_found: false,
       baseline_updated: false,
       extraction_failed: false,
@@ -221,7 +218,7 @@ async function main() {
 
   if (wentGA.length === 0) {
     console.log("No beta exams changed status this run.");
-    writeOutput({
+    writeOutputs({
       changes_found: false,
       baseline_updated: false,
       extraction_failed: false,
@@ -231,7 +228,7 @@ async function main() {
 
   writeFileSync(EXAMS_FILE, JSON.stringify(tracker, null, 2) + "\n");
   writeFileSync(REPORT_FILE, buildReport(wentGA));
-  writeOutput({
+  writeOutputs({
     changes_found: true,
     baseline_updated: true,
     extraction_failed: false,
