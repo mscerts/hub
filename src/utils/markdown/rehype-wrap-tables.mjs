@@ -8,7 +8,10 @@ export default function rehypeWrapTables() {
       parent.children[index] = {
         type: "element",
         tagName: "div",
-        properties: { className: ["docs-table-wrapper"] },
+        properties: {
+          className: ["docs-table-wrapper", "subtle-scrollbar"],
+          dataSubtleScrollbar: true,
+        },
         children: [node],
       };
     });

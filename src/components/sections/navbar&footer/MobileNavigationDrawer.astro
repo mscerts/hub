@@ -170,6 +170,8 @@ const redditLinks = [
 </div>
 
 <script>
+  import initializeSubtleScrollbars from "@utils/subtle-scrollbars";
+
   const initializeMobileNavigation = () => {
     const layer = document.querySelector<HTMLElement>(
       "[data-mobile-nav-layer]",
@@ -271,28 +273,6 @@ const redditLinks = [
     desktopQuery.addEventListener("change", (event) => {
       if (event.matches && layer.dataset.open === "true") setOpen(false, false);
     });
-  };
-
-  const initializeSubtleScrollbars = () => {
-    document
-      .querySelectorAll<HTMLElement>("[data-subtle-scrollbar]")
-      .forEach((element) => {
-        if (element.dataset.scrollbarReady) return;
-        element.dataset.scrollbarReady = "true";
-
-        let hideTimer = 0;
-        element.addEventListener(
-          "scroll",
-          () => {
-            element.dataset.scrolling = "true";
-            window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => {
-              delete element.dataset.scrolling;
-            }, 800);
-          },
-          { passive: true },
-        );
-      });
   };
 
   initializeMobileNavigation();

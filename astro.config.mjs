@@ -95,6 +95,10 @@ export default defineConfig({
         return (
           !pathname.startsWith("/wiki/") &&
           !pathname.startsWith("/wiki-next/") &&
+          !(
+            pathname.startsWith("/certs/archive/") &&
+            pathname !== "/certs/archive/"
+          ) &&
           !pathname.endsWith(".md") &&
           !isLegacyDoc
         );

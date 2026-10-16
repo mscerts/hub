@@ -234,5 +234,6 @@ export const docsSidebar: DocsSidebarItem[] = [
   },
   { label: "Support Us", href: docsPath("supportus") },
   { label: "Contributing", href: docsPath("contributing") },
+  { label: "Archive", href: "/certs/archive/" },
   { label: "Privacy Policy", href: docsPath("privacy") },
 ];

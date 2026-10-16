@@ -30,6 +30,19 @@ const blogCollection = defineCollection({
 });
 
 export const collections = {
+  archive: defineCollection({
+    loader: glob({
+      pattern: "**/[^_]*.{md,mdx}",
+      base: "./src/content/archive",
+    }),
+    schema: z
+      .object({
+        title: z.string(),
+        description: z.string().optional(),
+        draft: z.boolean().optional(),
+      })
+      .passthrough(),
+  }),
   docs: defineCollection({
     loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/docs" }),
     schema: z.strictObject({

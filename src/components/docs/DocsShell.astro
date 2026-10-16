@@ -132,8 +132,11 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
 
 <script>
   import { headingAnchors } from "./client/heading-anchors";
+  import initializeSubtleScrollbars from "@utils/subtle-scrollbars";
 
   headingAnchors();
+  initializeSubtleScrollbars();
+  document.addEventListener("astro:page-load", initializeSubtleScrollbars);
 </script>
 
 <style>
@@ -301,6 +304,7 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
     max-width: 100%;
     margin-block: 1.5rem 2rem;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
     border: 1px solid var(--nb-border);
     border-radius: 0.75rem;
   }

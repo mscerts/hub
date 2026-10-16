@@ -1,0 +1,63 @@
+---
+import { Icon } from "astro-icon/components";
+import { linkRel } from "@utils/link-rel";
+
+interface Action {
+  label: string;
+  href: string;
+  icon?: string;
+  target?: "_blank" | "_self";
+}
+
+interface Props {
+  label: string;
+  actions: Action[];
+}
+
+const { label, actions } = Astro.props;
+---
+
+<div class="hs-dropdown relative inline-flex">
+  <button
+    type="button"
+    class="hs-dropdown-toggle inline-flex h-8 items-center gap-x-2 rounded-md border border-gray-700 bg-gray-800 px-3 text-xs font-semibold text-gray-100 transition hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
+    aria-haspopup="menu"
+    aria-expanded="false"
+  >
+    {label}
+    <Icon name="ph:caret-down" class="size-3.5" aria-hidden="true" />
+  </button>
+  <div
+    class="hs-dropdown-menu hs-dropdown-open:opacity-100 z-20 mt-2 hidden w-60 rounded-lg border border-gray-700 bg-gray-800 p-1 opacity-0 shadow-xl transition-[opacity,margin]"
+    role="menu"
+    aria-label={label}
+  >
+    {
+      actions.map((action) => (
+        <a
+          href={action.href}
+          target={action.target}
+          rel={linkRel(action.target)}
+          class="flex items-center gap-x-3 rounded-md px-3 py-2.5 text-sm text-gray-100 no-underline transition hover:bg-gray-700 focus-visible:bg-gray-700 focus-visible:outline-none"
+          role="menuitem"
+        >
+          {action.icon && (
+            <Icon
+              name={action.icon}
+              class="size-4 shrink-0"
+              aria-hidden="true"
+            />
+          )}
+          <span class="min-w-0 flex-1">{action.label}</span>
+          {action.target === "_blank" && (
+            <Icon
+              name="ph:arrow-square-out"
+              class="size-4 shrink-0 text-gray-400"
+              aria-hidden="true"
+            />
+          )}
+        </a>
+      ))
+    }
+  </div>
+</div>
