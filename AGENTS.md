@@ -192,7 +192,7 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 Resource placement:
 - **Text:** Official Learn courses/paths, documentation, and reputable written guides.
 - **Videos:** Verified video courses, exam reviews, and directly relevant technical sessions.
-- **Tests:** Free practice assessments and legitimate free tests.
+- **Tests:** Free practice assessments and legitimate free tests. A BETA or newly launched exam whose own Learn practice assessment is not published yet opens its Tests tab with a `:::note` saying that Microsoft usually publishes it about 8 weeks after the exam leaves beta and reaches general availability (the Learn Content Watch uses the same rule of thumb; the wording is in the pages of AB-330, AB-650, GH-700 and AZ-401, and the NEW exams' variant leaves out "leaves beta and"). When the exam gets its own card, remove the note: `tests/scripts/practice-assessment-note.test.mjs` fails for a page that has both. An exam page that only links the predecessor's assessment (`AZ-400: Microsoft Learn Practice Assessment`) has no assessment of its own yet, so the note stays.
 - **Paid:** Paid courses, assessments, and practice-test products.
 - **Misc:** Repositories, tools, communities, reference implementations, and supporting standards. Microsoft Agent Academy (`https://microsoft.github.io/agent-academy/`) belongs here only on exam pages where Copilot Studio / Copilot-and-agent building or administration is a core, named topic (not an incidental mention, and not a different Copilot product like GitHub Copilot) — currently AB-410, AB-620, AB-650, AB-730, AB-900.
 - Keep all five exam tabs, even if some are empty. Sparse beta pages are expected.
