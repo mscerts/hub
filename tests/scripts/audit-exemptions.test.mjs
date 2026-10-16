@@ -77,6 +77,23 @@ test("an exemption stays true: the exempt exam still lacks the resource", () => 
   }
 });
 
+test("an ESI exemption stays true: the exempt exam still has no ESI card of its own", () => {
+  for (const code of Object.keys(EXEMPT["Microsoft ESI"] ?? {})) {
+    const { file } = examPage(code);
+    const titles = [
+      ...stripComments(lf(readFileSync(file, "utf8"))).matchAll(
+        /<LinkCard\s+title="([^"]*)"/g,
+      ),
+    ].map((match) => match[1].replace(/[​-‏﻿]/g, ""));
+    assert.ok(
+      !titles.some((title) =>
+        /^Microsoft Enterprise Skills Initiative\b/i.test(title),
+      ),
+      `${code} now has an ESI card: remove its exemption from scripts/lib/audit-exemptions.mjs`,
+    );
+  }
+});
+
 test("the GitHub Labs tab counts only when it is active and holds a card", () => {
   const tab = (inner) =>
     `<Tabs><TabItem label="Microsoft GitHub">${inner}</TabItem></Tabs>`;

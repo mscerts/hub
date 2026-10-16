@@ -27,6 +27,7 @@ Scripts are in `scripts/`, workflows in `.github/workflows/`, trackers in `src/d
 | Learn Content Watch | New practice assessments and instructor-led courses on Microsoft Learn for the exams the hub covers | `learn-content-watch.mjs` | `learn-content-watch.yml` | `learn-content-watch.json` | [learn-content-watch.md](learn-content-watch.md) |
 | Source Watch | The Microsoft program and policy pages, and the programme pages of other hosts, that the guide, prepare and voucher pages are written from | `source-watch.mjs` | `source-watch.yml` | `source-watch.json` (watch list: `watched-sources.json`, edited by hand) | [source-watch.md](source-watch.md) |
 | Tests Review Reminder | GitHub itself (issues and workflow runs), to ask once whether the monitors' tests can go | `tests-review-reminder.mjs` | `tests-review-reminder.yml` | none | [tests-review-reminder.md](tests-review-reminder.md) |
+| ESI Check Reminder | The "Microsoft ESI" list of the Missing Resources Audit (exam pages without an ESI card), turned into a checklist issue every second month, because ESI is not public and must be checked by hand | `esi-check-reminder.mjs` | `esi-check-reminder.yml` | none | [esi-check-reminder.md](esi-check-reminder.md) |
 
 [learn-research-caches.md](learn-research-caches.md) is not a monitor: it records where the Microsoft Learn research caches live (`mscerts/learnsync`) and which monitor reads them.
 

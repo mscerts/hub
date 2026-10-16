@@ -1,0 +1,49 @@
+name: ESI Check Reminder
+
+on:
+  schedule:
+    # 09:20 UTC on the 1st of every second month (January, March, May, July,
+    # September, November). This workflow makes no commit, so it needs no slot of its
+    # own among the monitors that push to main; the minute is simply free.
+    - cron: "20 9 1 */2 *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print the checklist, but create, comment on and close nothing"
+        type: boolean
+        default: false
+
+# A run waits for the one in progress instead of cancelling it.
+concurrency:
+  group: esi-check-reminder
+  cancel-in-progress: false
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      # Rebuilds the list of exam pages without an ESI card from the pages
+      # themselves, so a committed list that went stale cannot send a wrong
+      # checklist. The file it writes stays in the runner; nothing is committed.
+      - name: List the exam pages without an ESI card
+        run: node scripts/audit-missing-resources.mjs
+
+      # ESI is not public, so a person has to check it: this raises (or comments on,
+      # or closes) ONE issue with the exams to check and their ESI search addresses.
+      - name: Raise the ESI check issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CREATE_ISSUES: "1"
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+        run: node scripts/esi-check-reminder.mjs
