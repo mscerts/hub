@@ -348,6 +348,7 @@ export function buildPools({
     boilerplate,
     linkFamilies,
     recommendedBy,
+    linkTexts,
     sectionOf,
     productShare,
     hasDocsCatalog: Array.isArray(docs) && docs.length > 0,

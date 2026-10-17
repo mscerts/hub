@@ -130,4 +130,4 @@ Exit codes: 0 done, 1 the course file has errors, 2 an input problem (no such fi
 
 ## Not covered here
 
-Choosing the picks is not done by this tool. It defines what a finished course looks like and checks it; everything that produces the picks must end in a file that passes `validate`. The first step of choosing, the **shortlist** of candidates per task with their provenance, is [course-candidates.md](course-candidates.md); judging relevance and deciding what is accepted automatically and what waits for the maintainer comes after it and is not built yet.
+Choosing the picks is not done by this tool. It defines what a finished course looks like and checks it; everything that produces the picks must end in a file that passes `validate`. The first step of choosing, the **shortlist** of candidates per task with their provenance, is [course-candidates.md](course-candidates.md); the **judging protocol** (verdicts, evidence quotes a script verifies, a skeptic pass) is [course-judging.md](course-judging.md); deciding what is accepted automatically and what waits for the maintainer comes after it and is not built yet.

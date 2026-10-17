@@ -117,6 +117,31 @@ export function describeTask(task) {
   return lines;
 }
 
+/**
+ * Everything the generator searches, loaded from learnsync (a checkout, else GitHub) and the catalog API:
+ * { learnsync, docs, courses, pools }. The judging step needs the same pools for the text it quotes.
+ */
+export async function loadPools({
+  root = repoRoot,
+  env = process.env,
+  fetchImpl = globalThis.fetch,
+} = {}) {
+  const dir = learnsyncDir({ root, env });
+  const learnsync = await loadLearnsync({ dir, fetchImpl });
+  const docs = await loadLearnsyncDocs({ dir, fetchImpl });
+  const courses = await fetchCourses(fetchImpl);
+  const pools = buildPools({
+    catalog: learnsync.catalog,
+    courses,
+    learningPaths: learnsync.content.learningPaths,
+    moduleLinks: learnsync.moduleLinks,
+    docs: docs.docs,
+    docPaths: docs.docPaths,
+    redirects: docs.redirects,
+  });
+  return { learnsync, docs, courses, pools };
+}
+
 /** The command line, dependencies injectable. Returns the exit code. */
 export async function main(argv, deps = {}) {
   const {
@@ -152,10 +177,9 @@ export async function main(argv, deps = {}) {
       error(`${options.code}: the study guide does not parse completely.`);
       return 2;
     }
-    const dir = learnsyncDir({ root, env });
-    const learnsync = await loadLearnsync({ dir, fetchImpl });
-    const docs = await loadLearnsyncDocs({ dir, fetchImpl });
-    const courses = await fetchCourses(fetchImpl);
+    const loaded = await loadPools({ root, env, fetchImpl });
+    const { learnsync, docs, courses } = loaded;
+    pools = loaded.pools;
     scope = buildScopeMap({
       code: options.code,
       courses,
@@ -164,15 +188,6 @@ export async function main(argv, deps = {}) {
       moduleLinks: learnsync.moduleLinks,
     });
     scope.warnings.unshift(...learnsync.warnings, ...docs.warnings);
-    pools = buildPools({
-      catalog: learnsync.catalog,
-      courses,
-      learningPaths: learnsync.content.learningPaths,
-      moduleLinks: learnsync.moduleLinks,
-      docs: docs.docs,
-      docPaths: docs.docPaths,
-      redirects: docs.redirects,
-    });
   } catch (e) {
     error(`Cannot load the inputs: ${e.message}`);
     return 2;
