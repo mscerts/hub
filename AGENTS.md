@@ -130,6 +130,7 @@ scripts/
 ├── course-status.mjs         # The rebuild check: compares a course file with today's study guide and Learn and prints what to redo (see docs/courses.md)
 ├── course-candidates.mjs     # Candidate generator: a shortlist of Learn modules, units and docs pages per study guide task, with provenance P1-P4; the abbreviations it knows are in scripts/lib/course-aliases.mjs (see docs/course-candidates.md)
 ├── course-judge.mjs          # Judging protocol: prompts for an AI judge per skill group, mechanical checks of its answers (evidence quotes), a skeptic pass and the merge (see docs/course-judging.md)
+├── course-gates.mjs          # Approval gates: accept, reject or queue every judged candidate; the queue is a file edited by hand and the maintainer's decisions are remembered in src/data_files/course-decisions/<CODE>.json (see docs/course-gates.md)
 └── *.mjs, *.sh               # One dependency-free script per monitor, plus new-exam.mjs and the audits
 tests/
 ├── scripts/                  # Offline tests of the scripts, the workflows and the docs claims (pnpm test:scripts)

@@ -4,7 +4,13 @@ import {
   buildPools,
   generateCandidates,
 } from "../../../scripts/lib/course-candidates.mjs";
-import { buildBatches } from "../../../scripts/lib/course-judge.mjs";
+import {
+  buildBatches,
+  buildSkepticBatch,
+  mergeJudged,
+  validateJudgments,
+  validateSkeptic,
+} from "../../../scripts/lib/course-judge.mjs";
 import { candidateWorld, guideOf, scopeOf } from "./example-candidates.mjs";
 
 export const EXAM = { code: "NET-100", name: "Network Administrator" };
@@ -99,4 +105,46 @@ export function skepticFor(skBatch, edit = (a) => a) {
     judgedBy: "test skeptic",
     answers,
   };
+}
+
+/**
+ * The judged file (course-judge.mjs merge) of a batch: the judgments of `judgmentsFor` and a skeptic that upholds
+ * every pick, each changed by `judge(judgment, candidate, task)` and `skeptic(answer, candidate, task)`.
+ */
+export function judgedFor(batch, { judge, skeptic } = {}) {
+  const judged = validateJudgments(batch, judgmentsFor(batch, judge));
+  const skBatch = buildSkepticBatch(batch, judged);
+  const answers = validateSkeptic(skBatch, skepticFor(skBatch, skeptic));
+  return mergeJudged(batch, judged, answers);
+}
+
+/**
+ * A judged file with something for every gate: P1 and P2 core with a good quote, P3 supporting (the skeptic refutes the
+ * units), P4 supporting (always the maintainer's call), the rest rejected.
+ */
+export function exampleJudged() {
+  const { batches: bs } = batches();
+  return judgedFor(bs[0], {
+    judge: (j, c) =>
+      c.source === "P4"
+        ? {
+            ...j,
+            verdict: "supporting",
+            relation: "same-workflow",
+            why: "A neighbouring step of the job.",
+            quote: c.evidence[0].text,
+          }
+        : j.verdict === "core"
+          ? {
+              ...j,
+              quote:
+                c.evidence.find((e) => /user-defined|route/i.test(e.text))
+                  ?.text ?? j.quote,
+            }
+          : j,
+    skeptic: (a, c) =>
+      c.source === "P3" && c.target.kind === "unit"
+        ? { ...a, stance: "refute", reason: "Another exam's job." }
+        : a,
+  });
 }
