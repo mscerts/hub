@@ -7,9 +7,10 @@
  *       Monitor stores and against learnsync: the tree must be the guide's tree, every pick must follow the
  *       format and approval rules, and every target must be a current Learn page (learnsync's validator;
  *       --live also asks learn.microsoft.com about what the caches cannot settle). Exit 1 on any error.
- *   node scripts/course-file.mjs render <CODE|file> [--out FILE]
+ *   node scripts/course-file.mjs render <CODE|file> [--out FILE] [--publish]
  *       Renders the course page (MDX) to stdout, or to FILE. The file must pass the checks that need no
- *       network; nothing is written to src/content unless --out says so.
+ *       network; nothing is written to src/content unless --out says so. The page is a draft (the site
+ *       leaves it out) unless --publish says otherwise.
  *
  * URL checks need a learnsync checkout (LEARNSYNC_DIR, default ../learnsync) because they run its validator.
  * Nothing here writes a course file: those come from the build steps described in docs/courses.md.
@@ -29,7 +30,7 @@ import { readGuides } from "./course-source.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 const USAGE = `Usage: node scripts/course-file.mjs validate <CODE|file> [--live]
-       node scripts/course-file.mjs render <CODE|file> [--out FILE]`;
+       node scripts/course-file.mjs render <CODE|file> [--out FILE] [--publish]`;
 
 /** What the validator needs to know about a learnsync verdict: is the target a current page? */
 export function currentFromVerdict(verdict) {
@@ -69,9 +70,10 @@ export async function learnsyncVerdicts({ dir, live }) {
 
 function parseArgs(argv) {
   const [command, target, ...rest] = argv;
-  const options = { command, target, live: false, out: null };
+  const options = { command, target, live: false, out: null, publish: false };
   for (let i = 0; i < rest.length; i++) {
     if (rest[i] === "--live") options.live = true;
+    else if (rest[i] === "--publish") options.publish = true;
     else if (rest[i] === "--out") {
       if (rest[i + 1] === undefined) throw new Error("--out needs a value");
       options.out = rest[++i];
@@ -190,7 +192,7 @@ export async function main(argv, deps = {}) {
     for (const e of result.errors) error(`  ${e}`);
     return 1;
   }
-  const page = renderCourse(course);
+  const page = renderCourse(course, { draft: !options.publish });
   if (options.out) {
     mkdirSync(dirname(resolve(options.out)), { recursive: true });
     writeFileSync(resolve(options.out), page);

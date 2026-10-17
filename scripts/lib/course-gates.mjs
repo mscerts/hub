@@ -150,6 +150,8 @@ export function gateItem(task, item, ctx) {
         by: "maintainer",
         via: "remembered",
         reasons: [`rejected by the maintainer: ${remembered.reason}`],
+        reason: remembered.reason,
+        at: remembered.at,
       };
     const current = isCurrent?.(path, item.target.kind);
     if (current && current.ok === false)
@@ -168,6 +170,8 @@ export function gateItem(task, item, ctx) {
       by: "maintainer",
       via: "remembered",
       reasons: [`accepted by the maintainer: ${remembered.reason}`],
+      reason: remembered.reason,
+      at: remembered.at,
     };
   }
 
@@ -203,6 +207,7 @@ export function gateItem(task, item, ctx) {
       by: "gates",
       via: "judge",
       reasons: [`rejected by the judge: ${j.why}`],
+      reason: j.why,
       remember: flags.some((f) => OUT_OF_SCOPE_FLAGS.includes(f)),
     };
 
@@ -319,6 +324,8 @@ export function gateJudged(judgedFiles, ctx) {
           source: item.source,
           ...(item.via ? { via: item.via } : {}),
           ...(item.module ? { module: item.module } : {}),
+          ...(item.unitSig ? { unitSig: item.unitSig } : {}),
+          ...(item.coverage !== undefined ? { coverage: item.coverage } : {}),
           signals: item.signals ?? {},
           flags: item.flags ?? [],
           judge: item.judge,

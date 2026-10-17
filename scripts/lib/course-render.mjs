@@ -53,8 +53,12 @@ function weightText(weight) {
     : ` (${weight.min}–${weight.max}%)`;
 }
 
-/** Render a validated course file to MDX (a string ending in a newline). */
-export function renderCourse(course) {
+/**
+ * Render a validated course file to MDX (a string ending in a newline). The page is a draft unless `draft` is
+ * false: every route of the site leaves a draft out (and so do the sitemap, the search index and the MCP
+ * bundle), so a generated course is not published until the maintainer says so.
+ */
+export function renderCourse(course, { draft = true } = {}) {
   const exam = `${course.code}: ${course.name}`;
   const guideUrl = `https://learn.microsoft.com/credentials/certifications/resources/study-guides/${course.code.toLowerCase()}${TRACKING}`;
   const version = course.inputs?.guideAsOf
@@ -64,6 +68,7 @@ export function renderCourse(course) {
     "---",
     `title: ${course.code} Study Guide Course`,
     `description: "${attr(`A task-by-task walkthrough of the ${exam} skills measured, with Microsoft Learn training and documentation for every task in the official study guide.`)}"`,
+    ...(draft ? ["draft: true"] : []),
     "---",
     "import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';",
     "",

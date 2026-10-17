@@ -195,6 +195,7 @@ export function buildBatches({ candidates, pools, exam }) {
         ...(c.via ? { via: moduleCard(pools, c.via) } : {}),
         ...(c.module ? { module: c.module } : {}),
         ...(c.courses ? { courses: c.courses } : {}),
+        ...(c.unitSig ? { unitSig: c.unitSig } : {}),
         coverage: c.coverage,
         signals: {
           ...(c.anchored !== undefined ? { anchored: c.anchored } : {}),

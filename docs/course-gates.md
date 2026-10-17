@@ -82,7 +82,7 @@ node scripts/course-gates.mjs gate AZ-104                       # the answered i
 
 ## Not covered here
 
-- **From decisions to picks.** The gated file lists every candidate with its decision, class, relation and who decided; turning the accepted ones into the picks of a course file (with `by: auto` or `maintainer`, the remembered rejections into its `rejected` list, the `inputs.picked` and `via` fields) is the course builder, which does not exist yet. The course file's validator already holds a built course to the same policy.
+- **From decisions to picks.** The gated file lists every candidate with its decision, class, relation and who decided; the builder ([course-build.md](course-build.md)) turns the accepted ones into the picks of a course file, with `by: auto` or `maintainer` and the remembered rejections in its `rejected` list.
 - **Per-task rejections only.** A page rejected under one task can come up under another; only a whole documentation family can be excluded for an exam.
 - **Freshness of a decision.** A remembered `accept` is kept while the page is current; it is not asked again when the page changes. The rebuild check ([courses.md](courses.md)) is what notices a changed module.
 - **No exam has been gated.** The rules, the queue, the memory and their tests exist; running them on an exam waits for a judged exam, which is the pilot.

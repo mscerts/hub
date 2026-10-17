@@ -18,6 +18,17 @@ test("learnHref gives a Learn address with the hub's tracking parameter and no l
   );
 });
 
+test("a rendered page is a draft unless it is told to publish", () => {
+  const { course } = exampleCourse();
+  assert.match(renderCourse(course), /\ndraft: true\n---\nimport/);
+  assert.ok(!/draft:/.test(renderCourse(course, { draft: false })));
+  assert.equal(
+    renderCourse(course, { draft: false }),
+    renderCourse(course).replace("draft: true\n", ""),
+    "nothing else changes",
+  );
+});
+
 test("the page opens with frontmatter, the import and a note that cites the study guide and explains the related tab", () => {
   const { course } = exampleCourse();
   const page = renderCourse(course);

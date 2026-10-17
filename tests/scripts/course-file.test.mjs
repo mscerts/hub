@@ -198,6 +198,23 @@ test("render: prints the page to stdout, or writes it with --out, and needs no n
     c.err.join("\n"),
   );
   assert.match(c.written.join(""), /^---\ntitle: GH-900 Study Guide Course/);
+  assert.match(
+    c.written.join(""),
+    /\ndraft: true\n---\nimport/,
+    "a generated page is a draft",
+  );
+  const published = capture();
+  await main(["render", "GH-900", "--publish"], {
+    root,
+    env: {},
+    log: published.log,
+    error: published.error,
+    write: published.write,
+  });
+  assert.ok(
+    !/draft:/.test(published.written.join("")),
+    "--publish leaves the flag out",
+  );
   const out = join(root, "out", "page.mdx");
   const c2 = capture();
   assert.equal(
