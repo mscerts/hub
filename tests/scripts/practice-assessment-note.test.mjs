@@ -75,3 +75,25 @@ test("the note is told apart from a page that simply links an assessment", () =>
     ),
   );
 });
+
+const ASN_NOTE =
+  /says that the Practice Assessment is on AI Skills Navigator, on the page of/;
+
+test("the 'practice assessment is on AI Skills Navigator, but the study guide links another certification' note sits in the Tests tab of an exam that has no card for it yet", () => {
+  const withNote = examPages().filter((page) => ASN_NOTE.test(page.text));
+  assert.ok(withNote.length > 0, "no exam page carries the note any more");
+  for (const { code, text } of withNote) {
+    assert.ok(
+      ASN_NOTE.test(testsTab(text)),
+      `${code}: the note belongs at the top of the Tests tab`,
+    );
+    assert.ok(
+      !OWN_CARD.test(text),
+      `${code} has its own Microsoft Learn Practice Assessment card now: remove the AI Skills Navigator note from its Tests tab`,
+    );
+    assert.ok(
+      !NOTE.test(text),
+      `${code} carries both practice assessment notes: keep the one that is true`,
+    );
+  }
+});
