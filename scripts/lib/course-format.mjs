@@ -19,6 +19,7 @@
  */
 
 import { diffTrees, squish } from "./course-guide.mjs";
+import { fingerprintOfSnapshot } from "./course-scope.mjs";
 
 export const COURSE_SCHEMA_VERSION = 1;
 
@@ -151,7 +152,60 @@ export function pickProblems(pick) {
   }
   if (pick.was !== undefined && !present(pick.was))
     problems.push("was must be a non-empty path when present");
+  // `via`: the module whose last unit lists a documentation page. It lets the rebuild check trace a change of
+  // that module's resource list to the picks it affects.
+  if (pick.source === "P2") {
+    if (pick.target?.kind !== "docs")
+      problems.push(
+        "a P2 pick is a documentation page a module lists, so its target.kind is docs",
+      );
+    if (!MODULE_PATH.test(pick.via ?? ""))
+      problems.push(
+        "a P2 pick needs via: the /training/modules/<slug> whose last unit lists it",
+      );
+  } else if (pick.via !== undefined && !MODULE_PATH.test(pick.via)) {
+    problems.push("via must be a /training/modules/<slug> path when present");
+  }
   return problems;
+}
+
+const MODULE_PATH = /^\/training\/modules\/[^/]+$/;
+
+const tupleOf = (entry, length) =>
+  Array.isArray(entry) &&
+  entry.length === length &&
+  entry.every((v) => typeof v === "string");
+
+/**
+ * The shape of the snapshot parts of `inputs`: `scope` = { courses: [[number, lastModified]], modules:
+ * [[path, unitSig, linksHash]] } (scope-snapshot of course-scope.mjs) and the optional `picked` =
+ * [[modulePath, unitSig]] for every module outside the exam's official course that a pick depends on.
+ * Returns a problem text, or null.
+ */
+function snapshotShapeProblem(scope, picked) {
+  if (
+    !scope ||
+    !Array.isArray(scope.courses) ||
+    !Array.isArray(scope.modules) ||
+    !scope.courses.every((e) => tupleOf(e, 2)) ||
+    !scope.modules.every((e) => tupleOf(e, 3))
+  )
+    return "inputs.scope must be { courses: [[number, lastModified]], modules: [[path, unitSig, linksHash]] }, the snapshot of the exam scope map";
+  if (
+    picked !== undefined &&
+    !(Array.isArray(picked) && picked.every((e) => tupleOf(e, 2)))
+  )
+    return "inputs.picked must be a list of [modulePath, unitSig] pairs";
+  return null;
+}
+
+/** The module a pick depends on: its own module (module or unit target), or the one it was listed by (`via`), else null. */
+export function moduleOfPick(pick) {
+  const target = pick?.target;
+  if (target?.kind === "module" || target?.kind === "unit") {
+    return target.path.split("/").slice(0, 4).join("/");
+  }
+  return MODULE_PATH.test(pick?.via ?? "") ? pick.via : null;
 }
 
 /** The picks of a course file as { domain, group, task, pick } rows. */
@@ -234,6 +288,23 @@ export function validateCourse(course, { guide, isCurrent, titleOf } = {}) {
       "inputs.scopeFingerprint must be the 40-character fingerprint of the exam scope map",
     );
   if (!isDay(inputs.builtAt)) errors.push("inputs.builtAt must be YYYY-MM-DD");
+  // the snapshot of what the course was built from: the rebuild check compares it with today's
+  const scopeModules = new Set();
+  const snapshotProblem = snapshotShapeProblem(inputs.scope, inputs.picked);
+  if (snapshotProblem) errors.push(snapshotProblem);
+  else {
+    for (const [path] of inputs.scope.modules) scopeModules.add(path);
+    if (
+      /^[0-9a-f]{40}$/.test(String(inputs.scopeFingerprint ?? "")) &&
+      fingerprintOfSnapshot(inputs.scope) !== inputs.scopeFingerprint
+    )
+      errors.push(
+        "inputs.scopeFingerprint is not the fingerprint of inputs.scope",
+      );
+  }
+  const pickedModules = new Set(
+    (inputs.picked ?? []).map((entry) => entry?.[0]),
+  );
   if (!Array.isArray(course.domains) || course.domains.length === 0) {
     errors.push("domains is missing or empty");
     return { ok: false, errors, warnings, stats: courseStats(course) };
@@ -290,6 +361,20 @@ export function validateCourse(course, { guide, isCurrent, titleOf } = {}) {
     const where = `${task.key ?? task.text}: ${pick?.target?.path ?? "?"}`;
     for (const problem of pickProblems(pick))
       errors.push(`${where}: ${problem}`);
+    // everything a pick depends on is recorded, so a change to it can be found later
+    const module =
+      typeof pick?.target?.path === "string" ? moduleOfPick(pick) : null;
+    if (module && !snapshotProblem) {
+      const official = pick.source === "P1" || pick.source === "P2";
+      if (official && !scopeModules.has(module))
+        errors.push(
+          `${where}: its module ${module} is not in inputs.scope, so it is not part of the exam's official course`,
+        );
+      if (!official && !scopeModules.has(module) && !pickedModules.has(module))
+        errors.push(
+          `${where}: its module ${module} is not recorded in inputs.picked, so a change to it could not be found`,
+        );
+    }
   }
   for (const domain of course.domains) {
     for (const group of domain.groups ?? []) {

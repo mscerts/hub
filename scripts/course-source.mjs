@@ -106,6 +106,35 @@ export async function loadLearnsync({ dir, fetchImpl }) {
   };
 }
 
+/**
+ * The exam scope map as Learn offers it today: learnsync's data (a checkout in LEARNSYNC_DIR, else
+ * ../learnsync next to the repo, else GitHub), the catalog API's course list, and buildScopeMap.
+ * Returns { learnsync, scope }; `scope.warnings` includes learnsync's own.
+ */
+export async function currentScope({
+  code,
+  root = repoRoot,
+  env = process.env,
+  fetchImpl = globalThis.fetch,
+}) {
+  const dir =
+    env.LEARNSYNC_DIR ||
+    (existsSync(join(root, "..", "learnsync", "data"))
+      ? join(root, "..", "learnsync")
+      : null);
+  const learnsync = await loadLearnsync({ dir, fetchImpl });
+  const courses = await fetchCourses(fetchImpl);
+  const scope = buildScopeMap({
+    code,
+    courses,
+    learningPaths: learnsync.content.learningPaths,
+    modules: learnsync.catalog.modules,
+    moduleLinks: learnsync.moduleLinks,
+  });
+  scope.warnings.unshift(...learnsync.warnings);
+  return { learnsync, scope };
+}
+
 export async function fetchCourses(fetchImpl) {
   const body = await fetchJson(COURSES_URL, fetchImpl);
   if (!Array.isArray(body?.courses))
@@ -231,27 +260,18 @@ export async function main(argv, deps = {}) {
   }
 
   let learnsync;
-  let courses;
+  let scope;
   try {
-    const dir =
-      env.LEARNSYNC_DIR ||
-      (existsSync(join(root, "..", "learnsync", "data"))
-        ? join(root, "..", "learnsync")
-        : null);
-    learnsync = await loadLearnsync({ dir, fetchImpl });
-    courses = await fetchCourses(fetchImpl);
+    ({ learnsync, scope } = await currentScope({
+      code: options.code,
+      root,
+      env,
+      fetchImpl,
+    }));
   } catch (e) {
     error(`Cannot load the Learn data: ${e.message}`);
     return 2;
   }
-  const scope = buildScopeMap({
-    code: options.code,
-    courses,
-    learningPaths: learnsync.content.learningPaths,
-    modules: learnsync.catalog.modules,
-    moduleLinks: learnsync.moduleLinks,
-  });
-  scope.warnings.unshift(...learnsync.warnings);
 
   const out = resolve(options.out || join(tmpdir(), "course-source"));
   mkdirSync(out, { recursive: true });

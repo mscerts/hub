@@ -3,13 +3,97 @@
 import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { parseGuide } from "../../../scripts/lib/course-guide.mjs";
+import {
+  buildScopeMap,
+  fingerprintOfSnapshot,
+} from "../../../scripts/lib/course-scope.mjs";
 
 const fixtures = resolve(import.meta.dirname, "../../fixtures/course-source");
 
 export const readGuideFixture = (code) =>
   JSON.parse(readFileSync(join(fixtures, `guide-${code}.json`), "utf8"));
 
-export const FINGERPRINT = "0123456789abcdef0123456789abcdef01234567";
+// What Learn "offers" in the tests: GH-900's official course (one learning path with one module that lists two
+// documentation pages) and a module of another exam. A fresh object every call, so a test can change it.
+export function learnInputs() {
+  return {
+    courses: [
+      {
+        course_number: "GH-900T00",
+        title: "GitHub Foundations",
+        url: "https://learn.microsoft.com/en-us/training/courses/gh-900t00/",
+        last_modified: "2026-01-01T00:00:00Z",
+        study_guide: [{ uid: "learn.path-github", type: "learningPath" }],
+      },
+    ],
+    learningPaths: [
+      {
+        uid: "learn.path-github",
+        title: "GitHub Foundations path",
+        path: "/training/paths/github-foundations",
+        modules: ["/training/modules/intro-to-github"],
+      },
+    ],
+    modules: [
+      {
+        uid: "learn.intro-to-github",
+        path: "/training/modules/intro-to-github",
+        title: "Introduction to GitHub",
+        unitSig: "sig-intro",
+        units: ["Introduction", "What is Git?", "Summary"],
+        unitUrls: [
+          "/training/modules/intro-to-github/1-introduction",
+          "/training/modules/intro-to-github/2-what-is-git",
+          "/training/modules/intro-to-github/3-summary",
+        ],
+      },
+      {
+        uid: "learn.advanced-git-workflows",
+        path: "/training/modules/advanced-git-workflows",
+        title: "Advanced Git workflows",
+        unitSig: "sig-advanced",
+        units: ["Introduction"],
+        unitUrls: ["/training/modules/advanced-git-workflows/1-introduction"],
+      },
+    ],
+    moduleLinks: {
+      lastChecked: "2026-10-17T00:00:00Z",
+      modules: [
+        {
+          path: "/training/modules/intro-to-github",
+          unitSig: "sig-intro",
+          unit: "/training/modules/intro-to-github/3-summary",
+          unitTitle: "Summary",
+          harvestedAt: "2026-10-17",
+          links: [
+            {
+              kind: "docs",
+              path: "/azure/github/overview",
+              text: "What is GitHub?",
+              section: "Learn more",
+            },
+            {
+              kind: "docs",
+              path: "/azure/github/branches",
+              text: "About branches",
+              section: "Learn more",
+            },
+          ],
+        },
+      ],
+    },
+  };
+}
+
+export const scopeMapFor = (inputs = learnInputs()) =>
+  buildScopeMap({ code: "GH-900", ...inputs });
+
+// what the example course was "built from"
+export const SCOPE = scopeMapFor().inputs.snapshot;
+export const PICKED = [
+  ["/training/modules/advanced-git-workflows", "sig-advanced"],
+];
+export const FINGERPRINT = fingerprintOfSnapshot(SCOPE);
 
 export const pick = (extra = {}) => ({
   target: { kind: "module", path: "/training/modules/intro-to-github" },
@@ -39,6 +123,7 @@ export function exampleCourse() {
       target: { kind: "docs", path: "/azure/github/overview" },
       title: "What is GitHub?",
       source: "P2",
+      via: "/training/modules/intro-to-github",
     }),
   ];
   tasks[2].picks = [
@@ -58,6 +143,7 @@ export function exampleCourse() {
       evidence:
         "About branches: branches let you develop features in isolation.",
       source: "P2",
+      via: "/training/modules/intro-to-github",
     }),
   ];
   tasks[3].picks = [
@@ -83,6 +169,8 @@ export function exampleCourse() {
       guideHash: fixture.hash,
       guideAsOf: guide.asOf?.text,
       scopeFingerprint: FINGERPRINT,
+      scope: structuredClone(SCOPE),
+      picked: structuredClone(PICKED),
       builtAt: "2026-10-17",
     },
     domains,

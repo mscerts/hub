@@ -48,6 +48,47 @@ export function coursesForExam(code, courses) {
     .sort((a, b) => byText(String(a.course_number), String(b.course_number)));
 }
 
+const sha1 = (text) => createHash("sha1").update(text).digest("hex");
+
+/** A short hash of a module's resource links (target and `was` of each, in order); "-" when it has no record. */
+export function linksHash(resources) {
+  if (!resources) return "-";
+  return sha1(
+    JSON.stringify(
+      resources.links.map((l) => [l.path ?? l.url, l.was ?? null]),
+    ),
+  ).slice(0, 12);
+}
+
+/**
+ * What a course is built from, in a form small enough to store in the course file:
+ * { courses: [[number, lastModified]], modules: [[path, unitSig, linksHash]] }, both sorted. Comparing two
+ * snapshots says exactly which course or module changed; `fingerprintOfSnapshot` is their one-line summary.
+ */
+export function scopeSnapshot({ courses, modules }) {
+  return {
+    courses: courses
+      .map((c) => [c.number, c.lastModified ?? ""])
+      .sort((a, b) => byText(a[0], b[0])),
+    modules: modules
+      .map((m) => [m.path, m.unitSig ?? "", linksHash(m.resources)])
+      .sort((a, b) => byText(a[0], b[0])),
+  };
+}
+
+/** The 40-character fingerprint of a snapshot: it changes with the course list, a unitSig or a module's links, and with nothing else. */
+export function fingerprintOfSnapshot(snapshot) {
+  const lines = [
+    ...snapshot.courses.map(
+      ([number, lastModified]) => `course|${number}|${lastModified}`,
+    ),
+    ...snapshot.modules.map(
+      ([path, sig, links]) => `module|${path}|${sig}|${links}`,
+    ),
+  ].sort(byText);
+  return sha1(lines.join("\n"));
+}
+
 /**
  * Build the scope map of one exam. `learningPaths`, `modules` and `moduleLinks` are the learnsync files'
  * arrays / object. Returns
@@ -149,13 +190,7 @@ export function buildScopeMap({
     path: learnPath(c.url ?? ""),
     lastModified: c.last_modified ?? null,
   }));
-  const lines = [
-    ...courseOut.map((c) => `course|${c.number}|${c.lastModified ?? ""}`),
-    ...moduleList.map(
-      (m) =>
-        `module|${m.path}|${m.unitSig ?? ""}|${m.resources ? JSON.stringify(m.resources.links.map((l) => [l.path ?? l.url, l.was ?? null])) : "-"}`,
-    ),
-  ].sort(byText);
+  const snapshot = scopeSnapshot({ courses: courseOut, modules: moduleList });
   return {
     code,
     ok: matched.length > 0 && moduleList.length > 0,
@@ -165,7 +200,8 @@ export function buildScopeMap({
     unresolved,
     warnings,
     inputs: {
-      fingerprint: createHash("sha1").update(lines.join("\n")).digest("hex"),
+      fingerprint: fingerprintOfSnapshot(snapshot),
+      snapshot,
       resourceModules: moduleList.filter(
         (m) => m.resources && m.resources.links.length > 0,
       ).length,

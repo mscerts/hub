@@ -8,6 +8,7 @@ import {
   approvalPolicy,
   courseStats,
   eachPick,
+  moduleOfPick,
   pickProblems,
   validateCourse,
 } from "../../scripts/lib/course-format.mjs";
@@ -71,6 +72,7 @@ test("a valid pick has no problems", () => {
       pick({
         target: { kind: "docs", path: "/azure/storage/blobs" },
         source: "P2",
+        via: "/training/modules/configure-blob-storage",
       }),
     ),
     [],
@@ -362,4 +364,130 @@ test("URLs: a target that is not a current Learn page is an error with the reaso
 test("without a guide only the file itself is checked", () => {
   const { course } = exampleCourse();
   assert.equal(validateCourse(course).ok, true);
+});
+
+test("a P2 pick is a documentation page listed by a module and must say which (via)", () => {
+  const p2 = (extra = {}) =>
+    pick({
+      target: { kind: "docs", path: "/azure/storage/blobs" },
+      source: "P2",
+      via: "/training/modules/configure-blob-storage",
+      ...extra,
+    });
+  assert.deepEqual(pickProblems(p2()), []);
+  assert.match(pickProblems(p2({ via: undefined })).join("|"), /needs via/);
+  assert.match(
+    pickProblems(p2({ via: "/training/modules/m/1-unit" })).join("|"),
+    /needs via/,
+  );
+  assert.match(
+    pickProblems(
+      p2({ target: { kind: "module", path: "/training/modules/m" } }),
+    ).join("|"),
+    /target\.kind is docs/,
+  );
+  // elsewhere via is optional but must be a module path when present
+  assert.deepEqual(pickProblems(pick({ via: "/training/modules/m" })), []);
+  assert.match(
+    pickProblems(pick({ via: "/azure/x" })).join("|"),
+    /via must be a \/training\/modules\/<slug> path/,
+  );
+});
+
+test("moduleOfPick: the module of a module or unit target, else the via module, else null", () => {
+  assert.equal(
+    moduleOfPick({ target: { kind: "module", path: "/training/modules/m" } }),
+    "/training/modules/m",
+  );
+  assert.equal(
+    moduleOfPick({
+      target: { kind: "unit", path: "/training/modules/m/3-unit" },
+    }),
+    "/training/modules/m",
+  );
+  assert.equal(
+    moduleOfPick({
+      target: { kind: "docs", path: "/azure/x" },
+      via: "/training/modules/m",
+    }),
+    "/training/modules/m",
+  );
+  assert.equal(
+    moduleOfPick({ target: { kind: "docs", path: "/azure/x" } }),
+    null,
+  );
+  assert.equal(moduleOfPick(undefined), null);
+});
+
+test("inputs.scope is required, well formed, and the fingerprint is the fingerprint of it", () => {
+  const { course, guide } = exampleCourse();
+  const errors = (change) =>
+    validateCourse(change(structuredClone(course)), { guide }).errors.join("|");
+  assert.match(
+    errors((c) => (delete c.inputs.scope, c)),
+    /inputs\.scope must be/,
+  );
+  assert.match(
+    errors(
+      (c) => ((c.inputs.scope.modules = [["/training/modules/x", "sig"]]), c),
+    ),
+    /inputs\.scope must be/,
+  );
+  assert.match(
+    errors((c) => ((c.inputs.picked = [["/training/modules/x"]]), c)),
+    /inputs\.picked must be a list/,
+  );
+  assert.match(
+    errors((c) => ((c.inputs.scope.modules[0][1] = "another-sig"), c)),
+    /scopeFingerprint is not the fingerprint of inputs\.scope/,
+  );
+  assert.equal(validateCourse(structuredClone(course), { guide }).ok, true);
+  const noPicked = structuredClone(course);
+  delete noPicked.inputs.picked;
+  assert.match(
+    validateCourse(noPicked, { guide }).errors.join("|"),
+    /module \/training\/modules\/advanced-git-workflows is not recorded in inputs\.picked/,
+  );
+});
+
+test("everything a pick depends on is recorded: P1/P2 modules in the official scope, other modules in inputs.picked", () => {
+  const { course, guide } = exampleCourse();
+  const errors = (change) =>
+    validateCourse(change(structuredClone(course)), { guide }).errors.join("|");
+  const tasks = (c) =>
+    c.domains.flatMap((d) => d.groups.flatMap((g) => g.tasks));
+  assert.match(
+    errors(
+      (c) => (
+        (tasks(c)[0].picks[0].target.path = "/training/modules/not-in-scope"),
+        c
+      ),
+    ),
+    /its module \/training\/modules\/not-in-scope is not in inputs\.scope/,
+  );
+  assert.match(
+    errors(
+      (c) => ((tasks(c)[1].picks[0].via = "/training/modules/not-in-scope"), c),
+    ),
+    /not in inputs\.scope/,
+  );
+  // a docs page found by search alone depends on no module
+  assert.equal(
+    validateCourse(
+      (() => {
+        const c = structuredClone(course);
+        tasks(c)[4].picks = [
+          pick({
+            target: { kind: "docs", path: "/azure/x" },
+            source: "P4",
+            evidence: "q",
+            decision: { by: "maintainer", at: "2026-10-17" },
+          }),
+        ];
+        return c;
+      })(),
+      { guide },
+    ).ok,
+    true,
+  );
 });

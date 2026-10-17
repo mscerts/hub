@@ -3,7 +3,9 @@ import test from "node:test";
 import {
   buildScopeMap,
   coursesForExam,
+  fingerprintOfSnapshot,
   learnPath,
+  linksHash,
 } from "../../scripts/lib/course-scope.mjs";
 
 const course = (number, studyGuide, extra = {}) => ({
@@ -228,4 +230,59 @@ test("the fingerprint moves with the course list, a unitSig or a resource, and w
     original,
     "other exams' modules and a later cache stamp do not matter",
   );
+});
+
+test("the snapshot lists the courses and modules with their signatures and link hashes, and the fingerprint is computed from it", () => {
+  const result = buildScopeMap({
+    code: "AZ-104",
+    courses: [course("AZ-104T00", [{ uid: "learn.path-1" }])],
+    learningPaths: [lp(1, ["b", "a"])],
+    modules: [mod("a", "sig-a"), mod("b", "sig-b")],
+    moduleLinks: { modules: [record("a", [docs("/azure/a/one")])] },
+  });
+  const { snapshot } = result.inputs;
+  assert.deepEqual(snapshot.courses, [["AZ-104T00", "2026-01-01T00:00:00Z"]]);
+  assert.deepEqual(
+    snapshot.modules.map((m) => [m[0], m[1]]),
+    [
+      ["/training/modules/a", "sig-a"],
+      ["/training/modules/b", "sig-b"],
+    ],
+    "sorted by path",
+  );
+  assert.match(snapshot.modules[0][2], /^[0-9a-f]{12}$/);
+  assert.equal(
+    snapshot.modules[1][2],
+    "-",
+    "a module without a record has no links hash",
+  );
+  assert.equal(fingerprintOfSnapshot(snapshot), result.inputs.fingerprint);
+  assert.equal(
+    fingerprintOfSnapshot({
+      courses: [...snapshot.courses],
+      modules: [...snapshot.modules].reverse(),
+    }),
+    result.inputs.fingerprint,
+    "order does not matter",
+  );
+});
+
+test("linksHash depends on the targets and on `was`, in order, and not on the link text", () => {
+  const links = (list) => ({ links: list });
+  const base = linksHash(links([docs("/azure/a"), docs("/azure/b")]));
+  assert.match(base, /^[0-9a-f]{12}$/);
+  assert.equal(
+    linksHash(
+      links([{ ...docs("/azure/a"), text: "another text" }, docs("/azure/b")]),
+    ),
+    base,
+  );
+  assert.notEqual(linksHash(links([docs("/azure/b"), docs("/azure/a")])), base);
+  assert.notEqual(
+    linksHash(
+      links([{ ...docs("/azure/a"), was: "/azure/old" }, docs("/azure/b")]),
+    ),
+    base,
+  );
+  assert.equal(linksHash(null), "-");
 });

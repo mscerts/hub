@@ -127,6 +127,7 @@ scripts/
 ├── beta-note.mjs             # Prints the :::note timeline of a beta exam page (see Beta Exam Pages)
 ├── course-source.mjs         # Parses a study guide into domain / skill group / task and builds the exam scope map (see docs/course-source.md)
 ├── course-file.mjs           # Validates a course file (src/data_files/courses/<CODE>.json) and renders the course page (see docs/courses.md)
+├── course-status.mjs         # The rebuild check: compares a course file with today's study guide and Learn and prints what to redo (see docs/courses.md)
 └── *.mjs, *.sh               # One dependency-free script per monitor, plus new-exam.mjs and the audits
 tests/
 ├── scripts/                  # Offline tests of the scripts, the workflows and the docs claims (pnpm test:scripts)

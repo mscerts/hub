@@ -112,7 +112,7 @@ const wordsOf = (text) =>
   new Set(normalizeTitle(text).split(" ").filter(Boolean));
 
 /** Share of words two titles have in common (Jaccard), 0 to 1. */
-function overlap(a, b) {
+export function overlap(a, b) {
   const x = wordsOf(a);
   const y = wordsOf(b);
   if (x.size === 0 || y.size === 0) return 0;

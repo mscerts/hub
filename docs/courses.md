@@ -49,7 +49,12 @@ Rejections are remembered: a rejected target is listed in the file's `rejected` 
   "schemaVersion": 1,
   "code": "AZ-104",
   "name": "Microsoft Azure Administrator",
-  "inputs": { "guideHash": "<hash of the guide text>", "guideAsOf": "April 17, 2026", "scopeFingerprint": "<40 hex>", "builtAt": "2026-10-17" },
+  "inputs": {
+    "guideHash": "<hash of the guide text>", "guideAsOf": "April 17, 2026", "builtAt": "2026-10-17",
+    "scopeFingerprint": "<40 hex, computed from scope>",
+    "scope": { "courses": [["AZ-104T00", "<course lastModified>"]], "modules": [["/training/modules/configure-blob-storage", "<unitSig>", "<links hash>"]] },
+    "picked": [["/training/modules/some-module-of-another-exam", "<unitSig>"]]
+  },
   "domains": [
     { "title": "Implement and manage storage", "weight": { "min": 15, "max": 20 },
       "groups": [
@@ -63,6 +68,7 @@ Rejections are remembered: a rejected target is listed in the file's `rejected` 
                   "decision": { "by": "auto", "at": "2026-10-17" } },
                 { "target": { "kind": "docs", "path": "/azure/storage/blobs/access-tiers-overview" },
                   "title": "Access tiers for blob data", "class": "supporting", "relation": "prerequisite", "source": "P2",
+                  "via": "/training/modules/configure-blob-storage",
                   "why": "Lifecycle rules move data between the access tiers, so you need to know them first.",
                   "evidence": "<a quote from the page>", "decision": { "by": "auto", "at": "2026-10-17" } } ] } ] } ] } ],
   "rejected": [ { "taskKey": "<task key>", "path": "/entra/id-governance/entitlement-management-overview", "reason": "different role: identity governance", "at": "2026-10-17" } ]
@@ -71,15 +77,40 @@ Rejections are remembered: a rejected target is listed in the file's `rejected` 
 
 (The example is illustrative; it is not an existing course. The two documentation pages and the rejected one exist on Learn.) A pick's `target.kind` is `module`, `unit` or `docs`; `path` is the canonical Learn path (lower case, no host, locale, query or trailing slash); `title` is the catalog title; `was` records the path a link had before it moved. The page adds the hub's tracking parameter to every address.
 
+`inputs` records what the course was built from, so the rebuild check can say exactly what changed:
+
+- `guideHash` and `guideAsOf`: the study guide at build time.
+- `scope`: the snapshot of the exam scope map ([course-source.md](course-source.md)): `[number, lastModified]` per official course and `[path, unitSig, linksHash]` per module of the official course. `scopeFingerprint` is the hash of that snapshot, and the validator checks that it is.
+- `picked`: `[path, unitSig]` for every module **outside** the official course that a pick relies on (a sibling exam's module, or the module whose last unit lists a search-found page). A pick's module must be in `scope` (for `P1`/`P2`) or in `picked` (for `P3`/`P4`); otherwise a change to it could never be found.
+- A `P2` pick carries `via`: the module whose last unit lists the page, so a change to that module's resource list can be traced to the picks it affects.
+
 What `validate` checks (`validateCourse`):
 
-1. The file's own shape: `schemaVersion`, `code`, `name`, the `inputs` (including a 40-character `scopeFingerprint`), a non-empty `domains`.
+1. The file's own shape: `schemaVersion`, `code`, `name`, the `inputs` (including the `scope` snapshot and a `scopeFingerprint` that matches it), a non-empty `domains`.
 2. **The tree is the study guide's tree**, domain by domain, group by group, task by task, with the same task `key`s in the same order. A changed guide shows up here (and as a warning when `inputs.guideHash` is no longer the guide's hash).
 3. Every pick: a canonical path of the right shape for its kind, a title, a class and a source from the lists above, `relation`/`why`/`evidence` where required, a `decision` of `{ by, at }`, and the approval policy.
 4. No target twice under one task, and nothing from `rejected` back under the task it was rejected for.
 5. **Every target is a current Learn page** (the CLI asks learnsync's validator; `--live` also asks learn.microsoft.com about what the caches cannot settle). A moved page is an error, with where it went. A title that is not the catalog title is a warning.
 
 `render` refuses a file that fails the checks that need no network, so a page is never generated from a broken file. The rendered page has exactly the guide's tree (`course-source.mjs --check <page>` confirms it).
+
+## The rebuild check
+
+`node scripts/course-status.mjs AZ-104` (or `--all`) answers "is this course still what its inputs say it should be, and if not, how much has to be redone?". It compares the course file with today's study guide and today's Learn (the same inputs as `course-source.mjs`) and prints a plan. It writes nothing. A course changes only when one of its inputs changes:
+
+| Status | Meaning |
+|--------|---------|
+| `current` | The tasks are the same and nothing a pick relies on changed. A new guide hash, a new "as of" date or a changed domain weight alone is information, never a reason to rebuild. |
+| `review` | Nothing is broken, but the official course changed shape (a module or a course was added or removed), or a module a pick relies on changed its content. Look, then decide. |
+| `stale` | A task was added, removed, moved or reordered, or a pick has to be replaced: its module left the official course or the catalog, its unit is gone, or the module no longer lists the page. |
+
+The plan names what changed, so a rebuild touches only that:
+
+- **Tasks:** `added` (they need picks), `removed` (their picks go), `moved` (same wording under a new group or domain: the picks carry over under the new key) and **rename hints** (a removed and an added task that share most of their words: the maintainer decides whether the picks carry over).
+- **Picks:** *hard* (replace) and *soft* (look), each with its reason, from the snapshot in `inputs`: a P1 pick's module or unit, a P2 pick's listing (`via`), a P3/P4 pick's module (`picked`).
+- **Work:** how many tasks to build, to check, to carry over, and how many are untouched.
+
+`--urls` (and `--live`) also asks learnsync's validator whether every pick's target is still a current Learn page, like `validate`; a page that is not becomes a hard break. `--json` prints the plan as data. Exit code 0 for `current` and `review`, 1 when a course is `stale`, 2 for an input problem. With no course files `--all` says so and exits 0.
 
 ## Commands
 
@@ -88,13 +119,14 @@ node scripts/course-file.mjs validate AZ-104            # LEARNSYNC_DIR (default
 node scripts/course-file.mjs validate AZ-104 --live
 node scripts/course-file.mjs render AZ-104 --out src/content/docs/courses/az-104.mdx
 node scripts/course-source.mjs AZ-104 --check src/content/docs/courses/az-104.mdx
+node scripts/course-status.mjs AZ-104                   # is the course still right? (--all, --urls, --json)
 ```
 
 Exit codes: 0 done, 1 the course file has errors, 2 an input problem (no such file, no stored guide, no learnsync checkout).
 
 ## Tests
 
-`tests/scripts/course-format.test.mjs`, `course-render.test.mjs` and `course-file.test.mjs`, offline. They use a small synthetic course built on the real GH-900 guide's tree (`tests/scripts/helpers/example-course.mjs`); the picks in it are made up and say nothing about what GH-900 learners should read.
+`tests/scripts/course-format.test.mjs`, `course-render.test.mjs`, `course-file.test.mjs` and `course-status.test.mjs`, offline. They use a small synthetic course built on the real GH-900 guide's tree (`tests/scripts/helpers/example-course.mjs`); the picks in it are made up and say nothing about what GH-900 learners should read.
 
 ## Not covered here
 

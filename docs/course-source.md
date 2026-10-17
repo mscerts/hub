@@ -49,6 +49,8 @@ Each task has a `key` (`domain/group/task` in slug form, unique in the guide) fo
 
 `inputs.fingerprint` is a hash of the course list (number and last-modified), every module's `unitSig` and every module's resource links (with `was`). It changes when something the exam's courses are built from changes, and only then, so "has anything changed since this course was built" is a comparison of two hashes. Together with the guide's own `hash`, it is the pair of facts a rebuild decision needs.
 
+The hash is computed from `inputs.snapshot`, the compact list it is made of: `courses` as `[number, lastModified]` and `modules` as `[path, unitSig, linksHash]` (`linksHash` is a short hash of the module's resource targets and their `was`, `-` when the module has no record). A course file stores the snapshot, so [the rebuild check](courses.md#the-rebuild-check) can name the modules that changed instead of only saying that the hash moved.
+
 ## Tests
 
 `tests/scripts/course-guide.test.mjs`, `course-scope.test.mjs` and `course-source.test.mjs`, offline. The guide fixtures in `tests/fixtures/course-source/` are real guides (AZ-104, GH-900, MB-310, AB-100) saved from the tracker; the tests never read `learn-exams.json` itself, which a monitor rewrites. To look at all current guides use `--survey`; a guide that stops parsing there is a reason to extend the parser with a fixture of the new shape, not to loosen a test.
