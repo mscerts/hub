@@ -2094,10 +2094,11 @@ test("the PDFs and pages the guide, prepare and voucher pages quote are on the l
   );
   assert.equal(kinds["https://aka.ms/MVTD_FAQ_EN"], "pdf");
   assert.equal(kinds["https://aka.ms/TrainCertPoster"], "pdf");
+  // the schedule home page lists every upcoming week; a week's own page is watched while its card is on the
+  // voucher page (the other test of this file checks every link), and leaves with it when the week is over
   assert.ok(
-    [...urls].filter((u) => u.startsWith("https://certweeks.fastlane.net/"))
-      .length >= 8,
-    "the Certification Week pages",
+    urls.has("https://certweeks.fastlane.net/"),
+    "the Certification Week schedule",
   );
 });
 
