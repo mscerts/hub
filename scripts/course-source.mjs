@@ -106,6 +106,65 @@ export async function loadLearnsync({ dir, fetchImpl }) {
   };
 }
 
+/** A learnsync checkout: LEARNSYNC_DIR, else ../learnsync next to the repo, else null (GitHub is used then). */
+export function learnsyncDir({ root = repoRoot, env = process.env } = {}) {
+  return (
+    env.LEARNSYNC_DIR ||
+    (existsSync(join(root, "..", "learnsync", "data"))
+      ? join(root, "..", "learnsync")
+      : null)
+  );
+}
+
+/** The set of live Learn paths from learnsync's docs-urls.txt (`<path>\t<lastmod or ->` per line). */
+export function parseDocsUrls(text) {
+  const paths = new Set();
+  for (const line of String(text).split("\n")) {
+    const path = line.split("\t")[0].trim();
+    if (path.startsWith("/")) paths.add(path);
+  }
+  return paths;
+}
+
+/**
+ * learnsync's documentation files, which only the candidate generator needs (docs-catalog.json is about 40 MB):
+ * { docs, docPaths, redirects, warnings }, each of the three null when the file is not there.
+ */
+export async function loadLearnsyncDocs({ dir, fetchImpl }) {
+  const warnings = [];
+  const note = (name) =>
+    warnings.push(
+      `${name} is not in learnsync: the filters that need it are off`,
+    );
+  if (dir) {
+    const data = join(dir, "data");
+    const has = (name) => existsSync(join(data, name));
+    const docs = has("docs-catalog.json")
+      ? readJson(join(data, "docs-catalog.json"))
+      : (note("docs-catalog.json"), null);
+    const docPaths = has("docs-urls.txt")
+      ? parseDocsUrls(readFileSync(join(data, "docs-urls.txt"), "utf8"))
+      : (note("docs-urls.txt"), null);
+    const redirects = has("docs-redirects.json")
+      ? readJson(join(data, "docs-redirects.json"))
+      : (note("docs-redirects.json"), null);
+    return { docs, docPaths, redirects, warnings };
+  }
+  const [docs, redirects] = await Promise.all(
+    ["docs-catalog.json", "docs-redirects.json"].map((f) =>
+      fetchJson(`${LEARNSYNC_RAW}/${f}`, fetchImpl),
+    ),
+  );
+  const res = await fetchImpl(`${LEARNSYNC_RAW}/docs-urls.txt`, {
+    headers: { "user-agent": "msfthub-course-source" },
+  });
+  const docPaths = res.ok ? parseDocsUrls(await res.text()) : null;
+  if (!docs) note("docs-catalog.json");
+  if (!docPaths) note("docs-urls.txt");
+  if (!redirects) note("docs-redirects.json");
+  return { docs, docPaths, redirects, warnings };
+}
+
 /**
  * The exam scope map as Learn offers it today: learnsync's data (a checkout in LEARNSYNC_DIR, else
  * ../learnsync next to the repo, else GitHub), the catalog API's course list, and buildScopeMap.
@@ -117,11 +176,7 @@ export async function currentScope({
   env = process.env,
   fetchImpl = globalThis.fetch,
 }) {
-  const dir =
-    env.LEARNSYNC_DIR ||
-    (existsSync(join(root, "..", "learnsync", "data"))
-      ? join(root, "..", "learnsync")
-      : null);
+  const dir = learnsyncDir({ root, env });
   const learnsync = await loadLearnsync({ dir, fetchImpl });
   const courses = await fetchCourses(fetchImpl);
   const scope = buildScopeMap({

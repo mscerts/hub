@@ -128,6 +128,7 @@ scripts/
 ├── course-source.mjs         # Parses a study guide into domain / skill group / task and builds the exam scope map (see docs/course-source.md)
 ├── course-file.mjs           # Validates a course file (src/data_files/courses/<CODE>.json) and renders the course page (see docs/courses.md)
 ├── course-status.mjs         # The rebuild check: compares a course file with today's study guide and Learn and prints what to redo (see docs/courses.md)
+├── course-candidates.mjs     # Candidate generator: a shortlist of Learn modules, units and docs pages per study guide task, with provenance P1-P4; the abbreviations it knows are in scripts/lib/course-aliases.mjs (see docs/course-candidates.md)
 └── *.mjs, *.sh               # One dependency-free script per monitor, plus new-exam.mjs and the audits
 tests/
 ├── scripts/                  # Offline tests of the scripts, the workflows and the docs claims (pnpm test:scripts)
