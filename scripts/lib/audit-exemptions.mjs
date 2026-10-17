@@ -38,12 +38,22 @@ export const EXEMPT = Object.freeze({
   }),
 });
 
-/** Does the lab page (comments already stripped) have a Microsoft GitHub tab with a card in it? */
-export function hasGithubLabsTab(labText) {
+/**
+ * Does the lab page (comments already stripped) have a Microsoft GitHub tab with a card in it?
+ * With the exam's `code`, a card titled with another exam's code (`MB-330: Case Study 1`, a lab
+ * kept from the predecessor) is not the exam's own lab and does not count, like the borrowed
+ * buttons of an exam page.
+ */
+export function hasGithubLabsTab(labText, code) {
   const tab = labText.match(
     /<TabItem label="Microsoft GitHub"[^>]*>([\s\S]*?)<\/TabItem>/,
   );
-  return !!tab && /<LinkCard\b/.test(tab[1]);
+  if (!tab) return false;
+  for (const card of tab[1].matchAll(/<LinkCard\b[^>]*?\btitle="([^"]*)"/g)) {
+    const borrowed = card[1].trim().match(/^([A-Z]{2,3}-\d{3}):\s/)?.[1];
+    if (!code || !borrowed || borrowed === code) return true;
+  }
+  return false;
 }
 
 /** Is this exam left out of the list of this resource type on purpose? */

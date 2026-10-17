@@ -70,7 +70,7 @@ test("an exemption stays true: the exempt exam still lacks the resource", () => 
     );
     if (!existsSync(lab)) continue; // no lab page, so no GitHub tab
     assert.equal(
-      hasGithubLabsTab(stripComments(lf(readFileSync(lab, "utf8")))),
+      hasGithubLabsTab(stripComments(lf(readFileSync(lab, "utf8"))), code),
       false,
       `${code} now has a Microsoft GitHub tab with labs: remove its exemption from scripts/lib/audit-exemptions.mjs`,
     );
@@ -113,6 +113,28 @@ test("the GitHub Labs tab counts only when it is active and holds a card", () =>
       stripComments(`{/* ${tab('<LinkCard title="Lab" href="x" />')} */}`),
     ),
     false,
+  );
+});
+
+test("a GitHub lab kept from the predecessor exam (titled with its code) is not the exam's own lab", () => {
+  const tab = (inner) =>
+    `<Tabs><TabItem label="Microsoft GitHub"><CardGrid>${inner}</CardGrid></TabItem></Tabs>`;
+  const kept = '<LinkCard title="MB-330: Case Study 1" href="x" />';
+  const own = '<LinkCard title="Case Study 1" href="x" />';
+  assert.equal(hasGithubLabsTab(tab(kept), "AB-330"), false);
+  assert.equal(hasGithubLabsTab(tab(kept + own), "AB-330"), true);
+  assert.equal(hasGithubLabsTab(tab(kept), "MB-330"), true);
+  assert.equal(
+    hasGithubLabsTab(
+      tab('<LinkCard title="AB-330: Case Study 1" href="x" />'),
+      "AB-330",
+    ),
+    true,
+  );
+  assert.equal(
+    hasGithubLabsTab(tab(kept)),
+    true,
+    "without a code every card counts",
   );
 });
 

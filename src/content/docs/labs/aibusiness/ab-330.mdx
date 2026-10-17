@@ -1,0 +1,127 @@
+---
+title: AB-330 Labs
+description: "Lab exercises for AB-330: Implementing AI-Powered Supply Chain Operations with Dynamics 365 Supply Chain Management. Includes Microsoft Learn and Microsoft GitHub labs."
+---
+import { LinkCard, CardGrid } from '@components/docs';
+import { Tabs, TabItem } from '@components/docs';
+
+:::note
+AB-330 is the new exam of the Microsoft Certified: Supply Chain Management AI Consultant Associate certification and replaces MB-330, which retires on February 1, 2027. There are no labs made for AB-330 yet: the labs below were made for MB-330 and carry its code. Check them against the [AB-330 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ab-330?WT.mc_id=studentamb_165290).
+:::
+
+<Tabs>
+
+  {/* <TabItem label="Applied Skills">
+
+:::note
+Applied Skills on Microsoft Learn are practical, hands-on exercises designed to help users build and demonstrate proficiency in specific technologies or tasks. These small labs focus on solving real-world scenarios, reinforcing learning through direct application of skills, and preparing users for industry roles or certifications.
+:::
+
+  <CardGrid>
+    <LinkCard title="" href="" />
+  </CardGrid>
+  </TabItem> */}
+
+  <TabItem label="Microsoft Learn">
+
+:::note
+Microsoft Learn labs for Dynamics 365 require you to bring your own subscription or run the exercises locally on your computer.
+:::
+
+  <CardGrid>
+    <LinkCard title="MB-330: Explore Dynamics 365 Supply Chain Management" href="https://learn.microsoft.com/training/modules/get-started-supply-chain-management-dyn365-supply-chain-mgmt/14-1-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Set up inventory policies for an item model group" href="https://learn.microsoft.com/training/modules/get-started-inventory-management-supply-chain/exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Work with inventory management" href="https://learn.microsoft.com/training/modules/get-started-inventory-management-supply-chain/exercise-create-new-warehouse-layout/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create and post an inventory journal" href="https://learn.microsoft.com/training/modules/work-inventory-management/exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Use the item arrival profile" href="https://learn.microsoft.com/training/modules/set-up-work-inbound-inventory-management/exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a BOM in the BOM Designer" href="https://learn.microsoft.com/training/modules/create-bill-materials-dyn365-supply-chain-mgmt/6-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Explore production control" href="https://learn.microsoft.com/training/modules/get-started-production-control-dyn365-supply-chain-mgmt/12-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a BOM without a version" href="https://learn.microsoft.com/training/modules/configure-work-discrete-manufacturing/exercise-create-bom-without-version/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a BOM with a version" href="https://learn.microsoft.com/training/modules/configure-work-discrete-manufacturing/exercise-create-bom-with-version/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create and process a production order" href="https://learn.microsoft.com/training/modules/configure-work-discrete-manufacturing/exercise-create-process-production-order/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Analyze BOM costs by using the costing sheet" href="https://learn.microsoft.com/training/modules/configure-bill-material-costing-reporting/lab-analyze-bom/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Start a discrete production order" href="https://learn.microsoft.com/training/modules/work-capacity-planning-scheduling-discrete-dyn365-supply-chain-mgmt/9-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Run a resource schedule" href="https://learn.microsoft.com/training/modules/work-capacity-planning-scheduling-discrete-dyn365-supply-chain-mgmt/10-exercise-2/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Manufacturing execution" href="https://learn.microsoft.com/training/modules/work-manufacturing-execution-dyn365-supply-chain-mgmt/7-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Set up components" href="https://learn.microsoft.com/training/modules/set-up-configurable-products/exercise-set-up/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a product configuration model" href="https://learn.microsoft.com/training/modules/set-up-configurable-products/exercise-create/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Add components and constraints to a configuration model" href="https://learn.microsoft.com/training/modules/set-up-configurable-products/exercise-add/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Release a product configuration model" href="https://learn.microsoft.com/training/modules/validate-release-production-configuration/exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Add a configurable product to a sales order line" href="https://learn.microsoft.com/training/modules/work-with-configurable-products/exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Configure warehouse management" href="https://learn.microsoft.com/training/modules/configure-warehouse-management-dyn365-supply-chain-mgmt/7-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Register a load where items are missing" href="https://learn.microsoft.com/training/modules/inbound-operations-supply-chain-management/exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a cycle counting plan" href="https://learn.microsoft.com/training/modules/execute-across-warehouse-supply-chain-management/exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Set up a detour for a step in a task flow" href="https://learn.microsoft.com/training/modules/warehouse-mobile-configuration-supply-chain-management/exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Work with warehouse management in manufacturing" href="https://learn.microsoft.com/training/modules/manufacture-warehouse-mgmt-dyn365-supply-chain-mgmt/07-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Set up demo data for the sample scenario" href="https://learn.microsoft.com/training/modules/get-started-engineering-change-management/05-exercise-set-up-demo-data/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a new engineering product" href="https://learn.microsoft.com/training/modules/get-started-engineering-change-management/06-exercise-create-engineering-product/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a severity rule" href="https://learn.microsoft.com/training/modules/enable-engineering-change-management/5-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Release an engineering product to a local company" href="https://learn.microsoft.com/training/modules/get-started-engineering-change-management/07-exercise-release-engineering-product/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Review and accept the product before you release it in the local company" href="https://learn.microsoft.com/training/modules/get-started-engineering-change-management/08-exercise-review-product/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Use the product in transactions in the local company" href="https://learn.microsoft.com/training/modules/get-started-engineering-change-management/09-exercise-product-transactions/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Add the engineering product to a sales order" href="https://learn.microsoft.com/training/modules/get-started-engineering-change-management/10-exercise-add-product-sales-order/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Request changes in the engineering product" href="https://learn.microsoft.com/training/modules/get-started-engineering-change-management/11-exercise-request-changes/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Make changes to the product by using an engineering change order" href="https://learn.microsoft.com/training/modules/get-started-engineering-change-management/12-exercise-change-product/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Release the changed product" href="https://learn.microsoft.com/training/modules/get-started-engineering-change-management/13-exercise-release-product/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Work with procure-to-purchase processes" href="https://learn.microsoft.com/training/modules/configure-perform-procure-purchase-dyn365-supply-chain-mgmt/9-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a purchase agreement" href="https://learn.microsoft.com/training/modules/configure-use-agreements-dyn365-supply-chain-mgmt/9-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Generate and process customer rebates" href="https://learn.microsoft.com/training/modules/configure-use-agreements-dyn365-supply-chain-mgmt/10-exercise-2/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create trade agreements" href="https://learn.microsoft.com/training/modules/configure-use-agreements-dyn365-supply-chain-mgmt/11-exercise-3/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create and process a purchase order" href="https://learn.microsoft.com/training/modules/process-purchase-orders-dyn365-supply-chain-mgmt/8a-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Process a sales order-initiated intercompany chain" href="https://learn.microsoft.com/training/modules/work-intercompany-trade/exercise-sales/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Process a purchase order-initiated intercompany chain" href="https://learn.microsoft.com/training/modules/work-intercompany-trade/exercise-purchase-order/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Process returns in intercompany" href="https://learn.microsoft.com/training/modules/work-intercompany-trade/exercise-returns/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a sales order and work with commissions" href="https://learn.microsoft.com/training/modules/work-with-order-to-cash-supply-chain-management/lab/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Set up intercompany relations" href="https://learn.microsoft.com/training/modules/set-up-intercompany-trade/exercise-set-up-relations/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a functional location lifecycle state and model" href="https://learn.microsoft.com/training/modules/setup-functional-locations-asset-management/05-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create functional location types" href="https://learn.microsoft.com/training/modules/setup-functional-locations-asset-management/06-exercise-2/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a default functional location and assign it as the default" href="https://learn.microsoft.com/training/modules/work-functional-locations-assets-management/04-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a maintenance request" href="https://learn.microsoft.com/training/modules/manage-maintenance-requests/11-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a Maintenance request list report" href="https://learn.microsoft.com/training/modules/manage-maintenance-requests/12-exercise-2/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Set up maintenance request lifecycle states, models, and types" href="https://learn.microsoft.com/training/modules/setup-maintenance-asset-management/06-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a maintenance plan" href="https://learn.microsoft.com/training/modules/preventive-reactive-asset-management/07-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Update the maintenance schedule" href="https://learn.microsoft.com/training/modules/preventive-reactive-asset-management/08-exercise-2/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create an asset consumption" href="https://learn.microsoft.com/training/modules/register-report-consumption-asset-management/04-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Run a capacity load and item forecast" href="https://learn.microsoft.com/training/modules/capacity-plan-asset-management/04-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a voyage leg" href="https://learn.microsoft.com/training/modules/set-up-landed-cost-supply-chain-management/11-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Configure customer posting profiles and create a new customer" href="https://learn.microsoft.com/training/modules/configure-accounts-receivable-dyn365-finance/11-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create and process a free text invoice" href="https://learn.microsoft.com/training/modules/accounts-receivable-daily-procedures-dyn365-finance/6-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Work with invoices from sales orders" href="https://learn.microsoft.com/training/modules/accounts-receivable-daily-procedures-dyn365-finance/7-exercise-2/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Process an invoice and settle it against a payment" href="https://learn.microsoft.com/training/modules/accounts-receivable-daily-procedures-dyn365-finance/8-exercise-3/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Set up credit and collections in Finance" href="https://learn.microsoft.com/training/modules/configure-credit-collections-dyn365-finance/7-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create a write-off journal for a customer" href="https://learn.microsoft.com/training/modules/configure-credit-collections-dyn365-finance/8-exercise-2/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Work with credit and collections" href="https://learn.microsoft.com/training/modules/process-credit-collections-dyn365-finance/5-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Explore transportation management" href="https://learn.microsoft.com/training/modules/configure-transportation-management-dyn365-supply-chain-mgmt/10-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Firm a planned order" href="https://learn.microsoft.com/training/modules/set-up-master-planning/exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Change a planned order type" href="https://learn.microsoft.com/training/modules/set-up-master-planning/exercise-2/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Set up purchase trade agreements" href="https://learn.microsoft.com/training/modules/use-master-planning/exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Approve a planned order" href="https://learn.microsoft.com/training/modules/use-master-planning/exercise-2/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Set up scheduled kanban rules" href="https://learn.microsoft.com/training/modules/create-process-scheduled-kanbans-dyn365-supply-chain-mgmt/3-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create and process a quality order" href="https://learn.microsoft.com/training/modules/configure-work-quality-control-dyn365-supply-chain-mgmt/7-exercise-1/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Create and process a nonconformance order" href="https://learn.microsoft.com/training/modules/configure-work-quality-control-dyn365-supply-chain-mgmt/8-exercise-2/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Set up an external role for a vendor" href="https://learn.microsoft.com/training/modules/configure-manage-vendor-collaboration-dyn365-supply-chain-mgmt/13-exercise/?WT.mc_id=studentamb_165290" />
+    <LinkCard title="MB-330: Set up a preferred worker, and schedule a work order" href="https://learn.microsoft.com/training/modules/schedule-work-orders-asset-management/05-exercise-1/?WT.mc_id=studentamb_165290" />
+  </CardGrid>
+  </TabItem>
+
+  <TabItem label="Microsoft GitHub">
+
+:::note
+Microsoft GitHub labs are series of labs designed to be used in Microsoft Instructor Lead Trainings delivered by Microsoft Certified Trainers where participants also have access to the environment to perform them. This means that for everyone else, it is necessary to bring your own environment to go through them.
+:::
+
+  <CardGrid>
+    <LinkCard title="MB-330: Case Study 0 Intro" href="https://github.com/MicrosoftLearning/MB-330-Microsoft-Dynamics-365-Supply-Chain-Management/blob/master/Instructions/Labs/Case%20Study%200%20Intro.md" />
+    <LinkCard title="MB-330: Case Study 1 Prod Mgmt EX 1 to 4" href="https://github.com/MicrosoftLearning/MB-330-Microsoft-Dynamics-365-Supply-Chain-Management/blob/master/Instructions/Labs/Case%20Study%201%20Prod%20Mgmt%20EX%201%20to%204.md" />
+    <LinkCard title="MB-330: Case Study 2A Inventory EX 1 to 4" href="https://github.com/MicrosoftLearning/MB-330-Microsoft-Dynamics-365-Supply-Chain-Management/blob/master/Instructions/Labs/Case%20Study%202A%20Inventory%20EX%201%20to%204.md" />
+    <LinkCard title="MB-330: Case Study 2B Quality EX 1 to 5" href="https://github.com/MicrosoftLearning/MB-330-Microsoft-Dynamics-365-Supply-Chain-Management/blob/master/Instructions/Labs/Case%20Study%202B%20Quality%20EX%201%20to%205.md" />
+    <LinkCard title="MB-330: Case Study 2C Asset Mgmt EX 1 to 5" href="https://github.com/MicrosoftLearning/MB-330-Microsoft-Dynamics-365-Supply-Chain-Management/blob/master/Instructions/Labs/Case%20Study%202C%20Asset%20Mgmt%20EX%201%20to%205.md" />
+    <LinkCard title="MB-330: Case Study 3A Proc EX 1 to 10" href="https://github.com/MicrosoftLearning/MB-330-Microsoft-Dynamics-365-Supply-Chain-Management/blob/master/Instructions/Labs/Case%20Study%203A%20Proc%20EX%201%20to%2010.md" />
+    <LinkCard title="MB-330: Case Study 3B Landed cost EX 1 to 3" href="https://github.com/MicrosoftLearning/MB-330-Microsoft-Dynamics-365-Supply-Chain-Management/blob/master/Instructions/Labs/Case%20Study%203B%20Landed%20cost%20EX%201%20to%203.md" />
+    <LinkCard title="MB-330: Case Study 3C Sales EX 1 to 4" href="https://github.com/MicrosoftLearning/MB-330-Microsoft-Dynamics-365-Supply-Chain-Management/blob/master/Instructions/Labs/Case%20Study%203C%20Sales%20EX%201%20to%204.md" />
+    <LinkCard title="MB-330: Case Study 4A WMS EX 1 to 14" href="https://github.com/MicrosoftLearning/MB-330-Microsoft-Dynamics-365-Supply-Chain-Management/blob/master/Instructions/Labs/Case%20Study%204A%20WMS%20EX%201%20to%2014.md" />
+    <LinkCard title="MB-330: Case Study 4B Transpo EX 1 to 6" href="https://github.com/MicrosoftLearning/MB-330-Microsoft-Dynamics-365-Supply-Chain-Management/blob/master/Instructions/Labs/Case%20Study%204B%20Transpo%20EX%201%20to%206.md" />
+    <LinkCard title="MB-330: Case Study 5 Master planning EX 1 to 2" href="https://github.com/MicrosoftLearning/MB-330-Microsoft-Dynamics-365-Supply-Chain-Management/blob/master/Instructions/Labs/Case%20Study%205%20Master%20planning%20EX%201%20to%202.md" />
+  </CardGrid>
+  </TabItem>
+</Tabs>

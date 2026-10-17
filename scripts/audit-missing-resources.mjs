@@ -70,7 +70,7 @@ const RESOURCE_TYPES = [
   },
   {
     key: "GitHub Labs",
-    test: ({ labText }) => hasGithubLabsTab(labText),
+    test: ({ labText, code }) => hasGithubLabsTab(labText, code),
   },
   {
     key: "MeasureUp",
@@ -172,7 +172,7 @@ for (const area of AREAS) {
     const examMdx = stripComments(raw);
     const titles = collectTitles(examMdx);
     const labText = buildLabText(area, code.toLowerCase());
-    const ctx = { titles, labText };
+    const ctx = { titles, labText, code };
 
     for (const { key, test } of RESOURCE_TYPES) {
       if (test(ctx)) continue;

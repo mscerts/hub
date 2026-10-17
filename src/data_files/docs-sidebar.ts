@@ -117,6 +117,11 @@ const prepareItems: DocsSidebarItem[] = [
 
 const voucherItems: DocsSidebarItem[] = [
   {
+    label: "Exam AB-330 (beta)",
+    href: docsPath("vouchers/ab330beta"),
+    badge: { text: "*80%", variant: "tip" },
+  },
+  {
     label: "Exam AZ-401 (beta)",
     href: docsPath("vouchers/az401beta"),
     badge: { text: "*80%", variant: "tip" },

@@ -26,7 +26,9 @@ export const examStatuses = {
     "SC-500": { text: "NEW", variant: "success", since: "2026-09-24" },
   },
   power: {},
-  dynamics: {},
+  dynamics: {
+    "MB-330": { text: "RETIRING", variant: "danger" },
+  },
 };
 
 // Statuses describe the current exam lifecycle state. Add an exam here when
