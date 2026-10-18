@@ -23,6 +23,7 @@ import {
   decodeEntities,
   diffLines,
   durationText,
+  errorText,
   hashLines,
   htmlToLines,
   isLearnHost,
@@ -2094,10 +2095,11 @@ test("the PDFs and pages the guide, prepare and voucher pages quote are on the l
   );
   assert.equal(kinds["https://aka.ms/MVTD_FAQ_EN"], "pdf");
   assert.equal(kinds["https://aka.ms/TrainCertPoster"], "pdf");
+  // the schedule home page lists every upcoming week; a week's own page is watched while its card is on the
+  // voucher page (the other test of this file checks every link), and leaves with it when the week is over
   assert.ok(
-    [...urls].filter((u) => u.startsWith("https://certweeks.fastlane.net/"))
-      .length >= 8,
-    "the Certification Week pages",
+    urls.has("https://certweeks.fastlane.net/"),
+    "the Certification Week schedule",
   );
 });
 
@@ -3436,4 +3438,52 @@ test("the script's header documents every environment override it reads", () => 
   for (const name of read) {
     assert.ok(header.includes(name), `${name} is documented in the header`);
   }
+});
+
+test("a failed fetch says why: the cause Node hides behind 'fetch failed' is part of the message", async () => {
+  // a real refused connection: undici's TypeError("fetch failed") with the code in its cause
+  const closed = createServer();
+  await new Promise((done) => closed.listen(0, "127.0.0.1", done));
+  const { port } = closed.address();
+  await new Promise((done) => closed.close(done));
+  const refused = await fetch(`http://127.0.0.1:${port}/`).catch((e) => e);
+  assert.equal(refused.message, "fetch failed");
+  assert.match(errorText(refused), /^fetch failed: ECONNREFUSED$/);
+  const cause = (inner) =>
+    Object.assign(new TypeError("fetch failed"), { cause: inner });
+  assert.equal(
+    errorText(
+      cause(Object.assign(new Error("x"), { code: "UND_ERR_CONNECT_TIMEOUT" })),
+    ),
+    "fetch failed: UND_ERR_CONNECT_TIMEOUT",
+  );
+  assert.equal(
+    errorText(
+      cause(
+        Object.assign(
+          new AggregateError([
+            Object.assign(new Error("x"), { code: "ETIMEDOUT" }),
+          ]),
+          {},
+        ),
+      ),
+    ),
+    "fetch failed: ETIMEDOUT",
+    "the first code of an aggregate (several addresses tried)",
+  );
+  assert.equal(
+    errorText(new TypeError("fetch failed")),
+    "fetch failed",
+    "no cause, no suffix",
+  );
+  assert.equal(
+    errorText(
+      new DOMException(
+        "The operation was aborted due to timeout",
+        "TimeoutError",
+      ),
+    ),
+    "The operation was aborted due to timeout",
+  );
+  assert.equal(errorText("odd"), "odd");
 });

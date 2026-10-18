@@ -153,10 +153,11 @@
       "label": "Training and certification poster (PDF)"
     },
     {
-      "url": "https://home.pearsonvue.com/test-takers/onvue/guide",
+      "url": "https://www.pearsonvue.com/content/dam/VUE/vue/en/documents/onvue/pearson-vue-online-testing-guide-en.pdf",
       "kind": "pdf",
       "label": "Pearson VUE online testing guide (PDF)",
-      "note": "Pearson VUE's rules for taking an exam online; the scheduling guide links it (checked 2026-10-14: the link redirects to a PDF that answers HEAD with ETag, Last-Modified and Content-Length)."
+      "aliases": ["https://home.pearsonvue.com/test-takers/onvue/guide"],
+      "note": "Pearson VUE's rules for taking an exam online; the scheduling guide links the address in aliases, which redirects to this PDF (it answers HEAD with ETag, Last-Modified and Content-Length). Watched at the PDF itself since 2026-10-17: GitHub's runner got a network error from the redirecting address on every run from 2026-10-15, although it answers from other networks. If this address fails the same way for 3 days, the site blocks the runner: remove the entry."
     },
     {
       "url": "https://certweeks.fastlane.net/",
@@ -164,16 +165,6 @@
       "label": "Certification Weeks schedule (Fast Lane)",
       "alsoFeeds": ["src/content/docs/vouchers/partnerweek.mdx"],
       "note": "Not linked from the hub; it lists every upcoming Certification Week with its date and region, so a new week shows up here before the voucher page has a card for it (checked 2026-10-14)."
-    },
-    {
-      "url": "https://certweeks.fastlane.net/emea/ais-aibs-en",
-      "kind": "html",
-      "label": "Certification Week, Cloud/Security/AI Business Solutions, EMEA (English)"
-    },
-    {
-      "url": "https://certweeks.fastlane.net/emea/ais-aibs-fr",
-      "kind": "html",
-      "label": "Certification Week, Cloud/Security/AI Business Solutions, France"
     },
     {
       "url": "https://certweeks.fastlane.net/emea/ais-aibs-es",

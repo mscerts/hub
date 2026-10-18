@@ -148,11 +148,13 @@ function cleanDocBody(src: string): string {
 
 function buildDocs(): DocPage[] {
   const docsDir = path.join(CONTENT_ROOT, "docs");
-  return walkDir(docsDir).map((file) => {
+  return walkDir(docsDir).flatMap((file): DocPage[] => {
     const raw = fs.readFileSync(file, "utf8");
     assertSafeBundledContent(raw, path.relative(CONTENT_ROOT, file));
     const { data, content } = matter(raw);
-    return {
+    // a draft is not published on the site (src/pages/certs/[...slug].astro), so it is not served here either
+    if (data["draft"] === true) return [];
+    return [{
       slug: slugFrom(file, docsDir),
       title: String(data["title"] ?? ""),
       ...(data["description"]
@@ -161,7 +163,7 @@ function buildDocs(): DocPage[] {
       category: categoryFrom(file, docsDir),
       links: extractLinks(content),
       body: cleanDocBody(content),
-    };
+    }];
   });
 }
 

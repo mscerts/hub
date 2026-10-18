@@ -1495,6 +1495,19 @@ export function isLearnHost(url, learnHosts) {
 }
 
 /**
+ * What went wrong in a failed fetch, with the cause Node hides behind "fetch failed" (ECONNRESET,
+ * UND_ERR_CONNECT_TIMEOUT, ENOTFOUND, a certificate error), so a source the runner cannot reach says why.
+ */
+export function errorText(err) {
+  const cause = err?.cause;
+  const code =
+    cause?.code ?? cause?.errors?.find((e) => e?.code)?.code ?? cause?.name;
+  return code && code !== err.message
+    ? `${err.message}: ${code}`
+    : String(err?.message ?? err);
+}
+
+/**
  * A request with retries for rate limits, server errors and network errors
  * only. `body: false` reads no body (HEAD, or a GET whose body is dropped).
  */
@@ -1553,7 +1566,7 @@ async function request(
       error = err;
       status = undefined;
       console.error(
-        `WARNING: ${url} attempt ${attempt} failed (${err.message})`,
+        `WARNING: ${url} attempt ${attempt} failed (${errorText(err)})`,
       );
     }
 
@@ -1578,7 +1591,7 @@ function failureOf(response) {
     kind: "fetch",
     reason: response.status
       ? `HTTP ${response.status}`
-      : `network error${response.error ? ` (${response.error.message})` : ""}`,
+      : `network error${response.error ? ` (${errorText(response.error)})` : ""}`,
   };
 }
 

@@ -70,7 +70,7 @@ const RESOURCE_TYPES = [
   },
   {
     key: "GitHub Labs",
-    test: ({ labText }) => hasGithubLabsTab(labText),
+    test: ({ labText, code }) => hasGithubLabsTab(labText, code),
   },
   {
     key: "MeasureUp",
@@ -90,6 +90,14 @@ const RESOURCE_TYPES = [
   {
     key: "Udemy",
     test: ({ titles }) => titles.some((t) => /\bUdemy\b/i.test(t)),
+  },
+  {
+    // esi.microsoft.com is not public and cannot be checked by a script (the
+    // page is a script shell), so a maintainer with ESI access looks each exam
+    // up by hand; the card is a search by exam code
+    key: "Microsoft ESI",
+    test: ({ titles }) =>
+      titles.some((t) => /^Microsoft Enterprise Skills Initiative\b/i.test(t)),
   },
 ];
 
@@ -164,7 +172,7 @@ for (const area of AREAS) {
     const examMdx = stripComments(raw);
     const titles = collectTitles(examMdx);
     const labText = buildLabText(area, code.toLowerCase());
-    const ctx = { titles, labText };
+    const ctx = { titles, labText, code };
 
     for (const { key, test } of RESOURCE_TYPES) {
       if (test(ctx)) continue;

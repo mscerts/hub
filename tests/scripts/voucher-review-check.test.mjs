@@ -362,6 +362,7 @@ test("the partner certification week page is reviewed after the last event it li
   // Checked 2026-10-14 against the Fast Lane pages: registration was open for 7
   // of the 10 events, the last ones running to November 27. A review date at the
   // end of the first week would nag every week while most of the page is live.
+  // Weeks that are over leave the page (2026-10-17), so only the last one matters.
   const source = readFileSync(
     join(root, "src", "content", "docs", "vouchers", "partnerweek.mdx"),
     "utf8",
@@ -375,7 +376,7 @@ test("the partner certification week page is reviewed after the last event it li
     ([, month, , last]) =>
       `2026-${String(months[month]).padStart(2, "0")}-${last.padStart(2, "0")}`,
   );
-  assert.ok(ends.length >= 8, `only ${ends.length} events found`);
+  assert.ok(ends.length >= 1, "the page lists no event");
   const lastEvent = ends.sort().at(-1);
   const reviewBy = source.match(/^reviewBy: (\d{4}-\d{2}-\d{2})$/m)?.[1];
   assert.ok(reviewBy, "the page has a reviewBy date");
