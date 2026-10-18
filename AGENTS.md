@@ -385,6 +385,7 @@ Verify all voucher percentages, codes, limits, deadlines, exclusions, announceme
 - For new exam tab blocks, prefer two-space increments (`TabItem` 2, `CardGrid` 4, `LinkCard` 6) without reformatting unrelated legacy content.
 
 ### Docs Rendering
+- Archived MDX pages live in `src/content/archive/` and render at `/certs/archive/<content-id>/`, with a matching Markdown endpoint. `/certs/archive/` automatically lists published entries. Archived pages display a historical-content notice and are excluded from the sitemap and search-engine indexing. When moving a page, preserve its content, update active listings/internal links, and add a redirect from its former URL in `astro.config.mjs`. Do not move pages without an explicit request.
 - `/certs/` is owned by `src/pages/certs/index.astro`.
 - `/certs/<content-id>/` is rendered by `src/pages/certs/[...slug].astro` through `DocsPage.astro` and `DocsShell.astro`.
 - Legacy content paths and `/wiki-next/*` redirect permanently to `/certs/*`.

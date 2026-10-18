@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
 import { linkRel } from "../../../utils/link-rel";
+import { linkSourceIcon } from "../../../utils/link-source-icon";
 interface Props extends HTMLAttributes<"a"> {
   title: string;
   description?: string;
@@ -30,15 +31,23 @@ const resolvedRel = linkRel(target, rel);
   ]}
   {...attrs}
 >
-  <span class="min-w-0">
-    <span class="text-card-foreground group-hover:text-primary block text-base leading-snug font-semibold transition-colors">
-      {title}
+  <span class="flex min-w-0 flex-1 items-start gap-3">
+    <span
+      class="border-border bg-muted text-card-foreground grid size-9 shrink-0 place-items-center rounded-lg border"
+      aria-hidden="true"
+    >
+      <Icon name={linkSourceIcon(href)} class="size-4.5" />
     </span>
-    {description && (
-      <span class="text-muted-foreground mt-1 block text-sm leading-normal">
-        {description}
+    <span class="min-w-0">
+      <span class="text-card-foreground group-hover:text-primary block text-base leading-snug font-semibold transition-colors">
+        {title}
       </span>
-    )}
+      {description && (
+        <span class="text-muted-foreground mt-1 block text-sm leading-normal">
+          {description}
+        </span>
+      )}
+    </span>
   </span>
   <Icon
     name={isExternal ? "ph:arrow-up-right" : "ph:caret-right"}

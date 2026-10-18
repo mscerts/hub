@@ -89,7 +89,17 @@ h6 {
   height: 0.375rem;
 }
 
+.subtle-scrollbar::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 .subtle-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.subtle-scrollbar::-webkit-scrollbar-corner {
   background: transparent;
 }
 
