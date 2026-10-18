@@ -386,7 +386,7 @@ Verify all voucher percentages, codes, limits, deadlines, exclusions, announceme
 
 ### Docs Rendering
 - Archived MDX pages live in `src/content/archive/` and render at `/certs/archive/<content-id>/`, with a matching Markdown endpoint. `/certs/archive/` automatically lists published entries. Archived pages display a historical-content notice and are excluded from the sitemap and search-engine indexing. When moving a page, preserve its content, update active listings/internal links, and add a redirect from its former URL in `astro.config.mjs`. Do not move pages without an explicit request.
-- `/certs/` is owned by `src/pages/certs/index.astro`.
+- `/certs/` is the all-exams index, owned by `src/pages/certs/index.astro`. It uses WikiList for all seven exam areas, excludes drafts, and retains published retired exams for reference. `/wiki/` redirects to it.
 - `/certs/<content-id>/` is rendered by `src/pages/certs/[...slug].astro` through `DocsPage.astro` and `DocsShell.astro`.
 - Legacy content paths and `/wiki-next/*` redirect permanently to `/certs/*`.
 - `remark-callouts.mjs` converts `:::note`, `:::tip`, `:::caution`, and `:::danger` directives to the local `Aside` component.
@@ -421,8 +421,9 @@ Global styles are in `src/assets/styles/global.css`; docs-specific styles are sc
 
 ### Redirects
 - Defined in `astro.config.mjs` under `redirects: { ... }`
+- `src/utils/deployment-redirects.mjs` generates `dist/_redirects` from those definitions and built docs routes, including legacy HTML and Markdown addresses. Do not maintain a second `public/_redirects` file. Exact rename rules override generated aliases; static HTML redirect stubs remain a fallback. Cloudflare HTTP status behavior must be verified after deployment, not with plain Astro preview.
 - Add redirects when exams are renamed/moved or certification structures change; retain legacy routes to avoid broken inbound links.
-- When Microsoft renames an exam in place (PL-400 became AB-400 on 2026-10-16, same certification, an updated exam), move the exam page and its lab page to the new code and area (`git mv`, so the history follows), redirect the canonical and the legacy address of both (`/certs/power/pl-400`, `/power/pl-400`, `/certs/labs/power/pl-400`, `/labs/power/pl-400`) in `astro.config.mjs` and, for a real 301, `public/_redirects`, update the internal links, put a note at the top of the page saying what happened, mark the new exam NEW, and keep the resources made for the old exam with its code in their titles (like `AZ-500: Pluralsight Course` on SC-500) until equivalents for the new one exist. An exam that is only retired, with a replacement page of its own, keeps its page and gets the retirement treatment instead.
+- When Microsoft renames an exam in place (PL-400 became AB-400 on 2026-10-16, same certification, an updated exam), move the exam page and its lab page to the new code and area (`git mv`, so the history follows), redirect the canonical and legacy addresses of both in `astro.config.mjs` (the build generates Cloudflare 301 rules), update internal links, put a note at the top saying what happened, mark the new exam NEW, and keep resources made for the old exam with its code in their titles until equivalents exist. An exam that is only retired, with a replacement page of its own, keeps its page and gets the retirement treatment instead.
 
 ---
 
@@ -448,7 +449,7 @@ pnpm dev                        # Local preview
 ```
 
 - Build must pass with 0 errors before committing.
-- `pnpm build` generates and verifies `dist/pagefind/pagefind.js`; use `pnpm preview` to test site search locally.
+- `pnpm build` runs `scripts/verify-public-routes.mjs` to guard the exam index, sitemap exclusions, critical legacy routes, and Cloudflare redirect count. It also generates and verifies `dist/pagefind/pagefind.js`; use `pnpm preview` to test site search locally.
 - Plain `pnpm dev` does not generate a Pagefind index, so search requires a completed production build.
 - `astro build --force` clears the content-layer data store (`node_modules/.astro/data-store.json`) on every build. Cloudflare Pages restores that directory from its build cache, and the incremental loader keys entries on ID + content digest, so a file whose path changed but whose content did not (e.g. a case-only rename) would otherwise keep a stale `filePath` and fail with `Rolldown failed to resolve import "astro:content-layer-deferred-module?...fileName=<old path>"`. The full resync costs about one second on this site; do not remove the flag.
 - `astro check` currently prints a few hints and no errors or warnings (mostly unused declarations, plus one deprecated `document.execCommand`). Do not introduce new unused-declaration hints.

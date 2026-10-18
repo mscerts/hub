@@ -1,22 +1,33 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import DocsPage from "@components/docs/templates/DocsPage.astro";
-import { CardGrid, LinkCard } from "@components/docs";
+import { CardGrid, LinkCard, Tabs, TabItem } from "@components/docs";
+import WikiList from "@components/WikiList.astro";
+const areas = [
+  ["azure", "Azure"],
+  ["github", "GitHub"],
+  ["aibusiness", "AI Business"],
+  ["dynamics", "Dynamics 365"],
+  ["microsoft365", "Microsoft 365"],
+  ["power", "Power Platform"],
+  ["security", "Security & Identity"],
+] as const;
 ---
 
 <MainLayout
-  title="Microsoft Certification Hub | Microsoft Certification Hub"
-  customDescription="Guides, study materials, labs, and exam resources for Microsoft certifications."
+  title="Microsoft Exam Study Materials | Microsoft Certification Hub"
+  customDescription="Free study material collections for Microsoft certification exams across Azure, Microsoft 365, Dynamics 365, Power Platform, Security, GitHub, and AI Business."
   wide
 >
   <DocsPage
-    title="Microsoft Certification Hub"
+    title="Microsoft Exam Study Materials"
     description="Guides, study materials, labs, and practical resources for Microsoft certification candidates."
     headings={[]}
-    sectionLabel="Microsoft Certification Hub"
+    sectionLabel="Exam Study Materials"
   >
     <p>
-      Explore certification guides, study materials, labs, and voucher resources.
+      Explore certification guides, study materials, labs, and voucher
+      resources.
     </p>
     <CardGrid>
       <LinkCard
@@ -29,11 +40,17 @@ import { CardGrid, LinkCard } from "@components/docs";
         description="Build a study plan and choose useful learning resources."
         href="/certs/prepare/studymaterials/"
       />
-      <LinkCard
-        title="Exam Study Materials"
-        description="Start with the Azure fundamentals study-material collection."
-        href="/certs/azure/az-900/"
-      />
     </CardGrid>
+    <p>
+      Browse published exam collections by area. Retired exam resources remain
+      available for reference.
+    </p>
+    <Tabs>
+      {areas.map(([category, label]) => (
+        <TabItem label={label}>
+          <WikiList category={category} />
+        </TabItem>
+      ))}
+    </Tabs>
   </DocsPage>
 </MainLayout>

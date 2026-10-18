@@ -15,19 +15,17 @@ const { examCode, items, title = "Related certifications" } = Astro.props;
 const relatedItems = items ?? relatedCertsByExam[examCode.toUpperCase()] ?? [];
 ---
 
-{
-  relatedItems.length > 0 && (
-    <>
-      <h3>{title}</h3>
-      <CardGrid>
-        {relatedItems.map((item) => (
-          <LinkCard
-            title={item.code}
-            description={`${item.relation}: ${item.name}`}
-            href={`/${item.area}/${item.code.toLowerCase()}/`}
-          />
-        ))}
-      </CardGrid>
-    </>
-  )
-}
+{relatedItems.length > 0 && (
+  <>
+    <h3>{title}</h3>
+    <CardGrid>
+      {relatedItems.map((item) => (
+        <LinkCard
+          title={item.code}
+          description={`${item.relation}: ${item.name}`}
+          href={`/certs/${item.area}/${item.code.toLowerCase()}/`}
+        />
+      ))}
+    </CardGrid>
+  </>
+)}
