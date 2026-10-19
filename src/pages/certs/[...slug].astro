@@ -10,7 +10,9 @@ export async function getStaticPaths() {
   const isDev = import.meta.env.DEV;
 
   return docs
-    .filter((entry) => entry.id !== "wiki" && (isDev || entry.data.draft !== true))
+    .filter(
+      (entry) => entry.id !== "wiki" && (isDev || entry.data.draft !== true),
+    )
     .map((entry) => ({
       params: { slug: entry.id.toLowerCase() },
       props: { entry },
@@ -31,6 +33,7 @@ const { Content, headings } = await render(entry);
     description={entry.data.description ?? ""}
     headings={headings}
     sectionLabel={docsSectionLabel(entry.id)}
+    sourcePath={entry.filePath}
   >
     <Content components={{ Aside }} />
   </DocsPage>

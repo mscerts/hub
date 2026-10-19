@@ -17,13 +17,18 @@ const {
   class: className,
   ...attrs
 } = Astro.props;
-const isExternal = /^(?:https?:)?\/\//i.test(href);
-const resolvedRel = linkRel(target, rel);
+const site = Astro.site ?? Astro.url;
+const destination = new URL(href, site);
+const isExternal =
+  ["http:", "https:"].includes(destination.protocol) &&
+  destination.origin !== site.origin;
+const resolvedTarget = target ?? (isExternal ? "_blank" : undefined);
+const resolvedRel = linkRel(resolvedTarget, rel);
 ---
 
 <a
   href={href}
-  target={target}
+  target={resolvedTarget}
   rel={resolvedRel}
   class:list={[
     "docs-link-card group not-prose border-border bg-card hover:border-border-strong hover:shadow-default flex items-center justify-between gap-4 rounded-xl border p-5 text-inherit no-underline shadow-sm transition hover:-translate-y-0.5",
@@ -57,6 +62,10 @@ const resolvedRel = linkRel(target, rel);
 </a>
 
 <style>
+  :global(:not(.grid)) > .docs-link-card + .docs-link-card {
+    margin-block-start: 1rem;
+  }
+
   .docs-link-card,
   .docs-link-card :global(*) {
     text-decoration: none !important;

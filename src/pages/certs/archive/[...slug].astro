@@ -19,8 +19,9 @@ const { Content, headings } = await render(entry);
 
 <MainLayout
   title={`${entry.data.title} | Archive | Microsoft Certification Hub`}
-  customDescription={entry.data.description ??
-    "Archived certification resource."}
+  customDescription={
+    entry.data.description ?? "Archived certification resource."
+  }
   noindex
   wide
 >
@@ -29,11 +30,12 @@ const { Content, headings } = await render(entry);
     description={entry.data.description ?? ""}
     headings={headings}
     sectionLabel="Archive"
+    sourcePath={entry.filePath}
   >
     <Aside type="caution" title="Archived content">
       This page is retained for historical reference and may contain outdated
-      information. Visit <a href="/certs/">current certification resources</a> or
-      return to the <a href="/certs/archive/">archive</a>.
+      information. Visit <a href="/certs/">current certification resources</a>{" "}
+      or return to the <a href="/certs/archive/">archive</a>.
     </Aside>
     <Content components={{ Aside }} />
   </DocsPage>

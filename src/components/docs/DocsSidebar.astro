@@ -12,7 +12,9 @@ interface Props {
 const { items, currentPath, idPrefix = "docs", path = "0" } = Astro.props;
 
 function containsCurrent(item: DocsSidebarItem): boolean {
-  return item.href === currentPath || Boolean(item.children?.some(containsCurrent));
+  return (
+    item.href === currentPath || Boolean(item.children?.some(containsCurrent))
+  );
 }
 
 function badgeClass(badge: DocsSidebarBadge) {
@@ -51,7 +53,10 @@ function badgeClass(badge: DocsSidebarBadge) {
 }
 
 function groupId(item: DocsSidebarItem, index: number) {
-  const slug = item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  const slug = item.label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
   return `${idPrefix}-${path}-${index}-${slug}`;
 }
 ---
@@ -60,25 +65,36 @@ function groupId(item: DocsSidebarItem, index: number) {
   {items.map((item, index) => {
     const hasChildren = Boolean(item.children?.length);
     const isCurrent = item.href === currentPath;
-    const isOpen = hasChildren && (item.collapsed === false || containsCurrent(item));
+    const isOpen =
+      hasChildren && (item.collapsed === false || containsCurrent(item));
     const id = groupId(item, index);
 
     return (
       <li class="m-0" data-docs-nav-group={hasChildren ? "true" : undefined}>
         {hasChildren ? (
-          <div class:list={["hs-accordion", isOpen && "active"]} id={id}>
+          <div
+            class:list={[
+              "hs-accordion --prevent-on-load-init",
+              isOpen && "active",
+            ]}
+            id={id}
+            data-docs-group-key={`${path}-${item.label}`}
+          >
             <button
               type="button"
               id={`${id}-toggle`}
               class:list={[
-                 "hs-accordion-toggle group flex min-h-9 w-full items-center gap-x-2 rounded-md px-3 py-2 lg:min-h-8 lg:py-1.5 text-left text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white",
+                "hs-accordion-toggle group flex min-h-9 w-full items-center gap-x-2 rounded-md px-3 py-2 lg:min-h-8 lg:py-1.5 text-left text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white",
                 containsCurrent(item) && "text-gray-900 dark:text-white",
               ]}
               aria-expanded={isOpen ? "true" : "false"}
               aria-controls={`${id}-content`}
             >
               {item.icon && (
-                <span aria-hidden="true" class="flex size-4 shrink-0 items-center justify-center">
+                <span
+                  aria-hidden="true"
+                  class="flex size-4 shrink-0 items-center justify-center"
+                >
                   <PackIcon
                     name={item.icon}
                     class="size-4 shrink-0 text-blue-600 dark:text-blue-300"
@@ -90,13 +106,50 @@ function groupId(item: DocsSidebarItem, index: number) {
                   "min-w-0 flex-1 break-words",
                   item.label === "Microsoft 365" && "whitespace-nowrap",
                 ]}
-              >{item.label}</span>
-              {item.badge && <span class:list={["rounded-full border px-1.5 py-0.5 text-[0.6rem] font-bold leading-none tracking-wide", badgeClass(item.badge)]}>{item.badge.text}</span>}
-              <svg class="size-3.5 shrink-0 transition-transform hs-accordion-active:rotate-180" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" /></svg>
+              >
+                {item.label}
+              </span>
+              {item.badge && (
+                <span
+                  class:list={[
+                    "rounded-full border px-1.5 py-0.5 text-[0.6rem] font-bold leading-none tracking-wide",
+                    badgeClass(item.badge),
+                  ]}
+                >
+                  {item.badge.text}
+                </span>
+              )}
+              <svg
+                class="size-3.5 shrink-0 transition-transform hs-accordion-active:rotate-180"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="m4 6 4 4 4-4"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                />
+              </svg>
             </button>
-            <div id={`${id}-content`} class:list={["hs-accordion-content w-full overflow-hidden transition-[height] duration-300", !isOpen && "hidden"]} role="region" aria-labelledby={`${id}-toggle`}>
+            <div
+              id={`${id}-content`}
+              class:list={[
+                "hs-accordion-content w-full overflow-hidden transition-[height] duration-300",
+                !isOpen && "hidden",
+              ]}
+              role="region"
+              aria-labelledby={`${id}-toggle`}
+            >
               <div class="ms-3 mt-0.5 border-s border-gray-200 ps-2 dark:border-gray-700">
-                <Astro.self items={item.children ?? []} currentPath={currentPath} idPrefix={idPrefix} path={`${path}-${index}`} />
+                <Astro.self
+                  items={item.children ?? []}
+                  currentPath={currentPath}
+                  idPrefix={idPrefix}
+                  path={`${path}-${index}`}
+                />
               </div>
             </div>
           </div>
@@ -107,15 +160,31 @@ function groupId(item: DocsSidebarItem, index: number) {
             data-docs-nav-label={item.label}
             aria-current={isCurrent ? "page" : undefined}
             class:list={[
-               "flex min-h-9 items-center justify-between gap-x-2 rounded-md px-3 py-2 lg:min-h-8 lg:py-1.5 text-sm font-medium text-gray-600 no-underline transition hover:bg-gray-100 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white",
-              isCurrent && "border border-gray-400 bg-gray-100 text-gray-900 dark:border-gray-600 dark:bg-[#2a2a2a] dark:text-white",
+              "flex min-h-9 items-center justify-between gap-x-2 rounded-md px-3 py-2 lg:min-h-8 lg:py-1.5 text-sm font-medium text-gray-600 no-underline transition hover:bg-gray-100 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white",
+              isCurrent &&
+                "border border-gray-400 bg-gray-100 text-gray-900 dark:border-gray-600 dark:bg-[#2a2a2a] dark:text-white",
             ]}
           >
             <span class="min-w-0 break-words">{item.label}</span>
-            {item.badge && <span class:list={["shrink-0 rounded-full border px-1.5 py-0.5 text-[0.6rem] font-bold leading-none tracking-wide", badgeClass(item.badge)]}>{item.badge.text}</span>}
+            {item.badge && (
+              <span
+                class:list={[
+                  "shrink-0 rounded-full border px-1.5 py-0.5 text-[0.6rem] font-bold leading-none tracking-wide",
+                  badgeClass(item.badge),
+                ]}
+              >
+                {item.badge.text}
+              </span>
+            )}
           </a>
         ) : (
-          <span class="flex min-h-9 items-center rounded-md px-3 py-2 text-sm font-medium text-gray-400 dark:text-gray-500" data-docs-nav-item data-docs-nav-label={item.label}>{item.label}</span>
+          <span
+            class="flex min-h-9 items-center rounded-md px-3 py-2 text-sm font-medium text-gray-400 dark:text-gray-500"
+            data-docs-nav-item
+            data-docs-nav-label={item.label}
+          >
+            {item.label}
+          </span>
         )}
       </li>
     );

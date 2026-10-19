@@ -1,9 +1,17 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import { renderTabPanels } from "@utils/render-tabs.mjs";
 interface Props extends HTMLAttributes<"div"> {
   syncKey?: string;
 }
 const { syncKey, class: className, ...attrs } = Astro.props;
+const state = Astro.locals as { docsTabsCount?: number };
+const ordinal = (state.docsTabsCount ?? 0) + 1;
+state.docsTabsCount = ordinal;
+const { html, tabs } = renderTabPanels(
+  await Astro.slots.render("default"),
+  `docs-tabs-${ordinal}`,
+);
 ---
 
 <div
@@ -15,12 +23,43 @@ const { syncKey, class: className, ...attrs } = Astro.props;
   <div
     data-docs-tabs-list
     data-subtle-scrollbar
-    class="subtle-scrollbar border-border flex overflow-x-auto overflow-y-hidden overscroll-x-contain border-b"
+    class="--prevent-on-load-init subtle-scrollbar border-border flex overflow-x-auto overflow-y-hidden overscroll-x-contain border-b"
     role="tablist"
   >
+    {tabs.map(({ label, id }, index) => (
+      <button
+        type="button"
+        role="tab"
+        id={`${id}-tab`}
+        data-docs-tabs-trigger
+        aria-controls={id}
+        aria-selected={index === 0 ? "true" : "false"}
+        tabindex={index === 0 ? 0 : -1}
+        class="-mb-px shrink-0 border-b-2 border-transparent px-5 py-3.5 text-base font-medium text-muted-foreground transition hover:border-border-strong hover:text-foreground aria-selected:border-primary aria-selected:text-primary"
+      >
+        {label}
+      </button>
+    ))}
   </div>
-  <div data-docs-tabs-content-wrapper class="mt-3"><slot /></div>
+  <div data-docs-tabs-content-wrapper class="mt-3" set:html={html} />
 </div>
+<noscript>
+  <style is:inline>
+    @layer base {
+      [data-docs-tabs] > [data-docs-tabs-list] {
+        display: none !important;
+      }
+      [data-docs-tabs-content-wrapper] > [data-docs-tabs-content][hidden] {
+        display: block !important;
+      }
+      [data-docs-tabs-content] > [data-docs-tab-fallback] {
+        display: block !important;
+        margin-block: 1rem;
+        font-weight: 600;
+      }
+    }
+  </style>
+</noscript>
 <script>
   const slugify = (value: string) =>
     value
@@ -43,7 +82,9 @@ const { syncKey, class: className, ...attrs } = Astro.props;
               ),
             )
           : [];
-        const list = root.querySelector<HTMLElement>("[data-docs-tabs-list]");
+        const list = root.querySelector<HTMLElement>(
+          ":scope > [data-docs-tabs-list]",
+        );
         if (!list || panels.length === 0) return;
         const labels = panels.map((panel) => panel.dataset.docsTabLabel ?? "");
         const group =
@@ -66,31 +107,14 @@ const { syncKey, class: className, ...attrs } = Astro.props;
             panel.hidden = !selected;
           });
           const key = root.dataset.docsSyncKey;
-          if (key) localStorage.setItem(`docs-tabs__${key}`, String(active));
+          if (key) {
+            try {
+              localStorage.setItem(`docs-tabs__${key}`, String(active));
+            } catch {
+              /* Tabs remain usable when storage is blocked. */
+            }
+          }
         };
-        const existingTriggers = Array.from(
-          list.querySelectorAll<HTMLElement>("[data-docs-tabs-trigger]"),
-        );
-        if (existingTriggers.length === 0) {
-          panels.forEach((panel, index) => {
-            const label = labels[index] || `Tab ${index + 1}`;
-            const hash = tabHash(label, index);
-            const id = `${groupSlug}-panel-${index}-${slugify(label)}`;
-            panel.dataset.docsTabHash = hash;
-            panel.id = id;
-            const trigger = document.createElement("button");
-            trigger.type = "button";
-            trigger.id = `${id}-tab`;
-            trigger.setAttribute("role", "tab");
-            trigger.setAttribute("aria-controls", id);
-            trigger.dataset.hsTab = `#${id}`;
-            trigger.className =
-              "-mb-px shrink-0 border-b-2 border-transparent px-5 py-3.5 text-base font-medium text-muted-foreground transition hover:border-border-strong hover:text-foreground aria-selected:border-primary aria-selected:text-primary";
-            trigger.textContent = label;
-            trigger.dataset.docsTabHash = hash;
-            list.append(trigger);
-          });
-        }
         const triggers = Array.from(
           list.querySelectorAll<HTMLElement>(
             "[role='tab'], [data-docs-tabs-trigger]",
@@ -105,9 +129,9 @@ const { syncKey, class: className, ...attrs } = Astro.props;
           trigger.dataset.docsTabHash = hash;
           panel.dataset.docsTabHash = hash;
           if (!panel.id)
-            panel.id = `${groupSlug}-panel-${index}-${slugify(label)}`;
+            panel.id = `${groupSlug}-${rootIndex}-panel-${index}-${slugify(label)}`;
           if (!trigger.id)
-            trigger.id = `${groupSlug}-tab-${index}-${slugify(label)}`;
+            trigger.id = `${groupSlug}-${rootIndex}-tab-${index}-${slugify(label)}`;
           trigger.setAttribute("aria-controls", panel.id);
           panel.setAttribute("role", "tabpanel");
           panel.setAttribute(
@@ -143,11 +167,17 @@ const { syncKey, class: className, ...attrs } = Astro.props;
           (trigger) =>
             trigger.dataset.docsTabHash === window.location.hash.slice(1),
         );
-        const stored = Number(
-          root.dataset.docsSyncKey
-            ? localStorage.getItem(`docs-tabs__${root.dataset.docsSyncKey}`)
-            : NaN,
-        );
+        let stored = NaN;
+        try {
+          if (root.dataset.docsSyncKey) {
+            const saved = localStorage.getItem(
+              `docs-tabs__${root.dataset.docsSyncKey}`,
+            );
+            if (saved !== null) stored = Number(saved);
+          }
+        } catch {
+          /* Use the first tab when storage is blocked. */
+        }
         activate(
           hashIndex >= 0
             ? hashIndex
@@ -166,7 +196,9 @@ const { syncKey, class: className, ...attrs } = Astro.props;
       .querySelectorAll<HTMLElement>("[data-docs-tabs]")
       .forEach((root) => {
         const triggers = Array.from(
-          root.querySelectorAll<HTMLElement>("[role='tab']"),
+          root.querySelectorAll<HTMLElement>(
+            ":scope > [data-docs-tabs-list] > [role='tab']",
+          ),
         );
         const index = triggers.findIndex(
           (trigger) => trigger.dataset.docsTabHash === hash,
@@ -176,6 +208,5 @@ const { syncKey, class: className, ...attrs } = Astro.props;
   }
 
   initDocsTabs();
-  document.addEventListener("astro:page-load", initDocsTabs);
   window.addEventListener("hashchange", activateTabFromHash);
 </script>

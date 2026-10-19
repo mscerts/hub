@@ -1,6 +1,7 @@
 ---
 import DocsSidebar from "@components/docs/DocsSidebar.astro";
 import Icon from "@components/ui/icons/Icon.astro";
+import { Icon as PackIcon } from "astro-icon/components";
 import MegaMenuLink from "@components/ui/links/MegaMenuLink.astro";
 import NavLink from "@components/ui/links/NavLink.astro";
 import { docsSidebar } from "@data/docs-sidebar";
@@ -35,7 +36,8 @@ const redditLinks = [
     class="mobile-nav-backdrop"
     data-mobile-nav-close
     tabindex="-1"
-    aria-label="Close site navigation"></button>
+    aria-label="Close site navigation"
+  ></button>
   <div
     id="mobile-site-navigation-drawer"
     class="mobile-nav-drawer border-l border-neutral-200 bg-white shadow-2xl shadow-black/25 dark:border-neutral-700 dark:bg-neutral-900"
@@ -46,9 +48,7 @@ const redditLinks = [
     aria-hidden="true"
     inert
   >
-    <div
-      class="flex shrink-0 items-center justify-between border-b border-neutral-200 px-5 py-4 dark:border-neutral-700"
-    >
+    <div class="flex shrink-0 items-center justify-between border-b border-neutral-200 px-5 py-4 dark:border-neutral-700">
       <h2 class="m-0 text-base font-semibold text-neutral-900 dark:text-white">
         Navigation
       </h2>
@@ -64,34 +64,30 @@ const redditLinks = [
             d="m6 6 12 12M18 6 6 18"
             stroke="currentColor"
             stroke-linecap="round"
-            stroke-width="1.8"></path>
+            stroke-width="1.8"
+          ></path>
         </svg>
       </button>
     </div>
     <div
       class="subtle-scrollbar min-h-0 flex-1 overflow-y-auto px-4 py-5"
       data-subtle-scrollbar
+      data-docs-sidebar-scroll="mobile"
     >
       <nav aria-label="Site navigation">
         <div class="grid gap-1">
-          {
-            strings.navBarLinks.map((link) =>
-              link.name === "Certifications" ? (
-                <MegaMenuLink />
-              ) : (
-                <NavLink url={link.url} name={link.name} idPrefix="mobile-" />
-              ),
-            )
-          }
+          {strings.navBarLinks.map((link) =>
+            link.name === "Certifications" ? (
+              <MegaMenuLink />
+            ) : (
+              <NavLink url={link.url} name={link.name} idPrefix="mobile-" />
+            ),
+          )}
         </div>
       </nav>
 
-      <section
-        class="mt-5 border-t border-neutral-200 pt-4 dark:border-neutral-700"
-      >
-        <h3
-          class="mb-2 px-3 text-xs font-semibold tracking-wide text-neutral-500 uppercase dark:text-neutral-400"
-        >
+      <section class="mt-5 border-t border-neutral-200 pt-4 dark:border-neutral-700">
+        <h3 class="mb-2 px-3 text-xs font-semibold tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
           Community
         </h3>
         <div class="flex items-center gap-1 px-3">
@@ -125,6 +121,19 @@ const redditLinks = [
               />
             </span>
           </button>
+          <a
+            href="https://github.com/mscerts/hub"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex size-9 items-center justify-center rounded-lg text-neutral-600 outline-hidden transition hover:bg-neutral-100 hover:text-blue-700 focus-visible:ring-2 focus-visible:ring-orange-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-blue-300 dark:focus-visible:ring-orange-300"
+            aria-label="Microsoft Certification Hub on GitHub"
+          >
+            <PackIcon
+              name="simple-icons:github"
+              class="size-5"
+              aria-hidden="true"
+            />
+          </a>
         </div>
         <div
           id="mobile-reddit-menu"
@@ -133,44 +142,41 @@ const redditLinks = [
           class="mt-2 grid gap-1 rounded-xl border border-neutral-200 bg-white p-2 dark:border-neutral-700 dark:bg-neutral-900"
           role="menu"
         >
-          {
-            redditLinks.map((link) => (
-              <a
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                role="menuitem"
-                class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 no-underline transition hover:bg-neutral-100 hover:text-blue-700 focus-visible:ring-2 focus-visible:ring-orange-700 focus-visible:outline-none dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-blue-300 dark:focus-visible:ring-orange-300"
-              >
-                {link.name}
-              </a>
-            ))
-          }
+          {redditLinks.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              role="menuitem"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 no-underline transition hover:bg-neutral-100 hover:text-blue-700 focus-visible:ring-2 focus-visible:ring-orange-700 focus-visible:outline-none dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-blue-300 dark:focus-visible:ring-orange-300"
+            >
+              {link.name}
+            </a>
+          ))}
         </div>
       </section>
 
-      {
-        isDocsPage && (
-          <section class="mt-5 border-t border-neutral-200 pt-4 dark:border-neutral-700">
-            <h3 class="mb-2 px-3 text-xs font-semibold tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
-              Documentation
-            </h3>
-            <nav aria-label="Documentation navigation">
-              <DocsSidebar
-                items={docsSidebar}
-                currentPath={currentPath}
-                idPrefix="mobile-nav"
-              />
-            </nav>
-          </section>
-        )
-      }
+      {isDocsPage && (
+        <section class="mt-5 border-t border-neutral-200 pt-4 dark:border-neutral-700">
+          <h3 class="mb-2 px-3 text-xs font-semibold tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
+            Documentation
+          </h3>
+          <nav aria-label="Documentation navigation">
+            <DocsSidebar
+              items={docsSidebar}
+              currentPath={currentPath}
+              idPrefix="mobile-nav"
+            />
+          </nav>
+        </section>
+      )}
     </div>
   </div>
 </div>
 
 <script>
   import initializeSubtleScrollbars from "@utils/subtle-scrollbars";
+  import initializeSidebarState from "@components/docs/client/sidebar-state";
 
   const initializeMobileNavigation = () => {
     const layer = document.querySelector<HTMLElement>(
@@ -219,6 +225,9 @@ const redditLinks = [
       document.body.classList.toggle("mobile-nav-open", open);
 
       if (open) {
+        drawer
+          .querySelector("[data-docs-sidebar-scroll]")
+          ?.dispatchEvent(new Event("docs:sidebar-open"));
         previousFocus =
           document.activeElement instanceof HTMLElement
             ? document.activeElement
@@ -277,8 +286,7 @@ const redditLinks = [
 
   initializeMobileNavigation();
   initializeSubtleScrollbars();
-  document.addEventListener("astro:page-load", initializeMobileNavigation);
-  document.addEventListener("astro:page-load", initializeSubtleScrollbars);
+  initializeSidebarState();
 </script>
 
 <style>
