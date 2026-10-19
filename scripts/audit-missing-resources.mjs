@@ -55,13 +55,6 @@ const RESOURCE_TYPES = [
       titles.some((t) => t === "Microsoft Learn Exam Readiness Zone"),
   },
   {
-    key: "MS Learn On-Demand Instructor-led Training",
-    test: ({ titles }) =>
-      titles.some((t) =>
-        t.startsWith("On Demand Instructor-led Training Series"),
-      ),
-  },
-  {
     key: "Exam Labs",
     // SC-100 is the one exam whose lab page also holds case studies (an
     // architect-level exam), so its button is called "Labs and Case Studies".
