@@ -2,7 +2,7 @@
 title: AI-901 Study Materials
 description: "Collection of study materials for the certification exam AI-901: Microsoft Azure AI Fundamentals. Contains official Microsoft Learn materials, labs, videos, practice tests and paid courses."
 ---
-import { LinkCard, CardGrid, Card, Tabs, TabItem } from '@components/docs';
+import { LinkCard, CardGrid, Card, Aside, Tabs, TabItem } from '@components/docs';
 import RelatedCerts from '../../../components/RelatedCerts.astro';
 
 <Card title="Get Started" icon="star">
@@ -33,6 +33,8 @@ import RelatedCerts from '../../../components/RelatedCerts.astro';
   <TabItem label="Tests">
     <CardGrid>
       <LinkCard title="Microsoft Learn Practice Assessment (AI Skills Navigator)" href="https://aiskillsnavigator.microsoft.com/credentials/cert-83587e0a0754cfee561ade3e27d9fa1cdaf15ae03be52d2413b2b858d1b4eda4" target="_blank" description="Mini test that shows examples of how exam questions are structured. It is not equivalent to the real exams in format/difficulty. It is easier than real exams."/>
+      <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/microsoft-ai-901-assessment.html#u44" target="_blank"/>
+      <LinkCard title="MeasureUp Practice Tests" href="https://www.measureup.com/microsoft-ai-901-practice-test.html#u44" target="_blank"/>
       <LinkCard title="Whizlab Practice Tests" href="https://www.whizlabs.com/ai-901-microsoft-azure-ai-fundamentals/" target="_blank"/>
       <LinkCard title="CertiAce Practice Tests" href="https://certiace.com/practice/AI-901" target="_blank"/>
     </CardGrid>
@@ -57,6 +59,15 @@ import RelatedCerts from '../../../components/RelatedCerts.astro';
 ---
 </Card>
 
-:::tip
-MeasureUp has not released any material for this exam yet.
-:::
+<Card title="MeasureUp Practice Tests" icon="open-book">
+<CardGrid>
+  <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/microsoft-ai-901-assessment.html#u44" target="_blank"/>
+  <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-ai-901-practice-test.html#u44" target="_blank"/>
+</CardGrid>
+  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
+      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps
+      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
+
+      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months.
+      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
+</Card>
