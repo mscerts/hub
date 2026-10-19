@@ -95,7 +95,7 @@ test("gate decides every candidate, writes the gated file and the queue, and say
   const text = io.out.join("\n");
   assert.match(
     text,
-    /^NET-100: 15 candidates: \d+ accepted \(\d+ core, \d+ supporting; 0 by earlier decisions\), \d+ rejected/m,
+    /^NET-100: \d+ candidates: \d+ accepted \(\d+ core, \d+ supporting; 0 by earlier decisions\), \d+ rejected/m,
   );
   assert.match(text, / {2}queued: found by search only \(P4\) \(\d+\)/);
   assert.match(text, /Wrote .*NET-100\.gated\.json and .*NET-100\.queue\.json/);

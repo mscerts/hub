@@ -23,7 +23,7 @@ The course file is written to `<tmp>/course-build/<CODE>.json`, or to `--out`. *
 | The tree: domains, weights, skill groups, tasks | The study guide, key for key and in order. A task with no accepted pick has an empty list: the explicit "nothing for this task" state. |
 | A pick: `target`, `title`, `class`, `relation`, `source` | The accepted gated item: the class and relation the gates gave it (a downgrade by the skeptic, or the maintainer's own class, included). |
 | `decision` of a pick | `{ by: "auto" }` for what the gates accepted, `{ by: "maintainer" }` for what the maintainer decided (with the day they decided it); `at` is the day the gates ran for an automatic one. |
-| `why`, `evidence` | The judge's reason and verified quote. The format requires them for a `supporting` pick and for any pick from another exam's course or found by search (`P3`, `P4`); a core pick of the exam's own course carries neither. |
+| `why`, `evidence` | The judge's reason and verified quote. The format requires them for a `supporting` pick and for any pick from another exam's course or found by search (`P3`, `P4`); a core pick of the exam's own course carries neither. **When the maintainer decided the pick, their `note` replaces the judge's words** if they wrote one; and for a page the judge **rejected** and the maintainer accepted, the note is the only reason and evidence there is (the judge's words argue against the page). |
 | `via` of a `P2` pick | The module whose last unit lists the page. |
 | Order of the picks | Core before supporting, then `P1` to `P4`, then module, unit, documentation page, then how well the candidate matched the task. |
 | `inputs.guideHash`, `guideAsOf`, `builtAt` | The guide's text hash and date, and the day of the build. |
@@ -38,7 +38,7 @@ A candidate that is still **in the queue** is not in the course; the build lists
 The build stops (exit code 1, nothing written) when:
 
 - **The inputs changed since the candidates were made.** The course records the snapshot of Learn it is built on, and the rebuild check compares it with later states of Learn; a snapshot newer than what the picks were judged against would hide a change in between. So a different guide hash, or a different scope fingerprint, means: make the candidates, judge and gate again. `--allow-stale` builds anyway and says so; the course then records the current state, with the picks of the older one.
-- **A pick cannot be written as the format wants:** a `supporting` pick, or one from `P3`/`P4`, whose judge gave no quote (typically a candidate the maintainer accepted that the judge had rejected: it has no evidence to quote); a `P3`/`P4` pick whose module's signature is not in the gated file.
+- **A pick cannot be written as the format wants:** a `supporting` pick, or one from `P3`/`P4`, whose judge gave no quote and for which the maintainer wrote no note; a `supporting` or `P3`/`P4` pick that the maintainer accepted over the judge's reject without a note (answer it again with one); a `P3`/`P4` pick whose module's signature is not in the gated file.
 - **A gated task is not in the guide** (the candidates were made for another version of it).
 - **The built course does not pass the validator** (`validateCourse`, offline). The builder runs it on its own result, so a file it writes is one the validator accepts.
 - **With `--urls`**, a pick is not a current Learn page (learnsync's validator; `--live` also asks Learn about what the caches cannot settle).

@@ -107,6 +107,47 @@ test("prepare writes a batch and a prompt for each skill group and says how big 
   assert.match(io.out.at(-1), /^1 batches, about \d+ prompt tokens in all/);
 });
 
+test("prepare --max-candidates cuts a group into parts that each get their own files; a bad value is a usage error", async () => {
+  const w = world();
+  const { code, io } = await run(
+    ["prepare", EXAM.code, "--out", w.out, "--max-candidates", "6"],
+    w,
+  );
+  assert.equal(code, 0, io.err.join("\n"));
+  const batchFiles = readdirSync(w.out)
+    .filter((f) => f.endsWith(".batch.json"))
+    .sort();
+  assert.ok(batchFiles.length > 1);
+  batchFiles.forEach((f, n) =>
+    assert.equal(
+      f,
+      `${EXAM.code}.${String(n + 1).padStart(2, "0")}-configure-virtual-networks-p${n + 1}of${batchFiles.length}.batch.json`,
+    ),
+  );
+  const first = readJson(join(w.out, batchFiles[0]));
+  assert.deepEqual(first.part, { n: 1, of: batchFiles.length });
+  const prompt = readFileSync(
+    join(w.out, batchFiles[0].replace(".batch.json", ".judge.md")),
+    "utf8",
+  );
+  assert.match(prompt, /This is part 1 of \d+ of the group/);
+  assert.match(
+    io.out.at(-1),
+    new RegExp(`^${batchFiles.length} batches, about \\d+ prompt tokens`),
+  );
+  for (const bad of ["0", "x", "2.5"]) {
+    const r = await run(
+      ["prepare", EXAM.code, "--out", w.out, "--max-candidates", bad],
+      w,
+    );
+    assert.equal(r.code, 2, bad);
+    assert.match(
+      r.io.err.join("\n"),
+      /--max-candidates must be a whole number of at least 1/,
+    );
+  }
+});
+
 test("prepare without --out writes to a temporary folder, never to the repository", async () => {
   const w = world();
   const { code } = await run(["prepare", EXAM.code], w);
@@ -197,7 +238,7 @@ test("check passes a clean answer and sends back one with a made-up quote", asyn
   assert.equal(ok.code, 0, ok.io.err.join("\n"));
   assert.match(
     ok.io.out[0],
-    /15 candidates judged, \d+ picks, every quote is in the evidence/,
+    /\d+ candidates judged, \d+ picks, every quote is in the evidence/,
   );
 
   write(

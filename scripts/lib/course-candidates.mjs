@@ -39,21 +39,32 @@ export const SECTION_PAGES = 5;
 /** How many documentation pages a module's title is matched against to infer its families. */
 const INFER_PAGES = 5;
 
+/**
+ * No limit. A task has as many candidates as there are relevant pages: a page that covers the task is judged
+ * however many others do, because there is no such thing as too many resources. The only thresholds are the
+ * absolute coverage ones below (how much of the task's own words a page must contain) and the hard filters
+ * (retired, not in the caches, out of the exam's product families). A limit can still be passed as an option, to
+ * look at a short list.
+ */
+export const NO_LIMIT = Infinity;
+
 export const DEFAULTS = Object.freeze({
   limits: Object.freeze({
-    p1Module: 5,
-    p1Unit: 6,
-    p2Docs: 8,
-    p3Module: 4,
-    p3Unit: 4,
-    p4Module: 3,
-    p4Docs: 6,
-    p1GroupModule: 3,
+    p1Module: NO_LIMIT,
+    p1Unit: NO_LIMIT,
+    p2Docs: NO_LIMIT,
+    p3Module: NO_LIMIT,
+    p3Unit: NO_LIMIT,
+    p4Module: NO_LIMIT,
+    p4Docs: NO_LIMIT,
+    p1GroupModule: NO_LIMIT,
   }),
   // the share of a task's weight a page must contain, per provenance: the further from the exam's own course,
   // the more of the task a page has to cover
   minCoverage: Object.freeze({ P1: 0.34, P2: 0.5, P3: 0.5, P4: 0.6 }),
-  relativeFloor: 0.4,
+  // a page is kept only if it scores at least this share of the best page's score: 0 keeps every page that
+  // passes the coverage threshold (a relevant page is not dropped for scoring below another)
+  relativeFloor: 0,
   anchorCoverage: 0.5,
   anchorModules: 3,
   anchorRelative: 0.5,
@@ -69,7 +80,8 @@ export const DEFAULTS = Object.freeze({
   anchorBoost: 1.25,
   viaBoost: 1.2,
   genericProductShare: 0.08,
-  scan: 3000,
+  // how many ranked pages a search examines at most: every one
+  scan: NO_LIMIT,
 });
 
 const byText = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
@@ -1033,7 +1045,14 @@ export function generateCandidates({
     schemaVersion: CANDIDATES_SCHEMA_VERSION,
     code,
     params: {
-      limits: opts.limits,
+      // JSON has no infinity: null means no limit
+      limits: Object.fromEntries(
+        Object.entries(opts.limits).map(([k, v]) => [
+          k,
+          Number.isFinite(v) ? v : null,
+        ]),
+      ),
+      scan: Number.isFinite(opts.scan) ? opts.scan : null,
       minCoverage: opts.minCoverage,
       relativeFloor: opts.relativeFloor,
       anchorCoverage: opts.anchorCoverage,

@@ -3,6 +3,7 @@ import test from "node:test";
 import { RELATIONS } from "../../scripts/lib/course-format.mjs";
 import {
   CONFIDENCE,
+  DEFAULT_BATCH_CANDIDATES,
   FLAGS,
   STANCES,
   VERDICTS,
@@ -17,10 +18,12 @@ import {
   quoteTermCoverage,
   rubricText,
   skepticPrompt,
+  splitTasks,
   validateJudgments,
   validateSkeptic,
 } from "../../scripts/lib/course-judge.mjs";
 import {
+  EXAM,
   batches,
   candidatesFile,
   judgmentsFor,
@@ -237,6 +240,131 @@ test("the judge's prompt carries the rubric, the answer format and the batch its
   assert.ok(estimateTokens(prompt) > estimateTokens(JSON.stringify(batch)) / 2);
   assert.equal(estimateTokens("abcd"), 1);
   assert.equal(rubricText(), rubricText());
+});
+
+const count = (batch) =>
+  batch.tasks.reduce((n, t) => n + t.candidates.length, 0);
+const idsOf = (list) =>
+  list.flatMap((b) =>
+    b.tasks.flatMap((t) =>
+      t.candidates.map((c) => label(t.key, c.target.path)),
+    ),
+  );
+
+test("a skill group with more candidates than a session should get is cut into parts, and nothing is left out", () => {
+  const { candidates, pools } = candidatesFile();
+  const whole = buildBatches({
+    candidates,
+    pools,
+    exam: EXAM,
+    maxCandidates: Infinity,
+  });
+  assert.equal(whole.length, 1);
+  assert.equal(whole[0].part, undefined);
+  assert.equal(whole[0].batchId, "networking/configure");
+  const total = count(whole[0]);
+  assert.ok(total > 6, "the invented group has enough candidates to cut");
+
+  const parts = buildBatches({
+    candidates,
+    pools,
+    exam: EXAM,
+    maxCandidates: 6,
+  });
+  assert.equal(parts.length, Math.ceil(total / 6));
+  parts.forEach((b, n) => {
+    assert.equal(b.batchId, `networking/configure#${n + 1}`);
+    assert.deepEqual(b.part, { n: n + 1, of: parts.length });
+    assert.ok(count(b) <= 6, `part ${n + 1} holds ${count(b)}`);
+    assert.deepEqual(
+      b.group,
+      whole[0].group,
+      "every part knows the whole group",
+    );
+    assert.deepEqual(b.inputs, whole[0].inputs);
+  });
+  // every candidate of every task, once, in the same order
+  assert.deepEqual(idsOf(parts), idsOf(whole));
+  // a part is a batch like any other: it validates on its own, and a made-up quote is still caught
+  for (const b of parts) {
+    const v = validateJudgments(b, judgmentsFor(b));
+    assert.deepEqual(v.errors, []);
+    assert.equal(v.items.size, count(b));
+  }
+  const first = parts[0];
+  assert.match(
+    validateJudgments(first, {
+      ...judgmentsFor(parts[1]),
+    }).errors.join("\n"),
+    /batchId .* is not the batch's/,
+  );
+});
+
+test("splitTasks fills a part before it starts the next, continues a task across parts and never splits a small group", () => {
+  const task = (key, n) => ({
+    key,
+    candidates: Array.from({ length: n }, (_, i) => `${key}${i}`),
+  });
+  const tasks = [task("a", 3), task("b", 4), task("c", 0), task("d", 2)];
+  const parts = splitTasks(tasks, 4);
+  assert.deepEqual(
+    parts.map((p) => p.map((x) => `${x.task.key}:${x.candidates.join("")}`)),
+    [["a:a0a1a2", "b:b0"], ["b:b1b2b3", "d:d0"], ["d:d1"]],
+  );
+  assert.equal(splitTasks(tasks, 9).length, 1, "9 candidates fit exactly");
+  assert.equal(splitTasks(tasks, 100).length, 1);
+  assert.equal(splitTasks(tasks, Infinity).length, 1);
+  assert.deepEqual(splitTasks([task("e", 0)], 3), [
+    [{ task: { key: "e", candidates: [] }, candidates: [] }],
+  ]);
+  assert.equal(DEFAULT_BATCH_CANDIDATES, 150);
+});
+
+test("the prompt of a part says so, and the batch is written compactly", () => {
+  const { candidates, pools } = candidatesFile();
+  const [first, second] = buildBatches({
+    candidates,
+    pools,
+    exam: EXAM,
+    maxCandidates: 6,
+  });
+  const prompt = judgePrompt(second);
+  assert.match(
+    prompt,
+    /This is part 2 of \d+ of the group: the other parts hold the other candidates of the same tasks/,
+  );
+  assert.ok(
+    !/This is part/.test(judgePrompt(one())),
+    "a group in one piece says nothing",
+  );
+  const json = prompt.match(/## The batch\n\n```json\n([\s\S]*?)\n```/)[1];
+  assert.equal(json.includes("\n"), false, "one line, no indentation");
+  assert.deepEqual(JSON.parse(json), second);
+  assert.equal(first.part.n, 1);
+});
+
+test("the rubric tells the judge to say when it is not sure instead of dismissing the page, and that a task has no limit of pages", () => {
+  const rubric = rubricText();
+  assert.match(
+    rubric,
+    /When you are not sure, say so; never dismiss a page to be safe/,
+  );
+  assert.match(rubric, /set `confidence` to `low`/);
+  assert.match(
+    rubric,
+    /the maintainer, who is the final judge of every page you are unsure about/,
+  );
+  assert.match(rubric, /a reject with `high` or `medium` confidence is final/);
+  assert.match(rubric, /There is no limit to how many pages a task may have/);
+  // the old advice pushed doubtful pages down into rejects
+  assert.ok(!/take the lower one/.test(rubric));
+  assert.ok(!/anything you cannot place/.test(rubric));
+  // the rules are numbered without a gap or a repeat
+  const numbers = [...rubric.matchAll(/^(\d+)\. /gm)].map((m) => Number(m[1]));
+  assert.deepEqual(
+    numbers,
+    numbers.map((_, i) => i + 1),
+  );
 });
 
 test("a valid answer passes: every candidate judged once, picks quoted from the evidence", () => {

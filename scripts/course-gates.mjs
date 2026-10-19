@@ -288,7 +288,7 @@ export async function main(argv, deps = {}) {
     write(queueFile, queue);
     const s = gated.stats;
     log(
-      `${code}: ${s.candidates} candidates: ${s.accepted} accepted (${s.acceptedCore} core, ${s.acceptedSupporting} supporting; ${s.acceptedByMaintainer} by earlier decisions), ${s.rejected} rejected (${s.rejectedByJudge} by the judge, ${s.rejectedRemembered} remembered, ${s.rejectedExcluded} in excluded sub-products, ${s.rejectedNotCurrent} not current), ${s.queued} for the maintainer.`,
+      `${code}: ${s.candidates} candidates: ${s.accepted} accepted (${s.acceptedCore} core, ${s.acceptedSupporting} supporting; ${s.acceptedByMaintainer} by earlier decisions), ${s.rejected} rejected (${s.rejectedByJudge} by the judge, ${s.rejectedRemembered} remembered, ${s.rejectedExcluded} in excluded sub-products, ${s.rejectedNotCurrent} not current), ${s.queued} for the maintainer (${s.queuedJudgeRejects} of them pages the judge rejected without being sure).`,
     );
     for (const [reason, n] of Object.entries(s.queueReasons))
       log(`  queued: ${reason} (${n})`);
@@ -317,7 +317,9 @@ export function describeQueue(queue) {
     lines.push(
       `  [${q.id}] ${q.source} ${q.target.kind}  ${q.title}${q.decision ? `   -> ${q.decision}` : ""}`,
       `      ${q.url}`,
-      `      proposed: ${p.class}${p.relation ? ` (${p.relation})` : ""}; why it waits: ${q.reasons.join("; ")}`,
+      p.class
+        ? `      proposed: ${p.class}${p.relation ? ` (${p.relation})` : ""}; why it waits: ${q.reasons.join("; ")}`
+        : `      the judge rejected it and is not sure; accept it with a class (and a note) or reject it: ${q.reasons.join("; ")}`,
       `      judge (${q.judge.confidence}): ${q.judge.why}${q.judge.quote ? `  quote: "${q.judge.quote}"` : ""}`,
     );
     if (q.skeptic)

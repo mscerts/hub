@@ -21,6 +21,9 @@ import { CLASSES, RELATIONS, approvalPolicy } from "./course-format.mjs";
 
 export const GATES_SCHEMA_VERSION = 1;
 
+/** The reason stored for an accept the maintainer gave no note to: not a reason a course page can show. */
+export const ACCEPTED_BY_MAINTAINER = "accepted by the maintainer";
+
 export const GATE_DEFAULTS = Object.freeze({
   // a core pick's quote must carry at least this share of the task's distinctive words: a quote that says
   // nothing of the task is no evidence for it
@@ -201,7 +204,18 @@ export function gateItem(task, item, ctx) {
     };
 
   const j = item.judge;
-  if (j.verdict === "reject")
+  if (j.verdict === "reject") {
+    // A judge that is not sure does not get to dismiss a page: the maintainer is the final judge of what it
+    // cannot place. Only a reject with high or medium confidence is final.
+    if (j.confidence === "low")
+      return {
+        decision: "queue",
+        by: "maintainer",
+        via: "gates",
+        reasons: [
+          `the judge rejected it but is not sure (low confidence): ${j.why}`,
+        ],
+      };
     return {
       decision: "reject",
       by: "gates",
@@ -210,6 +224,7 @@ export function gateItem(task, item, ctx) {
       reason: j.why,
       remember: flags.some((f) => OUT_OF_SCOPE_FLAGS.includes(f)),
     };
+  }
 
   // a pick: the class the judge gave, unless the skeptic downgraded it
   const proposal =
@@ -370,6 +385,9 @@ export function gateStats(items) {
     rejectedNotCurrent: count((i) => i.gate.via === "current"),
     rejectedByJudge: count((i) => i.gate.via === "judge"),
     queued: queued.length,
+    // pages the judge rejected without being sure: the maintainer decides them
+    queuedJudgeRejects: queued.filter((i) => i.judge.verdict === "reject")
+      .length,
     queueReasons: Object.fromEntries(
       Object.entries(reasons).sort((a, b) => b[1] - a[1] || byText(a[0], b[0])),
     ),
@@ -403,10 +421,13 @@ export function buildQueue(code, gated, { builtAt }) {
       source: i.source,
       ...(i.via ? { via: i.via } : {}),
       url: learnUrl(i.target.path),
-      proposal: {
-        class: i.gate.class,
-        ...(i.gate.relation ? { relation: i.gate.relation } : {}),
-      },
+      // a page the judge rejected without being sure has no proposed class: the maintainer gives one to accept it
+      proposal: i.gate.class
+        ? {
+            class: i.gate.class,
+            ...(i.gate.relation ? { relation: i.gate.relation } : {}),
+          }
+        : { verdict: "reject" },
       reasons: i.gate.reasons,
       judge: {
         verdict: i.judge.verdict,
@@ -463,9 +484,18 @@ export function applyAnswers(store, queue, { today, replace = false }) {
     }
     const entry = { task: q.task, target: q.target.path, decision: q.decision };
     if (q.decision === "accept") {
-      entry.class = q.class || q.proposal.class;
+      const overruled = q.proposal?.verdict === "reject";
+      entry.class = q.class || q.proposal?.class;
       if (!CLASSES.includes(entry.class)) {
-        problems.push(`${label}: class must be ${CLASSES.join(" or ")}`);
+        problems.push(
+          `${label}: class must be ${CLASSES.join(" or ")}${overruled ? " (the judge rejected this page, so no class is proposed: give one)" : ""}`,
+        );
+        continue;
+      }
+      if (overruled && !present(q.note)) {
+        problems.push(
+          `${label}: the judge rejected this page; say in note why you accept it (it becomes the pick's reason)`,
+        );
         continue;
       }
       if (entry.class === "supporting") {
@@ -486,9 +516,7 @@ export function applyAnswers(store, queue, { today, replace = false }) {
         problems.push(`${label}: excludeFamily goes with a reject`);
         continue;
       }
-      entry.reason = present(q.note)
-        ? q.note.trim()
-        : "accepted by the maintainer";
+      entry.reason = present(q.note) ? q.note.trim() : ACCEPTED_BY_MAINTAINER;
     } else {
       entry.reason = present(q.note)
         ? q.note.trim()

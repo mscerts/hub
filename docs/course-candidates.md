@@ -4,6 +4,12 @@
 
 For every task of an exam's study guide the generator produces a **shortlist** of Microsoft Learn modules, units and documentation pages that might cover it, each tagged with where it came from. It decides nothing. It is lexical (BM25 over titles, descriptions, unit titles and URL words), so it finds pages that share the words of a task and is noisy by nature; the **product constraint** and the **hard filters** take out what is plainly wrong, and the judging step (not built yet) decides what belongs in the course. Nothing is written to the repository: the output is a working file for the next step.
 
+## No limit on how many
+
+There is **no cap on the number of candidates** (maintainer's rule, 2026-10-19: if a resource is relevant it is included, there is no such thing as too many). The per-source limits (`DEFAULTS.limits`), the number of ranked pages a search examines (`scan`) and the floor relative to the best page's score (`relativeFloor`) are all off by default (`Infinity`, `Infinity`, `0`; written to the file's `params` as `null`, `null` and `0`). What still keeps a page out is relevance, not count: the **absolute coverage threshold** per provenance (`minCoverage`: the share of the task's own words a page must contain), the **hard filters** (retired, not in the caches, a page that is not a Learn page, boilerplate) and the **product constraint** below. A limit can still be passed as an option (`options.limits`, `options.scan`, `options.relativeFloor`) to look at a short list.
+
+The price is judging work, not correctness: a shortlist several times longer means several times more prompts (see [course-judging.md](course-judging.md), which cuts a skill group into parts of at most 150 candidates so that each prompt fits one session). Measured on AZ-104 on 2026-10-19: with the old limits 1,496 candidates (143 of the 354 picks of the hand-made test page among them); with none 13,099 (215 of the 354), of which `P4` documentation pages are 10,382.
+
 ## Provenance
 
 Every candidate has a `source`, the same four values as a course file's picks ([courses.md](courses.md)):

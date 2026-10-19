@@ -77,6 +77,43 @@ const decided = (task, target, over) => ({
   ...over,
 });
 
+/** Make the first candidate of the first task one that the judge rejected, sure of it. */
+const judgeRejected = (judged) => {
+  const item = judged.tasks[0].items[0];
+  item.judge = {
+    verdict: "reject",
+    why: "Generic.",
+    flags: [],
+    confidence: "high",
+  };
+  item.agreement = "unchallenged";
+  delete item.skeptic;
+};
+
+test("a page the maintainer accepts over the judge's reject takes its reason and evidence from the maintainer's note", () => {
+  const first = exampleJudged().tasks[0];
+  const target = { task: first.key, path: first.items[0].target.path };
+  const note = "Every administrator meets this when a route stops working.";
+  const result = build({
+    gated: gatedFile({
+      edit: judgeRejected,
+      decisions: store([decided(target.task, target.path, { reason: note })]),
+    }),
+  });
+  assert.equal(result.ok, true, result.problems.join("\n"));
+  const { pick } = picksOf(result.course).find(
+    (p) => p.pick.target.path === target.path,
+  );
+  assert.equal(pick.class, "supporting");
+  assert.equal(pick.why, note, "not the judge's argument against the page");
+  assert.equal(pick.evidence, note);
+  assert.equal(pick.decision.by, "maintainer");
+  assert.deepEqual(
+    validateCourse(result.course, { guide: guide() }).errors,
+    [],
+  );
+});
+
 test("the accepted picks become a course file that passes the validator, with the guide's tree", () => {
   const result = build();
   assert.equal(result.ok, true, result.problems.join("\n"));
@@ -334,26 +371,21 @@ test("what cannot be built stops the build with the reasons and returns no cours
     }),
     /other\/task\/key is not a task of the study guide/,
   );
-  // the maintainer accepted a candidate the judge had rejected: it has no quote, so no evidence
+  // the maintainer accepted a candidate the judge had rejected, without a note: the judge's words argue against the
+  // pick, so with no note of the maintainer's it has neither a reason nor evidence
   const first = exampleJudged().tasks[0];
   const target = { task: first.key, path: first.items[0].target.path };
   const withDecision = gatedFile({
-    edit: (judged) => {
-      const item = judged.tasks[0].items[0];
-      item.judge = {
-        verdict: "reject",
-        why: "Generic.",
-        flags: [],
-        confidence: "high",
-      };
-      item.agreement = "unchallenged";
-      delete item.skeptic;
-    },
-    decisions: store([decided(target.task, target.path)]),
+    edit: judgeRejected,
+    decisions: store([
+      decided(target.task, target.path, {
+        reason: "accepted by the maintainer",
+      }),
+    ]),
   });
   assert.match(
     bad({ gated: withDecision }),
-    /accepted as supporting but the judge gave no quote, so it has no evidence/,
+    /accepted as supporting over the judge's reject without a note, so it has no reason/,
   );
   const noSig = gatedFile({
     change: (items) =>
@@ -372,7 +404,10 @@ test("what cannot be built stops the build with the reasons and returns no cours
           : i,
       ),
   });
-  assert.match(bad({ gated: noQuoteP3 }), /the judge gave no quote/);
+  assert.match(
+    bad({ gated: noQuoteP3 }),
+    /needs an evidence quote and the judge gave none/,
+  );
 });
 
 test("the built course renders, and the rebuild check finds nothing to do the moment it is built", () => {

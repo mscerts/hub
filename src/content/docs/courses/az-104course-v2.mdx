@@ -1,0 +1,1035 @@
+---
+title: AZ-104 Study Guide Course
+description: "A task-by-task walkthrough of the AZ-104: Microsoft Azure Administrator skills measured, with Microsoft Learn training and documentation for every task in the official study guide."
+draft: true
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official AZ-104 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-104?WT.mc_id=studentamb_165290) skills measured (April 17, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. "Related in practice" lists material the guide does not name but that you meet when you do the task at work.
+:::
+
+## Manage Azure identities and governance (20–25%)
+
+### Manage Microsoft Entra users and groups
+
+#### Create users and groups
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create, configure, and manage identities" href="https://learn.microsoft.com/training/modules/create-configure-manage-identities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create, configure, and manage groups" href="https://learn.microsoft.com/training/modules/create-configure-manage-identities/5-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Exercise - add groups in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/create-configure-manage-identities/6-exercise-add-groups-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create, configure, and manage users" href="https://learn.microsoft.com/training/modules/create-configure-manage-identities/2-users?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How to manage groups" href="https://learn.microsoft.com/entra/fundamentals/how-to-manage-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage user and group properties
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Manage licenses in Microsoft Entra ID
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Understand Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/understand-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Knowing the Microsoft Entra ID P1 and P2 plans is needed to decide which licenses to assign, but the module is otherwise a general overview."/>
+      <LinkCard title="Compare Microsoft Entra ID P1 and P2 plans" href="https://learn.microsoft.com/training/modules/understand-azure-active-directory/5-compare-azure-premium-p1-p2-plans?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: The P1 and P2 plan comparison tells an administrator which features, and so which licenses, they must assign."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage external users
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure self-service password reset (SSPR)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Allow users to reset their password with Microsoft Entra self-service password reset" href="https://learn.microsoft.com/training/modules/allow-users-reset-their-password?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement Microsoft Entra self-service password reset" href="https://learn.microsoft.com/training/modules/allow-users-reset-their-password/3-implement-azure-ad-self-service-password-reset?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Exercise - Set up self-service password reset" href="https://learn.microsoft.com/training/modules/allow-users-reset-their-password/4-exercise-set-up-self-service-password-reset?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Enable Microsoft Entra self-service password reset" href="https://learn.microsoft.com/entra/identity/authentication/tutorial-enable-sspr?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Manage access to Azure resources
+
+#### Manage built-in Azure roles
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="What is Azure RBAC?" href="https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac/2-rbac-overview?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: A concept lesson on what Azure RBAC is; one needs it before managing built-in roles, but the title does not show that it covers the built-in roles themselves."/>
+      <LinkCard title="Exercise - List access using Azure RBAC and the Azure portal" href="https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac/4-list-access?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Listing who has which role is the neighbouring step of managing built-in roles: an administrator checks existing access before granting or changing a role."/>
+      <LinkCard title="Exercise - View activity logs for Azure RBAC changes" href="https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac/6-view-activity-logs?WT.mc_id=studentamb_165290" target="_blank" description="Operate and troubleshoot: After roles are granted, an administrator checks the activity log to see who changed Azure RBAC assignments; this is the monitoring step of the same job."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Assign roles at different scopes
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Interpret access assignments
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Manage Azure subscriptions and governance
+
+#### Implement and manage Azure Policy
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Azure Policy initiatives" href="https://learn.microsoft.com/training/modules/sovereignty-policy-initiatives?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Evaluation of resources through Azure Policy" href="https://learn.microsoft.com/training/modules/sovereignty-policy-initiatives/azure-policies-evaluation-resources?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Policy definitions" href="https://learn.microsoft.com/training/modules/sovereignty-policy-initiatives/azure-policy-definitions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Policy resources" href="https://learn.microsoft.com/training/modules/sovereignty-policy-initiatives/azure-policy-resources?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Overview of Azure Policy" href="https://learn.microsoft.com/azure/governance/policy/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure resource locks
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Apply and manage tags on resources
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Manage resource groups
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Manage subscriptions
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Manage costs by using alerts, budgets, and Azure Advisor recommendations
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure management groups
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+## Implement and manage storage (15–20%)
+
+### Configure access to storage
+
+#### Configure Azure Storage firewalls and virtual networks
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Configure virtual networks" href="https://learn.microsoft.com/training/modules/configure-virtual-networks?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Storage virtual network rules are applied to subnets of an existing virtual network, so an administrator first needs to know how to create virtual networks and subnets."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and use shared access signature (SAS) tokens
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure Storage security" href="https://learn.microsoft.com/training/modules/configure-storage-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create shared access signatures" href="https://learn.microsoft.com/training/modules/configure-storage-security/3-create-shared-access-signatures?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Grant limited access to data with shared access signatures (SAS)" href="https://learn.microsoft.com/azure/storage/common/storage-sas-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure stored access policies
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Implement security and manage access for Azure Storage" href="https://learn.microsoft.com/training/modules/implement-storage-account-security?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Contains the stored access policies unit plus the authorization model and Shared Key topics around it; the unit itself is the core pick."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage access keys
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Implement security and manage access for Azure Storage" href="https://learn.microsoft.com/training/modules/implement-storage-account-security?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Its authorization model and Shared Key units cover when to allow or block access key authorization, the decision around managing keys."/>
+      <LinkCard title="Disable Shared Key authorization and enforce with Azure Policy" href="https://learn.microsoft.com/training/modules/implement-storage-account-security/5-disable-shared-key-enforce-policy?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Access keys are the Shared Key credential, and an administrator also decides whether to disable that authorization and enforce it with Azure Policy."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure identity-based access for Azure Files
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Secure your Azure resources with Azure role-based access control (Azure RBAC)" href="https://learn.microsoft.com/training/modules/secure-azure-resources-with-rbac?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Share-level permissions for Azure Files are granted through Azure RBAC roles, so the RBAC basics come first."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Configure and manage storage accounts
+
+#### Create and configure storage accounts
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure storage accounts" href="https://learn.microsoft.com/training/modules/configure-storage-accounts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Determine storage account types" href="https://learn.microsoft.com/training/modules/configure-storage-accounts/4-determine-storage-account-kinds?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Storage Account Overview" href="https://learn.microsoft.com/azure/storage/common/storage-account-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Configure Azure Storage security" href="https://learn.microsoft.com/training/modules/configure-storage-security?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: After creating an account an administrator secures it with SAS, encryption and keys, which are neighbouring tasks of the same job."/>
+      <LinkCard title="Implement Azure Storage" href="https://learn.microsoft.com/training/modules/configure-storage-accounts/2-implement-azure-storage?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: The opening unit of the module introduces what a storage account is before one is created."/>
+      <LinkCard title="Explore Azure Storage services" href="https://learn.microsoft.com/training/modules/configure-storage-accounts/3-explore-azure-storage-services?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Knowing the blob, file, queue and table services is needed to decide how to set up an account."/>
+      <LinkCard title="Access storage" href="https://learn.microsoft.com/training/modules/configure-storage-accounts/6-access-storage?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Reaching the account through its endpoints is the step that follows creating and configuring it."/>
+      <LinkCard title="Secure storage endpoints" href="https://learn.microsoft.com/training/modules/configure-storage-accounts/7-secure-storage-endpoints?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Restricting the account endpoints is a configuration step an administrator does after creating the account."/>
+      <LinkCard title="Customer-managed keys for account encryption" href="https://learn.microsoft.com/azure/storage/common/customer-managed-keys-overview?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Encryption key management is a neighbouring task of the same job and is chosen for an account at or after creation."/>
+      <LinkCard title="Data redundancy" href="https://learn.microsoft.com/azure/storage/common/storage-redundancy?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: The redundancy option is chosen while creating the account, and the page is the core reference of the neighbouring redundancy task."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Azure Storage redundancy
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data redundancy" href="https://learn.microsoft.com/azure/storage/common/storage-redundancy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure object replication
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Determine blob object replication" href="https://learn.microsoft.com/training/modules/configure-blob-storage/6-determine-blob-object-replication?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Configure Azure Blob Storage" href="https://learn.microsoft.com/training/modules/configure-blob-storage?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: The module around the object replication unit teaches the blob features an administrator configures alongside replication."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure storage account encryption
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Determine Azure Storage encryption" href="https://learn.microsoft.com/training/modules/configure-storage-security/5-determine-storage-service-encryption?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Customer-managed keys for account encryption" href="https://learn.microsoft.com/azure/storage/common/customer-managed-keys-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Storage encryption for data at rest" href="https://learn.microsoft.com/azure/storage/common/storage-service-encryption?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage data by using Azure Storage Explorer and AzCopy
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Use Azure Storage Explorer" href="https://learn.microsoft.com/training/modules/configure-azure-files-file-sync/6-identify-components?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Configure Azure Files and Azure Blob Storage
+
+#### Create and configure a file share in Azure Files
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure Files" href="https://learn.microsoft.com/training/modules/configure-azure-files-file-sync?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Azure file shares" href="https://learn.microsoft.com/training/modules/configure-azure-files-file-sync/3-manage-file-shares?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Compare storage for file shares and blob data" href="https://learn.microsoft.com/training/modules/configure-azure-files-file-sync/2-compare-files-to-blobs?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Deciding whether data belongs in a file share or in blob storage is made before a share is created."/>
+      <LinkCard title="Create file share snapshots" href="https://learn.microsoft.com/training/modules/configure-azure-files-file-sync/4-create-file-share-snapshots?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Snapshots are a protection step an admin configures on a share after creating it; it is its own task in the same group."/>
+      <LinkCard title="Implement soft delete for Azure Files" href="https://learn.microsoft.com/training/modules/configure-azure-files-file-sync/5-implement-file-sync?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Soft delete for file shares is configured on the storage account after shares exist; it is a neighbouring task in the same group."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and configure a container in Azure Blob Storage
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure Blob Storage" href="https://learn.microsoft.com/training/modules/configure-blob-storage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create blob containers" href="https://learn.microsoft.com/training/modules/configure-blob-storage/3-create-blob-containers?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Compare storage for file shares and blob data" href="https://learn.microsoft.com/training/modules/configure-azure-files-file-sync/2-compare-files-to-blobs?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Deciding between blob containers and file shares is made before creating a container."/>
+      <LinkCard title="Implement Azure Blob Storage" href="https://learn.microsoft.com/training/modules/configure-blob-storage/2-implement?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Blob types and how Blob Storage is organised are needed before creating a container."/>
+      <LinkCard title="Assign blob access tiers" href="https://learn.microsoft.com/training/modules/configure-blob-storage/4-create-blob-access-tiers?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Assigning access tiers to the blobs in a container is a neighbouring configuration step in the same group."/>
+      <LinkCard title="Manage blobs" href="https://learn.microsoft.com/training/modules/configure-blob-storage/7-upload-blobs?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Uploading and managing blobs is the step an admin does right after creating a container."/>
+      <LinkCard title="Azure Blob Storage lifecycle management overview" href="https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Lifecycle rules are applied to the blobs in containers after setup; it is a neighbouring task in the same group."/>
+      <LinkCard title="Introduction to Blob (object) Storage" href="https://learn.microsoft.com/azure/storage/blobs/storage-blobs-introduction?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: The concepts page for storage accounts, containers and blobs gives the background needed before creating a container."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure storage tiers
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure Blob Storage" href="https://learn.microsoft.com/training/modules/configure-blob-storage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign blob access tiers" href="https://learn.microsoft.com/training/modules/configure-blob-storage/4-create-blob-access-tiers?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Determine Blob Storage pricing" href="https://learn.microsoft.com/training/modules/configure-blob-storage/8-determine-storage-pricing?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Choosing a hot, cool, cold or archive tier is a cost decision, and an admin weighs Blob Storage pricing when making it."/>
+      <LinkCard title="Azure Blob Storage lifecycle management overview" href="https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Lifecycle policies automate moving blobs between tiers, the neighbouring step once tiers are understood."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure soft delete for blobs and containers
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Create blob containers" href="https://learn.microsoft.com/training/modules/configure-blob-storage/3-create-blob-containers?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Container soft delete protects containers, so knowing how containers are created comes first."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure snapshots and soft delete for Azure Files
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement soft delete for Azure Files" href="https://learn.microsoft.com/training/modules/configure-azure-files-file-sync/5-implement-file-sync?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure blob lifecycle management
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure Blob Storage" href="https://learn.microsoft.com/training/modules/configure-blob-storage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add blob lifecycle management rules" href="https://learn.microsoft.com/training/modules/configure-blob-storage/5-add-blob-lifecycle-management-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Blob Storage lifecycle management overview" href="https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure blob versioning
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+## Deploy and manage Azure compute resources (20–25%)
+
+### Automate deployment of resources by using Azure Resource Manager (ARM) templates or Bicep files
+
+#### Interpret an Azure Resource Manager template or a Bicep file
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Deploy Azure infrastructure by using JSON ARM templates" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Azure Resource Manager template structure" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/2-explore-template-structure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Exercise - Create and deploy an Azure Resource Manager template" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/3-exercise-create-and-deploy-template?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Building and deploying a first template by hand makes the parts of a template familiar, so reading one later is easier, but the unit is about creating, not interpreting."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Modify an existing Azure Resource Manager template
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Deploy Azure infrastructure by using JSON ARM templates" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add flexibility to your Azure Resource Manager template by using parameters and outputs" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/4-add-flexibility-arm-template?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Exercise - Add parameters and outputs to your Azure Resource Manager template" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/5-exercise-parameters-output?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Explore Azure Resource Manager template structure" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/2-explore-template-structure?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: You must know the sections of a template before you can safely change one."/>
+      <LinkCard title="Exercise - Create and deploy an Azure Resource Manager template" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/3-exercise-create-and-deploy-template?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: It produces the first working template and deploys it, which is the starting point that the later modify exercise builds on."/>
+      <LinkCard title="Template structure and syntax - Azure Resource Manager" href="https://learn.microsoft.com/azure/azure-resource-manager/templates/syntax?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: The reference for template sections and properties is what an administrator checks when editing a template."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Modify an existing Bicep file
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Deploy resources by using an Azure Resource Manager template or a Bicep file
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Deploy Azure infrastructure by using JSON ARM templates" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Exercise - Create and deploy an Azure Resource Manager template" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/3-exercise-create-and-deploy-template?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Explore Azure Resource Manager template structure" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/2-explore-template-structure?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: You need to know what is in a template before you deploy it."/>
+      <LinkCard title="Add flexibility to your Azure Resource Manager template by using parameters and outputs" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/4-add-flexibility-arm-template?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Parameters let the same template be deployed with different values, a normal part of deploying templates."/>
+      <LinkCard title="Exercise - Add parameters and outputs to your Azure Resource Manager template" href="https://learn.microsoft.com/training/modules/create-azure-resource-manager-template-vs-code/5-exercise-parameters-output?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: A second hands-on exercise that deploys the template with parameters and outputs, extending the first deployment."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Export a deployment as an Azure Resource Manager template or convert an Azure Resource Manager template to a Bicep file
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Create and configure virtual machines
+
+#### Create a virtual machine
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure virtual machines" href="https://learn.microsoft.com/training/modules/intro-to-azure-virtual-machines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Compile a checklist for creating an Azure Virtual Machine" href="https://learn.microsoft.com/training/modules/intro-to-azure-virtual-machines/2-compile-a-checklist-for-creating-a-vm?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Configure virtual machine availability" href="https://learn.microsoft.com/training/modules/configure-virtual-machine-availability?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: The availability option (set or zone) is chosen while creating a VM, so an administrator meets this when doing the task, although the guide lists it as its own tasks."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure encryption at host for Azure virtual machines
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Move a virtual machine to another resource group, subscription, or region
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Manage virtual machine sizes
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Manage virtual machine disks
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Deploy virtual machines to availability zones and availability sets
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Availability options for Azure Virtual Machines" href="https://learn.microsoft.com/azure/virtual-machines/availability?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Manage the availability of your Azure VMs" href="https://learn.microsoft.com/training/modules/intro-to-azure-virtual-machines/5-high-availability?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: An overview of managing VM availability that sets the scene before deploying to zones and sets in detail."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy and configure an Azure Virtual Machine Scale Sets
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure virtual machine availability" href="https://learn.microsoft.com/training/modules/configure-virtual-machine-availability?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement Azure Virtual Machine Scale Sets" href="https://learn.microsoft.com/training/modules/configure-virtual-machine-availability/7-implement-scale-sets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Virtual Machine Scale Sets" href="https://learn.microsoft.com/training/modules/configure-virtual-machine-availability/8-create-scale-sets?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create virtual machines in a Flexible scale set using Azure portal" href="https://learn.microsoft.com/azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of autoscale with Azure Virtual Machine Scale Sets" href="https://learn.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Provision and manage containers in the Azure portal
+
+#### Create and manage an Azure Container Registry
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Provision a container by using Azure Container Instances
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure Container Instances" href="https://learn.microsoft.com/training/modules/configure-azure-container-instances?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Exercise: Implement Container Instances" href="https://learn.microsoft.com/training/modules/configure-azure-container-instances/6-simulation-containers?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Provision a container by using Azure Container Apps
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Manage sizing and scaling for containers, including Azure Container Instances and Azure Container Apps
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Create and configure Azure App Service
+
+#### Provision an App Service plan
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure App Service plans" href="https://learn.microsoft.com/training/modules/configure-app-service-plans?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement Azure App Service plans" href="https://learn.microsoft.com/training/modules/configure-app-service-plans/2-implement-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Determine Azure App Service plan pricing" href="https://learn.microsoft.com/training/modules/configure-app-service-plans/3-determine-plan-pricing?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage an App Service Plan - Azure App Service" href="https://learn.microsoft.com/azure/app-service/app-service-plan-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Configure Azure App Service" href="https://learn.microsoft.com/training/modules/configure-azure-app-services?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Creating the app that runs in the plan is the next step after provisioning the plan, and the module also covers slots, domains and backup."/>
+      <LinkCard title="Configure Azure App Service autoscale" href="https://learn.microsoft.com/training/modules/configure-app-service-plans/5-plan-scaling?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Autoscale is the neighbouring step once the plan exists; it is the scaling task of the guide, not plan provisioning itself."/>
+      <LinkCard title="Create an app with App Service" href="https://learn.microsoft.com/training/modules/configure-azure-app-services/3-create-app-service?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Creating an app means choosing or creating the plan it runs in, so a professional meets plan provisioning in the same step."/>
+      <LinkCard title="Scale Up Features and Capacities" href="https://learn.microsoft.com/azure/app-service/manage-scale-up?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Scaling up changes the pricing tier of the plan, a neighbouring step after the plan has been provisioned."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure scaling for an App Service plan
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure App Service plans" href="https://learn.microsoft.com/training/modules/configure-app-service-plans?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scale up and scale out Azure App Service" href="https://learn.microsoft.com/training/modules/configure-app-service-plans/4-scale-up-scale-out?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Azure App Service autoscale" href="https://learn.microsoft.com/training/modules/configure-app-service-plans/5-plan-scaling?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Implement Azure App Service plans" href="https://learn.microsoft.com/training/modules/configure-app-service-plans/2-implement-azure?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: The plan and its tier define the scaling options available, so implementing the plan comes first."/>
+      <LinkCard title="Determine Azure App Service plan pricing" href="https://learn.microsoft.com/training/modules/configure-app-service-plans/3-determine-plan-pricing?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: The pricing tier decides how many instances and which scale features a plan allows, so it is needed before configuring scaling."/>
+      <LinkCard title="Manage an App Service Plan - Azure App Service" href="https://learn.microsoft.com/azure/app-service/app-service-plan-manage?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Scaling is one of several plan management actions on this page, so it is a neighbouring reference for the task."/>
+      <LinkCard title="Azure App Service Plans" href="https://learn.microsoft.com/azure/app-service/overview-hosting-plans?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: It explains how plans work and are billed before showing how to scale them, background for the scaling task."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create an App Service
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure App Service" href="https://learn.microsoft.com/training/modules/configure-azure-app-services?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an app with App Service" href="https://learn.microsoft.com/training/modules/configure-azure-app-services/3-create-app-service?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Configure Azure App Service plans" href="https://learn.microsoft.com/training/modules/configure-app-service-plans?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: An app runs in an App Service plan, so the plan has to be chosen or created when the app is created."/>
+      <LinkCard title="Implement Azure App Service plans" href="https://learn.microsoft.com/training/modules/configure-app-service-plans/2-implement-azure?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: The plan that hosts the app must exist before the app can be created."/>
+      <LinkCard title="Implement Azure App Service" href="https://learn.microsoft.com/training/modules/configure-azure-app-services/2-implement?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Understanding how Azure App Service is implemented comes before creating an app."/>
+      <LinkCard title="Manage an App Service Plan - Azure App Service" href="https://learn.microsoft.com/azure/app-service/app-service-plan-manage?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Creating the plan comes before creating the app, and the page shows how to create and manage plans."/>
+      <LinkCard title="Configure an App Service App" href="https://learn.microsoft.com/azure/app-service/configure-common?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Right after creating an app a professional configures its common settings, which this page covers."/>
+      <LinkCard title="Overview of Azure App Service" href="https://learn.microsoft.com/azure/app-service/overview?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: An overview of what App Service hosts is background needed before creating an app."/>
+      <LinkCard title="Azure App Service Plans" href="https://learn.microsoft.com/azure/app-service/overview-hosting-plans?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Every app is created inside a plan, so how plans work and are billed is needed first."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure certificates and Transport Layer Security (TLS) for an App Service
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Map an existing custom DNS name to an App Service
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Host your domain on Azure DNS" href="https://learn.microsoft.com/training/modules/host-domain-azure-dns?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Mapping a custom domain needs DNS records, and this module shows how to host a domain in Azure DNS and create records."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure backup for an App Service
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Back up and restore your App Service app" href="https://learn.microsoft.com/training/modules/configure-azure-app-services/9-backup-app-service?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure networking settings for an App Service
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure deployment slots for an App Service
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure App Service" href="https://learn.microsoft.com/training/modules/configure-azure-app-services?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create deployment slots" href="https://learn.microsoft.com/training/modules/configure-azure-app-services/5-create-deployment-slots?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add deployment slots" href="https://learn.microsoft.com/training/modules/configure-azure-app-services/6-add-deployment-slots?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Implement and manage virtual networking (15–20%)
+
+### Configure and manage virtual networks in Azure
+
+#### Create and configure virtual networks and subnets
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure virtual networks" href="https://learn.microsoft.com/training/modules/configure-virtual-networks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create virtual networks" href="https://learn.microsoft.com/training/modules/configure-virtual-networks/4-create-virtual-networks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Exercise: Create and configure virtual networks" href="https://learn.microsoft.com/training/modules/configure-virtual-networks/9-simulation-create-networks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Plan virtual networks" href="https://learn.microsoft.com/training/modules/configure-virtual-networks/2-plan-virtual-networks?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Planning address space and segmentation is done before virtual networks and subnets are created."/>
+      <LinkCard title="Private IP addresses in Azure" href="https://learn.microsoft.com/azure/virtual-network/ip-services/private-ip-addresses?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Subnet address ranges hand out private IP addresses, so someone configuring subnets also meets private IP allocation."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and configure virtual network peering
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure Virtual Network peering" href="https://learn.microsoft.com/training/modules/configure-vnet-peering?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Determine Azure Virtual Network peering uses" href="https://learn.microsoft.com/training/modules/configure-vnet-peering/2-determine-uses?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create virtual network peering" href="https://learn.microsoft.com/training/modules/configure-vnet-peering/4-create?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create, Change, or Delete Azure Virtual Network Peering" href="https://learn.microsoft.com/azure/virtual-network/virtual-network-manage-peering?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Virtual Network Peering" href="https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Configure virtual networks" href="https://learn.microsoft.com/training/modules/configure-virtual-networks?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Peering joins two existing virtual networks, so creating and planning them with non-overlapping address spaces comes first."/>
+      <LinkCard title="Create virtual networks" href="https://learn.microsoft.com/training/modules/configure-virtual-networks/4-create-virtual-networks?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: The two virtual networks to be peered have to be created first."/>
+      <LinkCard title="Plan virtual networks" href="https://learn.microsoft.com/training/modules/configure-virtual-networks/2-plan-virtual-networks?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Address space planning decides whether two networks can be peered without overlapping ranges."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure public IP addresses
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure virtual networks" href="https://learn.microsoft.com/training/modules/configure-virtual-networks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create public IP addressing" href="https://learn.microsoft.com/training/modules/configure-virtual-networks/6-create-public-ip-addressing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Associate public IP addresses" href="https://learn.microsoft.com/training/modules/configure-virtual-networks/7-associate-public-ip-addresses?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Public IP addresses in Azure" href="https://learn.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Plan IP addressing" href="https://learn.microsoft.com/training/modules/configure-virtual-networks/5-plan-addressing?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Choosing public and private addressing is planned before public IP addresses are created."/>
+      <LinkCard title="Allocate or assign private IP addresses" href="https://learn.microsoft.com/training/modules/configure-virtual-networks/8-associate-private-ip-addresses?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Private IP allocation is the neighbouring step to public IP configuration when addressing a resource."/>
+      <LinkCard title="Private IP addresses in Azure" href="https://learn.microsoft.com/azure/virtual-network/ip-services/private-ip-addresses?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Private IP addresses are configured next to public ones on the same network interface and subnet."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure user-defined routes
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Configure Azure Virtual Network peering" href="https://learn.microsoft.com/training/modules/configure-vnet-peering?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Only one unit of this peering module deals with user-defined routes; the rest is the neighbouring peering task."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Troubleshoot network connectivity
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Configure secure access to virtual networks
+
+#### Create and configure network security groups (NSGs) and application security groups
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure network security groups" href="https://learn.microsoft.com/training/modules/configure-network-security-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement application security groups" href="https://learn.microsoft.com/training/modules/configure-network-security-groups/6-implement-asgs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement network security groups" href="https://learn.microsoft.com/training/modules/configure-network-security-groups/2-implement-network-security-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Determine network security group rules" href="https://learn.microsoft.com/training/modules/configure-network-security-groups/3-determine-network-security-groups-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create network security group rules" href="https://learn.microsoft.com/training/modules/configure-network-security-groups/5-create-network-security-groups-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create, Change, or Delete Azure Network Security Groups" href="https://learn.microsoft.com/azure/virtual-network/manage-network-security-group?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure network security groups overview" href="https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Tutorial: Filter network traffic with a network security group (NSG)" href="https://learn.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Application Security Groups Overview" href="https://learn.microsoft.com/azure/virtual-network/application-security-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Determine network security group effective rules" href="https://learn.microsoft.com/training/modules/configure-network-security-groups/4-determine-network-security-groups-effective-rules?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Checking effective rules is the neighbouring step an administrator does after creating NSG rules; it is its own task in the guide."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Evaluate effective security rules in NSGs
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure network security groups" href="https://learn.microsoft.com/training/modules/configure-network-security-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Determine network security group effective rules" href="https://learn.microsoft.com/training/modules/configure-network-security-groups/4-determine-network-security-groups-effective-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Determine network security group rules" href="https://learn.microsoft.com/training/modules/configure-network-security-groups/3-determine-network-security-groups-rules?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: You need to know the NSG rule set and its defaults before you can reason about which rules end up effective."/>
+      <LinkCard title="Implement network security groups" href="https://learn.microsoft.com/training/modules/configure-network-security-groups/2-implement-network-security-groups?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: The NSG fundamentals (what an NSG is and where it is attached) are needed before effective rules make sense."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Azure Bastion
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure service endpoints for Azure platform as a service (PaaS)
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Configure storage accounts" href="https://learn.microsoft.com/training/modules/configure-storage-accounts?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Applying service endpoints to a storage account is the PaaS side of the task, and this AZ-104 module has a unit on securing storage endpoints."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure private endpoints for Azure PaaS
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Configure name resolution and load balancing
+
+#### Configure Azure DNS
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Host your domain on Azure DNS" href="https://learn.microsoft.com/training/modules/host-domain-azure-dns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Azure DNS to host your domain" href="https://learn.microsoft.com/training/modules/host-domain-azure-dns/3-configure-azure-dns-host-domain?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Exercise - Create a DNS zone and an A record by using Azure DNS" href="https://learn.microsoft.com/training/modules/host-domain-azure-dns/4-exercise-create-dns-zone-a-record?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Exercise - Create alias records for Azure DNS" href="https://learn.microsoft.com/training/modules/host-domain-azure-dns/6-exercise-create-alias-records?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="DNS Zones and Records Overview" href="https://learn.microsoft.com/azure/dns/dns-zones-records?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Quickstart - Create an Azure private DNS zone using the Azure portal" href="https://learn.microsoft.com/azure/dns/private-dns-getstarted-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="What is Azure DNS?" href="https://learn.microsoft.com/training/modules/host-domain-azure-dns/2-what-is-azure-dns?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: A conceptual unit on what Azure DNS is; an administrator needs it before creating zones and records, but it does not configure anything itself."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure an internal or public load balancer
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Load Balancer" href="https://learn.microsoft.com/training/modules/intro-to-azure-load-balancer?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: The exam's own load balancer module, but its units are conceptual (what, how, when) with no configuration steps, so it prepares for configuring a load balancer rather than teaching it."/>
+      <LinkCard title="What is Azure Load Balancer?" href="https://learn.microsoft.com/training/modules/intro-to-azure-load-balancer/2-what-is-azure-load-balancer?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: A conceptual unit on what Azure Load Balancer is, needed before configuring a public or internal load balancer."/>
+      <LinkCard title="How Azure Load Balancer works" href="https://learn.microsoft.com/training/modules/intro-to-azure-load-balancer/3-how-azure-load-balancer-works?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Explains how traffic is distributed, the mechanics an administrator needs to understand before configuring public or internal load balancers."/>
+      <LinkCard title="When to use Azure Load Balancer" href="https://learn.microsoft.com/training/modules/intro-to-azure-load-balancer/4-when-to-use-azure-load-balancer?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Helps decide when a load balancer fits a design, a decision made before configuring one; it has no configuration steps."/>
+      <LinkCard title="What is Azure Load Balancer?" href="https://learn.microsoft.com/azure/load-balancer/load-balancer-overview?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: The overview of Azure Load Balancer, its features and scenarios, read before configuring a load balancer."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Troubleshoot load balancing
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+## Monitor and maintain Azure resources (10–15%)
+
+### Monitor resources in Azure
+
+#### Interpret metrics in Azure Monitor
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure log settings in Azure Monitor
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Activity Log in Azure Monitor - Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/fundamentals/activity-log?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Monitoring for Azure VMs" href="https://learn.microsoft.com/training/modules/monitor-azure-vm-using-diagnostic-data/2-monitor-vm-health?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: An overview of what Azure Monitor can collect from VMs, which an administrator needs to know before deciding which logs to configure."/>
+      <LinkCard title="Tutorial: Collect guest logs from an Azure virtual machine" href="https://learn.microsoft.com/azure/azure-monitor/vm/tutorial-collect-logs?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: A hands-on tutorial that builds a data collection rule for guest logs, a practical walk-through of the VM log collection step."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Query and analyze logs in Azure Monitor
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Monitor your Azure virtual machines with Azure Monitor" href="https://learn.microsoft.com/training/modules/monitor-azure-vm-using-diagnostic-data?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: It gathers the VM logs that an administrator later queries, but its unit titles show no log querying itself."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Set up alert rules, action groups, and alert processing rules in Azure Monitor
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure and interpret monitoring of virtual machines, storage accounts, and networks by using Azure Monitor Insights
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Monitoring for Azure VMs" href="https://learn.microsoft.com/training/modules/monitor-azure-vm-using-diagnostic-data/2-monitor-vm-health?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: An overview of VM monitoring in Azure, which an administrator needs before enabling and reading VM insights."/>
+      <LinkCard title="Use Metrics Explorer to view detailed host metrics" href="https://learn.microsoft.com/training/modules/monitor-azure-vm-using-diagnostic-data/4-view-host-metrics?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Metrics Explorer is the neighbouring way to read VM host metrics that an administrator uses alongside the VM insights views."/>
+      <LinkCard title="Collect VM client event logs" href="https://learn.microsoft.com/training/modules/monitor-azure-vm-using-diagnostic-data/6-collect-log-data?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Collecting VM client event logs is a neighbouring monitoring step an administrator does beside VM insights."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Use Azure Network Watcher and Connection monitor
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Network Watcher" href="https://learn.microsoft.com/training/modules/intro-to-azure-network-watcher?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Azure Network Watcher?" href="https://learn.microsoft.com/training/modules/intro-to-azure-network-watcher/2-what-is-azure-network-watcher?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How Azure Network Watcher works" href="https://learn.microsoft.com/training/modules/intro-to-azure-network-watcher/3-how-azure-network-watcher-works?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="When to use Azure Network Watcher" href="https://learn.microsoft.com/training/modules/intro-to-azure-network-watcher/4-when-to-use-azure-network-watcher?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Network Watcher Overview" href="https://learn.microsoft.com/azure/network-watcher/network-watcher-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Enable or Disable Azure Network Watcher" href="https://learn.microsoft.com/azure/network-watcher/network-watcher-create?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Network Watcher must be enabled in a region before its tools and Connection Monitor can be used."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement backup and recovery
+
+#### Create a Recovery Services vault
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Backup" href="https://learn.microsoft.com/training/modules/intro-to-azure-backup?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Explains what Azure Backup is and how it works, which an administrator needs to understand before creating a vault."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create an Azure Backup vault
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Backup" href="https://learn.microsoft.com/training/modules/intro-to-azure-backup?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Introduces what Azure Backup is and how it works, background an administrator needs before choosing and creating a vault."/>
+      <LinkCard title="What is Azure Backup?" href="https://learn.microsoft.com/training/modules/intro-to-azure-backup/2-what-is-azure-backup?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Explains what Azure Backup is, background needed before creating a vault."/>
+      <LinkCard title="How Azure Backup works" href="https://learn.microsoft.com/training/modules/intro-to-azure-backup/3-how-azure-backup-works?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Explains how Azure Backup works, background needed before creating a vault."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and configure a backup policy
+
+<Tabs>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Backup" href="https://learn.microsoft.com/training/modules/intro-to-azure-backup?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Explains how Azure Backup works, which an administrator needs to understand before setting schedules and retention in a policy."/>
+      <LinkCard title="Protect your virtual machines by using Azure Backup" href="https://learn.microsoft.com/training/modules/protect-virtual-machines-with-azure-backup?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: Backing up a VM is where a backup policy is chosen and applied, though the evidence does not show policy content itself."/>
+      <LinkCard title="How Azure Backup works" href="https://learn.microsoft.com/training/modules/intro-to-azure-backup/3-how-azure-backup-works?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Explains how backups work (recovery points, storage), which underpins schedule and retention choices in a policy."/>
+      <LinkCard title="Back up an Azure virtual machine by using Azure Backup" href="https://learn.microsoft.com/training/modules/protect-virtual-machines-with-azure-backup/3-back-up-azure-virtual-machine?WT.mc_id=studentamb_165290" target="_blank" description="Same workflow: The step where a policy is selected when enabling VM backup; the evidence does not show policy creation itself."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Perform backup and restore operations by using Azure Backup
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Exercise - Restore Azure virtual machine data" href="https://learn.microsoft.com/training/modules/protect-virtual-machines-with-azure-backup/6-exercise-restore-virtual-machine-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Back up an Azure virtual machine by using Azure Backup" href="https://learn.microsoft.com/training/modules/protect-virtual-machines-with-azure-backup/3-back-up-azure-virtual-machine?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Related in practice">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Backup" href="https://learn.microsoft.com/training/modules/intro-to-azure-backup?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Explains how Azure Backup works, background for performing backups and restores."/>
+      <LinkCard title="What is Azure Backup?" href="https://learn.microsoft.com/training/modules/intro-to-azure-backup/2-what-is-azure-backup?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Explains what Azure Backup is, background for performing backups and restores."/>
+      <LinkCard title="How Azure Backup works" href="https://learn.microsoft.com/training/modules/intro-to-azure-backup/3-how-azure-backup-works?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Explains how Azure Backup works, which an administrator needs to understand before running backups and restores."/>
+      <LinkCard title="Azure Backup features and scenarios" href="https://learn.microsoft.com/training/modules/protect-virtual-machines-with-azure-backup/2-azure-backup-features-scenarios?WT.mc_id=studentamb_165290" target="_blank" description="Prerequisite: Gives the Azure Backup features and scenarios that frame the backup and restore steps that follow."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Azure Site Recovery for Azure resources
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Perform a failover to a secondary region by using Site Recovery
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure and interpret reports and alerts for backups
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::

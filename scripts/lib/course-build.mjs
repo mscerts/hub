@@ -17,6 +17,7 @@ import {
   moduleOfPick,
   validateCourse,
 } from "./course-format.mjs";
+import { ACCEPTED_BY_MAINTAINER } from "./course-gates.mjs";
 
 const byText = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 const SOURCE_ORDER = { P1: 0, P2: 1, P3: 2, P4: 3 };
@@ -42,19 +43,33 @@ function pickOf(item, day) {
   };
   const needsEvidence =
     g.class === "supporting" || item.source === "P3" || item.source === "P4";
+  // The judge's words describe the page as the judge saw it. When the judge rejected the page and the maintainer
+  // accepted it, they argue against the pick: the maintainer's note is its reason and its evidence. A note the
+  // maintainer wrote also replaces the judge's reason when the judge picked the page too.
+  const judgePicked = item.judge.verdict !== "reject";
+  const note =
+    g.by === "maintainer" &&
+    typeof g.reason === "string" &&
+    g.reason.trim() !== "" &&
+    g.reason !== ACCEPTED_BY_MAINTAINER
+      ? g.reason.trim()
+      : null;
   if (g.class === "supporting") {
-    pick.why = item.judge.why;
-    if (!item.judge.quote)
+    pick.why = note ?? (judgePicked ? item.judge.why : null);
+    if (!pick.why)
       return {
-        problem: `${item.task.key}: ${target.path} is accepted as supporting but the judge gave no quote, so it has no evidence`,
+        problem: `${item.task.key}: ${target.path} is accepted as supporting over the judge's reject without a note, so it has no reason (answer it again with a note)`,
       };
   }
   if (needsEvidence) {
-    if (!item.judge.quote)
+    const evidence = judgePicked ? item.judge.quote : note;
+    if (!evidence)
       return {
-        problem: `${item.task.key}: ${target.path} (${item.source}) needs an evidence quote and the judge gave none`,
+        problem: judgePicked
+          ? `${item.task.key}: ${target.path} (${item.source}) needs an evidence quote and the judge gave none`
+          : `${item.task.key}: ${target.path} (${item.source}) was rejected by the judge and accepted without a note, so it has no evidence (answer it again with a note)`,
       };
-    pick.evidence = item.judge.quote;
+    pick.evidence = evidence;
   }
   pick.decision = {
     by: g.by === "maintainer" ? "maintainer" : "auto",

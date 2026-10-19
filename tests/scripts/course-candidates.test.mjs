@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  DEFAULTS,
   buildPools,
   docFamily,
   generateCandidates,
@@ -287,13 +288,16 @@ test("without a good module of its own a task may use other families of the exam
     (c) => c.source === "P4" || c.source === "P3",
   ))
     assert.ok(c.coverage >= 0.8, `${c.target.path} covers ${c.coverage}`);
-  // a family no module of the exam lists is demoted: it does not show beside pages of the exam's own families...
-  assert.ok(!routes.candidates.some((c) => c.target.path === next));
-  assert.ok(
-    routes.candidates.some(
-      (c) => c.target.path === "/azure/virtual-network/manage-route-table",
-    ),
+  // a family no module of the exam lists is demoted: it is flagged and ranks after the pages of the exam's own
+  // families (nothing is cut for being lower, but the judge and the gates see the flag)...
+  const own = routes.candidates.find(
+    (c) => c.target.path === "/azure/virtual-network/manage-route-table",
   );
+  const foreign = routes.candidates.find((c) => c.target.path === next);
+  assert.ok(own, "a page of the exam's own families is listed");
+  assert.equal(own.foreignFamily, undefined);
+  assert.equal(foreign.foreignFamily, true);
+  assert.ok(foreign.rank > own.rank, "demoted below the exam's own pages");
   // ...but it shows when nothing from them covers the task, marked
   const hop = weak("Configure next hop");
   const neighbour = hop.candidates.find((c) => c.target.path === next);
@@ -407,7 +411,26 @@ test("an exam with no official course gets no P1 or P2, and a warning", () => {
   );
 });
 
-test("the limits cap each provenance and kind", () => {
+test("nothing is limited by default: every relevant page is a candidate, however many there are", () => {
+  // forced weak anchor: eleven documentation pages cover the task, more than the 6 the old default allowed
+  const out = run({
+    tasks: ["Configure user-defined routes"],
+    options: { anchorCoverage: 2 },
+  });
+  assert.equal(paths(out.tasks[0], "P4", "docs").length, 11);
+  const capped = run({
+    tasks: ["Configure user-defined routes"],
+    options: { anchorCoverage: 2, limits: { p4Docs: 6 } },
+  });
+  assert.equal(paths(capped.tasks[0], "P4", "docs").length, 6);
+  for (const [name, value] of Object.entries(out.params.limits))
+    assert.equal(value, null, `${name} has no limit (null in the file)`);
+  assert.equal(out.params.scan, null);
+  assert.equal(out.params.relativeFloor, 0);
+  assert.ok(Object.values(DEFAULTS.limits).every((n) => n === Infinity));
+});
+
+test("a limit can still be asked for, to look at a short list", () => {
   const out = run({
     tasks: ["Configure user-defined routes"],
     options: { limits: { p4Docs: 1, p1Unit: 1 } },
@@ -416,7 +439,7 @@ test("the limits cap each provenance and kind", () => {
   assert.ok(paths(task, "P4", "docs").length <= 1);
   assert.ok(paths(task, "P1", "unit").length <= 1);
   assert.equal(out.params.limits.p4Docs, 1);
-  assert.equal(out.params.limits.p2Docs, 8, "the others keep their default");
+  assert.equal(out.params.limits.p2Docs, null, "the others stay unlimited");
 });
 
 test("a task that finds nothing is searched once more with the thresholds scaled down, and says so", () => {

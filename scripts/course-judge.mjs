@@ -4,10 +4,12 @@
  * check the judge's answers mechanically, and merge them with a skeptic's. No AI runs here: the prompts are
  * files a person or an agent session gives to a model, and the answers are files they save back.
  *
- *   node scripts/course-judge.mjs prepare <CODE> [--candidates FILE] [--group TEXT] [--out DIR]
+ *   node scripts/course-judge.mjs prepare <CODE> [--candidates FILE] [--group TEXT] [--out DIR] [--max-candidates N]
  *       One batch per skill group of the candidates file (scripts/course-candidates.mjs), with the text a judge
  *       may quote: <prefix>.batch.json and <prefix>.judge.md (prompt) in DIR (default <tmp>/course-judge),
- *       where <prefix> is <CODE>.<nn>-<group>. Prints the size of each prompt (a rough token count).
+ *       where <prefix> is <CODE>.<nn>-<group>. A group with more than N candidates (default 150, so that a
+ *       prompt stays within one session) is cut into parts <CODE>.<nn>-<group>-p<k>of<n>, each judged on its
+ *       own; nothing is left out. Prints the size of each prompt (a rough token count).
  *   node scripts/course-judge.mjs check <prefix>
  *       Validates <prefix>.judgments.json against the batch: every candidate judged once, a verdict, a reason, a
  *       relation for a supporting pick, and for every pick a quote that is really in the evidence. Exit 1 when
@@ -39,7 +41,7 @@ import {
 } from "./lib/course-judge.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-judge.mjs prepare <CODE> [--candidates FILE] [--group TEXT] [--out DIR]
+const USAGE = `Usage: node scripts/course-judge.mjs prepare <CODE> [--candidates FILE] [--group TEXT] [--out DIR] [--max-candidates N]
        node scripts/course-judge.mjs check <prefix>
        node scripts/course-judge.mjs skeptic <prefix> [--keep-unverified]
        node scripts/course-judge.mjs merge <prefix> [--no-skeptic] [--keep-unverified]`;
@@ -53,6 +55,7 @@ function parseArgs(argv) {
     candidates: null,
     group: null,
     out: null,
+    maxCandidates: null,
     keepUnverified: false,
     noSkeptic: false,
   };
@@ -61,7 +64,15 @@ function parseArgs(argv) {
     const arg = argv[i];
     if (arg === "--keep-unverified") options.keepUnverified = true;
     else if (arg === "--no-skeptic") options.noSkeptic = true;
-    else if (["--candidates", "--group", "--out"].includes(arg)) {
+    else if (arg === "--max-candidates") {
+      if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
+      const n = Number(argv[++i]);
+      if (!Number.isInteger(n) || n < 1)
+        throw new Error(
+          "--max-candidates must be a whole number of at least 1",
+        );
+      options.maxCandidates = n;
+    } else if (["--candidates", "--group", "--out"].includes(arg)) {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
       options[arg.slice(2)] = argv[++i];
     } else if (arg.startsWith("-")) throw new Error(`Unknown option ${arg}`);
@@ -198,6 +209,7 @@ async function prepare(
     candidates,
     pools: loaded.pools,
     exam: { code, name: guide.name ?? null },
+    ...(options.maxCandidates ? { maxCandidates: options.maxCandidates } : {}),
   });
   if (options.group) {
     const needle = options.group.toLowerCase();
@@ -215,7 +227,7 @@ async function prepare(
   batches.forEach((batch, i) => {
     const prefix = join(
       outDir,
-      `${code}.${String(i + 1).padStart(2, "0")}-${slug(batch.group.title)}`,
+      `${code}.${String(i + 1).padStart(String(batches.length).length > 2 ? 3 : 2, "0")}-${slug(batch.group.title)}${batch.part ? `-p${batch.part.n}of${batch.part.of}` : ""}`,
     );
     const prompt = judgePrompt(batch);
     write(`${prefix}.batch.json`, batch);

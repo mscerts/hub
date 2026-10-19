@@ -37,3 +37,6 @@ pnpm-debug.log*
 # link checker output (lychee reports, lychee cache)
 lychee/
 .lycheecache
+
+# local runs of the course pipeline: judgments, queues, gated files (kept so that a run is not paid for twice; see docs/course-playbook.md)
+.course-runs/

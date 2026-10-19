@@ -132,6 +132,8 @@ scripts/
 ├── course-judge.mjs          # Judging protocol: prompts for an AI judge per skill group, mechanical checks of its answers (evidence quotes), a skeptic pass and the merge (see docs/course-judging.md)
 ├── course-gates.mjs          # Approval gates: accept, reject or queue every judged candidate; the queue is a file edited by hand and the maintainer's decisions are remembered in src/data_files/course-decisions/<CODE>.json (see docs/course-gates.md)
 ├── course-build.mjs          # The builder: assembles a course file from the gated decisions, the study guide and the exam scope (see docs/course-build.md)
+├── course-pilot.mjs          # Measures the pilot: draws the gold set and the review sample, prints the pass criteria (see docs/course-playbook.md)
+├── course-rollout.mjs        # Read-only table of every exam with a stored study guide: size, what Learn offers, wave and a review estimate (see docs/course-playbook.md)
 └── *.mjs, *.sh               # One dependency-free script per monitor, plus new-exam.mjs and the audits
 tests/
 ├── scripts/                  # Offline tests of the scripts, the workflows and the docs claims (pnpm test:scripts)

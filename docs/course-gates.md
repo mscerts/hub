@@ -19,8 +19,9 @@ Applied in this order; the first that fits decides.
 1. **The maintainer already decided it** (same task and page): the decision stands, as an `accept` with its class and relation or a `reject`. The one exception is a page that is no longer a current Learn page, which is rejected whatever was decided.
 2. **An excluded sub-product:** a documentation page whose family (`/entra/id-governance`) the maintainer excluded is rejected.
 3. **Not a current Learn page** (with `--urls`: learnsync's validator says it moved, was removed or is a landing page) is rejected.
-4. **The judge rejected it** is a rejection. When the judge flagged it `other-role`, `other-sub-product` or `licensing-tier`, the decision carries `remember: true`: an out-of-scope page worth remembering in the course file's rejected list.
-5. **A pick** is accepted unless one of these queues it (all the reasons are listed):
+4. **The judge rejected it with `high` or `medium` confidence** is a rejection. When the judge flagged it `other-role`, `other-sub-product` or `licensing-tier`, the decision carries `remember: true`: an out-of-scope page worth remembering in the course file's rejected list.
+5. **The judge rejected it but is not sure** (`confidence: low`) is **never dismissed: it is queued** ("the judge rejected it but is not sure"), because the maintainer is the final judge of every page the AI is unsure about (rule of 2026-10-19). It has no proposed class (`proposal: { "verdict": "reject" }`); to accept it, the maintainer gives a `class` (and a `relation` for `supporting`) and a `note`, which becomes the pick's reason and evidence in the course ([course-build.md](course-build.md)). To reject it, nothing more is needed.
+6. **A pick** is accepted unless one of these queues it (all the reasons are listed):
 
 | Reason | Rule |
 |--------|------|
@@ -42,9 +43,9 @@ An accepted pick is one the gates, not a person, took: its decision is `by: gate
 | Field | Meaning |
 |-------|---------|
 | `decision` | `"accept"` or `"reject"`. Leave `null` to decide later. |
-| `class`, `relation` | Optional, to accept as another class than proposed (`supporting` needs a relation; `core` has none). The proposal is used when they are `null`. |
+| `class`, `relation` | Optional, to accept as another class than proposed (`supporting` needs a relation; `core` has none). The proposal is used when they are `null`. **Required** to accept a page the judge rejected without being sure: there is no proposal to take. |
 | `excludeFamily` | `true` with a reject of a documentation page: every page of that family is rejected from now on. |
-| `note` | The reason. For a reject it is what is remembered (default "rejected by the maintainer"). |
+| `note` | The reason. For a reject it is what is remembered (default "rejected by the maintainer"). **Required** to accept a page the judge rejected: it replaces the judge's words, which argue against the page. |
 
 `node scripts/course-gates.mjs show <CODE>` prints the queue readably, task by task, with the address of each page.
 
@@ -85,7 +86,7 @@ node scripts/course-gates.mjs gate AZ-104                       # the answered i
 - **From decisions to picks.** The gated file lists every candidate with its decision, class, relation and who decided; the builder ([course-build.md](course-build.md)) turns the accepted ones into the picks of a course file, with `by: auto` or `maintainer` and the remembered rejections in its `rejected` list.
 - **Per-task rejections only.** A page rejected under one task can come up under another; only a whole documentation family can be excluded for an exam.
 - **Freshness of a decision.** A remembered `accept` is kept while the page is current; it is not asked again when the page changes. The rebuild check ([courses.md](courses.md)) is what notices a changed module.
-- **No exam has been gated.** The rules, the queue, the memory and their tests exist; running them on an exam waits for a judged exam, which is the pilot.
+- **One exam has been gated, with no answers yet.** AZ-104, on 2026-10-17 and again on 2026-10-19 under the rule above. The queue is long by design: every `P4` page, every unsure pick and every unsure reject waits. Whether the pilot's "at most 25% queued" target still makes sense with that rule is the maintainer's to decide.
 
 ## Tests
 

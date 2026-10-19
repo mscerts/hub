@@ -157,64 +157,111 @@ const moduleCard = (pools, path) => {
  * One batch per skill group of a candidates file (course-candidates.mjs). `exam` is { code, name }.
  * Returns [{ schemaVersion, kind: "judge", batchId, exam, inputs, group, tasks }].
  */
-export function buildBatches({ candidates, pools, exam }) {
+export function buildBatches({
+  candidates,
+  pools,
+  exam,
+  maxCandidates = DEFAULT_BATCH_CANDIDATES,
+}) {
   const groups = new Map();
   for (const task of candidates.tasks) {
-    const batchId = task.key.split("/").slice(0, 2).join("/");
-    if (!groups.has(batchId))
-      groups.set(batchId, {
+    const groupId = task.key.split("/").slice(0, 2).join("/");
+    if (!groups.has(groupId))
+      groups.set(groupId, {
         domain: task.domain,
         title: task.group,
         tasks: [],
       });
-    groups.get(batchId).tasks.push(task);
+    groups.get(groupId).tasks.push(task);
   }
-  return [...groups].map(([batchId, group]) => ({
-    schemaVersion: JUDGE_SCHEMA_VERSION,
-    kind: "judge",
-    batchId,
-    exam,
-    inputs: {
-      guideHash: candidates.inputs?.guideHash ?? null,
-      scopeFingerprint: candidates.inputs?.scopeFingerprint ?? null,
+  const candidateOf = (c) => ({
+    target: c.target,
+    title: c.title,
+    source: c.source,
+    ...(c.via ? { via: moduleCard(pools, c.via) } : {}),
+    ...(c.module ? { module: c.module } : {}),
+    ...(c.courses ? { courses: c.courses } : {}),
+    ...(c.unitSig ? { unitSig: c.unitSig } : {}),
+    coverage: c.coverage,
+    signals: {
+      ...(c.anchored !== undefined ? { anchored: c.anchored } : {}),
+      ...(c.foreignFamily ? { foreignFamily: true } : {}),
+      ...(c.siblingSection ? { siblingSection: true } : {}),
+      ...(c.viaGroup ? { viaGroup: true } : {}),
+      ...(c.relaxed ? { relaxed: true } : {}),
+      ...(c.recommendedBy
+        ? {
+            recommendedBy: c.recommendedBy.map(
+              (p) => moduleCard(pools, p).title,
+            ),
+          }
+        : {}),
     },
-    group: {
-      domain: group.domain,
-      title: group.title,
-      tasks: group.tasks.map((t) => t.text),
-    },
-    tasks: group.tasks.map((task) => ({
-      key: task.key,
-      text: task.text,
-      noP1: task.noP1,
-      anchor: (task.anchor?.modules ?? []).map((m) => m.title),
-      candidates: task.candidates.map((c) => ({
-        target: c.target,
-        title: c.title,
-        source: c.source,
-        ...(c.via ? { via: moduleCard(pools, c.via) } : {}),
-        ...(c.module ? { module: c.module } : {}),
-        ...(c.courses ? { courses: c.courses } : {}),
-        ...(c.unitSig ? { unitSig: c.unitSig } : {}),
-        coverage: c.coverage,
-        signals: {
-          ...(c.anchored !== undefined ? { anchored: c.anchored } : {}),
-          ...(c.foreignFamily ? { foreignFamily: true } : {}),
-          ...(c.siblingSection ? { siblingSection: true } : {}),
-          ...(c.viaGroup ? { viaGroup: true } : {}),
-          ...(c.relaxed ? { relaxed: true } : {}),
-          ...(c.recommendedBy
-            ? {
-                recommendedBy: c.recommendedBy.map(
-                  (p) => moduleCard(pools, p).title,
-                ),
-              }
-            : {}),
+    evidence: evidenceOf(c, pools),
+  });
+  const batches = [];
+  for (const [groupId, group] of groups) {
+    const parts = splitTasks(group.tasks, maxCandidates);
+    parts.forEach((part, n) =>
+      batches.push({
+        schemaVersion: JUDGE_SCHEMA_VERSION,
+        kind: "judge",
+        batchId: parts.length > 1 ? `${groupId}#${n + 1}` : groupId,
+        ...(parts.length > 1 ? { part: { n: n + 1, of: parts.length } } : {}),
+        exam,
+        inputs: {
+          guideHash: candidates.inputs?.guideHash ?? null,
+          scopeFingerprint: candidates.inputs?.scopeFingerprint ?? null,
         },
-        evidence: evidenceOf(c, pools),
-      })),
-    })),
-  }));
+        group: {
+          domain: group.domain,
+          title: group.title,
+          tasks: group.tasks.map((t) => t.text),
+        },
+        tasks: part.map(({ task, candidates: list }) => ({
+          key: task.key,
+          text: task.text,
+          noP1: task.noP1,
+          anchor: (task.anchor?.modules ?? []).map((m) => m.title),
+          candidates: list.map(candidateOf),
+        })),
+      }),
+    );
+  }
+  return batches;
+}
+
+/** The most candidates one judge session gets (about 40,000 tokens of prompt). */
+export const DEFAULT_BATCH_CANDIDATES = 150;
+
+/**
+ * Cut the tasks of a skill group into parts of at most `max` candidates, in task order and, within a task, in
+ * provenance order. A task with more candidates than a part holds is continued in the next part. Nothing is
+ * dropped: every candidate is in exactly one part. Returns [[{ task, candidates }]]; one part when the group fits.
+ */
+export function splitTasks(tasks, max) {
+  const total = tasks.reduce((n, t) => n + t.candidates.length, 0);
+  if (!Number.isFinite(max) || total <= max)
+    return [tasks.map((task) => ({ task, candidates: task.candidates }))];
+  const parts = [];
+  let current = [];
+  let room = max;
+  for (const task of tasks) {
+    let rest = task.candidates;
+    while (rest.length > 0) {
+      const take = rest.slice(0, room);
+      current.push({ task, candidates: take });
+      rest = rest.slice(take.length);
+      room -= take.length;
+      if (room === 0) {
+        parts.push(current);
+        current = [];
+        room = max;
+      }
+    }
+  }
+  if (current.length > 0) parts.push(current);
+  return parts;
 }
 
 /** A rough size of a prompt, to estimate the cost of a run before it is made. */
@@ -233,7 +280,8 @@ const flagLines = () =>
     .map(([key, meaning]) => `  - \`${key}\`: ${meaning}`)
     .join("\n");
 
-const fence = (json) => `\`\`\`json\n${JSON.stringify(json, null, 2)}\n\`\`\``;
+// compact on purpose: the indentation of a pretty-printed batch is about a third of its tokens
+const fence = (json) => `\`\`\`json\n${JSON.stringify(json)}\n\`\`\``;
 
 /** The rubric every judge gets, built from the constants of the course format so the two cannot drift. */
 export function rubricText() {
@@ -242,19 +290,20 @@ export function rubricText() {
 - \`core\`: the candidate covers the task **as the study guide words it**. Someone who studies it learns what the task asks for.
 - \`supporting\`: **not in the guide, but part of the job the task belongs to**: something a working professional doing this task meets, although the guide does not name it. It needs a \`relation\`:
 ${relationLines()}
-- \`reject\`: everything else. Above all, **out of scope**: a different job role, product area, licensing tier or specialty, however close the keywords look. Model case: for AZ-104's task "Manage external users", a page on onboarding external users with *entitlement management* (identity governance) is not an Azure administrator's job: reject it, with the reason. Also reject a page that only mentions the keywords, a generic overview that does not help with the task, a retired page, and anything you cannot place.
+- \`reject\`: everything else. Above all, **out of scope**: a different job role, product area, licensing tier or specialty, however close the keywords look. Model case: for AZ-104's task "Manage external users", a page on onboarding external users with *entitlement management* (identity governance) is not an Azure administrator's job: reject it, with the reason. Also reject a page that only mentions the keywords, a generic overview that does not help with the task, and a retired page. There is no limit to how many pages a task may have: if a page is relevant, it is a pick, however many others the task already has.
 
 Rules:
 
 1. Judge **every** candidate of **every** task, once. Do not skip one and do not add one.
-2. The guide's wording decides what is \`core\`. When a candidate covers the topic but not what the task asks for, it is \`supporting\` at best. When in doubt between two verdicts, take the lower one and say so in \`confidence\`.
-3. A pick (\`core\` or \`supporting\`) needs a \`quote\`: words copied **exactly** from one snippet of that candidate's \`evidence\` (two or more words, at most ${MAX_QUOTE_CHARS} characters, no paraphrase, no ellipsis). A script checks it, and an answer with a quote that is not in the evidence is sent back. A \`reject\` may carry a quote too.
-4. \`why\` is one plain sentence (at most ${MAX_WHY_CHARS} characters). For a \`supporting\` pick it says why a professional doing the task meets this; for a \`reject\` it says what puts it out of scope.
-5. \`flags\` lists what is wrong with the candidate even when you pick it (none is fine):
+2. The guide's wording decides what is \`core\`. When a candidate covers the topic but not what the task asks for, it is \`supporting\` at best.
+3. **When you are not sure, say so; never dismiss a page to be safe.** If you cannot decide between two verdicts, or cannot place the page, give the verdict you lean to and set \`confidence\` to \`low\` (do not lower the verdict, and do not reject what you cannot place). A pick or a reject with \`low\` confidence goes to the maintainer, who is the final judge of every page you are unsure about; a reject with \`high\` or \`medium\` confidence is final.
+4. A pick (\`core\` or \`supporting\`) needs a \`quote\`: words copied **exactly** from one snippet of that candidate's \`evidence\` (two or more words, at most ${MAX_QUOTE_CHARS} characters, no paraphrase, no ellipsis). A script checks it, and an answer with a quote that is not in the evidence is sent back. A \`reject\` may carry a quote too, and one with \`low\` confidence should: it shows the maintainer what you saw.
+5. \`why\` is one plain sentence (at most ${MAX_WHY_CHARS} characters). For a \`supporting\` pick it says why a professional doing the task meets this; for a \`reject\` it says what puts it out of scope, and with \`low\` confidence what you are unsure about.
+6. \`flags\` lists what is wrong with the candidate even when you pick it (none is fine):
 ${flagLines()}
-6. \`confidence\` is \`high\`, \`medium\` or \`low\`: how sure you are of the verdict. Say \`low\` rather than guess.
-7. The candidate's \`signals\` and \`coverage\` come from a word search; they are hints about where it came from, not evidence. \`source\` says which pool: P1 the exam's own course, P2 documentation its modules list, P3 another exam's course, P4 anything else.
-8. You may use what you know about the exam and the product, but do not invent: if the evidence does not show it, you cannot quote it.`;
+7. \`confidence\` is \`high\`, \`medium\` or \`low\`: how sure you are of the verdict. Say \`low\` whenever you would be guessing; a \`low\` is a question for the maintainer, not a failure.
+8. The candidate's \`signals\` and \`coverage\` come from a word search; they are hints about where it came from, not evidence. \`source\` says which pool: P1 the exam's own course, P2 documentation its modules list, P3 another exam's course, P4 anything else.
+9. You may use what you know about the exam and the product, but do not invent: if the evidence does not show it, you cannot quote it.`;
 }
 
 const verdictShape = `{
@@ -281,7 +330,11 @@ export function judgePrompt(batch) {
   return `# Judge the candidates of one skill group
 
 Exam: **${batch.exam.code}: ${batch.exam.name ?? ""}**
-Skill group: **${batch.group.domain} > ${batch.group.title}**
+Skill group: **${batch.group.domain} > ${batch.group.title}**${
+    batch.part
+      ? `\nThis is part ${batch.part.n} of ${batch.part.of} of the group: the other parts hold the other candidates of the same tasks. Judge only the candidates below.`
+      : ""
+  }
 
 You are judging which Microsoft Learn modules, units and documentation pages belong in a study course for this exam. Each task below comes from the exam's study guide; each candidate was found by a search and has not been looked at yet. Answer from the evidence shown.
 

@@ -228,6 +228,103 @@ test("a rejection by the judge is a rejection, remembered when it says the page 
   );
 });
 
+test("a reject the judge is not sure of is never final: it waits for the maintainer, with no class proposed", () => {
+  const unsure = gate({
+    judge: {
+      verdict: "reject",
+      why: "Mentions routes only in passing.",
+      confidence: "low",
+    },
+    flags: ["other-role"],
+  });
+  assert.equal(unsure.decision, "queue");
+  assert.equal(unsure.by, "maintainer");
+  assert.equal(unsure.class, undefined);
+  assert.match(
+    unsure.reasons[0],
+    /the judge rejected it but is not sure \(low confidence\): Mentions routes only in passing\./,
+  );
+  assert.equal(unsure.remember, undefined, "nothing is remembered yet");
+  // a reject the judge is sure of (or fairly sure of) is final
+  for (const confidence of ["high", "medium"])
+    assert.equal(
+      gate({ judge: { verdict: "reject", why: "x", confidence } }).decision,
+      "reject",
+      confidence,
+    );
+  // what the maintainer decided still comes first
+  const decided = gate(
+    { judge: { verdict: "reject", why: "x", confidence: "low" } },
+    {
+      decisions: withStore([
+        {
+          task: TASK.key,
+          target: "/azure/storage/blobs/x",
+          decision: "reject",
+          reason: "No.",
+          by: "maintainer",
+          at: "2026-10-16",
+        },
+      ]),
+    },
+  );
+  assert.equal(decided.decision, "reject");
+  assert.equal(decided.via, "remembered");
+});
+
+test("the queue shows an unsure reject as a question, and accepting one needs a class and the maintainer's own note", () => {
+  const judged = judgedFiles();
+  const item = judged[0].tasks[0].items[0];
+  item.judge = {
+    verdict: "reject",
+    why: "Looks like another role's page.",
+    confidence: "low",
+    flags: ["other-role"],
+  };
+  delete item.skeptic;
+  item.agreement = "unchallenged";
+  const gated = gateJudged(judged, { today: TODAY });
+  assert.equal(gated.stats.queuedJudgeRejects, 1);
+  assert.equal(
+    gated.stats.rejectedByJudge,
+    gated.items.filter((i) => i.gate.via === "judge").length,
+  );
+  const queue = buildQueue("NET-100", gated, { builtAt: TODAY });
+  const index = queue.items.findIndex(
+    (q) => q.target.path === item.target.path,
+  );
+  const q = queue.items[index];
+  assert.deepEqual(q.proposal, { verdict: "reject" });
+  assert.equal(q.judge.verdict, "reject");
+  const apply = (over) =>
+    applyAnswers(
+      emptyDecisions("NET-100"),
+      answer(structuredClone(queue), index, over),
+      { today: TODAY },
+    );
+  // accepting needs a class: there is none to take
+  const noClass = apply({ decision: "accept", note: "It is relevant." });
+  assert.match(
+    noClass.problems[0],
+    /class must be core or supporting \(the judge rejected this page/,
+  );
+  // ...and a note, which becomes the pick's reason
+  const noNote = apply({ decision: "accept", class: "core" });
+  assert.match(
+    noNote.problems[0],
+    /the judge rejected this page; say in note why you accept it/,
+  );
+  const ok = apply({
+    decision: "accept",
+    class: "core",
+    note: "It is relevant.",
+  });
+  assert.deepEqual(ok.problems, []);
+  assert.equal(ok.applied[0].reason, "It is relevant.");
+  // rejecting needs nothing more
+  assert.deepEqual(apply({ decision: "reject" }).problems, []);
+});
+
 test("the entitlement management card is caught: queued when the judge missed it, rejected and remembered when the judge saw it", () => {
   const card = {
     source: "P4",
