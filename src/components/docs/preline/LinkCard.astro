@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
 import { linkRel } from "../../../utils/link-rel";
 import { linkSourceIcon } from "../../../utils/link-source-icon";
+import resourceFavicons from "@data/resource-favicons.json";
 interface Props extends HTMLAttributes<"a"> {
   title: string;
   description?: string;
@@ -24,6 +25,15 @@ const isExternal =
   destination.origin !== site.origin;
 const resolvedTarget = target ?? (isExternal ? "_blank" : undefined);
 const resolvedRel = linkRel(resolvedTarget, rel);
+const isMicrosoftLearn =
+  destination.hostname === "learn.microsoft.com" ||
+  destination.hostname.endsWith(".learn.microsoft.com");
+const favicon =
+  isExternal && !isMicrosoftLearn
+    ? (resourceFavicons as Record<string, { path: string }>)[
+        destination.hostname
+      ]?.path
+    : undefined;
 ---
 
 <a
@@ -41,7 +51,19 @@ const resolvedRel = linkRel(resolvedTarget, rel);
       class="border-border bg-muted text-card-foreground grid size-9 shrink-0 place-items-center rounded-lg border"
       aria-hidden="true"
     >
-      <Icon name={linkSourceIcon(href)} class="size-4.5" />
+      {favicon ? (
+        <img
+          src={favicon}
+          alt=""
+          width="20"
+          height="20"
+          loading="lazy"
+          decoding="async"
+          class="size-5 shrink-0 object-contain grayscale opacity-80 dark:invert"
+        />
+      ) : (
+        <Icon name={linkSourceIcon(href)} class="size-4.5" />
+      )}
     </span>
     <span class="min-w-0">
       <span class="text-card-foreground group-hover:text-primary block text-base leading-snug font-semibold transition-colors">

@@ -374,6 +374,8 @@ Beta voucher format (the one layout of every beta voucher page; write it with `n
 Verify all voucher percentages, codes, limits, deadlines, exclusions, announcement links, and scheduling links from the official source. These facts are time-sensitive; do not record changing inventory totals in this file.
 
 ### Components
+- Microsoft Learn (`learn.microsoft.com` and its subdomains) deliberately keeps the monochrome `simple-icons:microsoft` Windows mark in LinkCard, even when a cached favicon exists. Other external hosts prefer their cached icons. The DClouds cache entry is a manually extracted Digital China mark from its official event banner, not a published favicon; preserve it if refresh cannot retrieve a replacement.
+- LinkCard uses local grayscale favicons from `src/data_files/resource-favicons.json` for known external hosts, falling back to the platform icon mapping. Internal links keep the book icon. Run `node scripts/resource-favicons-sync.mjs` to fetch missing icons, or add `--refresh` to refresh existing ones; `--list` previews discovered hosts and `--google-fallbacks` retries unavailable host favicons via Google's favicon cache. Commit the manifest and matching `public/resource-favicons/*.png` assets together. Downloads run separately from builds, use declared site icons with `/favicon.ico` fallback, and are normalized to 32px grayscale PNGs. Existing cached icons survive refresh failures; visitors never request a third-party favicon service.
 - Local components live in `src/components/*.astro`
 - MDX can import `.astro` components directly
 - Use the `@components/docs` barrel for docs components.
