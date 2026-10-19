@@ -11,7 +11,7 @@ const iconName = {
   "approve-check-circle": "ph:check-circle",
 }[icon ?? ""] ?? icon;
 ---
-<article class:list={["not-prose my-5 rounded-xl border border-border bg-card p-10 shadow-sm", className]} {...attrs}>
+<article class:list={["not-prose my-5 rounded-xl border border-border bg-card p-4 sm:p-6 lg:p-10 shadow-sm", className]} {...attrs}>
   <div class="flex items-center gap-3">
     {iconName && <span class="grid size-9 shrink-0 place-items-center rounded-lg border border-border bg-muted text-foreground"><Icon name={iconName} class="size-5" aria-hidden="true" /></span>}
     <h3 class="m-0 text-xl font-semibold leading-snug text-card-foreground">{title}</h3>

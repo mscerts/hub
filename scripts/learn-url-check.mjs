@@ -243,7 +243,7 @@ const USER_AGENT =
 const SCAN_ROOTS = ["src"];
 const SCAN_EXT = /\.(mdx?|astro|ts|tsx|js|mjs|json)$/;
 const SCAN_SKIP =
-  /(node_modules|[\\/]dist[\\/]|[\\/]\.astro[\\/]|[\\/]data_files[\\/](applied-skills-cache|measureup-products|missing-resources|voucher-challenges|beta-exams|retiring-exams|retirement-schedule|partner-designations|learn-exams|learn-content-watch|learn-url-check|source-watch|skills-hub-posts|lab-repos|link-failures|voucher-review)\.json)/;
+  /(node_modules|[\\/]dist[\\/]|[\\/]\.astro[\\/]|[\\/]data_files[\\/](applied-skills-cache|measureup-products|missing-resources|resource-favicons|voucher-challenges|beta-exams|retiring-exams|retirement-schedule|partner-designations|learn-exams|learn-content-watch|learn-url-check|source-watch|skills-hub-posts|lab-repos|link-failures|voucher-review)\.json)/;
 
 // ---------------------------------------------------------------------------
 // Pure helpers (exported for tests)
