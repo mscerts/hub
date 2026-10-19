@@ -56,10 +56,7 @@ interface Props {
         const raw =
           localStorage.getItem("hs_theme") ||
           localStorage.getItem("starlight-theme");
-        const theme =
-          raw === "light" || raw === "dark"
-            ? raw
-            : "dark";
+        const theme = raw === "light" || raw === "dark" ? raw : "dark";
         localStorage.setItem("hs_theme", theme);
         localStorage.removeItem("starlight-theme");
         document.documentElement.classList.toggle("dark", theme === "dark");
@@ -111,13 +108,13 @@ interface Props {
         : "bg-neutral-200 dark:bg-neutral-800",
     ]}
   >
-    <a class="skip-to-main" href="#main-content">Skip to main content</a>
-    {
-      /*
+    <a class="skip-to-main" href="#main-content">
+      Skip to main content
+    </a>
+    {/*
     Setting up the main structure of the page.
     The Navbar is placed at the top, with a slot for the main content and FooterSection at the bottom.
-    */
-    }
+    */}
     <div
       class:list={[
         "flex-grow",
@@ -179,8 +176,9 @@ interface Props {
 
         analyticsLoaded = true;
         analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
-        const gtag = (...args: unknown[]) =>
-          analyticsWindow.dataLayer?.push(args);
+        function gtag(..._args: unknown[]) {
+          analyticsWindow.dataLayer?.push(arguments);
+        }
         analyticsWindow.gtag = gtag;
         gtag("js", new Date());
         gtag("config", ANALYTICS.googleAnalytics);
@@ -211,7 +209,6 @@ interface Props {
 
       cookieConsentManager.subscribe(loadAnalytics);
     </script>
-
     <script>
       // https://preline.co
       import "preline";
@@ -224,7 +221,6 @@ interface Props {
         }
       };
       window.addEventListener("load", initPreline, { once: true });
-      document.addEventListener("astro:page-load", initPreline);
     </script>
     <style>
       .skip-to-main {

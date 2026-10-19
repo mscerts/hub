@@ -14,12 +14,10 @@ const searchId = "site-search-dialog";
   aria-controls={searchId}
 >
   <Icon name="ph:magnifying-glass" class="size-4 shrink-0" aria-hidden="true" />
-  <span class="hidden min-w-0 flex-1 text-left text-sm font-medium xl:block"
-    >Search</span
-  >
-  <kbd
-    class="hidden shrink-0 items-center gap-0.5 rounded border border-neutral-300 bg-white/60 px-1.5 py-0.5 text-[0.625rem] font-medium text-neutral-500 xl:inline-flex dark:border-neutral-600 dark:bg-[#2d2d2d] dark:text-neutral-400"
-  >
+  <span class="hidden min-w-0 flex-1 text-left text-sm font-medium xl:block">
+    Search
+  </span>
+  <kbd class="hidden shrink-0 items-center gap-0.5 rounded border border-neutral-300 bg-white/60 px-1.5 py-0.5 text-[0.625rem] font-medium text-neutral-500 xl:inline-flex dark:border-neutral-600 dark:bg-[#2d2d2d] dark:text-neutral-400">
     <span data-shortcut-key>Ctrl</span> K
   </kbd>
 </button>
@@ -35,15 +33,9 @@ const searchId = "site-search-dialog";
     data-search-overlay
     class="flex min-h-full items-start justify-center overflow-y-auto p-4 pt-[10vh] sm:p-6 sm:pt-[12vh]"
   >
-    <div
-      class="w-full max-w-xl overflow-hidden rounded-lg border border-neutral-700 bg-[#171717] text-neutral-100 shadow-2xl ring-1 shadow-black/50 ring-neutral-600/40"
-    >
-      <div
-        class="flex flex-col overflow-hidden rounded-t-lg border-b border-neutral-700 bg-neutral-900"
-      >
-        <div
-          class="flex items-center gap-3 border-b border-neutral-700 px-4 py-3"
-        >
+    <div class="w-full max-w-xl overflow-hidden rounded-lg border border-neutral-700 bg-[#171717] text-neutral-100 shadow-2xl ring-1 shadow-black/50 ring-neutral-600/40">
+      <div class="flex flex-col overflow-hidden rounded-t-lg border-b border-neutral-700 bg-neutral-900">
+        <div class="flex items-center gap-3 border-b border-neutral-700 px-4 py-3">
           <Icon
             name="ph:magnifying-glass"
             class="size-4 shrink-0 text-neutral-400"
@@ -86,6 +78,24 @@ const searchId = "site-search-dialog";
           >
             Type to search...
           </p>
+        </div>
+        <div
+          data-search-pagination
+          hidden
+          class="border-t border-neutral-700 px-4 py-3"
+        >
+          <p
+            data-search-count
+            role="status"
+            class="mb-2 text-xs text-neutral-400"
+          ></p>
+          <button
+            data-search-more
+            type="button"
+            class="w-full rounded-lg border border-neutral-600 px-3 py-2 text-sm font-medium text-neutral-200 transition hover:bg-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 disabled:cursor-wait disabled:opacity-50"
+          >
+            Show more results
+          </button>
         </div>
       </div>
 
@@ -253,6 +263,11 @@ const searchId = "site-search-dialog";
     document.body.append(dialog);
     dialog.dataset.ready = "true";
     const closeButtonElement = closeButton;
+    const pagination = dialog.querySelector<HTMLElement>(
+      "[data-search-pagination]",
+    )!;
+    const count = dialog.querySelector<HTMLElement>("[data-search-count]")!;
+    const more = dialog.querySelector<HTMLButtonElement>("[data-search-more]")!;
 
     const nav = navigator as Navigator & {
       userAgentData?: { platform?: string };
@@ -270,6 +285,81 @@ const searchId = "site-search-dialog";
     let activeIndex = -1;
     let searchTimer: ReturnType<typeof setTimeout> | undefined;
     let activeController: AbortController | undefined;
+    let matches: PagefindSearchResponse["results"] = [];
+    let shown = 0;
+    let loading = false;
+
+    const resetPagination = () => {
+      matches = [];
+      shown = 0;
+      loading = false;
+      pagination.hidden = true;
+      count.textContent = "";
+      more.hidden = false;
+      more.disabled = false;
+      more.textContent = "Show more results";
+    };
+
+    const appendBatch = async (signal: AbortSignal) => {
+      if (loading || signal.aborted) return;
+      const moreWasFocused = document.activeElement === more;
+      loading = true;
+      more.disabled = true;
+      more.textContent = "Loading...";
+      try {
+        const data = await Promise.all(
+          matches.slice(shown, shown + 10).map((result) => result.data()),
+        );
+        if (signal.aborted) return;
+        data.forEach((result, index) =>
+          results.appendChild(
+            buildResult(
+              {
+                title: result.meta?.title ?? "Untitled",
+                url: result.url,
+                snippet: result.excerpt,
+                subResults: (result.sub_results ?? []).filter(
+                  (subResult): subResult is Required<PagefindSubResult> =>
+                    Boolean(subResult.title && subResult.url),
+                ),
+              },
+              shown + index,
+            ),
+          ),
+        );
+        shown += data.length;
+        empty.hidden = true;
+        input.setAttribute("aria-expanded", "true");
+        pagination.hidden = false;
+        count.textContent = `Showing ${shown} of ${matches.length} results`;
+        more.hidden = shown >= matches.length;
+      } catch {
+        if (signal.aborted) return;
+        if (shown === 0) {
+          empty.hidden = false;
+          empty.textContent = "Search is temporarily unavailable.";
+        } else {
+          count.textContent = `Showing ${shown} of ${matches.length} results. Could not load more; try again.`;
+        }
+      } finally {
+        if (!signal.aborted) {
+          loading = false;
+          more.disabled = false;
+          more.textContent = "Show more results";
+          if (
+            moreWasFocused &&
+            (document.activeElement === more ||
+              document.activeElement === document.body)
+          ) {
+            (more.hidden ? input : more).focus({ preventScroll: true });
+          }
+        }
+      }
+    };
+
+    more.addEventListener("click", () => {
+      if (activeController) void appendBatch(activeController.signal);
+    });
 
     const options = () =>
       Array.from(results.querySelectorAll<HTMLElement>("[role='option']"));
@@ -297,6 +387,7 @@ const searchId = "site-search-dialog";
       if (searchTimer) clearTimeout(searchTimer);
       input.value = "";
       clearResults(input, results);
+      resetPagination();
       empty.hidden = false;
       empty.textContent = "Type to search...";
       activeIndex = -1;
@@ -309,36 +400,22 @@ const searchId = "site-search-dialog";
       empty.hidden = false;
       empty.textContent = "Searching...";
       clearResults(input, results);
+      resetPagination();
+      activeIndex = -1;
 
       try {
         const api = await loadPagefind();
         if (signal.aborted) return;
         const response = await api.search(query);
         if (signal.aborted) return;
-        const data = await Promise.all(
-          response.results.slice(0, 10).map((result) => result.data()),
-        );
-        const mapped: SearchResult[] = data.map((result) => ({
-          title: result.meta?.title ?? "Untitled",
-          url: result.url,
-          snippet: result.excerpt,
-          subResults: (result.sub_results ?? []).filter(
-            (subResult): subResult is Required<PagefindSubResult> =>
-              Boolean(subResult.title && subResult.url),
-          ),
-        }));
-
-        if (mapped.length === 0) {
+        matches = response.results;
+        if (matches.length === 0) {
           empty.hidden = false;
           empty.textContent = "No results found.";
           return;
         }
 
-        empty.hidden = true;
-        input.setAttribute("aria-expanded", "true");
-        mapped.forEach((result, index) =>
-          results.appendChild(buildResult(result, index)),
-        );
+        await appendBatch(signal);
       } catch {
         if (signal.aborted) return;
         empty.hidden = false;
@@ -353,8 +430,14 @@ const searchId = "site-search-dialog";
     };
 
     const close = () => {
+      activeController?.abort();
+      if (searchTimer) clearTimeout(searchTimer);
       if (dialog.open) dialog.close();
     };
+    dialog.addEventListener("close", () => {
+      activeController?.abort();
+      if (searchTimer) clearTimeout(searchTimer);
+    });
 
     triggers.forEach((trigger) => trigger.addEventListener("click", open));
     closeButtonElement.addEventListener("click", close);
@@ -362,6 +445,8 @@ const searchId = "site-search-dialog";
       if (event.target === overlay) close();
     });
     input.addEventListener("input", () => {
+      activeController?.abort();
+      resetPagination();
       if (searchTimer) clearTimeout(searchTimer);
       searchTimer = setTimeout(() => {
         const query = input.value.trim();
@@ -373,6 +458,7 @@ const searchId = "site-search-dialog";
       }, 150);
     });
     dialog.addEventListener("keydown", (event) => {
+      if (event.target !== input) return;
       const items = options();
       if (event.key === "ArrowDown") {
         event.preventDefault();
@@ -412,7 +498,6 @@ const searchId = "site-search-dialog";
     });
   };
 
-  document.addEventListener("astro:page-load", initializeSearch);
   initializeSearch();
   bindGlobals();
 </script>

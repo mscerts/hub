@@ -7,6 +7,7 @@ import astroIcon from "astro-icon";
 import remarkDirective from "remark-directive";
 import remarkCallouts from "./src/utils/markdown/remark-callouts.mjs";
 import rehypeWrapTables from "./src/utils/markdown/rehype-wrap-tables.mjs";
+import deploymentRedirects from "./src/utils/deployment-redirects.mjs";
 
 const legacyDocsPrefixes = [
   "aibusiness",
@@ -31,6 +32,7 @@ export default defineConfig({
   site: "https://msfthub.com",
   redirects: {
     "/guide": "/certs/guide/introduction/",
+    "/vouchers/ab650beta/": "/certs/vouchers/betaexams/",
     "/microsoft365": "/certs/",
     "/azure": "/certs/",
     "/powerplatform": "/certs/",
@@ -84,6 +86,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     astroIcon(),
+    deploymentRedirects(),
     sitemap({
       i18n: {
         defaultLocale: "en",
@@ -99,6 +102,10 @@ export default defineConfig({
         return (
           !pathname.startsWith("/wiki/") &&
           !pathname.startsWith("/wiki-next/") &&
+          !(
+            pathname.startsWith("/certs/archive/") &&
+            pathname !== "/certs/archive/"
+          ) &&
           !pathname.endsWith(".md") &&
           !isLegacyDoc
         );

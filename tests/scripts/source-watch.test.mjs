@@ -2035,7 +2035,7 @@ test("every Titan journey the partner guide quotes is watched, by its own entry 
   const quoted = new Set(
     [
       ...guide.matchAll(
-        /skillupwithlevelup\.com\/journeys\/(\d+)\)[^\n]*?\d+ tasks?, ~\d+ hours?/g,
+        /skillupwithlevelup\.com\/journeys\/(\d+)\)[^\n]*?(?:\d+ tasks?, ~\d+ hours?|\|\s*\d+\s*\|\s*~\d+\s*\|)/g,
       ),
     ].map((match) => match[1]),
   );

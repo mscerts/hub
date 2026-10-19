@@ -1,6 +1,7 @@
 ---
 import DocsShell from "../DocsShell.astro";
 import { docsSidebar } from "@data/docs-sidebar";
+import { editPageUrl } from "@utils/edit-page.mjs";
 
 interface Heading {
   depth: number;
@@ -13,9 +14,10 @@ interface Props {
   description: string;
   headings: Heading[];
   sectionLabel: string;
+  sourcePath?: string;
 }
 
-const { title, description, headings, sectionLabel } = Astro.props;
+const { title, description, headings, sectionLabel, sourcePath } = Astro.props;
 ---
 
 <DocsShell
@@ -24,6 +26,7 @@ const { title, description, headings, sectionLabel } = Astro.props;
   {title}
   {description}
   {headings}
+  editUrl={editPageUrl(sourcePath)}
 >
   <slot />
 </DocsShell>

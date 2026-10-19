@@ -62,5 +62,4 @@ function applyHeadingAnchors() {
 
 export function headingAnchors(): void {
   applyHeadingAnchors();
-  document.addEventListener("astro:page-load", applyHeadingAnchors);
 }

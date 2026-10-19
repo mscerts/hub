@@ -376,6 +376,8 @@ Beta voucher format (the one layout of every beta voucher page; write it with `n
 Verify all voucher percentages, codes, limits, deadlines, exclusions, announcement links, and scheduling links from the official source. These facts are time-sensitive; do not record changing inventory totals in this file.
 
 ### Components
+- Microsoft Learn (`learn.microsoft.com` and its subdomains) deliberately keeps the monochrome `simple-icons:microsoft` Windows mark in LinkCard, even when a cached favicon exists. Other external hosts prefer their cached icons. The DClouds cache entry is a manually extracted Digital China mark from its official event banner, not a published favicon; preserve it if refresh cannot retrieve a replacement.
+- LinkCard uses local grayscale favicons from `src/data_files/resource-favicons.json` for known external hosts, falling back to the platform icon mapping. Internal links keep the book icon. Run `node scripts/resource-favicons-sync.mjs` to fetch missing icons, or add `--refresh` to refresh existing ones; `--list` previews discovered hosts and `--google-fallbacks` retries unavailable host favicons via Google's favicon cache. Commit the manifest and matching `public/resource-favicons/*.png` assets together. Downloads run separately from builds, use declared site icons with `/favicon.ico` fallback, and are normalized to 32px grayscale PNGs. Existing cached icons survive refresh failures; visitors never request a third-party favicon service.
 - Local components live in `src/components/*.astro`
 - MDX can import `.astro` components directly
 - Use the `@components/docs` barrel for docs components.
@@ -387,7 +389,10 @@ Verify all voucher percentages, codes, limits, deadlines, exclusions, announceme
 - For new exam tab blocks, prefer two-space increments (`TabItem` 2, `CardGrid` 4, `LinkCard` 6) without reformatting unrelated legacy content.
 
 ### Docs Rendering
-- `/certs/` is owned by `src/pages/certs/index.astro`.
+- `Tabs.astro` renders its slot once and prepares direct child panels with `src/utils/render-tabs.mjs` (parse5). Tab buttons, unique IDs, ARIA relationships, and the first-panel state are server-rendered; client code handles switching, keyboard navigation, and saved/hash selection. Do not let Preline initialize these tablists. Without JavaScript, scoped noscript styles reveal all panels with their labels; the styles use the base cascade layer to override Tailwind's important hidden rule.
+- Navigation uses full document loads, not Astro ClientRouter. Initialize page components on script execution; do not register unused `astro:page-load`/swap hooks. Keep ordinary browser events such as `pagehide` (sidebar persistence), `hashchange` (tab links), and `resize`. Do not tear down listeners on `pagehide`, because back/forward cache restores the same document.
+- Archived MDX pages live in `src/content/archive/` and render at `/certs/archive/<content-id>/`, with a matching Markdown endpoint. `/certs/archive/` automatically lists published entries. Archived pages display a historical-content notice and are excluded from the sitemap and search-engine indexing. When moving a page, preserve its content, update active listings/internal links, and add a redirect from its former URL in `astro.config.mjs`. Do not move pages without an explicit request.
+- `/certs/` is the all-exams index, owned by `src/pages/certs/index.astro`. It uses WikiList for all seven exam areas, excludes drafts, and retains published retired exams for reference. `/wiki/` redirects to it.
 - `/certs/<content-id>/` is rendered by `src/pages/certs/[...slug].astro` through `DocsPage.astro` and `DocsShell.astro`.
 - Legacy content paths and `/wiki-next/*` redirect permanently to `/certs/*`.
 - `remark-callouts.mjs` converts `:::note`, `:::tip`, `:::caution`, and `:::danger` directives to the local `Aside` component.
@@ -422,8 +427,9 @@ Global styles are in `src/assets/styles/global.css`; docs-specific styles are sc
 
 ### Redirects
 - Defined in `astro.config.mjs` under `redirects: { ... }`
+- `src/utils/deployment-redirects.mjs` generates `dist/_redirects` from those definitions and built docs routes, including legacy HTML and Markdown addresses. Do not maintain a second `public/_redirects` file. Exact rename rules override generated aliases; static HTML redirect stubs remain a fallback. Cloudflare HTTP status behavior must be verified after deployment, not with plain Astro preview.
 - Add redirects when exams are renamed/moved or certification structures change; retain legacy routes to avoid broken inbound links.
-- When Microsoft renames an exam in place (PL-400 became AB-400 on 2026-10-16, same certification, an updated exam), move the exam page and its lab page to the new code and area (`git mv`, so the history follows), redirect the canonical and the legacy address of both (`/certs/power/pl-400`, `/power/pl-400`, `/certs/labs/power/pl-400`, `/labs/power/pl-400`) in `astro.config.mjs` and, for a real 301, `public/_redirects`, update the internal links, put a note at the top of the page saying what happened, mark the new exam NEW, and keep the resources made for the old exam with its code in their titles (like `AZ-500: Pluralsight Course` on SC-500) until equivalents for the new one exist. An exam that is only retired, with a replacement page of its own, keeps its page and gets the retirement treatment instead.
+- When Microsoft renames an exam in place (PL-400 became AB-400 on 2026-10-16, same certification, an updated exam), move the exam page and its lab page to the new code and area (`git mv`, so the history follows), redirect the canonical and legacy addresses of both in `astro.config.mjs` (the build generates Cloudflare 301 rules), update internal links, put a note at the top saying what happened, mark the new exam NEW, and keep resources made for the old exam with its code in their titles until equivalents exist. An exam that is only retired, with a replacement page of its own, keeps its page and gets the retirement treatment instead.
 
 ---
 
@@ -449,7 +455,7 @@ pnpm dev                        # Local preview
 ```
 
 - Build must pass with 0 errors before committing.
-- `pnpm build` generates and verifies `dist/pagefind/pagefind.js`; use `pnpm preview` to test site search locally.
+- `pnpm build` runs `scripts/verify-public-routes.mjs` to guard the exam index, sitemap exclusions, critical legacy routes, and Cloudflare redirect count. It also generates and verifies `dist/pagefind/pagefind.js`; use `pnpm preview` to test site search locally.
 - Plain `pnpm dev` does not generate a Pagefind index, so search requires a completed production build.
 - `astro build --force` clears the content-layer data store (`node_modules/.astro/data-store.json`) on every build. Cloudflare Pages restores that directory from its build cache, and the incremental loader keys entries on ID + content digest, so a file whose path changed but whose content did not (e.g. a case-only rename) would otherwise keep a stale `filePath` and fail with `Rolldown failed to resolve import "astro:content-layer-deferred-module?...fileName=<old path>"`. The full resync costs about one second on this site; do not remove the flag.
 - `astro check` currently prints a few hints and no errors or warnings (mostly unused declarations, plus one deprecated `document.execCommand`). Do not introduce new unused-declaration hints.

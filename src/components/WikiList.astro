@@ -3,7 +3,14 @@ import { getCollection } from "astro:content";
 import { LinkCard, CardGrid } from "@components/docs";
 
 interface Props {
-  category: "azure" | "github" | "aibusiness" | "dynamics" | "microsoft365" | "power" | "security";
+  category:
+    | "azure"
+    | "github"
+    | "aibusiness"
+    | "dynamics"
+    | "microsoft365"
+    | "power"
+    | "security";
 }
 
 const { category } = Astro.props;
@@ -11,39 +18,32 @@ const { category } = Astro.props;
 const docs = await getCollection("docs");
 
 const exams = docs.filter(
-  (doc) => doc.id.startsWith(`${category}/`)
+  (doc) => doc.id.startsWith(`${category}/`) && !doc.data.draft,
 );
 
 exams.sort((a, b) => a.id.localeCompare(b.id));
 ---
 
-{
-  exams.length > 0 ? (
-    <CardGrid>
-      {exams.map((exam) => {
-        const examCode = exam.id.split('/').pop()?.toUpperCase() ?? "";
-        const href = `/certs/${exam.id}/`;
-        const desc = exam.data.description ?? "";
-        // Try primary pattern: "exam CODE: Name. Contains..."
-        let shortDesc = desc.match(/exam [A-Z]+-\d+:\s*(.+?)\.\s*Contains/)?.[1] ?? "";
-        // Fallback: text after "exam CODE:" up to first period
-        if (!shortDesc) {
-          shortDesc = desc.match(/exam [A-Z]+-\d+:\s*(.+?)\./)?.[1] ?? "";
-        }
-        // Fallback: first 80 chars
-        if (!shortDesc) {
-          shortDesc = desc.slice(0, 80).trim();
-        }
-        return (
-          <LinkCard
-            title={examCode}
-            description={shortDesc}
-            href={href}
-          />
-        );
-      })}
-    </CardGrid>
-  ) : (
-    <p>No study materials available in this category.</p>
-  )
-}
+{exams.length > 0 ? (
+  <CardGrid>
+    {exams.map((exam) => {
+      const examCode = exam.id.split("/").pop()?.toUpperCase() ?? "";
+      const href = `/certs/${exam.id}/`;
+      const desc = exam.data.description ?? "";
+      // Try primary pattern: "exam CODE: Name. Contains..."
+      let shortDesc =
+        desc.match(/exam [A-Z]+-\d+:\s*(.+?)\.\s*Contains/)?.[1] ?? "";
+      // Fallback: text after "exam CODE:" up to first period
+      if (!shortDesc) {
+        shortDesc = desc.match(/exam [A-Z]+-\d+:\s*(.+?)\./)?.[1] ?? "";
+      }
+      // Fallback: first 80 chars
+      if (!shortDesc) {
+        shortDesc = desc.slice(0, 80).trim();
+      }
+      return <LinkCard title={examCode} description={shortDesc} href={href} />;
+    })}
+  </CardGrid>
+) : (
+  <p>No study materials available in this category.</p>
+)}

@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
 import { linkRel } from "../../../utils/link-rel";
+import { linkSourceIcon } from "../../../utils/link-source-icon";
+import resourceFavicons from "@data/resource-favicons.json";
 interface Props extends HTMLAttributes<"a"> {
   title: string;
   description?: string;
@@ -16,29 +18,63 @@ const {
   class: className,
   ...attrs
 } = Astro.props;
-const isExternal = /^(?:https?:)?\/\//i.test(href);
-const resolvedRel = linkRel(target, rel);
+const site = Astro.site ?? Astro.url;
+const destination = new URL(href, site);
+const isExternal =
+  ["http:", "https:"].includes(destination.protocol) &&
+  destination.origin !== site.origin;
+const resolvedTarget = target ?? (isExternal ? "_blank" : undefined);
+const resolvedRel = linkRel(resolvedTarget, rel);
+const isMicrosoftLearn =
+  destination.hostname === "learn.microsoft.com" ||
+  destination.hostname.endsWith(".learn.microsoft.com");
+const favicon =
+  isExternal && !isMicrosoftLearn
+    ? (resourceFavicons as Record<string, { path: string }>)[
+        destination.hostname
+      ]?.path
+    : undefined;
 ---
 
 <a
   href={href}
-  target={target}
+  target={resolvedTarget}
   rel={resolvedRel}
   class:list={[
-    "docs-link-card group not-prose border-border bg-card hover:border-border-strong hover:shadow-default flex items-center justify-between gap-4 rounded-xl border p-5 text-inherit no-underline shadow-sm transition hover:-translate-y-0.5",
+    "docs-link-card group not-prose border-border bg-card hover:border-border-strong hover:shadow-default flex items-center justify-between gap-3 sm:gap-4 rounded-xl border p-4 sm:p-5 text-inherit no-underline shadow-sm transition hover:-translate-y-0.5",
     className,
   ]}
   {...attrs}
 >
-  <span class="min-w-0">
-    <span class="text-card-foreground group-hover:text-primary block text-base leading-snug font-semibold transition-colors">
-      {title}
+  <span class="flex min-w-0 flex-1 items-start gap-2 sm:gap-3">
+    <span
+      class="border-border bg-muted text-card-foreground grid size-9 shrink-0 place-items-center rounded-lg border"
+      aria-hidden="true"
+    >
+      {favicon ? (
+        <img
+          src={favicon}
+          alt=""
+          width="20"
+          height="20"
+          loading="lazy"
+          decoding="async"
+          class="size-5 shrink-0 object-contain grayscale opacity-80 dark:invert"
+        />
+      ) : (
+        <Icon name={linkSourceIcon(href)} class="size-4.5" />
+      )}
     </span>
-    {description && (
-      <span class="text-muted-foreground mt-1 block text-sm leading-normal">
-        {description}
+    <span class="min-w-0">
+      <span class="text-card-foreground group-hover:text-primary block text-base leading-snug font-semibold transition-colors">
+        {title}
       </span>
-    )}
+      {description && (
+        <span class="text-muted-foreground mt-1 block text-sm leading-normal">
+          {description}
+        </span>
+      )}
+    </span>
   </span>
   <Icon
     name={isExternal ? "ph:arrow-up-right" : "ph:caret-right"}
@@ -48,6 +84,10 @@ const resolvedRel = linkRel(target, rel);
 </a>
 
 <style>
+  :global(:not(.grid)) > .docs-link-card + .docs-link-card {
+    margin-block-start: 1rem;
+  }
+
   .docs-link-card,
   .docs-link-card :global(*) {
     text-decoration: none !important;

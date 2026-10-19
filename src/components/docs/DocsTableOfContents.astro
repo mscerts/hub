@@ -13,45 +13,43 @@ interface Props {
 const { headings, variant = "desktop" } = Astro.props;
 ---
 
-{
-  headings.length > 0 && (
-    <div data-docs-toc data-docs-toc-variant={variant} class="docs-toc">
-      {variant === "desktop" && (
-        <h2 class="text-[0.68rem] font-bold tracking-[0.18em] text-neutral-500 uppercase dark:text-neutral-300">
-          On this page
-        </h2>
-      )}
-      <nav
-        class:list={["docs-toc-nav", variant === "desktop" && "mt-4"]}
-        aria-label="Table of contents"
-      >
-        <span class="docs-toc-rail" aria-hidden="true" />
-        <span
-          class="docs-toc-rail-active"
-          data-docs-toc-active
-          aria-hidden="true"
-        />
-        <ul class="m-0 list-none p-0">
-          {headings.map((heading) => (
-            <li>
-              <a
-                href={`#${heading.slug}`}
-                data-docs-toc-link
-                data-docs-toc-slug={heading.slug}
-                data-docs-toc-depth={heading.depth}
-                class:list={[
-                  "docs-toc-link text-foreground hover:text-foreground block py-1.5 text-sm leading-snug no-underline transition-colors duration-150",
-                ]}
-              >
-                {heading.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
-  )
-}
+{headings.length > 0 && (
+  <div data-docs-toc data-docs-toc-variant={variant} class="docs-toc">
+    {variant === "desktop" && (
+      <h2 class="text-[0.68rem] font-bold tracking-[0.18em] text-neutral-500 uppercase dark:text-neutral-300">
+        On this page
+      </h2>
+    )}
+    <nav
+      class:list={["docs-toc-nav", variant === "desktop" && "mt-4"]}
+      aria-label="Table of contents"
+    >
+      <span class="docs-toc-rail" aria-hidden="true" />
+      <span
+        class="docs-toc-rail-active"
+        data-docs-toc-active
+        aria-hidden="true"
+      />
+      <ul class="m-0 list-none p-0">
+        {headings.map((heading) => (
+          <li>
+            <a
+              href={`#${heading.slug}`}
+              data-docs-toc-link
+              data-docs-toc-slug={heading.slug}
+              data-docs-toc-depth={heading.depth}
+              class:list={[
+                "docs-toc-link text-foreground hover:text-foreground block py-1.5 text-sm leading-snug no-underline transition-colors duration-150",
+              ]}
+            >
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+)}
 
 <style>
   .docs-toc-nav {
@@ -148,17 +146,10 @@ const { headings, variant = "desktop" } = Astro.props;
 </style>
 
 <script>
-  type TocInstance = {
-    destroy: () => void;
-  };
-
-  const instances: TocInstance[] = [];
-  let globalsBound = false;
-
   const prefersReducedMotion = () =>
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const initToc = (root: HTMLElement): TocInstance => {
+  const initToc = (root: HTMLElement) => {
     const nav = root.querySelector<HTMLElement>(".docs-toc-nav");
     const activeRail = root.querySelector<HTMLElement>(
       "[data-docs-toc-active]",
@@ -167,7 +158,7 @@ const { headings, variant = "desktop" } = Astro.props;
       root.querySelectorAll<HTMLElement>("[data-docs-toc-link]"),
     );
 
-    if (!nav || !activeRail || links.length === 0) return { destroy: () => {} };
+    if (!nav || !activeRail || links.length === 0) return;
 
     const headings = links
       .map((link, index) => ({
@@ -179,9 +170,31 @@ const { headings, variant = "desktop" } = Astro.props;
         Boolean(heading.element),
       );
 
-    if (headings.length === 0) return { destroy: () => {} };
+    if (headings.length === 0) return;
 
-    const controller = new AbortController();
+    const mobileDetails = root.closest<HTMLDetailsElement>(".docs-mobile-toc");
+    const summary = mobileDetails?.querySelector<HTMLElement>("summary");
+    const currentLabel = mobileDetails?.querySelector<HTMLElement>(
+      "[data-docs-toc-current]",
+    );
+    const closeMobile = () => {
+      if (mobileDetails) mobileDetails.open = false;
+    };
+    if (mobileDetails) {
+      document.addEventListener("pointerdown", (event) => {
+        if (
+          event.target instanceof Node &&
+          !mobileDetails.contains(event.target)
+        )
+          closeMobile();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape" || !mobileDetails.open) return;
+        closeMobile();
+        event.preventDefault();
+        summary?.focus({ preventScroll: true });
+      });
+    }
     const inBand = new Set<number>();
     let activeIndex = -1;
     let pinnedIndex: number | null = null;
@@ -202,6 +215,9 @@ const { headings, variant = "desktop" } = Astro.props;
 
       const activeLink = links[index];
       if (activeLink) {
+        if (currentLabel)
+          currentLabel.textContent =
+            activeLink.textContent?.trim() ?? "Table of contents";
         const y = activeLink.offsetTop + activeLink.offsetHeight / 2;
         root.style.setProperty("--toc-active-y", `${y}px`);
       }
@@ -213,12 +229,20 @@ const { headings, variant = "desktop" } = Astro.props;
         return;
       }
 
-      if (inBand.size > 0) {
+      if (!mobileDetails && inBand.size > 0) {
         setActive(Math.max(...inBand));
         return;
       }
 
-      const bandTop = window.innerHeight * 0.22;
+      const headingOffset = mobileDetails
+        ? (parseFloat(
+            getComputedStyle(document.documentElement).scrollPaddingTop,
+          ) || 0) +
+          (parseFloat(getComputedStyle(headings[0].element).scrollMarginTop) ||
+            0) +
+          2
+        : 0;
+      const bandTop = Math.max(window.innerHeight * 0.22, headingOffset);
       let nextIndex = 0;
       headings.forEach((heading) => {
         if (heading.element.getBoundingClientRect().top <= bandTop)
@@ -273,6 +297,14 @@ const { headings, variant = "desktop" } = Astro.props;
         "[data-docs-toc-link]",
       );
       if (!link) return;
+      if (
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        event.button !== 0
+      )
+        return;
       const index = links.indexOf(link);
       if (index < 0) return;
       pinnedIndex = index;
@@ -286,6 +318,9 @@ const { headings, variant = "desktop" } = Astro.props;
       const target = document.getElementById(link.dataset.docsTocSlug ?? "");
       if (target) {
         event.preventDefault();
+        const focusWasInside = mobileDetails?.contains(document.activeElement);
+        closeMobile();
+        if (focusWasInside) summary?.focus({ preventScroll: true });
         target.scrollIntoView({
           behavior: prefersReducedMotion() ? "auto" : "smooth",
         });
@@ -295,40 +330,11 @@ const { headings, variant = "desktop" } = Astro.props;
 
     window.addEventListener("scroll", onScroll, {
       passive: true,
-      signal: controller.signal,
     });
-    window.addEventListener("resize", updateLayout, {
-      signal: controller.signal,
-    });
-    nav.addEventListener("click", onClick, { signal: controller.signal });
+    window.addEventListener("resize", updateLayout);
+    nav.addEventListener("click", onClick);
     updateLayout();
-
-    return {
-      destroy: () => {
-        controller.abort();
-        observer.disconnect();
-        if (releaseTimer) clearTimeout(releaseTimer);
-        if (frame) cancelAnimationFrame(frame);
-      },
-    };
   };
 
-  const initialize = () => {
-    instances.splice(0).forEach((instance) => instance.destroy());
-    document
-      .querySelectorAll<HTMLElement>("[data-docs-toc]")
-      .forEach((root) => {
-        instances.push(initToc(root));
-      });
-  };
-
-  if (!globalsBound) {
-    globalsBound = true;
-    document.addEventListener("astro:page-load", initialize);
-    document.addEventListener("astro:before-swap", () => {
-      instances.splice(0).forEach((instance) => instance.destroy());
-    });
-  }
-
-  initialize();
+  document.querySelectorAll<HTMLElement>("[data-docs-toc]").forEach(initToc);
 </script>

@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build --force && pnpm search:index && pnpm search:verify",
+    "build": "astro check && astro build --force && node scripts/verify-public-routes.mjs && pnpm search:index && pnpm search:verify",
     "preview": "astro preview",
     "search:index": "pagefind --site dist",
     "search:verify": "node scripts/verify-pagefind.mjs",
@@ -33,6 +33,7 @@
     "astro-icon": "^1.1.5",
     "clipboard": "^2.0.11",
     "clsx": "^2.1.1",
+    "parse5": "7.3.0",
     "preline": "5.0.0",
     "remark-directive": "^4.0.0",
     "remark-mdx": "^3.1.1",

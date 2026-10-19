@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "@/layouts/MainLayout.astro";
+import DocsPage from "@components/docs/templates/DocsPage.astro";
+import { CardGrid, LinkCard } from "@components/docs";
+import { Icon } from "astro-icon/components";
+
+const entries = (
+  await getCollection("archive", ({ data }) => !data.draft)
+).sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+<MainLayout
+  title="Archive | Microsoft Certification Hub"
+  customDescription="Previously published certification guides and resources retained for historical reference."
+  wide
+>
+  <DocsPage
+    title="Archive"
+    description="Previously published guides and resources, retained for historical reference."
+    headings={[]}
+    sectionLabel="Archive"
+    sourcePath="src/pages/certs/archive/index.astro"
+  >
+    {entries.length ? (
+      <CardGrid>
+        {entries.map((entry) => (
+          <LinkCard
+            title={entry.data.title}
+            description={entry.data.description}
+            href={`/certs/archive/${entry.id.toLowerCase()}/`}
+          />
+        ))}
+      </CardGrid>
+    ) : (
+      <div class="border-border bg-card flex flex-col items-center gap-3 rounded-xl border px-6 py-10 text-center">
+        <Icon
+          name="ph:archive"
+          class="text-muted-foreground size-8"
+          aria-hidden="true"
+        />
+        <p class="text-foreground font-semibold">No archived pages yet.</p>
+        <p class="text-muted-foreground max-w-md text-sm">
+          Pages moved out of the active guides will appear here for historical
+          reference.
+        </p>
+        <a href="/certs/">Browse current certification resources</a>
+      </div>
+    )}
+  </DocsPage>
+</MainLayout>
