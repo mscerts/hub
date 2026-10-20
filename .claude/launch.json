@@ -6,6 +6,12 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["dev"],
       "port": 4321
+    },
+    {
+      "name": "hub-preview",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["exec", "astro", "preview", "--port", "4323"],
+      "port": 4323
     }
   ]
 }
