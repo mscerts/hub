@@ -87,6 +87,8 @@ The skeptic gets the **picks only** (not the rejections), each with the judge's 
 
 with a one-sentence `reason`, optional extra `flags` and an optional `quote` (checked the same way). Every pick must be answered once.
 
+**What a skeptic may refute for** (maintainer, 2026-10-20). A `refute` is for a page that is **wrong**: another role, product area, sub-product or licensing tier; off the task and off the job around it; retired or only in preview; or a quote that does not say what the judge claims. It is **not** for a page that is more basic or deeper than the exam asks (that is a `supporting` pick with the relation `prerequisite` or `deeper`), for a task that another page already covers as well (the course has no cap on the number of pages), or for a neighbouring step that is not the task itself (`supporting`). A page that belongs but not as `core` is a `downgrade`. Why: on AZ-104 the maintainer overruled 13 of 19 refutations in a random sample of the queue, and the refutations they overruled said "beyond the exam's level", "a better page is already picked" or "a different direction".
+
 ## The judged file
 
 `merge` writes, per candidate, `judge` (verdict, relation, reason, quote with `quoteVerified`, `quoteWhere` and `quoteTermCoverage`, flags, confidence) and `skeptic` (picks only), plus:
@@ -118,7 +120,7 @@ How to run the two passes:
 
 ## Not covered here
 
-- **The approval gates, the review queue and remembered decisions** read the judged files: auto-accept, queue (any `P4`, a flag, a disagreement, low confidence in a pick **or in a reject**, an unverified quote, a quote that carries little of the task) and auto-reject (only a reject the judge is sure of). See [course-gates.md](course-gates.md).
+- **The approval gates, the review queue and remembered decisions** read the judged files: auto-accept (a pick the skeptic did not refute, any source and confidence; hands-on pages the judge picked), queue (a refutation, no skeptic answer, an unverified quote, low confidence in a **reject**) and auto-reject (a reject the judge is sure of, classic material, hands-on pages the judge did not pick). See [course-gates.md](course-gates.md).
 - **The quote check is on the cached text only** (titles, unit titles, descriptions, link texts). It proves the judge did not make a quote up, not that the page's body says what the judge infers; it cannot be stricter without fetching the live page. If quotes prove too loose, a live check at judge time is the next step.
 - **Rejections are not challenged by the skeptic.** A wrong rejection is only caught when the judge itself was unsure (`low` confidence), which sends it to the maintainer; a confident wrong rejection costs recall, not correctness. The skeptic sees the picks only.
 - **`judgedBy` is free text.** Nothing checks which model answered or that the skeptic differs from the judge.

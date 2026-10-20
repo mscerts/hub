@@ -13,7 +13,8 @@
  *       The build stops when the study guide or Learn changed since the candidates were made, because the
  *       course would record a state its picks were never judged against; --allow-stale builds anyway.
  *       Hands-on pages (exercises, simulations, guided projects, tutorials, quickstarts) are left out of the
- *       course and a page that fits several tasks is shown once; both are listed in FILE.routing.json.
+ *       course, a page that fits several tasks is shown once and a classic page is left out; all three are
+ *       listed in FILE.routing.json.
  *
  * Exit code: 0 built, 1 the course cannot be built (stale inputs, a missing quote, a pick that is not valid, a
  * page that is not current), 2 usage or input error.
@@ -198,6 +199,10 @@ export async function main(argv, deps = {}) {
     `${JSON.stringify({ schemaVersion: 1, kind: "routing", code, builtAt: today, ...routing }, null, 2)}
 `,
   );
+  if (routing.classic.length)
+    log(
+      `${routing.classic.length} accepted classic pages are not in the course (routing.classic).`,
+    );
   log(
     `${routing.handsOn.length} accepted hands-on pages are not in the course: the lab page collects them (node scripts/course-labs.mjs ${code} --routing ${routingFile}); ${routing.repeats.length} pages fitted several tasks and are shown once.`,
   );

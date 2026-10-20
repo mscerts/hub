@@ -8,6 +8,7 @@ import {
   emptyDecisions,
   gateItem,
   gateJudged,
+  gateStats,
   indexDecisions,
   learnUrl,
   validateDecisions,
@@ -52,7 +53,7 @@ const gate = (over, ctx = {}) =>
 const withStore = (decisions = [], excludedFamilies = []) =>
   indexDecisions({ ...emptyDecisions("X"), decisions, excludedFamilies });
 
-test("a clean pick of the exam's own course is accepted by the gates: judge and skeptic agree, nothing flagged", () => {
+test("a clean pick of the exam's own course is accepted by the gates: the judge picked it and the skeptic did not refute it", () => {
   for (const source of ["P1", "P2"]) {
     const g = gate({ source });
     assert.equal(g.decision, "accept", source);
@@ -60,7 +61,9 @@ test("a clean pick of the exam's own course is accepted by the gates: judge and 
     assert.equal(g.by, "gates");
     assert.match(
       g.reasons[0],
-      new RegExp(`${source}, the judge and the skeptic agree`),
+      new RegExp(
+        `${source}, the judge picked it and the skeptic did not refute it`,
+      ),
     );
   }
   const supporting = gate({
@@ -89,25 +92,63 @@ test("a clean pick of the exam's own course is accepted by the gates: judge and 
   );
 });
 
-test("what the approval policy of the course format reserves for the maintainer is queued, whatever the judges say", () => {
-  const p4 = gate({ source: "P4" });
-  assert.equal(p4.decision, "queue");
-  assert.match(p4.reasons[0], /found by search only \(P4\)/);
-  const p3core = gate({ source: "P3" });
-  assert.equal(p3core.decision, "queue");
-  assert.match(
-    p3core.reasons[0],
-    /core material of another exam's course \(P3\)/,
-  );
+test("a pick of any source or class is accepted: search only, a model, core of another course, a deeper dive", () => {
+  for (const source of ["P3", "P4", "P5"]) {
+    const g = gate({ source });
+    assert.equal(g.decision, "accept", source);
+    assert.equal(g.class, "core");
+    assert.equal(g.by, "gates");
+    assert.match(g.reasons[0], new RegExp(`^${source}, the judge picked it`));
+  }
   const deeper = gate({
     source: "P2",
     judge: { verdict: "supporting", relation: "deeper" },
   });
-  assert.equal(deeper.decision, "queue");
-  assert.match(deeper.reasons[0], /a deeper dive/);
+  assert.equal(deeper.decision, "accept");
+  assert.equal(deeper.relation, "deeper");
 });
 
-test("a skeptic that refuted or downgraded a pick sends it to the queue, and a downgrade proposes supporting", () => {
+test("a pick the judge is unsure of is accepted when the skeptic did not refute it, with the doubt kept as a warning", () => {
+  for (const source of ["P1", "P4", "P5"]) {
+    const g = gate({ source, judge: { confidence: "low" } });
+    assert.equal(g.decision, "accept", source);
+    assert.deepEqual(g.warnings, ["the judge is not sure (low confidence)"]);
+  }
+  // with warnings queueing again, it waits as before
+  const strict = gate(
+    { judge: { confidence: "low" } },
+    { options: { acceptWithWarnings: false } },
+  );
+  assert.equal(strict.decision, "queue");
+  assert.deepEqual(strict.reasons, ["the judge is not sure (low confidence)"]);
+});
+
+test("the stats count the accepted picks that carry a warning, by kind of warning", () => {
+  const items = [
+    gate({ flags: ["outdated"] }),
+    gate({ judge: { quoteTermCoverage: 0.1 } }),
+    gate({ judge: { quoteTermCoverage: 0.2 } }),
+    gate({ signals: { foreignFamily: true } }),
+    gate({}),
+    gate({ judge: { confidence: "low" } }),
+    gate({
+      agreement: "disagree",
+      skeptic: { stance: "refute", reason: "Another product area." },
+    }),
+  ].map((g) => ({ gate: g, judge: { verdict: "core" } }));
+  const stats = gateStats(items);
+  assert.equal(stats.accepted, 6);
+  assert.equal(stats.acceptedWithWarnings, 5);
+  assert.deepEqual(stats.acceptedWarnings, {
+    "the quote carries N of the task's words": 2,
+    flagged: 1,
+    "another sub-product than the task's anchor": 1,
+    "the judge is not sure": 1,
+  });
+  assert.equal(stats.queued, 1);
+});
+
+test("a skeptic that refuted a pick sends it to the queue; a downgrade is accepted as supporting with the skeptic's relation", () => {
   const refuted = gate({
     agreement: "disagree",
     skeptic: { stance: "refute", reason: "Another product area." },
@@ -126,79 +167,218 @@ test("a skeptic that refuted or downgraded a pick sends it to the queue, and a d
       reason: "Not what the guide asks.",
     },
   });
-  assert.equal(downgraded.decision, "queue");
+  assert.equal(downgraded.decision, "accept");
   assert.equal(downgraded.class, "supporting");
   assert.equal(downgraded.relation, "operate");
-  assert.match(downgraded.reasons.join(), /the skeptic downgraded it/);
+  assert.deepEqual(downgraded.warnings, [
+    "the skeptic downgraded it to supporting: Not what the guide asks.",
+  ]);
+  // the page belongs (both say so); with warnings queueing again, the maintainer sees the downgrade
+  const strict = gate(
+    {
+      agreement: "disagree",
+      skeptic: { stance: "downgrade", relation: "operate", reason: "x" },
+    },
+    { options: { acceptWithWarnings: false } },
+  );
+  assert.equal(strict.decision, "queue");
+  assert.equal(strict.class, "supporting");
 });
 
-test("a pick nobody challenged, a low confidence, a flag, a quote that is not in the evidence or says little of the task each queue it", () => {
+test("a pick nobody challenged, or whose quote is not in the evidence, is queued; a flag or a quote that says little of the task is a warning", () => {
   const reasons = (over) => gate(over).reasons.join(" | ");
   assert.match(
     reasons({ skeptic: null, agreement: "unchallenged" }),
     /no skeptic has challenged it/,
   );
-  assert.match(reasons({ judge: { confidence: "low" } }), /low confidence/);
   assert.equal(gate({ judge: { confidence: "medium" } }).decision, "accept");
-  const flagged = gate({ flags: ["preview", "level-mismatch"] });
-  assert.equal(flagged.decision, "queue");
-  assert.match(flagged.reasons.join(), /flagged: preview, level-mismatch/);
   assert.match(
     reasons({ judge: { quoteVerified: false } }),
     /the quote is not in the evidence/,
   );
-  assert.match(
-    reasons({ judge: { quoteTermCoverage: 0.25 } }),
-    /the quote carries 25% of the task's words/,
-  );
+  // a warning is accepted with, and kept in the decision
+  const flagged = gate({ flags: ["preview", "level-mismatch"] });
+  assert.equal(flagged.decision, "accept");
+  assert.deepEqual(flagged.warnings, ["flagged: preview, level-mismatch"]);
+  const weak = gate({ judge: { quoteTermCoverage: 0.25 } });
+  assert.equal(weak.decision, "accept");
+  assert.deepEqual(weak.warnings, [
+    "the quote carries 25% of the task's words",
+  ]);
   assert.equal(
-    gate({ judge: { quoteTermCoverage: 0.5 } }).decision,
-    "accept",
+    gate({ judge: { quoteTermCoverage: 0.5 } }).warnings,
+    undefined,
     "half is enough",
   );
   assert.equal(
     gate(
       { judge: { quoteTermCoverage: 0.25 } },
       { options: { coreQuoteCoverage: 0.2 } },
-    ).decision,
-    "accept",
+    ).warnings,
+    undefined,
     "an option",
   );
   assert.equal(GATE_DEFAULTS.coreQuoteCoverage, 0.5);
+  // with acceptWithWarnings off they queue again, as before 2026-10-20
+  const strict = { options: { acceptWithWarnings: false } };
+  assert.match(
+    gate({ flags: ["preview", "level-mismatch"] }, strict).reasons.join(),
+    /flagged: preview, level-mismatch/,
+  );
+  assert.match(
+    gate({ judge: { quoteTermCoverage: 0.25 } }, strict).reasons.join(),
+    /the quote carries 25% of the task's words/,
+  );
+  assert.equal(GATE_DEFAULTS.acceptWithWarnings, true);
+  // a queued pick lists the warnings among its reasons, for the maintainer
+  const queued = gate({
+    flags: ["preview"],
+    judge: { confidence: "low" },
+    agreement: "disagree",
+    skeptic: { stance: "refute", reason: "Another product area." },
+  });
+  assert.deepEqual(queued.reasons, [
+    "the skeptic refuted it: Another product area.",
+    "the judge is not sure (low confidence)",
+    "flagged: preview",
+  ]);
 });
 
-test("a candidate of another sub-product than the task's anchor is queued", () => {
+test("classic material is rejected by the gates and nobody is asked, whatever the judge said", () => {
+  const classic = gate({
+    title: "Create a classic file share",
+    target: { kind: "docs", path: "/azure/storage/files/create-classic-share" },
+  });
+  assert.equal(classic.decision, "reject");
+  assert.equal(classic.via, "classic");
+  assert.equal(classic.by, "gates");
+  assert.equal(
+    gate({
+      target: { kind: "docs", path: "/azure/x/classic/page" },
+      judge: { confidence: "low" },
+    }).via,
+    "classic",
+  );
+});
+
+test("hands-on material is decided without asking: a page the judge picked is accepted for the lab page, one it rejected is rejected", () => {
+  const exercise = {
+    title: "Exercise - Create a virtual network",
+    target: {
+      kind: "unit",
+      path: "/training/modules/vnets/3-exercise-create-a-virtual-network",
+    },
+  };
+  const picked = gate(exercise);
+  assert.equal(picked.decision, "accept");
+  assert.equal(picked.via, "hands-on");
+  assert.match(picked.reasons[0], /hands-on \(exercise\).*lab page/);
+  // however unsure the judge or the skeptic is, the maintainer is not asked about the course
+  const unsure = gate({
+    ...exercise,
+    judge: { confidence: "low" },
+    flags: ["level-mismatch"],
+    agreement: "disagree",
+    skeptic: { stance: "refute", reason: "Another job." },
+  });
+  assert.equal(unsure.decision, "accept");
+  assert.equal(unsure.via, "hands-on");
+  assert.deepEqual(unsure.warnings, [
+    "the skeptic refuted it: Another job.",
+    "the judge is not sure (low confidence)",
+    "flagged: level-mismatch",
+  ]);
+  for (const confidence of ["low", "high"]) {
+    const rejected = gate({
+      ...exercise,
+      judge: { verdict: "reject", why: "Another task.", confidence },
+    });
+    assert.equal(rejected.decision, "reject", confidence);
+    assert.equal(rejected.via, "hands-on");
+  }
+  // a quote that is not in the evidence cannot be built into a pick: rejected, not asked
+  assert.equal(
+    gate({ ...exercise, judge: { quoteVerified: false } }).decision,
+    "reject",
+  );
+  // a tutorial page and a unit of a guided project are hands-on too
+  assert.equal(
+    gate({
+      title: "Tutorial: Filter network traffic",
+      target: {
+        kind: "docs",
+        path: "/azure/virtual-network/tutorial-filter-network-traffic",
+      },
+    }).via,
+    "hands-on",
+  );
+  assert.equal(
+    gate({
+      title: "Introduction",
+      module: { path: "/training/modules/m", title: "Guided project: X" },
+      target: { kind: "unit", path: "/training/modules/m/1-introduction" },
+    }).via,
+    "hands-on",
+  );
+  // what the maintainer already decided comes first
+  const decided = gate(exercise, {
+    decisions: withStore([
+      {
+        task: TASK.key,
+        target: exercise.target.path,
+        decision: "reject",
+        reason: "No.",
+        by: "maintainer",
+        at: TODAY,
+      },
+    ]),
+  });
+  assert.equal(decided.via, "remembered");
+});
+
+test("a candidate of another sub-product than the task's anchor is accepted with a warning, and queued when warnings queue", () => {
   for (const [signals, text] of [
     [{ foreignFamily: true }, /a family the exam's course does not list/],
     [{ siblingSection: true }, /a section the exam's course does not list/],
     [{ anchored: false }, /another sub-product than the task's anchor/],
   ]) {
-    const g = gate({
+    const over = {
       source: "P3",
       judge: { verdict: "supporting", relation: "prerequisite" },
       signals,
-    });
-    assert.equal(g.decision, "queue");
-    assert.match(g.reasons.join(), text);
+    };
+    const g = gate(over);
+    assert.equal(g.decision, "accept");
+    assert.match(g.warnings.join(), text);
+    assert.doesNotMatch(g.reasons[0], /same sub-product/);
+    const strict = gate(over, { options: { acceptWithWarnings: false } });
+    assert.equal(strict.decision, "queue");
+    assert.match(strict.reasons.join(), text);
   }
-  assert.equal(
-    gate({
-      source: "P3",
-      judge: { verdict: "supporting", relation: "prerequisite" },
-      signals: { anchored: true },
-    }).decision,
-    "accept",
-  );
+  const same = gate({
+    source: "P3",
+    judge: { verdict: "supporting", relation: "prerequisite" },
+    signals: { anchored: true },
+  });
+  assert.equal(same.decision, "accept");
+  assert.equal(same.warnings, undefined);
+  assert.match(same.reasons[0], /same sub-product/);
 });
 
-test("a page that has not been modified for 24 months is queued; an unknown age is not", () => {
+test("a page that has not been modified for 24 months is a warning; an unknown age is not", () => {
   const old = gate({}, { ageOf: () => 731 });
-  assert.equal(old.decision, "queue");
-  assert.match(old.reasons.join(), /not modified for 24 months/);
-  assert.equal(gate({}, { ageOf: () => 730 }).decision, "accept");
-  assert.equal(gate({}, { ageOf: () => null }).decision, "accept");
+  assert.equal(old.decision, "accept");
+  assert.deepEqual(old.warnings, ["not modified for 24 months"]);
+  assert.equal(gate({}, { ageOf: () => 730 }).warnings, undefined);
+  assert.equal(gate({}, { ageOf: () => null }).warnings, undefined);
   assert.equal(
-    gate({}, { ageOf: () => 400, options: { maxAgeDays: 365 } }).decision,
+    gate({}, { ageOf: () => 400, options: { maxAgeDays: 365 } }).warnings
+      .length,
+    1,
+  );
+  assert.equal(
+    gate({}, { ageOf: () => 731, options: { acceptWithWarnings: false } })
+      .decision,
     "queue",
   );
 });
@@ -350,7 +530,19 @@ test("the entitlement management card is caught: queued when the judge missed it
     },
   });
   assert.equal(missed.decision, "queue");
-  assert.ok(missed.reasons.length >= 4);
+  assert.match(
+    missed.reasons[0],
+    /the skeptic refuted it: Identity governance/,
+  );
+  assert.ok(
+    missed.reasons.length >= 3,
+    "the refutation, and the flag and the foreign family as warnings",
+  );
+  assert.match(missed.reasons.join(), /flagged: other-sub-product/);
+  assert.match(
+    missed.reasons.join(),
+    /a family the exam's course does not list/,
+  );
   const seen = gate({
     ...card,
     judge: {
@@ -474,13 +666,18 @@ test("what the maintainer decided is applied first and is never asked again", ()
   assert.equal(rejected.decision, "reject");
   assert.equal(rejected.by, "maintainer");
   assert.match(rejected.reasons[0], /rejected by the maintainer: another job/);
-  // the same page under another task is not decided
+  // the same page under another task is not decided: the gates judge it on its own
   const other = gateItem(
     { ...TASK, key: "domain/group/another" },
-    judgedItem({ source: "P4" }),
+    judgedItem({
+      source: "P4",
+      agreement: "disagree",
+      skeptic: { stance: "refute", reason: "no" },
+    }),
     { today: TODAY, decisions },
   );
   assert.equal(other.decision, "queue");
+  assert.equal(other.via, "gates");
 });
 
 const judgedFiles = () => [exampleJudged()];

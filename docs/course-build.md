@@ -33,10 +33,11 @@ The course file is written to `<tmp>/course-build/<CODE>.json`, or to `--out`, w
 
 A candidate that is still **in the queue** is not in the course; the build lists each as a warning so that none is forgotten.
 
-## The two rules of the page
+## The rules of the page
 
-After the accepted items are read, and before the course is written, the builder applies two rules (maintainer, 2026-10-20; the format is in [courses.md](courses.md)). Neither decides relevance; what they take out is written to `<out>.routing.json` and counted in the summary line.
+After the accepted items are read, and before the course is written, the builder applies three rules (maintainer, 2026-10-20; the format is in [courses.md](courses.md)). Neither decides relevance; what they take out is written to `<out>.routing.json` and counted in the summary line.
 
+- **Classic pages leave the course.** An accepted page whose title has the word "classic", or whose address has a `classic` segment (`course-classic.mjs`), is dropped and listed in `routing.classic` with the tasks it was accepted for. The candidate generator filters these before judging, so this catches pages judged before the rule or accepted by hand; the build prints how many.
 - **Hands-on pages leave the course.** An accepted page that `course-handson.mjs` calls hands-on (an exercise or simulation unit, a unit of a guided or challenge project, a guided or challenge project module, a docs tutorial or quickstart, an Applied Skill) is not a pick: the lab page collects it. `routing.handsOn` lists each once with its title, kind, reason, the module it is in and every task it was accepted for. [course-labs.md](course-labs.md) turns that list into the cards the lab page lacks.
 - **A page is shown once.** A page accepted for several tasks stays under one: **core before supporting, a sure judgement (the judge not unsure, the skeptic upholding) before an unsure one, the exam's own course (`P1`) before the other sources, then the task that has the fewest picks so far** (so that the thin tasks fill first), then the better evidence quote, then the earlier task. The pages that fit one task are placed first, so that the load is known; the result does not depend on the order of the gated file. `routing.repeats` lists, for every such page, the task it stays under and the tasks it also fitted.
 

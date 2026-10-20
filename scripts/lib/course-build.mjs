@@ -10,8 +10,11 @@
  * maintainer's remembered decision) gave it, its reason and its evidence are the judge's, and a rejection worth
  * remembering goes into the file's `rejected` list so that it cannot come back.
  *
- * Two rules of the page are applied here (maintainer, 2026-10-20), and what they take out is reported in
+ * Three rules of the page are applied here (maintainer, 2026-10-20), and what they take out is reported in
  * `routing`, not lost:
+ *   - Classic material (course-classic.mjs) is not learned: an accepted classic page is left out and listed in
+ *     `routing.classic`. The generator filters classic pages before they are judged, so this catches only what
+ *     was judged before the rule or accepted by hand.
  *   - Hands-on material (an exercise, a simulation, a guided project, a tutorial, a quickstart) is not in the
  *     course: the lab page collects it (course-handson.mjs). `routing.handsOn` lists every such page that was
  *     accepted, with the tasks it was accepted for, so that scripts/course-labs.mjs can add what the lab page lacks.
@@ -26,6 +29,7 @@ import {
   moduleOfPick,
   validateCourse,
 } from "./course-format.mjs";
+import { isClassic } from "./course-classic.mjs";
 import { ACCEPTED_BY_MAINTAINER } from "./course-gates.mjs";
 import { handsOnReason } from "./course-handson.mjs";
 
@@ -115,17 +119,28 @@ const fitOrder = (a, b) =>
  * Apply the two rules of the page to the accepted rows (see the top of this file).
  *   accepted  Map: task key -> [{ pick, item }]
  *   taskKeys  the task keys in the guide's order
- * Returns { accepted, handsOn, repeats }: `accepted` the same shape without the hands-on pages and with every
- * page under one task only; `handsOn` [{ path, kind, title, reason, module?, moduleTitle?, tasks }] sorted by path;
+ * Returns { accepted, handsOn, classic, repeats }: `accepted` the same shape without the classic and hands-on
+ * pages and with every page under one task only; `classic` [{ path, title, tasks }] sorted by path; `handsOn` [{ path, kind, title, reason, module?, moduleTitle?, tasks }] sorted by path;
  * `repeats` [{ path, title, shownUnder, alsoFits }] for every page that fitted several tasks.
  */
 export function routePicks({ accepted, taskKeys }) {
   const order = new Map(taskKeys.map((key, i) => [key, i]));
   const handsOn = new Map();
+  const classic = new Map();
   const byPath = new Map();
   for (const key of taskKeys) {
     for (const row of accepted.get(key) ?? []) {
       const { pick, item } = row;
+      if (isClassic({ title: pick.title, path: pick.target.path })) {
+        const entry = classic.get(pick.target.path) ?? {
+          path: pick.target.path,
+          title: pick.title,
+          tasks: [],
+        };
+        if (!entry.tasks.includes(key)) entry.tasks.push(key);
+        classic.set(pick.target.path, entry);
+        continue;
+      }
       const reason = handsOnReason({
         kind: pick.target.kind,
         path: pick.target.path,
@@ -189,13 +204,17 @@ export function routePicks({ accepted, taskKeys }) {
     list.push({ pick: winner.pick, item: winner.item });
     kept.set(winner.taskKey, list);
   }
+  const inGuideOrder = (e) => ({
+    ...e,
+    tasks: e.tasks.sort((a, b) => order.get(a) - order.get(b)),
+  });
   return {
     accepted: kept,
+    classic: [...classic.values()]
+      .map(inGuideOrder)
+      .sort((a, b) => byText(a.path, b.path)),
     handsOn: [...handsOn.values()]
-      .map((e) => ({
-        ...e,
-        tasks: e.tasks.sort((a, b) => order.get(a) - order.get(b)),
-      }))
+      .map(inGuideOrder)
       .sort((a, b) => byText(a.path, b.path)),
     repeats,
   };
@@ -292,7 +311,11 @@ export function buildCourse({
   // hands-on material goes to the lab page and a page is shown once (the top of this file)
   const routed = routePicks({ accepted: decided, taskKeys: [...taskKeys] });
   const accepted = routed.accepted;
-  const routing = { handsOn: routed.handsOn, repeats: routed.repeats };
+  const routing = {
+    classic: routed.classic,
+    handsOn: routed.handsOn,
+    repeats: routed.repeats,
+  };
 
   // everything a pick of another exam's course (or found by search) depends on is recorded with its signature
   const picked = new Map();

@@ -6,10 +6,13 @@
  *
  * Input: the judged files of an exam (course-judge.mjs merge). Output: a decision per candidate, and the queue.
  *
- *   accept   a pick the gates may take on their own: the judge and the skeptic agree, nothing is flagged, and the
- *            approval policy of the course format lets the gates decide (not a P4, not core from P3, not a
- *            deeper dive)
- *   reject   remembered before, in an excluded sub-product, not a current Learn page, or rejected by the judge
+ *   accept   a pick the gates take on their own: the judge picked it, the skeptic did not refute it and the quote is
+ *            in the evidence, whatever the source (P1 to P5), the class and the confidence; what used to queue it
+ *            as well (an unsure judge, a downgrade, a flag, a weak quote, another sub-product, an old page) is kept
+ *            in the decision's `warnings`. Hands-on pages the judge picked are accepted the same way (the builder
+ *            sends them to the lab page)
+ *   reject   remembered before, in an excluded sub-product, not a current Learn page, classic material, a hands-on
+ *            page the judge did not pick, or rejected by the judge
  *   queue    everything else, with the reasons, for the maintainer
  *
  * The maintainer's decisions live in src/data_files/course-decisions/<CODE>.json (committed, like the course file);
@@ -17,7 +20,9 @@
  */
 
 import { docFamily } from "./course-candidates.mjs";
-import { CLASSES, RELATIONS, approvalPolicy } from "./course-format.mjs";
+import { isClassic } from "./course-classic.mjs";
+import { CLASSES, RELATIONS } from "./course-format.mjs";
+import { handsOnReason } from "./course-handson.mjs";
 
 export const GATES_SCHEMA_VERSION = 1;
 
@@ -25,11 +30,14 @@ export const GATES_SCHEMA_VERSION = 1;
 export const ACCEPTED_BY_MAINTAINER = "accepted by the maintainer";
 
 export const GATE_DEFAULTS = Object.freeze({
-  // a core pick's quote must carry at least this share of the task's distinctive words: a quote that says
-  // nothing of the task is no evidence for it
+  // a core pick's quote that carries less than this share of the task's distinctive words is a warning: a quote
+  // that says nothing of the task is weak evidence for it
   coreQuoteCoverage: 0.5,
-  // a page not modified for longer than this is queued (24 months)
+  // a page not modified for longer than this is a warning (24 months)
   maxAgeDays: 730,
+  // a pick is accepted although it carries warnings (an unsure judge, a downgrade, a flag, a weak quote, another
+  // sub-product, old); false queues it again, as the gates did before 2026-10-20
+  acceptWithWarnings: true,
 });
 
 // the flags that say a candidate is out of scope: a rejection with one is worth remembering
@@ -204,6 +212,65 @@ export function gateItem(task, item, ctx) {
     };
 
   const j = item.judge;
+
+  // Classic material is not learned (course-classic.mjs): rejected, nobody is asked.
+  if (isClassic({ title: item.title, path }))
+    return {
+      decision: "reject",
+      by: "gates",
+      via: "classic",
+      reasons: ["classic material: a course leaves it out"],
+    };
+
+  // A pick is the class the judge gave, unless the skeptic downgraded it.
+  const proposal =
+    item.skeptic?.stance === "downgrade"
+      ? { class: "supporting", relation: item.skeptic.relation }
+      : {
+          class: j.verdict,
+          ...(j.relation ? { relation: j.relation } : {}),
+        };
+
+  // Hands-on material (an exercise, a guided project, a tutorial, a quickstart) is not in the course: the lab page
+  // collects it (course-handson.mjs). There is nothing to decide for the course, so the maintainer is not asked:
+  // a page the judge picked is accepted (the builder sends it to the lab page), one it rejected is rejected.
+  const handsOn = handsOnReason({
+    kind: item.target.kind,
+    path,
+    title: item.title,
+    moduleTitle: item.module?.title,
+  });
+  if (handsOn) {
+    if (j.verdict === "reject" || j.quoteVerified === false)
+      return {
+        decision: "reject",
+        by: "gates",
+        via: "hands-on",
+        reasons: [
+          j.verdict === "reject"
+            ? `hands-on (${handsOn}): it goes on the lab page, and the judge did not pick it`
+            : `hands-on (${handsOn}): its quote is not in the evidence`,
+        ],
+      };
+    const notes = [];
+    if (item.agreement === "disagree" && item.skeptic?.stance === "refute")
+      notes.push(`the skeptic refuted it: ${item.skeptic.reason}`);
+    if (j.confidence === "low")
+      notes.push("the judge is not sure (low confidence)");
+    if (flags.length) notes.push(`flagged: ${flags.join(", ")}`);
+    return {
+      decision: "accept",
+      class: proposal.class,
+      ...(proposal.relation ? { relation: proposal.relation } : {}),
+      by: "gates",
+      via: "hands-on",
+      reasons: [
+        `${item.source}, hands-on (${handsOn}): the judge picked it; it goes on the lab page, so nobody is asked`,
+      ],
+      ...(notes.length ? { warnings: notes } : {}),
+    };
+  }
+
   if (j.verdict === "reject") {
     // A judge that is not sure does not get to dismiss a page: the maintainer is the final judge of what it
     // cannot place. Only a reject with high or medium confidence is final.
@@ -226,51 +293,40 @@ export function gateItem(task, item, ctx) {
     };
   }
 
-  // a pick: the class the judge gave, unless the skeptic downgraded it
-  const proposal =
-    item.skeptic?.stance === "downgrade"
-      ? { class: "supporting", relation: item.skeptic.relation }
-      : {
-          class: j.verdict,
-          ...(j.relation ? { relation: j.relation } : {}),
-        };
-  const reasons = [];
-  const policy = approvalPolicy({
-    source: item.source,
-    class: proposal.class,
-    relation: proposal.relation,
-  });
-  if (policy === "maintainer")
-    reasons.push(
-      item.source === "P4"
-        ? "found by search only (P4): the maintainer decides"
-        : item.source === "P5"
-          ? "named by a model only (P5): the maintainer decides"
-          : proposal.class === "core"
-            ? "core material of another exam's course (P3): the maintainer decides"
-            : "a deeper dive than the exam asks for: the maintainer decides",
-    );
-  if (item.agreement === "disagree")
-    reasons.push(
-      `the skeptic ${item.skeptic.stance === "refute" ? "refuted" : "downgraded"} it: ${item.skeptic.reason}`,
-    );
-  else if (item.agreement === "unchallenged")
-    reasons.push("no skeptic has challenged it");
-  if (j.confidence === "low")
-    reasons.push("the judge is not sure (low confidence)");
-  if (flags.length) reasons.push(`flagged: ${flags.join(", ")}`);
+  // A pick is accepted when the judge picked it, the skeptic did not refute it and its quote is in the evidence,
+  // whatever its source (P1 to P5), class and confidence (maintainer, 2026-10-20, in two steps: first a pick the
+  // judge was sure of and the skeptic upheld; then, after a random sample of the queue was marked, a pick the
+  // judge was unsure of or the skeptic only downgraded). Three things are BLOCKERS and queue the pick: a skeptic
+  // that refuted it, no skeptic at all, a quote that is not in the evidence. The WARNINGS below used to queue a
+  // pick as well; an accepted pick keeps them in `warnings`, so the audit trail is in the gated file, and
+  // `acceptWithWarnings: false` makes them queue again.
+  const blockers = [];
+  const warnings = [];
+  if (item.agreement === "disagree") {
+    if (item.skeptic.stance === "refute")
+      blockers.push(`the skeptic refuted it: ${item.skeptic.reason}`);
+    else
+      warnings.push(
+        `the skeptic downgraded it to supporting: ${item.skeptic.reason}`,
+      );
+  } else if (item.agreement === "unchallenged")
+    blockers.push("no skeptic has challenged it");
   if (j.quoteVerified === false)
-    reasons.push("the quote is not in the evidence");
-  else if (
+    blockers.push("the quote is not in the evidence");
+  if (j.confidence === "low")
+    warnings.push("the judge is not sure (low confidence)");
+  if (flags.length) warnings.push(`flagged: ${flags.join(", ")}`);
+  if (
+    j.quoteVerified !== false &&
     j.verdict === "core" &&
     (j.quoteTermCoverage ?? 0) < options.coreQuoteCoverage
   )
-    reasons.push(
+    warnings.push(
       `the quote carries ${Math.round((j.quoteTermCoverage ?? 0) * 100)}% of the task's words`,
     );
   const s = item.signals ?? {};
   if (s.foreignFamily || s.siblingSection || s.anchored === false)
-    reasons.push(
+    warnings.push(
       "another sub-product than the task's anchor" +
         (s.foreignFamily
           ? " (a family the exam's course does not list)"
@@ -280,16 +336,17 @@ export function gateItem(task, item, ctx) {
     );
   const age = ageOf?.(item.target);
   if (typeof age === "number" && age > options.maxAgeDays)
-    reasons.push(`not modified for ${Math.round(age / 30)} months`);
+    warnings.push(`not modified for ${Math.round(age / 30)} months`);
 
-  if (reasons.length)
+  // every reason is listed for the maintainer: the blockers, and the warnings too
+  if (blockers.length || (!options.acceptWithWarnings && warnings.length))
     return {
       decision: "queue",
       class: proposal.class,
       ...(proposal.relation ? { relation: proposal.relation } : {}),
       by: "maintainer",
       via: "gates",
-      reasons,
+      reasons: [...blockers, ...warnings],
     };
   return {
     decision: "accept",
@@ -298,9 +355,12 @@ export function gateItem(task, item, ctx) {
     by: "gates",
     via: "gates",
     reasons: [
-      `${item.source}, the judge and the skeptic agree` +
-        (item.source === "P3" ? ", same sub-product" : ""),
+      `${item.source}, the judge picked it and the skeptic did not refute it` +
+        (item.source === "P3" && warnings.length === 0
+          ? ", same sub-product"
+          : ""),
     ],
+    ...(warnings.length ? { warnings } : {}),
   };
 }
 
@@ -367,6 +427,19 @@ export function gateStats(items) {
       const key = r.split(":")[0].replace(/\b\d+%?(?=\s)/g, "N");
       reasons[key] = (reasons[key] ?? 0) + 1;
     }
+  // what an accepted pick carries although it was accepted (flagged, a weak quote, another sub-product, old)
+  const warned = items.filter(
+    (i) => i.gate.decision === "accept" && i.gate.warnings?.length,
+  );
+  const warnings = {};
+  for (const i of warned)
+    for (const w of i.gate.warnings) {
+      const key = w
+        .split(":")[0]
+        .replace(/\s*\(.*$/, "")
+        .replace(/\b\d+%?(?=\s)/g, "N");
+      warnings[key] = (warnings[key] ?? 0) + 1;
+    }
   return {
     candidates: items.length,
     accepted: count((i) => i.gate.decision === "accept"),
@@ -375,6 +448,12 @@ export function gateStats(items) {
     ),
     acceptedSupporting: count(
       (i) => i.gate.decision === "accept" && i.gate.class === "supporting",
+    ),
+    acceptedWithWarnings: warned.length,
+    acceptedWarnings: Object.fromEntries(
+      Object.entries(warnings).sort(
+        (a, b) => b[1] - a[1] || byText(a[0], b[0]),
+      ),
     ),
     acceptedByMaintainer: count(
       (i) => i.gate.decision === "accept" && i.gate.by === "maintainer",

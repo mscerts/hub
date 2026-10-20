@@ -14,7 +14,7 @@ That the page exists, nothing more. A model writes addresses from memory, so som
 2. **Learn's moves** (`docs-redirects.json`, followed up to five times): a page that moved lives at its new address whatever the old one still says (`how: moved`).
 3. **The address as written**, when it is a live page of the catalog (`how: path`). A training module is looked up in the module catalog; a unit of a module outside the exam's courses becomes its module (`how: unit`).
 4. **The title**, when the address failed: the exact title, with or without the product the catalog appends ("Assign roles using the portal - Azure RBAC"), in the area the model named; the same title on several pages is settled by the closest address and never guessed on a tie (`how: title`, `ambiguous-title`).
-5. The hard filters of the generator (retired, moved, not in the cache, boilerplate, not English) drop what exists but must not be offered (`dropped`).
+5. The hard filters of the generator (retired, classic, moved, not in the cache, boilerplate, not English) drop what exists but must not be offered (`dropped`).
 
 A page that is live but has no text in the catalog cannot be judged and is counted as `no-catalog-text`.
 
@@ -60,7 +60,7 @@ node scripts/course-judge.mjs prepare AZ-104 --candidates <tmp>/course-candidate
 
 ## Policy
 
-A `P5` pick is the maintainer's call, like a `P4` pick (`approvalPolicy` in `course-format.mjs`; the queue says "named by a model only (P5)"). The proposal source adds candidates; it does not change who may approve them. Whether a pick that the judge was sure of and the skeptic upheld may go onto the page without waiting, whatever its source, is a separate gate decision for the maintainer.
+A `P5` pick is judged like any other and the gates decide it like any other: since 2026-10-20 a pick of any source is accepted when the judge picked it and the skeptic did not refute it ([course-gates.md](course-gates.md)); before that a `P5` or `P4` pick always waited for the maintainer. Being named by a model is no evidence: the judge is told so, and a page that the skeptic refutes still waits.
 
 ## Why (AZ-104, 2026-10-20)
 
@@ -70,7 +70,7 @@ Measured with the single-prompt course page as a source of proposals: of its 212
 
 What it adds: with the 599 picks of the first run, 903 picks and all 82 tasks with 3 or more (73 before; 9 tasks lifted, 72 gain a page). It reaches 193 of the original page's 365 picks, the word search with every limit off 225, the two together 285; of the 140 picks no word search reaches, the model names 60. In the 29 tasks without a strong module the model reaches 48% of the original page's picks there and the search 38%. The two sources are complements.
 
-The gates leave every proposal in the queue (the policy above), so the accepted page does not change (196 picks). A simulation of a gate that also accepts a queued pick the judge is sure of and the skeptic upholds, whatever its source, gives 723 picks with 79 tasks at 3 or more (441 and 64 if proposals are left out); the course format would first have to allow that decision. The full comparison with the single-prompt page is in the run folder, not in the repository.
+Under the old policy the gates left every proposal in the queue, so the accepted page did not change (196 picks). With the rule of 2026-10-20 (a pick of any source is accepted unless the skeptic refutes it) the same run gives 513 picks after the page rules at the first step and more after the second, 76 of 82 tasks with 3 or more, and marked samples of the added pages were kept almost in full. The full comparison with the single-prompt page is in the run folder, not in the repository.
 
 ## Tests
 

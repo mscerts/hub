@@ -1,10 +1,5 @@
 import assert from "node:assert/strict";
-import {
-  mkdirSync,
-  mkdtempSync,
-  rmSync,
-  writeFileSync,
-} from "node:fs";
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test, { after } from "node:test";
@@ -60,39 +55,70 @@ const entry = (over) => ({
 
 test("the lab page's Learn paths and tab labels are read from its cards and tabs", () => {
   const paths = labPagePaths(LAB_PAGE);
-  assert.ok(paths.has("/training/modules/control-traffic/3-exercise-create-custom-routes"));
-  assert.ok(paths.has("/azure/virtual-network/tutorial-filter-network-traffic"));
-  assert.ok(!paths.has("https://microsoftlearning.github.io/NET-100/Instructions/Labs/LAB_01.html"));
-  assert.deepEqual(tabLabels(LAB_PAGE), ["Microsoft Learn", "Networking", "Microsoft GitHub"]);
+  assert.ok(
+    paths.has(
+      "/training/modules/control-traffic/3-exercise-create-custom-routes",
+    ),
+  );
+  assert.ok(
+    paths.has("/azure/virtual-network/tutorial-filter-network-traffic"),
+  );
+  assert.ok(
+    !paths.has(
+      "https://microsoftlearning.github.io/NET-100/Instructions/Labs/LAB_01.html",
+    ),
+  );
+  assert.deepEqual(tabLabels(LAB_PAGE), [
+    "Microsoft Learn",
+    "Networking",
+    "Microsoft GitHub",
+  ]);
 });
 
 test("a hands-on page is on the lab page when the page, the same unit under another number, or (for a project module) any unit of it is there", () => {
   const paths = labPagePaths(LAB_PAGE);
   assert.equal(onLabPage(entry(), paths), true, "the same address");
   assert.equal(
-    onLabPage(entry({ path: "/training/modules/control-traffic/4-exercise-create-custom-routes" }), paths),
+    onLabPage(
+      entry({
+        path: "/training/modules/control-traffic/4-exercise-create-custom-routes",
+      }),
+      paths,
+    ),
     true,
     "the unit moved to another position",
   );
   assert.equal(
-    onLabPage(entry({ path: "/training/modules/control-traffic/3-exercise-other" }), paths),
+    onLabPage(
+      entry({ path: "/training/modules/control-traffic/3-exercise-other" }),
+      paths,
+    ),
     false,
   );
   assert.equal(
     onLabPage(
-      entry({ kind: "module", path: "/training/modules/guided-project-share-files" }),
+      entry({
+        kind: "module",
+        path: "/training/modules/guided-project-share-files",
+      }),
       paths,
     ),
     true,
     "a guided project whose exercises are listed",
   );
   assert.equal(
-    onLabPage(entry({ kind: "module", path: "/training/modules/guided-project-other" }), paths),
+    onLabPage(
+      entry({ kind: "module", path: "/training/modules/guided-project-other" }),
+      paths,
+    ),
     false,
   );
   assert.equal(
     onLabPage(
-      entry({ kind: "docs", path: "/azure/virtual-network/tutorial-filter-network-traffic" }),
+      entry({
+        kind: "docs",
+        path: "/azure/virtual-network/tutorial-filter-network-traffic",
+      }),
       paths,
     ),
     true,
@@ -100,17 +126,43 @@ test("a hands-on page is on the lab page when the page, the same unit under anot
 });
 
 test("a card is titled like the lab page's own: no Exercise or Simulation prefix, a capital first letter; a tutorial keeps its name", () => {
-  assert.equal(cardTitle({ title: "Exercise - add groups in Microsoft Entra ID" }), "Add groups in Microsoft Entra ID");
-  assert.equal(cardTitle({ title: "Simulation - Provide storage" }), "Provide storage");
-  assert.equal(cardTitle({ title: "Exercise configure SSPR" }), "Configure SSPR");
-  assert.equal(cardTitle({ title: "Tutorial: Connect virtual networks with peering" }), "Tutorial: Connect virtual networks with peering");
+  assert.equal(
+    cardTitle({ title: "Exercise - add groups in Microsoft Entra ID" }),
+    "Add groups in Microsoft Entra ID",
+  );
+  assert.equal(
+    cardTitle({ title: "Simulation - Provide storage" }),
+    "Provide storage",
+  );
+  assert.equal(
+    cardTitle({ title: "Exercise configure SSPR" }),
+    "Configure SSPR",
+  );
+  assert.equal(
+    cardTitle({ title: "Tutorial: Connect virtual networks with peering" }),
+    "Tutorial: Connect virtual networks with peering",
+  );
   assert.equal(cardTitle({ title: 'Quote "this"' }), "Quote 'this'");
-  assert.equal(cardTitle({ title: "Exercise" }), "Exercise", "nothing left after the prefix: keep the title");
+  assert.equal(
+    cardTitle({ title: "Tutorial to fail back VMs with Site Recovery." }),
+    "Tutorial to fail back VMs with Site Recovery",
+    "no full stop at the end",
+  );
+  assert.equal(
+    cardTitle({ title: "Exercise" }),
+    "Exercise",
+    "nothing left after the prefix: keep the title",
+  );
 });
 
 test("the card is one line with the hub's tracking parameter and no description", () => {
   assert.equal(
-    cardLine(entry({ path: "/training/modules/m/3-exercise-x", title: "Exercise - X y" })),
+    cardLine(
+      entry({
+        path: "/training/modules/m/3-exercise-x",
+        title: "Exercise - X y",
+      }),
+    ),
     '  <LinkCard title="X y" href="https://learn.microsoft.com/training/modules/m/3-exercise-x?WT.mc_id=studentamb_165290" />',
   );
 });
@@ -141,7 +193,10 @@ test("compareWithLabPage splits the pages into those on the lab page and those m
     }),
   ];
   const { present, missing } = compareWithLabPage({ handsOn, mdx: LAB_PAGE });
-  assert.deepEqual(present.map((e) => e.path), [handsOn[0].path]);
+  assert.deepEqual(
+    present.map((e) => e.path),
+    [handsOn[0].path],
+  );
   assert.deepEqual(
     missing.map((e) => [e.domain, e.path]),
     [
@@ -186,17 +241,36 @@ function world({ lab = true, routing = {} } = {}) {
 const capture = () => {
   const out = [];
   const err = [];
-  return { out, err, log: (m) => out.push(String(m)), error: (m) => err.push(String(m)) };
+  return {
+    out,
+    err,
+    log: (m) => out.push(String(m)),
+    error: (m) => err.push(String(m)),
+  };
 };
 
 test("the command lists what the lab page lacks as ready cards and changes nothing", () => {
   const w = world();
   const c = capture();
-  assert.equal(main(["AZ-104", "--routing", w.file], { root: w.root, log: c.log, error: c.error }), 0, c.err.join("\n"));
+  assert.equal(
+    main(["AZ-104", "--routing", w.file], {
+      root: w.root,
+      log: c.log,
+      error: c.error,
+    }),
+    0,
+    c.err.join("\n"),
+  );
   const text = c.out.join("\n");
-  assert.match(text, /AZ-104: 2 hands-on pages were accepted for the course; 1 are on the lab page already, 1 are missing\./);
+  assert.match(
+    text,
+    /AZ-104: 2 hands-on pages were accepted for the course; 1 are on the lab page already, 1 are missing\./,
+  );
   assert.match(text, /Its tabs: Microsoft Learn, Networking, Microsoft GitHub/);
-  assert.match(text, /# implement-and-manage-virtual-networking\n  <LinkCard title="Tutorial: A" href="https:\/\/learn\.microsoft\.com\/azure\/dns\/tutorial-a\?WT\.mc_id=studentamb_165290" \/>   <!-- tutorial; docs -->/);
+  assert.match(
+    text,
+    /# implement-and-manage-virtual-networking\n  <LinkCard title="Tutorial: A" href="https:\/\/learn\.microsoft\.com\/azure\/dns\/tutorial-a\?WT\.mc_id=studentamb_165290" \/>   <!-- tutorial; docs -->/,
+  );
   assert.match(text, /Missing by kind: 1 tutorial\./);
 });
 
@@ -206,20 +280,41 @@ test("input problems are exit code 2: usage, a missing or wrong routing file, a 
     [[], /An exam code is required/],
     [["AZ-104"], /--routing FILE is required/],
     [["AZ-104", "--nope"], /Unknown option --nope/],
-    [["AZ-104", "--routing", join(w.root, "none.json")], /Cannot read the routing file/],
+    [
+      ["AZ-104", "--routing", join(w.root, "none.json")],
+      /Cannot read the routing file/,
+    ],
     [["AZ-900", "--routing", w.file], /is for AZ-104, not AZ-900/],
   ];
   for (const [argv, message] of cases) {
     const c = capture();
-    assert.equal(main(argv, { root: w.root, log: c.log, error: c.error }), 2, argv.join(" "));
+    assert.equal(
+      main(argv, { root: w.root, log: c.log, error: c.error }),
+      2,
+      argv.join(" "),
+    );
     assert.match(c.err.join("\n"), message);
   }
   const bad = world({ routing: { kind: "queue" } });
   const c = capture();
-  assert.equal(main(["AZ-104", "--routing", bad.file], { root: bad.root, log: c.log, error: c.error }), 2);
+  assert.equal(
+    main(["AZ-104", "--routing", bad.file], {
+      root: bad.root,
+      log: c.log,
+      error: c.error,
+    }),
+    2,
+  );
   assert.match(c.err.join("\n"), /is not a routing file/);
   const none = world({ lab: false });
   const c2 = capture();
-  assert.equal(main(["AZ-104", "--routing", none.file], { root: none.root, log: c2.log, error: c2.error }), 2);
+  assert.equal(
+    main(["AZ-104", "--routing", none.file], {
+      root: none.root,
+      log: c2.log,
+      error: c2.error,
+    }),
+    2,
+  );
   assert.match(c2.err.join("\n"), /AZ-104 has no lab page/);
 });

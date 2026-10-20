@@ -120,7 +120,7 @@ export function judgedFor(batch, { judge, skeptic } = {}) {
 
 /**
  * A judged file with something for every gate: P1 and P2 core with a good quote, P3 supporting (the skeptic refutes the
- * units), P4 supporting (always the maintainer's call), the rest rejected.
+ * units), P4 supporting (the skeptic refutes them, so they wait for the maintainer), the rest rejected.
  */
 export function exampleJudged() {
   const { batches: bs } = batches();
@@ -143,7 +143,7 @@ export function exampleJudged() {
             }
           : j,
     skeptic: (a, c) =>
-      c.source === "P3" && c.target.kind === "unit"
+      (c.source === "P3" && c.target.kind === "unit") || c.source === "P4"
         ? { ...a, stance: "refute", reason: "Another exam's job." }
         : a,
   });

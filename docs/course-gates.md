@@ -1,6 +1,6 @@
 # Approval gates: what is accepted, what is rejected, what waits for the maintainer
 
-*Runbook of the approval gates and the review queue (`scripts/course-gates.mjs`, `scripts/lib/course-gates.mjs`). Repo-wide rules live in [AGENTS.md](../AGENTS.md). Its input is the judged files of [course-judging.md](course-judging.md); the approval policy it applies is `approvalPolicy` of [courses.md](courses.md).*
+*Runbook of the approval gates and the review queue (`scripts/course-gates.mjs`, `scripts/lib/course-gates.mjs`). Repo-wide rules live in [AGENTS.md](../AGENTS.md). Its input is the judged files of [course-judging.md](course-judging.md); the rule about who approves a pick is in [courses.md](courses.md).*
 
 A judged candidate has a verdict, a quote that was verified, and a skeptic's opinion. The gates turn that into a **decision** for every candidate of an exam:
 
@@ -19,22 +19,32 @@ Applied in this order; the first that fits decides.
 1. **The maintainer already decided it** (same task and page): the decision stands, as an `accept` with its class and relation or a `reject`. The one exception is a page that is no longer a current Learn page, which is rejected whatever was decided.
 2. **An excluded sub-product:** a documentation page whose family (`/entra/id-governance`) the maintainer excluded is rejected.
 3. **Not a current Learn page** (with `--urls`: learnsync's validator says it moved, was removed or is a landing page) is rejected.
+3a. **Classic material** (`scripts/lib/course-classic.mjs`: the word "classic" in the title or an address segment) is rejected and nobody is asked: a course leaves it out.
+3b. **Hands-on material** (`scripts/lib/course-handson.mjs`: an exercise, a simulation, a guided or challenge project, a tutorial, a quickstart) is not in the course, so there is nothing to decide for it and the maintainer is not asked (maintainer, 2026-10-20: 4 of 60 sampled queue items were exercises or tutorials that belong on the lab page). A page the judge **picked** is accepted, whatever the confidence and the skeptic say (they are kept in `warnings`), and the builder sends it to the lab page; one the judge **rejected**, or whose quote is not in the evidence, is rejected. The decision's `via` is `hands-on`.
 4. **The judge rejected it with `high` or `medium` confidence** is a rejection. When the judge flagged it `other-role`, `other-sub-product` or `licensing-tier`, the decision carries `remember: true`: an out-of-scope page worth remembering in the course file's rejected list.
 5. **The judge rejected it but is not sure** (`confidence: low`) is **never dismissed: it is queued** ("the judge rejected it but is not sure"), because the maintainer is the final judge of every page the AI is unsure about (rule of 2026-10-19). It has no proposed class (`proposal: { "verdict": "reject" }`); to accept it, the maintainer gives a `class` (and a `relation` for `supporting`) and a `note`, which becomes the pick's reason and evidence in the course ([course-build.md](course-build.md)). To reject it, nothing more is needed.
-6. **A pick** is accepted unless one of these queues it (all the reasons are listed):
+6. **A pick is accepted when the judge picked it and the skeptic did not refute it**, whatever its source (`P1` to `P5`), class and confidence (maintainer, 2026-10-20, in two steps; before that a page found by search only, named by a model only, core of another exam's course, a deeper dive or one the judge was unsure of always waited). Three things are **blockers**: any of them queues the pick, and all the reasons are listed.
 
-| Reason | Rule |
-|--------|------|
-| Maintainer only | The approval policy: any `P4` (found by search only) or `P5` (named by a model only), `core` material of another exam's course (`P3`), and any `deeper` dive. |
-| Disagreement | The skeptic refuted or downgraded it. A downgrade proposes `supporting` with the skeptic's relation. |
+| Blocker | Rule |
+|---------|------|
+| Refuted | The skeptic refuted it (`refute`: the page is wrong, see [course-judging.md](course-judging.md)). |
 | Not challenged | No skeptic answered for it (`merge --no-skeptic`). |
-| Not sure | The judge's confidence is `low`. |
-| Flagged | Either answer carries a flag: `other-role`, `other-sub-product`, `licensing-tier`, `level-mismatch`, `preview`, `outdated`. |
-| Quote | The quote is not in the evidence, or, for a `core` pick, it carries less than half of the task's distinctive words (`quoteTermCoverage`). A `supporting` pick is not held to the task's words: by definition they are not the guide's. |
-| Another sub-product | The generator marked it `foreignFamily`, `siblingSection` or `anchored: false`: not in the families of the task's anchor. |
-| Old | Not modified for more than 24 months (the lastmod of `docs-urls.txt` for a documentation page, the catalog's `lastModified` for a module and its units). An unknown age is never a reason. |
+| Quote not in the evidence | The quote the judge gave is not in the page text it was shown. |
 
-An accepted pick is one the gates, not a person, took: its decision is `by: gates` and becomes `by: auto` in the course file. The model case, AZ-104's entitlement-management page under "Manage external users", is caught twice: a judge that saw it rejects it with `other-sub-product` (and the rejection is remembered); a judge that missed it gets `other-sub-product` from the skeptic or the generator's signals, and the page is queued.
+Six things used to queue a pick as well and are now **warnings**: an accepted pick keeps them in the decision's `warnings` (and the `gate` summary counts them), so a person can still find the picks that carry one; with `acceptWithWarnings: false` in the gate options they queue again.
+
+| Warning | Rule |
+|---------|------|
+| The judge is not sure | The judge's confidence is `low`. |
+| Downgraded | The skeptic downgraded it: both say the page belongs, only the class is disputed, so the pick is accepted as `supporting` with the skeptic's relation. |
+| Flagged | Either answer carries a flag: `other-role`, `other-sub-product`, `licensing-tier`, `level-mismatch`, `preview`, `outdated`. |
+| Weak quote | For a `core` pick, the quote carries less than half of the task's distinctive words (`quoteTermCoverage`). A `supporting` pick is not held to the task's words: by definition they are not the guide's. |
+| Another sub-product | The generator marked it `foreignFamily`, `siblingSection` or `anchored: false`: not in the families of the task's anchor. |
+| Old | Not modified for more than 24 months (the lastmod of `docs-urls.txt` for a documentation page, the catalog's `lastModified` for a module and its units). An unknown age is never a warning. |
+
+**Why this is safe enough, and what is not measured.** Two random samples of AZ-104 were marked by the maintainer. First, 60 pages the judge was sure of and the skeptic upheld (12 the old gates accepted, 48 they would have queued, 18 of those with a warning): all 60 kept; for the 48 the 95% lower bound is about 93%. Then 60 of the 243 pages that still waited: the maintainer added 48 of them, among them 15 of 17 pages the judge was unsure of and 9 of 9 the skeptic only downgraded (small samples: the lower bounds are about 66% and 70%), and also 13 of 19 the skeptic had refuted and 11 of 15 unsure rejects, which is why those two still wait. A person has not checked picks beyond the samples. The skeptic is the defence against the wrong-product page (the entitlement management card, below): a card it refutes is still queued, and the skeptic's prompt now says what a refutation is for.
+
+An accepted pick is one the gates, not a person, took: its decision is `by: gates` and becomes `by: auto` in the course file. The model case, AZ-104's entitlement-management page under "Manage external users", is caught twice: a judge that saw it rejects it with `other-sub-product` (and the rejection is remembered); a judge that missed it gets `other-sub-product` from the skeptic or the generator's signals, and the page is queued if the skeptic refutes it.
 
 ## The queue
 
@@ -86,7 +96,7 @@ node scripts/course-gates.mjs gate AZ-104                       # the answered i
 - **From decisions to picks.** The gated file lists every candidate with its decision, class, relation and who decided; the builder ([course-build.md](course-build.md)) turns the accepted ones into the picks of a course file, with `by: auto` or `maintainer` and the remembered rejections in its `rejected` list.
 - **Per-task rejections only.** A page rejected under one task can come up under another; only a whole documentation family can be excluded for an exam.
 - **Freshness of a decision.** A remembered `accept` is kept while the page is current; it is not asked again when the page changes. The rebuild check ([courses.md](courses.md)) is what notices a changed module.
-- **One exam has been gated, with no answers yet.** AZ-104, on 2026-10-17 and again on 2026-10-19 under the rule above. The queue is long by design: every `P4` page, every unsure pick and every unsure reject waits. Whether the pilot's "at most 25% queued" target still makes sense with that rule is the maintainer's to decide.
+- **One exam has been gated, with no answers yet.** AZ-104, on 2026-10-17, 2026-10-19 and 2026-10-20 (the third time with the rule above and the model proposals). The queue now holds what the AI is unsure about (an unsure judge, a skeptic that disagrees, an unsure reject); the pilot's "at most 25% queued" target can be measured again.
 
 ## Tests
 

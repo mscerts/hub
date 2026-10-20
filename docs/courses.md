@@ -26,8 +26,9 @@ A supporting pick must carry, in the file:
 
 The page has two tabs under every task, **"Learning"** (modules and units) and **"Documentation"** (documentation pages). The core picks come first in each; a supporting pick follows them with a description of its relation and its reason, so a learner can tell what the guide asks for from what the job adds. There is no tab of its own for supporting picks.
 
-**Two rules of the page** (maintainer, 2026-10-20), applied by the builder and checked by the validator:
+**Three rules of the page** (maintainer, 2026-10-20), applied by the builder and checked by the validator:
 
+- **Classic material is left out**: a page whose title has the word "classic", or whose address has a `classic` segment (`create-classic-file-share`), is the old way of doing something and is not learned ("azure classic is not a thing that needs to be learnt"). The candidate generator drops such a page before it is judged (hard filter `classic`, `scripts/lib/course-classic.mjs`); the builder and the validator catch one that got through. It is a word rule: outside Azure the word has other meanings (classic Outlook, the classic SharePoint experience), and Microsoft also uses it in the names of current pages ("classic file share", "classic subscription administrator roles"), which the rule drops too. Narrow it in `course-classic.mjs` if that matters for an exam.
 - **Hands-on material is on the lab page, not in the course**: an exercise, a simulation, a lab, a guided or challenge project, a tutorial, a quickstart, an Applied Skill (`scripts/lib/course-handson.mjs` decides). The lab page (`src/content/docs/labs/<area>/<code>.mdx`) collects it, so the course does not repeat it; what the builder takes out is listed in a routing file beside the course file, and `scripts/course-labs.mjs` finds what the lab page still lacks ([course-labs.md](course-labs.md)).
 - **A page appears once in the whole course.** A page accepted for several tasks stays under the task where it fits best; the routing file says where else it fits.
 
@@ -43,10 +44,7 @@ Rejections are remembered: a rejected target is listed in the file's `rejected` 
 | `P4` | Anything else, found by searching the catalogs. |
 | `P5` | A page a model named from its own knowledge for the task and a script confirmed exists ([course-proposals.md](course-proposals.md)). |
 
-`approvalPolicy` (`scripts/lib/course-format.mjs`) says who may approve a pick:
-
-- **Only the maintainer** (`decision.by` must be `maintainer`): any `P4` or `P5` pick, core material from `P3`, and any `deeper` pick.
-- **The automatic gates may accept it** (`decision.by` may be `auto`): core picks from `P1`/`P2` and supporting picks from `P1`-`P3` that are not `deeper`. The validator only checks that the policy is respected; what the gates accept is decided where they run, and everything they do not accept is the maintainer's decision.
+**Who approves a pick** (maintainer, 2026-10-20). The automatic gates accept a pick of **any source, class and confidence** when the judge picked it, the skeptic did not refute it and the quote is in the evidence; its `decision.by` is `auto`. That a page was found by search only (`P4`) or named by a model only (`P5`), is core material of another exam's course (`P3`), is a deeper dive, or that the judge was unsure of it or the skeptic only downgraded it, no longer sends it to the maintainer: two random samples of AZ-104 marked by the maintainer support it ([course-gates.md](course-gates.md)). Hands-on pages and classic pages are decided by the gates alone. What the gates do not accept (a skeptic that refuted the pick or did not answer, a quote that is not in the evidence, an unsure reject) is the maintainer's decision (`decision.by: maintainer`). The validator checks that a decider is named, not who it was.
 
 ## The course file
 
@@ -95,7 +93,7 @@ What `validate` checks (`validateCourse`):
 1. The file's own shape: `schemaVersion`, `code`, `name`, the `inputs` (including the `scope` snapshot and a `scopeFingerprint` that matches it), a non-empty `domains`.
 2. **The tree is the study guide's tree**, domain by domain, group by group, task by task, with the same task `key`s in the same order. A changed guide shows up here (and as a warning when `inputs.guideHash` is no longer the guide's hash).
 3. Every pick: a canonical path of the right shape for its kind, a title, a class and a source from the lists above, `relation`/`why`/`evidence` where required, a `decision` of `{ by, at }`, and the approval policy.
-4. **No target twice in the course** (a page is shown once, under one task), **no hands-on page** (it belongs on the lab page, see above; the check reads the pick's title and address), and nothing from `rejected` back under the task it was rejected for.
+4. **No target twice in the course** (a page is shown once, under one task), **no classic page**, **no hands-on page** (it belongs on the lab page, see above; the check reads the pick's title and address), and nothing from `rejected` back under the task it was rejected for.
 5. **Every target is a current Learn page** (the CLI asks learnsync's validator; `--live` also asks learn.microsoft.com about what the caches cannot settle). A moved page is an error, with where it went. A title that is not the catalog title is a warning.
 
 `render` refuses a file that fails the checks that need no network, so a page is never generated from a broken file. The rendered page has exactly the guide's tree (`course-source.mjs --check <page>` confirms it).

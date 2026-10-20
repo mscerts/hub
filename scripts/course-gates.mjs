@@ -290,6 +290,14 @@ export async function main(argv, deps = {}) {
     log(
       `${code}: ${s.candidates} candidates: ${s.accepted} accepted (${s.acceptedCore} core, ${s.acceptedSupporting} supporting; ${s.acceptedByMaintainer} by earlier decisions), ${s.rejected} rejected (${s.rejectedByJudge} by the judge, ${s.rejectedRemembered} remembered, ${s.rejectedExcluded} in excluded sub-products, ${s.rejectedNotCurrent} not current), ${s.queued} for the maintainer (${s.queuedJudgeRejects} of them pages the judge rejected without being sure).`,
     );
+    if (s.acceptedWithWarnings)
+      log(
+        `  ${s.acceptedWithWarnings} of the accepted carry a warning the gates accepted anyway (the judge picked them and the skeptic did not refute them): ${Object.entries(
+          s.acceptedWarnings,
+        )
+          .map(([w, n]) => `${w} (${n})`)
+          .join(", ")}`,
+      );
     for (const [reason, n] of Object.entries(s.queueReasons))
       log(`  queued: ${reason} (${n})`);
     log(`Wrote ${join(outDir, `${code}.gated.json`)} and ${queueFile}`);

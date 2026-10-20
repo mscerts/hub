@@ -21,9 +21,11 @@
  * the whole exam, and says so.
  *
  * Hard filters (a page failing one is counted, never listed): not-in-cache, moved, removed, not-english,
- * retired, boilerplate (a link that nearly every module lists), out-of-scope-product.
+ * retired, classic (the old way of doing something, course-classic.mjs), boilerplate (a link that nearly every
+ * module lists), out-of-scope-product.
  */
 
+import { isClassic } from "./course-classic.mjs";
 import { LexicalIndex, queryTerms } from "./course-lexical.mjs";
 import { learnPath } from "./course-scope.mjs";
 import { flattenTasks } from "./course-status.mjs";
@@ -412,6 +414,7 @@ export function hardFilter({ kind, path, title }, pools) {
     /^\s*(retired|deprecated)\s*:/i.test(title ?? "")
   )
     return "retired";
+  if (isClassic({ title, path })) return "classic";
   if (kind === "docs") {
     if (pools.docPaths && !pools.docPaths.has(path)) return "not-in-cache";
     if (pools.movedFrom.has(path)) return "moved";

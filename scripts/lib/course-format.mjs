@@ -18,6 +18,7 @@
  *               of managing external users for an Azure administrator).
  */
 
+import { isClassic } from "./course-classic.mjs";
 import { handsOnReason } from "./course-handson.mjs";
 import { diffTrees, squish } from "./course-guide.mjs";
 import { fingerprintOfSnapshot } from "./course-scope.mjs";
@@ -55,21 +56,13 @@ export const RELATIONS = Object.freeze({
 export const SOURCES = Object.freeze(["P1", "P2", "P3", "P4", "P5"]);
 
 export const PICK_KINDS = Object.freeze(["module", "unit", "docs"]);
-export const DECIDERS = Object.freeze(["auto", "maintainer"]);
-
 /**
- * Who may approve a pick: "maintainer" = only the maintainer; "gates" = the automatic gates may accept it
- * (the gates decide, docs/courses.md; anything they do not accept is queued for the maintainer).
- *   P4 (found by search only), P5 (named by a model only), core material of another exam's course, and a deeper
- *   dive are always the maintainer's call; everything else the gates may accept.
+ * Who decided a pick: `auto` (the gates took it: the judge was sure and the skeptic agreed, whatever the source;
+ * docs/course-gates.md) or `maintainer` (an answer of the review queue). The format does not limit which sources
+ * the gates may accept (maintainer, 2026-10-20: a sure and agreed pick of any source goes in), so the validator
+ * checks that a decider is named, not who it was.
  */
-export function approvalPolicy(pick) {
-  if (pick.source === "P4" || pick.source === "P5") return "maintainer";
-  if (pick.class === "core")
-    return pick.source === "P3" ? "maintainer" : "gates";
-  if (pick.relation === "deeper") return "maintainer";
-  return "gates";
-}
+export const DECIDERS = Object.freeze(["auto", "maintainer"]);
 
 const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
 const CANONICAL_PATH = /^\/[a-z0-9][a-z0-9._~()%/-]*$/;
@@ -143,16 +136,6 @@ export function pickProblems(pick) {
   const decision = pick.decision;
   if (!decision || !DECIDERS.includes(decision.by) || !isDay(decision.at))
     problems.push("decision must be { by: auto | maintainer, at: YYYY-MM-DD }");
-  else if (
-    CLASSES.includes(pick.class) &&
-    SOURCES.includes(pick.source) &&
-    approvalPolicy(pick) === "maintainer" &&
-    decision.by !== "maintainer"
-  ) {
-    problems.push(
-      `a ${pick.class} pick from ${pick.source}${pick.relation ? ` (${pick.relation})` : ""} needs the maintainer's approval, not "${decision.by}"`,
-    );
-  }
   if (pick.was !== undefined && !present(pick.was))
     problems.push("was must be a non-empty path when present");
   // `via`: the module whose last unit lists a documentation page. It lets the rebuild check trace a change of
@@ -395,6 +378,10 @@ export function validateCourse(course, { guide, isCurrent, titleOf } = {}) {
               `${task.key}: ${path} is already shown under ${first}: a page appears once in a course`,
             );
           else shownAt.set(path, task.key);
+          if (isClassic({ title: pick.title, path }))
+            errors.push(
+              `${task.key}: ${path} is classic material; a course leaves it out`,
+            );
           const handsOn = handsOnReason({
             kind: pick.target?.kind,
             path,

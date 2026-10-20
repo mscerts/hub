@@ -196,7 +196,9 @@ test("the builder leaves a hands-on page out of the course and lists it in the r
   });
   assert.equal(result.ok, true, result.problems.join("\n"));
   assert.ok(
-    !picksOf(result.course).some((p) => p.pick.target.path === target.target.path),
+    !picksOf(result.course).some(
+      (p) => p.pick.target.path === target.target.path,
+    ),
   );
   assert.deepEqual(
     result.routing.handsOn.map((e) => [e.path, e.kind, e.reason, e.title]),
@@ -214,7 +216,10 @@ test("the builder leaves a hands-on page out of the course and lists it in the r
     taskKeysOf.filter((k) => k !== undefined),
     "every task it was accepted for",
   );
-  assert.deepEqual(validateCourse(result.course, { guide: guide() }).errors, []);
+  assert.deepEqual(
+    validateCourse(result.course, { guide: guide() }).errors,
+    [],
+  );
 });
 
 test("the builder shows a page once, under the task where it fits best, and the routing says where else it fits", () => {

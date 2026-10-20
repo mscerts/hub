@@ -49,13 +49,16 @@ export function onLabPage(entry, paths) {
 
 /**
  * The text of a lab-page card: the page's title without the "Exercise - " or "Simulation - " the lab page leaves
- * off (every card there is an exercise), the first letter in capitals. A tutorial or a quickstart keeps its name.
+ * off (every card there is an exercise), the first letter in capitals, no full stop at the end. A tutorial or a
+ * quickstart keeps its name.
  */
 export function cardTitle(entry) {
   const title = squish(entry.title);
   const bare = squish(title.replace(PREFIX, ""));
   const text = bare === "" ? title : bare;
-  return `${text[0].toUpperCase()}${text.slice(1)}`.replace(/"/g, "'");
+  return `${text[0].toUpperCase()}${text.slice(1)}`
+    .replace(/"/g, "'")
+    .replace(/\.$/, "");
 }
 
 /** The LinkCard line for a hands-on page (the lab page's own style: no description, no target). */
@@ -75,7 +78,10 @@ export function compareWithLabPage({ handsOn, mdx }) {
   const present = [];
   const missing = [];
   for (const entry of handsOn) {
-    const withDomain = { ...entry, domain: entry.tasks?.[0]?.split("/")[0] ?? "" };
+    const withDomain = {
+      ...entry,
+      domain: entry.tasks?.[0]?.split("/")[0] ?? "",
+    };
     (onLabPage(entry, paths) ? present : missing).push(withDomain);
   }
   missing.sort(

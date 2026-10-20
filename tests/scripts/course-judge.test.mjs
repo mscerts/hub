@@ -571,6 +571,12 @@ test("the skeptic gets the picks only, each with the judge's claim", () => {
     JSON.parse(prompt.match(/## The batch\n\n```json\n([\s\S]*?)\n```/)[1]),
     sk,
   );
+  // what a skeptic may and may not refute for (maintainer, 2026-10-20)
+  assert.match(prompt, /\*\*Refute only a page that is wrong\*\*/);
+  assert.match(prompt, /more basic or deeper than the exam asks/);
+  assert.match(prompt, /no cap on the number of pages/);
+  assert.match(prompt, /answer `downgrade`, not `refute`/);
+  assert.ok(!/is it the right level/.test(prompt));
 });
 
 test("the skeptic's answer is checked like the judge's", () => {

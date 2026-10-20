@@ -47,7 +47,15 @@ function parseArgs(argv) {
 export function labPageFile(code, root = repoRoot) {
   const area = AREA_BY_PREFIX[code.split("-")[0]];
   return area
-    ? join(root, "src", "content", "docs", "labs", area, `${code.toLowerCase()}.mdx`)
+    ? join(
+        root,
+        "src",
+        "content",
+        "docs",
+        "labs",
+        area,
+        `${code.toLowerCase()}.mdx`,
+      )
     : null;
 }
 
@@ -109,7 +117,9 @@ export function main(argv, deps = {}) {
     log(
       `\nMissing by kind: ${Object.entries(byReason)
         .map(([k, v]) => `${v} ${k}`)
-        .join(", ")}. Titles are written like the lab page's (${cardTitle(missing[0])}).`,
+        .join(
+          ", ",
+        )}. Titles are written like the lab page's (${cardTitle(missing[0])}).`,
     );
   }
   return 0;

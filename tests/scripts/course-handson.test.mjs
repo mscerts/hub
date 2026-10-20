@@ -65,27 +65,80 @@ test("a guided or challenge project is hands-on, as a module and for each of its
 });
 
 test("a docs page that is a tutorial or a quickstart is hands-on, by its title or by its address", () => {
-  assert.equal(docs("Tutorial: Filter network traffic with a network security group (NSG)"), "tutorial");
-  assert.equal(docs("Quickstart - Create a Windows VM in the Azure portal"), "quickstart");
-  assert.equal(docs("Log Analytics Tutorial: Query and Analyze Log Data - Azure Monitor"), "tutorial");
+  assert.equal(
+    docs(
+      "Tutorial: Filter network traffic with a network security group (NSG)",
+    ),
+    "tutorial",
+  );
+  assert.equal(
+    docs("Quickstart - Create a Windows VM in the Azure portal"),
+    "quickstart",
+  );
+  assert.equal(
+    docs("Log Analytics Tutorial: Query and Analyze Log Data - Azure Monitor"),
+    "tutorial",
+  );
   // the title lost its prefix, the address kept it
-  assert.equal(docs("Create template - Visual Studio Code", "/azure/azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code"), "quickstart");
-  assert.equal(docs("Enable Microsoft Entra self-service password reset", "/entra/identity/authentication/tutorial-enable-sspr"), "tutorial");
-  assert.equal(docs("Build policies to enforce compliance", "/azure/governance/policy/tutorials/create-and-manage"), "tutorial");
-  assert.equal(docs("Create a virtual machine", "/azure/virtual-machines/windows/quick-create-portal"), "quickstart");
+  assert.equal(
+    docs(
+      "Create template - Visual Studio Code",
+      "/azure/azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code",
+    ),
+    "quickstart",
+  );
+  assert.equal(
+    docs(
+      "Enable Microsoft Entra self-service password reset",
+      "/entra/identity/authentication/tutorial-enable-sspr",
+    ),
+    "tutorial",
+  );
+  assert.equal(
+    docs(
+      "Build policies to enforce compliance",
+      "/azure/governance/policy/tutorials/create-and-manage",
+    ),
+    "tutorial",
+  );
+  assert.equal(
+    docs(
+      "Create a virtual machine",
+      "/azure/virtual-machines/windows/quick-create-portal",
+    ),
+    "quickstart",
+  );
 });
 
 test("an ordinary documentation page, a concept or a how-to, stays in the course", () => {
-  assert.equal(docs("How to manage groups", "/entra/fundamentals/how-to-manage-groups"), null);
-  assert.equal(docs("What is Azure Files?", "/azure/storage/files/storage-files-introduction"), null);
-  assert.equal(docs("Azure Monitor metrics aggregation and display explained", "/azure/azure-monitor/metrics/metrics-aggregation-explained"), null);
+  assert.equal(
+    docs("How to manage groups", "/entra/fundamentals/how-to-manage-groups"),
+    null,
+  );
+  assert.equal(
+    docs(
+      "What is Azure Files?",
+      "/azure/storage/files/storage-files-introduction",
+    ),
+    null,
+  );
+  assert.equal(
+    docs(
+      "Azure Monitor metrics aggregation and display explained",
+      "/azure/azure-monitor/metrics/metrics-aggregation-explained",
+    ),
+    null,
+  );
   // the tutorial rule is for documentation pages: a unit is judged by its own title
   assert.equal(unit("Tutorial overview"), null);
 });
 
 test("an Applied Skill is hands-on whatever its kind", () => {
   assert.equal(
-    docs("Deploy and configure Azure Monitor", "/credentials/applied-skills/deploy-and-configure-azure-monitor"),
+    docs(
+      "Deploy and configure Azure Monitor",
+      "/credentials/applied-skills/deploy-and-configure-azure-monitor",
+    ),
     "applied skill",
   );
 });

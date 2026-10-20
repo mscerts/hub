@@ -5,7 +5,6 @@ import {
   COURSE_SCHEMA_VERSION,
   RELATIONS,
   SOURCES,
-  approvalPolicy,
   courseStats,
   eachPick,
   moduleOfPick,
@@ -36,26 +35,6 @@ test("the vocabulary of the format is fixed: two classes, four relations, five s
   for (const relation of Object.values(RELATIONS))
     assert.ok(relation.label && relation.meaning);
   assert.equal(COURSE_SCHEMA_VERSION, 1);
-});
-
-test("approvalPolicy: only the gates may accept P1/P2 core picks and non-deeper supporting picks from P1-P3", () => {
-  const rows = [
-    [{ class: "core", source: "P1" }, "gates"],
-    [{ class: "core", source: "P2" }, "gates"],
-    [{ class: "core", source: "P3" }, "maintainer"],
-    [{ class: "core", source: "P4" }, "maintainer"],
-    [{ class: "supporting", source: "P1", relation: "prerequisite" }, "gates"],
-    [{ class: "supporting", source: "P2", relation: "operate" }, "gates"],
-    [{ class: "supporting", source: "P3", relation: "same-workflow" }, "gates"],
-    [{ class: "supporting", source: "P3", relation: "deeper" }, "maintainer"],
-    [{ class: "supporting", source: "P1", relation: "deeper" }, "maintainer"],
-    [
-      { class: "supporting", source: "P4", relation: "prerequisite" },
-      "maintainer",
-    ],
-  ];
-  for (const [input, expected] of rows)
-    assert.equal(approvalPolicy(input), expected, JSON.stringify(input));
 });
 
 test("a valid pick has no problems", () => {
@@ -183,26 +162,31 @@ test("decision rules: the right shape, and the maintainer where the policy says 
     ),
     /decision must be/,
   );
+  // the gates may accept a pick of any source: the format checks that a decider is named, not who it was
   const p4 = pick({
     source: "P4",
     evidence: "quote",
     decision: { by: "auto", at: "2026-10-17" },
   });
-  assert.match(
-    pickProblems(p4).join("|"),
-    /needs the maintainer's approval, not "auto"/,
-  );
+  assert.deepEqual(pickProblems(p4), []);
   assert.deepEqual(
     pickProblems({ ...p4, decision: { by: "maintainer", at: "2026-10-17" } }),
     [],
   );
-  const deeper = supporting({
-    relation: "deeper",
-    decision: { by: "auto", at: "2026-10-17" },
-  });
+  assert.deepEqual(
+    pickProblems(
+      supporting({
+        relation: "deeper",
+        decision: { by: "auto", at: "2026-10-17" },
+      }),
+    ),
+    [],
+  );
   assert.match(
-    pickProblems(deeper).join("|"),
-    /\(deeper\) needs the maintainer's approval/,
+    pickProblems(pick({ decision: { by: "robot", at: "2026-10-17" } })).join(
+      "|",
+    ),
+    /decision must be/,
   );
   // the maintainer may approve anything the gates could
   assert.deepEqual(

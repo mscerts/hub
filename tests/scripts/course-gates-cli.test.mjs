@@ -97,7 +97,11 @@ test("gate decides every candidate, writes the gated file and the queue, and say
     text,
     /^NET-100: \d+ candidates: \d+ accepted \(\d+ core, \d+ supporting; 0 by earlier decisions\), \d+ rejected/m,
   );
-  assert.match(text, / {2}queued: found by search only \(P4\) \(\d+\)/);
+  assert.match(text, / {2}queued: the skeptic refuted it \(\d+\)/);
+  assert.match(
+    text,
+    / {2}\d+ of the accepted carry a warning the gates accepted anyway \(the judge picked them and the skeptic did not refute them\): /,
+  );
   assert.match(text, /Wrote .*NET-100\.gated\.json and .*NET-100\.queue\.json/);
   assert.match(
     text,
@@ -331,7 +335,7 @@ test("loadAges reads the age of a page from learnsync: lastmod for documentation
   assert.equal(loadAges(join(base, "empty"), "2026-10-17"), null);
 });
 
-test("a gate run with learnsync data queues an old page", async () => {
+test("a gate run with learnsync data accepts an old page with a warning", async () => {
   const w = world();
   const dir = join(w.base, "learnsync");
   mkdirSync(join(dir, "data"), { recursive: true });
@@ -353,8 +357,8 @@ test("a gate run with learnsync data queues an old page", async () => {
   const item = readJson(join(w.out, "NET-100.gated.json")).items.find(
     (i) => i.target.path === docs.target.path && i.source === "P2",
   );
-  assert.equal(item.gate.decision, "queue");
-  assert.match(item.gate.reasons.join(), /not modified for \d+ months/);
+  assert.equal(item.gate.decision, "accept");
+  assert.match(item.gate.warnings.join(), /not modified for \d+ months/);
 });
 
 test("the queue is described in a readable form, task by task", async () => {

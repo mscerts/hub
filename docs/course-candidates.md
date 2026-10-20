@@ -47,6 +47,7 @@ A page that fails one is counted per task (`dropped`, with up to three samples e
 | `removed` | A module in the catalog's tombstones |
 | `not-english` | A locale in the path, or a title that is mostly not Latin script |
 | `retired` | `/previous-versions/` or `/archive/` in the path, or `(retired)` / `[deprecated]` / `Retired:` in the title |
+| `classic` | The title has the word "classic", or an address segment does (`create-classic-file-share`, `/classic/`): the old way of doing something, which a course does not teach (`scripts/lib/course-classic.mjs`) |
 | `boilerplate` | A documentation page that more than 25 modules list |
 | `out-of-scope-product` | The product constraint above |
 

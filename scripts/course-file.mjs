@@ -94,7 +94,9 @@ function labPageOf(code, root) {
   const area = AREA_BY_PREFIX[code.split("-")[0]];
   const slug = code.toLowerCase();
   return area &&
-    existsSync(join(root, "src", "content", "docs", "labs", area, `${slug}.mdx`))
+    existsSync(
+      join(root, "src", "content", "docs", "labs", area, `${slug}.mdx`),
+    )
     ? `/certs/labs/${area}/${slug}/`
     : null;
 }

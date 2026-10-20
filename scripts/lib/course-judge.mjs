@@ -560,7 +560,11 @@ ${Object.entries(STANCES)
   .map(([key, meaning]) => `- \`${key}\`: ${meaning}.`)
   .join("\n")}
 
-Check in particular: does the candidate really cover the task **as the guide words it** (for \`core\`), is it really part of the job (for \`supporting\`), is it about another role, product area, sub-product or licensing tier, is it the right level, is it retired or in preview, and does the quote really say what the judge claims. \`reason\` is one plain sentence (at most ${MAX_WHY_CHARS} characters). A \`downgrade\` is only for a \`core\` pick and needs a \`relation\`. \`flags\` adds what you found wrong (none is fine). A \`quote\` is optional; if you give one it must be copied exactly from one snippet of the candidate's \`evidence\`.
+Check in particular: does the candidate really cover the task **as the guide words it** (for \`core\`), is it really part of the job (for \`supporting\`), is it about another role, product area, sub-product or licensing tier, is it retired or in preview, and does the quote really say what the judge claims.
+
+**Refute only a page that is wrong**: about another role, product area, sub-product or licensing tier, off the task and off the job around it, retired or only in preview, or whose quote does not say what the judge claims. These are **not** reasons to refute (maintainer's rules, 2026-10-20): the page is more basic or deeper than the exam asks (that is what a \`supporting\` pick with the relation \`prerequisite\` or \`deeper\` is for; at most downgrade a \`core\` pick), another page already covers the task as well or better (the course has no cap on the number of pages: a second good page is still a pick), or it is a neighbouring step instead of the task itself (that is \`supporting\`). When the page belongs but not as \`core\`, answer \`downgrade\`, not \`refute\`.
+
+\`reason\` is one plain sentence (at most ${MAX_WHY_CHARS} characters). A \`downgrade\` is only for a \`core\` pick and needs a \`relation\`. \`flags\` adds what you found wrong (none is fine). A \`quote\` is optional; if you give one it must be copied exactly from one snippet of the candidate's \`evidence\`.
 
 ## Answer format
 
