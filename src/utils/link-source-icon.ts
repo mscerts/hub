@@ -22,11 +22,23 @@ const platforms: [string, string][] = [
   ["whizlabs.com", "ph:exam"],
 ];
 
+/**
+ * The host whose icon a link shows. Microsoft's short links to its course
+ * recordings (https://aka.ms/AZ-104onYouTube) are YouTube playlists to a reader,
+ * so they show the YouTube icon; every other link shows its own host's.
+ */
+export function iconHostname(url: URL): string {
+  if (url.hostname === "aka.ms" && /onyoutube\/?$/i.test(url.pathname)) {
+    return "www.youtube.com";
+  }
+  return url.hostname;
+}
+
 export function linkSourceIcon(href: string): string {
   if (!/^(?:https?:)?\/\//i.test(href)) return "ph:book-open-text";
 
   try {
-    const hostname = new URL(href, "https://msfthub.com").hostname;
+    const hostname = iconHostname(new URL(href, "https://msfthub.com"));
     if (hostname === "msfthub.com" || hostname === "www.msfthub.com") {
       return "ph:book-open-text";
     }

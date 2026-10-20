@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
 import { linkRel } from "../../../utils/link-rel";
-import { linkSourceIcon } from "../../../utils/link-source-icon";
+import { iconHostname, linkSourceIcon } from "../../../utils/link-source-icon";
 import resourceFavicons from "@data/resource-favicons.json";
 interface Props extends HTMLAttributes<"a"> {
   title: string;
@@ -31,7 +31,7 @@ const isMicrosoftLearn =
 const favicon =
   isExternal && !isMicrosoftLearn
     ? (resourceFavicons as Record<string, { path: string }>)[
-        destination.hostname
+        iconHostname(destination)
       ]?.path
     : undefined;
 ---

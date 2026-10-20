@@ -93,6 +93,7 @@ test("every workflow file is valid YAML", async () => {
 const KNOWN_PUSHERS = [
   "applied-skills-monitor.yml",
   "beta-exam-monitor.yml",
+  "course-videos-monitor.yml",
   "lab-repos-check.yml",
   "learn-content-watch.yml",
   "learn-url-check.yml",

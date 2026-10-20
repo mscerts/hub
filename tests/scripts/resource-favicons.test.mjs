@@ -2,7 +2,11 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import sharp from "sharp";
 import ico from "sharp-ico";
-import { linkSourceIcon } from "../../src/utils/link-source-icon.ts";
+import {
+  iconHostname,
+  linkSourceIcon,
+} from "../../src/utils/link-source-icon.ts";
+import { readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import {
   faviconCandidates,
@@ -101,6 +105,35 @@ test("Microsoft Learn links retain the monochrome Windows icon rather than the h
   assert.equal(
     linkSourceIcon("https://sub.learn.microsoft.com/example"),
     "simple-icons:microsoft",
+  );
+});
+
+test("Microsoft's course recording short links show the YouTube icon, other aka.ms links keep their own", () => {
+  const host = (href) => iconHostname(new URL(href));
+  for (const href of [
+    "https://aka.ms/AZ-104onYouTube",
+    "https://aka.ms/AI-3016onYouTube/",
+    "http://aka.ms/sc-401onyoutube",
+  ]) {
+    assert.equal(host(href), "www.youtube.com", href);
+    assert.equal(linkSourceIcon(href), "simple-icons:youtube", href);
+  }
+  for (const href of [
+    "https://aka.ms/azure-free",
+    "https://aka.ms/AZ-104onYouTube/more",
+    "https://example.com/AZ-104onYouTube",
+  ]) {
+    assert.equal(host(href), new URL(href).hostname, href);
+  }
+  assert.equal(linkSourceIcon("https://aka.ms/azure-free"), "ph:globe");
+  // The icon host is one the favicon manifest has an entry for.
+  assert.ok(
+    JSON.parse(
+      readFileSync(
+        new URL("../../src/data_files/resource-favicons.json", import.meta.url),
+        "utf8",
+      ),
+    )["www.youtube.com"],
   );
 });
 

@@ -765,6 +765,18 @@ const WORKFLOWS = [
     ],
   },
   {
+    file: "course-videos-monitor.yml",
+    issues: [
+      {
+        title: "Course Videos Monitor Failed",
+        raiseWhen:
+          "failure() && steps.check.outputs.extraction_failed == 'true'",
+        clearWhen: "steps.check.outputs.extraction_failed == 'false'",
+        errorFile: "/tmp/course-videos-error.md",
+      },
+    ],
+  },
+  {
     file: "measureup-monitor.yml",
     issues: [
       {

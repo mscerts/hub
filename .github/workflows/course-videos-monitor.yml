@@ -1,0 +1,91 @@
+name: Course Videos Monitor
+
+on:
+  schedule:
+    - cron: "40 5 * * *" # Daily 05:40 UTC (a start time of its own; the push retry below is the protection)
+  workflow_dispatch:
+    inputs:
+      force_baseline:
+        description: "Accept the course videos aka.ms resolves now silently (no issue) and skip the too-many-new and too-many-gone failsafes, for example after Microsoft renamed its short links or recorded many courses at once"
+        type: boolean
+        default: false
+
+# A run is never cancelled half way through (a newer run waits instead): the
+# issue and the baseline commit below belong together.
+concurrency:
+  group: course-videos-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/course-videos-report.md
+      ERROR_FILE: /tmp/course-videos-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      - name: Check the Microsoft Learn course videos on YouTube
+        id: check
+        env:
+          FORCE_BASELINE: ${{ inputs.force_baseline && '1' || '' }}
+        run: node scripts/course-videos-check.mjs
+
+      # The issue comes BEFORE the baseline commit on purpose. A new course video
+      # stays "new" until the baseline that records it is on main, so when
+      # opening the issue fails the commit below is skipped (it has no
+      # status-check function in its condition) and the course is reported again
+      # by the next run or by "Re-run failed jobs". Committing first would lose
+      # the alert: the course would already be in the baseline. The same holds
+      # for a card of an exam page: it is remembered in the baseline.
+      - name: Create issue if course videos or exam page cards changed
+        id: issue
+        if: steps.check.outputs.changes_found == 'true'
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
+        with:
+          title: "${{ steps.check.outputs.issue_title }}"
+          content-filepath: /tmp/course-videos-report.md
+          labels: enhancement
+
+      # Also runs when only a playlist changed or a course stopped resolving:
+      # that refreshes the baseline without an issue, so it can never go stale.
+      - name: Commit updated course videos baseline
+        if: steps.check.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/course-videos.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update course videos baseline"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1
+
+      # ONE issue with a stable title for a failing check: a comment for every
+      # further failed run, closed by the next healthy run.
+      - name: Create issue if the check failed
+        if: failure() && steps.check.outputs.extraction_failed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs raise --title "Course Videos Monitor Failed" --label bug --file /tmp/course-videos-error.md
+
+      - name: Close the failure issue once the check runs again
+        if: steps.check.outputs.extraction_failed == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs clear --title "Course Videos Monitor Failed" --label bug --comment "The Course Videos Monitor ran normally again. Closing this issue."
