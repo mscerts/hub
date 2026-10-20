@@ -24,7 +24,7 @@ const supporting = (extra = {}) =>
     ...extra,
   });
 
-test("the vocabulary of the format is fixed: two classes, four relations, four sources", () => {
+test("the vocabulary of the format is fixed: two classes, four relations, five sources", () => {
   assert.deepEqual(CLASSES, ["core", "supporting"]);
   assert.deepEqual(Object.keys(RELATIONS), [
     "prerequisite",
@@ -32,7 +32,7 @@ test("the vocabulary of the format is fixed: two classes, four relations, four s
     "operate",
     "deeper",
   ]);
-  assert.deepEqual(SOURCES, ["P1", "P2", "P3", "P4"]);
+  assert.deepEqual(SOURCES, ["P1", "P2", "P3", "P4", "P5"]);
   for (const relation of Object.values(RELATIONS))
     assert.ok(relation.label && relation.meaning);
   assert.equal(COURSE_SCHEMA_VERSION, 1);
@@ -312,6 +312,12 @@ test("picks: duplicates under one task, and a rejected pick coming back, are err
     validateCourse(dup, { guide }).errors.join("|"),
     /appears twice under one task/,
   );
+  const twoTasks = structuredClone(course);
+  twoTasks.domains[0].groups[0].tasks[1].picks.push(pick());
+  assert.match(
+    validateCourse(twoTasks, { guide }).errors.join("|"),
+    /\/training\/modules\/intro-to-github is already shown under .*: a page appears once in a course/,
+  );
   const back = structuredClone(course);
   back.domains[0].groups[0].tasks[0].picks.push(
     pick({
@@ -489,5 +495,46 @@ test("everything a pick depends on is recorded: P1/P2 modules in the official sc
       { guide },
     ).ok,
     true,
+  );
+});
+
+test("picks: hands-on material belongs on the lab page, so an exercise, a guided project, a tutorial or a quickstart is an error", () => {
+  const { course, guide } = exampleCourse();
+  const withPick = (extra) => {
+    const copy = structuredClone(course);
+    copy.domains[0].groups[0].tasks[0].picks.push(pick(extra));
+    return validateCourse(copy, { guide }).errors.join("|");
+  };
+  assert.match(
+    withPick({
+      target: {
+        kind: "unit",
+        path: "/training/modules/intro-to-github/2-exercise-create-a-repository",
+      },
+      title: "Exercise - Create a repository",
+    }),
+    /is hands-on material \(exercise\); it belongs on the lab page, not in the course/,
+  );
+  assert.match(
+    withPick({
+      target: {
+        kind: "docs",
+        path: "/azure/github/quickstart-create-repository",
+      },
+      title: "Create a repository",
+      source: "P2",
+      via: "/training/modules/intro-to-github",
+    }),
+    /is hands-on material \(quickstart\)/,
+  );
+  assert.equal(
+    withPick({
+      target: { kind: "docs", path: "/azure/github/forks" },
+      title: "About forks",
+      source: "P2",
+      via: "/training/modules/intro-to-github",
+    }),
+    "",
+    "an ordinary docs page is fine",
   );
 });

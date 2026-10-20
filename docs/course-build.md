@@ -14,7 +14,7 @@ Inputs:
 - the **study guide** the New Exam Monitor stores (`src/data_files/learn-exams.json`, `LEARN_EXAMS_FILE`), parsed: the tree, the exam's name and the guide's hash and date;
 - **what Learn offers the exam today**, as for the other course tools (a learnsync checkout, `LEARNSYNC_DIR`, and the catalog API's course list): the scope snapshot the course stores.
 
-The course file is written to `<tmp>/course-build/<CODE>.json`, or to `--out`. **Nothing is written into the repository on its own**: when a course is wanted, the maintainer moves it to `src/data_files/courses/<CODE>.json` and runs `node scripts/course-file.mjs validate <CODE> --live`.
+The course file is written to `<tmp>/course-build/<CODE>.json`, or to `--out`, with `<CODE>.routing.json` beside it (what the page rules took out, below). **Nothing is written into the repository on its own**: when a course is wanted, the maintainer moves it to `src/data_files/courses/<CODE>.json` and runs `node scripts/course-file.mjs validate <CODE> --live`.
 
 ## What goes into the file
 
@@ -23,15 +23,24 @@ The course file is written to `<tmp>/course-build/<CODE>.json`, or to `--out`. *
 | The tree: domains, weights, skill groups, tasks | The study guide, key for key and in order. A task with no accepted pick has an empty list: the explicit "nothing for this task" state. |
 | A pick: `target`, `title`, `class`, `relation`, `source` | The accepted gated item: the class and relation the gates gave it (a downgrade by the skeptic, or the maintainer's own class, included). |
 | `decision` of a pick | `{ by: "auto" }` for what the gates accepted, `{ by: "maintainer" }` for what the maintainer decided (with the day they decided it); `at` is the day the gates ran for an automatic one. |
-| `why`, `evidence` | The judge's reason and verified quote. The format requires them for a `supporting` pick and for any pick from another exam's course or found by search (`P3`, `P4`); a core pick of the exam's own course carries neither. **When the maintainer decided the pick, their `note` replaces the judge's words** if they wrote one; and for a page the judge **rejected** and the maintainer accepted, the note is the only reason and evidence there is (the judge's words argue against the page). |
+| `why`, `evidence` | The judge's reason and verified quote. The format requires them for a `supporting` pick and for any pick from another exam's course or found by search or named by a model (`P3`, `P4`, `P5`); a core pick of the exam's own course carries neither. **When the maintainer decided the pick, their `note` replaces the judge's words** if they wrote one; and for a page the judge **rejected** and the maintainer accepted, the note is the only reason and evidence there is (the judge's words argue against the page). |
 | `via` of a `P2` pick | The module whose last unit lists the page. |
-| Order of the picks | Core before supporting, then `P1` to `P4`, then module, unit, documentation page, then how well the candidate matched the task. |
+| Order of the picks | Core before supporting, then `P1` to `P5`, then module, unit, documentation page, then how well the candidate matched the task. |
 | `inputs.guideHash`, `guideAsOf`, `builtAt` | The guide's text hash and date, and the day of the build. |
 | `inputs.scope` and `scopeFingerprint` | The snapshot of the exam's scope map (the official courses and modules with their signatures and link hashes). |
-| `inputs.picked` | `[module, unitSig]` for every module outside the official course that a `P3` or `P4` pick depends on, once each. |
+| `inputs.picked` | `[module, unitSig]` for every module outside the official course that a `P3`, `P4` or `P5` pick depends on, once each. |
 | `rejected` | What is worth remembering so that it cannot come back: pages the maintainer rejected (their reason and day) and pages the judge rejected as `other-role`, `other-sub-product` or `licensing-tier` (the judge's reason, the day the gates ran). An ordinary rejection, and a page of an excluded sub-product, is not in the list: the decisions file already keeps the latter. |
 
 A candidate that is still **in the queue** is not in the course; the build lists each as a warning so that none is forgotten.
+
+## The two rules of the page
+
+After the accepted items are read, and before the course is written, the builder applies two rules (maintainer, 2026-10-20; the format is in [courses.md](courses.md)). Neither decides relevance; what they take out is written to `<out>.routing.json` and counted in the summary line.
+
+- **Hands-on pages leave the course.** An accepted page that `course-handson.mjs` calls hands-on (an exercise or simulation unit, a unit of a guided or challenge project, a guided or challenge project module, a docs tutorial or quickstart, an Applied Skill) is not a pick: the lab page collects it. `routing.handsOn` lists each once with its title, kind, reason, the module it is in and every task it was accepted for. [course-labs.md](course-labs.md) turns that list into the cards the lab page lacks.
+- **A page is shown once.** A page accepted for several tasks stays under one: **core before supporting, a sure judgement (the judge not unsure, the skeptic upholding) before an unsure one, the exam's own course (`P1`) before the other sources, then the task that has the fewest picks so far** (so that the thin tasks fill first), then the better evidence quote, then the earlier task. The pages that fit one task are placed first, so that the load is known; the result does not depend on the order of the gated file. `routing.repeats` lists, for every such page, the task it stays under and the tasks it also fitted.
+
+A task may end up with fewer picks than the gates accepted for it; that is the cost of showing a page once, and the routing file says which pages it still fits.
 
 ## When it refuses
 
@@ -53,4 +62,4 @@ Exit code 2 is an input problem: no gated file, no stored guide or exam name, Le
 
 ## Tests
 
-`tests/scripts/course-build.test.mjs` and `course-build-cli.test.mjs`, offline, on the invented exam of `tests/scripts/helpers/example-judging.mjs` and `example-candidates.mjs`. One test closes the loop: a built course renders, and the rebuild check says `current` the moment it is built.
+`tests/scripts/course-build.test.mjs`, `course-routing.test.mjs` (the page rules) and `course-build-cli.test.mjs`, offline, on the invented exam of `tests/scripts/helpers/example-judging.mjs` and `example-candidates.mjs`. One test closes the loop: a built course renders, and the rebuild check says `current` the moment it is built.

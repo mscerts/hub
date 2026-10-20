@@ -16,7 +16,7 @@
  * Nothing here writes a course file: those come from the build steps described in docs/courses.md.
  */
 
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import {
@@ -25,6 +25,7 @@ import {
   validateCourse,
 } from "./lib/course-format.mjs";
 import { parseGuide } from "./lib/course-guide.mjs";
+import { AREA_BY_PREFIX } from "./lib/areas.mjs";
 import { renderCourse } from "./lib/course-render.mjs";
 import { readGuides } from "./course-source.mjs";
 
@@ -87,6 +88,16 @@ function parseArgs(argv) {
 }
 
 const isCode = (value) => /^[A-Za-z]{2,3}-\d{3}$/.test(value);
+
+/** The address of the exam's lab page when the hub has one (the course page points there), else null. */
+function labPageOf(code, root) {
+  const area = AREA_BY_PREFIX[code.split("-")[0]];
+  const slug = code.toLowerCase();
+  return area &&
+    existsSync(join(root, "src", "content", "docs", "labs", area, `${slug}.mdx`))
+    ? `/certs/labs/${area}/${slug}/`
+    : null;
+}
 
 /**
  * The command line, dependencies injectable. Exit code: 0 done, 1 the course file has errors,
@@ -192,7 +203,10 @@ export async function main(argv, deps = {}) {
     for (const e of result.errors) error(`  ${e}`);
     return 1;
   }
-  const page = renderCourse(course, { draft: !options.publish });
+  const page = renderCourse(course, {
+    draft: !options.publish,
+    labPage: labPageOf(course.code, root),
+  });
   if (options.out) {
     mkdirSync(dirname(resolve(options.out)), { recursive: true });
     writeFileSync(resolve(options.out), page);

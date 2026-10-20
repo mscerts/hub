@@ -3,8 +3,9 @@
  * The page is generated and never edited by hand: change the course file and render again.
  *
  * Layout, in the style of the docs the hub already has: `##` domain with its weight, `###` skill group,
- * `####` task, and under every task a Tabs block: "Learning" (core modules and units), "Documentation"
- * (core docs pages) and "Related in practice" (supporting picks, each with how it relates and why).
+ * `####` task, and under every task a Tabs block with two tabs: "Learning" (modules and units) and
+ * "Documentation" (docs pages). Core picks come first in each tab; a supporting pick follows them with a
+ * description of how it relates to the task and why (maintainer, 2026-10-20: no separate tab for them).
  * A tab with nothing in it is left out; a task with no pick at all says so.
  */
 
@@ -12,7 +13,6 @@ import { RELATIONS } from "./course-format.mjs";
 import { squish } from "./course-guide.mjs";
 
 export const TRACKING = "?WT.mc_id=studentamb_165290";
-export const SUPPORTING_TAB = "Related in practice";
 
 /** The address of a Learn target with the hub's tracking parameter and no locale. */
 export function learnHref(path) {
@@ -56,9 +56,10 @@ function weightText(weight) {
 /**
  * Render a validated course file to MDX (a string ending in a newline). The page is a draft unless `draft` is
  * false: every route of the site leaves a draft out (and so do the sitemap, the search index and the MCP
- * bundle), so a generated course is not published until the maintainer says so.
+ * bundle), so a generated course is not published until the maintainer says so. `labPage` is the address of the
+ * exam's lab page, which the opening note links when the hub has one.
  */
-export function renderCourse(course, { draft = true } = {}) {
+export function renderCourse(course, { draft = true, labPage = null } = {}) {
   const exam = `${course.code}: ${course.name}`;
   const guideUrl = `https://learn.microsoft.com/credentials/certifications/resources/study-guides/${course.code.toLowerCase()}${TRACKING}`;
   const version = course.inputs?.guideAsOf
@@ -73,7 +74,7 @@ export function renderCourse(course, { draft = true } = {}) {
     "import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';",
     "",
     ":::note",
-    `Structured directly from the [official ${course.code} study guide](${guideUrl}) skills measured${version}. Each task links to the relevant Microsoft Learn training and documentation. "${SUPPORTING_TAB}" lists material the guide does not name but that you meet when you do the task at work.`,
+    `Structured directly from the [official ${course.code} study guide](${guideUrl}) skills measured${version}. Each task links to the relevant Microsoft Learn training and documentation. A card with a description is material the guide does not name but that you meet when you do the task at work; the description says how it relates. Exercises, guided projects, tutorials and quickstarts are on ${labPage ? `the [${course.code} labs page](${labPage})` : "the lab page"}, not here, and every page appears once.`,
     ":::",
     "",
   ];
@@ -83,20 +84,19 @@ export function renderCourse(course, { draft = true } = {}) {
       out.push(`### ${plain(group.title)}`, "");
       for (const task of group.tasks) {
         out.push(`#### ${plain(task.text)}`, "");
-        const picks = task.picks ?? [];
-        const core = picks.filter((p) => p.class === "core");
+        const all = task.picks ?? [];
+        const picks = [
+          ...all.filter((p) => p.class === "core"),
+          ...all.filter((p) => p.class === "supporting"),
+        ];
         const tabs = [
           ...tab(
             "Learning",
-            core.filter((p) => p.target.kind !== "docs"),
+            picks.filter((p) => p.target.kind !== "docs"),
           ),
           ...tab(
             "Documentation",
-            core.filter((p) => p.target.kind === "docs"),
-          ),
-          ...tab(
-            SUPPORTING_TAB,
-            picks.filter((p) => p.class === "supporting"),
+            picks.filter((p) => p.target.kind === "docs"),
           ),
         ];
         if (tabs.length === 0)

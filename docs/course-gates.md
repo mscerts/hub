@@ -25,7 +25,7 @@ Applied in this order; the first that fits decides.
 
 | Reason | Rule |
 |--------|------|
-| Maintainer only | The approval policy: any `P4` (found by search only), `core` material of another exam's course (`P3`), and any `deeper` dive. |
+| Maintainer only | The approval policy: any `P4` (found by search only) or `P5` (named by a model only), `core` material of another exam's course (`P3`), and any `deeper` dive. |
 | Disagreement | The skeptic refuted or downgraded it. A downgrade proposes `supporting` with the skeptic's relation. |
 | Not challenged | No skeptic answered for it (`merge --no-skeptic`). |
 | Not sure | The judge's confidence is `low`. |

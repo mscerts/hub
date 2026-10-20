@@ -244,9 +244,11 @@ export function gateItem(task, item, ctx) {
     reasons.push(
       item.source === "P4"
         ? "found by search only (P4): the maintainer decides"
-        : proposal.class === "core"
-          ? "core material of another exam's course (P3): the maintainer decides"
-          : "a deeper dive than the exam asks for: the maintainer decides",
+        : item.source === "P5"
+          ? "named by a model only (P5): the maintainer decides"
+          : proposal.class === "core"
+            ? "core material of another exam's course (P3): the maintainer decides"
+            : "a deeper dive than the exam asks for: the maintainer decides",
     );
   if (item.agreement === "disagree")
     reasons.push(

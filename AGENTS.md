@@ -131,10 +131,12 @@ scripts/
 ├── course-status.mjs         # The rebuild check: compares a course file with today's study guide and Learn and prints what to redo (see docs/courses.md)
 ├── course-candidates.mjs     # Candidate generator: a shortlist of Learn modules, units and docs pages per study guide task, with provenance P1-P4; the abbreviations it knows are in scripts/lib/course-aliases.mjs (see docs/course-candidates.md)
 ├── course-judge.mjs          # Judging protocol: prompts for an AI judge per skill group, mechanical checks of its answers (evidence quotes), a skeptic pass and the merge (see docs/course-judging.md)
+├── course-propose.mjs        # Model proposals: prompts for a model to name the Learn pages of each task, a check that every named page exists, and the merge into the shortlist as source P5 (see docs/course-proposals.md)
 ├── course-gates.mjs          # Approval gates: accept, reject or queue every judged candidate; the queue is a file edited by hand and the maintainer's decisions are remembered in src/data_files/course-decisions/<CODE>.json (see docs/course-gates.md)
 ├── course-build.mjs          # The builder: assembles a course file from the gated decisions, the study guide and the exam scope (see docs/course-build.md)
 ├── course-pilot.mjs          # Measures the pilot: draws the gold set and the review sample, prints the pass criteria (see docs/course-playbook.md)
 ├── course-rollout.mjs        # Read-only table of every exam with a stored study guide: size, what Learn offers, wave and a review estimate (see docs/course-playbook.md)
+├── course-labs.mjs           # Compares the hands-on pages a course leaves out (exercises, guided projects, tutorials, quickstarts) with the exam's lab page and prints the cards it lacks (see docs/course-labs.md)
 ├── course-placement.mjs      # Suggests the exam pages a course that is no exam's own (AI-3026, SC-5006) could go on, with the evidence; the Course Videos Monitor uses it (see docs/course-placement.md)
 └── *.mjs, *.sh               # One dependency-free script per monitor, plus new-exam.mjs and the audits
 tests/

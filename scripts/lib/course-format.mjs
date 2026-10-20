@@ -18,6 +18,7 @@
  *               of managing external users for an Azure administrator).
  */
 
+import { handsOnReason } from "./course-handson.mjs";
 import { diffTrees, squish } from "./course-guide.mjs";
 import { fingerprintOfSnapshot } from "./course-scope.mjs";
 
@@ -48,9 +49,10 @@ export const RELATIONS = Object.freeze({
 /**
  * Where a pick came from: P1 a module or unit of the exam's own official course, P2 a documentation page
  * that such a module lists in its last unit, P3 material of another exam's official course, P4 anything
- * else found by searching the catalogs.
+ * else found by searching the catalogs, P5 a page a model named from its own knowledge for the task and a
+ * script confirmed exists (docs/course-proposals.md).
  */
-export const SOURCES = Object.freeze(["P1", "P2", "P3", "P4"]);
+export const SOURCES = Object.freeze(["P1", "P2", "P3", "P4", "P5"]);
 
 export const PICK_KINDS = Object.freeze(["module", "unit", "docs"]);
 export const DECIDERS = Object.freeze(["auto", "maintainer"]);
@@ -58,11 +60,11 @@ export const DECIDERS = Object.freeze(["auto", "maintainer"]);
 /**
  * Who may approve a pick: "maintainer" = only the maintainer; "gates" = the automatic gates may accept it
  * (the gates decide, docs/courses.md; anything they do not accept is queued for the maintainer).
- *   P4 (found by search only), core material of another exam's course, and a deeper dive are always the
- *   maintainer's call; everything else the gates may accept.
+ *   P4 (found by search only), P5 (named by a model only), core material of another exam's course, and a deeper
+ *   dive are always the maintainer's call; everything else the gates may accept.
  */
 export function approvalPolicy(pick) {
-  if (pick.source === "P4") return "maintainer";
+  if (pick.source === "P4" || pick.source === "P5") return "maintainer";
   if (pick.class === "core")
     return pick.source === "P3" ? "maintainer" : "gates";
   if (pick.relation === "deeper") return "maintainer";
@@ -131,7 +133,8 @@ export function pickProblems(pick) {
   if (
     (pick.class === "supporting" ||
       pick.source === "P3" ||
-      pick.source === "P4") &&
+      pick.source === "P4" ||
+      pick.source === "P5") &&
     !present(pick.evidence)
   )
     problems.push(
@@ -229,7 +232,7 @@ export function courseStats(course) {
     picks: 0,
     core: 0,
     supporting: 0,
-    bySource: { P1: 0, P2: 0, P3: 0, P4: 0 },
+    bySource: { P1: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
     byKind: { module: 0, unit: 0, docs: 0 },
     byDecider: { auto: 0, maintainer: 0 },
   };
@@ -376,16 +379,31 @@ export function validateCourse(course, { guide, isCurrent, titleOf } = {}) {
         );
     }
   }
+  // a page is shown once in the whole course, and hands-on material is on the lab page instead
+  const shownAt = new Map();
   for (const domain of course.domains) {
     for (const group of domain.groups ?? []) {
       for (const task of group.tasks ?? []) {
-        const seen = new Set();
         for (const pick of task.picks ?? []) {
           const path = pick?.target?.path;
           if (!path) continue;
-          if (seen.has(path))
+          const first = shownAt.get(path);
+          if (first === task.key)
             errors.push(`${task.key}: ${path} appears twice under one task`);
-          seen.add(path);
+          else if (first !== undefined)
+            errors.push(
+              `${task.key}: ${path} is already shown under ${first}: a page appears once in a course`,
+            );
+          else shownAt.set(path, task.key);
+          const handsOn = handsOnReason({
+            kind: pick.target?.kind,
+            path,
+            title: pick.title,
+          });
+          if (handsOn)
+            errors.push(
+              `${task.key}: ${path} is hands-on material (${handsOn}); it belongs on the lab page, not in the course`,
+            );
           if (task.key && rejectedPairs.has(`${task.key}|${path}`))
             errors.push(
               `${task.key}: ${path} was rejected by the maintainer and must not come back`,

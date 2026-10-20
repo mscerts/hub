@@ -302,7 +302,7 @@ Rules:
 6. \`flags\` lists what is wrong with the candidate even when you pick it (none is fine):
 ${flagLines()}
 7. \`confidence\` is \`high\`, \`medium\` or \`low\`: how sure you are of the verdict. Say \`low\` whenever you would be guessing; a \`low\` is a question for the maintainer, not a failure.
-8. The candidate's \`signals\` and \`coverage\` come from a word search; they are hints about where it came from, not evidence. \`source\` says which pool: P1 the exam's own course, P2 documentation its modules list, P3 another exam's course, P4 anything else.
+8. The candidate's \`signals\` and \`coverage\` come from a word search; they are hints about where it came from, not evidence. \`source\` says which pool: P1 the exam's own course, P2 documentation its modules list, P3 another exam's course, P4 anything else a word search found, P5 a page a model named for this task from its own knowledge (a script confirmed that the page exists). That a page was found or named is no evidence that it belongs: judge it on its evidence like any other.
 9. You may use what you know about the exam and the product, but do not invent: if the evidence does not show it, you cannot quote it.`;
 }
 

@@ -24,7 +24,12 @@ A supporting pick must carry, in the file:
 - `why`, one sentence on why a professional doing this task meets it;
 - `evidence`, a quote from the target page that shows the connection (the judging step checks that it really is on the page).
 
-The page shows core picks under "Learning" (modules and units) and "Documentation", and supporting picks under **"Related in practice"**, each with its relation and its reason, so a learner can tell what the guide asks for from what the job adds.
+The page has two tabs under every task, **"Learning"** (modules and units) and **"Documentation"** (documentation pages). The core picks come first in each; a supporting pick follows them with a description of its relation and its reason, so a learner can tell what the guide asks for from what the job adds. There is no tab of its own for supporting picks.
+
+**Two rules of the page** (maintainer, 2026-10-20), applied by the builder and checked by the validator:
+
+- **Hands-on material is on the lab page, not in the course**: an exercise, a simulation, a lab, a guided or challenge project, a tutorial, a quickstart, an Applied Skill (`scripts/lib/course-handson.mjs` decides). The lab page (`src/content/docs/labs/<area>/<code>.mdx`) collects it, so the course does not repeat it; what the builder takes out is listed in a routing file beside the course file, and `scripts/course-labs.mjs` finds what the lab page still lacks ([course-labs.md](course-labs.md)).
+- **A page appears once in the whole course.** A page accepted for several tasks stays under the task where it fits best; the routing file says where else it fits.
 
 Rejections are remembered: a rejected target is listed in the file's `rejected` array (`taskKey`, `path`, `reason`, `at`) and the validator fails if it comes back under that task.
 
@@ -36,10 +41,11 @@ Rejections are remembered: a rejected target is listed in the file's `rejected` 
 | `P2` | A documentation page that such a module lists in its last unit (learnsync's `module-links.json`). |
 | `P3` | Material of another exam's official course (for example an AZ-700 module for an AZ-104 networking task). |
 | `P4` | Anything else, found by searching the catalogs. |
+| `P5` | A page a model named from its own knowledge for the task and a script confirmed exists ([course-proposals.md](course-proposals.md)). |
 
 `approvalPolicy` (`scripts/lib/course-format.mjs`) says who may approve a pick:
 
-- **Only the maintainer** (`decision.by` must be `maintainer`): any `P4` pick, core material from `P3`, and any `deeper` pick.
+- **Only the maintainer** (`decision.by` must be `maintainer`): any `P4` or `P5` pick, core material from `P3`, and any `deeper` pick.
 - **The automatic gates may accept it** (`decision.by` may be `auto`): core picks from `P1`/`P2` and supporting picks from `P1`-`P3` that are not `deeper`. The validator only checks that the policy is respected; what the gates accept is decided where they run, and everything they do not accept is the maintainer's decision.
 
 ## The course file
@@ -89,7 +95,7 @@ What `validate` checks (`validateCourse`):
 1. The file's own shape: `schemaVersion`, `code`, `name`, the `inputs` (including the `scope` snapshot and a `scopeFingerprint` that matches it), a non-empty `domains`.
 2. **The tree is the study guide's tree**, domain by domain, group by group, task by task, with the same task `key`s in the same order. A changed guide shows up here (and as a warning when `inputs.guideHash` is no longer the guide's hash).
 3. Every pick: a canonical path of the right shape for its kind, a title, a class and a source from the lists above, `relation`/`why`/`evidence` where required, a `decision` of `{ by, at }`, and the approval policy.
-4. No target twice under one task, and nothing from `rejected` back under the task it was rejected for.
+4. **No target twice in the course** (a page is shown once, under one task), **no hands-on page** (it belongs on the lab page, see above; the check reads the pick's title and address), and nothing from `rejected` back under the task it was rejected for.
 5. **Every target is a current Learn page** (the CLI asks learnsync's validator; `--live` also asks learn.microsoft.com about what the caches cannot settle). A moved page is an error, with where it went. A title that is not the catalog title is a warning.
 
 `render` refuses a file that fails the checks that need no network, so a page is never generated from a broken file. The rendered page has exactly the guide's tree (`course-source.mjs --check <page>` confirms it).

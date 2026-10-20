@@ -232,6 +232,38 @@ test("render: prints the page to stdout, or writes it with --out, and needs no n
   assert.deepEqual(c2.written, []);
 });
 
+test("render links the exam's lab page in the opening note when the hub has one, and says only 'the lab page' when it has none", async () => {
+  const root = world();
+  const without = capture();
+  await main(["render", "GH-900"], {
+    root,
+    env: {},
+    log: without.log,
+    error: without.error,
+    write: without.write,
+  });
+  assert.match(without.written.join(""), /are on the lab page, not here/);
+  mkdirSync(join(root, "src", "content", "docs", "labs", "github"), {
+    recursive: true,
+  });
+  writeFileSync(
+    join(root, "src", "content", "docs", "labs", "github", "gh-900.mdx"),
+    "---\ntitle: GH-900 Labs\n---\n",
+  );
+  const withLab = capture();
+  await main(["render", "GH-900"], {
+    root,
+    env: {},
+    log: withLab.log,
+    error: withLab.error,
+    write: withLab.write,
+  });
+  assert.match(
+    withLab.written.join(""),
+    /are on the \[GH-900 labs page\]\(\/certs\/labs\/github\/gh-900\/\), not here/,
+  );
+});
+
 test("render refuses a course file with errors and writes nothing", async () => {
   const { course } = exampleCourse();
   course.domains[0].groups[0].tasks[0].picks[0].decision = {

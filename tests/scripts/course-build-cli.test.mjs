@@ -108,6 +108,23 @@ test("a built course is written to a temporary folder, passes the validator and 
   );
 });
 
+test("the routing of the page rules is written beside the course and the summary says how many pages it holds", async () => {
+  const w = world();
+  const { code, io } = await run(["NET-100"], w);
+  assert.equal(code, 0, io.err.join("\n"));
+  const routing = readJson(join(w.tmp, "course-build", "NET-100.routing.json"));
+  assert.equal(routing.kind, "routing");
+  assert.equal(routing.code, "NET-100");
+  assert.equal(routing.builtAt, "2026-10-18");
+  assert.ok(Array.isArray(routing.handsOn) && Array.isArray(routing.repeats));
+  assert.match(
+    io.out.join("\n"),
+    new RegExp(
+      `${routing.handsOn.length} accepted hands-on pages are not in the course: the lab page collects them \\(node scripts/course-labs\\.mjs NET-100 --routing .*NET-100\\.routing\\.json\\); ${routing.repeats.length} pages fitted several tasks and are shown once\\.`,
+    ),
+  );
+});
+
 test("--out says where the course goes, and --gated where the decisions are", async () => {
   const w = world();
   const elsewhere = join(w.base, "decisions.gated.json");

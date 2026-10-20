@@ -4,11 +4,7 @@ import {
   diffTrees,
   treeFromCourseMdx,
 } from "../../scripts/lib/course-guide.mjs";
-import {
-  SUPPORTING_TAB,
-  learnHref,
-  renderCourse,
-} from "../../scripts/lib/course-render.mjs";
+import { learnHref, renderCourse } from "../../scripts/lib/course-render.mjs";
 import { exampleCourse, pick } from "./helpers/example-course.mjs";
 
 test("learnHref gives a Learn address with the hub's tracking parameter and no locale", () => {
@@ -29,7 +25,7 @@ test("a rendered page is a draft unless it is told to publish", () => {
   );
 });
 
-test("the page opens with frontmatter, the import and a note that cites the study guide and explains the related tab", () => {
+test("the page opens with frontmatter, the import and a note that cites the study guide and says where the hands-on pages are", () => {
   const { course } = exampleCourse();
   const page = renderCourse(course);
   const [frontmatter, rest] = page.split("---\nimport");
@@ -47,9 +43,17 @@ test("the page opens with frontmatter, the import and a note that cites the stud
   );
   assert.match(
     page,
-    /"Related in practice" lists material the guide does not name but that you meet when you do the task at work\./,
+    /A card with a description is material the guide does not name but that you meet when you do the task at work; the description says how it relates\. Exercises, guided projects, tutorials and quickstarts are on the lab page, not here, and every page appears once\./,
   );
   assert.ok(page.endsWith("\n") && !page.endsWith("\n\n"));
+});
+
+test("the note links the lab page when it is given one", () => {
+  const { course } = exampleCourse();
+  assert.match(
+    renderCourse(course, { labPage: "/certs/labs/github/gh-900/" }),
+    /are on the \[GH-900 labs page\]\(\/certs\/labs\/github\/gh-900\/\), not here/,
+  );
 });
 
 test("domains, groups and tasks become ##, ### and #### headings with the domain weight", () => {
@@ -71,7 +75,7 @@ test("domains, groups and tasks become ##, ### and #### headings with the domain
   assert.match(renderCourse(single), /^## Understand Git and GitHub basics$/m);
 });
 
-test("core modules and units go to Learning, core docs to Documentation, supporting picks to the related tab with how and why", () => {
+test("modules and units go to Learning, docs pages to Documentation, a supporting pick follows the core ones with how and why; there is no third tab", () => {
   const { course } = exampleCourse();
   const page = renderCourse(course);
   // task 1: one module
@@ -84,20 +88,27 @@ test("core modules and units go to Learning, core docs to Documentation, support
     page,
     /<TabItem label="Documentation">\n    <CardGrid>\n      <LinkCard title="What is GitHub\?" href="https:\/\/learn\.microsoft\.com\/azure\/github\/overview\?WT\.mc_id=studentamb_165290" target="_blank"\/>/,
   );
-  // task 3: a unit in Learning and a supporting doc in the related tab
+  // task 3: a unit in Learning and a supporting doc in Documentation, with its description
   assert.match(
     page,
     /<LinkCard title="What is Git\?" href="https:\/\/learn\.microsoft\.com\/training\/modules\/intro-to-github\/2-what-is-git\?WT\.mc_id=studentamb_165290" target="_blank"\/>/,
   );
   assert.match(
     page,
-    new RegExp(
-      `<TabItem label="${SUPPORTING_TAB}">\\n    <CardGrid>\\n      <LinkCard title="About branches" href="[^"]+" target="_blank" description="Prerequisite: You create and switch branches before you can open a pull request\\."\\/>`,
-    ),
+    /<TabItem label="Documentation">\n    <CardGrid>\n      <LinkCard title="About branches" href="[^"]+" target="_blank" description="Prerequisite: You create and switch branches before you can open a pull request\."\/>/,
   );
+  // task 4: a supporting module is in Learning, with its description
   assert.match(
     page,
-    /description="Deeper dive: The same feature in more depth\."/,
+    /<TabItem label="Learning">\n    <CardGrid>\n      <LinkCard title="Advanced Git workflows" href="[^"]+" target="_blank" description="Deeper dive: The same feature in more depth\."\/>/,
+  );
+  assert.ok(
+    !page.includes("Related in practice"),
+    "no tab of its own for supporting picks",
+  );
+  assert.deepEqual(
+    [...new Set(page.match(/<TabItem label="[^"]+"/g))],
+    ['<TabItem label="Learning"', '<TabItem label="Documentation"'],
   );
   // every card carries the tracking parameter
   for (const href of page.match(/href="[^"]+"/g))
@@ -168,4 +179,29 @@ test("the rendered page has exactly the study guide's tree, even for headings wi
 test("rendering is deterministic", () => {
   const { course } = exampleCourse();
   assert.equal(renderCourse(course), renderCourse(structuredClone(course)));
+});
+
+test("in a tab the core picks come before the supporting ones, whatever the order of the course file", () => {
+  const { course } = exampleCourse();
+  const task = course.domains[0].groups[0].tasks[0];
+  task.picks = [
+    pick({
+      class: "supporting",
+      relation: "operate",
+      why: "Runs what the task sets up.",
+      evidence: "q",
+      target: { kind: "docs", path: "/azure/first" },
+      title: "Supporting page",
+      source: "P2",
+      via: "/training/modules/intro-to-github",
+    }),
+    pick({
+      target: { kind: "docs", path: "/azure/second" },
+      title: "Core page",
+      source: "P2",
+      via: "/training/modules/intro-to-github",
+    }),
+  ];
+  const page = renderCourse(course);
+  assert.ok(page.indexOf("Core page") < page.indexOf("Supporting page"));
 });
