@@ -4,12 +4,11 @@
  *
  * Layout, in the style of the docs the hub already has: `##` domain with its weight, `###` skill group,
  * `####` task, and under every task a Tabs block with two tabs: "Learning" (modules and units) and
- * "Documentation" (docs pages). Core picks come first in each tab; a supporting pick follows them with a
- * description of how it relates to the task and why (maintainer, 2026-10-20: no separate tab for them).
- * A tab with nothing in it is left out; a task with no pick at all says so.
+ * "Documentation" (docs pages). Core picks come first in each tab; a supporting pick follows them (maintainer,
+ * 2026-10-20: no separate tab for them; 2026-10-21: no description on any button, the relation and the reason
+ * stay in the course file). A tab with nothing in it is left out; a task with no pick at all says so.
  */
 
-import { RELATIONS } from "./course-format.mjs";
 import { squish } from "./course-guide.mjs";
 
 export const TRACKING = "?WT.mc_id=studentamb_165290";
@@ -23,15 +22,9 @@ export function learnHref(path) {
 const attr = (text) => squish(text).replace(/"/g, "'");
 /** Text for a markdown heading or a paragraph: nothing MDX would read as an expression or a tag. */
 const plain = (text) => squish(text).replace(/[{}<>]/g, (c) => `\\${c}`);
-const clip = (text, max) =>
-  text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text;
 
 function card(pick, indent) {
-  const description =
-    pick.class === "supporting"
-      ? ` description="${attr(clip(`${RELATIONS[pick.relation].label}: ${pick.why}`, 220))}"`
-      : "";
-  return `${indent}<LinkCard title="${attr(pick.title)}" href="${learnHref(pick.target.path)}" target="_blank"${description}/>`;
+  return `${indent}<LinkCard title="${attr(pick.title)}" href="${learnHref(pick.target.path)}" target="_blank"/>`;
 }
 
 function tab(label, picks) {
@@ -74,7 +67,7 @@ export function renderCourse(course, { draft = true, labPage = null } = {}) {
     "import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';",
     "",
     ":::note",
-    `Structured directly from the [official ${course.code} study guide](${guideUrl}) skills measured${version}. Each task links to the relevant Microsoft Learn training and documentation. A card with a description is material the guide does not name but that you meet when you do the task at work; the description says how it relates. Exercises, guided projects, tutorials and quickstarts are on ${labPage ? `the [${course.code} labs page](${labPage})` : "the lab page"}, not here, and every page appears once.`,
+    `Structured directly from the [official ${course.code} study guide](${guideUrl}) skills measured${version}. Each task links to the relevant Microsoft Learn training and documentation. Exercises, guided projects, tutorials and quickstarts are on ${labPage ? `the [${course.code} labs page](${labPage})` : "the lab page"}, not here, and every page appears once.`,
     ":::",
     "",
   ];

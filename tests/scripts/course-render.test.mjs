@@ -43,7 +43,7 @@ test("the page opens with frontmatter, the import and a note that cites the stud
   );
   assert.match(
     page,
-    /A card with a description is material the guide does not name but that you meet when you do the task at work; the description says how it relates\. Exercises, guided projects, tutorials and quickstarts are on the lab page, not here, and every page appears once\./,
+    /Each task links to the relevant Microsoft Learn training and documentation\. Exercises, guided projects, tutorials and quickstarts are on the lab page, not here, and every page appears once\./,
   );
   assert.ok(page.endsWith("\n") && !page.endsWith("\n\n"));
 });
@@ -75,7 +75,7 @@ test("domains, groups and tasks become ##, ### and #### headings with the domain
   assert.match(renderCourse(single), /^## Understand Git and GitHub basics$/m);
 });
 
-test("modules and units go to Learning, docs pages to Documentation, a supporting pick follows the core ones with how and why; there is no third tab", () => {
+test("modules and units go to Learning, docs pages to Documentation, a supporting pick follows the core ones and, like every card, has no description; there is no third tab", () => {
   const { course } = exampleCourse();
   const page = renderCourse(course);
   // task 1: one module
@@ -88,19 +88,19 @@ test("modules and units go to Learning, docs pages to Documentation, a supportin
     page,
     /<TabItem label="Documentation">\n    <CardGrid>\n      <LinkCard title="What is GitHub\?" href="https:\/\/learn\.microsoft\.com\/azure\/github\/overview\?WT\.mc_id=studentamb_165290" target="_blank"\/>/,
   );
-  // task 3: a unit in Learning and a supporting doc in Documentation, with its description
+  // task 3: a unit in Learning and a supporting doc in Documentation, without a description
   assert.match(
     page,
     /<LinkCard title="What is Git\?" href="https:\/\/learn\.microsoft\.com\/training\/modules\/intro-to-github\/2-what-is-git\?WT\.mc_id=studentamb_165290" target="_blank"\/>/,
   );
   assert.match(
     page,
-    /<TabItem label="Documentation">\n    <CardGrid>\n      <LinkCard title="About branches" href="[^"]+" target="_blank" description="Prerequisite: You create and switch branches before you can open a pull request\."\/>/,
+    /<TabItem label="Documentation">\n    <CardGrid>\n      <LinkCard title="About branches" href="[^"]+" target="_blank"\/>/,
   );
-  // task 4: a supporting module is in Learning, with its description
+  // task 4: a supporting module is in Learning, without a description
   assert.match(
     page,
-    /<TabItem label="Learning">\n    <CardGrid>\n      <LinkCard title="Advanced Git workflows" href="[^"]+" target="_blank" description="Deeper dive: The same feature in more depth\."\/>/,
+    /<TabItem label="Learning">\n    <CardGrid>\n      <LinkCard title="Advanced Git workflows" href="[^"]+" target="_blank"\/>/,
   );
   assert.ok(
     !page.includes("Related in practice"),
@@ -151,12 +151,9 @@ test("text that MDX would read as code or markup is escaped, quotes in attribute
       source: "P2",
     }),
   ];
-  const description = renderCourse(supporting)
-    .match(/description="([^"]+)"/g)
-    .find((d) => d.includes("Operate and troubleshoot"));
   assert.ok(
-    description.length < 260 && description.includes("…"),
-    "long reasons are clipped",
+    !/<LinkCard[^>]*description=/.test(renderCourse(supporting)),
+    "no card has a description, whatever the pick's relation and reason",
   );
 });
 

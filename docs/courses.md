@@ -24,7 +24,7 @@ A supporting pick must carry, in the file:
 - `why`, one sentence on why a professional doing this task meets it;
 - `evidence`, a quote from the target page that shows the connection (the judging step checks that it really is on the page).
 
-The page has two tabs under every task, **"Learning"** (modules and units) and **"Documentation"** (documentation pages). The core picks come first in each; a supporting pick follows them with a description of its relation and its reason, so a learner can tell what the guide asks for from what the job adds. There is no tab of its own for supporting picks.
+The page has two tabs under every task, **"Learning"** (modules and units) and **"Documentation"** (documentation pages). The core picks come first in each; a supporting pick follows them. No button carries a description (maintainer, 2026-10-21): the relation and the reason stay in the course file, where the judging and the validator use them, but the page does not show them. There is no tab of its own for supporting picks.
 
 **Three rules of the page** (maintainer, 2026-10-20), applied by the builder and checked by the validator:
 
