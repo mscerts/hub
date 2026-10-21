@@ -196,12 +196,18 @@ const redditLinks = [
                 role="group"
                 aria-label="Quick actions"
               >
-                <span
-                  class="flex size-9 items-center justify-center rounded-lg text-neutral-600 dark:text-neutral-300"
-                  aria-hidden="true"
+                <a
+                  href="/certs/archive/"
+                  class="flex size-9 items-center justify-center rounded-lg text-neutral-600 outline-hidden transition hover:text-blue-700 focus-visible:ring-2 focus-visible:ring-orange-700 dark:text-neutral-300 dark:hover:text-blue-300 dark:focus-visible:ring-orange-300"
+                  aria-label="Archive"
+                  title="Archive"
                 >
-                  <PackIcon name="ph:envelope-simple-fill" class="size-5" />
-                </span>
+                  <PackIcon
+                    name="ph:envelope-simple-fill"
+                    class="size-5"
+                    aria-hidden="true"
+                  />
+                </a>
                 <span
                   class="flex size-9 items-center justify-center rounded-lg text-neutral-600 dark:text-neutral-300"
                   aria-hidden="true"

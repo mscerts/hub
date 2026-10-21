@@ -20,6 +20,7 @@ interface Props {
   hero?: DocsHero;
   tableOfContents?: boolean;
   pagination?: boolean;
+  archiveNotice?: "retired-exam" | "expired-offer" | "historical";
 }
 
 const {
@@ -32,6 +33,7 @@ const {
   tableOfContents,
   pagination,
   editUrl,
+  archiveNotice,
 } = Astro.props;
 ---
 
@@ -45,6 +47,7 @@ const {
   {hero}
   {tableOfContents}
   {pagination}
+  {archiveNotice}
 >
   <slot />
 </DocsShell>

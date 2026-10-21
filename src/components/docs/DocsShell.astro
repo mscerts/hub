@@ -15,6 +15,7 @@ interface Props {
   hero?: import("@utils/docs").DocsHero;
   tableOfContents?: boolean;
   pagination?: boolean;
+  archiveNotice?: "retired-exam" | "expired-offer" | "historical";
 }
 
 import DocsSidebar from "./DocsSidebar.astro";
@@ -35,6 +36,7 @@ const {
   hero,
   tableOfContents = true,
   pagination = true,
+  archiveNotice,
 } = Astro.props;
 const currentPath = Astro.url.pathname;
 const { previous, next } = docsPagination(sidebarItems, currentPath);
@@ -95,6 +97,28 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
           <p class="mt-4 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-[#b8b8b8]">
             {hero?.tagline ?? description}
           </p>
+          {archiveNotice && (
+            <div
+              class="mt-6 border border-amber-300 border-l-4 border-l-amber-700 bg-amber-50 px-4 py-3 text-sm text-amber-950 dark:border-amber-800 dark:border-l-amber-400 dark:bg-amber-950/40 dark:text-amber-100"
+              role="note"
+              data-archive-notice={archiveNotice}
+            >
+              <strong class="block font-semibold">
+                {archiveNotice === "expired-offer"
+                  ? "ARCHIVED OFFER · EXPIRED"
+                  : archiveNotice === "retired-exam"
+                    ? "ARCHIVED EXAM · RETIRED"
+                    : "ARCHIVED HISTORICAL PAGE"}
+              </strong>
+              <span>
+                {archiveNotice === "expired-offer"
+                  ? "This promotion has ended. Dates, codes, eligibility, and availability are historical and may no longer apply."
+                  : archiveNotice === "retired-exam"
+                    ? "This exam has retired. The page is preserved for historical reference; its resources and links may be outdated."
+                    : "This page is preserved for historical reference and does not imply that the exam or offer is currently available."}
+              </span>
+            </div>
+          )}
           {hero?.image && (
             <img
               src={hero.image.src}
