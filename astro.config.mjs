@@ -31,6 +31,13 @@ const legacyDocsPrefixes = [
 export default defineConfig({
   site: "https://msfthub.com",
   redirects: {
+    "/certs/privacy": "/privacy/",
+    "/certs/privacy.md": "/privacy/",
+    "/privacy.md": "/privacy/",
+    "/wiki/privacy": "/privacy/",
+    "/wiki/privacy.md": "/privacy/",
+    "/wiki-next/privacy": "/privacy/",
+    "/wiki-next/privacy.md": "/privacy/",
     "/guide": "/certs/guide/introduction/",
     "/vouchers/ab650beta/": "/certs/vouchers/betaexams/",
     "/microsoft365": "/certs/",
@@ -100,6 +107,7 @@ export default defineConfig({
         );
 
         return (
+          pathname !== "/certs/privacy/" &&
           !pathname.startsWith("/wiki/") &&
           !pathname.startsWith("/wiki-next/") &&
           !(

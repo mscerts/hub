@@ -4,6 +4,8 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import DocsPage from "@components/docs/templates/DocsPage.astro";
 import { Aside } from "@components/docs";
 import { docsSectionLabel } from "@utils/docs";
+import type { ImageMetadata } from "astro";
+import { dirname, resolve, relative } from "node:path";
 
 export async function getStaticPaths() {
   const docs = await getCollection("docs");
@@ -21,6 +23,22 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
+const images = import.meta.glob<ImageMetadata>(
+  "/src/assets/images/*.{svg,png,jpg,jpeg,webp,avif}",
+  { eager: true, import: "default" },
+);
+const heroData = entry.data.hero;
+let heroImage: ImageMetadata | undefined;
+if (heroData?.image) {
+  const source =
+    "/" +
+    relative(
+      process.cwd(),
+      resolve(dirname(entry.filePath!), heroData.image.file),
+    ).replaceAll("\\", "/");
+  heroImage = images[source];
+  if (!heroImage) throw new Error(`Hero image is not available: ${source}`);
+}
 ---
 
 <MainLayout
@@ -33,7 +51,13 @@ const { Content, headings } = await render(entry);
     description={entry.data.description ?? ""}
     headings={headings}
     sectionLabel={docsSectionLabel(entry.id)}
-    sourcePath={entry.filePath}
+    sourcePath={entry.data.editUrl === false ? undefined : entry.filePath}
+    editUrl={
+      typeof entry.data.editUrl === "string" ? entry.data.editUrl : undefined
+    }
+    tableOfContents={entry.data.tableOfContents !== false}
+    hero={heroData ? { ...heroData, image: heroImage } : undefined}
+    pagination={entry.data.prev !== false || entry.data.next !== false}
   >
     <Content components={{ Aside }} />
   </DocsPage>

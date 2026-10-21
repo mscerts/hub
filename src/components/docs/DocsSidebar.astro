@@ -72,22 +72,18 @@ function groupId(item: DocsSidebarItem, index: number) {
     return (
       <li class="m-0" data-docs-nav-group={hasChildren ? "true" : undefined}>
         {hasChildren ? (
-          <div
-            class:list={[
-              "hs-accordion --prevent-on-load-init",
-              isOpen && "active",
-            ]}
+          <details
+            class:list={["group/sidebar", isOpen && "active"]}
             id={id}
             data-docs-group-key={`${path}-${item.label}`}
+            open={isOpen}
           >
-            <button
-              type="button"
+            <summary
               id={`${id}-toggle`}
               class:list={[
-                "hs-accordion-toggle group flex min-h-9 w-full items-center gap-x-2 rounded-md px-3 py-2 lg:min-h-8 lg:py-1.5 text-left text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white",
+                "group flex min-h-9 w-full cursor-pointer list-none items-center gap-x-2 rounded-md px-3 py-2 lg:min-h-8 lg:py-1.5 text-left text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white [&::-webkit-details-marker]:hidden",
                 containsCurrent(item) && "text-gray-900 dark:text-white",
               ]}
-              aria-expanded={isOpen ? "true" : "false"}
               aria-controls={`${id}-content`}
             >
               {item.icon && (
@@ -120,7 +116,7 @@ function groupId(item: DocsSidebarItem, index: number) {
                 </span>
               )}
               <svg
-                class="size-3.5 shrink-0 transition-transform hs-accordion-active:rotate-180"
+                class="size-3.5 shrink-0 transition-transform group-open/sidebar:rotate-180"
                 viewBox="0 0 16 16"
                 fill="none"
                 aria-hidden="true"
@@ -133,13 +129,10 @@ function groupId(item: DocsSidebarItem, index: number) {
                   stroke-width="1.5"
                 />
               </svg>
-            </button>
+            </summary>
             <div
               id={`${id}-content`}
-              class:list={[
-                "hs-accordion-content w-full overflow-hidden transition-[height] duration-300",
-                !isOpen && "hidden",
-              ]}
+              class="w-full"
               role="region"
               aria-labelledby={`${id}-toggle`}
             >
@@ -152,7 +145,7 @@ function groupId(item: DocsSidebarItem, index: number) {
                 />
               </div>
             </div>
-          </div>
+          </details>
         ) : item.href ? (
           <a
             href={item.href}

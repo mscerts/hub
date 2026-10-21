@@ -1,3 +1,14 @@
+export interface DocsHero {
+  title: string;
+  tagline?: string;
+  image?: { src: string; width: number; height: number };
+  actions?: {
+    text: string;
+    link: string;
+    variant?: "primary" | "secondary" | "minimal";
+  }[];
+}
+
 export function docsPath(id: string): string {
   return id === "wiki" || id === "certs"
     ? "/certs/"

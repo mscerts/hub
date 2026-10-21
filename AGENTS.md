@@ -39,7 +39,7 @@ node scripts/tasks.mjs <command>
 ### Workflow
 
 1. At the start of a session, run `list`. If the user named a task, `show` it and read its Log; otherwise ask which item to take instead of picking one yourself.
-2. Before editing files for an item, run `start <ref>`. If it reports the item is claimed by someone else, stop and tell the user. If the item names a task prompt from `.github/prompts/`, follow that prompt.
+2. Before editing files for an item, run `start <ref>`. If it reports the item is claimed by someone else, stop and tell the user. Historical task prompts under `.github/prompts/` were removed; use current source code and the maintained runbooks under `docs/` instead.
 3. Run `note` when you make a decision, hit a blocker, or end a session: what changed, what is left, and what the next agent needs to know. The Log is the only handoff between sessions and tools, so write it for a reader with no other context. If you can't finish it and won't be returning to it, also run `unclaim` so someone else can pick it up.
 4. After opening a pull request, run `link <ref> <pr-url>` and `note` that it's ready for review. Run `done` only when the user confirms the work is finished.
 5. If you notice something worth doing outside the current task, don't add it to the board immediately — see "Surfacing things you notice" below.
@@ -79,7 +79,7 @@ This repository is public. Never copy task titles, bodies, Log notes, plans, or 
 ```
 src/
 ├── components/
-│   ├── sections/              # Landing page sections (features, testimonials, navbar&footer, misc)
+│   ├── sections/              # Active landing, navbar/footer, and misc sections; retained feature/testimonial templates
 │   ├── docs/                 # Docs shell, navigation, templates, and MDX components
 │   ├── ui/                   # Shared site UI
 │   ├── WikiList.astro        # Auto-generates wiki cards by directory prefix
@@ -403,7 +403,10 @@ Verify all voucher percentages, codes, limits, deadlines, exclusions, announceme
 
 ### Banner System
 `AnnouncementBanner.astro` — dismissible banner with localStorage persistence (versioned via `version` prop).
-Rendered by `MainLayout.astro` when enabled.
+Retained for reuse but not currently imported or rendered. The homepage's announcement card is part of `QuickLinksCenter.astro`.
+
+### Retained Templates
+`HeroSection.astro`, `LanguagePicker.astro`, `GithubBtn.astro`, the feature/testimonial section templates, and `BetaBanner.astro` are retained components, not evidence that those features are active. Verify imports before describing a template as rendered. `WikiList.astro` is active on the exam index. Do not delete unused templates as incidental cleanup.
 
 ### Key Dependencies
 - **@astrojs/mdx** + **@astrojs/markdown-remark** — MDX and Unified remark processing
@@ -415,11 +418,12 @@ Rendered by `MainLayout.astro` when enabled.
 Global styles are in `src/assets/styles/global.css`; docs-specific styles are scoped to the canonical docs components.
 
 ### Logo
-- Light: `/src/images/logo_light.svg`
-- Dark: `/src/images/logo_dark.svg`
+- Light: `/src/assets/images/logo_light.svg` (navbar)
+- Dark: `/src/assets/images/logo_dark.svg` (navbar)
 - Favicon: `/favicon.svg`
 
 ### Sidebar
+- Groups use native details/summary controls, with their initial open state rendered on the server. JavaScript enhances them with session-scoped group and scroll persistence; opening and closing still works without scripts.
 - Guide, preparation, voucher, and top-level area groups are hand-maintained in `src/data_files/docs-sidebar.ts`.
 - Exam entries are generated from the matching `src/content/docs/<area>/` directory by `buildExamItems()`; new exam pages appear automatically.
 - Exam status badges are maintained in `src/data_files/exam-status.mjs`: `NEW`, `RETIRED`, `RETIRING`, `BETA`, `UPCOMING`, and `AT RISK`. The same file names each status (`examStatusNames`, e.g. "Retired") and gives the landing page its colours (`examStatusStyles`); the landing page's "Recent status changes" list (`QuickLinksCenter.astro`, which has its own `getStatusClass` switch: a new badge text needs a `case` there) shows every exam that carries one, except that a RETIRED exam is only listed for 90 days after its retirement date (below). The list keeps the order of `examStatuses` (by area, then by exam as written in the file); it is not sorted by date and has no cap. The sidebar reads the statuses through `visibleExamStatuses()` and that list through `recentExamStatuses()`, not `examStatuses` directly.
@@ -459,7 +463,7 @@ pnpm dev                        # Local preview
 ```
 
 - Build must pass with 0 errors before committing.
-- `pnpm build` runs `scripts/verify-public-routes.mjs` to guard the exam index, sitemap exclusions, critical legacy routes, and Cloudflare redirect count. It also generates and verifies `dist/pagefind/pagefind.js`; use `pnpm preview` to test site search locally.
+- `pnpm build` runs `scripts/verify-public-routes.mjs` to guard the exam index, sitemap exclusions, critical legacy routes, and Cloudflare redirect count. `scripts/verify-route-manifest.mjs` checks the complete public-route baseline in `src/data_files/public-routes.json`, follows redirect chains, and verifies that configured GA4/GTM IDs are present in built HTML/JS. When deliberately adding/removing routes, first build with `pnpm exec astro build --force`, then run `node scripts/verify-route-manifest.mjs --update` and review/commit the baseline diff alongside the route change. The build also generates and verifies `dist/pagefind/pagefind.js`; use `pnpm preview` to test site search locally.
 - Plain `pnpm dev` does not generate a Pagefind index, so search requires a completed production build.
 - `astro build --force` clears the content-layer data store (`node_modules/.astro/data-store.json`) on every build. Cloudflare Pages restores that directory from its build cache, and the incremental loader keys entries on ID + content digest, so a file whose path changed but whose content did not (e.g. a case-only rename) would otherwise keep a stale `filePath` and fail with `Rolldown failed to resolve import "astro:content-layer-deferred-module?...fileName=<old path>"`. The full resync costs about one second on this site; do not remove the flag.
 - `astro check` currently prints a few hints and no errors or warnings (mostly unused declarations, plus one deprecated `document.execCommand`). Do not introduce new unused-declaration hints.
@@ -467,7 +471,7 @@ pnpm dev                        # Local preview
 - The build does **not** validate external link availability, tracking parameters, assessment IDs, exam names, voucher accuracy, or duplicate content. Verify these manually against authoritative sources.
 - When redirects change, test the old route against the dev server.
 - Use `pnpm install --frozen-lockfile` for reproducible installs; commit `pnpm-lock.yaml` when dependencies change.
-- No environment variables or secrets are required to build the site; analytics IDs (Google Analytics, Clarity, GTM) are hardcoded in astro.config.mjs.
+- No environment variables or secrets are required to build the site. Public analytics IDs live in `src/data_files/constants.ts` (`ANALYTICS`); `MainLayout.astro` loads Google Analytics, Clarity, and GTM only after analytics consent.
 
 ---
 
@@ -478,8 +482,7 @@ pnpm dev                        # Local preview
 | `WikiList.astro` | Auto-generates wiki cards by directory prefix |
 | `LabList.astro` | Auto-generates lab index cards from `labs/<area>/<code>.mdx` pages |
 | `VoucherList.astro` | Auto-generates voucher cards by `voucherCategory` frontmatter |
-| `MainLayout.astro` | Global document shell, metadata, scripts, and banner integration |
-| `MainLayout.astro` | Main layout wrapper |
+| `MainLayout.astro` | Global document shell, metadata, consent-gated analytics, and full-page component initialization |
 
 ---
 
