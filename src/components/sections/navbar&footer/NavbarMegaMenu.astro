@@ -208,12 +208,19 @@ const redditLinks = [
                     aria-hidden="true"
                   />
                 </a>
-                <span
-                  class="flex size-9 items-center justify-center rounded-lg text-neutral-600 dark:text-neutral-300"
-                  aria-hidden="true"
+                <button
+                  type="button"
+                  class="flex size-9 items-center justify-center rounded-lg text-neutral-600 outline-hidden transition hover:text-blue-700 focus-visible:ring-2 focus-visible:ring-orange-700 dark:text-neutral-300 dark:hover:text-blue-300 dark:focus-visible:ring-orange-300"
+                  aria-label="Show bookmark feature status"
+                  title="Bookmarks"
+                  data-bookmark-coming-soon-trigger
                 >
-                  <PackIcon name="ph:bookmark-simple-fill" class="size-5" />
-                </span>
+                  <PackIcon
+                    name="ph:bookmark-simple-fill"
+                    class="size-5"
+                    aria-hidden="true"
+                  />
+                </button>
               </div>
             </div>
             <div
@@ -259,7 +266,60 @@ const redditLinks = [
     isDocsPage={isDocsPage}
   />
 </header>
+<div
+  class="fixed top-20 right-4 z-[70] w-[min(22rem,calc(100vw-2rem))] border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900 shadow-xl dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100"
+  role="status"
+  aria-live="polite"
+  data-bookmark-coming-soon-notice
+  hidden
+>
+  <div class="flex items-start justify-between gap-4">
+    <p class="font-medium">Bookmarking coming soon</p>
+    <button
+      type="button"
+      class="-mr-1 -mt-1 inline-flex size-7 shrink-0 items-center justify-center text-neutral-500 hover:text-neutral-900 focus-visible:ring-2 focus-visible:ring-orange-700 dark:text-neutral-400 dark:hover:text-white dark:focus-visible:ring-orange-300"
+      aria-label="Dismiss bookmark notice"
+      data-bookmark-coming-soon-dismiss
+    >
+      <PackIcon name="ph:x" class="size-4" aria-hidden="true" />
+    </button>
+  </div>
+</div>
 <script>
+  const bookmarkTrigger = document.querySelector<HTMLButtonElement>(
+    "[data-bookmark-coming-soon-trigger]",
+  );
+  const bookmarkNotice = document.querySelector<HTMLElement>(
+    "[data-bookmark-coming-soon-notice]",
+  );
+  const bookmarkDismiss = document.querySelector<HTMLButtonElement>(
+    "[data-bookmark-coming-soon-dismiss]",
+  );
+  let bookmarkNoticeTimeout: number | undefined;
+
+  const closeBookmarkNotice = () => {
+    if (!bookmarkNotice) return;
+    window.clearTimeout(bookmarkNoticeTimeout);
+    bookmarkNotice.classList.add("hidden");
+    bookmarkNotice.hidden = true;
+    bookmarkTrigger?.focus();
+  };
+
+  bookmarkTrigger?.addEventListener("click", () => {
+    if (!bookmarkNotice) return;
+    window.clearTimeout(bookmarkNoticeTimeout);
+    bookmarkNotice.hidden = false;
+    bookmarkNotice.classList.remove("hidden");
+    bookmarkNoticeTimeout = window.setTimeout(closeBookmarkNotice, 3500);
+  });
+  bookmarkDismiss?.addEventListener("click", closeBookmarkNotice);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && bookmarkNotice && !bookmarkNotice.hidden) {
+      closeBookmarkNotice();
+    }
+  });
+
   const closeRedditMenus = () => {
     document
       .querySelectorAll<HTMLElement>("[data-reddit-menu]")
