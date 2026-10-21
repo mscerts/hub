@@ -35,6 +35,8 @@ export const EXEMPT = Object.freeze({
       "the course repository's exercises are the Learn exercise units that wrap them, already on the Microsoft Learn tab; its 17 instructor demos (Instructions/Demos) are not on Learn, and the maintainers decided not to list them (2026-10-16)",
     "DP-750":
       "the course repository's labs are the Learn exercise units that wrap them, already on the Microsoft Learn tab (checked 2026-10-16)",
+    "AI-901":
+      "the labs of mslearn-ai-fundamentals and mslearn-ai-concepts are the Learn exercise units that wrap them (each unit opens the lab through a go.microsoft.com link), all on the Microsoft Learn tab; the GitHub cards were replaced by them on 2026-10-21 (AGENTS.md, Lab Page Workflow)",
   }),
 });
 

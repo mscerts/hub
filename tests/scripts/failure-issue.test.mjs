@@ -777,6 +777,18 @@ const WORKFLOWS = [
     ],
   },
   {
+    file: "lab-registry-monitor.yml",
+    issues: [
+      {
+        title: "Lab registry: the sync failed",
+        raiseWhen:
+          "failure() && steps.sync.outputs.extraction_failed == 'true'",
+        clearWhen: "steps.sync.outputs.extraction_failed == 'false'",
+        errorFile: "/tmp/lab-registry-error.md",
+      },
+    ],
+  },
+  {
     file: "measureup-monitor.yml",
     issues: [
       {
