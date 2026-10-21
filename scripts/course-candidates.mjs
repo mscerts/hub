@@ -4,10 +4,12 @@
  * Microsoft Learn modules, units and documentation pages with their provenance (P1-P4). It only shortlists;
  * the judging step decides.
  *
- *   node scripts/course-candidates.mjs <CODE> [--out DIR]
- *       Writes <CODE>.candidates.json to DIR (default: <tmp>/course-candidates) and prints a summary.
+ *   node scripts/course-candidates.mjs <CODE> [--out DIR] [--no-foundations]
+ *       Writes <CODE>.candidates.json to DIR (default: <tmp>/course-candidates) and prints a summary. Besides the
+ *       tasks it shortlists the fundamentals of every skill group; --no-foundations leaves them out.
  *   node scripts/course-candidates.mjs <CODE> --task <text> [--json]
- *       Prints the shortlist of the tasks whose text contains <text> (case-insensitive) and writes nothing.
+ *       Prints the shortlist of the tasks whose text contains <text> (case-insensitive), and of the fundamentals
+ *       of the skill groups whose title contains it, and writes nothing.
  *       With --json the same tasks as JSON.
  *
  * Inputs (nothing is written to the repository):
@@ -35,14 +37,21 @@ import { parseGuide } from "./lib/course-guide.mjs";
 import { buildScopeMap } from "./lib/course-scope.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-candidates.mjs <CODE> [--out DIR]
+const USAGE = `Usage: node scripts/course-candidates.mjs <CODE> [--out DIR] [--no-foundations]
        node scripts/course-candidates.mjs <CODE> --task <text> [--json]`;
 
 function parseArgs(argv) {
-  const options = { code: null, out: null, task: null, json: false };
+  const options = {
+    code: null,
+    out: null,
+    task: null,
+    json: false,
+    noFoundations: false,
+  };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--json") options.json = true;
+    else if (arg === "--no-foundations") options.noFoundations = true;
     else if (arg === "--out" || arg === "--task") {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
       options[arg.slice(2)] = argv[++i];
@@ -76,7 +85,11 @@ const tagsOf = (c) => {
 
 /** One task's shortlist as lines of text. */
 export function describeTask(task) {
-  const lines = [`${task.text}  (${task.domain} > ${task.group})`];
+  const lines = [
+    task.foundation
+      ? `Fundamentals of ${task.text}  (${task.domain})`
+      : `${task.text}  (${task.domain} > ${task.group})`,
+  ];
   const a = task.anchor;
   if (a) {
     lines.push(
@@ -198,11 +211,13 @@ export async function main(argv, deps = {}) {
     guide,
     scope,
     pools,
+    options: options.noFoundations ? { foundations: false } : {},
   });
 
   if (options.task) {
     const needle = options.task.toLowerCase();
-    const tasks = result.tasks.filter((t) =>
+    // the fundamentals of a skill group are previewed by the group's title
+    const tasks = [...result.tasks, ...result.foundations].filter((t) =>
       t.text.toLowerCase().includes(needle),
     );
     if (tasks.length === 0) {
@@ -222,6 +237,11 @@ export async function main(argv, deps = {}) {
   log(
     `${options.code}: ${s.tasks} tasks, ${s.candidates} candidates (P1 ${s.bySource.P1}, P2 ${s.bySource.P2}, P3 ${s.bySource.P3}, P4 ${s.bySource.P4}); ${s.tasksWithoutP1} tasks without a P1 candidate, ${s.tasksWithoutCandidates} without any`,
   );
+  const f = s.foundations;
+  if (f.groups)
+    log(
+      `  fundamentals: ${f.groups} skill groups, ${f.candidates} candidates (P1 ${f.bySource.P1}, P2 ${f.bySource.P2}, P3 ${f.bySource.P3}, P4 ${f.bySource.P4}); ${f.withoutCandidates} groups without any`,
+    );
   for (const w of result.warnings) log(`  warning: ${w}`);
   log(`Wrote ${file}`);
   return 0;

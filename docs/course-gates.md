@@ -42,6 +42,10 @@ Four things used to queue a pick as well and are **warnings**: an accepted pick 
 
 An accepted pick is one the gates, not a person, took: its decision is `by: gates` and becomes `by: auto` in the course file. The model case, AZ-104's entitlement-management page under "Manage external users", is caught when the judge sees it: a judge that rejects it with `other-sub-product` has the rejection remembered, and one that picks it with that flag has it marked for review. A judge that picks it without the flag only gets the generator's "another sub-product" warning and the page is accepted; that case is not caught any more (the skeptic used to be the second chance).
 
+## Fundamentals
+
+A skill group's fundamentals ([courses.md](courses.md)) are candidates of the pseudo-task `<group>/@foundations` and go through the rules above unchanged: the class of an accepted pick is `foundation` (the judge's verdict), a maintainer's decision for such a key is an accept with the class `foundation` (never core or supporting, and no relation) and a decision for a task is never `foundation`. A fundamentals pick the judge was not sure of or flagged out of scope is marked for review like any other.
+
 ## The queue
 
 `gate` writes `<CODE>.queue.json` next to `<CODE>.gated.json`, in `<tmp>/course-gates` unless `--out` says otherwise. The queue is **a file the maintainer edits by hand** (the format of the open decision on the board item: no page, no GitHub issue). Each item carries what is needed to decide: the task, the page and its address to open, the proposal (class and relation), every reason it waits, and the judge's reason, confidence, flags and quote. To answer, set:

@@ -7,7 +7,11 @@
  * A course file is the study guide's tree (domain > skill group > task, exactly as scripts/lib/course-guide.mjs
  * parses it) with a list of picks under every task: Learn modules, units and documentation pages.
  *
- * Two classes of pick, and nothing else:
+ * A skill group may also carry `foundations`: the pages that teach the theory a learner needs before the group's
+ * tasks (scripts/lib/course-foundations.mjs). They are picks of the class `foundation`, shown once in the whole
+ * course like every other page.
+ *
+ * Two classes of pick under a task, and nothing else:
  *   core        covers the listed task as the guide words it.
  *   supporting  is NOT in the guide, but is part of the job the task belongs to: a professional doing the
  *               listed task meets it (a prerequisite, a neighbouring step of the same workflow, running or
@@ -19,6 +23,11 @@
  */
 
 import { isClassic } from "./course-classic.mjs";
+import {
+  FOUNDATION_CLASS,
+  foundationKey,
+  groupKeyOf,
+} from "./course-foundations.mjs";
 import { handsOnReason } from "./course-handson.mjs";
 import { diffTrees, squish } from "./course-guide.mjs";
 import { fingerprintOfSnapshot } from "./course-scope.mjs";
@@ -74,9 +83,10 @@ const isDay = (value) =>
 const present = (value) => typeof value === "string" && value.trim() !== "";
 
 /**
- * Check one pick (without its context); returns a list of problems.
+ * Check one pick (without its context); returns a list of problems. `foundation` is true for a pick of a group's
+ * fundamentals, whose class is `foundation` (it has a `why`, no relation) instead of core or supporting.
  */
-export function pickProblems(pick) {
+export function pickProblems(pick, { foundation = false } = {}) {
   const problems = [];
   if (!pick || typeof pick !== "object") return ["a pick is not an object"];
   if (!pick.target || !PICK_KINDS.includes(pick.target.kind))
@@ -103,7 +113,16 @@ export function pickProblems(pick) {
   else if (pick.target?.kind === "docs" && /^\/training\//.test(path))
     problems.push(`a docs target is not a training page: ${path}`);
   if (!present(pick.title)) problems.push("title is missing");
-  if (!CLASSES.includes(pick.class))
+  if (foundation) {
+    if (pick.class !== FOUNDATION_CLASS)
+      problems.push(`a fundamentals pick has the class ${FOUNDATION_CLASS}`);
+    if (pick.relation !== undefined && pick.relation !== null)
+      problems.push("a fundamentals pick has no relation");
+    if (!present(pick.why))
+      problems.push(
+        "a fundamentals pick must say which concept it teaches (why)",
+      );
+  } else if (!CLASSES.includes(pick.class))
     problems.push(`class must be one of ${CLASSES.join(", ")}`);
   if (!SOURCES.includes(pick.source))
     problems.push(`source must be one of ${SOURCES.join(", ")}`);
@@ -125,13 +144,14 @@ export function pickProblems(pick) {
   }
   if (
     (pick.class === "supporting" ||
+      pick.class === FOUNDATION_CLASS ||
       pick.source === "P3" ||
       pick.source === "P4" ||
       pick.source === "P5") &&
     !present(pick.evidence)
   )
     problems.push(
-      "evidence is required for a supporting pick and for material found outside the exam's own course",
+      "evidence is required for a supporting or fundamentals pick and for material found outside the exam's own course",
     );
   const decision = pick.decision;
   if (!decision || !DECIDERS.includes(decision.by) || !isDay(decision.at))
@@ -194,10 +214,24 @@ export function moduleOfPick(pick) {
   return MODULE_PATH.test(pick?.via ?? "") ? pick.via : null;
 }
 
-/** The picks of a course file as { domain, group, task, pick } rows. */
+/**
+ * The picks of a course file as { domain, group, task, pick } rows, in the order of the page. The fundamentals of a
+ * group come first, with the pseudo-task `{ key: <group>/@foundations, text: "Fundamentals", foundation: true }`
+ * as their `task`.
+ */
 export function* eachPick(course) {
   for (const domain of course.domains ?? []) {
     for (const group of domain.groups ?? []) {
+      const first = group.tasks?.[0]?.key;
+      if (first && group.foundations?.length) {
+        const task = {
+          key: foundationKey(groupKeyOf(first)),
+          text: "Fundamentals",
+          foundation: true,
+        };
+        for (const pick of group.foundations)
+          yield { domain, group, task, pick };
+      }
       for (const task of group.tasks ?? []) {
         for (const pick of task.picks ?? [])
           yield { domain, group, task, pick };
@@ -215,26 +249,28 @@ export function courseStats(course) {
     picks: 0,
     core: 0,
     supporting: 0,
+    foundation: 0,
     bySource: { P1: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
     byKind: { module: 0, unit: 0, docs: 0 },
     byDecider: { auto: 0, maintainer: 0 },
   };
+  const count = (pick) => {
+    stats.picks++;
+    if (pick.class in stats) stats[pick.class]++;
+    if (pick.source in stats.bySource) stats.bySource[pick.source]++;
+    if (pick.target?.kind in stats.byKind) stats.byKind[pick.target.kind]++;
+    if (pick.decision?.by in stats.byDecider)
+      stats.byDecider[pick.decision.by]++;
+  };
   for (const domain of course.domains ?? []) {
     for (const group of domain.groups ?? []) {
+      for (const pick of group.foundations ?? []) count(pick);
       for (const task of group.tasks ?? []) {
         stats.tasks++;
         const picks = task.picks ?? [];
         if (picks.length === 0) stats.tasksWithoutPicks++;
         if (picks.some((p) => p.class === "core")) stats.tasksWithCore++;
-        for (const pick of picks) {
-          stats.picks++;
-          if (pick.class in stats) stats[pick.class]++;
-          if (pick.source in stats.bySource) stats.bySource[pick.source]++;
-          if (pick.target?.kind in stats.byKind)
-            stats.byKind[pick.target.kind]++;
-          if (pick.decision?.by in stats.byDecider)
-            stats.byDecider[pick.decision.by]++;
-        }
+        for (const pick of picks) count(pick);
       }
     }
   }
@@ -343,9 +379,13 @@ export function validateCourse(course, { guide, isCurrent, titleOf } = {}) {
     else rejectedPairs.add(`${entry.taskKey}|${entry.path}`);
   }
 
+  for (const domain of course.domains)
+    for (const group of domain.groups ?? [])
+      if (group.foundations !== undefined && !Array.isArray(group.foundations))
+        errors.push(`${group.title}: foundations must be a list of picks`);
   for (const { task, pick } of eachPick(course)) {
     const where = `${task.key ?? task.text}: ${pick?.target?.path ?? "?"}`;
-    for (const problem of pickProblems(pick))
+    for (const problem of pickProblems(pick, { foundation: task.foundation }))
       errors.push(`${where}: ${problem}`);
     // everything a pick depends on is recorded, so a change to it can be found later
     const module =
@@ -364,53 +404,47 @@ export function validateCourse(course, { guide, isCurrent, titleOf } = {}) {
   }
   // a page is shown once in the whole course, and hands-on material is on the lab page instead
   const shownAt = new Map();
-  for (const domain of course.domains) {
-    for (const group of domain.groups ?? []) {
-      for (const task of group.tasks ?? []) {
-        for (const pick of task.picks ?? []) {
-          const path = pick?.target?.path;
-          if (!path) continue;
-          const first = shownAt.get(path);
-          if (first === task.key)
-            errors.push(`${task.key}: ${path} appears twice under one task`);
-          else if (first !== undefined)
-            errors.push(
-              `${task.key}: ${path} is already shown under ${first}: a page appears once in a course`,
-            );
-          else shownAt.set(path, task.key);
-          if (isClassic({ title: pick.title, path }))
-            errors.push(
-              `${task.key}: ${path} is classic material; a course leaves it out`,
-            );
-          const handsOn = handsOnReason({
-            kind: pick.target?.kind,
-            path,
-            title: pick.title,
-          });
-          if (handsOn)
-            errors.push(
-              `${task.key}: ${path} is hands-on material (${handsOn}); it belongs on the lab page, not in the course`,
-            );
-          if (task.key && rejectedPairs.has(`${task.key}|${path}`))
-            errors.push(
-              `${task.key}: ${path} was rejected by the maintainer and must not come back`,
-            );
-          if (isCurrent) {
-            const verdict = isCurrent(path, pick.target.kind);
-            if (verdict && verdict.ok === false)
-              errors.push(
-                `${task.key}: ${path} is not a current Learn page${verdict.reason ? ` (${verdict.reason})` : ""}`,
-              );
-          }
-          if (titleOf) {
-            const official = titleOf(path);
-            if (official && squish(official) !== squish(pick.title))
-              warnings.push(
-                `${task.key}: the title "${pick.title}" is not the catalog title "${official}"`,
-              );
-          }
-        }
-      }
+  for (const { task, pick } of eachPick(course)) {
+    const path = pick?.target?.path;
+    if (!path) continue;
+    const first = shownAt.get(path);
+    if (first === task.key)
+      errors.push(`${task.key}: ${path} appears twice under one task`);
+    else if (first !== undefined)
+      errors.push(
+        `${task.key}: ${path} is already shown under ${first}: a page appears once in a course`,
+      );
+    else shownAt.set(path, task.key);
+    if (isClassic({ title: pick.title, path }))
+      errors.push(
+        `${task.key}: ${path} is classic material; a course leaves it out`,
+      );
+    const handsOn = handsOnReason({
+      kind: pick.target?.kind,
+      path,
+      title: pick.title,
+    });
+    if (handsOn)
+      errors.push(
+        `${task.key}: ${path} is hands-on material (${handsOn}); it belongs on the lab page, not in the course`,
+      );
+    if (task.key && rejectedPairs.has(`${task.key}|${path}`))
+      errors.push(
+        `${task.key}: ${path} was rejected by the maintainer and must not come back`,
+      );
+    if (isCurrent) {
+      const verdict = isCurrent(path, pick.target.kind);
+      if (verdict && verdict.ok === false)
+        errors.push(
+          `${task.key}: ${path} is not a current Learn page${verdict.reason ? ` (${verdict.reason})` : ""}`,
+        );
+    }
+    if (titleOf) {
+      const official = titleOf(path);
+      if (official && squish(official) !== squish(pick.title))
+        warnings.push(
+          `${task.key}: the title "${pick.title}" is not the catalog title "${official}"`,
+        );
     }
   }
   return {

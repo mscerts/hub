@@ -5,6 +5,7 @@
  * files a person or an agent session gives to a model, and the answers are files they save back.
  *
  *   node scripts/course-judge.mjs prepare <CODE> [--candidates FILE] [--group TEXT] [--out DIR] [--max-candidates N]
+ *                                  [--foundations-only]
  *       One batch per skill group of the candidates file (scripts/course-candidates.mjs), with the text a judge
  *       may quote: <prefix>.batch.json and <prefix>.judge.md (prompt) in DIR (default <tmp>/course-judge),
  *       where <prefix> is <CODE>.<nn>-<group>. A group with more than N candidates (default 150, so that a
@@ -35,7 +36,7 @@ import {
 } from "./lib/course-judge.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-judge.mjs prepare <CODE> [--candidates FILE] [--group TEXT] [--out DIR] [--max-candidates N]
+const USAGE = `Usage: node scripts/course-judge.mjs prepare <CODE> [--candidates FILE] [--group TEXT] [--out DIR] [--max-candidates N] [--foundations-only]
        node scripts/course-judge.mjs check <prefix>
        node scripts/course-judge.mjs merge <prefix> [--keep-unverified]`;
 
@@ -50,11 +51,13 @@ function parseArgs(argv) {
     out: null,
     maxCandidates: null,
     keepUnverified: false,
+    foundationsOnly: false,
   };
   const positional = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--keep-unverified") options.keepUnverified = true;
+    else if (arg === "--foundations-only") options.foundationsOnly = true;
     else if (arg === "--max-candidates") {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
       const n = Number(argv[++i]);
@@ -201,6 +204,7 @@ async function prepare(
     pools: loaded.pools,
     exam: { code, name: guide.name ?? null },
     ...(options.maxCandidates ? { maxCandidates: options.maxCandidates } : {}),
+    foundationsOnly: options.foundationsOnly,
   });
   if (options.group) {
     const needle = options.group.toLowerCase();

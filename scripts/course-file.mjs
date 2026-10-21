@@ -7,11 +7,12 @@
  *       Monitor stores and against learnsync: the tree must be the guide's tree, every pick must follow the
  *       format and approval rules, and every target must be a current Learn page (learnsync's validator;
  *       --live also asks learn.microsoft.com about what the caches cannot settle). Exit 1 on any error.
- *   node scripts/course-file.mjs render <CODE|file> [--out FILE] [--review FILE]
+ *   node scripts/course-file.mjs render <CODE|file> [--out FILE] [--review FILE] [--group TEXT]
  *       Renders the course page (MDX) to stdout, or to FILE. The file must pass the checks that need no
  *       network; nothing is written to src/content unless --out says so. There are no draft pages: the page
  *       is an ordinary page of the site. With --review (the FILE.review.json that course-build.mjs writes) it is
- *       the review copy: the picks the judge was not sure of are orange, numbered and carry its reason.
+ *       the review copy: the picks the judge was not sure of are orange, numbered and carry its reason. --group
+ *       renders only the skill groups whose title contains TEXT (a preview of one group).
  *
  * URL checks need a learnsync checkout (LEARNSYNC_DIR, default ../learnsync) because they run its validator.
  * Nothing here writes a course file: those come from the build steps described in docs/courses.md.
@@ -32,7 +33,7 @@ import { readGuides } from "./course-source.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 const USAGE = `Usage: node scripts/course-file.mjs validate <CODE|file> [--live]
-       node scripts/course-file.mjs render <CODE|file> [--out FILE] [--review FILE]`;
+       node scripts/course-file.mjs render <CODE|file> [--out FILE] [--review FILE] [--group TEXT]`;
 
 /** What the validator needs to know about a learnsync verdict: is the target a current page? */
 export function currentFromVerdict(verdict) {
@@ -72,10 +73,21 @@ export async function learnsyncVerdicts({ dir, live }) {
 
 function parseArgs(argv) {
   const [command, target, ...rest] = argv;
-  const options = { command, target, live: false, out: null, review: null };
+  const options = {
+    command,
+    target,
+    live: false,
+    out: null,
+    review: null,
+    group: null,
+  };
   for (let i = 0; i < rest.length; i++) {
     if (rest[i] === "--live") options.live = true;
-    else if (rest[i] === "--out" || rest[i] === "--review") {
+    else if (
+      rest[i] === "--out" ||
+      rest[i] === "--review" ||
+      rest[i] === "--group"
+    ) {
       if (rest[i + 1] === undefined)
         throw new Error(`${rest[i]} needs a value`);
       options[rest[i].slice(2)] = rest[++i];
@@ -194,7 +206,7 @@ export async function main(argv, deps = {}) {
   if (options.command === "validate") {
     const s = result.stats;
     log(
-      `${course.code}: ${result.ok ? "valid" : "INVALID"} - ${s.tasks} tasks (${s.tasksWithCore} with core picks, ${s.tasksWithoutPicks} with none), ${s.picks} picks (${s.core} core, ${s.supporting} supporting; ${s.byDecider.auto} automatic, ${s.byDecider.maintainer} approved by the maintainer)`,
+      `${course.code}: ${result.ok ? "valid" : "INVALID"} - ${s.tasks} tasks (${s.tasksWithCore} with core picks, ${s.tasksWithoutPicks} with none), ${s.picks} picks (${s.core} core, ${s.supporting} supporting${s.foundation ? `, ${s.foundation} fundamentals` : ""}; ${s.byDecider.auto} automatic, ${s.byDecider.maintainer} approved by the maintainer)`,
     );
     for (const w of result.warnings) log(`  warning: ${w}`);
     for (const e of result.errors) log(`  error: ${e}`);
@@ -219,6 +231,7 @@ export async function main(argv, deps = {}) {
       return 2;
     }
     const placed = numberReview(course, review).length;
+    // a preview of one group renders its marks only: the file is still checked against the whole course
     if (placed !== review.picks.length) {
       error(
         `${options.review} lists ${review.picks.length} picks but only ${placed} of them are in the course file: it belongs to another build; build the course again.`,
@@ -229,6 +242,7 @@ export async function main(argv, deps = {}) {
   const page = renderCourse(course, {
     labPage: labPageOf(course.code, root),
     review,
+    only: options.group,
   });
   if (options.out) {
     mkdirSync(dirname(resolve(options.out)), { recursive: true });

@@ -158,6 +158,13 @@ test("--task prints the shortlist of the tasks that contain the text, with prove
   );
 });
 
+test("--task also previews the fundamentals of a skill group whose title contains the text", async () => {
+  const w = world();
+  const { code, io } = await run(["GH-900", "--task", "Manage"], w);
+  assert.equal(code, 0, io.err.join("\n"));
+  assert.match(io.out.join("\n"), /^Fundamentals of .+  \(.+\)$/m);
+});
+
 test("--task --json prints the matching tasks as data", async () => {
   const w = world();
   const { code, io } = await run(

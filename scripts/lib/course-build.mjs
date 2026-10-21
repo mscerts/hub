@@ -36,11 +36,19 @@ import {
 import { isClassic } from "./course-classic.mjs";
 import { ACCEPTED_BY_MAINTAINER } from "./course-gates.mjs";
 import { handsOnReason } from "./course-handson.mjs";
+import {
+  FOUNDATION_CLASS,
+  flattenFoundations,
+  foundationKey,
+  groupKeyOf,
+  orderFoundations,
+} from "./course-foundations.mjs";
 
 const byText = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 const SOURCE_ORDER = { P1: 0, P2: 1, P3: 2, P4: 3, P5: 4 };
 const KIND_ORDER = { module: 0, unit: 1, docs: 2 };
-const CLASS_ORDER = { core: 0, supporting: 1 };
+// a page that fits a task as core stays there; a page of the fundamentals comes before one that only supports a task
+const CLASS_ORDER = { core: 0, [FOUNDATION_CLASS]: 1, supporting: 2 };
 
 /**
  * One accepted gated item as a pick, or a problem text. `day` is the day the gates decided (for a decision the
@@ -61,6 +69,7 @@ function pickOf(item, day) {
   };
   const needsEvidence =
     g.class === "supporting" ||
+    g.class === FOUNDATION_CLASS ||
     item.source === "P3" ||
     item.source === "P4" ||
     item.source === "P5";
@@ -75,7 +84,7 @@ function pickOf(item, day) {
     g.reason !== ACCEPTED_BY_MAINTAINER
       ? g.reason.trim()
       : null;
-  if (g.class === "supporting") {
+  if (g.class === "supporting" || g.class === FOUNDATION_CLASS) {
     pick.why = note ?? (judgePicked ? item.judge.why : null);
     if (!pick.why)
       return {
@@ -269,11 +278,14 @@ export function buildCourse({
         : `${s}: run the candidates, judging and gates again, or build with --allow-stale`,
     );
 
-  const taskKeys = new Set(
-    guide.domains.flatMap((d) =>
-      d.groups.flatMap((g) => g.tasks.map((t) => t.key)),
-    ),
+  // the keys of the page's order: the fundamentals of a skill group (its pseudo-task), then the group's tasks
+  const orderedKeys = guide.domains.flatMap((d) =>
+    d.groups.flatMap((g) => [
+      ...(g.tasks[0] ? [foundationKey(groupKeyOf(g.tasks[0].key))] : []),
+      ...g.tasks.map((t) => t.key),
+    ]),
   );
+  const taskKeys = new Set(orderedKeys);
   const decided = new Map();
   const rejected = new Map();
   for (const item of gated.items) {
@@ -309,11 +321,11 @@ export function buildCourse({
   }
 
   // hands-on material goes to the lab page and a page is shown once (the top of this file)
-  const routed = routePicks({ accepted: decided, taskKeys: [...taskKeys] });
+  const routed = routePicks({ accepted: decided, taskKeys: orderedKeys });
   const accepted = routed.accepted;
   // the picks that stay in the course but are marked for the maintainer, in the guide's order
   const review = [];
-  for (const key of taskKeys) {
+  for (const key of orderedKeys) {
     for (const { pick, item } of accepted.get(key) ?? []) {
       const marks = item.gate.review;
       if (!marks?.length) continue;
@@ -340,32 +352,51 @@ export function buildCourse({
 
   // everything a pick of another exam's course (or found by search) depends on is recorded with its signature
   const picked = new Map();
+  const rowsOf = (key) => {
+    const rows = (accepted.get(key) ?? []).sort(pickOrder);
+    for (const { pick, item } of rows) {
+      if (
+        pick.source === "P3" ||
+        pick.source === "P4" ||
+        pick.source === "P5"
+      ) {
+        const module = moduleOfPick(pick);
+        if (module && !picked.has(module)) {
+          if (!item.unitSig)
+            problems.push(
+              `${key}: ${pick.target.path} depends on ${module} but its signature is not in the gated file`,
+            );
+          else picked.set(module, item.unitSig);
+        }
+      }
+    }
+    return rows;
+  };
   const domains = guide.domains.map((d) => ({
     title: d.title,
     ...(d.weight ? { weight: d.weight } : {}),
-    groups: d.groups.map((g) => ({
-      title: g.title,
-      tasks: g.tasks.map((t) => {
-        const rows = (accepted.get(t.key) ?? []).sort(pickOrder);
-        for (const { pick, item } of rows) {
-          if (
-            pick.source === "P3" ||
-            pick.source === "P4" ||
-            pick.source === "P5"
-          ) {
-            const module = moduleOfPick(pick);
-            if (module && !picked.has(module)) {
-              if (!item.unitSig)
-                problems.push(
-                  `${t.key}: ${pick.target.path} depends on ${module} but its signature is not in the gated file`,
-                );
-              else picked.set(module, item.unitSig);
+    groups: d.groups.map((g) => {
+      const foundations = g.tasks[0]
+        ? rowsOf(foundationKey(groupKeyOf(g.tasks[0].key)))
+        : [];
+      return {
+        title: g.title,
+        ...(foundations.length
+          ? {
+              foundations: orderFoundations(
+                foundations.map((r) => r.pick),
+                g.tasks.map((t) => t.text),
+                g.title,
+              ),
             }
-          }
-        }
-        return { key: t.key, text: t.text, picks: rows.map((r) => r.pick) };
-      }),
-    })),
+          : {}),
+        tasks: g.tasks.map((t) => ({
+          key: t.key,
+          text: t.text,
+          picks: rowsOf(t.key).map((r) => r.pick),
+        })),
+      };
+    }),
   }));
 
   const course = {

@@ -7,6 +7,7 @@ import {
   queryTerms,
   stem,
   words,
+  termCoverage,
 } from "../../scripts/lib/course-lexical.mjs";
 
 test("the stemmer makes route, routes, routing and routed one term, and keeps different words apart", () => {
@@ -264,5 +265,45 @@ test("a page with the abbreviation covers the long form, a page with some of its
     short.partial,
     undefined,
     "the abbreviation alone is the whole concept",
+  );
+});
+
+test("termCoverage counts a task's distinctive words in a text, can leave out the words of a group's title, and treats a long form as one", () => {
+  assert.equal(termCoverage("Manage external users", "External sign-in"), 0.5);
+  assert.equal(
+    termCoverage("Manage", "anything"),
+    1,
+    "a task without distinctive words is covered",
+  );
+  assert.equal(termCoverage("Manage", "anything", { emptyIs: 0 }), 0);
+  // the words of the group's title do not count, and neither does a long form that contains one of them
+  const without = new Set(
+    queryTerms("Manage Microsoft Entra users and groups").terms.map(
+      (t) => t.term,
+    ),
+  );
+  assert.equal(
+    termCoverage(
+      "Manage licenses in Microsoft Entra ID",
+      "Understand Microsoft Entra ID",
+      { without },
+    ),
+    0,
+  );
+  assert.equal(
+    termCoverage(
+      "Manage licenses in Microsoft Entra ID",
+      "Overview of licensing",
+      { without },
+    ),
+    1,
+  );
+  assert.equal(
+    termCoverage(
+      "Manage licenses in Microsoft Entra ID",
+      "Overview of licensing",
+      { without, minWordLength: 3 },
+    ),
+    1,
   );
 });

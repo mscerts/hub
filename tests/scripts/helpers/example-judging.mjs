@@ -20,22 +20,28 @@ export function worldPools() {
   return { world, pools };
 }
 
-/** The generator's candidates file for TASKS (or other tasks). */
-export function candidatesFile(tasks = TASKS) {
+/**
+ * The generator's candidates file for TASKS (or other tasks). The fundamentals of the skill groups are left out
+ * unless `foundations` is true, so that the tests of the tasks keep their data.
+ */
+export function candidatesFile(tasks = TASKS, { foundations = false } = {}) {
   const { world, pools } = worldPools();
   const candidates = generateCandidates({
     code: EXAM.code,
     guide: guideOf(tasks),
     scope: scopeOf(world),
     pools,
-    options: { genericProductShare: 0.6 },
+    options: {
+      genericProductShare: 0.6,
+      ...(foundations ? {} : { foundations: false }),
+    },
   });
   return { candidates, pools };
 }
 
 /** The judge batches of TASKS. */
-export function batches(tasks = TASKS) {
-  const { candidates, pools } = candidatesFile(tasks);
+export function batches(tasks = TASKS, options = {}) {
+  const { candidates, pools } = candidatesFile(tasks, options);
   return {
     batches: buildBatches({ candidates, pools, exam: EXAM }),
     candidates,
@@ -54,6 +60,24 @@ export function judgmentsFor(batch, edit = (j) => j) {
   for (const task of batch.tasks)
     for (const c of task.candidates) {
       const pick = c.source === "P1" || c.source === "P2";
+      // the fundamentals task of a skill group has its own verdicts: foundation or reject
+      if (task.foundation) {
+        const base = {
+          task: task.key,
+          target: c.target.path,
+          verdict: c.source === "P4" ? "reject" : "foundation",
+          why:
+            c.source === "P4"
+              ? "Found by search only and not part of the group's theory."
+              : "Teaches a concept behind the tasks of the group.",
+          ...(c.source === "P4" ? {} : { quote: firstQuote(c) }),
+          flags: [],
+          confidence: "high",
+        };
+        const edited = edit(base, c, task);
+        if (edited) judgments.push(edited);
+        continue;
+      }
       const base = {
         task: task.key,
         target: c.target.path,

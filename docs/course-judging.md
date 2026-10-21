@@ -28,6 +28,12 @@ The judge may also **flag** a candidate it picks: `other-role`, `other-sub-produ
 - **A task has no limit of pages.** A relevant page is a pick, however many others the task already has.
 - **A judge that is not sure does not dismiss.** It gives the verdict it leans to with `confidence: low` and says what it is unsure about; it must not lower a verdict "to be safe" or reject what it cannot place (the first rubric said "when in doubt take the lower one", which pushed doubtful pages down into rejects; that rule is gone). A `low` goes to the maintainer, who is the final judge: a `low` pick and a `low` **reject** both wait in the queue ([course-gates.md](course-gates.md)); only a reject with `high` or `medium` confidence is final. A `low` reject should carry a quote, so that the maintainer sees what the judge saw.
 
+## Fundamentals tasks
+
+The fundamentals of a skill group ([courses.md](courses.md)) are judged in the batch of the group, as its **last task**, marked `"foundation": true` with the group's task wordings in `groupTasks`; the prompt then has an extra "Fundamentals" section (`foundationRubricText()`). The verdicts for such a task are only **`foundation`** (a page that teaches the theory, concepts, terminology, architecture or "how it works" behind the group's tasks at an introductory or conceptual level: be liberal, pick it even when it covers one concept of several, overlaps another page or comes from another exam's fundamentals course) and **`reject`** (a procedure, anything hands-on, an advanced deep dive, another role or product area, a page that only mentions the words, a retired page). `core`, `supporting` and a `relation` are sent back for these tasks, and `foundation` is sent back for a real task. A `foundation` pick needs a `quote` like any pick; `why` names the concept the page teaches; flags and confidence are as before, so an unsure pick is marked for review.
+
+`node scripts/course-judge.mjs prepare <CODE> --foundations-only` writes batches of the fundamentals alone (the tasks are left out, their wordings stay as context), which is the cheap way to judge them on their own; `--group` picks one skill group.
+
 ## The files
 
 All of a batch's files share a prefix, `<CODE>.<nn>-<group>` (for example `AZ-104.03-manage-microsoft-entra-users-and-groups`), in `<tmp>/course-judge` unless `--out` says otherwise. Nothing is written to the repository.

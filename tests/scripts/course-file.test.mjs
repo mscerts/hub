@@ -422,3 +422,25 @@ test("render --review writes the review copy and refuses a review file that does
   );
   assert.match(missing.err.join("\n"), /Cannot read the review file/);
 });
+
+test("render --group previews only the skill groups whose title contains the text", async () => {
+  const course = exampleCourse().course;
+  const root = world({ course });
+  const groups = course.domains.flatMap((d) => d.groups.map((g) => g.title));
+  const c = capture();
+  assert.equal(
+    await main(["render", "GH-900", "--group", groups[1]], {
+      root,
+      env: {},
+      log: c.log,
+      error: c.error,
+      write: c.write,
+    }),
+    0,
+    c.err.join("\n"),
+  );
+  const page = c.written.join("");
+  assert.match(page, /title: GH-900 Study Guide Course \(one skill group\)/);
+  assert.ok(page.includes(`### ${groups[1]}`));
+  assert.ok(!page.includes(`### ${groups[0]}`));
+});

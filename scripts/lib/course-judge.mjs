@@ -13,12 +13,18 @@
  */
 
 import { RELATIONS } from "./course-format.mjs";
-import { contentStems, queryTerms } from "./course-lexical.mjs";
+import { termCoverage } from "./course-lexical.mjs";
 
 export const JUDGE_SCHEMA_VERSION = 1;
 
 /** The judge's verdicts: the two classes of a course pick, and rejection. */
 export const VERDICTS = Object.freeze(["core", "supporting", "reject"]);
+
+/**
+ * The verdicts for a fundamentals task (a skill group's pseudo-task, course-foundations.mjs): the page teaches the
+ * theory a learner needs before the group's tasks, or it does not.
+ */
+export const FOUNDATION_VERDICTS = Object.freeze(["foundation", "reject"]);
 
 /** What a judge may flag about a candidate; the gates mark a pick with an out-of-scope flag (other-role, other-sub-product, licensing-tier) for review and keep the others as warnings. */
 export const FLAGS = Object.freeze({
@@ -77,23 +83,7 @@ export function findQuote(quote, evidence) {
  * no evidence for it.
  */
 export function quoteTermCoverage(taskText, quote) {
-  const terms = queryTerms(taskText).terms.filter(
-    (t) => !t.context && !t.generic,
-  );
-  if (terms.length === 0) return 1;
-  const stems = new Set(contentStems(quote));
-  const matched = new Set(
-    terms.filter((t) => stems.has(t.term)).map((t) => t.term),
-  );
-  for (const t of terms)
-    if (t.role === "concept" && matched.has(t.term))
-      for (const part of terms)
-        if (part.group === t.group) matched.add(part.term);
-  return (
-    Math.round(
-      (terms.filter((t) => matched.has(t.term)).length / terms.length) * 100,
-    ) / 100
-  );
+  return termCoverage(taskText, quote);
 }
 
 /** The text a judge may quote for a candidate: [{ where, text }]. */
@@ -146,6 +136,8 @@ const moduleCard = (pools, path) => {
 
 /**
  * One batch per skill group of a candidates file (course-candidates.mjs). `exam` is { code, name }.
+ * `foundationsOnly` leaves the tasks out and batches only the fundamentals of the skill groups (a cheap way to judge
+ * them on their own); the group's task wordings stay in `group.tasks` for context.
  * Returns [{ schemaVersion, kind: "judge", batchId, exam, inputs, group, tasks }].
  */
 export function buildBatches({
@@ -153,18 +145,24 @@ export function buildBatches({
   pools,
   exam,
   maxCandidates = DEFAULT_BATCH_CANDIDATES,
+  foundationsOnly = false,
 }) {
   const groups = new Map();
-  for (const task of candidates.tasks) {
+  const groupOf = (task) => {
     const groupId = task.key.split("/").slice(0, 2).join("/");
     if (!groups.has(groupId))
       groups.set(groupId, {
         domain: task.domain,
         title: task.group,
         tasks: [],
+        foundation: null,
       });
-    groups.get(groupId).tasks.push(task);
-  }
+    return groups.get(groupId);
+  };
+  for (const task of candidates.tasks) groupOf(task).tasks.push(task);
+  // the fundamentals of a group are judged with its tasks, as the last task of the batch
+  for (const f of candidates.foundations ?? [])
+    if (f.candidates.length > 0) groupOf(f).foundation = f;
   const candidateOf = (c) => ({
     target: c.target,
     title: c.title,
@@ -180,6 +178,7 @@ export function buildBatches({
       ...(c.siblingSection ? { siblingSection: true } : {}),
       ...(c.viaGroup ? { viaGroup: true } : {}),
       ...(c.relaxed ? { relaxed: true } : {}),
+      ...(c.concept ? { concept: true } : {}),
       ...(c.recommendedBy
         ? {
             recommendedBy: c.recommendedBy.map(
@@ -192,7 +191,15 @@ export function buildBatches({
   });
   const batches = [];
   for (const [groupId, group] of groups) {
-    const parts = splitTasks(group.tasks, maxCandidates);
+    const inBatch = foundationsOnly
+      ? group.foundation
+        ? [group.foundation]
+        : []
+      : group.foundation
+        ? [...group.tasks, group.foundation]
+        : group.tasks;
+    if (inBatch.length === 0) continue;
+    const parts = splitTasks(inBatch, maxCandidates);
     parts.forEach((part, n) =>
       batches.push({
         schemaVersion: JUDGE_SCHEMA_VERSION,
@@ -212,6 +219,9 @@ export function buildBatches({
         tasks: part.map(({ task, candidates: list }) => ({
           key: task.key,
           text: task.text,
+          ...(task.foundation
+            ? { foundation: true, groupTasks: task.tasks }
+            : {}),
           noP1: task.noP1,
           anchor: (task.anchor?.modules ?? []).map((m) => m.title),
           candidates: list.map(candidateOf),
@@ -297,6 +307,22 @@ ${flagLines()}
 9. You may use what you know about the exam and the product, but do not invent: if the evidence does not show it, you cannot quote it.`;
 }
 
+/**
+ * The rules for the fundamentals task of a skill group, added to the prompt of a batch that has one. Liberal on
+ * purpose (maintainer, 2026-10-21): the aim is that a learner who reads every fundamentals page has the whole
+ * conceptual base before the group's tasks, which are more advanced.
+ */
+export function foundationRubricText() {
+  return `## Fundamentals
+
+A task marked \`"foundation": true\` stands for the **fundamentals of the whole skill group**: the theory a learner should know **before** starting the group's tasks (listed in its \`groupTasks\`), as a learning path for a fundamentals exam would teach it, but scoped to this skill group. Be **liberal**: the aim is that someone who reads every fundamentals page has the complete conceptual base for the group, because the tasks are more advanced and assume it.
+
+- \`foundation\`: a page that teaches theory, concepts, terminology, architecture, models or the "what is it, how does it work, why does it exist" behind the group's tasks, at an introductory or conceptual level. Pick it even when it covers only one concept of several, when it overlaps with another page, and when it comes from a fundamentals course of another exam (AZ-900, SC-900 and so on), as long as the concept belongs to this skill group.
+- \`reject\`: a procedure (steps to do the task), anything hands-on, an advanced or specialised deep dive that assumes the basics, another job role or product area, a page that only mentions the words, a retired page.
+
+For these tasks only \`foundation\` and \`reject\` are allowed (never \`core\`, \`supporting\` or a \`relation\`). The rest of the rules apply as written above: every pick needs a \`quote\`; \`why\` is one plain sentence naming the concept the page teaches; \`flags\` and \`confidence\` as before, and when you are not sure say so.`;
+}
+
 const verdictShape = `{
   "schemaVersion": ${JUDGE_SCHEMA_VERSION},
   "kind": "judgments",
@@ -329,7 +355,7 @@ Skill group: **${batch.group.domain} > ${batch.group.title}**${
 
 You are judging which Microsoft Learn modules, units and documentation pages belong in a study course for this exam. Each task below comes from the exam's study guide; each candidate was found by a search and has not been looked at yet. Answer from the evidence shown.
 
-${rubricText()}
+${rubricText()}${batch.tasks.some((task) => task.foundation) ? `\n\n${foundationRubricText()}` : ""}
 
 ## Answer format
 
@@ -417,8 +443,9 @@ export function validateJudgments(batch, file) {
     }
     seen.add(label);
     const before = errors.length;
-    if (!VERDICTS.includes(j.verdict))
-      errors.push(`${label}: verdict must be one of ${VERDICTS.join(", ")}`);
+    const allowed = entry.task.foundation ? FOUNDATION_VERDICTS : VERDICTS;
+    if (!allowed.includes(j.verdict))
+      errors.push(`${label}: verdict must be one of ${allowed.join(", ")}`);
     if (j.verdict === "supporting") {
       if (!Object.hasOwn(RELATIONS, j.relation))
         errors.push(
@@ -440,7 +467,10 @@ export function validateJudgments(batch, file) {
       errors.push(
         `${label}: confidence must be one of ${CONFIDENCE.join(", ")}`,
       );
-    const pick = j.verdict === "core" || j.verdict === "supporting";
+    const pick =
+      j.verdict === "core" ||
+      j.verdict === "supporting" ||
+      j.verdict === "foundation";
     let check = null;
     if (j.quote !== undefined && !present(j.quote))
       errors.push(`${label}: quote is empty`);
@@ -486,6 +516,7 @@ export function mergeJudged(batch, judged) {
   const tasks = batch.tasks.map((task) => ({
     key: task.key,
     text: task.text,
+    ...(task.foundation ? { foundation: true } : {}),
     noP1: task.noP1,
     items: task.candidates.map((c) => {
       const label = idOf(task.key, c.target.path);

@@ -26,6 +26,7 @@
 import { docFamily } from "./course-candidates.mjs";
 import { isClassic } from "./course-classic.mjs";
 import { CLASSES, RELATIONS } from "./course-format.mjs";
+import { FOUNDATION_CLASS, isFoundationKey } from "./course-foundations.mjs";
 import { handsOnReason } from "./course-handson.mjs";
 
 export const GATES_SCHEMA_VERSION = 1;
@@ -53,6 +54,13 @@ const OUT_OF_SCOPE_FLAGS = [
   "other-sub-product",
   "licensing-tier",
 ];
+
+/**
+ * The classes an accept can have under a task (core, supporting) or under a skill group's fundamentals
+ * (`foundation`, the pseudo-task key `<group>/@foundations`).
+ */
+const classesFor = (taskKey) =>
+  isFoundationKey(taskKey) ? [FOUNDATION_CLASS] : CLASSES;
 
 const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
 const isDay = (value) =>
@@ -102,15 +110,15 @@ export function validateDecisions(store, code = null) {
     if (!["accept", "reject"].includes(d.decision))
       errors.push(`${label}: decision must be accept or reject`);
     if (d.decision === "accept") {
-      if (!CLASSES.includes(d.class))
+      if (!classesFor(d.task).includes(d.class))
         errors.push(
-          `${label}: an accept needs a class (${CLASSES.join(", ")})`,
+          `${label}: an accept needs a class (${classesFor(d.task).join(", ")})`,
         );
       if (d.class === "supporting" && !Object.hasOwn(RELATIONS, d.relation))
         errors.push(
           `${label}: a supporting accept needs a relation (${Object.keys(RELATIONS).join(", ")})`,
         );
-      if (d.class === "core" && d.relation !== undefined)
+      if (d.class !== "supporting" && d.relation !== undefined)
         errors.push(`${label}: only a supporting accept has a relation`);
     } else if (d.class !== undefined || d.relation !== undefined)
       errors.push(`${label}: only an accept has a class or a relation`);
@@ -572,9 +580,9 @@ export function applyAnswers(store, queue, { today, replace = false }) {
     if (q.decision === "accept") {
       const overruled = q.proposal?.verdict === "reject";
       entry.class = q.class || q.proposal?.class;
-      if (!CLASSES.includes(entry.class)) {
+      if (!classesFor(q.task).includes(entry.class)) {
         problems.push(
-          `${label}: class must be ${CLASSES.join(" or ")}${overruled ? " (the judge rejected this page, so no class is proposed: give one)" : ""}`,
+          `${label}: class must be ${classesFor(q.task).join(" or ")}${overruled ? " (the judge rejected this page, so no class is proposed: give one)" : ""}`,
         );
         continue;
       }

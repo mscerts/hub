@@ -370,3 +370,43 @@ export class LexicalIndex {
     return { hits, dropped, examined };
   }
 }
+
+/**
+ * The share of a task's distinctive words (an abbreviation counting for its long form) that a text contains, from 0 to
+ * 1; a task without distinctive words counts as covered (`emptyIs`). Used for the quote of a judge's pick and for
+ * putting a fundamentals page next to the task it leads into. `without` is a set of stems that do not count (the
+ * words of the skill group's title), `minWordLength` drops shorter words ("id").
+ */
+export function termCoverage(
+  taskText,
+  text,
+  { without = null, emptyIs = 1, minWordLength = 0 } = {},
+) {
+  const all = queryTerms(taskText).terms.filter(
+    (t) => !t.context && !t.generic,
+  );
+  // a long form ("Microsoft Entra ID") is one group of terms: when one of its words is excluded the whole group is
+  const dropped = new Set(
+    all.filter((t) => t.group && without?.has(t.term)).map((t) => t.group),
+  );
+  const terms = all.filter(
+    (t) =>
+      !without?.has(t.term) &&
+      !(t.group && dropped.has(t.group)) &&
+      t.word.length >= minWordLength,
+  );
+  if (terms.length === 0) return emptyIs;
+  const stems = new Set(contentStems(text));
+  const matched = new Set(
+    terms.filter((t) => stems.has(t.term)).map((t) => t.term),
+  );
+  for (const t of terms)
+    if (t.role === "concept" && matched.has(t.term))
+      for (const part of terms)
+        if (part.group === t.group) matched.add(part.term);
+  return (
+    Math.round(
+      (terms.filter((t) => matched.has(t.term)).length / terms.length) * 100,
+    ) / 100
+  );
+}

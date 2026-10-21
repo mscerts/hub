@@ -327,3 +327,44 @@ test("in a tab the core picks come before the supporting ones, whatever the orde
   const page = renderCourse(course);
   assert.ok(page.indexOf("Core page") < page.indexOf("Supporting page"));
 });
+
+test("a preview renders only the skill groups whose title contains the text, numbers its marks from 1 and says so", () => {
+  const { course } = exampleCourse();
+  const groups = course.domains.flatMap((d) => d.groups.map((g) => g.title));
+  assert.ok(groups.length > 1, "the example has several skill groups");
+  const only = groups[1];
+  const rows = [...eachPick(course)];
+  const review = {
+    schemaVersion: 1,
+    kind: "review",
+    code: course.code,
+    picks: rows.map(({ task, pick }) => ({
+      task: task.key,
+      path: pick.target.path,
+      reasons: ["the judge is not sure (low confidence)"],
+      why: "A reason.",
+    })),
+  };
+  const page = renderCourse(course, { only, review });
+  assert.match(
+    page,
+    /title: GH-900 Study Guide Course \(one skill group\) \(review copy\)/,
+  );
+  assert.match(page, /preview of the skill groups whose title contains/);
+  assert.ok(page.includes(`### ${only}`));
+  for (const other of groups.filter((g) => g !== only && !only.includes(g)))
+    assert.ok(!page.includes(`### ${other}`), other);
+  // the marks of the shown group start at 1
+  const numbers = [...page.matchAll(/description="#(\d+) /g)].map((m) =>
+    Number(m[1]),
+  );
+  assert.deepEqual(
+    numbers,
+    numbers.map((_, i) => i + 1),
+  );
+  assert.equal(numberReview(course, review, { only }).length, numbers.length);
+  assert.ok(numbers.length < rows.length, "fewer than the whole course");
+  // no filter: the whole page, without the preview note
+  assert.ok(!/preview of the skill groups/.test(renderCourse(course)));
+  assert.ok(!/one skill group/.test(renderCourse(course)));
+});

@@ -10,6 +10,7 @@
 |---|------|---------|-----------|-------------|
 | 1 | Study guide and scope (to look at; the later steps read the same inputs themselves) | `node scripts/course-source.mjs <CODE>` | `<tmp>/course-source/` (guide tree, scope map) | nobody: it reads what Learn says ([course-source.md](course-source.md)) |
 | 2 | Candidates | `node scripts/course-candidates.mjs <CODE>` | `<tmp>/course-candidates/<CODE>.candidates.json` | the code: a shortlist per task ([course-candidates.md](course-candidates.md)) |
+| 2b | Fundamentals shortlist | part of `course-candidates.mjs` (a pseudo-task per skill group, [courses.md](courses.md)) | the `foundations` list of the candidates file | no AI |
 | 3 | Judging | `node scripts/course-judge.mjs prepare <CODE>`, then the prompts go to a model, then `check`, `merge` | `<tmp>/course-judge/<CODE>.<nn>-<group>.*` | a model (the judge), checked mechanically ([course-judging.md](course-judging.md)) |
 | 4 | Gates and queue | `node scripts/course-gates.mjs gate <CODE>`, then `show`, then answers by hand, then `resolve` | `<tmp>/course-gates/<CODE>.gated.json`, `<CODE>.queue.json`; the remembered decisions in `src/data_files/course-decisions/<CODE>.json` | the rules accept or reject; **the maintainer answers the queue** ([course-gates.md](course-gates.md)) |
 | 5 | Build | `node scripts/course-build.mjs <CODE>` | `<tmp>/course-build/<CODE>.json` | nobody: it writes down what was decided ([course-build.md](course-build.md)) |

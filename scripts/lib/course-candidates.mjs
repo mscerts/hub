@@ -20,12 +20,27 @@
  * administrator's job) out of an Azure Active Directory task. A task with no good P1 module is anchored on
  * the whole exam, and says so.
  *
+ * Fundamentals (docs/course-candidates.md): besides the tasks, every skill group gets a shortlist for its
+ * fundamentals, the theory a learner needs before the group's tasks (course-foundations.mjs). It is the same
+ * search with the group's title and the words of all its tasks as the query and looser coverage thresholds, so it
+ * is liberal; hands-on pages are dropped because the course leaves them to the lab page. A word search alone cannot find
+ * a concept page that shares no word with the group ("Describe identity concepts" for "Manage Microsoft Entra users and
+ * groups"), so a CONCEPT PASS adds the modules and documentation pages whose title reads like theory (describe,
+ * understand, introduction to, what is, concepts, overview) and that are on the same specific product or in the same
+ * documentation families as the exam's own modules for the group; they carry `concept: true`. The judge decides what is
+ * theory. They are in the file's `foundations` list, one entry per group, with the key `<group>/@foundations`.
+ *
  * Hard filters (a page failing one is counted, never listed): not-in-cache, moved, removed, not-english,
  * retired, classic (the old way of doing something, course-classic.mjs), boilerplate (a link that nearly every
  * module lists), out-of-scope-product.
  */
 
 import { isClassic } from "./course-classic.mjs";
+import {
+  FOUNDATION_DEFAULTS,
+  flattenFoundations,
+} from "./course-foundations.mjs";
+import { handsOnReason } from "./course-handson.mjs";
 import { LexicalIndex, queryTerms } from "./course-lexical.mjs";
 import { learnPath } from "./course-scope.mjs";
 import { flattenTasks } from "./course-status.mjs";
@@ -470,7 +485,7 @@ const round2 = (n) => Math.round(n * 100) / 100;
 /** The candidates of one task. `ctx` is built by generateCandidates. */
 function candidatesForTask(task, ctx) {
   const { pools, options, own, listed, profile, courseNumbers } = ctx;
-  const query = queryTerms(task.text, { context: task.group });
+  const query = queryTerms(task.text, { context: task.context ?? task.group });
   const result = {
     key: task.key,
     text: task.text,
@@ -976,14 +991,123 @@ function candidatesForTask(task, ctx) {
   return result;
 }
 
+/** A title that reads like theory: a page that explains what something is rather than how to do it. */
+export const CONCEPT_TITLE =
+  /^(describe|understand|explore|introduction to|intro to|what is|what are|learn about|fundamentals of)\b|\b(concepts?|fundamentals?|basics|overview|principles|terminology)\b/i;
+
+/**
+ * The concept pass of a group's fundamentals: modules and documentation pages with a theory-like title that sit on the
+ * same specific product (modules) or in the same documentation families (docs) as the exam's own modules for the
+ * group, whether or not they share a word with it. `have` is the set of paths the word search found already.
+ * Returns candidates in the generator's shape, each with `concept: true`, and the number of pages the hard filters
+ * dropped.
+ */
+function conceptCandidates(f, ctx, have) {
+  const { pools, options, own, listed } = ctx;
+  const query = queryTerms(f.text);
+  if (query.terms.length === 0) return { candidates: [], dropped: 0 };
+  const ownHits = pools.moduleIndex.search(query, {
+    include: (id) => own.has(id),
+    minCoverage: 0.3,
+    scan: options.scan,
+  }).hits;
+  const products = new Set();
+  const families = new Map();
+  for (const h of ownHits) {
+    for (const p of pools.modules.get(h.id)?.products ?? [])
+      if (pools.productShare(p) <= options.genericProductShare)
+        products.add(lower(p));
+    for (const [family, n] of pools.familiesOf(h.id) ?? [])
+      families.set(family, (families.get(family) ?? 0) + n);
+  }
+  const familyTotal = [...families.values()].reduce((a, b) => a + b, 0);
+  const anchorFamilies = new Set(
+    [...families]
+      .filter(([, n]) => n / familyTotal >= options.anchorFamilyShare)
+      .map(([family]) => family),
+  );
+  const found = [];
+  let dropped = 0;
+  const courseNumbers = (path) => pools.official.get(path).map((e) => e.number);
+  if (products.size > 0)
+    for (const m of pools.modules.values()) {
+      if (have.has(m.path) || !CONCEPT_TITLE.test(m.title)) continue;
+      if (!m.products.some((p) => products.has(lower(p)))) continue;
+      if (
+        pools.removed.has(m.path) ||
+        hardFilter({ kind: "module", path: m.path, title: m.title }, pools)
+      ) {
+        dropped++;
+        continue;
+      }
+      const source = own.has(m.path)
+        ? "P1"
+        : pools.official.has(m.path)
+          ? "P3"
+          : "P4";
+      found.push({
+        source,
+        target: { kind: "module", path: m.path },
+        title: m.title,
+        unitSig: m.unitSig,
+        products: m.products,
+        ...(source === "P1" ? { courses: ctx.courseNumbers } : {}),
+        ...(source === "P3" ? { courses: courseNumbers(m.path) } : {}),
+        concept: true,
+      });
+    }
+  if (anchorFamilies.size > 0) {
+    const docs = pools.docsIndex.search(query, {
+      include: (id) =>
+        !have.has(id) &&
+        anchorFamilies.has(docFamily(id)) &&
+        CONCEPT_TITLE.test(pools.docMeta.get(id)?.title ?? ""),
+      classify: (id) =>
+        hardFilter(
+          { kind: "docs", path: id, title: pools.docMeta.get(id).title },
+          pools,
+        ),
+      minCoverage: 0.15,
+      scan: options.scan,
+    });
+    dropped += [...(docs.dropped?.values() ?? [])].reduce(
+      (n, e) => n + e.count,
+      0,
+    );
+    for (const h of docs.hits)
+      found.push({
+        source: listed.has(h.id) ? "P2" : "P4",
+        target: { kind: "docs", path: h.id },
+        title: pools.docMeta.get(h.id).title,
+        ...(listed.has(h.id) ? { via: listed.get(h.id)[0] } : {}),
+        family: docFamily(h.id),
+        concept: true,
+      });
+  }
+  const order = { P1: 0, P2: 1, P3: 2, P4: 3 };
+  return {
+    candidates: found.sort(
+      (a, b) =>
+        order[a.source] - order[b.source] ||
+        (a.target.kind === b.target.kind
+          ? byText(a.target.path, b.target.path)
+          : a.target.kind === "module"
+            ? -1
+            : 1),
+    ),
+    dropped,
+  };
+}
+
 /**
  * The candidates of every task of an exam.
  *   code    the exam code
  *   guide   the parsed study guide (parseGuide, with `hash` when known)
  *   scope   the exam scope map (buildScopeMap)
  *   pools   buildPools(...)
- *   options overrides of DEFAULTS (limits and minCoverage are merged key by key)
- * Returns { schemaVersion, code, params, inputs, exam, tasks, stats, warnings }.
+ *   options overrides of DEFAULTS (limits and minCoverage are merged key by key); `foundations: false` leaves
+ *           the fundamentals of the skill groups out, `foundations: { minCoverage }` changes their thresholds
+ * Returns { schemaVersion, code, params, inputs, exam, tasks, foundations, stats, warnings }.
  */
 export function generateCandidates({
   code,
@@ -1044,6 +1168,91 @@ export function generateCandidates({
       bySource[c.source]++;
       candidates++;
     }
+
+  // the fundamentals of every skill group: the same search, looser, minus what belongs on the lab page
+  const foundationCoverage = {
+    ...FOUNDATION_DEFAULTS.minCoverage,
+    ...(options.foundations?.minCoverage ?? {}),
+  };
+  const foundations =
+    options.foundations === false
+      ? []
+      : flattenFoundations(guide).map((f) => {
+          const found = candidatesForTask(
+            {
+              key: f.key,
+              text: [f.text, ...f.tasks].join(". "),
+              domain: f.domain,
+              group: f.group,
+            },
+            {
+              ...ctx,
+              options: { ...opts, minCoverage: foundationCoverage },
+              groupModules: new Map(),
+            },
+          );
+          const concept = conceptCandidates(
+            f,
+            { ...ctx, options: opts },
+            new Set(found.candidates.map((c) => c.target.path)),
+          );
+          let rank = found.candidates.length;
+          found.candidates = [
+            ...found.candidates,
+            ...concept.candidates.map((c) => ({
+              ...c,
+              rank: ++rank,
+              score: 0,
+              coverage: 0,
+              matched: [],
+            })),
+          ];
+          found.dropped = {
+            ...found.dropped,
+            ...(concept.dropped
+              ? { "concept-pass": { count: concept.dropped, samples: [] } }
+              : {}),
+          };
+          const kept = [];
+          const handsOn = [];
+          for (const c of found.candidates)
+            (handsOnReason({
+              kind: c.target.kind,
+              path: c.target.path,
+              title: c.title,
+              moduleTitle: c.module?.title,
+            })
+              ? handsOn
+              : kept
+            ).push(c);
+          return {
+            ...found,
+            text: f.text,
+            foundation: true,
+            tasks: f.tasks,
+            candidates: kept,
+            dropped: {
+              ...found.dropped,
+              ...(handsOn.length
+                ? {
+                    "hands-on": {
+                      count: handsOn.length,
+                      samples: handsOn
+                        .slice(0, 3)
+                        .map((c) => ({ path: c.target.path, score: c.score })),
+                    },
+                  }
+                : {}),
+            },
+          };
+        });
+  const foundationBySource = { P1: 0, P2: 0, P3: 0, P4: 0 };
+  let foundationCandidates = 0;
+  for (const f of foundations)
+    for (const c of f.candidates) {
+      foundationBySource[c.source]++;
+      foundationCandidates++;
+    }
   return {
     schemaVersion: CANDIDATES_SCHEMA_VERSION,
     code,
@@ -1073,6 +1282,8 @@ export function generateCandidates({
       recommendBoost: opts.recommendBoost,
       groupCoverage: opts.groupCoverage,
       genericProductShare: opts.genericProductShare,
+      foundationCoverage:
+        options.foundations === false ? null : foundationCoverage,
     },
     inputs: {
       guideHash: guide.hash ?? null,
@@ -1082,7 +1293,15 @@ export function generateCandidates({
     },
     exam: profile,
     tasks,
+    foundations,
     stats: {
+      foundations: {
+        groups: foundations.length,
+        withoutCandidates: foundations.filter((f) => f.candidates.length === 0)
+          .length,
+        candidates: foundationCandidates,
+        bySource: foundationBySource,
+      },
       tasks: tasks.length,
       tasksWithoutP1: tasks.filter((t) => t.noP1).length,
       tasksWithoutCandidates: tasks.filter((t) => t.candidates.length === 0)
