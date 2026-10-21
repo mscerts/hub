@@ -113,7 +113,7 @@ test("the generator's hard filter drops a classic module, unit or docs page and 
 const KEYS = ["d/g/t1", "d/g/t2"];
 const row = (path, title) => ({
   pick: { target: { kind: "docs", path }, title, class: "core", source: "P1" },
-  item: { judge: { confidence: "high" }, skeptic: { stance: "uphold" } },
+  item: { judge: { confidence: "high" } },
 });
 
 test("the builder leaves an accepted classic page out and lists it, with its tasks, in the routing", () => {

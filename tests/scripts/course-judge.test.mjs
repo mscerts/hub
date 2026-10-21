@@ -5,10 +5,8 @@ import {
   CONFIDENCE,
   DEFAULT_BATCH_CANDIDATES,
   FLAGS,
-  STANCES,
   VERDICTS,
   buildBatches,
-  buildSkepticBatch,
   estimateTokens,
   evidenceOf,
   findQuote,
@@ -17,17 +15,14 @@ import {
   normalizeText,
   quoteTermCoverage,
   rubricText,
-  skepticPrompt,
   splitTasks,
   validateJudgments,
-  validateSkeptic,
 } from "../../scripts/lib/course-judge.mjs";
 import {
   EXAM,
   batches,
   candidatesFile,
   judgmentsFor,
-  skepticFor,
 } from "./helpers/example-judging.mjs";
 
 const one = () => batches().batches[0];
@@ -531,211 +526,44 @@ test("a rejection needs no quote, but one it gives is checked", () => {
   );
 });
 
-test("the skeptic gets the picks only, each with the judge's claim", () => {
-  const batch = one();
-  const v = validateJudgments(batch, judgmentsFor(batch));
-  const sk = buildSkepticBatch(batch, v);
-  assert.equal(sk.kind, "skeptic-batch");
-  assert.equal(sk.batchId, batch.batchId);
-  const picks = [...v.items.values()].filter(
-    (i) => i.judgment.verdict !== "reject",
-  ).length;
-  assert.equal(
-    sk.tasks.reduce((n, t) => n + t.candidates.length, 0),
-    picks,
-  );
-  for (const t of sk.tasks)
-    for (const c of t.candidates) {
-      assert.ok(["core", "supporting"].includes(c.judge.verdict));
-      assert.ok(c.judge.why && c.judge.quote);
-      assert.ok(c.evidence.length > 0, "the skeptic sees the same evidence");
-    }
-  const none = buildSkepticBatch(
-    batch,
-    validateJudgments(
-      batch,
-      judgmentsFor(batch, (j) => ({
-        ...j,
-        verdict: "reject",
-        relation: undefined,
-      })),
-    ),
-  );
-  assert.deepEqual(none.tasks, []);
-  const prompt = skepticPrompt(sk);
-  assert.match(prompt, /skeptic/);
-  for (const stance of Object.keys(STANCES))
-    assert.ok(prompt.includes(`\`${stance}\``), stance);
-  assert.ok(prompt.includes('"kind": "skeptic"'));
-  assert.deepEqual(
-    JSON.parse(prompt.match(/## The batch\n\n```json\n([\s\S]*?)\n```/)[1]),
-    sk,
-  );
-  // what a skeptic may and may not refute for (maintainer, 2026-10-20)
-  assert.match(prompt, /\*\*Refute only a page that is wrong\*\*/);
-  assert.match(prompt, /more basic or deeper than the exam asks/);
-  assert.match(prompt, /no cap on the number of pages/);
-  assert.match(prompt, /answer `downgrade`, not `refute`/);
-  assert.ok(!/is it the right level/.test(prompt));
-});
-
-test("the skeptic's answer is checked like the judge's", () => {
-  const batch = one();
-  const v = validateJudgments(batch, judgmentsFor(batch));
-  const sk = buildSkepticBatch(batch, v);
-  const ok = validateSkeptic(sk, skepticFor(sk));
-  assert.deepEqual(ok.errors, []);
-  assert.deepEqual(ok.unverified, []);
-  assert.equal(ok.judgedBy, "test skeptic");
-  const bad = (edit) => validateSkeptic(sk, skepticFor(sk, edit));
-  const core = (_, c) => c.judge.verdict === "core";
-  const supporting = (_, c) => c.judge.verdict === "supporting";
-
-  assert.match(
-    bad((a) => ({ ...a, stance: "shrug" })).errors[0],
-    /stance must be one of uphold, downgrade, refute/,
-  );
-  assert.match(
-    bad((a, c) => (core(a, c) ? { ...a, stance: "downgrade" } : a)).errors.join(
-      "\n",
-    ),
-    /a downgrade needs a relation/,
-  );
-  assert.deepEqual(
-    bad((a, c) =>
-      core(a, c) ? { ...a, stance: "downgrade", relation: "operate" } : a,
-    ).errors,
-    [],
-  );
-  assert.match(
-    bad((a, c) =>
-      supporting(a, c) ? { ...a, stance: "downgrade", relation: "operate" } : a,
-    ).errors.join("\n"),
-    /only a core pick can be downgraded/,
-  );
-  assert.match(
-    bad((a) => ({ ...a, relation: "operate" })).errors.join("\n"),
-    /only a downgrade has a relation/,
-  );
-  assert.match(
-    bad((a) => ({ ...a, reason: "" })).errors[0],
-    /reason is required/,
-  );
-  assert.match(
-    bad((a) => ({ ...a, flags: ["x"] })).errors[0],
-    /flags must be a list/,
-  );
-  let first = true;
-  assert.match(
-    bad((a) => (first ? ((first = false), null) : a)).errors[0],
-    /not answered$/,
-  );
-  assert.match(
-    validateSkeptic(sk, {
-      ...skepticFor(sk),
-      answers: [
-        ...skepticFor(sk).answers,
-        {
-          task: sk.tasks[0].key,
-          target: "/training/modules/nope",
-          stance: "uphold",
-          reason: "x",
-        },
-      ],
-    }).errors.join("\n"),
-    /not a pick of that task/,
-  );
-  const withQuote = bad((a, c) => ({ ...a, quote: c.evidence[0].text }));
-  assert.deepEqual(withQuote.errors, []);
-  assert.equal([...withQuote.items.values()][0].quote.verified, true);
-  const invented = bad((a) => ({ ...a, quote: "nothing like it" }));
-  assert.equal(invented.unverified.length, ok.items.size);
-  assert.match(validateSkeptic(sk, null).errors[0], /not a JSON object/);
-  assert.match(
-    validateSkeptic(sk, {
-      ...skepticFor(sk),
-      batchId: "x",
-      kind: "y",
-      schemaVersion: 0,
-    }).errors.join("\n"),
-    /batchId.*\n?.*|kind must be "skeptic"/,
-  );
-});
-
-test("merging keeps every candidate with both answers, whether they agree, and the union of the flags", () => {
+test("merging keeps every candidate with the judge's answer and its flags", () => {
   const batch = one();
   const v = validateJudgments(
     batch,
     judgmentsFor(batch, (j) =>
-      j.verdict === "core" ? { ...j, flags: ["preview"] } : j,
+      j.verdict === "core" ? { ...j, flags: ["preview", "outdated"] } : j,
     ),
   );
-  const sk = buildSkepticBatch(batch, v);
-  const picks = sk.tasks.flatMap((t) => t.candidates.map((c) => [t.key, c]));
-  const downgraded = picks.find(([, c]) => c.judge.verdict === "core");
-  const refuted = picks.find(([, c]) => c.judge.verdict === "supporting");
-  const skeptic = validateSkeptic(
-    sk,
-    skepticFor(sk, (a, c, task) => {
-      if (
-        task.key === downgraded[0] &&
-        c.target.path === downgraded[1].target.path
-      )
-        return {
-          ...a,
-          stance: "downgrade",
-          relation: "operate",
-          flags: ["outdated"],
-        };
-      if (task.key === refuted[0] && c.target.path === refuted[1].target.path)
-        return { ...a, stance: "refute", reason: "Another product area." };
-      return a;
-    }),
-  );
-  const merged = mergeJudged(batch, v, skeptic);
+  const merged = mergeJudged(batch, v);
   assert.equal(merged.kind, "judged");
   assert.equal(merged.judgedBy, "test judge");
-  assert.equal(merged.skepticBy, "test skeptic");
+  assert.equal(merged.skepticBy, undefined);
   const items = merged.tasks.flatMap((t) => t.items);
   assert.equal(
     items.length,
     batch.tasks.reduce((n, t) => n + t.candidates.length, 0),
   );
-  for (const item of items)
+  for (const item of items) {
     assert.equal(item.evidence, undefined, "the evidence stays in the batch");
-
-  const find = (key, c) =>
-    merged.tasks
-      .find((t) => t.key === key)
-      .items.find((i) => i.target.path === c.target.path);
-  const d = find(...downgraded);
-  assert.equal(d.agreement, "disagree");
-  assert.equal(d.disagreement, "downgrade");
-  assert.deepEqual(d.flags, ["outdated", "preview"]);
-  assert.equal(d.skeptic.relation, "operate");
-  assert.equal(d.judge.verdict, "core");
-  assert.equal(d.judge.quoteVerified, true);
-  assert.equal(typeof d.judge.quoteTermCoverage, "number");
-  const r = find(...refuted);
-  assert.equal(r.agreement, "disagree");
-  assert.equal(r.disagreement, "refute");
-  const agreed = items.find((i) => i.agreement === "agree");
-  assert.ok(agreed);
+    assert.equal(item.skeptic, undefined);
+    assert.equal(item.agreement, undefined);
+  }
+  const core = items.find((i) => i.judge.verdict === "core");
+  assert.deepEqual(core.flags, ["outdated", "preview"]);
+  assert.equal(core.judge.quoteVerified, true);
+  assert.equal(typeof core.judge.quoteTermCoverage, "number");
   const rejected = items.find((i) => i.judge.verdict === "reject");
-  assert.equal(rejected.agreement, "unchallenged");
-  assert.equal(rejected.skeptic, undefined);
   assert.equal(rejected.judge.quote, undefined);
 
   const s = merged.stats;
   assert.equal(s.candidates, items.length);
   assert.equal(s.core + s.supporting + s.reject, s.candidates);
-  assert.equal(s.agree + s.disagree, s.core + s.supporting);
-  assert.ok(s.disagree >= 2);
+  assert.equal(s.agree, undefined);
   assert.equal(s.unverifiedQuotes, 0);
   assert.deepEqual(JSON.parse(JSON.stringify(merged)), merged);
 });
 
-test("without a skeptic every pick is unchallenged, and a quote that was kept without being verified is marked and counted", () => {
+test("a quote that was kept without being verified is marked and counted", () => {
   const batch = one();
   const { task, c } = findCandidate(batch, "P1", "unit");
   const v = validateJudgments(
@@ -746,13 +574,7 @@ test("without a skeptic every pick is unchallenged, and a quote that was kept wi
         : j,
     ),
   );
-  const merged = mergeJudged(batch, v, null);
-  assert.equal(merged.skepticBy, null);
-  assert.ok(
-    merged.tasks
-      .flatMap((t) => t.items)
-      .every((i) => i.agreement === "unchallenged"),
-  );
+  const merged = mergeJudged(batch, v);
   assert.equal(merged.stats.unverifiedQuotes, 1);
   const item = merged.tasks
     .find((t) => t.key === task.key)
@@ -764,7 +586,6 @@ test("without a skeptic every pick is unchallenged, and a quote that was kept wi
 test("constants are the ones the docs and the prompts name", () => {
   assert.deepEqual([...VERDICTS], ["core", "supporting", "reject"]);
   assert.deepEqual([...CONFIDENCE], ["high", "medium", "low"]);
-  assert.deepEqual(Object.keys(STANCES), ["uphold", "downgrade", "refute"]);
   assert.ok(Object.keys(FLAGS).includes("other-sub-product"));
   const { candidates, pools } = candidatesFile();
   assert.equal(

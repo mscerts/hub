@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * The judging protocol (docs/course-judging.md): turn the candidates of an exam into prompts for an AI judge,
- * check the judge's answers mechanically, and merge them with a skeptic's. No AI runs here: the prompts are
+ * check the judge's answers mechanically and merge them into the judged file. No AI runs here: the prompts are
  * files a person or an agent session gives to a model, and the answers are files they save back.
  *
  *   node scripts/course-judge.mjs prepare <CODE> [--candidates FILE] [--group TEXT] [--out DIR] [--max-candidates N]
@@ -14,11 +14,8 @@
  *       Validates <prefix>.judgments.json against the batch: every candidate judged once, a verdict, a reason, a
  *       relation for a supporting pick, and for every pick a quote that is really in the evidence. Exit 1 when
  *       something is wrong (the judge redoes those entries).
- *   node scripts/course-judge.mjs skeptic <prefix> [--keep-unverified]
- *       Writes <prefix>.skeptic-batch.json and <prefix>.skeptic.md for the picks of a clean judgments file.
- *   node scripts/course-judge.mjs merge <prefix> [--no-skeptic] [--keep-unverified]
- *       Validates <prefix>.judgments.json and <prefix>.skeptic.json and writes <prefix>.judged.json: every
- *       candidate with both answers and whether they agree.
+ *   node scripts/course-judge.mjs merge <prefix> [--keep-unverified]
+ *       Validates <prefix>.judgments.json and writes <prefix>.judged.json: every candidate with the judge's answer.
  *
  * Exit code: 0 done, 1 an answer is not valid, 2 usage or input error.
  */
@@ -31,22 +28,18 @@ import { loadPools } from "./course-candidates.mjs";
 import { readGuides } from "./course-source.mjs";
 import {
   buildBatches,
-  buildSkepticBatch,
   estimateTokens,
   judgePrompt,
   mergeJudged,
-  skepticPrompt,
   validateJudgments,
-  validateSkeptic,
 } from "./lib/course-judge.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 const USAGE = `Usage: node scripts/course-judge.mjs prepare <CODE> [--candidates FILE] [--group TEXT] [--out DIR] [--max-candidates N]
        node scripts/course-judge.mjs check <prefix>
-       node scripts/course-judge.mjs skeptic <prefix> [--keep-unverified]
-       node scripts/course-judge.mjs merge <prefix> [--no-skeptic] [--keep-unverified]`;
+       node scripts/course-judge.mjs merge <prefix> [--keep-unverified]`;
 
-const COMMANDS = ["prepare", "check", "skeptic", "merge"];
+const COMMANDS = ["prepare", "check", "merge"];
 
 function parseArgs(argv) {
   const options = {
@@ -57,13 +50,11 @@ function parseArgs(argv) {
     out: null,
     maxCandidates: null,
     keepUnverified: false,
-    noSkeptic: false,
   };
   const positional = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--keep-unverified") options.keepUnverified = true;
-    else if (arg === "--no-skeptic") options.noSkeptic = true;
     else if (arg === "--max-candidates") {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
       const n = Number(argv[++i]);
@@ -240,7 +231,7 @@ async function prepare(
     );
   });
   log(
-    `${batches.length} batches, about ${total} prompt tokens in all (judge run once; a skeptic run is smaller: it sees the picks only). Files are in ${outDir}`,
+    `${batches.length} batches, about ${total} prompt tokens in all. Files are in ${outDir}`,
   );
   return 0;
 }
@@ -278,52 +269,12 @@ function afterwards(options, { log, error }) {
     return 1;
   }
 
-  if (options.command === "skeptic") {
-    const skBatch = buildSkepticBatch(batch, judged);
-    const picks = skBatch.tasks.reduce((n, t) => n + t.candidates.length, 0);
-    if (picks === 0) {
-      log(
-        `${prefix}: the judge picked nothing, so there is nothing to challenge.`,
-      );
-      return 0;
-    }
-    const prompt = skepticPrompt(skBatch);
-    write(`${prefix}.skeptic-batch.json`, skBatch);
-    write(`${prefix}.skeptic.md`, prompt);
-    log(
-      `${prefix}: ${picks} picks to challenge, prompt about ${estimateTokens(prompt)} tokens. Give ${prefix}.skeptic.md to a fresh model (not the judge) and save its JSON as ${prefix}.skeptic.json.`,
-    );
-    return 0;
-  }
-
   // merge
-  let skeptic = null;
-  if (!options.noSkeptic) {
-    const skBatchFile = `${prefix}.skeptic-batch.json`;
-    const tasksWithPicks = buildSkepticBatch(batch, judged).tasks.length;
-    if (tasksWithPicks > 0) {
-      if (!existsSync(skBatchFile)) {
-        error(
-          `No skeptic batch: run skeptic ${prefix}, or merge with --no-skeptic.`,
-        );
-        return 2;
-      }
-      skeptic = validateSkeptic(
-        readJson(skBatchFile, "the skeptic batch"),
-        readJson(`${prefix}.skeptic.json`, "the skeptic file"),
-      );
-      if (hasProblems(skeptic, options)) {
-        error(`The skeptic's answers are not valid; nothing was written.`);
-        for (const l of problemLines(skeptic, options)) error(l);
-        return 1;
-      }
-    }
-  }
-  const out = mergeJudged(batch, judged, skeptic);
+  const out = mergeJudged(batch, judged);
   write(`${prefix}.judged.json`, out);
   const s = out.stats;
   log(
-    `${prefix}: ${s.candidates} candidates: ${s.core} core, ${s.supporting} supporting, ${s.reject} reject; skeptic agrees on ${s.agree}, disagrees on ${s.disagree}${s.unverifiedQuotes ? `; ${s.unverifiedQuotes} unverified quotes kept` : ""}. Wrote ${prefix}.judged.json`,
+    `${prefix}: ${s.candidates} candidates: ${s.core} core, ${s.supporting} supporting, ${s.reject} reject${s.unverifiedQuotes ? `; ${s.unverifiedQuotes} unverified quotes kept` : ""}. Wrote ${prefix}.judged.json`,
   );
   return 0;
 }

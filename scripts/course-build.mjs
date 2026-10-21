@@ -14,7 +14,9 @@
  *       course would record a state its picks were never judged against; --allow-stale builds anyway.
  *       Hands-on pages (exercises, simulations, guided projects, tutorials, quickstarts) are left out of the
  *       course, a page that fits several tasks is shown once and a classic page is left out; all three are
- *       listed in FILE.routing.json.
+ *       listed in FILE.routing.json. The picks the judge was not sure of (or flagged as another role or product
+ *       area) are in the course and listed in FILE.review.json, for the review copy of the course page
+ *       (node scripts/course-file.mjs render ... --review FILE.review.json).
  *
  * Exit code: 0 built, 1 the course cannot be built (stale inputs, a missing quote, a pick that is not valid, a
  * page that is not current), 2 usage or input error.
@@ -199,6 +201,17 @@ export async function main(argv, deps = {}) {
     `${JSON.stringify({ schemaVersion: 1, kind: "routing", code, builtAt: today, ...routing }, null, 2)}
 `,
   );
+  // the picks marked for the maintainer on the review copy of the course page
+  const reviewFile = out.replace(/\.json$/, "") + ".review.json";
+  writeFileSync(
+    reviewFile,
+    `${JSON.stringify({ schemaVersion: 1, kind: "review", code, builtAt: today, picks: result.review }, null, 2)}
+`,
+  );
+  if (result.review.length)
+    log(
+      `${result.review.length} picks are in the course but marked for review (the judge was not sure of them or flagged them): node scripts/course-file.mjs render ${code} --review ${reviewFile}`,
+    );
   if (routing.classic.length)
     log(
       `${routing.classic.length} accepted classic pages are not in the course (routing.classic).`,

@@ -6,7 +6,7 @@
  * shares words with the task in its title, description and address; a model knows pages that do not. Pure: no I/O,
  * no network, no AI. The command line is scripts/course-propose.mjs.
  *
- * What a proposal proves is that the page exists, nothing more: the judge and the skeptic decide whether it belongs,
+ * What a proposal proves is that the page exists, nothing more: the judge decides whether it belongs,
  * exactly as for a page the word search found.
  */
 

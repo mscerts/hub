@@ -9,11 +9,14 @@ interface Props extends HTMLAttributes<"a"> {
   title: string;
   description?: string;
   href: string;
+  /** "review" marks a pick the course builder wants the maintainer to look at (orange); only generated review copies use it. */
+  tone?: "review";
 }
 const {
   title,
   description,
   href,
+  tone,
   target,
   rel,
   class: className,
@@ -45,7 +48,10 @@ const cardIcon = isExternal
   target={resolvedTarget}
   rel={resolvedRel}
   class:list={[
-    "docs-link-card group not-prose border-border bg-card hover:border-border-strong hover:shadow-default flex items-center justify-between gap-3 sm:gap-4 rounded-xl border p-4 sm:p-5 text-inherit no-underline shadow-sm transition hover:-translate-y-0.5",
+    "docs-link-card group not-prose hover:shadow-default flex items-center justify-between gap-3 sm:gap-4 rounded-xl border p-4 sm:p-5 text-inherit no-underline shadow-sm transition hover:-translate-y-0.5",
+    tone === "review"
+      ? "docs-link-card--review border-[#f97316] bg-[#fff7ed] dark:border-[#fb923c] dark:bg-[#431407]/60"
+      : "border-border bg-card hover:border-border-strong",
     className,
   ]}
   {...attrs}
@@ -74,7 +80,14 @@ const cardIcon = isExternal
         {title}
       </span>
       {description && (
-        <span class="text-muted-foreground mt-1 block text-sm leading-normal">
+        <span
+          class:list={[
+            "mt-1 block text-sm leading-normal",
+            tone === "review"
+              ? "text-[#9a3412] dark:text-[#fed7aa]"
+              : "text-muted-foreground",
+          ]}
+        >
           {description}
         </span>
       )}

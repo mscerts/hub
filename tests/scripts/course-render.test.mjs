@@ -4,7 +4,13 @@ import {
   diffTrees,
   treeFromCourseMdx,
 } from "../../scripts/lib/course-guide.mjs";
-import { learnHref, renderCourse } from "../../scripts/lib/course-render.mjs";
+import {
+  learnHref,
+  numberReview,
+  renderCourse,
+  reviewLabel,
+} from "../../scripts/lib/course-render.mjs";
+import { eachPick } from "../../scripts/lib/course-format.mjs";
 import { exampleCourse, pick } from "./helpers/example-course.mjs";
 
 test("learnHref gives a Learn address with the hub's tracking parameter and no locale", () => {
@@ -14,14 +20,133 @@ test("learnHref gives a Learn address with the hub's tracking parameter and no l
   );
 });
 
-test("a rendered page is a draft unless it is told to publish", () => {
+test("a rendered page is an ordinary page: there are no draft pages", () => {
   const { course } = exampleCourse();
-  assert.match(renderCourse(course), /\ndraft: true\n---\nimport/);
-  assert.ok(!/draft:/.test(renderCourse(course, { draft: false })));
+  assert.ok(!/draft:/.test(renderCourse(course)));
+  assert.ok(!/draft:/.test(renderCourse(course, { draft: true })));
+});
+
+/** A review file marking the picks at `at` of the course (in the order eachPick lists them). */
+function reviewOf(course, at, extra = {}) {
+  const all = [...eachPick(course)];
+  return {
+    schemaVersion: 1,
+    kind: "review",
+    code: course.code,
+    picks: at.map((i, n) => ({
+      task: all[i].task.key,
+      path: all[i].pick.target.path,
+      title: all[i].pick.title,
+      reasons:
+        n % 2 === 0
+          ? ["the judge is not sure (low confidence)"]
+          : ["flagged: other-role, other-sub-product"],
+      why: `The judge's reason ${n}.`,
+      ...extra,
+    })),
+  };
+}
+
+test("the review copy marks the marked picks in orange with a number and the judge's reason, and nothing else changes", () => {
+  const { course } = exampleCourse();
+  const review = reviewOf(course, [0, 1, 2]);
+  const plain = renderCourse(course);
+  const page = renderCourse(course, { review });
+  assert.match(
+    page,
+    /^---\ntitle: GH-900 Study Guide Course \(review copy\)\n/,
+  );
+  assert.ok(!/draft:/.test(page));
+  assert.match(page, /:::caution\nThis is the review copy\./);
+  assert.match(page, /The 3 orange cards/);
+  const marked = page.split("\n").filter((l) => /tone="review"/.test(l));
+  assert.equal(marked.length, 3);
+  // every marked card keeps its title and address and says what is wrong
+  assert.match(marked[0], /description="#1 Not sure\. The judge's reason 0\."/);
+  assert.match(
+    marked[1],
+    /description="#2 Flagged as another job role · Flagged as another product area\./,
+  );
+  assert.match(marked[2], /description="#3 Not sure\./);
+  for (const l of marked)
+    assert.match(
+      l,
+      /^ +<LinkCard title="[^"]+" href="https:\/\/learn\.microsoft\.com\//,
+    );
+  // the unmarked cards are the cards of the normal page
+  const unmarked = (text) =>
+    text
+      .split("\n")
+      .filter((l) => /<LinkCard/.test(l) && !/tone="review"/.test(l));
+  assert.deepEqual(
+    unmarked(page),
+    unmarked(plain).filter(
+      (l) => !marked.some((m) => m.startsWith(l.replace(/\/>$/, ""))),
+    ),
+  );
+  // without a review file there is no caution and no mark
+  assert.ok(!/tone="review"|review copy/.test(plain));
+});
+
+test("the marks are numbered in the order the cards are on the page, and numberReview gives the same numbers", () => {
+  const { course } = exampleCourse();
+  const all = [...eachPick(course)];
+  const review = reviewOf(course, all.map((_, i) => i).reverse());
+  const numbered = numberReview(course, review);
+  assert.equal(numbered.length, all.length);
+  assert.deepEqual(
+    numbered.map((m) => m.n),
+    numbered.map((_, i) => i + 1),
+  );
+  const page = renderCourse(course, { review });
+  const onPage = [...page.matchAll(/description="#(\d+) /g)].map((m) =>
+    Number(m[1]),
+  );
+  assert.deepEqual(
+    onPage,
+    numbered.map((m) => m.n),
+    "the numbers run down the page",
+  );
+  // the paths in the page order are the ones numberReview lists
+  const hrefs = [
+    ...page.matchAll(
+      /href="https:\/\/learn\.microsoft\.com([^"?]+)\?[^"]*" target="_blank" tone="review"/g,
+    ),
+  ].map((m) => m[1]);
+  assert.deepEqual(
+    hrefs,
+    numbered.map((m) => m.path),
+  );
+});
+
+test("a mark whose pick is not in the course is left out, so a review file of another build is noticed by its length", () => {
+  const { course } = exampleCourse();
+  const review = reviewOf(course, [0]);
+  review.picks.push({
+    task: review.picks[0].task,
+    path: "/azure/not-in-this-course",
+    reasons: ["the judge is not sure (low confidence)"],
+    why: "x",
+  });
+  assert.equal(numberReview(course, review).length, 1);
+  assert.equal(numberReview(course, null).length, 0);
+});
+
+test("the label says why a card is marked", () => {
   assert.equal(
-    renderCourse(course, { draft: false }),
-    renderCourse(course).replace("draft: true\n", ""),
-    "nothing else changes",
+    reviewLabel(["the judge is not sure (low confidence)"]),
+    "Not sure",
+  );
+  assert.equal(
+    reviewLabel(["flagged: other-role"]),
+    "Flagged as another job role",
+  );
+  assert.equal(
+    reviewLabel([
+      "the judge is not sure (low confidence)",
+      "flagged: other-role, licensing-tier",
+    ]),
+    "Not sure · Flagged as another job role · Flagged as another licensing tier",
   );
 });
 

@@ -6,8 +6,7 @@
  *   batch        the candidates of one skill group with the text a judge may quote (the evidence)
  *   judgments    the judge's answer: per candidate a verdict (core, supporting, reject), a reason and, for a pick,
  *                a quote from the evidence. The quote is checked by a script: it must really be there.
- *   skeptic      a second, independent pass over the picks that tries to refute them
- *   judged       both answers merged, with whether they agree; what the approval gates (not built yet) read
+ *   judged       the answer merged with the batch: what the approval gates read
  *
  * The AI is not part of this code. A person or an agent session gives the prompt of a batch to a model and saves
  * its JSON answer; this module builds the prompts and validates, verifies and merges the answers.
@@ -21,7 +20,7 @@ export const JUDGE_SCHEMA_VERSION = 1;
 /** The judge's verdicts: the two classes of a course pick, and rejection. */
 export const VERDICTS = Object.freeze(["core", "supporting", "reject"]);
 
-/** What a judge may flag about a candidate; the gates queue a pick that carries one. */
+/** What a judge may flag about a candidate; the gates mark a pick with an out-of-scope flag (other-role, other-sub-product, licensing-tier) for review and keep the others as warnings. */
 export const FLAGS = Object.freeze({
   "other-role": "written for a different job role than the exam's",
   "other-sub-product":
@@ -36,14 +35,6 @@ export const FLAGS = Object.freeze({
 });
 
 export const CONFIDENCE = Object.freeze(["high", "medium", "low"]);
-
-/** What the skeptic may answer about a pick. */
-export const STANCES = Object.freeze({
-  uphold: "the pick stands",
-  downgrade:
-    "it is not core but is still supporting (a core pick that only belongs to the job, not to the guide's wording)",
-  refute: "it should not be a pick at all",
-});
 
 const MAX_QUOTE_CHARS = 200;
 const MAX_WHY_CHARS = 300;
@@ -484,213 +475,14 @@ export function validateJudgments(batch, file) {
 }
 
 // ---------------------------------------------------------------------------
-// The skeptic
-// ---------------------------------------------------------------------------
-
-/** The picks of a validated judgments file, as a batch for the skeptic: candidates with the judge's claim. */
-export function buildSkepticBatch(batch, validated) {
-  const tasks = [];
-  for (const task of batch.tasks) {
-    const candidates = [];
-    for (const c of task.candidates) {
-      const item = validated.items.get(idOf(task.key, c.target.path));
-      if (!item || item.judgment.verdict === "reject") continue;
-      const j = item.judgment;
-      candidates.push({
-        ...c,
-        judge: {
-          verdict: j.verdict,
-          ...(j.relation ? { relation: j.relation } : {}),
-          why: j.why,
-          quote: j.quote,
-          flags: j.flags ?? [],
-        },
-      });
-    }
-    if (candidates.length)
-      tasks.push({
-        key: task.key,
-        text: task.text,
-        noP1: task.noP1,
-        anchor: task.anchor,
-        candidates,
-      });
-  }
-  return {
-    ...batch,
-    kind: "skeptic-batch",
-    tasks,
-  };
-}
-
-const skepticShape = `{
-  "schemaVersion": ${JUDGE_SCHEMA_VERSION},
-  "kind": "skeptic",
-  "batchId": "<the batchId of the input>",
-  "judgedBy": "<the model or session that checked>",
-  "answers": [
-    {
-      "task": "<task key>",
-      "target": "<candidate target.path>",
-      "stance": "uphold | downgrade | refute",
-      "reason": "one sentence",
-      "relation": "only for downgrade: prerequisite | same-workflow | operate | deeper",
-      "flags": ["zero or more of: ${Object.keys(FLAGS).join(", ")}"],
-      "quote": "optional: words copied exactly from one evidence snippet that back your answer"
-    }
-  ]
-}`;
-
-/** The prompt for the skeptic, as Markdown. */
-export function skepticPrompt(skBatch) {
-  return `# Try to refute these picks
-
-Exam: **${skBatch.exam.code}: ${skBatch.exam.name ?? ""}**
-Skill group: **${skBatch.group.domain} > ${skBatch.group.title}**
-
-Another judge decided that each candidate below belongs in a study course for this exam, as \`core\` or \`supporting\`. You are the skeptic: your job is to find out whether that is **wrong**. You have not seen the judge's reasoning beyond what is shown, and you should not be polite about it.
-
-${rubricText()}
-
-## What to answer for each candidate
-
-- \`uphold\`: you tried to refute the pick and could not. The verdict, and its relation if supporting, stands.
-${Object.entries(STANCES)
-  .filter(([key]) => key !== "uphold")
-  .map(([key, meaning]) => `- \`${key}\`: ${meaning}.`)
-  .join("\n")}
-
-Check in particular: does the candidate really cover the task **as the guide words it** (for \`core\`), is it really part of the job (for \`supporting\`), is it about another role, product area, sub-product or licensing tier, is it retired or in preview, and does the quote really say what the judge claims.
-
-**Refute only a page that is wrong**: about another role, product area, sub-product or licensing tier, off the task and off the job around it, retired or only in preview, or whose quote does not say what the judge claims. These are **not** reasons to refute (maintainer's rules, 2026-10-20): the page is more basic or deeper than the exam asks (that is what a \`supporting\` pick with the relation \`prerequisite\` or \`deeper\` is for; at most downgrade a \`core\` pick), another page already covers the task as well or better (the course has no cap on the number of pages: a second good page is still a pick), or it is a neighbouring step instead of the task itself (that is \`supporting\`). When the page belongs but not as \`core\`, answer \`downgrade\`, not \`refute\`.
-
-\`reason\` is one plain sentence (at most ${MAX_WHY_CHARS} characters). A \`downgrade\` is only for a \`core\` pick and needs a \`relation\`. \`flags\` adds what you found wrong (none is fine). A \`quote\` is optional; if you give one it must be copied exactly from one snippet of the candidate's \`evidence\`.
-
-## Answer format
-
-Reply with JSON only (no prose), with one entry in \`answers\` per candidate below:
-
-${"```json"}
-${skepticShape}
-${"```"}
-
-## The batch
-
-${fence(skBatch)}
-`;
-}
-
-/** Check a skeptic's answer against its skeptic batch. Returns { errors, unverified, items } like validateJudgments. */
-export function validateSkeptic(skBatch, file) {
-  const errors = [];
-  const unverified = [];
-  const items = new Map();
-  if (!file || typeof file !== "object")
-    return {
-      errors: ["the skeptic file is not a JSON object"],
-      unverified,
-      items,
-    };
-  if (file.schemaVersion !== JUDGE_SCHEMA_VERSION)
-    errors.push(`schemaVersion must be ${JUDGE_SCHEMA_VERSION}`);
-  if (file.kind !== "skeptic") errors.push('kind must be "skeptic"');
-  if (file.batchId !== skBatch.batchId)
-    errors.push(
-      `batchId "${file.batchId}" is not the batch's "${skBatch.batchId}"`,
-    );
-  if (!Array.isArray(file.answers)) {
-    errors.push("answers must be a list");
-    return { errors, unverified, items };
-  }
-  const index = indexBatch(skBatch);
-  const seen = new Set();
-  for (const [n, a] of file.answers.entries()) {
-    const where = `answer ${n + 1}`;
-    if (!a || typeof a !== "object") {
-      errors.push(`${where}: not an object`);
-      continue;
-    }
-    const entry = index.get(a.task);
-    const candidate = entry?.candidates.get(a.target);
-    const label = idOf(a.task, a.target);
-    if (!entry) {
-      errors.push(`${where}: the task "${a.task}" has no picks in the batch`);
-      continue;
-    }
-    if (!candidate) {
-      errors.push(`${label}: not a pick of that task`);
-      continue;
-    }
-    if (seen.has(label)) {
-      errors.push(`${label}: answered twice`);
-      continue;
-    }
-    seen.add(label);
-    const before = errors.length;
-    if (!Object.hasOwn(STANCES, a.stance))
-      errors.push(
-        `${label}: stance must be one of ${Object.keys(STANCES).join(", ")}`,
-      );
-    if (a.stance === "downgrade") {
-      if (candidate.judge.verdict !== "core")
-        errors.push(`${label}: only a core pick can be downgraded`);
-      if (!Object.hasOwn(RELATIONS, a.relation))
-        errors.push(
-          `${label}: a downgrade needs a relation (${Object.keys(RELATIONS).join(", ")})`,
-        );
-    } else if (a.relation !== undefined)
-      errors.push(`${label}: only a downgrade has a relation`);
-    if (!present(a.reason)) errors.push(`${label}: reason is required`);
-    else if (a.reason.length > MAX_WHY_CHARS)
-      errors.push(
-        `${label}: reason is longer than ${MAX_WHY_CHARS} characters`,
-      );
-    if (
-      a.flags !== undefined &&
-      (!Array.isArray(a.flags) || a.flags.some((f) => !Object.hasOwn(FLAGS, f)))
-    )
-      errors.push(
-        `${label}: flags must be a list of ${Object.keys(FLAGS).join(", ")}`,
-      );
-    let check = null;
-    if (a.quote !== undefined) {
-      if (!present(a.quote)) errors.push(`${label}: quote is empty`);
-      else if (a.quote.length > MAX_QUOTE_CHARS)
-        errors.push(
-          `${label}: quote is longer than ${MAX_QUOTE_CHARS} characters`,
-        );
-      else {
-        check = findQuote(a.quote, candidate.evidence);
-        if (!check.verified)
-          unverified.push({ task: a.task, target: a.target, quote: a.quote });
-      }
-    }
-    if (errors.length === before)
-      items.set(label, {
-        answer: a,
-        quote: check ? { verified: check.verified, where: check.where } : null,
-      });
-  }
-  for (const [key, { candidates }] of index)
-    for (const path of candidates.keys())
-      if (!seen.has(idOf(key, path)))
-        errors.push(`${idOf(key, path)}: not answered`);
-  return { errors, unverified, items, judgedBy: file.judgedBy ?? null };
-}
-
-// ---------------------------------------------------------------------------
 // Merging
 // ---------------------------------------------------------------------------
 
 /**
- * Merge a validated judgments file, and optionally a validated skeptic file, into the judged group. Every
- * candidate of the batch is in it, with the judge's answer, the skeptic's (picks only) and whether they agree:
- *   agree        the skeptic upheld the pick
- *   disagree     the skeptic downgraded or refuted it (`disagreement` says which)
- *   unchallenged a rejected candidate, or no skeptic ran
- * `flags` is the union of both answers' flags. A quote that is not in the evidence is kept and marked.
+ * Merge a validated judgments file into the judged group. Every candidate of the batch is in it, with the judge's
+ * answer. A quote that is not in the evidence is kept and marked.
  */
-export function mergeJudged(batch, judged, skeptic = null) {
+export function mergeJudged(batch, judged) {
   const tasks = batch.tasks.map((task) => ({
     key: task.key,
     text: task.text,
@@ -698,19 +490,9 @@ export function mergeJudged(batch, judged, skeptic = null) {
     items: task.candidates.map((c) => {
       const label = idOf(task.key, c.target.path);
       const j = judged.items.get(label);
-      const s = skeptic?.items.get(label) ?? null;
       const { evidence, ...card } = c;
       const verdict = j.judgment;
-      const stance = s?.answer.stance;
-      const agreement =
-        verdict.verdict === "reject" || !s
-          ? "unchallenged"
-          : stance === "uphold"
-            ? "agree"
-            : "disagree";
-      const flags = [
-        ...new Set([...(verdict.flags ?? []), ...(s?.answer.flags ?? [])]),
-      ].sort(byText);
+      const flags = [...new Set(verdict.flags ?? [])].sort(byText);
       return {
         ...card,
         judge: {
@@ -728,24 +510,6 @@ export function mergeJudged(batch, judged, skeptic = null) {
           flags: verdict.flags ?? [],
           confidence: verdict.confidence,
         },
-        ...(s
-          ? {
-              skeptic: {
-                stance,
-                reason: s.answer.reason,
-                ...(s.answer.relation ? { relation: s.answer.relation } : {}),
-                ...(s.answer.flags?.length ? { flags: s.answer.flags } : {}),
-                ...(s.answer.quote
-                  ? {
-                      quote: s.answer.quote,
-                      quoteVerified: s.quote?.verified ?? false,
-                    }
-                  : {}),
-              },
-            }
-          : {}),
-        agreement,
-        ...(agreement === "disagree" ? { disagreement: stance } : {}),
         flags,
       };
     }),
@@ -760,15 +524,12 @@ export function mergeJudged(batch, judged, skeptic = null) {
     inputs: batch.inputs,
     group: batch.group,
     judgedBy: judged.judgedBy ?? null,
-    skepticBy: skeptic?.judgedBy ?? null,
     tasks,
     stats: {
       candidates: items.length,
       core: count((i) => i.judge.verdict === "core"),
       supporting: count((i) => i.judge.verdict === "supporting"),
       reject: count((i) => i.judge.verdict === "reject"),
-      agree: count((i) => i.agreement === "agree"),
-      disagree: count((i) => i.agreement === "disagree"),
       unverifiedQuotes: count(
         (i) => i.judge.quote !== undefined && i.judge.quoteVerified === false,
       ),

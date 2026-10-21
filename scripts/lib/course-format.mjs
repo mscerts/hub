@@ -57,9 +57,9 @@ export const SOURCES = Object.freeze(["P1", "P2", "P3", "P4", "P5"]);
 
 export const PICK_KINDS = Object.freeze(["module", "unit", "docs"]);
 /**
- * Who decided a pick: `auto` (the gates took it: the judge was sure and the skeptic agreed, whatever the source;
+ * Who decided a pick: `auto` (the gates took it: the judge was sure of it, whatever the source;
  * docs/course-gates.md) or `maintainer` (an answer of the review queue). The format does not limit which sources
- * the gates may accept (maintainer, 2026-10-20: a sure and agreed pick of any source goes in), so the validator
+ * the gates may accept (maintainer, 2026-10-20: a pick the judge is sure of, of any source, goes in), so the validator
  * checks that a decider is named, not who it was.
  */
 export const DECIDERS = Object.freeze(["auto", "maintainer"]);

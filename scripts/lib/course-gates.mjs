@@ -6,14 +6,18 @@
  *
  * Input: the judged files of an exam (course-judge.mjs merge). Output: a decision per candidate, and the queue.
  *
- *   accept   a pick the gates take on their own: the judge picked it, the skeptic did not refute it and the quote is
- *            in the evidence, whatever the source (P1 to P5), the class and the confidence; what used to queue it
- *            as well (an unsure judge, a downgrade, a flag, a weak quote, another sub-product, an old page) is kept
- *            in the decision's `warnings`. Hands-on pages the judge picked are accepted the same way (the builder
- *            sends them to the lab page)
+ *   accept   a pick the gates take on their own: the judge picked it and its quote is in the evidence, whatever
+ *            the source (P1 to P5) and the class (maintainer, 2026-10-21: everything the judge includes is in the
+ *            course by default). A pick the judge is not sure of (low confidence) or flagged as out of scope
+ *            (other-role, other-sub-product, licensing-tier) is accepted too, with a `review` list on the decision:
+ *            the builder marks it on the review copy of the course page, with the judge's reason, for the
+ *            maintainer to look at there. What else could be said against a pick (a level, a preview, a weak quote,
+ *            another sub-product than the anchor, an old page) is kept in the decision's `warnings`. Hands-on
+ *            pages the judge picked are accepted the same way (the builder sends them to the lab page)
  *   reject   remembered before, in an excluded sub-product, not a current Learn page, classic material, a hands-on
  *            page the judge did not pick, or rejected by the judge
- *   queue    everything else, with the reasons, for the maintainer
+ *   queue    everything else (a quote that is not in the evidence, a reject the judge is not sure of), with the
+ *            reasons, for the maintainer
  *
  * The maintainer's decisions live in src/data_files/course-decisions/<CODE>.json (committed, like the course file);
  * they are applied before anything else, so a decided candidate never comes back to the queue.
@@ -35,9 +39,12 @@ export const GATE_DEFAULTS = Object.freeze({
   coreQuoteCoverage: 0.5,
   // a page not modified for longer than this is a warning (24 months)
   maxAgeDays: 730,
-  // a pick is accepted although it carries warnings (an unsure judge, a downgrade, a flag, a weak quote, another
-  // sub-product, old); false queues it again, as the gates did before 2026-10-20
+  // a pick is accepted although it carries warnings (a level or preview flag, a weak quote, another sub-product
+  // than the anchor, old); false queues it too
   acceptWithWarnings: true,
+  // true queues a pick the judge is not sure of or flagged as out of scope for the maintainer (the review sheets of
+  // 2026-10-21); false accepts it with a `review` list, to be looked at on the review copy of the course page
+  queueUnsure: false,
 });
 
 // the flags that say a candidate is out of scope: a rejection with one is worth remembering
@@ -222,14 +229,11 @@ export function gateItem(task, item, ctx) {
       reasons: ["classic material: a course leaves it out"],
     };
 
-  // A pick is the class the judge gave, unless the skeptic downgraded it.
-  const proposal =
-    item.skeptic?.stance === "downgrade"
-      ? { class: "supporting", relation: item.skeptic.relation }
-      : {
-          class: j.verdict,
-          ...(j.relation ? { relation: j.relation } : {}),
-        };
+  // A pick is the class the judge gave.
+  const proposal = {
+    class: j.verdict,
+    ...(j.relation ? { relation: j.relation } : {}),
+  };
 
   // Hands-on material (an exercise, a guided project, a tutorial, a quickstart) is not in the course: the lab page
   // collects it (course-handson.mjs). There is nothing to decide for the course, so the maintainer is not asked:
@@ -253,8 +257,6 @@ export function gateItem(task, item, ctx) {
         ],
       };
     const notes = [];
-    if (item.agreement === "disagree" && item.skeptic?.stance === "refute")
-      notes.push(`the skeptic refuted it: ${item.skeptic.reason}`);
     if (j.confidence === "low")
       notes.push("the judge is not sure (low confidence)");
     if (flags.length) notes.push(`flagged: ${flags.join(", ")}`);
@@ -293,29 +295,31 @@ export function gateItem(task, item, ctx) {
     };
   }
 
-  // A pick is accepted when the judge picked it, the skeptic did not refute it and its quote is in the evidence,
-  // whatever its source (P1 to P5), class and confidence (maintainer, 2026-10-20, in two steps: first a pick the
-  // judge was sure of and the skeptic upheld; then, after a random sample of the queue was marked, a pick the
-  // judge was unsure of or the skeptic only downgraded). Three things are BLOCKERS and queue the pick: a skeptic
-  // that refuted it, no skeptic at all, a quote that is not in the evidence. The WARNINGS below used to queue a
-  // pick as well; an accepted pick keeps them in `warnings`, so the audit trail is in the gated file, and
-  // `acceptWithWarnings: false` makes them queue again.
+  // A pick is accepted when the judge picked it and its quote is in the evidence, whatever its source (P1 to P5)
+  // and class. The only BLOCKER is a quote that is not in the evidence. A pick the judge is not sure of (low
+  // confidence) or flagged out of scope (other-role, other-sub-product, licensing-tier) carries a `review` list: the
+  // builder marks it on the review copy of the course page, where the maintainer looks at it with its reason
+  // (`queueUnsure: true` makes them blockers again, as in the review sheets). Everything else that speaks against a
+  // pick is a WARNING: an accepted pick keeps it in `warnings`, and `acceptWithWarnings: false` makes them queue too.
+  // (There is no skeptic any more, removed 2026-10-21: on a marked sample it refuted 18 pages, 13 of which the
+  // maintainer kept, and its narrowed prompt caught none of the 6 pages the maintainer dropped; see course-judging.md.)
   const blockers = [];
   const warnings = [];
-  if (item.agreement === "disagree") {
-    if (item.skeptic.stance === "refute")
-      blockers.push(`the skeptic refuted it: ${item.skeptic.reason}`);
-    else
-      warnings.push(
-        `the skeptic downgraded it to supporting: ${item.skeptic.reason}`,
-      );
-  } else if (item.agreement === "unchallenged")
-    blockers.push("no skeptic has challenged it");
+  const review = [];
   if (j.quoteVerified === false)
     blockers.push("the quote is not in the evidence");
-  if (j.confidence === "low")
-    warnings.push("the judge is not sure (low confidence)");
-  if (flags.length) warnings.push(`flagged: ${flags.join(", ")}`);
+  (options.queueUnsure ? blockers : review).push(
+    ...(j.confidence === "low"
+      ? ["the judge is not sure (low confidence)"]
+      : []),
+  );
+  const outOfScope = flags.filter((f) => OUT_OF_SCOPE_FLAGS.includes(f));
+  if (outOfScope.length)
+    (options.queueUnsure ? blockers : review).push(
+      `flagged: ${outOfScope.join(", ")}`,
+    );
+  const otherFlags = flags.filter((f) => !OUT_OF_SCOPE_FLAGS.includes(f));
+  if (otherFlags.length) warnings.push(`flagged: ${otherFlags.join(", ")}`);
   if (
     j.quoteVerified !== false &&
     j.verdict === "core" &&
@@ -355,12 +359,13 @@ export function gateItem(task, item, ctx) {
     by: "gates",
     via: "gates",
     reasons: [
-      `${item.source}, the judge picked it and the skeptic did not refute it` +
+      `${item.source}, the judge picked it` +
         (item.source === "P3" && warnings.length === 0
           ? ", same sub-product"
           : ""),
     ],
     ...(warnings.length ? { warnings } : {}),
+    ...(review.length ? { review } : {}),
   };
 }
 
@@ -380,7 +385,7 @@ export function indexDecisions(store) {
 
 /**
  * Gate every candidate of the judged files of an exam. Returns { items, stats }; an item is
- * { task: { key, text, group }, target, title, source, via?, signals, flags, judge, skeptic?, agreement, gate }
+ * { task: { key, text, group }, target, title, source, via?, signals, flags, judge, gate }
  * with `gate` the result of gateItem. `today` is a YYYY-MM-DD day.
  */
 export function gateJudged(judgedFiles, ctx) {
@@ -406,8 +411,6 @@ export function gateJudged(judgedFiles, ctx) {
           signals: item.signals ?? {},
           flags: item.flags ?? [],
           judge: item.judge,
-          ...(item.skeptic ? { skeptic: item.skeptic } : {}),
-          agreement: item.agreement,
           gate: gateItem(info, item, { ...ctx, decisions }),
         });
       }
@@ -440,9 +443,14 @@ export function gateStats(items) {
         .replace(/\b\d+%?(?=\s)/g, "N");
       warnings[key] = (warnings[key] ?? 0) + 1;
     }
+  // accepted picks that are marked for the maintainer on the review copy of the course page
+  const forReview = items.filter(
+    (i) => i.gate.decision === "accept" && i.gate.review?.length,
+  );
   return {
     candidates: items.length,
     accepted: count((i) => i.gate.decision === "accept"),
+    acceptedForReview: forReview.length,
     acceptedCore: count(
       (i) => i.gate.decision === "accept" && i.gate.class === "core",
     ),
@@ -517,9 +525,6 @@ export function buildQueue(code, gated, { builtAt }) {
         confidence: i.judge.confidence,
         flags: i.judge.flags ?? [],
       },
-      ...(i.skeptic
-        ? { skeptic: { stance: i.skeptic.stance, reason: i.skeptic.reason } }
-        : {}),
       decision: null,
       class: null,
       relation: null,
@@ -633,6 +638,57 @@ export function applyAnswers(store, queue, { today, replace = false }) {
     applied,
     pending,
     problems,
+  };
+}
+
+/**
+ * The numbers of a "--drop 3,8,10-12" list as a sorted list of whole numbers; `max` is the highest number on the
+ * review page. Throws on anything else.
+ */
+export function parseNumbers(text, max) {
+  const numbers = new Set();
+  for (const part of String(text).split(",")) {
+    const range = /^\s*(\d+)\s*(?:-\s*(\d+)\s*)?$/.exec(part);
+    if (!range)
+      throw new Error(`"${part.trim()}" is not a number or a range like 4-9`);
+    const from = Number(range[1]);
+    const to = Number(range[2] ?? range[1]);
+    if (from < 1 || to > max || from > to)
+      throw new Error(
+        `${part.trim()} is not on the page (the numbers go from 1 to ${max})`,
+      );
+    for (let n = from; n <= to; n++) numbers.add(n);
+  }
+  return [...numbers].sort((a, b) => a - b);
+}
+
+/**
+ * The maintainer's answers on the review copy of a course page, as a queue file that applyAnswers takes: the
+ * numbers in `drop` are rejected, every other marked pick is kept (accepted with the class and relation it has in
+ * the course). `numbered` is numberReview(course, review).
+ */
+export function answersFromReview(code, numbered, drop, { note = "" } = {}) {
+  const dropped = new Set(drop);
+  return {
+    schemaVersion: GATES_SCHEMA_VERSION,
+    kind: "queue",
+    code,
+    items: numbered.map((m) => ({
+      id: `r${String(m.n).padStart(3, "0")}`,
+      task: m.task,
+      target: { kind: m.kind, path: m.path },
+      proposal: {
+        class: m.class,
+        ...(m.relation ? { relation: m.relation } : {}),
+      },
+      decision: dropped.has(m.n) ? "reject" : "accept",
+      class: null,
+      relation: null,
+      excludeFamily: false,
+      note: dropped.has(m.n)
+        ? note || "dropped on the review copy of the course page"
+        : "",
+    })),
   };
 }
 

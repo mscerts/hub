@@ -11,13 +11,22 @@ const redirects = new Map(
     .split("\n")
     .map((line) => line.split(/\s+/).slice(0, 2)),
 );
+// The review copy of a course page (docs/courses.md, "<name>-review") is regenerated and deleted as the maintainer
+// reviews a course: it is an ordinary page of the site, but not part of the baseline, so adding or removing one needs no
+// baseline update.
+const isReviewCopy = (path) =>
+  /^(?:\/(?:certs|wiki|wiki-next))?\/courses\/[^/]+-review(?:\.md|\/)?$/.test(
+    path,
+  );
 const paths = [
   ...new Set(
     [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
       .map((match) => new URL(match[1]).pathname)
       .concat([...redirects.keys()]),
   ),
-].sort();
+]
+  .filter((path) => !isReviewCopy(path))
+  .sort();
 if (process.argv.includes("--update")) {
   await writeFile(manifestUrl, JSON.stringify({ paths }, null, 2) + "\n");
   console.log(

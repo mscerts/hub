@@ -4,13 +4,21 @@
  * needs the maintainer, and remember the maintainer's decisions so nothing is asked twice.
  *
  *   node scripts/course-gates.mjs gate <CODE> [--judged DIR] [--out DIR] [--decisions FILE] [--today YYYY-MM-DD]
- *                                 [--urls [--live]] [--force]
+ *                                 [--urls [--live]] [--force] [--queue-unsure]
  *       Reads <CODE>.*.judged.json of DIR (default <tmp>/course-judge; node scripts/course-judge.mjs merge writes
  *       them) and writes <CODE>.gated.json (a decision for every candidate) and <CODE>.queue.json (what waits for the
  *       maintainer) to OUT (default <tmp>/course-gates). --urls also asks learnsync's validator whether each page is a
  *       current Learn page. A queue file that has answers not yet applied is never overwritten (run resolve, or --force).
+ *       --queue-unsure queues the picks the judge is not sure of, or flagged as another role or product area, for
+ *       the maintainer (the review sheets of 2026-10-21); by default they are accepted and marked on the review
+ *       copy of the course page.
  *   node scripts/course-gates.mjs show <CODE> [--out DIR]
  *       Prints the queue in a readable form.
+ *   node scripts/course-gates.mjs review <CODE> --course FILE --drop NUMBERS [--review FILE] [--note TEXT]
+ *                                 [--decisions FILE] [--today YYYY-MM-DD] [--replace]
+ *       The answers on the review copy of the course page (node scripts/course-file.mjs render ... --review):
+ *       the numbered orange cards in NUMBERS (a list like 3,8,10-12) are dropped, every other marked pick is
+ *       kept. Both are remembered in the decisions file, so the marks go away the next time the course is built.
  *   node scripts/course-gates.mjs resolve <CODE> [--out DIR] [--decisions FILE] [--today YYYY-MM-DD] [--replace]
  *       Applies the answers written by hand into the queue file to the decisions file
  *       (default src/data_files/course-decisions/<CODE>.json, committed like a course file), and removes the answered
@@ -27,24 +35,28 @@ import {
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
-import { dirname, join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { currentFromVerdict, learnsyncVerdicts } from "./course-file.mjs";
 import { learnsyncDir } from "./course-source.mjs";
+import { numberReview } from "./lib/course-render.mjs";
 import {
   ageInDays,
+  answersFromReview,
   applyAnswers,
   buildQueue,
   emptyDecisions,
   gateJudged,
+  parseNumbers,
   validateDecisions,
 } from "./lib/course-gates.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-gates.mjs gate <CODE> [--judged DIR] [--out DIR] [--decisions FILE] [--today YYYY-MM-DD] [--urls [--live]] [--force]
+const USAGE = `Usage: node scripts/course-gates.mjs gate <CODE> [--judged DIR] [--out DIR] [--decisions FILE] [--today YYYY-MM-DD] [--urls [--live]] [--force] [--queue-unsure]
        node scripts/course-gates.mjs show <CODE> [--out DIR]
+       node scripts/course-gates.mjs review <CODE> --course FILE --drop NUMBERS [--review FILE] [--note TEXT] [--decisions FILE] [--today YYYY-MM-DD] [--replace]
        node scripts/course-gates.mjs resolve <CODE> [--out DIR] [--decisions FILE] [--today YYYY-MM-DD] [--replace]`;
-const COMMANDS = ["gate", "show", "resolve"];
+const COMMANDS = ["gate", "show", "review", "resolve"];
 
 function parseArgs(argv) {
   const options = {
@@ -57,7 +69,12 @@ function parseArgs(argv) {
     urls: false,
     live: false,
     force: false,
+    queueUnsure: false,
     replace: false,
+    course: null,
+    review: null,
+    drop: null,
+    note: null,
   };
   const positional = [];
   for (let i = 0; i < argv.length; i++) {
@@ -65,8 +82,20 @@ function parseArgs(argv) {
     if (arg === "--urls") options.urls = true;
     else if (arg === "--live") options.live = options.urls = true;
     else if (arg === "--force") options.force = true;
+    else if (arg === "--queue-unsure") options.queueUnsure = true;
     else if (arg === "--replace") options.replace = true;
-    else if (["--judged", "--out", "--decisions", "--today"].includes(arg)) {
+    else if (
+      [
+        "--judged",
+        "--out",
+        "--decisions",
+        "--today",
+        "--course",
+        "--review",
+        "--drop",
+        "--note",
+      ].includes(arg)
+    ) {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
       options[arg.slice(2)] = argv[++i];
     } else if (arg.startsWith("-")) throw new Error(`Unknown option ${arg}`);
@@ -166,6 +195,54 @@ export async function main(argv, deps = {}) {
         for (const p of problems) error(`  ${p}`);
         return 1;
       }
+    }
+
+    if (options.command === "review") {
+      if (!options.course || options.drop === null) {
+        error(`review needs --course FILE and --drop NUMBERS\n${USAGE}`);
+        return 2;
+      }
+      const courseFile = resolve(options.course);
+      const course = readJson(courseFile, "the course file");
+      const review = readJson(
+        options.review
+          ? resolve(options.review)
+          : courseFile.replace(/\.json$/, "") + ".review.json",
+        "the review file",
+      );
+      if (review.kind !== "review" || review.code !== code) {
+        error(`The review file is not the review file of ${code}.`);
+        return 2;
+      }
+      const numbered = numberReview(course, review);
+      if (numbered.length !== review.picks.length) {
+        error(
+          `The review file lists ${review.picks.length} picks but ${numbered.length} of them are in the course file: it belongs to another build; nothing was written.`,
+        );
+        return 1;
+      }
+      let drop;
+      try {
+        drop = parseNumbers(options.drop, numbered.length);
+      } catch (e) {
+        error(`--drop: ${e.message}`);
+        return 2;
+      }
+      const result = applyAnswers(
+        store ?? emptyDecisions(code),
+        answersFromReview(code, numbered, drop, { note: options.note ?? "" }),
+        { today: day, replace: options.replace },
+      );
+      if (result.problems.length) {
+        error("The answers cannot be applied; nothing was written:");
+        for (const p of result.problems) error(`  ${p}`);
+        return 1;
+      }
+      write(decisionsFile, result.store);
+      log(
+        `${code}: ${result.applied.length} marked picks decided (${result.applied.length - drop.length} kept, ${drop.length} dropped). Wrote ${decisionsFile}; run gate and build again.`,
+      );
+      return 0;
     }
 
     if (options.command === "resolve") {
@@ -274,6 +351,7 @@ export async function main(argv, deps = {}) {
       today: day,
       isCurrent,
       ageOf,
+      options: { queueUnsure: options.queueUnsure },
     });
     const queue = buildQueue(code, gated, { builtAt: day });
     write(join(outDir, `${code}.gated.json`), {
@@ -290,9 +368,13 @@ export async function main(argv, deps = {}) {
     log(
       `${code}: ${s.candidates} candidates: ${s.accepted} accepted (${s.acceptedCore} core, ${s.acceptedSupporting} supporting; ${s.acceptedByMaintainer} by earlier decisions), ${s.rejected} rejected (${s.rejectedByJudge} by the judge, ${s.rejectedRemembered} remembered, ${s.rejectedExcluded} in excluded sub-products, ${s.rejectedNotCurrent} not current), ${s.queued} for the maintainer (${s.queuedJudgeRejects} of them pages the judge rejected without being sure).`,
     );
+    if (s.acceptedForReview)
+      log(
+        `  ${s.acceptedForReview} of the accepted are marked for review on the course page (the judge was not sure of them or flagged them as another role or product area)`,
+      );
     if (s.acceptedWithWarnings)
       log(
-        `  ${s.acceptedWithWarnings} of the accepted carry a warning the gates accepted anyway (the judge picked them and the skeptic did not refute them): ${Object.entries(
+        `  ${s.acceptedWithWarnings} of the accepted carry a warning the gates accepted anyway (the judge picked them and is sure of them): ${Object.entries(
           s.acceptedWarnings,
         )
           .map(([w, n]) => `${w} (${n})`)
@@ -330,8 +412,6 @@ export function describeQueue(queue) {
         : `      the judge rejected it and is not sure; accept it with a class (and a note) or reject it: ${q.reasons.join("; ")}`,
       `      judge (${q.judge.confidence}): ${q.judge.why}${q.judge.quote ? `  quote: "${q.judge.quote}"` : ""}`,
     );
-    if (q.skeptic)
-      lines.push(`      skeptic: ${q.skeptic.stance} - ${q.skeptic.reason}`);
   }
   return lines;
 }

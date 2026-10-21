@@ -6,10 +6,8 @@ import {
 } from "../../../scripts/lib/course-candidates.mjs";
 import {
   buildBatches,
-  buildSkepticBatch,
   mergeJudged,
   validateJudgments,
-  validateSkeptic,
 } from "../../../scripts/lib/course-judge.mjs";
 import { candidateWorld, guideOf, scopeOf } from "./example-candidates.mjs";
 
@@ -81,46 +79,19 @@ export function judgmentsFor(batch, edit = (j) => j) {
   };
 }
 
-/** A valid skeptic file for a skeptic batch: every pick upheld, or `edit(answer, candidate, task)`. */
-export function skepticFor(skBatch, edit = (a) => a) {
-  const answers = [];
-  for (const task of skBatch.tasks)
-    for (const c of task.candidates) {
-      const edited = edit(
-        {
-          task: task.key,
-          target: c.target.path,
-          stance: "uphold",
-          reason: "Could not refute it.",
-        },
-        c,
-        task,
-      );
-      if (edited) answers.push(edited);
-    }
-  return {
-    schemaVersion: 1,
-    kind: "skeptic",
-    batchId: skBatch.batchId,
-    judgedBy: "test skeptic",
-    answers,
-  };
-}
-
 /**
- * The judged file (course-judge.mjs merge) of a batch: the judgments of `judgmentsFor` and a skeptic that upholds
- * every pick, each changed by `judge(judgment, candidate, task)` and `skeptic(answer, candidate, task)`.
+ * The judged file (course-judge.mjs merge) of a batch: the judgments of `judgmentsFor`, each changed by
+ * `judge(judgment, candidate, task)`.
  */
-export function judgedFor(batch, { judge, skeptic } = {}) {
+export function judgedFor(batch, { judge } = {}) {
   const judged = validateJudgments(batch, judgmentsFor(batch, judge));
-  const skBatch = buildSkepticBatch(batch, judged);
-  const answers = validateSkeptic(skBatch, skepticFor(skBatch, skeptic));
-  return mergeJudged(batch, judged, answers);
+  return mergeJudged(batch, judged);
 }
 
 /**
- * A judged file with something for every gate: P1 and P2 core with a good quote, P3 supporting (the skeptic refutes the
- * units), P4 supporting (the skeptic refutes them, so they wait for the maintainer), the rest rejected.
+ * A judged file with something for every gate: P1 and P2 core with a good quote, P3 supporting (the judge is not sure
+ * of the units, so they wait for the maintainer), P4 supporting (flagged as another role, so they wait too), the
+ * rest rejected.
  */
 export function exampleJudged() {
   const { batches: bs } = batches();
@@ -133,6 +104,7 @@ export function exampleJudged() {
             relation: "same-workflow",
             why: "A neighbouring step of the job.",
             quote: c.evidence[0].text,
+            flags: ["other-role"],
           }
         : j.verdict === "core"
           ? {
@@ -141,10 +113,8 @@ export function exampleJudged() {
                 c.evidence.find((e) => /user-defined|route/i.test(e.text))
                   ?.text ?? j.quote,
             }
-          : j,
-    skeptic: (a, c) =>
-      (c.source === "P3" && c.target.kind === "unit") || c.source === "P4"
-        ? { ...a, stance: "refute", reason: "Another exam's job." }
-        : a,
+          : c.source === "P3" && c.target.kind === "unit"
+            ? { ...j, confidence: "low" }
+            : j,
   });
 }

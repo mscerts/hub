@@ -17,7 +17,6 @@ const row = (path, over = {}, itemOver = {}) => ({
   },
   item: {
     judge: { confidence: "high" },
-    skeptic: { stance: "uphold" },
     coverage: 0.5,
     ...itemOver,
   },
@@ -50,11 +49,6 @@ test("core beats supporting, a sure judgement beats an unsure one, the exam's ow
     "d/g/t2": [row("/a")],
   });
   assert.deepEqual(pathsAt(sure, "d/g/t2"), ["/a"]);
-  const downgraded = route({
-    "d/g/t1": [row("/a", {}, { skeptic: { stance: "downgrade" } })],
-    "d/g/t2": [row("/a")],
-  });
-  assert.deepEqual(pathsAt(downgraded, "d/g/t2"), ["/a"]);
   const source = route({
     "d/g/t1": [row("/a", { source: "P4" })],
     "d/g/t2": [row("/a", { source: "P1" })],

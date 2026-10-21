@@ -16,7 +16,6 @@ import {
   EXAM,
   candidatesFile,
   judgmentsFor,
-  skepticFor,
   worldPools,
 } from "./helpers/example-judging.mjs";
 
@@ -262,7 +261,7 @@ test("check passes a clean answer and sends back one with a made-up quote", asyn
   assert.match(empty.io.out.join("\n"), /not judged/);
 });
 
-test("skeptic writes a batch of the picks and a prompt, and refuses an answer that is not valid", async () => {
+test("merge writes the judge's answers into one judged file, and refuses an answer that is not valid", async () => {
   const w = world();
   const { prefix, batch } = await prepared(w);
   write(
@@ -271,98 +270,32 @@ test("skeptic writes a batch of the picks and a prompt, and refuses an answer th
       j.verdict === "core" ? { ...j, quote: "not there" } : j,
     ),
   );
-  const refused = await run(["skeptic", prefix], w);
+  const refused = await run(["merge", prefix], w);
   assert.equal(refused.code, 1);
   assert.match(refused.io.err.join("\n"), /nothing was written/);
-  assert.ok(!existsSync(`${prefix}.skeptic-batch.json`));
+  assert.ok(!existsSync(`${prefix}.judged.json`));
 
   write(`${prefix}.judgments.json`, judgmentsFor(batch));
-  const ok = await run(["skeptic", prefix], w);
-  assert.equal(ok.code, 0, ok.io.err.join("\n"));
-  const sk = readJson(`${prefix}.skeptic-batch.json`);
-  assert.equal(sk.kind, "skeptic-batch");
-  assert.ok(sk.tasks.length > 0);
-  assert.match(
-    readFileSync(`${prefix}.skeptic.md`, "utf8"),
-    /Try to refute these picks/,
-  );
-  assert.match(
-    ok.io.out[0],
-    /picks to challenge, prompt about \d+ tokens.*fresh model \(not the judge\)/,
-  );
-
-  write(
-    `${prefix}.judgments.json`,
-    judgmentsFor(batch, (j) => ({
-      ...j,
-      verdict: "reject",
-      relation: undefined,
-    })),
-  );
-  const nothing = await run(["skeptic", prefix], w);
-  assert.equal(nothing.code, 0);
-  assert.match(nothing.io.out[0], /the judge picked nothing/);
-});
-
-test("merge combines the judge's and the skeptic's answers into one judged file", async () => {
-  const w = world();
-  const { prefix, batch } = await prepared(w);
-  write(`${prefix}.judgments.json`, judgmentsFor(batch));
-  await run(["skeptic", prefix], w);
-  const sk = readJson(`${prefix}.skeptic-batch.json`);
-  write(
-    `${prefix}.skeptic.json`,
-    skepticFor(sk, (a, c) =>
-      c.source === "P3"
-        ? { ...a, stance: "refute", reason: "Another job." }
-        : a,
-    ),
-  );
   const merged = await run(["merge", prefix], w);
   assert.equal(merged.code, 0, merged.io.err.join("\n"));
   const judged = readJson(`${prefix}.judged.json`);
   assert.equal(judged.kind, "judged");
-  assert.ok(judged.stats.agree > 0 && judged.stats.disagree > 0);
+  assert.ok(judged.stats.core > 0);
+  assert.equal(judged.stats.agree, undefined);
   assert.match(
     merged.io.out[0],
-    /candidates: \d+ core, \d+ supporting, \d+ reject; skeptic agrees on \d+, disagrees on \d+/,
+    /candidates: \d+ core, \d+ supporting, \d+ reject\. Wrote/,
   );
 });
 
-test("merge needs the skeptic unless told not to, and stops on an invalid skeptic answer", async () => {
+test("there is no skeptic command and no --no-skeptic option any more", async () => {
   const w = world();
-  const { prefix, batch } = await prepared(w);
-  write(`${prefix}.judgments.json`, judgmentsFor(batch));
-
-  const noBatch = await run(["merge", prefix], w);
-  assert.equal(noBatch.code, 2);
-  assert.match(
-    noBatch.io.err.join("\n"),
-    /No skeptic batch: run skeptic .*, or merge with --no-skeptic/,
-  );
-
-  const without = await run(["merge", prefix, "--no-skeptic"], w);
-  assert.equal(without.code, 0, without.io.err.join("\n"));
-  assert.ok(
-    readJson(`${prefix}.judged.json`)
-      .tasks.flatMap((t) => t.items)
-      .every((i) => i.agreement === "unchallenged"),
-  );
-
-  await run(["skeptic", prefix], w);
-  write(`${prefix}.skeptic.json`, {
-    schemaVersion: 1,
-    kind: "skeptic",
-    batchId: batch.batchId,
-    answers: [],
-  });
-  const invalid = await run(["merge", prefix], w);
-  assert.equal(invalid.code, 1);
-  assert.match(
-    invalid.io.err.join("\n"),
-    /The skeptic's answers are not valid; nothing was written/,
-  );
-  assert.match(invalid.io.err.join("\n"), /not answered/);
+  const command = await run(["skeptic", "x"], w);
+  assert.equal(command.code, 2);
+  assert.match(command.io.err.join("\n"), /Unknown command skeptic/);
+  const option = await run(["merge", "x", "--no-skeptic"], w);
+  assert.equal(option.code, 2);
+  assert.match(option.io.err.join("\n"), /Unknown option --no-skeptic/);
 });
 
 test("merge keeps a quote that is not in the evidence only when asked, and marks it", async () => {
@@ -374,13 +307,10 @@ test("merge keeps a quote that is not in the evidence only when asked, and marks
       c.source === "P2" ? { ...j, quote: "never said" } : j,
     ),
   );
-  const refused = await run(["merge", prefix, "--no-skeptic"], w);
+  const refused = await run(["merge", prefix], w);
   assert.equal(refused.code, 1);
   assert.match(refused.io.err.join("\n"), /The judgments are not valid/);
-  const kept = await run(
-    ["merge", prefix, "--no-skeptic", "--keep-unverified"],
-    w,
-  );
+  const kept = await run(["merge", prefix, "--keep-unverified"], w);
   assert.equal(kept.code, 0);
   assert.match(kept.io.out[0], /\d+ unverified quotes kept/);
   assert.equal(

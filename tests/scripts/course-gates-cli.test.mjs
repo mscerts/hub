@@ -11,6 +11,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test, { after } from "node:test";
 import { describeQueue, loadAges, main } from "../../scripts/course-gates.mjs";
+import { eachPick } from "../../scripts/lib/course-format.mjs";
+import { exampleCourse } from "./helpers/example-course.mjs";
 import { exampleJudged } from "./helpers/example-judging.mjs";
 
 const temps = [];
@@ -78,7 +80,7 @@ const run = async (argv, w, io = capture(), extra = {}) => {
   return { code, io };
 };
 const gate = (w, extra = []) =>
-  run(["gate", "NET-100", "--out", w.out, ...extra], w);
+  run(["gate", "NET-100", "--out", w.out, "--queue-unsure", ...extra], w);
 
 test("gate decides every candidate, writes the gated file and the queue, and says what waits and why", async () => {
   const w = world();
@@ -97,10 +99,14 @@ test("gate decides every candidate, writes the gated file and the queue, and say
     text,
     /^NET-100: \d+ candidates: \d+ accepted \(\d+ core, \d+ supporting; 0 by earlier decisions\), \d+ rejected/m,
   );
-  assert.match(text, / {2}queued: the skeptic refuted it \(\d+\)/);
+  assert.match(text, / {2}queued: flagged \(\d+\)/);
   assert.match(
     text,
-    / {2}\d+ of the accepted carry a warning the gates accepted anyway \(the judge picked them and the skeptic did not refute them\): /,
+    / {2}queued: the judge is not sure \(low confidence\) \(\d+\)/,
+  );
+  assert.match(
+    text,
+    / {2}\d+ of the accepted carry a warning the gates accepted anyway \(the judge picked them and is sure of them\): /,
   );
   assert.match(text, /Wrote .*NET-100\.gated\.json and .*NET-100\.queue\.json/);
   assert.match(
@@ -378,7 +384,7 @@ test("the queue is described in a readable form, task by task", async () => {
     ),
   );
   assert.ok(lines.some((l) => /^ {6}judge \((high|medium|low)\): /.test(l)));
-  assert.ok(lines.some((l) => /^ {6}skeptic: /.test(l)));
+  assert.ok(!lines.some((l) => /skeptic/.test(l)));
 });
 
 test("input errors are exit code 2 with a message, and a bad decisions file is exit code 1", async () => {
@@ -455,5 +461,171 @@ test("the default folders are temporary ones and the decisions file is the repos
     readFileSync(join(w.tmp, "course-gates", "NET-100.gated.json"), "utf8")
       .length > 0,
     true,
+  );
+});
+
+/** A course file with a review file beside it, three picks marked: the world of the review command. */
+function reviewWorld() {
+  const w = world({ judged: false });
+  const { course } = exampleCourse();
+  const picks = [...eachPick(course)].slice(0, 3);
+  const courseFile = join(w.base, "course", "GH-900.json");
+  mkdirSync(join(w.base, "course"), { recursive: true });
+  write(courseFile, course);
+  write(join(w.base, "course", "GH-900.review.json"), {
+    schemaVersion: 1,
+    kind: "review",
+    code: "GH-900",
+    builtAt: "2026-10-18",
+    picks: picks.map(({ task, pick }) => ({
+      task: task.key,
+      path: pick.target.path,
+      title: pick.title,
+      kind: pick.target.kind,
+      source: pick.source,
+      class: pick.class,
+      ...(pick.relation ? { relation: pick.relation } : {}),
+      reasons: ["the judge is not sure (low confidence)"],
+      why: "A reason.",
+    })),
+  });
+  return {
+    ...w,
+    courseFile,
+    decisions: join(w.base, "decisions", "GH-900.json"),
+    picks,
+  };
+}
+
+test("review: the dropped numbers are rejected, the others kept, and both are remembered in the decisions file", async () => {
+  const w = reviewWorld();
+  const { code, io } = await run(
+    [
+      "review",
+      "GH-900",
+      "--course",
+      w.courseFile,
+      "--drop",
+      "2",
+      "--note",
+      "Not for this exam.",
+      "--decisions",
+      w.decisions,
+    ],
+    w,
+  );
+  assert.equal(code, 0, io.err.join("\n"));
+  assert.match(
+    io.out.join("\n"),
+    /GH-900: 3 marked picks decided \(2 kept, 1 dropped\)\. Wrote .*GH-900\.json; run gate and build again\./,
+  );
+  const store = readJson(w.decisions);
+  assert.equal(store.decisions.length, 3);
+  const byTarget = new Map(store.decisions.map((d) => [d.target, d]));
+  const decisionOf = (i) => byTarget.get(w.picks[i].pick.target.path);
+  assert.equal(decisionOf(0).decision, "accept");
+  assert.equal(decisionOf(0).by, "maintainer");
+  assert.equal(decisionOf(1).decision, "reject");
+  assert.equal(decisionOf(1).reason, "Not for this exam.");
+  assert.equal(decisionOf(2).decision, "accept");
+  // the numbers are the ones of the page
+  const { numberReview } = await import("../../scripts/lib/course-render.mjs");
+  const numbered = numberReview(
+    readJson(w.courseFile),
+    readJson(w.courseFile.replace(/\.json$/, ".review.json")),
+  );
+  assert.equal(numbered[1].path, w.picks[1].pick.target.path);
+
+  // an answer already given is a problem unless it is changed on purpose
+  const again = await run(
+    [
+      "review",
+      "GH-900",
+      "--course",
+      w.courseFile,
+      "--drop",
+      "1",
+      "--decisions",
+      w.decisions,
+    ],
+    w,
+  );
+  assert.equal(again.code, 1);
+  assert.match(again.io.err.join("\n"), /already decided/);
+  const replaced = await run(
+    [
+      "review",
+      "GH-900",
+      "--course",
+      w.courseFile,
+      "--drop",
+      "1",
+      "--decisions",
+      w.decisions,
+      "--replace",
+    ],
+    w,
+  );
+  assert.equal(replaced.code, 0, replaced.io.err.join("\n"));
+  assert.equal(
+    readJson(w.decisions).decisions.filter((d) => d.decision === "reject")
+      .length,
+    1,
+  );
+});
+
+test("review: nothing is written for a number that is not on the page, a missing option, or a review file of another build", async () => {
+  const w = reviewWorld();
+  const args = (...more) => [
+    "review",
+    "GH-900",
+    "--course",
+    w.courseFile,
+    "--decisions",
+    w.decisions,
+    ...more,
+  ];
+  const off = await run(args("--drop", "4"), w);
+  assert.equal(off.code, 2);
+  assert.match(
+    off.io.err.join("\n"),
+    /--drop: 4 is not on the page \(the numbers go from 1 to 3\)/,
+  );
+  const bad = await run(args("--drop", "x"), w);
+  assert.equal(bad.code, 2);
+  const none = await run(["review", "GH-900", "--course", w.courseFile], w);
+  assert.equal(none.code, 2);
+  assert.match(
+    none.io.err.join("\n"),
+    /review needs --course FILE and --drop NUMBERS/,
+  );
+  // a review file that lists a pick the course no longer has
+  const reviewFile = w.courseFile.replace(/\.json$/, ".review.json");
+  const review = readJson(reviewFile);
+  write(reviewFile, {
+    ...review,
+    picks: [...review.picks, { ...review.picks[0], path: "/azure/gone" }],
+  });
+  const stale = await run(args("--drop", "1"), w);
+  assert.equal(stale.code, 1);
+  assert.match(stale.io.err.join("\n"), /belongs to another build/);
+  write(reviewFile, { ...review, code: "AZ-104" });
+  const other = await run(args("--drop", "1"), w);
+  assert.equal(other.code, 2);
+  assert.ok(!existsSync(w.decisions), "nothing was written");
+});
+
+test("gate: by default the unsure picks are accepted and counted as marked for review, with --queue-unsure they wait", async () => {
+  const w = world();
+  const sheet = await gate(w);
+  assert.equal(sheet.code, 0, sheet.io.err.join("\n"));
+  const waiting = readJson(w.queue).items.length;
+  assert.ok(waiting > 0);
+  const marked = await run(["gate", "NET-100", "--out", w.out, "--force"], w);
+  assert.equal(marked.code, 0, marked.io.err.join("\n"));
+  assert.ok(readJson(w.queue).items.length < waiting);
+  assert.match(
+    marked.io.out.join("\n"),
+    /\d+ of the accepted are marked for review on the course page/,
   );
 });

@@ -132,7 +132,7 @@ scripts/
 ├── course-file.mjs           # Validates a course file (src/data_files/courses/<CODE>.json) and renders the course page (see docs/courses.md)
 ├── course-status.mjs         # The rebuild check: compares a course file with today's study guide and Learn and prints what to redo (see docs/courses.md)
 ├── course-candidates.mjs     # Candidate generator: a shortlist of Learn modules, units and docs pages per study guide task, with provenance P1-P4; the abbreviations it knows are in scripts/lib/course-aliases.mjs (see docs/course-candidates.md)
-├── course-judge.mjs          # Judging protocol: prompts for an AI judge per skill group, mechanical checks of its answers (evidence quotes), a skeptic pass and the merge (see docs/course-judging.md)
+├── course-judge.mjs          # Judging protocol: prompts for an AI judge per skill group, mechanical checks of its answers (evidence quotes) and the merge (see docs/course-judging.md)
 ├── course-propose.mjs        # Model proposals: prompts for a model to name the Learn pages of each task, a check that every named page exists, and the merge into the shortlist as source P5 (see docs/course-proposals.md)
 ├── course-gates.mjs          # Approval gates: accept, reject or queue every judged candidate; the queue is a file edited by hand and the maintainer's decisions are remembered in src/data_files/course-decisions/<CODE>.json (see docs/course-gates.md)
 ├── course-build.mjs          # The builder: assembles a course file from the gated decisions, the study guide and the exam scope (see docs/course-build.md)
@@ -393,7 +393,7 @@ Verify all voucher percentages, codes, limits, deadlines, exclusions, announceme
 - Use `CardGrid` for groups of `LinkCard`s. Empty grids are tolerated on canonical exam tabs but should not be introduced on lab tabs.
 - When adding a new resource `LinkCard` to an existing `CardGrid`, place it last unless it is an official Microsoft resource — a Microsoft resource goes after any other Microsoft resources already in that grid, or first if it would be the only resource in the grid.
 - External `LinkCard` and `LinkButton` targets use `target="_blank"`; internal links generally do not need it.
-- `LinkCard` requires `title` and `href`; `description` is optional and should stay concise.
+- `LinkCard` requires `title` and `href`; `description` is optional and should stay concise. `tone="review"` (orange) is only for the generated review copy of a course page (`docs/courses.md`); never use it on an exam page.
 - For new exam tab blocks, prefer two-space increments (`TabItem` 2, `CardGrid` 4, `LinkCard` 6) without reformatting unrelated legacy content.
 
 ### Docs Rendering
@@ -467,7 +467,7 @@ pnpm dev                        # Local preview
 ```
 
 - Build must pass with 0 errors before committing.
-- `pnpm build` runs `scripts/verify-public-routes.mjs` to guard the exam index, sitemap exclusions, critical legacy routes, and Cloudflare redirect count. `scripts/verify-route-manifest.mjs` checks the complete public-route baseline in `src/data_files/public-routes.json`, follows redirect chains, and verifies that configured GA4/GTM IDs are present in built HTML/JS. When deliberately adding/removing routes, first build with `pnpm exec astro build --force`, then run `node scripts/verify-route-manifest.mjs --update` and review/commit the baseline diff alongside the route change. The build also generates and verifies `dist/pagefind/pagefind.js`; use `pnpm preview` to test site search locally.
+- `pnpm build` runs `scripts/verify-public-routes.mjs` to guard the exam index, sitemap exclusions, critical legacy routes, and Cloudflare redirect count. `scripts/verify-route-manifest.mjs` checks the complete public-route baseline in `src/data_files/public-routes.json`, follows redirect chains, and verifies that configured GA4/GTM IDs are present in built HTML/JS. When deliberately adding/removing routes, first build with `pnpm exec astro build --force`, then run `node scripts/verify-route-manifest.mjs --update` and review/commit the baseline diff alongside the route change. The review copy of a course page (`courses/<name>-review`, `docs/courses.md`) is left out of the baseline, so generating or deleting one needs no update. The build also generates and verifies `dist/pagefind/pagefind.js`; use `pnpm preview` to test site search locally.
 - Plain `pnpm dev` does not generate a Pagefind index, so search requires a completed production build.
 - `astro build --force` clears the content-layer data store (`node_modules/.astro/data-store.json`) on every build. Cloudflare Pages restores that directory from its build cache, and the incremental loader keys entries on ID + content digest, so a file whose path changed but whose content did not (e.g. a case-only rename) would otherwise keep a stale `filePath` and fail with `Rolldown failed to resolve import "astro:content-layer-deferred-module?...fileName=<old path>"`. The full resync costs about one second on this site; do not remove the flag.
 - `astro check` currently prints a few hints and no errors or warnings (mostly unused declarations, plus one deprecated `document.execCommand`). Do not introduce new unused-declaration hints.

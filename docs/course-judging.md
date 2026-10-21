@@ -1,12 +1,13 @@
-# Judging the candidates: verdicts, evidence quotes and a skeptic
+# Judging the candidates: verdicts, confidence and evidence quotes
 
-*Runbook of the judging protocol (`scripts/course-judge.mjs`, `scripts/lib/course-judge.mjs`). Repo-wide rules live in [AGENTS.md](../AGENTS.md). Its input is the shortlist of [course-candidates.md](course-candidates.md); the classes it uses are those of [courses.md](courses.md). What happens to a verdict next (the approval gates and the review queue) is not built yet.*
+*Runbook of the judging protocol (`scripts/course-judge.mjs`, `scripts/lib/course-judge.mjs`). Repo-wide rules live in [AGENTS.md](../AGENTS.md). Its input is the shortlist of [course-candidates.md](course-candidates.md); the classes it uses are those of [courses.md](courses.md). What happens to a verdict next (the approval gates and the review queue) is [course-gates.md](course-gates.md).*
 
 The candidate generator finds pages that share the words of a task. It cannot tell which of them belong in a course. A judge (an AI) does that, one skill group at a time, and this protocol makes the answer **checkable**:
 
-- the judge must give every candidate a **verdict**, a reason and, for a pick, a **quote** that a script verifies really is in the text it was shown;
-- a second, independent model, the **skeptic**, tries to refute every pick;
-- the two answers are merged with whether they agree, which is what the gates will decide on.
+- the judge must give every candidate a **verdict**, a reason, a **confidence** and, for a pick, a **quote** that a script verifies really is in the text it was shown;
+- the checked answer is merged with its batch into one judged file, which is what the gates decide on.
+
+There is no second model that challenges the picks: a skeptic stage existed until 2026-10-21 and was removed (see "No skeptic" below).
 
 No AI is part of the code. The scripts build prompts and check, verify and merge answers; a person or an agent session gives a prompt to a model and saves its JSON answer. That keeps keys and model calls out of the repository and out of CI.
 
@@ -20,7 +21,7 @@ No AI is part of the code. The scripts build prompts and check, verify and merge
 
 These are the two classes of a course pick plus rejection; a rejection is what the rejected list of the course file remembers.
 
-The judge may also **flag** a candidate it picks: `other-role`, `other-sub-product`, `licensing-tier`, `level-mismatch`, `preview`, `outdated` (meanings in `FLAGS`). It gives a `confidence` (`high`, `medium`, `low`).
+The judge may also **flag** a candidate it picks: `other-role`, `other-sub-product`, `licensing-tier`, `level-mismatch`, `preview`, `outdated` (meanings in `FLAGS`). The gates mark a pick that carries one of the first three for review on the course page; the others are warnings. It gives a `confidence` (`high`, `medium`, `low`).
 
 **Two rules of the maintainer, built into the rubric (2026-10-19):**
 
@@ -31,16 +32,14 @@ The judge may also **flag** a candidate it picks: `other-role`, `other-sub-produ
 
 All of a batch's files share a prefix, `<CODE>.<nn>-<group>` (for example `AZ-104.03-manage-microsoft-entra-users-and-groups`), in `<tmp>/course-judge` unless `--out` says otherwise. Nothing is written to the repository.
 
-**A big group is cut into parts.** A skill group with more than 150 candidates (`--max-candidates N`, default `DEFAULT_BATCH_CANDIDATES`) is split into parts of at most that many, in task order and, within a task, in provenance order (`P1` first, `P4` last); a task with more candidates than a part holds continues in the next. A part has its own prefix (`AZ-104.08-create-and-configure-virtual-machines-p3of19`), `batchId` (`<group>#3`) and `part` field, and is judged, checked, challenged and merged on its own; its prompt says which part it is. Every candidate is in exactly one part, nothing is dropped, and the gates read the merged parts as one exam. The batch is written to the prompt as compact JSON (no indentation, about a third fewer tokens than pretty-printed).
+**A big group is cut into parts.** A skill group with more than 150 candidates (`--max-candidates N`, default `DEFAULT_BATCH_CANDIDATES`) is split into parts of at most that many, in task order and, within a task, in provenance order (`P1` first, `P4` last); a task with more candidates than a part holds continues in the next. A part has its own prefix (`AZ-104.08-create-and-configure-virtual-machines-p3of19`), `batchId` (`<group>#3`) and `part` field, and is judged, checked and merged on its own; its prompt says which part it is. Every candidate is in exactly one part, nothing is dropped, and the gates read the merged parts as one exam. The batch is written to the prompt as compact JSON (no indentation, about a third fewer tokens than pretty-printed).
 
 | File | Written by | What it is |
 |------|-----------|------------|
 | `<prefix>.batch.json` | `prepare` | The skill group: its tasks, and per task every candidate with where it came from and its **evidence**. |
 | `<prefix>.judge.md` | `prepare` | The judge's prompt: rubric, answer format and the batch. |
 | `<prefix>.judgments.json` | the judge | The answer. |
-| `<prefix>.skeptic-batch.json`, `<prefix>.skeptic.md` | `skeptic` | The picks with the judge's claim, and the skeptic's prompt. |
-| `<prefix>.skeptic.json` | the skeptic | The answer. |
-| `<prefix>.judged.json` | `merge` | Both answers per candidate, and whether they agree. |
+| `<prefix>.judged.json` | `merge` | The judge's answer per candidate. |
 
 The **evidence** of a candidate is the text a judge may quote: for a module its title, its unit titles and its products; for a unit its own title, its module's title and the other units of that module; for a documentation page its title, its description and the texts of the links modules use to point to it. It is exactly what the quote check compares with, so the check never depends on anything the judge did not see.
 
@@ -75,29 +74,20 @@ The **evidence** of a candidate is the text a judge may quote: for a module its 
 
 Each quote also gets a `quoteTermCoverage`: the share of the task's distinctive words (an abbreviation counting for its long form) that the quote contains. It is only recorded; the gates will use it, because a quote that says nothing of the task is no evidence for it.
 
-## The skeptic
+## No skeptic
 
-The skeptic gets the **picks only** (not the rejections), each with the judge's verdict, relation, reason, quote and flags, and the same evidence. For each it answers:
+A second, independent model (the *skeptic*) used to try to refute every pick; its stance (`uphold`, `downgrade`, `refute`) was merged into the judged file and a refutation queued the pick for the maintainer. **It was removed on 2026-10-21**, together with the `skeptic` command, `--no-skeptic` and the `agreement` field, after the maintainer's own answers were compared with it (AZ-104):
 
-| Stance | Meaning |
-|--------|---------|
-| `uphold` | It tried to refute the pick and could not. |
-| `downgrade` | Not `core`, but still `supporting` (only for a `core` pick; needs a `relation`). |
-| `refute` | It should not be a pick at all. |
+- It refuted 76 of the 907 picks (8%), downgraded 39 and upheld 792. It never refuted a pick the judge had high confidence in (0 of 268); 55 of the 76 refutations were on the 125 picks the judge was unsure of. A downgrade only changes the order on the page.
+- Of 18 refused pages in a random sample of the queue, the maintainer kept 13 (72%; 95% interval 49% to 88%). The refusals the maintainer overruled said "beyond the exam's level", "a better page is already picked" or "a different direction".
+- The prompt was narrowed to "refute only a page that is wrong" (2026-10-20) and the skeptic re-run, blind, over 103 pages the maintainer had marked (97 kept, 6 dropped): it refused 2 pages, both kept, and none of the 6 dropped. It read the Google Cloud copy as "the tool is the one the task names" and the Windows Server hybrid backup as "an Azure administrator configures the same policies". The old prompt refused 5 of the 6, and 13 of the 97 kept pages with them.
+- The re-run cost about 540,000 subagent tokens for those 103 pages (roughly 4.7 million for all picks); on prompt volume the skeptic was a third to a half of the judging work.
 
-with a one-sentence `reason`, optional extra `flags` and an optional `quote` (checked the same way). Every pick must be answered once.
-
-**What a skeptic may refute for** (maintainer, 2026-10-20). A `refute` is for a page that is **wrong**: another role, product area, sub-product or licensing tier; off the task and off the job around it; retired or only in preview; or a quote that does not say what the judge claims. It is **not** for a page that is more basic or deeper than the exam asks (that is a `supporting` pick with the relation `prerequisite` or `deeper`), for a task that another page already covers as well (the course has no cap on the number of pages), or for a neighbouring step that is not the task itself (`supporting`). A page that belongs but not as `core` is a `downgrade`. Why: on AZ-104 the maintainer overruled 13 of 19 refutations in a random sample of the queue, and the refutations they overruled said "beyond the exam's level", "a better page is already picked" or "a different direction".
+What replaced it: the judge's own confidence and out-of-scope flags. A pick the judge is not sure of (`confidence: low`) or flagged `other-role`, `other-sub-product` or `licensing-tier` is in the course and is marked, with the judge's reason, on the review copy of the course page, where the maintainer reads it and gives the numbers to drop ([course-gates.md](course-gates.md)). Of the 9 flagged pages among the 103, the maintainer dropped 2 (22%); of the 94 unflagged ones, 4 (4%). Old runs keep their `skeptic` and `agreement` fields; nothing reads them.
 
 ## The judged file
 
-`merge` writes, per candidate, `judge` (verdict, relation, reason, quote with `quoteVerified`, `quoteWhere` and `quoteTermCoverage`, flags, confidence) and `skeptic` (picks only), plus:
-
-- `agreement`: `agree` (the skeptic upheld), `disagree` (it downgraded or refuted; `disagreement` says which), or `unchallenged` (a rejection, or no skeptic ran);
-- `flags`: the union of both answers' flags;
-- the candidate's own card (target, title, source, `via`, signals) without the evidence, which stays in the batch.
-
-Disagreement is recorded and never overwritten: the gates queue it for the maintainer. `stats` counts candidates, verdicts, agreements, disagreements and unverified quotes. `merge` refuses a judgments or skeptic file that `check` would send back, unless `--keep-unverified` keeps a quote that is not in the evidence and marks it (`quoteVerified: false`), which the gates queue.
+`merge` writes, per candidate, `judge` (verdict, relation, reason, confidence, quote with `quoteVerified`, `quoteWhere` and `quoteTermCoverage`, flags) and the candidate's own card (target, title, source, `via`, signals) without the evidence, which stays in the batch; `flags` repeats the judge's flags. `stats` counts candidates, verdicts and unverified quotes. `merge` refuses a judgments file that `check` would send back, unless `--keep-unverified` keeps a quote that is not in the evidence and marks it (`quoteVerified: false`), which the gates queue.
 
 ## Running it
 
@@ -106,24 +96,21 @@ node scripts/course-candidates.mjs AZ-104                  # the shortlist (cour
 node scripts/course-judge.mjs prepare AZ-104 [--group "external"] [--max-candidates 150]   # batches and prompts; prints their size
 # give <prefix>.judge.md to the judge, save its JSON as <prefix>.judgments.json
 node scripts/course-judge.mjs check <prefix>               # exit 1: the judge redoes the listed entries
-node scripts/course-judge.mjs skeptic <prefix>             # the picks and the skeptic's prompt
-# give <prefix>.skeptic.md to a FRESH model, save its JSON as <prefix>.skeptic.json
 node scripts/course-judge.mjs merge <prefix>               # <prefix>.judged.json
 ```
 
-How to run the two passes:
+How to run it:
 
 - **Who judges:** a local Claude session; with subagents, one per skill group, each given only the contents of `<prefix>.judge.md`. The repository holds no API keys and nothing runs in CI.
-- **The skeptic must be independent:** a separate subagent or session that has not seen the judge's reasoning, given only `<prefix>.skeptic.md`. It is useless as a check if it is the judge reading its own answer.
 - **Redo only what `check` lists.** Send the judge the entries it names and ask for corrected entries; replace those in the file and check again.
-- **Estimate the cost first.** `prepare` prints the size of every prompt in rough tokens (characters / 4) and the total; a skeptic prompt is smaller (picks only). Measured on AZ-104 on 2026-10-17 (shortlist capped): 15 batches, about 0.6 million prompt tokens, and about 5 million tokens of subagent usage in all for judge and skeptic (each session reads its prompt in several steps, so usage is a multiple of the prompt). With no cap (2026-10-19): 13,099 candidates, 95 parts of 3,000 to 45,000 tokens each and about 2.2 million prompt tokens, so expect roughly two to three times that usage. Paths for `check`: use forward slashes in Git Bash (backslashes are eaten there).
+- **Estimate the cost first.** `prepare` prints the size of every prompt in rough tokens (characters / 4) and the total. Measured on AZ-104 on 2026-10-17 (shortlist capped): 15 batches, about 0.6 million prompt tokens, and about 5 million tokens of subagent usage in all for judge and skeptic (the skeptic stage has gone since, so expect about two thirds of that) (each session reads its prompt in several steps, so usage is a multiple of the prompt). With no cap (2026-10-19): 13,099 candidates, 95 parts of 3,000 to 45,000 tokens each and about 2.2 million prompt tokens, so expect roughly two to three times that usage. Paths for `check`: use forward slashes in Git Bash (backslashes are eaten there).
 
 ## Not covered here
 
-- **The approval gates, the review queue and remembered decisions** read the judged files: auto-accept (a pick the skeptic did not refute, any source and confidence; hands-on pages the judge picked), queue (a refutation, no skeptic answer, an unverified quote, low confidence in a **reject**) and auto-reject (a reject the judge is sure of, classic material, hands-on pages the judge did not pick). See [course-gates.md](course-gates.md).
+- **The approval gates, the review queue and remembered decisions** read the judged files: auto-accept (a pick the judge made, any source and confidence, with a quote that is in the evidence; one the judge is not sure of or flagged as out of scope is marked for review; hands-on pages the judge picked), queue (an unverified quote, low confidence in a **reject**) and auto-reject (a reject the judge is sure of, classic material, hands-on pages the judge did not pick). See [course-gates.md](course-gates.md).
 - **The quote check is on the cached text only** (titles, unit titles, descriptions, link texts). It proves the judge did not make a quote up, not that the page's body says what the judge infers; it cannot be stricter without fetching the live page. If quotes prove too loose, a live check at judge time is the next step.
-- **Rejections are not challenged by the skeptic.** A wrong rejection is only caught when the judge itself was unsure (`low` confidence), which sends it to the maintainer; a confident wrong rejection costs recall, not correctness. The skeptic sees the picks only.
-- **`judgedBy` is free text.** Nothing checks which model answered or that the skeptic differs from the judge.
+- **Rejections are not challenged.** A wrong rejection is only caught when the judge itself was unsure (`low` confidence), which sends it to the maintainer; a confident wrong rejection costs recall, not correctness.
+- **`judgedBy` is free text.** Nothing checks which model answered.
 - **One exam has been judged, once.** AZ-104, on 2026-10-17 with the shortlist capped, at the maintainer's request (30 subagent sessions). The rubric and the shortlist have changed since (see above); the formal pilot ([course-playbook.md](course-playbook.md)) has not been run.
 
 ## Tests

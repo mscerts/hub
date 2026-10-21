@@ -22,10 +22,16 @@ function gatedFile({
   decisions = null,
   edit = () => {},
   change = (items) => items,
+  sheet = true,
 } = {}) {
   const judged = exampleJudged();
   edit(judged);
-  const { items } = gateJudged([judged], { decisions, today: TODAY });
+  // sheet mode (queueUnsure) keeps the queue the tests below are about; `sheet: false` is the default of the gates
+  const { items } = gateJudged([judged], {
+    decisions,
+    today: TODAY,
+    options: { queueUnsure: sheet },
+  });
   return {
     schemaVersion: 1,
     kind: "gated",
@@ -86,8 +92,6 @@ const judgeRejected = (judged) => {
     flags: [],
     confidence: "high",
   };
-  item.agreement = "unchallenged";
-  delete item.skeptic;
 };
 
 test("a page the maintainer accepts over the judge's reject takes its reason and evidence from the maintainer's note", () => {
@@ -243,8 +247,6 @@ test("a rejection worth remembering goes into the rejected list, and an ordinary
       confidence: "high",
     };
     item.flags = flags;
-    item.agreement = "unchallenged";
-    delete item.skeptic;
   };
   let marked;
   const edit = (judged) => {
@@ -422,4 +424,65 @@ test("the built course renders, and the rebuild check finds nothing to do the mo
   });
   assert.equal(plan.status, "current", JSON.stringify(plan.reasons));
   assert.deepEqual(plan.picks, { hard: [], soft: [] });
+});
+
+test("a pick the judge was not sure of is in the course and listed for review, with the judge's reason; the maintainer's decision takes the mark away", () => {
+  const gated = gatedFile({ sheet: false });
+  const marked = gated.items.filter(
+    (i) => i.gate.decision === "accept" && i.gate.review?.length,
+  );
+  assert.ok(marked.length > 0, "the example has picks the judge was unsure of");
+  const result = build({ gated });
+  assert.equal(result.ok, true, result.problems.join("\n"));
+  assert.ok(
+    !result.warnings.some((w) => /still in the queue/.test(w)),
+    "nothing waits: every pick the judge made is in",
+  );
+  assert.equal(result.review.length > 0, true);
+  const inCourse = new Set(
+    picksOf(result.course).map(
+      ({ task, pick }) => `${task}|${pick.target.path}`,
+    ),
+  );
+  for (const r of result.review) {
+    assert.ok(
+      inCourse.has(`${r.task}|${r.path}`),
+      "a marked pick is a pick of the course",
+    );
+    assert.ok(r.reasons.length > 0 && r.why && r.title);
+    assert.ok(["core", "supporting"].includes(r.class));
+  }
+  assert.deepEqual(
+    result.review
+      .map((r) => r.reasons)
+      .flat()
+      .filter((x, i, a) => a.indexOf(x) === i)
+      .sort(),
+    [...new Set(marked.flatMap((i) => i.gate.review))].sort(),
+  );
+
+  // the maintainer accepts one of them: it stays in the course and is no longer marked
+  const first = result.review[0];
+  const decisions = store([
+    decided(first.task, first.path, {
+      class: first.class,
+      ...(first.relation ? { relation: first.relation } : {}),
+    }),
+  ]);
+  const after = build({ gated: gatedFile({ sheet: false, decisions }) });
+  assert.ok(
+    !after.review.some((r) => r.task === first.task && r.path === first.path),
+  );
+  assert.ok(
+    picksOf(after.course).some(
+      ({ task, pick }) =>
+        task === first.task && pick.target.path === first.path,
+    ),
+  );
+  // the marks follow the page rules: a page is shown once, and the mark belongs to the pick that is shown
+  const seen = new Set();
+  for (const r of result.review) {
+    assert.ok(!seen.has(r.path), "a page is marked once");
+    seen.add(r.path);
+  }
 });

@@ -10,10 +10,10 @@
 |---|------|---------|-----------|-------------|
 | 1 | Study guide and scope (to look at; the later steps read the same inputs themselves) | `node scripts/course-source.mjs <CODE>` | `<tmp>/course-source/` (guide tree, scope map) | nobody: it reads what Learn says ([course-source.md](course-source.md)) |
 | 2 | Candidates | `node scripts/course-candidates.mjs <CODE>` | `<tmp>/course-candidates/<CODE>.candidates.json` | the code: a shortlist per task ([course-candidates.md](course-candidates.md)) |
-| 3 | Judging | `node scripts/course-judge.mjs prepare <CODE>`, then the prompts go to a model, then `check`, `skeptic`, `merge` | `<tmp>/course-judge/<CODE>.<nn>-<group>.*` | a model (judge), a fresh model (skeptic), checked mechanically ([course-judging.md](course-judging.md)) |
+| 3 | Judging | `node scripts/course-judge.mjs prepare <CODE>`, then the prompts go to a model, then `check`, `merge` | `<tmp>/course-judge/<CODE>.<nn>-<group>.*` | a model (the judge), checked mechanically ([course-judging.md](course-judging.md)) |
 | 4 | Gates and queue | `node scripts/course-gates.mjs gate <CODE>`, then `show`, then answers by hand, then `resolve` | `<tmp>/course-gates/<CODE>.gated.json`, `<CODE>.queue.json`; the remembered decisions in `src/data_files/course-decisions/<CODE>.json` | the rules accept or reject; **the maintainer answers the queue** ([course-gates.md](course-gates.md)) |
 | 5 | Build | `node scripts/course-build.mjs <CODE>` | `<tmp>/course-build/<CODE>.json` | nobody: it writes down what was decided ([course-build.md](course-build.md)) |
-| 6 | Check and render | `node scripts/course-file.mjs validate <CODE> --live`, then `render` | `src/data_files/courses/<CODE>.json`, the draft page | **the maintainer moves the file and publishes** ([courses.md](courses.md)) |
+| 6 | Check and render | `node scripts/course-file.mjs validate <CODE> --live`, then `render` | `src/data_files/courses/<CODE>.json`, the page and its review copy | **the maintainer moves the file, reads the review copy and links the page** ([courses.md](courses.md)) |
 | - | Rebuild check | `node scripts/course-status.mjs <CODE>` | prints what to redo | the maintainer, when Learn or the guide changed |
 
 Measuring, for the pilot and for every batch after it: `node scripts/course-pilot.mjs` (below). The size of the whole job: `node scripts/course-rollout.mjs`.
@@ -21,7 +21,7 @@ Measuring, for the pilot and for every batch after it: `node scripts/course-pilo
 Two rules the whole chain keeps:
 
 - **A course changes only when Learn or the exam changes.** The course file carries the guide hash and the scope fingerprint; step 5 refuses inputs that moved since the candidates were made; step 6's rebuild check says what to redo.
-- **The AI decides a pick alone unless the skeptic refutes it; the maintainer is the final judge of the rest.** Since 2026-10-20 a pick of any source, class and confidence is accepted when the judge picked it, the skeptic did not refute it and the quote is in the evidence (two marked samples of AZ-104 support it, [course-gates.md](course-gates.md)). A page the skeptic refutes, one with no skeptic answer, and a reject the judge is **not sure** of wait for the maintainer. Only a reject the judge is sure of (`high` or `medium` confidence) is final; it is remembered, not shown.
+- **The AI decides a pick alone when the judge is sure of it; the maintainer is the final judge of the rest.** Since 2026-10-21 every pick the judge makes is in the course when its quote is in the evidence, whatever its source and class (marked samples of AZ-104 support it, [course-gates.md](course-gates.md); there is no skeptic any more). The picks the judge is **not sure** of, or flagged as another role, product area or licensing tier, are in it too and are marked orange, with the judge's reason, on the review copy of the course page; the maintainer reads them there and gives the numbers to drop (`course-gates.mjs review`). A reject the judge is **not sure** of waits in the queue. Only a reject the judge is sure of (`high` or `medium` confidence) is final; it is remembered, not shown.
 - **No page is left out for being one too many.** A task has as many resources as there are relevant pages; the shortlist has no cap and the judges are told so ([course-candidates.md](course-candidates.md), [course-judging.md](course-judging.md)). What costs is judging time, which is why a big skill group is cut into parts.
 
 ## Before any run
@@ -29,7 +29,7 @@ Two rules the whole chain keeps:
 1. `git fetch origin`, and work on the merged state: the monitors push their trackers (`learn-exams.json` among them) to `main` all the time, so the stored study guide must be today's.
 2. A learnsync checkout at current `main` (`LEARNSYNC_DIR`, default `../learnsync`). The module-links cache is what makes the best source (`P2`) work: the tools warn when it is missing, and its `lastChecked` says how old it is (the rollout table lists how many modules of each exam have harvested links).
 3. `pnpm format:check`, `node --test tests/scripts/*.test.mjs` and `pnpm build` are green on the checkout the run starts from.
-4. Decide who runs the model sessions. Judge and skeptic are separate fresh sessions; neither is shown the hand-made course page, the gold file or the other's reasoning beyond what the protocol hands over. In Git Bash give the tools forward-slash paths (`C:/Users/...`): backslashes are eaten there.
+4. Decide who runs the model sessions. The judge is a fresh session, shown neither the hand-made course page nor the gold file. In Git Bash give the tools forward-slash paths (`C:/Users/...`): backslashes are eaten there.
 5. Keep what a run produced. The tools write to the system temp folder, and the judgments of one exam cost millions of tokens, so copy the folders of a run (`course-judge`, `course-gates`, `course-build`, `course-candidates`) to `.course-runs/<CODE>-<date>/` in the hub folder, which git ignores. A judged exam can be gated, answered and built again from those files without judging it a second time.
 
 ## The pilot
@@ -57,8 +57,8 @@ On the groups of the gold file (or the whole exam, if the budget allows), run st
 
 Record, as the run goes (these are the numbers the rollout's budget comes from):
 
-- the size of each prompt (`prepare` prints a rough token count) and the real usage of the judge and skeptic sessions;
-- the wall-clock time of the judge and skeptic work;
+- the size of each prompt (`prepare` prints a rough token count) and the real usage of the judge sessions;
+- the wall-clock time of the judge work;
 - every answer that `check` or `merge` rejected, and what the model did about it.
 
 ### P3. The queue
@@ -88,7 +88,7 @@ Not measured by the tool, and required: every pick is a current Learn page (`cou
 
 The same chain on a small slice of other exams, to see what AZ-104 alone cannot show:
 
-- **AZ-104, "Implement and manage virtual networking"** (the three networking skill groups): the exam's own course does not cover everything the guide asks; the AZ-700 modules do. This is the cross-exam case, where the judge must call a page `core` of another exam's course (`P3`); since 2026-10-20 the gates accept it when the judge is sure and the skeptic agrees.
+- **AZ-104, "Implement and manage virtual networking"** (the three networking skill groups): the exam's own course does not cover everything the guide asks; the AZ-700 modules do. This is the cross-exam case, where the judge must call a page `core` of another exam's course (`P3`); since 2026-10-20 the gates accept it when the judge is sure of it.
 - **SC-300, "Plan and automate identity governance"** (entitlement management, access reviews, privileged access): the same product area that the AZ-104 gold set marks as out of scope. The check is that a page rejected for AZ-104 as `other-role` is allowed for SC-300, and that it is the guide's task that decides, not the page. If SC-300's guide has changed by then, **PL-300** is the alternative: a different area, a different guide shape (Power BI), a catalog of another kind.
 
 Measure the slice as in P4 (a sample of at least 30 automatic acceptances per exam) and add the gold set only where the maintainer has marked one.
@@ -139,7 +139,7 @@ Wave 1 is long. Work it in **batches of about five exams**, richest first, and m
 3. **Stop the batch** when an exam's sample is under 90% right, a false accept turns up in what the maintainer reads anyway, or the learnsync caches are older than a week. Find the cause with the table in P6, fix it, and re-run the exam that tripped it before going on.
 4. After the batch, `course-rollout.mjs` again with the measured numbers: the review budget for the next one is the batch's own minutes per exam, not the estimate.
 
-Each finished exam ends the same way: `course-build.mjs`, the maintainer moves the file to `src/data_files/courses/<CODE>.json`, `course-file.mjs validate <CODE> --live`, `render --out src/content/docs/courses/<code>course.mdx`, and `pnpm build`. The page stays a draft until the maintainer publishes it (`render --publish`); nothing on the site links a course page yet.
+Each finished exam ends the same way: `course-build.mjs`, the maintainer moves the file to `src/data_files/courses/<CODE>.json`, `course-file.mjs validate <CODE> --live`, `render --out src/content/docs/courses/<code>course.mdx`, and `pnpm build`. There are no draft pages: the page is an ordinary page of the site that nothing links until the maintainer does.
 
 ### The review budget
 
@@ -153,7 +153,7 @@ The rebuild check (`course-status.mjs <CODE>`, or `--all`) compares a course wit
 
 - **Running anything.** The pilot, a batch and the rollout all start with the maintainer asking.
 - **A scheduled monitor** for courses. The rebuild check is a command.
-- **Publishing.** A course page is a draft until the maintainer says otherwise; linking courses from the exam pages, the sidebar or the landing page is a separate decision.
+- **Linking.** A course page is reachable by its address from the day it is rendered (there are no drafts); linking courses from the exam pages, the sidebar or the landing page is a separate decision.
 - **Judging quality beyond the four criteria.** The criteria say the automatic part is as good as a person's pick on a sample; they do not say a course is complete, and a task with no pick is the explicit "nothing for this task" state, not an error.
 
 ## Tests

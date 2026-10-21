@@ -10,6 +10,10 @@
  * maintainer's remembered decision) gave it, its reason and its evidence are the judge's, and a rejection worth
  * remembering goes into the file's `rejected` list so that it cannot come back.
  *
+ * What the maintainer still has to look at is listed in `review`, not decided: a pick the judge was not sure of or
+ * flagged as out of scope is in the course, and the review copy of the course page (course-render.mjs) marks it with
+ * the judge's reason.
+ *
  * Three rules of the page are applied here (maintainer, 2026-10-20), and what they take out is reported in
  * `routing`, not lost:
  *   - Classic material (course-classic.mjs) is not learned: an accepted classic page is left out and listed in
@@ -102,12 +106,8 @@ const pickOrder = (a, b) =>
   (b.item.coverage ?? 0) - (a.item.coverage ?? 0) ||
   byText(a.pick.target.path, b.pick.target.path);
 
-/** 1 when the judge was unsure or the skeptic did not uphold the pick, else 0. */
-const doubt = (item) =>
-  item.judge?.confidence === "low" ||
-  (item.skeptic && item.skeptic.stance !== "uphold")
-    ? 1
-    : 0;
+/** 1 when the judge was unsure of the pick, else 0. */
+const doubt = (item) => (item.judge?.confidence === "low" ? 1 : 0);
 
 /** Which of two accepted rows for the same page fits its task better: negative when a does. */
 const fitOrder = (a, b) =>
@@ -311,6 +311,27 @@ export function buildCourse({
   // hands-on material goes to the lab page and a page is shown once (the top of this file)
   const routed = routePicks({ accepted: decided, taskKeys: [...taskKeys] });
   const accepted = routed.accepted;
+  // the picks that stay in the course but are marked for the maintainer, in the guide's order
+  const review = [];
+  for (const key of taskKeys) {
+    for (const { pick, item } of accepted.get(key) ?? []) {
+      const marks = item.gate.review;
+      if (!marks?.length) continue;
+      review.push({
+        task: key,
+        path: pick.target.path,
+        title: pick.title,
+        kind: pick.target.kind,
+        source: pick.source,
+        class: pick.class,
+        ...(pick.relation ? { relation: pick.relation } : {}),
+        reasons: marks,
+        why: item.judge.why,
+        confidence: item.judge.confidence,
+        flags: item.judge.flags ?? [],
+      });
+    }
+  }
   const routing = {
     classic: routed.classic,
     handsOn: routed.handsOn,
@@ -378,5 +399,6 @@ export function buildCourse({
     warnings,
     stats: courseStats(course),
     routing,
+    review,
   };
 }

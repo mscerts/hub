@@ -11,6 +11,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test, { after } from "node:test";
 import { currentFromVerdict, main } from "../../scripts/course-file.mjs";
+import { eachPick } from "../../scripts/lib/course-format.mjs";
 import { exampleCourse, readGuideFixture } from "./helpers/example-course.mjs";
 
 const temps = [];
@@ -198,23 +199,20 @@ test("render: prints the page to stdout, or writes it with --out, and needs no n
     c.err.join("\n"),
   );
   assert.match(c.written.join(""), /^---\ntitle: GH-900 Study Guide Course/);
-  assert.match(
-    c.written.join(""),
-    /\ndraft: true\n---\nimport/,
-    "a generated page is a draft",
+  assert.ok(!/draft:/.test(c.written.join("")), "there are no draft pages");
+  const publish = capture();
+  assert.equal(
+    await main(["render", "GH-900", "--publish"], {
+      root,
+      env: {},
+      log: publish.log,
+      error: publish.error,
+      write: publish.write,
+    }),
+    2,
+    "--publish is gone",
   );
-  const published = capture();
-  await main(["render", "GH-900", "--publish"], {
-    root,
-    env: {},
-    log: published.log,
-    error: published.error,
-    write: published.write,
-  });
-  assert.ok(
-    !/draft:/.test(published.written.join("")),
-    "--publish leaves the flag out",
-  );
+  assert.match(publish.err.join("\n"), /Unknown option --publish/);
   const out = join(root, "out", "page.mdx");
   const c2 = capture();
   assert.equal(
@@ -343,4 +341,84 @@ test("input problems are exit code 2: usage, a missing course file, a missing gu
     1,
   );
   assert.match(c2.err.join("\n"), /schemaVersion 9 is not 1/);
+});
+
+test("render --review writes the review copy and refuses a review file that does not belong to the course", async () => {
+  const course = exampleCourse().course;
+  const root = world({ course });
+  const [first, second] = [...eachPick(course)];
+  const reviewFile = join(root, "review.json");
+  const write = (review) => writeFileSync(reviewFile, JSON.stringify(review));
+  const review = {
+    schemaVersion: 1,
+    kind: "review",
+    code: "GH-900",
+    picks: [first, second].map(({ task, pick }) => ({
+      task: task.key,
+      path: pick.target.path,
+      reasons: ["the judge is not sure (low confidence)"],
+      why: "A reason.",
+    })),
+  };
+  write(review);
+  const c = capture();
+  assert.equal(
+    await main(["render", "GH-900", "--review", reviewFile], {
+      root,
+      env: {},
+      log: c.log,
+      error: c.error,
+      write: c.write,
+    }),
+    0,
+    c.err.join("\n"),
+  );
+  const page = c.written.join("");
+  assert.match(page, /title: GH-900 Study Guide Course \(review copy\)/);
+  assert.equal((page.match(/tone="review"/g) ?? []).length, 2);
+  assert.ok(!/draft:/.test(page));
+
+  // a review file of another build: a pick that is not in the course
+  write({
+    ...review,
+    picks: [...review.picks, { ...review.picks[0], path: "/azure/gone" }],
+  });
+  const stale = capture();
+  assert.equal(
+    await main(["render", "GH-900", "--review", reviewFile], {
+      root,
+      env: {},
+      log: stale.log,
+      error: stale.error,
+      write: stale.write,
+    }),
+    1,
+  );
+  assert.match(stale.err.join("\n"), /belongs to another build/);
+  // the review file of another exam, and a file that is not there
+  write({ ...review, code: "AZ-104" });
+  const other = capture();
+  assert.equal(
+    await main(["render", "GH-900", "--review", reviewFile], {
+      root,
+      env: {},
+      log: other.log,
+      error: other.error,
+      write: other.write,
+    }),
+    2,
+  );
+  assert.match(other.err.join("\n"), /not the review file of GH-900/);
+  const missing = capture();
+  assert.equal(
+    await main(["render", "GH-900", "--review", join(root, "nope.json")], {
+      root,
+      env: {},
+      log: missing.log,
+      error: missing.error,
+      write: missing.write,
+    }),
+    2,
+  );
+  assert.match(missing.err.join("\n"), /Cannot read the review file/);
 });

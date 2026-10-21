@@ -25,13 +25,16 @@ const readJson = (file) => JSON.parse(readFileSync(file, "utf8"));
 const guide = (extra = {}) => ({ ...guideOf(TASKS), ok: true, ...extra });
 
 /** A tmp folder with the gated file where `course-gates gate` writes it. */
-function world({ gated = true } = {}) {
+function world({ gated = true, sheet = true } = {}) {
   const base = mkdtempSync(join(tmpdir(), "course-build-"));
   temps.push(base);
   const tmp = join(base, "tmp");
   mkdirSync(join(tmp, "course-gates"), { recursive: true });
   const judged = exampleJudged();
-  const { items } = gateJudged([judged], { today: "2026-10-17" });
+  const { items } = gateJudged([judged], {
+    today: "2026-10-17",
+    options: { queueUnsure: sheet },
+  });
   const file = join(tmp, "course-gates", "NET-100.gated.json");
   if (gated)
     writeFileSync(
@@ -271,5 +274,26 @@ test("usage and input errors are exit code 2 with a message", async () => {
   assert.match(
     cannotLoad.io.err.join("\n"),
     /Cannot load the inputs: Learn is not there/,
+  );
+});
+
+test("the picks marked for review are written beside the course and the summary says how many there are", async () => {
+  const w = world({ sheet: false });
+  const { code, io } = await run(["NET-100"], w);
+  assert.equal(code, 0, io.err.join("\n"));
+  const review = readJson(join(w.tmp, "course-build", "NET-100.review.json"));
+  assert.equal(review.kind, "review");
+  assert.equal(review.code, "NET-100");
+  assert.equal(review.builtAt, "2026-10-18");
+  assert.ok(review.picks.length > 0);
+  assert.match(
+    io.out.join("\n"),
+    new RegExp(
+      `${review.picks.length} picks are in the course but marked for review .*node scripts/course-file\\.mjs render NET-100 --review .*NET-100\\.review\\.json`,
+    ),
+  );
+  assert.ok(
+    !/still in the queue/.test(io.out.join("\n")),
+    "nothing waits in the queue",
   );
 });

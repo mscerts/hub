@@ -74,3 +74,33 @@ test("redirect loops and missing built analytics IDs fail the build guard", asyn
     /Analytics ID missing from build: googleTagManager/,
   );
 });
+
+test("the review copy of a course page is not part of the baseline", async (t) => {
+  const { root, run } = await fixture(t);
+  const sitemap = (...paths) =>
+    "<urlset>" +
+    ["/certs/", ...paths]
+      .map((path) => "<url><loc>https://example.org" + path + "</loc></url>")
+      .join("") +
+    "</urlset>";
+  await writeFile(
+    join(root, "dist/sitemap-0.xml"),
+    sitemap("/certs/courses/az-104course-review/"),
+  );
+  await writeFile(
+    join(root, "dist/_redirects"),
+    [
+      "/old/ /certs/ 301",
+      "/courses/az-104course-review/ /certs/ 301",
+      "/wiki-next/courses/az-104course-review /certs/ 301",
+      "",
+    ].join("\n"),
+  );
+  assert.equal(run().status, 0, "adding a review copy needs no update");
+  // an ordinary course page still does
+  await writeFile(
+    join(root, "dist/sitemap-0.xml"),
+    sitemap("/certs/courses/az-104course-v9/"),
+  );
+  assert.match(run().stderr, /Public route set changed/);
+});
