@@ -248,3 +248,31 @@ export const docsSidebar: DocsSidebarItem[] = [
   { label: "Support Us", href: docsPath("supportus") },
   { label: "Contributing", href: docsPath("contributing") },
 ];
+
+function sidebarPath(href: string): string {
+  const { pathname } = new URL(href, "https://msfthub.com");
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
+const sidebarIconByHref = new Map<string, DocsSidebarIcon>();
+
+function indexSidebarIcons(
+  items: DocsSidebarItem[],
+  inheritedIcon?: DocsSidebarIcon,
+): void {
+  for (const item of items) {
+    const icon = item.icon ?? inheritedIcon;
+    if (item.href && icon) {
+      sidebarIconByHref.set(sidebarPath(item.href), icon);
+    }
+    if (item.children) {
+      indexSidebarIcons(item.children, icon);
+    }
+  }
+}
+
+indexSidebarIcons(docsSidebar);
+
+export function sidebarIconForHref(href: string): string | undefined {
+  return sidebarIconByHref.get(sidebarPath(href));
+}
