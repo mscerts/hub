@@ -789,6 +789,18 @@ const WORKFLOWS = [
     ],
   },
   {
+    file: "learn-courses-monitor.yml",
+    issues: [
+      {
+        title: "Learn courses: the sync failed",
+        raiseWhen:
+          "failure() && steps.sync.outputs.extraction_failed == 'true'",
+        clearWhen: "steps.sync.outputs.extraction_failed == 'false'",
+        errorFile: "/tmp/learn-courses-error.md",
+      },
+    ],
+  },
+  {
     file: "measureup-monitor.yml",
     issues: [
       {

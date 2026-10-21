@@ -1,0 +1,93 @@
+name: Learn Course Tracker
+
+on:
+  schedule:
+    # Wednesday 09:40 UTC, after Monday's learnsync runs (the learning paths and modules the placement reads) so
+    # that the data it reads is fresh. Every pusher starts at a different minute (a test keeps it that way); that
+    # is only a convenience as runs often start hours late. The push retry below is the protection.
+    - cron: "40 9 * * 3"
+  workflow_dispatch:
+    inputs:
+      force_baseline:
+        description: "Accept a big drop of the catalog silently (use after the 'tracked courses are missing at once' failsafe stopped a run and the change is real)"
+        type: boolean
+        default: false
+
+# A run is never cancelled half way through (a newer run waits instead): the
+# issue and the tracker commit below belong together.
+concurrency:
+  group: learn-courses-monitor
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      issues: write
+    env:
+      REPORT_FILE: /tmp/learn-courses-report.md
+      ERROR_FILE: /tmp/learn-courses-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      # The script reads the course list and the Applied Skills of the Learn catalog API, learnsync's data (the
+      # learning paths and modules) and the hub's own pages, and opens the issue itself BEFORE the tracker is
+      # committed below.
+      #
+      # The running issue is titled "Learn courses: decisions needed" and lists what needs a person now: courses
+      # waiting for a decision with their proposed pages, exam courses proposed for a replacement page, confirmed
+      # pages that lack the course card, courses missing from the catalog that hub pages still link, temporary
+      # assignments that are due, courses whose learning paths changed, retiring Applied Skills built on a tracked
+      # course. Nothing is placed automatically. It is created when the list becomes non-empty, gets a comment when
+      # the list changes and is closed with a comment when nothing is left.
+      #
+      # A failing sync raises one issue titled "Learn courses: the sync failed" (a comment per further failed run,
+      # closed by the next healthy run). The tracker holds what was last reported, so when the issue step fails
+      # this step fails, the commit below is skipped (it has no status-check function in its condition), main keeps
+      # the old tracker, and the next run derives the same state again.
+      - name: Sync the Learn course tracker
+        id: sync
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CREATE_ISSUES: "1"
+          FORCE_BASELINE: ${{ inputs.force_baseline && '1' || '' }}
+        run: node scripts/learn-courses-sync.mjs
+
+      - name: Commit updated Learn course tracker
+        if: steps.sync.outputs.baseline_updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data_files/learn-courses.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update Learn course tracker"
+          # A push can land on main between the checkout and here: retry on top of it.
+          for attempt in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          exit 1
+
+      # ONE issue with a stable title for a failing sync: a comment for every
+      # further failed run, closed by the next healthy run.
+      - name: Create issue if the sync failed
+        if: failure() && steps.sync.outputs.extraction_failed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs raise --title "Learn courses: the sync failed" --label bug --file /tmp/learn-courses-error.md
+
+      - name: Close the failure issue once the sync runs again
+        if: steps.sync.outputs.extraction_failed == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs clear --title "Learn courses: the sync failed" --label bug --comment "The Learn course tracker ran normally again. Closing this issue."

@@ -97,6 +97,7 @@ const KNOWN_PUSHERS = [
   "lab-registry-monitor.yml",
   "lab-repos-check.yml",
   "learn-content-watch.yml",
+  "learn-courses-monitor.yml",
   "learn-url-check.yml",
   "link-checker.yml",
   "measureup-monitor.yml",
