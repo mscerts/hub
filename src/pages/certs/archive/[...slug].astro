@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import MainLayout from "@/layouts/MainLayout.astro";
 import DocsPage from "@components/docs/templates/DocsPage.astro";
+import { Aside } from "@components/docs";
 
 export async function getStaticPaths() {
   return (await getCollection("archive", ({ data }) => !data.draft)).map(
@@ -37,6 +38,6 @@ const archiveNotice = entry.id.startsWith("vouchers/")
     sourcePath={entry.filePath}
     archiveNotice={archiveNotice}
   >
-    <Content />
+    <Content components={{ Aside }} />
   </DocsPage>
 </MainLayout>

@@ -40,12 +40,6 @@ const areaPrefixOrder: Record<string, string[]> = {
   dynamics: ["MB"],
 };
 
-// Exam pages that stay live (direct link, search, lab index) but are hidden
-// from this sidebar listing. AZ-800/AZ-801 retired on September 30, 2026 into
-// the merged AZ-802, so sidebar navigation points there instead. Their RETIRED
-// badge therefore shows only on the landing page's status list.
-const HIDDEN_FROM_SIDEBAR = new Set(["AZ-800", "AZ-801"]);
-
 // The statuses as of this build: a NEW badge that has run its 90 days is left out.
 const shownStatuses = visibleExamStatuses();
 
@@ -57,7 +51,6 @@ function buildExamItems(area: keyof typeof examStatuses): DocsSidebarItem[] {
     .filter((entry) => entry.toLowerCase().endsWith(".mdx"))
     .map((entry) => entry.replace(/\.mdx$/i, "").toUpperCase())
     .filter((code) => /^[A-Z]{2,3}-\d{3}$/.test(code))
-    .filter((code) => !HIDDEN_FROM_SIDEBAR.has(code))
     .sort((left, right) => {
       const leftRank = prefixOrder.indexOf(left.split("-")[0]);
       const rightRank = prefixOrder.indexOf(right.split("-")[0]);

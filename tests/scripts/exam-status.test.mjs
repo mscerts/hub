@@ -323,8 +323,19 @@ test("every RETIRED badge of the data file has a tracker entry with a retirement
 test("every exam that carries a status has its page, so the landing list and sidebar never link a deleted exam", () => {
   for (const [area, exams] of Object.entries(examStatuses)) {
     for (const code of Object.keys(exams)) {
-      const page = join(root, "src", "content", "docs", area, `${code}.mdx`);
-      assert.ok(existsSync(page), `${area}/${code}: ${page} does not exist`);
+      const live = join(root, "src", "content", "docs", area, `${code}.mdx`);
+      const archived = join(
+        root,
+        "src",
+        "content",
+        "archive",
+        area,
+        `${code}.mdx`,
+      );
+      assert.ok(
+        existsSync(live) || existsSync(archived),
+        `${area}/${code}: ${live} does not exist (and neither does the archived copy)`,
+      );
     }
   }
 });

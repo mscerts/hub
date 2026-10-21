@@ -48,6 +48,10 @@ export default defineConfig({
     "/certs/azure/az-800.md": "/certs/archive/azure/az-800/",
     "/certs/azure/az-801/": "/certs/archive/azure/az-801/",
     "/certs/azure/az-801.md": "/certs/archive/azure/az-801/",
+    "/certs/labs/azure/az-800/": "/certs/archive/labs/azure/az-800/",
+    "/certs/labs/azure/az-800.md": "/certs/archive/labs/azure/az-800/",
+    "/certs/labs/azure/az-801/": "/certs/archive/labs/azure/az-801/",
+    "/certs/labs/azure/az-801.md": "/certs/archive/labs/azure/az-801/",
     "/certs/azure/az-204/": "/certs/archive/azure/az-204/",
     "/certs/azure/az-204.md": "/certs/archive/azure/az-204/",
     "/certs/azure/ai-102/": "/certs/archive/azure/ai-102/",
@@ -68,14 +72,22 @@ export default defineConfig({
     "/certs/power/pl-600.md": "/certs/archive/power/pl-600/",
     "/certs/security/sc-730/": "/certs/archive/security/sc-730/",
     "/certs/security/sc-730.md": "/certs/archive/security/sc-730/",
-    "/certs/vouchers/fabricdatadays/": "/certs/archive/vouchers/fabricdatadays/",
-    "/certs/vouchers/fabricdatadays.md": "/certs/archive/vouchers/fabricdatadays/",
-    "/certs/vouchers/aiagentskillssweepstakes/": "/certs/archive/vouchers/aiagentskillssweepstakes/",
-    "/certs/vouchers/aiagentskillssweepstakes.md": "/certs/archive/vouchers/aiagentskillssweepstakes/",
-    "/certs/vouchers/defendersweepstakes/": "/certs/archive/vouchers/defendersweepstakes/",
-    "/certs/vouchers/defendersweepstakes.md": "/certs/archive/vouchers/defendersweepstakes/",
-    "/certs/vouchers/getsqlaidevelopercertified/": "/certs/archive/vouchers/getsqlaidevelopercertified/",
-    "/certs/vouchers/getsqlaidevelopercertified.md": "/certs/archive/vouchers/getsqlaidevelopercertified/",
+    "/certs/vouchers/fabricdatadays/":
+      "/certs/archive/vouchers/fabricdatadays/",
+    "/certs/vouchers/fabricdatadays.md":
+      "/certs/archive/vouchers/fabricdatadays/",
+    "/certs/vouchers/aiagentskillssweepstakes/":
+      "/certs/archive/vouchers/aiagentskillssweepstakes/",
+    "/certs/vouchers/aiagentskillssweepstakes.md":
+      "/certs/archive/vouchers/aiagentskillssweepstakes/",
+    "/certs/vouchers/defendersweepstakes/":
+      "/certs/archive/vouchers/defendersweepstakes/",
+    "/certs/vouchers/defendersweepstakes.md":
+      "/certs/archive/vouchers/defendersweepstakes/",
+    "/certs/vouchers/getsqlaidevelopercertified/":
+      "/certs/archive/vouchers/getsqlaidevelopercertified/",
+    "/certs/vouchers/getsqlaidevelopercertified.md":
+      "/certs/archive/vouchers/getsqlaidevelopercertified/",
     "/certs/vouchers/ab650beta/": "/certs/archive/vouchers/ab650beta/",
     "/certs/vouchers/ab650beta.md": "/certs/archive/vouchers/ab650beta/",
     "/certs/vouchers/ai500beta/": "/certs/archive/vouchers/ai500beta/",
@@ -115,9 +127,12 @@ export default defineConfig({
     "/vouchers/aichallenge/": "/certs/vouchers/",
     "/vouchers/microsoftignite/": "/certs/vouchers/",
     "/vouchers/fabricdatadays/": "/certs/archive/vouchers/fabricdatadays/",
-    "/vouchers/defendersweepstakes/": "/certs/archive/vouchers/defendersweepstakes/",
-    "/vouchers/aiagentskillssweepstakes/": "/certs/archive/vouchers/aiagentskillssweepstakes/",
-    "/vouchers/getsqlaidevelopercertified/": "/certs/archive/vouchers/getsqlaidevelopercertified/",
+    "/vouchers/defendersweepstakes/":
+      "/certs/archive/vouchers/defendersweepstakes/",
+    "/vouchers/aiagentskillssweepstakes/":
+      "/certs/archive/vouchers/aiagentskillssweepstakes/",
+    "/vouchers/getsqlaidevelopercertified/":
+      "/certs/archive/vouchers/getsqlaidevelopercertified/",
     "/vouchers/ai500beta/": "/certs/archive/vouchers/ai500beta/",
     "/vouchers/az802beta/": "/certs/archive/vouchers/az802beta/",
     "/dynamics/mb-280": "/certs/archive/dynamics/mb-280/",
