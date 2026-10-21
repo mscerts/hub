@@ -10,10 +10,10 @@ type DocsSidebarIcon =
   | "ph:books"
   | "simple-icons:microsoftazure"
   | "simple-icons:github"
-  | "ph:sparkle"
+  | "microsoft-copilot"
   | "simple-icons:microsoftoffice"
-  | "ph:shield-check"
-  | "ph:puzzle-piece"
+  | "microsoft-defender"
+  | "simple-icons:powerbi"
   | "simple-icons:dynamics365";
 
 export interface DocsSidebarBadge {
@@ -210,7 +210,7 @@ export const docsSidebar: DocsSidebarItem[] = [
       },
       {
         label: "AI Business",
-        icon: "ph:sparkle",
+        icon: "microsoft-copilot",
         badge: { text: "AB", variant: "note" },
         children: buildExamItems("aibusiness"),
         collapsed: true,
@@ -224,14 +224,14 @@ export const docsSidebar: DocsSidebarItem[] = [
       },
       {
         label: "Security & Identity",
-        icon: "ph:shield-check",
+        icon: "microsoft-defender",
         badge: { text: "SC", variant: "note" },
         children: buildExamItems("security"),
         collapsed: true,
       },
       {
         label: "Power Platform",
-        icon: "ph:puzzle-piece",
+        icon: "simple-icons:powerbi",
         badge: { text: "PL", variant: "note" },
         children: buildExamItems("power"),
         collapsed: true,

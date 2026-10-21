@@ -20,33 +20,125 @@ const { html, tabs } = renderTabPanels(
   class:list={["not-prose", className]}
   {...attrs}
 >
-  <div
-    data-docs-tabs-list
-    data-subtle-scrollbar
-    class="--prevent-on-load-init subtle-scrollbar border-border flex overflow-x-auto overflow-y-hidden overscroll-x-contain border-b"
-    role="tablist"
-  >
-    {tabs.map(({ label, id }, index) => (
+  <div data-docs-tabs-scroll class="relative">
+    <div
+      data-docs-tabs-list
+      data-subtle-scrollbar
+      class="--prevent-on-load-init subtle-scrollbar border-border flex overflow-x-auto overflow-y-hidden overscroll-x-contain border-b"
+      role="tablist"
+    >
+      {tabs.map(({ label, id }, index) => (
+        <button
+          type="button"
+          role="tab"
+          id={`${id}-tab`}
+          data-docs-tabs-trigger
+          aria-controls={id}
+          aria-selected={index === 0 ? "true" : "false"}
+          tabindex={index === 0 ? 0 : -1}
+          class="-mb-px shrink-0 border-b-2 border-transparent px-5 py-3.5 text-base font-medium text-muted-foreground transition hover:border-border-strong hover:text-foreground aria-selected:border-primary aria-selected:text-primary"
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+    <div
+      data-docs-tabs-arrow="left"
+      class="from-background absolute inset-y-0 left-0 z-10 flex w-12 items-center bg-gradient-to-r to-transparent pl-1"
+    >
       <button
         type="button"
-        role="tab"
-        id={`${id}-tab`}
-        data-docs-tabs-trigger
-        aria-controls={id}
-        aria-selected={index === 0 ? "true" : "false"}
-        tabindex={index === 0 ? 0 : -1}
-        class="-mb-px shrink-0 border-b-2 border-transparent px-5 py-3.5 text-base font-medium text-muted-foreground transition hover:border-border-strong hover:text-foreground aria-selected:border-primary aria-selected:text-primary"
+        aria-label="Scroll tabs left"
+        class="border-border bg-card text-muted-foreground hover:text-foreground focus-visible:outline-blue-600 grid size-7 place-items-center rounded-full border shadow-sm transition focus-visible:outline-2 focus-visible:outline-offset-2"
       >
-        {label}
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="m10 12-4-4 4-4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
       </button>
-    ))}
+    </div>
+    <div
+      data-docs-tabs-arrow="right"
+      class="from-background absolute inset-y-0 right-0 z-10 flex w-12 items-center justify-end bg-gradient-to-l to-transparent pr-1"
+    >
+      <button
+        type="button"
+        aria-label="Scroll tabs right"
+        class="border-border bg-card text-muted-foreground hover:text-foreground focus-visible:outline-blue-600 grid size-7 place-items-center rounded-full border shadow-sm transition focus-visible:outline-2 focus-visible:outline-offset-2"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="m6 4 4 4-4 4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      </button>
+    </div>
   </div>
   <div data-docs-tabs-content-wrapper class="mt-3" set:html={html} />
 </div>
+<style>
+  [data-docs-tabs-arrow] {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+  }
+  [data-docs-tabs-scroll][data-can-scroll="both"]:is(:hover, :focus-within)
+    [data-docs-tabs-arrow],
+  [data-docs-tabs-scroll][data-can-scroll="left"]:is(:hover, :focus-within)
+    [data-docs-tabs-arrow="left"],
+  [data-docs-tabs-scroll][data-can-scroll="right"]:is(:hover, :focus-within)
+    [data-docs-tabs-arrow="right"] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  [data-docs-tabs-scroll][data-can-scroll="none"] [data-docs-tabs-arrow],
+  [data-docs-tabs-scroll][data-can-scroll="left"]
+    [data-docs-tabs-arrow="right"],
+  [data-docs-tabs-scroll][data-can-scroll="right"]
+    [data-docs-tabs-arrow="left"] {
+    display: none;
+  }
+  @media (hover: none) {
+    [data-docs-tabs-scroll][data-can-scroll="both"] [data-docs-tabs-arrow],
+    [data-docs-tabs-scroll][data-can-scroll="left"]
+      [data-docs-tabs-arrow="left"],
+    [data-docs-tabs-scroll][data-can-scroll="right"]
+      [data-docs-tabs-arrow="right"] {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-docs-tabs-arrow] {
+      transition: none;
+    }
+  }
+</style>
 <noscript>
   <style is:inline>
     @layer base {
-      [data-docs-tabs] > [data-docs-tabs-list] {
+      [data-docs-tabs] [data-docs-tabs-list] {
         display: none !important;
       }
       [data-docs-tabs-content-wrapper] > [data-docs-tabs-content][hidden] {
@@ -67,6 +159,65 @@ const { html, tabs } = renderTabPanels(
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)/g, "");
 
+  const scrollBehavior = (): ScrollBehavior =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "auto"
+      : "smooth";
+
+  function scrollTabIntoView(list: HTMLElement, trigger: HTMLElement) {
+    const padding = 8;
+    const listRect = list.getBoundingClientRect();
+    const rect = trigger.getBoundingClientRect();
+    if (rect.left < listRect.left + padding) {
+      list.scrollBy({
+        left: rect.left - listRect.left - padding,
+        behavior: scrollBehavior(),
+      });
+    } else if (rect.right > listRect.right - padding) {
+      list.scrollBy({
+        left: rect.right - listRect.right + padding,
+        behavior: scrollBehavior(),
+      });
+    }
+  }
+
+  function initTabScrollControls(list: HTMLElement) {
+    const wrap = list.parentElement;
+    if (!wrap?.hasAttribute("data-docs-tabs-scroll")) return;
+    const left = wrap.querySelector<HTMLButtonElement>(
+      '[data-docs-tabs-arrow="left"] button',
+    );
+    const right = wrap.querySelector<HTMLButtonElement>(
+      '[data-docs-tabs-arrow="right"] button',
+    );
+    if (!left || !right) return;
+
+    const update = () => {
+      const max = list.scrollWidth - list.clientWidth;
+      if (max <= 1) {
+        wrap.dataset.canScroll = "none";
+        return;
+      }
+      const atStart = list.scrollLeft <= 1;
+      const atEnd = list.scrollLeft >= max - 1;
+      wrap.dataset.canScroll = atStart ? "right" : atEnd ? "left" : "both";
+    };
+    const scrollByPage = (direction: number) => {
+      list.scrollBy({
+        left: direction * Math.max(120, list.clientWidth * 0.8),
+        behavior: scrollBehavior(),
+      });
+    };
+
+    left.addEventListener("click", () => scrollByPage(-1));
+    right.addEventListener("click", () => scrollByPage(1));
+    list.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    new ResizeObserver(update).observe(list);
+    void document.fonts.ready.then(update);
+    update();
+  }
+
   function initDocsTabs() {
     document
       .querySelectorAll<HTMLElement>("[data-docs-tabs]")
@@ -83,9 +234,10 @@ const { html, tabs } = renderTabPanels(
             )
           : [];
         const list = root.querySelector<HTMLElement>(
-          ":scope > [data-docs-tabs-list]",
+          ":scope > [data-docs-tabs-scroll] > [data-docs-tabs-list]",
         );
         if (!list || panels.length === 0) return;
+        initTabScrollControls(list);
         const labels = panels.map((panel) => panel.dataset.docsTabLabel ?? "");
         const group =
           root.dataset.docsSyncKey || labels.join("-") || `group-${rootIndex}`;
@@ -105,6 +257,7 @@ const { html, tabs } = renderTabPanels(
             trigger.setAttribute("aria-selected", String(selected));
             trigger.tabIndex = selected ? 0 : -1;
             panel.hidden = !selected;
+            if (selected) scrollTabIntoView(list, trigger);
           });
           const key = root.dataset.docsSyncKey;
           if (key) {
@@ -197,7 +350,7 @@ const { html, tabs } = renderTabPanels(
       .forEach((root) => {
         const triggers = Array.from(
           root.querySelectorAll<HTMLElement>(
-            ":scope > [data-docs-tabs-list] > [role='tab']",
+            ":scope > [data-docs-tabs-scroll] > [data-docs-tabs-list] > [role='tab']",
           ),
         );
         const index = triggers.findIndex(

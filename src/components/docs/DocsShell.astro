@@ -242,23 +242,22 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
       </div>
     </div>
 
-    <aside
-      class:list={[
-        "docs-toc hidden min-h-[calc(100vh-4rem)] w-64 shrink-0 border-l border-neutral-200 xl:block dark:border-neutral-700",
-        !tableOfContents && "docs-toc-disabled",
-      ]}
-      aria-label="On this page"
-    >
-      <div
-        class="subtle-scrollbar sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-12"
-        data-subtle-scrollbar
+    {visibleHeadings.length > 0 && (
+      <aside
+        class="docs-toc hidden min-h-[calc(100vh-4rem)] w-64 shrink-0 border-l border-neutral-200 xl:block dark:border-neutral-700"
+        aria-label="On this page"
       >
-        <DocsTableOfContents headings={visibleHeadings} />
-        <div class="mt-8">
-          <DocsCreditCard />
+        <div
+          class="subtle-scrollbar sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-12"
+          data-subtle-scrollbar
+        >
+          <DocsTableOfContents headings={visibleHeadings} />
+          <div class="mt-8">
+            <DocsCreditCard />
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    )}
   </div>
 </div>
 
@@ -326,10 +325,6 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
     color: var(--nb-foreground);
     font-size: 1rem;
     line-height: 1.75;
-  }
-
-  .docs-toc.docs-toc-disabled {
-    display: none;
   }
 
   .docs-content :global(:is(h2, h3, h4)[id]) {
