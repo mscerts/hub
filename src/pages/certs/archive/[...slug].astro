@@ -15,6 +15,11 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
+const archiveNotice = entry.id.startsWith("vouchers/")
+  ? "expired-offer"
+  : entry.id === "security/sc-730"
+    ? "historical"
+    : "retired-exam";
 ---
 
 <MainLayout
@@ -31,12 +36,8 @@ const { Content, headings } = await render(entry);
     headings={headings}
     sectionLabel="Archive"
     sourcePath={entry.filePath}
+    archiveNotice={archiveNotice}
   >
-    <Aside type="caution" title="Archived content">
-      This page is retained for historical reference and may contain outdated
-      information. Visit <a href="/certs/">current certification resources</a>{" "}
-      or return to the <a href="/certs/archive/">archive</a>.
-    </Aside>
     <Content components={{ Aside }} />
   </DocsPage>
 </MainLayout>

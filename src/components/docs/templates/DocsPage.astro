@@ -2,6 +2,7 @@
 import DocsShell from "../DocsShell.astro";
 import { docsSidebar } from "@data/docs-sidebar";
 import { editPageUrl } from "@utils/edit-page.mjs";
+import type { DocsHero } from "@utils/docs";
 
 interface Heading {
   depth: number;
@@ -15,9 +16,25 @@ interface Props {
   headings: Heading[];
   sectionLabel: string;
   sourcePath?: string;
+  editUrl?: string;
+  hero?: DocsHero;
+  tableOfContents?: boolean;
+  pagination?: boolean;
+  archiveNotice?: "retired-exam" | "expired-offer" | "historical";
 }
 
-const { title, description, headings, sectionLabel, sourcePath } = Astro.props;
+const {
+  title,
+  description,
+  headings,
+  sectionLabel,
+  sourcePath,
+  hero,
+  tableOfContents,
+  pagination,
+  editUrl,
+  archiveNotice,
+} = Astro.props;
 ---
 
 <DocsShell
@@ -26,7 +43,11 @@ const { title, description, headings, sectionLabel, sourcePath } = Astro.props;
   {title}
   {description}
   {headings}
-  editUrl={editPageUrl(sourcePath)}
+  editUrl={editUrl ?? editPageUrl(sourcePath)}
+  {hero}
+  {tableOfContents}
+  {pagination}
+  {archiveNotice}
 >
   <slot />
 </DocsShell>

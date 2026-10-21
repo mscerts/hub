@@ -6,6 +6,79 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@layer base {
+  @media print {
+    html,
+    body {
+      background: white !important;
+      color: black !important;
+    }
+    body:has([data-docs]) #main-content > :not([data-docs]),
+    header:has(nav[aria-label="Global"]),
+    footer,
+    dialog,
+    cookie-consent-banner,
+    [data-mobile-nav-layer],
+    .docs-sidebar,
+    .docs-toc,
+    .docs-mobile-toc,
+    [data-docs-tabs-list],
+    [data-docs-tabs-arrow],
+    [aria-label="Page actions"],
+    [aria-label="Documentation pagination"],
+    .skip-to-main,
+    a[href*="github.com/mscerts/hub/edit/"] {
+      display: none !important;
+    }
+    [data-docs],
+    [data-docs] * {
+      background: transparent !important;
+      color: black !important;
+      box-shadow: none !important;
+      border-color: #ccc !important;
+    }
+    [data-docs-main] {
+      max-width: none !important;
+      padding: 0 !important;
+    }
+    [data-docs] > div {
+      display: block !important;
+      min-height: 0 !important;
+    }
+    [data-docs-tabs-content-wrapper] > [data-docs-tabs-content][hidden],
+    [data-docs-tabs-content] > [data-docs-tab-fallback] {
+      display: block !important;
+    }
+    [data-docs-tab-fallback] {
+      margin-block: 1rem !important;
+      font-weight: 600 !important;
+    }
+    .docs-content h2,
+    .docs-content h3,
+    .docs-content h4 {
+      break-after: avoid;
+    }
+    .docs-link-card,
+    .docs-content img,
+    .docs-content tr {
+      break-inside: avoid;
+    }
+    .docs-content pre {
+      white-space: pre-wrap !important;
+      overflow-wrap: anywhere;
+    }
+    .docs-content .docs-table-wrapper {
+      overflow: visible !important;
+    }
+    .docs-content thead {
+      display: table-header-group;
+    }
+    .docs-content img {
+      filter: none !important;
+    }
+  }
+}
+
 html,
 body {
   font-family: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;

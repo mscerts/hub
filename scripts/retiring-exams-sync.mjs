@@ -40,6 +40,9 @@ const OUTPUT_FILE =
   process.env.OUTPUT_FILE ??
   join(root, "src", "data_files", "retiring-exams.json");
 const DOCS_DIR = join(root, "src", "content", "docs");
+// Retired exams are archived out of the live docs tree (see AGENTS.md, "Docs
+// Rendering"), so the page lookup falls back to the sibling archive collection.
+const ARCHIVE_DIR = join(dirname(DOCS_DIR), "archive");
 
 // The two badges of a retirement: RETIRING until the date has passed, RETIRED
 // after it (see src/data_files/exam-status.mjs).
@@ -64,19 +67,26 @@ const MONTHS = {
 // Area directory + exam-name/retirement-date lookup
 // ---------------------------------------------------------------------------
 function findExamPage(area, code) {
-  const candidate = join(DOCS_DIR, area, `${code}.mdx`);
-  return existsSync(candidate) ? candidate : null;
+  for (const dir of [DOCS_DIR, ARCHIVE_DIR]) {
+    const candidate = join(dir, area, `${code}.mdx`);
+    if (existsSync(candidate)) return candidate;
+  }
+  return null;
 }
 
 function examNameFromPage(content, code) {
   const match = content.match(
     new RegExp(`certification exam ${code}:\\s*([^.]+)\\.`, "i"),
   );
-  if (!match)
-    throw new Error(
-      `Could not find the exam name in the description frontmatter for ${code}`,
-    );
-  return match[1].trim();
+  if (match) return match[1].trim();
+  // Archived pages describe the exam without the "certification exam" template.
+  const archived = content.match(
+    new RegExp(`\\bexam ${code}:\\s*([^,.]+)`, "i"),
+  );
+  if (archived) return archived[1].trim();
+  throw new Error(
+    `Could not find the exam name in the description frontmatter for ${code}`,
+  );
 }
 
 function isoDateFromHumanDate(humanDate) {

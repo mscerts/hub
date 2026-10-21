@@ -12,6 +12,10 @@ interface Props {
   description: string;
   headings: Heading[];
   editUrl?: string;
+  hero?: import("@utils/docs").DocsHero;
+  tableOfContents?: boolean;
+  pagination?: boolean;
+  archiveNotice?: "retired-exam" | "expired-offer" | "historical";
 }
 
 import DocsSidebar from "./DocsSidebar.astro";
@@ -22,11 +26,21 @@ import CodeBlocks from "./CodeBlocks.astro";
 import { Icon } from "astro-icon/components";
 import { docsPagination } from "@utils/docs-pagination.mjs";
 
-const { sectionLabel, sidebarItems, title, description, headings, editUrl } =
-  Astro.props;
+const {
+  sectionLabel,
+  sidebarItems,
+  title,
+  description,
+  headings,
+  editUrl,
+  hero,
+  tableOfContents = true,
+  pagination = true,
+  archiveNotice,
+} = Astro.props;
 const currentPath = Astro.url.pathname;
 const { previous, next } = docsPagination(sidebarItems, currentPath);
-const visibleHeadings = headings.filter(
+const visibleHeadings = (tableOfContents ? headings : []).filter(
   (heading) => heading.depth >= 2 && heading.depth <= 4,
 );
 const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
@@ -55,7 +69,10 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
     </aside>
 
     <div class="min-w-0 flex-1">
-      <div class="mx-auto max-w-4xl px-5 py-8 sm:px-8 sm:py-12 lg:px-10">
+      <div
+        data-docs-main
+        class="mx-auto max-w-4xl px-5 py-8 sm:px-8 sm:py-12 lg:px-10"
+      >
         <nav
           class="text-xs font-medium text-neutral-500 dark:text-[#9aa7b5]"
           aria-label="Breadcrumb"
@@ -74,12 +91,68 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
 
         <header class="mt-6 border-b border-neutral-200 pb-8 dark:border-neutral-700">
           <h1 class="text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl dark:text-[#f4f4f4]">
-            {title}
+            {hero?.title ?? title}
           </h1>
           <DocsPageActions title={title} />
           <p class="mt-4 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-[#b8b8b8]">
-            {description}
+            {hero?.tagline ?? description}
           </p>
+          {archiveNotice && (
+            <div
+              class="mt-6 border border-amber-300 border-l-4 border-l-amber-700 bg-amber-50 px-4 py-3 text-sm text-amber-950 dark:border-amber-800 dark:border-l-amber-400 dark:bg-amber-950/40 dark:text-amber-100"
+              role="note"
+              data-archive-notice={archiveNotice}
+            >
+              <strong class="block font-semibold">
+                {archiveNotice === "expired-offer"
+                  ? "ARCHIVED OFFER · EXPIRED"
+                  : archiveNotice === "retired-exam"
+                    ? "ARCHIVED EXAM · RETIRED"
+                    : "ARCHIVED HISTORICAL PAGE"}
+              </strong>
+              <span>
+                {archiveNotice === "expired-offer"
+                  ? "This promotion has ended. Dates, codes, eligibility, and availability are historical and may no longer apply."
+                  : archiveNotice === "retired-exam"
+                    ? "This exam has retired. The page is preserved for historical reference; its resources and links may be outdated."
+                    : "This page is preserved for historical reference and does not imply that the exam or offer is currently available."}
+              </span>
+            </div>
+          )}
+          {hero?.image && (
+            <img
+              src={hero.image.src}
+              width={hero.image.width}
+              height={hero.image.height}
+              alt=""
+              class="mt-6 max-h-64 w-full object-contain"
+            />
+          )}
+          {hero?.actions?.length && (
+            <div class="mt-6 flex flex-wrap gap-3">
+              {hero.actions.map((action) => (
+                <a
+                  href={action.link}
+                  target={
+                    /^https?:\/\//i.test(action.link) ? "_blank" : undefined
+                  }
+                  rel={
+                    /^https?:\/\//i.test(action.link)
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  class:list={[
+                    "inline-flex items-center rounded-lg border px-4 py-2 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500",
+                    action.variant === "primary"
+                      ? "border-blue-600 bg-blue-600 text-white hover:bg-blue-700"
+                      : "border-neutral-300 text-neutral-800 hover:bg-neutral-100 dark:border-neutral-600 dark:text-neutral-100 dark:hover:bg-neutral-800",
+                  ]}
+                >
+                  {action.text}
+                </a>
+              ))}
+            </div>
+          )}
         </header>
 
         {visibleHeadings.length > 0 && (
@@ -118,7 +191,7 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
         <article class="docs-content mt-10 max-w-none" data-pagefind-body>
           <slot />
         </article>
-        {(previous || next) && (
+        {pagination && (previous || next) && (
           <nav
             aria-label="Documentation pagination"
             class="mt-10 grid gap-3 sm:grid-cols-2"
@@ -169,20 +242,22 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
       </div>
     </div>
 
-    <aside
-      class="docs-toc hidden min-h-[calc(100vh-4rem)] w-64 shrink-0 border-l border-neutral-200 xl:block dark:border-neutral-700"
-      aria-label="On this page"
-    >
-      <div
-        class="subtle-scrollbar sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-12"
-        data-subtle-scrollbar
+    {visibleHeadings.length > 0 && (
+      <aside
+        class="docs-toc hidden min-h-[calc(100vh-4rem)] w-64 shrink-0 border-l border-neutral-200 xl:block dark:border-neutral-700"
+        aria-label="On this page"
       >
-        <DocsTableOfContents headings={visibleHeadings} />
-        <div class="mt-8">
-          <DocsCreditCard />
+        <div
+          class="subtle-scrollbar sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-12"
+          data-subtle-scrollbar
+        >
+          <DocsTableOfContents headings={visibleHeadings} />
+          <div class="mt-8">
+            <DocsCreditCard />
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    )}
   </div>
 </div>
 

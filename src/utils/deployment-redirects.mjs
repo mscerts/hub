@@ -31,6 +31,19 @@ export function redirectRules(redirects, pathnames) {
   for (const [source, value] of Object.entries(redirects)) {
     const target = typeof value === "string" ? value : value.destination;
     add(source, target);
+    // An archived page takes over its previous canonical HTML and Markdown
+    // URLs, including the historical wiki prefixes.
+    if (
+      source.startsWith("/certs/") &&
+      !source.endsWith(".md") &&
+      target.startsWith("/certs/archive/")
+    ) {
+      const old = source.slice("/certs/".length).replace(/\/$/, "");
+      for (const prefix of ["/", "/wiki/", "/wiki-next/"]) {
+        add(`${prefix}${old}/`, target);
+        add(`${prefix}${old}.md`, target.replace(/\/$/, ".md"));
+      }
+    }
     // Renamed Markdown documents follow the same destination when it has a Markdown endpoint.
     if (target.startsWith("/certs/") && docs.includes(target)) {
       const old = source.replace(/\/$/, "");

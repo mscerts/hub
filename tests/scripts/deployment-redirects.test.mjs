@@ -8,7 +8,7 @@ test("legacy HTML and Markdown URLs reach canonical pages, with renames taking p
   const rules = redirectRules(
     {
       "/power/pl-400": "/certs/aibusiness/ab-400/",
-      "/vouchers/ab650beta/": "/certs/vouchers/betaexams/",
+      "/vouchers/ab650beta/": "/certs/archive/vouchers/ab650beta/",
     },
     [
       "certs/azure/az-104/",
@@ -35,10 +35,35 @@ test("legacy HTML and Markdown URLs reach canonical pages, with renames taking p
   }
   assert.equal(
     lookup.get("/vouchers/ab650beta/"),
-    "/certs/vouchers/betaexams/",
+    "/certs/archive/vouchers/ab650beta/",
   );
   assert.equal(lookup.get("/wiki/"), "/certs/");
   assert.equal(lookup.get("/unknown/"), undefined);
+});
+
+test("archived canonical pages preserve old HTML and Markdown URLs", () => {
+  const rules = redirectRules(
+    {
+      "/certs/azure/az-800/": "/certs/archive/azure/az-800/",
+    },
+    ["certs/archive/azure/az-800/"],
+  );
+  const lookup = new Map(
+    rules
+      .trim()
+      .split("\n")
+      .map((line) => line.split(" ").slice(0, 2)),
+  );
+  for (const prefix of ["/", "/wiki/", "/wiki-next/"]) {
+    assert.equal(
+      lookup.get(`${prefix}azure/az-800/`),
+      "/certs/archive/azure/az-800/",
+    );
+    assert.equal(
+      lookup.get(`${prefix}azure/az-800.md`),
+      "/certs/archive/azure/az-800.md",
+    );
+  }
 });
 
 test("GA4 loader pushes native Arguments objects rather than arrays", () => {

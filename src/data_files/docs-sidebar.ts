@@ -10,10 +10,10 @@ type DocsSidebarIcon =
   | "ph:books"
   | "simple-icons:microsoftazure"
   | "simple-icons:github"
-  | "ph:sparkle"
+  | "microsoft-copilot"
   | "simple-icons:microsoftoffice"
-  | "ph:shield-check"
-  | "ph:puzzle-piece"
+  | "microsoft-defender"
+  | "simple-icons:powerbi"
   | "simple-icons:dynamics365";
 
 export interface DocsSidebarBadge {
@@ -40,12 +40,6 @@ const areaPrefixOrder: Record<string, string[]> = {
   dynamics: ["MB"],
 };
 
-// Exam pages that stay live (direct link, search, lab index) but are hidden
-// from this sidebar listing. AZ-800/AZ-801 retired on September 30, 2026 into
-// the merged AZ-802, so sidebar navigation points there instead. Their RETIRED
-// badge therefore shows only on the landing page's status list.
-const HIDDEN_FROM_SIDEBAR = new Set(["AZ-800", "AZ-801"]);
-
 // The statuses as of this build: a NEW badge that has run its 90 days is left out.
 const shownStatuses = visibleExamStatuses();
 
@@ -57,7 +51,6 @@ function buildExamItems(area: keyof typeof examStatuses): DocsSidebarItem[] {
     .filter((entry) => entry.toLowerCase().endsWith(".mdx"))
     .map((entry) => entry.replace(/\.mdx$/i, "").toUpperCase())
     .filter((code) => /^[A-Z]{2,3}-\d{3}$/.test(code))
-    .filter((code) => !HIDDEN_FROM_SIDEBAR.has(code))
     .sort((left, right) => {
       const leftRank = prefixOrder.indexOf(left.split("-")[0]);
       const rightRank = prefixOrder.indexOf(right.split("-")[0]);
@@ -217,7 +210,7 @@ export const docsSidebar: DocsSidebarItem[] = [
       },
       {
         label: "AI Business",
-        icon: "ph:sparkle",
+        icon: "microsoft-copilot",
         badge: { text: "AB", variant: "note" },
         children: buildExamItems("aibusiness"),
         collapsed: true,
@@ -231,14 +224,14 @@ export const docsSidebar: DocsSidebarItem[] = [
       },
       {
         label: "Security & Identity",
-        icon: "ph:shield-check",
+        icon: "microsoft-defender",
         badge: { text: "SC", variant: "note" },
         children: buildExamItems("security"),
         collapsed: true,
       },
       {
         label: "Power Platform",
-        icon: "ph:puzzle-piece",
+        icon: "simple-icons:powerbi",
         badge: { text: "PL", variant: "note" },
         children: buildExamItems("power"),
         collapsed: true,
@@ -254,6 +247,32 @@ export const docsSidebar: DocsSidebarItem[] = [
   },
   { label: "Support Us", href: docsPath("supportus") },
   { label: "Contributing", href: docsPath("contributing") },
-  { label: "Archive", href: "/certs/archive/" },
-  { label: "Privacy Policy", href: docsPath("privacy") },
 ];
+
+function sidebarPath(href: string): string {
+  const { pathname } = new URL(href, "https://msfthub.com");
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
+const sidebarIconByHref = new Map<string, DocsSidebarIcon>();
+
+function indexSidebarIcons(
+  items: DocsSidebarItem[],
+  inheritedIcon?: DocsSidebarIcon,
+): void {
+  for (const item of items) {
+    const icon = item.icon ?? inheritedIcon;
+    if (item.href && icon) {
+      sidebarIconByHref.set(sidebarPath(item.href), icon);
+    }
+    if (item.children) {
+      indexSidebarIcons(item.children, icon);
+    }
+  }
+}
+
+indexSidebarIcons(docsSidebar);
+
+export function sidebarIconForHref(href: string): string | undefined {
+  return sidebarIconByHref.get(sidebarPath(href));
+}

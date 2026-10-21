@@ -3,10 +3,7 @@ import { getCollection } from "astro:content";
 import Icon from "@components/ui/icons/Icon.astro";
 import { Icon as PackIcon } from "astro-icon/components";
 import MeasureUpBanner from "../../../assets/images/mUhalloween2026.webp";
-import {
-  recentExamStatuses,
-  examStatusNames,
-} from "@data/exam-status.mjs";
+import { recentExamStatuses, examStatusNames } from "@data/exam-status.mjs";
 import retiringExams from "@data/retiring-exams.json";
 
 const docs = await getCollection("docs");
@@ -66,12 +63,19 @@ const retirementDates = Object.fromEntries(
   retiringExams.exams.map((exam) => [exam.code, exam.retirementDate]),
 );
 
-const statusChanges = Object.entries(recentExamStatuses(retirementDates)).flatMap(([area, exams]) =>
-  Object.entries(exams).map(([code, status]) => ({
-    code,
-    status: status.text,
-    href: `/${area}/${code.toLowerCase()}/`,
-  })),
+const docIds = new Set(docs.map((doc) => doc.id));
+
+const statusChanges = Object.entries(
+  recentExamStatuses(retirementDates),
+).flatMap(([area, exams]) =>
+  Object.entries(exams).map(([code, status]) => {
+    const id = `${area}/${code.toLowerCase()}`;
+    return {
+      code,
+      status: status.text,
+      href: docIds.has(id) ? `/${id}/` : `/certs/archive/${id}/`,
+    };
+  }),
 );
 
 const getStatusClass = (status: string) => {
@@ -128,20 +132,12 @@ const vouchers = docs
   .slice(0, 8);
 ---
 
-<section
-  class="mx-auto max-w-[85rem] px-4 pt-10 pb-16 sm:px-6 lg:px-8 lg:pt-14 lg:pb-20"
->
-  <header
-    class="max-w-3xl border-b border-neutral-300 pb-8 dark:border-neutral-700"
-  >
-    <p
-      class="text-sm font-semibold tracking-[0.18em] text-orange-800 uppercase dark:text-orange-300"
-    >
+<section class="mx-auto max-w-[85rem] px-4 pt-10 pb-16 sm:px-6 lg:px-8 lg:pt-14 lg:pb-20">
+  <header class="max-w-3xl border-b border-neutral-300 pb-8 dark:border-neutral-700">
+    <p class="text-sm font-semibold tracking-[0.18em] text-orange-800 uppercase dark:text-orange-300">
       Microsoft Certification Hub
     </p>
-    <h1
-      class="mt-3 text-3xl font-bold tracking-tight text-balance text-neutral-900 sm:text-5xl dark:text-neutral-100"
-    >
+    <h1 class="mt-3 text-3xl font-bold tracking-tight text-balance text-neutral-900 sm:text-5xl dark:text-neutral-100">
       The shortest path to your next resource.
     </h1>
   </header>
@@ -151,9 +147,7 @@ const vouchers = docs
     role="region"
     aria-label="AI and business certification announcement"
   >
-    <div
-      class="min-h-24 rounded-xl bg-neutral-800 bg-[url('/ab-banner.svg')] bg-cover bg-center bg-no-repeat p-4 text-center shadow-sm sm:p-6 dark:bg-blue-900"
-    >
+    <div class="min-h-24 rounded-xl bg-neutral-800 bg-[url('/ab-banner.svg')] bg-cover bg-center bg-no-repeat p-4 text-center shadow-sm sm:p-6 dark:bg-blue-900">
       <a
         class="group inline-flex items-center gap-x-2 rounded-full border-2 border-neutral-50 px-4 py-2 text-sm font-semibold text-neutral-50 backdrop-brightness-75 transition duration-300 hover:border-neutral-100/70 hover:text-neutral-50/70 sm:backdrop-brightness-100"
         href="/certs/"
@@ -180,15 +174,13 @@ const vouchers = docs
 
   <div class="mt-8 grid gap-4 lg:grid-cols-12 lg:items-start">
     <div class="grid gap-4 lg:col-span-7">
-      <article
-        class="relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 p-6 text-neutral-100 shadow-xl sm:p-8 dark:border-neutral-700"
-      >
+      <article class="relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 p-6 text-neutral-100 shadow-xl sm:p-8 dark:border-neutral-700">
         <div class="relative max-w-xl">
           <div class="flex items-center gap-3 text-orange-300">
             <Icon name="dashboard" />
-            <span class="text-sm font-semibold tracking-[0.16em] uppercase"
-              >New here?</span
-            >
+            <span class="text-sm font-semibold tracking-[0.16em] uppercase">
+              New here?
+            </span>
           </div>
           <h2 class="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
             Get oriented without reading the whole site.
@@ -202,30 +194,27 @@ const vouchers = docs
               href="/certs/guide/introduction/"
               class="rounded-xl border border-white/15 bg-white/10 p-4 transition hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-300"
             >
-              <span
-                class="block text-xs font-semibold tracking-wide text-orange-300 uppercase"
-                >01</span
-              >
+              <span class="block text-xs font-semibold tracking-wide text-orange-300 uppercase">
+                01
+              </span>
               <span class="mt-2 block font-semibold">Read the guide</span>
             </a>
             <a
               href="/certs/"
               class="rounded-xl border border-white/15 bg-white/10 p-4 transition hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-300"
             >
-              <span
-                class="block text-xs font-semibold tracking-wide text-orange-300 uppercase"
-                >02</span
-              >
+              <span class="block text-xs font-semibold tracking-wide text-orange-300 uppercase">
+                02
+              </span>
               <span class="mt-2 block font-semibold">Find your exam</span>
             </a>
             <a
               href="/certs/prepare/studymaterials/"
               class="rounded-xl border border-white/15 bg-white/10 p-4 transition hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-300"
             >
-              <span
-                class="block text-xs font-semibold tracking-wide text-orange-300 uppercase"
-                >03</span
-              >
+              <span class="block text-xs font-semibold tracking-wide text-orange-300 uppercase">
+                03
+              </span>
               <span class="mt-2 block font-semibold">Prepare efficiently</span>
             </a>
           </div>
@@ -233,75 +222,67 @@ const vouchers = docs
       </article>
 
       <div class="grid gap-4 sm:grid-cols-3">
-        {
-          resourceLinks.map((link) => (
-            <a
-              href={link.href}
-              class="group rounded-2xl border border-neutral-300 bg-white p-5 transition hover:-translate-y-0.5 hover:border-orange-700 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:hover:border-orange-300 dark:focus-visible:outline-orange-300"
-            >
-              <PackIcon name={link.icon} class:list={["size-7", link.iconClass]} />
-              <h2 class="mt-5 font-semibold text-neutral-900 dark:text-neutral-100">
-                {link.label}
-              </h2>
-              <p class="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-                {link.description}
-              </p>
-            </a>
-          ))
-        }
+        {resourceLinks.map((link) => (
+          <a
+            href={link.href}
+            class="group rounded-2xl border border-neutral-300 bg-white p-5 transition hover:-translate-y-0.5 hover:border-orange-700 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:hover:border-orange-300 dark:focus-visible:outline-orange-300"
+          >
+            <PackIcon
+              name={link.icon}
+              class:list={["size-7", link.iconClass]}
+            />
+            <h2 class="mt-5 font-semibold text-neutral-900 dark:text-neutral-100">
+              {link.label}
+            </h2>
+            <p class="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+              {link.description}
+            </p>
+          </a>
+        ))}
       </div>
 
-      <section
-        class="rounded-2xl border border-neutral-300 bg-white p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
-      >
+      <section class="rounded-2xl border border-neutral-300 bg-white p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60">
         <div class="flex items-end justify-between gap-4">
           <div>
-            <p
-              class="text-xs font-semibold tracking-[0.16em] text-orange-800 uppercase dark:text-orange-300"
-            >
+            <p class="text-xs font-semibold tracking-[0.16em] text-orange-800 uppercase dark:text-orange-300">
               Offer board
             </p>
-            <h2
-              class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100"
-            >
+            <h2 class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100">
               New vouchers
             </h2>
           </div>
           <a
             href="/certs/vouchers/"
             class="text-sm font-semibold text-neutral-600 hover:text-orange-800 dark:text-neutral-400 dark:hover:text-orange-300"
-            >All vouchers</a
           >
+            All vouchers
+          </a>
         </div>
         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
           Categorized voucher pages appear here automatically as they are added.
         </p>
         <ul class="mt-5 divide-y divide-neutral-200 dark:divide-neutral-800">
-          {
-            vouchers.map((voucher) => (
-              <li>
-                <a
-                  href={`/${voucher.id}/`}
-                  class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-800 dark:text-neutral-200 dark:hover:text-orange-300"
+          {vouchers.map((voucher) => (
+            <li>
+              <a
+                href={`/${voucher.id}/`}
+                class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-800 dark:text-neutral-200 dark:hover:text-orange-300"
+              >
+                <span class="min-w-0 truncate">{voucher.data.title}</span>
+                <span
+                  class={`shrink-0 rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${getVoucherBadgeClass(voucher.data.voucherCategory)}`}
                 >
-                  <span class="min-w-0 truncate">{voucher.data.title}</span>
-                  <span
-                    class={`shrink-0 rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${getVoucherBadgeClass(voucher.data.voucherCategory)}`}
-                  >
-                    {getVoucherLabel(voucher.data.voucherCategory)}
-                  </span>
-                </a>
-              </li>
-            ))
-          }
+                  {getVoucherLabel(voucher.data.voucherCategory)}
+                </span>
+              </a>
+            </li>
+          ))}
           <li>
             <a
               href="/certs/vouchers/"
               class="flex items-center justify-center py-3 text-sm font-semibold text-orange-800 hover:text-orange-900 dark:text-orange-300 dark:hover:text-orange-200"
             >
-              View more vouchers <span aria-hidden="true" class="ms-2"
-                ></span
-              >
+              View more vouchers <span aria-hidden="true" class="ms-2"></span>
             </a>
           </li>
         </ul>
@@ -309,95 +290,79 @@ const vouchers = docs
     </div>
 
     <aside class="grid gap-4 lg:col-span-5">
-      <section
-        class="rounded-2xl border border-neutral-300 bg-white p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
-      >
+      <section class="rounded-2xl border border-neutral-300 bg-white p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60">
         <div class="flex items-start justify-between gap-4">
           <div>
-            <p
-              class="text-xs font-semibold tracking-[0.16em] text-orange-800 uppercase dark:text-orange-300"
-            >
+            <p class="text-xs font-semibold tracking-[0.16em] text-orange-800 uppercase dark:text-orange-300">
               Study together
             </p>
-            <h2
-              class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100"
-            >
+            <h2 class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100">
               Community
             </h2>
           </div>
           <Icon name="groups" />
         </div>
-        <p
-          class="mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400"
-        >
+        <p class="mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
           Ask questions, compare study plans, and keep up with certification
           changes.
         </p>
         <ul class="mt-5 divide-y divide-neutral-200 dark:divide-neutral-800">
-          {
-            communityLinks.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center justify-between gap-4 py-3 text-sm font-semibold text-neutral-800 transition hover:text-orange-800 dark:text-neutral-200 dark:hover:text-orange-300"
-                >
-                  <span class="flex items-center gap-3">
-                    <Icon name={link.icon} class={link.iconClass} />
-                    <span>{link.label}</span>
-                  </span>
-                  <span aria-hidden="true">-&gt;</span>
-                </a>
-              </li>
-            ))
-          }
+          {communityLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between gap-4 py-3 text-sm font-semibold text-neutral-800 transition hover:text-orange-800 dark:text-neutral-200 dark:hover:text-orange-300"
+              >
+                <span class="flex items-center gap-3">
+                  <Icon name={link.icon} class={link.iconClass} />
+                  <span>{link.label}</span>
+                </span>
+                <span aria-hidden="true">-&gt;</span>
+              </a>
+            </li>
+          ))}
         </ul>
       </section>
 
-      <section
-        class="rounded-2xl border border-neutral-300 bg-white p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60"
-      >
+      <section class="rounded-2xl border border-neutral-300 bg-white p-5 sm:p-6 dark:border-neutral-700 dark:bg-neutral-900/60">
         <div class="flex items-end justify-between gap-4">
           <div>
-            <p
-              class="text-xs font-semibold tracking-[0.16em] text-orange-800 uppercase dark:text-orange-300"
-            >
+            <p class="text-xs font-semibold tracking-[0.16em] text-orange-800 uppercase dark:text-orange-300">
               Watch the catalog
             </p>
-            <h2
-              class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100"
-            >
+            <h2 class="mt-2 text-2xl font-bold text-neutral-900 dark:text-neutral-100">
               Recent status changes
             </h2>
           </div>
           <a
             href="/certs/"
             class="text-sm font-semibold text-neutral-600 hover:text-orange-800 dark:text-neutral-400 dark:hover:text-orange-300"
-            >All exams</a
           >
+            All exams
+          </a>
         </div>
         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-           Exams currently carrying a new, beta, at-risk, retiring, or retired marker.
+          Exams currently carrying a new, beta, at-risk, retiring, or retired
+          marker.
         </p>
         <ul class="mt-5 divide-y divide-neutral-200 dark:divide-neutral-800">
-          {
-            statusChanges.map((exam) => (
-              <li>
-                <a
-                  href={exam.href}
-                  class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-800 dark:text-neutral-200 dark:hover:text-orange-300"
+          {statusChanges.map((exam) => (
+            <li>
+              <a
+                href={exam.href}
+                class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-800 dark:text-neutral-200 dark:hover:text-orange-300"
+              >
+                <span>{exam.code}</span>
+                <span
+                  class={`rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${getStatusClass(exam.status)}`}
                 >
-                  <span>{exam.code}</span>
-                  <span
-                      class={`rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${getStatusClass(exam.status)}`}
-                  >
-                    <span title={getStatusName(exam.status)}>{exam.status}</span>
-                  </span>
-                </a>
-              </li>
-            ))
-          }
+                  <span title={getStatusName(exam.status)}>{exam.status}</span>
+                </span>
+              </a>
+            </li>
+          ))}
         </ul>
       </section>
     </aside>

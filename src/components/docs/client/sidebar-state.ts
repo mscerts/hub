@@ -18,15 +18,14 @@ function writeState(key: string, value: unknown) {
 }
 
 function setExpanded(group: HTMLElement, open: boolean) {
-  const button = group.querySelector<HTMLButtonElement>(
-    ":scope > button[aria-controls]",
+  const button = group.querySelector<HTMLElement>(
+    ":scope > summary[aria-controls]",
   );
   const panel = group.querySelector<HTMLElement>(":scope > [role=region]");
   if (!button || !panel) return;
   group.classList.toggle("active", open);
   button.setAttribute("aria-expanded", String(open));
-  panel.classList.toggle("hidden", !open);
-  panel.hidden = !open;
+  (group as HTMLDetailsElement).open = open;
 }
 
 export default function initializeSidebarState() {
@@ -58,8 +57,9 @@ export default function initializeSidebarState() {
               : group.classList.contains("active")),
         );
         group
-          .querySelector<HTMLButtonElement>(":scope > button")
-          ?.addEventListener("click", () => {
+          .querySelector<HTMLElement>(":scope > summary")
+          ?.addEventListener("click", (event) => {
+            event.preventDefault();
             const open = !group.classList.contains("active");
             const previous = readState(groupStorageKey);
             const state =

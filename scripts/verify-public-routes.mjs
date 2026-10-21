@@ -37,7 +37,7 @@ for (const [source, target] of [
   ["/azure/az-104.md", "/certs/azure/az-104.md"],
   ["/wiki/azure/az-104.md", "/certs/azure/az-104.md"],
   ["/wiki/", "/certs/"],
-  ["/vouchers/ab650beta/", "/certs/vouchers/betaexams/"],
+  ["/vouchers/ab650beta/", "/certs/archive/vouchers/ab650beta/"],
 ])
   assert.equal(rules.get(source), target, source);
 assert.ok(

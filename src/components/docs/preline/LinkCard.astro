@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
 import { linkRel } from "../../../utils/link-rel";
 import { iconHostname, linkSourceIcon } from "../../../utils/link-source-icon";
+import { sidebarIconForHref } from "@data/docs-sidebar";
 import resourceFavicons from "@data/resource-favicons.json";
 interface Props extends HTMLAttributes<"a"> {
   title: string;
@@ -34,6 +35,9 @@ const favicon =
         iconHostname(destination)
       ]?.path
     : undefined;
+const cardIcon = isExternal
+  ? linkSourceIcon(href)
+  : (sidebarIconForHref(href) ?? linkSourceIcon(href));
 ---
 
 <a
@@ -62,7 +66,7 @@ const favicon =
           class="size-5 shrink-0 object-contain grayscale opacity-80 dark:invert"
         />
       ) : (
-        <Icon name={linkSourceIcon(href)} class="size-4.5" />
+        <Icon name={cardIcon} class="size-4.5" />
       )}
     </span>
     <span class="min-w-0">
