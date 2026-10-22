@@ -135,6 +135,11 @@ const voucherItems: DocsSidebarItem[] = [
     badge: { text: "*100%", variant: "tip" },
   },
   {
+    label: "Partner LevelUp",
+    href: docsPath("vouchers/levelup"),
+    badge: { text: "*100%", variant: "tip" },
+  },
+  {
     label: "South Africa AI Skills",
     href: docsPath("vouchers/southafricaaiskills"),
     badge: { text: "*100%", variant: "tip" },
