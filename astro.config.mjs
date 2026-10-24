@@ -94,6 +94,10 @@ export default defineConfig({
     "/certs/vouchers/ai500beta.md": "/certs/archive/vouchers/ai500beta/",
     "/certs/vouchers/az802beta/": "/certs/archive/vouchers/az802beta/",
     "/certs/vouchers/az802beta.md": "/certs/archive/vouchers/az802beta/",
+    "/certs/vouchers/githubuniverse2026/":
+      "/certs/archive/vouchers/githubuniverse2026/",
+    "/certs/vouchers/githubuniverse2026.md":
+      "/certs/archive/vouchers/githubuniverse2026/",
     "/microsoft365": "/certs/",
     "/azure": "/certs/",
     "/powerplatform": "/certs/",
@@ -135,6 +139,8 @@ export default defineConfig({
       "/certs/archive/vouchers/getsqlaidevelopercertified/",
     "/vouchers/ai500beta/": "/certs/archive/vouchers/ai500beta/",
     "/vouchers/az802beta/": "/certs/archive/vouchers/az802beta/",
+    "/vouchers/githubuniverse2026/":
+      "/certs/archive/vouchers/githubuniverse2026/",
     "/dynamics/mb-280": "/certs/archive/dynamics/mb-280/",
     "/azure/az-204": "/certs/archive/azure/az-204/",
     "/security/sc-730/": "/certs/archive/security/sc-730/",

@@ -125,11 +125,6 @@ const voucherItems: DocsSidebarItem[] = [
     badge: { text: "*80%", variant: "tip" },
   },
   {
-    label: "GitHub Universe 2026 - GH-700",
-    href: docsPath("vouchers/githubuniverse2026"),
-    badge: { text: "*50%", variant: "tip" },
-  },
-  {
     label: "Partner Certification Week",
     href: docsPath("vouchers/partnerweek"),
     badge: { text: "*100%", variant: "tip" },
