@@ -156,7 +156,7 @@ test("the page opens with frontmatter, the import and a note that cites the stud
   const [frontmatter, rest] = page.split("---\nimport");
   assert.match(
     frontmatter,
-    /^---\ntitle: GH-900 Study Guide Course\ndescription: "A task-by-task walkthrough of the GH-900: GitHub Foundations skills measured, with Microsoft Learn training and documentation for every task in the official study guide\."\n/,
+    /^---\ntitle: GH-900 Study Guide Course\ndescription: "Follow a structured GH-900 course organized by study guide task, with Microsoft Learn training and documentation for GitHub Foundations\."\n/,
   );
   assert.match(
     rest,
@@ -346,10 +346,7 @@ test("a preview renders only the skill groups whose title contains the text, num
     })),
   };
   const page = renderCourse(course, { only, review });
-  assert.match(
-    page,
-    /title: GH-900 Study Guide Course \(one skill group\) \(review copy\)/,
-  );
+  assert.match(page, /title: "GH-900 Study Guide Course: .+ \(review copy\)"/);
   assert.match(page, /preview of the skill groups whose title contains/);
   assert.ok(page.includes(`### ${only}`));
   for (const other of groups.filter((g) => g !== only && !only.includes(g)))

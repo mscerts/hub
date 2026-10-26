@@ -103,7 +103,7 @@ const escapeJsxAttr = (text) => text.replace(/"/g, "&quot;");
 /** The MDX of the new page; `beta` is { start, state } for a beta exam. */
 export function buildPage({ code, name, area, labs = false, beta = null }) {
   const codeLC = code.toLowerCase();
-  const description = `Collection of study materials for the certification exam ${code}: ${name}. Contains official Microsoft Learn materials, labs, videos, practice tests and paid courses.`;
+  const description = `Study resources for ${code}: ${name}.`;
 
   const examUrl = `https://learn.microsoft.com/credentials/certifications/exams/${codeLC}?WT.mc_id=studentamb_165290`;
   const studyGuideUrl = `https://learn.microsoft.com/credentials/certifications/resources/study-guides/${codeLC}?WT.mc_id=studentamb_165290`;
@@ -120,6 +120,7 @@ export function buildPage({ code, name, area, labs = false, beta = null }) {
 
   return `---
 title: ${code} Study Materials
+examName: "${escapeYaml(name)}"
 description: "${escapeYaml(description)}"
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';${betaBlock}

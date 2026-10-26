@@ -30,9 +30,11 @@ exams.sort((a, b) => a.id.localeCompare(b.id));
       const examCode = exam.id.split("/").pop()?.toUpperCase() ?? "";
       const href = `/certs/${exam.id}/`;
       const desc = exam.data.description ?? "";
-      // Try primary pattern: "exam CODE: Name. Contains..."
+      // Older content can still use the legacy description template.
       let shortDesc =
-        desc.match(/exam [A-Z]+-\d+:\s*(.+?)\.\s*Contains/)?.[1] ?? "";
+        exam.data.examName ??
+        desc.match(/exam [A-Z]+-\d+:\s*(.+?)\.\s*Contains/)?.[1] ??
+        "";
       // Fallback: text after "exam CODE:" up to first period
       if (!shortDesc) {
         shortDesc = desc.match(/exam [A-Z]+-\d+:\s*(.+?)\./)?.[1] ?? "";

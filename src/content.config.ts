@@ -49,6 +49,7 @@ export const collections = {
     schema: z.strictObject({
       title: z.string(),
       description: z.string().optional(),
+      examName: z.string().min(1).optional(),
       draft: z.boolean().optional(),
       voucherCategory: z.enum(["100%", "50%", "Special"]).optional(),
       // Optional dates and the linked exam read by the daily voucher review

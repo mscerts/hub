@@ -42,6 +42,11 @@ function scratch({ statuses, pages, tracker }) {
     join(dir, "scripts", "beta-exams-sync.mjs"),
   );
   mkdirSync(join(dir, "src", "data_files"), { recursive: true });
+  mkdirSync(join(dir, "src", "utils"), { recursive: true });
+  copyFileSync(
+    join(root, "src", "utils", "exam-name.mjs"),
+    join(dir, "src", "utils", "exam-name.mjs"),
+  );
   writeFileSync(
     join(dir, "src", "data_files", "exam-status.mjs"),
     `export const examStatuses = ${JSON.stringify(statuses)};\n`,

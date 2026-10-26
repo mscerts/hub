@@ -8,7 +8,7 @@
  * Reads every `examStatuses[area][code]` entry in src/data_files/exam-status.mjs
  * whose badge is RETIRING (`{ text: "RETIRING", variant: "danger" }`) or RETIRED
  * (`{ text: "RETIRED", variant: "note" }`), pulls the exam name from that
- * page's frontmatter `description` and the retirement date from its
+ * page's frontmatter `examName` (legacy description fallback) and the retirement date from its
  * <RetirementBanner retireDate="..."> prop or inline `:::caution` text
  * (whichever the page uses), and writes src/data_files/retiring-exams.json.
  * A RETIRED exam stays in the tracker as history: when its page no longer gives
@@ -32,6 +32,7 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { examStatuses } from "../src/data_files/exam-status.mjs";
+import { readExamName } from "../src/utils/exam-name.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -75,6 +76,8 @@ function findExamPage(area, code) {
 }
 
 function examNameFromPage(content, code) {
+  const explicit = readExamName(content);
+  if (explicit) return explicit;
   const match = content.match(
     new RegExp(`certification exam ${code}:\\s*([^.]+)\\.`, "i"),
   );

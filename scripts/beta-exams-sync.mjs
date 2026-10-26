@@ -7,7 +7,7 @@
  *
  * Reads every `examStatuses[area][code]` entry in src/data_files/exam-status.mjs with
  * `{ text: "BETA", variant: "tip" }`, pulls the exam name from that page's
- * frontmatter `description`, and writes src/data_files/beta-exams.json.
+ * frontmatter `examName` (legacy description fallback), and writes src/data_files/beta-exams.json.
  *
  * This is a bootstrap/full-resync tool, not part of any scheduled workflow.
  * It rebuilds the tracker file from exam-status.mjs: an entry whose exam no longer
@@ -35,6 +35,7 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { examStatuses } from "../src/data_files/exam-status.mjs";
+import { readExamName } from "../src/utils/exam-name.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -70,6 +71,8 @@ function findExamPage(area, code) {
 
 function examNameFromPage(file, code) {
   const content = readFileSync(file, "utf8");
+  const explicit = readExamName(content);
+  if (explicit) return explicit;
   const match = content.match(
     new RegExp(`certification exam ${code}:\\s*([^.]+)\\.`, "i"),
   );

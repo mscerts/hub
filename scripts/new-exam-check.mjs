@@ -348,6 +348,7 @@ import {
 import { AREA_BY_PREFIX } from "./lib/areas.mjs";
 import { listOpenIssues, makeGh, readIssueBody } from "./lib/gh.mjs";
 import { retryDelayMs } from "./lib/retry.mjs";
+import { readExamName } from "../src/utils/exam-name.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -3273,8 +3274,8 @@ function stripComments(text) {
 }
 
 /**
- * What the drift check needs from one hub exam page: the exam name of the
- * frontmatter description (the template "certification exam CODE: NAME.
+ * What the drift check needs from one hub exam page: the official examName,
+ * falling back to the frontmatter description ("certification exam CODE: NAME.
  * Contains official ..."; null when the page words it differently, like the
  * GH-700 placeholder), the name of the Get Started "Exam CODE: NAME" card, the
  * text without comments, and the first `:::caution` banner.
@@ -3297,7 +3298,11 @@ export function parseHubPage(source, code) {
   const caution = body.match(/^:::caution[^\n]*\n([\s\S]*?)^:::[ \t]*$/m);
   return {
     description,
-    descriptionName: nameMatch ? normalizeName(nameMatch[1]) : null,
+    descriptionName: readExamName(text)
+      ? normalizeName(readExamName(text))
+      : nameMatch
+        ? normalizeName(nameMatch[1])
+        : null,
     cardName: card ? normalizeName(decodeEntities(card[1])) : null,
     text: body,
     caution: caution ? caution[1] : "",

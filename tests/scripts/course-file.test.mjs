@@ -440,7 +440,7 @@ test("render --group previews only the skill groups whose title contains the tex
     c.err.join("\n"),
   );
   const page = c.written.join("");
-  assert.match(page, /title: GH-900 Study Guide Course \(one skill group\)/);
+  assert.ok(page.includes(`title: "GH-900 Study Guide Course: ${groups[1]}"`));
   assert.ok(page.includes(`### ${groups[1]}`));
   assert.ok(!page.includes(`### ${groups[0]}`));
 });

@@ -78,7 +78,9 @@ function realBetaTips() {
   for (const area of EXAM_AREAS) {
     for (const file of readdirSync(join(docs, area))) {
       if (!file.endsWith(".mdx")) continue;
-      const text = lf(readFileSync(join(docs, area, file), "utf8"));
+      const text = lf(readFileSync(join(docs, area, file), "utf8"))
+        .replace(/^<BetaBanner>$/gm, ":::tip")
+        .replace(/^<\/BetaBanner>$/gm, ":::");
       const tip = text.match(/^:::tip\nThis is a beta exam\.[\s\S]*?\n:::$/m);
       if (tip) tips.add(tip[0]);
     }

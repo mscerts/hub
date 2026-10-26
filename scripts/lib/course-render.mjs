@@ -153,7 +153,6 @@ export function renderCourse(
   course,
   { labPage = null, review = null, only = null } = {},
 ) {
-  const exam = `${course.code}: ${course.name}`;
   const guideUrl = `https://learn.microsoft.com/credentials/certifications/resources/study-guides/${course.code.toLowerCase()}${TRACKING}`;
   const version = course.inputs?.guideAsOf
     ? ` (${plain(course.inputs.guideAsOf)} version)`
@@ -169,8 +168,14 @@ export function renderCourse(
   );
   const out = [
     "---",
-    `title: ${course.code} Study Guide Course${only ? " (one skill group)" : ""}${review ? " (review copy)" : ""}`,
-    `description: "${attr(`A task-by-task walkthrough of the ${exam} skills measured, with Microsoft Learn training and documentation for every task in the official study guide.`)}"`,
+    `title: ${only ? JSON.stringify(`${course.code} Study Guide Course: ${plain(only)}${review ? " (review copy)" : ""}`) : `${course.code} Study Guide Course${review ? " (review copy)" : ""}`}`,
+    `description: "${attr(
+      only
+        ? `Preview ${course.code} course resources for ${plain(only)}. Follow the selected Microsoft Learn reading for this skill group.`
+        : review
+          ? `Review the draft ${course.code} study guide course. Inspect selected Microsoft Learn resources and flagged picks before the course is finalized.`
+          : `Follow a structured ${course.code} course organized by study guide task, with Microsoft Learn training and documentation for ${course.name}.`,
+    )}"`,
     "---",
     "import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';",
     "",

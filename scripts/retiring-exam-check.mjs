@@ -147,6 +147,7 @@ import { appendStepSummary, warnLoud, writeOutput } from "./lib/actions.mjs";
 import { EXAM_AREAS } from "./lib/areas.mjs";
 import { ensureLabel, listOpenIssues, makeGh } from "./lib/gh.mjs";
 import { retryDelayMs } from "./lib/retry.mjs";
+import { readExamName } from "../src/utils/exam-name.mjs";
 
 export { retryDelayMs };
 
@@ -1073,8 +1074,10 @@ function listMdx(dir) {
   return out;
 }
 
-/** The exam name in the standard description template, or "". */
+/** The official examName, with the description template as a legacy fallback. */
 export function examNameFromDescription(text, code) {
+  const explicit = readExamName(text);
+  if (explicit) return explicit;
   const frontmatter = frontmatterOf(text);
   const match = frontmatter.match(
     new RegExp(
