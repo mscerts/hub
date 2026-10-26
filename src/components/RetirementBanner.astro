@@ -1,9 +1,10 @@
 ---
-import { Aside } from '@components/docs';
+import { Aside } from "@components/docs";
 
 interface Props {
   retireDate: string;
   certRetires: boolean;
+  certificationName?: string;
   replacementCode?: string;
   replacementName?: string;
   replacementArea?: string;
@@ -15,6 +16,7 @@ interface Props {
 const {
   retireDate,
   certRetires,
+  certificationName,
   replacementCode,
   replacementName,
   replacementArea,
@@ -23,14 +25,31 @@ const {
   note,
 } = Astro.props;
 
-const href = replacementHref ?? (replacementArea && replacementCode ? `/certs/${replacementArea}/${replacementCode.toLowerCase()}/` : undefined);
+const href =
+  replacementHref ??
+  (replacementArea && replacementCode
+    ? `/certs/${replacementArea}/${replacementCode.toLowerCase()}/`
+    : undefined);
 
 // The wording is chosen when the site is built, not in the visitor's browser: a page
 // only flips from "is being retired" to "was retired" on the first deploy after
 // retireDate. The cut-off is the same one scripts/retiring-exam-check.mjs uses: the
 // exam counts as retired once retireDate is yesterday (UTC) or earlier. A retireDate
 // that cannot be parsed keeps the "is being retired" wording.
-const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+const MONTHS = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december",
+];
 
 function parseRetireDate(value: string): number | null {
   const match = value.match(/([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})/);
@@ -42,7 +61,11 @@ function parseRetireDate(value: string): number | null {
 
 const retireTime = parseRetireDate(retireDate);
 const now = new Date();
-const todayUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+const todayUtc = Date.UTC(
+  now.getUTCFullYear(),
+  now.getUTCMonth(),
+  now.getUTCDate(),
+);
 const retired = retireTime !== null && retireTime < todayUtc;
 
 // The closing sentence is dropped once the exam is retired, unless a custom note is passed.
@@ -55,24 +78,29 @@ const closingNote =
 
 <Aside type="caution">
   <p>
-    {
-      retired
-        ? certRetires
-          ? `Exam and its certification were retired on ${retireDate}.`
-          : `The exam was retired on ${retireDate}. The certification remains, meaning you can renew it if you already have it.`
-        : certRetires
-          ? `Exam and its certification are being retired on ${retireDate}.`
-          : `The exam is being retired on ${retireDate}. The certification will remain, meaning you can renew it if you already have it.`
-    }
+    {retired
+      ? certRetires
+        ? `Exam and its certification${certificationName ? `, ${certificationName},` : ""} were retired on ${retireDate}.`
+        : `The exam was retired on ${retireDate}. The certification remains, meaning you can renew it if you already have it.`
+      : certRetires
+        ? `Exam and its certification${certificationName ? `, ${certificationName},` : ""} are being retired on ${retireDate}.`
+        : `The exam is being retired on ${retireDate}. The certification will remain, meaning you can renew it if you already have it.`}
   </p>
 
-  {
-    href && replacementCode
-      ? <p>{retired ? "It was replaced by " : "It will be replaced by "}<a href={href}>{replacementCode}{replacementName ? `: ${replacementName}` : ""}</a>.</p>
-      : null
-  }
+  {href && replacementCode ? (
+    <p>
+      {retired ? "It was replaced by " : "It will be replaced by "}
+      <a href={href}>
+        {replacementCode}
+        {replacementName ? `: ${replacementName}` : ""}
+      </a>
+      .
+    </p>
+  ) : null}
 
   {betaNote ? <p>{betaNote}</p> : null}
+
+  <slot />
 
   {closingNote ? <p>{closingNote}</p> : null}
 </Aside>

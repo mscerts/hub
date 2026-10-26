@@ -240,10 +240,12 @@ function directiveBlocks(mdxText) {
       fence = fenceMark;
       continue;
     }
-    const name = /^:::(\w+)[ \t]*$/.exec(lines[i])?.[1];
+    const component = /^<BetaBanner>\s*$/.test(lines[i]);
+    const name = component ? "tip" : /^:::(\w+)[ \t]*$/.exec(lines[i])?.[1];
     if (!name) continue;
     let end = i + 1;
-    while (end < lines.length && !/^:::[ \t]*$/.test(lines[end])) end++;
+    const closing = component ? /^<\/BetaBanner>\s*$/ : /^:::[ \t]*$/;
+    while (end < lines.length && !closing.test(lines[end])) end++;
     if (end === lines.length) break; // never closed
     blocks.push({ name, from: i, to: end, body: lines.slice(i + 1, end) });
     i = end;

@@ -36,6 +36,24 @@ const pageFile = (area, code) => `src/content/docs/${area}/${code}.mdx`;
 const regenerate = (code) =>
   `node scripts/beta-note.mjs --code ${code} writes the note for the entry in ${TRACKER}`;
 
+test("shared BetaBanner retains strict timeline adjacency and ignores fenced examples", () => {
+  const tip = "<BetaBanner>\nThis is a beta exam.\n</BetaBanner>";
+  const note = ":::note\nTimeline text.\n:::";
+  assert.deepEqual(inspectBetaNote(`${tip}\n\n${note}`), {
+    hasTip: true,
+    noteCount: 1,
+    text: "Timeline text.",
+  });
+  assert.equal(
+    inspectBetaNote(`${tip}\nUnrelated prose\n${note}`).noteCount,
+    0,
+  );
+  assert.equal(
+    inspectBetaNote(`\x60\x60\x60mdx\n${tip}\n${note}\n\x60\x60\x60`).hasTip,
+    false,
+  );
+});
+
 /** The BETA exams of the status table as [{ area, code }]. */
 const betaExams = ({ statuses }) =>
   Object.entries(statuses).flatMap(([area, codes]) =>

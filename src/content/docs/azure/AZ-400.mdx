@@ -3,16 +3,21 @@ title: AZ-400 Study Materials
 description: "Collection of study materials for the certification exam AZ-400: Designing and Implementing Microsoft DevOps Solutions. Contains official Microsoft Learn materials, labs, videos, practice tests and paid courses."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import RetirementBanner from '@components/RetirementBanner.astro';
 
-:::caution
-Exam and its certification, Microsoft Certified: DevOps Engineer Expert, are being retired on February 1, 2027.
-
-It will be replaced by [AZ-401: Designing and Implementing Microsoft Agentic DevOps Solutions](/certs/azure/az-401/), which is in beta now and leads to the new Microsoft Certified: Agentic DevOps Engineer Expert certification.
+<RetirementBanner
+  retireDate="February 1, 2027"
+  certRetires={true}
+  certificationName="Microsoft Certified: DevOps Engineer Expert"
+  replacementCode="AZ-401"
+  replacementName="Designing and Implementing Microsoft Agentic DevOps Solutions"
+  replacementArea="azure"
+  betaNote="The replacement is in beta now and leads to the new Microsoft Certified: Agentic DevOps Engineer Expert certification."
+>
 
 Microsoft announced the retirement together with the new exam: [read the announcement on the Skills Hub blog](https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-agentic-devops-engineer-expert/4528356?WT.mc_id=studentamb_165290).
 
-Microsoft Learn always takes a while to update with certification retirements so don't panic if you can't see it there yet.
-:::
+</RetirementBanner>
 
 <Card title="Get Started" icon="star">
 

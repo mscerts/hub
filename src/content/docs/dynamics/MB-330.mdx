@@ -3,16 +3,21 @@ title: MB-330 Study Materials
 description: "Collection of study materials for the certification exam MB-330: Microsoft Dynamics 365 Supply Chain Management Functional Consultant. Contains official Microsoft Learn materials, labs, videos, practice tests and paid courses."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import RetirementBanner from '@components/RetirementBanner.astro';
 
-:::caution
-Exam and its certification, Microsoft Certified: Dynamics 365 Supply Chain Management Functional Consultant Associate, are being retired on February 1, 2027.
-
-It will be replaced by [AB-330: Implementing AI-Powered Supply Chain Operations with Dynamics 365 Supply Chain Management](/certs/aibusiness/ab-330/), which is in beta now and leads to the new Microsoft Certified: Supply Chain Management AI Consultant Associate certification.
+<RetirementBanner
+  retireDate="February 1, 2027"
+  certRetires={true}
+  certificationName="Microsoft Certified: Dynamics 365 Supply Chain Management Functional Consultant Associate"
+  replacementCode="AB-330"
+  replacementName="Implementing AI-Powered Supply Chain Operations with Dynamics 365 Supply Chain Management"
+  replacementArea="aibusiness"
+  betaNote="The replacement is in beta now and leads to the new Microsoft Certified: Supply Chain Management AI Consultant Associate certification."
+>
 
 Microsoft announced the retirement together with the new exam: [read the announcement on the Skills Hub blog](https://techcommunity.microsoft.com/blog/skills-hub-blog/new-microsoft-certified-supply-chain-management-ai-consultant-associate/4564533?WT.mc_id=studentamb_165290).
 
-Microsoft Learn always takes a while to update with certification retirements so don't panic if you can't see it there yet.
-:::
+</RetirementBanner>
 
 <Card title="Get Started" icon="star">
 

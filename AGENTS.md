@@ -215,6 +215,7 @@ Resource placement:
 - Retiring pages retain valid existing resources and link to the verified replacement exam.
 
 ### Beta Exam Pages (timeline note box at the top)
+Active beta pages use `<BetaBanner>` with the standard beta text as slot content; legacy `:::tip` blocks remain supported by the scaffolder and consistency checks. Keep the separate timeline `:::note` immediately after the banner. `RetirementBanner` standardizes active retirement notices; preserve announcement links as slot content and verified replacement details as props.
 Every exam page that is in beta (`{ text: "BETA", variant: "tip" }` in `src/data_files/exam-status.mjs`, tracked in `beta-exams.json`) opens, above the Get Started card, with the usual `:::tip` beta/resource-scarcity banner followed by a SEPARATE `:::note` box with the beta timeline and **real dates**, so visitors know when the exam is expected to leave beta and when beta scores arrive. The timeline never goes inside the `:::tip`: the tip keeps its existing beta text unchanged, and the `:::note` is its own box right after it.
 
 Facts (Microsoft's "About beta Certification exams" page, `https://learn.microsoft.com/credentials/support/about-beta-exams?WT.mc_id=studentamb_165290`, section "Beta exam scoring and results"; re-read it before relying on these numbers, they are Microsoft's to change):

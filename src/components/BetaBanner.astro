@@ -1,8 +1,8 @@
 ---
-import { Aside } from '@components/docs';
+import { Aside } from "@components/docs";
 
 interface Props {
-  summary: string;
+  summary?: string;
   note?: string;
 }
 
@@ -10,7 +10,7 @@ const { summary, note } = Astro.props;
 ---
 
 <Aside type="tip">
-  {summary}
-
-  {note ?? null}
+  {summary && <p>{summary}</p>}
+  {note && <p>{note}</p>}
+  <slot />
 </Aside>
