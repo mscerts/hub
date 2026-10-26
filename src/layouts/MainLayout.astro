@@ -56,8 +56,16 @@ interface Props {
         const raw =
           localStorage.getItem("hs_theme") ||
           localStorage.getItem("starlight-theme");
-        const theme = raw === "light" || raw === "dark" ? raw : "dark";
-        localStorage.setItem("hs_theme", theme);
+        const preference = ["light", "dark", "auto"].includes(raw)
+          ? raw
+          : "dark";
+        const theme =
+          preference === "auto"
+            ? matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light"
+            : preference;
+        localStorage.setItem("hs_theme", preference);
         localStorage.removeItem("starlight-theme");
         document.documentElement.classList.toggle("dark", theme === "dark");
         document.documentElement.dataset.theme = theme;

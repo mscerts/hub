@@ -29,11 +29,14 @@ const isExternal =
   destination.origin !== site.origin;
 const resolvedTarget = target ?? (isExternal ? "_blank" : undefined);
 const resolvedRel = linkRel(resolvedTarget, rel);
-const isMicrosoftLearn =
+const preferVectorIcon =
   destination.hostname === "learn.microsoft.com" ||
-  destination.hostname.endsWith(".learn.microsoft.com");
+  destination.hostname.endsWith(".learn.microsoft.com") ||
+  destination.hostname === "esi.microsoft.com" ||
+  destination.hostname === "github.com" ||
+  destination.hostname === "www.github.com";
 const favicon =
-  isExternal && !isMicrosoftLearn
+  isExternal && !preferVectorIcon
     ? (resourceFavicons as Record<string, { path: string }>)[
         iconHostname(destination)
       ]?.path
@@ -69,7 +72,7 @@ const cardIcon = isExternal
           height="20"
           loading="lazy"
           decoding="async"
-          class="size-5 shrink-0 object-contain grayscale opacity-80 dark:invert"
+          class="size-5 shrink-0 object-contain grayscale dark:invert"
         />
       ) : (
         <Icon name={cardIcon} class="size-4.5" />

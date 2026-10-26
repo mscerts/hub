@@ -362,7 +362,7 @@ const redditLinks = [
 <script is:inline>
   const HSThemeAppearance = {
     init() {
-      const defaultTheme = "default";
+      const defaultTheme = "dark";
       let theme =
         localStorage.getItem("hs_theme") ||
         localStorage.getItem("starlight-theme") ||
@@ -370,7 +370,6 @@ const redditLinks = [
       localStorage.setItem("hs_theme", theme);
       localStorage.removeItem("starlight-theme");
 
-      if (document.querySelector("html").classList.contains("dark")) return;
       this.setAppearance(theme);
     },
     _resetStylesOnLoad() {
@@ -391,19 +390,24 @@ const redditLinks = [
       if (theme === "auto") {
         theme = window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
-          : "default";
+          : "light";
       }
 
       document.querySelector("html").classList.remove("dark");
       document.querySelector("html").classList.remove("default");
       document.querySelector("html").classList.remove("auto");
+      document.querySelector("html").classList.remove("light");
 
-      document
-        .querySelector("html")
-        .classList.add(this.getOriginalAppearance());
+      document.querySelector("html").classList.add(theme);
 
       document.documentElement.dataset.theme =
         document.documentElement.classList.contains("dark") ? "dark" : "light";
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute("content", theme === "dark" ? "#222222" : "#e5e5e5");
+      document.querySelectorAll("[data-theme-select]").forEach((select) => {
+        select.value = this.getOriginalAppearance();
+      });
 
       setTimeout(() => {
         $resetStylesEl.remove();
@@ -420,16 +424,22 @@ const redditLinks = [
       if (theme === "auto") {
         theme = window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
-          : "default";
+          : "light";
       }
       return theme;
     },
     getOriginalAppearance() {
-      const defaultTheme = "default";
+      const defaultTheme = "dark";
       return localStorage.getItem("hs_theme") || defaultTheme;
     },
   };
   HSThemeAppearance.init();
+  document.querySelectorAll("[data-theme-select]").forEach((select) => {
+    select.value = HSThemeAppearance.getOriginalAppearance();
+    select.addEventListener("change", () => {
+      HSThemeAppearance.setAppearance(select.value);
+    });
+  });
 
   window
     .matchMedia("(prefers-color-scheme: dark)")

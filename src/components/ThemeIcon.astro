@@ -1,20 +1,11 @@
----
-import { Icon } from "astro-icon/components";
----
-
-<button
-  type="button"
-  aria-label="Dark Theme Toggle"
-  class="hs-dark-mode group flex size-9 items-center justify-center rounded-lg font-medium text-neutral-600 outline-hidden ring-zinc-500 transition duration-300 hover:bg-neutral-200 hover:text-orange-800 focus-visible:ring-2 focus-visible:ring-orange-700 hs-dark-mode-active:hidden dark:text-neutral-400 dark:ring-zinc-200 dark:hover:bg-neutral-700 dark:hover:text-orange-300 dark:focus-visible:ring-orange-300"
-  data-hs-theme-click-value="dark"
+<select
+  aria-label="Color theme"
+  data-theme-select
+  class="h-9 w-24 rounded-lg border-0 bg-transparent py-1 pl-2 pr-7 text-sm text-neutral-600 focus-visible:ring-2 focus-visible:ring-blue-500 dark:text-neutral-300 dark:[color-scheme:dark]"
 >
-  <Icon name="ph:moon-fill" class="size-5" />
-</button>
-<button
-  type="button"
-  aria-label="Light Theme Toggle"
-  class="hs-dark-mode group hidden size-9 items-center justify-center rounded-lg font-medium text-neutral-600 outline-hidden ring-zinc-500 transition duration-300 hover:bg-neutral-200 hover:text-orange-800 focus-visible:ring-2 focus-visible:ring-orange-700 hs-dark-mode-active:flex dark:text-neutral-400 dark:ring-zinc-200 dark:hover:bg-neutral-700 dark:hover:text-orange-300 dark:focus-visible:ring-orange-300"
-  data-hs-theme-click-value="light"
->
-  <Icon name="ph:sun-fill" class="size-5" />
-</button>
+  <option value="light">Light</option>
+  <option value="dark" selected>
+    Dark
+  </option>
+  <option value="auto">System</option>
+</select>
