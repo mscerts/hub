@@ -81,7 +81,8 @@ const ASN_NOTE =
 
 test("the 'practice assessment is on AI Skills Navigator, but the study guide links another certification' note sits in the Tests tab of an exam that has no card for it yet", () => {
   const withNote = examPages().filter((page) => ASN_NOTE.test(page.text));
-  assert.ok(withNote.length > 0, "no exam page carries the note any more");
+  // No page carries the note at the moment (AZ-802 got its card on 2026-10-26); it comes back when the study
+  // guide of an exam links the wrong certification, so only the pages that have it are checked.
   for (const { code, text } of withNote) {
     assert.ok(
       ASN_NOTE.test(testsTab(text)),
