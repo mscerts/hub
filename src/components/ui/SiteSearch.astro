@@ -109,6 +109,7 @@ const searchId = "site-search-dialog";
 </dialog>
 
 <script>
+  import { searchRanking } from "@utils/search-ranking";
   interface PagefindSubResult {
     title?: string;
     url?: string;
@@ -127,6 +128,7 @@ const searchId = "site-search-dialog";
 
   interface PagefindApi {
     init(): Promise<void>;
+    options(options: { ranking: typeof searchRanking }): Promise<void>;
     search(query: string): Promise<PagefindSearchResponse>;
   }
 
@@ -160,6 +162,7 @@ const searchId = "site-search-dialog";
       /* @vite-ignore */ pagefindUrl.href
     )) as PagefindApi;
     await pagefind.init();
+    await pagefind.options({ ranking: searchRanking });
     return pagefind;
   };
 

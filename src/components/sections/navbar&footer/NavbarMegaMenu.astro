@@ -405,8 +405,19 @@ const redditLinks = [
       document
         .querySelector('meta[name="theme-color"]')
         ?.setAttribute("content", theme === "dark" ? "#222222" : "#e5e5e5");
-      document.querySelectorAll("[data-theme-select]").forEach((select) => {
-        select.value = this.getOriginalAppearance();
+      const preference = this.getOriginalAppearance();
+      const names = { dark: "Dark", light: "Light", auto: "System" };
+      const next = { dark: "light", light: "auto", auto: "dark" };
+      document.querySelectorAll("[data-theme-cycle]").forEach((button) => {
+        const label = `Theme: ${names[preference]}. Switch to ${names[next[preference]]} theme`;
+        button.setAttribute("aria-label", label);
+        button.setAttribute("title", label);
+        button.querySelectorAll("[data-theme-icon]").forEach((icon) => {
+          icon.classList.toggle(
+            "hidden",
+            icon.dataset.themeIcon !== preference,
+          );
+        });
       });
 
       setTimeout(() => {
@@ -434,10 +445,12 @@ const redditLinks = [
     },
   };
   HSThemeAppearance.init();
-  document.querySelectorAll("[data-theme-select]").forEach((select) => {
-    select.value = HSThemeAppearance.getOriginalAppearance();
-    select.addEventListener("change", () => {
-      HSThemeAppearance.setAppearance(select.value);
+  document.querySelectorAll("[data-theme-cycle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const next = { dark: "light", light: "auto", auto: "dark" };
+      HSThemeAppearance.setAppearance(
+        next[HSThemeAppearance.getOriginalAppearance()],
+      );
     });
   });
 

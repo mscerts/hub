@@ -5,6 +5,7 @@ import { Icon as PackIcon } from "astro-icon/components";
 import MeasureUpBanner from "../../../assets/images/mUhalloween2026.webp";
 import { recentExamStatuses, examStatusNames } from "@data/exam-status.mjs";
 import retiringExams from "@data/retiring-exams.json";
+import { compareVoucherRecency } from "@utils/voucher-recency";
 
 const docs = await getCollection("docs");
 
@@ -128,7 +129,7 @@ const getVoucherBadgeClass = (category: string | undefined) => {
 
 const vouchers = docs
   .filter((doc) => doc.id.startsWith("vouchers/") && doc.data.voucherCategory)
-  .sort((left, right) => left.data.title.localeCompare(right.data.title))
+  .sort(compareVoucherRecency)
   .slice(0, 8);
 ---
 
@@ -177,7 +178,6 @@ const vouchers = docs
       <article class="relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900 p-6 text-neutral-100 shadow-xl sm:p-8 dark:border-neutral-700">
         <div class="relative max-w-xl">
           <div class="flex items-center gap-3 text-orange-300">
-            <Icon name="dashboard" />
             <span class="text-sm font-semibold tracking-[0.16em] uppercase">
               New here?
             </span>

@@ -1,8 +1,57 @@
 ---
+import { renderFileTree } from "@utils/render-file-tree.mjs";
+const tree = renderFileTree(await Astro.slots.render("default"));
 ---
 
 <div class="my-5 overflow-x-auto rounded-xl border border-border bg-card p-4 font-mono text-sm text-card-foreground shadow-sm">
-  <div class="min-w-max [&_ul]:m-0 [&_ul]:list-none [&_ul]:space-y-1 [&_ul]:pl-5 [&_li]:relative [&_li]:before:absolute [&_li]:before:-left-4 [&_li]:before:text-muted-foreground [&_li]:before:content-['├─'] [&_li:last-child]:before:content-['└─']">
-    <slot />
-  </div>
+  <div class="file-tree min-w-max" set:html={tree} />
 </div>
+
+<style>
+  .file-tree :global(ul) {
+    margin: 0;
+    list-style: none;
+    padding-left: 1.5rem;
+  }
+  .file-tree :global(li) {
+    margin-block: 0.35rem;
+  }
+  .file-tree :global(summary) {
+    cursor: pointer;
+  }
+  .file-tree :global(summary),
+  .file-tree :global(.file-tree-file) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .file-tree :global(summary:focus-visible) {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+  .file-tree :global(summary::before) {
+    content: "▸";
+    width: 0.75rem;
+  }
+  .file-tree :global(details[open] > summary::before) {
+    content: "▾";
+  }
+  .file-tree :global(summary::-webkit-details-marker) {
+    display: none;
+  }
+  .file-tree :global(.file-tree-file) {
+    padding-left: 1.25rem;
+  }
+  .file-tree :global(.file-tree-icon) {
+    flex-shrink: 0;
+  }
+  @media print {
+    .file-tree :global(details::details-content) {
+      display: block !important;
+      content-visibility: visible !important;
+    }
+    .file-tree :global(details > ul) {
+      display: block !important;
+    }
+  }
+</style>

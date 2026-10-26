@@ -1,11 +1,21 @@
-<select
-  aria-label="Color theme"
-  data-theme-select
-  class="h-9 w-24 rounded-lg border-0 bg-transparent py-1 pl-2 pr-7 text-sm text-neutral-600 focus-visible:ring-2 focus-visible:ring-blue-500 dark:text-neutral-300 dark:[color-scheme:dark]"
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  type="button"
+  data-theme-cycle
+  aria-label="Theme: Dark. Switch to Light theme"
+  title="Theme: Dark. Switch to Light theme"
+  class="flex size-9 items-center justify-center rounded-lg text-neutral-600 transition hover:bg-neutral-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 dark:text-neutral-300 dark:hover:bg-neutral-700"
 >
-  <option value="light">Light</option>
-  <option value="dark" selected>
-    Dark
-  </option>
-  <option value="auto">System</option>
-</select>
+  <span data-theme-icon="dark">
+    <Icon name="ph:moon" class="size-5" aria-hidden="true" />
+  </span>
+  <span data-theme-icon="light" class="hidden">
+    <Icon name="ph:sun" class="size-5" aria-hidden="true" />
+  </span>
+  <span data-theme-icon="auto" class="hidden">
+    <Icon name="ph:monitor" class="size-5" aria-hidden="true" />
+  </span>
+</button>

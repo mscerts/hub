@@ -351,6 +351,7 @@ To discover genuine Microsoft Learn exercise units:
 - **Applied Skills are a separate content type**, not part of this modules/units catalog at all — they live under `https://learn.microsoft.com/credentials/applied-skills/<slug>` (a distinct URL namespace, inherently hands-on by definition, no title-pattern matching needed). Don't expect to find them in `learn-catalog.json`; discover and verify them the normal way (search Microsoft Learn directly) for the Applied Skills tab.
 
 ### Voucher Pages
+- The homepage's New vouchers list sorts by explicit `lastUpdated` dates (newest first, title as a tie-breaker). Set a date when adding or updating an offer; undated pages sort last. Initial dates were seeded from each active page's last Git modification, including maintenance edits, rather than treated as offer launch dates. The voucher index and sidebar keep their existing ordering.
 - Files are lowercase slugs at `src/content/docs/vouchers/<slug>.mdx`; routes are `/certs/vouchers/<slug>/`.
 - Frontmatter requires `title`, `description`, and `voucherCategory`, with category exactly `"100%"`, `"50%"`, or `"Special"`.
 - `VoucherList.astro` automatically includes categorized pages on the voucher index, sorted by title. The sidebar remains hand-maintained.
