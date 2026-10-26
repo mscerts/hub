@@ -48,6 +48,18 @@ export function learnInputs() {
         ],
       },
       {
+        uid: "learn.git-basics",
+        path: "/training/modules/git-basics",
+        title: "Git basics",
+        unitSig: "sig-basics",
+        units: ["Introduction", "Create a repository", "Summary"],
+        unitUrls: [
+          "/training/modules/git-basics/1-introduction",
+          "/training/modules/git-basics/2-create-a-repository",
+          "/training/modules/git-basics/3-summary",
+        ],
+      },
+      {
         uid: "learn.advanced-git-workflows",
         path: "/training/modules/advanced-git-workflows",
         title: "Advanced Git workflows",
@@ -92,6 +104,7 @@ export const scopeMapFor = (inputs = learnInputs()) =>
 export const SCOPE = scopeMapFor().inputs.snapshot;
 export const PICKED = [
   ["/training/modules/advanced-git-workflows", "sig-advanced"],
+  ["/training/modules/git-basics", "sig-basics"],
 ];
 export const FINGERPRINT = fingerprintOfSnapshot(SCOPE);
 
@@ -126,13 +139,13 @@ export function exampleCourse() {
       via: "/training/modules/intro-to-github",
     }),
   ];
+  // a module is placed once, as a module (docs/courses.md): the example has no unit pick
   tasks[2].picks = [
     pick({
-      target: {
-        kind: "unit",
-        path: "/training/modules/intro-to-github/2-what-is-git",
-      },
-      title: "What is Git?",
+      target: { kind: "module", path: "/training/modules/git-basics" },
+      title: "Git basics",
+      source: "P4",
+      evidence: "Git basics: create a repository, commit and push.",
     }),
     pick({
       target: { kind: "docs", path: "/azure/github/branches" },

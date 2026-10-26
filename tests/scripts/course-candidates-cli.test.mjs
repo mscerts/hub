@@ -91,6 +91,25 @@ function world({ docsFiles = true } = {}) {
       "/azure/github/branches\t2026-10-01\n/azure/github/merging\t-\n/azure/github/overview\t2026-10-02\n",
     );
     writeFileSync(join(data, "docs-redirects.json"), "[]");
+    writeFileSync(
+      join(data, "docs-toc.json"),
+      JSON.stringify({
+        schemaVersion: 1,
+        tocs: [
+          {
+            path: "/azure/github",
+            groups: [
+              {
+                title: ["Branches"],
+                landing: null,
+                pages: ["/azure/github/branches", "/azure/github/merging"],
+              },
+            ],
+          },
+        ],
+        noToc: {},
+      }),
+    );
   }
   return { base, root, dir, courses: inputs.courses };
 }
@@ -301,6 +320,11 @@ test("loadLearnsyncDocs reads a checkout, or GitHub when there is none, and repo
   assert.equal(local.docs.length, 3);
   assert.ok(local.docPaths.has("/azure/github/merging"));
   assert.deepEqual(local.redirects, []);
+  assert.equal(
+    local.docsToc.tocs.length,
+    1,
+    "the sidebar groups of the checkout",
+  );
   assert.deepEqual(local.warnings, []);
 
   const remote = await loadLearnsyncDocs({
@@ -313,8 +337,10 @@ test("loadLearnsyncDocs reads a checkout, or GitHub when there is none, and repo
   assert.equal(remote.docs.length, 3);
   assert.deepEqual([...remote.docPaths], ["/azure/github/branches"]);
   assert.equal(remote.redirects, null);
+  assert.equal(remote.docsToc, null);
   assert.deepEqual(remote.warnings, [
     "docs-redirects.json is not in learnsync: the filters that need it are off",
+    "docs-toc.json is read from a learnsync checkout only: no concept pages are found next to a page in the docs sidebar",
   ]);
 
   const none = await loadLearnsyncDocs({
@@ -323,5 +349,11 @@ test("loadLearnsyncDocs reads a checkout, or GitHub when there is none, and repo
   });
   assert.equal(none.docs, null);
   assert.equal(none.docPaths, null);
-  assert.equal(none.warnings.length, 3);
+  assert.equal(none.docsToc, null);
+  assert.equal(
+    none.warnings.length,
+    4,
+    "the three files and the sidebar groups",
+  );
+  assert.match(none.warnings[3], /docs-toc.json is not in learnsync/);
 });

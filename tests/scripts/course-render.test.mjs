@@ -213,11 +213,13 @@ test("modules and units go to Learning, docs pages to Documentation, a supportin
     page,
     /<TabItem label="Documentation">\n    <CardGrid>\n      <LinkCard title="What is GitHub\?" href="https:\/\/learn\.microsoft\.com\/azure\/github\/overview\?WT\.mc_id=studentamb_165290" target="_blank"\/>/,
   );
-  // task 3: a unit in Learning and a supporting doc in Documentation, without a description
+  // task 3: a module in Learning (a course has no unit cards: a module is placed once, as a module) and a supporting
+  // doc in Documentation, without a description
   assert.match(
     page,
-    /<LinkCard title="What is Git\?" href="https:\/\/learn\.microsoft\.com\/training\/modules\/intro-to-github\/2-what-is-git\?WT\.mc_id=studentamb_165290" target="_blank"\/>/,
+    /<LinkCard title="Git basics" href="https:\/\/learn\.microsoft\.com\/training\/modules\/git-basics\?WT\.mc_id=studentamb_165290" target="_blank"\/>/,
   );
+  assert.ok(!page.includes("/2-what-is-git"), "no card of a unit");
   assert.match(
     page,
     /<TabItem label="Documentation">\n    <CardGrid>\n      <LinkCard title="About branches" href="[^"]+" target="_blank"\/>/,

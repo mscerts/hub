@@ -172,8 +172,8 @@ test("a module of the official course whose content changed makes the picks that
   assert.deepEqual(p.picks.hard, []);
   assert.equal(
     p.picks.soft.length,
-    2,
-    "the module pick and the unit pick; the documentation pages it lists are unaffected by a content-only change",
+    1,
+    "the module pick; the documentation pages it lists are unaffected by a content-only change",
   );
   assert.ok(
     p.picks.soft.every(
@@ -280,23 +280,6 @@ test("a documentation page the module stopped listing is a hard break; one liste
   assert.equal(moved.status, "review");
 });
 
-test("a unit that no longer exists in its module is a hard break", () => {
-  const p = plan({
-    learn: (inputs) =>
-      (inputs.modules[0].unitUrls = inputs.modules[0].unitUrls.filter(
-        (u) => !u.endsWith("2-what-is-git"),
-      )),
-  });
-  assert.equal(p.status, "stale");
-  assert.ok(
-    p.picks.hard.some(
-      (h) =>
-        h.path === "/training/modules/intro-to-github/2-what-is-git" &&
-        h.reason === "the unit no longer exists in its module",
-    ),
-  );
-});
-
 test("modules outside the official course (inputs.picked): gone is hard, changed is soft", () => {
   const gone = plan({
     learn: (inputs) => (
@@ -315,7 +298,9 @@ test("modules outside the official course (inputs.picked): gone is hard, changed
     "/training/modules/advanced-git-workflows",
   ]);
   const changed = plan({
-    learn: (inputs) => (inputs.modules[1].unitSig = "sig-advanced-2"),
+    learn: (inputs) =>
+      (inputs.modules.find((m) => m.path.includes("advanced")).unitSig =
+        "sig-advanced-2"),
   });
   assert.deepEqual(
     changed.picks.soft.map((s) => [s.source, s.reason]),

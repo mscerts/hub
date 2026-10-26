@@ -22,9 +22,14 @@ export function worldPools() {
 
 /**
  * The generator's candidates file for TASKS (or other tasks). The fundamentals of the skill groups are left out
- * unless `foundations` is true, so that the tests of the tasks keep their data.
+ * unless `foundations` is true, so that the tests of the tasks keep their data. The generator's default offers only
+ * the hands-on units (a module is placed once, as a module); `units: "all"` offers every unit, for the tests that
+ * need a unit candidate or an older gated file that still holds one.
  */
-export function candidatesFile(tasks = TASKS, { foundations = false } = {}) {
+export function candidatesFile(
+  tasks = TASKS,
+  { foundations = false, units = "hands-on" } = {},
+) {
   const { world, pools } = worldPools();
   const candidates = generateCandidates({
     code: EXAM.code,
@@ -33,6 +38,7 @@ export function candidatesFile(tasks = TASKS, { foundations = false } = {}) {
     pools,
     options: {
       genericProductShare: 0.6,
+      units,
       ...(foundations ? {} : { foundations: false }),
     },
   });
@@ -117,8 +123,8 @@ export function judgedFor(batch, { judge } = {}) {
  * of the units, so they wait for the maintainer), P4 supporting (flagged as another role, so they wait too), the
  * rest rejected.
  */
-export function exampleJudged() {
-  const { batches: bs } = batches();
+export function exampleJudged(options = {}) {
+  const { batches: bs } = batches(TASKS, options);
   return judgedFor(bs[0], {
     judge: (j, c) =>
       c.source === "P4"

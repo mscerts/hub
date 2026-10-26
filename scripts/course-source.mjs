@@ -148,7 +148,14 @@ export async function loadLearnsyncDocs({ dir, fetchImpl }) {
     const redirects = has("docs-redirects.json")
       ? readJson(join(data, "docs-redirects.json"))
       : (note("docs-redirects.json"), null);
-    return { docs, docPaths, redirects, warnings };
+    // the sidebar groups are optional research data: without them the generator finds no sidebar neighbours
+    const docsToc = has("docs-toc.json")
+      ? readJson(join(data, "docs-toc.json"))
+      : (warnings.push(
+          "docs-toc.json is not in learnsync: no concept pages are found next to a page in the docs sidebar",
+        ),
+        null);
+    return { docs, docPaths, redirects, docsToc, warnings };
   }
   const [docs, redirects] = await Promise.all(
     ["docs-catalog.json", "docs-redirects.json"].map((f) =>
@@ -162,7 +169,11 @@ export async function loadLearnsyncDocs({ dir, fetchImpl }) {
   if (!docs) note("docs-catalog.json");
   if (!docPaths) note("docs-urls.txt");
   if (!redirects) note("docs-redirects.json");
-  return { docs, docPaths, redirects, warnings };
+  // the sidebar groups are optional and large: read from GitHub only when asked (LEARNSYNC_DIR has them)
+  warnings.push(
+    "docs-toc.json is read from a learnsync checkout only: no concept pages are found next to a page in the docs sidebar",
+  );
+  return { docs, docPaths, redirects, docsToc: null, warnings };
 }
 
 /**

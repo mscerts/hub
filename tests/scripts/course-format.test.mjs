@@ -42,7 +42,9 @@ test("a valid pick has no problems", () => {
   assert.deepEqual(pickProblems(supporting()), []);
   assert.deepEqual(
     pickProblems(
-      pick({ target: { kind: "unit", path: "/training/modules/m/3-unit" } }),
+      pick({
+        target: { kind: "module", path: "/training/modules/m" },
+      }),
     ),
     [],
   );
@@ -57,6 +59,15 @@ test("a valid pick has no problems", () => {
     [],
   );
   assert.deepEqual(pickProblems(pick({ was: "/azure/old" })), []);
+});
+
+test("a course places a module, not its units: a unit pick is a problem whatever else is right", () => {
+  const problems = pickProblems(
+    pick({ target: { kind: "unit", path: "/training/modules/m/3-unit" } }),
+  );
+  assert.equal(problems.length, 1);
+  assert.match(problems[0], /places a module, not its units/);
+  assert.match(problems[0], /lab page/);
 });
 
 test("target problems: kind, canonical path, and the path shape each kind needs", () => {

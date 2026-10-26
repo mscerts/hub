@@ -678,7 +678,7 @@ test("what the maintainer decided is applied first and is never asked again", ()
   assert.deepEqual(other.review, ["flagged: other-role"]);
 });
 
-const judgedFiles = () => [exampleJudged()];
+const judgedFiles = () => [exampleJudged({ units: "all" })];
 
 test("gating a judged file: a decision for every candidate in task and path order, and the numbers", () => {
   const files = judgedFiles();

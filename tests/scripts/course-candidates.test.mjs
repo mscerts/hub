@@ -14,8 +14,9 @@ import {
   scopeOf,
 } from "./helpers/example-candidates.mjs";
 
-// the invented world is tiny, so "generic product" (share of all modules) is read generously
-const OPTIONS = { genericProductShare: 0.6 };
+// the invented world is tiny, so "generic product" (share of all modules) is read generously; the tests of the
+// units run with `units: "all"` (the default offers only the hands-on ones, see the end of this file)
+const OPTIONS = { genericProductShare: 0.6, units: "all" };
 
 function run({
   tasks,
@@ -549,4 +550,55 @@ test("a section of a family that no module of the exam lists ranks lower and is 
   assert.ok(
     run({ tasks: [task] }).exam.sections.includes("/azure/virtual-network"),
   );
+});
+
+test("a module is placed once, as a module: by default no unit is a candidate, but a hands-on unit still is, for the lab page", () => {
+  const world = candidateWorld();
+  const routes = world.catalog.modules.find(
+    (m) => m.path === "/training/modules/manage-traffic-routes",
+  );
+  routes.units.push("Exercise - Create custom user-defined routes");
+  routes.unitUrls.push(
+    "/training/modules/manage-traffic-routes/4-exercise-create-custom-user-defined-routes",
+  );
+  const tasks = ["Configure user-defined routes"];
+  const kinds = (units) => {
+    const out = run({ tasks, world, options: { units } });
+    return out.tasks[0].candidates
+      .filter((c) => c.target.kind === "unit")
+      .map((c) => c.target.path);
+  };
+  // the explicit option and the default are the same
+  assert.equal(DEFAULTS.units, "hands-on");
+  const handsOn = kinds("hands-on");
+  assert.deepEqual(handsOn, [
+    "/training/modules/manage-traffic-routes/4-exercise-create-custom-user-defined-routes",
+  ]);
+  const all = kinds("all");
+  assert.ok(
+    all.length > handsOn.length,
+    "units: all offers the others as before",
+  );
+  assert.ok(
+    all.includes("/training/modules/manage-traffic-routes/3-unit"),
+    "a plain unit is offered only with units: all",
+  );
+  // the module itself is a candidate either way
+  const out = run({ tasks, world, options: { units: "hands-on" } });
+  assert.deepEqual(paths(out.tasks[0], "P1", "module"), [
+    "/training/modules/manage-traffic-routes",
+  ]);
+  assert.equal(out.params.units, "hands-on");
+});
+
+test("the default of the generator offers no plain unit of another exam's course either", () => {
+  const out = run({
+    tasks: ["Configure peering between virtual networks"],
+    options: { units: "hands-on" },
+  });
+  assert.deepEqual(
+    out.tasks[0].candidates.filter((c) => c.target.kind === "unit"),
+    [],
+  );
+  assert.ok(out.tasks[0].candidates.some((c) => c.target.kind === "module"));
 });

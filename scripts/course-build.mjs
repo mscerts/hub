@@ -216,6 +216,14 @@ export async function main(argv, deps = {}) {
     log(
       `${routing.classic.length} accepted classic pages are not in the course (routing.classic).`,
     );
+  if (routing.collapsed.length)
+    log(
+      `${routing.collapsed.length} accepted units became their module (a module is placed once, as a module: routing.collapsed).`,
+    );
+  if (routing.blocked.length)
+    log(
+      `${routing.blocked.length} accepted units are left out because the maintainer had rejected their module for that task (routing.blocked).`,
+    );
   log(
     `${routing.handsOn.length} accepted hands-on pages are not in the course: the lab page collects them (node scripts/course-labs.mjs ${code} --routing ${routingFile}); ${routing.repeats.length} pages fitted several tasks and are shown once.`,
   );

@@ -39,8 +39,10 @@ import { isClassic } from "./course-classic.mjs";
 import {
   FOUNDATION_DEFAULTS,
   flattenFoundations,
+  groupKeyOf,
 } from "./course-foundations.mjs";
 import { handsOnReason } from "./course-handson.mjs";
+import { buildTocLookup, isConceptPath } from "./course-toc.mjs";
 import { LexicalIndex, queryTerms } from "./course-lexical.mjs";
 import { learnPath } from "./course-scope.mjs";
 import { flattenTasks } from "./course-status.mjs";
@@ -99,6 +101,16 @@ export const DEFAULTS = Object.freeze({
   genericProductShare: 0.08,
   // how many ranked pages a search examines at most: every one
   scan: NO_LIMIT,
+  // which units are candidates: "hands-on" (only the units the lab page collects) or "all" (see unitIsOffered)
+  units: "hands-on",
+  // the concept pages that sit next to a page found for the group in the documentation sidebar are candidates of
+  // its fundamentals (needs learnsync's docs-toc.json; false leaves them out)
+  sidebar: true,
+  // a documentation page found for a task seeds the sidebar step only when the exam's own modules list it (P2) or it
+  // covers at least this share of the task's own words
+  sidebarSeedCoverage: 0.6,
+  // ... and a sibling it brings must cover at least this share of the skill group's own words
+  sidebarCoverage: 0.15,
 });
 
 const byText = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
@@ -176,6 +188,7 @@ const nonLatinShare = (text) => {
  *                can be candidates
  *   docPaths     Set of every live Learn path (docs-urls.txt), optional: enables the not-in-cache filter
  *   redirects    docs-redirects.json, optional: enables the moved filter
+ *   docsToc      docs-toc.json, optional: the sidebar groups of the documentation (`siblingsOf`, course-toc.mjs)
  */
 export function buildPools({
   catalog,
@@ -185,8 +198,10 @@ export function buildPools({
   docs = null,
   docPaths = null,
   redirects = null,
+  docsToc = null,
   boilerplateModules = BOILERPLATE_MODULES,
 }) {
+  const toc = buildTocLookup(docsToc);
   const modules = new Map();
   for (const m of catalog?.modules ?? []) {
     if (!m?.path) continue;
@@ -366,6 +381,8 @@ export function buildPools({
     modules,
     removed,
     official,
+    siblingsOf: toc.pages > 0 ? toc.siblingsOf : null,
+    hasDocsToc: toc.pages > 0,
     moduleIndex,
     unitIndex,
     units,
@@ -439,6 +456,27 @@ export function hardFilter({ kind, path, title }, pools) {
 }
 
 const moduleOfUnit = (pools, unitPath) => pools.units.get(unitPath)?.module;
+
+/**
+ * Whether a unit is offered as a candidate. A module is placed once, as a module, in the first skill group where it
+ * fits (maintainer, 2026-10-21; docs/courses.md), so units of a module are not candidates of their own. The one
+ * exception is a hands-on unit (an exercise, a simulation, a unit of a guided or challenge project): the course
+ * does not show it, but its pick is how the lab page learns about it (`routing.handsOn`, docs/course-labs.md).
+ * `units: "all"` offers every unit, as before the rule.
+ */
+export function unitIsOffered(pools, unitPath, units) {
+  if (units === "all") return true;
+  const unit = pools.units.get(unitPath);
+  if (!unit) return false;
+  return (
+    handsOnReason({
+      kind: "unit",
+      path: unitPath,
+      title: unit.title,
+      moduleTitle: pools.modules.get(unit.module)?.title,
+    }) !== null
+  );
+}
 
 /**
  * What the exam is about, as far as its official course tells: the modules' products and the families of the
@@ -780,7 +818,9 @@ function candidatesForTask(task, ctx) {
     gather({
       group: "P1 unit",
       index: pools.unitIndex,
-      include: (id) => own.has(moduleOfUnit(pools, id)),
+      include: (id) =>
+        own.has(moduleOfUnit(pools, id)) &&
+        unitIsOffered(pools, id, options.units),
       classify: moduleFilter("unit"),
       minCoverage: relax * options.minCoverage.P1,
       limit: options.limits.p1Unit,
@@ -851,7 +891,12 @@ function candidatesForTask(task, ctx) {
       index: pools.unitIndex,
       include: (id) => {
         const path = moduleOfUnit(pools, id);
-        return path && pools.official.has(path) && !own.has(path);
+        return (
+          path &&
+          pools.official.has(path) &&
+          !own.has(path) &&
+          unitIsOffered(pools, id, options.units)
+        );
       },
       classify: fitFilter("unit"),
       minCoverage: minCoverageFor("P3"),
@@ -1100,6 +1145,68 @@ function conceptCandidates(f, ctx, have) {
 }
 
 /**
+ * The concept pages that sit next to pages already found for a skill group, in the documentation sidebar
+ * (learnsync's docs-toc.json): the writers put "Learn about groups" in the same group as "Manage groups", so a
+ * how-to page found for a task brings its concept page for the group's fundamentals. `f` is the group's
+ * fundamentals pseudo-task, `seeds` the paths of the documentation pages found for the group's tasks and for
+ * its fundamentals, `have` the paths already in the fundamentals. A sibling is a candidate when
+ *   - its address names a concept article (`concept-`, `what-is-`, `-overview`, ...) or its title reads as theory
+ *     (CONCEPT_TITLE), and the docs catalog knows it,
+ *   - it covers at least `sidebarCoverage` of the group's own words (the sidebar group is broad: "Authentication >
+ *     Concepts" sits next to a page found for a task about users, and says nothing about users),
+ *   - and the hard filters pass (counted under `dropped`).
+ * Each carries `sidebar: { of: [the seeds it sits next to] }` and `concept: true`.
+ */
+function sidebarCandidates(f, seeds, ctx, have) {
+  const { pools, options, listed } = ctx;
+  if (!options.sidebar || !pools.siblingsOf)
+    return { candidates: [], dropped: 0 };
+  const query = queryTerms(f.text);
+  if (query.terms.length === 0) return { candidates: [], dropped: 0 };
+  const of = new Map();
+  for (const seed of seeds)
+    for (const path of pools.siblingsOf(seed)) {
+      if (have.has(path)) continue;
+      const meta = pools.docMeta.get(path);
+      if (!meta) continue;
+      if (!isConceptPath(path) && !CONCEPT_TITLE.test(meta.title ?? ""))
+        continue;
+      const list = of.get(path) ?? [];
+      if (!list.includes(seed)) list.push(seed);
+      of.set(path, list);
+    }
+  if (of.size === 0) return { candidates: [], dropped: 0 };
+  const hits = pools.docsIndex.search(query, {
+    include: (id) => of.has(id),
+    classify: (id) =>
+      hardFilter(
+        { kind: "docs", path: id, title: pools.docMeta.get(id).title },
+        pools,
+      ),
+    minCoverage: options.sidebarCoverage,
+    scan: options.scan,
+  });
+  const dropped = [...(hits.dropped?.values() ?? [])].reduce(
+    (n, e) => n + e.count,
+    0,
+  );
+  return {
+    candidates: hits.hits
+      .map((h) => ({
+        source: listed.has(h.id) ? "P2" : "P4",
+        target: { kind: "docs", path: h.id },
+        title: pools.docMeta.get(h.id).title,
+        ...(listed.has(h.id) ? { via: listed.get(h.id)[0] } : {}),
+        family: docFamily(h.id),
+        concept: true,
+        sidebar: { of: of.get(h.id) },
+      }))
+      .sort((x, y) => byText(x.target.path, y.target.path)),
+    dropped,
+  };
+}
+
+/**
  * The candidates of every task of an exam.
  *   code    the exam code
  *   guide   the parsed study guide (parseGuide, with `hash` when known)
@@ -1196,10 +1303,40 @@ export function generateCandidates({
             { ...ctx, options: opts },
             new Set(found.candidates.map((c) => c.target.path)),
           );
+          // the concept pages next to the documentation pages found for the group, in the docs sidebar
+          const groupKey = groupKeyOf(f.key);
+          const seeds = [
+            ...new Set(
+              [
+                ...found.candidates,
+                ...concept.candidates,
+                ...tasks
+                  .filter((t) => groupKeyOf(t.key) === groupKey)
+                  .flatMap((t) => t.candidates),
+              ]
+                .filter(
+                  (c) =>
+                    c.target.kind === "docs" &&
+                    (c.concept ||
+                      c.source === "P2" ||
+                      (c.coverage ?? 0) >= opts.sidebarSeedCoverage),
+                )
+                .map((c) => c.target.path),
+            ),
+          ].sort(byText);
+          const sidebar = sidebarCandidates(
+            f,
+            seeds,
+            { ...ctx, options: opts },
+            new Set([
+              ...found.candidates.map((c) => c.target.path),
+              ...concept.candidates.map((c) => c.target.path),
+            ]),
+          );
           let rank = found.candidates.length;
           found.candidates = [
             ...found.candidates,
-            ...concept.candidates.map((c) => ({
+            ...[...concept.candidates, ...sidebar.candidates].map((c) => ({
               ...c,
               rank: ++rank,
               score: 0,
@@ -1211,6 +1348,9 @@ export function generateCandidates({
             ...found.dropped,
             ...(concept.dropped
               ? { "concept-pass": { count: concept.dropped, samples: [] } }
+              : {}),
+            ...(sidebar.dropped
+              ? { "sidebar-pass": { count: sidebar.dropped, samples: [] } }
               : {}),
           };
           const kept = [];
@@ -1248,10 +1388,12 @@ export function generateCandidates({
         });
   const foundationBySource = { P1: 0, P2: 0, P3: 0, P4: 0 };
   let foundationCandidates = 0;
+  let sidebarSiblings = 0;
   for (const f of foundations)
     for (const c of f.candidates) {
       foundationBySource[c.source]++;
       foundationCandidates++;
+      if (c.sidebar) sidebarSiblings++;
     }
   return {
     schemaVersion: CANDIDATES_SCHEMA_VERSION,
@@ -1265,6 +1407,10 @@ export function generateCandidates({
         ]),
       ),
       scan: Number.isFinite(opts.scan) ? opts.scan : null,
+      units: opts.units,
+      sidebar: opts.sidebar && pools.hasDocsToc === true,
+      sidebarSeedCoverage: opts.sidebarSeedCoverage,
+      sidebarCoverage: opts.sidebarCoverage,
       minCoverage: opts.minCoverage,
       relativeFloor: opts.relativeFloor,
       anchorCoverage: opts.anchorCoverage,
@@ -1301,6 +1447,7 @@ export function generateCandidates({
           .length,
         candidates: foundationCandidates,
         bySource: foundationBySource,
+        sidebarSiblings,
       },
       tasks: tasks.length,
       tasksWithoutP1: tasks.filter((t) => t.noP1).length,

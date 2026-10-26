@@ -4,9 +4,13 @@
  * Microsoft Learn modules, units and documentation pages with their provenance (P1-P4). It only shortlists;
  * the judging step decides.
  *
- *   node scripts/course-candidates.mjs <CODE> [--out DIR] [--no-foundations]
+ *   node scripts/course-candidates.mjs <CODE> [--out DIR] [--no-foundations] [--units all] [--no-sidebar]
  *       Writes <CODE>.candidates.json to DIR (default: <tmp>/course-candidates) and prints a summary. Besides the
- *       tasks it shortlists the fundamentals of every skill group; --no-foundations leaves them out.
+ *       tasks it shortlists the fundamentals of every skill group; --no-foundations leaves them out. A module is
+ *       placed once, as a module, so the only units it offers are the hands-on ones the lab page collects;
+ *       --units all offers every unit, as before that rule. With learnsync's docs-toc.json the fundamentals also
+ *       get the concept pages that sit next to a documentation page found for the group in the docs sidebar;
+ *       --no-sidebar leaves them out.
  *   node scripts/course-candidates.mjs <CODE> --task <text> [--json]
  *       Prints the shortlist of the tasks whose text contains <text> (case-insensitive), and of the fundamentals
  *       of the skill groups whose title contains it, and writes nothing.
@@ -37,7 +41,7 @@ import { parseGuide } from "./lib/course-guide.mjs";
 import { buildScopeMap } from "./lib/course-scope.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-candidates.mjs <CODE> [--out DIR] [--no-foundations]
+const USAGE = `Usage: node scripts/course-candidates.mjs <CODE> [--out DIR] [--no-foundations] [--units all] [--no-sidebar]
        node scripts/course-candidates.mjs <CODE> --task <text> [--json]`;
 
 function parseArgs(argv) {
@@ -47,12 +51,20 @@ function parseArgs(argv) {
     task: null,
     json: false,
     noFoundations: false,
+    noSidebar: false,
+    units: null,
   };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--json") options.json = true;
     else if (arg === "--no-foundations") options.noFoundations = true;
-    else if (arg === "--out" || arg === "--task") {
+    else if (arg === "--no-sidebar") options.noSidebar = true;
+    else if (arg === "--units") {
+      const value = argv[++i];
+      if (value !== "all" && value !== "hands-on")
+        throw new Error('--units takes "all" or "hands-on"');
+      options.units = value;
+    } else if (arg === "--out" || arg === "--task") {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
       options[arg.slice(2)] = argv[++i];
     } else if (arg.startsWith("-")) throw new Error(`Unknown option ${arg}`);
@@ -151,6 +163,7 @@ export async function loadPools({
     docs: docs.docs,
     docPaths: docs.docPaths,
     redirects: docs.redirects,
+    docsToc: docs.docsToc,
   });
   return { learnsync, docs, courses, pools };
 }
@@ -211,7 +224,11 @@ export async function main(argv, deps = {}) {
     guide,
     scope,
     pools,
-    options: options.noFoundations ? { foundations: false } : {},
+    options: {
+      ...(options.noFoundations ? { foundations: false } : {}),
+      ...(options.units ? { units: options.units } : {}),
+      ...(options.noSidebar ? { sidebar: false } : {}),
+    },
   });
 
   if (options.task) {

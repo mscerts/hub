@@ -214,15 +214,6 @@ export function affectedPicks({
       } else if (!official && pickedMissing.has(module)) {
         add("hard", "its module left the catalog");
       } else {
-        if (pick.target.kind === "unit") {
-          const record = current.catalog.get(module);
-          if (
-            record &&
-            Array.isArray(record.unitUrls) &&
-            !record.unitUrls.includes(pick.target.path)
-          )
-            add("hard", "the unit no longer exists in its module");
-        }
         if (pick.source === "P2" && resourcesChanged.has(module)) {
           const links = current.scope.get(module)?.resources?.links ?? [];
           if (listedUnder(links, pick.target.path)) {

@@ -391,7 +391,7 @@ const answerOf = (pagesByTask) => ({
 const page = (path, why = "", title = "") => ({ path, title, why });
 
 function merged(pagesByTask, options = {}) {
-  const { candidates } = candidatesFile();
+  const { candidates } = candidatesFile(undefined, { units: "all" });
   const before = JSON.stringify(candidates);
   const result = mergeProposals({
     candidates,

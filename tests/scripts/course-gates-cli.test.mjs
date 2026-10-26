@@ -37,7 +37,7 @@ function world({ judged = true } = {}) {
         "course-judge",
         "NET-100.01-configure-virtual-networks.judged.json",
       ),
-      exampleJudged(),
+      exampleJudged({ units: "all" }),
     );
   const root = join(base, "hub");
   mkdirSync(root, { recursive: true });
@@ -345,7 +345,7 @@ test("a gate run with learnsync data accepts an old page with a warning", async 
   const w = world();
   const dir = join(w.base, "learnsync");
   mkdirSync(join(dir, "data"), { recursive: true });
-  const judged = exampleJudged();
+  const judged = exampleJudged({ units: "all" });
   const docs = judged.tasks
     .flatMap((t) => t.items)
     .find((i) => i.target.kind === "docs" && i.source === "P2");

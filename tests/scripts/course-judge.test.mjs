@@ -122,7 +122,11 @@ test("how much of the task's wording a quote carries, an abbreviation counting f
 });
 
 test("the evidence of a candidate is the text a judge may quote: titles, units, descriptions, link texts", () => {
-  const { batches: bs, pools, candidates } = batches();
+  const {
+    batches: bs,
+    pools,
+    candidates,
+  } = batches(undefined, { units: "all" });
   const task = candidates.tasks[0];
   const find = (kind, source) =>
     task.candidates.find((c) => c.target.kind === kind && c.source === source);
@@ -564,7 +568,7 @@ test("merging keeps every candidate with the judge's answer and its flags", () =
 });
 
 test("a quote that was kept without being verified is marked and counted", () => {
-  const batch = one();
+  const batch = batches(undefined, { units: "all" }).batches[0];
   const { task, c } = findCandidate(batch, "P1", "unit");
   const v = validateJudgments(
     batch,

@@ -179,6 +179,7 @@ export function buildBatches({
       ...(c.viaGroup ? { viaGroup: true } : {}),
       ...(c.relaxed ? { relaxed: true } : {}),
       ...(c.concept ? { concept: true } : {}),
+      ...(c.sidebar ? { sidebar: c.sidebar } : {}),
       ...(c.recommendedBy
         ? {
             recommendedBy: c.recommendedBy.map(
@@ -303,7 +304,7 @@ Rules:
 6. \`flags\` lists what is wrong with the candidate even when you pick it (none is fine):
 ${flagLines()}
 7. \`confidence\` is \`high\`, \`medium\` or \`low\`: how sure you are of the verdict. Say \`low\` whenever you would be guessing; a \`low\` is a question for the maintainer, not a failure.
-8. The candidate's \`signals\` and \`coverage\` come from a word search; they are hints about where it came from, not evidence. \`source\` says which pool: P1 the exam's own course, P2 documentation its modules list, P3 another exam's course, P4 anything else a word search found, P5 a page a model named for this task from its own knowledge (a script confirmed that the page exists). That a page was found or named is no evidence that it belongs: judge it on its evidence like any other.
+8. The candidate's \`signals\` and \`coverage\` come from a word search; they are hints about where it came from, not evidence. A candidate with \`sidebar\` sits in the same group of the documentation's left sidebar as the pages listed in \`sidebar.of\` (pages found for this skill group): Microsoft's writers put it next to them, which is a hint that it is about the same topic. \`source\` says which pool: P1 the exam's own course, P2 documentation its modules list, P3 another exam's course, P4 anything else a word search found, P5 a page a model named for this task from its own knowledge (a script confirmed that the page exists). That a page was found or named is no evidence that it belongs: judge it on its evidence like any other.
 9. You may use what you know about the exam and the product, but do not invent: if the evidence does not show it, you cannot quote it.`;
 }
 
@@ -353,7 +354,7 @@ Skill group: **${batch.group.domain} > ${batch.group.title}**${
       : ""
   }
 
-You are judging which Microsoft Learn modules, units and documentation pages belong in a study course for this exam. Each task below comes from the exam's study guide; each candidate was found by a search and has not been looked at yet. Answer from the evidence shown.
+You are judging which Microsoft Learn modules and documentation pages belong in a study course for this exam. A module is judged as a whole and is placed once in the course, as a module, so a module that fits the task at least partly is a pick; a candidate that is a single hands-on unit (an exercise or a lab) is collected on the lab page, not in the course. Each task below comes from the exam's study guide; each candidate was found by a search and has not been looked at yet. Answer from the evidence shown.
 
 ${rubricText()}${batch.tasks.some((task) => task.foundation) ? `\n\n${foundationRubricText()}` : ""}
 

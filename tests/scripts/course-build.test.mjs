@@ -158,7 +158,7 @@ test("what was inputs to the candidates is what the course records: guide hash, 
 
 test("a pick keeps the class, relation and decider the gates gave it, with its reason and evidence where the format wants them", () => {
   const { course } = build();
-  const core = find(course, "P1", "unit");
+  const core = find(course, "P1", "module");
   assert.equal(core.class, "core");
   assert.deepEqual(core.decision, { by: "auto", at: TODAY });
   assert.equal(core.relation, undefined);

@@ -750,3 +750,159 @@ test("a built group lists its fundamentals general first and then in the order o
   );
   assert.ok(group.foundations.length > 1);
 });
+
+// ---- the concept pages next to a page in the documentation sidebar (learnsync's docs-toc.json)
+const SIDEBAR_GROUP = [
+  "/azure/virtual-network/virtual-networks-udr-overview",
+  "/azure/virtual-network/concept-routing-basics",
+  "/azure/virtual-network/howto-create-route",
+  "/azure/virtual-network/concept-routing-old",
+];
+function sidebarWorld({ toc = true } = {}) {
+  const world = candidateWorld();
+  const page = (path, title) => {
+    world.docs.push({
+      title,
+      url: `https://learn.microsoft.com${path}`,
+      product: null,
+      subproduct: null,
+      description: "",
+    });
+    world.docPaths.add(path);
+  };
+  page(
+    "/azure/virtual-network/concept-routing-basics",
+    "How traffic is routed between virtual networks",
+  );
+  page("/azure/virtual-network/howto-create-route", "Add a route to a table");
+  page(
+    "/azure/virtual-network/concept-routing-old",
+    "Routing in virtual networks (retired)",
+  );
+  const docsToc = toc
+    ? {
+        schemaVersion: 1,
+        tocs: [
+          {
+            path: "/azure/virtual-network",
+            groups: [
+              { title: ["Routing"], landing: null, pages: [...SIDEBAR_GROUP] },
+            ],
+          },
+        ],
+        noToc: {},
+      }
+    : null;
+  return { ...world, docsToc };
+}
+const generateSidebar = (world, options = {}) =>
+  generateCandidates({
+    code: "NET-100",
+    guide: guideOf(TASKS),
+    scope: scopeOf(world),
+    pools: buildPools({ ...world, boilerplateModules: 2 }),
+    options: {
+      genericProductShare: 0.6,
+      // the word search of the fundamentals finds nothing: the sidebar is the only way a page gets in
+      foundations: { minCoverage: { P1: 1.01, P2: 1.01, P3: 1.01, P4: 1.01 } },
+      ...options,
+    },
+  });
+
+test("a concept page that sits next to a documentation page found for the group's tasks is a candidate of its fundamentals, and says which page it sits next to", () => {
+  const result = generateSidebar(sidebarWorld());
+  const f = result.foundations[0];
+  const sibling = f.candidates.find(
+    (c) => c.target.path === "/azure/virtual-network/concept-routing-basics",
+  );
+  assert.ok(sibling, f.candidates.map((c) => c.target.path).join(", "));
+  assert.equal(sibling.concept, true);
+  assert.equal(sibling.source, "P4");
+  assert.deepEqual(sibling.target, {
+    kind: "docs",
+    path: "/azure/virtual-network/concept-routing-basics",
+  });
+  assert.deepEqual(sibling.sidebar.of, [
+    "/azure/virtual-network/virtual-networks-udr-overview",
+  ]);
+  // a how-to page of the same group is not theory: not a candidate
+  assert.ok(
+    !f.candidates.some(
+      (c) => c.target.path === "/azure/virtual-network/howto-create-route",
+    ),
+  );
+  assert.equal(result.stats.foundations.sidebarSiblings, 1);
+  assert.equal(result.params.sidebar, true);
+});
+
+test("a sidebar neighbour that fails a hard filter (a retired page) is dropped and counted, not offered", () => {
+  const f = generateSidebar(sidebarWorld()).foundations[0];
+  assert.ok(
+    !f.candidates.some(
+      (c) => c.target.path === "/azure/virtual-network/concept-routing-old",
+    ),
+  );
+  assert.equal(f.dropped["sidebar-pass"].count, 1);
+});
+
+test("without the sidebar data, or with the option off, the fundamentals have no neighbours; the params say so", () => {
+  const none = generateSidebar(sidebarWorld({ toc: false }));
+  assert.equal(none.params.sidebar, false);
+  assert.equal(none.stats.foundations.sidebarSiblings, 0);
+  assert.ok(!none.foundations[0].candidates.some((c) => c.sidebar));
+  const off = generateSidebar(sidebarWorld(), { sidebar: false });
+  assert.equal(off.params.sidebar, false);
+  assert.equal(off.stats.foundations.sidebarSiblings, 0);
+});
+
+test("the judge sees where a sidebar candidate sits, and the prompt says what that means", () => {
+  const world = sidebarWorld();
+  const pools = buildPools({ ...world, boilerplateModules: 2 });
+  const candidates = generateSidebar(world);
+  const bs = buildBatches({
+    candidates,
+    pools,
+    exam: { code: "NET-100", name: "Network Administrator" },
+  });
+  const task = bs
+    .flatMap((b) => b.tasks)
+    .find((t) => t.foundation && t.candidates.some((c) => c.signals.sidebar));
+  assert.ok(task, "a fundamentals task with a sidebar candidate");
+  const c = task.candidates.find((x) => x.signals.sidebar);
+  assert.deepEqual(c.signals.sidebar.of, [
+    "/azure/virtual-network/virtual-networks-udr-overview",
+  ]);
+  assert.match(
+    judgePrompt(bs[0]),
+    /same group of the documentation's left sidebar/,
+  );
+});
+
+test("a sidebar neighbour is offered only when the docs catalog knows it: a page the toc lists but the catalog lacks is not a candidate", () => {
+  const world = sidebarWorld();
+  world.docsToc.tocs[0].groups[0].pages.push(
+    "/azure/virtual-network/concept-not-in-the-catalog",
+  );
+  const f = generateSidebar(world).foundations[0];
+  assert.ok(
+    f.candidates.some(
+      (c) => c.target.path === "/azure/virtual-network/concept-routing-basics",
+    ),
+  );
+  assert.ok(
+    !f.candidates.some(
+      (c) =>
+        c.target.path === "/azure/virtual-network/concept-not-in-the-catalog",
+    ),
+  );
+});
+
+test("a page the exam's own modules list (P2) seeds the sidebar step whatever its coverage; the seed threshold only applies to the others", () => {
+  const strict = generateSidebar(sidebarWorld(), { sidebarSeedCoverage: 1.01 });
+  const sibling = strict.foundations[0].candidates.find(
+    (c) => c.target.path === "/azure/virtual-network/concept-routing-basics",
+  );
+  assert.ok(sibling, "udr-overview is P2, so it is a seed even at 1.01");
+  assert.equal(strict.params.sidebarSeedCoverage, 1.01);
+  assert.equal(strict.params.sidebarCoverage, 0.15);
+});

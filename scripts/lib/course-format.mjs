@@ -91,6 +91,11 @@ export function pickProblems(pick, { foundation = false } = {}) {
   if (!pick || typeof pick !== "object") return ["a pick is not an object"];
   if (!pick.target || !PICK_KINDS.includes(pick.target.kind))
     problems.push(`target.kind must be one of ${PICK_KINDS.join(", ")}`);
+  // a module is placed as a module, once (maintainer, 2026-10-21): the units of a module are not picks of a course
+  if (pick.target?.kind === "unit")
+    problems.push(
+      "a course places a module, not its units: the pick must be the module (/training/modules/<slug>); a hands-on unit belongs on the lab page",
+    );
   const path = pick.target?.path;
   if (!present(path) || !CANONICAL_PATH.test(path) || path.endsWith("/"))
     problems.push(

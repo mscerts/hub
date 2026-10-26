@@ -25,6 +25,13 @@
  *   - A page is shown once in the whole course. A page accepted for several tasks stays under the task where it
  *     fits best (core before supporting, a sure judgement before an unsure one, the exam's own course before
  *     other sources, then the task with the fewest picks so far) and `routing.repeats` lists where else it fit.
+ *   - A module is placed as a module, once, in the FIRST skill group (in the guide's order) where it was accepted
+ *     (maintainer, 2026-10-21): it is not split into units across the page. A unit that was accepted, which the
+ *     generator no longer offers but an older gated file still holds, is collapsed into its module (listed in
+ *     `routing.collapsed`), and a module accepted in several groups stays in the earliest one (the choice among
+ *     the tasks of that group is the rule above; `routing.repeats` lists the groups it left). A unit whose module
+ *     the maintainer rejected for that task is not collapsed (the module must not come back): it is dropped and listed
+ *     in `routing.blocked`.
  */
 
 import {
@@ -128,14 +135,26 @@ const fitOrder = (a, b) =>
  * Apply the two rules of the page to the accepted rows (see the top of this file).
  *   accepted  Map: task key -> [{ pick, item }]
  *   taskKeys  the task keys in the guide's order
- * Returns { accepted, handsOn, classic, repeats }: `accepted` the same shape without the classic and hands-on
- * pages and with every page under one task only; `classic` [{ path, title, tasks }] sorted by path; `handsOn` [{ path, kind, title, reason, module?, moduleTitle?, tasks }] sorted by path;
- * `repeats` [{ path, title, shownUnder, alsoFits }] for every page that fitted several tasks.
+ * Returns { accepted, handsOn, classic, collapsed, repeats }: `accepted` the same shape without the classic and
+ * hands-on pages and with every page under one task only; `classic` [{ path, title, tasks }] sorted by path;
+ * `handsOn` [{ path, kind, title, reason, module?, moduleTitle?, tasks }] sorted by path; `collapsed`
+ * [{ path, module, title, moduleTitle, tasks }] for every accepted unit that became its module, sorted by path;
+ * `blocked` [{ path, module, title, tasks }] for every accepted unit whose module the maintainer rejected for that
+ * task (`rejected`: the Set or Map of "<task key>|<path>" the builder remembers); `repeats` [{ path, title,
+ * shownUnder, alsoFits }] for every page that fitted several tasks.
  */
-export function routePicks({ accepted, taskKeys }) {
+export function routePicks({ accepted, taskKeys, rejected = new Map() }) {
   const order = new Map(taskKeys.map((key, i) => [key, i]));
+  // the skill groups in the guide's order (a group's fundamentals key and its tasks share the group key)
+  const groupOrder = new Map();
+  for (const key of taskKeys) {
+    const group = groupKeyOf(key);
+    if (!groupOrder.has(group)) groupOrder.set(group, groupOrder.size);
+  }
   const handsOn = new Map();
   const classic = new Map();
+  const collapsed = new Map();
+  const blocked = new Map();
   const byPath = new Map();
   for (const key of taskKeys) {
     for (const row of accepted.get(key) ?? []) {
@@ -171,9 +190,54 @@ export function routePicks({ accepted, taskKeys }) {
         handsOn.set(pick.target.path, entry);
         continue;
       }
-      const list = byPath.get(pick.target.path) ?? [];
-      list.push({ ...row, taskKey: key });
-      byPath.set(pick.target.path, list);
+      // a module is placed as a module: an accepted unit that is not hands-on is its module
+      let entry = { ...row, taskKey: key };
+      if (pick.target.kind === "unit") {
+        const module = moduleOfPick(pick);
+        if (rejected.has(`${key}|${module}`)) {
+          const known = blocked.get(pick.target.path) ?? {
+            path: pick.target.path,
+            module,
+            title: pick.title,
+            tasks: [],
+          };
+          if (!known.tasks.includes(key)) known.tasks.push(key);
+          blocked.set(pick.target.path, known);
+          continue;
+        }
+        const moduleTitle = item.module?.title ?? null;
+        const known = collapsed.get(pick.target.path) ?? {
+          path: pick.target.path,
+          module,
+          title: pick.title,
+          moduleTitle,
+          tasks: [],
+        };
+        if (!known.tasks.includes(key)) known.tasks.push(key);
+        collapsed.set(pick.target.path, known);
+        entry = {
+          pick: {
+            ...pick,
+            target: { kind: "module", path: module },
+            title: moduleTitle ?? pick.title,
+          },
+          item,
+          taskKey: key,
+          fromUnit: true,
+        };
+      }
+      const path = entry.pick.target.path;
+      const list = byPath.get(path) ?? [];
+      // several units of one module accepted for the same task are one pick of the module
+      const same = list.findIndex((r) => r.taskKey === key);
+      if (same < 0) list.push(entry);
+      else if (
+        (list[same].fromUnit && !entry.fromUnit) ||
+        (list[same].fromUnit === entry.fromUnit &&
+          fitOrder(entry, list[same]) < 0)
+      )
+        list[same] = entry;
+      byPath.set(path, list);
     }
   }
   // a page that fits one task fixes that task's load first; then the pages that fit the fewest tasks choose
@@ -184,7 +248,17 @@ export function routePicks({ accepted, taskKeys }) {
   const paths = [...byPath].sort(
     (a, b) => a[1].length - b[1].length || byText(a[0], b[0]),
   );
-  for (const [path, rows] of paths) {
+  for (const [path, allRows] of paths) {
+    // a module stays in the first skill group where it was accepted; the rest of the rule is within that group
+    let rows = allRows;
+    if (allRows[0].pick.target.kind === "module" && allRows.length > 1) {
+      const first = Math.min(
+        ...allRows.map((r) => groupOrder.get(groupKeyOf(r.taskKey))),
+      );
+      rows = allRows.filter(
+        (r) => groupOrder.get(groupKeyOf(r.taskKey)) === first,
+      );
+    }
     let winner = rows[0];
     if (rows.length > 1) {
       const top = rows.reduce((m, r) => (fitOrder(r, m) < 0 ? r : m), rows[0]);
@@ -198,16 +272,17 @@ export function routePicks({ accepted, taskKeys }) {
             (b.item.coverage ?? 0) - (a.item.coverage ?? 0) ||
             order.get(a.taskKey) - order.get(b.taskKey),
         )[0];
+    }
+    if (allRows.length > 1)
       repeats.push({
         path,
         title: winner.pick.title,
         shownUnder: winner.taskKey,
-        alsoFits: rows
+        alsoFits: allRows
           .filter((r) => r !== winner)
           .map((r) => r.taskKey)
           .sort((a, b) => order.get(a) - order.get(b)),
       });
-    }
     bump(winner.taskKey);
     const list = kept.get(winner.taskKey) ?? [];
     list.push({ pick: winner.pick, item: winner.item });
@@ -223,6 +298,12 @@ export function routePicks({ accepted, taskKeys }) {
       .map(inGuideOrder)
       .sort((a, b) => byText(a.path, b.path)),
     handsOn: [...handsOn.values()]
+      .map(inGuideOrder)
+      .sort((a, b) => byText(a.path, b.path)),
+    collapsed: [...collapsed.values()]
+      .map(inGuideOrder)
+      .sort((a, b) => byText(a.path, b.path)),
+    blocked: [...blocked.values()]
       .map(inGuideOrder)
       .sort((a, b) => byText(a.path, b.path)),
     repeats,
@@ -321,7 +402,11 @@ export function buildCourse({
   }
 
   // hands-on material goes to the lab page and a page is shown once (the top of this file)
-  const routed = routePicks({ accepted: decided, taskKeys: orderedKeys });
+  const routed = routePicks({
+    accepted: decided,
+    taskKeys: orderedKeys,
+    rejected,
+  });
   const accepted = routed.accepted;
   // the picks that stay in the course but are marked for the maintainer, in the guide's order
   const review = [];
@@ -347,8 +432,15 @@ export function buildCourse({
   const routing = {
     classic: routed.classic,
     handsOn: routed.handsOn,
+    collapsed: routed.collapsed,
+    blocked: routed.blocked,
     repeats: routed.repeats,
   };
+  for (const c of routed.collapsed)
+    if (!c.moduleTitle)
+      warnings.push(
+        `${c.path} was accepted as a unit and became its module ${c.module}, but the gated file has no title for the module: the page shows the unit's title`,
+      );
 
   // everything a pick of another exam's course (or found by search) depends on is recorded with its signature
   const picked = new Map();
