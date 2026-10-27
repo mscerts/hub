@@ -409,7 +409,7 @@ Verify all voucher percentages, codes, limits, deadlines, exclusions, announceme
 
 ### Banner System
 `AnnouncementBanner.astro` — dismissible banner with localStorage persistence (versioned via `version` prop).
-Retained for reuse but not currently imported or rendered. The homepage's announcement card is part of `QuickLinksCenter.astro`.
+`MainLayout.astro` conditionally renders the site-wide announcement strip above the navbar. Configure `ANNOUNCEMENT` in `src/data_files/constants.ts`; it is disabled by default. Set the message, optional href/linkLabel and enabled flag, and bump version to show a new announcement to visitors who dismissed the previous one. Dismissal is remembered in localStorage per version; the strip is hidden when printing. The homepage's separate announcement card remains part of `QuickLinksCenter.astro`.
 
 ### Retained Templates
 `HeroSection.astro`, `LanguagePicker.astro`, `GithubBtn.astro`, the feature/testimonial section templates, and `BetaBanner.astro` are retained components, not evidence that those features are active. Verify imports before describing a template as rendered. `WikiList.astro` is active on the exam index. Do not delete unused templates as incidental cleanup.

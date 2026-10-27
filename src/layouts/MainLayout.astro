@@ -5,7 +5,8 @@ import Navbar from "@components/sections/navbar&footer/NavbarMegaMenu.astro";
 import FooterSection from "@components/sections/navbar&footer/FooterSection.astro";
 import CookieConsentBanner from "@components/ui/banners/CookieConsentBanner.astro";
 import CookieConsentModal from "@components/ui/modals/CookieConsentModal.astro";
-import { SITE, VERIFICATIONS } from "@data/constants";
+import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
+import { SITE, VERIFICATIONS, ANNOUNCEMENT } from "@data/constants";
 import "@styles/global.css";
 
 // Setting expected props
@@ -119,6 +120,7 @@ interface Props {
     <a class="skip-to-main" href="#main-content">
       Skip to main content
     </a>
+    {ANNOUNCEMENT.enabled && <AnnouncementBanner {...ANNOUNCEMENT} />}
     {/*
     Setting up the main structure of the page.
     The Navbar is placed at the top, with a slot for the main content and FooterSection at the bottom.

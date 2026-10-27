@@ -10,6 +10,15 @@ export const SITE = {
   url: "https://msfthub.com",
 };
 
+// Change the message/link and bump version when publishing a new announcement.
+export const ANNOUNCEMENT = {
+  enabled: false,
+  message: "Explore our Microsoft certification study materials.",
+  href: "/certs/",
+  linkLabel: "Browse exams",
+  version: "1",
+};
+
 export const SEO = {
   title: SITE.title,
   description: SITE.description,
