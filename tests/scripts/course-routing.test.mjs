@@ -76,6 +76,36 @@ test("a tie goes to the task with the fewest picks, then to the better quote, th
   assert.deepEqual(pathsAt(earlier, "d/g/t1"), ["/a"]);
 });
 
+test("a module that ties goes to the earliest task of the guide, not to the thinnest one", () => {
+  const module = (path) =>
+    row(path, { target: { kind: "module", path }, title: `Module ${path}` });
+  const result = route({
+    "d/g/t1": [row("/x"), row("/y"), module("/training/modules/m")],
+    "d/g/t2": [row("/z"), module("/training/modules/m")],
+    "d/g/t3": [module("/training/modules/m")],
+  });
+  assert.deepEqual(
+    pathsAt(result, "d/g/t1").includes("/training/modules/m"),
+    true,
+  );
+  assert.deepEqual(pathsAt(result, "d/g/t3"), []);
+  // a better fit class still decides first: core beats supporting even for a module
+  const supporting = route({
+    "d/g/t1": [
+      {
+        ...module("/training/modules/m"),
+        pick: {
+          ...module("/training/modules/m").pick,
+          class: "supporting",
+          relation: "deeper",
+        },
+      },
+    ],
+    "d/g/t3": [module("/training/modules/m")],
+  });
+  assert.deepEqual(pathsAt(supporting, "d/g/t3"), ["/training/modules/m"]);
+});
+
 test("every repeat is reported with the task it stays under and the tasks it also fits, in the guide's order", () => {
   const result = route({
     "d/g/t3": [row("/a")],
@@ -245,6 +275,7 @@ test("the builder shows a page once, under the task where it fits best, and the 
     {
       path: original.target.path,
       title: holders[0].pick.title,
+      kind: "docs",
       shownUnder: original.task.key,
       alsoFits: [copy.task.key],
     },
@@ -290,6 +321,7 @@ test("a module stays in the first skill group where it was accepted, even when i
     {
       path: "/training/modules/m",
       title: "Module /training/modules/m",
+      kind: "module",
       shownUnder: "d/g1/t2",
       alsoFits: ["d/g2/t1"],
     },
@@ -463,4 +495,46 @@ test("a collapsed unit whose module has no title in the gated file is built with
   );
   assert.equal(result.ok, true, result.problems.join("\n"));
   assert.ok(result.warnings.some((w) => /has no title for the module/.test(w)));
+});
+
+test("through the builder: a task with no module of its own points to the module that fits it and is listed under another task", () => {
+  const result = build((items) => {
+    const holder = items.find(
+      (i) =>
+        i.target.kind === "module" &&
+        i.task.key === "networking/configure/t0" &&
+        i.gate.class === "core",
+    );
+    const own = items.find(
+      (i) =>
+        i.task.key === "networking/configure/t1" && i.target.kind === "module",
+    );
+    const copy = structuredClone(holder);
+    copy.task = own.task;
+    return [...items.filter((i) => i !== own), copy];
+  });
+  assert.equal(result.ok, true, result.problems.join("\n"));
+  const tasks = result.course.domains.flatMap((d) =>
+    d.groups.flatMap((g) => g.tasks),
+  );
+  const t1 = tasks.find((t) => t.key === "networking/configure/t1");
+  const t0 = tasks.find((t) => t.key === "networking/configure/t0");
+  assert.deepEqual(
+    t1.picks.filter((p) => p.target.kind === "module"),
+    [],
+  );
+  assert.deepEqual(t1.overlaps, [
+    {
+      path: "/training/modules/manage-traffic-routes",
+      title: t0.picks.find(
+        (p) => p.target.path === "/training/modules/manage-traffic-routes",
+      ).title,
+      shownUnder: "networking/configure/t0",
+    },
+  ]);
+  assert.equal(
+    t0.overlaps,
+    undefined,
+    "a task with a module of its own needs no pointer",
+  );
 });

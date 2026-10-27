@@ -1,6 +1,6 @@
 # Courses: the course file and the course page
 
-*Runbook of the course file format, its validator (`scripts/course-file.mjs validate`) and its renderer (`scripts/course-file.mjs render`). Repo-wide rules live in [AGENTS.md](../AGENTS.md). How the inputs are produced is in [course-source.md](course-source.md).*
+_Runbook of the course file format, its validator (`scripts/course-file.mjs validate`) and its renderer (`scripts/course-file.mjs render`). Repo-wide rules live in [AGENTS.md](../AGENTS.md). How the inputs are produced is in [course-source.md](course-source.md)._
 
 A course is an exam's study guide, task by task, with the Microsoft Learn modules and documentation pages that cover each task. It is kept as data and the page is generated from it:
 
@@ -14,15 +14,19 @@ Besides its tasks, every skill group (the `###` heading of the page, for example
 
 In the course file a group may have a `foundations` list of picks of the class `foundation`: like a supporting pick it carries a `why` (the concept the page teaches) and `evidence`, but it has no `relation`, and it belongs to the group, not to a task. The pages travel through the same chain as the tasks' pages, as the pseudo-task `<domain>/<group>/@foundations` ([course-foundations.mjs](../scripts/lib/course-foundations.mjs)): the candidate generator shortlists them with looser thresholds ([course-candidates.md](course-candidates.md)), the judge answers `foundation` or `reject` ([course-judging.md](course-judging.md)), the gates decide them like any other candidate (a pick the judge was not sure of is marked orange on the review copy), and the builder puts the accepted ones into the group. **A page still appears once in the whole course**: a page that is core for a task stays under the task, then comes the fundamentals, then a page that only supports a task (the fundamentals take the "prerequisite" pages). The page opens each group with a "Fundamentals" block (the same Learning and Documentation tabs) before its tasks, **in the order a learner meets them** (maintainer, 2026-10-21): first the general concepts, the pages that fit no single task, then the pages in the order of the tasks they lead into. A page leads into a task when it contains at least half of that task's own words (its distinctive words minus those of the group's title, which every task shares, and minus short words such as "id"), found in its title, the judge's reason and the quote; it goes to the first task with the best match (`orderFoundations` in `course-foundations.mjs`; no AI).
 
+## The audience profile
+
+The page opens with the study guide's **audience profile** and, for each concept of its "familiar with" and "experience with" lists, the resources the maintainer chose. These are decided by hand, options are only proposed, and a resource may be a page of any site: [course-audience.md](course-audience.md). In the course file it is the `audience` field (not a pick of a task).
+
 ## The two classes of pick
 
 Every pick under a task is either **core** or **supporting** (a group's fundamentals are the third class, `foundation`, above the tasks). There is nothing else: material that fits neither is out of scope and is not in the file.
 
-| Class | What it is | Example (AZ-104, "Configure blob lifecycle management") |
-|-------|-----------|------------------------------------------------------|
-| `core` | Covers the task **as the study guide words it**. | The module "Configure blob storage" and the doc "Azure Blob Storage lifecycle management overview". |
-| `supporting` | **Not in the guide, but part of the job the task belongs to**: a working professional doing the listed task meets it, although the guide does not name it. | The doc "Access tiers for blob data" (a prerequisite: lifecycle rules move data between the tiers). |
-| out of scope | A different role, product area, licensing tier or specialty, however close the keywords look. **Rejected.** | "Create an access review of an access package in entitlement management" under "Manage external users": identity governance is not part of an Azure administrator's job. |
+| Class        | What it is                                                                                                                                                 | Example (AZ-104, "Configure blob lifecycle management")                                                                                                                  |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `core`       | Covers the task **as the study guide words it**.                                                                                                           | The module "Configure blob storage" and the doc "Azure Blob Storage lifecycle management overview".                                                                      |
+| `supporting` | **Not in the guide, but part of the job the task belongs to**: a working professional doing the listed task meets it, although the guide does not name it. | The doc "Access tiers for blob data" (a prerequisite: lifecycle rules move data between the tiers).                                                                      |
+| out of scope | A different role, product area, licensing tier or specialty, however close the keywords look. **Rejected.**                                                | "Create an access review of an access package in entitlement management" under "Manage external users": identity governance is not part of an Azure administrator's job. |
 
 A supporting pick must carry, in the file:
 
@@ -50,15 +54,17 @@ A module is not split into its units across the page (maintainer, 2026-10-21; th
 - **The validator** refuses a unit pick (`a course places a module, not its units`); a module twice is already refused by "every page appears once".
 - **The rebuild check** has no unit to compare any more.
 
+**A task without a module of its own points to the one that also covers it** (maintainer, 2026-10-26). A module is listed once, so a task it fits can end up with no module of its own (on AZ-104 "Manage licenses in Microsoft Entra ID" had only documentation pages, while the module "Create, configure, and manage identities", which the judge also called core for it, is listed under "Create users and groups"). The builder gives such a task an `overlaps` list in the course file, `[{ path, title, shownUnder }]`, one entry per accepted module that fits the task and is shown under another task (not under a group's fundamentals, which every task of the group is read after). The page shows a note above the task's tabs that names the module and links the task it is listed under (in another skill group, it names the group too), so the reader is not left wondering why the module is missing; it does not repeat the card, because a page appears once. The task's own tabs follow, or, when it has no picks at all, the note replaces "No Learn module or documentation page covers this task yet." The validator checks that the module really is shown under the task named, that the task has no module of its own and that it does not point to itself. A task that has a module of its own gets no note.
+
 ## Where a pick comes from, and who approves it
 
-| Source | Meaning |
-|--------|---------|
-| `P1` | A module of the exam's own official course. |
-| `P2` | A documentation page that such a module lists in its last unit (learnsync's `module-links.json`). |
-| `P3` | Material of another exam's official course (for example an AZ-700 module for an AZ-104 networking task). |
-| `P4` | Anything else, found by searching the catalogs. |
-| `P5` | A page a model named from its own knowledge for the task and a script confirmed exists ([course-proposals.md](course-proposals.md)). |
+| Source | Meaning                                                                                                                              |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `P1`   | A module of the exam's own official course.                                                                                          |
+| `P2`   | A documentation page that such a module lists in its last unit (learnsync's `module-links.json`).                                    |
+| `P3`   | Material of another exam's official course (for example an AZ-700 module for an AZ-104 networking task).                             |
+| `P4`   | Anything else, found by searching the catalogs.                                                                                      |
+| `P5`   | A page a model named from its own knowledge for the task and a script confirmed exists ([course-proposals.md](course-proposals.md)). |
 
 **Who approves a pick** (maintainer, 2026-10-20). The automatic gates accept a pick of **any source, class and confidence** when the judge picked it and the quote is in the evidence; its `decision.by` is `auto`. That a page was found by search only (`P4`) or named by a model only (`P5`), is core material of another exam's course (`P3`) or is a deeper dive no longer sends it to the maintainer: marked samples of AZ-104 support it ([course-gates.md](course-gates.md)). Hands-on pages and classic pages are decided by the gates alone. A pick the judge was not sure of, or flagged `other-role`, `other-sub-product` or `licensing-tier`, is accepted too and marked on the review copy for the maintainer to look at. What the gates do not accept (a quote that is not in the evidence, an unsure reject) is the maintainer's decision (`decision.by: maintainer`). The validator checks that a decider is named, not who it was.
 
@@ -70,33 +76,87 @@ A module is not split into its units across the page (maintainer, 2026-10-21; th
   "code": "AZ-104",
   "name": "Microsoft Azure Administrator",
   "inputs": {
-    "guideHash": "<hash of the guide text>", "guideAsOf": "April 17, 2026", "builtAt": "2026-10-17",
+    "guideHash": "<hash of the guide text>",
+    "guideAsOf": "April 17, 2026",
+    "builtAt": "2026-10-17",
     "scopeFingerprint": "<40 hex, computed from scope>",
-    "scope": { "courses": [["AZ-104T00", "<course lastModified>"]], "modules": [["/training/modules/configure-blob-storage", "<unitSig>", "<links hash>"]] },
+    "scope": {
+      "courses": [["AZ-104T00", "<course lastModified>"]],
+      "modules": [
+        [
+          "/training/modules/configure-blob-storage",
+          "<unitSig>",
+          "<links hash>"
+        ]
+      ]
+    },
     "picked": [["/training/modules/some-module-of-another-exam", "<unitSig>"]]
   },
   "domains": [
-    { "title": "Implement and manage storage", "weight": { "min": 15, "max": 20 },
+    {
+      "title": "Implement and manage storage",
+      "weight": { "min": 15, "max": 20 },
       "groups": [
-        { "title": "Configure Azure Files and Azure Blob Storage",
+        {
+          "title": "Configure Azure Files and Azure Blob Storage",
           "foundations": [
-            { "target": { "kind": "module", "path": "/training/modules/describe-azure-storage-services" },
-              "title": "Describe Azure storage services", "class": "foundation", "source": "P3",
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/describe-azure-storage-services"
+              },
+              "title": "Describe Azure storage services",
+              "class": "foundation",
+              "source": "P3",
               "why": "Teaches what the storage account types and services are before any of the tasks configure them.",
-              "evidence": "<a quote from the page>", "decision": { "by": "auto", "at": "2026-10-17" } } ],
+              "evidence": "<a quote from the page>",
+              "decision": { "by": "auto", "at": "2026-10-17" }
+            }
+          ],
           "tasks": [
-            { "key": "implement-and-manage-storage/configure-azure-files-and-azure-blob-storage/configure-blob-lifecycle-management",
+            {
+              "key": "implement-and-manage-storage/configure-azure-files-and-azure-blob-storage/configure-blob-lifecycle-management",
               "text": "Configure blob lifecycle management",
               "picks": [
-                { "target": { "kind": "module", "path": "/training/modules/configure-blob-storage" },
-                  "title": "Configure blob storage", "class": "core", "source": "P1",
-                  "decision": { "by": "auto", "at": "2026-10-17" } },
-                { "target": { "kind": "docs", "path": "/azure/storage/blobs/access-tiers-overview" },
-                  "title": "Access tiers for blob data", "class": "supporting", "relation": "prerequisite", "source": "P2",
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/configure-blob-storage"
+                  },
+                  "title": "Configure blob storage",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": { "by": "auto", "at": "2026-10-17" }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/storage/blobs/access-tiers-overview"
+                  },
+                  "title": "Access tiers for blob data",
+                  "class": "supporting",
+                  "relation": "prerequisite",
+                  "source": "P2",
                   "via": "/training/modules/configure-blob-storage",
                   "why": "Lifecycle rules move data between the access tiers, so you need to know them first.",
-                  "evidence": "<a quote from the page>", "decision": { "by": "auto", "at": "2026-10-17" } } ] } ] } ] } ],
-  "rejected": [ { "taskKey": "<task key>", "path": "/entra/id-governance/entitlement-management-overview", "reason": "different role: identity governance", "at": "2026-10-17" } ]
+                  "evidence": "<a quote from the page>",
+                  "decision": { "by": "auto", "at": "2026-10-17" }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "taskKey": "<task key>",
+      "path": "/entra/id-governance/entitlement-management-overview",
+      "reason": "different role: identity governance",
+      "at": "2026-10-17"
+    }
+  ]
 }
 ```
 
@@ -123,16 +183,16 @@ What `validate` checks (`validateCourse`):
 
 `node scripts/course-status.mjs AZ-104` (or `--all`) answers "is this course still what its inputs say it should be, and if not, how much has to be redone?". It compares the course file with today's study guide and today's Learn (the same inputs as `course-source.mjs`) and prints a plan. It writes nothing. A course changes only when one of its inputs changes:
 
-| Status | Meaning |
-|--------|---------|
+| Status    | Meaning                                                                                                                                                                       |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `current` | The tasks are the same and nothing a pick relies on changed. A new guide hash, a new "as of" date or a changed domain weight alone is information, never a reason to rebuild. |
-| `review` | Nothing is broken, but the official course changed shape (a module or a course was added or removed), or a module a pick relies on changed its content. Look, then decide. |
-| `stale` | A task was added, removed, moved or reordered, or a pick has to be replaced: its module left the official course or the catalog, or the module no longer lists the page. |
+| `review`  | Nothing is broken, but the official course changed shape (a module or a course was added or removed), or a module a pick relies on changed its content. Look, then decide.    |
+| `stale`   | A task was added, removed, moved or reordered, or a pick has to be replaced: its module left the official course or the catalog, or the module no longer lists the page.      |
 
 The plan names what changed, so a rebuild touches only that:
 
 - **Tasks:** `added` (they need picks), `removed` (their picks go), `moved` (same wording under a new group or domain: the picks carry over under the new key) and **rename hints** (a removed and an added task that share most of their words: the maintainer decides whether the picks carry over).
-- **Picks:** *hard* (replace) and *soft* (look), each with its reason, from the snapshot in `inputs`: a P1 pick's module, a P2 pick's listing (`via`), a P3/P4 pick's module (`picked`).
+- **Picks:** _hard_ (replace) and _soft_ (look), each with its reason, from the snapshot in `inputs`: a P1 pick's module, a P2 pick's listing (`via`), a P3/P4 pick's module (`picked`).
 - **Work:** how many tasks to build, to check, to carry over, and how many are untouched.
 
 `--urls` (and `--live`) also asks learnsync's validator whether every pick's target is still a current Learn page, like `validate`; a page that is not becomes a hard break. `--json` prints the plan as data. Exit code 0 for `current` and `review`, 1 when a course is `stale`, 2 for an input problem. With no course files `--all` says so and exits 0.

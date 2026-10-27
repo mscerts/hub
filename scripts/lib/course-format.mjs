@@ -22,6 +22,7 @@
  *               of managing external users for an Azure administrator).
  */
 
+import { audienceProblems, eachConcept } from "./course-audience.mjs";
 import { isClassic } from "./course-classic.mjs";
 import {
   FOUNDATION_CLASS,
@@ -452,6 +453,48 @@ export function validateCourse(course, { guide, isCurrent, titleOf } = {}) {
         );
     }
   }
+  // the audience profile: the guide's own words with the maintainer's picks; a Learn page also picked for a task is only a warning
+  const audienceChecked = audienceProblems(course.audience, {
+    guideAudience: guide?.audience ?? null,
+  });
+  errors.push(...audienceChecked.errors);
+  warnings.push(...audienceChecked.warnings);
+  for (const concept of eachConcept(course.audience))
+    for (const pick of concept.picks ?? [])
+      if (pick.kind === "learn" && shownAt.has(pick.path))
+        warnings.push(
+          `${concept.text}: ${pick.path} is also shown under ${shownAt.get(pick.path)}`,
+        );
+  // a task without a module of its own may point to a module that also covers it and is shown under another task
+  for (const domain of course.domains)
+    for (const group of domain.groups ?? [])
+      for (const task of group.tasks ?? []) {
+        if (task.overlaps === undefined) continue;
+        if (!Array.isArray(task.overlaps) || task.overlaps.length === 0) {
+          errors.push(`${task.key}: overlaps must be a non-empty list`);
+          continue;
+        }
+        if ((task.picks ?? []).some((p) => p?.target?.kind === "module"))
+          errors.push(
+            `${task.key}: has a module of its own, so it needs no pointer to another task's module`,
+          );
+        for (const o of task.overlaps) {
+          if (
+            !present(o?.path) ||
+            !present(o?.title) ||
+            !present(o?.shownUnder)
+          )
+            errors.push(
+              `${task.key}: an overlap needs path, title and shownUnder: ${JSON.stringify(o)}`,
+            );
+          else if (shownAt.get(o.path) !== o.shownUnder)
+            errors.push(
+              `${task.key}: the overlap ${o.path} is shown under ${shownAt.get(o.path) ?? "no task"}, not under ${o.shownUnder}`,
+            );
+          else if (o.shownUnder === task.key)
+            errors.push(`${task.key}: an overlap points to the task itself`);
+        }
+      }
   return {
     ok: errors.length === 0,
     errors,

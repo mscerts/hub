@@ -367,3 +367,93 @@ test("a preview renders only the skill groups whose title contains the text, num
   assert.ok(!/preview of the skill groups/.test(renderCourse(course)));
   assert.ok(!/one skill group/.test(renderCourse(course)));
 });
+
+// ---- a task without a module of its own points to the module that also covers it (docs/courses.md)
+const taskOf = (course, text) =>
+  course.domains
+    .flatMap((d) => d.groups.flatMap((g) => g.tasks))
+    .find((t) => t.text === text);
+const overlapOf = (course, text) => {
+  const target = taskOf(course, text);
+  const module = target.picks.find((p) => p.target.kind === "module");
+  return {
+    path: module.target.path,
+    title: module.title,
+    shownUnder: target.key,
+  };
+};
+
+test("a task without a module of its own gets a note naming the module and linking the task it is listed under", () => {
+  const { course } = exampleCourse();
+  const task = taskOf(course, "Explain the GitHub Flow for collaboration");
+  task.overlaps = [
+    overlapOf(
+      course,
+      "Describe GitHub accounts, organizations, and enterprise options",
+    ),
+  ];
+  const page = renderCourse(course);
+  assert.match(
+    page,
+    /#### Explain the GitHub Flow for collaboration\n\n:::note\nThe Microsoft Learn module "[^"]+" also covers this task\. It is listed once, under \[Describe GitHub accounts, organizations, and enterprise options\]\(#describe-github-accounts-organizations-and-enterprise-options\)\.\n:::\n/,
+  );
+  assert.ok(
+    !/Explain the GitHub Flow for collaboration\n\n:::note\nNo Learn module/.test(
+      page,
+    ),
+    "the overlap note replaces the empty-task note",
+  );
+});
+
+test("several modules make a list, and a module in another skill group names the group", () => {
+  const { course } = exampleCourse();
+  const task = taskOf(course, "Explain the GitHub Flow for collaboration");
+  task.overlaps = [
+    overlapOf(
+      course,
+      "Describe GitHub accounts, organizations, and enterprise options",
+    ),
+    overlapOf(course, "Describe the purpose and benefits of version control"),
+  ];
+  const page = renderCourse(course);
+  assert.match(
+    page,
+    /These Microsoft Learn modules also cover this task\. Each is listed once, under the task named:\n\n- "[^"]+": under \[Describe GitHub accounts[^\]]*\]\(#[^)]+\)\n- "[^"]+": under \[Describe the purpose and benefits of version control\]\(#describe-the-purpose-and-benefits-of-version-control\) in the skill group Version control fundamentals\n:::/,
+  );
+});
+
+test("the link follows the page's ids: a repeated heading gets -1, and a preview without the target links no task", () => {
+  const { course } = exampleCourse();
+  const target = taskOf(
+    course,
+    "Describe the purpose and benefits of version control",
+  );
+  const copy = structuredClone(
+    taskOf(course, "Explain the GitHub Flow for collaboration"),
+  );
+  copy.key = `${copy.key}-copy`;
+  copy.text = target.text;
+  course.domains[0].groups[1].tasks.push(copy);
+  taskOf(course, "Explain the GitHub Flow for collaboration").overlaps = [
+    overlapOf(course, target.text),
+  ];
+  assert.match(
+    renderCourse(course),
+    /\(#describe-the-purpose-and-benefits-of-version-control\)/,
+  );
+  const preview = renderCourse(course, { only: "Working with GitHub" });
+  assert.match(preview, /It is listed once, under another task\./);
+});
+
+test("a task with picks and a pointer shows the note above its tabs", () => {
+  const { course } = exampleCourse();
+  const task = taskOf(course, "Explain the difference between Git and GitHub");
+  task.overlaps = [
+    overlapOf(course, "Describe the purpose and benefits of version control"),
+  ];
+  const page = renderCourse(course);
+  assert.match(
+    page,
+    /#### Explain the difference between Git and GitHub\n\n:::note\nThe Microsoft Learn module[^\n]*\n:::\n\n<Tabs>/,
+  );
+});

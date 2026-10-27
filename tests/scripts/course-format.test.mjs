@@ -533,3 +533,58 @@ test("picks: hands-on material belongs on the lab page, so an exercise, a guided
     "an ordinary docs page is fine",
   );
 });
+
+// ---- the pointer of a task without a module of its own to a module listed under another task
+const pointerTask = (course) =>
+  course.domains
+    .flatMap((d) => d.groups.flatMap((g) => g.tasks))
+    .find((t) => t.text === "Explain the GitHub Flow for collaboration");
+const moduleHolder = (course) =>
+  course.domains
+    .flatMap((d) => d.groups.flatMap((g) => g.tasks))
+    .find(
+      (t) => t.text === "Describe the purpose and benefits of version control",
+    );
+const pointerTo = (course) => {
+  const holder = moduleHolder(course);
+  const module = holder.picks.find((p) => p.target.kind === "module");
+  return {
+    path: module.target.path,
+    title: module.title,
+    shownUnder: holder.key,
+  };
+};
+
+test("a pointer to a module shown under another task is valid", () => {
+  const { course } = exampleCourse();
+  pointerTask(course).overlaps = [pointerTo(course)];
+  const { ok, errors } = validateCourse(course);
+  assert.deepEqual(errors, []);
+  assert.equal(ok, true);
+});
+
+test("a pointer is wrong when the module is shown elsewhere, the task has a module of its own, or it points to itself", () => {
+  let { course } = exampleCourse();
+  pointerTask(course).overlaps = [
+    { ...pointerTo(course), shownUnder: pointerTask(course).key },
+  ];
+  assert.match(
+    validateCourse(course).errors.join("\n"),
+    /is shown under .*, not under/,
+  );
+  ({ course } = exampleCourse());
+  moduleHolder(course).overlaps = [pointerTo(course)];
+  assert.match(
+    validateCourse(course).errors.join("\n"),
+    /has a module of its own/,
+  );
+  ({ course } = exampleCourse());
+  pointerTask(course).overlaps = [];
+  assert.match(validateCourse(course).errors.join("\n"), /non-empty list/);
+  ({ course } = exampleCourse());
+  pointerTask(course).overlaps = [{ path: "/training/modules/x" }];
+  assert.match(
+    validateCourse(course).errors.join("\n"),
+    /needs path, title and shownUnder/,
+  );
+});

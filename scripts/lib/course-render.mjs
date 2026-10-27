@@ -21,6 +21,7 @@
  * where they would be read, and answer with the numbers to drop.
  */
 
+import { eachConcept } from "./course-audience.mjs";
 import { foundationKey, groupKeyOf } from "./course-foundations.mjs";
 import { squish } from "./course-guide.mjs";
 
@@ -135,6 +136,111 @@ export function numberReview(course, review, { only = null } = {}) {
 const shownGroup = (group, only) =>
   !only || squish(group.title).toLowerCase().includes(only.toLowerCase());
 
+/** The id the page gives a heading (GitHub's rule: lower case, no punctuation, spaces to hyphens; a repeat gets -1, -2 ...). */
+function headingIds(course, only) {
+  const seen = new Map();
+  const idOf = (text) => {
+    const base = squish(text)
+      .toLowerCase()
+      .replace(/[^\p{L}\p{M}\p{N}\p{Pc}\- ]/gu, "")
+      .replace(/ /g, "-");
+    const n = seen.get(base) ?? 0;
+    seen.set(base, n + 1);
+    return n === 0 ? base : `${base}-${n}`;
+  };
+  const tasks = new Map();
+  if (course.audience) {
+    idOf("Audience profile");
+    for (const list of course.audience.lists)
+      if (list.lead || list.kind === "prerequisite")
+        idOf(list.lead ?? "Prerequisites");
+  }
+  for (const domain of course.domains) {
+    const groups = domain.groups.filter((g) => shownGroup(g, only));
+    if (groups.length === 0) continue;
+    idOf(`${domain.title}${weightText(domain.weight)}`);
+    for (const group of groups) {
+      idOf(group.title);
+      if (foundationsOf(group)) idOf("Fundamentals");
+      for (const task of group.tasks)
+        tasks.set(task.key, {
+          id: idOf(task.text),
+          text: task.text,
+          group: group.title,
+        });
+    }
+  }
+  return tasks;
+}
+
+/** The note of a task that has no module of its own: the modules that also cover it are listed once, under another task. */
+function overlapNote(task, shown) {
+  const where = (o) => {
+    const target = shown.get(o.shownUnder);
+    if (!target) return "under another task";
+    const here = shown.get(task.key);
+    const link = `[${plain(target.text)}](#${target.id})`;
+    return here && here.group !== target.group
+      ? `under ${link} in the skill group ${plain(target.group)}`
+      : `under ${link}`;
+  };
+  const list = task.overlaps ?? [];
+  if (list.length === 0) return [];
+  if (list.length === 1)
+    return [
+      ":::note",
+      `The Microsoft Learn module "${plain(list[0].title)}" also covers this task. It is listed once, ${where(list[0])}.`,
+      ":::",
+      "",
+    ];
+  return [
+    ":::note",
+    "These Microsoft Learn modules also cover this task. Each is listed once, under the task named:",
+    "",
+    ...list.map((o) => `- "${plain(o.title)}": ${where(o)}`),
+    ":::",
+    "",
+  ];
+}
+
+/**
+ * The audience profile: the guide's own words, then a card for each resource the maintainer chose for a concept
+ * (the concept is the title, the resource its description), then the concepts that have no resource as a list.
+ * A page of Learn gets the tracking parameter; a page of another site is linked as it is.
+ */
+function audienceSection(audience, { review }) {
+  const out = ["## Audience profile", ""];
+  for (const paragraph of audience.intro) out.push(plain(paragraph), "");
+  let open = 0;
+  for (const list of audience.lists) {
+    if (list.lead) out.push(`### ${plain(list.lead)}`, "");
+    if (list.kind !== "prerequisite") {
+      out.push(...list.items.map((i) => `- ${plain(i.text)}`), "");
+      continue;
+    }
+    const cards = list.items.flatMap((item) =>
+      (item.picks ?? []).map(
+        (pick) =>
+          `  <LinkCard title="${attr(item.text)}" description="${attr(pick.title)}" href="${pick.kind === "learn" ? learnHref(pick.path) : pick.href}" target="_blank"/>`,
+      ),
+    );
+    if (cards.length) out.push("<CardGrid>", ...cards, "</CardGrid>", "");
+    const bare = list.items.filter((i) => !i.picks?.length);
+    if (bare.length) {
+      out.push(...bare.map((i) => `- ${plain(i.text)}`), "");
+      open += bare.filter((i) => i.picks === undefined).length;
+    }
+  }
+  if (review && open > 0)
+    out.push(
+      ":::caution",
+      `${open} concept${open === 1 ? " has" : "s have"} no resource chosen yet and ${open === 1 ? "is" : "are"} listed as text. Choose one with node scripts/course-audience.mjs.`,
+      ":::",
+      "",
+    );
+  return out;
+}
+
 /** The weight of a domain as " (20–25%)", or "" when the guide gave none. */
 function weightText(weight) {
   if (!weight) return "";
@@ -163,6 +269,7 @@ export function renderCourse(
       m,
     ]),
   );
+  const shown = headingIds(course, only);
   const hasFoundations = course.domains.some((d) =>
     (d.groups ?? []).some((g) => g.foundations?.length),
   );
@@ -198,6 +305,8 @@ export function renderCourse(
       ":::",
       "",
     );
+  if (course.audience)
+    out.push(...audienceSection(course.audience, { review: Boolean(review) }));
   for (const domain of course.domains) {
     const groups = domain.groups.filter((g) => shownGroup(g, only));
     if (groups.length === 0) continue;
@@ -229,14 +338,16 @@ export function renderCourse(
           ...tab("Learning", learning, markOf),
           ...tab("Documentation", docs, markOf),
         ];
-        if (tabs.length === 0)
+        const overlap = overlapNote(task, shown);
+        if (tabs.length === 0 && overlap.length) out.push(...overlap);
+        else if (tabs.length === 0)
           out.push(
             ":::note",
             "No Learn module or documentation page covers this task yet.",
             ":::",
             "",
           );
-        else out.push("<Tabs>", ...tabs, "</Tabs>", "");
+        else out.push(...overlap, "<Tabs>", ...tabs, "</Tabs>", "");
       }
     }
   }

@@ -1,0 +1,217 @@
+---
+title: "AZ-104 Study Guide Course: Manage Microsoft Entra users and groups (review copy)"
+description: "Preview AZ-104 course resources for Manage Microsoft Entra users and groups. Follow the selected Microsoft Learn reading for this skill group."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official AZ-104 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-104?WT.mc_id=studentamb_165290) skills measured (April 17, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AZ-104 labs page](/certs/labs/azure/az-104/), not here, and every page appears once.
+:::
+
+:::caution
+This is a preview of the skill groups whose title contains "Manage Microsoft Entra users and groups", not the whole course.
+:::
+
+:::caution
+This is the review copy. Every page the judge picked is here. The 24 orange cards are the ones it was not sure about, or flagged as written for another job role or product area; each says why. To drop one, give its number.
+:::
+
+## Audience profile
+
+As a candidate for this exam, you should have subject matter expertise in implementing, managing, and monitoring an organization's Microsoft Azure environment, including virtual networks, storage, compute, identity, security, and governance.
+
+As an Azure administrator, you often serve as part of a larger team dedicated to implementing an organization's cloud infrastructure. You also coordinate with other roles to deliver Azure networking, security, database, application development, and DevOps solutions.
+
+### You should be familiar with
+
+<CardGrid>
+  <LinkCard title="Operating systems" description="IT Essentials (Cisco Networking Academy)" href="https://www.netacad.com/courses/it-essentials" target="_blank"/>
+  <LinkCard title="Networking" description="Networking Basics (Cisco Networking Academy)" href="https://www.netacad.com/courses/networking-basics" target="_blank"/>
+  <LinkCard title="Servers" description="IT Essentials (Cisco Networking Academy)" href="https://www.netacad.com/courses/it-essentials" target="_blank"/>
+  <LinkCard title="Virtualization" description="Hyper-V virtualization in Windows Server and Windows" href="https://learn.microsoft.com/windows-server/virtualization/hyper-v/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+</CardGrid>
+
+### In addition, you should have experience with
+
+<CardGrid>
+  <LinkCard title="PowerShell" description="Automate Administration with PowerShell" href="https://learn.microsoft.com/training/courses/az-040t00?WT.mc_id=studentamb_165290" target="_blank"/>
+  <LinkCard title="Azure CLI" description="What is the Azure CLI?" href="https://learn.microsoft.com/cli/azure/what-is-azure-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+  <LinkCard title="The Azure portal" description="What is the Azure portal?" href="https://learn.microsoft.com/azure/azure-portal/azure-portal-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+  <LinkCard title="Azure Resource Manager templates or Bicep files" description="What is Bicep?" href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+  <LinkCard title="Microsoft Entra ID" description="What is Microsoft Entra?" href="https://learn.microsoft.com/entra/fundamentals/what-is-entra?WT.mc_id=studentamb_165290" target="_blank"/>
+</CardGrid>
+
+## Manage Azure identities and governance (20–25%)
+
+### Manage Microsoft Entra users and groups
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/understand-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe identity concepts" href="https://learn.microsoft.com/training/modules/describe-identity-principles-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/introduction-to-entra-id-2026?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore identity in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-identity-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the function and identity types of Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-basic-services-identity-types?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the authentication capabilities of Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-authentication-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Combined registration for SSPR and Microsoft Entra multifactor authentication" href="https://learn.microsoft.com/entra/identity/authentication/concept-registration-mfa-sspr-combined?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#1 Not sure. Explains the combined registration concept for MFA and SSPR that SSPR depends on."/>
+      <LinkCard title="What is hybrid identity with Microsoft Entra ID?" href="https://learn.microsoft.com/entra/identity/hybrid/whatis-hybrid-identity?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#2 Not sure. Explains hybrid identity, where users originate on-premises, useful background; unsure it belongs to this group."/>
+      <LinkCard title="Understand and manage dynamic group processing in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/manage-dynamic-group?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="License self-service password reset" href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-licensing?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#3 Not sure · Flagged as another licensing tier. Explains the licensing concept behind SSPR, which ties the licensing and SSPR tasks together."/>
+      <LinkCard title="Users, groups, licensing, and roles in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/directory-overview-user-model?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Self-service password reset policies" href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create users and groups
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create, configure, and manage identities" href="https://learn.microsoft.com/training/modules/create-configure-manage-identities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage users and groups in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/manage-users-and-groups-in-aad?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage users, groups, and licenses in Microsoft Entra ID by using Windows PowerShell" href="https://learn.microsoft.com/training/modules/manage-users-groups-licenses-azure-active-directory-use-windows-powershell?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#4 Not sure · Flagged as another job role. Scripting user and group creation is a related skill, but the module is written for Windows PowerShell and Microsoft 365 admins."/>
+      <LinkCard title="Provision and govern identities in Microsoft Entra" href="https://learn.microsoft.com/training/modules/provision-govern-identities-entra?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#5 Not sure · Flagged as another job role. Bulk creation of users and group naming policy go deeper, but it is aimed at Microsoft 365 admins; unsure."/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create or Edit a Dynamic Membership Group and Get Its Processing Status" href="https://learn.microsoft.com/entra/identity/users/groups-create-rule?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to manage groups" href="https://learn.microsoft.com/entra/fundamentals/how-to-manage-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage rules for dynamic membership groups in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-membership?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn About Groups, Group Membership, and Access" href="https://learn.microsoft.com/entra/fundamentals/concept-learn-about-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Bulk create users in the Azure portal - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/users-bulk-add?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Microsoft Entra Cloud Sync? - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/what-is-cloud-sync?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#6 Not sure. Users in hybrid tenants are often created by sync from Active Directory; the exam only touches it lightly, so I am unsure."/>
+      <LinkCard title="Bulk add group members by uploading a CSV file" href="https://learn.microsoft.com/entra/identity/users/groups-bulk-import-members?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Bulk remove group members by uploading a CSV file" href="https://learn.microsoft.com/entra/identity/users/groups-bulk-remove-members?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change Static Groups to Dynamic Membership Groups" href="https://learn.microsoft.com/entra/identity/users/groups-change-type?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure dynamic membership groups with the memberOf operator in the Entra Admin Center (preview)" href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-rule-member-of?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Validate rules for dynamic membership groups" href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-rule-validation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enforce a group naming policy in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/groups-naming-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up self-service group management" href="https://learn.microsoft.com/entra/identity/users/groups-self-service-management?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage user and group properties
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage users, groups, and licenses in Microsoft Entra ID by using Windows PowerShell": under [Create users and groups](#create-users-and-groups)
+- "Provision and govern identities in Microsoft Entra": under [Create users and groups](#create-users-and-groups)
+- "Create, configure, and manage identities": under [Create users and groups](#create-users-and-groups)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How to manage user profile information in the Microsoft Entra admin center" href="https://learn.microsoft.com/entra/fundamentals/how-to-manage-user-profile-info?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Download a list of groups in the Azure portal" href="https://learn.microsoft.com/entra/identity/users/groups-bulk-download?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Bulk operations in Microsoft Entra ID (Preview)" href="https://learn.microsoft.com/entra/fundamentals/bulk-operations?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#7 Not sure. Describes bulk management of users and groups, but it is a preview experience."/>
+      <LinkCard title="Set expiration for Microsoft 365 groups" href="https://learn.microsoft.com/entra/identity/users/groups-lifecycle?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure group settings using PowerShell" href="https://learn.microsoft.com/entra/identity/users/groups-settings-cmdlets?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#8 Not sure. Tenant-wide group settings can be managed with PowerShell, which goes beyond the portal work the exam asks for; the cmdlets look dated."/>
+      <LinkCard title="PowerShell V2 examples for managing groups" href="https://learn.microsoft.com/entra/identity/users/groups-settings-v2-cmdlets?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#9 Not sure. PowerShell examples for managing groups give more depth than the exam asks, but they use the older AzureAD V2 module."/>
+      <LinkCard title="Bulk download group membership list - Azure portal" href="https://learn.microsoft.com/entra/identity/users/groups-bulk-download-members?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create simpler and faster rules for dynamic membership groups" href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-rule-more-efficient?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restore a deleted Microsoft 365 group or cloud security group" href="https://learn.microsoft.com/entra/identity/users/groups-restore-deleted?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fix problems with dynamic membership groups" href="https://learn.microsoft.com/entra/identity/users/groups-troubleshooting?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage licenses in Microsoft Entra ID
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage users and groups in Microsoft Entra ID": under [Create users and groups](#create-users-and-groups)
+- "Manage users, groups, and licenses in Microsoft Entra ID by using Windows PowerShell": under [Create users and groups](#create-users-and-groups)
+- "Create, configure, and manage identities": under [Create users and groups](#create-users-and-groups)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="PowerShell examples for group-based licensing" href="https://learn.microsoft.com/entra/identity/users/licensing-powershell-graph-examples?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign or unassign licenses for users in the Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Product names and service plan identifiers for licensing" href="https://learn.microsoft.com/entra/identity/users/licensing-service-plan-reference?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra license usage insights" href="https://learn.microsoft.com/entra/fundamentals/concept-license-usage-insights?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra licensing - Microsoft Entra" href="https://learn.microsoft.com/entra/fundamentals/licensing?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage external users
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement and manage external identities" href="https://learn.microsoft.com/training/modules/implement-manage-external-identities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage access for external users" href="https://learn.microsoft.com/training/modules/manage-access-for-external-users?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#10 Not sure · Flagged as another job role. MS-700 module mostly about guests in Teams, SharePoint and OneDrive, with a unit on external collaboration in Entra ID that an Azure administrator also meets."/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add B2B collaboration users - Microsoft Entra External ID" href="https://learn.microsoft.com/entra/external-id/add-users-administrator?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure external collaboration" href="https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="B2B guest user properties" href="https://learn.microsoft.com/entra/external-id/user-properties?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to create, invite, and delete users in Microsoft Entra ID" href="https://learn.microsoft.com/entra/fundamentals/how-to-create-delete-users?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Microsoft Entra B2B collaboration?" href="https://learn.microsoft.com/entra/external-id/what-is-b2b?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign Azure roles to external users using the Azure portal - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-external-users?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add B2B collaboration users as an information worker" href="https://learn.microsoft.com/entra/external-id/add-users-information-worker?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#11 Not sure. Shows how information workers and app owners add guests in the portal, a neighbouring view of the invite flow that an admin supports."/>
+      <LinkCard title="Auditing and reporting a B2B collaboration user" href="https://learn.microsoft.com/entra/external-id/auditing-and-reporting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra B2B best practices and recommendations" href="https://learn.microsoft.com/entra/external-id/b2b-fundamentals?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add sponsors to a guest user in the Microsoft Entra admin center - External ID" href="https://learn.microsoft.com/entra/external-id/b2b-sponsors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Microsoft Entra Accounts" href="https://learn.microsoft.com/entra/external-id/default-account?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#12 Not sure. Explains that guests can redeem invitations with their own Entra work or school account, background to how invited external users sign in."/>
+      <LinkCard title="Identity providers for workforce tenants" href="https://learn.microsoft.com/entra/external-id/identity-providers?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#13 Not sure. Overview of identity providers available to workforce tenants for sharing with external users, more depth on how guests authenticate than the exam asks."/>
+      <LinkCard title="About B2B Invitations" href="https://learn.microsoft.com/entra/external-id/invitation-email-elements?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Invite internal users to B2B collaboration" href="https://learn.microsoft.com/entra/external-id/invite-internal-users?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Leave an organization" href="https://learn.microsoft.com/entra/external-id/leave-the-organization?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#14 Not sure. Part of the guest lifecycle; admins decide whether external users may leave the organisation and need to know how guests remove themselves."/>
+      <LinkCard title="Use Microsoft Accounts" href="https://learn.microsoft.com/entra/external-id/microsoft-account?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#15 Not sure. Explains that guests can redeem invitations with a personal Microsoft account, background to how invited external users sign in."/>
+      <LinkCard title="Email one-time passcode authentication" href="https://learn.microsoft.com/entra/external-id/one-time-passcode?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#16 Not sure. Email one-time passcode is the fallback way guests redeem invitations when they have no other account, useful depth for supporting invited users."/>
+      <LinkCard title="Reset guest redemption status" href="https://learn.microsoft.com/entra/external-id/reset-redemption-status?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dynamic groups setup" href="https://learn.microsoft.com/entra/external-id/use-dynamic-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Convert external users to internal users" href="https://learn.microsoft.com/entra/identity/users/convert-external-users-internal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Cross-tenant access overview" href="https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#17 Not sure. Cross-tenant access settings control B2B collaboration with external organisations, more depth on governing guest access than the exam asks."/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure self-service password reset (SSPR)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Allow users to reset their password with Microsoft Entra self-service password reset" href="https://learn.microsoft.com/training/modules/allow-users-reset-their-password?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage and implement authentication methods in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/manage-implement-authentication-methods?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#18 Not sure · Flagged as another job role. SC-500 module with a unit on configuring SSPR, but it is mainly about MFA and passwordless methods for a security specialty."/>
+      <LinkCard title="Manage user authentication" href="https://learn.microsoft.com/training/modules/manage-user-authentication?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#19 Flagged as another job role. SC-300 module on user authentication with a hands-on SSPR deployment exercise, but mostly about FIDO2, Windows Hello and password protection beyond what the exam asks."/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Self-service password reset deep dive - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-howitworks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deployment considerations for Microsoft Entra self-service password reset" href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-deploy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="On-premises password writeback with self-service password reset" href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-writeback?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to migrate to the Authentication methods policy" href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-methods-manage?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#20 Not sure. The Authentication methods policy is where SSPR and MFA methods are now managed centrally, so an administrator configuring SSPR meets it."/>
+      <LinkCard title="Microsoft Entra user data collection" href="https://learn.microsoft.com/entra/identity/authentication/howto-mfa-reporting-datacollection?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#21 Not sure. Describes which user data SSPR and MFA use to authenticate users, background to the contact methods an administrator configures."/>
+      <LinkCard title="Combined Security Information Registration" href="https://learn.microsoft.com/entra/identity/authentication/howto-registration-mfa-sspr-combined?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Combined Registration" href="https://learn.microsoft.com/entra/identity/authentication/howto-registration-mfa-sspr-combined-troubleshoot?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#22 Not sure. Troubleshooting combined registration for MFA and SSPR helps administrators when users cannot register their reset methods; narrow, so low confidence."/>
+      <LinkCard title="Prepopulate Contact Information for Self-Service Password Reset" href="https://learn.microsoft.com/entra/identity/authentication/howto-sspr-authenticationdata?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Customize Self-Service Password Reset" href="https://learn.microsoft.com/entra/identity/authentication/howto-sspr-customization?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Self-service password reset reports" href="https://learn.microsoft.com/entra/identity/authentication/howto-sspr-reporting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Self-Service Password Reset for Windows Devices" href="https://learn.microsoft.com/entra/identity/authentication/howto-sspr-windows?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#23 Not sure. Enabling SSPR at the Windows sign-in screen is a device-side extension of the feature that goes beyond the exam; unsure it is worth a pick."/>
+      <LinkCard title="Self-service password reset FAQ - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/passwords-faq?WT.mc_id=studentamb_165290" target="_blank" tone="review" description="#24 Not sure. An SSPR FAQ answering common administrator and user questions; useful reference but not core, so I lean to a weak pick."/>
+      <LinkCard title="Troubleshoot self-service password reset" href="https://learn.microsoft.com/entra/identity/authentication/troubleshoot-sspr?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>

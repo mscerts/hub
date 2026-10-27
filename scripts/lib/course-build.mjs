@@ -24,7 +24,8 @@
  *     accepted, with the tasks it was accepted for, so that scripts/course-labs.mjs can add what the lab page lacks.
  *   - A page is shown once in the whole course. A page accepted for several tasks stays under the task where it
  *     fits best (core before supporting, a sure judgement before an unsure one, the exam's own course before
- *     other sources, then the task with the fewest picks so far) and `routing.repeats` lists where else it fit.
+ *     other sources, then the task with the fewest picks so far; a module takes the earliest task of the guide that
+ *     it fits instead of the thinnest one) and `routing.repeats` lists where else it fit.
  *   - A module is placed as a module, once, in the FIRST skill group (in the guide's order) where it was accepted
  *     (maintainer, 2026-10-21): it is not split into units across the page. A unit that was accepted, which the
  *     generator no longer offers but an older gated file still holds, is collapsed into its module (listed in
@@ -42,12 +43,14 @@ import {
 } from "./course-format.mjs";
 import { isClassic } from "./course-classic.mjs";
 import { ACCEPTED_BY_MAINTAINER } from "./course-gates.mjs";
+import { buildAudience } from "./course-audience.mjs";
 import { handsOnReason } from "./course-handson.mjs";
 import {
   FOUNDATION_CLASS,
   flattenFoundations,
   foundationKey,
   groupKeyOf,
+  isFoundationKey,
   orderFoundations,
 } from "./course-foundations.mjs";
 
@@ -262,10 +265,13 @@ export function routePicks({ accepted, taskKeys, rejected = new Map() }) {
     let winner = rows[0];
     if (rows.length > 1) {
       const top = rows.reduce((m, r) => (fitOrder(r, m) < 0 ? r : m), rows[0]);
+      // a module introduces the skill group's first task it fits, whatever the load; a docs page goes to the thinnest task
+      const byGuide = rows[0].pick.target.kind === "module";
       winner = rows
         .filter((r) => fitOrder(r, top) === 0)
         .sort(
           (a, b) =>
+            (byGuide ? order.get(a.taskKey) - order.get(b.taskKey) : 0) ||
             (load.get(a.taskKey) ?? 0) - (load.get(b.taskKey) ?? 0) ||
             (b.item.judge?.quoteTermCoverage ?? 0) -
               (a.item.judge?.quoteTermCoverage ?? 0) ||
@@ -277,6 +283,7 @@ export function routePicks({ accepted, taskKeys, rejected = new Map() }) {
       repeats.push({
         path,
         title: winner.pick.title,
+        kind: winner.pick.target.kind,
         shownUnder: winner.taskKey,
         alsoFits: allRows
           .filter((r) => r !== winner)
@@ -318,6 +325,7 @@ export function routePicks({ accepted, taskKeys, rejected = new Map() }) {
  *   gated        the gated file ({ code, builtAt, inputs, items })
  *   today        YYYY-MM-DD, the day the course is built
  *   allowStale   build even when the guide or Learn changed since the candidates were made
+ *   audienceDecisions   the maintainer's picks for the guide's audience profile (course-audience.mjs), or null
  * Returns { ok, course, problems, warnings, stats }; a course with problems is not returned.
  */
 export function buildCourse({
@@ -328,6 +336,7 @@ export function buildCourse({
   gated,
   today,
   allowStale = false,
+  audienceDecisions = null,
 }) {
   const problems = [];
   const warnings = [];
@@ -482,11 +491,30 @@ export function buildCourse({
               ),
             }
           : {}),
-        tasks: g.tasks.map((t) => ({
-          key: t.key,
-          text: t.text,
-          picks: rowsOf(t.key).map((r) => r.pick),
-        })),
+        tasks: g.tasks.map((t) => {
+          const picks = rowsOf(t.key).map((r) => r.pick);
+          // a task without a module of its own points to the module that also covers it but is shown under another task
+          const overlaps = picks.some((p) => p.target.kind === "module")
+            ? []
+            : routed.repeats
+                .filter(
+                  (r) =>
+                    r.kind === "module" &&
+                    r.alsoFits.includes(t.key) &&
+                    !isFoundationKey(r.shownUnder),
+                )
+                .map((r) => ({
+                  path: r.path,
+                  title: r.title,
+                  shownUnder: r.shownUnder,
+                }));
+          return {
+            key: t.key,
+            text: t.text,
+            picks,
+            ...(overlaps.length ? { overlaps } : {}),
+          };
+        }),
       };
     }),
   }));
@@ -503,6 +531,9 @@ export function buildCourse({
       picked: [...picked].sort((a, b) => byText(a[0], b[0])),
       builtAt: today,
     },
+    ...(guide.audience
+      ? { audience: buildAudience(guide.audience, audienceDecisions) }
+      : {}),
     domains,
     rejected: [...rejected.values()].sort(
       (a, b) => byText(a.taskKey, b.taskKey) || byText(a.path, b.path),

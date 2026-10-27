@@ -46,6 +46,7 @@ import { buildTocLookup, isConceptPath } from "./course-toc.mjs";
 import { LexicalIndex, queryTerms } from "./course-lexical.mjs";
 import { learnPath } from "./course-scope.mjs";
 import { flattenTasks } from "./course-status.mjs";
+import { audienceConcepts } from "./course-audience.mjs";
 
 export const CANDIDATES_SCHEMA_VERSION = 1;
 
@@ -1267,7 +1268,9 @@ export function generateCandidates({
     groupModules: new Map(),
   };
 
-  const tasks = flattenTasks(guide).map((task) => candidatesForTask(task, ctx));
+  const tasks = options.audienceOnly
+    ? []
+    : flattenTasks(guide).map((task) => candidatesForTask(task, ctx));
   const bySource = { P1: 0, P2: 0, P3: 0, P4: 0 };
   let candidates = 0;
   for (const t of tasks)
@@ -1282,7 +1285,7 @@ export function generateCandidates({
     ...(options.foundations?.minCoverage ?? {}),
   };
   const foundations =
-    options.foundations === false
+    options.foundations === false || options.audienceOnly
       ? []
       : flattenFoundations(guide).map((f) => {
           const found = candidatesForTask(
@@ -1386,6 +1389,73 @@ export function generateCandidates({
             },
           };
         });
+  // the options for the concepts of the audience profile: the same search, as loose as the fundamentals, and a
+  // short list per concept, because a person picks from it (the course page never gets one automatically)
+  const audienceMax = options.audienceMax ?? 12;
+  const audience =
+    options.audience === false
+      ? []
+      : audienceConcepts(guide.audience).map((concept) => {
+          const lead = guide.audience.lists[concept.list].lead ?? null;
+          const found = candidatesForTask(
+            {
+              key: concept.key,
+              text: concept.text,
+              domain: "Audience profile",
+              group: lead ?? "Prerequisites",
+              context: "",
+            },
+            {
+              ...ctx,
+              options: { ...opts, minCoverage: foundationCoverage },
+              groupModules: new Map(),
+            },
+          );
+          const kept = found.candidates.filter(
+            (c) =>
+              !handsOnReason({
+                kind: c.target.kind,
+                path: c.target.path,
+                title: c.title,
+                moduleTitle: c.module?.title,
+              }),
+          );
+          return {
+            ...found,
+            text: concept.text,
+            list: concept.list,
+            lead,
+            audience: true,
+            // a general concept is matched by a word or two, so the best match comes first, not the best source
+            candidates: [...kept]
+              .sort(
+                (x, y) =>
+                  (y.coverage ?? 0) - (x.coverage ?? 0) ||
+                  (y.score ?? 0) - (x.score ?? 0),
+              )
+              .slice(0, audienceMax)
+              .map((c, i) => ({ ...c, rank: i + 1 })),
+            dropped: {
+              ...found.dropped,
+              ...(found.candidates.length > kept.length
+                ? {
+                    "hands-on": {
+                      count: found.candidates.length - kept.length,
+                      samples: [],
+                    },
+                  }
+                : {}),
+              ...(kept.length > audienceMax
+                ? {
+                    "over-the-limit": {
+                      count: kept.length - audienceMax,
+                      samples: [],
+                    },
+                  }
+                : {}),
+            },
+          };
+        });
   const foundationBySource = { P1: 0, P2: 0, P3: 0, P4: 0 };
   let foundationCandidates = 0;
   let sidebarSiblings = 0;
@@ -1440,7 +1510,14 @@ export function generateCandidates({
     exam: profile,
     tasks,
     foundations,
+    audience,
     stats: {
+      audience: {
+        concepts: audience.length,
+        withoutCandidates: audience.filter((a) => a.candidates.length === 0)
+          .length,
+        candidates: audience.reduce((n, a) => n + a.candidates.length, 0),
+      },
       foundations: {
         groups: foundations.length,
         withoutCandidates: foundations.filter((f) => f.candidates.length === 0)

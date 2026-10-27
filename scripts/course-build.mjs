@@ -22,18 +22,19 @@
  * page that is not current), 2 usage or input error.
  */
 
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { currentFromVerdict, learnsyncVerdicts } from "./course-file.mjs";
 import { currentScope, learnsyncDir, readGuides } from "./course-source.mjs";
+import { decisionsProblems } from "./lib/course-audience.mjs";
 import { buildCourse } from "./lib/course-build.mjs";
 import { eachPick } from "./lib/course-format.mjs";
 import { parseGuide } from "./lib/course-guide.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-build.mjs <CODE> [--gated FILE] [--out FILE] [--today YYYY-MM-DD] [--allow-stale] [--urls [--live]]`;
+const USAGE = `Usage: node scripts/course-build.mjs <CODE> [--gated FILE] [--out FILE] [--today YYYY-MM-DD] [--allow-stale] [--audience FILE] [--urls [--live]]`;
 
 function parseArgs(argv) {
   const options = {
@@ -50,7 +51,7 @@ function parseArgs(argv) {
     if (arg === "--allow-stale") options.allowStale = true;
     else if (arg === "--urls") options.urls = true;
     else if (arg === "--live") options.live = options.urls = true;
-    else if (["--gated", "--out", "--today"].includes(arg)) {
+    else if (["--gated", "--out", "--today", "--audience"].includes(arg)) {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
       options[arg.slice(2)] = argv[++i];
     } else if (arg.startsWith("-")) throw new Error(`Unknown option ${arg}`);
@@ -135,6 +136,34 @@ export async function main(argv, deps = {}) {
     return 2;
   }
 
+  // the maintainer's picks for the audience profile (course-audience.mjs); a course without them lists the concepts as text
+  const audienceFile = resolve(
+    options.audience ??
+      join(root, "src", "data_files", "course-audience", `${code}.json`),
+  );
+  let audienceDecisions = null;
+  if (existsSync(audienceFile)) {
+    try {
+      audienceDecisions = JSON.parse(readFileSync(audienceFile, "utf8"));
+    } catch (e) {
+      error(
+        `The audience decisions are not valid JSON (${audienceFile}): ${e.message}`,
+      );
+      return 2;
+    }
+    const { problems } = decisionsProblems(audienceDecisions, {
+      code,
+      audience: guide.audience,
+    });
+    if (problems.length) {
+      error(`${audienceFile} is not valid:`);
+      for (const p of problems) error(`  ${p}`);
+      return 1;
+    }
+  } else if (options.audience) {
+    error(`No audience decisions: ${audienceFile} does not exist.`);
+    return 2;
+  }
   const result = buildCourse({
     code,
     name,
@@ -143,6 +172,7 @@ export async function main(argv, deps = {}) {
     gated,
     today,
     allowStale: options.allowStale,
+    audienceDecisions,
   });
   for (const w of result.warnings) log(`warning: ${w}`);
   if (!result.ok) {

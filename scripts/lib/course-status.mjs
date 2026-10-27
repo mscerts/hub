@@ -258,6 +258,39 @@ export function affectedPicks({
  *   catalog     the catalog's modules (learn-catalog.json `modules`)
  *   isCurrent   optional URL check, see affectedPicks
  */
+/**
+ * What changed in the audience profile of the study guide since the course was built: the concepts that were added
+ * or removed and whether the guide's own wording of the profile changed. Null when either side has no profile.
+ */
+export function diffAudience(courseAudience, guideAudience) {
+  if (!courseAudience || !guideAudience) return null;
+  const concepts = (a) =>
+    a.lists
+      .filter((l) => l.kind === "prerequisite")
+      .flatMap((l) => l.items.map((i) => i.text ?? i));
+  const before = new Set(concepts(courseAudience));
+  const after = new Set(concepts(guideAudience));
+  const added = [...after].filter((t) => !before.has(t));
+  const removed = [...before].filter((t) => !after.has(t));
+  const wording = (a) =>
+    JSON.stringify([
+      a.intro,
+      a.lists.map((l) => [
+        l.kind,
+        l.lead ?? null,
+        l.items.map((i) => i.text ?? i),
+      ]),
+    ]);
+  return {
+    added,
+    removed,
+    changed:
+      added.length > 0 ||
+      removed.length > 0 ||
+      wording(courseAudience) !== wording(guideAudience),
+  };
+}
+
 export function rebuildPlan({ course, guide, scopeMap, catalog, isCurrent }) {
   const guidePlan = planGuideChanges(guide, course);
   const before = course.inputs?.scope ?? { courses: [], modules: [] };
@@ -310,6 +343,13 @@ export function rebuildPlan({ course, guide, scopeMap, catalog, isCurrent }) {
     reviewReasons.push("the exam's official course list changed");
   if (soft.length)
     reviewReasons.push(`${soft.length} pick(s) rely on something that changed`);
+  const audience = diffAudience(course.audience, guide.audience);
+  if (audience?.changed)
+    reviewReasons.push(
+      audience.added.length || audience.removed.length
+        ? `the audience profile of the study guide changed (${audience.added.length} concept(s) added, ${audience.removed.length} removed): choose resources for them`
+        : "the wording of the audience profile of the study guide changed",
+    );
 
   const buildKeys = new Set([
     ...guidePlan.added.map((t) => t.key),
@@ -325,6 +365,7 @@ export function rebuildPlan({ course, guide, scopeMap, catalog, isCurrent }) {
     reasons: [...reasons, ...(stale ? reviewReasons : [])],
     reviewReasons: stale ? [] : reviewReasons,
     guide: guidePlan,
+    audience,
     scope: {
       fingerprintChanged:
         fingerprintOfSnapshot(before) !== scopeMap.inputs.fingerprint,

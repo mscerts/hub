@@ -162,6 +162,69 @@ function findDuplicateDomains(named, taken, warnings) {
 const slug = (text) =>
   normalizeTitle(text).replace(/ /g, "-").slice(0, 60).replace(/-+$/, "");
 
+const ROLE_LEAD =
+  /\b(responsibilit|you (perform|design|are responsible)|tasks?\b|duties)/i;
+const PREREQUISITE_LEAD =
+  /\b(familiar|experience|knowledge|proficien|background|competenc|skilled|understanding|training in)/i;
+
+/**
+ * The audience profile section of a study guide as the New Exam Monitor stores it (`lines`): the text before the
+ * first list (`intro`) and every list with the line that leads it. A list is a `prerequisite` list when its lead
+ * says what the candidate should be familiar with, know or have experience with, else a `role` list (the
+ * candidate's responsibilities), which needs no resource. Returns null when the guide has no such section.
+ * `{ intro: [text], lists: [{ lead, kind, items: [text] }] }`; a guide that only describes the audience in prose
+ * has no list: the maintainer then writes the concepts into the decisions file.
+ */
+export function parseAudience(lines) {
+  const list = Array.isArray(lines) ? lines.map((l) => String(l ?? "")) : [];
+  const at = list.findIndex((l) => /^#{2,6}\s+audience profile\b/i.test(l));
+  if (at < 0) return null;
+  let end = list.length;
+  for (let i = at + 1; i < list.length; i++)
+    if (/^#{1,6}\s/.test(list[i])) {
+      end = i;
+      break;
+    }
+  const intro = [];
+  const lists = [];
+  let current = null;
+  for (const raw of list.slice(at + 1, end)) {
+    const line = raw.trim();
+    if (!line) continue;
+    const bullet = /^[-*]\s+(.*\S)\s*$/.exec(line);
+    if (bullet) {
+      if (!current) {
+        current = { lead: null, items: [] };
+        lists.push(current);
+      }
+      current.items.push(squish(bullet[1]));
+    } else if (/:\s*$/.test(line)) {
+      current = { lead: squish(line.replace(/:\s*$/, "")), items: [] };
+      lists.push(current);
+    } else {
+      current = null;
+      intro.push(squish(line));
+    }
+  }
+  const kept = [];
+  for (const l of lists) {
+    if (l.items.length === 0) {
+      if (l.lead) intro.push(`${l.lead}:`);
+      continue;
+    }
+    const lead = l.lead ?? "";
+    kept.push({
+      lead: l.lead,
+      kind:
+        !ROLE_LEAD.test(lead) && PREREQUISITE_LEAD.test(lead)
+          ? "prerequisite"
+          : "role",
+      items: l.items,
+    });
+  }
+  return { intro, lists: kept };
+}
+
 /**
  * Parse one guide.
  * Returns { ok, asOf, domains: [{ title, weight, headingLevel, groups: [{ title, implicit?, tasks: [{ key, text }] }] }],
@@ -211,6 +274,7 @@ export function parseGuide(lines) {
     return {
       ok: false,
       asOf,
+      audience: parseAudience(list),
       domains: [],
       stats: { domains: 0, groups: 0, tasks: 0 },
       warnings: [
@@ -361,7 +425,7 @@ export function parseGuide(lines) {
     domains.length > 0 &&
     used.size === named.length - dropped.size &&
     domains.every((d) => d.groups.some((g) => g.tasks.length > 0));
-  return { ok, asOf, domains, stats, warnings };
+  return { ok, asOf, audience: parseAudience(list), domains, stats, warnings };
 }
 
 // ---------------------------------------------------------------------------------------------
