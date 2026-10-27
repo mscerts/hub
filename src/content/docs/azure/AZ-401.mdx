@@ -4,6 +4,7 @@ examName: "Designing and Implementing Microsoft Agentic DevOps Solutions"
 description: "Prepare for AZ-401 with resources on agentic DevOps across GitHub and Azure DevOps. Review the beta timeline, study guide and available training."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import MeasureUpCard from '@components/MeasureUpCard.astro';
 import BetaBanner from '@components/BetaBanner.astro';
 
 <BetaBanner>
@@ -79,16 +80,10 @@ Microsoft usually publishes the free Microsoft Learn practice assessment about 8
 ---
 </Card>
 
-<Card title="MeasureUp Practice Tests" icon="open-book">
-<CardGrid>
+<MeasureUpCard>
+<CardGrid slot="products">
   <LinkCard title="AZ-400: MeasureUp Assessment" href="https://www.measureup.com/assessment-az-400-designing-and-implementing-microsoft-devops-solutions.html#u44" target="_blank"/>
   <LinkCard title="AZ-400: MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-az-400-designing-and-implementing-microsoft-devops-solutions.html#u44" target="_blank"/>
 </CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months.
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
       <Aside type="note">MeasureUp has not released material for AZ-401 yet. The products above are for the previous exam, AZ-400.</Aside>
-</Card>
+</MeasureUpCard>

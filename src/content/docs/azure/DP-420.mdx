@@ -4,6 +4,7 @@ examName: "Building AI Applications with Azure Cosmos DB"
 description: "Browse DP-420 study materials for building AI applications with Azure Cosmos DB. Explore data modeling, queries and application development resources."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import MeasureUpCard from '@components/MeasureUpCard.astro';
 
 :::note
 Effective October 6, 2026, Microsoft renamed the certification to Microsoft Certified: Azure Cosmos DB AI Developer Associate (previously Azure Cosmos DB Developer Specialty) and updated this exam, now titled Building AI Applications with Azure Cosmos DB. The exam code is still DP-420. See the [study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-420?WT.mc_id=studentamb_165290) for the skills measured as of October 6, 2026 and [Microsoft's announcement](https://techcommunity.microsoft.com/blog/skills-hub-blog/updates-to-azure-cosmos-db-and-power-platform-developer-certifications/4528353?WT.mc_id=studentamb_165290). MeasureUp and Pluralsight still list the previous exam name, Designing and Implementing Cloud-Native Applications Using Microsoft Azure Cosmos DB, so their material may not yet cover the October 6, 2026 update.
@@ -58,15 +59,9 @@ Effective October 6, 2026, Microsoft renamed the certification to Microsoft Cert
 ---
       </Card>
 
-<Card title="MeasureUp Practice Tests" icon="open-book">
-<CardGrid>
+<MeasureUpCard>
+<CardGrid slot="products">
   <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-dp-420-designing-and-implementing-cloud-native-applications-using-microsoft-azure-cosmos-db.html#u44" target="_blank"/>
   <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-dp-420-designing-and-implementing-cloud-native-applications-using-microsoft-azure-cosmos-db.html#u44" target="_blank"/>
 </CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months.
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
-</Card>
+</MeasureUpCard>

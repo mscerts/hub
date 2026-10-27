@@ -4,6 +4,7 @@ examName: "Extending Microsoft Power Platform Solutions with Code and AI"
 description: "Find AB-400 preparation resources for extending Power Platform with code and AI. Browse developer training, practice tests and material from PL-400."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import MeasureUpCard from '@components/MeasureUpCard.astro';
 
 :::note
 AB-400 is the updated version of exam PL-400: Microsoft Power Platform Developer. This page was the PL-400 page until **October 16, 2026**, and the old PL-400 address now redirects here. On that day registration for PL-400 closed and registration opened exclusively for AB-400, which is available in English. Learners who registered for PL-400 on or before October 16 can schedule and take it through **October 30, 2026**. The certification earned stays Microsoft Certified: Power Platform Developer Associate. Because the exam was updated, check older material against the [AB-400 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ab-400?WT.mc_id=studentamb_165290); the resources below that were made for PL-400 carry its code. See [Microsoft's announcement](https://techcommunity.microsoft.com/blog/skills-hub-blog/updates-to-azure-cosmos-db-and-power-platform-developer-certifications/4528353?WT.mc_id=studentamb_165290).
@@ -66,16 +67,10 @@ Microsoft usually publishes the free Microsoft Learn practice assessment about 8
 ---
       </Card>
 
-<Card title="MeasureUp Practice Tests" icon="open-book">
-<CardGrid>
+<MeasureUpCard>
+<CardGrid slot="products">
   <LinkCard title="PL-400: MeasureUp Assessment" href="https://www.measureup.com/assessment-pl-400-microsoft-power-platform-developer.html#u44" target="_blank"/>
   <LinkCard title="PL-400: MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-pl-400-microsoft-power-platform-developer.html#u44" target="_blank"/>
 </CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months.
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
       <Aside type="note">MeasureUp has not released material for AB-400 yet. The two products above are for the previous exam, PL-400.</Aside>
-</Card>
+</MeasureUpCard>

@@ -4,6 +4,7 @@ examName: "AI Business Professional"
 description: "Find AB-730 study materials for using AI in everyday business work. Explore Copilot learning resources, practice assessments and exam preparation videos."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import MeasureUpCard from '@components/MeasureUpCard.astro';
 
 <Card title="Get Started" icon="star">
 
@@ -66,15 +67,9 @@ import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs
 ---
  </Card>
 
-<Card title="MeasureUp Practice Tests" icon="open-book">
-<CardGrid>
+<MeasureUpCard>
+<CardGrid slot="products">
     <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/microsoft-ab-730-ai-business-professional-assessment.html#u44" target="_blank"/>
     <LinkCard title="MeasureUp Practice Tests" href="https://www.measureup.com/microsoft-ab-730-ai-business-professional-practice-test.html#u44" target="_blank"/>
 </CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months.
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
-</Card>
+</MeasureUpCard>

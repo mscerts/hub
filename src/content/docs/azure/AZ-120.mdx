@@ -4,6 +4,7 @@ examName: "Planning and Administering Azure for SAP Workloads"
 description: "Study for AZ-120 with resources for planning and running SAP workloads on Azure, including architecture, migration and high availability."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import MeasureUpCard from '@components/MeasureUpCard.astro';
 
 <Card title="Get Started" icon="star">
 
@@ -47,15 +48,9 @@ import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs
 ---
       </Card>
 
-<Card title="MeasureUp Practice Tests" icon="open-book">
-<CardGrid>
+<MeasureUpCard>
+<CardGrid slot="products">
   <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-az-120-planning-and-administering-microsoft-azure-for-sap-workloads.html#u44" target="_blank"/>
   <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-az-120-planning-and-administering-microsoft-azure-for-sap-workloads.html#u44" target="_blank"/>
 </CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps
-      even more to identify your weak areas and where you need to study more.
-
-      MeasureUp also offers a money back guarantee if you don't pass the exam and subscriptions in case you are planning to take multiple exams.
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
-</Card>
+</MeasureUpCard>

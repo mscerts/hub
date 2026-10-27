@@ -4,6 +4,7 @@ examName: "Designing and Implementing Microsoft DevOps Solutions"
 description: "Browse AZ-400 study resources for DevOps, source control and delivery pipelines. Check the retirement notice and transition to AZ-401."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import MeasureUpCard from '@components/MeasureUpCard.astro';
 import RetirementBanner from '@components/RetirementBanner.astro';
 
 <RetirementBanner
@@ -76,15 +77,9 @@ Microsoft announced the retirement together with the new exam: [read the announc
 ---
       </Card>
 
-<Card title="MeasureUp Practice Tests" icon="open-book">
-<CardGrid>
+<MeasureUpCard>
+<CardGrid slot="products">
   <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-az-400-designing-and-implementing-microsoft-devops-solutions.html#u44" target="_blank"/>
   <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-az-400-designing-and-implementing-microsoft-devops-solutions.html#u44" target="_blank"/>
 </CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months.
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
-</Card>
+</MeasureUpCard>

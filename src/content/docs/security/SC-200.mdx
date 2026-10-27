@@ -4,6 +4,7 @@ examName: "Microsoft Security Operations Analyst"
 description: "Study for SC-200 with Microsoft Sentinel and Defender resources. Find training on threat detection, incident investigation and security operations."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import MeasureUpCard from '@components/MeasureUpCard.astro';
 import RelatedCerts from '../../../components/RelatedCerts.astro';
 
 <Card title="Get Started" icon="star">
@@ -74,15 +75,9 @@ import RelatedCerts from '../../../components/RelatedCerts.astro';
 ---
       </Card>
 
-<Card title="MeasureUp Practice Tests" icon="open-book">
-<CardGrid>
+<MeasureUpCard>
+<CardGrid slot="products">
   <LinkCard title="MeasureUp Assessment" href="https://www.measureup.com/assessment-sc-200-microsoft-security-operations-analyst.html#u44" target="_blank"/>
   <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-sc-200-microsoft-security-operations-analyst.html#u44" target="_blank"/>
 </CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months.
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
-</Card>
+</MeasureUpCard>

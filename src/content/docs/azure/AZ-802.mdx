@@ -4,6 +4,7 @@ examName: "Administering Windows Server"
 description: "Prepare for AZ-802 with Windows Server administration resources covering identity, storage, networking and hybrid management, plus predecessor material."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import MeasureUpCard from '@components/MeasureUpCard.astro';
 
 <Card title="Get Started" icon="star">
 
@@ -74,19 +75,12 @@ import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs
 ---
       </Card>
 
-<Card title="MeasureUp Practice Tests" icon="open-book">
-<CardGrid>
+<MeasureUpCard>
+<CardGrid slot="products">
   <LinkCard title="AZ-800: MeasureUp Assessment" href="https://www.measureup.com/microsoft-assessment-az-800-administering-windows-server-hybrid-core-infrastructure.html#u44" target="_blank"/>
   <LinkCard title="AZ-800: MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-az-800-administering-windows-server-hybrid-core-infrastructure.html#u44" target="_blank"/>
   <LinkCard title="AZ-801: MeasureUp Assessment" href="https://www.measureup.com/microsoft-assessment-az-801-configuring-windows-server-hybrid-advanced-services.html#u44" target="_blank"/>
   <LinkCard title="AZ-801: MeasureUp Practice Test" href="https://www.measureup.com/microsoft-practice-test-az-801-configuring-windows-server-hybrid-advanced-services.html#u44" target="_blank"/>
 </CardGrid>
-  <LinkCard title="MeasureUp Subscriptions" href="https://www.measureup.com/subscription-plans-for-individuals#u44" target="_blank"/>
-      Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps
-      even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.
-
-      MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months.
-
-      These tests are for the legacy AZ-800 and AZ-801 exams. Since AZ-802 combines both, they are still relevant to your studies.
-      <Aside type="tip">Use our code **MSFTHUB** for an exclusive 15% discount on the MeasureUp store!</Aside>
-</Card>
+<p slot="before-discount">These tests are for the legacy AZ-800 and AZ-801 exams. Since AZ-802 combines both, they are still relevant to your studies.</p>
+</MeasureUpCard>

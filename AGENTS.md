@@ -202,7 +202,7 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 3. Optional status banner: `:::tip` for beta/resource scarcity (every beta exam page also gets a separate `:::note` box with the beta timeline, see "Beta Exam Pages" below); `:::caution` for retirement, replacement details, or an unconfirmed at-risk change
 4. `<Card title="Get Started" icon="star">` -> Exam link, Study Guide link, optional Exam Labs/Case Studies link, and the matching How to Prepare LinkCard as the final resource
 5. `<Tabs>` with `TabItem`s: Text, Videos, Tests, Paid, Misc
-6. Closing `</Card>`, then bottom `<Card title="MeasureUp Practice Tests" icon="open-book">` block with `<Aside>` for MSFTHUB discount; if no products exist, use a tip stating that MeasureUp has not released material yet
+6. Closing `</Card>`, then a shared `<MeasureUpCard>` for existing MeasureUp products. Keep the verified LinkCards in a `<CardGrid slot="products">` so product order, labels and `#u44` URLs remain explicit. The component owns subscription/discount copy; optional slots preserve page-specific wording and predecessor notes. If no products exist, keep the unavailable-material tip instead of adding an empty card.
 
 Resource placement:
 - **Text:** Official Learn courses/paths, documentation, and reputable written guides. The Learn page of the exam's own course is titled `Microsoft Learn`; a course that is no exam's own (`AI-3026`, `SC-5009`) is titled `Microsoft Learn <CODE> Course` with the course title as its description, and the Learn Course Tracker (see Videos) says which pages need it.
