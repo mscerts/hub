@@ -132,6 +132,7 @@ scripts/
 ├── course-file.mjs           # Validates a course file (src/data_files/courses/<CODE>.json) and renders the course page (see docs/courses.md)
 ├── course-status.mjs         # The rebuild check: compares a course file with today's study guide and Learn and prints what to redo (see docs/courses.md)
 ├── course-candidates.mjs     # Candidate generator: a shortlist of Learn modules and docs pages (and the hands-on units the lab page collects) per study guide task, with provenance P1-P4; the abbreviations it knows are in scripts/lib/course-aliases.mjs (see docs/course-candidates.md)
+├── course-audience.mjs       # Options for the concepts of a study guide's audience profile ("you should be familiar with ...") and the maintainer's decision for each; a resource may be a page of any site (see docs/course-audience.md)
 ├── course-judge.mjs          # Judging protocol: prompts for an AI judge per skill group, mechanical checks of its answers (evidence quotes) and the merge (see docs/course-judging.md)
 ├── course-propose.mjs        # Model proposals: prompts for a model to name the Learn pages of each task, a check that every named page exists, and the merge into the shortlist as source P5 (see docs/course-proposals.md)
 ├── course-gates.mjs          # Approval gates: accept, reject or queue every judged candidate; the queue is a file edited by hand and the maintainer's decisions are remembered in src/data_files/course-decisions/<CODE>.json (see docs/course-gates.md)
