@@ -4,6 +4,7 @@ examName: "Microsoft 365 Administrator"
 description: "Browse MS-102 resources for Microsoft 365 tenant administration, identity, security and compliance. Check the retirement notice and AB-650 replacement."
 ---
 import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs';
+import RelatedCerts from '@components/RelatedCerts.astro';
 import MeasureUpCard from '@components/MeasureUpCard.astro';
 import RetirementBanner from '@components/RetirementBanner.astro';
 
@@ -23,6 +24,8 @@ import RetirementBanner from '@components/RetirementBanner.astro';
   <LinkCard title="MS-102 Study Guide" href="https://learn.microsoft.com/credentials/certifications/resources/study-guides/ms-102?WT.mc_id=studentamb_165290" target="_blank" description="Study guides contain topics and information you need to know to successfully prepare for the exam."/>
   <LinkCard title="Exam Labs" href="/certs/labs/microsoft365/ms-102/" target="_blank" description="Collection of all lab exercises that Microsoft offers. Includes Labs for Instructor Lead Trainings, and Applied Skills."/>
   <LinkCard title="How to Prepare for Role-Based Exams" href="/certs/prepare/role-based/" description="Guidance on hands-on practice, documentation, and readiness for Microsoft role-based exams."/>
+
+  <RelatedCerts examCode="MS-102" />
 
 ---
 <Tabs>

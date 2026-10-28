@@ -1,29 +1,100 @@
 ---
 import { CardGrid, LinkCard } from "@components/docs";
+import { getCollection } from "astro:content";
 import {
-  relatedCertsByExam,
-  type RelatedCertItem,
+  certificationRequirements,
+  externalPrerequisites,
 } from "../data_files/related-certs";
+import { examStatuses } from "../data_files/exam-status.mjs";
 
 interface Props {
   examCode: string;
-  items?: RelatedCertItem[];
   title?: string;
 }
 
-const { examCode, items, title = "Related certifications" } = Astro.props;
-const relatedItems = items ?? relatedCertsByExam[examCode.toUpperCase()] ?? [];
+const { examCode, title = "Related certifications" } = Astro.props;
+const code = examCode.toUpperCase();
+const requirement = certificationRequirements.find(
+  (item) => item.expert === code,
+);
+const related = certificationRequirements.flatMap<{
+  code: string;
+  relation: "Prerequisite" | "Qualifies toward";
+  source: string;
+}>((item) => {
+  if (item.expert === code)
+    return item.prerequisites.map((target) => ({
+      code: target,
+      relation: "Prerequisite",
+      source: item.source,
+    }));
+  if ((item.prerequisites as readonly string[]).includes(code))
+    return [
+      { code: item.expert, relation: "Qualifies toward", source: item.source },
+    ];
+  return [];
+});
+const entries = [
+  ...(await getCollection("docs")),
+  ...(await getCollection("archive")),
+];
+const relatedItems = related.map((item) => {
+  const entry = entries.find(
+    (entry) =>
+      entry.id.split("/").length === 2 &&
+      entry.id.endsWith(`/${item.code.toLowerCase()}`),
+  );
+  if (!entry) {
+    const external = externalPrerequisites[item.code];
+    if (!external)
+      throw new Error(`Related certification page missing: ${item.code}`);
+    return {
+      ...item,
+      ...external,
+      href: `${external.href}?WT.mc_id=studentamb_165290`,
+      status: "",
+      external: true,
+    };
+  }
+  const status = Object.values(examStatuses)
+    .flatMap((area) => Object.entries(area))
+    .find(([code]) => code === item.code)?.[1].text;
+  return {
+    ...item,
+    name:
+      typeof entry.data.examName === "string"
+        ? entry.data.examName
+        : entry.data.title,
+    href: `/certs/${entry.collection === "archive" ? "archive/" : ""}${entry.id}/`,
+    status:
+      status === "RETIRING"
+        ? " (retiring)"
+        : status === "BETA"
+          ? " (beta)"
+          : "",
+    external: false,
+  };
+});
 ---
 
 {relatedItems.length > 0 && (
   <>
     <h3>{title}</h3>
+    <p>
+      These requirements apply to earning the Expert certification, not to
+      taking its exam.
+      {requirement &&
+        (requirement.prerequisites.length > 1
+          ? ` You must ${requirement.kind === "exam" ? "pass at least one of the following exams" : "earn at least one of the following certifications"}.`
+          : " You must earn the following certification.")}
+    </p>
     <CardGrid>
       {relatedItems.map((item) => (
         <LinkCard
-          title={item.code}
+          title={`${item.code}${item.status}`}
           description={`${item.relation}: ${item.name}`}
-          href={`/certs/${item.area}/${item.code.toLowerCase()}/`}
+          href={item.href}
+          target={item.external ? "_blank" : undefined}
         />
       ))}
     </CardGrid>
