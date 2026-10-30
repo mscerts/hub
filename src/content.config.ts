@@ -3,7 +3,10 @@
 import { defineCollection, type ImageFunction } from "astro:content";
 import { z } from "astro/zod";
 import { glob } from "astro/loaders";
-import { voucherDisplayFields, voucherReviewFields } from "./utils/voucher-fields.ts";
+import {
+  voucherDisplayFields,
+  voucherReviewFields,
+} from "./utils/voucher-fields.ts";
 
 // Author schema for blog posts (supports local images or remote URLs)
 const authorSchema = (image: ImageFunction) =>
