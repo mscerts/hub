@@ -110,6 +110,11 @@ const prepareItems: DocsSidebarItem[] = [
 
 const voucherItems: DocsSidebarItem[] = [
   {
+    label: "Partner LevelUp",
+    href: docsPath("vouchers/levelup"),
+    badge: { text: "*100%", variant: "tip" },
+  },
+  {
     label: "Exam AB-330 (beta)",
     href: docsPath("vouchers/ab330beta"),
     badge: { text: "*80%", variant: "tip" },
@@ -127,11 +132,6 @@ const voucherItems: DocsSidebarItem[] = [
   {
     label: "Partner Certification Week",
     href: docsPath("vouchers/partnerweek"),
-    badge: { text: "*100%", variant: "tip" },
-  },
-  {
-    label: "Partner LevelUp",
-    href: docsPath("vouchers/levelup"),
     badge: { text: "*100%", variant: "tip" },
   },
   {

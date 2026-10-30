@@ -446,16 +446,29 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
   }
 
   .docs-content :global(table) {
-    width: max-content;
-    min-width: 100%;
+    width: 100%;
     border-spacing: 0;
     border-collapse: separate;
     background: var(--nb-card);
   }
 
+  /* A table of up to three columns wraps its text to fit the page; a wider one keeps its natural width and scrolls sideways. */
+  .docs-content :global(table:has(th:nth-child(4), td:nth-child(4))) {
+    width: max-content;
+    min-width: 100%;
+  }
+
   @media (max-width: 63.999rem) {
-    .docs-content :global(table) {
+    .docs-content :global(table:has(th:nth-child(4), td:nth-child(4))) {
       min-width: 42rem;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .docs-content :global(table:not(:has(th:nth-child(4), td:nth-child(4))) th),
+    .docs-content
+      :global(table:not(:has(th:nth-child(4), td:nth-child(4))) td) {
+      padding-inline: 0.55rem;
     }
   }
 
