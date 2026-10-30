@@ -2,6 +2,10 @@ import { readdirSync } from "node:fs";
 import path from "node:path";
 import { examStatuses, visibleExamStatuses } from "./exam-status.mjs";
 import { docsPath } from "@utils/docs";
+import {
+  isUpcomingVoucher,
+  readVoucherStarts,
+} from "@utils/voucher-upcoming.mjs";
 
 type DocsSidebarIcon =
   | "ph:book-open-text"
@@ -108,11 +112,27 @@ const prepareItems: DocsSidebarItem[] = [
   { label: "How to Lab", href: docsPath("prepare/labs") },
 ];
 
+// An offer that has not started yet (voucherStarts in its frontmatter) shows an
+// UPCOMING badge in place of its discount until its start day (UTC).
+function voucherBadge(
+  slug: string,
+  discount: DocsSidebarBadge,
+): DocsSidebarBadge {
+  return isUpcomingVoucher(readVoucherStarts(slug))
+    ? { text: "UPCOMING", variant: "caution" }
+    : discount;
+}
+
 const voucherItems: DocsSidebarItem[] = [
   {
     label: "Partner LevelUp",
     href: docsPath("vouchers/levelup"),
     badge: { text: "*100%", variant: "tip" },
+  },
+  {
+    label: "Data Days",
+    href: docsPath("vouchers/datadays"),
+    badge: voucherBadge("datadays", { text: "*100%", variant: "tip" }),
   },
   {
     label: "Exam AB-330 (beta)",

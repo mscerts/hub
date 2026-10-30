@@ -2,7 +2,8 @@ import { z } from "astro/zod";
 
 // Frontmatter fields of a voucher page that tell the daily voucher review
 // (scripts/voucher-review-check.mjs) when to look at the page again. They are
-// all optional and only validated here; nothing on the site renders them.
+// all optional and validated here; nothing on the site renders them, except
+// voucherStarts, which marks an offer UPCOMING (src/utils/voucher-upcoming.mjs).
 
 const DATE_HINT =
   "Use a plain calendar date written as YYYY-MM-DD, for example 2026-10-31.";
@@ -54,4 +55,14 @@ export const voucherReviewFields = {
   reviewBy: voucherDate.optional(),
   /** The exam this offer is tied to, for a voucher about a beta or upcoming exam. */
   linkedExam: examCode.optional(),
+};
+
+/** Fields the site itself reads, unlike the review fields above. */
+export const voucherDisplayFields = {
+  /**
+   * First day of an offer that has not started yet. Until that day (UTC) the
+   * site tags the offer UPCOMING (sidebar, landing list, voucher index); the
+   * review monitor does not read it.
+   */
+  voucherStarts: voucherDate.optional(),
 };

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { LinkCard, CardGrid } from "@components/docs";
+import { isUpcomingVoucher } from "@utils/voucher-upcoming.mjs";
 
 interface Props {
   category: "100%" | "50%" | "Special";
@@ -25,11 +26,15 @@ vouchers.sort((a, b) => a.data.title.localeCompare(b.data.title));
     <CardGrid>
       {vouchers.map((voucher) => {
         const href = `/certs/${voucher.id}/`;
+        const starts = voucher.data.voucherStarts;
+        const description = isUpcomingVoucher(starts)
+          ? `Upcoming, starts ${starts!.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" })}. ${voucher.data.description || ""}`
+          : voucher.data.description || "";
 
         return (
           <LinkCard
             title={voucher.data.title}
-            description={voucher.data.description || ""}
+            description={description}
             href={href}
           />
         );

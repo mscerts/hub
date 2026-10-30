@@ -6,6 +6,7 @@ import MeasureUpBanner from "../../../assets/images/mUhalloween2026.webp";
 import { recentExamStatuses, examStatusNames } from "@data/exam-status.mjs";
 import retiringExams from "@data/retiring-exams.json";
 import { compareVoucherRecency } from "@utils/voucher-recency";
+import { isUpcomingVoucher } from "@utils/voucher-upcoming.mjs";
 
 const docs = await getCollection("docs");
 
@@ -270,9 +271,15 @@ const vouchers = docs
               >
                 <span class="min-w-0 truncate">{voucher.data.title}</span>
                 <span
-                  class={`shrink-0 rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${getVoucherBadgeClass(voucher.data.voucherCategory)}`}
+                  class={`shrink-0 rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${
+                    isUpcomingVoucher(voucher.data.voucherStarts)
+                      ? "bg-amber-100 text-amber-950 dark:bg-amber-400/15 dark:text-amber-300"
+                      : getVoucherBadgeClass(voucher.data.voucherCategory)
+                  }`}
                 >
-                  {getVoucherLabel(voucher.data.voucherCategory)}
+                  {isUpcomingVoucher(voucher.data.voucherStarts)
+                    ? "Upcoming"
+                    : getVoucherLabel(voucher.data.voucherCategory)}
                 </span>
               </a>
             </li>
