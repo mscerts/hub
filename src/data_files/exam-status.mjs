@@ -17,7 +17,7 @@ export const examStatuses = {
     "AB-330": { text: "BETA", variant: "tip" },
     "AB-400": { text: "NEW", variant: "success", since: "2026-10-16" },
     "AB-620": { text: "NEW", variant: "success", since: "2026-09-24" },
-    "AB-650": { text: "BETA", variant: "tip" },
+    "AB-650": { text: "NEW", variant: "success", since: "2026-10-31" },
   },
   microsoft365: {
     "MS-102": { text: "RETIRING", variant: "danger" },
