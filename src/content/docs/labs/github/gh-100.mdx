@@ -14,6 +14,10 @@ import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
 
   <TabItem label="Microsoft Learn">
 
+:::note
+These exercises run in your own GitHub account, so you need a free GitHub account. The ones that use Azure also need an Azure subscription that you bring yourself.
+:::
+
   <CardGrid>
     <LinkCard title="Getting started with GitHub Apps" href="https://learn.microsoft.com/training/modules/automate-devops-github-apps/3-get-started-with-github-apps/?WT.mc_id=studentamb_165290" />
     <LinkCard title="Create and run a basic GitHub Actions workflow" href="https://learn.microsoft.com/training/modules/github-actions-automate-tasks/3-exercise-create-container-action/?WT.mc_id=studentamb_165290" />
@@ -36,10 +40,14 @@ import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
   </CardGrid>
   </TabItem>
 
-  {/* <TabItem label="Microsoft GitHub">
+  <TabItem label="Microsoft GitHub">
+
+:::note
+GitHub Skills courses run in your own copy of a GitHub repository. The ones that a Learn exercise on the Microsoft Learn tab already wraps are not repeated here.
+:::
 
   <CardGrid>
-    <LinkCard title="" href="" />
+    <LinkCard title="GitHub Skills: Create and use reusable workflows" href="https://github.com/skills/reusable-workflows" target="_blank" description="Create GitHub Actions workflows that can be called from other workflows."/>
   </CardGrid>
-  </TabItem> */}
+  </TabItem>
 </Tabs>
