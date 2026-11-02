@@ -108,7 +108,14 @@ const voucherLabels = {
   Special: "Special",
 };
 
-const getVoucherLabel = (category: string | undefined) => {
+// A beta exam voucher is always the 80% discount, so it says so instead of "Special".
+const isBetaVoucher = (title: string) => /\(beta\)/i.test(title);
+
+const getVoucherLabel = (category: string | undefined, title: string) => {
+  if (isBetaVoucher(title)) {
+    return "80% off";
+  }
+
   if (category === "100%" || category === "50%" || category === "Special") {
     return voucherLabels[category];
   }
@@ -116,16 +123,14 @@ const getVoucherLabel = (category: string | undefined) => {
   return "Special";
 };
 
-const getVoucherBadgeClass = (category: string | undefined) => {
-  switch (category) {
-    case "100%":
-      return "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300";
-    case "50%":
-      return "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300";
-    case "Special":
-    default:
-      return "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300";
+// Pink like the sidebar's *100% and *80% badges: the 100% offers and the beta
+// exam vouchers (80%); the 50% and other special offers stay blue.
+const getVoucherBadgeClass = (category: string | undefined, title: string) => {
+  if (category === "100%" || isBetaVoucher(title)) {
+    return "bg-[#fae8ff] text-[#86198f] dark:bg-[#d946ef]/15 dark:text-[#f0abfc]";
   }
+
+  return "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300";
 };
 
 const vouchers = docs
@@ -274,12 +279,12 @@ const vouchers = docs
                   class={`shrink-0 rounded-full px-2 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${
                     isUpcomingVoucher(voucher.data.voucherStarts)
                       ? "bg-amber-100 text-amber-950 dark:bg-amber-400/15 dark:text-amber-300"
-                      : getVoucherBadgeClass(voucher.data.voucherCategory)
+                      : getVoucherBadgeClass(voucher.data.voucherCategory, voucher.data.title)
                   }`}
                 >
                   {isUpcomingVoucher(voucher.data.voucherStarts)
                     ? "Upcoming"
-                    : getVoucherLabel(voucher.data.voucherCategory)}
+                    : getVoucherLabel(voucher.data.voucherCategory, voucher.data.title)}
                 </span>
               </a>
             </li>

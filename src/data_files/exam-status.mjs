@@ -165,7 +165,7 @@ export const examStatusStyles = {
 
 export const voucherBadgeStyles = {
   "100%":
-    "bg-purple-100 text-purple-800 dark:bg-purple-400/15 dark:text-purple-300",
+    "bg-[#fae8ff] text-[#86198f] dark:bg-[#d946ef]/15 dark:text-[#f0abfc]",
   "50%":
     "bg-orange-100 text-orange-800 dark:bg-orange-400/15 dark:text-orange-300",
   Special: "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300",
