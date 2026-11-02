@@ -125,14 +125,14 @@ function voucherBadge(
 
 const voucherItems: DocsSidebarItem[] = [
   {
-    label: "Partner LevelUp",
-    href: docsPath("vouchers/levelup"),
-    badge: { text: "*100%", variant: "tip" },
-  },
-  {
     label: "Data Days",
     href: docsPath("vouchers/datadays"),
     badge: voucherBadge("datadays", { text: "*100%", variant: "tip" }),
+  },
+  {
+    label: "Partner LevelUp",
+    href: docsPath("vouchers/levelup"),
+    badge: { text: "*100%", variant: "tip" },
   },
   {
     label: "Exam AB-330 (beta)",

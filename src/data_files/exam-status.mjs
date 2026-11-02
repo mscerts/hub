@@ -155,7 +155,7 @@ export const examStatusNames = {
 
 export const examStatusStyles = {
   NEW: "bg-green-100 text-green-800 dark:bg-green-400/15 dark:text-green-300",
-  BETA: "bg-[#a855f7]/15 text-[#d8b4fe]",
+  BETA: "bg-[#fae8ff] text-[#86198f] dark:bg-[#d946ef]/15 dark:text-[#f0abfc]",
   GA: "bg-green-100 text-green-800 dark:bg-green-400/15 dark:text-green-300",
   AT_RISK: "bg-amber-400/15 text-amber-300",
   RETIRING: "bg-red-100 text-red-800 dark:bg-red-400/15 dark:text-red-300",

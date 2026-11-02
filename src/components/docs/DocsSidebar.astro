@@ -25,11 +25,17 @@ function badgeClass(badge: DocsSidebarBadge) {
     return "border-gray-300 bg-gray-100 text-gray-700 dark:border-[#7f8da0]/60 dark:bg-[#64748b]/15 dark:text-[#cbd5e1]";
   }
 
+  if (badge.text === "RETIRING") {
+    return "border-red-300 bg-red-100 text-red-800 dark:border-red-400/60 dark:bg-red-400/15 dark:text-red-300";
+  }
+
+  if (badge.text === "BETA") {
+    return "border-[#f0abfc] bg-[#fae8ff] text-[#86198f] dark:border-[#d946ef]/60 dark:bg-[#d946ef]/15 dark:text-[#f0abfc]";
+  }
+
   if (badge.variant === "tip") {
-    return isVoucher
-      ? isHighDiscount
-        ? "border-blue-300 bg-blue-100 text-blue-800 dark:border-[#3b82f6]/60 dark:bg-[#3b82f6]/15 dark:text-[#93c5fd]"
-        : "border-blue-300 bg-blue-100 text-blue-800 dark:border-[#3b82f6]/60 dark:bg-[#3b82f6]/15 dark:text-[#93c5fd]"
+    return isVoucher && isHighDiscount
+      ? "border-[#f0abfc] bg-[#fae8ff] text-[#86198f] dark:border-[#d946ef]/60 dark:bg-[#d946ef]/15 dark:text-[#f0abfc]"
       : "border-blue-300 bg-blue-100 text-blue-800 dark:border-[#3b82f6]/60 dark:bg-[#3b82f6]/15 dark:text-[#93c5fd]";
   }
 
