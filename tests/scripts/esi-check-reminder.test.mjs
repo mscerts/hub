@@ -101,20 +101,55 @@ test("the list is read sorted by area prefix and number, and anything unusual is
     readEsiList(
       JSON.stringify({
         "Microsoft ESI": ["SC-900", "AB-210", "AB-100", "AB-210"],
+        "MS Learn Course": [],
       }),
     ),
     ["AB-100", "AB-210", "SC-900"],
   );
-  assert.deepEqual(readEsiList(JSON.stringify({ "Microsoft ESI": [] })), []);
+  assert.deepEqual(
+    readEsiList(JSON.stringify({ "Microsoft ESI": [], "MS Learn Course": [] })),
+    [],
+  );
   assert.throws(() => readEsiList("{"), /not valid JSON/);
   assert.throws(() => readEsiList("{}"), /no "Microsoft ESI" list/);
+  assert.throws(
+    () => readEsiList(JSON.stringify({ "Microsoft ESI": ["AB-100"] })),
+    /no "MS Learn Course" list/,
+  );
   assert.throws(
     () => readEsiList(JSON.stringify({ "Microsoft ESI": "AB-100" })),
     /no "Microsoft ESI" list/,
   );
   assert.throws(
-    () => readEsiList(JSON.stringify({ "Microsoft ESI": ["AB-100", "nope"] })),
+    () =>
+      readEsiList(
+        JSON.stringify({
+          "Microsoft ESI": ["AB-100", "nope"],
+          "MS Learn Course": [],
+        }),
+      ),
     /"nope" .* is not an exam code/,
+  );
+});
+
+test("an exam without a Learn course is left out: ESI has no training for it", () => {
+  assert.deepEqual(
+    readEsiList(
+      JSON.stringify({
+        "Microsoft ESI": ["AB-210", "AB-330", "AZ-401", "SC-900"],
+        "MS Learn Course": ["AB-330", "AZ-401", "GH-700"],
+      }),
+    ),
+    ["AB-210", "SC-900"],
+  );
+  assert.deepEqual(
+    readEsiList(
+      JSON.stringify({
+        "Microsoft ESI": ["AB-330"],
+        "MS Learn Course": ["AB-330"],
+      }),
+    ),
+    [],
   );
 });
 
@@ -224,7 +259,10 @@ test("on the command line a dry run prints the checklist and touches nothing", (
   const file = join(tempDir, "missing.json");
   writeFileSync(
     file,
-    JSON.stringify({ "Microsoft ESI": ["AB-210", "SC-900"] }),
+    JSON.stringify({
+      "Microsoft ESI": ["AB-210", "SC-900"],
+      "MS Learn Course": [],
+    }),
   );
   const report = join(tempDir, "report.md");
   // a gh that would fail the run if it were ever called

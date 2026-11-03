@@ -19,6 +19,10 @@
  *   the refreshed list is added as a comment, so it does not pile up copies.
  * An exam leaves the list when its page gets the ESI card, or when the audit exempts
  * it (scripts/lib/audit-exemptions.mjs) after a check found no training.
+ * An exam whose page has no Microsoft Learn course card is never listed either: ESI
+ * sells the Learn courses as instructor-led training, so an exam without a course
+ * on Learn (a beta exam, mostly) cannot be there. It is listed again at the round
+ * after its page gets the course card.
  *
  * The list is read from the file the audit wrote; a file that cannot be read or has
  * no "Microsoft ESI" list is an error (red run), never an empty list: a run that
@@ -47,6 +51,7 @@ import { makeGh } from "./lib/gh.mjs";
 export const ISSUE_TITLE = "ESI: check which exams have training";
 export const ISSUE_LABEL = "enhancement";
 export const LIST_KEY = "Microsoft ESI";
+export const COURSE_KEY = "MS Learn Course";
 
 /** The address an exam's ESI card has on the exam pages: a search by exam code. */
 export function esiSearchUrl(code) {
@@ -65,8 +70,10 @@ export function statusOf(code, statuses = examStatuses) {
 }
 
 /**
- * The exam codes of the "Microsoft ESI" list, sorted by area and number. Throws
- * when the file has no such list or it holds something that is not an exam code.
+ * The exam codes of the "Microsoft ESI" list, without the exams that are on the
+ * "MS Learn Course" list (no course on Learn, so nothing for ESI to offer), sorted
+ * by area and number. Throws when the file has no such list or it holds something
+ * that is not an exam code.
  */
 export function readEsiList(text) {
   let data;
@@ -88,11 +95,19 @@ export function readEsiList(text) {
       );
     }
   }
-  return [...new Set(list)].sort((a, b) => {
-    const [pa, na] = a.split("-");
-    const [pb, nb] = b.split("-");
-    return pa.localeCompare(pb) || Number(na) - Number(nb);
-  });
+  const noCourse = data[COURSE_KEY];
+  if (!Array.isArray(noCourse)) {
+    throw new Error(
+      `The audit file has no "${COURSE_KEY}" list (run node scripts/audit-missing-resources.mjs first).`,
+    );
+  }
+  return [...new Set(list)]
+    .filter((code) => !noCourse.includes(code))
+    .sort((a, b) => {
+      const [pa, na] = a.split("-");
+      const [pb, nb] = b.split("-");
+      return pa.localeCompare(pb) || Number(na) - Number(nb);
+    });
 }
 
 function checklist(codes, repository, statuses) {

@@ -28,6 +28,46 @@ export const EXEMPT = Object.freeze({
     "AI-901":
       "the labs of mslearn-ai-fundamentals and mslearn-ai-concepts are the Learn exercise units that wrap them (each unit opens the lab through a go.microsoft.com link), all on the Microsoft Learn tab; the GitHub cards were replaced by them on 2026-10-21 (AGENTS.md, Lab Page Workflow)",
   }),
+  "Microsoft ESI": Object.freeze({
+    "AB-210":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "AB-250":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "AB-410":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "AB-900":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "AZ-120":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "AZ-140":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "AZ-900":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "DP-420":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "GH-100":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "GH-500":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "MB-230":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "MB-310":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "MB-330":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "MD-102":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "MS-102":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "MS-700":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "MS-721":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "SC-100":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+    "SC-900":
+      "the maintainer checked ESI by hand and it has no training for this exam (2026-11-02)",
+  }),
 });
 
 /**
