@@ -224,10 +224,6 @@
       [
         "/training/modules/understand-azure-active-directory",
         "fe06a8811fd6a74d7b1500c07465a3713f7b1ba5"
-      ],
-      [
-        "/training/modules/understand-foundations-generative-ai-business-leaders",
-        "9fd6baeb69d96f1faad06c4a1921e71e4d9feb8c"
       ]
     ],
     "builtAt": "2026-11-04"
@@ -1102,21 +1098,6 @@
         {
           "title": "Design and implement evaluation and validation strategies for multi-agent solutions",
           "foundations": [
-            {
-              "target": {
-                "kind": "module",
-                "path": "/training/modules/understand-foundations-generative-ai-business-leaders"
-              },
-              "title": "Understand the foundations of generative AI for business leaders",
-              "class": "foundation",
-              "source": "P3",
-              "why": "Explains what generative AI models are and how they work, a concept base for the group, though written for business leaders.",
-              "evidence": "Understand generative AI models",
-              "decision": {
-                "by": "auto",
-                "at": "2026-11-04"
-              }
-            },
             {
               "target": {
                 "kind": "docs",
@@ -2794,9 +2775,27 @@
       "at": "2026-11-04"
     },
     {
+      "taskKey": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-evaluation-and-validation-strategies-fo/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "at": "2026-11-04"
+    },
+    {
       "taskKey": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-observability-and-monitoring-for-multi/@foundations",
       "path": "/azure/azure-monitor/agents/azure-monitor-agent-overview",
       "reason": "The Azure Monitor Agent collects guest operating system data from virtual machines, an infrastructure monitoring topic outside agent observability.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-observability-and-monitoring-for-multi/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "evaluate-optimize-and-monitor-multi-agent-solutions/optimize-prompt-and-model-performance-for-multi-agent-soluti/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
       "at": "2026-11-04"
     },
     {
@@ -2863,6 +2862,12 @@
       "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
       "path": "/training/modules/introduction-to-github-copilot-for-business",
       "reason": "Covers GitHub Copilot Business use cases and setup, which is a product and licensing topic outside this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
       "at": "2026-11-04"
     },
     {
