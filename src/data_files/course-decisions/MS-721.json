@@ -1,0 +1,921 @@
+{
+  "schemaVersion": 1,
+  "code": "MS-721",
+  "decisions": [
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-audio-conferencing/@foundations",
+      "target": "/microsoftteams/calling-plan-overview",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-audio-conferencing/configure-audio-conferencing-for-teams",
+      "target": "/training/modules/configure-troubleshoot-microsoft-teams-clients-services",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting or other-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-audio-conferencing/configure-audio-conferencing-for-teams",
+      "target": "/troubleshoot/microsoftteams/teams-conferencing/static-conference-id-not-supported",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-audio-conferencing/configure-audio-conferencing-for-teams",
+      "target": "/troubleshoot/microsoftteams/teams-conferencing/teams-call-requires-five-or-more-digits",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-teams-meetings/@foundations",
+      "target": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-teams-meetings/@foundations",
+      "target": "/training/modules/m365-introduction-deliver-virtual-events-using-microsoft-teams",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-teams-meetings/configure-virtual-appointments-and-advanced-virtual-appointm",
+      "target": "/microsoft-365/frontline/ehr-admin-epic",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-teams-meetings/configure-virtual-appointments-and-advanced-virtual-appointm",
+      "target": "/microsoft-365/frontline/ehr-admin-oracle-health",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-teams-meetings/configure-virtual-appointments-and-advanced-virtual-appointm",
+      "target": "/microsoft-365/frontline/ehr-connector-report",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-teams-meetings/create-and-manage-meeting-policies",
+      "target": "/training/modules/troubleshoot-microsoft-teams-meetings-live-events-messaging",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-teams-meetings/create-and-manage-meeting-policies",
+      "target": "/troubleshoot/microsoftteams/teams-conferencing/organizer-cant-start-teams-meeting",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/assign-teams-phone-licenses-phone-numbers-and-policies/@foundations",
+      "target": "/training/modules/configure-teams-phone-system",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/assign-teams-phone-licenses-phone-numbers-and-policies/assign-a-teams-calling-plan",
+      "target": "/troubleshoot/microsoftteams/teams-conferencing/need-a-license-error-when-assigning-a-number",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Troubleshooting page for the licence error when assigning a number to a user.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-and-manage-calling-features-for-teams-phone/@foundations",
+      "target": "/training/modules/configure-manage-voice-users",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-and-manage-calling-features-for-teams-phone/@foundations",
+      "target": "/training/modules/configure-teams-phone-system",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-and-manage-calling-features-for-teams-phone/configure-call-delegation",
+      "target": "/training/modules/configure-deploy-direct-routing",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-and-manage-calling-features-for-teams-phone/configure-call-forwarding",
+      "target": "/training/modules/configure-deploy-direct-routing",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-and-manage-calling-features-for-teams-phone/configure-private-lines",
+      "target": "/training/modules/configure-deploy-direct-routing",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-and-manage-calling-features-for-teams-phone/configure-simultaneous-ring",
+      "target": "/training/modules/configure-deploy-direct-routing",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-and-manage-direct-routing-for-teams-phone/@foundations",
+      "target": "/training/modules/configure-teams-phone-system",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-and-manage-direct-routing-for-teams-phone/create-pstn-usage-records",
+      "target": "/training/modules/plan-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-emergency-calling/@foundations",
+      "target": "/training/modules/configure-manage-voice-users",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-emergency-calling/@foundations",
+      "target": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-emergency-calling/configure-networks-and-locations-location-information-servic",
+      "target": "/training/modules/configure-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-emergency-calling/create-and-configure-emergency-calling-locations",
+      "target": "/training/modules/plan-configure-network-settings-for-microsoft-teams",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-emergency-calling/troubleshoot-dynamic-emergency-address",
+      "target": "/training/modules/configure-deploy-direct-routing",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-emergency-calling/troubleshoot-dynamic-emergency-address",
+      "target": "/training/modules/configure-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-auto-attendants-and-call-queues/@foundations",
+      "target": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-auto-attendants-and-call-queues/assign-licenses-to-resource-accounts",
+      "target": "/microsoft-365/enterprise/remove-licenses-from-user-accounts-with-microsoft-365-powershell",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-auto-attendants-and-call-queues/assign-licenses-to-resource-accounts",
+      "target": "/microsoft-365/enterprise/view-account-license-and-service-details-with-microsoft-365-powershell",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-auto-attendants-and-call-queues/create-and-configure-resource-accounts",
+      "target": "/troubleshoot/microsoftteams/teams-administration/following-application-instance-not-present-error",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Troubleshooting page for the application instance error when creating a resource account.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-auto-attendants-and-call-queues/create-and-configure-resource-accounts",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/teams-rooms-resource-account-sign-in-issues",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting or other-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-teams-phone-policies/@foundations",
+      "target": "/training/modules/configure-manage-voice-users",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-teams-phone-policies/@foundations",
+      "target": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-teams-phone-policies/create-and-configure-call-hold-policies",
+      "target": "/training/modules/configure-auto-attendants-call-queues",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-teams-phone-policies/create-and-configure-dial-plans",
+      "target": "/training/modules/configure-manage-voice-users",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Training module that covers voice users and dial plans.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-teams-phone-policies/create-and-configure-dial-plans",
+      "target": "/training/modules/monitor-troubleshoot-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-teams-phone-policies/create-and-configure-mobility-policies",
+      "target": "/training/modules/plan-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-teams-phone-policies/create-and-configure-routing-of-unassigned-numbers",
+      "target": "/training/modules/monitor-troubleshoot-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/configure-and-manage-teams-android-devices/configure-teams-ip-phone-policies",
+      "target": "/training/modules/configure-deploy-direct-routing",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/configure-and-manage-teams-android-devices/configure-teams-ip-phone-policies",
+      "target": "/training/modules/migrate-voice-services-from-skype-for-business-server-to-teams",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/configure-and-manage-teams-android-devices/create-and-configure-device-configuration-profiles-for-andro",
+      "target": "/troubleshoot/mem/intune/device-configuration/troubleshoot-email-profiles-in-microsoft-intune",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/configure-and-manage-teams-android-devices/create-and-configure-device-configuration-profiles-for-andro",
+      "target": "/troubleshoot/mem/intune/device-configuration/troubleshoot-vpn-profiles",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/configure-and-manage-teams-rooms-on-windows/configure-custom-displays-for-teams-rooms-on-windows",
+      "target": "/microsoftteams/rooms/coordinated-meetings",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/configure-and-manage-teams-rooms-on-windows/configure-custom-displays-for-teams-rooms-on-windows",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/cannot-display-powerpoint-live-content",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/@foundations",
+      "target": "/entra/identity/conditional-access/concept-authentication-flows",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/@foundations",
+      "target": "/entra/identity/conditional-access/concept-condition-filters-for-devices",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/@foundations",
+      "target": "/training/modules/monitor-troubleshoot-teams-phone-system",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/configure-device-settings",
+      "target": "/microsoftteams/meetings-real-time-media-traffic",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/configure-device-settings",
+      "target": "/microsoftteams/network-roaming-policy",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/configure-device-settings",
+      "target": "/training/modules/create-configure-manage-identities",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/configure-device-settings",
+      "target": "/training/modules/plan-configure-network-settings-for-microsoft-teams",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/configure-device-settings",
+      "target": "/training/modules/plan-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/configure-device-updates",
+      "target": "/training/modules/configure-troubleshoot-microsoft-teams-clients-services",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/configure-local-network-settings",
+      "target": "/training/modules/monitor-troubleshoot-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/configure-meeting-room-settings-by-using-the-microsoft-teams",
+      "target": "/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Explains unified device management in the Teams Rooms Pro management portal.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/configure-meeting-room-settings-by-using-the-microsoft-teams",
+      "target": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/create-and-manage-teams-device-tags",
+      "target": "/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/deploy-common-area-phones-user-phones-and-conference-phones",
+      "target": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/manage-teams-rooms-from-the-microsoft-teams-rooms-pro-manage",
+      "target": "/microsoftteams/rooms/coordinated-meetings",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/monitor-teams-device-health",
+      "target": "/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/specify-intune-configuration-requirements-for-teams-devices",
+      "target": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/specify-intune-configuration-requirements-for-teams-devices",
+      "target": "/training/modules/plan-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/troubleshoot-authentication-issues",
+      "target": "/entra/identity/authentication/troubleshoot-authentication-strengths",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/troubleshoot-authentication-issues",
+      "target": "/entra/identity/devices/troubleshoot-primary-refresh-token",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/troubleshoot-authentication-issues",
+      "target": "/training/modules/device-identity-authentication-entra-id",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/troubleshoot-authentication-issues",
+      "target": "/training/modules/plan-implement-administer-conditional-access",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/troubleshoot-update-issues",
+      "target": "/training/modules/configure-troubleshoot-microsoft-teams-clients-services",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/troubleshoot-update-issues",
+      "target": "/troubleshoot/microsoftteams/teams-administration/resolve-teams-client-update-failures",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/troubleshoot-update-issues",
+      "target": "/troubleshoot/microsoftteams/teams-administration/root-cause-undetermined-teams-update-failure",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/troubleshoot-update-issues",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/create-support-request-teams-device-issues",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-rooms-and-devices/manage-and-maintain-teams-rooms-and-devices/troubleshoot-update-issues",
+      "target": "/troubleshoot/microsoftteams/teams-sign-in/teams-doesnt-automatically-update",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/identify-the-requirements-for-a-microsoft-teams-rooms-resour",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/teams-rooms-resource-account-sign-in-issues",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/recommend-a-teams-rooms-device-platform-including-windows-an",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/collect-device-logs",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/recommend-a-teams-rooms-device-platform-including-windows-an",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/incorrect-events-style-meeting-interface",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/recommend-a-teams-rooms-device-platform-including-windows-an",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/reset-device-using-recovery-tool",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/recommend-a-teams-rooms-device-platform-including-windows-an",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/resolve-capacity-limit-notifications",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/recommend-a-teams-rooms-device-platform-including-windows-an",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/resolve-sign-in-delays-dynamic-device-groups",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/recommend-a-teams-rooms-device-platform-including-windows-an",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/signed-out-of-teams-android-devices",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/recommend-a-teams-rooms-device-platform-including-windows-an",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/teams-android-devices-conditional-access-issues",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/recommend-an-interoperability-solution-for-microsoft-teams-r",
+      "target": "/training/modules/monitor-troubleshoot-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/recommend-teams-certified-devices",
+      "target": "/troubleshoot/microsoftteams/meetings/known-issues-teams-certified-peripherals",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/recommend-teams-certified-devices",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/signed-out-of-teams-android-devices",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting or other-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-certified-device-solutions/recommend-teams-rooms-certified-components",
+      "target": "/troubleshoot/microsoftteams/teams-rooms-and-devices/signed-out-of-teams-android-devices",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-meetings/@foundations",
+      "target": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-meetings/@foundations",
+      "target": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-meetings/plan-and-design-teams-meeting-policies-and-settings",
+      "target": "/microsoftteams/settings-policies-reference",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-meetings/plan-and-design-teams-policy-packages",
+      "target": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-meetings/plan-for-pstn-audio-conferencing",
+      "target": "/training/modules/configure-troubleshoot-microsoft-teams-clients-services",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-meetings/recommend-when-to-use-teams-premium-and-microsoft-365-copilo",
+      "target": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/microsoftteams/direct-routing-whats-new",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-400",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-402",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-403",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-404",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-408",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-410",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-412",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-415",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-420",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-422",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-480",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-484",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-486",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-488",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-500",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-and-design-direct-routing",
+      "target": "/troubleshoot/microsoftteams/phone-system/direct-routing/microsoft-sip-response-codes-503",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-for-shared-calling",
+      "target": "/microsoftteams/settings-policies-reference",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/recommend-an-appropriate-billing-method-for-communications-c",
+      "target": "/training/modules/configure-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/recommend-devices-for-teams-phone",
+      "target": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/prepare-the-network-for-teams/@foundations",
+      "target": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "decision": "reject",
+      "reason": "Generic or end-user overview; not needed as a foundation for this task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/prepare-the-network-for-teams/configure-the-network-topology",
+      "target": "/training/modules/network-fundamentals",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting, error-code reference, other-role or generic overview; not needed for the planning task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/prepare-the-network-for-teams/recommend-when-to-use-enterprise-content-delivery-network-ec",
+      "target": "/microsoft-365/enterprise/content-delivery-networks",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}
