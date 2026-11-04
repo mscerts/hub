@@ -1,0 +1,982 @@
+---
+title: DP-700 Study Guide Course
+description: "Follow a structured DP-700 course organized by study guide task, with Microsoft Learn training and documentation."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official DP-700 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-700?WT.mc_id=studentamb_165290) skills measured. Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [DP-700 labs page](/certs/labs/azure/dp-700/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+You work closely with analytics engineers, architects, analysts, and administrators to design and deploy data engineering solutions for analytics.
+
+You should be skilled at manipulating and transforming data by using Structured Query Language (SQL), PySpark, and Kusto Query Language (KQL).
+
+### As a candidate for this exam, you should have subject matter expertise with data loading patterns, data architectures, and orchestration processes. Your responsibilities for this role include
+
+- Ingesting and transforming data.
+- Securing and managing an analytics solution.
+- Monitoring and optimizing an analytics solution.
+
+## Implement and manage an analytics solution (30–35%)
+
+### Configure Microsoft Fabric workspace settings
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Use Apache Spark in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/use-apache-spark-work-files-lakehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with lakehouses in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/get-started-lakehouses?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure data access in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/secure-data-access-in-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to end-to-end analytics using Microsoft Fabric" href="https://learn.microsoft.com/training/modules/introduction-end-analytics-use-microsoft-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Orchestrate processes and data movement with Microsoft Fabric" href="https://learn.microsoft.com/training/modules/use-data-factory-pipelines-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Ingest Data with Dataflows Gen2 in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/use-dataflow-gen-2-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Fabric Terminology" href="https://learn.microsoft.com/fabric/fundamentals/fabric-terminology?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="On-demand billing for Apache Spark in Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/autoscale-billing-for-spark-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data engineering and science capacity admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/capacity-settings-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="High concurrency mode in Apache Spark compute for Fabric" href="https://learn.microsoft.com/fabric/data-engineering/high-concurrency-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="OneLake security roles, permissions, and scopes" href="https://learn.microsoft.com/fabric/onelake/security/data-access-control-model?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Spark workspace settings
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure and manage starter pools in Fabric Spark" href="https://learn.microsoft.com/fabric/data-engineering/configure-starter-pools?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create custom Apache Spark pools in Fabric" href="https://learn.microsoft.com/fabric/data-engineering/create-custom-spark-pools?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apache Spark workspace administration settings FAQ - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/spark-admin-settings-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure domain workspace settings
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage Fabric settings in OneLake Catalog - Microsoft Fabric" href="https://learn.microsoft.com/fabric/governance/onelake-catalog-manage-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure OneLake workspace settings
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure data workflow workspace settings
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Implement lifecycle management in Fabric
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Lifecycle Management of the Microsoft Fabric Variable library - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/variable-library/variable-library-cicd?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is a lakehouse?" href="https://learn.microsoft.com/fabric/data-engineering/lakehouse-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is a deployment plan in Microsoft Fabric? - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/deployment-plan/deployment-plan-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to CI/CD in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/cicd-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan CI/CD for Microsoft Fabric Solutions" href="https://learn.microsoft.com/fabric/fundamentals/understand-best-practices-fabric-cicd?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure version control
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement continuous integration and continuous delivery (CI/CD) in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/implement-cicd-in-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Git" href="https://learn.microsoft.com/training/modules/intro-to-git?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Overview of Fabric Git integration - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/git-integration/intro-to-git-integration?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement database projects
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Develop and Deploy Cross-Warehouse Dependencies" href="https://learn.microsoft.com/fabric/data-warehouse/cross-warehouse-development-database-projects?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Pre-deployment and post-deployment scripts for Fabric Data Warehouse (Preview) - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-warehouse/deployment-scripts?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and configure deployment pipelines
+
+:::note
+The Microsoft Learn module "Implement continuous integration and continuous delivery (CI/CD) in Microsoft Fabric" also covers this task. It is listed once, under [Configure version control](#configure-version-control).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Assign a workspace to a deployment pipeline" href="https://learn.microsoft.com/fabric/cicd/deployment-pipelines/assign-pipeline?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create deployment rules for Fabric's ALM - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/deployment-pipelines/create-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fabric Application lifecycle management (ALM) deployment pipelines deploy content - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/deployment-pipelines/deploy-content?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Fabric deployment pipelines new user interface - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/deployment-pipelines/deployment-pipelines-new-ui?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started using deployment pipelines, the Fabric Application lifecycle management (ALM) tool" href="https://learn.microsoft.com/fabric/cicd/deployment-pipelines/get-started-with-deployment-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Fabric deployment pipelines - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/deployment-pipelines/intro-to-deployment-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="The Microsoft Fabric deployment pipelines process - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/deployment-pipelines/understand-the-deployment-process?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Best practices for lifecycle management in Fabric" href="https://learn.microsoft.com/fabric/cicd/best-practices-cicd?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Compare content in different stages before deployment" href="https://learn.microsoft.com/fabric/cicd/deployment-pipelines/compare-pipeline-content?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fabric Application lifecycle management (ALM) deployment pipelines history" href="https://learn.microsoft.com/fabric/cicd/deployment-pipelines/deployment-history?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automate deployment pipelines with APIs for Power BI items - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/deployment-pipelines/pipeline-automation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automate deployment pipeline by using Fabric APIs - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/deployment-pipelines/pipeline-automation-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automate deployments with a deployment plan - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/deployment-plan/deployment-plan-automation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CI/CD workflow options in Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/manage-deployment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot the Fabric lifecycle management tools. - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/troubleshoot-cicd?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fabric environment Git integration and deployment pipeline" href="https://learn.microsoft.com/fabric/data-engineering/environment-git-and-deployment-pipeline?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Lakehouse git integration and deployment pipelines - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/lakehouse-git-deployment-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Configure security and governance
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Fabric security fundamentals" href="https://learn.microsoft.com/fabric/security/security-fundamentals?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security in Microsoft Fabric" href="https://learn.microsoft.com/fabric/security/security-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data security overview" href="https://learn.microsoft.com/fabric/onelake/security/get-started-security?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement workspace-level access controls
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Implement item-level access controls
+
+:::note
+The Microsoft Learn module "Secure a Microsoft Fabric data warehouse" also covers this task. It is listed once, under [Implement row-level, column-level, object-level, and file-level access controls](#implement-row-level-column-level-object-level-and-file-level-access-controls).
+:::
+
+#### Implement row-level, column-level, object-level, and file-level access controls
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Secure a Microsoft Fabric data warehouse" href="https://learn.microsoft.com/training/modules/secure-data-warehouse-in-microsoft-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="OneLake table, column, and row-level security" href="https://learn.microsoft.com/fabric/onelake/security/table-column-row-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="OneLake security roles: create and manage - Microsoft Fabric" href="https://learn.microsoft.com/fabric/onelake/security/create-manage-roles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Read data secured with OneLake security" href="https://learn.microsoft.com/fabric/onelake/security/read-secured-data?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement dynamic data masking
+
+:::note
+The Microsoft Learn module "Secure a Microsoft Fabric data warehouse" also covers this task. It is listed once, under [Implement row-level, column-level, object-level, and file-level access controls](#implement-row-level-column-level-object-level-and-file-level-access-controls).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Dynamic Data Masking in Fabric Data Warehouse" href="https://learn.microsoft.com/fabric/data-warehouse/dynamic-data-masking?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to Implement Dynamic Data Masking in Fabric Data Warehouse" href="https://learn.microsoft.com/fabric/data-warehouse/howto-dynamic-data-masking?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Apply sensitivity labels to items
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Apply sensitivity labels to Fabric items" href="https://learn.microsoft.com/fabric/fundamentals/apply-sensitivity-labels?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Mandatory label policy in Fabric and Power BI" href="https://learn.microsoft.com/fabric/governance/mandatory-label-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sensitivity label inheritance upon update" href="https://learn.microsoft.com/fabric/governance/service-security-sensitivity-label-inheritance-upon-update?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Endorse items
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Endorse Fabric and Power BI items" href="https://learn.microsoft.com/fabric/fundamentals/endorsement-promote-certify?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Orchestrate processes
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore fundamentals of large-scale analytics" href="https://learn.microsoft.com/training/modules/examine-components-of-modern-data-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore fundamentals of real-time analytics" href="https://learn.microsoft.com/training/modules/explore-fundamentals-stream-processing?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Pipeline Overview" href="https://learn.microsoft.com/fabric/data-factory/pipeline-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose between a pipeline and a notebook
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data ingestion options for a lakehouse" href="https://learn.microsoft.com/fabric/data-engineering/load-data-lakehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Notebook activity" href="https://learn.microsoft.com/fabric/data-factory/notebook-activity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement schedules and event-based triggers
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Implement orchestration patterns with notebooks and pipelines, including parameters and dynamic expressions
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+## Ingest and transform data (30–35%)
+
+### Design and implement loading patterns
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Work with Delta Lake tables in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/work-delta-lake-tables-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore core data concepts" href="https://learn.microsoft.com/training/modules/explore-core-data-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Transact-SQL" href="https://learn.microsoft.com/training/modules/introduction-to-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement full and incremental data loads
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Load data into a Microsoft Fabric data warehouse" href="https://learn.microsoft.com/training/modules/load-data-into-microsoft-fabric-data-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Prepare data for loading into a dimensional model
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Get started with data warehouses in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/get-started-data-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Design dimensional models for analytics in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/design-dimensional-models-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Load Tables in a Dimensional Model" href="https://learn.microsoft.com/fabric/data-warehouse/dimensional-modeling-load-tables?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Modeling Dimension Tables in Warehouse" href="https://learn.microsoft.com/fabric/data-warehouse/dimensional-modeling-dimension-tables?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Modeling Fact Tables in Warehouse" href="https://learn.microsoft.com/fabric/data-warehouse/dimensional-modeling-fact-tables?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dimensional Modeling" href="https://learn.microsoft.com/fabric/data-warehouse/dimensional-modeling-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement a loading pattern for streaming data
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Ingest and transform batch data
+
+#### Choose an appropriate data store
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Choose data stores in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/choose-data-store-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with Real-Time Intelligence in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/get-started-kusto-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Work with real-time data in an Eventhouse in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/query-data-kql-database-microsoft-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Fabric decision guide - choose a data store" href="https://learn.microsoft.com/fabric/fundamentals/decision-guide-data-store?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Warehouse and Lakehouse: A Decision Guide" href="https://learn.microsoft.com/fabric/fundamentals/decision-guide-lakehouse-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data storage options in Microsoft Fabric" href="https://learn.microsoft.com/fabric/fundamentals/store-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a lakehouse in Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/create-lakehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a KQL database" href="https://learn.microsoft.com/fabric/real-time-intelligence/create-database?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose between dataflows, notebooks, and T-SQL for data transformation
+
+:::note
+The Microsoft Learn module "Load data into a Microsoft Fabric data warehouse" also covers this task. It is listed once, under [Design and implement full and incremental data loads](#design-and-implement-full-and-incremental-data-loads) in the skill group Design and implement loading patterns.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Decision Guide for Data Movement and Transformation" href="https://learn.microsoft.com/fabric/data-factory/decision-guide-data-integration?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage shortcuts to data
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Unify Data Sources With OneLake Shortcuts" href="https://learn.microsoft.com/fabric/onelake/onelake-shortcuts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Shortcuts in a lakehouse" href="https://learn.microsoft.com/fabric/data-engineering/lakehouse-shortcuts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Azure Data Lake Storage Gen2 shortcut - Microsoft Fabric" href="https://learn.microsoft.com/fabric/onelake/create-adls-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create shortcuts to on-premises data" href="https://learn.microsoft.com/fabric/onelake/create-on-premises-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Amazon S3 compatible shortcut" href="https://learn.microsoft.com/fabric/onelake/create-s3-compatible-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Amazon S3 shortcut" href="https://learn.microsoft.com/fabric/onelake/create-s3-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a cross-tenant OneLake shortcut" href="https://learn.microsoft.com/fabric/onelake/shortcuts/create-cross-tenant-onelake-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a same-tenant OneLake shortcut" href="https://learn.microsoft.com/fabric/onelake/shortcuts/create-onelake-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure and manage OneLake shortcuts" href="https://learn.microsoft.com/fabric/onelake/onelake-shortcut-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Shortcut transformations (file)" href="https://learn.microsoft.com/fabric/onelake/shortcuts/transformations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Unify data with OneLake shortcuts and mirroring" href="https://learn.microsoft.com/fabric/onelake/unify-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Database Shortcut" href="https://learn.microsoft.com/fabric/real-time-intelligence/database-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create OneLake shortcuts in a KQL database" href="https://learn.microsoft.com/fabric/real-time-intelligence/onelake-shortcuts?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement mirroring
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement operational analytics with Microsoft Fabric" href="https://learn.microsoft.com/training/modules/implement-operational-analytics-fabric-azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Mirroring in Fabric documentation - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get Started with Mirroring in Fabric" href="https://learn.microsoft.com/fabric/mirroring/get-started-with-mirroring?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Open Mirroring" href="https://learn.microsoft.com/fabric/mirroring/open-mirroring?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Mirroring" href="https://learn.microsoft.com/fabric/mirroring/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Query Mirrored Databases in Spark Notebook" href="https://learn.microsoft.com/fabric/data-engineering/query-mirrored-database-spark-notebooks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SQL Analytics Endpoint Metadata Sync" href="https://learn.microsoft.com/fabric/data-engineering/sql-analytics-endpoint-metadata-sync?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Comparing Copy Job, Mirroring, Copy Activity, and Eventstreams in Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-factory/decision-guide-data-movement?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Ingest from Warehouse Tables and Mirrored Databases with T-SQL - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-warehouse/ingest-data-warehouse-tables-tsql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Access Mirrored Cosmos DB Database Data From Lakehouse" href="https://learn.microsoft.com/fabric/database/cosmos-db/how-to-access-data-lakehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Mirror OneLake in Cosmos DB Database" href="https://learn.microsoft.com/fabric/database/cosmos-db/mirror-onelake?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Mirroring Limitations in Cosmos DB" href="https://learn.microsoft.com/fabric/database/cosmos-db/mirroring-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently asked questions for Mirroring Fabric SQL database - Microsoft Fabric" href="https://learn.microsoft.com/fabric/database/sql/mirroring-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limitations of Mirroring for SQL database" href="https://learn.microsoft.com/fabric/database/sql/mirroring-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor mirrored Fabric SQL database replication" href="https://learn.microsoft.com/fabric/database/sql/mirroring-monitor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Mirroring for SQL database" href="https://learn.microsoft.com/fabric/database/sql/mirroring-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure mirrored data in SQL Database" href="https://learn.microsoft.com/fabric/database/sql/mirroring-secure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot mirroring from Fabric SQL database" href="https://learn.microsoft.com/fabric/database/sql/mirroring-troubleshooting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Databases From Azure Cosmos DB - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently asked questions for Microsoft Fabric mirrored databases from Azure Cosmos DB - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to: Join mirrored Azure Cosmos DB data with other mirrored databases in Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-how-to-join-multiple?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to: Query nested data in Microsoft Fabric mirrored databases from Azure Cosmos DB" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-how-to-query-nested?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to: Access mirrored Azure Cosmos DB data in Lakehouse and notebooks from Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-lakehouse-notebooks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limits and Quotas in Microsoft Fabric Mirrored Databases From Azure Cosmos DB - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate from Azure Synapse Link to Azure Cosmos DB mirroring in Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-migrate-synapse-link?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Mirroring for Azure Cosmos DB Accounts With Network Restrictions - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-private-network?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Microsoft Fabric mirrored databases from Azure Cosmos DB - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-troubleshooting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Databases from Azure Database for MySQL (Preview)" href="https://learn.microsoft.com/fabric/mirroring/azure-database-mysql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limitations in Microsoft Fabric Mirrored Databases from Azure Database for MySQL (Preview)" href="https://learn.microsoft.com/fabric/mirroring/azure-database-mysql-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently asked questions for Mirroring Azure Database for MySQL in Microsoft Fabric (preview) - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-database-mysql-mirroring-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Fabric Mirrored Databases from Azure Database for MySQL (Preview)" href="https://learn.microsoft.com/fabric/mirroring/azure-database-mysql-troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Databases From Azure Database for PostgreSQL flexible server" href="https://learn.microsoft.com/fabric/mirroring/azure-database-postgresql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure Data in Microsoft Fabric Mirrored Databases From Azure Database for PostgreSQL flexible server" href="https://learn.microsoft.com/fabric/mirroring/azure-database-postgresql-how-to-data-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limitations of Fabric Mirrored Databases From Azure Database for PostgreSQL flexible server" href="https://learn.microsoft.com/fabric/mirroring/azure-database-postgresql-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently asked questions for Mirroring Azure Database for PostgreSQL flexible server in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-database-postgresql-mirroring-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Fabric Mirrored Databases From Azure Database for PostgreSQL flexible server" href="https://learn.microsoft.com/fabric/mirroring/azure-database-postgresql-troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Catalog From Azure Databricks - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-databricks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently asked questions for mirrored databases from Azure Databricks in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-databricks-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limitations in Microsoft Fabric Mirrored Databases From Azure Databricks - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-databricks-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Mirrored Azure Databricks behind a private endpoint" href="https://learn.microsoft.com/fabric/mirroring/azure-databricks-private-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Databases From Azure Databricks Security" href="https://learn.microsoft.com/fabric/mirroring/azure-databricks-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Databases from Azure SQL Database" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-database?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automatic reseed for Fabric Mirrored Databases from Azure SQL Database" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-database-automatic-reseed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure Data in Microsoft Fabric Mirrored Databases From Azure SQL Database - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-database-how-to-data-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limitations and Behaviors for Fabric Mirrored Databases From Azure SQL Database" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-database-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently Asked Questions for Mirroring Azure SQL Database in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-database-mirroring-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Fabric Mirrored Databases From Azure SQL Database" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-database-troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Databases From Azure SQL Managed Instance" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-managed-instance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automatic reseed for Fabric Mirrored Databases from Azure SQL Managed Instance" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-managed-instance-automatic-reseed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently Asked Questions for Mirroring Azure SQL Managed Instance - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-managed-instance-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure Data in Mirrored Databases From Azure SQL Managed Instance" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-managed-instance-how-to-data-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limitations in Mirrored Databases From Azure SQL Managed Instance" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-managed-instance-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Fabric Mirrored Databases From Azure SQL Managed Instance" href="https://learn.microsoft.com/fabric/mirroring/azure-sql-managed-instance-troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Data in Your Mirrored Database Using Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/explore?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Data in Your Mirrored Database Directly in OneLake" href="https://learn.microsoft.com/fabric/mirroring/explore-data-directly?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Data in Your Mirrored Database With Notebooks" href="https://learn.microsoft.com/fabric/mirroring/explore-onelake-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Extended Capabilities in Mirroring" href="https://learn.microsoft.com/fabric/mirroring/extended-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delta Change Data Feed in Microsoft Fabric Mirroring - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/extended-capabilities-delta-change-data-feed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirroring Views - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/extended-capabilities-views?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Databases From Google BigQuery" href="https://learn.microsoft.com/fabric/mirroring/google-bigquery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently asked questions for Google BigQuery mirroring in Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/google-bigquery-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limitations in Microsoft Fabric mirrored databases from Google BigQuery" href="https://learn.microsoft.com/fabric/mirroring/google-bigquery-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data Security in Microsoft Fabric Mirrored Databases From Google BigQuery" href="https://learn.microsoft.com/fabric/mirroring/google-bigquery-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CI/CD for mirrored databases in Fabric" href="https://learn.microsoft.com/fabric/mirroring/mirrored-database-cicd?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fabric Mirroring Public REST API" href="https://learn.microsoft.com/fabric/mirroring/mirrored-database-rest-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor Mirrored Database Replication" href="https://learn.microsoft.com/fabric/mirroring/monitor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Mirrored database operation logs" href="https://learn.microsoft.com/fabric/mirroring/monitor-logs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Best Practices for Open Mirroring in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/open-mirroring-best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently Asked Questions for Open Mirroring in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/open-mirroring-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Open Mirroring Landing Zone Requirements and Formats" href="https://learn.microsoft.com/fabric/mirroring/open-mirroring-landing-zone-format?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Mirror Oracle Databases in Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/oracle?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Mirroring Oracle limitations in Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/oracle-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure Data in Microsoft Fabric Mirrored Databases From Oracle" href="https://learn.microsoft.com/fabric/mirroring/oracle-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Databases From SAP" href="https://learn.microsoft.com/fabric/mirroring/sap?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limitations in Microsoft Fabric mirrored databases from SAP" href="https://learn.microsoft.com/fabric/mirroring/sap-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Share Your Mirrored Database and Manage Permissions" href="https://learn.microsoft.com/fabric/mirroring/share-and-manage-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored SharePoint List - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/sharepoint-list?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Databases From Snowflake - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/snowflake?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data Security in Microsoft Fabric Mirrored Databases from Snowflake" href="https://learn.microsoft.com/fabric/mirroring/snowflake-how-to-data-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limitations for Microsoft Fabric Mirrored Databases From Snowflake - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/snowflake-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently asked questions for Mirroring Snowflake in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/snowflake-mirroring-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Databases From SQL Server" href="https://learn.microsoft.com/fabric/mirroring/sql-server?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Automatic Reseed for Fabric Mirrored Databases from SQL Server" href="https://learn.microsoft.com/fabric/mirroring/sql-server-configure-automatic-reseed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently Asked Questions for Mirroring SQL Server in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/sql-server-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limitations of Fabric Mirrored Databases From SQL Server" href="https://learn.microsoft.com/fabric/mirroring/sql-server-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Optimize Performance of Mirrored Databases from SQL Server" href="https://learn.microsoft.com/fabric/mirroring/sql-server-performance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure Data in Microsoft Fabric Mirrored Databases From SQL Server" href="https://learn.microsoft.com/fabric/mirroring/sql-server-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Fabric Mirrored Databases From SQL Server" href="https://learn.microsoft.com/fabric/mirroring/sql-server-troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Fabric Mirrored Databases" href="https://learn.microsoft.com/fabric/mirroring/troubleshooting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Blob and ADLS APIs to mirror data into OneLake" href="https://learn.microsoft.com/fabric/onelake/onelake-apis-in-action?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add Mirrored Database Change Feed source to an eventstream - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/add-source-mirrored-database-change-feed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Workspace outbound access protection for mirrored Databases" href="https://learn.microsoft.com/fabric/security/workspace-outbound-access-protection-mirrored-databases?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Ingest data by using pipelines
+
+:::note
+The Microsoft Learn module "Load data into a Microsoft Fabric data warehouse" also covers this task. It is listed once, under [Design and implement full and incremental data loads](#design-and-implement-full-and-incremental-data-loads) in the skill group Design and implement loading patterns.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Ingest Data into Your Warehouse Using Pipelines" href="https://learn.microsoft.com/fabric/data-warehouse/ingest-data-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Ingest Data into the Warehouse" href="https://learn.microsoft.com/fabric/data-warehouse/ingest-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Data Factory" href="https://learn.microsoft.com/fabric/data-factory/data-factory-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Transform data by using PySpark, SQL, and KQL
+
+:::note
+The Microsoft Learn module "Load data into a Microsoft Fabric data warehouse" also covers this task. It is listed once, under [Design and implement full and incremental data loads](#design-and-implement-full-and-incremental-data-loads) in the skill group Design and implement loading patterns.
+:::
+
+#### Denormalize data
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Group and aggregate data
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Handle duplicate, missing, and late-arriving data
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Ingest and transform streaming data
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What Is Real-Time Intelligence in Microsoft Fabric?" href="https://learn.microsoft.com/fabric/real-time-intelligence/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Schema-Aware Eventstreams Overview (Preview) - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/schema-aware-eventstreams-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose an appropriate streaming engine
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Fabric Eventstreams Overview - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Process data by using eventstreams
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Use Eventstream in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/explore-event-streams-microsoft-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Process Events Using a SQL Operator" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/process-events-using-sql-code-editor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enrich Events with Reference Data in Fabric Eventstreams" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/enrich-events-with-reference-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Route Events Based on Content in Fabric Eventstreams" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/route-events-based-on-content?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Ingest, filter, and transform real-time events and send them to a Microsoft Fabric lakehouse" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/transform-and-stream-real-time-events-to-lakehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore and transform sample bike-sharing data with Eventstream for KQL Database integration" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/transform-sample-data-and-route-to-kql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Classify Unschematized Events in an Eventstream (Preview) - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/process-events-with-classifier?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enhance Event Processing with Multiple Schema Inferencing - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/process-events-with-multiple-schemas?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fabric decision guide - copy activity, dataflow, Eventstream, or Spark" href="https://learn.microsoft.com/fabric/fundamentals/decision-guide-pipeline-dataflow-spark?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add a lakehouse destination to an eventstream" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/add-destination-lakehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add an Azure Event Hubs Source to an Eventstream - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/add-source-azure-event-hubs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="HTTP Source in Fabric Eventstream" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/add-source-http?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add a Sample Data Source to an Eventstream" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/add-source-sample-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fabric Eventstream: Supported Data Formats - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/data-formats?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get Data from an Eventstream in Multiple Fabric Items" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/get-data-from-eventstream-in-multiple-fabric-items?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Preview Data in an Eventstream Item - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/preview-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Preview Data in a Schema-Aware Eventstream (Preview) - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/preview-data-schema-aware?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect to Azure resources securely using managed private endpoints" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/set-up-private-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Eventstream streaming connector virtual network and on-premises support guide" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/streaming-connector-private-network-support-guide?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Eventstream streaming connector virtual network and on-premises support overview" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/streaming-connector-private-network-support-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Process data by using Spark structured streaming
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Query Microsoft Fabric Eventstream from a notebook with Spark Structured Streaming" href="https://learn.microsoft.com/fabric/data-engineering/notebook-with-event-stream?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Stateful processing with Structured Streaming" href="https://learn.microsoft.com/fabric/data-engineering/structured-streaming-stateful-processing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data streaming into a lakehouse with Spark" href="https://learn.microsoft.com/fabric/data-engineering/lakehouse-streaming-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Common Structured Streaming patterns" href="https://learn.microsoft.com/fabric/data-engineering/structured-streaming-common-patterns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Structured Streaming" href="https://learn.microsoft.com/fabric/data-engineering/structured-streaming-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Triggers and output modes in Structured Streaming" href="https://learn.microsoft.com/fabric/data-engineering/structured-streaming-triggers-output-modes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore sample Stock Market data using Fabric Eventstream and Spark Structured Streaming" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/explore-sample-stock-market-data-with-spark?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Best practices for Structured Streaming" href="https://learn.microsoft.com/fabric/data-engineering/structured-streaming-best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Real-time mode in Structured Streaming" href="https://learn.microsoft.com/fabric/data-engineering/structured-streaming-real-time-mode?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Process data by using KQL
+
+:::note
+The Microsoft Learn module "Work with real-time data in an Eventhouse in Microsoft Fabric" also covers this task. It is listed once, under [Choose an appropriate data store](#choose-an-appropriate-data-store) in the skill group Ingest and transform batch data.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Query data in a KQL queryset" href="https://learn.microsoft.com/fabric/real-time-intelligence/kusto-query-set?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Real-Time Dashboard - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/dashboard-real-time-create?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="KQL activity" href="https://learn.microsoft.com/fabric/data-factory/kql-activity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Access an existing KQL database" href="https://learn.microsoft.com/fabric/real-time-intelligence/access-database-copy-uri?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Visualize Data in a Power BI Report" href="https://learn.microsoft.com/fabric/real-time-intelligence/create-powerbi-report?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a KQL queryset" href="https://learn.microsoft.com/fabric/real-time-intelligence/create-query-set?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Turn on OneLake availability for an eventhouse" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-house-onelake-availability?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Analyze Data in a KQL database" href="https://learn.microsoft.com/fabric/real-time-intelligence/eventhouse-analyze-data-with?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get data from Azure Event Hubs" href="https://learn.microsoft.com/fabric/real-time-intelligence/get-data-event-hub?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get Data from Eventstream" href="https://learn.microsoft.com/fabric/real-time-intelligence/get-data-eventstream?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get data from file" href="https://learn.microsoft.com/fabric/real-time-intelligence/get-data-local-file?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get data from OneLake" href="https://learn.microsoft.com/fabric/real-time-intelligence/get-data-onelake?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get data from Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-intelligence/get-data-real-time-hub?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Fabric notebooks with data from a KQL database" href="https://learn.microsoft.com/fabric/real-time-intelligence/notebooks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect a KQL database to Power BI Desktop" href="https://learn.microsoft.com/fabric/real-time-intelligence/power-bi-data-connector?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create windowing functions
+
+:::note
+The Microsoft Learn module "Work with real-time data in an Eventhouse in Microsoft Fabric" also covers this task. It is listed once, under [Choose an appropriate data store](#choose-an-appropriate-data-store) in the skill group Ingest and transform batch data.
+:::
+
+## Monitor and optimize an analytics solution (30–35%)
+
+### Monitor Fabric items
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore fundamentals of data visualization" href="https://learn.microsoft.com/training/modules/explore-fundamentals-data-visualization?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Microsoft Fabric" href="https://learn.microsoft.com/fabric/fundamentals/microsoft-fabric-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Eventhouse Monitoring Overview" href="https://learn.microsoft.com/fabric/real-time-intelligence/monitor-eventhouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitoring in Fabric Data Warehouse Overview - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-warehouse/monitoring-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What Is Monitor Hub in Microsoft Fabric? - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/monitoring-hub?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor data ingestion
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Ingestion results logs" href="https://learn.microsoft.com/fabric/real-time-intelligence/monitor-logs-ingestion-results?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor data transformation
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Get started with data warehouses in Microsoft Fabric": under [Prepare data for loading into a dimensional model](#prepare-data-for-loading-into-a-dimensional-model) in the skill group Design and implement loading patterns
+- "Use Eventstream in Microsoft Fabric": under [Process data by using eventstreams](#process-data-by-using-eventstreams) in the skill group Ingest and transform streaming data
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Trigger Fabric Items" href="https://learn.microsoft.com/fabric/real-time-intelligence/data-activator/activator-trigger-fabric-items?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor semantic model refresh
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage semantic models in Power BI" href="https://learn.microsoft.com/training/modules/manage-datasets-power-bi?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Semantic model refresh activity in Data Factory for Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-factory/semantic-model-refresh-activity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure alerts
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor activities in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/monitor-fabric-items?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Set up job alerts in the Monitor hub (preview) - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/monitoring-hub-alerts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Alerts for Pipeline Runs - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-factory/create-alerts-for-pipeline-runs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set Alerts on Business Event in Real-Time Hub - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-hub/business-events/set-alerts-business-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set alerts on anomaly detection events in Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/set-alerts-anomaly-detection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set alerts on Azure Blob Storage events in Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/set-alerts-azure-blob-storage-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set alerts on streams in Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/set-alerts-data-streams?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set alerts on Fabric capacity operation events in Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/set-alerts-fabric-capacity-operation-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set alerts on Fabric capacity overview events in Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/set-alerts-fabric-capacity-overview-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set alerts on Job events in Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/set-alerts-fabric-job-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set alerts on OneLake events in Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/set-alerts-fabric-onelake-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set alerts on Fabric workspace item events in Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/set-alerts-fabric-workspace-item-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create custom alerts on Fabric capacity overview events in Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/set-custom-alerts-fabric-capacity-overview-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Activator Alerts from KQL Query Results" href="https://learn.microsoft.com/fabric/real-time-intelligence/data-activator/activator-alert-queryset?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Power BI alerts and refine them in Fabric Activator" href="https://learn.microsoft.com/fabric/real-time-intelligence/data-activator/activator-get-data-power-bi?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Activator alerts from a Real-Time Dashboard" href="https://learn.microsoft.com/fabric/real-time-intelligence/data-activator/activator-get-data-real-time-dashboard?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor Eventstream for Stopped Events in Activator" href="https://learn.microsoft.com/fabric/real-time-intelligence/data-activator/alert-stop-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Alert on Fabric Warehouse SQL Query" href="https://learn.microsoft.com/fabric/real-time-intelligence/data-activator/set-alerts-warehouse-sql-query?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set Alerts on Eventstream With Activator Destination" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/set-alerts-event-stream?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set Alerts Based on Fabric Events in Real-Time Hub" href="https://learn.microsoft.com/fabric/real-time-intelligence/user-flow-5?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set alert on Real Time Dashboard or KQL Queryset" href="https://learn.microsoft.com/fabric/real-time-intelligence/user-flow-6?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Choose How to Monitor Pipeline Runs - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-factory/monitor-pipeline-runs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Activator documentation - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/data-activator?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Identify and resolve errors
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Eventstream Workspace Monitoring Overview (preview) - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/fabric-workspace-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify and resolve pipeline errors
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Fail activity" href="https://learn.microsoft.com/fabric/data-factory/fail-activity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify and resolve dataflow errors
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Transform data using Dataflows Gen2 in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/fabric-transform-data-dataflows?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Understand Dataflow Gen2 detailed refresh logs" href="https://learn.microsoft.com/fabric/data-factory/dataflow-gen2-detailed-refresh-logs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View Dataflow Gen2 refresh history and monitoring" href="https://learn.microsoft.com/fabric/data-factory/dataflows-gen2-monitor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dataflow Gen2 data destinations validation rules" href="https://learn.microsoft.com/fabric/data-factory/dataflow-gen2-data-destinations-validation-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dataflow Gen2 refresh - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-factory/dataflow-gen2-refresh?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Workspace Monitoring for Dataflow Gen2 in Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-factory/dataflow-gen2-workspace-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to handle schema drift in Dataflow Gen2" href="https://learn.microsoft.com/fabric/data-factory/how-to-handle-schema-drift?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify and resolve notebook errors
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Transform data using notebooks in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/fabric-transform-data-notebooks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Notebook contextual monitoring and debugging" href="https://learn.microsoft.com/fabric/data-engineering/spark-monitor-debug?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Develop, execute, and manage notebooks" href="https://learn.microsoft.com/fabric/data-engineering/author-execute-notebook?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Job admission in Apache Spark for Fabric" href="https://learn.microsoft.com/fabric/data-engineering/job-admission-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Job queueing in Apache Spark for Fabric" href="https://learn.microsoft.com/fabric/data-engineering/job-queueing-for-fabric-spark?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fabric Notebook known limitation" href="https://learn.microsoft.com/fabric/data-engineering/notebook-limitation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apache Spark advisor for real-time advice on notebooks" href="https://learn.microsoft.com/fabric/data-engineering/spark-advisor-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View browse item's recent runs" href="https://learn.microsoft.com/fabric/data-engineering/spark-item-recent-runs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Concurrency limits and queueing in Apache Spark for Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/spark-job-concurrency-and-queueing?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify and resolve eventhouse errors
+
+:::note
+The Microsoft Learn module "Work with real-time data in an Eventhouse in Microsoft Fabric" also covers this task. It is listed once, under [Choose an appropriate data store](#choose-an-appropriate-data-store) in the skill group Ingest and transform batch data.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Monitor Fabric items with item job event logs" href="https://learn.microsoft.com/fabric/fundamentals/item-job-event-logs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor eventhouse activity by application" href="https://learn.microsoft.com/fabric/real-time-intelligence/monitor-eventhouse-activity-by-application?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage and monitor an eventhouse" href="https://learn.microsoft.com/fabric/real-time-intelligence/manage-monitor-eventhouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Eventhouse capacity throttling logs" href="https://learn.microsoft.com/fabric/real-time-intelligence/monitor-logs-capacity-throttling?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Command logs" href="https://learn.microsoft.com/fabric/real-time-intelligence/monitor-logs-command?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data operation logs" href="https://learn.microsoft.com/fabric/real-time-intelligence/monitor-logs-data-operation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Query logs" href="https://learn.microsoft.com/fabric/real-time-intelligence/monitor-logs-query?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Eventhouse scale-out event logs" href="https://learn.microsoft.com/fabric/real-time-intelligence/monitor-logs-scaleout-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Eventhouse sub-optimal size logs" href="https://learn.microsoft.com/fabric/real-time-intelligence/monitor-logs-sub-optimal-size?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Metrics" href="https://learn.microsoft.com/fabric/real-time-intelligence/monitor-metrics?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify and resolve eventstream errors
+
+:::note
+The Microsoft Learn module "Use Eventstream in Microsoft Fabric" also covers this task. It is listed once, under [Process data by using eventstreams](#process-data-by-using-eventstreams) in the skill group Ingest and transform streaming data.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Query Eventstream Monitoring Data with KQL (preview)" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/query-fabric-workspace-monitoring-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable Workspace Monitoring for Eventstreams (preview)" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/enable-fabric-workspace-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Eventstream Workspace Monitoring Known Limitations (preview)" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/fabric-workspace-monitoring-known-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor the Status and Performance of an Eventstream" href="https://learn.microsoft.com/fabric/real-time-intelligence/event-streams/monitor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Schema Registry Limits in Fabric Real-Time Intelligence - Microsoft Fabric" href="https://learn.microsoft.com/fabric/real-time-intelligence/schema-sets/schema-registry-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify and resolve T-SQL errors
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Transform data using T-SQL in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/fabric-transform-data-tsql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data Types in Fabric Data Warehouse" href="https://learn.microsoft.com/fabric/data-warehouse/data-types?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor T-SQL Queries in Fabric Data Warehouse" href="https://learn.microsoft.com/fabric/data-warehouse/monitor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="T-SQL Surface Area in Fabric Data Warehouse - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-warehouse/tsql-surface-area?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Optimize performance
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Organize a Fabric lakehouse using medallion architecture design" href="https://learn.microsoft.com/training/modules/describe-medallion-architecture?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Workspace Monitoring Overview - Microsoft Fabric" href="https://learn.microsoft.com/fabric/fundamentals/workspace-monitoring-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Eventhouse compute usage" href="https://learn.microsoft.com/fabric/real-time-intelligence/eventhouse-compute-observability?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Direct Lake query performance" href="https://learn.microsoft.com/fabric/fundamentals/direct-lake-understand-storage?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Optimize a lakehouse table
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Lakehouse and Delta Tables" href="https://learn.microsoft.com/fabric/data-engineering/lakehouse-and-delta-tables?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delta Table Maintenance in Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/lakehouse-table-maintenance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is the SQL analytics endpoint for a lakehouse? - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/lakehouse-sql-analytics-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Optimize a pipeline
+
+:::note
+The Microsoft Learn module "Load data into a Microsoft Fabric data warehouse" also covers this task. It is listed once, under [Design and implement full and incremental data loads](#design-and-implement-full-and-incremental-data-loads) in the skill group Design and implement loading patterns.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure high concurrency mode for notebooks in pipelines" href="https://learn.microsoft.com/fabric/data-engineering/configure-high-concurrency-session-notebooks-in-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Copy activity performance with SQL databases" href="https://learn.microsoft.com/fabric/data-factory/copy-performance-sql-databases?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Lakehouse Maintenance Activity" href="https://learn.microsoft.com/fabric/data-factory/lakehouse-maintenance-activity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable Workspace Monitoring (Preview) in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-factory/workspace-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Optimize a data warehouse
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor a Microsoft Fabric data warehouse" href="https://learn.microsoft.com/training/modules/monitor-fabric-data-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Query a data warehouse in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/query-data-warehouse-microsoft-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What Is Fabric Data Warehouse?" href="https://learn.microsoft.com/fabric/data-warehouse/data-warehousing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Query the Warehouse or SQL analytics endpoint" href="https://learn.microsoft.com/fabric/data-warehouse/query-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Cross-Workload Table Maintenance and Optimization in Microsoft Fabric" href="https://learn.microsoft.com/fabric/fundamentals/table-maintenance-optimization?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Optimize eventstreams and eventhouses
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Use Eventstream in Microsoft Fabric": under [Process data by using eventstreams](#process-data-by-using-eventstreams) in the skill group Ingest and transform streaming data
+- "Work with real-time data in an Eventhouse in Microsoft Fabric": under [Choose an appropriate data store](#choose-an-appropriate-data-store) in the skill group Ingest and transform batch data
+:::
+
+#### Optimize Spark performance
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure and manage Automated Table Statistics in Fabric Spark" href="https://learn.microsoft.com/fabric/data-engineering/automated-table-statistics?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure autotune for Apache Spark" href="https://learn.microsoft.com/fabric/data-engineering/autotune?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apache Spark monitoring overview" href="https://learn.microsoft.com/fabric/data-engineering/spark-monitoring-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Resource Profile Configurations in Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/configure-resource-profile-configurations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Spark monitoring and performance optimization best practices" href="https://learn.microsoft.com/fabric/data-engineering/spark-monitoring-best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Choosing a notebook kernel in Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/fabric-notebook-selection-guide?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Spark memory and performance issues" href="https://learn.microsoft.com/fabric/data-engineering/troubleshoot-spark-memory-performance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Optimize query performance
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure Delta driver mode snapshot in Fabric Spark" href="https://learn.microsoft.com/fabric/data-engineering/driver-mode-snapshot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Performance Guidelines" href="https://learn.microsoft.com/fabric/data-warehouse/guidelines-warehouse-performance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
