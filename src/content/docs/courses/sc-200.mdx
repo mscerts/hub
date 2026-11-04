@@ -1,0 +1,928 @@
+---
+title: SC-200 Study Guide Course
+description: "Follow a structured SC-200 course organized by study guide task, with Microsoft Learn training and documentation for Microsoft Security Operations Analyst."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official SC-200 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-200?WT.mc_id=studentamb_165290) skills measured (October 21, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [SC-200 labs page](/certs/labs/security/sc-200/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As a candidate for this exam, you're a security operations analyst who reduces organizational risk by performing triage, responding to incidents, hunting for threats, and engineering detections.
+
+As a security operations analyst, you monitor, identify, investigate, and respond to threats in multi-cloud and on-premises environments by using Microsoft Defender XDR, Microsoft Sentinel, Microsoft Entra ID, Microsoft Purview, and Microsoft Defender for Cloud workload protections. You perform hunting by using KQL and automate responses to threats.
+
+You collaborate with business and security leadership to define security standards for the organization. You work with other roles across the digital enterprise to implement the standards, to enhance the security posture of an organization, and to raise security awareness.
+
+### As a candidate, you should be familiar with
+
+- Microsoft security, compliance, and identity solutions
+- Microsoft 365
+- Azure cloud services
+- AI agents and Copilots
+- Windows, Linux, and mobile operating systems.
+
+## Manage a security operations environment (40–45%)
+
+### Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/intro-to-azure-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Defender XDR threat protection" href="https://learn.microsoft.com/training/modules/introduction-microsoft-365-threat-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe security capabilities of Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/describe-security-capabilities-of-azure-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe threat protection with Microsoft Defender XDR" href="https://learn.microsoft.com/training/modules/describe-threat-protection-with-microsoft-365-defender?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Defender XDR" href="https://learn.microsoft.com/training/modules/defender-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore SOC tools and technologies with Microsoft Security" href="https://learn.microsoft.com/training/modules/explore-tools-technologies-microsoft-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Defender for Endpoint" href="https://learn.microsoft.com/training/modules/m365-introduction-defender-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand security operations centers (SOCs) to manage cybersecurity" href="https://learn.microsoft.com/training/modules/understand-security-operations-centers-manage-cybersecurity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Microsoft Defender XDR?" href="https://learn.microsoft.com/defender-xdr/microsoft-365-defender?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure email notifications in Microsoft Defender XDR, including incidents, actions, and threat analytics
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure for alerts and detections in Microsoft Defender for Endpoint": under [Configure alert notifications in Microsoft Defender XDR, including tuning, suppression, and correlation](#configure-alert-notifications-in-microsoft-defender-xdr-including-tuning-suppression-and-correlation)
+- "Mitigate incidents using Microsoft Defender": under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr)
+:::
+
+#### Configure alert notifications in Microsoft Defender XDR, including tuning, suppression, and correlation
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure for alerts and detections in Microsoft Defender for Endpoint" href="https://learn.microsoft.com/training/modules/configure-settings-for-alerts-detections-microsoft-defender-for-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Microsoft Defender for Endpoint advanced features
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure and manage automation using Microsoft Defender for Endpoint" href="https://learn.microsoft.com/training/modules/configure-manage-automation-microsoft-defender-for-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy the Microsoft Defender for Endpoint environment" href="https://learn.microsoft.com/training/modules/deploy-microsoft-defender-for-endpoints-environment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Protect against threats with Microsoft Defender for Endpoint" href="https://learn.microsoft.com/training/modules/m365-security-threat-protect?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Onboard devices and configure Microsoft Defender for Endpoint capabilities" href="https://learn.microsoft.com/defender-endpoint/onboard-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure rules settings in Microsoft Defender for Endpoint
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement Windows security enhancements with Microsoft Defender for Endpoint" href="https://learn.microsoft.com/training/modules/implement-windows-10-security-enhancements-with-microsoft-defender-for-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Protect folders from ransomware with controlled folder access" href="https://learn.microsoft.com/defender-endpoint/controlled-folder-access-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prepare to deploy Microsoft Defender for Endpoint" href="https://learn.microsoft.com/defender-endpoint/production-deployment?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure custom data collection in Microsoft Defender for Endpoint
+
+:::note
+The Microsoft Learn module "Deploy the Microsoft Defender for Endpoint environment" also covers this task. It is listed once, under [Configure Microsoft Defender for Endpoint advanced features](#configure-microsoft-defender-for-endpoint-advanced-features).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create and manage custom data collection rules in Microsoft Defender for Endpoint" href="https://learn.microsoft.com/defender-endpoint/create-custom-data-collection-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Custom data collection in Microsoft Defender for Endpoint" href="https://learn.microsoft.com/defender-endpoint/custom-data-collection?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure security policies for Microsoft Defender for Endpoint, including attack surface reduction (ASR) rules
+
+:::note
+The Microsoft Learn module "Implement Windows security enhancements with Microsoft Defender for Endpoint" also covers this task. It is listed once, under [Configure rules settings in Microsoft Defender for Endpoint](#configure-rules-settings-in-microsoft-defender-for-endpoint).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="ASR rules overview" href="https://learn.microsoft.com/defender-endpoint/attack-surface-reduction-rules-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage automated investigation and response capabilities in Microsoft Defender XDR
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Mitigate incidents using Microsoft Defender" href="https://learn.microsoft.com/training/modules/mitigate-incidents-microsoft-365-defender?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Remediate threats using Microsoft Defender" href="https://learn.microsoft.com/training/modules/m365-threat-remediate?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Perform actions on a device using Microsoft Defender for Endpoint" href="https://learn.microsoft.com/training/modules/perform-actions-device-microsoft-defender-for-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure automatic attack disruption in Microsoft Defender XDR
+
+:::note
+The Microsoft Learn module "Remediate threats using Microsoft Defender" also covers this task. It is listed once, under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr).
+:::
+
+#### Configure and manage device groups, permissions, and automation levels in Microsoft Defender for Endpoint
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure and manage automation using Microsoft Defender for Endpoint": under [Configure Microsoft Defender for Endpoint advanced features](#configure-microsoft-defender-for-endpoint-advanced-features)
+- "Deploy the Microsoft Defender for Endpoint environment": under [Configure Microsoft Defender for Endpoint advanced features](#configure-microsoft-defender-for-endpoint-advanced-features)
+:::
+
+#### Create and configure automation rules in Microsoft Sentinel
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Automation in Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/automation-microsoft-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement automation rules and playbooks in Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/implement-automation-rules-playbooks-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Threat detection with Microsoft Sentinel analytics" href="https://learn.microsoft.com/training/modules/analyze-data-in-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and manage Microsoft Sentinel workspaces" href="https://learn.microsoft.com/training/modules/create-manage-azure-sentinel-workspaces?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security incident management in Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/incident-management-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure SIEM security operations using Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/configure-siem-security-operations-using-microsoft-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add Advanced Conditions to Microsoft Sentinel Automation Rules" href="https://learn.microsoft.com/azure/sentinel/add-advanced-conditions-to-automation-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automate threat response in Microsoft Sentinel with automation rules" href="https://learn.microsoft.com/azure/sentinel/automate-incident-handling-with-automation-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create basic automation rules with Simple Flows in the Microsoft Defender portal (preview)" href="https://learn.microsoft.com/azure/sentinel/automation/create-basic-automation-rules-simple-flows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate Microsoft Sentinel alert-trigger playbooks to automation rules" href="https://learn.microsoft.com/azure/sentinel/automation/migrate-playbooks-to-automation-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and use Microsoft Sentinel automation rules to manage response" href="https://learn.microsoft.com/azure/sentinel/create-manage-use-automation-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Incident Tasks in Microsoft Sentinel using Automation Rules" href="https://learn.microsoft.com/azure/sentinel/create-tasks-automation-rule?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Sentinel automation rules reference" href="https://learn.microsoft.com/azure/sentinel/automation-rule-reference?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automation in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/automation/automation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Microsoft Sentinel Content" href="https://learn.microsoft.com/azure/sentinel/configure-content?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Handle false positives in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/false-positives?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Import and export Microsoft Sentinel automation rules" href="https://learn.microsoft.com/azure/sentinel/import-export-automation-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor the Health of your Microsoft Sentinel Automation Rules and Playbooks" href="https://learn.microsoft.com/azure/sentinel/monitor-automation-health?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automation integrations in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/automation/integrations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and configure Microsoft Sentinel playbooks
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Threat response with Microsoft Sentinel playbooks" href="https://learn.microsoft.com/training/modules/threat-response-sentinel-playbooks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage content in Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/manage-content-microsoft-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Automate Threat Response with Playbooks in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/automation/automate-responses-with-playbooks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and manage Microsoft Sentinel playbooks" href="https://learn.microsoft.com/azure/sentinel/automation/create-playbooks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and perform incident tasks in Microsoft Sentinel using playbooks" href="https://learn.microsoft.com/azure/sentinel/automation/create-tasks-playbook?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Generate playbooks using AI in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/automation/generate-playbook?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Supported triggers and actions in Microsoft Sentinel playbooks" href="https://learn.microsoft.com/azure/sentinel/automation/playbook-triggers-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automate and run Microsoft Sentinel playbooks" href="https://learn.microsoft.com/azure/sentinel/automation/run-playbooks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and customize Microsoft Sentinel playbooks from templates" href="https://learn.microsoft.com/azure/sentinel/automation/use-playbook-templates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Authenticate playbooks to Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/automation/authenticate-playbooks-to-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Define an access restriction policy for Standard-plan playbooks" href="https://learn.microsoft.com/azure/sentinel/automation/define-playbook-access-restrictions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Logic Apps for Microsoft Sentinel playbooks" href="https://learn.microsoft.com/azure/sentinel/automation/logic-apps-playbooks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Recommended Microsoft Sentinel playbook use cases, templates, and examples" href="https://learn.microsoft.com/azure/sentinel/automation/playbook-recommendations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Respond to Threat Actors During Investigations and Threat Hunts in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/respond-threats-during-investigation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Sentinel SOAR content catalog" href="https://learn.microsoft.com/azure/sentinel/sentinel-soar-content?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Configure the Microsoft Sentinel SIEM and platform
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Construct KQL statements for Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/construct-kusto-query-language-statements?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Query logs in Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/query-logs-azure-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Sentinel data lake overview - Microsoft Security" href="https://learn.microsoft.com/azure/sentinel/datalake/sentinel-lake-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Sentinel Content and Solutions Overview" href="https://learn.microsoft.com/azure/sentinel/sentinel-solutions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify Microsoft Sentinel roles
+
+:::note
+The Microsoft Learn module "Create and manage Microsoft Sentinel workspaces" also covers this task. It is listed once, under [Create and configure automation rules in Microsoft Sentinel](#create-and-configure-automation-rules-in-microsoft-sentinel) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Roles and permissions in the Microsoft Sentinel platform" href="https://learn.microsoft.com/azure/sentinel/roles?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage data retention for XDR and Microsoft Sentinel tables, including Analytics, Data lake, and XDR tiers
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Create and configure Microsoft Sentinel workbooks
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Query, visualize, and monitor data in Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/query-data-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Analyze query results using KQL" href="https://learn.microsoft.com/training/modules/analyze-results-kusto-query-language?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Visualize your Data by using Workbooks in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/monitor-your-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Workbooks for Microsoft Sentinel Data Lake - Microsoft Security" href="https://learn.microsoft.com/azure/sentinel/datalake/workbooks-for-data-lake?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Convert Dashboards to Azure Workbooks in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/migration-convert-dashboards?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Commonly used Microsoft Sentinel workbooks" href="https://learn.microsoft.com/azure/sentinel/top-workbooks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Optimize the Microsoft Sentinel platform, including SOC optimization recommendations
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Optimize security operations" href="https://learn.microsoft.com/azure/sentinel/soc-optimization/soc-optimization-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SOC optimization reference" href="https://learn.microsoft.com/azure/sentinel/soc-optimization/soc-optimization-reference?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Ingest data into the Microsoft Sentinel SIEM and platform
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data federation overview in Microsoft Sentinel data lake" href="https://learn.microsoft.com/azure/sentinel/datalake/data-federation-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Microsoft Sentinel?" href="https://learn.microsoft.com/azure/sentinel/sentinel-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Select data connectors based on data source requirements, including Windows logs and security events
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Connect Windows hosts to Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/connect-windows-hosts-to-azure-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect syslog data sources to Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/connect-syslog-data-sources-to-azure-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure collection of Windows Security events by using Windows Security Events via AMA, including data collection rules
+
+:::note
+The Microsoft Learn module "Connect Windows hosts to Microsoft Sentinel" also covers this task. It is listed once, under [Select data connectors based on data source requirements, including Windows logs and security events](#select-data-connectors-based-on-data-source-requirements-including-windows-logs-and-security-events).
+:::
+
+#### Plan and configure collection of Windows Security events by using Windows Event Forwarding (WEF)
+
+:::note
+The Microsoft Learn module "Connect Windows hosts to Microsoft Sentinel" also covers this task. It is listed once, under [Select data connectors based on data source requirements, including Windows logs and security events](#select-data-connectors-based-on-data-source-requirements-including-windows-logs-and-security-events).
+:::
+
+#### Plan and configure Syslog via AMA and Common Event Format (CEF) via AMA connectors
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Connect Common Event Format logs to Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/connect-common-event-format-logs-to-azure-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Syslog and CEF AMA connectors - Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/cef-syslog-ama-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure collection of Azure activity logs by using Azure Policy and resource diagnostic settings
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Ingest threat indicators into Microsoft Sentinel
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Connect threat indicators to Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/connect-threat-indicators-to-azure-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Utilize threat intelligence in Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/utilize-threat-intelligence-azure-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Connect your TIP with the upload API (Preview)" href="https://learn.microsoft.com/azure/sentinel/connect-threat-intelligence-upload-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect to STIX/TAXII threat intelligence feeds" href="https://learn.microsoft.com/azure/sentinel/connect-threat-intelligence-taxii?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect your threat intelligence platform" href="https://learn.microsoft.com/azure/sentinel/connect-threat-intelligence-tip?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add threat intelligence in bulk by file" href="https://learn.microsoft.com/azure/sentinel/indicators-bulk-file-import?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable the Defender Threat Intelligence data connector in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/connect-mdti-data-connector?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Threat Indicators in Analytics Rules" href="https://learn.microsoft.com/azure/sentinel/use-threat-indicators-in-analytics-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Work with STIX objects and indicators to enhance threat intelligence and threat hunting in Microsoft Sentinel (Preview)" href="https://learn.microsoft.com/azure/sentinel/work-with-stix-objects-indicators?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Work with threat intelligence" href="https://learn.microsoft.com/azure/sentinel/work-with-threat-indicators?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create custom log tables in the workspace to store ingested data
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Configure detections
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Microsoft Sentinel SIEM?" href="https://learn.microsoft.com/azure/sentinel/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create custom detection rules by using Advanced Hunting in Microsoft Defender XDR
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Protect against threats with Microsoft Defender for Endpoint": under [Configure Microsoft Defender for Endpoint advanced features](#configure-microsoft-defender-for-endpoint-advanced-features) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+- "Configure for alerts and detections in Microsoft Defender for Endpoint": under [Configure alert notifications in Microsoft Defender XDR, including tuning, suppression, and correlation](#configure-alert-notifications-in-microsoft-defender-xdr-including-tuning-suppression-and-correlation) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+- "Mitigate incidents using Microsoft Defender": under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+:::
+
+#### Manage custom detection rules in Microsoft Defender XDR
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure for alerts and detections in Microsoft Defender for Endpoint": under [Configure alert notifications in Microsoft Defender XDR, including tuning, suppression, and correlation](#configure-alert-notifications-in-microsoft-defender-xdr-including-tuning-suppression-and-correlation) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+- "Mitigate incidents using Microsoft Defender": under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Compare Microsoft Sentinel analytics rules and Microsoft Defender custom detections - Microsoft Security" href="https://learn.microsoft.com/azure/sentinel/compare-analytics-rules-custom-detections?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and manage analytics rules in Microsoft Sentinel SIEM, including scheduled, near-real time (NRT), threat intelligence, and machine learning
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Identify threats with Behavioral Analytics" href="https://learn.microsoft.com/training/modules/use-entity-behavior-analytics-azure-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Threat detection in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/threat-detection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Work with near-real-time (NRT) detection analytics rules in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/create-nrt-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Quick threat detection with near-real-time (NRT) analytics rules in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/near-real-time-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Analyze attack vector coverage by using the MITRE ATT&CK matrix
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explain threat hunting concepts in Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/what-is-threat-hunting-azure-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure anomalies in Microsoft Sentinel
+
+:::note
+The Microsoft Learn module "Identify threats with Behavioral Analytics" also covers this task. It is listed once, under [Configure and manage analytics rules in Microsoft Sentinel SIEM, including scheduled, near-real time (NRT), threat intelligence, and machine learning](#configure-and-manage-analytics-rules-in-microsoft-sentinel-siem-including-scheduled-near-real-time-nrt-threat-intelligence-and-machine-learning).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Anomalies detected by the Microsoft Sentinel machine learning engine" href="https://learn.microsoft.com/azure/sentinel/anomalies-reference?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use customizable anomalies to detect threats in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/soc-ml-anomalies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Work with anomaly detection analytics rules in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/work-with-anomaly-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Investigate anomalies on UEBA behaviors in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/ueba-anomalies-on-behaviors?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Respond to security incidents (35–40%)
+
+### Respond to alerts and incidents in Microsoft Defender XDR
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Investigate and respond to Microsoft Purview Data Loss Prevention alerts" href="https://learn.microsoft.com/training/modules/purview-data-loss-prevention-alerts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Investigate insider risk alerts and related activity" href="https://learn.microsoft.com/training/modules/purview-insider-risk-investigate-alerts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe identity concepts" href="https://learn.microsoft.com/training/modules/describe-identity-principles-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the identity protection and governance capabilities of Microsoft Entra" href="https://learn.microsoft.com/training/modules/describe-identity-protection-governance-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe access management capabilities of Microsoft Entra" href="https://learn.microsoft.com/training/modules/explore-access-management-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the authentication capabilities of Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-authentication-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the function and identity types of Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-basic-services-identity-types?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore identity in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-identity-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Zero Trust and best practice frameworks" href="https://learn.microsoft.com/training/modules/introduction-zero-trust-best-practice-frameworks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand and plan data loss prevention" href="https://learn.microsoft.com/training/modules/purview-data-loss-prevention-understand-plan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Microsoft Purview Insider Risk Management" href="https://learn.microsoft.com/training/modules/purview-explore-insider-risk-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/understand-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/introduction-to-entra-id-2026?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to information security and compliance in Microsoft Purview" href="https://learn.microsoft.com/training/modules/m365-compliance-information-governance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the embedded experiences of Microsoft Security Copilot" href="https://learn.microsoft.com/training/modules/security-copilot-embedded-experiences?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe Microsoft Security Copilot" href="https://learn.microsoft.com/training/modules/security-copilot-getting-started?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the core features of Microsoft Security Copilot" href="https://learn.microsoft.com/training/modules/security-copilot-describe-core-features?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe Microsoft Security Copilot agents" href="https://learn.microsoft.com/training/modules/security-copilot-describe-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the data security solutions of Microsoft Purview" href="https://learn.microsoft.com/training/modules/describe-purview-data-solutions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the security management capabilities in Azure" href="https://learn.microsoft.com/training/modules/describe-security-management-capabilities-of-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Data Security Investigations" href="https://learn.microsoft.com/training/modules/purview-data-security-investigations-understand?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Security Alerts and Incidents" href="https://learn.microsoft.com/azure/defender-for-cloud/alerts-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Alerts and incidents in Microsoft Defender XDR for Microsoft Defender for Cloud" href="https://learn.microsoft.com/azure/defender-for-cloud/concept-integration-365?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Defender for Resource Manager - Benefits and Features" href="https://learn.microsoft.com/azure/defender-for-cloud/defender-for-resource-manager-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Defender for Storage security threats and alerts" href="https://learn.microsoft.com/azure/defender-for-cloud/defender-for-storage-threats-alerts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Defender for Cloud Overview" href="https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate and remediate threats by using Microsoft Defender for Office 365, including automatic attack disruption
+
+:::note
+The Microsoft Learn module "Remediate threats using Microsoft Defender" also covers this task. It is listed once, under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel.
+:::
+
+#### Investigate and remediate threats or compromised entities identified by Microsoft Purview
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Investigate and remediate alerts and incidents identified by Microsoft Defender for Cloud workload protections
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Remediate security alerts using Microsoft Defender for Cloud" href="https://learn.microsoft.com/training/modules/remediate-azure-defender-security-alerts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Protect AI workloads with Microsoft Defender for Cloud" href="https://learn.microsoft.com/training/modules/defender-for-cloud-ai-protect-workloads?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate and remediate security risks identified by Microsoft Defender for Cloud Apps
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Investigate and remediate compromised identities that are identified by Microsoft Entra ID
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Microsoft Entra Identity Protection" href="https://learn.microsoft.com/training/modules/manage-azure-active-directory-identity-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Microsoft Entra ID Protection?" href="https://learn.microsoft.com/entra/id-protection/overview-identity-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate and remediate security alerts from Microsoft Defender for Identity
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage Microsoft Entra Identity Protection": under [Investigate and remediate compromised identities that are identified by Microsoft Entra ID](#investigate-and-remediate-compromised-identities-that-are-identified-by-microsoft-entra-id)
+- "Mitigate incidents using Microsoft Defender": under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+:::
+
+#### Investigate and remediate alerts and incidents identified by Microsoft Sentinel
+
+:::note
+The Microsoft Learn module "Security incident management in Microsoft Sentinel" also covers this task. It is listed once, under [Create and configure automation rules in Microsoft Sentinel](#create-and-configure-automation-rules-in-microsoft-sentinel) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Entities in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/entities?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate incidents by using agentic AI, including embedded Microsoft Security Copilot
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Experience Security Copilot through guided simulations" href="https://learn.microsoft.com/training/modules/security-copilot-interactive-guides?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Security Copilot and Chat in Microsoft Defender" href="https://learn.microsoft.com/defender-xdr/security-copilot-in-microsoft-365-defender?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate complex attacks, such as multi-stage, multi-domain, and lateral movement
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Manage security incidents by using case management
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Security incident management in Microsoft Sentinel": under [Create and configure automation rules in Microsoft Sentinel](#create-and-configure-automation-rules-in-microsoft-sentinel) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+- "Mitigate incidents using Microsoft Defender": under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Investigate Incidents with Microsoft Sentinel (legacy)" href="https://learn.microsoft.com/azure/sentinel/investigate-cases?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Sentinel incident investigation in the Azure portal" href="https://learn.microsoft.com/azure/sentinel/incident-investigation?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Respond to alerts and incidents in Microsoft Defender for Endpoint
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore security solutions in Microsoft Defender XDR" href="https://learn.microsoft.com/training/modules/explore-security-solutions-microsoft-365-defender?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore threat intelligence in Microsoft Defender XDR" href="https://learn.microsoft.com/training/modules/explore-threat-intelligence-microsoft-365-defender?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate device timelines
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Perform device investigations in Microsoft Defender for Endpoint" href="https://learn.microsoft.com/training/modules/perform-device-investigations-microsoft-defender-for-endpoints?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Perform actions on the device, including live response and collecting investigation packages
+
+:::note
+The Microsoft Learn module "Perform actions on a device using Microsoft Defender for Endpoint" also covers this task. It is listed once, under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel.
+:::
+
+#### Perform evidence and entity investigation
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Perform evidence and entities investigations using Microsoft Defender for Endpoint" href="https://learn.microsoft.com/training/modules/perform-evidence-entities-investigations-microsoft-defender-for-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate and remediate incidents identified by automatic attack disruption
+
+:::note
+The Microsoft Learn module "Remediate threats using Microsoft Defender" also covers this task. It is listed once, under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel.
+:::
+
+### Investigate Microsoft 365 activities to identify threats
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe the data compliance solutions of Microsoft Purview" href="https://learn.microsoft.com/training/modules/describe-purview-risk-compliance-governance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Examine data governance solutions in Microsoft Purview" href="https://learn.microsoft.com/training/modules/examine-data-governance-solutions-microsoft-purview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Microsoft Purview eDiscovery" href="https://learn.microsoft.com/training/modules/purview-ediscovery-understand?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate threats by using Microsoft Purview Audit
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Conduct investigations with Microsoft Purview Audit" href="https://learn.microsoft.com/training/modules/purview-audit-search-investigate?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Investigate threats using audit in Microsoft Defender XDR and Microsoft Purview (Premium)" href="https://learn.microsoft.com/training/modules/investigate-threats-using-audit-in-microsoft-365-defender-microsoft-purview-premium?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Investigate threats by using audit features in Microsoft Defender XDR and Microsoft Purview Standard" href="https://learn.microsoft.com/training/modules/investigate-threats-using-audit-in-microsoft-365-defender-microsoft-purview-standard?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Microsoft Purview Audit (Premium) to investigate compromised accounts" href="https://learn.microsoft.com/purview/audit-log-investigate-accounts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Investigate data loss alerts with Microsoft Defender XDR" href="https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about auditing solutions in Microsoft Purview" href="https://learn.microsoft.com/purview/audit-solutions-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Search the audit log for events in Microsoft Teams" href="https://learn.microsoft.com/purview/audit-teams-audit-log-events?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate threats by using Content search in Microsoft Purview eDiscovery
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Search for content with Microsoft Purview eDiscovery" href="https://learn.microsoft.com/training/modules/purview-ediscovery-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Analyze and prepare content in eDiscovery review sets" href="https://learn.microsoft.com/training/modules/purview-ediscovery-review-set?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use the condition builder to create search queries in eDiscovery" href="https://learn.microsoft.com/purview/edisc-condition-builder?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Export search results in eDiscovery" href="https://learn.microsoft.com/purview/edisc-search-export?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a search query for a case in eDiscovery" href="https://learn.microsoft.com/purview/edisc-search-query?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Evaluate and refine search results in eDiscovery" href="https://learn.microsoft.com/purview/edisc-search-results?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate threats by using Microsoft Graph activity logs
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Investigate threats by using audit features in Microsoft Defender XDR and Microsoft Purview Standard": under [Investigate threats by using Microsoft Purview Audit](#investigate-threats-by-using-microsoft-purview-audit)
+- "Conduct investigations with Microsoft Purview Audit": under [Investigate threats by using Microsoft Purview Audit](#investigate-threats-by-using-microsoft-purview-audit)
+- "Mitigate incidents using Microsoft Defender": under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+:::
+
+## Perform threat hunting (20–25%)
+
+### Detect threats by using Microsoft Defender XDR
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Transition to and prepare for fundamentals-level security, compliance, and identity course" href="https://learn.microsoft.com/training/modules/transition-prepare-fundamentals-level-security-compliance-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Defender for Office 365" href="https://learn.microsoft.com/training/modules/defender-office-365-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify the appropriate table to use in a KQL query
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build multi-table statements using KQL" href="https://learn.microsoft.com/training/modules/build-multi-table-statements-kusto-query-language?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data normalization in Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/data-normalization-microsoft-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Get started with log queries in Azure Monitor Logs - Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/logs/get-started-queries?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Log queries in Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/logs/log-query-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Run KQL queries against the Microsoft Sentinel data lake - Microsoft Security" href="https://learn.microsoft.com/azure/sentinel/datalake/kql-queries?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sample KQL Queries for Microsoft Sentinel Data Lake" href="https://learn.microsoft.com/azure/sentinel/datalake/kql-sample-queries?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Federated Data Sources in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/datalake/using-data-federation?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify threats by using Kusto Query Language (KQL)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Work with data in Microsoft Sentinel using Kusto Query Language" href="https://learn.microsoft.com/training/modules/work-with-data-kusto-query-language?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Query across resources with Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/logs/cross-workspace-query?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Advanced Security Information Model (ASIM) parsers" href="https://learn.microsoft.com/azure/sentinel/normalization-about-parsers?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create Advanced Hunting queries
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Threat hunting with Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/hunt-threats-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Hunt for threats using notebooks in Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/perform-threat-hunting-sentinel-with-notebooks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Search jobs in Microsoft Sentinel" href="https://learn.microsoft.com/training/modules/use-search-jobs-microsoft-sentinel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create custom hunting queries in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/hunts-custom-queries?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Interpret threat analytics in Microsoft Defender XDR
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Experience Security Copilot through guided simulations": under [Investigate incidents by using agentic AI, including embedded Microsoft Security Copilot](#investigate-incidents-by-using-agentic-ai-including-embedded-microsoft-security-copilot) in the skill group Respond to alerts and incidents in Microsoft Defender XDR
+- "Protect against threats with Microsoft Defender for Endpoint": under [Configure Microsoft Defender for Endpoint advanced features](#configure-microsoft-defender-for-endpoint-advanced-features) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+- "Remediate threats using Microsoft Defender": under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+- "Configure for alerts and detections in Microsoft Defender for Endpoint": under [Configure alert notifications in Microsoft Defender XDR, including tuning, suppression, and correlation](#configure-alert-notifications-in-microsoft-defender-xdr-including-tuning-suppression-and-correlation) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+- "Mitigate incidents using Microsoft Defender": under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Threat Intelligence in Microsoft Defender XDR" href="https://learn.microsoft.com/defender-xdr/defender-threat-intelligence?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create hunting graphs, including blast radius
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Explain threat hunting concepts in Microsoft Sentinel": under [Analyze attack vector coverage by using the MITRE ATT&CK matrix](#analyze-attack-vector-coverage-by-using-the-mitre-attck-matrix) in the skill group Configure detections
+- "Mitigate incidents using Microsoft Defender": under [Manage automated investigation and response capabilities in Microsoft Defender XDR](#manage-automated-investigation-and-response-capabilities-in-microsoft-defender-xdr) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Graph icons and visualizations in Microsoft Defender" href="https://learn.microsoft.com/defender-xdr/understand-graph-icons?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Analyze relationships between entities by using Sentinel Graph
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Identify threats with Behavioral Analytics": under [Configure and manage analytics rules in Microsoft Sentinel SIEM, including scheduled, near-real time (NRT), threat intelligence, and machine learning](#configure-and-manage-analytics-rules-in-microsoft-sentinel-siem-including-scheduled-near-real-time-nrt-threat-intelligence-and-machine-learning) in the skill group Configure detections
+- "Security incident management in Microsoft Sentinel": under [Create and configure automation rules in Microsoft Sentinel](#create-and-configure-automation-rules-in-microsoft-sentinel) in the skill group Configure automation for Microsoft Defender XDR and Microsoft Sentinel
+:::
+
+### Detect threats by using the Microsoft Sentinel platform
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Microsoft Sentinel's support for MCP?" href="https://learn.microsoft.com/azure/sentinel/datalake/sentinel-mcp-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="KQL and the Microsoft Sentinel data lake - Microsoft Security" href="https://learn.microsoft.com/azure/sentinel/datalake/kql-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Microsoft Sentinel MCP server's tool collection?" href="https://learn.microsoft.com/azure/sentinel/datalake/sentinel-mcp-tools-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and monitor hunting queries
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Use Search jobs in Microsoft Sentinel": under [Create Advanced Hunting queries](#create-advanced-hunting-queries) in the skill group Detect threats by using Microsoft Defender XDR
+- "Threat hunting with Microsoft Sentinel": under [Create Advanced Hunting queries](#create-advanced-hunting-queries) in the skill group Detect threats by using Microsoft Defender XDR
+- "Hunt for threats using notebooks in Microsoft Sentinel": under [Create Advanced Hunting queries](#create-advanced-hunting-queries) in the skill group Detect threats by using Microsoft Defender XDR
+- "Query, visualize, and monitor data in Microsoft Sentinel": under [Create and configure Microsoft Sentinel workbooks](#create-and-configure-microsoft-sentinel-workbooks) in the skill group Configure the Microsoft Sentinel SIEM and platform
+- "Explain threat hunting concepts in Microsoft Sentinel": under [Analyze attack vector coverage by using the MITRE ATT&CK matrix](#analyze-attack-vector-coverage-by-using-the-mitre-attck-matrix) in the skill group Configure detections
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Hunting Capabilities in Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/hunting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage hunting queries in Microsoft Sentinel using REST API" href="https://learn.microsoft.com/azure/sentinel/hunting-with-rest-api?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage KQL jobs in Data lake
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Work with data in Microsoft Sentinel using Kusto Query Language": under [Identify threats by using Kusto Query Language (KQL)](#identify-threats-by-using-kusto-query-language-kql) in the skill group Detect threats by using Microsoft Defender XDR
+- "Analyze query results using KQL": under [Create and configure Microsoft Sentinel workbooks](#create-and-configure-microsoft-sentinel-workbooks) in the skill group Configure the Microsoft Sentinel SIEM and platform
+- "Query, visualize, and monitor data in Microsoft Sentinel": under [Create and configure Microsoft Sentinel workbooks](#create-and-configure-microsoft-sentinel-workbooks) in the skill group Configure the Microsoft Sentinel SIEM and platform
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create jobs in the Microsoft Sentinel data lake - Microsoft Security" href="https://learn.microsoft.com/azure/sentinel/datalake/kql-jobs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage KQL jobs - Microsoft Security" href="https://learn.microsoft.com/azure/sentinel/datalake/kql-manage-jobs?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage Summary rule tables for querying
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="KQL Jobs, Summary Rules, and Search Jobs - Microsoft Security" href="https://learn.microsoft.com/azure/sentinel/datalake/kql-jobs-summary-rules-search-jobs?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Hunt for threats by using Notebooks, including connection to the Sentinel MCP Server
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Threat hunting with Microsoft Sentinel": under [Create Advanced Hunting queries](#create-advanced-hunting-queries) in the skill group Detect threats by using Microsoft Defender XDR
+- "Hunt for threats using notebooks in Microsoft Sentinel": under [Create Advanced Hunting queries](#create-advanced-hunting-queries) in the skill group Detect threats by using Microsoft Defender XDR
+- "Explain threat hunting concepts in Microsoft Sentinel": under [Analyze attack vector coverage by using the MITRE ATT&CK matrix](#analyze-attack-vector-coverage-by-using-the-mitre-attck-matrix) in the skill group Configure detections
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Hunt for security threats with Jupyter notebooks - Microsoft Sentinel" href="https://learn.microsoft.com/azure/sentinel/notebooks-hunt?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
