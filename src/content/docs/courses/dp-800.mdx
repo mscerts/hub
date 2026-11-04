@@ -1,0 +1,1291 @@
+---
+title: DP-800 Study Guide Course
+description: "Follow a structured DP-800 course organized by study guide task, with Microsoft Learn training and documentation for Developing AI-Enabled Database Solutions."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official DP-800 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-800?WT.mc_id=studentamb_165290) skills measured (March 12, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [DP-800 labs page](/certs/labs/azure/dp-800/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As a candidate for this Microsoft Certification, you should have subject matter expertise in designing and developing AI-enabled database solutions across Microsoft SQL platforms, including Microsoft SQL Server, Azure SQL, and SQL databases in Microsoft Fabric.
+
+You should also have experience writing T-SQL code and developing databases in Microsoft SQL platforms. Plus, you need to be familiar with continuous integration and continuous deployment (CI/CD) practices in GitHub, AI-assisted development tools, and AI concepts, such as embeddings, vectors, and models.
+
+You work closely with application developers; database administrators (DBAs); architects; AI engineers; development, security, operations (DevSecOps) engineers; security and compliance administrators; and other stakeholders to deliver robust, high-performance database solutions that power modern applications and AI-driven experiences.
+
+### Your responsibilities include
+
+- Designing and developing database solutions that include both structured and semi-structured data.
+- Integrating AI features into modern and highly scalable enterprise applications.
+- Securing, optimizing, and deploying database solutions.
+- Implementing AI capabilities in database solutions.
+
+## Design and develop database solutions (35–40%)
+
+### Design and implement database objects
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore core data concepts" href="https://learn.microsoft.com/training/modules/explore-core-data-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore fundamental relational data concepts" href="https://learn.microsoft.com/training/modules/explore-relational-data-offerings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Transact-SQL" href="https://learn.microsoft.com/training/modules/introduction-to-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore performance-based database design" href="https://learn.microsoft.com/training/modules/explore-performance-based-design?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement tables, including data types, size, columns, indexes, and column store indexes
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement database objects with SQL" href="https://learn.microsoft.com/training/modules/design-implement-database-objects?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement specialized tables, including in-memory, temporal, external, ledger, and graph
+
+:::note
+The Microsoft Learn module "Design and implement database objects with SQL" also covers this task. It is listed once, under [Design and implement tables, including data types, size, columns, indexes, and column store indexes](#design-and-implement-tables-including-data-types-size-columns-indexes-and-column-store-indexes).
+:::
+
+#### Design and implement JSON columns and indexes
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Write advanced T-SQL code" href="https://learn.microsoft.com/training/modules/write-advanced-sql-code?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="CREATE JSON INDEX (Transact-SQL) - SQL Server" href="https://learn.microsoft.com/sql/t-sql/statements/create-json-index-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Index JSON Data - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/json/index-json-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Store JSON Documents" href="https://learn.microsoft.com/sql/relational-databases/json/store-json-documents-in-sql-tables?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.json_index_paths (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-json-index-paths-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.json_indexes (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-json-indexes-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement database constraints, including PRIMARY KEY, FOREIGN KEY, UNIQUE, CHECK, and DEFAULT
+
+:::note
+The Microsoft Learn module "Design and implement database objects with SQL" also covers this task. It is listed once, under [Design and implement tables, including data types, size, columns, indexes, and column store indexes](#design-and-implement-tables-including-data-types-size-columns-indexes-and-column-store-indexes).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="column_constraint (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-table-column-constraint-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Primary and foreign key constraints" href="https://learn.microsoft.com/sql/relational-databases/tables/primary-and-foreign-key-constraints?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement SEQUENCES
+
+:::note
+The Microsoft Learn module "Design and implement database objects with SQL" also covers this task. It is listed once, under [Design and implement tables, including data types, size, columns, indexes, and column store indexes](#design-and-implement-tables-including-data-types-size-columns-indexes-and-column-store-indexes).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Sequence Numbers" href="https://learn.microsoft.com/sql/relational-databases/sequence-numbers/sequence-numbers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALTER SEQUENCE (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-sequence-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE SEQUENCE (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/create-sequence-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DROP SEQUENCE (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/drop-sequence-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sequence Properties (General Page)" href="https://learn.microsoft.com/sql/relational-databases/sequence-numbers/sequence-properties-general-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sequences (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-sequences-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SEQUENCES (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-information-schema-views/sequences-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sp_sequence_get_range (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-sequence-get-range-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement partitioning for tables and indexes
+
+:::note
+The Microsoft Learn module "Design and implement database objects with SQL" also covers this task. It is listed once, under [Design and implement tables, including data types, size, columns, indexes, and column store indexes](#design-and-implement-tables-including-data-types-size-columns-indexes-and-column-store-indexes).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Partitioned Tables and Indexes" href="https://learn.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create partitioned tables and indexes" href="https://learn.microsoft.com/sql/relational-databases/partitions/create-partitioned-tables-and-indexes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE PARTITION SCHEME (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.partitions (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-partitions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Application Pattern for Partitioning Memory-Optimized Tables" href="https://learn.microsoft.com/sql/relational-databases/in-memory-oltp/application-pattern-for-partitioning-memory-optimized-tables?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Partition with Temporal Tables" href="https://learn.microsoft.com/sql/relational-databases/tables/temporal/partitioning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALTER TABLE (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="TRUNCATE TABLE (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement programmability objects
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="User-Defined Functions" href="https://learn.microsoft.com/sql/relational-databases/user-defined-functions/user-defined-functions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create views
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement programmability objects with SQL" href="https://learn.microsoft.com/training/modules/implement-programmability-objects?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="CREATE VIEW (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/create-view-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create views" href="https://learn.microsoft.com/sql/relational-databases/views/create-views?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Views" href="https://learn.microsoft.com/sql/relational-databases/views/views?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.views (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-views-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="VIEWS (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-information-schema-views/views-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Indexed Views" href="https://learn.microsoft.com/sql/relational-databases/views/create-indexed-views?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delete views" href="https://learn.microsoft.com/sql/relational-databases/views/delete-views?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get information about a view" href="https://learn.microsoft.com/sql/relational-databases/views/get-information-about-a-view?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Modify Data Through a View" href="https://learn.microsoft.com/sql/relational-databases/views/modify-data-through-a-view?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Modify views" href="https://learn.microsoft.com/sql/relational-databases/views/modify-views?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Rename Views" href="https://learn.microsoft.com/sql/relational-databases/views/rename-views?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create views over XML columns" href="https://learn.microsoft.com/sql/relational-databases/xml/create-views-over-xml-columns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALTER MATERIALIZED VIEW (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-materialized-view-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALTER VIEW (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-view-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL) creates a materialized view to persist the data returned from the view definition query and automatically gets updated as data changes in the underlying tables." href="https://learn.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DROP VIEW (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/drop-view-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create scalar functions
+
+:::note
+The Microsoft Learn module "Implement programmability objects with SQL" also covers this task. It is listed once, under [Create views](#create-views).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="CLR Scalar-Valued Functions" href="https://learn.microsoft.com/sql/relational-databases/clr-integration-database-objects-user-defined-functions/clr-scalar-valued-functions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scalar User-Defined Functions for In-Memory OLTP" href="https://learn.microsoft.com/sql/relational-databases/in-memory-oltp/scalar-user-defined-functions-for-in-memory-oltp?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scalar UDF Inlining" href="https://learn.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create table-valued functions
+
+:::note
+The Microsoft Learn module "Implement programmability objects with SQL" also covers this task. It is listed once, under [Create views](#create-views).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="CLR Table-Valued Functions" href="https://learn.microsoft.com/sql/relational-databases/clr-integration-database-objects-user-defined-functions/clr-table-valued-functions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create stored procedures
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Integrate SQL solutions with Azure services" href="https://learn.microsoft.com/training/modules/integrate-sql-solutions-azure-services?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="CREATE PROCEDURE (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/create-procedure-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a stored procedure - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/stored-procedures/create-a-stored-procedure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Parameters - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/stored-procedures/parameters?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Stored procedures in the GraphQL API - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/concept/graphql/stored-procedures?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Stored procedures in the REST API - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/concept/rest/stored-procedures?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Altering Natively Compiled T-SQL Modules" href="https://learn.microsoft.com/sql/relational-databases/in-memory-oltp/altering-natively-compiled-t-sql-modules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Memory-optimized table and a natively compiled stored procedure" href="https://learn.microsoft.com/sql/relational-databases/in-memory-oltp/creating-a-memory-optimized-table-and-a-natively-compiled-stored-procedure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Creating Natively Compiled Stored Procedures" href="https://learn.microsoft.com/sql/relational-databases/in-memory-oltp/creating-natively-compiled-stored-procedures?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Native Compilation Advisor" href="https://learn.microsoft.com/sql/relational-databases/in-memory-oltp/native-compilation-advisor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Native Compilation of Tables and Stored Procedures" href="https://learn.microsoft.com/sql/relational-databases/in-memory-oltp/native-compilation-of-tables-and-stored-procedures?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Supported DDL for Natively Compiled T-SQL modules" href="https://learn.microsoft.com/sql/relational-databases/in-memory-oltp/supported-ddl-for-natively-compiled-t-sql-modules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Features for natively compiled T-SQL modules" href="https://learn.microsoft.com/sql/relational-databases/in-memory-oltp/supported-features-for-natively-compiled-t-sql-modules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delete a Stored Procedure - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/stored-procedures/delete-a-stored-procedure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Execute a Stored Procedure - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/stored-procedures/execute-a-stored-procedure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Modify a stored procedure - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/stored-procedures/modify-a-stored-procedure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Return Data From a Stored Procedure - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/stored-procedures/return-data-from-a-stored-procedure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Specify Parameters in a Stored Procedure - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/stored-procedures/specify-parameters?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Stored Procedures (Database Engine) - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sp_executesql (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sp_refreshsqlmodule (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-refreshsqlmodule-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Debug Stored Procedures" href="https://learn.microsoft.com/sql/ssdt/debugger/debug-stored-procedures?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create SQL Server Unit Tests for Functions, Triggers, and Stored Procedures - SQL Server Data Tools (SSDT)" href="https://learn.microsoft.com/sql/ssdt/how-to-create-unit-tests-for-functions-triggers-stored-procedures?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Debug Database Objects" href="https://learn.microsoft.com/sql/ssdt/how-to-debug-database-objects?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ADD SIGNATURE (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/add-signature-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DROP PROCEDURE (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/drop-procedure-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SET NOCOUNT (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/set-nocount-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create triggers
+
+:::note
+The Microsoft Learn module "Implement programmability objects with SQL" also covers this task. It is listed once, under [Create views](#create-views).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="CREATE TRIGGER (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/create-trigger-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create DML Triggers" href="https://learn.microsoft.com/sql/relational-databases/triggers/create-dml-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create DML Triggers to Handle Multiple Rows of Data" href="https://learn.microsoft.com/sql/relational-databases/triggers/create-dml-triggers-to-handle-multiple-rows-of-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DDL Triggers" href="https://learn.microsoft.com/sql/relational-databases/triggers/ddl-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DML Triggers" href="https://learn.microsoft.com/sql/relational-databases/triggers/dml-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement DDL Triggers" href="https://learn.microsoft.com/sql/relational-databases/triggers/implement-ddl-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Logon triggers" href="https://learn.microsoft.com/sql/relational-databases/triggers/logon-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn how to use the inserted and deleted tables with DML triggers to inspect changes." href="https://learn.microsoft.com/sql/relational-databases/triggers/use-the-inserted-and-deleted-tables?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.server_trigger_events (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-server-trigger-events-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.trigger_event_types (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-trigger-event-types-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.trigger_events (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-trigger-events-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.triggers (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-triggers-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.dm_exec_trigger_stats (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-dynamic-management-objects/sys-dm-exec-trigger-stats-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sp_helptext (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-helptext-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sp_helptrigger (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-helptrigger-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sp_recompile (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-recompile-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sp_settriggerorder (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-settriggerorder-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Capture Logon Trigger Event Data" href="https://learn.microsoft.com/sql/relational-databases/triggers/capture-logon-trigger-event-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Nested Triggers" href="https://learn.microsoft.com/sql/relational-databases/triggers/create-nested-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DDL Event Groups" href="https://learn.microsoft.com/sql/relational-databases/triggers/ddl-event-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DDL Events" href="https://learn.microsoft.com/sql/relational-databases/triggers/ddl-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delete or Disable DML Triggers" href="https://learn.microsoft.com/sql/relational-databases/triggers/delete-or-disable-dml-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get Information About DDL Triggers" href="https://learn.microsoft.com/sql/relational-databases/triggers/get-information-about-ddl-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get Information About DML Triggers" href="https://learn.microsoft.com/sql/relational-databases/triggers/get-information-about-dml-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage trigger security" href="https://learn.microsoft.com/sql/relational-databases/triggers/manage-trigger-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Modify or Rename DML Triggers" href="https://learn.microsoft.com/sql/relational-databases/triggers/modify-or-rename-dml-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Specify First and Last Triggers" href="https://learn.microsoft.com/sql/relational-databases/triggers/specify-first-and-last-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use the EVENTDATA Function" href="https://learn.microsoft.com/sql/relational-databases/triggers/use-the-eventdata-function?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ERROR_PROCEDURE (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/functions/error-procedure-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Trigger Functions (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/functions/trigger-functions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="TRIGGER_NESTLEVEL (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/functions/trigger-nestlevel-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="UPDATE() (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/functions/update-trigger-functions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALTER TRIGGER (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-trigger-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DISABLE TRIGGER (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DROP TRIGGER (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/drop-trigger-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ENABLE TRIGGER (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/enable-trigger-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="EXECUTE AS Clause (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/execute-as-clause-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Write advanced T-SQL code
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What Are the Microsoft SQL Database Functions?" href="https://learn.microsoft.com/sql/t-sql/functions/functions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Write common table expressions (CTEs)
+
+:::note
+The Microsoft Learn module "Write advanced T-SQL code" also covers this task. It is listed once, under [Design and implement JSON columns and indexes](#design-and-implement-json-columns-and-indexes) in the skill group Design and implement database objects.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="WITH common_table_expression (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Nested Common Table Expression (CTE)" href="https://learn.microsoft.com/sql/t-sql/queries/nested-common-table-expression?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Recursive Queries Using Common Table Expressions" href="https://learn.microsoft.com/sql/t-sql/queries/recursive-common-table-expression-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Write queries that include window functions
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Write queries that use window functions" href="https://learn.microsoft.com/training/modules/write-queries-that-use-window-functions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="OVER Clause (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/queries/select-over-clause-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Write queries that include JSON functions, such as JSON_OBJECT, JSON_ARRAY, JSON_ARRAYAGG, JSON_CONTAINS, OPENJSON, and JSON_VALUE
+
+:::note
+The Microsoft Learn module "Write advanced T-SQL code" also covers this task. It is listed once, under [Design and implement JSON columns and indexes](#design-and-implement-json-columns-and-indexes) in the skill group Design and implement database objects.
+:::
+
+#### Write queries that include regular expressions, such as REGEXP_LIKE, REGEXP_REPLACE, REGEXP_SUBSTR, REGEXP_INSTR, REGEXP_COUNT, REGEXP_MATCHES, and REGEXP_SPLIT_TO_TABLE
+
+:::note
+The Microsoft Learn module "Write advanced T-SQL code" also covers this task. It is listed once, under [Design and implement JSON columns and indexes](#design-and-implement-json-columns-and-indexes) in the skill group Design and implement database objects.
+:::
+
+#### Write queries that include fuzzy string matching functions, such as EDIT_DISTANCE, EDIT_DISTANCE_SIMILARITY, and JARO_WINKLER_DISTANCE
+
+:::note
+The Microsoft Learn module "Write advanced T-SQL code" also covers this task. It is listed once, under [Design and implement JSON columns and indexes](#design-and-implement-json-columns-and-indexes) in the skill group Design and implement database objects.
+:::
+
+#### Write graph queries that use the MATCH operator
+
+:::note
+The Microsoft Learn module "Write advanced T-SQL code" also covers this task. It is listed once, under [Design and implement JSON columns and indexes](#design-and-implement-json-columns-and-indexes) in the skill group Design and implement database objects.
+:::
+
+#### Write correlated queries
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Write Subqueries in T-SQL" href="https://learn.microsoft.com/training/modules/write-subqueries?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement error handling
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement error handling with Transact-SQL" href="https://learn.microsoft.com/training/modules/implement-error-handling-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement transactions with Transact-SQL" href="https://learn.microsoft.com/training/modules/implement-transactions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="TRY...CATCH (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/language-elements/try-catch-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement SQL solutions by using AI-assisted tools
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Copilot in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/introduction-to-copilot-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="SQL MCP Server overview - SQL MCP Server" href="https://learn.microsoft.com/azure/data-api-builder/mcp/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of GitHub Copilot Integration - MSSQL Extension for Visual Studio Code" href="https://learn.microsoft.com/sql/tools/visual-studio-code-extensions/github-copilot/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Interpret security impact of using AI-assisted tools
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement SQL solutions by using AI-assisted tools" href="https://learn.microsoft.com/training/modules/design-implement-sql-solutions-ai-assisted-tools?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Enable GitHub Copilot and Microsoft Copilot in Fabric
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Accelerate Azure SQL tasks with Microsoft Copilot" href="https://learn.microsoft.com/training/modules/use-copilot-administer-azure-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Copilot in the SQL Database Workload Overview" href="https://learn.microsoft.com/fabric/database/sql/copilot-sql-database?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure model and Model Context Protocol (MCP) tool options in a GitHub Copilot or Copilot in Fabric chat session
+
+:::note
+The Microsoft Learn module "Implement SQL solutions by using AI-assisted tools" also covers this task. It is listed once, under [Interpret security impact of using AI-assisted tools](#interpret-security-impact-of-using-ai-assisted-tools).
+:::
+
+#### Create and configure GitHub Copilot instruction files
+
+:::note
+The Microsoft Learn module "Implement SQL solutions by using AI-assisted tools" also covers this task. It is listed once, under [Interpret security impact of using AI-assisted tools](#interpret-security-impact-of-using-ai-assisted-tools).
+:::
+
+#### Connect to MCP server endpoints, including Microsoft SQL Server and Fabric lakehouse
+
+:::note
+The Microsoft Learn module "Implement SQL solutions by using AI-assisted tools" also covers this task. It is listed once, under [Interpret security impact of using AI-assisted tools](#interpret-security-impact-of-using-ai-assisted-tools).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data agent as Model Context Protocol server" href="https://learn.microsoft.com/fabric/data-science/data-agent-mcp-server?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Secure, optimize, and deploy database solutions (35–40%)
+
+### Implement data security and compliance
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore security practices for Azure SQL Database" href="https://learn.microsoft.com/training/modules/explore-security-practices-azure-sql-database?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Authentication overview - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/concept/security/authenticate-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of key management for Always Encrypted" href="https://learn.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Authorization overview - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/concept/security/authorization-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra authentication for SQL Server overview" href="https://learn.microsoft.com/sql/relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Ledger Overview" href="https://learn.microsoft.com/sql/relational-databases/security/ledger/ledger-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security Overview - Azure SQL Database & Azure SQL Managed Instance" href="https://learn.microsoft.com/azure/azure-sql/database/security-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Data API builder? - Azure Databases" href="https://learn.microsoft.com/azure/data-api-builder/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement data encryption, including Always Encrypted and column-level encryption
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement data security and compliance with SQL" href="https://learn.microsoft.com/training/modules/implement-data-security-compliance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Always Encrypted" href="https://learn.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement Dynamic Data Masking
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Plan and implement security for Azure SQL Database and Azure SQL Managed Instance" href="https://learn.microsoft.com/training/modules/security-azure-sql-database-azure-sql-managed-instance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Dynamic Data Masking - Azure SQL Database & Azure SQL Managed Instance" href="https://learn.microsoft.com/azure/azure-sql/database/dynamic-data-masking-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dynamic Data Masking - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/dynamic-data-masking-configure-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Regex-based dynamic data masking (preview) - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/dynamic-data-masking-regex?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dynamic Data Masking" href="https://learn.microsoft.com/sql/relational-databases/security/dynamic-data-masking?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.masked_columns (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-masked-columns-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement Row-Level Security (RLS)
+
+:::note
+The Microsoft Learn module "Implement data security and compliance with SQL" also covers this task. It is listed once, under [Design and implement data encryption, including Always Encrypted and column-level encryption](#design-and-implement-data-encryption-including-always-encrypted-and-column-level-encryption).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Row-Level Security" href="https://learn.microsoft.com/sql/relational-databases/security/row-level-security?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement object-level permissions
+
+:::note
+The Microsoft Learn module "Implement data security and compliance with SQL" also covers this task. It is listed once, under [Design and implement data encryption, including Always Encrypted and column-level encryption](#design-and-implement-data-encryption-including-always-encrypted-and-column-level-encryption).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="DENY Object Permissions (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="GRANT Object Permissions (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/grant-object-permissions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="REVOKE Object Permissions (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/revoke-object-permissions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Database-Level Roles" href="https://learn.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Server-Level Roles" href="https://learn.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Determine effective Database Engine permissions" href="https://learn.microsoft.com/sql/relational-databases/security/authentication-access/determining-effective-database-engine-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Ownership and user-schema separation in SQL Server" href="https://learn.microsoft.com/sql/relational-databases/security/authentication-access/ownership-and-user-schema-separation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sp_helprotect (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-helprotect-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Grant Permissions on an XML Schema Collection" href="https://learn.microsoft.com/sql/relational-databases/xml/grant-permissions-on-an-xml-schema-collection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DENY System Object Permissions (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/deny-system-object-permissions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="GRANT system object permissions (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/grant-system-object-permissions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="REVOKE System Object Permissions (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/revoke-system-object-permissions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement secure database access, including passwordless
+
+:::note
+The Microsoft Learn module "Implement data security and compliance with SQL" also covers this task. It is listed once, under [Design and implement data encryption, including Always Encrypted and column-level encryption](#design-and-implement-data-encryption-including-always-encrypted-and-column-level-encryption).
+:::
+
+#### Implement auditing
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure auditing for Azure SQL Database and SQL Managed Instance" href="https://learn.microsoft.com/training/modules/configure-azure-sql-auditing?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Auditing - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/auditing-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Auditing Policy at the Server and Database Level - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/auditing-server-level-database-level?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up Auditing - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/auditing-setup?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SQL Server Audit - Azure SQL Managed Instance" href="https://learn.microsoft.com/azure/azure-sql/managed-instance/auditing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Auditing - Azure SQL Managed Instance" href="https://learn.microsoft.com/azure/azure-sql/managed-instance/auditing-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a server audit & database audit specification" href="https://learn.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-database-audit-specification?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Server Audit & Server Audit Specification" href="https://learn.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SQL Server Audit (Database Engine)" href="https://learn.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE DATABASE AUDIT SPECIFICATION" href="https://learn.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE SERVER AUDIT SPECIFICATION (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE SERVER AUDIT (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SQL Database audit log format - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/audit-log-format?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit to Storage Account Behind VNet and Firewall - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Auditing to Analyze Audit Logs and Reports - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/auditing-analyze-audit-logs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Auditing Best Practices for Production Environments - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/auditing-best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Auditing Using APIs - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/auditing-manage-using-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Auditing Using Managed Identity - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/auditing-managed-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Auditing for Fabric SQL Database" href="https://learn.microsoft.com/fabric/database/sql/auditing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage SQL database auditing with the REST API" href="https://learn.microsoft.com/fabric/database/sql/auditing-manage-rest-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Add DB User Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-add-db-user-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Add Login to Server Role Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-add-login-to-server-role-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Add Member to DB Role Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-add-member-to-db-role-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Add Role Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-add-role-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Addlogin Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-addlogin-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit App Role Change Password Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-app-role-change-password-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Backup and Restore Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-backup-and-restore-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Broker Conversation Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-broker-conversation-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Broker Login Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-broker-login-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Change Audit Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-change-audit-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Change Database Owner Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-change-database-owner-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Database Management Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-database-management-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Database Mirroring Login Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-database-mirroring-login-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Database Object Access Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-database-object-access-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Database Object GDR Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-database-object-gdr-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Database Object Management Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-database-object-management-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Database Object Take Ownership Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-database-object-take-ownership-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Database Operation Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-database-operation-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Database Principal Impersonation Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-database-principal-impersonation-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Database Principal Management Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-database-principal-management-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Database Scope GDR Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-database-scope-gdr-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit DBCC Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-dbcc-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Fulltext Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-fulltext-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Login Change Password Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-login-change-password-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Login Change Property Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-login-change-property-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Login Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-login-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Login Failed event class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-login-failed-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Login GDR Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-login-gdr-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Logout Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-logout-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Object Derived Permission Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-object-derived-permission-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Schema Object Access Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-schema-object-access-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Schema Object GDR Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-schema-object-gdr-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Schema Object Management Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-schema-object-management-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Schema Object Take Ownership Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-schema-object-take-ownership-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Server Alter Trace Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-server-alter-trace-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Server Object GDR Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-server-object-gdr-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Server Object Management Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-server-object-management-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Server Object Take Ownership Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-server-object-take-ownership-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Server Operation Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-server-operation-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Server Principal Impersonation Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-server-principal-impersonation-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Server Principal Management Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-server-principal-management-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Server Scope GDR Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-server-scope-gdr-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Server Starts and Stops Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-server-starts-and-stops-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit Statement Permission Event Class" href="https://learn.microsoft.com/sql/relational-databases/event-classes/audit-statement-permission-event-class?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SQL Server Audit Action Groups and Actions - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SQL Server Audit Records - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-records?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View a SQL Server Audit Log - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/security/auditing/view-a-sql-server-audit-log?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Write SQL Server Audit events to the Security log - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/security/auditing/write-sql-server-audit-events-to-the-security-log?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.database_audit_specification_details (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-audit-specification-details-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.database_audit_specifications (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-audit-specifications-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.server_audit_specification_details (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-server-audit-specification-details-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.server_audit_specifications (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-server-audit-specifications-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.server_audits (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-server-audits-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.dm_audit_actions (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-dynamic-management-objects/sys-dm-audit-actions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.dm_audit_class_type_map (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-dynamic-management-objects/sys-dm-audit-class-type-map-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.dm_server_audit_status (Transact-SQL) - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/system-dynamic-management-objects/sys-dm-server-audit-status-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.fn_get_audit_file (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.fn_get_audit_file_v2 (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-v2-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sp_audit_write (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALTER DATABASE AUDIT SPECIFICATION (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-database-audit-specification-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALTER SERVER AUDIT SPECIFICATION (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-server-audit-specification-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALTER SERVER AUDIT (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DROP DATABASE AUDIT SPECIFICATION (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/drop-database-audit-specification-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DROP SERVER AUDIT SPECIFICATION (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/drop-server-audit-specification-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DROP SERVER AUDIT (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/drop-server-audit-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Secure model endpoints, including Managed Identity
+
+:::note
+The Microsoft Learn module "Implement data security and compliance with SQL" also covers this task. It is listed once, under [Design and implement data encryption, including Always Encrypted and column-level encryption](#design-and-implement-data-encryption-including-always-encrypted-and-column-level-encryption).
+:::
+
+#### Secure GraphQL, REST, and MCP endpoints
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement SQL solutions by using AI-assisted tools": under [Interpret security impact of using AI-assisted tools](#interpret-security-impact-of-using-ai-assisted-tools) in the skill group Design and implement SQL solutions by using AI-assisted tools
+- "Integrate SQL solutions with Azure services": under [Create stored procedures](#create-stored-procedures) in the skill group Implement programmability objects
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data API builder documentation - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Optimize database performance
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe performance monitoring" href="https://learn.microsoft.com/training/modules/describe-performance-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="In-Memory OLTP overview and usage scenarios" href="https://learn.microsoft.com/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Execution Plan Overview" href="https://learn.microsoft.com/sql/relational-databases/performance/execution-plans?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor Azure SQL workloads with database watcher - Azure SQL Database & SQL Managed Instance" href="https://learn.microsoft.com/azure/azure-sql/database-watcher-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Extended Events Overview - SQL Server, Azure SQL Database, Azure SQL Managed Instance, and SQL Database in Fabric" href="https://learn.microsoft.com/sql/relational-databases/extended-events/extended-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SQL Server I/O Fundamentals" href="https://learn.microsoft.com/sql/relational-databases/sql-server-storage-guide?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Multiple Databases with Elastic Pools - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Serverless compute tier - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Recommend database configurations
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Optimize database performance" href="https://learn.microsoft.com/training/modules/optimize-database-performance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Modifiable Configuration Reference - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/modifiable-configuration-reference?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and configure a serverless database - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-create-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALTER DATABASE SCOPED CONFIGURATION - SQL Server (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and configure a watcher - Azure SQL Database & SQL Managed Instance" href="https://learn.microsoft.com/azure/azure-sql/database-watcher-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="High Availability and Disaster Recovery Checklist - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/high-availability-disaster-recovery-checklist?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable and configure FILESTREAM" href="https://learn.microsoft.com/sql/relational-databases/blob/enable-and-configure-filestream?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change the Configuration Settings for a Database" href="https://learn.microsoft.com/sql/relational-databases/databases/change-the-configuration-settings-for-a-database?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Database Properties (Configurations Page)" href="https://learn.microsoft.com/sql/relational-databases/databases/database-properties-configurations-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="tempdb Database" href="https://learn.microsoft.com/sql/relational-databases/databases/tempdb-database?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and Validate Resource Governor Configuration" href="https://learn.microsoft.com/sql/relational-databases/resource-governor/resource-governor-walkthrough?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.configurations (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-configurations-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.database_automatic_tuning_configurations (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-automatic-tuning-configurations-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.database_scoped_configurations (Transact-SQL) - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sp_configure (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="High availability and disaster recovery checklist - Azure SQL Managed Instance" href="https://learn.microsoft.com/azure/azure-sql/managed-instance/high-availability-disaster-recovery-checklist?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Preserve data integrity and consistency by using transaction isolation levels and concurrency controls
+
+:::note
+The Microsoft Learn module "Optimize database performance" also covers this task. It is listed once, under [Recommend database configurations](#recommend-database-configurations).
+:::
+
+#### Evaluate query performance by using query execution plans, dynamic management views (DMVs), Query Store, and Query Performance Insight
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore query performance optimization" href="https://learn.microsoft.com/training/modules/explore-query-performance-optimization?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="sys.dm_exec_query_statistics_xml (Transact-SQL) - SQL Server" href="https://learn.microsoft.com/sql/relational-databases/system-dynamic-management-objects/sys-dm-exec-query-statistics-xml-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DMVs - usage statistics and performance of views" href="https://learn.microsoft.com/sql/relational-databases/performance/use-dmvs-determine-usage-performance-views?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify and resolve query performance issues, including blocking and deadlocks
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Explore query performance optimization": under [Evaluate query performance by using query execution plans, dynamic management views (DMVs), Query Store, and Query Performance Insight](#evaluate-query-performance-by-using-query-execution-plans-dynamic-management-views-dmvs-query-store-and-query-performance-insight)
+- "Optimize database performance": under [Recommend database configurations](#recommend-database-configurations)
+:::
+
+### Implement CI/CD by using SQL Database Projects
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What Are SQL Database Projects? - SQL Server" href="https://learn.microsoft.com/sql/tools/sql-database-projects/sql-database-projects?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy to Azure services with Azure Pipelines - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/overview-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data-Tier Applications (DAC) Overview" href="https://learn.microsoft.com/sql/tools/sql-database-projects/concepts/data-tier-applications/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Project References Overview" href="https://learn.microsoft.com/sql/tools/sql-database-projects/concepts/project-references?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Publish Profiles Overview - SQL Server" href="https://learn.microsoft.com/sql/tools/sql-database-projects/concepts/publish-profiles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SQL Database Projects Refactor Overview" href="https://learn.microsoft.com/sql/tools/sql-database-projects/concepts/refactor-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Schema Comparison Overview - SQL Server" href="https://learn.microsoft.com/sql/tools/sql-database-projects/concepts/schema-comparison?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement a testing strategy, including unit tests and integration tests
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement CI/CD by using SQL database projects" href="https://learn.microsoft.com/training/modules/implement-cicd-sql-database-projects?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage reference/static data in source control
+
+:::note
+The Microsoft Learn module "Implement CI/CD by using SQL database projects" also covers this task. It is listed once, under [Design and implement a testing strategy, including unit tests and integration tests](#design-and-implement-a-testing-strategy-including-unit-tests-and-integration-tests).
+:::
+
+#### Create, build, and validate database models by using SQL Database Projects, including SDK-style models
+
+:::note
+The Microsoft Learn module "Implement CI/CD by using SQL database projects" also covers this task. It is listed once, under [Design and implement a testing strategy, including unit tests and integration tests](#design-and-implement-a-testing-strategy-including-unit-tests-and-integration-tests).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="SQL Server Data Tools, SDK-Style (Preview)" href="https://learn.microsoft.com/sql/ssdt/sql-server-data-tools-sdk-style?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure source control for SQL Database Projects
+
+:::note
+The Microsoft Learn module "Implement CI/CD by using SQL database projects" also covers this task. It is listed once, under [Design and implement a testing strategy, including unit tests and integration tests](#design-and-implement-a-testing-strategy-including-unit-tests-and-integration-tests).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Get Started with SQL Database Projects" href="https://learn.microsoft.com/sql/tools/sql-database-projects/get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage branching, pull requests, and conflict resolution
+
+:::note
+The Microsoft Learn module "Implement CI/CD by using SQL database projects" also covers this task. It is listed once, under [Design and implement a testing strategy, including unit tests and integration tests](#design-and-implement-a-testing-strategy-including-unit-tests-and-integration-tests).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Set and manage branch policies - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/git/branch-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure custom target branches for pull requests - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/git/pull-request-targets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure repositories and pull requests - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/git/secure-repositories-pull-requests?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Share Code with Git in Azure DevOps - Azure DevOps" href="https://learn.microsoft.com/azure/devops/user-guide/code-with-git?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement secrets management
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Key Vault Overview - Azure Key Vault" href="https://learn.microsoft.com/azure/key-vault/general/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure your Azure Key Vault secrets" href="https://learn.microsoft.com/azure/key-vault/secrets/secure-secrets?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Detect schema drift by using SQL Database Projects
+
+:::note
+The Microsoft Learn module "Implement CI/CD by using SQL database projects" also covers this task. It is listed once, under [Design and implement a testing strategy, including unit tests and integration tests](#design-and-implement-a-testing-strategy-including-unit-tests-and-integration-tests).
+:::
+
+#### Update an SQL database project and deploy changes
+
+:::note
+The Microsoft Learn module "Implement CI/CD by using SQL database projects" also covers this task. It is listed once, under [Design and implement a testing strategy, including unit tests and integration tests](#design-and-implement-a-testing-strategy-including-unit-tests-and-integration-tests).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Pre-Deployment and Post-Deployment Scripts" href="https://learn.microsoft.com/sql/tools/sql-database-projects/concepts/pre-post-deployment-scripts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SQL Projects Automation - SQL Server" href="https://learn.microsoft.com/sql/tools/sql-database-projects/sql-projects-automation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Compare a Database and a Project" href="https://learn.microsoft.com/sql/tools/sql-database-projects/howto/compare-database-project?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy a Data-Tier Application" href="https://learn.microsoft.com/sql/tools/sql-database-projects/concepts/data-tier-applications/deploy-data-tier-application?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement controls for deployment pipelines, including branching policies, triggers in approvals, authentication tables, and code owners
+
+:::note
+The Microsoft Learn module "Implement CI/CD by using SQL database projects" also covers this task. It is listed once, under [Design and implement a testing strategy, including unit tests and integration tests](#design-and-implement-a-testing-strategy-including-unit-tests-and-integration-tests).
+:::
+
+### Integrate SQL solutions with Azure services
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore relational database services in Azure" href="https://learn.microsoft.com/training/modules/explore-provision-deploy-relational-database-offerings-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What Is Azure SQL? - Azure SQL" href="https://learn.microsoft.com/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is the Azure SQL Database service? - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/sql-database-paas-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create configuration files for Data API builder (DAB)
+
+:::note
+The Microsoft Learn module "Integrate SQL solutions with Azure services" also covers this task. It is listed once, under [Create stored procedures](#create-stored-procedures) in the skill group Implement programmability objects.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configuration schema - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/configuration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Initialize a config with the DAB CLI - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/command-line/dab-init?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DAB Init extension - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/vscode-extension/init?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure runtime and data source with the DAB CLI - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/command-line/dab-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Validate configuration with the DAB CLI - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/command-line/dab-validate?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DAB Start extension - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/vscode-extension/start?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DAB Validate extension - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/vscode-extension/validate?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data API builder CLI reference - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/command-line?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add entities with the DAB CLI - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/command-line/dab-add?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Start the runtime with the DAB CLI - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/command-line/dab-start?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Update entities with the DAB CLI - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/command-line/dab-update?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Auto configuration in Data API builder - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/concept/config/auto-config?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DAB Add extension - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/vscode-extension/add?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Autoconfig command reference for DAB CLI - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/command-line/dab-auto-config?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Auto-config-simulate command reference for DAB CLI - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/command-line/dab-auto-config-simulate?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Install the DAB CLI - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/command-line/install?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use @akv function in configuration - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/concept/config/akv-function?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use @env function in configuration - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/concept/config/env-function?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use configuration file environments in Data API builder - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/concept/config/environments?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configuration schema - Autoentities section - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/configuration/autoentities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configuration schema - Data source section - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/configuration/data-source?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configuration schema - Entities section - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/configuration/entities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configuration schema - Runtime section - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/configuration/runtime?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure entities for REST and GraphQL, including data caching, pagination, searching, and filtering
+
+:::note
+The Microsoft Learn module "Integrate SQL solutions with Azure services" also covers this task. It is listed once, under [Create stored procedures](#create-stored-procedures) in the skill group Implement programmability objects.
+:::
+
+#### Configure REST or GraphQL endpoints
+
+:::note
+The Microsoft Learn module "Integrate SQL solutions with Azure services" also covers this task. It is listed once, under [Create stored procedures](#create-stored-procedures) in the skill group Implement programmability objects.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data API Builder" href="https://learn.microsoft.com/sql/tools/visual-studio-code-extensions/mssql/mssql-data-api-builder?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use first (GraphQL) and $first (REST) - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/keywords/first-graphql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use $first (REST) and first (GraphQL) - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/keywords/first-rest?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use orderBy (GraphQL) and $orderby (REST) - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/keywords/orderby-graphql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use $orderby (REST) and orderBy (GraphQL) - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/keywords/orderby-rest?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use $select to shape REST payloads - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/keywords/select-graphql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="GraphQL API in Data API builder - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/concept/graphql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to call GraphQL endpoints - Data API builder" href="https://learn.microsoft.com/azure/data-api-builder/concept/graphql/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Expose database objects, stored procedures, and views, including GraphQL relationships
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement programmability objects with SQL": under [Create views](#create-views) in the skill group Implement programmability objects
+- "Integrate SQL solutions with Azure services": under [Create stored procedures](#create-stored-procedures) in the skill group Implement programmability objects
+:::
+
+#### Configure and implement DAB deployment
+
+:::note
+The Microsoft Learn module "Integrate SQL solutions with Azure services" also covers this task. It is listed once, under [Create stored procedures](#create-stored-procedures) in the skill group Implement programmability objects.
+:::
+
+#### Recommend Azure Monitor configurations, including Application Insights and Log Analytics
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Monitor documentation - Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Handle changes by using change event streaming (CES), change data capture (CDC), Change Tracking, Azure Functions with SQL trigger binding, or Azure Logic Apps
+
+:::note
+The Microsoft Learn module "Integrate SQL solutions with Azure services" also covers this task. It is listed once, under [Create stored procedures](#create-stored-procedures) in the skill group Implement programmability objects.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is change data capture (CDC)?" href="https://learn.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Implement AI capabilities in database solutions (25–30%)
+
+### Design and implement models and embeddings
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Explore Microsoft Foundry Models in Azure Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/foundry-models-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Evaluate external models, including multimodal, multilanguage, sizes, and structured output
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement models and embeddings with SQL" href="https://learn.microsoft.com/training/modules/design-implement-models-embeddings-with-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage external models
+
+:::note
+The Microsoft Learn module "Design and implement models and embeddings with SQL" also covers this task. It is listed once, under [Evaluate external models, including multimodal, multilanguage, sizes, and structured output](#evaluate-external-models-including-multimodal-multilanguage-sizes-and-structured-output).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="CREATE EXTERNAL MODEL (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/create-external-model-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.external_models (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-catalog-views/sys-external-models-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALTER EXTERNAL MODEL (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-external-model-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DROP EXTERNAL MODEL (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/drop-external-model-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL) - SQL Server" href="https://learn.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose an embedding maintenance method, including table triggers, Change Tracking, Azure Functions with SQL trigger binding, Azure Logic Apps, CDC, CES, and Microsoft Foundry
+
+:::note
+The Microsoft Learn module "Implement programmability objects with SQL" also covers this task. It is listed once, under [Create views](#create-views) in the skill group Implement programmability objects.
+:::
+
+#### Identify which columns to include in embeddings
+
+:::note
+The Microsoft Learn module "Design and implement models and embeddings with SQL" also covers this task. It is listed once, under [Evaluate external models, including multimodal, multilanguage, sizes, and structured output](#evaluate-external-models-including-multimodal-multilanguage-sizes-and-structured-output).
+:::
+
+#### Design and implement chunks for embeddings
+
+:::note
+The Microsoft Learn module "Design and implement models and embeddings with SQL" also covers this task. It is listed once, under [Evaluate external models, including multimodal, multilanguage, sizes, and structured output](#evaluate-external-models-including-multimodal-multilanguage-sizes-and-structured-output).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Chunk and Vectorize by Document Layout (Document Layout Skill)" href="https://learn.microsoft.com/azure/search/search-how-to-semantic-chunking?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Integrated Vectorization Overview" href="https://learn.microsoft.com/azure/search/vector-search-integrated-vectorization?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Generate embeddings
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement RAG with SQL" href="https://learn.microsoft.com/training/modules/design-implement-rag-with-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="AI_GENERATE_EMBEDDINGS (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/functions/ai-generate-embeddings-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure OpenAI embeddings input binding for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-openai-embeddings-input?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement intelligent search
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Vector Search Overview" href="https://learn.microsoft.com/azure/search/vector-search-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Hybrid Search Scoring (RRF)" href="https://learn.microsoft.com/azure/search/hybrid-search-ranking?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose from full-text, semantic vector, and hybrid search
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement intelligent search with SQL" href="https://learn.microsoft.com/training/modules/design-implement-intelligent-search-with-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement full-text search
+
+:::note
+The Microsoft Learn module "Design and implement intelligent search with SQL" also covers this task. It is listed once, under [Choose from full-text, semantic vector, and hybrid search](#choose-from-full-text-semantic-vector-and-hybrid-search).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Full-Text Search" href="https://learn.microsoft.com/sql/relational-databases/search/full-text-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and Manage Full-Text Catalogs" href="https://learn.microsoft.com/sql/relational-databases/search/create-and-manage-full-text-catalogs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and Manage Full-Text Indexes" href="https://learn.microsoft.com/sql/relational-databases/search/create-and-manage-full-text-indexes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get Started with Full-Text Search" href="https://learn.microsoft.com/sql/relational-databases/search/get-started-with-full-text-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Populate Full-Text Indexes" href="https://learn.microsoft.com/sql/relational-databases/search/populate-full-text-indexes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Query with Full-Text Search" href="https://learn.microsoft.com/sql/relational-databases/search/query-with-full-text-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use the Full-Text Indexing Wizard" href="https://learn.microsoft.com/sql/relational-databases/search/use-the-full-text-indexing-wizard?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE FULLTEXT INDEX (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/create-fulltext-index-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Back up & Restore Full-Text Catalogs and Indexes" href="https://learn.microsoft.com/sql/relational-databases/search/back-up-and-restore-full-text-catalogs-and-indexes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Choose a Language When Creating a Full-Text Index" href="https://learn.microsoft.com/sql/relational-databases/search/choose-a-language-when-creating-a-full-text-index?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and manage filters" href="https://learn.microsoft.com/sql/relational-databases/search/configure-and-manage-filters-for-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and Manage Stopwords and Stoplists for Full-Text Search" href="https://learn.microsoft.com/sql/relational-databases/search/configure-and-manage-stopwords-and-stoplists-for-full-text-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure & Manage Thesaurus Files for Full-Text Search" href="https://learn.microsoft.com/sql/relational-databases/search/configure-and-manage-thesaurus-files-for-full-text-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and Manage Word Breakers and Stemmers" href="https://learn.microsoft.com/sql/relational-databases/search/configure-and-manage-word-breakers-and-stemmers-for-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Improve the Performance of Full-Text Indexes" href="https://learn.microsoft.com/sql/relational-databases/search/improve-the-performance-of-full-text-indexes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Improve the Performance of Full-Text Queries" href="https://learn.microsoft.com/sql/relational-databases/search/improve-the-performance-of-full-text-queries?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage & monitor Full-Text Search for a SQL Server instance" href="https://learn.microsoft.com/sql/relational-databases/search/manage-and-monitor-full-text-search-for-a-server-instance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Full-Text Indexing" href="https://learn.microsoft.com/sql/relational-databases/search/troubleshoot-full-text-indexing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Customize Filters and Word Breakers" href="https://learn.microsoft.com/sql/relational-databases/search/view-or-change-registered-filters-and-word-breakers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Full-Text Search and Semantic Search Functions (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-functions/full-text-search-and-semantic-search-functions-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Full-Text Search and Semantic Search Stored Procedures (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/full-text-search-and-semantic-search-stored-procedures-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sp_fulltext_catalog (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-fulltext-catalog-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sp_fulltext_column (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-fulltext-column-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="sys.sp_fulltext_table (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-fulltext-table-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALTER FULLTEXT INDEX (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/statements/alter-fulltext-index-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design for vector data, including vector data type, vector indexes, and size
+
+:::note
+The Microsoft Learn module "Design and implement database objects with SQL" also covers this task. It is listed once, under [Design and implement tables, including data types, size, columns, indexes, and column store indexes](#design-and-implement-tables-including-data-types-size-columns-indexes-and-column-store-indexes) in the skill group Design and implement database objects.
+:::
+
+#### Identify when to use vector-related types and functions for semantic searching, including VECTOR_NORMALIZE, VECTOR_DISTANCE, VECTORPROPERTY, and VECTOR_SEARCH
+
+:::note
+The Microsoft Learn module "Design and implement intelligent search with SQL" also covers this task. It is listed once, under [Choose from full-text, semantic vector, and hybrid search](#choose-from-full-text-semantic-vector-and-hybrid-search).
+:::
+
+#### Choose between using ANN and ENN for vector search
+
+:::note
+The Microsoft Learn module "Design and implement intelligent search with SQL" also covers this task. It is listed once, under [Choose from full-text, semantic vector, and hybrid search](#choose-from-full-text-semantic-vector-and-hybrid-search).
+:::
+
+#### Evaluate vector index types and metrics
+
+:::note
+The Microsoft Learn module "Design and implement database objects with SQL" also covers this task. It is listed once, under [Design and implement tables, including data types, size, columns, indexes, and column store indexes](#design-and-implement-tables-including-data-types-size-columns-indexes-and-column-store-indexes) in the skill group Design and implement database objects.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="VECTOR_DISTANCE (Transact-SQL)" href="https://learn.microsoft.com/sql/t-sql/functions/vector-distance-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement vector search
+
+:::note
+The Microsoft Learn module "Design and implement intelligent search with SQL" also covers this task. It is listed once, under [Choose from full-text, semantic vector, and hybrid search](#choose-from-full-text-semantic-vector-and-hybrid-search).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="VECTOR_SEARCH (Transact-SQL) - SQL Server" href="https://learn.microsoft.com/sql/t-sql/functions/vector-search-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Vector Search & Vector Index - SQL Server" href="https://learn.microsoft.com/sql/sql-server/ai/vectors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE VECTOR INDEX (Transact-SQL) - SQL Server" href="https://learn.microsoft.com/sql/t-sql/statements/create-vector-index-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Vector Data Type - SQL Server" href="https://learn.microsoft.com/sql/t-sql/data-types/vector-data-type?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Vector & embeddings frequently asked questions (FAQ) - SQL Server" href="https://learn.microsoft.com/sql/sql-server/ai/vectors-frequently-asked-questions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement hybrid search
+
+:::note
+The Microsoft Learn module "Design and implement intelligent search with SQL" also covers this task. It is listed once, under [Choose from full-text, semantic vector, and hybrid search](#choose-from-full-text-semantic-vector-and-hybrid-search).
+:::
+
+#### Implement reciprocal rank fusion (RRF)
+
+:::note
+The Microsoft Learn module "Design and implement intelligent search with SQL" also covers this task. It is listed once, under [Choose from full-text, semantic vector, and hybrid search](#choose-from-full-text-semantic-vector-and-hybrid-search).
+:::
+
+#### Evaluate performance of vector and hybrid search
+
+:::note
+The Microsoft Learn module "Design and implement intelligent search with SQL" also covers this task. It is listed once, under [Choose from full-text, semantic vector, and hybrid search](#choose-from-full-text-semantic-vector-and-hybrid-search).
+:::
+
+### Design and implement retrieval-augmented generation (RAG)
+
+#### Identify use cases for RAG
+
+:::note
+The Microsoft Learn module "Design and implement RAG with SQL" also covers this task. It is listed once, under [Generate embeddings](#generate-embeddings) in the skill group Design and implement models and embeddings.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use SQL Database in AI Applications - Microsoft Fabric" href="https://learn.microsoft.com/fabric/database/sql/use-case-ai-application?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a prompt by using the sp_invoke_external_rest_endpoint stored procedure
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="sys.sp_invoke_external_rest_endpoint (Transact-SQL)" href="https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Convert structured data to JSON for language model processing
+
+:::note
+The Microsoft Learn module "Write advanced T-SQL code" also covers this task. It is listed once, under [Design and implement JSON columns and indexes](#design-and-implement-json-columns-and-indexes) in the skill group Design and implement database objects.
+:::
+
+#### Send results to language model
+
+:::note
+The Microsoft Learn module "Design and implement RAG with SQL" also covers this task. It is listed once, under [Generate embeddings](#generate-embeddings) in the skill group Design and implement models and embeddings.
+:::
+
+#### Extract language model responses
+
+:::note
+The Microsoft Learn module "Design and implement RAG with SQL" also covers this task. It is listed once, under [Generate embeddings](#generate-embeddings) in the skill group Design and implement models and embeddings.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Extract Entities Using Azure OpenAI Structured Outputs Mode" href="https://learn.microsoft.com/azure/developer/ai/how-to/extract-entities-using-structured-outputs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Groundedness detection in Azure AI Content Safety - Azure AI services" href="https://learn.microsoft.com/azure/ai-services/content-safety/concepts/groundedness?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>

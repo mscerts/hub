@@ -1,0 +1,1040 @@
+{
+  "schemaVersion": 1,
+  "code": "DP-800",
+  "decisions": [
+    {
+      "task": "design-and-develop-database-solutions/design-and-implement-database-objects/design-and-implement-json-columns-and-indexes",
+      "target": "/sql/relational-databases/indexes/indexes-on-computed-columns",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/design-and-implement-database-objects/design-and-implement-sequences",
+      "target": "/sql/relational-databases/sequence-numbers/sequence-properties-general-page",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/design-and-implement-sql-solutions-by-using-ai-assisted-tool/enable-github-copilot-and-microsoft-copilot-in-fabric",
+      "target": "/fabric/database/sql/copilot-faq",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/design-and-implement-sql-solutions-by-using-ai-assisted-tool/enable-github-copilot-and-microsoft-copilot-in-fabric",
+      "target": "/training/modules/use-copilot-administer-azure-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-scalar-functions",
+      "target": "/sql/relational-databases/clr-integration-database-objects-user-defined-functions/clr-scalar-valued-functions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-scalar-functions",
+      "target": "/sql/relational-databases/clr-integration-database-objects-user-defined-functions/clr-user-defined-functions",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/azure/data-api-builder/concept/graphql/stored-procedures",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/azure/data-api-builder/concept/rest/stored-procedures",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/azure/data-api-builder/mcp/how-to-configure-custom-tools",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/in-memory-oltp/altering-natively-compiled-t-sql-modules",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/in-memory-oltp/native-compilation-advisor",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/in-memory-oltp/native-compilation-of-tables-and-stored-procedures",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/in-memory-oltp/simulating-an-if-while-exists-statement-in-a-natively-compiled-module",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/in-memory-oltp/supported-ddl-for-natively-compiled-t-sql-modules",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/in-memory-oltp/supported-features-for-natively-compiled-t-sql-modules",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/stored-procedures/delete-a-stored-procedure",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/stored-procedures/execute-a-stored-procedure",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/stored-procedures/modify-a-stored-procedure",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/stored-procedures/recompile-a-stored-procedure",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/stored-procedures/rename-a-stored-procedure",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/stored-procedures/stored-procedures-database-engine",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-depends-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-refresh-parameter-encryption-transact-sql",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-sproc-columns-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/ssdt/how-to-create-unit-tests-for-functions-triggers-stored-procedures",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/t-sql/statements/add-signature-transact-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/sql/t-sql/statements/set-nocount-transact-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-stored-procedures",
+      "target": "/training/modules/integrate-sql-solutions-azure-services",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-table-valued-functions",
+      "target": "/sql/relational-databases/clr-integration-database-objects-user-defined-functions/clr-table-valued-functions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-table-valued-functions",
+      "target": "/sql/relational-databases/clr-integration-database-objects-user-defined-functions/clr-user-defined-functions",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-triggers",
+      "target": "/azure/azure-functions/functions-bindings-azure-sql-trigger",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-triggers",
+      "target": "/azure/azure-functions/scenario-database-changes-azure-sqldb",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-triggers",
+      "target": "/sql/relational-databases/system-catalog-views/sys-server-triggers-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-triggers",
+      "target": "/sql/t-sql/statements/execute-as-clause-transact-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-views",
+      "target": "/sql/relational-databases/system-catalog-views/sys-all-views-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-views",
+      "target": "/sql/relational-databases/system-information-schema-views/view-column-usage-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-views",
+      "target": "/sql/relational-databases/system-information-schema-views/view-table-usage-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/implement-programmability-objects/create-views",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-refreshview-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-develop-database-solutions/write-advanced-t-sql-code/@foundations",
+      "target": "/sql/t-sql/functions/functions",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/@foundations",
+      "target": "/azure/search/hybrid-search-overview",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/@foundations",
+      "target": "/azure/search/hybrid-search-ranking",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/@foundations",
+      "target": "/azure/search/search-relevance-overview",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/@foundations",
+      "target": "/azure/search/vector-search-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/@foundations",
+      "target": "/azure/search/vector-store",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/choose-from-full-text-semantic-vector-and-hybrid-search",
+      "target": "/azure/search/hybrid-search-overview",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/choose-from-full-text-semantic-vector-and-hybrid-search",
+      "target": "/azure/search/search-query-overview",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/choose-from-full-text-semantic-vector-and-hybrid-search",
+      "target": "/fabric/database/cosmos-db/hybrid-search",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/evaluate-performance-of-vector-and-hybrid-search",
+      "target": "/fabric/database/cosmos-db/hybrid-search",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/evaluate-vector-index-types-and-metrics",
+      "target": "/azure/documentdb/enn-vector-search",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/implement-full-text-search",
+      "target": "/fabric/database/cosmos-db/full-text-indexing",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/implement-full-text-search",
+      "target": "/fabric/database/cosmos-db/hybrid-search",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/implement-full-text-search",
+      "target": "/sql/relational-databases/xml/use-full-text-search-with-xml-columns",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/implement-hybrid-search",
+      "target": "/azure/search/hybrid-search-overview",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/implement-hybrid-search",
+      "target": "/azure/search/search-query-overview",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/implement-hybrid-search",
+      "target": "/azure/search/search-relevance-overview",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/implement-hybrid-search",
+      "target": "/fabric/database/cosmos-db/hybrid-search",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/implement-hybrid-search",
+      "target": "/training/modules/aaai-implement-advanced-rag-azure-ai-search",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/implement-vector-search",
+      "target": "/azure/search/vector-search-overview",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/implement-vector-search",
+      "target": "/fabric/database/cosmos-db/hybrid-search",
+      "decision": "reject",
+      "reason": "Another product area than SQL (Azure AI Search, Cosmos DB, DocumentDB or Functions).",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-intelligent-search/implement-vector-search",
+      "target": "/sql/sql-server/ai/vectors-frequently-asked-questions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-models-and-embeddings/@foundations",
+      "target": "/azure/machine-learning/concept-data-privacy",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-models-and-embeddings/@foundations",
+      "target": "/azure/machine-learning/concept-responsible-ai",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-models-and-embeddings/design-and-implement-chunks-for-embeddings",
+      "target": "/azure/search/search-how-to-semantic-chunking",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-models-and-embeddings/design-and-implement-chunks-for-embeddings",
+      "target": "/azure/search/vector-search-integrated-vectorization",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-models-and-embeddings/generate-embeddings",
+      "target": "/azure/azure-functions/functions-bindings-openai-embeddingsstore-output",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-models-and-embeddings/generate-embeddings",
+      "target": "/azure/search/vector-search-how-to-generate-embeddings",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-models-and-embeddings/generate-embeddings",
+      "target": "/azure/search/vector-search-vectorizer-custom-web-api",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-models-and-embeddings/generate-embeddings",
+      "target": "/sql/sql-server/ai/vectors-frequently-asked-questions",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-models-and-embeddings/generate-embeddings",
+      "target": "/training/modules/design-implement-rag-with-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-retrieval-augmented-generation-rag/extract-language-model-responses",
+      "target": "/azure/ai-services/content-safety/concepts/groundedness",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-retrieval-augmented-generation-rag/extract-language-model-responses",
+      "target": "/azure/data-api-builder/mcp/use-local-models",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-retrieval-augmented-generation-rag/extract-language-model-responses",
+      "target": "/azure/developer/ai/how-to/extract-entities-using-structured-outputs",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-retrieval-augmented-generation-rag/identify-use-cases-for-rag",
+      "target": "/fabric/database/sql/use-case-ai-application",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-retrieval-augmented-generation-rag/send-results-to-language-model",
+      "target": "/azure/architecture/ai-ml/guide/rag/rag-generate-embeddings",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-ai-capabilities-in-database-solutions/design-and-implement-retrieval-augmented-generation-rag/send-results-to-language-model",
+      "target": "/azure/foundry/foundry-models/how-to/use-chat-reasoning",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-ci-cd-by-using-sql-database-projects/@foundations",
+      "target": "/sql/tools/sql-database-projects/concepts/database-references",
+      "decision": "reject",
+      "reason": "Generic, advanced or neighbouring-task page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-ci-cd-by-using-sql-database-projects/@foundations",
+      "target": "/sql/tools/sql-database-projects/concepts/publish-profiles",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-ci-cd-by-using-sql-database-projects/@foundations",
+      "target": "/sql/tools/sql-database-projects/concepts/refactor-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-ci-cd-by-using-sql-database-projects/@foundations",
+      "target": "/training/modules/introduction-to-transact-sql",
+      "decision": "reject",
+      "reason": "Generic, advanced or neighbouring-task page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-ci-cd-by-using-sql-database-projects/implement-secrets-management",
+      "target": "/training/modules/implement-cicd-sql-database-projects",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-ci-cd-by-using-sql-database-projects/implement-secrets-management",
+      "target": "/training/modules/manage-application-configuration-data",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-ci-cd-by-using-sql-database-projects/manage-branching-pull-requests-and-conflict-resolution",
+      "target": "/azure/devops/repos/git/pr-status-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-ci-cd-by-using-sql-database-projects/update-an-sql-database-project-and-deploy-changes",
+      "target": "/sql/ssdt/how-to-update-a-connected-database-with-power-buffer",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-data-security-and-compliance/@foundations",
+      "target": "/sql/relational-databases/security/ledger/ledger-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-data-security-and-compliance/design-and-implement-dynamic-data-masking",
+      "target": "/training/modules/configure-azure-sql-platform-security",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-data-security-and-compliance/design-and-implement-object-level-permissions",
+      "target": "/sql/relational-databases/server-management-objects-smo/tasks/granting-revoking-and-denying-permissions",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-data-security-and-compliance/design-and-implement-row-level-security-rls",
+      "target": "/training/modules/configure-azure-sql-platform-security",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-data-security-and-compliance/implement-auditing",
+      "target": "/azure/azure-sql/database/auditing-microsoft-support-operations",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-data-security-and-compliance/implement-auditing",
+      "target": "/sql/relational-databases/system-catalog-views/sys-server-file-audits-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-data-security-and-compliance/implement-auditing",
+      "target": "/training/modules/configure-azure-sql-auditing",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/implement-data-security-and-compliance/secure-model-endpoints-including-managed-identity",
+      "target": "/azure/machine-learning/how-to-access-resources-from-endpoints-managed-identities",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/@foundations",
+      "target": "/azure/azure-sql/database/logical-servers",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/@foundations",
+      "target": "/azure/azure-sql/database/single-database-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/@foundations",
+      "target": "/training/modules/explore-data-manipulation-azure-sql-database",
+      "decision": "reject",
+      "reason": "Generic, advanced or neighbouring-task page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/@foundations",
+      "target": "/training/modules/explore-fundamentals-stream-processing",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/create-configuration-files-for-data-api-builder-dab",
+      "target": "/azure/data-api-builder/command-line/dab-add-telemetry",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/create-configuration-files-for-data-api-builder-dab",
+      "target": "/azure/data-api-builder/command-line/dab-export",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/create-configuration-files-for-data-api-builder-dab",
+      "target": "/azure/data-api-builder/concept/database/timeout",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/create-configuration-files-for-data-api-builder-dab",
+      "target": "/azure/data-api-builder/mcp/how-to-configure-authentication",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/create-configuration-files-for-data-api-builder-dab",
+      "target": "/azure/data-api-builder/mcp/stdio-transport",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/create-configuration-files-for-data-api-builder-dab",
+      "target": "/azure/data-api-builder/vscode-extension/mcp",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/create-configuration-files-for-data-api-builder-dab",
+      "target": "/azure/data-api-builder/vscode-extension/visualize",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/recommend-azure-monitor-configurations-including-application",
+      "target": "/azure/azure-monitor",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/@foundations",
+      "target": "/azure/azure-sql/database-watcher-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/@foundations",
+      "target": "/azure/azure-sql/database/logical-servers",
+      "decision": "reject",
+      "reason": "Generic, advanced or neighbouring-task page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/@foundations",
+      "target": "/azure/azure-sql/database/single-database-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/@foundations",
+      "target": "/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/@foundations",
+      "target": "/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/@foundations",
+      "target": "/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/@foundations",
+      "target": "/training/modules/optimize-database-performance",
+      "decision": "reject",
+      "reason": "Generic, advanced or neighbouring-task page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/recommend-database-configurations",
+      "target": "/azure/azure-sql/database-watcher-manage",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/recommend-database-configurations",
+      "target": "/sql/relational-databases/blob/enable-and-configure-filestream",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/recommend-database-configurations",
+      "target": "/sql/relational-databases/policy-based-management/keep-the-locks-configuration-option-default-value",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/recommend-database-configurations",
+      "target": "/sql/relational-databases/resource-governor/resource-governor-walkthrough",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/recommend-database-configurations",
+      "target": "/sql/relational-databases/security/surface-area-configuration",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/recommend-database-configurations",
+      "target": "/sql/relational-databases/system-catalog-views/server-wide-configuration-catalog-views-transact-sql",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/recommend-database-configurations",
+      "target": "/sql/tools/configuration-manager/sql-server-properties-startup-parameters-tab",
+      "decision": "reject",
+      "reason": "Dropped in review: single reference entry, deeper detail than the exam needs, other-product page, generic introduction or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/recommend-database-configurations",
+      "target": "/training/modules/design-data-storage-solution-for-relational-data",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-database-performance/recommend-database-configurations",
+      "target": "/training/modules/integrate-sql-solutions-azure-services",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}
