@@ -1,0 +1,2953 @@
+{
+  "schemaVersion": 1,
+  "code": "AI-500",
+  "name": "Designing and Implementing Multi-Agent AI Solutions",
+  "inputs": {
+    "guideHash": "7829ea781e5d22f3b6ce2489af75a5a3e752ea7089f47ac1bf9c694bad050497",
+    "scopeFingerprint": "7c535736488a157fd6d20cde54102463c3af6980",
+    "scope": {
+      "courses": [
+        [
+          "AI-500T00",
+          "2026-09-29T15:19:00+00:00"
+        ]
+      ],
+      "modules": [
+        [
+          "/training/modules/aaai-apply-task-decomposition-multi-agent-azure",
+          "b4f63dad511fab11f459c917a4682c194e35aa3e",
+          "8ff4849c1292"
+        ],
+        [
+          "/training/modules/aaai-build-enterprise-tool-ecosystems-mcp-azure",
+          "ee598290e1e8b03f5f4ad79147f5127c027c705a",
+          "a1324d11cd2b"
+        ],
+        [
+          "/training/modules/aaai-debug-production-multi-agent-incidents-azure",
+          "e89af2838de9250e2a6dbe1e13b921895685b700",
+          "93e1282bc964"
+        ],
+        [
+          "/training/modules/aaai-design-advanced-prompt-production-agents",
+          "c944e48daab5cdb945d678d483f391aaaf9a035b",
+          "be139604be7e"
+        ],
+        [
+          "/training/modules/aaai-design-agentic-loops-azure-ai-agent-service",
+          "dbd8c7cd40ef3755911ad34fc60748fda741ed04",
+          "10f8363fde3c"
+        ],
+        [
+          "/training/modules/aaai-design-enterprise-agent-communication-a2a",
+          "be011535bf3b939532d05d8f9bd8ad2a61141712",
+          "5f7978d2a7ab"
+        ],
+        [
+          "/training/modules/aaai-design-evaluation-frameworks-multi-agent-azure",
+          "df1a4590db913337136a2109c4072a623924cccd",
+          "1a84852f8044"
+        ],
+        [
+          "/training/modules/aaai-design-human-in-loop-approval-workflows",
+          "099e58bdae5fc366861b7dffeff6343bbf7a9e1a",
+          "0271eaccc7fd"
+        ],
+        [
+          "/training/modules/aaai-design-multi-agent-memory-azure-cosmos-db",
+          "fba47f36114699083bea17e2718d406e838a3ef4",
+          "f90faea2c323"
+        ],
+        [
+          "/training/modules/aaai-govern-enterprise-agent-lifecycle-azure",
+          "57cc8508aa63ad65ad0dfceacc14892a74cd495f",
+          "8cc2286d6b0d"
+        ],
+        [
+          "/training/modules/aaai-implement-advanced-rag-azure-ai-search",
+          "478521b5a1a96ae11e6158387f9d77ab4d214c27",
+          "8463efe36189"
+        ],
+        [
+          "/training/modules/aaai-implement-cicd-multi-agent-systems-github-actions",
+          "b7d20fd73d52c7559c19af4e30ea703c60ded64c",
+          "e886abd97236"
+        ],
+        [
+          "/training/modules/aaai-implement-distributed-observability-multi-agent-opentelemetry",
+          "589456a7482c201fcd15dd951dcaba3582751479",
+          "6b3a166be767"
+        ],
+        [
+          "/training/modules/aaai-implement-multi-agent-orchestration-azure-ai-foundry",
+          "9b6ef272c26288577b92034434188a74aa7f70f0",
+          "7cf2776353f3"
+        ],
+        [
+          "/training/modules/aaai-optimize-multi-agent-performance-cost-azure",
+          "e4ade1a76c8ba274b98d0b5d3bc39818e9cd4fab",
+          "54f4a987bde7"
+        ],
+        [
+          "/training/modules/aaai-scale-responsible-ai-governance-multi-agent",
+          "53ccd1368be869e06c2a97080767b510054a0432",
+          "32dc7658371a"
+        ],
+        [
+          "/training/modules/aaai-secure-multi-agent-systems-azure-zero-trust",
+          "7c4e70639033e1f867a56138ecc44acb0a3b8c9d",
+          "1f92cd0a3df8"
+        ]
+      ]
+    },
+    "picked": [
+      [
+        "/training/modules/defender-for-cloud-ai-understand-protections",
+        "71b2721141c72c80b9838b5df26971250c9bcea4"
+      ],
+      [
+        "/training/modules/describe-identity-principles-concepts",
+        "ee4f6625fd492608b15caef29b2f853608db0999"
+      ],
+      [
+        "/training/modules/describe-identity-protection-governance-capabilities",
+        "b6d18851f3999813871910751315d8cc7d7e9fd7"
+      ],
+      [
+        "/training/modules/describe-pipelines-concurrency",
+        "c12c8b763fe0699b0585d867232edfd037b03483"
+      ],
+      [
+        "/training/modules/entra-ai-understand",
+        "b8c9155c55a49d14ef1b5b1f26add57f2bc91395"
+      ],
+      [
+        "/training/modules/explore-access-management-capabilities",
+        "3053f52847dd1b5ec8975846d7abc7e1429bbde8"
+      ],
+      [
+        "/training/modules/explore-ai-governance-ai-ready-infrastructure",
+        "531386b5ac648aad2969ac657cd2b97ff11e4531"
+      ],
+      [
+        "/training/modules/explore-authentication-capabilities",
+        "b2430640598efd5c14e7a61654c817de20f67368"
+      ],
+      [
+        "/training/modules/explore-azure-cosmos-db-nosql",
+        "b7d928dffa6fc7ab59d3ca2753784b9a552a33e5"
+      ],
+      [
+        "/training/modules/explore-azure-pipelines",
+        "a4d192c7b3ad9627283824a0e124f57af6e6cc52"
+      ],
+      [
+        "/training/modules/explore-basic-services-identity-types",
+        "412523ab4358c53a2d33ef1d2286d0b06200f6c5"
+      ],
+      [
+        "/training/modules/explore-identity-azure-active-directory",
+        "6a658436630392359fe14860573189ebb2dc2e85"
+      ],
+      [
+        "/training/modules/explore-infrastructure-code-configuration-management",
+        "a3d60d41e331d1c59d9304c67f0460cc9fc8b599"
+      ],
+      [
+        "/training/modules/explore-non-relational-data-stores-azure",
+        "20647b652d297259e5d5bb75a360d5381f26144c"
+      ],
+      [
+        "/training/modules/explore-release-strategy-recommendations",
+        "146d43c5f915e84f9052e5d79f51d0b326faaf0e"
+      ],
+      [
+        "/training/modules/fundamentals-generative-ai",
+        "72bf0174ffb19a04bcdb0cd8811a6b5b9b0e3e44"
+      ],
+      [
+        "/training/modules/implement-manage-enforcement-cloud-governance-policies",
+        "8e2db1274719401584948e140fd68a5e2acf9962"
+      ],
+      [
+        "/training/modules/introduction-agentic-devops-microsoft-tools-azure",
+        "a7cd037f9c55a2790ea86b7723ce95029a917b01"
+      ],
+      [
+        "/training/modules/introduction-development-operations-principles-for-machine-learn",
+        "49040b368dd6f758c60ff54a3794b01da7333c5b"
+      ],
+      [
+        "/training/modules/introduction-entra-agent-id",
+        "b6fde014225be4f9d56054890ed661fa80ed088d"
+      ],
+      [
+        "/training/modules/introduction-language",
+        "e65b4f9d7a9c0c4fdd789576d88fcf5daeadd75c"
+      ],
+      [
+        "/training/modules/introduction-to-azure-cosmos-db-sql-api",
+        "cb3572c4c89d2d7564bd58df0be41f4dd846da3e"
+      ],
+      [
+        "/training/modules/introduction-to-deployment-patterns",
+        "4cd3bb15633a2283fd536fb1cc9b4dc42e43ab83"
+      ],
+      [
+        "/training/modules/introduction-to-entra-id-2026",
+        "e18fae1e60d20d77a81dbd333ceb033744346898"
+      ],
+      [
+        "/training/modules/introduction-to-github-actions",
+        "37a91a09596154a7465980bd4287dfc341f5c8cd"
+      ],
+      [
+        "/training/modules/introduction-to-secure-devops",
+        "110e19366ea9cc9f63b6a0de4f2aacb4a7cfbb66"
+      ],
+      [
+        "/training/modules/learn-continuous-integration-github-actions",
+        "ff70b7dae8a015ccc7dd7e22a5972ea522d443d7"
+      ],
+      [
+        "/training/modules/memory-state-evaluation",
+        "2e32092412d217267ec1003a6e4502a7ce43a6eb"
+      ],
+      [
+        "/training/modules/optimize-finetune-agents",
+        "c6a0e52a685174db44566064dc75b02585cacadc"
+      ],
+      [
+        "/training/modules/rag-fundamentals",
+        "f5d8199859bfa3db71375970c4c98a4210fb1c9e"
+      ],
+      [
+        "/training/modules/understand-azure-active-directory",
+        "fe06a8811fd6a74d7b1500c07465a3713f7b1ba5"
+      ],
+      [
+        "/training/modules/understand-foundations-generative-ai-business-leaders",
+        "9fd6baeb69d96f1faad06c4a1921e71e4d9feb8c"
+      ]
+    ],
+    "builtAt": "2026-11-04"
+  },
+  "audience": {
+    "intro": [
+      "As a candidate for this Microsoft Certification, you're an expert-level practitioner who has subject matter expertise in designing, building, and optimizing scalable, production-ready, multi-agent AI systems and workflows. You manage the development from design to production.",
+      "You work closely with developers, machine learning engineers, platform engineers, data scientists, and business stakeholders to translate complex requirements into production-ready, multi-agent solutions.",
+      "For this exam, you should have experience developing AI and machine learning, deploying agentic systems in production environments, and orchestrating agent logic using Microsoft Foundry. You should also be proficient in Python.",
+      "Additionally, you need experience developing solutions that include Azure compute, network, storage, and data services. You should be familiar with open-source frameworks and standards, including Microsoft Agent Framework, Model Context Protocol (MCP), retrieval-augmented generation (RAG), and LangGraph."
+    ],
+    "lists": []
+  },
+  "domains": [
+    {
+      "title": "Architect multi-agent solutions",
+      "weight": {
+        "min": 15,
+        "max": 20
+      },
+      "groups": [
+        {
+          "title": "Design logical architecture for multi-agent solutions",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/entra-ai-understand"
+              },
+              "title": "Understand identity architecture for AI workloads",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Teaches identity as the control layer for AI workloads, including authentication flows and role assignments that the group's tasks rely on.",
+              "evidence": "Identity as the control layer for AI solutions",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-access-management-capabilities"
+              },
+              "title": "Describe access management capabilities of Microsoft Entra",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Teaches Conditional Access and Entra RBAC, the permission concepts behind the group's permission boundaries.",
+              "evidence": "Describe Conditional Access",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-authentication-capabilities"
+              },
+              "title": "Describe the authentication capabilities of Microsoft Entra ID",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Teaches authentication methods and MFA, the concepts behind the group's authentication task.",
+              "evidence": "Describe authentication methods",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-basic-services-identity-types"
+              },
+              "title": "Describe the function and identity types of Microsoft Entra ID",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Teaches the types of identities, including workload and agent identities, that the group's authentication design depends on.",
+              "evidence": "Describe types of identities",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/fundamentals-generative-ai"
+              },
+              "title": "Introduction to generative AI and agents",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Teaches LLMs, prompts and AI agents, the core generative AI concepts the group's tasks assume.",
+              "evidence": "Large language models (LLMs)",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/introduction-agentic-devops-microsoft-tools-azure"
+              },
+              "title": "Introduction to agentic DevOps using Microsoft tools on Azure",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Introduces autonomy boundaries and human control points for agentic work, a concept the group's autonomy-level task uses; written for DevOps.",
+              "evidence": "Set autonomy boundaries and human control points",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/introduction-entra-agent-id"
+              },
+              "title": "Introduction to Microsoft Entra Agent ID",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains Entra Agent ID and the identity types agents use, the authentication concept behind the group's tool-scope task.",
+              "evidence": "Describe agent ID and compare identity types",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/describe-identity-principles-concepts"
+              },
+              "title": "Describe identity concepts",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Teaches the authentication and authorization concepts behind the group's tool scopes and authentication methods.",
+              "evidence": "Define authentication and authorization",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/concepts/foundry-models-overview"
+              },
+              "title": "Microsoft Foundry Models overview",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Introduces the Foundry model catalog and deployment options, the model concepts behind matching task demands to model families.",
+              "evidence": "Discover and deploy AI models with Microsoft Foundry Models.",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/decompose-goals-and-objectives-into-workflows-agents-and-too",
+              "text": "Decompose goals and objectives into workflows, agents, and tools",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-apply-task-decomposition-multi-agent-azure"
+                  },
+                  "title": "Apply task decomposition and agent collaboration strategies in Microsoft Foundry",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/design-workflows-including-agents-subagents-control-loops-an",
+              "text": "Design workflows, including agents, subagents, control loops, and human-in-the-loop",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-design-human-in-loop-approval-workflows"
+                  },
+                  "title": "Design human-in-the-loop approval workflows with Power Automate and Microsoft Teams",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-agent-personas-scopes-boundaries-autonomy-levels-and",
+              "text": "Specify agent personas, scopes, boundaries, autonomy levels, and behavioral guidelines",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-design-advanced-prompt-production-agents"
+                  },
+                  "title": "Design advanced prompting strategies for production AI agents",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-tool-scopes-permission-boundaries-and-authentication",
+              "text": "Specify tool scopes, permission boundaries, and authentication methods",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-secure-multi-agent-systems-azure-zero-trust"
+                  },
+                  "title": "Secure multi-agent systems with Azure zero-trust architecture",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-appropriate-protocols-for-communication-including-be",
+              "text": "Specify appropriate protocols for communication, including between multiple agents and between agents and other components",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-design-enterprise-agent-communication-a2a"
+                  },
+                  "title": "Design enterprise-scale agent communication with A2A in Azure",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/design-controls-and-functionality-to-support-human-ai-experi",
+              "text": "Design controls and functionality to support human-AI experience (HAX) and to adhere to responsible AI principles",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-advanced-prompt-production-agents",
+                  "title": "Design advanced prompting strategies for production AI agents",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-agent-personas-scopes-boundaries-autonomy-levels-and"
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/design-short-term-and-long-term-memory-architectures-includi",
+              "text": "Design short-term and long-term memory architectures, including context sharing",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-design-multi-agent-memory-azure-cosmos-db"
+                  },
+                  "title": "Design multi-agent memory architectures with Azure Cosmos DB",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/match-task-demands-to-model-family-capacities",
+              "text": "Match task demands to model family capacities",
+              "picks": []
+            }
+          ]
+        },
+        {
+          "title": "Specify technology components to include in a multi-agent solution",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/rag-fundamentals"
+              },
+              "title": "Introduction to retrieval-augmented generation concepts",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Teaches retrieval-augmented generation concepts, the basis of the agent-to-knowledge-source routing the group specifies.",
+              "evidence": "Understand retrieval-augmented generation",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/agents/concepts/agent-identity"
+              },
+              "title": "Agent identity concepts in Microsoft Foundry - Microsoft Foundry",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains agent identities, RBAC and authentication for tools, the identity concepts behind per-agent scoping in the zero-trust task.",
+              "evidence": "Learn how agent identities and agent identity blueprints work in Microsoft Foundry",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/agents/concepts/what-is-memory"
+              },
+              "title": "What is Memory?",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains agent memory types, retention and controls in Foundry Agent Service, the concepts behind the state persistence task.",
+              "evidence": "Learn about memory in Foundry Agent Service",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/guardrails/guardrails-overview"
+              },
+              "title": "Guardrails and controls overview in Microsoft Foundry - Microsoft Foundry",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Introduces safety and security guardrails, intervention points and response actions for agents, a conceptual base for the group's controls.",
+              "evidence": "safety and security guardrails that can be applied to models and agents",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-integration-components-to-coordinate-agent-to-agent",
+              "text": "Specify integration components to coordinate agent-to-agent communication, agent-to-tool interactions, and agent-to-knowledge-source routing across a multi-agent production system",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-build-enterprise-tool-ecosystems-mcp-azure"
+                  },
+                  "title": "Build enterprise-grade tool ecosystems with MCP and Microsoft Foundry",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-components-for-zero-trust-multi-agent-solutions-incl",
+              "text": "Specify components for Zero Trust multi-agent solutions, including per-agent identity scoping, lateral movement prevention, and compliance control mapping for regulated deployments",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-secure-multi-agent-systems-azure-zero-trust",
+                  "title": "Secure multi-agent systems with Azure zero-trust architecture",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-tool-scopes-permission-boundaries-and-authentication"
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-multi-tier-state-persistence-components-that-address",
+              "text": "Specify multi-tier state persistence components that address session state, shared team state, and long-term semantic memory with lifecycle and tenant-isolation policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-secure-multi-agent-systems-azure-zero-trust",
+                  "title": "Secure multi-agent systems with Azure zero-trust architecture",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-tool-scopes-permission-boundaries-and-authentication"
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-compute-components-for-multi-agent-solutions-that-me",
+              "text": "Specify compute components for multi-agent solutions that meet scalability, reliability, operational efficiency, security, and cost requirements",
+              "picks": []
+            },
+            {
+              "key": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-observability-components-including-cross-service-tra",
+              "text": "Specify observability components, including cross-service trace correlation, structured logging of agent reasoning paths, and agent replay capture for reproducible debugging",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-implement-distributed-observability-multi-agent-opentelemetry"
+                  },
+                  "title": "Implement distributed observability for multi-agent solutions with OpenTelemetry",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-monitoring-components-including-cross-agent-coordina",
+              "text": "Specify monitoring components, including cross-agent coordination tracking, behavioral drift and quality regression detection, and automated remediation for agent failure patterns",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-debug-production-multi-agent-incidents-azure"
+                  },
+                  "title": "Debug and respond to production multi-agent incidents in Azure",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-developer-tools-and-environment-to-support-the-softw",
+              "text": "Specify developer tools and environment to support the Software Development Lifecycle (SDLC), including dev containers, Visual Studio Code extensions, command-line interface (CLI), dependency management, and AI instructions",
+              "picks": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Develop multi-agent solutions in Azure",
+      "weight": {
+        "min": 30,
+        "max": 35
+      },
+      "groups": [
+        {
+          "title": "Design and implement advanced prompt engineering strategies in multi-agent solutions",
+          "tasks": [
+            {
+              "key": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/design-and-implement-advanced-prompt-engineering-techniques",
+              "text": "Design and implement advanced prompt engineering techniques, including examples, dynamic context injection, defensive guidelines, and prompt lifecycle management",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/foundry/openai/concepts/advanced-prompt-engineering"
+                  },
+                  "title": "System message design for Azure OpenAI",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P2",
+                  "via": "/training/modules/aaai-design-advanced-prompt-production-agents",
+                  "why": "Explains system message design for Azure OpenAI, a deeper look at one prompt technique a professional applying prompt engineering meets.",
+                  "evidence": "Learn how system messages shape Azure OpenAI chat responses",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-advanced-prompt-production-agents",
+                  "title": "Design advanced prompting strategies for production AI agents",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-agent-personas-scopes-boundaries-autonomy-levels-and"
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/design-and-implement-context-aware-multi-agent-behaviors",
+              "text": "Design and implement context-aware multi-agent behaviors",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-optimize-multi-agent-performance-cost-azure"
+                  },
+                  "title": "Optimize multi-agent performance and cost in Microsoft Foundry",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "A professional making agents context-aware also manages context window and token use, which this module covers.",
+                  "evidence": "Optimize token usage and context management",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/design-and-implement-a-strategy-for-fine-tuning-agents-and-m",
+              "text": "Design and implement a strategy for fine-tuning agents and models, including data and frequency",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/optimize-finetune-agents"
+                  },
+                  "title": "Optimize and fine-tune AI agents for production",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Select the appropriate fine-tuning method",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Design and implement agent memory, context management, and knowledge integration",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-azure-cosmos-db-nosql"
+              },
+              "title": "Explore Azure Cosmos DB for NoSQL",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces Azure Cosmos DB for NoSQL, the store behind agent memory, including how it works and when to evaluate it for a workload.",
+              "evidence": "What is Azure Cosmos DB for NoSQL",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-non-relational-data-stores-azure"
+              },
+              "title": "Explore fundamentals of Azure Cosmos DB",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces Azure Cosmos DB as a non-relational store and its APIs, the storage concept behind agent memory.",
+              "evidence": "Describe Azure Cosmos DB",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/introduction-language"
+              },
+              "title": "Introduction to natural language processing concepts",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces tokenization and semantic language models, the language concepts behind embeddings and semantic search used in the RAG tasks.",
+              "evidence": "Semantic language models",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/introduction-to-azure-cosmos-db-sql-api"
+              },
+              "title": "Introduction to Azure Cosmos DB for NoSQL",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces Azure Cosmos DB for NoSQL and when to use it, the storage concept behind agent memory.",
+              "evidence": "What is Azure Cosmos DB for NoSQL",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/agents/concepts/what-is-foundry-iq"
+              },
+              "title": "What is Foundry IQ?",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains Foundry IQ as the managed knowledge layer that organises enterprise data for agents, the concept behind knowledge integration.",
+              "evidence": "a managed knowledge layer that turns enterprise data into reusable",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/design-and-implement-context-management-in-single-agents-and",
+              "text": "Design and implement context management in single agents and between agents, including context accumulation, retrieval, injection, and compaction",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-multi-agent-memory-azure-cosmos-db",
+                  "title": "Design multi-agent memory architectures with Azure Cosmos DB",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/design-short-term-and-long-term-memory-architectures-includi"
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/design-and-implement-single-agent-and-multi-agent-memory-str",
+              "text": "Design and implement single-agent and multi-agent memory strategies, including security, compliance, lifecycle, storage, and session management",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-multi-agent-memory-azure-cosmos-db",
+                  "title": "Design multi-agent memory architectures with Azure Cosmos DB",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/design-short-term-and-long-term-memory-architectures-includi"
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/design-and-implement-a-multi-agent-rag-architecture-includin",
+              "text": "Design and implement a multi-agent RAG architecture, including chunking, embedding quality, and retrieval precision",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-implement-advanced-rag-azure-ai-search"
+                  },
+                  "title": "Implement advanced RAG pipelines with Azure AI Search and Microsoft Foundry",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/design-and-implement-knowledge-integration-for-multi-agent-c",
+              "text": "Design and implement knowledge integration for multi-agent consumption, including search, RAG, MCP-available sources, and semantic search",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-implement-advanced-rag-azure-ai-search",
+                  "title": "Implement advanced RAG pipelines with Azure AI Search and Microsoft Foundry",
+                  "shownUnder": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/design-and-implement-a-multi-agent-rag-architecture-includin"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Build and integrate tool ecosystems",
+          "foundations": [
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/agents/concepts/toolbox-overview"
+              },
+              "title": "What is Toolbox in Microsoft Foundry? - Microsoft Foundry",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains how a toolbox packages agent tools behind a single managed MCP endpoint, the core concept of tool ecosystems.",
+              "evidence": "packages agent tools behind a single managed MCP endpoint",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/integrate-external-resources-including-function-calling-spec",
+              "text": "Integrate external resources, including function calling, specified tool use, and dynamic tool use",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-build-enterprise-tool-ecosystems-mcp-azure",
+                  "title": "Build enterprise-grade tool ecosystems with MCP and Microsoft Foundry",
+                  "shownUnder": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-integration-components-to-coordinate-agent-to-agent"
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/design-and-build-mcp-servers-and-clients-including-azure-fun",
+              "text": "Design and build MCP servers and clients, including Azure Functions, Azure Logic Apps, and Azure API Management",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-build-enterprise-tool-ecosystems-mcp-azure",
+                  "title": "Build enterprise-grade tool ecosystems with MCP and Microsoft Foundry",
+                  "shownUnder": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-integration-components-to-coordinate-agent-to-agent"
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/design-tool-error-handling-and-fallback-mechanisms",
+              "text": "Design tool error-handling and fallback mechanisms",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-build-enterprise-tool-ecosystems-mcp-azure",
+                  "title": "Build enterprise-grade tool ecosystems with MCP and Microsoft Foundry",
+                  "shownUnder": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-integration-components-to-coordinate-agent-to-agent"
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/implement-tool-result-validation-and-quality-checks",
+              "text": "Implement tool result validation and quality checks",
+              "picks": []
+            }
+          ]
+        },
+        {
+          "title": "Implement multi-agent orchestration",
+          "foundations": [
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/agents/overview"
+              },
+              "title": "What is Microsoft Foundry Agent Service? - Microsoft Foundry",
+              "class": "foundation",
+              "source": "P2",
+              "via": "/training/modules/aaai-design-agentic-loops-azure-ai-agent-service",
+              "why": "Introduces Microsoft Foundry Agent Service, its agent types, tools and runtime features, the platform concept behind the orchestration tasks.",
+              "evidence": "agent types, tools, and runtime features",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/implement-multi-agent-orchestration-patterns-including-hub-a",
+              "text": "Implement multi-agent orchestration patterns, including hub-and-spoke, sequential, parallel, peer-to-peer, and orchestrator-subagent",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-implement-multi-agent-orchestration-azure-ai-foundry"
+                  },
+                  "title": "Implement advanced multi-agent orchestration patterns in Microsoft Foundry",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/implement-human-in-the-loop-processes-including-approval-wor",
+              "text": "Implement human-in-the-loop processes, including approval workflows, overrides, and edge case handling",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-human-in-loop-approval-workflows",
+                  "title": "Design human-in-the-loop approval workflows with Power Automate and Microsoft Teams",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/design-workflows-including-agents-subagents-control-loops-an"
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/design-and-implement-a-caching-strategy-including-prompt-cac",
+              "text": "Design and implement a caching strategy, including prompt caching, semantic caching, and response caching",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-optimize-multi-agent-performance-cost-azure",
+                  "title": "Optimize multi-agent performance and cost in Microsoft Foundry",
+                  "shownUnder": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/design-and-implement-context-aware-multi-agent-behaviors"
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/implement-scaling-and-control-of-multi-agent-spawning-batchi",
+              "text": "Implement scaling and control of multi-agent spawning, batching, and concurrent execution",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-implement-multi-agent-orchestration-azure-ai-foundry",
+                  "title": "Implement advanced multi-agent orchestration patterns in Microsoft Foundry",
+                  "shownUnder": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/implement-multi-agent-orchestration-patterns-including-hub-a"
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/integrate-existing-agents-into-a-multi-agent-solution-secure",
+              "text": "Integrate existing agents into a multi-agent solution securely by using Agent2Agent (A2A) and/or MCP",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-enterprise-agent-communication-a2a",
+                  "title": "Design enterprise-scale agent communication with A2A in Azure",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-appropriate-protocols-for-communication-including-be"
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/implement-multi-agent-orchestration-frameworks-including-age",
+              "text": "Implement multi-agent orchestration frameworks, including Agent Framework, LangChain, and LangGraph",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-implement-multi-agent-orchestration-azure-ai-foundry",
+                  "title": "Implement advanced multi-agent orchestration patterns in Microsoft Foundry",
+                  "shownUnder": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/implement-multi-agent-orchestration-patterns-including-hub-a"
+                }
+              ]
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/implement-advanced-multi-agent-capabilities-by-using-hugging",
+              "text": "Implement advanced multi-agent capabilities by using Hugging Face Transformers",
+              "picks": []
+            },
+            {
+              "key": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/design-middleware-for-reusable-capabilities-across-the-solut",
+              "text": "Design middleware for reusable capabilities across the solution, including logging, authorization, and exception handling",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-implement-distributed-observability-multi-agent-opentelemetry",
+                  "title": "Implement distributed observability for multi-agent solutions with OpenTelemetry",
+                  "shownUnder": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-observability-components-including-cross-service-tra"
+                },
+                {
+                  "path": "/training/modules/aaai-secure-multi-agent-systems-azure-zero-trust",
+                  "title": "Secure multi-agent systems with Azure zero-trust architecture",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-tool-scopes-permission-boundaries-and-authentication"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Evaluate, optimize, and monitor multi-agent solutions",
+      "weight": {
+        "min": 20,
+        "max": 25
+      },
+      "groups": [
+        {
+          "title": "Design and implement evaluation and validation strategies for multi-agent solutions",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/understand-foundations-generative-ai-business-leaders"
+              },
+              "title": "Understand the foundations of generative AI for business leaders",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Explains what generative AI models are and how they work, a concept base for the group, though written for business leaders.",
+              "evidence": "Understand generative AI models",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/observability/how-to/cloud-evaluation"
+              },
+              "title": "Introduction to cloud evaluation with Microsoft Foundry SDK - Microsoft Foundry",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Introduces the cloud evaluation workflows for datasets, targets and conversations, the evaluation concepts the group builds on.",
+              "evidence": "choose a cloud evaluation workflow for datasets, targets, interactions, conversations, or synthetic data",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-evaluation-and-validation-strategies-fo/design-and-implement-a-human-review-process-to-evaluate-solu",
+              "text": "Design and implement a human review process to evaluate solutions in Foundry",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-human-in-loop-approval-workflows",
+                  "title": "Design human-in-the-loop approval workflows with Power Automate and Microsoft Teams",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/design-workflows-including-agents-subagents-control-loops-an"
+                },
+                {
+                  "path": "/training/modules/aaai-design-evaluation-frameworks-multi-agent-azure",
+                  "title": "Design evaluation frameworks for multi-agent solutions with Microsoft Foundry",
+                  "shownUnder": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-evaluation-and-validation-strategies-fo/design-and-implement-evaluations-for-memory-knowledge-tools"
+                }
+              ]
+            },
+            {
+              "key": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-evaluation-and-validation-strategies-fo/design-and-implement-evaluations-for-memory-knowledge-tools",
+              "text": "Design and implement evaluations for memory, knowledge, tools, and prompts",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-design-evaluation-frameworks-multi-agent-azure"
+                  },
+                  "title": "Design evaluation frameworks for multi-agent solutions with Microsoft Foundry",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/memory-state-evaluation"
+                  },
+                  "title": "Memory, State, and Evaluation",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Covers defining evaluation signals and quality gates for agent memory and state, but on a GitHub Copilot course rather than Foundry.",
+                  "evidence": "Define evaluation signals and enforce quality gates",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Optimize prompt and model performance for multi-agent solutions",
+          "foundations": [
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/agents/concepts/agent-optimizer-overview"
+              },
+              "title": "Agent optimizer in Foundry Agent Service overview - Microsoft Foundry",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains the agent optimizer that evaluates behaviour and improves prompts, the optimization loop concept the group builds on.",
+              "evidence": "Improve prompt and hosted agents by evaluating behavior and generating better instructions",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "evaluate-optimize-and-monitor-multi-agent-solutions/optimize-prompt-and-model-performance-for-multi-agent-soluti/optimize-task-duration-including-parallelism-and-rate-limits",
+              "text": "Optimize task duration, including parallelism and rate limits",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-govern-enterprise-agent-lifecycle-azure"
+                  },
+                  "title": "Govern the enterprise agent lifecycle in Microsoft Foundry",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "A professional tuning task duration also sets usage quotas and rate limits, which this module covers as one unit within a wider lifecycle governance module.",
+                  "evidence": "Implement usage quotas and rate limiting",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "evaluate-optimize-and-monitor-multi-agent-solutions/optimize-prompt-and-model-performance-for-multi-agent-soluti/diagnose-context-window-issues-including-sliding-window-amne",
+              "text": "Diagnose context window issues, including sliding-window amnesia, summary drift, vector-only recall, and entity continuity issues",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-optimize-multi-agent-performance-cost-azure",
+                  "title": "Optimize multi-agent performance and cost in Microsoft Foundry",
+                  "shownUnder": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/design-and-implement-context-aware-multi-agent-behaviors"
+                }
+              ]
+            },
+            {
+              "key": "evaluate-optimize-and-monitor-multi-agent-solutions/optimize-prompt-and-model-performance-for-multi-agent-soluti/design-and-implement-continuous-improvement-including-large",
+              "text": "Design and implement continuous improvement, including large language model-as-a-judge (LLM-as-a-judge) frameworks, synthetic data generation, semantic optimization loops, and user feedback loops",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-evaluation-frameworks-multi-agent-azure",
+                  "title": "Design evaluation frameworks for multi-agent solutions with Microsoft Foundry",
+                  "shownUnder": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-evaluation-and-validation-strategies-fo/design-and-implement-evaluations-for-memory-knowledge-tools"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Design and implement observability and monitoring for multi-agent solutions",
+          "foundations": [
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/azure-monitor/app/app-insights-overview"
+              },
+              "title": "Application Insights OpenTelemetry observability overview - Azure Monitor",
+              "class": "foundation",
+              "source": "P2",
+              "via": "/training/modules/aaai-govern-enterprise-agent-lifecycle-azure",
+              "why": "Explains how Application Insights integrates with OpenTelemetry for application observability, the monitoring service concept behind the group.",
+              "evidence": "Learn how Azure Monitor Application Insights integrates with OpenTelemetry (OTel) for comprehensive application observability",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/observability/concepts/trace-agent-concept"
+              },
+              "title": "Agent tracing overview",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains agent tracing in Foundry, capturing inputs, outputs and tool usage with OpenTelemetry, the core concept of the group.",
+              "evidence": "Learn how agent tracing in Microsoft Foundry captures inputs, outputs, and tool usage with OpenTelemetry",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-observability-and-monitoring-for-multi/design-a-strategy-for-monitoring-reliability-including-agent",
+              "text": "Design a strategy for monitoring reliability, including agent health, workflow failures, trace correlation, drift detection, quality regression, and remediation",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-debug-production-multi-agent-incidents-azure",
+                  "title": "Debug and respond to production multi-agent incidents in Azure",
+                  "shownUnder": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-monitoring-components-including-cross-agent-coordina"
+                },
+                {
+                  "path": "/training/modules/aaai-implement-distributed-observability-multi-agent-opentelemetry",
+                  "title": "Implement distributed observability for multi-agent solutions with OpenTelemetry",
+                  "shownUnder": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-observability-components-including-cross-service-tra"
+                },
+                {
+                  "path": "/training/modules/aaai-design-evaluation-frameworks-multi-agent-azure",
+                  "title": "Design evaluation frameworks for multi-agent solutions with Microsoft Foundry",
+                  "shownUnder": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-evaluation-and-validation-strategies-fo/design-and-implement-evaluations-for-memory-knowledge-tools"
+                }
+              ]
+            },
+            {
+              "key": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-observability-and-monitoring-for-multi/design-a-strategy-for-monitoring-solution-and-platform-avail",
+              "text": "Design a strategy for monitoring solution and platform availability, performance, reliability, and service-level agreement adherence",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-optimize-multi-agent-performance-cost-azure",
+                  "title": "Optimize multi-agent performance and cost in Microsoft Foundry",
+                  "shownUnder": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/design-and-implement-context-aware-multi-agent-behaviors"
+                }
+              ]
+            },
+            {
+              "key": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-observability-and-monitoring-for-multi/design-and-implement-a-strategy-for-optimizing-token-usage-i",
+              "text": "Design and implement a strategy for optimizing token usage, including token limits, loop controls, and tool calls",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-optimize-multi-agent-performance-cost-azure",
+                  "title": "Optimize multi-agent performance and cost in Microsoft Foundry",
+                  "shownUnder": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/design-and-implement-context-aware-multi-agent-behaviors"
+                }
+              ]
+            },
+            {
+              "key": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-observability-and-monitoring-for-multi/design-a-strategy-for-monitoring-and-managing-cost-including",
+              "text": "Design a strategy for monitoring and managing cost, including usage, quotas, allocations, and chargebacks",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-govern-enterprise-agent-lifecycle-azure",
+                  "title": "Govern the enterprise agent lifecycle in Microsoft Foundry",
+                  "shownUnder": "evaluate-optimize-and-monitor-multi-agent-solutions/optimize-prompt-and-model-performance-for-multi-agent-soluti/optimize-task-duration-including-parallelism-and-rate-limits"
+                }
+              ]
+            },
+            {
+              "key": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-observability-and-monitoring-for-multi/implement-tracing-in-foundry-including-tokens-prompts-correl",
+              "text": "Implement tracing in Foundry, including tokens, prompts, correlation IDs, alerting, and execution tracking",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-debug-production-multi-agent-incidents-azure",
+                  "title": "Debug and respond to production multi-agent incidents in Azure",
+                  "shownUnder": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-monitoring-components-including-cross-agent-coordina"
+                },
+                {
+                  "path": "/training/modules/aaai-implement-distributed-observability-multi-agent-opentelemetry",
+                  "title": "Implement distributed observability for multi-agent solutions with OpenTelemetry",
+                  "shownUnder": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/specify-observability-components-including-cross-service-tra"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Secure, govern, and deploy multi-agent solutions",
+      "weight": {
+        "min": 20,
+        "max": 25
+      },
+      "groups": [
+        {
+          "title": "Design and implement security for multi-agent solutions",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/defender-for-cloud-ai-understand-protections"
+              },
+              "title": "Understand how Microsoft Defender for Cloud supports AI security and governance in Azure",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Teaches the AI security risks and guardrail concepts in Azure, the threat background for securing AI systems.",
+              "evidence": "Understand AI security risks in Azure",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/describe-identity-protection-governance-capabilities"
+              },
+              "title": "Describe the identity protection and governance capabilities of Microsoft Entra",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces Entra access governance concepts such as privileged identity management and access reviews that underpin access control.",
+              "evidence": "Describe the capabilities of Privileged Identity Management",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-identity-azure-active-directory"
+              },
+              "title": "Explore identity in Microsoft Entra ID",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces identity as a control plane and Zero Trust with identity, the conceptual base for the security tasks.",
+              "evidence": "Explore Zero Trust with identity",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/introduction-to-secure-devops"
+              },
+              "title": "Introduction to Secure DevOps",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Teaches DevSecOps, continuous security validation and threat modeling, the shift-left concepts behind the security tasks.",
+              "evidence": "Understand DevSecOps",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/understand-azure-active-directory"
+              },
+              "title": "Understand Microsoft Entra ID",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Teaches Microsoft Entra ID as a directory service and its plans, the identity base the authentication tasks assume.",
+              "evidence": "Examine Microsoft Entra ID as a directory service for cloud apps",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-ai-governance-ai-ready-infrastructure"
+              },
+              "title": "Explore AI governance for AI ready infrastructure",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Introduces Foundry governance capabilities and policies for AI workloads, adjacent to the access control concepts of the group.",
+              "evidence": "Understand Microsoft Foundry governance capabilities",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/introduction-to-entra-id-2026"
+              },
+              "title": "Introduction to Microsoft Entra ID",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Teaches Microsoft Entra ID concepts such as strong authentication, risk-based access and Zero Trust, the identity base for the group.",
+              "evidence": "Strong authentication",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/agents/concepts/identity-access-overview"
+              },
+              "title": "Identity and access overview for Foundry Agent Service - Microsoft Foundry",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains the identity boundaries of Foundry Agent Service and endpoint and downstream resource access, the core concepts of the group.",
+              "evidence": "Understand the identity boundaries in Foundry Agent Service",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-security-for-multi-agent-solutions/specify-and-implement-resource-access-including-identity-bas",
+              "text": "Specify and implement resource access, including identity-based access, network boundaries, access control policies, and role-based access control (RBAC)",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-secure-multi-agent-systems-azure-zero-trust",
+                  "title": "Secure multi-agent systems with Azure zero-trust architecture",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-tool-scopes-permission-boundaries-and-authentication"
+                }
+              ]
+            },
+            {
+              "key": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-security-for-multi-agent-solutions/design-and-implement-authentication-flows-in-a-multi-agent-s",
+              "text": "Design and implement authentication flows in a multi-agent solution, including user impersonation, on-behalf-of, API keys, and OAuth 2.0",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/agent-id/agent-user-oauth-flow"
+                  },
+                  "title": "Agent's user account impersonation protocol",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Agent's user account impersonation protocol",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/agent-id/agent-on-behalf-of-oauth-flow"
+                  },
+                  "title": "Agent OAuth flows - On-behalf-of flow",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "agent applications operate on behalf of signed-in users",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/logic-apps/set-up-on-behalf-of-user-flow"
+                  },
+                  "title": "Authorize Agent Access with On-Behalf-Of Flow",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P4",
+                  "why": "It sets up on-behalf-of authorization for agent tools, the same OBO feature as the task but inside Logic Apps, a product area outside the exam.",
+                  "evidence": "Set up OAuth 2.0 On-Behalf-Of (OBO) authorization",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-secure-multi-agent-systems-azure-zero-trust",
+                  "title": "Secure multi-agent systems with Azure zero-trust architecture",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-tool-scopes-permission-boundaries-and-authentication"
+                }
+              ]
+            },
+            {
+              "key": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-security-for-multi-agent-solutions/design-the-secrets-management-and-retrieval-approach-for-mul",
+              "text": "Design the secrets management and retrieval approach for multi-agent solutions by using Azure Key Vault, including secrets, certificates, key rotation, role-based access to secrets, and encryption",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-manage-enforcement-cloud-governance-policies"
+                  },
+                  "title": "Implement and manage enforcement of cloud governance policies",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Configure key rotation",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-security-for-multi-agent-solutions/implement-shift-left-security-principles-including-the-ai-re",
+              "text": "Implement shift-left security principles, including the AI Red Teaming Agent in Foundry",
+              "picks": []
+            }
+          ]
+        },
+        {
+          "title": "Design and implement guardrails for multi-agent solutions",
+          "foundations": [
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/agents/concepts/hosted-agent-guardrails"
+              },
+              "title": "Hosted agent content safety overview - Microsoft Foundry",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains content safety guardrails for hosted agents, how they evaluate content and report blocked content.",
+              "evidence": "content safety guardrails for hosted agents",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/foundry/guardrails/intervention-points"
+              },
+              "title": "Intervention points concepts",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains the intervention points of agentic AI, the places where a guardrail can act, the central concept of the group.",
+              "evidence": "Agentic AI intervention points",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-guardrails-for-multi-agent-solutions/design-and-implement-a-multi-intervention-guardrail-strategy",
+              "text": "Design and implement a multi-intervention guardrail strategy covering user inputs, tool calls, tool responses, and outputs",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-advanced-prompt-production-agents",
+                  "title": "Design advanced prompting strategies for production AI agents",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-agent-personas-scopes-boundaries-autonomy-levels-and"
+                }
+              ]
+            },
+            {
+              "key": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-guardrails-for-multi-agent-solutions/design-and-implement-custom-guardrails-for-domain-specific-c",
+              "text": "Design and implement custom guardrails for domain-specific constraints",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-advanced-prompt-production-agents",
+                  "title": "Design advanced prompting strategies for production AI agents",
+                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-agent-personas-scopes-boundaries-autonomy-levels-and"
+                }
+              ]
+            },
+            {
+              "key": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-guardrails-for-multi-agent-solutions/design-guardrail-testing-and-validation-including-using-synt",
+              "text": "Design guardrail testing and validation, including using synthetic data",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-evaluation-frameworks-multi-agent-azure",
+                  "title": "Design evaluation frameworks for multi-agent solutions with Microsoft Foundry",
+                  "shownUnder": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-evaluation-and-validation-strategies-fo/design-and-implement-evaluations-for-memory-knowledge-tools"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Deploy multi-agent solutions to Azure",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/describe-pipelines-concurrency"
+              },
+              "title": "Describe pipelines and concurrency",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces Azure Pipelines concepts such as parallel jobs and continuous integration, which the CI/CD tasks build on.",
+              "evidence": "Enable Continuous Integration with Azure Pipelines",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-azure-pipelines"
+              },
+              "title": "Explore Azure Pipelines",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces the concept of pipelines in DevOps and what Azure Pipelines is, which the group's CI/CD tasks assume.",
+              "evidence": "Explore the concept of pipelines in DevOps",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-infrastructure-code-configuration-management"
+              },
+              "title": "Explore Infrastructure as Code and configuration management",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces Infrastructure as Code, declarative versus imperative configuration and idempotent deployments, which the IaC requirements in the CI/CD task rely on.",
+              "evidence": "Explore Infrastructure as Code and configuration management",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-release-strategy-recommendations"
+              },
+              "title": "Explore release strategy recommendations",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces release strategy concepts such as the delivery cadence, release approvals, release gates and GitOps, which underlie the release tasks.",
+              "evidence": "Explore release strategy recommendations",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/introduction-to-deployment-patterns"
+              },
+              "title": "Introduction to deployment patterns",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces classical and modern deployment patterns, the concepts behind the release methodology and rollout tasks.",
+              "evidence": "Examine classical deployment patterns",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/introduction-to-github-actions"
+              },
+              "title": "Introduction to GitHub Actions",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces GitHub Actions workflows, jobs, events and runners, the CI/CD building blocks the group's pipeline tasks use.",
+              "evidence": "Understand workflows",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/introduction-development-operations-principles-for-machine-learn"
+              },
+              "title": "Introduction to DevOps principles for machine learning",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Introduces DevOps for machine learning and how Azure Machine Learning integrates with DevOps tools, a base concept for deploying AI solutions.",
+              "evidence": "DevOps for machine learning",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/choose-a-release-methodology-including-development-test-acce",
+              "text": "Choose a release methodology, including Development-Test-Acceptance-Production (DTAP), blue/green, and canary",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-implement-cicd-multi-agent-systems-github-actions"
+                  },
+                  "title": "Implement CI/CD pipelines for multi-agent systems with GitHub Actions",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/design-and-implement-multi-environment-release-strategies-in",
+              "text": "Design and implement multi-environment release strategies, including rollback strategies, release management, and rollout",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-implement-cicd-multi-agent-systems-github-actions",
+                  "title": "Implement CI/CD pipelines for multi-agent systems with GitHub Actions",
+                  "shownUnder": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/choose-a-release-methodology-including-development-test-acce"
+                }
+              ]
+            },
+            {
+              "key": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/design-and-implement-a-strategy-for-testing-including-unit-t",
+              "text": "Design and implement a strategy for testing, including unit tests, regression tests, integration tests, and automated evaluations",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-design-evaluation-frameworks-multi-agent-azure",
+                  "title": "Design evaluation frameworks for multi-agent solutions with Microsoft Foundry",
+                  "shownUnder": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-evaluation-and-validation-strategies-fo/design-and-implement-evaluations-for-memory-knowledge-tools"
+                }
+              ]
+            },
+            {
+              "key": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/specify-continuous-integration-and-continuous-deployment-ci",
+              "text": "Specify continuous integration and continuous deployment (CI/CD) requirements for integration and release, including infrastructure-as-code deployments and testing",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/learn-continuous-integration-github-actions"
+                  },
+                  "title": "Learn continuous integration with GitHub Actions",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "A DevOps engineer specifying CI for agent solutions meets GitHub Actions CI basics, although this module is written for a DevOps role.",
+                  "evidence": "Describe continuous integration with Actions",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture"
+                  },
+                  "title": "Azure Pipelines baseline architecture - Azure Pipelines",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "A professional building agent CI/CD on Azure may meet the Azure Pipelines baseline architecture as the reference design for the pipeline.",
+                  "evidence": "Understand the baseline architecture to build a continuous integration and deployment pipeline using Azure Pipelines.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/azure/foundry/agents/concepts/foundry-canvas",
+      "reason": "A GitHub Copilot App extension for building Foundry agents, a tool rather than a concept of this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/defender-for-cloud-ai-understand-protections",
+      "reason": "Teaches Defender for Cloud AI security posture, a different product area from the group's agent architecture concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/describe-identity-protection-governance-capabilities",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/describe-pipelines-concurrency",
+      "reason": "Azure DevOps pipelines for a DevOps engineer, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/explore-azure-automation-devops",
+      "reason": "Azure Automation runbooks for DevOps operations, which is not a concept of this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/explore-azure-cosmos-db-nosql",
+      "reason": "Other product area than the multi-agent solution design.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/explore-azure-pipelines",
+      "reason": "Azure Pipelines for DevOps, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/explore-identity-azure-active-directory",
+      "reason": "Dropped in review: generic introduction, other-role or other-product page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/explore-infrastructure-code-configuration-management",
+      "reason": "Infrastructure as Code for DevOps, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/explore-non-relational-data-stores-azure",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/github-enterprise-server-developer-fundamentals",
+      "reason": "GitHub Enterprise Server for developers, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/github-enterprise-server-repository-workflows",
+      "reason": "GitHub Enterprise Server repository workflows, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/github-introduction-administration",
+      "reason": "GitHub enterprise administration, a different product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/github-introduction-products",
+      "reason": "GitHub accounts, plans and billing, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-copilot-spaces",
+      "reason": "Copilot Spaces for knowledge sharing, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-development-operations-principles-for-machine-learn",
+      "reason": "MLOps and DevOps tooling for machine learning, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-github-advanced-security",
+      "reason": "GitHub Advanced Security for code security, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-open-source-database-migration-azure-cosmos-db",
+      "reason": "Database migration to Cosmos DB, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "reason": "Prompting GitHub Copilot as a developer tool, a different product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-to-ado-to-github-migration",
+      "reason": "Azure DevOps to GitHub migration project, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-to-azure-cosmos-db-sql-api",
+      "reason": "Other product area than the multi-agent solution design.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-to-devops",
+      "reason": "General DevOps introduction, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-to-entra-id-2026",
+      "reason": "Dropped in review: generic introduction, other-role or other-product page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-to-github",
+      "reason": "GitHub platform tour, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-to-github-actions",
+      "reason": "GitHub Actions workflows for CI/CD, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-to-github-copilot",
+      "reason": "GitHub Copilot as a developer tool, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-to-github-copilot-enterprise",
+      "reason": "GitHub Copilot Enterprise licensing and set-up, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-to-github-copilot-for-business",
+      "reason": "GitHub Copilot Business licensing and use cases, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-to-secure-devops",
+      "reason": "DevSecOps pipeline security for developers, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-vibe-coding",
+      "reason": "Vibe coding with GitHub Copilot for developers, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/mcp-server",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/understand-azure-active-directory",
+      "reason": "Dropped in review: generic introduction, other-role or other-product page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "Dropped in review: generic introduction, other-role or other-product page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/decompose-goals-and-objectives-into-workflows-agents-and-too",
+      "path": "/training/modules/design-ai-agents-business-solutions",
+      "reason": "Written for business solution designers on Copilot Studio and Dynamics 365, a different product area and job role from Foundry multi-agent architecture.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-appropriate-protocols-for-communication-including-be",
+      "path": "/training/modules/design-solutions-identity-access-management",
+      "reason": "A security architect's identity and access design (SC-100) for Entra and Defender, not agent communication protocols.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/@foundations",
+      "path": "/training/modules/defender-for-cloud-ai-understand-protections",
+      "reason": "Other product area than the multi-agent solution design.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/@foundations",
+      "path": "/training/modules/explore-roles-responsibilities-world-of-data",
+      "reason": "Data job roles and data services, unrelated to multi-agent components.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "architect-multi-agent-solutions/specify-technology-components-to-include-in-a-multi-agent-so/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/@foundations",
+      "path": "/azure/cosmos-db/mongodb/integrations-overview",
+      "reason": "Integrating Cosmos DB for MongoDB with other Azure services is a database-specific page outside this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/@foundations",
+      "path": "/azure/foundry/agents/how-to/tools/web-overview",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/@foundations",
+      "path": "/azure/foundry/control-plane/overview",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/@foundations",
+      "path": "/training/modules/aaai-build-enterprise-tool-ecosystems-mcp-azure",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/@foundations",
+      "path": "/training/modules/defender-for-cloud-ai-understand-protections",
+      "reason": "Covers Microsoft Defender for Cloud, another product area, rather than the tool ecosystem concepts of this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/@foundations",
+      "path": "/training/modules/explore-ai-governance-ai-ready-infrastructure",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/@foundations",
+      "path": "/training/modules/explore-roles-responsibilities-world-of-data",
+      "reason": "Covers data job roles, which is a different job role from the multi-agent solution developer.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/@foundations",
+      "path": "/training/modules/rag-fundamentals",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/implement-tool-result-validation-and-quality-checks",
+      "path": "/azure/sre-agent/agent-hooks",
+      "reason": "Hooks that enforce quality gates on tool usage exist here, but in the Azure SRE Agent product, which is another product area from Microsoft Foundry.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/implement-tool-result-validation-and-quality-checks",
+      "path": "/azure/stream-analytics/stream-analytics-vs-tools",
+      "reason": "Managing Azure Stream Analytics jobs in Visual Studio is a different product area with no link to tool result validation.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/implement-tool-result-validation-and-quality-checks",
+      "path": "/training/modules/aaai-optimize-multi-agent-performance-cost-azure",
+      "reason": "Not part of this task; the page fits a neighbouring task.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/build-and-integrate-tool-ecosystems/implement-tool-result-validation-and-quality-checks",
+      "path": "/training/modules/implement-manage-data-quality-constraints-unity-catalog",
+      "reason": "Data quality constraints and schema drift in Azure Databricks pipelines are a data engineering job in another product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/azure/foundry/agents/concepts/agent-optimizer-overview",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/defender-for-cloud-ai-understand-protections",
+      "reason": "Defender for Cloud AI protections, a different product area from prompt engineering.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/describe-pipelines-concurrency",
+      "reason": "Azure Pipelines concurrency for DevOps, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/explore-azure-automation-devops",
+      "reason": "Azure Automation runbooks for DevOps, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/explore-azure-pipelines",
+      "reason": "Azure Pipelines for DevOps, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/explore-infrastructure-code-configuration-management",
+      "reason": "Infrastructure as Code for DevOps, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/explore-roles-responsibilities-world-of-data",
+      "reason": "Data job roles and services, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/github-enterprise-server-developer-fundamentals",
+      "reason": "GitHub Enterprise Server for developers, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/github-enterprise-server-repository-workflows",
+      "reason": "GitHub Enterprise Server repository workflows, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/github-introduction-administration",
+      "reason": "GitHub enterprise administration, a different product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/github-introduction-products",
+      "reason": "GitHub accounts and billing, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-agentic-devops-microsoft-tools-azure",
+      "reason": "Agentic DevOps for DevOps teams, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-copilot-spaces",
+      "reason": "Copilot Spaces for knowledge sharing, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-development-operations-principles-for-machine-learn",
+      "reason": "MLOps and DevOps tooling, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-github-advanced-security",
+      "reason": "GitHub Advanced Security, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-language",
+      "reason": "Dropped in review: generic introduction, other-role or other-product page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-open-source-database-migration-azure-cosmos-db",
+      "reason": "Database migration to Cosmos DB, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "reason": "Dropped in review: generic introduction, other-role or other-product page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-to-ado-to-github-migration",
+      "reason": "Azure DevOps to GitHub migration, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-to-devops",
+      "reason": "General DevOps introduction, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-to-github",
+      "reason": "GitHub platform tour, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-to-github-actions",
+      "reason": "GitHub Actions for CI/CD, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-to-github-copilot",
+      "reason": "GitHub Copilot as a developer tool, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-to-github-copilot-enterprise",
+      "reason": "GitHub Copilot Enterprise licensing and set-up, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-to-github-copilot-for-business",
+      "reason": "GitHub Copilot Business licensing and use cases, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-to-secure-devops",
+      "reason": "DevSecOps for developers, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/introduction-vibe-coding",
+      "reason": "Vibe coding with GitHub Copilot for developers, unrelated to this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/mcp-server",
+      "reason": "A GitHub MCP server walkthrough in VS Code, a product tutorial rather than a group concept.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/aaai-design-multi-agent-memory-azure-cosmos-db",
+      "reason": "Other product area than the multi-agent solution design.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/cloud-native-myths",
+      "reason": "Windows 11 and cloud-native myths are a different product area and do not teach this group's concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/defender-for-cloud-ai-understand-protections",
+      "reason": "Covers Microsoft Defender for Cloud, another product area, from a security operations angle rather than memory or knowledge concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/describe-identity-principles-concepts",
+      "reason": "General identity and authentication concepts from the identity product area, not the memory, context or knowledge concepts this group teaches.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/describe-identity-protection-governance-capabilities",
+      "reason": "Identity governance and protection capabilities are a different sub-product area from agent memory and knowledge.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/entra-ai-understand",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/explore-access-management-capabilities",
+      "reason": "Conditional Access and role-based access are identity product features, not the concepts of this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/explore-ai-governance-ai-ready-infrastructure",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/explore-authentication-capabilities",
+      "reason": "Authentication methods and MFA are identity product features outside this group's memory, context and knowledge concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/explore-basic-services-identity-types",
+      "reason": "Covers identity types and Entra services from the identity product area; the Agent ID unit does not teach the memory or knowledge concepts of this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/explore-identity-azure-active-directory",
+      "reason": "Identity administration for Entra ID is a different job role and product area from agent memory and knowledge.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/explore-roles-responsibilities-world-of-data",
+      "reason": "Covers data job roles and data services in general, which is a different job role from the multi-agent solution developer.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/introduction-entra-agent-id",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/introduction-to-entra-id-2026",
+      "reason": "Microsoft Entra ID security basics are an identity product area outside this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/understand-azure-active-directory",
+      "reason": "Microsoft Entra ID directory basics for administrators are an identity product area outside this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/understand-command-syntax-windows-powershell",
+      "reason": "PowerShell command syntax is an administration skill, not a concept of agent memory or knowledge integration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/@foundations",
+      "path": "/training/modules/understand-windows-powershell-pipeline",
+      "reason": "The PowerShell pipeline is an administration skill, not a concept of this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/design-and-implement-agent-memory-context-management-and-kno/design-and-implement-knowledge-integration-for-multi-agent-c",
+      "path": "/training/modules/aaai-design-multi-agent-memory-azure-cosmos-db",
+      "reason": "Other product area than the multi-agent solution design.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/azure/azure-monitor/agents/azure-monitor-agent-overview",
+      "reason": "The Azure Monitor Agent collects guest OS monitoring data from virtual machines, a different product area from agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/azure/foundry/agents/concepts/autopilot-overview",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/azure/foundry/agents/concepts/what-is-memory",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/aaai-implement-multi-agent-orchestration-azure-ai-foundry",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/cloud-native-myths",
+      "reason": "Windows 11 and cloud-native myths are a different product area and do not teach orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/defender-for-cloud-ai-understand-protections",
+      "reason": "Covers Microsoft Defender for Cloud, another product area, rather than orchestration concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/describe-identity-principles-concepts",
+      "reason": "General identity and authentication concepts from the identity product area, not orchestration concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/describe-identity-protection-governance-capabilities",
+      "reason": "Identity governance and entitlement management are a different sub-product area from multi-agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/describe-pipelines-concurrency",
+      "reason": "Azure Pipelines parallel jobs are a DevOps concept for a different job role, not agent concurrency.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/entra-ai-understand",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-access-management-capabilities",
+      "reason": "Conditional Access and role-based access are identity product features outside orchestration concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-ai-governance-ai-ready-infrastructure",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-authentication-capabilities",
+      "reason": "Authentication methods and MFA are identity product features, not orchestration concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-azure-automation-devops",
+      "reason": "Azure Automation runbooks and webhooks are a DevOps tool area for a different job role, not agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-azure-pipelines",
+      "reason": "Azure Pipelines is a DevOps product for a different job role, not the orchestration concepts of this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-basic-services-identity-types",
+      "reason": "Identity types and Entra services are an identity product area, not orchestration concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-git-hooks",
+      "reason": "Git hooks are a source control feature for developers, outside multi-agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-identity-azure-active-directory",
+      "reason": "Identity administration for Entra ID is a different job role and product area from orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-infrastructure-code-configuration-management",
+      "reason": "Infrastructure as Code and environment configuration are a DevOps job for a different role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-package-dependencies",
+      "reason": "Package dependency management is a developer and DevOps topic, not orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-release-strategy-recommendations",
+      "reason": "Release approvals and release gates are a DevOps release process, not agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/explore-roles-responsibilities-world-of-data",
+      "reason": "Covers data job roles, which is a different job role from the multi-agent solution developer.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/github-enterprise-server-developer-fundamentals",
+      "reason": "GitHub Enterprise Server is a self-hosted GitHub product for developers, outside orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/github-enterprise-server-repository-workflows",
+      "reason": "Repository branching and pull request workflows on GitHub Enterprise Server are a developer process, outside orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/github-introduction-administration",
+      "reason": "GitHub organization administration is an administrator job in another product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/github-introduction-products",
+      "reason": "GitHub accounts, plans and billing are a product and licensing topic outside orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/intro-to-git",
+      "reason": "Introduction to Git version control is a developer basic, not the concepts of multi-agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-copilot-spaces",
+      "reason": "Copilot Spaces is a GitHub Copilot feature for developers, outside orchestration concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-development-operations-principles-for-machine-learn",
+      "reason": "DevOps principles for machine learning are an MLOps topic for a different role, not agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-entra-agent-id",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-github-advanced-security",
+      "reason": "GitHub Advanced Security is a code security product, outside multi-agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-github-packages",
+      "reason": "Publishing and installing packages on GitHub is a developer task outside orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "reason": "Prompt engineering for GitHub Copilot is a tool-specific developer course, not the orchestration concepts of this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-to-ado-to-github-migration",
+      "reason": "Migrating from Azure DevOps to GitHub is a DevOps migration project, outside orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-to-deployment-patterns",
+      "reason": "Classical and modern software deployment patterns are a DevOps topic, not multi-agent orchestration patterns.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-to-devops",
+      "reason": "DevOps culture and Azure DevOps tooling are a different job role and product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-to-entra-id-2026",
+      "reason": "Microsoft Entra ID security basics are an identity product area outside orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-to-github",
+      "reason": "An introduction to the GitHub platform, outside multi-agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-to-github-actions",
+      "reason": "GitHub Actions workflows are a CI/CD tool for developers, outside agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-to-github-copilot",
+      "reason": "GitHub Copilot as a coding assistant is a developer tool, outside multi-agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-to-github-copilot-enterprise",
+      "reason": "GitHub Copilot Enterprise is a licensed developer product, outside orchestration concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-to-github-copilot-for-business",
+      "reason": "GitHub Copilot Business is a licensed developer product, outside orchestration concepts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-to-secure-devops",
+      "reason": "DevSecOps and CodeQL are a secure software delivery topic for a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/introduction-vibe-coding",
+      "reason": "Vibe coding with GitHub Copilot is a developer practice, outside multi-agent orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/mcp-server",
+      "reason": "Neighbouring-task, identity, governance or generic page; not needed as a foundation for this exam.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/understand-azure-active-directory",
+      "reason": "Microsoft Entra ID directory basics for administrators are an identity product area outside this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/understand-command-syntax-windows-powershell",
+      "reason": "PowerShell command syntax is an administration skill, not an orchestration concept.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/understand-package-management",
+      "reason": "Package feeds and Azure Artifacts are a developer tooling topic, outside orchestration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/@foundations",
+      "path": "/training/modules/understand-windows-powershell-pipeline",
+      "reason": "The PowerShell pipeline is an administration skill, not an orchestration concept.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/design-middleware-for-reusable-capabilities-across-the-solut",
+      "path": "/training/modules/aaai-implement-cicd-multi-agent-systems-github-actions",
+      "reason": "CI/CD pipelines and rollback for deployment are a DevOps job outside middleware design.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/implement-advanced-multi-agent-capabilities-by-using-hugging",
+      "path": "/azure/databricks/machine-learning/train-model/huggingface",
+      "reason": "Dropped in review: generic introduction, other-role or other-product page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/implement-advanced-multi-agent-capabilities-by-using-hugging",
+      "path": "/azure/databricks/machine-learning/train-model/huggingface/fine-tune-model",
+      "reason": "A hands-on fine-tuning procedure on a single GPU in Azure Databricks, which is a procedure in another product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "develop-multi-agent-solutions-in-azure/implement-multi-agent-orchestration/implement-advanced-multi-agent-capabilities-by-using-hugging",
+      "path": "/azure/databricks/machine-learning/train-model/huggingface/load-data",
+      "reason": "Other product area than the multi-agent solution design.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-evaluation-and-validation-strategies-fo/@foundations",
+      "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-observability-and-monitoring-for-multi/@foundations",
+      "path": "/azure/azure-monitor/agents/azure-monitor-agent-overview",
+      "reason": "The Azure Monitor Agent collects guest operating system data from virtual machines, an infrastructure monitoring topic outside agent observability.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "evaluate-optimize-and-monitor-multi-agent-solutions/optimize-prompt-and-model-performance-for-multi-agent-soluti/optimize-task-duration-including-parallelism-and-rate-limits",
+      "path": "/training/modules/develop-monitor-status-dashboards",
+      "reason": "Pipeline concurrency and dashboards in Azure DevOps and GitHub Actions are a CI/CD product area, not optimization of multi-agent task duration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
+      "path": "/azure/foundry/agents/concepts/foundry-canvas",
+      "reason": "Describes a GitHub Copilot App extension for designing and testing hosted agents, a tool-specific feature rather than a deployment concept.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
+      "path": "/training/modules/describe-identity-protection-governance-capabilities",
+      "reason": "Covers Entra identity governance and protection, which is a different product area from deploying agents.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
+      "path": "/training/modules/explore-azure-automation-devops",
+      "reason": "Covers Azure Automation runbooks and PowerShell workflows, which is a different tool area from deploying multi-agent solutions.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
+      "path": "/training/modules/github-enterprise-server-developer-fundamentals",
+      "reason": "Covers GitHub Enterprise Server, a different product from the Azure deployment concepts of this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
+      "path": "/training/modules/github-enterprise-server-repository-workflows",
+      "reason": "Covers repository workflows on GitHub Enterprise Server, a different product from the Azure deployment concepts of this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
+      "path": "/training/modules/github-introduction-administration",
+      "reason": "Covers GitHub enterprise administration, authentication and permissions, which is an administrator role outside this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
+      "path": "/training/modules/intro-to-git",
+      "reason": "Dropped in review: generic introduction, other-role or other-product page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
+      "path": "/training/modules/introduction-to-devops",
+      "reason": "Dropped in review: generic introduction, other-role or other-product page.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
+      "path": "/training/modules/introduction-to-github-copilot-enterprise",
+      "reason": "Covers GitHub Copilot Enterprise licensing and setup, which is a product and licensing topic outside this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/@foundations",
+      "path": "/training/modules/introduction-to-github-copilot-for-business",
+      "reason": "Covers GitHub Copilot Business use cases and setup, which is a product and licensing topic outside this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/specify-continuous-integration-and-continuous-deployment-ci",
+      "path": "/azure/business-process-tracking/set-up-continuous-integration-deployment",
+      "reason": "CI/CD for Business Process Tracking workflows is a different product area from multi-agent solutions.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/specify-continuous-integration-and-continuous-deployment-ci",
+      "path": "/azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services",
+      "reason": "Deploys apps to Linux VMs with Jenkins, which is a different tool and workload from multi-agent solutions.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/specify-continuous-integration-and-continuous-deployment-ci",
+      "path": "/azure/developer/jenkins/overview",
+      "reason": "Hosting the Jenkins server on Azure is a different tool and product area from the GitHub and Azure pipelines the multi-agent CI/CD task covers.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/specify-continuous-integration-and-continuous-deployment-ci",
+      "path": "/azure/stream-analytics/cicd-overview",
+      "reason": "CI/CD for Azure Stream Analytics jobs is a different product area from multi-agent solutions.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/specify-continuous-integration-and-continuous-deployment-ci",
+      "path": "/azure/stream-analytics/stream-analytics-cicd-api",
+      "reason": "CI/CD for Stream Analytics on IoT Edge is a different product area from multi-agent solutions.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/specify-continuous-integration-and-continuous-deployment-ci",
+      "path": "/azure/stream-analytics/stream-analytics-tools-for-visual-studio-cicd",
+      "reason": "A Stream Analytics CI/CD NuGet package is a different product area from multi-agent solutions.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-guardrails-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/github-introduction-administration",
+      "reason": "It covers GitHub enterprise administration, a different product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-guardrails-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-github-advanced-security",
+      "reason": "It covers GitHub Advanced Security for code, a different product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-guardrails-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "reason": "It covers prompt engineering inside GitHub Copilot, a different product area from agent guardrails.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-guardrails-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "It is written for business leaders, a different job role from the multi-agent engineer.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-security-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/github-introduction-administration",
+      "reason": "It covers GitHub enterprise administration and permissions, a different product area from Azure multi-agent security.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-security-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/introduction-github-advanced-security",
+      "reason": "It covers GitHub Advanced Security for code scanning, a different product area from multi-agent security.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-security-for-multi-agent-solutions/@foundations",
+      "path": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "reason": "It is written for business leaders, a different job role from the multi-agent engineer.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-security-for-multi-agent-solutions/implement-shift-left-security-principles-including-the-ai-re",
+      "path": "/training/modules/aaai-design-human-in-loop-approval-workflows",
+      "reason": "The module is about human approval workflows in Power Automate and Teams, not shift-left security or the AI Red Teaming Agent.",
+      "at": "2026-11-04"
+    }
+  ]
+}

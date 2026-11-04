@@ -1,0 +1,673 @@
+---
+title: AI-500 Study Guide Course
+description: "Follow a structured AI-500 course organized by study guide task, with Microsoft Learn training and documentation."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official AI-500 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-500?WT.mc_id=studentamb_165290) skills measured. Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AI-500 labs page](/certs/labs/azure/ai-500/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As a candidate for this Microsoft Certification, you're an expert-level practitioner who has subject matter expertise in designing, building, and optimizing scalable, production-ready, multi-agent AI systems and workflows. You manage the development from design to production.
+
+You work closely with developers, machine learning engineers, platform engineers, data scientists, and business stakeholders to translate complex requirements into production-ready, multi-agent solutions.
+
+For this exam, you should have experience developing AI and machine learning, deploying agentic systems in production environments, and orchestrating agent logic using Microsoft Foundry. You should also be proficient in Python.
+
+Additionally, you need experience developing solutions that include Azure compute, network, storage, and data services. You should be familiar with open-source frameworks and standards, including Microsoft Agent Framework, Model Context Protocol (MCP), retrieval-augmented generation (RAG), and LangGraph.
+
+## Architect multi-agent solutions (15–20%)
+
+### Design logical architecture for multi-agent solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand identity architecture for AI workloads" href="https://learn.microsoft.com/training/modules/entra-ai-understand?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe access management capabilities of Microsoft Entra" href="https://learn.microsoft.com/training/modules/explore-access-management-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the authentication capabilities of Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-authentication-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the function and identity types of Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-basic-services-identity-types?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to generative AI and agents" href="https://learn.microsoft.com/training/modules/fundamentals-generative-ai?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to agentic DevOps using Microsoft tools on Azure" href="https://learn.microsoft.com/training/modules/introduction-agentic-devops-microsoft-tools-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Entra Agent ID" href="https://learn.microsoft.com/training/modules/introduction-entra-agent-id?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe identity concepts" href="https://learn.microsoft.com/training/modules/describe-identity-principles-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Foundry Models overview" href="https://learn.microsoft.com/azure/foundry/concepts/foundry-models-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Decompose goals and objectives into workflows, agents, and tools
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Apply task decomposition and agent collaboration strategies in Microsoft Foundry" href="https://learn.microsoft.com/training/modules/aaai-apply-task-decomposition-multi-agent-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design workflows, including agents, subagents, control loops, and human-in-the-loop
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design human-in-the-loop approval workflows with Power Automate and Microsoft Teams" href="https://learn.microsoft.com/training/modules/aaai-design-human-in-loop-approval-workflows?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify agent personas, scopes, boundaries, autonomy levels, and behavioral guidelines
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design advanced prompting strategies for production AI agents" href="https://learn.microsoft.com/training/modules/aaai-design-advanced-prompt-production-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify tool scopes, permission boundaries, and authentication methods
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Secure multi-agent systems with Azure zero-trust architecture" href="https://learn.microsoft.com/training/modules/aaai-secure-multi-agent-systems-azure-zero-trust?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify appropriate protocols for communication, including between multiple agents and between agents and other components
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design enterprise-scale agent communication with A2A in Azure" href="https://learn.microsoft.com/training/modules/aaai-design-enterprise-agent-communication-a2a?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design controls and functionality to support human-AI experience (HAX) and to adhere to responsible AI principles
+
+:::note
+The Microsoft Learn module "Design advanced prompting strategies for production AI agents" also covers this task. It is listed once, under [Specify agent personas, scopes, boundaries, autonomy levels, and behavioral guidelines](#specify-agent-personas-scopes-boundaries-autonomy-levels-and-behavioral-guidelines).
+:::
+
+#### Design short-term and long-term memory architectures, including context sharing
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design multi-agent memory architectures with Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/aaai-design-multi-agent-memory-azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Match task demands to model family capacities
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Specify technology components to include in a multi-agent solution
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to retrieval-augmented generation concepts" href="https://learn.microsoft.com/training/modules/rag-fundamentals?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Agent identity concepts in Microsoft Foundry - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/concepts/agent-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Memory?" href="https://learn.microsoft.com/azure/foundry/agents/concepts/what-is-memory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Guardrails and controls overview in Microsoft Foundry - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/guardrails/guardrails-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify integration components to coordinate agent-to-agent communication, agent-to-tool interactions, and agent-to-knowledge-source routing across a multi-agent production system
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build enterprise-grade tool ecosystems with MCP and Microsoft Foundry" href="https://learn.microsoft.com/training/modules/aaai-build-enterprise-tool-ecosystems-mcp-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify components for Zero Trust multi-agent solutions, including per-agent identity scoping, lateral movement prevention, and compliance control mapping for regulated deployments
+
+:::note
+The Microsoft Learn module "Secure multi-agent systems with Azure zero-trust architecture" also covers this task. It is listed once, under [Specify tool scopes, permission boundaries, and authentication methods](#specify-tool-scopes-permission-boundaries-and-authentication-methods) in the skill group Design logical architecture for multi-agent solutions.
+:::
+
+#### Specify multi-tier state persistence components that address session state, shared team state, and long-term semantic memory with lifecycle and tenant-isolation policies
+
+:::note
+The Microsoft Learn module "Secure multi-agent systems with Azure zero-trust architecture" also covers this task. It is listed once, under [Specify tool scopes, permission boundaries, and authentication methods](#specify-tool-scopes-permission-boundaries-and-authentication-methods) in the skill group Design logical architecture for multi-agent solutions.
+:::
+
+#### Specify compute components for multi-agent solutions that meet scalability, reliability, operational efficiency, security, and cost requirements
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Specify observability components, including cross-service trace correlation, structured logging of agent reasoning paths, and agent replay capture for reproducible debugging
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement distributed observability for multi-agent solutions with OpenTelemetry" href="https://learn.microsoft.com/training/modules/aaai-implement-distributed-observability-multi-agent-opentelemetry?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify monitoring components, including cross-agent coordination tracking, behavioral drift and quality regression detection, and automated remediation for agent failure patterns
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Debug and respond to production multi-agent incidents in Azure" href="https://learn.microsoft.com/training/modules/aaai-debug-production-multi-agent-incidents-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify developer tools and environment to support the Software Development Lifecycle (SDLC), including dev containers, Visual Studio Code extensions, command-line interface (CLI), dependency management, and AI instructions
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+## Develop multi-agent solutions in Azure (30–35%)
+
+### Design and implement advanced prompt engineering strategies in multi-agent solutions
+
+#### Design and implement advanced prompt engineering techniques, including examples, dynamic context injection, defensive guidelines, and prompt lifecycle management
+
+:::note
+The Microsoft Learn module "Design advanced prompting strategies for production AI agents" also covers this task. It is listed once, under [Specify agent personas, scopes, boundaries, autonomy levels, and behavioral guidelines](#specify-agent-personas-scopes-boundaries-autonomy-levels-and-behavioral-guidelines) in the skill group Design logical architecture for multi-agent solutions.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="System message design for Azure OpenAI" href="https://learn.microsoft.com/azure/foundry/openai/concepts/advanced-prompt-engineering?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement context-aware multi-agent behaviors
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Optimize multi-agent performance and cost in Microsoft Foundry" href="https://learn.microsoft.com/training/modules/aaai-optimize-multi-agent-performance-cost-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement a strategy for fine-tuning agents and models, including data and frequency
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Optimize and fine-tune AI agents for production" href="https://learn.microsoft.com/training/modules/optimize-finetune-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement agent memory, context management, and knowledge integration
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/explore-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore fundamentals of Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/explore-non-relational-data-stores-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to natural language processing concepts" href="https://learn.microsoft.com/training/modules/introduction-language?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/introduction-to-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Foundry IQ?" href="https://learn.microsoft.com/azure/foundry/agents/concepts/what-is-foundry-iq?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement context management in single agents and between agents, including context accumulation, retrieval, injection, and compaction
+
+:::note
+The Microsoft Learn module "Design multi-agent memory architectures with Azure Cosmos DB" also covers this task. It is listed once, under [Design short-term and long-term memory architectures, including context sharing](#design-short-term-and-long-term-memory-architectures-including-context-sharing) in the skill group Design logical architecture for multi-agent solutions.
+:::
+
+#### Design and implement single-agent and multi-agent memory strategies, including security, compliance, lifecycle, storage, and session management
+
+:::note
+The Microsoft Learn module "Design multi-agent memory architectures with Azure Cosmos DB" also covers this task. It is listed once, under [Design short-term and long-term memory architectures, including context sharing](#design-short-term-and-long-term-memory-architectures-including-context-sharing) in the skill group Design logical architecture for multi-agent solutions.
+:::
+
+#### Design and implement a multi-agent RAG architecture, including chunking, embedding quality, and retrieval precision
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement advanced RAG pipelines with Azure AI Search and Microsoft Foundry" href="https://learn.microsoft.com/training/modules/aaai-implement-advanced-rag-azure-ai-search?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement knowledge integration for multi-agent consumption, including search, RAG, MCP-available sources, and semantic search
+
+:::note
+The Microsoft Learn module "Implement advanced RAG pipelines with Azure AI Search and Microsoft Foundry" also covers this task. It is listed once, under [Design and implement a multi-agent RAG architecture, including chunking, embedding quality, and retrieval precision](#design-and-implement-a-multi-agent-rag-architecture-including-chunking-embedding-quality-and-retrieval-precision).
+:::
+
+### Build and integrate tool ecosystems
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Toolbox in Microsoft Foundry? - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/concepts/toolbox-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Integrate external resources, including function calling, specified tool use, and dynamic tool use
+
+:::note
+The Microsoft Learn module "Build enterprise-grade tool ecosystems with MCP and Microsoft Foundry" also covers this task. It is listed once, under [Specify integration components to coordinate agent-to-agent communication, agent-to-tool interactions, and agent-to-knowledge-source routing across a multi-agent production system](#specify-integration-components-to-coordinate-agent-to-agent-communication-agent-to-tool-interactions-and-agent-to-knowledge-source-routing-across-a-multi-agent-production-system) in the skill group Specify technology components to include in a multi-agent solution.
+:::
+
+#### Design and build MCP servers and clients, including Azure Functions, Azure Logic Apps, and Azure API Management
+
+:::note
+The Microsoft Learn module "Build enterprise-grade tool ecosystems with MCP and Microsoft Foundry" also covers this task. It is listed once, under [Specify integration components to coordinate agent-to-agent communication, agent-to-tool interactions, and agent-to-knowledge-source routing across a multi-agent production system](#specify-integration-components-to-coordinate-agent-to-agent-communication-agent-to-tool-interactions-and-agent-to-knowledge-source-routing-across-a-multi-agent-production-system) in the skill group Specify technology components to include in a multi-agent solution.
+:::
+
+#### Design tool error-handling and fallback mechanisms
+
+:::note
+The Microsoft Learn module "Build enterprise-grade tool ecosystems with MCP and Microsoft Foundry" also covers this task. It is listed once, under [Specify integration components to coordinate agent-to-agent communication, agent-to-tool interactions, and agent-to-knowledge-source routing across a multi-agent production system](#specify-integration-components-to-coordinate-agent-to-agent-communication-agent-to-tool-interactions-and-agent-to-knowledge-source-routing-across-a-multi-agent-production-system) in the skill group Specify technology components to include in a multi-agent solution.
+:::
+
+#### Implement tool result validation and quality checks
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Implement multi-agent orchestration
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Microsoft Foundry Agent Service? - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement multi-agent orchestration patterns, including hub-and-spoke, sequential, parallel, peer-to-peer, and orchestrator-subagent
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement advanced multi-agent orchestration patterns in Microsoft Foundry" href="https://learn.microsoft.com/training/modules/aaai-implement-multi-agent-orchestration-azure-ai-foundry?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement human-in-the-loop processes, including approval workflows, overrides, and edge case handling
+
+:::note
+The Microsoft Learn module "Design human-in-the-loop approval workflows with Power Automate and Microsoft Teams" also covers this task. It is listed once, under [Design workflows, including agents, subagents, control loops, and human-in-the-loop](#design-workflows-including-agents-subagents-control-loops-and-human-in-the-loop) in the skill group Design logical architecture for multi-agent solutions.
+:::
+
+#### Design and implement a caching strategy, including prompt caching, semantic caching, and response caching
+
+:::note
+The Microsoft Learn module "Optimize multi-agent performance and cost in Microsoft Foundry" also covers this task. It is listed once, under [Design and implement context-aware multi-agent behaviors](#design-and-implement-context-aware-multi-agent-behaviors) in the skill group Design and implement advanced prompt engineering strategies in multi-agent solutions.
+:::
+
+#### Implement scaling and control of multi-agent spawning, batching, and concurrent execution
+
+:::note
+The Microsoft Learn module "Implement advanced multi-agent orchestration patterns in Microsoft Foundry" also covers this task. It is listed once, under [Implement multi-agent orchestration patterns, including hub-and-spoke, sequential, parallel, peer-to-peer, and orchestrator-subagent](#implement-multi-agent-orchestration-patterns-including-hub-and-spoke-sequential-parallel-peer-to-peer-and-orchestrator-subagent).
+:::
+
+#### Integrate existing agents into a multi-agent solution securely by using Agent2Agent (A2A) and/or MCP
+
+:::note
+The Microsoft Learn module "Design enterprise-scale agent communication with A2A in Azure" also covers this task. It is listed once, under [Specify appropriate protocols for communication, including between multiple agents and between agents and other components](#specify-appropriate-protocols-for-communication-including-between-multiple-agents-and-between-agents-and-other-components) in the skill group Design logical architecture for multi-agent solutions.
+:::
+
+#### Implement multi-agent orchestration frameworks, including Agent Framework, LangChain, and LangGraph
+
+:::note
+The Microsoft Learn module "Implement advanced multi-agent orchestration patterns in Microsoft Foundry" also covers this task. It is listed once, under [Implement multi-agent orchestration patterns, including hub-and-spoke, sequential, parallel, peer-to-peer, and orchestrator-subagent](#implement-multi-agent-orchestration-patterns-including-hub-and-spoke-sequential-parallel-peer-to-peer-and-orchestrator-subagent).
+:::
+
+#### Implement advanced multi-agent capabilities by using Hugging Face Transformers
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Design middleware for reusable capabilities across the solution, including logging, authorization, and exception handling
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement distributed observability for multi-agent solutions with OpenTelemetry": under [Specify observability components, including cross-service trace correlation, structured logging of agent reasoning paths, and agent replay capture for reproducible debugging](#specify-observability-components-including-cross-service-trace-correlation-structured-logging-of-agent-reasoning-paths-and-agent-replay-capture-for-reproducible-debugging) in the skill group Specify technology components to include in a multi-agent solution
+- "Secure multi-agent systems with Azure zero-trust architecture": under [Specify tool scopes, permission boundaries, and authentication methods](#specify-tool-scopes-permission-boundaries-and-authentication-methods) in the skill group Design logical architecture for multi-agent solutions
+:::
+
+## Evaluate, optimize, and monitor multi-agent solutions (20–25%)
+
+### Design and implement evaluation and validation strategies for multi-agent solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand the foundations of generative AI for business leaders" href="https://learn.microsoft.com/training/modules/understand-foundations-generative-ai-business-leaders?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Introduction to cloud evaluation with Microsoft Foundry SDK - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/observability/how-to/cloud-evaluation?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement a human review process to evaluate solutions in Foundry
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design human-in-the-loop approval workflows with Power Automate and Microsoft Teams": under [Design workflows, including agents, subagents, control loops, and human-in-the-loop](#design-workflows-including-agents-subagents-control-loops-and-human-in-the-loop) in the skill group Design logical architecture for multi-agent solutions
+- "Design evaluation frameworks for multi-agent solutions with Microsoft Foundry": under [Design and implement evaluations for memory, knowledge, tools, and prompts](#design-and-implement-evaluations-for-memory-knowledge-tools-and-prompts)
+:::
+
+#### Design and implement evaluations for memory, knowledge, tools, and prompts
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design evaluation frameworks for multi-agent solutions with Microsoft Foundry" href="https://learn.microsoft.com/training/modules/aaai-design-evaluation-frameworks-multi-agent-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Memory, State, and Evaluation" href="https://learn.microsoft.com/training/modules/memory-state-evaluation?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Optimize prompt and model performance for multi-agent solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Agent optimizer in Foundry Agent Service overview - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/concepts/agent-optimizer-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Optimize task duration, including parallelism and rate limits
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Govern the enterprise agent lifecycle in Microsoft Foundry" href="https://learn.microsoft.com/training/modules/aaai-govern-enterprise-agent-lifecycle-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Diagnose context window issues, including sliding-window amnesia, summary drift, vector-only recall, and entity continuity issues
+
+:::note
+The Microsoft Learn module "Optimize multi-agent performance and cost in Microsoft Foundry" also covers this task. It is listed once, under [Design and implement context-aware multi-agent behaviors](#design-and-implement-context-aware-multi-agent-behaviors) in the skill group Design and implement advanced prompt engineering strategies in multi-agent solutions.
+:::
+
+#### Design and implement continuous improvement, including large language model-as-a-judge (LLM-as-a-judge) frameworks, synthetic data generation, semantic optimization loops, and user feedback loops
+
+:::note
+The Microsoft Learn module "Design evaluation frameworks for multi-agent solutions with Microsoft Foundry" also covers this task. It is listed once, under [Design and implement evaluations for memory, knowledge, tools, and prompts](#design-and-implement-evaluations-for-memory-knowledge-tools-and-prompts) in the skill group Design and implement evaluation and validation strategies for multi-agent solutions.
+:::
+
+### Design and implement observability and monitoring for multi-agent solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Application Insights OpenTelemetry observability overview - Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Agent tracing overview" href="https://learn.microsoft.com/azure/foundry/observability/concepts/trace-agent-concept?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design a strategy for monitoring reliability, including agent health, workflow failures, trace correlation, drift detection, quality regression, and remediation
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Debug and respond to production multi-agent incidents in Azure": under [Specify monitoring components, including cross-agent coordination tracking, behavioral drift and quality regression detection, and automated remediation for agent failure patterns](#specify-monitoring-components-including-cross-agent-coordination-tracking-behavioral-drift-and-quality-regression-detection-and-automated-remediation-for-agent-failure-patterns) in the skill group Specify technology components to include in a multi-agent solution
+- "Implement distributed observability for multi-agent solutions with OpenTelemetry": under [Specify observability components, including cross-service trace correlation, structured logging of agent reasoning paths, and agent replay capture for reproducible debugging](#specify-observability-components-including-cross-service-trace-correlation-structured-logging-of-agent-reasoning-paths-and-agent-replay-capture-for-reproducible-debugging) in the skill group Specify technology components to include in a multi-agent solution
+- "Design evaluation frameworks for multi-agent solutions with Microsoft Foundry": under [Design and implement evaluations for memory, knowledge, tools, and prompts](#design-and-implement-evaluations-for-memory-knowledge-tools-and-prompts) in the skill group Design and implement evaluation and validation strategies for multi-agent solutions
+:::
+
+#### Design a strategy for monitoring solution and platform availability, performance, reliability, and service-level agreement adherence
+
+:::note
+The Microsoft Learn module "Optimize multi-agent performance and cost in Microsoft Foundry" also covers this task. It is listed once, under [Design and implement context-aware multi-agent behaviors](#design-and-implement-context-aware-multi-agent-behaviors) in the skill group Design and implement advanced prompt engineering strategies in multi-agent solutions.
+:::
+
+#### Design and implement a strategy for optimizing token usage, including token limits, loop controls, and tool calls
+
+:::note
+The Microsoft Learn module "Optimize multi-agent performance and cost in Microsoft Foundry" also covers this task. It is listed once, under [Design and implement context-aware multi-agent behaviors](#design-and-implement-context-aware-multi-agent-behaviors) in the skill group Design and implement advanced prompt engineering strategies in multi-agent solutions.
+:::
+
+#### Design a strategy for monitoring and managing cost, including usage, quotas, allocations, and chargebacks
+
+:::note
+The Microsoft Learn module "Govern the enterprise agent lifecycle in Microsoft Foundry" also covers this task. It is listed once, under [Optimize task duration, including parallelism and rate limits](#optimize-task-duration-including-parallelism-and-rate-limits) in the skill group Optimize prompt and model performance for multi-agent solutions.
+:::
+
+#### Implement tracing in Foundry, including tokens, prompts, correlation IDs, alerting, and execution tracking
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Debug and respond to production multi-agent incidents in Azure": under [Specify monitoring components, including cross-agent coordination tracking, behavioral drift and quality regression detection, and automated remediation for agent failure patterns](#specify-monitoring-components-including-cross-agent-coordination-tracking-behavioral-drift-and-quality-regression-detection-and-automated-remediation-for-agent-failure-patterns) in the skill group Specify technology components to include in a multi-agent solution
+- "Implement distributed observability for multi-agent solutions with OpenTelemetry": under [Specify observability components, including cross-service trace correlation, structured logging of agent reasoning paths, and agent replay capture for reproducible debugging](#specify-observability-components-including-cross-service-trace-correlation-structured-logging-of-agent-reasoning-paths-and-agent-replay-capture-for-reproducible-debugging) in the skill group Specify technology components to include in a multi-agent solution
+:::
+
+## Secure, govern, and deploy multi-agent solutions (20–25%)
+
+### Design and implement security for multi-agent solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand how Microsoft Defender for Cloud supports AI security and governance in Azure" href="https://learn.microsoft.com/training/modules/defender-for-cloud-ai-understand-protections?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the identity protection and governance capabilities of Microsoft Entra" href="https://learn.microsoft.com/training/modules/describe-identity-protection-governance-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore identity in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-identity-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Secure DevOps" href="https://learn.microsoft.com/training/modules/introduction-to-secure-devops?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/understand-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore AI governance for AI ready infrastructure" href="https://learn.microsoft.com/training/modules/explore-ai-governance-ai-ready-infrastructure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/introduction-to-entra-id-2026?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Identity and access overview for Foundry Agent Service - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/concepts/identity-access-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify and implement resource access, including identity-based access, network boundaries, access control policies, and role-based access control (RBAC)
+
+:::note
+The Microsoft Learn module "Secure multi-agent systems with Azure zero-trust architecture" also covers this task. It is listed once, under [Specify tool scopes, permission boundaries, and authentication methods](#specify-tool-scopes-permission-boundaries-and-authentication-methods) in the skill group Design logical architecture for multi-agent solutions.
+:::
+
+#### Design and implement authentication flows in a multi-agent solution, including user impersonation, on-behalf-of, API keys, and OAuth 2.0
+
+:::note
+The Microsoft Learn module "Secure multi-agent systems with Azure zero-trust architecture" also covers this task. It is listed once, under [Specify tool scopes, permission boundaries, and authentication methods](#specify-tool-scopes-permission-boundaries-and-authentication-methods) in the skill group Design logical architecture for multi-agent solutions.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Agent's user account impersonation protocol" href="https://learn.microsoft.com/entra/agent-id/agent-user-oauth-flow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Agent OAuth flows - On-behalf-of flow" href="https://learn.microsoft.com/entra/agent-id/agent-on-behalf-of-oauth-flow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Authorize Agent Access with On-Behalf-Of Flow" href="https://learn.microsoft.com/azure/logic-apps/set-up-on-behalf-of-user-flow?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design the secrets management and retrieval approach for multi-agent solutions by using Azure Key Vault, including secrets, certificates, key rotation, role-based access to secrets, and encryption
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement and manage enforcement of cloud governance policies" href="https://learn.microsoft.com/training/modules/implement-manage-enforcement-cloud-governance-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement shift-left security principles, including the AI Red Teaming Agent in Foundry
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Design and implement guardrails for multi-agent solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Hosted agent content safety overview - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/concepts/hosted-agent-guardrails?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Intervention points concepts" href="https://learn.microsoft.com/azure/foundry/guardrails/intervention-points?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement a multi-intervention guardrail strategy covering user inputs, tool calls, tool responses, and outputs
+
+:::note
+The Microsoft Learn module "Design advanced prompting strategies for production AI agents" also covers this task. It is listed once, under [Specify agent personas, scopes, boundaries, autonomy levels, and behavioral guidelines](#specify-agent-personas-scopes-boundaries-autonomy-levels-and-behavioral-guidelines) in the skill group Design logical architecture for multi-agent solutions.
+:::
+
+#### Design and implement custom guardrails for domain-specific constraints
+
+:::note
+The Microsoft Learn module "Design advanced prompting strategies for production AI agents" also covers this task. It is listed once, under [Specify agent personas, scopes, boundaries, autonomy levels, and behavioral guidelines](#specify-agent-personas-scopes-boundaries-autonomy-levels-and-behavioral-guidelines) in the skill group Design logical architecture for multi-agent solutions.
+:::
+
+#### Design guardrail testing and validation, including using synthetic data
+
+:::note
+The Microsoft Learn module "Design evaluation frameworks for multi-agent solutions with Microsoft Foundry" also covers this task. It is listed once, under [Design and implement evaluations for memory, knowledge, tools, and prompts](#design-and-implement-evaluations-for-memory-knowledge-tools-and-prompts) in the skill group Design and implement evaluation and validation strategies for multi-agent solutions.
+:::
+
+### Deploy multi-agent solutions to Azure
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe pipelines and concurrency" href="https://learn.microsoft.com/training/modules/describe-pipelines-concurrency?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Azure Pipelines" href="https://learn.microsoft.com/training/modules/explore-azure-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Infrastructure as Code and configuration management" href="https://learn.microsoft.com/training/modules/explore-infrastructure-code-configuration-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore release strategy recommendations" href="https://learn.microsoft.com/training/modules/explore-release-strategy-recommendations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to deployment patterns" href="https://learn.microsoft.com/training/modules/introduction-to-deployment-patterns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to GitHub Actions" href="https://learn.microsoft.com/training/modules/introduction-to-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to DevOps principles for machine learning" href="https://learn.microsoft.com/training/modules/introduction-development-operations-principles-for-machine-learn?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose a release methodology, including Development-Test-Acceptance-Production (DTAP), blue/green, and canary
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement CI/CD pipelines for multi-agent systems with GitHub Actions" href="https://learn.microsoft.com/training/modules/aaai-implement-cicd-multi-agent-systems-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement multi-environment release strategies, including rollback strategies, release management, and rollout
+
+:::note
+The Microsoft Learn module "Implement CI/CD pipelines for multi-agent systems with GitHub Actions" also covers this task. It is listed once, under [Choose a release methodology, including Development-Test-Acceptance-Production (DTAP), blue/green, and canary](#choose-a-release-methodology-including-development-test-acceptance-production-dtap-bluegreen-and-canary).
+:::
+
+#### Design and implement a strategy for testing, including unit tests, regression tests, integration tests, and automated evaluations
+
+:::note
+The Microsoft Learn module "Design evaluation frameworks for multi-agent solutions with Microsoft Foundry" also covers this task. It is listed once, under [Design and implement evaluations for memory, knowledge, tools, and prompts](#design-and-implement-evaluations-for-memory-knowledge-tools-and-prompts) in the skill group Design and implement evaluation and validation strategies for multi-agent solutions.
+:::
+
+#### Specify continuous integration and continuous deployment (CI/CD) requirements for integration and release, including infrastructure-as-code deployments and testing
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Learn continuous integration with GitHub Actions" href="https://learn.microsoft.com/training/modules/learn-continuous-integration-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Pipelines baseline architecture - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
