@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 1,
+  "code": "DP-600",
+  "decisions": [
+    {
+      "task": "explore-and-analyze-data/query-data-by-using-sql/connect-to-and-query-datasets-by-using-the-xmla-endpoint",
+      "target": "/fabric/enterprise/powerbi/service-premium-connect-tools",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-and-manage-semantic-models/design-and-build-semantic-models/@foundations",
+      "target": "/training/modules/data-analytics-microsoft",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-and-manage-semantic-models/design-and-build-semantic-models/@foundations",
+      "target": "/training/modules/explore-fundamentals-stream-processing",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-and-manage-semantic-models/design-and-build-semantic-models/design-and-build-a-large-format-dataset",
+      "target": "/fabric/enterprise/powerbi/service-premium-large-models",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-and-manage-semantic-models/design-and-build-semantic-models/implement-dynamic-row-level-security-and-object-level-securi",
+      "target": "/fabric/data-warehouse/row-level-security",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-and-manage-semantic-models/design-and-build-semantic-models/implement-dynamic-row-level-security-and-object-level-securi",
+      "target": "/fabric/onelake/security/create-manage-roles",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-and-manage-semantic-models/design-and-build-semantic-models/implement-dynamic-row-level-security-and-object-level-securi",
+      "target": "/fabric/onelake/security/row-level-security-syntax",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-and-manage-semantic-models/design-and-build-semantic-models/validate-row-level-security-and-object-level-security",
+      "target": "/fabric/data-warehouse/row-level-security",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-and-manage-semantic-models/design-and-build-semantic-models/write-calculations-that-use-dax-variables-and-functions-such",
+      "target": "/training/modules/dax-power-bi-write-formulas",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/@foundations",
+      "target": "/fabric/fundamentals",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/@foundations",
+      "target": "/training/modules/explore-core-data-concepts",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/@foundations",
+      "target": "/training/modules/explore-roles-responsibilities-world-of-data",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/configure-fabric-enabled-workspace-settings",
+      "target": "/fabric/data-engineering/configure-resource-profiles",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/configure-fabric-enabled-workspace-settings",
+      "target": "/fabric/data-factory/apache-airflow-jobs-workspace-settings",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/configure-fabric-enabled-workspace-settings",
+      "target": "/fabric/data-factory/workspace-monitoring",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/configure-fabric-enabled-workspace-settings",
+      "target": "/fabric/governance/onelake-catalog-manage-settings",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/configure-fabric-enabled-workspace-settings",
+      "target": "/fabric/security/workspace-outbound-access-protection-power-bi-reports",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/implement-workspace-and-item-level-access-controls-for-fabri",
+      "target": "/fabric/data-engineering/lakehouse-schemas",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/implement-workspace-and-item-level-access-controls-for-fabri",
+      "target": "/fabric/onelake/security/onelake-security-integrations-external-engines",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/implement-workspace-and-item-level-access-controls-for-fabri",
+      "target": "/fabric/security/security-feature-availability",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/implement-workspace-and-item-level-access-controls-for-fabri",
+      "target": "/fabric/security/security-workspace-private-links-example-notebook",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/implement-workspace-and-item-level-access-controls-for-fabri",
+      "target": "/fabric/security/security-workspace-private-links-example-on-premises-data-gateway",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/implement-workspace-and-item-level-access-controls-for-fabri",
+      "target": "/fabric/security/security-workspace-private-links-example-pipeline",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/implement-workspace-and-item-level-access-controls-for-fabri",
+      "target": "/fabric/security/workspace-outbound-access-protection-data-science",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/implement-workspace-and-item-level-access-controls-for-fabri",
+      "target": "/fabric/security/workspace-outbound-access-protection-fabric-maps",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/admin/service-admin-portal-refresh-summary",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/admin/service-admin-premium-capacity-notifications",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/data-engineering/billing-capacity-management-for-spark",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/data-engineering/job-concurrency-queue-monitoring",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/data-warehouse/correlate-capacity-metrics-query-insights",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/data-warehouse/pause-resume",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/data-warehouse/usage-reporting",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/enterprise/azure-billing",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/enterprise/powerbi/service-premium-what-is",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/extensibility-toolkit/consume-workloads",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/governance/fabric-policies-get-started",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/onelake/onelake-capacity-consumption",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/onelake/onelake-consumption",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/real-time-hub/explore-fabric-capacity-operation-events",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/real-time-hub/explore-fabric-capacity-overview-events",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/real-time-hub/set-alerts-fabric-capacity-operation-events",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/real-time-hub/set-alerts-fabric-capacity-overview-events",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/real-time-hub/set-custom-alerts-fabric-capacity-overview-events",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/training/modules/monitor-fabric-data-warehouse",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-sensitivity-labels-in-semantic-models-and-lakehouses",
+      "target": "/fabric/security/security-workspace-private-links-example-on-premises-data-gateway",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/@foundations",
+      "target": "/fabric/fundamentals",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/@foundations",
+      "target": "/training/modules/examine-components-of-modern-data-warehouse",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/@foundations",
+      "target": "/training/modules/explore-core-data-concepts",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/@foundations",
+      "target": "/training/modules/explore-roles-responsibilities-world-of-data",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/implement-version-control-for-a-workspace",
+      "target": "/fabric/data-warehouse/upgrade-warehouse",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/@foundations",
+      "target": "/fabric/data-factory/what-is-copy-job",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/@foundations",
+      "target": "/fabric/fundamentals/copilot-fabric-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/@foundations",
+      "target": "/fabric/real-time-intelligence/event-streams/streaming-connector-private-network-support-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/@foundations",
+      "target": "/training/modules/explore-roles-responsibilities-world-of-data",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/@foundations",
+      "target": "/training/modules/introduction-to-copilot-fabric",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/choose-a-data-gateway-type",
+      "target": "/fabric/data-factory/connector-troubleshoot-databricks",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/choose-a-data-gateway-type",
+      "target": "/fabric/data-factory/dataflow-gen2-cloud-connection-gateway-use",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/choose-a-data-gateway-type",
+      "target": "/fabric/data-factory/gateway-considerations-output-destinations",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/choose-a-data-gateway-type",
+      "target": "/fabric/real-time-intelligence/event-streams/create-manage-streaming-virtual-network-data-gateways",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/choose-a-data-gateway-type",
+      "target": "/fabric/real-time-intelligence/event-streams/streaming-connector-private-network-support-guide",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/choose-a-data-gateway-type",
+      "target": "/fabric/real-time-intelligence/event-streams/streaming-connector-private-network-support-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/choose-a-data-gateway-type",
+      "target": "/fabric/security/security-workspace-private-links-example-on-premises-data-gateway",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/choose-a-data-gateway-type",
+      "target": "/training/modules/manage-datasets-power-bi",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/create-a-custom-power-bi-report-theme",
+      "target": "/training/modules/create-dashboards-power-bi",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/create-a-custom-power-bi-report-theme",
+      "target": "/training/modules/data-visualization-reports-power-bi",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/recommend-settings-in-the-fabric-admin-portal",
+      "target": "/fabric/admin/service-admin-portal-datamart",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/recommend-settings-in-the-fabric-admin-portal",
+      "target": "/fabric/admin/service-admin-portal-premium-per-user",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/copy-data/@foundations",
+      "target": "/training/modules/fabric-transform-data-notebooks",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/copy-data/choose-an-appropriate-method-for-copying-data-from-a-fabric",
+      "target": "/fabric/data-warehouse/migration-teradata-methods",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/create-objects-in-a-lakehouse-or-warehouse/@foundations",
+      "target": "/fabric/data-warehouse/development-deployment",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/create-objects-in-a-lakehouse-or-warehouse/@foundations",
+      "target": "/fabric/data-warehouse/v-order",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/create-objects-in-a-lakehouse-or-warehouse/@foundations",
+      "target": "/training/modules/explore-roles-responsibilities-world-of-data",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/create-objects-in-a-lakehouse-or-warehouse/@foundations",
+      "target": "/training/modules/introduction-to-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/optimize-performance/@foundations",
+      "target": "/training/modules/data-analytics-microsoft",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/optimize-performance/@foundations",
+      "target": "/training/modules/explore-fundamentals-stream-processing",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/transform-data/@foundations",
+      "target": "/fabric/data-engineering/data-engineering-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/transform-data/@foundations",
+      "target": "/training/modules/data-analytics-microsoft",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/transform-data/@foundations",
+      "target": "/training/modules/explore-fundamentals-stream-processing",
+      "decision": "reject",
+      "reason": "Generic, other-role or landing page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-and-serve-data/transform-data/merge-or-join-data",
+      "target": "/fabric/data-engineering/delta-lake-schema-evolution",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}
