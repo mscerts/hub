@@ -1,0 +1,773 @@
+---
+title: AZ-140 Study Guide Course
+description: "Follow a structured AZ-140 course organized by study guide task, with Microsoft Learn training and documentation."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official AZ-140 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-140?WT.mc_id=studentamb_165290) skills measured (July 20, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AZ-140 labs page](/certs/labs/azure/az-140/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As a candidate for this exam, you should be a server or desktop administrator with subject matter expertise in designing, implementing, managing, and maintaining Azure Virtual Desktop experiences and remote apps for any device.
+
+You should be able to manage end-user desktop environments, including delivering applications and configuring user settings. You should use the Azure portal, templates, scripting, and command-line tools to manage an Azure Virtual Desktop deployment.
+
+### To deliver these experiences, you should work closely with
+
+- Azure administrators
+- Azure architects
+- Microsoft 365 administrators
+- Azure security engineers
+- Azure Local administrators
+
+### You should have experience with Azure technologies, including
+
+- Compute
+- Networking
+- Identity
+- Storage
+- Resiliency
+
+## Plan and implement an Azure Virtual Desktop infrastructure (40–45%)
+
+### Plan, implement, and manage networking for Azure Virtual Desktop
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Azure Virtual Desktop" href="https://learn.microsoft.com/training/modules/explore-azure-virtual-desktop?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Azure Virtual Desktop" href="https://learn.microsoft.com/training/modules/m365-wvd-intro?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Virtual Desktop terminology - Azure - Azure Virtual Desktop" href="https://learn.microsoft.com/azure/virtual-desktop/terminology?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Assess network capacity and speed requirements for Azure Virtual Desktop
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design the Azure Virtual Desktop architecture" href="https://learn.microsoft.com/training/modules/design-azure-virtual-desktop-architecture?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement and manage networking for Azure Virtual Desktop" href="https://learn.microsoft.com/training/modules/implement-manage-networking-azure-virtual-desktop?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design network configuration for session hosts to meet requirements for Azure Virtual Desktop
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create and configure host pools and session hosts for Azure Virtual Desktop" href="https://learn.microsoft.com/training/modules/create-configure-host-pools-session-hosts?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement Remote Desktop Protocol (RDP) Shortpath, RDP Multipath, and quality of service (QoS) policies
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement and manage networking for Azure Virtual Desktop": under [Assess network capacity and speed requirements for Azure Virtual Desktop](#assess-network-capacity-and-speed-requirements-for-azure-virtual-desktop)
+- "Create and configure host pools and session hosts for Azure Virtual Desktop": under [Design network configuration for session hosts to meet requirements for Azure Virtual Desktop](#design-network-configuration-for-session-hosts-to-meet-requirements-for-azure-virtual-desktop)
+:::
+
+#### Plan and implement an Azure Private Link solution for Azure Virtual Desktop
+
+:::note
+The Microsoft Learn module "Implement and manage networking for Azure Virtual Desktop" also covers this task. It is listed once, under [Assess network capacity and speed requirements for Azure Virtual Desktop](#assess-network-capacity-and-speed-requirements-for-azure-virtual-desktop).
+:::
+
+#### Monitor and troubleshoot network connectivity
+
+:::note
+The Microsoft Learn module "Implement and manage networking for Azure Virtual Desktop" also covers this task. It is listed once, under [Assess network capacity and speed requirements for Azure Virtual Desktop](#assess-network-capacity-and-speed-requirements-for-azure-virtual-desktop).
+:::
+
+### Plan and implement storage for Azure Virtual Desktop user data
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design for user identities and profiles" href="https://learn.microsoft.com/training/modules/design-user-identities-profiles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Virtual Desktop Architecture" href="https://learn.microsoft.com/training/modules/azure-virtual-desktop-architecture?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan storage for Azure Virtual Desktop user data
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement and manage storage for Azure Virtual Desktop" href="https://learn.microsoft.com/training/modules/implement-manage-storage-azure-virtual-desktop?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement storage for FSLogix components
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement and manage FSLogix" href="https://learn.microsoft.com/training/modules/implement-manage-fslogix?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement storage accounts for Azure Virtual Desktop
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement and manage storage for Azure Virtual Desktop": under [Plan storage for Azure Virtual Desktop user data](#plan-storage-for-azure-virtual-desktop-user-data)
+- "Implement and manage FSLogix": under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components)
+:::
+
+#### Implement file shares for Azure Virtual Desktop
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement and manage storage for Azure Virtual Desktop": under [Plan storage for Azure Virtual Desktop user data](#plan-storage-for-azure-virtual-desktop-user-data)
+- "Implement and manage FSLogix": under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components)
+:::
+
+#### Implement Azure NetApp Files for Azure Virtual Desktop
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement and manage storage for Azure Virtual Desktop": under [Plan storage for Azure Virtual Desktop user data](#plan-storage-for-azure-virtual-desktop-user-data)
+- "Implement and manage FSLogix": under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components)
+:::
+
+### Plan host pools and session hosts
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure virtual machines" href="https://learn.microsoft.com/training/modules/intro-to-azure-virtual-machines?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Recommend resource groups, subscriptions, and management groups for Azure Virtual Desktop resources
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage access for Azure Virtual Desktop" href="https://learn.microsoft.com/training/modules/manage-access?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Recommend an operating system (OS) for Azure Virtual Desktop session hosts
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Create and manage session host image for Azure Virtual Desktop": under [Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements](#recommend-an-appropriate-licensing-model-for-azure-virtual-desktop-based-on-requirements)
+- "Design the Azure Virtual Desktop architecture": under [Assess network capacity and speed requirements for Azure Virtual Desktop](#assess-network-capacity-and-speed-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+- "Create and configure host pools and session hosts for Azure Virtual Desktop": under [Design network configuration for session hosts to meet requirements for Azure Virtual Desktop](#design-network-configuration-for-session-hosts-to-meet-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+:::
+
+#### Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create and manage session host image for Azure Virtual Desktop" href="https://learn.microsoft.com/training/modules/create-manage-session-host-image?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan a host pool architecture
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor and manage performance and health" href="https://learn.microsoft.com/training/modules/monitor-manage-performance-health?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design an Azure Virtual Desktop configuration for performance requirements
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement and manage storage for Azure Virtual Desktop": under [Plan storage for Azure Virtual Desktop user data](#plan-storage-for-azure-virtual-desktop-user-data) in the skill group Plan and implement storage for Azure Virtual Desktop user data
+- "Implement and manage networking for Azure Virtual Desktop": under [Assess network capacity and speed requirements for Azure Virtual Desktop](#assess-network-capacity-and-speed-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+- "Monitor and manage performance and health": under [Plan a host pool architecture](#plan-a-host-pool-architecture)
+- "Design the Azure Virtual Desktop architecture": under [Assess network capacity and speed requirements for Azure Virtual Desktop](#assess-network-capacity-and-speed-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+- "Create and configure host pools and session hosts for Azure Virtual Desktop": under [Design network configuration for session hosts to meet requirements for Azure Virtual Desktop](#design-network-configuration-for-session-hosts-to-meet-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+:::
+
+#### Design an Azure Virtual Desktop configuration for Azure Virtual Machines capacity requirements
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Monitor and manage performance and health": under [Plan a host pool architecture](#plan-a-host-pool-architecture)
+- "Design the Azure Virtual Desktop architecture": under [Assess network capacity and speed requirements for Azure Virtual Desktop](#assess-network-capacity-and-speed-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+- "Create and configure host pools and session hosts for Azure Virtual Desktop": under [Design network configuration for session hosts to meet requirements for Azure Virtual Desktop](#design-network-configuration-for-session-hosts-to-meet-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+:::
+
+### Implement host pools and session hosts
+
+#### Create host pools and session hosts by using the Azure portal
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Install and configure apps on a session host" href="https://learn.microsoft.com/training/modules/install-configure-apps-session-host?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Automate creation of Azure Virtual Desktop hosts and host pools by using PowerShell, Azure CLI, Azure Resource Manager templates (ARM templates), and Bicep files
+
+:::note
+The Microsoft Learn module "Create and manage session host image for Azure Virtual Desktop" also covers this task. It is listed once, under [Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements](#recommend-an-appropriate-licensing-model-for-azure-virtual-desktop-based-on-requirements) in the skill group Plan host pools and session hosts.
+:::
+
+#### Configure host pool and session host settings
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure user experience settings" href="https://learn.microsoft.com/training/modules/configure-user-experience-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure licensing for session hosts, including user eligibility for Windows client access and RDS Client Access License (CAL) requirements for Windows Server
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Create and manage session host images
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure VM Image Builder overview" href="https://learn.microsoft.com/azure/virtual-machines/image-builder-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create an image manually
+
+:::note
+The Microsoft Learn module "Create and manage session host image for Azure Virtual Desktop" also covers this task. It is listed once, under [Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements](#recommend-an-appropriate-licensing-model-for-azure-virtual-desktop-based-on-requirements) in the skill group Plan host pools and session hosts.
+:::
+
+#### Create an image by using Azure VM Image Builder
+
+:::note
+The Microsoft Learn module "Create and manage session host image for Azure Virtual Desktop" also covers this task. It is listed once, under [Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements](#recommend-an-appropriate-licensing-model-for-azure-virtual-desktop-based-on-requirements) in the skill group Plan host pools and session hosts.
+:::
+
+#### Modify an image
+
+:::note
+The Microsoft Learn module "Create and manage session host image for Azure Virtual Desktop" also covers this task. It is listed once, under [Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements](#recommend-an-appropriate-licensing-model-for-azure-virtual-desktop-based-on-requirements) in the skill group Plan host pools and session hosts.
+:::
+
+#### Plan and implement lifecycle management for images
+
+:::note
+The Microsoft Learn module "Create and manage session host image for Azure Virtual Desktop" also covers this task. It is listed once, under [Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements](#recommend-an-appropriate-licensing-model-for-azure-virtual-desktop-based-on-requirements) in the skill group Plan host pools and session hosts.
+:::
+
+#### Apply OS and application updates to an image
+
+:::note
+The Microsoft Learn module "Create and manage session host image for Azure Virtual Desktop" also covers this task. It is listed once, under [Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements](#recommend-an-appropriate-licensing-model-for-azure-virtual-desktop-based-on-requirements) in the skill group Plan host pools and session hosts.
+:::
+
+#### Create a session host by using a custom image
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Monitor and manage performance and health": under [Plan a host pool architecture](#plan-a-host-pool-architecture) in the skill group Plan host pools and session hosts
+- "Create and manage session host image for Azure Virtual Desktop": under [Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements](#recommend-an-appropriate-licensing-model-for-azure-virtual-desktop-based-on-requirements) in the skill group Plan host pools and session hosts
+- "Install and configure apps on a session host": under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts
+- "Create and configure host pools and session hosts for Azure Virtual Desktop": under [Design network configuration for session hosts to meet requirements for Azure Virtual Desktop](#design-network-configuration-for-session-hosts-to-meet-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+:::
+
+#### Plan and implement image storage, including Azure Compute Gallery
+
+:::note
+The Microsoft Learn module "Create and manage session host image for Azure Virtual Desktop" also covers this task. It is listed once, under [Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements](#recommend-an-appropriate-licensing-model-for-azure-virtual-desktop-based-on-requirements) in the skill group Plan host pools and session hosts.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create an image definition and image version" href="https://learn.microsoft.com/azure/virtual-machines/image-version?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Azure Compute Gallery" href="https://learn.microsoft.com/azure/virtual-machines/azure-compute-gallery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Gallery for Sharing Resources" href="https://learn.microsoft.com/azure/virtual-machines/create-gallery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an encrypted image version with customer-managed keys" href="https://learn.microsoft.com/azure/virtual-machines/image-version-encryption?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Export an image version to a managed disk" href="https://learn.microsoft.com/azure/virtual-machines/managed-disk-from-image-version?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate Managed image to Compute gallery" href="https://learn.microsoft.com/azure/virtual-machines/migration/migration-managed-image-to-compute-gallery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Share Azure Compute Gallery Resources with a Community Gallery" href="https://learn.microsoft.com/azure/virtual-machines/share-gallery-community?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Share Gallery Images Across Tenants by Using an App Registration" href="https://learn.microsoft.com/azure/virtual-machines/share-using-app-registration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Share VM images in a compute gallery" href="https://learn.microsoft.com/azure/virtual-machines/shared-image-galleries?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Soft Delete in Azure Compute Gallery (Preview) - Azure Virtual Machines" href="https://learn.microsoft.com/azure/virtual-machines/soft-delete-gallery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot problems with shared images in Azure" href="https://learn.microsoft.com/azure/virtual-machines/troubleshooting-shared-images?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="List, update, and delete resources" href="https://learn.microsoft.com/azure/virtual-machines/update-image-resources?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Share Resources in Azure Compute Gallery" href="https://learn.microsoft.com/azure/virtual-machines/share-gallery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Share Azure Compute Gallery Resources Directly with Subscriptions and Tenants" href="https://learn.microsoft.com/azure/virtual-machines/share-gallery-direct?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a VM from a generalized image in a gallery" href="https://learn.microsoft.com/azure/virtual-machines/vm-generalized-image-version?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Azure VM Image Builder with a gallery for Windows VMs" href="https://learn.microsoft.com/azure/virtual-machines/windows/image-builder-gallery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a new Windows image version from an existing image version using Azure VM Image Builder" href="https://learn.microsoft.com/azure/virtual-machines/windows/image-builder-gallery-update-image-version?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Plan and implement identity and security (15–20%)
+
+### Plan and implement identity integration
+
+#### Select an identity scenario for Azure Virtual Desktop, including Active Directory Domain Services (AD DS), Microsoft Entra ID, and Microsoft Entra Domain Services
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="On-Premises AD DS Authentication for Azure Files" href="https://learn.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify requirements to configure the Azure Virtual Desktop session host for an identity scenario
+
+:::note
+The Microsoft Learn module "Create and configure host pools and session hosts for Azure Virtual Desktop" also covers this task. It is listed once, under [Design network configuration for session hosts to meet requirements for Azure Virtual Desktop](#design-network-configuration-for-session-hosts-to-meet-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop.
+:::
+
+#### Plan and implement Azure role-based access control (Azure RBAC) for Azure Virtual Desktop
+
+:::note
+The Microsoft Learn module "Manage access for Azure Virtual Desktop" also covers this task. It is listed once, under [Recommend resource groups, subscriptions, and management groups for Azure Virtual Desktop resources](#recommend-resource-groups-subscriptions-and-management-groups-for-azure-virtual-desktop-resources) in the skill group Plan host pools and session hosts.
+:::
+
+#### Plan and implement Microsoft Entra Conditional Access policies for connections to Azure Virtual Desktop
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage security for Azure Virtual Desktop" href="https://learn.microsoft.com/training/modules/manage-security?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement authentication options in Azure Virtual Desktop, including passwordless, smart card, and multifactor authentication
+
+:::note
+The Microsoft Learn module "Manage access for Azure Virtual Desktop" also covers this task. It is listed once, under [Recommend resource groups, subscriptions, and management groups for Azure Virtual Desktop resources](#recommend-resource-groups-subscriptions-and-management-groups-for-azure-virtual-desktop-resources) in the skill group Plan host pools and session hosts.
+:::
+
+#### Manage roles, groups, and rights assignments on Azure Virtual Desktop session hosts
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage access for Azure Virtual Desktop": under [Recommend resource groups, subscriptions, and management groups for Azure Virtual Desktop resources](#recommend-resource-groups-subscriptions-and-management-groups-for-azure-virtual-desktop-resources) in the skill group Plan host pools and session hosts
+- "Install and configure apps on a session host": under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts
+:::
+
+#### Configure Microsoft Entra single sign-on
+
+:::note
+The Microsoft Learn module "Manage access for Azure Virtual Desktop" also covers this task. It is listed once, under [Recommend resource groups, subscriptions, and management groups for Azure Virtual Desktop resources](#recommend-resource-groups-subscriptions-and-management-groups-for-azure-virtual-desktop-resources) in the skill group Plan host pools and session hosts.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure single sign-on for Azure Virtual Desktop using Microsoft Entra ID - Azure Virtual Desktop" href="https://learn.microsoft.com/azure/virtual-desktop/configure-single-sign-on?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Plan and implement security
+
+#### Plan, implement, and manage security for Azure Virtual Desktop session hosts by using Microsoft Defender for Cloud
+
+:::note
+The Microsoft Learn module "Manage security for Azure Virtual Desktop" also covers this task. It is listed once, under [Plan and implement Microsoft Entra Conditional Access policies for connections to Azure Virtual Desktop](#plan-and-implement-microsoft-entra-conditional-access-policies-for-connections-to-azure-virtual-desktop) in the skill group Plan and implement identity integration.
+:::
+
+#### Configure session host protection by using Microsoft Defender Antivirus
+
+:::note
+The Microsoft Learn module "Manage security for Azure Virtual Desktop" also covers this task. It is listed once, under [Plan and implement Microsoft Entra Conditional Access policies for connections to Azure Virtual Desktop](#plan-and-implement-microsoft-entra-conditional-access-policies-for-connections-to-azure-virtual-desktop) in the skill group Plan and implement identity integration.
+:::
+
+#### Configure session host protection by using Microsoft Defender for Endpoint, including onboarding and scanning options
+
+:::note
+The Microsoft Learn module "Manage security for Azure Virtual Desktop" also covers this task. It is listed once, under [Plan and implement Microsoft Entra Conditional Access policies for connections to Azure Virtual Desktop](#plan-and-implement-microsoft-entra-conditional-access-policies-for-connections-to-azure-virtual-desktop) in the skill group Plan and implement identity integration.
+:::
+
+#### Implement and manage network security for connections to Azure Virtual Desktop, including user defined routes (UDRs), network security groups (NSGs), and Azure Firewall
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Plan and implement security for virtual networks" href="https://learn.microsoft.com/training/modules/security-virtual-networks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Azure Bastion or just-in-time (JIT) VM access for administrative access to session hosts
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Administer and manage Windows Server IaaS Virtual Machine remotely" href="https://learn.microsoft.com/training/modules/administer-manage-windows-server-iaas-virtual-machine-remotely?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable and enforce just-in-time VM access" href="https://learn.microsoft.com/training/modules/enable-enforce-just-in-time-vm-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore just-in-time virtual machine access" href="https://learn.microsoft.com/training/modules/just-in-time-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan and implement advanced security for compute" href="https://learn.microsoft.com/training/modules/advanced-security-compute?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up Microsoft Defender for Cloud" href="https://learn.microsoft.com/training/modules/set-up-microsoft-defender-cloud?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Developer and admin access to Azure VMs" href="https://learn.microsoft.com/azure/networking/design-guide/developer-admin-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable Just-in-Time Access" href="https://learn.microsoft.com/azure/defender-for-cloud/enable-just-in-time-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand just-in-time virtual machine access" href="https://learn.microsoft.com/azure/defender-for-cloud/just-in-time-access-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement Windows threat protection features on Azure Virtual Desktop session hosts, including App Control for Business and Controlled Folder Access
+
+:::note
+The Microsoft Learn module "Manage security for Azure Virtual Desktop" also covers this task. It is listed once, under [Plan and implement Microsoft Entra Conditional Access policies for connections to Azure Virtual Desktop](#plan-and-implement-microsoft-entra-conditional-access-policies-for-connections-to-azure-virtual-desktop) in the skill group Plan and implement identity integration.
+:::
+
+#### Plan for and implement Azure confidential VMs and Trusted Launch security features for Azure Virtual Desktop session hosts
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage security for Azure Virtual Desktop": under [Plan and implement Microsoft Entra Conditional Access policies for connections to Azure Virtual Desktop](#plan-and-implement-microsoft-entra-conditional-access-policies-for-connections-to-azure-virtual-desktop) in the skill group Plan and implement identity integration
+- "Create and configure host pools and session hosts for Azure Virtual Desktop": under [Design network configuration for session hosts to meet requirements for Azure Virtual Desktop](#design-network-configuration-for-session-hosts-to-meet-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+:::
+
+## Plan and implement user environments and apps (20–25%)
+
+### Plan and implement FSLogix
+
+#### Recommend FSLogix configuration
+
+:::note
+The Microsoft Learn module "Implement and manage FSLogix" also covers this task. It is listed once, under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components) in the skill group Plan and implement storage for Azure Virtual Desktop user data.
+:::
+
+#### Configure FSLogix Profile Containers
+
+:::note
+The Microsoft Learn module "Implement and manage FSLogix" also covers this task. It is listed once, under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components) in the skill group Plan and implement storage for Azure Virtual Desktop user data.
+:::
+
+#### Configure FSLogix ODFC containers
+
+:::note
+The Microsoft Learn module "Implement and manage FSLogix" also covers this task. It is listed once, under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components) in the skill group Plan and implement storage for Azure Virtual Desktop user data.
+:::
+
+#### Configure FSLogix Cloud Cache
+
+:::note
+The Microsoft Learn module "Implement and manage FSLogix" also covers this task. It is listed once, under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components) in the skill group Plan and implement storage for Azure Virtual Desktop user data.
+:::
+
+#### Implement FSLogix application masking
+
+:::note
+The Microsoft Learn module "Implement and manage FSLogix" also covers this task. It is listed once, under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components) in the skill group Plan and implement storage for Azure Virtual Desktop user data.
+:::
+
+### Plan and implement user experience and client settings
+
+#### Choose an Azure Virtual Desktop client
+
+:::note
+The Microsoft Learn module "Configure user experience settings" also covers this task. It is listed once, under [Configure host pool and session host settings](#configure-host-pool-and-session-host-settings) in the skill group Implement host pools and session hosts.
+:::
+
+#### Choose a deployment method for the client
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Deploy and troubleshoot Azure Virtual Desktop clients
+
+:::note
+The Microsoft Learn module "Configure user experience settings" also covers this task. It is listed once, under [Configure host pool and session host settings](#configure-host-pool-and-session-host-settings) in the skill group Implement host pools and session hosts.
+:::
+
+#### Configure device redirection
+
+:::note
+The Microsoft Learn module "Configure user experience settings" also covers this task. It is listed once, under [Configure host pool and session host settings](#configure-host-pool-and-session-host-settings) in the skill group Implement host pools and session hosts.
+:::
+
+#### Configure multimedia redirection
+
+:::note
+The Microsoft Learn module "Configure user experience settings" also covers this task. It is listed once, under [Configure host pool and session host settings](#configure-host-pool-and-session-host-settings) in the skill group Implement host pools and session hosts.
+:::
+
+#### Configure printing and Universal Print
+
+:::note
+The Microsoft Learn module "Configure user experience settings" also covers this task. It is listed once, under [Configure host pool and session host settings](#configure-host-pool-and-session-host-settings) in the skill group Implement host pools and session hosts.
+:::
+
+#### Configure user settings through Microsoft Intune policies or Group Policy
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure Remote Desktop Protocol (RDP) properties on a host pool
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure user experience settings": under [Configure host pool and session host settings](#configure-host-pool-and-session-host-settings) in the skill group Implement host pools and session hosts
+- "Implement and manage networking for Azure Virtual Desktop": under [Assess network capacity and speed requirements for Azure Virtual Desktop](#assess-network-capacity-and-speed-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+- "Create and configure host pools and session hosts for Azure Virtual Desktop": under [Design network configuration for session hosts to meet requirements for Azure Virtual Desktop](#design-network-configuration-for-session-hosts-to-meet-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+:::
+
+#### Configure session timeout properties
+
+:::note
+The Microsoft Learn module "Configure user experience settings" also covers this task. It is listed once, under [Configure host pool and session host settings](#configure-host-pool-and-session-host-settings) in the skill group Implement host pools and session hosts.
+:::
+
+#### Implement the Start VM on Connect feature
+
+:::note
+The Microsoft Learn module "Configure user experience settings" also covers this task. It is listed once, under [Configure host pool and session host settings](#configure-host-pool-and-session-host-settings) in the skill group Implement host pools and session hosts.
+:::
+
+#### Assign and unassign personal desktops to users
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Install and configure apps on a session host
+
+#### Choose a method for deploying an app to Azure Virtual Desktop
+
+:::note
+The Microsoft Learn module "Install and configure apps on a session host" also covers this task. It is listed once, under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts.
+:::
+
+#### Create and configure an application group
+
+:::note
+The Microsoft Learn module "Install and configure apps on a session host" also covers this task. It is listed once, under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts.
+:::
+
+#### Assign users to application groups
+
+:::note
+The Microsoft Learn module "Install and configure apps on a session host" also covers this task. It is listed once, under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts.
+:::
+
+#### Publish an application as a RemoteApp
+
+:::note
+The Microsoft Learn module "Install and configure apps on a session host" also covers this task. It is listed once, under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts.
+:::
+
+#### Implement and manage Microsoft 365 Apps on Azure Virtual Desktop session hosts
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Install and configure apps on a session host": under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts
+- "Implement and manage FSLogix": under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components) in the skill group Plan and implement storage for Azure Virtual Desktop user data
+:::
+
+#### Implement and manage OneDrive, including multisession environments
+
+:::note
+The Microsoft Learn module "Install and configure apps on a session host" also covers this task. It is listed once, under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts.
+:::
+
+#### Implement and manage Microsoft Teams, including the Remote Desktop WebRTC Redirector Service
+
+:::note
+The Microsoft Learn module "Install and configure apps on a session host" also covers this task. It is listed once, under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts.
+:::
+
+#### Implement and manage browsers for Azure Virtual Desktop sessions
+
+:::note
+The Microsoft Learn module "Install and configure apps on a session host" also covers this task. It is listed once, under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts.
+:::
+
+#### Configure dynamic application delivery by using App attach
+
+:::note
+The Microsoft Learn module "Install and configure apps on a session host" also covers this task. It is listed once, under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts.
+:::
+
+#### Create an application package for App attach
+
+:::note
+The Microsoft Learn module "Install and configure apps on a session host" also covers this task. It is listed once, under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts.
+:::
+
+## Monitor and maintain an Azure Virtual Desktop infrastructure (10–15%)
+
+### Monitor and manage Azure Virtual Desktop services
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Azure Virtual Desktop? - Azure - Azure Virtual Desktop" href="https://learn.microsoft.com/azure/virtual-desktop/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure log collection and analysis for Azure Virtual Desktop session hosts
+
+:::note
+The Microsoft Learn module "Monitor and manage performance and health" also covers this task. It is listed once, under [Plan a host pool architecture](#plan-a-host-pool-architecture) in the skill group Plan host pools and session hosts.
+:::
+
+#### Monitor Azure Virtual Desktop by using Azure Monitor
+
+:::note
+The Microsoft Learn module "Monitor and manage performance and health" also covers this task. It is listed once, under [Plan a host pool architecture](#plan-a-host-pool-architecture) in the skill group Plan host pools and session hosts.
+:::
+
+#### Customize Azure Monitor workbooks for Azure Virtual Desktop Insights
+
+:::note
+The Microsoft Learn module "Monitor and manage performance and health" also covers this task. It is listed once, under [Plan a host pool architecture](#plan-a-host-pool-architecture) in the skill group Plan host pools and session hosts.
+:::
+
+#### Optimize session host capacity and performance
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Monitor and manage performance and health": under [Plan a host pool architecture](#plan-a-host-pool-architecture) in the skill group Plan host pools and session hosts
+- "Design the Azure Virtual Desktop architecture": under [Assess network capacity and speed requirements for Azure Virtual Desktop](#assess-network-capacity-and-speed-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+- "Create and configure host pools and session hosts for Azure Virtual Desktop": under [Design network configuration for session hosts to meet requirements for Azure Virtual Desktop](#design-network-configuration-for-session-hosts-to-meet-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+:::
+
+#### Implement autoscaling in host pools
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Monitor and manage performance and health": under [Plan a host pool architecture](#plan-a-host-pool-architecture) in the skill group Plan host pools and session hosts
+- "Design the Azure Virtual Desktop architecture": under [Assess network capacity and speed requirements for Azure Virtual Desktop](#assess-network-capacity-and-speed-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+- "Create and configure host pools and session hosts for Azure Virtual Desktop": under [Design network configuration for session hosts to meet requirements for Azure Virtual Desktop](#design-network-configuration-for-session-hosts-to-meet-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop
+:::
+
+#### Monitor and manage active sessions and application groups
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Monitor and manage performance and health": under [Plan a host pool architecture](#plan-a-host-pool-architecture) in the skill group Plan host pools and session hosts
+- "Install and configure apps on a session host": under [Create host pools and session hosts by using the Azure portal](#create-host-pools-and-session-hosts-by-using-the-azure-portal) in the skill group Implement host pools and session hosts
+:::
+
+### Plan and implement updates, backups, and disaster recovery
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand data protection and resiliency in Azure NetApp Files" href="https://learn.microsoft.com/training/modules/azure-netapp-files-data-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Recommend an update strategy for session hosts
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Plan and implement updates, backups, and disaster recovery" href="https://learn.microsoft.com/training/modules/plan-implement-business-continuity-disaster-recovery?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement a disaster recovery plan for Azure Virtual Desktop
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Plan and implement updates, backups, and disaster recovery": under [Recommend an update strategy for session hosts](#recommend-an-update-strategy-for-session-hosts)
+- "Create and manage session host image for Azure Virtual Desktop": under [Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements](#recommend-an-appropriate-licensing-model-for-azure-virtual-desktop-based-on-requirements) in the skill group Plan host pools and session hosts
+- "Implement and manage FSLogix": under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components) in the skill group Plan and implement storage for Azure Virtual Desktop user data
+:::
+
+#### Plan for multi-region implementation
+
+:::note
+The Microsoft Learn module "Create and configure host pools and session hosts for Azure Virtual Desktop" also covers this task. It is listed once, under [Design network configuration for session hosts to meet requirements for Azure Virtual Desktop](#design-network-configuration-for-session-hosts-to-meet-requirements-for-azure-virtual-desktop) in the skill group Plan, implement, and manage networking for Azure Virtual Desktop.
+:::
+
+#### Design and implement a backup strategy for Azure Virtual Desktop
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Plan and implement updates, backups, and disaster recovery": under [Recommend an update strategy for session hosts](#recommend-an-update-strategy-for-session-hosts)
+- "Implement and manage storage for Azure Virtual Desktop": under [Plan storage for Azure Virtual Desktop user data](#plan-storage-for-azure-virtual-desktop-user-data) in the skill group Plan and implement storage for Azure Virtual Desktop user data
+- "Implement and manage FSLogix": under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components) in the skill group Plan and implement storage for Azure Virtual Desktop user data
+:::
+
+#### Configure backup and restore for FSLogix user profiles, personal desktops, and images
+
+:::note
+The Microsoft Learn module "Implement and manage FSLogix" also covers this task. It is listed once, under [Implement storage for FSLogix components](#implement-storage-for-fslogix-components) in the skill group Plan and implement storage for Azure Virtual Desktop user data.
+:::
