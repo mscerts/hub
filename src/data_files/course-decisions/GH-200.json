@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "code": "GH-200",
+  "decisions": [
+    {
+      "task": "author-and-maintain-actions/define-action-structure-and-metadata/implement-workflow-commands-within-actions",
+      "target": "/training/modules/implement-github-actions",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "author-and-maintain-actions/distribute-and-maintain-actions/apply-versioning-and-release-strategies",
+      "target": "/training/modules/implement-versioning-strategy",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "author-and-manage-workflows/configure-workflow-triggers-and-events/@foundations",
+      "target": "/training/modules/github-introduction-administration",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "author-and-manage-workflows/configure-workflow-triggers-and-events/@foundations",
+      "target": "/training/modules/intro-to-git",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "author-and-manage-workflows/configure-workflow-triggers-and-events/@foundations",
+      "target": "/training/modules/introduction-to-devops",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "author-and-manage-workflows/configure-workflow-triggers-and-events/define-and-validate-workflow-dispatch-inputs-types-required",
+      "target": "/training/modules/manage-github-actions-enterprise",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "author-and-manage-workflows/design-and-implement-workflow-structure/use-workflow-commands-and-environment-variables",
+      "target": "/training/modules/github-actions-cd",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "consume-and-troubleshoot-workflows/access-workflow-artifacts-and-logs/@foundations",
+      "target": "/azure/devops/pipelines/artifacts/artifacts-overview",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "consume-and-troubleshoot-workflows/use-and-manage-workflow-templates/contrast-disabling-and-deleting-workflows",
+      "target": "/training/modules/github-actions-ci",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "consume-and-troubleshoot-workflows/use-and-manage-workflow-templates/use-starter-workflows-public-and-private-non-public-template",
+      "target": "/training/modules/manage-github-actions-enterprise",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "manage-github-actions-for-the-enterprise/distribute-and-govern-actions-and-workflows/@foundations",
+      "target": "/training/modules/github-enterprise-server-developer-fundamentals",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "manage-github-actions-for-the-enterprise/distribute-and-govern-actions-and-workflows/@foundations",
+      "target": "/training/modules/introduction-github-packages",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "manage-github-actions-for-the-enterprise/manage-runners-at-scale/apply-ip-allow-lists-and-networking-settings",
+      "target": "/training/modules/manage-github-actions-enterprise",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    }
+  ],
+  "excludedFamilies": []
+}
