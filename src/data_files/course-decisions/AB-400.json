@@ -1,0 +1,609 @@
+{
+  "schemaVersion": 1,
+  "code": "AB-400",
+  "decisions": [
+    {
+      "task": "build-microsoft-power-platform-solutions/design-solution-components/@foundations",
+      "target": "/training/modules/describe-business-value-microsoft-power-platform-services",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-solution-components/@foundations",
+      "target": "/training/modules/introduction-copilot-power-platform",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-solution-components/design-custom-agents-that-integrate-with-microsoft-power-pla",
+      "target": "/microsoft-365/copilot/extensibility/overview",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-solution-components/design-custom-agents-that-integrate-with-microsoft-power-pla",
+      "target": "/training/modules/build-agent-with-custom-tools",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-solution-components/design-custom-agents-that-integrate-with-microsoft-power-pla",
+      "target": "/training/modules/design-alm-process-ai-powered-business-solutions",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-solution-components/design-custom-agents-that-integrate-with-microsoft-power-pla",
+      "target": "/training/modules/manage-testing-ai-powered-business-solutions",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-solution-components/design-custom-interfaces-by-using-power-apps-code-apps",
+      "target": "/power-apps/developer/code-apps/reference/cli",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-the-technical-architecture/assess-the-impact-of-microsoft-power-platform-security-featu",
+      "target": "/training/modules/deploy-operate-code-apps",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-the-technical-architecture/determine-when-to-use-deterministic-or-non-deterministic-met",
+      "target": "/azure/azure-functions/functions-agent-bindings-agent-framework",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-the-technical-architecture/determine-when-to-use-deterministic-or-non-deterministic-met",
+      "target": "/azure/well-architected/ai",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-the-technical-architecture/determine-when-to-use-microsoft-foundry-or-microsoft-copilot",
+      "target": "/microsoft-365/copilot/extensibility/choose-plugin-development-tools",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-the-technical-architecture/determine-when-to-use-microsoft-foundry-or-microsoft-copilot",
+      "target": "/microsoft-365/copilot/extensibility/copilot-studio-experience",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-the-technical-architecture/determine-when-to-use-microsoft-foundry-or-microsoft-copilot",
+      "target": "/training/modules/build-agent-with-custom-tools",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-the-technical-architecture/determine-when-to-use-microsoft-foundry-or-microsoft-copilot",
+      "target": "/training/modules/choose-microsoft-365-copilot-extensibility-path",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-the-technical-architecture/determine-when-to-use-microsoft-foundry-or-microsoft-copilot",
+      "target": "/training/modules/design-alm-process-ai-powered-business-solutions",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/design-the-technical-architecture/determine-when-to-use-microsoft-foundry-or-microsoft-copilot",
+      "target": "/training/modules/implement-alm-agents-power-platform",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/implement-application-lifecycle-management-alm/@foundations",
+      "target": "/training/modules/deliver-solutions-governed-alm",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/implement-application-lifecycle-management-alm/implement-and-extend-microsoft-power-platform-pipelines",
+      "target": "/power-platform/alm/faqs-ai-deployment-notes-pipelines",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "build-microsoft-power-platform-solutions/implement-application-lifecycle-management-alm/implement-and-extend-microsoft-power-platform-pipelines",
+      "target": "/power-platform/developer/cli/reference/pipeline",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "develop-integrations/create-custom-connectors/@foundations",
+      "target": "/azure/connectors/introduction",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "develop-integrations/create-custom-connectors/@foundations",
+      "target": "/training/modules/introduction-dataverse-developers",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "develop-integrations/create-custom-connectors/create-a-custom-connector-for-an-azure-service",
+      "target": "/training/modules/create-copilot-podcast",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "develop-integrations/create-custom-connectors/implement-authentication-for-custom-connectors",
+      "target": "/training/modules/create-copilot-podcast",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/build-microsoft-foundry-agents-by-using-code-that-integrates/@foundations",
+      "target": "/microsoft-365/copilot/extensibility/overview-custom-engine-agent",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/build-microsoft-foundry-agents-by-using-code-that-integrates/@foundations",
+      "target": "/microsoft-copilot-studio/authoring-add-other-agents",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/build-microsoft-foundry-agents-by-using-code-that-integrates/@foundations",
+      "target": "/training/modules/integrate-custom-agents-power-platform",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/build-microsoft-foundry-agents-by-using-code-that-integrates/connect-custom-agents-to-copilot-studio-agents",
+      "target": "/microsoft-365/copilot/extensibility/agents-overview",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/build-microsoft-foundry-agents-by-using-code-that-integrates/connect-custom-agents-to-copilot-studio-agents",
+      "target": "/microsoft-365/copilot/extensibility/bring-agents-to-copilot",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/configure-power-automate-cloud-flows-and-copilot-studio-work/@foundations",
+      "target": "/training/modules/implement-resilient-cloud-flows",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/configure-power-automate-cloud-flows-and-copilot-studio-work/implement-authentication-for-the-dataverse-connector-by-usin",
+      "target": "/training/modules/build-power-platform-custom-connectors",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/create-a-dataverse-plug-in/configure-a-dataverse-custom-api-message",
+      "target": "/power-apps/developer/data-platform/webapi/overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/create-a-dataverse-plug-in/configure-dataverse-business-events",
+      "target": "/power-apps/developer/data-platform/work-event-data-azure-event-hub-solution",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/create-a-dataverse-plug-in/configure-microsoft-power-platform-managed-identity-for-plug",
+      "target": "/training/modules/process-workloads-azure-functions",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/create-a-dataverse-plug-in/develop-a-plug-in-that-implements-business-logic",
+      "target": "/training/modules/design-power-platform-architectures",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/create-a-dataverse-plug-in/implement-images-to-support-plug-in-logic",
+      "target": "/power-apps/developer/data-platform/best-practices/business-logic",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/create-a-dataverse-plug-in/perform-operations-in-plug-ins-by-using-the-organization-ser",
+      "target": "/power-apps/developer/data-platform/best-practices/business-logic",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/process-workloads-by-using-microsoft-azure-functions/@foundations",
+      "target": "/training/modules/power-automate-architecture",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/process-workloads-by-using-microsoft-azure-functions/@foundations",
+      "target": "/training/modules/process-workloads-azure-functions",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-microsoft-power-platform/process-workloads-by-using-microsoft-azure-functions/authenticate-to-microsoft-power-platform-by-using-managed-id",
+      "target": "/power-platform/admin/security/connect-data-sources",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/apply-business-logic-in-model-driven-apps-by-using-client-sc/@foundations",
+      "target": "/training/modules/apply-client-logic-model-driven-apps",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/apply-business-logic-in-model-driven-apps-by-using-client-sc/@foundations",
+      "target": "/training/modules/command-bar-advanced",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/apply-business-logic-in-model-driven-apps-by-using-client-sc/@foundations",
+      "target": "/training/modules/get-started-with-model-driven-apps-in-powerapps",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/build-power-apps-code-apps/@foundations",
+      "target": "/training/modules/explore-microsoft-365-copilot-agents",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/build-power-apps-code-apps/@foundations",
+      "target": "/training/modules/http-connectors",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/build-power-apps-code-apps/configure-code-apps-to-use-dataverse-tables",
+      "target": "/training/modules/build-dataverse-table-structure",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/build-power-apps-code-apps/configure-code-apps-to-use-microsoft-power-platform-connecti",
+      "target": "/power-platform/developer/cli/reference/connection",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/build-power-apps-code-apps/configure-code-apps-to-use-microsoft-power-platform-connecti",
+      "target": "/training/modules/implement-alm-agents-power-platform",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/build-power-apps-code-apps/configure-code-apps-to-use-power-automate-cloud-flows",
+      "target": "/power-automate/service-principal-support",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/build-power-apps-code-apps/configure-code-apps-to-use-power-automate-cloud-flows",
+      "target": "/power-platform/admin/analytics-flow",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/create-pcf-code-components/@foundations",
+      "target": "/training/modules/build-power-apps-component-framework-code-components",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/alerts/proactive-diagnostics",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/alerts/proactive-exception-volume",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/alerts/proactive-failure-diagnostics",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/alerts/proactive-potential-memory-leak",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/alerts/proactive-trace-severity",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/app-map",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/application-insights-faq",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/azure-ad-authentication",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/grafana-dashboards",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/javascript-feature-extensions",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/opentelemetry-add-modify",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/opentelemetry-collect-detect",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/opentelemetry-configuration",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/opentelemetry-enable",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/opentelemetry-sampling",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/sdk-stats",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/traces-attribute-analysis",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/traces-onboard-app-insights",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/traces-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/usage",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/azure-monitor/app/work-item-integration",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/implement-monitoring-by-using-azure-application-insights",
+      "target": "/azure/developer/azure-skills/skills/app-insights-instrumentation",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-the-user-experience/deploy-and-manage-power-apps-code-apps/package-deploy-and-share-code-apps",
+      "target": "/training/modules/deploy-refine-app",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    }
+  ],
+  "excludedFamilies": []
+}
