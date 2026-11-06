@@ -241,6 +241,13 @@ function audienceSection(audience, { review }) {
   return out;
 }
 
+/** The page description; the exam's name is left out when it would push the description past what the site allows (170 characters). */
+function fullDescription(course) {
+  const base = `Follow a structured ${course.code} course organized by study guide task, with Microsoft Learn training and documentation`;
+  const named = `${base} for ${course.name}.`;
+  return named.length <= 165 ? named : `${base}.`;
+}
+
 /** The weight of a domain as " (20–25%)", or "" when the guide gave none. */
 function weightText(weight) {
   if (!weight) return "";
@@ -281,7 +288,7 @@ export function renderCourse(
         ? `Preview ${course.code} course resources for ${plain(only)}. Follow the selected Microsoft Learn reading for this skill group.`
         : review
           ? `Review the draft ${course.code} study guide course. Inspect selected Microsoft Learn resources and flagged picks before the course is finalized.`
-          : `Follow a structured ${course.code} course organized by study guide task, with Microsoft Learn training and documentation for ${course.name}.`,
+          : fullDescription(course),
     )}"`,
     "---",
     "import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';",

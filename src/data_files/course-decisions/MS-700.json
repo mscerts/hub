@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "code": "MS-700",
+  "decisions": [
+    {
+      "task": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/@foundations",
+      "target": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "decision": "reject",
+      "reason": "Dropped in review: end-user introduction or a narrow device migration note.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/configure-accounts-and-systems-for-microsoft-teams-rooms",
+      "target": "/microsoftteams/rooms/bookable-desks",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/configure-accounts-and-systems-for-microsoft-teams-rooms",
+      "target": "/microsoftteams/rooms/coordinated-meetings",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/configure-accounts-and-systems-for-microsoft-teams-rooms",
+      "target": "/microsoftteams/rooms/rooms-plan",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/configure-accounts-and-systems-for-microsoft-teams-rooms",
+      "target": "/microsoftteams/rooms/rooms-pro-management",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and",
+      "target": "/training/modules/configure-teams-phone-system",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-configuration-profiles-for-teams-devices",
+      "target": "/microsoftteams/devices/device-management",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-configuration-profiles-for-teams-devices",
+      "target": "/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "decision": "reject",
+      "reason": "Dropped in review: end-user introduction or a narrow device migration note.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams",
+      "target": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams",
+      "target": "/training/modules/manage-meetings-virtual-events-experiences",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/identify-when-to-use-microsoft-entra-access-reviews-for-team",
+      "target": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies",
+      "target": "/training/modules/configure-deploy-manage-teams-devices",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/@foundations",
+      "target": "/training/modules/explore-teams",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/@foundations",
+      "target": "/training/modules/introduction-teams-meetings-calling",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/create-and-manage-calling-policies",
+      "target": "/microsoftteams/what-are-emergency-locations-addresses-and-call-routing",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/create-and-manage-voicemail-policies",
+      "target": "/training/modules/configure-auto-attendants-call-queues",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-teams-channels-chats-and-apps/create-and-manage-teams/@foundations",
+      "target": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-teams-channels-chats-and-apps/create-and-manage-teams/@foundations",
+      "target": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-and-manage-frontline-teams-and-experiences",
+      "target": "/training/modules/manage-apps-for-microsoft-teams",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-and-manage-frontline-teams-and-experiences",
+      "target": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-teams-channels-chats-and-apps/create-and-manage-teams/manage-teams-environment-settings",
+      "target": "/training/modules/harden-microsoft-365-secure-score",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/@foundations",
+      "target": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/recommend-appropriate-extensibility-options-including-apps-t",
+      "target": "/training/modules/manage-meetings-virtual-events-experiences",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/@foundations",
+      "target": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-report-on-and-troubleshoot-teams/monitor-and-report-on-teams/configure-alert-rules",
+      "target": "/training/modules/implement-compliance-for-microsoft-teams",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/troubleshoot-issues-with-joining-meetings-and-accessing-feat",
+      "target": "/training/modules/monitor-troubleshoot-teams-phone-system",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}

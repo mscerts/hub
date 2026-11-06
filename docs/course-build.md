@@ -5,7 +5,7 @@ _Runbook of the builder (`scripts/course-build.mjs`, `scripts/lib/course-build.m
 The builder decides nothing. It takes what the earlier steps decided and writes it down as a course file: the study guide's tree, the picks the gates (or the maintainer) accepted, the remembered rejections, and the state of Learn they were judged against.
 
 ```bash
-node scripts/course-build.mjs AZ-104 [--gated FILE] [--out FILE] [--allow-stale] [--urls [--live]]
+node scripts/course-build.mjs AZ-104 [--gated FILE] [--out FILE] [--allow-stale] [--no-official-course] [--urls [--live]]
 ```
 
 Inputs:
@@ -15,6 +15,8 @@ Inputs:
 - **what Learn offers the exam today**, as for the other course tools (a learnsync checkout, `LEARNSYNC_DIR`, and the catalog API's course list): the scope snapshot the course stores.
 
 The course file is written to `<tmp>/course-build/<CODE>.json`, or to `--out`, with `<CODE>.routing.json` beside it (what the page rules took out, below). **Nothing is written into the repository on its own**: when a course is wanted, the maintainer moves it to `src/data_files/courses/<CODE>.json` and runs `node scripts/course-file.mjs validate <CODE> --live`.
+
+**An exam with no official course** (a beta exam, a new one) is refused by default: there is no scope to build on. `--no-official-course` (maintainer, 2026-11-04) builds it anyway, so learners have something to study from while Learn has nothing: the scope snapshot is empty, every pick comes from search (`P4`) or a model (`P5`), and the build says so as a warning. When an official course appears, `course-status.mjs` sees the added course and asks for a review.
 
 ## What goes into the file
 

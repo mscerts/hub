@@ -1,0 +1,915 @@
+---
+title: DP-600 Study Guide Course
+description: "Follow a structured DP-600 course organized by study guide task, with Microsoft Learn training and documentation."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official DP-600 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-600?WT.mc_id=studentamb_165290) skills measured. Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [DP-600 labs page](/certs/labs/azure/dp-600/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As a candidate for this exam, you should have subject matter expertise in designing, creating, and deploying enterprise-scale data analytics solutions.
+
+You implement analytics best practices in Fabric, including version control and deployment.
+
+### Your responsibilities for this role include transforming data into reusable analytics assets by using Microsoft Fabric components, such as
+
+- Lakehouses
+- Data warehouses
+- Notebooks
+- Dataflows
+- Data pipelines
+- Semantic models
+- Reports
+
+### To implement solutions as a Fabric analytics engineer, you partner with other roles, such as
+
+- Solution architects
+- Data engineers
+- Data scientists
+- AI engineers
+- Database administrators
+- Power BI data analysts
+
+### In addition to in-depth work with the Fabric platform, you need experience with
+
+- Data modeling
+- Data transformation
+- Git-based source control
+- Exploratory analytics
+- Languages, including Structured Query Language (SQL), Data Analysis Expressions (DAX), and PySpark
+
+## Plan, implement, and manage a solution for data analytics (10–15%)
+
+### Plan a data analytics environment
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to end-to-end analytics using Microsoft Fabric" href="https://learn.microsoft.com/training/modules/introduction-end-analytics-use-microsoft-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore fundamentals of large-scale analytics" href="https://learn.microsoft.com/training/modules/examine-components-of-modern-data-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore core data concepts" href="https://learn.microsoft.com/training/modules/explore-core-data-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore fundamentals of real-time analytics" href="https://learn.microsoft.com/training/modules/explore-fundamentals-stream-processing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore the analytics process that turns data into insights" href="https://learn.microsoft.com/training/modules/data-analytics-microsoft?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore fundamentals of data visualization" href="https://learn.microsoft.com/training/modules/explore-fundamentals-data-visualization?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Copy job in Data Factory" href="https://learn.microsoft.com/fabric/data-factory/what-is-copy-job?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fabric fundamentals documentation - Microsoft Fabric" href="https://learn.microsoft.com/fabric/fundamentals?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify requirements for a solution, including components, features, performance, and capacity stock-keeping units (SKUs)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Choose data stores in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/choose-data-store-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Recommend settings in the Fabric admin portal
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Delegate tenant settings" href="https://learn.microsoft.com/fabric/admin/delegate-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Workspace admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/portal-workspace?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Tenant settings for additional workloads" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-additional-workloads?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Admin API admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-admin-api-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of advanced networking settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-advanced-networking?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="App admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-app?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit and usage admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-audit-usage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Copilot and Agent admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dashboard admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-dashboard?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Tenant settings for semantic models - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-data-model?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dataflow admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-dataflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Datamart tenant settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-datamart?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Semantic model security admin setting - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-dataset-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Developer admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-developer?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Discovery admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-discovery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Domain management tenant settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-domain-management-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Encryption admin setting - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-encryption?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Tenant settings for Explore - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-explore?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Export and sharing tenant settings" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-export-sharing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scorecards admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-goals-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Help and support admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-help-support?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Information protection tenant settings" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-information-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Insights admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-insights?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Integration admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-integration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric tenant settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-microsoft-fabric-tenant-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="OneLake tenant settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-onelake?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage organizational visuals - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-organizational-visuals?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Power BI visuals admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-power-bi-visuals?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Power BI Premium Per-User (PPU)" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-premium-per-user?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Q&A admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-qa?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="R and Python visuals admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-r-python-visuals?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Tenant settings for scale-out - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-scale-out?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Template app admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-template-app?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="User experience experiments admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-user-experience-experiments?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Tenant settings index" href="https://learn.microsoft.com/fabric/admin/tenant-settings-index?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose a data gateway type
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="On-premises and virtual network data gateway considerations for data destinations in Dataflow Gen2" href="https://learn.microsoft.com/fabric/data-factory/gateway-considerations-output-destinations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure your data movement with Copy Job and Virtual Network Data Gateway" href="https://learn.microsoft.com/fabric/data-factory/copy-job-with-virtual-network-data-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Using cloud connections through gateways" href="https://learn.microsoft.com/fabric/data-factory/dataflow-gen2-cloud-connection-gateway-use?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to access on-premises data sources in Data Factory" href="https://learn.microsoft.com/fabric/data-factory/how-to-access-on-premises-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set Up a Virtual Network Gateway to Access a Lakehouse from Power BI" href="https://learn.microsoft.com/fabric/security/security-workspace-private-links-example-power-bi-virtual-network?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a custom Power BI report theme
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Implement and manage a data analytics environment
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Get started with lakehouses in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/get-started-lakehouses?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with data warehouses in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/get-started-data-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Plan Your Microsoft Fabric Capacity: Strategic Guide Overview" href="https://learn.microsoft.com/fabric/enterprise/capacity-planning-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Terminology" href="https://learn.microsoft.com/fabric/fundamentals/fabric-terminology?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement workspace and item-level access controls for Fabric items
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Secure data access in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/secure-data-access-in-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure a Microsoft Fabric data warehouse" href="https://learn.microsoft.com/training/modules/secure-data-warehouse-in-microsoft-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enforce semantic model security" href="https://learn.microsoft.com/training/modules/enforce-semantic-model-security?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="OneLake table, column, and row-level security" href="https://learn.microsoft.com/fabric/onelake/security/table-column-row-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use tenant and workspace private links" href="https://learn.microsoft.com/fabric/security/security-tenant-workspace-private-links-same-tenant?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About workspace IP firewall rules" href="https://learn.microsoft.com/fabric/security/security-workspace-level-firewall-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up and use workspace IP firewall rules" href="https://learn.microsoft.com/fabric/security/security-workspace-level-firewall-set-up?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of workspace-level private links" href="https://learn.microsoft.com/fabric/security/security-workspace-level-private-links-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up and use workspace-level private links" href="https://learn.microsoft.com/fabric/security/security-workspace-level-private-links-set-up?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fabric security features availability - Microsoft Fabric" href="https://learn.microsoft.com/fabric/security/security-feature-availability?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement data sharing for workspaces, warehouses, and lakehouses
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create a workspace" href="https://learn.microsoft.com/fabric/fundamentals/create-workspaces?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Workspaces in Microsoft Fabric and Power BI" href="https://learn.microsoft.com/fabric/fundamentals/workspaces?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage sensitivity labels in semantic models and lakehouses
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How to apply sensitivity labels in Power BI - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/powerbi/service-security-apply-data-sensitivity-labels?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sensitivity Labels in Power BI - Microsoft Purview Information Protection" href="https://learn.microsoft.com/fabric/enterprise/powerbi/service-security-sensitivity-label-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sensitivity label inheritance from data sources in Power BI" href="https://learn.microsoft.com/fabric/governance/service-security-sensitivity-label-inheritance-from-data-sources?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Fabric-enabled workspace settings
+
+:::note
+The Microsoft Learn module "Secure data access in Microsoft Fabric" also covers this task. It is listed once, under [Implement workspace and item-level access controls for Fabric items](#implement-workspace-and-item-level-access-controls-for-fabric-items).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure resource profiles in Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/configure-resource-profiles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and manage starter pools in Fabric Spark" href="https://learn.microsoft.com/fabric/data-engineering/configure-starter-pools?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create custom Apache Spark pools in Fabric" href="https://learn.microsoft.com/fabric/data-engineering/create-custom-spark-pools?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Workspace administration settings in Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/workspace-admin-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable workspace inbound access protection" href="https://learn.microsoft.com/fabric/security/security-workspace-enable-inbound-access-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable workspace outbound access protection" href="https://learn.microsoft.com/fabric/security/workspace-outbound-access-protection-set-up?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable and configure Copilot in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/fundamentals/copilot-enable-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage admin access to workspace outbound access protection settings" href="https://learn.microsoft.com/fabric/security/workspace-outbound-access-protection-tenant-setting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Fabric settings in OneLake Catalog - Microsoft Fabric" href="https://learn.microsoft.com/fabric/governance/onelake-catalog-manage-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apache Spark workspace administration settings FAQ - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/spark-admin-settings-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Govern workspace settings editing across your tenant - Microsoft Fabric" href="https://learn.microsoft.com/fabric/governance/fabric-policies-edit-workspace-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure workspace monitoring - Microsoft Fabric" href="https://learn.microsoft.com/fabric/fundamentals/enable-workspace-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable Workspace Monitoring (Preview) in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-factory/workspace-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage Fabric capacity
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage your Fabric capacity" href="https://learn.microsoft.com/fabric/admin/capacity-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage settings for data engineering and science capacity - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/capacity-settings-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data engineering and science capacity admin settings - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/capacity-settings-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Capacity overage in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/capacity-overage-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable capacity overage in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/enable-capacity-overage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is the Microsoft Fabric Capacity Metrics app? - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/metrics-app?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Evaluate and optimize your Microsoft Fabric capacity" href="https://learn.microsoft.com/fabric/enterprise/optimize-capacity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Pause and resume your Fabric capacity" href="https://learn.microsoft.com/fabric/enterprise/pause-resume?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scale Your Capacity Size in Azure - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/scale-capacity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Control item creation on a Fabric capacity - Microsoft Fabric" href="https://learn.microsoft.com/fabric/governance/fabric-policies-item-creation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Fabric Capacity in the OneLake Catalog - Microsoft Fabric" href="https://learn.microsoft.com/fabric/governance/onelake-catalog-capacities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What Is Monitor Hub in Microsoft Fabric? - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/monitoring-hub?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor capacity health in the Monitor hub - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/monitoring-hub-capacity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Capacity reassignment restrictions and common issues" href="https://learn.microsoft.com/fabric/admin/portal-workspace-capacity-reassignment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View refresh summary" href="https://learn.microsoft.com/fabric/admin/service-admin-portal-refresh-summary?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Power BI Premium capacity notifications - Microsoft Fabric" href="https://learn.microsoft.com/fabric/admin/service-admin-premium-capacity-notifications?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apache Spark billing and utilization in Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/billing-capacity-management-for-spark?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure On-demand Billing for Spark in Microsoft Fabric - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-engineering/configure-autoscale-billing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Job concurrency and queue monitoring" href="https://learn.microsoft.com/fabric/data-engineering/job-concurrency-queue-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor Apache Spark capacity consumption" href="https://learn.microsoft.com/fabric/data-engineering/monitor-spark-capacity-consumption?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fabric Spark Capacity and Cluster Planning" href="https://learn.microsoft.com/fabric/data-engineering/spark-best-practices-capacity-planning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Permission and Capacity Errors in Data Engineering" href="https://learn.microsoft.com/fabric/data-engineering/troubleshoot-permissions-capacity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Burstable Capacity" href="https://learn.microsoft.com/fabric/data-warehouse/burstable-capacity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Smoothing and Throttling" href="https://learn.microsoft.com/fabric/data-warehouse/compute-capacity-smoothing-throttling?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to Observe Fabric Data Warehouse Utilization Trends" href="https://learn.microsoft.com/fabric/data-warehouse/how-to-observe-utilization?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Warehouse Consumption and Utilization in Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-warehouse/usage-reporting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Billing for Your Fabric Capacity - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/azure-billing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Buy Fabric capacity Azure SKUs" href="https://learn.microsoft.com/fabric/enterprise/buy-capacity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Capacity Planning Guide: Scale for Centralized Analytics - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/capacity-planning-enterprise-managed-self-service-solutions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Capacity Planning Guide: Manage Growth and Governance - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/capacity-planning-manage-capacity-growth-governance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Capacity Planning Guide: Plan Your First Deployment" href="https://learn.microsoft.com/fabric/enterprise/capacity-planning-plan-deployment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Capacity Planning Guide: Scale for Decentralized Analytics - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/capacity-planning-scale-self-service-analytics?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshooting guide - Monitor and identify capacity usage" href="https://learn.microsoft.com/fabric/enterprise/capacity-planning-troubleshoot-consumption?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshooting guide - Diagnose and resolve 'capacity limit exceeded' errors" href="https://learn.microsoft.com/fabric/enterprise/capacity-planning-troubleshoot-errors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshooting guide - Determine source of report slowness" href="https://learn.microsoft.com/fabric/enterprise/capacity-planning-troubleshoot-throttling?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is the Chargeback app?" href="https://learn.microsoft.com/fabric/enterprise/chargeback-app?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Install the Chargeback app" href="https://learn.microsoft.com/fabric/enterprise/chargeback-app-install?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fabric Copilot Capacity for Usage Billing - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/fabric-copilot-capacity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Features by SKU and Capacity" href="https://learn.microsoft.com/fabric/enterprise/fabric-features?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric quotas" href="https://learn.microsoft.com/fabric/enterprise/fabric-quotas?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Microsoft Fabric licenses and capacity" href="https://learn.microsoft.com/fabric/enterprise/licenses?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Metrics app calculations" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-calculations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Capacity Metrics app compute page" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-compute-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Autoscale compute for Spark detail page" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-feature-autoscale-detail-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand the metrics app autoscale compute for Spark page" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-feature-autoscale-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand the metrics app health page" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-health-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Install the Microsoft Fabric capacity metrics app - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-install?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand the metrics app item history page (preview)" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-item-history-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitoring Scenarios in the Capacity Metrics App Preview - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-monitor-capacity-throttling?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Compute Page in Fabric Capacity Metrics app preview - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-preview-compute-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Health Page in Fabric Capacity Metrics app preview - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-preview-health-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Item Details Page in Fabric Capacity Metrics app preview - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-preview-item-details-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Storage Page in Fabric Capacity Metrics app preview - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-preview-storage-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand the metrics app storage page - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-storage-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand the metrics app timepoint item detail page" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-timepoint-item-detail-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand the metrics app timepoint page" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-timepoint-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand the metrics app timepoint summary page" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-timepoint-summary-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand the metrics app workspace blocked details page - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/metrics-app-workspace-blocked-details?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor a paused capacity" href="https://learn.microsoft.com/fabric/enterprise/monitor-paused-capacity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan your capacity size" href="https://learn.microsoft.com/fabric/enterprise/plan-capacity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage surge protection - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/surge-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="OneLake consumption - Microsoft Fabric" href="https://learn.microsoft.com/fabric/onelake/onelake-consumption?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Fabric capacity operation events in Fabric Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/explore-fabric-capacity-operation-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Fabric capacity overview events in Fabric Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/explore-fabric-capacity-overview-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set alerts on Fabric capacity operation events in Real-Time hub" href="https://learn.microsoft.com/fabric/real-time-hub/set-alerts-fabric-capacity-operation-events?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Manage the analytics development lifecycle
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Microsoft Fabric" href="https://learn.microsoft.com/fabric/fundamentals/microsoft-fabric-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement version control for a workspace
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement continuous integration and continuous delivery (CI/CD) in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/implement-cicd-in-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Git" href="https://learn.microsoft.com/training/modules/intro-to-git?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Overview of Fabric Git integration - Microsoft Fabric" href="https://learn.microsoft.com/fabric/cicd/git-integration/intro-to-git-integration?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage a Power BI Desktop project (.pbip)
+
+:::note
+The Microsoft Learn module "Manage the semantic model development lifecycle" also covers this task. It is listed once, under [Deploy and manage semantic models by using the XMLA endpoint](#deploy-and-manage-semantic-models-by-using-the-xmla-endpoint).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Power BI Desktop projects overview" href="https://learn.microsoft.com/power-bi/developer/projects/projects-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement deployment solutions
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Plan CI/CD for Microsoft Fabric Solutions" href="https://learn.microsoft.com/fabric/fundamentals/understand-best-practices-fabric-cicd?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CI/CD and ALM solution architectures for Dataflow Gen2" href="https://learn.microsoft.com/fabric/data-factory/dataflow-gen2-cicd-alm-solution-architecture?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Perform impact analysis of downstream dependencies from lakehouses, data warehouses, dataflows, and semantic models
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Deploy and manage semantic models by using the XMLA endpoint
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage the semantic model development lifecycle" href="https://learn.microsoft.com/training/modules/manage-semantic-model-lifecycle?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Troubleshoot XMLA endpoint connectivity in Power BI" href="https://learn.microsoft.com/fabric/enterprise/powerbi/troubleshoot-xml-analysis-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and update reusable assets, including Power BI template (.pbit) files, Power BI data source (.pbids) files, and shared semantic models
+
+:::note
+The Microsoft Learn module "Manage the semantic model development lifecycle" also covers this task. It is listed once, under [Deploy and manage semantic models by using the XMLA endpoint](#deploy-and-manage-semantic-models-by-using-the-xmla-endpoint).
+:::
+
+## Prepare and serve data (40–45%)
+
+### Create objects in a lakehouse or warehouse
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What Is Fabric Data Warehouse?" href="https://learn.microsoft.com/fabric/data-warehouse/data-warehousing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is a lakehouse?" href="https://learn.microsoft.com/fabric/data-engineering/lakehouse-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Ingest data by using a data pipeline, dataflow, or notebook
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Transform data using Dataflows Gen2 in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/fabric-transform-data-dataflows?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage shortcuts
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Unify Data Sources With OneLake Shortcuts" href="https://learn.microsoft.com/fabric/onelake/onelake-shortcuts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Shortcuts in a lakehouse" href="https://learn.microsoft.com/fabric/data-engineering/lakehouse-shortcuts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign variables to shortcuts" href="https://learn.microsoft.com/fabric/onelake/assign-variables-to-shortcuts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Azure Data Lake Storage Gen2 shortcut - Microsoft Fabric" href="https://learn.microsoft.com/fabric/onelake/create-adls-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Dataverse shortcut" href="https://learn.microsoft.com/fabric/onelake/create-dataverse-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Google Cloud Storage(GCS) shortcut" href="https://learn.microsoft.com/fabric/onelake/create-gcs-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create shortcuts to on-premises data" href="https://learn.microsoft.com/fabric/onelake/create-on-premises-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Amazon S3 compatible shortcut" href="https://learn.microsoft.com/fabric/onelake/create-s3-compatible-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Amazon S3 shortcut" href="https://learn.microsoft.com/fabric/onelake/create-s3-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage shortcut connections" href="https://learn.microsoft.com/fabric/onelake/manage-shortcut-connections?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure and manage OneLake shortcuts" href="https://learn.microsoft.com/fabric/onelake/onelake-shortcut-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Azure Blob Storage shortcut" href="https://learn.microsoft.com/fabric/onelake/shortcuts/create-blob-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a cross-tenant OneLake shortcut" href="https://learn.microsoft.com/fabric/onelake/shortcuts/create-cross-tenant-onelake-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a OneDrive or SharePoint shortcut" href="https://learn.microsoft.com/fabric/onelake/shortcuts/create-onedrive-sharepoint-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a same-tenant OneLake shortcut" href="https://learn.microsoft.com/fabric/onelake/shortcuts/create-onelake-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Edit or delete a shortcut" href="https://learn.microsoft.com/fabric/onelake/shortcuts/edit-delete-shortcut?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Move shortcuts to a new region" href="https://learn.microsoft.com/fabric/onelake/shortcuts/move-shortcuts-region?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data ingestion options for a lakehouse" href="https://learn.microsoft.com/fabric/data-engineering/load-data-lakehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Access OneLake shortcuts in an Apache Spark notebook" href="https://learn.microsoft.com/fabric/onelake/access-onelake-shortcuts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Integrate Microsoft Entra with AWS S3 using Service Principal Authentication (SPN)" href="https://learn.microsoft.com/fabric/onelake/amazon-storage-shortcut-entra-integration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Iceberg tables with OneLake" href="https://learn.microsoft.com/fabric/onelake/onelake-iceberg-tables?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Shortcut transformations (file)" href="https://learn.microsoft.com/fabric/onelake/shortcuts/transformations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Shortcut transformations (AI-powered)" href="https://learn.microsoft.com/fabric/onelake/shortcuts/transformations-ai?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Unify data with OneLake shortcuts and mirroring" href="https://learn.microsoft.com/fabric/onelake/unify-data?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement file partitioning for analytics workloads in a lakehouse
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Create views, functions, and stored procedures
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Transform data using T-SQL in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/fabric-transform-data-tsql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Enrich data by adding new columns or tables
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Copy data
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Warehouse and Lakehouse: A Decision Guide" href="https://learn.microsoft.com/fabric/fundamentals/decision-guide-lakehouse-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Pipeline Overview" href="https://learn.microsoft.com/fabric/data-factory/pipeline-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose an appropriate method for copying data from a Fabric data source to a lakehouse or warehouse
+
+:::note
+The Microsoft Learn module "Choose data stores in Microsoft Fabric" also covers this task. It is listed once, under [Identify requirements for a solution, including components, features, performance, and capacity stock-keeping units (SKUs)](#identify-requirements-for-a-solution-including-components-features-performance-and-capacity-stock-keeping-units-skus) in the skill group Plan a data analytics environment.
+:::
+
+#### Copy data by using a data pipeline, dataflow, or notebook
+
+:::note
+The Microsoft Learn module "Transform data using Dataflows Gen2 in Microsoft Fabric" also covers this task. It is listed once, under [Ingest data by using a data pipeline, dataflow, or notebook](#ingest-data-by-using-a-data-pipeline-dataflow-or-notebook) in the skill group Create objects in a lakehouse or warehouse.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Decision Guide for Data Movement and Transformation" href="https://learn.microsoft.com/fabric/data-factory/decision-guide-data-integration?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Add stored procedures, notebooks, and dataflows to a data pipeline
+
+:::note
+The Microsoft Learn module "Transform data using T-SQL in Microsoft Fabric" also covers this task. It is listed once, under [Create views, functions, and stored procedures](#create-views-functions-and-stored-procedures) in the skill group Create objects in a lakehouse or warehouse.
+:::
+
+#### Schedule data pipelines
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Run, schedule, or use events to trigger a pipeline - Microsoft Fabric" href="https://learn.microsoft.com/fabric/data-factory/pipeline-runs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create your first pipeline to copy data" href="https://learn.microsoft.com/fabric/data-factory/create-first-pipeline-with-sample-data?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Schedule dataflows and notebooks
+
+:::note
+The Microsoft Learn module "Transform data using Dataflows Gen2 in Microsoft Fabric" also covers this task. It is listed once, under [Ingest data by using a data pipeline, dataflow, or notebook](#ingest-data-by-using-a-data-pipeline-dataflow-or-notebook) in the skill group Create objects in a lakehouse or warehouse.
+:::
+
+### Transform data
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Transact-SQL" href="https://learn.microsoft.com/training/modules/introduction-to-transact-sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Fabric Data Engineering?" href="https://learn.microsoft.com/fabric/data-engineering/data-engineering-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement a data cleansing process
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Transform data using notebooks in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/fabric-transform-data-notebooks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement a star schema for a lakehouse or warehouse, including Type 1 and Type 2 slowly changing dimensions
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design dimensional models for analytics in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/design-dimensional-models-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement bridge tables for a lakehouse or a warehouse
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Denormalize data
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Transform data using notebooks in Microsoft Fabric": under [Implement a data cleansing process](#implement-a-data-cleansing-process)
+- "Transform data using T-SQL in Microsoft Fabric": under [Create views, functions, and stored procedures](#create-views-functions-and-stored-procedures) in the skill group Create objects in a lakehouse or warehouse
+- "Transform data using Dataflows Gen2 in Microsoft Fabric": under [Ingest data by using a data pipeline, dataflow, or notebook](#ingest-data-by-using-a-data-pipeline-dataflow-or-notebook) in the skill group Create objects in a lakehouse or warehouse
+:::
+
+#### Aggregate or de-aggregate data
+
+:::note
+The Microsoft Learn module "Transform data using notebooks in Microsoft Fabric" also covers this task. It is listed once, under [Implement a data cleansing process](#implement-a-data-cleansing-process).
+:::
+
+#### Merge or join data
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Transform data using notebooks in Microsoft Fabric": under [Implement a data cleansing process](#implement-a-data-cleansing-process)
+- "Transform data using T-SQL in Microsoft Fabric": under [Create views, functions, and stored procedures](#create-views-functions-and-stored-procedures) in the skill group Create objects in a lakehouse or warehouse
+- "Transform data using Dataflows Gen2 in Microsoft Fabric": under [Ingest data by using a data pipeline, dataflow, or notebook](#ingest-data-by-using-a-data-pipeline-dataflow-or-notebook) in the skill group Create objects in a lakehouse or warehouse
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Low shuffle merge optimization on Delta tables" href="https://learn.microsoft.com/fabric/data-engineering/low-shuffle-merge?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify and resolve duplicate data, missing data, or null values
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Transform data using notebooks in Microsoft Fabric": under [Implement a data cleansing process](#implement-a-data-cleansing-process)
+- "Transform data using T-SQL in Microsoft Fabric": under [Create views, functions, and stored procedures](#create-views-functions-and-stored-procedures) in the skill group Create objects in a lakehouse or warehouse
+- "Transform data using Dataflows Gen2 in Microsoft Fabric": under [Ingest data by using a data pipeline, dataflow, or notebook](#ingest-data-by-using-a-data-pipeline-dataflow-or-notebook) in the skill group Create objects in a lakehouse or warehouse
+:::
+
+#### Convert data types by using SQL or PySpark
+
+:::note
+The Microsoft Learn module "Transform data using T-SQL in Microsoft Fabric" also covers this task. It is listed once, under [Create views, functions, and stored procedures](#create-views-functions-and-stored-procedures) in the skill group Create objects in a lakehouse or warehouse.
+:::
+
+#### Filter data
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Transform data using notebooks in Microsoft Fabric": under [Implement a data cleansing process](#implement-a-data-cleansing-process)
+- "Transform data using T-SQL in Microsoft Fabric": under [Create views, functions, and stored procedures](#create-views-functions-and-stored-procedures) in the skill group Create objects in a lakehouse or warehouse
+- "Transform data using Dataflows Gen2 in Microsoft Fabric": under [Ingest data by using a data pipeline, dataflow, or notebook](#ingest-data-by-using-a-data-pipeline-dataflow-or-notebook) in the skill group Create objects in a lakehouse or warehouse
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Filter activity" href="https://learn.microsoft.com/fabric/data-factory/filter-activity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Optimize performance
+
+#### Identify and resolve data loading performance bottlenecks in dataflows, notebooks, and SQL queries
+
+:::note
+The Microsoft Learn module "Transform data using Dataflows Gen2 in Microsoft Fabric" also covers this task. It is listed once, under [Ingest data by using a data pipeline, dataflow, or notebook](#ingest-data-by-using-a-data-pipeline-dataflow-or-notebook) in the skill group Create objects in a lakehouse or warehouse.
+:::
+
+#### Implement performance improvements in dataflows, notebooks, and SQL queries
+
+:::note
+The Microsoft Learn module "Transform data using Dataflows Gen2 in Microsoft Fabric" also covers this task. It is listed once, under [Ingest data by using a data pipeline, dataflow, or notebook](#ingest-data-by-using-a-data-pipeline-dataflow-or-notebook) in the skill group Create objects in a lakehouse or warehouse.
+:::
+
+#### Identify and resolve issues with Delta table file sizes
+
+:::note
+The Microsoft Learn module "Transform data using notebooks in Microsoft Fabric" also covers this task. It is listed once, under [Implement a data cleansing process](#implement-a-data-cleansing-process) in the skill group Transform data.
+:::
+
+## Implement and manage semantic models (20–25%)
+
+### Design and build semantic models
+
+#### Choose a storage mode, including Direct Lake
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design semantic models for scale in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/design-semantic-models-scale?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Direct Lake overview" href="https://learn.microsoft.com/fabric/fundamentals/direct-lake-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify use cases for DAX Studio and Tabular Editor 2
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Create DAX calculations in semantic models": under [Write calculations that use DAX variables and functions, such as iterators, table filtering, windowing, and information functions](#write-calculations-that-use-dax-variables-and-functions-such-as-iterators-table-filtering-windowing-and-information-functions)
+- "Manage the semantic model development lifecycle": under [Deploy and manage semantic models by using the XMLA endpoint](#deploy-and-manage-semantic-models-by-using-the-xmla-endpoint) in the skill group Manage the analytics development lifecycle
+- "Optimize semantic model performance": under [Design and build composite models that include aggregations](#design-and-build-composite-models-that-include-aggregations)
+:::
+
+#### Implement a star schema for a semantic model
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design dimensional models for analytics in Microsoft Fabric": under [Implement a star schema for a lakehouse or warehouse, including Type 1 and Type 2 slowly changing dimensions](#implement-a-star-schema-for-a-lakehouse-or-warehouse-including-type-1-and-type-2-slowly-changing-dimensions) in the skill group Transform data
+- "Design semantic models for scale in Microsoft Fabric": under [Choose a storage mode, including Direct Lake](#choose-a-storage-mode-including-direct-lake)
+:::
+
+#### Implement relationships, such as bridge tables and many-to-many relationships
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Write calculations that use DAX variables and functions, such as iterators, table filtering, windowing, and information functions
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create DAX calculations in semantic models" href="https://learn.microsoft.com/training/modules/dax-power-bi-create-calculations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Write DAX formulas for semantic models" href="https://learn.microsoft.com/training/modules/dax-power-bi-write-formulas?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement calculation groups, dynamic strings, and field parameters
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create calculation groups in Power BI" href="https://learn.microsoft.com/power-bi/transform-model/calculation-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and build a large format dataset
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design semantic models for scale in Microsoft Fabric": under [Choose a storage mode, including Direct Lake](#choose-a-storage-mode-including-direct-lake)
+- "Optimize semantic model performance": under [Design and build composite models that include aggregations](#design-and-build-composite-models-that-include-aggregations)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Large semantic models in Power BI Premium - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/powerbi/service-premium-large-models?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and build composite models that include aggregations
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Optimize semantic model performance" href="https://learn.microsoft.com/training/modules/optimize-semantic-model-performance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement dynamic row-level security and object-level security
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Enforce semantic model security": under [Implement workspace and item-level access controls for Fabric items](#implement-workspace-and-item-level-access-controls-for-fabric-items) in the skill group Implement and manage a data analytics environment
+- "Secure a Microsoft Fabric data warehouse": under [Implement workspace and item-level access controls for Fabric items](#implement-workspace-and-item-level-access-controls-for-fabric-items) in the skill group Implement and manage a data analytics environment
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Row-level security (RLS) with Power BI" href="https://learn.microsoft.com/fabric/security/service-admin-row-level-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Object-Level Security (OLS) with Power BI" href="https://learn.microsoft.com/fabric/security/service-admin-object-level-security?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Validate row-level security and object-level security
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Enforce semantic model security": under [Implement workspace and item-level access controls for Fabric items](#implement-workspace-and-item-level-access-controls-for-fabric-items) in the skill group Implement and manage a data analytics environment
+- "Secure a Microsoft Fabric data warehouse": under [Implement workspace and item-level access controls for Fabric items](#implement-workspace-and-item-level-access-controls-for-fabric-items) in the skill group Implement and manage a data analytics environment
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Row-Level Security in Fabric Data Warehouse" href="https://learn.microsoft.com/fabric/data-warehouse/row-level-security?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Optimize enterprise-scale semantic models
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Automatic aggregations overview - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/powerbi/aggregations-auto?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand capacity throttling and smoothing" href="https://learn.microsoft.com/fabric/enterprise/throttling?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement performance improvements in queries and report visuals
+
+:::note
+The Microsoft Learn module "Optimize semantic model performance" also covers this task. It is listed once, under [Design and build composite models that include aggregations](#design-and-build-composite-models-that-include-aggregations) in the skill group Design and build semantic models.
+:::
+
+#### Improve DAX performance by using DAX Studio
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Create DAX calculations in semantic models": under [Write calculations that use DAX variables and functions, such as iterators, table filtering, windowing, and information functions](#write-calculations-that-use-dax-variables-and-functions-such-as-iterators-table-filtering-windowing-and-information-functions) in the skill group Design and build semantic models
+- "Optimize semantic model performance": under [Design and build composite models that include aggregations](#design-and-build-composite-models-that-include-aggregations) in the skill group Design and build semantic models
+:::
+
+#### Optimize a semantic model by using Tabular Editor 2
+
+:::note
+The Microsoft Learn module "Optimize semantic model performance" also covers this task. It is listed once, under [Design and build composite models that include aggregations](#design-and-build-composite-models-that-include-aggregations) in the skill group Design and build semantic models.
+:::
+
+#### Implement incremental refresh
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage semantic models in Power BI" href="https://learn.microsoft.com/training/modules/manage-datasets-power-bi?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Explore and analyze data (20–25%)
+
+### Perform exploratory analytics
+
+#### Implement descriptive and diagnostic analytics
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Integrate prescriptive and predictive analytics into a visual or report
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Profile data
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Clean, transform, and load data in Power BI" href="https://learn.microsoft.com/training/modules/clean-data-power-bi?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Query data by using SQL
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Discover and connect to data in OneLake" href="https://learn.microsoft.com/training/modules/discover-data-onelake?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Query a lakehouse in Fabric by using SQL queries or the visual query editor
+
+:::note
+The Microsoft Learn module "Query a data warehouse in Microsoft Fabric" also covers this task. It is listed once, under [Query a warehouse in Fabric by using SQL queries or the visual query editor](#query-a-warehouse-in-fabric-by-using-sql-queries-or-the-visual-query-editor).
+:::
+
+#### Query a warehouse in Fabric by using SQL queries or the visual query editor
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Query a data warehouse in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/query-data-warehouse-microsoft-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Query the Warehouse or SQL analytics endpoint" href="https://learn.microsoft.com/fabric/data-warehouse/query-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Query Using the Visual Query Editor" href="https://learn.microsoft.com/fabric/data-warehouse/visual-query-editor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Query Using the SQL Query Editor" href="https://learn.microsoft.com/fabric/data-warehouse/sql-query-editor?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Connect to and query datasets by using the XMLA endpoint
+
+:::note
+The Microsoft Learn module "Manage the semantic model development lifecycle" also covers this task. It is listed once, under [Deploy and manage semantic models by using the XMLA endpoint](#deploy-and-manage-semantic-models-by-using-the-xmla-endpoint) in the skill group Manage the analytics development lifecycle.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Semantic model connectivity and management with the XMLA endpoint in Power BI" href="https://learn.microsoft.com/fabric/enterprise/powerbi/service-premium-connect-tools?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>

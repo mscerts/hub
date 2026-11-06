@@ -1,0 +1,727 @@
+{
+  "schemaVersion": 1,
+  "code": "AB-210",
+  "decisions": [
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/configure-sales/@foundations",
+      "target": "/dynamics365/sales/sales-accelerator-intro",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/configure-sales/@foundations",
+      "target": "/training/modules/overview-d365-sales-professional",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/configure-sales/configure-microsoft-365-functionality-including-microsoft-te",
+      "target": "/training/modules/configure-microsoft-365-experience",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/configure-sales/configure-the-timeline",
+      "target": "/dynamics365/sales/free-auto-capture",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/configure-sales/configure-the-timeline",
+      "target": "/training/modules/specialized-components-model-form",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/configure-sales/evaluate-prerequisites-for-deploying-sales",
+      "target": "/dynamics365/sales/features-in-mobile-offline",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/configure-sales/set-up-and-configure-business-process-flows",
+      "target": "/training/modules/administer-configure-d365-sales-professional",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/configure-sales/set-up-and-configure-business-process-flows",
+      "target": "/training/modules/manage-opportunities-dynamics-365-sales",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/configure-sales/set-up-and-configure-business-process-flows",
+      "target": "/training/modules/specialized-components-model-form",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/create-and-manage-the-product-catalog/@foundations",
+      "target": "/dynamics365/sales/developer/product-catalog-entities",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/create-and-manage-the-product-catalog/@foundations",
+      "target": "/dynamics365/sales/faq-product-price-list",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-dynamics-365-sales-core-features-for-ai/create-and-manage-the-product-catalog/configure-products-and-product-families",
+      "target": "/dynamics365/sales/developer/create-manage-product-families-products-bundles-product-properties",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/automate-deal-closing-by-using-the-sales-close-agent/@foundations",
+      "target": "/dynamics365/sales/consent-management-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/automate-deal-closing-by-using-the-sales-close-agent/@foundations",
+      "target": "/training/modules/identify-customer-needs-explore-relationships",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/automate-deal-closing-by-using-the-sales-close-agent/collaborate-with-the-sales-close-agent",
+      "target": "/dynamics365/sales/faqs-about-sales-close-agent-engage",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/automate-deal-closing-by-using-the-sales-close-agent/collaborate-with-the-sales-close-agent",
+      "target": "/dynamics365/sales/view-sales-close-agent-engage-insights-metrics",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/automate-deal-closing-by-using-the-sales-close-agent/collaborate-with-the-sales-close-agent",
+      "target": "/dynamics365/sales/view-sales-close-agent-engage-processed-records",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/automate-deal-closing-by-using-the-sales-close-agent/collaborate-with-the-sales-close-agent",
+      "target": "/training/modules/identify-customer-needs-explore-relationships",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/automate-deal-closing-by-using-the-sales-close-agent/interpret-the-actions-of-the-sales-close-agent",
+      "target": "/training/modules/identify-customer-needs-explore-relationships",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/automate-deal-closing-by-using-the-sales-close-agent/monitor-the-sales-close-agent",
+      "target": "/dynamics365/sales/faqs-about-sales-close-agent-engage",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/automate-deal-closing-by-using-the-sales-close-agent/set-up-and-configure-the-sales-close-agent",
+      "target": "/dynamics365/sales/faqs-about-sales-close-agent-engage",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/automate-deal-closing-by-using-the-sales-close-agent/set-up-and-configure-the-sales-close-agent",
+      "target": "/training/modules/manage-organize-product-catalog-dynamics-365-sales",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/@foundations",
+      "target": "/dynamics365/sales/sales-opportunity-agent",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/@foundations",
+      "target": "/training/modules/overview-d365-sales-professional",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/configure-the-sales-research-agent",
+      "target": "/dynamics365/sales/sales-research-agent-business-function-builder-create",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/configure-the-sales-research-agent",
+      "target": "/dynamics365/sales/sales-research-agent-business-function-builder-share",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/configure-the-sales-research-agent",
+      "target": "/dynamics365/sales/sales-research-agent-business-function-builder-troubleshoot",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/configure-the-sales-research-agent",
+      "target": "/dynamics365/sales/sales-research-agent-lakehouse-integration",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/evaluate-use-cases-for-the-sales-research-agent",
+      "target": "/dynamics365/sales/define-custom-research-topics",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/evaluate-use-cases-for-the-sales-research-agent",
+      "target": "/training/modules/explore-negotiate-deals-terms-dynamics-365-sales",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/evaluate-use-cases-for-the-sales-research-agent",
+      "target": "/training/modules/identify-customer-needs-explore-relationships",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/optimize-opportunity-management/@foundations",
+      "target": "/dynamics365/sales/create-price-lists-price-list-items-define-pricing-products",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/optimize-opportunity-management/@foundations",
+      "target": "/training/modules/explore-negotiate-deals-terms-dynamics-365-sales",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/optimize-opportunity-management/add-opportunity-products-and-configure-pricing",
+      "target": "/dynamics365/sales/create-edit-quote-sales",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/optimize-opportunity-management/add-opportunity-products-and-configure-pricing",
+      "target": "/dynamics365/sales/define-related-products-increase-chances-sales",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/optimize-opportunity-management/coordinate-opportunity-management-with-the-sales-close-agent",
+      "target": "/training/modules/identify-customer-needs-explore-relationships",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/optimize-opportunity-management/set-up-and-configure-the-sales-opportunity-agent",
+      "target": "/dynamics365/sales/ai-agent-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/optimize-opportunity-management/set-up-and-configure-the-sales-opportunity-agent",
+      "target": "/dynamics365/sales/next-best-actions-to-manage-opportunities",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "develop-deals-by-using-intelligent-opportunity-research/optimize-opportunity-management/set-up-and-configure-the-sales-opportunity-agent",
+      "target": "/dynamics365/sales/sales-opportunity-agent-tools",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/configure-supporting-apps-and-services/@foundations",
+      "target": "/dynamics365/customer-service/administer/sms-channel-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/configure-supporting-apps-and-services/@foundations",
+      "target": "/training/modules/introduction-dataverse-developers",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/configure-supporting-apps-and-services/deploy-and-configure-the-sales-mobile-app",
+      "target": "/dynamics365/sales/sales-mobile/dynamics-365-sales-mobile-app",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/configure-supporting-apps-and-services/deploy-and-configure-the-sales-mobile-app",
+      "target": "/dynamics365/sales/sales-mobile/learn-basics-mobile-app",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/configure-supporting-apps-and-services/deploy-and-configure-the-sales-mobile-app",
+      "target": "/dynamics365/sales/sales-mobile/use-sales-mobile-app",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/configure-supporting-apps-and-services/deploy-and-configure-the-sales-mobile-app",
+      "target": "/training/modules/explore-lead-qualification-dynamics-365",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/configure-supporting-apps-and-services/set-up-teams-calling",
+      "target": "/dynamics365/sales/create-azure-repo",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/expand-the-sales-footprint-by-using-microsoft-power-platform/@foundations",
+      "target": "/training/modules/create-powerful-customer-experiences-organizations",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/expand-the-sales-footprint-by-using-microsoft-power-platform/create-power-automate-flows",
+      "target": "/training/modules/make-app",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/expand-the-sales-footprint-by-using-microsoft-power-platform/embed-power-bi-reports",
+      "target": "/dynamics365/sales/sales-dev-agent/power-bi-report",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/expand-the-sales-footprint-by-using-microsoft-power-platform/embed-power-bi-reports",
+      "target": "/training/modules/architect-analytics",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/@foundations",
+      "target": "/dynamics365/sales/conversation-intelligence-team-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/configure-copilot-features-including-record-summarization",
+      "target": "/dynamics365/release-plan/2025wave1/service/dynamics365-customer-service/summarize-base-records-related-records-copilot",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/configure-copilot-features-including-record-summarization",
+      "target": "/dynamics365/release-plan/2025wave1/service/dynamics365-customer-service/view-enhanced-user-experience-copilot-summaries",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/configure-predictive-scoring",
+      "target": "/dynamics365/sales/populate-predictive-scores",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/configure-the-sales-accelerator",
+      "target": "/dynamics365/sales/digital-selling-sales-accelerator",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/configure-the-sales-accelerator",
+      "target": "/dynamics365/sales/faq-sales-accelerator",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/configure-the-sales-accelerator",
+      "target": "/training/modules/manage-relationships-social-selling-dynamics-365-sales",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/set-up-goals-and-goal-metrics",
+      "target": "/dynamics365/sales/developer/create-goal-hierarchy-goals-targets",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/set-up-goals-and-goal-metrics",
+      "target": "/dynamics365/sales/developer/define-goal-metric-rollup-fields",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/set-up-relationship-intelligence",
+      "target": "/dynamics365/sales/faq-relationship-intelligence",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/set-up-relationship-intelligence",
+      "target": "/training/modules/identify-customer-needs-explore-relationships",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/design-an-ai-first-sales-strategy/@foundations",
+      "target": "/dynamics365/guidance/implementation-guide/introduction",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/design-an-ai-first-sales-strategy/@foundations",
+      "target": "/training/modules/describe-close-customer-deals",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/design-an-ai-first-sales-strategy/@foundations",
+      "target": "/training/modules/describe-sales-account-management-dynamics-365",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/design-an-ai-first-sales-strategy/@foundations",
+      "target": "/training/modules/explore-lead-qualification-dynamics-365",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/design-an-ai-first-sales-strategy/@foundations",
+      "target": "/training/modules/explore-negotiate-deals-terms-dynamics-365-sales",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/design-an-ai-first-sales-strategy/design-the-sales-data-model-in-dataverse",
+      "target": "/training/modules/model-security",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/design-an-ai-first-sales-strategy/evaluate-options-for-reporting-and-visualization",
+      "target": "/training/modules/data-visualization-reports-power-bi",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/design-an-ai-first-sales-strategy/evaluate-options-for-reporting-and-visualization",
+      "target": "/training/modules/set-up-sales-accelerator",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/@foundations",
+      "target": "/dynamics365/sales/consent-management-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/@foundations",
+      "target": "/dynamics365/sales/model-context-protocol-sales-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/@foundations",
+      "target": "/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/@foundations",
+      "target": "/training/modules/explore-microsoft-365-copilot-agents",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/@foundations",
+      "target": "/training/modules/introduction-agentic-ai-business-solution-architecture",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/@foundations",
+      "target": "/training/modules/introduction-microsoft-ai-agent-solutions",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/@foundations",
+      "target": "/training/modules/introduction-power-platform-developer-resources",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/configure-capacity-billing-and-credits",
+      "target": "/dynamics365/release-plan/2025wave2/smb/dynamics365-business-central/consume-copilot-credits-no-extra-setup",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/configure-prerequisites-for-deploying-agents",
+      "target": "/dynamics365/guidance/agent-templates/overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/configure-prerequisites-for-deploying-agents",
+      "target": "/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/configure-prerequisites-for-deploying-agents",
+      "target": "/training/modules/extend-dynamics365-apps-power-platform",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/configure-prerequisites-for-deploying-agents",
+      "target": "/training/modules/sales-copilot-deploy-configure",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "optimize-ai-driven-sales/prepare-to-deploy-agents/configure-prerequisites-for-deploying-agents",
+      "target": "/training/modules/sales-qualification-agent-dynamics-365-sales",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "qualify-and-prioritize-leads-by-using-ai/automate-lead-qualification-by-using-the-sales-qualification/configure-the-sales-qualification-agent",
+      "target": "/dynamics365/sales/custom-icp-examples",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "qualify-and-prioritize-leads-by-using-ai/automate-lead-qualification-by-using-the-sales-qualification/monitor-the-sales-qualification-agent",
+      "target": "/dynamics365/sales/run-simulation-sqa-outreach-email",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "qualify-and-prioritize-leads-by-using-ai/generate-and-nurture-leads/@foundations",
+      "target": "/dynamics365/sales/copilot-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "qualify-and-prioritize-leads-by-using-ai/generate-and-nurture-leads/@foundations",
+      "target": "/dynamics365/sales/recommended-actions-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "qualify-and-prioritize-leads-by-using-ai/generate-and-nurture-leads/configure-the-lead-and-opportunity-experience",
+      "target": "/dynamics365/release-plan/2024wave2/sales/dynamics365-sales/customize-lead-qualification-process-seamless-experience",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    }
+  ],
+  "excludedFamilies": []
+}

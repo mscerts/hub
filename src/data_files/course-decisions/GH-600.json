@@ -1,0 +1,1428 @@
+{
+  "schemaVersion": 1,
+  "code": "GH-600",
+  "decisions": [
+    {
+      "task": "implement-guardrails-and-accountability/define-autonomy-levels/@foundations",
+      "target": "/training/modules/introduction-to-secure-devops",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-guardrails-and-accountability/implement-guardrails-and-human-in-the-loop-workflows/@foundations",
+      "target": "/training/modules/introduction-to-secure-devops",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/@foundations",
+      "target": "/azure/api-center/register-discover-mcp-server",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/@foundations",
+      "target": "/azure/developer/azure-mcp-server/concepts",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/@foundations",
+      "target": "/azure/developer/azure-mcp-server/overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/app-service/scenario-ai-model-context-protocol-server",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/azure-arc/agents-tools-foundry-local/mcp-server-overview",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/azure-functions/functions-mcp-foundry-tools",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/azure-functions/scenario-custom-remote-mcp-server",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/azure-functions/scenario-mcp-apps",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/connector-namespace/create-mcp-server-connectors",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/agents/custom-agents/use-mcp-tools",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/agents/custom-agents/use-mcp-tools-in-app",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/agents/mcp-tools",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/agents/mcp-tools/custom-mcp",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/agents/mcp-tools/managed-oauth",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/agents/mcp-tools/rest-api-proxy",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/ai-gateway/coding-agent-codex",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/ai-gateway/coding-agent-configure-govern",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/ai-gateway/coding-agent-cursor",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/ai-gateway/coding-agent-gemini",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/ai-gateway/coding-agent-mcp-skills",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/ai-gateway/coding-agent-opencode",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/ai-gateway/register-mcp-service",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/databricks/genie-agents/external-tools",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/developer/ai/build-openai-mcp-server-dotnet",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/foundry/agents/how-to/mcp-authentication",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/foundry/agents/how-to/private-tool-catalog",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/foundry/agents/how-to/tools/azure-ai-speech",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/foundry/agents/how-to/tools/connectors",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/foundry/agents/how-to/tools/governance",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/foundry/agents/how-to/tools/model-context-protocol",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/foundry/agents/how-to/tools/use-toolbox-hosted-agent",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/foundry/mcp/build-your-own-mcp-server",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/logic-apps/add-agent-tools-connector-actions",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/logic-apps/create-mcp-server-api-center",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/logic-apps/create-model-context-protocol-server-standard",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/postgresql/azure-ai/generative-ai-foundry-integration",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/sre-agent/mcp-connectors",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/azure/sre-agent/tools",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/dynamics365/customer-service/administer/configure-service-agent-mcp-servers",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/dynamics365/developer/reference/mcp-tools/manage_mcp_registration",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/entra/agent-id/secure-mcp-server-with-entra-id",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/microsoft-365/copilot/extensibility/build-mcp-plugins",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/microsoft-365/copilot/extensibility/build-reuse-mcp-servers",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/microsoft-365/copilot/extensibility/configure-plugin-mcp-servers",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/microsoft-365/copilot/extensibility/overview-plugins",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/microsoft-365/copilot/extensibility/plugin-dynamic-tool-discovery",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-add-mcp-server",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/microsoft-copilot-studio/mcp-add-existing-server-to-agent",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/training/modules/manage-ado-mcp-server",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-a-github-remote-mcp-server",
+      "target": "/azure/developer/azure-mcp-server/how-to/github-copilot-cloud-agent",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-a-github-remote-mcp-server",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-add-mcp-server",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-mcp-allow-lists",
+      "target": "/azure/ai-services/cognitive-services-data-loss-prevention",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-mcp-allow-lists",
+      "target": "/entra/global-secure-access/how-to-configure-mcp-firewall",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-mcp-allow-lists",
+      "target": "/power-platform/release-plan/2024wave2/power-platform-governance-administration/use-new-connector-management-rule",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-the-mcp-registries",
+      "target": "/training/modules/design-agent-architecture-integration",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-the-mcp-registries",
+      "target": "/training/modules/mcp-server",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/integrate-agents-within-development-environments/@foundations",
+      "target": "/azure/foundry/observability/concepts/trace-agent-concept",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/integrate-agents-within-development-environments/@foundations",
+      "target": "/training/modules/explore-azure-pipelines",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/integrate-agents-within-development-environments/configure-an-agent-to-be-invoked-in-a-ci-workflow",
+      "target": "/azure/foundry/agents/concepts/routines",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/integrate-agents-within-development-environments/configure-an-agent-to-be-invoked-in-a-ci-workflow",
+      "target": "/azure/sre-agent/http-triggers",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/integrate-agents-within-development-environments/evaluate-the-execution-context-for-an-agent",
+      "target": "/azure/devops/pipelines/yaml-schema/target",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/integrate-agents-within-development-environments/evaluate-the-execution-context-for-an-agent",
+      "target": "/azure/sre-agent/security-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/integrate-agents-within-development-environments/evaluate-the-execution-context-for-an-agent",
+      "target": "/training/modules/memory-state-evaluation",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/operate-agents-with-safe-execution-paths-and-robust-error-ha/@foundations",
+      "target": "/azure/developer/python/sdk/fundamentals/overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/operate-agents-with-safe-execution-paths-and-robust-error-ha/@foundations",
+      "target": "/training/modules/introduction-to-github-actions",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/operate-agents-with-safe-execution-paths-and-robust-error-ha/implement-error-handling",
+      "target": "/azure/durable-task/common/durable-task-error-handling",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/operate-agents-with-safe-execution-paths-and-robust-error-ha/implement-error-handling",
+      "target": "/power-platform/release-plan/2025wave2/power-automate/self-healing-agent-uiweb-automation-desktop-flows",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/operate-agents-with-safe-execution-paths-and-robust-error-ha/implement-retries",
+      "target": "/azure/api-management/retry-policy",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/operate-agents-with-safe-execution-paths-and-robust-error-ha/implement-retries",
+      "target": "/azure/durable-task/sdks/durable-agents-patterns",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/operate-agents-with-safe-execution-paths-and-robust-error-ha/implement-retries",
+      "target": "/azure/foundry/agents/concepts/long-running-agent-reference",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/@foundations",
+      "target": "/azure/azure-arc/agents-tools-foundry-local/mcp-server-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/app-service/scenario-ai-authentication",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/connector-namespace/create-mcp-server-connectors",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/developer/azure-skills/skills/azure-ai-gateway",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/documentdb/mcp-toolkit",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/security/fundamentals/shared-responsibility-ai-agent",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/sentinel/datalake/sentinel-mcp-use-tool-azure-ai-foundry",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/sentinel/datalake/sentinel-mcp-use-tool-copilot-studio",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/sre-agent/agent-hooks",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/sre-agent/audit-agent-actions",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/sre-agent/managed-connectors",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/sre-agent/setup-managed-connector",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/azure/sre-agent/setup-mcp-server",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/defender-cloud-apps/app-governance-visibility-insights-view-apps",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/entra/identity/enterprise-apps/assign-agent-identities-to-applications",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-add-mcp-server",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-available",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-manage",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/power-platform/admin/business-applications-work-iq/review-data-access",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tool-permissions",
+      "target": "/training/modules/design-agent-architecture-integration",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/app-service/configure-authentication-ai-foundry-openapi-tool",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/app-service/scenario-ai-openapi-tool",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/azure-functions/functions-mcp-foundry-tools",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/databricks/agents/custom-agents/create-custom-tool",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/developer/azure-mcp-server/get-started/tools/visual-studio",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/concepts/user-delegation",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/configure-user-delegation",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/private-tool-catalog",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/ai-search",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/azure-functions",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/bing-tools",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/code-interpreter",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/connectors",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/custom-code-interpreter",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/file-search",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/function-calling",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/governance",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/openapi",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/sharepoint",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/tool-authentication",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/tool-search",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/toolbox-network-isolation",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/use-toolbox-hosted-agent",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/tools/web-search",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/agents/how-to/use-tools-skills-copilot-harness",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/how-to/develop/langchain-agents",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/how-to/develop/langchain-toolbox",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/foundry/how-to/develop/vs-code-agent-inspector",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/azure/logic-apps/set-up-on-behalf-of-user-flow",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/microsoft-365/copilot/extensibility/plugin-dynamic-tool-discovery",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-add-mcp-server",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-available",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-manage",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-overview",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/microsoft-copilot-studio/guidance/agent-tools",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/select-and-configure-agent-tools/configure-agent-tools",
+      "target": "/microsoft-copilot-studio/workflows-experience/flow-agent",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-memory-state-and-execution/ensure-continuity-of-agent-memory-and-state-across-tools-and/@foundations",
+      "target": "/azure/foundry/agents/concepts/toolbox-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-memory-state-and-execution/ensure-continuity-of-agent-memory-and-state-across-tools-and/@foundations",
+      "target": "/microsoft-365/agents-sdk/state-concepts",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-memory-state-and-execution/ensure-continuity-of-agent-memory-and-state-across-tools-and/@foundations",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-memory-state-and-execution/ensure-continuity-of-agent-memory-and-state-across-tools-and/@foundations",
+      "target": "/training/modules/mcp-server",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-memory-state-and-execution/ensure-continuity-of-agent-memory-and-state-across-tools-and/share-agent-state",
+      "target": "/azure/foundry/agents/concepts/agent-state-store",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-memory-state-and-execution/ensure-continuity-of-agent-memory-and-state-across-tools-and/share-agent-state",
+      "target": "/azure/foundry/agents/how-to/multiplex-session-users",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-memory-state-and-execution/implement-agent-memory-strategies/@foundations",
+      "target": "/azure/foundry/agents/overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-memory-state-and-execution/implement-agent-memory-strategies/choose-between-short-term-long-term-and-external-memory",
+      "target": "/azure/cosmos-db/gen-ai/agentic-memories",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-memory-state-and-execution/persist-agent-state-and-manage-context-drift/capture-task-progress-and-decisions-as-durable-artifacts",
+      "target": "/azure/durable-task/common/durable-task-custom-orchestration-status",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "orchestrate-multi-agent-coordination/configure-observability-for-multi-agent-behavior-by-using-lo/@foundations",
+      "target": "/azure/databricks/mlflow3/genai/agent-observability-and-quality",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "orchestrate-multi-agent-coordination/configure-observability-for-multi-agent-behavior-by-using-lo/@foundations",
+      "target": "/azure/databricks/mlflow3/genai/concepts/core-concepts",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "orchestrate-multi-agent-coordination/detect-and-respond-to-multi-agent-failures-and-degraded-beha/@foundations",
+      "target": "/training/modules/introduction-to-deployment-patterns",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "orchestrate-multi-agent-coordination/manage-the-lifecycle-of-agents-within-multi-agent-workflows/add-agents-to-existing-multi-agent-workflows",
+      "target": "/azure/architecture/ai-ml/idea/multiple-agent-workflow-automation",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "orchestrate-multi-agent-coordination/manage-the-lifecycle-of-agents-within-multi-agent-workflows/add-agents-to-existing-multi-agent-workflows",
+      "target": "/azure/azure-functions/functions-agent-bindings-agent-framework-durable",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "orchestrate-multi-agent-coordination/manage-the-lifecycle-of-agents-within-multi-agent-workflows/add-agents-to-existing-multi-agent-workflows",
+      "target": "/azure/foundry/how-to/develop/langchain-agents",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "orchestrate-multi-agent-coordination/manage-the-lifecycle-of-agents-within-multi-agent-workflows/add-agents-to-existing-multi-agent-workflows",
+      "target": "/azure/machine-learning/prompt-flow/how-to-deploy-migrated-agent-framework-workflow",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "orchestrate-multi-agent-coordination/manage-the-lifecycle-of-agents-within-multi-agent-workflows/add-agents-to-existing-multi-agent-workflows",
+      "target": "/microsoft-copilot-studio/workflows-experience/agent-node-workflow",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "orchestrate-multi-agent-coordination/manage-the-lifecycle-of-agents-within-multi-agent-workflows/retire-agents-while-preserving-auditability-and-workflow-con",
+      "target": "/azure/logic-apps/set-up-handoff-agent-workflow",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "orchestrate-multi-agent-coordination/operate-and-manage-multi-agent-workflows/@foundations",
+      "target": "/training/modules/describe-pipelines-concurrency",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "perform-evaluation-error-analysis-and-tuning/analyze-agent-failures-and-identify-root-causes/@foundations",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "perform-evaluation-error-analysis-and-tuning/define-success-criteria-and-evaluation-signals-for-agent-tas/@foundations",
+      "target": "/azure/databricks/mlflow3/genai/concepts/core-concepts",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "perform-evaluation-error-analysis-and-tuning/define-success-criteria-and-evaluation-signals-for-agent-tas/@foundations",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "perform-evaluation-error-analysis-and-tuning/define-success-criteria-and-evaluation-signals-for-agent-tas/align-evaluation-criteria-with-development-intent",
+      "target": "/training/modules/automated-evaluation-genaiops",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "perform-evaluation-error-analysis-and-tuning/tune-agent-behavior-based-on-evaluation-results/@foundations",
+      "target": "/azure/databricks/mlflow3/genai/concepts/core-concepts",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "perform-evaluation-error-analysis-and-tuning/tune-agent-behavior-based-on-evaluation-results/@foundations",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "perform-evaluation-error-analysis-and-tuning/tune-agent-behavior-based-on-evaluation-results/@foundations",
+      "target": "/training/modules/mcp-server",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "perform-evaluation-error-analysis-and-tuning/tune-agent-behavior-based-on-evaluation-results/refine-tool-usage-and-tool-access",
+      "target": "/training/modules/manage-github-actions-enterprise",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/@foundations",
+      "target": "/azure/databricks/mlflow3/genai/agent-observability-and-quality",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/@foundations",
+      "target": "/azure/databricks/mlflow3/genai/concepts/core-concepts",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/define-boundaries-between-planning-reasoning-and-action/@foundations",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/define-boundaries-between-planning-reasoning-and-action/@foundations",
+      "target": "/training/modules/introduction-to-secure-devops",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/define-boundaries-between-planning-reasoning-and-action/@foundations",
+      "target": "/training/modules/introduction-vibe-coding",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/define-boundaries-between-planning-reasoning-and-action/configure-agent-planning-to-be-distinct-from-agent-execution",
+      "target": "/training/modules/multi-agent-systems-orchestration",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/define-boundaries-between-planning-reasoning-and-action/configure-an-agent-to-output-a-structured-plan",
+      "target": "/azure/foundry/openai/how-to/structured-outputs",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/define-boundaries-between-planning-reasoning-and-action/configure-an-agent-to-output-a-structured-plan",
+      "target": "/azure/logic-apps/set-up-prompt-chain-agent-workflow",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/define-boundaries-between-planning-reasoning-and-action/validate-agent-plans",
+      "target": "/azure/foundry/agents/how-to/test-hosted-agent",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/integrate-agents-into-the-software-development-lifecycle-sdl/@foundations",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/integrate-agents-into-the-software-development-lifecycle-sdl/@foundations",
+      "target": "/training/modules/introduction-to-secure-devops",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/integrate-agents-into-the-software-development-lifecycle-sdl/@foundations",
+      "target": "/training/modules/introduction-vibe-coding",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/integrate-agents-into-the-software-development-lifecycle-sdl/define-inputs-outputs-and-success-criteria-for-agents",
+      "target": "/microsoft-365/copilot/extensibility/evaluation-write-assertions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/integrate-agents-into-the-software-development-lifecycle-sdl/identify-steps-for-agents-to-perform",
+      "target": "/azure/foundry/agents/how-to/add-human-in-the-loop",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    }
+  ],
+  "excludedFamilies": []
+}

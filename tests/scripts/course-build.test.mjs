@@ -342,6 +342,18 @@ test("a course built on a newer guide or a newer Learn than the candidates were 
   );
 });
 
+test("an exam with no official course builds only when allowNoScope is set, and says so", () => {
+  const noCourse = { ...scopeOf(), ok: false };
+  assert.equal(build({ scope: noCourse }).ok, false);
+  const r = build({ scope: noCourse, allowNoScope: true });
+  assert.equal(r.ok, true);
+  assert.ok(r.course);
+  assert.ok(
+    r.warnings.some((w) => /no official course .* built anyway/.test(w)),
+    "the missing official course is a warning, not silence",
+  );
+});
+
 test("what cannot be built stops the build with the reasons and returns no course", () => {
   const bad = (opts) => {
     const r = build(opts);

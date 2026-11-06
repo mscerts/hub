@@ -1,0 +1,1339 @@
+{
+  "schemaVersion": 1,
+  "code": "MD-102",
+  "decisions": [
+    {
+      "task": "manage-and-maintain-devices/deploy-and-upgrade-windows-clients-by-using-cloud-based-tool/@foundations",
+      "target": "/training/modules/explore-windows-365-cloud-pc-management",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/deploy-and-upgrade-windows-clients-by-using-cloud-based-tool/implement-windows-client-deployment-by-using-windows-autopil",
+      "target": "/intune/app-management/deployment/add-company-portal-autopilot",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/deploy-and-upgrade-windows-clients-by-using-cloud-based-tool/plan-and-implement-device-upgrades-for-windows-11-by-using-i",
+      "target": "/intune/configmgr/core/clients/manage/upgrade-readiness",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/deploy-and-upgrade-windows-clients-by-using-cloud-based-tool/plan-and-implement-device-upgrades-for-windows-11-by-using-i",
+      "target": "/intune/device-configuration/templates/configure-edition-upgrade-windows",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/deploy-and-upgrade-windows-clients-by-using-cloud-based-tool/plan-and-implement-device-upgrades-for-windows-11-by-using-i",
+      "target": "/intune/device-configuration/templates/ref-edition-upgrade-settings-windows",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/deploy-and-upgrade-windows-clients-by-using-cloud-based-tool/plan-and-implement-device-upgrades-for-windows-11-by-using-i",
+      "target": "/training/modules/hotpatch-updates-2026",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/implement-intune-suite-add-on-capabilities/@foundations",
+      "target": "/intune/fundamentals/certificates/connector/overview",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/implement-intune-suite-add-on-capabilities/configure-microsoft-intune-remote-help",
+      "target": "/intune/device-management/tools/setup-servicenow",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/implement-intune-suite-add-on-capabilities/configure-microsoft-intune-remote-help",
+      "target": "/intune/device-management/tools/setup-teamviewer",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/perform-remote-actions-on-devices/@foundations",
+      "target": "/entra/identity/devices/concept-hybrid-join",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/perform-remote-actions-on-devices/rotate-bitlocker-recovery-keys",
+      "target": "/intune/configmgr/tenant-attach/bitlocker-recovery-keys",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/perform-remote-actions-on-devices/update-microsoft-defender-antivirus-security-intelligence",
+      "target": "/intune/device-configuration/endpoint-security/ref-antivirus-defender-settings-windows-tenant-attach",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/perform-remote-actions-on-devices/update-microsoft-defender-antivirus-security-intelligence",
+      "target": "/intune/device-configuration/endpoint-security/ref-windows-security-settings-tenant-attach",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/@foundations",
+      "target": "/intune/device-enrollment/android/android-management-api-overview",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/@foundations",
+      "target": "/intune/device-enrollment/android/enterprise-work-profile",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/@foundations",
+      "target": "/intune/device-enrollment/apple/overview-automated-enrollment-apple",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/@foundations",
+      "target": "/intune/device-enrollment/apple/personal-device-options-ios",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-android-devices",
+      "target": "/intune/device-configuration/certificates/remove-profiles",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-android-devices",
+      "target": "/intune/device-configuration/templates/troubleshoot-zebra-mx-android",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-android-devices",
+      "target": "/intune/device-enrollment/android/android-management-api-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-android-devices",
+      "target": "/intune/device-enrollment/android/migrate-device-admin-to-work-profile",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-android-devices",
+      "target": "/intune/device-security/certificates/s-mime",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-android-devices",
+      "target": "/intune/fundamentals/filters/ref-supported-workloads",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-android-devices",
+      "target": "/intune/fundamentals/get-started",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-android-devices",
+      "target": "/training/modules/understand-intune-strategies",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-android-devices",
+      "target": "/troubleshoot/mem/intune/device-configuration/device-configuration-profile-reports-error-2016281112",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-android-devices",
+      "target": "/troubleshoot/mem/intune/device-configuration/factory-reset-protection-emails-not-enforced",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-android-devices",
+      "target": "/troubleshoot/mem/intune/device-enrollment/edge-ignore-pac-android-vpn-profile",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-ios-ipados-devices",
+      "target": "/entra/identity-platform/apple-sso-plugin",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-ios-ipados-devices",
+      "target": "/intune/device-enrollment/apple/school-manager",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-ios-ipados-devices",
+      "target": "/intune/device-enrollment/apple/setup-automated-shared-device-mode",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-ios-ipados-devices",
+      "target": "/intune/device-enrollment/apple/shared-device-solutions-ios",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-ios-ipados-devices",
+      "target": "/intune/fundamentals/platform-guide-ios-ipados",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-ios-ipados-devices",
+      "target": "/intune/solutions/education/ref-classroom-settings-ios",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-ios-ipados-devices",
+      "target": "/intune/solutions/education/ref-classroom-settings-ios-shared",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-ios-ipados-devices",
+      "target": "/intune/solutions/frontline-worker",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-ios-ipados-devices",
+      "target": "/intune/solutions/frontline-worker/ios-ipados",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-ios-ipados-devices",
+      "target": "/troubleshoot/mem/intune/general/troubleshoot-company-resource-access-problems",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-macos-devices",
+      "target": "/entra/identity/devices/device-join-macos-platform-single-sign-on-kerberos-configuration",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-macos-devices",
+      "target": "/intune/device-configuration/certificates/remove-profiles",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-macos-devices",
+      "target": "/intune/device-security/certificates/s-mime",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-macos-devices",
+      "target": "/intune/fundamentals/get-started",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-macos-devices",
+      "target": "/training/modules/understand-intune-strategies",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-maintain-devices/plan-and-implement-device-configuration-profiles/create-device-configuration-profiles-for-macos-devices",
+      "target": "/troubleshoot/mem/intune/device-configuration/device-configuration-profile-reports-error-2016281112",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/deploy-and-update-apps/configure-policies-for-microsoft-365-apps-by-using-microsoft",
+      "target": "/training/modules/implement-application-protection-intune",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/deploy-and-update-apps/deploy-microsoft-365-apps-by-using-intune",
+      "target": "/intune/app-management/deployment/deploy-windows",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/deploy-and-update-apps/deploy-microsoft-365-apps-by-using-intune",
+      "target": "/intune/app-management/lifecycle",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/deploy-and-update-apps/deploy-microsoft-365-apps-by-using-intune",
+      "target": "/intune/fundamentals/deploy-protect-apps-step-2",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/deploy-and-update-apps/deploy-microsoft-365-apps-by-using-intune",
+      "target": "/training/modules/app-management-using-microsoft-endpoint-manager",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/deploy-and-update-apps/deploy-microsoft-365-apps-by-using-intune",
+      "target": "/troubleshoot/mem/intune/app-management/app-install-error-codes",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/deploy-and-update-apps/monitor-app-deployment-status-and-troubleshoot-installation",
+      "target": "/training/modules/implement-application-protection-intune",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/deploy-and-update-apps/prepare-applications-for-deployment-by-using-intune",
+      "target": "/troubleshoot/mem/intune/app-management/develop-deliver-working-win32-app-via-intune",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/@foundations",
+      "target": "/entra/identity/conditional-access/concept-assignment-network",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/@foundations",
+      "target": "/entra/identity/conditional-access/concept-conditional-access-users-groups",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/@foundations",
+      "target": "/entra/identity/conditional-access/plan-conditional-access",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/@foundations",
+      "target": "/intune/app-management/protection/configure-conditional-launch",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/@foundations",
+      "target": "/intune/app-management/protection/manage-data-transfer-ios",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/@foundations",
+      "target": "/intune/device-security/conditional-access-integration/block-no-modern-auth",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/@foundations",
+      "target": "/intune/fundamentals/get-started",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/implement-microsoft-entra-conditional-access-policies-for-ap",
+      "target": "/entra/identity/conditional-access/concept-filter-for-applications",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/implement-microsoft-entra-conditional-access-policies-for-ap",
+      "target": "/entra/identity/conditional-access/reference-office-365-application-contents",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/implement-microsoft-entra-conditional-access-policies-for-ap",
+      "target": "/intune/app-management/configuration/configure-microsoft-365-mobile",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/implement-microsoft-entra-conditional-access-policies-for-ap",
+      "target": "/training/modules/explore-access-management-capabilities",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/plan-and-implement-app-configuration-policies-for-managed-ap",
+      "target": "/intune/device-configuration/templates/configure-zebra-mx-android",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/plan-and-implement-app-configuration-policies-for-managed-ap",
+      "target": "/intune/device-management/actions/sync",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/plan-and-implement-app-configuration-policies-for-managed-ap",
+      "target": "/intune/device-security/microsoft-defender/configure-web-protection-android",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/plan-and-implement-app-protection-and-app-configuration-poli/plan-and-implement-app-configuration-policies-for-managed-ap",
+      "target": "/troubleshoot/mem/intune/app-protection-policies/no-prompt-for-fingerprint-identity",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "optimize-endpoint-operations-by-using-automation-monitoring/automate-management-tasks/analyze-device-performance-by-using-security-copilot-agents",
+      "target": "/intune/endpoint-analytics/app-reliability",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/@foundations",
+      "target": "/entra/identity/devices/concept-tokens-microsoft-entra-id",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/@foundations",
+      "target": "/entra/identity/hybrid/cloud-sync/what-is-cloud-sync",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/@foundations",
+      "target": "/entra/identity/hybrid/connect/whatis-fed",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/@foundations",
+      "target": "/entra/identity/hybrid/what-is-provisioning",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/@foundations",
+      "target": "/training/modules/cloud-native-myths",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/@foundations",
+      "target": "/training/modules/deploy-windows-autopilot",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/join-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/devices/device-join-macos-platform-single-sign-on",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/join-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/devices/device-join-macos-platform-single-sign-on-multi-user-device",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/join-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/devices/device-join-microsoft-entra-company-portal",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/join-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/devices/macos-platform-sso-architecture",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/join-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/devices/macos-psso",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/join-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/devices/troubleshoot-intermittent-status-account-disabled",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/join-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/hybrid/cloud-sync/what-is-cloud-sync",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/join-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/hybrid/common-scenarios",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/join-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/hybrid/sync-tools",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/join-devices-to-microsoft-entra-id",
+      "target": "/training/modules/create-configure-manage-identities",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/join-devices-to-microsoft-entra-id",
+      "target": "/training/modules/implement-hybrid-identity-windows-server",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/plan-and-implement-groups-for-devices-in-microsoft-entra-id",
+      "target": "/entra/identity/role-based-access-control/admin-units-members-dynamic",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/plan-and-implement-groups-for-devices-in-microsoft-entra-id",
+      "target": "/entra/identity/users/directory-overview-user-model",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/register-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/devices/device-join-macos-platform-single-sign-on",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/register-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/devices/device-join-macos-platform-single-sign-on-multi-user-device",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/register-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/devices/device-join-microsoft-entra-company-portal",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/register-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/devices/macos-platform-sso-architecture",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/register-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/devices/macos-psso",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/register-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/hybrid/cloud-sync/what-is-cloud-sync",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/register-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/hybrid/common-scenarios",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/register-devices-to-microsoft-entra-id",
+      "target": "/entra/identity/hybrid/sync-tools",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/register-devices-to-microsoft-entra-id",
+      "target": "/training/modules/create-configure-manage-identities",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/register-devices-to-microsoft-entra-id",
+      "target": "/troubleshoot/mem/intune/device-management/remove-duplicate-mobile-device-management",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/@foundations",
+      "target": "/training/modules/cloud-native-myths",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-automatic-enrollment-for-windows",
+      "target": "/intune/configmgr/comanage/autopilot-enrollment",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-automatic-enrollment-for-windows",
+      "target": "/intune/device-enrollment/windows/attestation",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-automatic-enrollment-for-windows",
+      "target": "/training/modules/education-deploy-devices",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-automatic-enrollment-for-windows",
+      "target": "/troubleshoot/mem/intune/device-enrollment/import-windows-autopilot-device-csv-files-errors",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-automatic-enrollment-for-windows",
+      "target": "/troubleshoot/mem/intune/device-enrollment/mdm-enrollment-error-0xcaa9001f",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-enrollment-settings-in-microsoft-intune",
+      "target": "/intune/configmgr/comanage/autopilot-enrollment",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-enrollment-settings-in-microsoft-intune",
+      "target": "/intune/device-enrollment/android/android-management-api-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-enrollment-settings-in-microsoft-intune",
+      "target": "/intune/device-enrollment/apple/setup-account-service-access",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-enrollment-settings-in-microsoft-intune",
+      "target": "/intune/device-enrollment/apple/setup-automated-shared-device-mode",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-enrollment-settings-in-microsoft-intune",
+      "target": "/intune/device-enrollment/windows/attestation",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-enrollment-settings-in-microsoft-intune",
+      "target": "/training/modules/education-deploy-devices",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-enrollment-settings-in-microsoft-intune",
+      "target": "/training/modules/manage-devices-with-microsoft-endpoint-manager",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-enrollment-settings-in-microsoft-intune",
+      "target": "/troubleshoot/mem/intune/device-enrollment/devices-enroll-canceled-intune-subscription",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-enrollment-settings-in-microsoft-intune",
+      "target": "/troubleshoot/mem/intune/device-enrollment/mdm-enrollment-error-0xcaa9001f",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/enroll-devices-to-microsoft-intune/configure-enrollment-settings-in-microsoft-intune",
+      "target": "/troubleshoot/mem/intune/device-enrollment/troubleshoot-android-certificates",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/implement-identity-and-compliance/configure-windows-hello-for-business-by-using-intune",
+      "target": "/entra/identity/authentication/concept-authentication-windows-hello",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/implement-identity-and-compliance/configure-windows-hello-for-business-by-using-intune",
+      "target": "/training/modules/manage-user-authentication",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/implement-identity-and-compliance/implement-compliance-policies-for-all-supported-device-platf",
+      "target": "/intune/device-security/compliance/create-custom-json",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/implement-identity-and-compliance/implement-compliance-policies-for-all-supported-device-platf",
+      "target": "/intune/device-security/compliance/create-custom-script",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/implement-identity-and-compliance/implement-compliance-policies-for-all-supported-device-platf",
+      "target": "/intune/device-security/compliance/ref-android-aosp-settings",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/implement-identity-and-compliance/implement-compliance-policies-for-all-supported-device-platf",
+      "target": "/intune/fundamentals/filters/ref-supported-workloads",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/@foundations",
+      "target": "/intune/device-security/compliance/overview",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/@foundations",
+      "target": "/intune/device-security/laps/overview",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/@foundations",
+      "target": "/training/modules/implement-defender-endpoint-intune",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/@foundations",
+      "target": "/training/modules/implement-device-encryption",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/@foundations",
+      "target": "/training/modules/understand-advanced-windows-firewall",
+      "decision": "reject",
+      "reason": "Generic or platform-specific overview; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/configure-app-control-for-business-policies-by-using-microso",
+      "target": "/intune/device-configuration/templates/configure-wdac-hololens",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/create-antivirus-policies-by-using-microsoft-intune",
+      "target": "/intune/configmgr/tenant-attach/deploy-antivirus-policy",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/create-antivirus-policies-by-using-microsoft-intune",
+      "target": "/intune/device-configuration/endpoint-security/ref-antivirus-defender-settings-windows-tenant-attach",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/create-antivirus-policies-by-using-microsoft-intune",
+      "target": "/intune/device-configuration/endpoint-security/ref-windows-security-settings-tenant-attach",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/create-firewall-policies-by-using-microsoft-intune",
+      "target": "/intune/configmgr/tenant-attach/deploy-firewall-policy",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/create-firewall-policies-by-using-microsoft-intune",
+      "target": "/intune/device-configuration/endpoint-security/ref-firewall-settings-tenant-attach",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/create-firewall-policies-by-using-microsoft-intune",
+      "target": "/intune/device-configuration/endpoint-security/ref-windows-security-settings-tenant-attach",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/create-firewall-policies-by-using-microsoft-intune",
+      "target": "/intune/device-security/endpoint-security-policies",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/create-firewall-policies-by-using-microsoft-intune",
+      "target": "/intune/device-security/microsoft-defender/security-settings-management",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/create-firewall-policies-by-using-microsoft-intune",
+      "target": "/troubleshoot/mem/intune/device-protection/win10-devices-show-incorrect-compliance-status",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/plan-and-implement-security-baselines-by-using-microsoft-int",
+      "target": "/intune/device-security/security-baselines/ref-hololens2-advanced-settings",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/plan-and-implement-security-baselines-by-using-microsoft-int",
+      "target": "/intune/device-security/security-baselines/ref-hololens2-standard-settings",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/plan-and-implement-security-baselines-by-using-microsoft-int",
+      "target": "/intune/device-security/security-baselines/ref-openclaw-settings",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/configure-endpoint-security/plan-and-implement-security-baselines-by-using-microsoft-int",
+      "target": "/intune/device-security/security-baselines/stig-audit-baseline",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/@foundations",
+      "target": "/intune/device-management/overview",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/create-and-manage-update-policies-for-ios-ipados-and-macos-d",
+      "target": "/intune/device-updates/apple/deprecated-mdm-policies-ios",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/monitor-device-updates-by-using-intune",
+      "target": "/intune/device-updates/apple/deprecated-mdm-policies-ios",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/monitor-device-updates-by-using-intune",
+      "target": "/intune/device-updates/apple/deprecated-mdm-policies-macos",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/monitor-device-updates-by-using-intune",
+      "target": "/intune/endpoint-analytics",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/monitor-device-updates-by-using-intune",
+      "target": "/training/modules/implement-reporting-data-visibility",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/app-management/deployment/deploy-win32-update-package",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/core/clients/manage/upgrade-readiness",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/sum/deploy-use/automatically-deploy-software-updates",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/sum/deploy-use/deploy-software-updates",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/sum/deploy-use/integrate-windows-update-client-policies",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/sum/deploy-use/monitor-software-updates",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/sum/deploy-use/surface-drivers",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/sum/plan-design/plan-for-software-updates",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/sum/plan-design/prerequisites-for-software-updates",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/sum/plan-design/security-and-privacy-for-software-updates",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/sum/plan-design/software-updates-best-practices",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/tenant-attach",
+      "decision": "reject",
+      "reason": "Configuration Manager page; another product area than Intune.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/tenant-attach/device-sync-actions",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/configmgr/tenant-attach/software-updates",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/device-enrollment/enroll-devices",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/device-updates/apple/deprecated-mdm-policies-ios",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/device-updates/apple/deprecated-mdm-policies-macos",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role page, niche platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/endpoint-analytics",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/fundamentals/filters/ref-supported-workloads",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specialty scenario or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "protect-devices/manage-device-updates/plan-for-device-updates-by-using-intune",
+      "target": "/intune/solutions/cloud-native-endpoints/planning-guide",
+      "decision": "reject",
+      "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}

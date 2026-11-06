@@ -1,0 +1,1408 @@
+{
+  "schemaVersion": 1,
+  "code": "AI-200",
+  "decisions": [
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/app-service/overview-managed-identity",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/architecture/serverless/event-hubs-functions/event-hubs-functions",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/architecture/serverless/event-hubs-functions/resilient-design",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/architecture/serverless/event-hubs-functions/security",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/concept-file-access-options",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/consumption-plan",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/event-grid-how-tos",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-documentdb",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-documentdb-trigger",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-error-pages",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-event-hubs-trigger",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-mcp-prompt-trigger",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-mcp-resource-trigger",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-mcp-tool-trigger",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-openai",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-openai-assistant-trigger",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-register",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-service-bus-trigger",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-storage-blob-trigger",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-bindings-storage-queue-trigger",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-connectors-overview",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/azure-functions/functions-reference-node",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/container-apps/functions-unified-platform",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/cosmos-db/serverless-computing-database",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/durable-task/common/durable-task-orchestrations",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/durable-task/common/programming-model-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
+      "target": "/azure/durable-task/durable-functions/durable-functions-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/app-service/configure-authentication-mcp",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/app-service/configure-authentication-provider-facebook",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/app-service/configure-authentication-provider-github",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/app-service/configure-authentication-provider-google",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/app-service/configure-authentication-provider-openid-connect",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/app-service/configure-authentication-provider-twitter",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/app-service/overview-agent-identity",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/app-service/tls-minimum-version",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/configure-encrypt-at-rest-using-cmk",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/consumption-plan",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/errors-diagnostics/diagnostic-events/azfd0001",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/errors-diagnostics/diagnostic-events/azfd0002",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/errors-diagnostics/diagnostic-events/azfd0013",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/functions-cli-samples",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/functions-consumption-costs",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/functions-create-ai-enabled-apps",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/functions-create-http-endpoint",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/functions-create-maven-eclipse",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/functions-hosted-skills",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/functions-hosted-skills-reference",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/functions-node-upgrade-v4",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/functions-openapi-definition",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/functions-reference-python",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/ip-addresses",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/machine-learning-pytorch",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/migrate-dotnet-to-isolated-model",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/migrate-version-3-version-4",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/python-memory-profiler-reference",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/python-scale-performance-reference",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/scenario-blob-storage-events",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/scenario-custom-remote-mcp-server",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/scenario-database-changes-azure-cosmosdb",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/scenario-database-changes-azure-sqldb",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/scenario-host-mcp-server-sdks",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/scenario-hosted-skills",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/scenario-mcp-apps",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/scenario-real-time-events-processing",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/scenario-scheduled-tasks",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-functions/supported-languages",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-monitor/profiler/profiler-azure-functions",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/azure-monitor/snapshot-debugger/snapshot-debugger-function-app",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/container-apps/functions-gpu-container-apps",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/container-apps/functions-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/container-apps/functions-scale-rule-override",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/container-apps/functions-unified-platform",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/container-apps/functions-usage",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/container-apps/mcp-choosing-azure-service",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/cosmos-db/how-to-configure-cosmos-db-trigger",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/durable-task/common/durable-task-error-handling",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/durable-task/common/durable-task-hubs",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/durable-task/durable-functions/durable-functions-azure-storage-provider",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/durable-task/durable-functions/durable-functions-event-publishing",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/durable-task/durable-functions/durable-functions-migrate",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/durable-task/durable-functions/durable-functions-perf-and-scale",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/durable-task/durable-functions/durable-functions-troubleshooting-guide",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/durable-task/durable-functions/durable-functions-versioning",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/azure/durable-task/durable-functions/durable-functions-zero-downtime-deployment",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/training/modules/implement-security-controls-function-logic-apps",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/training/modules/instrument-app-opentelemetry",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
+      "target": "/training/modules/orchestrate-durable-functions",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-event-and-message-based-ai-solutions/@foundations",
+      "target": "/azure/service-bus-messaging/message-deferral",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/@foundations",
+      "target": "/azure/cosmos-db/bulk-executor-overview",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/@foundations",
+      "target": "/azure/cosmos-db/customer-solutions",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/@foundations",
+      "target": "/azure/cosmos-db/gen-ai/agent-kit/overview",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/bulk-executor-nodejs",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/diagnostic-queries",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/github-copilot-visual-studio-code-best-practices",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-create-container",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-dotnet-create-container",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-dotnet-create-database",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-dotnet-create-item",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-dotnet-read-item",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-geospatial-index-query",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-javascript-create-container",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-javascript-create-database",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-javascript-create-item",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-provision-autoscale-throughput",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-provision-container-throughput",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-provision-database-throughput",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-python-create-container",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/how-to-python-create-database",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/azure/cosmos-db/query-metrics-performance-python",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/training/modules/build-multi-item-transactions-azure-cosmos-db-sql-api",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/training/modules/perform-cross-document-transactional-operations-azure-cosmos-db-sql-api",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
+      "target": "/training/modules/process-bulk-data-azure-cosmos-db-sql-api",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-database-for-postgresql/@foundations",
+      "target": "/azure/postgresql/connectivity/how-to-connect-query-guide",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-database-for-postgresql/@foundations",
+      "target": "/training/modules/understand-concurrency-postgresql",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/integrate-azure-managed-redis-in-ai-solutions/implement-vector-indexing-to-enable-similarity-search",
+      "target": "/azure/postgresql/extensions/how-to-use-pgvector",
+      "decision": "reject",
+      "reason": "Other product area than Azure Cosmos DB.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/integrate-azure-managed-redis-in-ai-solutions/implement-vector-indexing-to-enable-similarity-search",
+      "target": "/training/modules/implement-vector-search-azure-database-postgresql",
+      "decision": "reject",
+      "reason": "Other product area than Azure Cosmos DB.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/@foundations",
+      "target": "/azure/container-registry/container-registry-image-tag-version",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/@foundations",
+      "target": "/azure/container-registry/container-registry-security-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/@foundations",
+      "target": "/azure/container-registry/overview-sign-verify-artifacts",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-and-run-images-by-using-azure-container-registry-tasks",
+      "target": "/azure/container-registry/buffer-gate-public-content",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-and-run-images-by-using-azure-container-registry-tasks",
+      "target": "/azure/container-registry/container-registry-check-health",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-and-run-images-by-using-azure-container-registry-tasks",
+      "target": "/azure/container-registry/tasks-agent-pools-permission-migration",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/azure/aks/devops-pipeline",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/azure/container-registry/container-registry-content-trust-deprecation",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/azure/container-registry/container-registry-dedicated-data-endpoints",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/azure/container-registry/container-registry-transfer-arm-template",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/azure/container-registry/container-registry-transfer-prerequisites",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/azure/container-registry/overview-sign-verify-artifacts",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/azure/container-registry/pull-images-from-connected-registry",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/azure/container-registry/wildcards-artifact-cache",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/troubleshoot/azure/azure-container-registry/client-ip-address-not-allowed-access",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/troubleshoot/azure/azure-container-registry/context-deadline-exceeded",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/troubleshoot/azure/azure-container-registry/download-failed-443-io-time-out",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/troubleshoot/azure/azure-container-registry/pull-image-to-web-app-fail",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/troubleshoot/azure/azure-container-registry/request-canceled-waiting-connection-timeout-exceeded",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
+      "target": "/troubleshoot/azure/azure-kubernetes/connectivity/cannot-pull-image-from-acr-to-aks-cluster",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/@foundations",
+      "target": "/azure/aks/intro-aks-automatic",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/@foundations",
+      "target": "/azure/container-apps/functions-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/@foundations",
+      "target": "/azure/container-apps/java-containers-intro",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/@foundations",
+      "target": "/azure/container-registry/container-registry-security-overview",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/@foundations",
+      "target": "/training/modules/configure-apps-azure-kubernetes-service",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/aks-diagnostics",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/app-routing",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/app-routing-gateway-api",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/app-routing-gateway-api-dns-tls",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/best-practices",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/control-kubeconfig-access",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/create-volume-azure-blob-storage",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/create-volume-azure-disk",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/create-volume-azure-files",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/csi-storage-drivers",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/deploy-marketplace",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/kubernetes-helm",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/aks/learn/quick-kubernetes-deploy-bicep-kubernetes-extension",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/azure/architecture/example-scenario/infrastructure/wordpress-container",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/training/modules/deploy-your-ai-copilot-azure-kubernetes",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/troubleshoot/azure/azure-kubernetes/create-upgrade-delete/error-code-vhdfilenotfound",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/troubleshoot/azure/azure-kubernetes/storage/could-not-change-permissions-azure-files",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/troubleshoot/azure/azure-kubernetes/storage/file-share-mount-failures-azure-files",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
+      "target": "/troubleshoot/azure/azure-kubernetes/welcome-azure-kubernetes",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/implement-event-driven-scaling-by-using-kubernetes-event-dri",
+      "target": "/azure/architecture/example-scenario/serverless/microservices-with-container-apps-dapr",
+      "decision": "reject",
+      "reason": "Not part of this task; the page is a specialised, troubleshooting or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-monitor-troubleshoot-azure-solutions/implement-secure-azure-solutions/@foundations",
+      "target": "/azure/key-vault/general/secure-key-vault",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-monitor-troubleshoot-azure-solutions/implement-secure-azure-solutions/@foundations",
+      "target": "/training/modules/manage-keys-secrets-key-vault",
+      "decision": "reject",
+      "reason": "Narrow, procedural or specialised page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-monitor-troubleshoot-azure-solutions/monitor-and-troubleshoot-azure-solutions/@foundations",
+      "target": "/azure/azure-monitor/agents/azure-monitor-agent-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-monitor-troubleshoot-azure-solutions/monitor-and-troubleshoot-azure-solutions/@foundations",
+      "target": "/azure/azure-monitor/metrics/azure-monitor-workspace-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "secure-monitor-troubleshoot-azure-solutions/monitor-and-troubleshoot-azure-solutions/trace-distributed-systems-by-using-opentelemetry-sdks",
+      "target": "/training/modules/aaai-implement-distributed-observability-multi-agent-opentelemetry",
+      "decision": "reject",
+      "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}

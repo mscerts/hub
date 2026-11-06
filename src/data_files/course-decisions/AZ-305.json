@@ -1,0 +1,1949 @@
+{
+  "schemaVersion": 1,
+  "code": "AZ-305",
+  "decisions": [
+    {
+      "task": "design-business-continuity-solutions/design-for-high-availability/@foundations",
+      "target": "/training/modules/design-compute-solution",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-for-high-availability/recommend-a-high-availability-solution-for-compute",
+      "target": "/training/modules/explore-azure-compute",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-for-high-availability/recommend-a-high-availability-solution-for-relational-data",
+      "target": "/azure/architecture/example-scenario/apps/sap-production",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-for-high-availability/recommend-a-high-availability-solution-for-relational-data",
+      "target": "/training/modules/explore-azure-compute",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/@foundations",
+      "target": "/azure/backup/multi-user-authorization-concept",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/@foundations",
+      "target": "/azure/backup/offline-backup-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/@foundations",
+      "target": "/azure/backup/security-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-backup-and-recovery-solution-for-databases",
+      "target": "/azure/architecture/security/ransomware-resilient-backup-architecture",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-backup-and-recovery-solution-for-databases",
+      "target": "/azure/azure-sql/database/designing-cloud-solutions-for-disaster-recovery",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-backup-and-recovery-solution-for-databases",
+      "target": "/azure/backup/backup-azure-integrate-microsoft-defender-using-logic-apps",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-backup-and-recovery-solution-for-unstructured-da",
+      "target": "/azure/storage/solution-integration/validated-partners/backup-archive-disaster-recovery/tiger-bridge-cdp-guide",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/@foundations",
+      "target": "/azure/architecture/analytics/analytics-get-started",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/@foundations",
+      "target": "/azure/architecture/data-guide/technology-choices/analysis-visualizations-reporting",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/@foundations",
+      "target": "/azure/architecture/guide/technology-choices/technology-choices-overview",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/@foundations",
+      "target": "/azure/architecture/integration/integration-get-started",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/@foundations",
+      "target": "/azure/data-factory/choose-the-right-integration-runtime-configuration",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/@foundations",
+      "target": "/azure/storage/common/storage-introduction",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/@foundations",
+      "target": "/training/modules/design-application-architecture",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/@foundations",
+      "target": "/training/modules/execute-existing-ssis-packages-azure-data-factory",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/@foundations",
+      "target": "/training/modules/explore-roles-responsibilities-world-of-data",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/@foundations",
+      "target": "/training/modules/petabyte-scale-ingestion-azure-data-factory",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/@foundations",
+      "target": "/training/modules/understand-data-roles-services-products",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-analysis",
+      "target": "/azure/azure-monitor/visualize/workbooks-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-analysis",
+      "target": "/azure/databricks/ai-bi",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-analysis",
+      "target": "/azure/synapse-analytics/sql/query-history-storage-analysis",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/architecture/databases/idea/minimal-storage-change-feed-replicate-data",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/architecture/solution-ideas/articles/analytics-netapp-object-api",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/architecture/solution-ideas/articles/azure-databricks-modern-analytics-architecture",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/architecture/solution-ideas/articles/iot-azure-data-explorer",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/architecture/solution-ideas/articles/mainframe-azure-file-replication",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/data-factory/solution-template-bulk-copy-from-files-to-database",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/data-factory/solution-template-bulk-copy-with-control-table",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/data-factory/solution-template-copy-files-multiple-containers",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/data-factory/solution-template-copy-new-files-last-modified-date",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/data-factory/solution-template-databricks-notebook",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/data-factory/solution-template-delta-copy-with-control-table",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/data-factory/solution-template-extract-data-from-pdf",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/data-factory/solution-template-migration-s3-azure",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/data-factory/solution-template-move-files",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/data-factory/solution-template-pii-detection-and-masking",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/data-factory/solution-template-replicate-multiple-objects-sap-cdc",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
+      "target": "/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/@foundations",
+      "target": "/azure/architecture/aws-professional/databases",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/@foundations",
+      "target": "/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/@foundations",
+      "target": "/training/modules/azure-well-architected-performance-efficiency",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/@foundations",
+      "target": "/training/modules/explore-iaas-paas-platform-tools-for-high-availability-disaster-recovery",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/@foundations",
+      "target": "/training/modules/explore-security-practices-azure-sql-database",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/@foundations",
+      "target": "/training/modules/intro-to-azure-site-recovery",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-database-service-tier-and-compute-tier",
+      "target": "/azure/azure-sql/database/serverless-tier-faq",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
+      "target": "/azure/azure-netapp-files/faq-data-migration-protection",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
+      "target": "/azure/backup/backup-azure-scdpm-troubleshooting",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
+      "target": "/azure/storage/file-sync/file-sync-disaster-recovery-best-practices",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
+      "target": "/azure/storage/files/windows-server-to-azure-files",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
+      "target": "/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manageability-monitoring",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
+      "target": "/azure/well-architected/security/data-classification",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
+      "target": "/security/benchmark/azure/mcsb-data-protection",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
+      "target": "/security/benchmark/azure/mcsb-v2-data-protection",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
+      "target": "/training/modules/secure-azure-cosmos-db-nosql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
+      "target": "/training/modules/secure-azure-storage-account",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-database-scalability",
+      "target": "/azure/architecture/antipatterns",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-database-scalability",
+      "target": "/azure/cosmos-db/modeling-data",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-storing-relational-data",
+      "target": "/azure/architecture/aws-professional/databases",
+      "decision": "reject",
+      "reason": "AWS-to-Azure comparison; not needed for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-semi-structured-and-unstru/@foundations",
+      "target": "/training/modules/design-data-storage-solution-for-relational-data",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/@foundations",
+      "target": "/entra/identity/authentication/concept-authentication-oath-tokens",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/@foundations",
+      "target": "/entra/identity/authentication/concept-authentication-phone-options",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/@foundations",
+      "target": "/entra/identity/authentication/concept-authentication-security-questions",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/@foundations",
+      "target": "/entra/identity/authentication/concept-authentication-strength-how-it-works",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/@foundations",
+      "target": "/entra/identity/authentication/concept-authentication-strengths",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/@foundations",
+      "target": "/training/modules/describe-identity-protection-governance-capabilities",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/@foundations",
+      "target": "/training/modules/entra-ai-understand",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/@foundations",
+      "target": "/training/modules/manage-application-access-microsoft-entra-id",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-a-solution-for-authorizing-access-to-on-premises-r",
+      "target": "/training/modules/design-network-solutions",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-a-solution-to-manage-secrets-certificates-and-keys",
+      "target": "/azure/key-vault/general/about-keys-secrets-certificates",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-authentication-solution",
+      "target": "/training/modules/aaai-secure-multi-agent-systems-azure-zero-trust",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-authentication-solution",
+      "target": "/training/modules/active-directory-authentication-kerberos",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-authentication-solution",
+      "target": "/training/modules/manage-secure-ai-ready-infrastructure",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-authentication-solution",
+      "target": "/training/modules/manage-user-authentication",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-authentication-solution",
+      "target": "/training/modules/plan-implement-administer-conditional-access",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/azure/architecture/aws-professional/security-identity",
+      "decision": "reject",
+      "reason": "AWS-to-Azure comparison; not needed for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/azure/architecture/reference-architectures/aws/aws-azure-ad-security",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity/app-provisioning/entra-id-scim-api-reference",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity/app-provisioning/troubleshoot-scim-api-errors",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity/devices/concept-primary-refresh-token",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity/domain-services/administration-concepts",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity/enterprise-apps/secure-hybrid-access",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity/enterprise-apps/what-is-application-management",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity/hybrid/connect/cloud-governed-management-for-on-premises",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity/hybrid/connect/how-to-connect-fed-management",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity/hybrid/how-to-group-source-of-authority-configure",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity/hybrid/how-to-user-source-of-authority-configure",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "target": "/entra/identity/users/domains-manage",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
+      "target": "/azure/governance/blueprints/concepts/lifecycle",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
+      "target": "/azure/governance/blueprints/concepts/resource-locking",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
+      "target": "/azure/governance/blueprints/concepts/sequencing-order",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
+      "target": "/azure/governance/blueprints/overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
+      "target": "/azure/governance/resource-graph/overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
+      "target": "/entra/id-governance/entitlement-management-access-package-visibility",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
+      "target": "/entra/id-governance/my-access-portal-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
+      "target": "/entra/id-governance/privileged-identity-management/concept-pim-for-groups",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
+      "target": "/entra/id-governance/reconciliation-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
+      "target": "/training/modules/introduction-to-deployment-stacks",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/azure/architecture/guide/multitenant/approaches/governance-compliance",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/azure/governance/policy/how-to/using-request-context-identity",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/id-governance/agent-sponsor-tasks",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/id-governance/entitlement-management-access-package-pim-reference",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/id-governance/entitlement-management-sap-integration",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/id-governance/privileged-identity-management/pim-apis",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/id-governance/privileged-identity-management/pim-email-notifications",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/id-governance/privileged-identity-management/pim-roles",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/id-governance/privileged-identity-management/pim-security-wizard",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/id-governance/privileged-identity-management/privileged-identity-management-custom-extensions",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/id-governance/sap",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/identity/conditional-access/agent-id",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/identity/multi-tenant-organizations/cross-tenant-synchronization-governance",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/identity/multi-tenant-organizations/defender-xdr-microsoft-entra-mto",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/entra/identity/users/groups-sensitivity-labels",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
+      "target": "/training/modules/implement-app-registration",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/aks/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/api-management/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/app-service/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/architecture/example-scenario/security/virtual-machine-compliance",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/architecture/guide/multitenant/approaches/governance-compliance",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/automation/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/azure-app-configuration/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/azure-monitor/fundamentals/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/azure-resource-manager/management/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/azure-sql/database/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/backup/backup-managed-disks-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/batch/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/cosmos-db/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/governance/policy/concepts/effect-add-to-network-group",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/logic-apps/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/redis/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/role-based-access-control/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/storage/common/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/synapse-analytics/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/virtual-machines/security-controls-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
+      "target": "/azure/virtual-machines/security-controls-policy-image-builder",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/azure/azure-monitor/app/traces-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/azure/azure-monitor/data-collection/pipeline-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/azure/azure-monitor/logs/logs-table-plans",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/azure/azure-monitor/logs/manage-logs-tables",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/azure/azure-monitor/logs/parse-text",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/azure/azure-monitor/logs/resource-logs-schema",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/azure/azure-monitor/metrics/prometheus-metrics-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/azure/azure-monitor/visualize/insights-overview",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/azure/azure-monitor/vm/data-collection",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/azure/backup/monitoring-and-alerts-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/entra/identity/monitoring-health/concept-audit-logs",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/entra/identity/monitoring-health/concept-diagnostic-settings-logs-options",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/entra/identity/monitoring-health/concept-log-monitoring-integration-options-considerations",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/entra/identity/monitoring-health/concept-sign-ins",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/entra/identity/monitoring-health/howto-access-activity-logs",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/entra/identity/monitoring-health/overview-monitoring-health",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/training/modules/configure-monitoring-applications",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/recommend-a-monitoring-solution",
+      "target": "/azure/cosmos-db/monitoring-solutions",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/recommend-a-monitoring-solution",
+      "target": "/training/modules/analyze-telemetry-logs-metrics",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/recommend-a-monitoring-solution",
+      "target": "/training/modules/connect-syslog-data-sources-to-azure-sentinel",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/recommend-a-monitoring-solution",
+      "target": "/training/modules/design-processes-automate-application-analytics",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/@foundations",
+      "target": "/azure/architecture/guide/multitenant/approaches/deployment-configuration",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/@foundations",
+      "target": "/azure/architecture/guide/multitenant/approaches/integration",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/@foundations",
+      "target": "/azure/azure-functions",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/@foundations",
+      "target": "/training/modules/cloud-native-myths",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/@foundations",
+      "target": "/training/modules/intro-to-azure-application-gateway",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/recommend-a-caching-solution-for-applications",
+      "target": "/azure/architecture/guide/networking/global-web-applications/mission-critical-content-delivery",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/recommend-a-caching-solution-for-applications",
+      "target": "/training/modules/implement-integrated-cache",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/recommend-a-messaging-architecture",
+      "target": "/azure/architecture/aws-professional/messaging",
+      "decision": "reject",
+      "reason": "AWS-to-Azure comparison; not needed for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/recommend-a-messaging-architecture",
+      "target": "/azure/architecture/guide/multitenant/approaches/messaging",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/recommend-a-messaging-architecture",
+      "target": "/training/modules/implement-event-messaging-azure-managed-redis",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/recommend-an-application-configuration-management-solution",
+      "target": "/training/modules/manage-app-settings-app-config",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/recommend-an-automated-deployment-solution-for-applications",
+      "target": "/training/modules/configure-azure-app-services",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/recommend-an-automated-deployment-solution-for-applications",
+      "target": "/training/modules/deploy-apps-azure-kubernetes-service",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-an-application-architecture/recommend-an-event-driven-architecture",
+      "target": "/azure/aks/keda-about",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/@foundations",
+      "target": "/training/modules/azure-well-architected-performance-efficiency",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/@foundations",
+      "target": "/training/modules/explore-iaas-paas-platform-tools-for-high-availability-disaster-recovery",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-compute-solution-for-batch-processing",
+      "target": "/azure/batch",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-compute-solution-for-batch-processing",
+      "target": "/azure/batch/batch-ci-cd",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-compute-solution-for-batch-processing",
+      "target": "/azure/batch/batch-get-resource-counts",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-container-based-solution",
+      "target": "/azure/aks/csi-storage-drivers",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-container-based-solution",
+      "target": "/azure/architecture/example-scenario/aks-agic/aks-agc",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-container-based-solution",
+      "target": "/azure/architecture/example-scenario/serverless/microservices-with-container-apps-dapr",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-container-based-solution",
+      "target": "/azure/architecture/guide/multitenant/service/container-apps",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-container-based-solution",
+      "target": "/azure/architecture/reference-architectures/containers/aro/azure-redhat-openshift-financial-services-workloads",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-container-based-solution",
+      "target": "/training/modules/azure-well-architected-performance-efficiency",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-serverless-based-solution",
+      "target": "/azure/architecture/example-scenario/serverless/microservices-with-container-apps-dapr",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-serverless-based-solution",
+      "target": "/training/modules/build-backends-azure-functions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-virtual-machine-based-solution",
+      "target": "/azure/architecture/solution-ideas/articles/multilayered-protection-azure-vm",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-virtual-machine-based-solution",
+      "target": "/azure/backup/selective-disk-backup-restore",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-virtual-machine-based-solution",
+      "target": "/azure/virtual-machines/linux/storage-performance",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-virtual-machine-based-solution",
+      "target": "/azure/virtual-machines/sizes/cobalt-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-virtual-machine-based-solution",
+      "target": "/azure/virtual-machines/sizes/lifecycle/sizes-v6-v7-modernization-modernize",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-virtual-machine-based-solution",
+      "target": "/azure/virtual-machines/windows/storage-performance",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-virtual-machine-based-solution",
+      "target": "/training/modules/azure-well-architected-performance-efficiency",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/@foundations",
+      "target": "/azure/cloud-adoption-framework/migrate/migration-wave-planning",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/@foundations",
+      "target": "/azure/cloud-adoption-framework/migrate/plan-migration",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/@foundations",
+      "target": "/azure/cloud-adoption-framework/migrate/prepare-workloads-cloud",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/@foundations",
+      "target": "/azure/cloud-adoption-framework/plan/discover-existing-workload-inventory",
+      "decision": "reject",
+      "reason": "Hub, navigation or product-specific page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/@foundations",
+      "target": "/azure/migrate/overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Overview of Azure Migrate, the base tool for the migration design tasks.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/evaluate-a-migration-solution-that-leverages-the-microsoft-c",
+      "target": "/azure/cloud-adoption-framework/ready/azure-best-practices/azure-virtual-network-manager",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/evaluate-a-migration-solution-that-leverages-the-microsoft-c",
+      "target": "/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/evaluate-a-migration-solution-that-leverages-the-microsoft-c",
+      "target": "/azure/cloud-adoption-framework/strategy/motivations",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/evaluate-a-migration-solution-that-leverages-the-microsoft-c",
+      "target": "/azure/governance/blueprints/samples/caf-migrate-landing-zone",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, a specific product or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/evaluate-on-premises-servers-data-and-applications-for-migra",
+      "target": "/azure/architecture/example-scenario/unix-migration/migrate-aix-azure-linux",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/evaluate-on-premises-servers-data-and-applications-for-migra",
+      "target": "/azure/data-factory/data-migration-guidance-hdfs-azure-storage",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/evaluate-on-premises-servers-data-and-applications-for-migra",
+      "target": "/azure/data-factory/data-migration-guidance-netezza-azure-sqldw",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/evaluate-on-premises-servers-data-and-applications-for-migra",
+      "target": "/azure/storage/files/storage-files-migration-nas-cloud-databox",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/evaluate-on-premises-servers-data-and-applications-for-migra",
+      "target": "/azure/storage/files/storage-files-migration-nas-hybrid-databox",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/architecture/databases/idea/migrate-oracle-odaa-exadata",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/azure-sql/database/manage-hyperscale-database",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/azure-sql/database/reverse-migrate-from-hyperscale",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/azure-sql/managed-instance/instance-pools-configure",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/cosmos-db/cassandra/migrate-data-databricks",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/cosmos-db/cassandra/migrate-data-dual-write-proxy",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/cosmos-db/migrate-data-striim",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/cosmos-db/postgresql/concepts-benefits-database-postgresql",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/cosmos-db/postgresql/how-to-migrate-database-postgresql",
+      "decision": "reject",
+      "reason": "Dropped in review: per-service compliance catalogue, template or sample variant, deeper detail than the exam needs, other-role or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/dms/how-to-migrate-ssis-packages",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/dms/how-to-migrate-ssis-packages-managed-instance",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/migrate/add-server-credentials",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/migrate/how-to-review-discovered-inventory",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/azure/virtual-machines/workloads/oracle/oracle-migration-oracle-database-at-azure",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/training/modules/migrate-sql-workloads-azure-managed-instances",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/training/modules/migrate-sql-workloads-azure-sql-databases",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
+      "target": "/training/modules/oracle-workload-azure-odaa",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-network-solutions/recommend-a-load-balancing-and-routing-solution",
+      "target": "/training/modules/explore-azure-networking",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-network-solutions/recommend-a-solution-to-optimize-network-security",
+      "target": "/training/modules/implement-windows-server-iaas-virtual-machine-network-security",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    }
+  ],
+  "excludedFamilies": []
+}

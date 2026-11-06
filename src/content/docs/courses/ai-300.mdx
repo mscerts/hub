@@ -1,0 +1,997 @@
+---
+title: AI-300 Study Guide Course
+description: "Follow a structured AI-300 course organized by study guide task, with Microsoft Learn training and documentation."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official AI-300 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-300?WT.mc_id=studentamb_165290) skills measured. Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AI-300 labs page](/certs/labs/azure/ai-300/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As a candidate for this Microsoft Certification, you should have subject matter expertise in setting up infrastructure for machine learning operations (MLOps) and generative AI operations (GenAIOps) solutions on Azure, together referred to as AI operations (AIOps). You need experience training, optimizing, deploying, and maintaining traditional machine learning models by using Azure Machine Learning, in addition to experience deploying, evaluating, monitoring, and optimizing generative AI applications and agents by using Microsoft Foundry.
+
+You should have a data science background with experience in Python programming and an entry-level understanding of DevOps practices, including using tools like GitHub Actions and working with command-line interfaces (CLIs).
+
+You work with data scientists, DevOps teams, and stakeholders to deliver scalable AI solutions with comprehensive automation and monitoring.
+
+### Additionally, you need knowledge and experience in MLOps by using
+
+- Machine Learning.
+- Foundry.
+- GitHub Actions.
+- Infrastructure as code (IaC) practices with Bicep and Azure CLI.
+
+### Your responsibilities for this role include
+
+- Designing and implementing MLOps infrastructure.
+- Implementing machine learning model lifecycle and operations.
+- Designing and implementing GenAIOps infrastructure.
+- Implementing generative AI quality assurance and observability.
+- Optimizing generative AI systems and model performance.
+
+## Design and implement an MLOps infrastructure (15–20%)
+
+### Create and manage resources in a Machine Learning workspace
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to machine learning concepts" href="https://learn.microsoft.com/training/modules/fundamentals-machine-learning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to DevOps principles for machine learning" href="https://learn.microsoft.com/training/modules/introduction-development-operations-principles-for-machine-learn?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Azure Machine Learning authentication and authorization" href="https://learn.microsoft.com/training/modules/intro-azure-machine-learning-auth?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Secure network traffic flow" href="https://learn.microsoft.com/azure/machine-learning/concept-secure-network-traffic-flow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data encryption with Azure Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/concept-data-encryption?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is an Azure Machine Learning compute instance?" href="https://learn.microsoft.com/azure/machine-learning/concept-compute-instance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure workspace resources using virtual networks (VNets) - Azure Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/how-to-network-security-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Workload Identity Federation" href="https://learn.microsoft.com/entra/workload-id/workload-identity-federation?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage a workspace
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Machine Learning monitoring" href="https://learn.microsoft.com/training/modules/monitor-azure-machine-learning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restrict Azure Machine Learning workspace network traffic" href="https://learn.microsoft.com/training/modules/restrict-azure-machine-learning-workspace-network?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is an Azure Machine Learning hub workspace?" href="https://learn.microsoft.com/azure/machine-learning/concept-hub-workspace?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Workspace soft deletion" href="https://learn.microsoft.com/azure/machine-learning/concept-soft-delete?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is a workspace?" href="https://learn.microsoft.com/azure/machine-learning/concept-workspace?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Workspace by Using an Azure Resource Manager Template" href="https://learn.microsoft.com/azure/machine-learning/how-to-create-workspace-template?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Export or delete workspace data" href="https://learn.microsoft.com/azure/machine-learning/how-to-export-delete-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage hub workspaces in portal" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-hub-workspace-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use REST to manage ML resources" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-rest?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage workspaces in portal or Python SDK (v2)" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-workspace?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create workspaces with Azure CLI" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-workspace-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create workspaces with Azure PowerShell" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-workspace-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create workspaces by using Terraform" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-workspace-terraform?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Move workspace between subscriptions (preview)" href="https://learn.microsoft.com/azure/machine-learning/how-to-move-workspace?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure inbound and outbound network traffic" href="https://learn.microsoft.com/azure/machine-learning/how-to-access-azureml-behind-firewall?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure a private endpoint" href="https://learn.microsoft.com/azure/machine-learning/how-to-configure-private-link?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Disable shared key access to the workspace storage account" href="https://learn.microsoft.com/azure/machine-learning/how-to-disable-local-auth-storage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit and manage Azure Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/how-to-integrate-azure-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure an Azure Machine Learning workspace with virtual networks - Azure Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/how-to-secure-workspace-vnet?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot private endpoint connection" href="https://learn.microsoft.com/azure/machine-learning/how-to-troubleshoot-secure-connection-workspace?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to use workspace diagnostics" href="https://learn.microsoft.com/azure/machine-learning/how-to-workspace-diagnostic-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Upgrade workspace management to SDK v2" href="https://learn.microsoft.com/azure/machine-learning/migrate-to-v2-resource-workspace?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CLI (v2) workspace YAML schema" href="https://learn.microsoft.com/azure/machine-learning/reference-yaml-workspace?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage datastores
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use datastores" href="https://learn.microsoft.com/azure/machine-learning/how-to-datastore?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Upgrade datastore management to SDK v2" href="https://learn.microsoft.com/azure/machine-learning/migrate-to-v2-resource-datastore?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Copy a OneLake lakehouse table to Azure Machine Learning through the UI" href="https://learn.microsoft.com/azure/machine-learning/create-datastore-with-user-interface?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CLI (v2) Azure Blob datastore YAML schema" href="https://learn.microsoft.com/azure/machine-learning/reference-yaml-datastore-blob?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CLI (v2) Azure Data Lake Gen2 datastore YAML schema" href="https://learn.microsoft.com/azure/machine-learning/reference-yaml-datastore-data-lake-gen2?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CLI (v2) Azure Files datastore YAML schema" href="https://learn.microsoft.com/azure/machine-learning/reference-yaml-datastore-files?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage compute targets
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Understand compute targets" href="https://learn.microsoft.com/azure/machine-learning/concept-compute-target?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Kubernetes compute target" href="https://learn.microsoft.com/azure/machine-learning/how-to-attach-kubernetes-anywhere?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create compute clusters" href="https://learn.microsoft.com/azure/machine-learning/how-to-create-attach-compute-cluster?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage training & deploy computes (studio)" href="https://learn.microsoft.com/azure/machine-learning/how-to-create-attach-compute-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a compute instance" href="https://learn.microsoft.com/azure/machine-learning/how-to-create-compute-instance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage a compute instance" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-compute-instance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Customize compute instance with a script" href="https://learn.microsoft.com/azure/machine-learning/how-to-customize-compute-instance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure identity and access management for workspaces
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement identity-based security for Azure Machine Learning workspaces" href="https://learn.microsoft.com/training/modules/implement-identity-based-security-azure-machine-learning?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Create and manage assets in a Machine Learning workspace
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Machine Learning CLI & SDK v2" href="https://learn.microsoft.com/azure/machine-learning/concept-v2?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How Azure Machine Learning Works (v2)" href="https://learn.microsoft.com/azure/machine-learning/concept-azure-machine-learning-v2?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data concepts in Azure Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/concept-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What are machine learning pipelines?" href="https://learn.microsoft.com/azure/machine-learning/concept-ml-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage data assets
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create Data Assets" href="https://learn.microsoft.com/azure/machine-learning/how-to-create-data-assets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Import data (preview)" href="https://learn.microsoft.com/azure/machine-learning/how-to-import-data-assets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage imported data assets (preview)" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-imported-data-assets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Upgrade data management to SDK v2" href="https://learn.microsoft.com/azure/machine-learning/migrate-to-v2-assets-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Search for assets" href="https://learn.microsoft.com/azure/machine-learning/how-to-search-assets?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage environments
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="About Azure Machine Learning environments" href="https://learn.microsoft.com/azure/machine-learning/concept-environments?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to create Azure Container for PyTorch custom curated environments" href="https://learn.microsoft.com/azure/machine-learning/how-to-azure-container-for-pytorch-environment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage environments in the studio" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-environments-in-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Azure Machine Learning environments with the CLI & SDK (v2)" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-environments-v2?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Curated environments" href="https://learn.microsoft.com/azure/machine-learning/resource-curated-environments?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apache Spark - environment configuration - Azure Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/apache-spark-environment-configuration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up MLOps with Azure DevOps" href="https://learn.microsoft.com/azure/machine-learning/how-to-setup-mlops-azureml?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up MLOps with GitHub" href="https://learn.microsoft.com/azure/machine-learning/how-to-setup-mlops-github-azure-ml?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot environment images" href="https://learn.microsoft.com/azure/machine-learning/how-to-troubleshoot-environments?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CLI (v2) environment YAML schema" href="https://learn.microsoft.com/azure/machine-learning/reference-yaml-environment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Container for PyTorch" href="https://learn.microsoft.com/azure/machine-learning/resource-azure-container-for-pytorch?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage components
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Run pipelines in Azure Machine Learning" href="https://learn.microsoft.com/training/modules/run-pipelines-azure-machine-learning?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is a component" href="https://learn.microsoft.com/azure/machine-learning/concept-component?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and run machine learning pipelines using components with the Machine Learning SDK v2" href="https://learn.microsoft.com/azure/machine-learning/how-to-create-component-pipeline-python?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and run component-based ML pipelines (CLI)" href="https://learn.microsoft.com/azure/machine-learning/how-to-create-component-pipelines-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and run component-based ML pipelines (UI)" href="https://learn.microsoft.com/azure/machine-learning/how-to-create-component-pipelines-ui?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage inputs and outputs for components and pipelines" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-inputs-outputs-pipeline?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to use pipeline components in pipeline jobs" href="https://learn.microsoft.com/azure/machine-learning/how-to-use-pipeline-component?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CLI (v2) command component YAML schema" href="https://learn.microsoft.com/azure/machine-learning/reference-yaml-component-command?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CLI (v2) pipeline component YAML schema" href="https://learn.microsoft.com/azure/machine-learning/reference-yaml-component-pipeline?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Designer (v2)?" href="https://learn.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SDK and CLI v2 expressions" href="https://learn.microsoft.com/azure/machine-learning/concept-expressions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to deploy pipeline as batch endpoint" href="https://learn.microsoft.com/azure/machine-learning/how-to-deploy-pipeline-component-as-batch-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy pipelines with batch endpoints" href="https://learn.microsoft.com/azure/machine-learning/how-to-use-batch-pipeline-deployments?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to deploy existing pipeline jobs to a batch endpoint" href="https://learn.microsoft.com/azure/machine-learning/how-to-use-batch-pipeline-from-job?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CLI (v2) Spark component YAML schema" href="https://learn.microsoft.com/azure/machine-learning/reference-yaml-component-spark?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Share assets across workspaces by using registries
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Share data across workspaces with registries" href="https://learn.microsoft.com/azure/machine-learning/how-to-share-data-across-workspaces-with-registries?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Share models, components, and environments across workspaces with registries" href="https://learn.microsoft.com/azure/machine-learning/how-to-share-models-pipelines-across-workspaces-with-registries?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement IaC for Machine Learning
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Infrastructure as Code and configuration management" href="https://learn.microsoft.com/training/modules/explore-infrastructure-code-configuration-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to GitHub" href="https://learn.microsoft.com/training/modules/introduction-to-github?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to GitHub Actions" href="https://learn.microsoft.com/training/modules/introduction-to-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Git" href="https://learn.microsoft.com/training/modules/intro-to-git?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to DevOps" href="https://learn.microsoft.com/training/modules/introduction-to-devops?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Git integration" href="https://learn.microsoft.com/azure/machine-learning/concept-train-model-git-integration?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure GitHub integration with Machine Learning to enable secure access
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Automate model training with GitHub Actions" href="https://learn.microsoft.com/training/modules/trigger-azure-machine-learn-jobs-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy and monitor a model in Azure Machine Learning" href="https://learn.microsoft.com/training/modules/deploy-model-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy Machine Learning workspaces and resources by using Bicep and Azure CLI
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create a hub workspace with Azure Resource Manager template" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-hub-workspace-template?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Automate resource provisioning by using GitHub Actions workflows
+
+:::note
+The Microsoft Learn module "Automate model training with GitHub Actions" also covers this task. It is listed once, under [Configure GitHub integration with Machine Learning to enable secure access](#configure-github-integration-with-machine-learning-to-enable-secure-access).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Authenticate to Azure from GitHub Actions workflows" href="https://learn.microsoft.com/azure/developer/github/connect-from-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Authenticate to Azure from GitHub Actions by OpenID Connect" href="https://learn.microsoft.com/azure/developer/github/connect-from-azure-openid-connect?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Restrict network access to Machine Learning workspaces
+
+:::note
+The Microsoft Learn module "Restrict Azure Machine Learning workspace network traffic" also covers this task. It is listed once, under [Create and manage a workspace](#create-and-manage-a-workspace) in the skill group Create and manage resources in a Machine Learning workspace.
+:::
+
+#### Manage source control for machine learning projects by using Git
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Source control for machine learning projects" href="https://learn.microsoft.com/training/modules/source-control-for-machine-learning-projects?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Implement machine learning model lifecycle and operations (25–30%)
+
+### Orchestrate model training
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="MLflow and Azure Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/concept-mlflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Artifacts and models in MLflow" href="https://learn.microsoft.com/azure/machine-learning/concept-mlflow-models?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Build & train models" href="https://learn.microsoft.com/azure/machine-learning/concept-train-machine-learning-model?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deep Learning vs. Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/concept-deep-learning-vs-machine-learning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is distributed training?" href="https://learn.microsoft.com/azure/machine-learning/concept-distributed-training?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure experiment tracking with MLflow
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Experiment with Azure Machine Learning" href="https://learn.microsoft.com/training/modules/experiment-azure-machine-learning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Run training scripts and track models with MLflow in Azure Machine Learning" href="https://learn.microsoft.com/training/modules/run-training-scripts-track-models-mlflow?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Query & compare experiments and runs with MLflow" href="https://learn.microsoft.com/azure/machine-learning/how-to-track-experiments-mlflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Track Experiments and Models by Using MLflow" href="https://learn.microsoft.com/azure/machine-learning/how-to-use-mlflow-cli-runs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure MLflow for Azure Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/how-to-use-mlflow-configure-tracking?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor and analyze jobs in studio" href="https://learn.microsoft.com/azure/machine-learning/how-to-track-monitor-analyze-runs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Organize & track training jobs (preview)" href="https://learn.microsoft.com/azure/machine-learning/how-to-track-monitor-organize-jobs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate logging from SDK v1 to MLflow" href="https://learn.microsoft.com/azure/machine-learning/reference-migrate-sdk-v1-mlflow-tracking?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Use automated machine learning to explore optimal models
+
+:::note
+The Microsoft Learn module "Experiment with Azure Machine Learning" also covers this task. It is listed once, under [Configure experiment tracking with MLflow](#configure-experiment-tracking-with-mlflow).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Lag features for time-series forecasting in AutoML" href="https://learn.microsoft.com/azure/machine-learning/concept-automl-forecasting-lags?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Models sweeping & selection for forecasting in AutoML" href="https://learn.microsoft.com/azure/machine-learning/concept-automl-forecasting-sweeping?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Use notebooks for experimentation and exploration
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Run training scripts and track models with MLflow in Azure Machine Learning": under [Configure experiment tracking with MLflow](#configure-experiment-tracking-with-mlflow)
+- "Experiment with Azure Machine Learning": under [Configure experiment tracking with MLflow](#configure-experiment-tracking-with-mlflow)
+:::
+
+#### Automate hyperparameter tuning
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Perform hyperparameter tuning with Azure Machine Learning" href="https://learn.microsoft.com/training/modules/perform-hyperparameter-tuning-azure-machine-learning-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How to do hyperparameter sweep in pipelines" href="https://learn.microsoft.com/azure/machine-learning/how-to-use-sweep-in-pipeline?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Hyperparameter tuning a model (v2)" href="https://learn.microsoft.com/azure/machine-learning/how-to-tune-hyperparameters?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Upgrade hyperparameter tuning to SDK v2" href="https://learn.microsoft.com/azure/machine-learning/migrate-to-v2-execution-hyperdrive?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Run model training scripts
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Run training scripts and track models with MLflow in Azure Machine Learning": under [Configure experiment tracking with MLflow](#configure-experiment-tracking-with-mlflow)
+- "Automate model training with GitHub Actions": under [Configure GitHub integration with Machine Learning to enable secure access](#configure-github-integration-with-machine-learning-to-enable-secure-access) in the skill group Implement IaC for Machine Learning
+- "Experiment with Azure Machine Learning": under [Configure experiment tracking with MLflow](#configure-experiment-tracking-with-mlflow)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Train deep learning PyTorch models (SDK v2)" href="https://learn.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Model Training on Serverless Compute" href="https://learn.microsoft.com/azure/machine-learning/how-to-use-serverless-compute?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage distributed training for large and deep learning models
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Implement training pipelines
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Run pipelines in Azure Machine Learning": under [Create and manage components](#create-and-manage-components) in the skill group Create and manage assets in a Machine Learning workspace
+- "Automate model training with GitHub Actions": under [Configure GitHub integration with Machine Learning to enable secure access](#configure-github-integration-with-machine-learning-to-enable-secure-access) in the skill group Implement IaC for Machine Learning
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Operationalize a training pipeline on batch endpoints" href="https://learn.microsoft.com/azure/machine-learning/how-to-use-batch-training-pipeline?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Schedule pipeline jobs" href="https://learn.microsoft.com/azure/machine-learning/how-to-schedule-pipeline-job?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Compare model performance across jobs
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Run training scripts and track models with MLflow in Azure Machine Learning": under [Configure experiment tracking with MLflow](#configure-experiment-tracking-with-mlflow)
+- "Experiment with Azure Machine Learning": under [Configure experiment tracking with MLflow](#configure-experiment-tracking-with-mlflow)
+:::
+
+### Implement model registration and versioning
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to generative AI and agents" href="https://learn.microsoft.com/training/modules/fundamentals-generative-ai?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to generative AI - Exploring the basics" href="https://learn.microsoft.com/training/modules/intro-generative-ai-explore-basics?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apply responsible AI principles in learning environments" href="https://learn.microsoft.com/training/modules/apply-responsible-ai-principles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft's Responsible AI Approach" href="https://learn.microsoft.com/training/modules/introduction-to-microsofts-responsible-ai-approach?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Foundry Models overview" href="https://learn.microsoft.com/azure/foundry/concepts/foundry-models-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Responsible AI practices for Azure OpenAI in Foundry Models" href="https://learn.microsoft.com/azure/foundry/responsible-ai/openai/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Package a feature retrieval specification with the model artifact
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Feature retrieval specification and usage in training and inference" href="https://learn.microsoft.com/azure/machine-learning/feature-retrieval-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CLI (v2) feature retrieval specification YAML schema" href="https://learn.microsoft.com/azure/machine-learning/reference-yaml-feature-retrieval-spec?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Register an MLflow model
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Run training scripts and track models with MLflow in Azure Machine Learning": under [Configure experiment tracking with MLflow](#configure-experiment-tracking-with-mlflow) in the skill group Orchestrate model training
+- "Experiment with Azure Machine Learning": under [Configure experiment tracking with MLflow](#configure-experiment-tracking-with-mlflow) in the skill group Orchestrate model training
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage models registry with MLflow" href="https://learn.microsoft.com/azure/machine-learning/how-to-manage-models-mlflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Guidelines for Deploying MLflow Models" href="https://learn.microsoft.com/azure/machine-learning/how-to-deploy-mlflow-models?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Convert custom models to MLflow" href="https://learn.microsoft.com/azure/machine-learning/how-to-convert-custom-model-to-mlflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Log MLflow models" href="https://learn.microsoft.com/azure/machine-learning/how-to-log-mlflow-models?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Evaluate a model by using responsible AI principles
+
+:::note
+The Microsoft Learn module "Experiment with Azure Machine Learning" also covers this task. It is listed once, under [Configure experiment tracking with MLflow](#configure-experiment-tracking-with-mlflow) in the skill group Orchestrate model training.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Responsible AI" href="https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assess AI Systems and Make Data-Driven Decisions with Azure Machine Learning Responsible AI Dashboard" href="https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai-dashboard?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assess errors in machine learning models" href="https://learn.microsoft.com/azure/machine-learning/concept-error-analysis?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Share Responsible AI insights and make data-driven decisions with Azure Machine Learning Responsible AI scorecard" href="https://learn.microsoft.com/azure/machine-learning/concept-responsible-ai-scorecard?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage model lifecycle, including archiving models
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="MLOps machine learning model management" href="https://learn.microsoft.com/azure/machine-learning/concept-model-management-and-deployment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Foundry Models lifecycle and support policy" href="https://learn.microsoft.com/azure/foundry/openai/concepts/model-retirements?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Design to Support Foundation Model Life Cycles - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/ai-ml/guide/manage-foundation-models-lifecycle?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Built-in policies for model deployment" href="https://learn.microsoft.com/azure/foundry/how-to/model-deployment-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Deploy machine learning models for production environments
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Get started with machine learning in Azure" href="https://learn.microsoft.com/training/modules/design-machine-learning-model-training-solution?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore release strategy recommendations" href="https://learn.microsoft.com/training/modules/explore-release-strategy-recommendations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to deployment patterns" href="https://learn.microsoft.com/training/modules/introduction-to-deployment-patterns?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Model specification for online deployments" href="https://learn.microsoft.com/azure/machine-learning/concept-online-deployment-model-specification?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Microsoft Foundry Models in Azure Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/foundry-models-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy models as real-time or batch endpoints with managed inference options
+
+:::note
+The Microsoft Learn module "Deploy and monitor a model in Azure Machine Learning" also covers this task. It is listed once, under [Configure GitHub integration with Machine Learning to enable secure access](#configure-github-integration-with-machine-learning-to-enable-secure-access) in the skill group Implement IaC for Machine Learning.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Deploy Machine Learning Models to Online Endpoints" href="https://learn.microsoft.com/azure/machine-learning/how-to-deploy-online-endpoints?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Test and troubleshoot model endpoints
+
+:::note
+The Microsoft Learn module "Deploy and monitor a model in Azure Machine Learning" also covers this task. It is listed once, under [Configure GitHub integration with Machine Learning to enable secure access](#configure-github-integration-with-machine-learning-to-enable-secure-access) in the skill group Implement IaC for Machine Learning.
+:::
+
+#### Implement progressive rollout and safe rollback strategies
+
+:::note
+The Microsoft Learn module "Deploy and monitor a model in Azure Machine Learning" also covers this task. It is listed once, under [Configure GitHub integration with Machine Learning to enable secure access](#configure-github-integration-with-machine-learning-to-enable-secure-access) in the skill group Implement IaC for Machine Learning.
+:::
+
+### Monitor and maintain machine learning models in production
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Inference data collection from models in production" href="https://learn.microsoft.com/azure/machine-learning/concept-data-collection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Azure Machine Learning?" href="https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Detect and analyze data drift
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Monitor performance metrics of models deployed to production
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor your generative AI application" href="https://learn.microsoft.com/training/modules/monitor-generative-ai-app?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Monitor model performance in production" href="https://learn.microsoft.com/azure/machine-learning/how-to-monitor-model-performance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Model monitoring in production" href="https://learn.microsoft.com/azure/machine-learning/concept-model-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitoring evaluation metrics descriptions and use cases (preview)" href="https://learn.microsoft.com/azure/machine-learning/prompt-flow/concept-model-monitoring-generative-ai-evaluation-metrics?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure retraining or alert triggers when thresholds are exceeded
+
+:::note
+The Microsoft Learn module "Deploy and monitor a model in Azure Machine Learning" also covers this task. It is listed once, under [Configure GitHub integration with Machine Learning to enable secure access](#configure-github-integration-with-machine-learning-to-enable-secure-access) in the skill group Implement IaC for Machine Learning.
+:::
+
+## Design and implement a GenAIOps infrastructure (20–25%)
+
+### Implement Foundry environments and platform configuration
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement and manage enforcement of cloud governance policies" href="https://learn.microsoft.com/training/modules/implement-manage-enforcement-cloud-governance-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and configure Foundry resources and project environments
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure identity and access management with managed identities and role-based access control (RBAC)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe Azure identity, access, and security" href="https://learn.microsoft.com/training/modules/describe-azure-identity-access-security?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Assign Azure roles using Azure CLI - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign Azure roles using the Azure portal - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign Azure roles to a managed identity (Preview) - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal-managed-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign Azure roles using Azure PowerShell - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign Azure roles using the REST API - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-rest?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Steps to assign an Azure role - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-steps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign Azure roles using Azure Resource Manager templates - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-template?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure custom roles - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/custom-roles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Azure role assignments - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Azure role definitions - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-definitions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Eligible and time-bound role assignments in Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/pim-integration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="List Azure role assignments using Azure CLI - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="List Azure role assignments using the Azure portal - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="List Azure role assignments using Azure PowerShell - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="List Azure role assignments using the REST API - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-rest?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Remove Azure role assignments - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/role-assignments-remove?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure built-in roles for Identity - Azure RBAC" href="https://learn.microsoft.com/azure/role-based-access-control/built-in-roles/identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delegate Azure access management to others - Azure ABAC" href="https://learn.microsoft.com/azure/role-based-access-control/delegate-role-assignments-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get signed in identity" href="https://learn.microsoft.com/entra/identity/users/how-to-get-signed-in-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement network security and private networking configurations
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Plan and implement security for private access to Azure resources" href="https://learn.microsoft.com/training/modules/security-private-access-azure-resources?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy infrastructure using Bicep templates and Azure CLI
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Deploy and manage foundation models for production workloads
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Understand deployment types in Microsoft Foundry Models in Azure Government" href="https://learn.microsoft.com/azure/foundry/foundry-models/concepts/deployment-types-gov?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy foundation models by using serverless API endpoints and managed compute options
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Deployment overview for Microsoft Foundry Models - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/concepts/deployments-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy fine-tuned models in Microsoft Foundry - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/fine-tuning/deploy-fine-tuned-models?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Select appropriate models for specific use cases
+
+:::note
+The Microsoft Learn module "Experiment with Azure Machine Learning" also covers this task. It is listed once, under [Configure experiment tracking with MLflow](#configure-experiment-tracking-with-mlflow) in the skill group Orchestrate model training.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="GPT-5 vs GPT-4.1 - choosing the right model for your use case" href="https://learn.microsoft.com/azure/foundry/foundry-models/how-to/model-choice-guide?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement model versioning and production deployment strategies
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage prompts for agents in Microsoft Foundry with GitHub" href="https://learn.microsoft.com/training/modules/prompt-versioning-genaiops?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Safe rollout for online endpoints" href="https://learn.microsoft.com/azure/machine-learning/how-to-safely-rollout-online-endpoints?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure provisioned throughput units for high-volume workloads
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Operate provisioned throughput deployments in production" href="https://learn.microsoft.com/azure/foundry/openai/how-to/provisioned-get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Determine PTU sizing for a workload" href="https://learn.microsoft.com/azure/foundry/openai/how-to/provisioned-throughput-sizing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Save costs with Microsoft Foundry Provisioned Throughput Reservations" href="https://learn.microsoft.com/azure/cost-management-billing/reservations/microsoft-foundry?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement prompt versioning and management with source control
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand the Transformer architecture and explore large language models in Azure Machine Learning" href="https://learn.microsoft.com/training/modules/explore-foundation-models-in-model-catalog?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What are flows in Azure Machine Learning prompt flow" href="https://learn.microsoft.com/azure/machine-learning/prompt-flow/concept-flows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Advance your maturity level for GenAIOps" href="https://learn.microsoft.com/azure/machine-learning/prompt-flow/concept-llmops-maturity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What are tools in Azure Machine Learning prompt flow" href="https://learn.microsoft.com/azure/machine-learning/prompt-flow/concept-tools?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Azure Machine Learning prompt flow" href="https://learn.microsoft.com/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and develop prompts
+
+:::note
+The Microsoft Learn module "Manage prompts for agents in Microsoft Foundry with GitHub" also covers this task. It is listed once, under [Implement model versioning and production deployment strategies](#implement-model-versioning-and-production-deployment-strategies) in the skill group Deploy and manage foundation models for production workloads.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Develop prompt flow" href="https://learn.microsoft.com/azure/machine-learning/prompt-flow/how-to-develop-flow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with prompt flow" href="https://learn.microsoft.com/azure/machine-learning/prompt-flow/get-started-prompt-flow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prompt tool in Azure Machine Learning prompt flow" href="https://learn.microsoft.com/azure/machine-learning/prompt-flow/tools-reference/prompt-tool?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create prompt variants and compare performance across different prompts
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Evaluate and optimize AI agents through structured experiments" href="https://learn.microsoft.com/training/modules/evaluate-optimize-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Optimize generative AI model performance with Microsoft Foundry" href="https://learn.microsoft.com/training/modules/optimize-generative-ai-model-performance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Variants in Azure Machine Learning prompt flow" href="https://learn.microsoft.com/azure/machine-learning/prompt-flow/concept-variants?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Tune prompts using variants in prompt flow" href="https://learn.microsoft.com/azure/machine-learning/prompt-flow/how-to-tune-prompts-using-variants?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Transparency Note for auto-generate prompt variants in prompt flow" href="https://learn.microsoft.com/azure/machine-learning/prompt-flow/transparency-note?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement version control for prompts by using Git repositories
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Evaluate and optimize AI agents through structured experiments": under [Create prompt variants and compare performance across different prompts](#create-prompt-variants-and-compare-performance-across-different-prompts)
+- "Manage prompts for agents in Microsoft Foundry with GitHub": under [Implement model versioning and production deployment strategies](#implement-model-versioning-and-production-deployment-strategies) in the skill group Deploy and manage foundation models for production workloads
+:::
+
+## Implement generative AI quality assurance and observability (10–15%)
+
+### Configure evaluation and validation for generative AI applications and agents
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to retrieval-augmented generation concepts" href="https://learn.microsoft.com/training/modules/rag-fundamentals?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Introduction to cloud evaluation with Microsoft Foundry SDK - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/observability/how-to/cloud-evaluation?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create test datasets and data mapping for comprehensive model evaluation
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Automate AI evaluations with Microsoft Foundry and GitHub Actions" href="https://learn.microsoft.com/training/modules/automated-evaluation-genaiops?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement AI quality metrics, including groundedness, relevance, coherence, and fluency
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="General Purpose Evaluators for Generative AI - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/concepts/evaluation-evaluators/general-purpose-evaluators?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure risk and safety evaluations for harmful content detection
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Risk and Safety Evaluators for Generative AI - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/concepts/evaluation-evaluators/risk-safety-evaluators?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Harm categories and severity levels in Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/openai/concepts/content-filter-severity-levels?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Foundry risk and safety evaluations Transparency Note" href="https://learn.microsoft.com/azure/foundry/concepts/safety-evaluations-transparency-note?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Set up automated evaluation workflows by using built-in and custom evaluation metrics
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Automate AI evaluations with Microsoft Foundry and GitHub Actions": under [Create test datasets and data mapping for comprehensive model evaluation](#create-test-datasets-and-data-mapping-for-comprehensive-model-evaluation)
+- "Evaluate and optimize AI agents through structured experiments": under [Create prompt variants and compare performance across different prompts](#create-prompt-variants-and-compare-performance-across-different-prompts) in the skill group Implement prompt versioning and management with source control
+:::
+
+### Implement observability for generative AI applications and agents
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand the key cost drivers of AI agents" href="https://learn.microsoft.com/training/modules/ai-agent-cost-structure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Examine continuous monitoring in Foundry
+
+:::note
+The Microsoft Learn module "Monitor your generative AI application" also covers this task. It is listed once, under [Monitor performance metrics of models deployed to production](#monitor-performance-metrics-of-models-deployed-to-production) in the skill group Monitor and maintain machine learning models in production.
+:::
+
+#### Monitor performance metrics, including latency, throughput, and response times
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Analyze and debug your generative AI app with tracing": under [Configure detailed logging, tracing, and debugging capabilities for production troubleshooting](#configure-detailed-logging-tracing-and-debugging-capabilities-for-production-troubleshooting)
+- "Monitor your generative AI application": under [Monitor performance metrics of models deployed to production](#monitor-performance-metrics-of-models-deployed-to-production) in the skill group Monitor and maintain machine learning models in production
+:::
+
+#### Track and optimize cost metrics, including token consumption and resource usage
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Establishing cost management practices for AI" href="https://learn.microsoft.com/training/modules/establish-ai-cost-management-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure detailed logging, tracing, and debugging capabilities for production troubleshooting
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Analyze and debug your generative AI app with tracing" href="https://learn.microsoft.com/training/modules/tracing-generative-ai-app?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Optimize generative AI systems and model performance (10–15%)
+
+### Optimize retrieval-augmented generation (RAG) performance and accuracy
+
+#### Optimize retrieval performance by tuning similarity thresholds, chunk sizes, and retrieval strategies
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Select and fine-tune embedding models for domain-specific use cases and accuracy improvements
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Implement and optimize hybrid search approaches combining semantic and keyword-based retrieval
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Evaluate and improve RAG system performance by using relevance metrics and A/B testing frameworks
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Implement advanced fine-tuning and model customization
+
+#### Design and implement advanced fine-tuning methods
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Optimize and fine-tune AI agents for production" href="https://learn.microsoft.com/training/modules/optimize-finetune-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage synthetic data for fine-tuning
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Generate synthetic data with Microsoft Foundry (preview) - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/fine-tuning/data-generation?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor and optimize fine-tuned model performance
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Manage a fine-tuned model from development through production deployment
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Optimize and fine-tune AI agents for production": under [Design and implement advanced fine-tuning methods](#design-and-implement-advanced-fine-tuning-methods)
+- "Automate model training with GitHub Actions": under [Configure GitHub integration with Machine Learning to enable secure access](#configure-github-integration-with-machine-learning-to-enable-secure-access) in the skill group Implement IaC for Machine Learning
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Fine-tuning in Microsoft Foundry - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/fine-tuning/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>

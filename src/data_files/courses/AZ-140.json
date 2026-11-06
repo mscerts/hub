@@ -1,0 +1,2482 @@
+{
+  "schemaVersion": 1,
+  "code": "AZ-140",
+  "name": "Configuring and Operating Microsoft Azure Virtual Desktop",
+  "inputs": {
+    "guideHash": "d9b4f5d252535015eb3dd4011445d186ec78fd76740020f164b52ba4b4ea68c6",
+    "guideAsOf": "July 20, 2026",
+    "scopeFingerprint": "85372a29360a7d11e787a4c72c8f7a443ed41b93",
+    "scope": {
+      "courses": [
+        [
+          "AZ-140T00",
+          "2025-06-06T18:23:00+00:00"
+        ]
+      ],
+      "modules": [
+        [
+          "/training/modules/azure-virtual-desktop-architecture",
+          "df68dc3bc9a60eeaf571db2237fad999184cae37",
+          "ba5cd700a160"
+        ],
+        [
+          "/training/modules/configure-user-experience-settings",
+          "8c9f12658a1336f8722004b348dbc5397271e847",
+          "ba5cd700a160"
+        ],
+        [
+          "/training/modules/create-configure-host-pools-session-hosts",
+          "1b77794f5192f825583cb3726eaae245e0148deb",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/create-manage-session-host-image",
+          "cb35dbc06c9f52fd0cd3bd55d240bbe1064f0e61",
+          "ba5cd700a160"
+        ],
+        [
+          "/training/modules/design-azure-virtual-desktop-architecture",
+          "a950c7f888329114ac074390d672615948ebe02c",
+          "ba5cd700a160"
+        ],
+        [
+          "/training/modules/design-user-identities-profiles",
+          "7934baed725dcd88dcfd762d81a05db05cddce45",
+          "ba5cd700a160"
+        ],
+        [
+          "/training/modules/implement-manage-fslogix",
+          "f99a89c92943fc0a4f2a98c24440438226f92ba8",
+          "b61451342c59"
+        ],
+        [
+          "/training/modules/implement-manage-networking-azure-virtual-desktop",
+          "fb7347bee420cec233095e83a940910e488c3ecc",
+          "ba5cd700a160"
+        ],
+        [
+          "/training/modules/implement-manage-storage-azure-virtual-desktop",
+          "9d73bd065778b283d7410ea81de78c0a74d5dc2a",
+          "ba5cd700a160"
+        ],
+        [
+          "/training/modules/install-configure-apps-session-host",
+          "b98ed3aad8569c16e646170fa5a6b3608c248ca2",
+          "ba5cd700a160"
+        ],
+        [
+          "/training/modules/manage-access",
+          "9683fdd2895ca20aaafb8a4b485467448ed55888",
+          "ba5cd700a160"
+        ],
+        [
+          "/training/modules/manage-security",
+          "44f7d602165b2b1894ef8b260fc3455079e07539",
+          "ba5cd700a160"
+        ],
+        [
+          "/training/modules/monitor-manage-performance-health",
+          "a9405a51e454bd5f6a9862e63baecc4184a89de6",
+          "ba5cd700a160"
+        ],
+        [
+          "/training/modules/plan-implement-business-continuity-disaster-recovery",
+          "430955dbd4db6367c44b2769cc8fe48ec640b037",
+          "ba5cd700a160"
+        ]
+      ]
+    },
+    "picked": [
+      [
+        "/training/modules/administer-manage-windows-server-iaas-virtual-machine-remotely",
+        "2ab3c722988a66d0444847dd8a4ecc3398ede18b"
+      ],
+      [
+        "/training/modules/advanced-security-compute",
+        "d53d23e7debeef6eb0405b269d1d4ef3d234b291"
+      ],
+      [
+        "/training/modules/azure-netapp-files-data-protection",
+        "24302b536ced969431e2d8c87e620c3ba133cf23"
+      ],
+      [
+        "/training/modules/enable-enforce-just-in-time-vm-access",
+        "9047c1d78e7150551ab5b89eb6bfec05569e173f"
+      ],
+      [
+        "/training/modules/explore-azure-virtual-desktop",
+        "5aae4c92104fdcb0e90467e164717c354ea32f2f"
+      ],
+      [
+        "/training/modules/intro-to-azure-virtual-machines",
+        "7785f30964a6396c8ef6ee37f7ee5e04e89a2bd3"
+      ],
+      [
+        "/training/modules/just-in-time-access",
+        "b9c9741e9f6b758b3215d99cbe4b79a01cb0b7b7"
+      ],
+      [
+        "/training/modules/m365-wvd-intro",
+        "a4346d1027dd700ea4008602626de985b8b909ec"
+      ],
+      [
+        "/training/modules/security-virtual-networks",
+        "9ab3839b96c07cae1667c961758411a175f5937c"
+      ],
+      [
+        "/training/modules/set-up-microsoft-defender-cloud",
+        "a1f05fe2fcf4c1177c6b7239b03061bcbdf82906"
+      ]
+    ],
+    "builtAt": "2026-11-05"
+  },
+  "audience": {
+    "intro": [
+      "As a candidate for this exam, you should be a server or desktop administrator with subject matter expertise in designing, implementing, managing, and maintaining Azure Virtual Desktop experiences and remote apps for any device.",
+      "You should be able to manage end-user desktop environments, including delivering applications and configuring user settings. You should use the Azure portal, templates, scripting, and command-line tools to manage an Azure Virtual Desktop deployment."
+    ],
+    "lists": [
+      {
+        "lead": "To deliver these experiences, you should work closely with",
+        "kind": "prerequisite",
+        "items": [
+          {
+            "key": "audience/to-deliver-these-experiences-you-should/azure-administrators",
+            "text": "Azure administrators"
+          },
+          {
+            "key": "audience/to-deliver-these-experiences-you-should/azure-architects",
+            "text": "Azure architects"
+          },
+          {
+            "key": "audience/to-deliver-these-experiences-you-should/microsoft-365-administrators",
+            "text": "Microsoft 365 administrators"
+          },
+          {
+            "key": "audience/to-deliver-these-experiences-you-should/azure-security-engineers",
+            "text": "Azure security engineers"
+          },
+          {
+            "key": "audience/to-deliver-these-experiences-you-should/azure-local-administrators",
+            "text": "Azure Local administrators"
+          }
+        ]
+      },
+      {
+        "lead": "You should have experience with Azure technologies, including",
+        "kind": "prerequisite",
+        "items": [
+          {
+            "key": "audience/you-should-have-experience-with-azure-te/compute",
+            "text": "Compute"
+          },
+          {
+            "key": "audience/you-should-have-experience-with-azure-te/networking",
+            "text": "Networking"
+          },
+          {
+            "key": "audience/you-should-have-experience-with-azure-te/identity",
+            "text": "Identity"
+          },
+          {
+            "key": "audience/you-should-have-experience-with-azure-te/storage",
+            "text": "Storage"
+          },
+          {
+            "key": "audience/you-should-have-experience-with-azure-te/resiliency",
+            "text": "Resiliency"
+          }
+        ]
+      }
+    ]
+  },
+  "domains": [
+    {
+      "title": "Plan and implement an Azure Virtual Desktop infrastructure",
+      "weight": {
+        "min": 40,
+        "max": 45
+      },
+      "groups": [
+        {
+          "title": "Plan, implement, and manage networking for Azure Virtual Desktop",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-azure-virtual-desktop"
+              },
+              "title": "Explore Azure Virtual Desktop",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Introduces AVD architecture and components that the networking group builds on.",
+              "evidence": "Understand Azure Virtual Desktop architecture",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-05"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/m365-wvd-intro"
+              },
+              "title": "Introduction to Azure Virtual Desktop",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Introduces what Azure Virtual Desktop is and how it works, the base the networking tasks build on.",
+              "evidence": "How does Azure Virtual Desktop work?",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-05"
+              }
+            },
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/virtual-desktop/terminology"
+              },
+              "title": "Azure Virtual Desktop terminology - Azure - Azure Virtual Desktop",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Defines the AVD terms (host pools, application groups, workspaces) that the networking tasks use.",
+              "evidence": "Learn about the basic elements of Azure Virtual Desktop, like host pools, application groups, and workspaces.",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-05"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/assess-network-capacity-and-speed-requirements-for-azure-vir",
+              "text": "Assess network capacity and speed requirements for Azure Virtual Desktop",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/design-azure-virtual-desktop-architecture"
+                  },
+                  "title": "Design the Azure Virtual Desktop architecture",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-manage-networking-azure-virtual-desktop"
+                  },
+                  "title": "Implement and manage networking for Azure Virtual Desktop",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi",
+              "text": "Design network configuration for session hosts to meet requirements for Azure Virtual Desktop",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/create-configure-host-pools-session-hosts"
+                  },
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "Session host setup module that includes network planning, a step a professional does alongside designing session host networking.",
+                  "evidence": "Network and Remote Desktop client planning",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/plan-and-implement-remote-desktop-protocol-rdp-shortpath-rdp",
+              "text": "Plan and implement Remote Desktop Protocol (RDP) Shortpath, RDP Multipath, and quality of service (QoS) policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-networking-azure-virtual-desktop",
+                  "title": "Implement and manage networking for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/assess-network-capacity-and-speed-requirements-for-azure-vir"
+                },
+                {
+                  "path": "/training/modules/create-configure-host-pools-session-hosts",
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/plan-and-implement-an-azure-private-link-solution-for-azure",
+              "text": "Plan and implement an Azure Private Link solution for Azure Virtual Desktop",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-networking-azure-virtual-desktop",
+                  "title": "Implement and manage networking for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/assess-network-capacity-and-speed-requirements-for-azure-vir"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/monitor-and-troubleshoot-network-connectivity",
+              "text": "Monitor and troubleshoot network connectivity",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-networking-azure-virtual-desktop",
+                  "title": "Implement and manage networking for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/assess-network-capacity-and-speed-requirements-for-azure-vir"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Plan and implement storage for Azure Virtual Desktop user data",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/design-user-identities-profiles"
+              },
+              "title": "Design for user identities and profiles",
+              "class": "foundation",
+              "source": "P1",
+              "why": "Teaches personal and multi-session desktop scenarios and how user identities and profiles relate to storage.",
+              "evidence": "Personal and multi-session desktop scenarios",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-05"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/azure-virtual-desktop-architecture"
+              },
+              "title": "Azure Virtual Desktop Architecture",
+              "class": "foundation",
+              "source": "P1",
+              "why": "Teaches the Azure Virtual Desktop components and pooled or personal desktops that user data storage attaches to.",
+              "evidence": "Azure Virtual Desktop components",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-05"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/plan-storage-for-azure-virtual-desktop-user-data",
+              "text": "Plan storage for Azure Virtual Desktop user data",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-manage-storage-azure-virtual-desktop"
+                  },
+                  "title": "Implement and manage storage for Azure Virtual Desktop",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components",
+              "text": "Implement storage for FSLogix components",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-manage-fslogix"
+                  },
+                  "title": "Implement and manage FSLogix",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-accounts-for-azure-virtual-desktop",
+              "text": "Implement storage accounts for Azure Virtual Desktop",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-storage-azure-virtual-desktop",
+                  "title": "Implement and manage storage for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/plan-storage-for-azure-virtual-desktop-user-data"
+                },
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-file-shares-for-azure-virtual-desktop",
+              "text": "Implement file shares for Azure Virtual Desktop",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-storage-azure-virtual-desktop",
+                  "title": "Implement and manage storage for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/plan-storage-for-azure-virtual-desktop-user-data"
+                },
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-azure-netapp-files-for-azure-virtual-desktop",
+              "text": "Implement Azure NetApp Files for Azure Virtual Desktop",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-storage-azure-virtual-desktop",
+                  "title": "Implement and manage storage for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/plan-storage-for-azure-virtual-desktop-user-data"
+                },
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Plan host pools and session hosts",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/intro-to-azure-virtual-machines"
+              },
+              "title": "Introduction to Azure virtual machines",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Teaches the Azure virtual machine concepts that session hosts and capacity planning rely on.",
+              "evidence": "Describe the options available to create and manage an Azure Virtual Machine",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-05"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-resource-groups-subscriptions-and-management-group",
+              "text": "Recommend resource groups, subscriptions, and management groups for Azure Virtual Desktop resources",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-access"
+                  },
+                  "title": "Manage access for Azure Virtual Desktop",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "A professional placing resources in subscriptions also assigns RBAC roles at those scopes, although the guide does not name it.",
+                  "evidence": "Role-based access control (RBAC) for Azure Virtual Desktop",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-operating-system-os-for-azure-virtual-desktop-s",
+              "text": "Recommend an operating system (OS) for Azure Virtual Desktop session hosts",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-session-host-image",
+                  "title": "Create and manage session host image for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-appropriate-licensing-model-for-azure-virtual-d"
+                },
+                {
+                  "path": "/training/modules/design-azure-virtual-desktop-architecture",
+                  "title": "Design the Azure Virtual Desktop architecture",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/assess-network-capacity-and-speed-requirements-for-azure-vir"
+                },
+                {
+                  "path": "/training/modules/create-configure-host-pools-session-hosts",
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-appropriate-licensing-model-for-azure-virtual-d",
+              "text": "Recommend an appropriate licensing model for Azure Virtual Desktop based on requirements",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/create-manage-session-host-image"
+                  },
+                  "title": "Create and manage session host image for Azure Virtual Desktop",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "A professional planning licensing also meets the Windows client licensing rules for session host images.",
+                  "evidence": "Manage licensing for session hosts that run Windows client",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/plan-a-host-pool-architecture",
+              "text": "Plan a host pool architecture",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/monitor-manage-performance-health"
+                  },
+                  "title": "Monitor and manage performance and health",
+                  "class": "supporting",
+                  "relation": "operate",
+                  "source": "P1",
+                  "why": "Once a host pool is planned, a professional runs scaling plans in it, which this module covers.",
+                  "evidence": "Implement scaling plans in host pools",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/design-an-azure-virtual-desktop-configuration-for-performanc",
+              "text": "Design an Azure Virtual Desktop configuration for performance requirements",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-storage-azure-virtual-desktop",
+                  "title": "Implement and manage storage for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/plan-storage-for-azure-virtual-desktop-user-data"
+                },
+                {
+                  "path": "/training/modules/implement-manage-networking-azure-virtual-desktop",
+                  "title": "Implement and manage networking for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/assess-network-capacity-and-speed-requirements-for-azure-vir"
+                },
+                {
+                  "path": "/training/modules/monitor-manage-performance-health",
+                  "title": "Monitor and manage performance and health",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/plan-a-host-pool-architecture"
+                },
+                {
+                  "path": "/training/modules/design-azure-virtual-desktop-architecture",
+                  "title": "Design the Azure Virtual Desktop architecture",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/assess-network-capacity-and-speed-requirements-for-azure-vir"
+                },
+                {
+                  "path": "/training/modules/create-configure-host-pools-session-hosts",
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/design-an-azure-virtual-desktop-configuration-for-azure-virt",
+              "text": "Design an Azure Virtual Desktop configuration for Azure Virtual Machines capacity requirements",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-manage-performance-health",
+                  "title": "Monitor and manage performance and health",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/plan-a-host-pool-architecture"
+                },
+                {
+                  "path": "/training/modules/design-azure-virtual-desktop-architecture",
+                  "title": "Design the Azure Virtual Desktop architecture",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/assess-network-capacity-and-speed-requirements-for-azure-vir"
+                },
+                {
+                  "path": "/training/modules/create-configure-host-pools-session-hosts",
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Implement host pools and session hosts",
+          "tasks": [
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta",
+              "text": "Create host pools and session hosts by using the Azure portal",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/install-configure-apps-session-host"
+                  },
+                  "title": "Install and configure apps on a session host",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "After session hosts are created, a professional creates the application groups that publish apps to them, a neighbouring step.",
+                  "evidence": "Create and configure an application group",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/automate-creation-of-azure-virtual-desktop-hosts-and-host-po",
+              "text": "Automate creation of Azure Virtual Desktop hosts and host pools by using PowerShell, Azure CLI, Azure Resource Manager templates (ARM templates), and Bicep files",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-session-host-image",
+                  "title": "Create and manage session host image for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-appropriate-licensing-model-for-azure-virtual-d"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/configure-host-pool-and-session-host-settings",
+              "text": "Configure host pool and session host settings",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/configure-user-experience-settings"
+                  },
+                  "title": "Configure user experience settings",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/configure-licensing-for-session-hosts-including-user-eligibi",
+              "text": "Configure licensing for session hosts, including user eligibility for Windows client access and RDS Client Access License (CAL) requirements for Windows Server",
+              "picks": []
+            }
+          ]
+        },
+        {
+          "title": "Create and manage session host images",
+          "foundations": [
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/virtual-machines/image-builder-overview"
+              },
+              "title": "Azure VM Image Builder overview",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains what VM Image Builder is and what it does, a core concept for building custom images.",
+              "evidence": "In this article, you learn about VM Image Builder for virtual machines in Azure.",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-05"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/create-an-image-manually",
+              "text": "Create an image manually",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-session-host-image",
+                  "title": "Create and manage session host image for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-appropriate-licensing-model-for-azure-virtual-d"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/create-an-image-by-using-azure-vm-image-builder",
+              "text": "Create an image by using Azure VM Image Builder",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-session-host-image",
+                  "title": "Create and manage session host image for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-appropriate-licensing-model-for-azure-virtual-d"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/modify-an-image",
+              "text": "Modify an image",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-session-host-image",
+                  "title": "Create and manage session host image for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-appropriate-licensing-model-for-azure-virtual-d"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-lifecycle-management-for-images",
+              "text": "Plan and implement lifecycle management for images",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-session-host-image",
+                  "title": "Create and manage session host image for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-appropriate-licensing-model-for-azure-virtual-d"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/apply-os-and-application-updates-to-an-image",
+              "text": "Apply OS and application updates to an image",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-session-host-image",
+                  "title": "Create and manage session host image for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-appropriate-licensing-model-for-azure-virtual-d"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/create-a-session-host-by-using-a-custom-image",
+              "text": "Create a session host by using a custom image",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-manage-performance-health",
+                  "title": "Monitor and manage performance and health",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/plan-a-host-pool-architecture"
+                },
+                {
+                  "path": "/training/modules/create-manage-session-host-image",
+                  "title": "Create and manage session host image for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-appropriate-licensing-model-for-azure-virtual-d"
+                },
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                },
+                {
+                  "path": "/training/modules/create-configure-host-pools-session-hosts",
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+              "text": "Plan and implement image storage, including Azure Compute Gallery",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/image-version"
+                  },
+                  "title": "Create an image definition and image version",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Learn how to create an image in an Azure Compute Gallery.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/azure-compute-gallery"
+                  },
+                  "title": "Overview of Azure Compute Gallery",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Learn about Azure Compute Gallery and how to share Azure resources.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/create-gallery"
+                  },
+                  "title": "Create a Gallery for Sharing Resources",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Learn how to use Azure Compute Gallery to create a gallery.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/image-version-encryption"
+                  },
+                  "title": "Create an encrypted image version with customer-managed keys",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P4",
+                  "why": "Encrypting stored image versions with customer-managed keys adds depth on securing gallery image storage.",
+                  "evidence": "Create an image version in an Azure Compute Gallery, by using customer-managed encryption keys.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/managed-disk-from-image-version"
+                  },
+                  "title": "Export an image version to a managed disk",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Exporting a stored image version to a managed disk is a neighbouring step of working with gallery images.",
+                  "evidence": "Export an image version from an Azure Compute Gallery to a managed disk.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/migration/migration-managed-image-to-compute-gallery"
+                  },
+                  "title": "Migrate Managed image to Compute gallery",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "A professional planning image storage often migrates legacy managed images into a compute gallery.",
+                  "evidence": "Learn how to legacy Managed image to image version in Azure compute gallery.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/share-gallery-community"
+                  },
+                  "title": "Share Azure Compute Gallery Resources with a Community Gallery",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Sharing gallery images through a community gallery is a neighbouring step after images are stored in the gallery.",
+                  "evidence": "Learn how to use a community gallery to share VM images stored in Azure Compute Gallery.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/share-using-app-registration"
+                  },
+                  "title": "Share Gallery Images Across Tenants by Using an App Registration",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Sharing gallery images across tenants is a neighbouring step after images are stored in the gallery.",
+                  "evidence": "Learn how to share Azure Compute Gallery images across Azure tenants by using an app registration.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/shared-image-galleries"
+                  },
+                  "title": "Share VM images in a compute gallery",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Sharing VM images from a compute gallery is a neighbouring step of planning image storage.",
+                  "evidence": "Learn how to use an Azure Compute Gallery to share VM images.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/soft-delete-gallery"
+                  },
+                  "title": "Soft Delete in Azure Compute Gallery (Preview) - Azure Virtual Machines",
+                  "class": "supporting",
+                  "relation": "operate",
+                  "source": "P4",
+                  "why": "Soft delete protects stored gallery images from accidental deletion, which is part of operating the image store.",
+                  "evidence": "Learn how to enable the Soft Delete feature in Azure Compute Gallery",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/troubleshooting-shared-images"
+                  },
+                  "title": "Troubleshoot problems with shared images in Azure",
+                  "class": "supporting",
+                  "relation": "operate",
+                  "source": "P4",
+                  "why": "A professional who runs an image gallery meets shared image problems and needs to troubleshoot them.",
+                  "evidence": "Learn how to troubleshoot problems with shared images in Azure Compute Galleries.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/update-image-resources"
+                  },
+                  "title": "List, update, and delete resources",
+                  "class": "supporting",
+                  "relation": "operate",
+                  "source": "P4",
+                  "why": "Listing, updating and deleting gallery resources is part of running the image store.",
+                  "evidence": "List, update, and delete resources in your Azure Compute Gallery.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/share-gallery"
+                  },
+                  "title": "Share Resources in Azure Compute Gallery",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Sharing gallery resources with role-based access is a neighbouring step after images are stored.",
+                  "evidence": "Learn how to share resources explicitly or to all Azure users by using role-based access control.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/share-gallery-direct"
+                  },
+                  "title": "Share Azure Compute Gallery Resources Directly with Subscriptions and Tenants",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Sharing gallery resources directly with subscriptions and tenants is a neighbouring step after images are stored.",
+                  "evidence": "Learn how to share Azure Compute Gallery resources explicitly with subscriptions and tenants.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/vm-generalized-image-version"
+                  },
+                  "title": "Create a VM from a generalized image in a gallery",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Creating VMs from a generalized gallery image is how session hosts consume stored golden images.",
+                  "evidence": "Create a VM from a generalized image in a gallery",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/windows/image-builder-gallery"
+                  },
+                  "title": "Use Azure VM Image Builder with a gallery for Windows VMs",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Creating Windows image versions with Image Builder into a gallery is a neighbouring step of the image storage workflow.",
+                  "evidence": "Create Azure Shared Gallery image versions using VM Image Builder and Azure PowerShell.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-machines/windows/image-builder-gallery-update-image-version"
+                  },
+                  "title": "Create a new Windows image version from an existing image version using Azure VM Image Builder",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Creating a new Windows image version from an existing version in the gallery is a neighbouring step of image storage.",
+                  "evidence": "Create a new Windows VM image version from an existing image version using Azure VM Image Builder.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-session-host-image",
+                  "title": "Create and manage session host image for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-appropriate-licensing-model-for-azure-virtual-d"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Plan and implement identity and security",
+      "weight": {
+        "min": 15,
+        "max": 20
+      },
+      "groups": [
+        {
+          "title": "Plan and implement identity integration",
+          "tasks": [
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/select-an-identity-scenario-for-azure-virtual-desktop-includ",
+              "text": "Select an identity scenario for Azure Virtual Desktop, including Active Directory Domain Services (AD DS), Microsoft Entra ID, and Microsoft Entra Domain Services",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/storage/files/storage-files-identity-ad-ds-overview"
+                  },
+                  "title": "On-Premises AD DS Authentication for Azure Files",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P4",
+                  "why": "Explains AD DS authentication for Azure Files, the storage side of an AD DS identity scenario, with more depth than the exam asks.",
+                  "evidence": "Learn about Active Directory Domain Services (AD DS) authentication to Azure file shares over SMB",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/specify-requirements-to-configure-the-azure-virtual-desktop",
+              "text": "Specify requirements to configure the Azure Virtual Desktop session host for an identity scenario",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-configure-host-pools-session-hosts",
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/plan-and-implement-azure-role-based-access-control-azure-rba",
+              "text": "Plan and implement Azure role-based access control (Azure RBAC) for Azure Virtual Desktop",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-access",
+                  "title": "Manage access for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-resource-groups-subscriptions-and-management-group"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/plan-and-implement-microsoft-entra-conditional-access-polici",
+              "text": "Plan and implement Microsoft Entra Conditional Access policies for connections to Azure Virtual Desktop",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-security"
+                  },
+                  "title": "Manage security for Azure Virtual Desktop",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/plan-and-implement-authentication-options-in-azure-virtual-d",
+              "text": "Plan and implement authentication options in Azure Virtual Desktop, including passwordless, smart card, and multifactor authentication",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-access",
+                  "title": "Manage access for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-resource-groups-subscriptions-and-management-group"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/manage-roles-groups-and-rights-assignments-on-azure-virtual",
+              "text": "Manage roles, groups, and rights assignments on Azure Virtual Desktop session hosts",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-access",
+                  "title": "Manage access for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-resource-groups-subscriptions-and-management-group"
+                },
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+              "text": "Configure Microsoft Entra single sign-on",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/virtual-desktop/configure-single-sign-on"
+                  },
+                  "title": "Configure single sign-on for Azure Virtual Desktop using Microsoft Entra ID - Azure Virtual Desktop",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Learn how to configure single sign-on for an Azure Virtual Desktop environment using Microsoft Entra ID.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-access",
+                  "title": "Manage access for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-resource-groups-subscriptions-and-management-group"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Plan and implement security",
+          "tasks": [
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-security/plan-implement-and-manage-security-for-azure-virtual-desktop",
+              "text": "Plan, implement, and manage security for Azure Virtual Desktop session hosts by using Microsoft Defender for Cloud",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-security",
+                  "title": "Manage security for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/plan-and-implement-microsoft-entra-conditional-access-polici"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-security/configure-session-host-protection-by-using-microsoft-defende",
+              "text": "Configure session host protection by using Microsoft Defender Antivirus",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-security",
+                  "title": "Manage security for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/plan-and-implement-microsoft-entra-conditional-access-polici"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-security/configure-session-host-protection-by-using-microsoft-defende-2",
+              "text": "Configure session host protection by using Microsoft Defender for Endpoint, including onboarding and scanning options",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-security",
+                  "title": "Manage security for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/plan-and-implement-microsoft-entra-conditional-access-polici"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-security/implement-and-manage-network-security-for-connections-to-azu",
+              "text": "Implement and manage network security for connections to Azure Virtual Desktop, including user defined routes (UDRs), network security groups (NSGs), and Azure Firewall",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/security-virtual-networks"
+                  },
+                  "title": "Plan and implement security for virtual networks",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Plan and implement Network Security Groups (NSGs) and Application Security Groups (ASGs)",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-security/configure-azure-bastion-or-just-in-time-jit-vm-access-for-ad",
+              "text": "Configure Azure Bastion or just-in-time (JIT) VM access for administrative access to session hosts",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/administer-manage-windows-server-iaas-virtual-machine-remotely"
+                  },
+                  "title": "Administer and manage Windows Server IaaS Virtual Machine remotely",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Configure just-in-time administration",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/enable-enforce-just-in-time-vm-access"
+                  },
+                  "title": "Enable and enforce just-in-time VM access",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Enable and configure JIT access policies",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/just-in-time-access"
+                  },
+                  "title": "Explore just-in-time virtual machine access",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Understand just-in-time virtual machine access",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/networking/design-guide/developer-admin-access"
+                  },
+                  "title": "Developer and admin access to Azure VMs",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Compare Azure Bastion, Point-to-Site VPN, and Just-in-Time access for SSH and RDP connectivity.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/defender-for-cloud/enable-just-in-time-access"
+                  },
+                  "title": "Enable Just-in-Time Access",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Learn how just-in-time VM access (JIT) in Microsoft Defender for Cloud helps you control access to your Azure virtual machines.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/defender-for-cloud/just-in-time-access-overview"
+                  },
+                  "title": "Understand just-in-time virtual machine access",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Learn how just-in-time VM access in Microsoft Defender for Cloud reduces attack surface by locking down inbound management ports and allowing access only when needed.",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/advanced-security-compute"
+                  },
+                  "title": "Plan and implement advanced security for compute",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "One unit covers Bastion and JIT access, but the rest of the module is about AKS and container security, outside session hosts; the lean is supporting.",
+                  "evidence": "Plan and implement remote access to public endpoints, Azure Bastion and just-in-time (JIT) virtual machine (VM) access",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/set-up-microsoft-defender-cloud"
+                  },
+                  "title": "Set up Microsoft Defender for Cloud",
+                  "class": "supporting",
+                  "relation": "prerequisite",
+                  "source": "P4",
+                  "why": "Setting up Defender for Cloud is needed before JIT VM access, a Defender feature, can be configured; a unit covers JIT.",
+                  "evidence": "Implement just-in-time VM access",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-security/plan-and-implement-windows-threat-protection-features-on-azu",
+              "text": "Plan and implement Windows threat protection features on Azure Virtual Desktop session hosts, including App Control for Business and Controlled Folder Access",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-security",
+                  "title": "Manage security for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/plan-and-implement-microsoft-entra-conditional-access-polici"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-identity-and-security/plan-and-implement-security/plan-for-and-implement-azure-confidential-vms-and-trusted-la",
+              "text": "Plan for and implement Azure confidential VMs and Trusted Launch security features for Azure Virtual Desktop session hosts",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-security",
+                  "title": "Manage security for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/plan-and-implement-microsoft-entra-conditional-access-polici"
+                },
+                {
+                  "path": "/training/modules/create-configure-host-pools-session-hosts",
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Plan and implement user environments and apps",
+      "weight": {
+        "min": 20,
+        "max": 25
+      },
+      "groups": [
+        {
+          "title": "Plan and implement FSLogix",
+          "tasks": [
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-fslogix/recommend-fslogix-configuration",
+              "text": "Recommend FSLogix configuration",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-fslogix/configure-fslogix-profile-containers",
+              "text": "Configure FSLogix Profile Containers",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-fslogix/configure-fslogix-odfc-containers",
+              "text": "Configure FSLogix ODFC containers",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-fslogix/configure-fslogix-cloud-cache",
+              "text": "Configure FSLogix Cloud Cache",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-fslogix/implement-fslogix-application-masking",
+              "text": "Implement FSLogix application masking",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Plan and implement user experience and client settings",
+          "tasks": [
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/choose-an-azure-virtual-desktop-client",
+              "text": "Choose an Azure Virtual Desktop client",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-user-experience-settings",
+                  "title": "Configure user experience settings",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/configure-host-pool-and-session-host-settings"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/choose-a-deployment-method-for-the-client",
+              "text": "Choose a deployment method for the client",
+              "picks": []
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/deploy-and-troubleshoot-azure-virtual-desktop-clients",
+              "text": "Deploy and troubleshoot Azure Virtual Desktop clients",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-user-experience-settings",
+                  "title": "Configure user experience settings",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/configure-host-pool-and-session-host-settings"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/configure-device-redirection",
+              "text": "Configure device redirection",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-user-experience-settings",
+                  "title": "Configure user experience settings",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/configure-host-pool-and-session-host-settings"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/configure-multimedia-redirection",
+              "text": "Configure multimedia redirection",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-user-experience-settings",
+                  "title": "Configure user experience settings",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/configure-host-pool-and-session-host-settings"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/configure-printing-and-universal-print",
+              "text": "Configure printing and Universal Print",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-user-experience-settings",
+                  "title": "Configure user experience settings",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/configure-host-pool-and-session-host-settings"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/configure-user-settings-through-microsoft-intune-policies-or",
+              "text": "Configure user settings through Microsoft Intune policies or Group Policy",
+              "picks": []
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/configure-remote-desktop-protocol-rdp-properties-on-a-host-p",
+              "text": "Configure Remote Desktop Protocol (RDP) properties on a host pool",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-user-experience-settings",
+                  "title": "Configure user experience settings",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/configure-host-pool-and-session-host-settings"
+                },
+                {
+                  "path": "/training/modules/implement-manage-networking-azure-virtual-desktop",
+                  "title": "Implement and manage networking for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/assess-network-capacity-and-speed-requirements-for-azure-vir"
+                },
+                {
+                  "path": "/training/modules/create-configure-host-pools-session-hosts",
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/configure-session-timeout-properties",
+              "text": "Configure session timeout properties",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-user-experience-settings",
+                  "title": "Configure user experience settings",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/configure-host-pool-and-session-host-settings"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/implement-the-start-vm-on-connect-feature",
+              "text": "Implement the Start VM on Connect feature",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-user-experience-settings",
+                  "title": "Configure user experience settings",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/configure-host-pool-and-session-host-settings"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/assign-and-unassign-personal-desktops-to-users",
+              "text": "Assign and unassign personal desktops to users",
+              "picks": []
+            }
+          ]
+        },
+        {
+          "title": "Install and configure apps on a session host",
+          "tasks": [
+            {
+              "key": "plan-and-implement-user-environments-and-apps/install-and-configure-apps-on-a-session-host/choose-a-method-for-deploying-an-app-to-azure-virtual-deskto",
+              "text": "Choose a method for deploying an app to Azure Virtual Desktop",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/install-and-configure-apps-on-a-session-host/create-and-configure-an-application-group",
+              "text": "Create and configure an application group",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/install-and-configure-apps-on-a-session-host/assign-users-to-application-groups",
+              "text": "Assign users to application groups",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/install-and-configure-apps-on-a-session-host/publish-an-application-as-a-remoteapp",
+              "text": "Publish an application as a RemoteApp",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/install-and-configure-apps-on-a-session-host/implement-and-manage-microsoft-365-apps-on-azure-virtual-des",
+              "text": "Implement and manage Microsoft 365 Apps on Azure Virtual Desktop session hosts",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                },
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/install-and-configure-apps-on-a-session-host/implement-and-manage-onedrive-including-multisession-environ",
+              "text": "Implement and manage OneDrive, including multisession environments",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/install-and-configure-apps-on-a-session-host/implement-and-manage-microsoft-teams-including-the-remote-de",
+              "text": "Implement and manage Microsoft Teams, including the Remote Desktop WebRTC Redirector Service",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/install-and-configure-apps-on-a-session-host/implement-and-manage-browsers-for-azure-virtual-desktop-sess",
+              "text": "Implement and manage browsers for Azure Virtual Desktop sessions",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/install-and-configure-apps-on-a-session-host/configure-dynamic-application-delivery-by-using-app-attach",
+              "text": "Configure dynamic application delivery by using App attach",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                }
+              ]
+            },
+            {
+              "key": "plan-and-implement-user-environments-and-apps/install-and-configure-apps-on-a-session-host/create-an-application-package-for-app-attach",
+              "text": "Create an application package for App attach",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Monitor and maintain an Azure Virtual Desktop infrastructure",
+      "weight": {
+        "min": 10,
+        "max": 15
+      },
+      "groups": [
+        {
+          "title": "Monitor and manage Azure Virtual Desktop services",
+          "foundations": [
+            {
+              "target": {
+                "kind": "docs",
+                "path": "/azure/virtual-desktop/overview"
+              },
+              "title": "What is Azure Virtual Desktop? - Azure - Azure Virtual Desktop",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains what Azure Virtual Desktop is, the introductory concept behind every task in this group.",
+              "evidence": "Azure Virtual Desktop is a desktop and app virtualization service that runs on Azure",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-05"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/monitor-and-manage-azure-virtual-desktop-services/configure-log-collection-and-analysis-for-azure-virtual-desk",
+              "text": "Configure log collection and analysis for Azure Virtual Desktop session hosts",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-manage-performance-health",
+                  "title": "Monitor and manage performance and health",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/plan-a-host-pool-architecture"
+                }
+              ]
+            },
+            {
+              "key": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/monitor-and-manage-azure-virtual-desktop-services/monitor-azure-virtual-desktop-by-using-azure-monitor",
+              "text": "Monitor Azure Virtual Desktop by using Azure Monitor",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-manage-performance-health",
+                  "title": "Monitor and manage performance and health",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/plan-a-host-pool-architecture"
+                }
+              ]
+            },
+            {
+              "key": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/monitor-and-manage-azure-virtual-desktop-services/customize-azure-monitor-workbooks-for-azure-virtual-desktop",
+              "text": "Customize Azure Monitor workbooks for Azure Virtual Desktop Insights",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-manage-performance-health",
+                  "title": "Monitor and manage performance and health",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/plan-a-host-pool-architecture"
+                }
+              ]
+            },
+            {
+              "key": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/monitor-and-manage-azure-virtual-desktop-services/optimize-session-host-capacity-and-performance",
+              "text": "Optimize session host capacity and performance",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-manage-performance-health",
+                  "title": "Monitor and manage performance and health",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/plan-a-host-pool-architecture"
+                },
+                {
+                  "path": "/training/modules/design-azure-virtual-desktop-architecture",
+                  "title": "Design the Azure Virtual Desktop architecture",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/assess-network-capacity-and-speed-requirements-for-azure-vir"
+                },
+                {
+                  "path": "/training/modules/create-configure-host-pools-session-hosts",
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi"
+                }
+              ]
+            },
+            {
+              "key": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/monitor-and-manage-azure-virtual-desktop-services/implement-autoscaling-in-host-pools",
+              "text": "Implement autoscaling in host pools",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-manage-performance-health",
+                  "title": "Monitor and manage performance and health",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/plan-a-host-pool-architecture"
+                },
+                {
+                  "path": "/training/modules/design-azure-virtual-desktop-architecture",
+                  "title": "Design the Azure Virtual Desktop architecture",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/assess-network-capacity-and-speed-requirements-for-azure-vir"
+                },
+                {
+                  "path": "/training/modules/create-configure-host-pools-session-hosts",
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi"
+                }
+              ]
+            },
+            {
+              "key": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/monitor-and-manage-azure-virtual-desktop-services/monitor-and-manage-active-sessions-and-application-groups",
+              "text": "Monitor and manage active sessions and application groups",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-manage-performance-health",
+                  "title": "Monitor and manage performance and health",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/plan-a-host-pool-architecture"
+                },
+                {
+                  "path": "/training/modules/install-configure-apps-session-host",
+                  "title": "Install and configure apps on a session host",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/create-host-pools-and-session-hosts-by-using-the-azure-porta"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Plan and implement updates, backups, and disaster recovery",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/azure-netapp-files-data-protection"
+              },
+              "title": "Understand data protection and resiliency in Azure NetApp Files",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Explains snapshots, backup, and cross-region and cross-zone replication, the data protection concepts behind AVD backup and recovery.",
+              "evidence": "Cross-region replication in Azure NetApp Files",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-05"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/plan-and-implement-updates-backups-and-disaster-recovery/recommend-an-update-strategy-for-session-hosts",
+              "text": "Recommend an update strategy for session hosts",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/plan-implement-business-continuity-disaster-recovery"
+                  },
+                  "title": "Plan and implement updates, backups, and disaster recovery",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-05"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/plan-and-implement-updates-backups-and-disaster-recovery/plan-and-implement-a-disaster-recovery-plan-for-azure-virtua",
+              "text": "Plan and implement a disaster recovery plan for Azure Virtual Desktop",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-implement-business-continuity-disaster-recovery",
+                  "title": "Plan and implement updates, backups, and disaster recovery",
+                  "shownUnder": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/plan-and-implement-updates-backups-and-disaster-recovery/recommend-an-update-strategy-for-session-hosts"
+                },
+                {
+                  "path": "/training/modules/create-manage-session-host-image",
+                  "title": "Create and manage session host image for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/recommend-an-appropriate-licensing-model-for-azure-virtual-d"
+                },
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            },
+            {
+              "key": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/plan-and-implement-updates-backups-and-disaster-recovery/plan-for-multi-region-implementation",
+              "text": "Plan for multi-region implementation",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-configure-host-pools-session-hosts",
+                  "title": "Create and configure host pools and session hosts for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi"
+                }
+              ]
+            },
+            {
+              "key": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/plan-and-implement-updates-backups-and-disaster-recovery/design-and-implement-a-backup-strategy-for-azure-virtual-des",
+              "text": "Design and implement a backup strategy for Azure Virtual Desktop",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-implement-business-continuity-disaster-recovery",
+                  "title": "Plan and implement updates, backups, and disaster recovery",
+                  "shownUnder": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/plan-and-implement-updates-backups-and-disaster-recovery/recommend-an-update-strategy-for-session-hosts"
+                },
+                {
+                  "path": "/training/modules/implement-manage-storage-azure-virtual-desktop",
+                  "title": "Implement and manage storage for Azure Virtual Desktop",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/plan-storage-for-azure-virtual-desktop-user-data"
+                },
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            },
+            {
+              "key": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/plan-and-implement-updates-backups-and-disaster-recovery/configure-backup-and-restore-for-fslogix-user-profiles-perso",
+              "text": "Configure backup and restore for FSLogix user profiles, personal desktops, and images",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-manage-fslogix",
+                  "title": "Implement and manage FSLogix",
+                  "shownUnder": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-storage-for-fslogix-components"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "taskKey": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/monitor-and-manage-azure-virtual-desktop-services/@foundations",
+      "path": "/azure/developer/terraform/concept-azapi-data-plane-framework",
+      "reason": "Covers the AzAPI Terraform provider data plane, a different tool and product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/monitor-and-manage-azure-virtual-desktop-services/@foundations",
+      "path": "/training/modules/azure-netapp-files-quotas",
+      "reason": "Covers Azure NetApp Files capacity quotas, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/monitor-and-manage-azure-virtual-desktop-services/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "Covers Windows 365 Cloud PC management, a different product from Azure Virtual Desktop.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/monitor-and-manage-azure-virtual-desktop-services/monitor-azure-virtual-desktop-by-using-azure-monitor",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "Covers Windows 365 Cloud PC management, a different product from Azure Virtual Desktop.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/plan-and-implement-updates-backups-and-disaster-recovery/@foundations",
+      "path": "/training/modules/azure-netapp-files-quotas",
+      "reason": "Covers capacity quotas in Azure NetApp Files, not backup or recovery concepts.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "monitor-and-maintain-an-azure-virtual-desktop-infrastructure/plan-and-implement-updates-backups-and-disaster-recovery/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "Covers Windows 365 Cloud PC management, a different product from Azure Virtual Desktop.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/@foundations",
+      "path": "/training/modules/azure-netapp-files-data-protection",
+      "reason": "Covers Azure NetApp Files data protection, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/@foundations",
+      "path": "/training/modules/azure-netapp-files-quotas",
+      "reason": "Covers Azure NetApp Files quotas, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "Covers Windows 365 Cloud PC management, a different product from AVD session hosts.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/@foundations",
+      "path": "/training/modules/just-in-time-access",
+      "reason": "Covers just-in-time VM access in Defender for Cloud, a security topic outside this group.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/modify-an-image",
+      "path": "/azure/azure-linux/customize-images",
+      "reason": "Image Customizer modifies Azure Linux images, a different product from the Windows session host images used in AVD.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/azure-government/documentation-government-image-gallery",
+      "reason": "Covers Azure Government Marketplace images, a different cloud and product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/azure-local/manage/virtual-machine-image-azure-compute-gallery",
+      "reason": "Covers Azure Local VMs, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/batch/batch-custom-image-pools-to-azure-compute-gallery-migration-guide",
+      "reason": "Migrates Azure Batch pools, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/batch/batch-sig-images",
+      "reason": "Covers Azure Batch custom image pools, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/confidential-computing/create-confidential-vm-from-compute-gallery",
+      "reason": "Covers confidential VMs on AMD series, a different specialty from AVD image storage.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/container-registry/container-registry-storage",
+      "reason": "Covers storage of container images in Azure Container Registry, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/cosmos-db/postgresql/resources-compute",
+      "reason": "Covers compute and storage for Cosmos DB for PostgreSQL clusters, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/cyclecloud/concepts/plan-and-size-hpc-clusters",
+      "reason": "Covers sizing HPC clusters in CycleCloud, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/databricks/getting-started/high-level-architecture",
+      "reason": "Describes the Azure Databricks platform, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/databricks/sql/language-manual/sql-ref-syntax-aux-analyze-compute-storage-metrics",
+      "reason": "A Databricks SQL reference for table storage metrics, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/defender-for-cloud/resolve-disk-scanning-error",
+      "reason": "Troubleshoots agentless scans of GCP VMs in Defender for Cloud, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/dev-box/how-to-configure-azure-compute-gallery",
+      "reason": "Attaches a gallery to a Microsoft Dev Box dev center, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/dev-box/how-to-manage-dev-box-definitions",
+      "reason": "Manages Dev Box definitions, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/developer/terraform/azurerm/create-avd-azure-compute-image-gallery",
+      "reason": "Configures the gallery with Terraform, an infrastructure-as-code developer workflow rather than the exam's admin tasks.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/developer/terraform/create-avd-azure-compute-image-gallery",
+      "reason": "Configures the gallery with Terraform, an infrastructure-as-code developer workflow rather than the exam's admin tasks.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/devtest-labs/add-vm-use-shared-image",
+      "reason": "Adds VMs from a shared gallery in Azure DevTest Labs, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/devtest-labs/configure-shared-image-gallery",
+      "reason": "Configures a shared image gallery in Azure DevTest Labs, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/devtest-labs/devtest-lab-manage-formulas",
+      "reason": "Manages formulas in Azure DevTest Labs, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/lab-services/how-to-attach-detach-shared-image-gallery",
+      "reason": "Attaches a compute gallery to an Azure Lab Services lab plan, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/lab-services/how-to-attach-detach-shared-image-gallery-1",
+      "reason": "Attaches a shared image gallery to an Azure Lab Services lab account, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/lab-services/how-to-use-shared-image-gallery",
+      "reason": "Uses a compute gallery in Azure Lab Services, another product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/lab-services/upload-custom-image-shared-image-gallery",
+      "reason": "Imports a physical lab image into Azure Lab Services, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/virtual-machine-scale-sets/instance-generalized-image-version",
+      "reason": "Creates scale sets from a gallery image, a different workload from AVD session hosts.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/virtual-machine-scale-sets/instance-specialized-image-version",
+      "reason": "Creates scale sets from specialized images with the CLI, a different workload from AVD session hosts.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/virtual-machine-scale-sets/share-images-across-tenants",
+      "reason": "Covers scale sets sharing images across tenants, a different workload from AVD session hosts.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/virtual-machines/linux/image-builder",
+      "reason": "Covers Linux VM images with Image Builder, not Windows session host images for AVD.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/virtual-machines/linux/image-builder-gallery",
+      "reason": "Covers Linux VM images, not Windows session host images for AVD.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/create-and-manage-session-host-images/plan-and-implement-image-storage-including-azure-compute-gal",
+      "path": "/azure/virtual-machines/linux/image-builder-gallery-update-image-version",
+      "reason": "Covers Linux VM image versions, not Windows session host images for AVD.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "Covers Windows 365 Cloud PC management, a different product from Azure Virtual Desktop.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/@foundations",
+      "path": "/training/modules/understand-windows-server-iaas-vm-cost-management",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/implement-host-pools-and-session-hosts/automate-creation-of-azure-virtual-desktop-hosts-and-host-po",
+      "path": "/training/modules/configure-automatic-deployment-azure-sql-database",
+      "reason": "Automates deployment of Azure SQL Database, a different product area from Azure Virtual Desktop.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/@foundations",
+      "path": "/azure/developer/terraform/concept-azapi-data-plane-framework",
+      "reason": "Covers the AzAPI Terraform provider's data plane, a different tool and product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/@foundations",
+      "path": "/training/modules/azure-netapp-files-data-protection",
+      "reason": "Dropped in review: product-specific or licensing module that is not needed as a foundation for this exam.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/@foundations",
+      "path": "/training/modules/azure-netapp-files-quotas",
+      "reason": "Dropped in review: product-specific or licensing module that is not needed as a foundation for this exam.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "Covers Windows 365 Cloud PC management, a different product from Azure Virtual Desktop.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-and-implement-storage-for-azure-virtual-desktop-user-da/implement-file-shares-for-azure-virtual-desktop",
+      "path": "/training/modules/design-user-identities-profiles",
+      "reason": "Not part of this task; the page fits a neighbouring task or is a generic overview.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "Covers Windows 365 Cloud PC management, a different product from Azure Virtual Desktop.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-host-pools-and-session-hosts/@foundations",
+      "path": "/training/modules/understand-windows-server-iaas-vm-cost-management",
+      "reason": "Dropped in review: product-specific or licensing module that is not needed as a foundation for this exam.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "Covers Windows 365 Cloud PC management, a different product from Azure Virtual Desktop.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/@foundations",
+      "path": "/azure/anyscale-on-azure/overview",
+      "reason": "Describes the Anyscale on Azure platform, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/@foundations",
+      "path": "/training/modules/azure-netapp-files-data-protection",
+      "reason": "Covers Azure NetApp Files data protection, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/@foundations",
+      "path": "/training/modules/azure-netapp-files-quotas",
+      "reason": "Covers Azure NetApp Files quotas, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "Covers Windows 365 identity and management, a different product from Azure Virtual Desktop.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/@foundations",
+      "path": "/training/modules/just-in-time-access",
+      "reason": "Covers just-in-time VM access in Defender for Cloud, outside the identity concepts.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/active-directory-b2c/identity-provider-azure-ad-single-tenant",
+      "reason": "Covers sign-in for Azure AD B2C customer tenants, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/active-directory-b2c/publish-app-to-azure-ad-app-gallery",
+      "reason": "Publishes a B2C app to the Entra app gallery, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/anyscale-on-azure",
+      "reason": "The documentation landing page for the Anyscale on Azure platform, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/anyscale-on-azure/identity-access",
+      "reason": "Covers identity for the Anyscale on Azure partner platform, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/anyscale-on-azure/overview",
+      "reason": "An overview of the Anyscale on Azure platform, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/azure-maps/how-to-secure-spa-users",
+      "reason": "Covers a single page application with Azure Maps, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/azure-maps/how-to-secure-webapp-users",
+      "reason": "Covers sign-in for a web app with Azure Maps, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/defender-for-iot/organizations/set-up-sso",
+      "reason": "Covers SSO for the Defender for IoT sensor console, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/devops/organizations/accounts/connect-organization-to-azure-ad",
+      "reason": "Connects Azure DevOps to Entra ID, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/partner-solutions/datadog/create",
+      "reason": "Creates a Datadog resource and mentions SSO only in passing, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/sap/microsoft-ai/copilot-studio/sso-entra-id-sap-cloud-identity-services",
+      "reason": "Covers SSO between Copilot Studio and SAP, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/security/fundamentals/identity-management-overview",
+      "reason": "Not part of this task; the page fits a neighbouring task or is a generic overview.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/spring-apps/enterprise/how-to-set-up-sso-with-azure-ad",
+      "reason": "Covers SSO for Spring Cloud Gateway in Azure Spring Apps, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/storage/files/identity-kerberos-authentication-macos",
+      "reason": "Covers Kerberos access to Azure Files on macOS with Platform SSO in preview, outside the task.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/configure-microsoft-entra-single-sign-on",
+      "path": "/azure/vpn-gateway/point-to-site-entra-vpn-client-windows-device-sso",
+      "reason": "Covers Device SSO for the Azure VPN Client, a different product area.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/plan-and-implement-azure-role-based-access-control-azure-rba",
+      "path": "/azure/automation/automation-role-based-access-control",
+      "reason": "Covers RBAC for Azure Automation, a different service from Azure Virtual Desktop.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/plan-and-implement-azure-role-based-access-control-azure-rba",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "Its RBAC unit is about Windows 365, a different product area from Azure Virtual Desktop.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-security/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "Covers Windows 365 Cloud PC management, a different product from Azure Virtual Desktop session hosts.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-security/configure-azure-bastion-or-just-in-time-jit-vm-access-for-ad",
+      "path": "/azure/enclave/just-in-time-access",
+      "reason": "Covers JIT for Azure Enclave resources using Entra PIM, a different product area from JIT VM access in Defender for Cloud.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-identity-and-security/plan-and-implement-security/configure-azure-bastion-or-just-in-time-jit-vm-access-for-ad",
+      "path": "/training/modules/explore-azure-remote-management",
+      "reason": "Not part of this task; the page fits a neighbouring task or is a generic overview.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-user-environments-and-apps/install-and-configure-apps-on-a-session-host/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "It is about Windows 365 Cloud PC management, a different product from this group.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-user-environments-and-apps/plan-and-implement-fslogix/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "It is about Windows 365 Cloud PC management, a different product area from FSLogix.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/@foundations",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "It is about Windows 365 Cloud PC management, a different product from this group.",
+      "at": "2026-11-05"
+    },
+    {
+      "taskKey": "plan-and-implement-user-environments-and-apps/plan-and-implement-user-experience-and-client-settings/choose-an-azure-virtual-desktop-client",
+      "path": "/training/modules/explore-windows-365-cloud-pc-management",
+      "reason": "It is about Windows 365 Cloud PC management, a different product from Azure Virtual Desktop clients.",
+      "at": "2026-11-05"
+    }
+  ]
+}

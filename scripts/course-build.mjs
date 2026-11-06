@@ -12,6 +12,7 @@
  *       src/data_files/courses/<CODE>.json when it is wanted.
  *       The build stops when the study guide or Learn changed since the candidates were made, because the
  *       course would record a state its picks were never judged against; --allow-stale builds anyway.
+ *   --no-official-course  build an exam that has no official course on Learn (empty scope, every pick from search)
  *       Hands-on pages (exercises, simulations, guided projects, tutorials, quickstarts) are left out of the
  *       course, a page that fits several tasks is shown once and a classic page is left out; all three are
  *       listed in FILE.routing.json. The picks the judge was not sure of (or flagged as another role or product
@@ -34,7 +35,7 @@ import { eachPick } from "./lib/course-format.mjs";
 import { parseGuide } from "./lib/course-guide.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-build.mjs <CODE> [--gated FILE] [--out FILE] [--today YYYY-MM-DD] [--allow-stale] [--audience FILE] [--urls [--live]]`;
+const USAGE = `Usage: node scripts/course-build.mjs <CODE> [--gated FILE] [--out FILE] [--today YYYY-MM-DD] [--allow-stale] [--no-official-course] [--audience FILE] [--urls [--live]]`;
 
 function parseArgs(argv) {
   const options = {
@@ -43,12 +44,14 @@ function parseArgs(argv) {
     out: null,
     today: null,
     allowStale: false,
+    noOfficialCourse: false,
     urls: false,
     live: false,
   };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--allow-stale") options.allowStale = true;
+    else if (arg === "--no-official-course") options.noOfficialCourse = true;
     else if (arg === "--urls") options.urls = true;
     else if (arg === "--live") options.live = options.urls = true;
     else if (["--gated", "--out", "--today", "--audience"].includes(arg)) {
@@ -172,6 +175,7 @@ export async function main(argv, deps = {}) {
     gated,
     today,
     allowStale: options.allowStale,
+    allowNoScope: options.noOfficialCourse,
     audienceDecisions,
   });
   for (const w of result.warnings) log(`warning: ${w}`);

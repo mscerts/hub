@@ -1,0 +1,714 @@
+---
+title: AI-200 Study Guide Course
+description: "Follow a structured AI-200 course organized by study guide task, with Microsoft Learn training and documentation for Developing AI Cloud Solutions on Azure."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official AI-200 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-200?WT.mc_id=studentamb_165290) skills measured. Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AI-200 labs page](/certs/labs/azure/ai-200/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As a candidate for this Microsoft Certification, you're responsible for contributing to all phases of implementing AI solutions on Azure, with an emphasis on back-end services and components. You're also responsible for supporting all phases of the development lifecycle, including requirements gathering, design, development, deployment, security, and monitoring.
+
+### You should be proficient in
+
+- Azure SDKs and third-party SDKs used in Azure.
+- Azure data management services.
+- Azure monitoring and troubleshooting.
+- Azure messaging and eventing.
+- Vector databases.
+- Python programming.
+- Implementing containerized applications on Azure.
+
+## Develop containerized solutions on Azure (20–25%)
+
+### Implement container application hosting
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Introduction to containers on Azure" href="https://learn.microsoft.com/azure/container-apps/start-containers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Container Registry documentation" href="https://learn.microsoft.com/azure/container-registry?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security overview for Azure Container Registry - Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/container-registry-security-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Continuous Patching in Azure Container Registry Key Concepts" href="https://learn.microsoft.com/azure/container-registry/key-concept-continuous-patching?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Build, store, version, and manage container images by using Azure Container Registry
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Store and manage containers in Azure Container Registry" href="https://learn.microsoft.com/training/modules/store-manage-containers-azure-container-registry?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy and use Azure Container Registry" href="https://learn.microsoft.com/training/modules/deploy-use-azure-container-registry?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy containers to Azure Container Apps" href="https://learn.microsoft.com/training/modules/deploy-containers-azure-container-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Azure Container Registry for container app deployments" href="https://learn.microsoft.com/training/modules/configure-azure-container-registry-container-app-deployments?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Image Tag Best Practices" href="https://learn.microsoft.com/azure/container-registry/container-registry-image-tag-version?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Container Image Storage in Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/container-registry-storage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Multi-Architecture Images in Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/push-multi-architecture-images?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delete Image Resources to Manage Registry Storage in ACR" href="https://learn.microsoft.com/azure/container-registry/container-registry-delete?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About Registries, Repositories, Images, and Artifacts" href="https://learn.microsoft.com/azure/container-registry/container-registry-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Push & Pull Container Image using Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Supported Content Formats by ACR, Docker, OCI, and Helm" href="https://learn.microsoft.com/azure/container-registry/container-registry-image-formats?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Lock Images to Prevent Deletion in Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/container-registry-image-lock?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Import Container Images to ACR using Azure APIs" href="https://learn.microsoft.com/azure/container-registry/container-registry-import-images?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View Repositories in the Azure portal" href="https://learn.microsoft.com/azure/container-registry/container-registry-repositories?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Container Apps image pull from Azure Container Registry with managed identity" href="https://learn.microsoft.com/azure/container-apps/managed-identity-image-pull?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable artifact cache to cache artifacts from another Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/artifact-cache-acr-to-acr-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Public Content in Private Container Registry" href="https://learn.microsoft.com/azure/container-registry/buffer-gate-public-content?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ACR Transfer with Azure CLI" href="https://learn.microsoft.com/azure/container-registry/container-registry-transfer-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Access Network-Restricted Registry By Trusted Azure Service" href="https://learn.microsoft.com/azure/container-registry/allow-access-trusted-services?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable artifact cache in your Azure Container Registry with Azure CLI" href="https://learn.microsoft.com/azure/container-registry/artifact-cache-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Optimize image pulls with artifact cache in Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/artifact-cache-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable artifact cache in your Azure Container Registry with Azure portal" href="https://learn.microsoft.com/azure/container-registry/artifact-cache-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Kubernetes Authentication Scenarios for ACR" href="https://learn.microsoft.com/azure/container-registry/authenticate-kubernetes-options?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Kubernetes Pull Secret for ACR Authentication" href="https://learn.microsoft.com/azure/container-registry/container-registry-auth-kubernetes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Service Principal Authentication for ACR" href="https://learn.microsoft.com/azure/container-registry/container-registry-auth-service-principal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Signing and Verifying OCI Artifacts" href="https://learn.microsoft.com/azure/container-registry/overview-sign-verify-artifacts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scan Registry Images with Microsoft Defender for Cloud" href="https://learn.microsoft.com/azure/container-registry/scan-images-defender?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure your Azure Container Registry deployment - Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/secure-container-registry?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Azure Container Registry authentication issues - Azure" href="https://learn.microsoft.com/troubleshoot/azure/azure-container-registry/acr-authentication-errors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Authentication required error message in Azure Container Registry - Azure" href="https://learn.microsoft.com/troubleshoot/azure/azure-container-registry/authentication-required?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Find Azure Container Registry image vulnerability scanning results in Microsoft Defender for Cloud - Azure" href="https://learn.microsoft.com/troubleshoot/azure/azure-container-registry/image-vulnerability-assessment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manifest unknown - manifest tagged by <tag> is not found in Azure Container Registry - Azure" href="https://learn.microsoft.com/troubleshoot/azure/azure-container-registry/manifest-tag-not-found?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot issues when you pull from Azure Container Registry - Azure" href="https://learn.microsoft.com/troubleshoot/azure/azure-container-registry/troubleshoot-issues-pull-container-registry?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot push errors in Azure Container Registry - Azure" href="https://learn.microsoft.com/troubleshoot/azure/azure-container-registry/troubleshoot-push-error-operation-disallowed-timeout?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage OCI Artifacts and Supply Chain Artifacts with ORAS" href="https://learn.microsoft.com/azure/container-registry/container-registry-manage-artifact?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Store Helm Charts in Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/container-registry-helm-repos?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Build and run images by using Azure Container Registry Tasks
+
+:::note
+The Microsoft Learn module "Store and manage containers in Azure Container Registry" also covers this task. It is listed once, under [Build, store, version, and manage container images by using Azure Container Registry](#build-store-version-and-manage-container-images-by-using-azure-container-registry).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Quick Task Run with Template" href="https://learn.microsoft.com/azure/container-registry/container-registry-task-run-template?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sample Azure Container Registry (ACR) Tasks" href="https://learn.microsoft.com/azure/container-registry/container-registry-tasks-samples?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Base Image Updates - Azure Container Registry Tasks" href="https://learn.microsoft.com/azure/container-registry/container-registry-tasks-base-images?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Multi-Step Task to Build, Test & Patch Image" href="https://learn.microsoft.com/azure/container-registry/container-registry-tasks-multi-step?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automate Container Builds with Azure Container Registry Tasks" href="https://learn.microsoft.com/azure/container-registry/container-registry-tasks-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Build Container Images with Cloud Native Build packs in Azure" href="https://learn.microsoft.com/azure/container-registry/container-registry-tasks-pack-build?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Task Workflow to Manage Public Registry Content in Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/tasks-consume-public-content?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Schedule Azure Container Registry (ACR) Tasks" href="https://learn.microsoft.com/azure/container-registry/container-registry-tasks-scheduled?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View Task Run Logs - Azure Container Registry Tasks" href="https://learn.microsoft.com/azure/container-registry/container-registry-tasks-logs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Dedicated Pool to Run Tasks in Azure Container Registry - Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/tasks-agent-pools?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Managed Identity Authentication for ACR" href="https://learn.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="External Authentication from Azure Container Registry Task" href="https://learn.microsoft.com/azure/container-registry/container-registry-tasks-authentication-key-vault?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Managed Identity in ACR Task" href="https://learn.microsoft.com/azure/container-registry/container-registry-tasks-authentication-managed-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Cross-Registry Authentication from ACR Task" href="https://learn.microsoft.com/azure/container-registry/container-registry-tasks-cross-registry-authentication?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="YAML Reference for Azure Container Registry (ACR) Tasks" href="https://learn.microsoft.com/azure/container-registry/container-registry-tasks-reference-yaml?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage network bypass policy for tasks" href="https://learn.microsoft.com/azure/container-registry/manage-network-bypass-policy-for-tasks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy containers to Azure App Service, including configuring App Service to supply environment variables and secrets
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Deploy containers to Azure App Service" href="https://learn.microsoft.com/training/modules/deploy-containers-azure-app-service?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Run sidecar-enabled AI applications on Azure App Service" href="https://learn.microsoft.com/training/modules/deploy-sidecar-azure-app-service?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement container-orchestrated solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Container Apps overview" href="https://learn.microsoft.com/azure/container-apps/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions on Azure Container Apps overview" href="https://learn.microsoft.com/azure/container-apps/functions-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Azure Container Registry" href="https://learn.microsoft.com/azure/container-registry/container-registry-intro?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Azure Kubernetes Service (AKS) Automatic" href="https://learn.microsoft.com/azure/aks/intro-aks-automatic?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy applications to Azure Container Apps, including environment configuration and revision management
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage containers in Azure Container Apps" href="https://learn.microsoft.com/training/modules/manage-containers-azure-container-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Update and deploy changes in Azure Container Apps" href="https://learn.microsoft.com/azure/container-apps/revisions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement event-driven scaling by using Kubernetes Event-driven Autoscaling (KEDA) in Container Apps
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Scale containers in Azure Container Apps" href="https://learn.microsoft.com/training/modules/scale-containers-azure-container-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Functions KEDA scaling mappings on Container Apps" href="https://learn.microsoft.com/azure/container-apps/functions-keda-mappings?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy and manage applications to Azure Kubernetes Service (AKS) by using manifest files
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Deploy applications to Azure Kubernetes Service" href="https://learn.microsoft.com/training/modules/deploy-apps-azure-kubernetes-service?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure applications on Azure Kubernetes Service" href="https://learn.microsoft.com/training/modules/configure-apps-azure-kubernetes-service?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy applications to Azure Kubernetes Service" href="https://learn.microsoft.com/training/modules/deploy-applications-azure-kubernetes-service?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Best Practices for Azure Kubernetes Service (AKS)" href="https://learn.microsoft.com/azure/aks/best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor Azure Kubernetes Service (AKS)" href="https://learn.microsoft.com/azure/aks/monitor-aks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Kubernetes Service (AKS) managed NGINX ingress with the application routing add-on - Azure Kubernetes Service" href="https://learn.microsoft.com/azure/aks/app-routing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with Kubernetes" href="https://learn.microsoft.com/azure/aks/get-started-kubernetes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Install existing applications with Helm in Azure Kubernetes Service (AKS)" href="https://learn.microsoft.com/azure/aks/kubernetes-helm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy an Azure Kubernetes Service (AKS) Cluster using Azure CLI" href="https://learn.microsoft.com/azure/aks/learn/quick-kubernetes-deploy-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor and troubleshoot solutions on AKS and Container Apps by inspecting logs, events, and end-to-end connectivity
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor and troubleshoot applications on Azure Kubernetes Service" href="https://learn.microsoft.com/training/modules/monitor-apps-azure-kubernetes-service?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Develop AI solutions by using Azure data management services (25–30%)
+
+### Develop AI solutions by using Azure Cosmos DB for NoSQL
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/explore-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore fundamentals of Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/explore-non-relational-data-stores-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/introduction-to-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Understand Distributed NoSQL Databases - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/distributed-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Indexing - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/index-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Unified AI Database - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Connect to Azure Cosmos DB for NoSQL by using the SDK and run queries
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build queries for Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/build-query-azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Author complex queries with the Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/author-complex-queries-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Query the Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/query-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/use-azure-cosmos-db-sql-api-sdk?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Query data in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/query-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect to Azure Cosmos DB with the SDK" href="https://learn.microsoft.com/training/modules/connect-azure-cosmos-db-nosql-sdk?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Expand query and transaction functionality in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/expand-query-transaction-functionality-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure the Azure Cosmos DB for NoSQL SDK" href="https://learn.microsoft.com/training/modules/configure-azure-cosmos-db-sql-api-sdk?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement Azure Cosmos DB for NoSQL point operations" href="https://learn.microsoft.com/training/modules/implement-azure-cosmos-db-sql-api-point-operations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Query Items Using .NET - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-dotnet-query-items?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Query Items Using JavaScript - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-javascript-query-items?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Container - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-create-container?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Container Using .NET - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-dotnet-create-container?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Database Using .NET - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-dotnet-create-database?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Item Using .NET - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-dotnet-create-item?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Read an Item Using .NET - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-dotnet-read-item?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Container Using JavaScript - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-javascript-create-container?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Database Using JavaScript - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-javascript-create-database?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Item Using JavaScript - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-javascript-create-item?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Container Using Python - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-python-create-container?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Database Using Python - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-python-create-database?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SQL SDK Connectivity Modes - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/sdk-connection-modes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Query Issues When Using - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/troubleshoot-query-performance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect using role-based access control and Microsoft Entra ID - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-connect-role-based-access-control?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Optimize query performance and Request Units (RUs) consumption by using indexing policies and consistency levels
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Optimize query performance for Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/optimize-query-performance-azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Analyze and tune query and operation performance in Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/analyze-tune-query-performance-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Store and retrieve embeddings and execute vector similarity search for semantic retrieval
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement vector search on Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/implement-vector-search-azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement a change feed processor to detect and handle new or updated items
+
+:::note
+The Microsoft Learn module "Implement vector search on Azure Cosmos DB for NoSQL" also covers this task. It is listed once, under [Store and retrieve embeddings and execute vector similarity search for semantic retrieval](#store-and-retrieve-embeddings-and-execute-vector-similarity-search-for-semantic-retrieval).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Change Feed Processor - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/change-feed-processor?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Develop AI solutions by using Azure Database for PostgreSQL
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore PostgreSQL architecture" href="https://learn.microsoft.com/training/modules/explore-postgresql-architecture?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand client-server communication in PostgreSQL" href="https://learn.microsoft.com/training/modules/understand-client-server-communication-postgresql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand PostgreSQL query processing" href="https://learn.microsoft.com/training/modules/understand-postgresql-query-process?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Server Concepts for Azure Database for PostgreSQL Flexible Server - Azure Database for PostgreSQL" href="https://learn.microsoft.com/azure/postgresql/configure-maintain/concepts-servers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What Is Azure Database for PostgreSQL flexible server? - Azure Database for PostgreSQL" href="https://learn.microsoft.com/azure/postgresql/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Connect and query Azure Database for PostgreSQL by using SDKs
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build and query with Azure Database for PostgreSQL" href="https://learn.microsoft.com/training/modules/build-query-azure-database-postgresql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Connection Libraries in Azure Database for PostgreSQL Flexible Server - Azure Database for PostgreSQL" href="https://learn.microsoft.com/azure/postgresql/connectivity/concepts-connection-libraries?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect and Query Overview in Azure Database for PostgreSQL Flexible Server - Azure Database for PostgreSQL" href="https://learn.microsoft.com/azure/postgresql/connectivity/how-to-connect-query-guide?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Model schemas and implement indexing strategies, including designing tables and choosing appropriate data types
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Implement indexing strategies, including optimizing query latency and reducing pgvector compute overhead
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Optimize vector search in Azure Database for PostgreSQL" href="https://learn.microsoft.com/training/modules/optimize-vector-search-azure-database-postgresql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Optimize Performance when Using pgvector in Azure Database for PostgreSQL Flexible Server - Azure Database for PostgreSQL" href="https://learn.microsoft.com/azure/postgresql/extensions/how-to-optimize-performance-pgvector?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure compute, memory, and storage resources to support vector workloads
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Run vector similarity search, including storing embeddings, semantic retrieval, and implementing retrieval-augmented generation (RAG) patterns by using metadata filter
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement vector search with Azure Database for PostgreSQL" href="https://learn.microsoft.com/training/modules/implement-vector-search-azure-database-postgresql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Vector Search in Azure Database for PostgreSQL Flexible Server - Azure Database for PostgreSQL" href="https://learn.microsoft.com/azure/postgresql/extensions/how-to-use-pgvector?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement connection optimization to improve throughput and minimize latency
+
+:::note
+The Microsoft Learn module "Optimize vector search in Azure Database for PostgreSQL" also covers this task. It is listed once, under [Implement indexing strategies, including optimizing query latency and reducing pgvector compute overhead](#implement-indexing-strategies-including-optimizing-query-latency-and-reducing-pgvector-compute-overhead).
+:::
+
+### Integrate Azure Managed Redis in AI solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Azure Managed Redis? - Azure Managed Redis" href="https://learn.microsoft.com/azure/redis/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About Vector Embeddings and Vector Search in Azure Managed Redis - Azure Managed Redis" href="https://learn.microsoft.com/azure/redis/overview-vector-similarity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Azure Managed Redis data operations, including caching, expiration, and invalidation
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement data operations in Azure Managed Redis" href="https://learn.microsoft.com/training/modules/implement-data-operations-azure-managed-redis?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement vector indexing to enable similarity search
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement vector storage in Azure Managed Redis" href="https://learn.microsoft.com/training/modules/implement-vector-storage-azure-managed-redis?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Choose an Azure Service for Vector Search - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/guide/technology-choices/vector-search?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Connect to and consume Azure services (20–25%)
+
+### Develop event- and message-based AI solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Concepts for Event Grid namespace topics" href="https://learn.microsoft.com/azure/event-grid/concepts-event-grid-namespaces?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Azure Event Grid" href="https://learn.microsoft.com/azure/event-grid/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Advanced Features in Azure Service Bus Messaging" href="https://learn.microsoft.com/azure/service-bus-messaging/advanced-features-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Message Deferral Overview" href="https://learn.microsoft.com/azure/service-bus-messaging/message-deferral?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Service Bus to Event Grid integration overview" href="https://learn.microsoft.com/azure/service-bus-messaging/service-bus-to-event-grid-integration-concept?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Service Bus Topic Filters Overview - Azure Service Bus" href="https://learn.microsoft.com/azure/service-bus-messaging/topic-filters?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Concepts (push delivery) in Event Grid basic" href="https://learn.microsoft.com/azure/event-grid/concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Event Grid Event Handlers Overview" href="https://learn.microsoft.com/azure/event-grid/event-handlers?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Queue and process back-end operations by using Azure Service Bus, including dead-letter queue handling, messages, topics, and subscriptions
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Queue and process AI operations with Azure Service Bus" href="https://learn.microsoft.com/training/modules/queue-process-operations-service-bus?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement event-driven workflows by using Azure Event Grid, including filters, custom events, and retries
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Develop event-driven AI workflows with Azure Event Grid" href="https://learn.microsoft.com/training/modules/event-driven-workflows-event-grid?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Develop and implement Azure Functions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Triggers and Bindings in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-triggers-bindings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Durable Functions Overview: Stateful Serverless Workflows" href="https://learn.microsoft.com/azure/durable-task/durable-functions/durable-functions-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Cosmos DB bindings for Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb-v2?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Cosmos DB trigger for Functions 2.x and higher" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Event Grid trigger for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Event Hubs bindings for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-event-hubs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Event Hubs trigger for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-event-hubs-trigger?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions HTTP triggers and bindings" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-http-webhook?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions HTTP trigger" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Service Bus bindings for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-service-bus?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Service Bus trigger for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-service-bus-trigger?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Blob storage trigger and bindings for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-storage-blob?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Blob storage trigger for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Queue storage trigger and bindings for Azure Functions overview" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-storage-queue?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Queue storage trigger for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-storage-queue-trigger?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Timer trigger for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-timer?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Guidance for developing Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-reference?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions documentation" href="https://learn.microsoft.com/azure/azure-functions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Choose a file access strategy for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/concept-file-access-options?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions Error Handling and Retry Guidance" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-error-pages?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions networking options" href="https://learn.microsoft.com/azure/azure-functions/functions-networking-options?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Linux container support in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/container-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Durable Orchestrations Overview - Azure" href="https://learn.microsoft.com/azure/durable-task/common/durable-task-orchestrations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Durable Task Programming Model: Orchestrators, Activities, and Entities" href="https://learn.microsoft.com/azure/durable-task/common/programming-model-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Securing Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/security-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure OpenAI extension for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-bindings-openai?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions Overview" href="https://learn.microsoft.com/azure/azure-functions/functions-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Serverless Database Computing With Azure Functions - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/serverless-computing-database?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Managed Identities" href="https://learn.microsoft.com/azure/app-service/overview-managed-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Build serverless APIs, including implementing triggers and bindings
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build serverless AI backends with Azure Functions" href="https://learn.microsoft.com/training/modules/build-backends-azure-functions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and deploy function apps
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement security controls for Azure Function apps and Logic apps" href="https://learn.microsoft.com/training/modules/implement-security-controls-function-logic-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Functions Scale and Hosting" href="https://learn.microsoft.com/azure/azure-functions/functions-scale?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions Flex Consumption plan hosting" href="https://learn.microsoft.com/azure/azure-functions/flex-consumption-plan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create function app resources in Azure using PowerShell" href="https://learn.microsoft.com/azure/azure-functions/create-resources-azure-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions Dedicated hosting" href="https://learn.microsoft.com/azure/azure-functions/dedicated-plan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and Manage Function Apps in a Flex Consumption Plan" href="https://learn.microsoft.com/azure/azure-functions/flex-consumption-how-to?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Site update strategies in Flex Consumption" href="https://learn.microsoft.com/azure/azure-functions/flex-consumption-site-updates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="App settings reference for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-app-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure CLI samples for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-cli-samples?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create your function app resources in Azure using Bicep" href="https://learn.microsoft.com/azure/azure-functions/functions-create-first-function-bicep?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create your function app resources using Azure Resource Manager templates" href="https://learn.microsoft.com/azure/azure-functions/functions-create-first-function-resource-manager?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a function app in the Azure portal" href="https://learn.microsoft.com/azure/azure-functions/functions-create-function-app-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create your first containerized Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-deploy-container?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Continuously update function app code using Azure Pipelines" href="https://learn.microsoft.com/azure/azure-functions/functions-how-to-azure-devops?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy to Azure Functions by using GitHub Actions" href="https://learn.microsoft.com/azure/azure-functions/functions-how-to-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure function app settings in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automate function app resource deployment to Azure" href="https://learn.microsoft.com/azure/azure-functions/functions-infrastructure-as-code?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure connections to remote services in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/manage-connections?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy your Python apps to Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/python-build-options?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to target Azure Functions runtime versions" href="https://learn.microsoft.com/azure/azure-functions/set-runtime-version?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Build and deploy TypeScript apps in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/typescript-build-options?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Update Language Versions in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/update-language-versions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Package-based deployment for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/deployment-zip-push?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Continuous deployment for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-continuous-deployment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deployment technologies in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-deployment-technologies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and deploy function code to Azure using Visual Studio Code" href="https://learn.microsoft.com/azure/azure-functions/how-to-create-function-vs-code?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Key Vault References as App Settings" href="https://learn.microsoft.com/azure/app-service/app-service-key-vault-references?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use App Configuration References" href="https://learn.microsoft.com/azure/app-service/app-service-configuration-references?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Microsoft Entra Authentication" href="https://learn.microsoft.com/azure/app-service/configure-authentication-provider-aad?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Authentication and Authorization" href="https://learn.microsoft.com/azure/app-service/overview-authentication-authorization?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure monitoring for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/configure-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to use a secured storage account with Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/configure-networking-how-to?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Event-driven scaling in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/event-driven-scaling?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Estimating consumption-based costs in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-consumption-costs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Container Apps hosting of Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-container-apps-hosting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Azure Functions in a local Linux container" href="https://learn.microsoft.com/azure/azure-functions/functions-create-container-registry?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an HTTP endpoint using Azure Functions in the portal" href="https://learn.microsoft.com/azure/azure-functions/functions-create-http-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create your first containerized Azure Functions on Azure Container Apps" href="https://learn.microsoft.com/azure/azure-functions/functions-deploy-container-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Develop Azure Functions using Visual Studio" href="https://learn.microsoft.com/azure/azure-functions/functions-develop-vs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions diagnostics Overview" href="https://learn.microsoft.com/azure/azure-functions/functions-diagnostics?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Work with Azure Functions in Containers" href="https://learn.microsoft.com/azure/azure-functions/functions-how-to-custom-container?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect a function app to Azure SQL with managed identity and SQL bindings" href="https://learn.microsoft.com/azure/azure-functions/functions-identity-access-azure-sql-with-managed-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Node.js apps in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-node-troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Recover a deployment to a Flex Consumption plan in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-rollback-deployments?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Target-based scaling in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-target-based-scaling?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Zone Redundancy for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/functions-zone-redundancy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate Consumption plan apps to Flex Consumption in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/migration/migrate-plan-consumption-to-flex?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use OpenTelemetry with Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/opentelemetry-howto?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Python function apps in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/recover-python-functions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Storage considerations for Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/storage-considerations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Supported Languages in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/supported-languages?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Function App on Azure Container Apps using Code" href="https://learn.microsoft.com/azure/container-apps/functions-container-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage your Azure Functions in Container Apps" href="https://learn.microsoft.com/azure/container-apps/functions-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Store app-level secrets for Azure Functions on Azure Container Apps" href="https://learn.microsoft.com/azure/container-apps/functions-secrets-app-level?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Functions host key storage on Azure Container Apps" href="https://learn.microsoft.com/azure/container-apps/functions-secrets-host-keys?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Azure Functions app with auto scaling rules on Azure Container Apps" href="https://learn.microsoft.com/azure/container-apps/functions-usage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Durable Functions App With Managed Identity" href="https://learn.microsoft.com/azure/durable-task/durable-functions/durable-functions-configure-managed-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions App Diagnostics for Durable Functions" href="https://learn.microsoft.com/azure/durable-task/durable-functions/function-app-diagnostics?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Azure Functions app down or reporting errors - Azure" href="https://learn.microsoft.com/troubleshoot/azure/azure-functions/availability/functions-troubleshoot-issues?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Upgrade the Azure Functions runtime version or language version - Azure" href="https://learn.microsoft.com/troubleshoot/azure/azure-functions/config-mgmt/functions-configuring-updateversion?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot post-deployment function app runtime issues in Azure Functions - Azure" href="https://learn.microsoft.com/troubleshoot/azure/azure-functions/deployment/functions-deploying-runtime-issues-post-deployment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Azure Function App issues" href="https://learn.microsoft.com/troubleshoot/azure/azure-functions/welcome-azure-functions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Build a scalable web API using Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/create-first-function-azure-developer-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Functions best practices" href="https://learn.microsoft.com/azure/azure-functions/functions-best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Develop Azure Functions Locally by using Core Tools" href="https://learn.microsoft.com/azure/azure-functions/functions-run-local?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Respond to blob storage events using Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/scenario-blob-storage-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Build a serverless workflow using Durable Functions in Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/scenario-build-serverless-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Respond to database changes in Azure Cosmos DB using Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/scenario-database-changes-azure-cosmosdb?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Process real-time events using Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/scenario-real-time-events-processing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Run scheduled tasks using Azure Functions" href="https://learn.microsoft.com/azure/azure-functions/scenario-scheduled-tasks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Control Azure Functions outbound IP with an Azure virtual network NAT gateway" href="https://learn.microsoft.com/azure/azure-functions/functions-how-to-use-nat-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Secure, monitor, troubleshoot Azure solutions (20–25%)
+
+### Implement secure Azure solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage secrets in Java applications - Zero Trust and Zero Secrets" href="https://learn.microsoft.com/training/modules/manage-secrets-java-applications-zero-trust?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Secure your Azure Key Vault" href="https://learn.microsoft.com/azure/key-vault/general/secure-key-vault?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Key Vault Overview - Azure Key Vault" href="https://learn.microsoft.com/azure/key-vault/general/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure your Azure Key Vault secrets" href="https://learn.microsoft.com/azure/key-vault/secrets/secure-secrets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Key Vault documentation - Certificates" href="https://learn.microsoft.com/azure/key-vault/certificates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Key Vault recovery overview" href="https://learn.microsoft.com/azure/key-vault/general/key-vault-recovery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secrets" href="https://learn.microsoft.com/azure/key-vault/secrets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apps, API Keys, and Azure Key Vault Secrets" href="https://learn.microsoft.com/azure/key-vault/general/apps-api-keys-secrets?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Secure secrets by using Azure Key Vault, including rotation and retrieval
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage application secrets with Azure Key Vault" href="https://learn.microsoft.com/training/modules/manage-app-secrets-key-vault?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Store and retrieve app configuration information by using Azure App Configuration
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage application settings with Azure App Configuration" href="https://learn.microsoft.com/training/modules/manage-app-settings-app-config?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Retrieve key-values from a point-in-time" href="https://learn.microsoft.com/azure/azure-app-configuration/concept-point-time-snapshot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use labels to provide per-environment configuration values." href="https://learn.microsoft.com/azure/azure-app-configuration/howto-labels-aspnet-core?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Monitor and troubleshoot Azure solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Overview of Azure Monitor alerts" href="https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Monitor traces overview - Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/app/traces-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Monitor overview" href="https://learn.microsoft.com/azure/azure-monitor/fundamentals/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Log queries in Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/logs/log-query-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Trace distributed systems by using OpenTelemetry SDKs
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Instrument an app with OpenTelemetry" href="https://learn.microsoft.com/training/modules/instrument-app-opentelemetry?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Enable OpenTelemetry in Application Insights - Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="OpenTelemetry Distributed Tracing with Durable Task Scheduler" href="https://learn.microsoft.com/azure/durable-task/sdks/durable-task-scheduler-opentelemetry-tracing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor Azure Functions with OpenTelemetry distributed tracing" href="https://learn.microsoft.com/azure/azure-functions/monitor-functions-opentelemetry-distributed-tracing?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Write KQL queries to analyze logs and metrics
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Analyze app telemetry with logs and metrics" href="https://learn.microsoft.com/training/modules/analyze-telemetry-logs-metrics?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Get started with log queries in Azure Monitor Logs - Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/logs/get-started-queries?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>

@@ -1,0 +1,3224 @@
+{
+  "schemaVersion": 1,
+  "code": "DP-300",
+  "decisions": [
+    {
+      "task": "configure-and-manage-automation-of-tasks/automate-deployment-of-database-resources/@foundations",
+      "target": "/azure/azure-sql/database/arm-templates-content-guide",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/automate-deployment-of-database-resources/@foundations",
+      "target": "/azure/azure-sql/managed-instance/arm-templates-content-guide",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/automate-deployment-of-database-resources/@foundations",
+      "target": "/training/modules/manage-azure-paas-resources-using-automated-methods",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-catalog-views/jobs-job-executions-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-catalog-views/jobs-job-versions-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-catalog-views/jobs-jobs-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-catalog-views/jobs-jobstep-versions-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-catalog-views/jobs-jobsteps-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-catalog-views/jobs-target-group-members-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-catalog-views/jobs-target-groups-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-delete-job-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-delete-jobstep-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-delete-target-group-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-delete-target-group-member-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-purge-jobhistory-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-start-job-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-stop-job-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-update-job-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-database-tasks-in-azure/create-and-configure-elastic-jobs",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-update-jobstep-elastic-jobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-sql-server-agent-jobs/@foundations",
+      "target": "/sql/relational-databases/maintenance-plans/execute-sql-server-agent-job-task-maintenance-plan",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-sql-server-agent-jobs/@foundations",
+      "target": "/sql/relational-databases/system-tables/dbo-sysjobhistory-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-sql-server-agent-jobs/@foundations",
+      "target": "/sql/relational-databases/system-tables/dbo-sysjobs-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-automation-of-tasks/create-and-manage-sql-server-agent-jobs/@foundations",
+      "target": "/training/modules/introduction-to-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-authentication-for-sql-on-azure-vms-and-azure-sql",
+      "target": "/azure/azure-sql/managed-instance/connect-vm-instance-configure",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-authentication-for-sql-on-azure-vms-and-azure-sql",
+      "target": "/azure/azure-sql/managed-instance/winauth-azuread-run-trace-managed-instance",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-authentication-for-sql-on-azure-vms-and-azure-sql",
+      "target": "/sql/relational-databases/security/sql-server-security-best-practices",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-microsoft-entra-id-authentication-for-azure-sql-da",
+      "target": "/azure/azure-sql/managed-instance/winauth-azuread-run-trace-managed-instance",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/azure/azure-sql/managed-instance/winauth-azuread-run-trace-managed-instance",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/relational-databases/event-classes/audit-database-principal-impersonation-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/relational-databases/event-classes/audit-database-principal-management-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/relational-databases/event-classes/audit-server-principal-impersonation-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/relational-databases/event-classes/audit-server-principal-management-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/relational-databases/system-catalog-views/sys-server-principals-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/relational-databases/system-dynamic-management-objects/sys-dm-server-external-policy-principal-assigned-actions-transact-sql",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/relational-databases/system-dynamic-management-objects/sys-dm-server-external-policy-principals-transact-sql",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-addsrvrolemember-transact-sql",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-helpuser-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/t-sql/functions/database-principal-id-transact-sql",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/t-sql/statements/deny-database-principal-permissions-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/t-sql/statements/deny-server-principal-permissions-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/t-sql/statements/grant-database-principal-permissions-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/t-sql/statements/grant-server-principal-permissions-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/t-sql/statements/grant-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/t-sql/statements/revoke-database-principal-permissions-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/configure-security-principals",
+      "target": "/sql/t-sql/statements/revoke-server-principal-permissions-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/create-users-from-microsoft-entra-identities",
+      "target": "/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity-create-server",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/create-users-from-microsoft-entra-identities",
+      "target": "/azure/azure-sql/managed-instance/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/configure-database-authentication-and-authorization/manage-authentication-and-authorization-by-using-t-sql",
+      "target": "/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/@foundations",
+      "target": "/security/benchmark/azure/overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/azure/azure-sql/database/auditing-microsoft-support-operations",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-add-db-user-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-add-login-to-server-role-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-add-member-to-db-role-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-add-role-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-addlogin-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-app-role-change-password-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-backup-and-restore-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-broker-conversation-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-broker-login-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-change-audit-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-change-database-owner-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-database-management-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-database-mirroring-login-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-database-object-access-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-database-object-gdr-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-database-object-management-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-database-object-take-ownership-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-database-operation-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-database-principal-impersonation-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-database-principal-management-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-database-scope-gdr-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-dbcc-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-fulltext-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-login-change-password-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-login-change-property-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-login-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-login-failed-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-login-gdr-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-logout-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-object-derived-permission-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-schema-object-access-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-schema-object-gdr-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-schema-object-management-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-schema-object-take-ownership-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-server-alter-trace-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-server-object-gdr-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-server-object-management-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-server-object-take-ownership-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-server-operation-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-server-principal-impersonation-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-server-principal-management-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-server-scope-gdr-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-server-starts-and-stops-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/audit-statement-permission-event-class",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/event-classes/security-audit-event-category-sql-server-profiler",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/system-catalog-views/sys-database-audit-specification-details-transact-sql",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/system-catalog-views/sys-database-audit-specifications-transact-sql",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/system-catalog-views/sys-server-audit-specification-details-transact-sql",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/system-catalog-views/sys-server-audit-specifications-transact-sql",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/system-catalog-views/sys-server-audits-transact-sql",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/system-catalog-views/sys-server-file-audits-transact-sql",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/system-dynamic-management-objects/sys-dm-audit-actions-transact-sql",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/system-dynamic-management-objects/sys-dm-audit-class-type-map-transact-sql",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/configure-server-and-database-audits",
+      "target": "/training/modules/configure-azure-sql-auditing",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/implement-change-data-tracking",
+      "target": "/sql/database-engine/availability-groups/windows/replicate-track-change-data-capture-always-on-availability",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-compliance-controls-for-sensitive-data/implement-change-data-tracking",
+      "target": "/sql/relational-databases/track-changes/work-with-change-data-sql-server",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/@foundations",
+      "target": "/azure/security/fundamentals/overview",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/@foundations",
+      "target": "/sql/relational-databases/security/encryption/always-encrypted-enclaves-host-guardian-service-plan",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/@foundations",
+      "target": "/training/modules/configure-azure-sql-platform-security",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/configure-private-links-and-service-endpoints",
+      "target": "/azure/architecture/networking/guide/private-link-virtual-wan-dns-guide",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/configure-private-links-and-service-endpoints",
+      "target": "/azure/architecture/networking/guide/private-link-virtual-wan-dns-single-region-workload",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/configure-private-links-and-service-endpoints",
+      "target": "/azure/private-link/configure-asg-private-endpoint",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/configure-private-links-and-service-endpoints",
+      "target": "/azure/private-link/increase-private-endpoint-vnet-limits",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/configure-private-links-and-service-endpoints",
+      "target": "/azure/private-link/private-link-disable-snat",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/configure-private-links-and-service-endpoints",
+      "target": "/azure/private-link/private-link-ipv6",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/configure-private-links-and-service-endpoints",
+      "target": "/training/modules/design-implement-private-access-to-azure-services",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/configure-private-links-and-service-endpoints",
+      "target": "/training/modules/eliminate-public-exposure-paas-private-link",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/configure-server-and-database-level-firewall-rules",
+      "target": "/azure/azure-sql/database/outbound-firewall-rule-overview",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/connect/jdbc/using-always-encrypted-with-secure-enclaves-with-the-jdbc-driver",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/connect/php/always-encrypted-secure-enclaves",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/database-engine/configure-windows/configure-column-encryption-enclave-type",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/relational-databases/security/encryption/always-encrypted-client-development",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/relational-databases/security/encryption/always-encrypted-cryptography",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/relational-databases/security/encryption/always-encrypted-enclaves-client-development",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/relational-databases/security/encryption/always-encrypted-enclaves-configure-enclave-type",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/relational-databases/security/encryption/always-encrypted-enclaves-host-guardian-service-deploy",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/relational-databases/security/encryption/always-encrypted-enclaves-host-guardian-service-plan",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/relational-databases/security/encryption/always-encrypted-enclaves-host-guardian-service-register",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/relational-databases/security/encryption/always-encrypted-migrate-using-bacpac",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-refresh-parameter-encryption-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-always-encrypted-with-secure-enclaves",
+      "target": "/sql/relational-databases/security/encryption/always-encrypted-enclaves-client-development",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-object-level-encryption",
+      "target": "/sql/relational-databases/security/encryption/use-sql-server-connector-with-sql-encryption-features",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-object-level-encryption",
+      "target": "/sql/relational-databases/system-dynamic-management-objects/sys-dm-column-encryption-enclave",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-object-level-encryption",
+      "target": "/sql/relational-databases/system-dynamic-management-objects/sys-dm-database-encryption-keys-transact-sql",
+      "decision": "reject",
+      "reason": "Catalogue or reference entry, not a page that teaches the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-object-level-encryption",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-refresh-parameter-encryption-transact-sql",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-a-secure-environment/implement-security-for-data-at-rest-and-data-in-transit/implement-object-level-encryption",
+      "target": "/training/modules/implement-data-security-compliance",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/configure-database-solutions-for-optimal-performance/@foundations",
+      "target": "/training/modules/describe-performance-monitoring",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/configure-database-solutions-for-optimal-performance/@foundations",
+      "target": "/training/modules/introduction-to-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/configure-database-solutions-for-optimal-performance/implement-database-scoped-configuration",
+      "target": "/training/modules/optimize-database-performance",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/configure-database-solutions-for-optimal-performance/implement-index-maintenance-tasks",
+      "target": "/sql/relational-databases/server-management-objects-smo/tasks/creating-altering-and-removing-indexes",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/configure-database-solutions-for-optimal-performance/implement-statistics-maintenance-tasks",
+      "target": "/sql/relational-databases/server-management-objects-smo/tasks/creating-and-updating-statistics",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/@foundations",
+      "target": "/training/modules/introduction-to-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/performance/optimized-plan-forcing-query-store",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/performance/query-store-hints",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/performance/query-store-hints-best-practices",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/performance/tuning-database-using-workload-from-query-store",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/query-store-catalog-views-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-database-query-store-internal-state-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-plan-feedback",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-plan-forcing-locations-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-plan-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-query-hints-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-query-text-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-query-variant",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-replicas",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-interval-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-query-store-clear-message-queues-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-query-store-flush-db-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-query-store-remove-plan-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-query-store-remove-query-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-query-store-reset-exec-stats-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/configure-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sys-sp-query-store-clear-hints-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-and-implement-index-changes-for-queries",
+      "target": "/sql/relational-databases/in-memory-oltp/altering-memory-optimized-tables",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-and-implement-index-changes-for-queries",
+      "target": "/sql/relational-databases/indexes/ordered-columnstore-indexes",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-and-implement-index-changes-for-queries",
+      "target": "/sql/relational-databases/json/index-json-data",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-and-implement-index-changes-for-queries",
+      "target": "/sql/relational-databases/json/store-json-documents-in-sql-tables",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-and-implement-index-changes-for-queries",
+      "target": "/sql/relational-databases/statistics/create-statistics",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-and-implement-index-changes-for-queries",
+      "target": "/sql/relational-databases/statistics/view-statistics-properties",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-and-implement-index-changes-for-queries",
+      "target": "/sql/relational-databases/xml/selective-xml-indexes-sxi",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-and-implement-index-changes-for-queries",
+      "target": "/sql/relational-databases/xml/xml-indexes-sql-server",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-and-implement-index-changes-for-queries",
+      "target": "/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-and-implement-index-changes-for-queries",
+      "target": "/sql/t-sql/statements/create-statistics-transact-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-and-implement-index-changes-for-queries",
+      "target": "/sql/t-sql/statements/update-statistics-transact-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-performance-issues-using-dynamic-management-views-d",
+      "target": "/sql/relational-databases/system-catalog-views/sys-database-event-session-actions-azure-sql-database",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-performance-issues-using-dynamic-management-views-d",
+      "target": "/sql/relational-databases/system-catalog-views/sys-database-event-session-events-azure-sql-database",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-performance-issues-using-dynamic-management-views-d",
+      "target": "/sql/relational-databases/system-catalog-views/sys-database-event-session-fields-azure-sql-database",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-performance-issues-using-dynamic-management-views-d",
+      "target": "/sql/relational-databases/system-catalog-views/sys-database-event-session-targets-azure-sql-database",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-performance-issues-using-dynamic-management-views-d",
+      "target": "/sql/relational-databases/system-catalog-views/sys-database-event-sessions-azure-sql-database",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-performance-issues-using-dynamic-management-views-d",
+      "target": "/sql/relational-databases/system-dynamic-management-objects/sys-dm-xe-database-session-event-actions-azure-sql-database",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-performance-issues-using-dynamic-management-views-d",
+      "target": "/sql/relational-databases/system-dynamic-management-objects/sys-dm-xe-database-session-events-azure-sql-database",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-performance-issues-using-dynamic-management-views-d",
+      "target": "/sql/relational-databases/system-dynamic-management-objects/sys-dm-xe-database-session-object-columns-azure-sql-database",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/identify-performance-issues-using-dynamic-management-views-d",
+      "target": "/sql/relational-databases/system-dynamic-management-objects/sys-dm-xe-database-session-targets-azure-sql-database",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/performance/optimized-plan-forcing-query-store",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/performance/parameter-sensitive-plan-optimization",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/performance/query-store-hints",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/performance/query-store-hints-best-practices",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/performance/tuning-database-using-workload-from-query-store",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/query-store-catalog-views-transact-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-database-query-store-internal-state-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-plan-feedback",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-plan-forcing-locations-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-plan-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-query-hints-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-query-text-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-query-variant",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-replicas",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-interval-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-query-store-clear-message-queues-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-query-store-flush-db-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-query-store-remove-plan-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-query-store-remove-query-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-query-store-reset-exec-stats-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sys-sp-query-store-clear-hints-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/monitor-by-using-query-store",
+      "target": "/sql/relational-databases/system-stored-procedures/sys-sp-xtp-control-query-exec-stats-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-and-optimize-query-performance/review-execution-plans",
+      "target": "/training/modules/evaluate-performance-improvements",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-resource-activity-and-performance/@foundations",
+      "target": "/sql/relational-databases/wmi-provider-server-events/understanding-the-wmi-provider-for-server-events",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-resource-activity-and-performance/@foundations",
+      "target": "/sql/relational-databases/wmi-provider-server-events/wmi-provider-for-server-events-concepts",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-resource-activity-and-performance/@foundations",
+      "target": "/training/modules/introduction-to-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-resource-activity-and-performance/configure-and-monitor-activity-and-performance",
+      "target": "/sql/relational-databases/data-collection/system-data-collection-set-reports",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-resource-activity-and-performance/configure-and-monitor-activity-and-performance",
+      "target": "/sql/relational-databases/maintenance-plans/job-activity-monitor-filter-settings",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-resource-activity-and-performance/configure-and-monitor-activity-and-performance",
+      "target": "/sql/relational-databases/maintenance-plans/job-activity-monitor-refresh",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-resource-activity-and-performance/configure-and-monitor-activity-and-performance",
+      "target": "/sql/relational-databases/performance-monitor/sql-server-logpool-freepool-object",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-resource-activity-and-performance/monitor-by-using-database-watcher",
+      "target": "/azure/azure-sql/database-watcher-faq",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-resource-activity-and-performance/monitor-by-using-extended-events",
+      "target": "/sql/relational-databases/system-tables/extended-events-tables-trace-xe-action-map",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "monitor-configure-and-optimize-database-resources/monitor-resource-activity-and-performance/monitor-by-using-extended-events",
+      "target": "/sql/relational-databases/system-tables/extended-events-tables-trace-xe-event-map",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/@foundations",
+      "target": "/sql/linux/business-continuity/overview",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/@foundations",
+      "target": "/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/@foundations",
+      "target": "/training/modules/backup-restore-databases",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/@foundations",
+      "target": "/training/modules/deploy-paas-solutions-with-azure-sql",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/@foundations",
+      "target": "/training/modules/design-data-storage-solution-for-relational-data",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-active-geo-replication",
+      "target": "/azure/azure-sql/database/manage-application-rolling-upgrade",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-always-on-availability-groups-on-sql-managed-insta",
+      "target": "/azure/azure-sql/virtual-machines/windows/availability-group-dnn-interoperability",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-always-on-failover-cluster-instances-on-azure-virt",
+      "target": "/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-dnn-interoperability",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-always-on-failover-cluster-instances-on-azure-virt",
+      "target": "/sql/sql-server/failover-clusters/install/remove-a-sql-server-failover-cluster-instance-setup",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-failover-groups",
+      "target": "/azure/azure-sql/database/disaster-recovery-strategies-for-applications-with-elastic-pool",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-failover-groups",
+      "target": "/azure/azure-sql/managed-instance/failover-group-standby-replica-how-to-configure",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-failover-groups",
+      "target": "/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/azure/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/database-engine/log-shipping/log-shipping-and-replication-sql-server",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/database-engine/log-shipping/log-shipping-tables-and-stored-procedures",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/database-engine/log-shipping/upgrade-sql-server-log-shipping-transact-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/linux/business-continuity/high-availability-basics",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/linux/business-continuity/use-log-shipping",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/databases/log-shipping-monitor-settings",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/databases/log-shipping-transaction-log-backup-settings",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/log-shipping-stored-procedures-transact-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-add-log-shipping-alert-job-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-add-log-shipping-primary-secondary-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-change-log-shipping-primary-database-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-change-log-shipping-secondary-database-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-change-log-shipping-secondary-primary-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-cleanup-log-shipping-history-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-delete-log-shipping-alert-job-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-delete-log-shipping-primary-database-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-delete-log-shipping-primary-secondary-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-delete-log-shipping-secondary-database-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-delete-log-shipping-secondary-primary-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-help-log-shipping-alert-job-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-help-log-shipping-monitor-primary-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-help-log-shipping-monitor-secondary-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-help-log-shipping-monitor-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-help-log-shipping-primary-database-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-help-log-shipping-primary-secondary-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-help-log-shipping-secondary-database-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-help-log-shipping-secondary-primary-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-refresh-log-shipping-monitor-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-tables/log-shipping-monitor-alert-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-tables/log-shipping-monitor-error-detail-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-tables/log-shipping-monitor-history-detail-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-tables/log-shipping-monitor-primary-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-tables/log-shipping-monitor-secondary-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-tables/log-shipping-primary-databases-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-tables/log-shipping-primary-secondaries-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-tables/log-shipping-secondary-databases-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-tables/log-shipping-secondary-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/relational-databases/system-tables/log-shipping-tables-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/configure-ha-dr-for-database-solutions/configure-log-shipping",
+      "target": "/sql/tools/sqllogship-application",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/@foundations",
+      "target": "/sql/relational-databases/accelerated-database-recovery-concepts",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/backup-and-restore-interoperability-and-coexistence-sql-server",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/backup-device-general-page",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/backup-device-media-contents-page",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/backup-devices-sql-server",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/backup-history-and-header-information-sql-server",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/backup-timeline",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/delete-a-backup-device-sql-server",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/device-contents-sql-server",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/example-piecemeal-restore-of-database-full-recovery-model",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/mirrored-backup-media-sets-sql-server",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/possible-media-errors-during-backup-and-restore-sql-server",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/recovery-of-related-databases-that-contain-marked-transaction",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/restore-a-backup-from-a-device-sql-server",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/restore-a-database-to-a-marked-transaction-sql-server-management-studio",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/restore-database-files-page",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/restore-database-general-page",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/restore-database-options-page",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/select-backup-destination",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/select-backup-device",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/sql-server-vss-writer-backup-guide",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/sql-server-vss-writer-logging",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/use-marked-transactions-to-recover-related-databases-consistently",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/use-resource-governor-to-limit-cpu-usage-by-backup-compression-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/backup-restore/view-the-properties-and-contents-of-a-logical-backup-device-sql-server",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/performance-monitor/sql-server-backup-device-object",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/relational-databases/performance-monitor/sql-server-databases-object",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/sql-server/azure-arc/backup-to-url",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/backup-and-restore-a-database-by-using-t-sql",
+      "target": "/sql/sql-server/azure-arc/point-in-time-restore",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/configure-long-term-backup-retention",
+      "target": "/azure/azure-sql/database/backup-immutability-legal-hold",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/configure-long-term-backup-retention",
+      "target": "/azure/azure-sql/database/backup-immutability-time-based",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/perform-a-database-backup-by-using-native-tools",
+      "target": "/training/modules/migrate-sql-workloads-azure-virtual-machines",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/perform-a-database-restore-to-a-point-in-time",
+      "target": "/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/perform-a-database-restore-to-a-point-in-time",
+      "target": "/sql/relational-databases/backup-restore/use-marked-transactions-to-recover-related-databases-consistently",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/back-up-database-backup-options-page",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/back-up-database-general-page",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/back-up-database-media-options-page",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/back-up-to-a-mirrored-media-set-transact-sql",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/backup-and-restore-interoperability-and-coexistence-sql-server",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/backup-device-general-page",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/backup-device-media-contents-page",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/backup-devices-sql-server",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/backup-history-and-header-information-sql-server",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/backup-timeline",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/define-a-logical-backup-device-for-a-disk-file-sql-server",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/delete-a-backup-device-sql-server",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/device-contents-sql-server",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/example-piecemeal-restore-of-database-full-recovery-model",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/full-file-backups-sql-server",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/mirrored-backup-media-sets-sql-server",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/online-restore-sql-server",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/piecemeal-restores-sql-server",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/possible-media-errors-during-backup-and-restore-sql-server",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/recovery-of-related-databases-that-contain-marked-transaction",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/remove-defunct-filegroups-sql-server",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/restore-a-backup-from-a-device-sql-server",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/restore-a-database-to-a-marked-transaction-sql-server-management-studio",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/restore-a-database-to-a-new-location-sql-server",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/restore-database-files-page",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/restore-database-general-page",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/restore-database-options-page",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/restore-pages-sql-server",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/restore-the-master-database-transact-sql",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/select-backup-destination",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/select-backup-device",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/sql-server-vss-writer-backup-guide",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/use-marked-transactions-to-recover-related-databases-consistently",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/view-the-contents-of-a-backup-tape-or-file-sql-server",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/view-the-data-and-log-files-in-a-backup-set-sql-server",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/backup-restore/view-the-properties-and-contents-of-a-logical-backup-device-sql-server",
+      "decision": "reject",
+      "reason": "SSMS dialog or legacy backup-device page; not needed for the task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-delete-backuphistory-transact-sql",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-configure-a-high-availability-and-disaster-recovery/plan-and-perform-backup-and-restore-of-a-database/recommend-a-database-backup-and-restore-strategy",
+      "target": "/sql/relational-databases/system-stored-procedures/sp-delete-database-backuphistory-transact-sql",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/configure-resources-for-scale-and-performance/@foundations",
+      "target": "/training/modules/evaluate-performance-improvements",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/configure-resources-for-scale-and-performance/@foundations",
+      "target": "/training/modules/explore-performance-based-design",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/configure-resources-for-scale-and-performance/@foundations",
+      "target": "/training/modules/explore-query-performance-optimization",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/configure-resources-for-scale-and-performance/configure-azure-sql-managed-instance-for-scale-and-performan",
+      "target": "/sql/relational-databases/performance/intelligent-query-processing",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/configure-resources-for-scale-and-performance/configure-azure-sql-managed-instance-for-scale-and-performan",
+      "target": "/sql/relational-databases/performance/performance-dashboard",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/configure-resources-for-scale-and-performance/configure-sql-server-on-azure-virtual-machines-for-scale-and",
+      "target": "/training/modules/explore-performance-based-design",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/configure-resources-for-scale-and-performance/configure-table-partitioning",
+      "target": "/sql/t-sql/statements/truncate-table-transact-sql",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/@foundations",
+      "target": "/training/modules/explore-roles-responsibilities-world-of-data",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/deploy-hybrid-sql-server-solutions",
+      "target": "/azure/azure-sql/azure-hybrid-benefit",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/identify-use-cases-for-azure-arc-enabled-sql-services",
+      "target": "/sql/sql-server/azure-arc",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/identify-use-cases-for-azure-arc-enabled-sql-services",
+      "target": "/sql/sql-server/azure-arc/manage-autodeploy",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/identify-use-cases-for-azure-arc-enabled-sql-services",
+      "target": "/sql/sql-server/azure-arc/manage-license-billing",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/identify-use-cases-for-azure-arc-enabled-sql-services",
+      "target": "/sql/sql-server/azure-arc/troubleshoot-deployment",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/identify-use-cases-for-azure-arc-enabled-sql-services",
+      "target": "/sql/sql-server/azure-arc/troubleshoot-extension",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/identify-use-cases-for-azure-arc-enabled-sql-services",
+      "target": "/sql/sql-server/end-of-support/sql-server-extended-security-updates",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/identify-use-cases-for-azure-arc-enabled-sql-services",
+      "target": "/sql/sql-server/manage-license-type-at-scale",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/plan-for-table-partitioning",
+      "target": "/sql/t-sql/statements/alter-table-transact-sql",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/plan-for-table-partitioning",
+      "target": "/training/modules/design-implement-database-objects",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/recommend-a-database-sharding-solution",
+      "target": "/training/modules/deploy-paas-solutions-with-azure-sql",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/@foundations",
+      "target": "/azure/dms/known-issues-azure-sql-db-managed-instance-online",
+      "decision": "reject",
+      "reason": "Neighbouring-task, other-platform or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/@foundations",
+      "target": "/azure/migration/migrate-workload-from-aws-introduction",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/@foundations",
+      "target": "/sql/sql-server/azure-arc/migration-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/@foundations",
+      "target": "/training/modules/explore-data-manipulation-azure-sql-database",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/evaluate-offline-or-online-migration-strategies",
+      "target": "/training/modules/design-migrations",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-a-migration-between-azure-sql-services",
+      "target": "/azure/dms/database-migration-service-dashboard",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-a-migration-between-azure-sql-services",
+      "target": "/azure/dms/dms-tools-matrix",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-a-migration-between-azure-sql-services",
+      "target": "/azure/dms/faq",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-a-migration-between-azure-sql-services",
+      "target": "/azure/dms/known-issues-dms-hybrid-mode",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-a-migration-between-azure-sql-services",
+      "target": "/azure/dms/migration-dms-powershell-cli",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-a-migration-between-azure-sql-services",
+      "target": "/azure/dms/resource-scenario-status",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-a-migration-to-azure",
+      "target": "/azure/azure-sql/database/elastic-query-horizontal-partitioning-migration",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-a-migration-to-azure",
+      "target": "/azure/dms/faq",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-a-migration-to-azure",
+      "target": "/azure/dms/known-issues-dms-hybrid-mode",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-a-migration-to-azure",
+      "target": "/sql/sql-server/azure-arc/migration-inventory",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-a-migration-to-azure",
+      "target": "/training/modules/migrate-premises-windows-server-instances-azure-iaas-virtual-machines",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-an-offline-migration-strategy",
+      "target": "/azure/cloud-adoption-framework/migrate/execute-migration",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-an-offline-migration-strategy",
+      "target": "/training/modules/design-migrations",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-azure-sql-managed-instance-database-copy-and-move",
+      "target": "/azure/azure-sql/managed-instance/replication-transactional-overview",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-azure-sql-managed-instance-database-copy-and-move",
+      "target": "/azure/azure-sql/managed-instance/vnet-subnet-move-instance",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/implement-azure-sql-managed-instance-database-copy-and-move",
+      "target": "/sql/relational-databases/import-export/use-character-format-to-import-or-export-data-sql-server",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/troubleshoot-a-migration",
+      "target": "/azure/azure-sql/migration-guides/modernization",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/troubleshoot-a-migration",
+      "target": "/azure/dms/faq",
+      "decision": "reject",
+      "reason": "Dropped in review: T-SQL or catalog reference page, dialog detail, niche feature, troubleshooting detail or neighbouring-task page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/troubleshoot-a-migration",
+      "target": "/azure/dms/known-issues-dms-hybrid-mode",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/troubleshoot-a-migration",
+      "target": "/azure/dms/migration-dms-powershell-cli",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/troubleshoot-a-migration",
+      "target": "/sql/sql-server/azure-arc/migration-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/troubleshoot-a-migration",
+      "target": "/sql/sql-server/migrate/compare-sql-migration-tools",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}

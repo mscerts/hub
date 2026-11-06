@@ -1,0 +1,784 @@
+{
+  "schemaVersion": 1,
+  "code": "AB-330",
+  "decisions": [
+    {
+      "task": "implement-the-design-to-retire-process/develop-a-product-strategy/@foundations",
+      "target": "/dynamics365/supply-chain/pim/product-configuration-models",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/develop-a-product-strategy/configure-inventory-dimensions-including-storage-tracking-an",
+      "target": "/dynamics365/supply-chain/cost-management/track-running-average-cost-per-inventory-dimension",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/develop-a-product-strategy/configure-inventory-dimensions-including-storage-tracking-an",
+      "target": "/dynamics365/supply-chain/warehousing/flexible-warehouse-level-dimension-reservation",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/develop-a-product-strategy/create-and-configure-category-hierarchies",
+      "target": "/dynamics365/supply-chain/procurement/tasks/create-procurement-catalog",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/develop-a-product-strategy/create-and-manage-product-attributes",
+      "target": "/dynamics365/commerce/attribute-attributegroups-lifecycle",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/develop-a-product-strategy/create-and-manage-product-attributes",
+      "target": "/dynamics365/supply-chain/engineering-change-management/engineering-attributes-and-search",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/develop-a-product-strategy/create-and-manage-product-attributes",
+      "target": "/dynamics365/supply-chain/pim/config-model-calculations",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/develop-a-product-strategy/create-and-manage-product-attributes",
+      "target": "/dynamics365/supply-chain/pim/tasks/create-product-configuration-model",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/develop-a-product-strategy/create-and-manage-product-attributes",
+      "target": "/troubleshoot/dynamics-365/supply-chain/products/integers-incorrectly-rounded",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/develop-a-product-strategy/create-and-manage-product-lifecycle-states",
+      "target": "/dynamics365/supply-chain/engineering-change-management/product-lifecycle-state-transactions",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/introduce-products/@foundations",
+      "target": "/dynamics365/supply-chain/engineering-change-management/product-engineering-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/introduce-products/create-and-release-products-and-product-variants",
+      "target": "/dynamics365/supply-chain/engineering-change-management/engineering-variants",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/introduce-products/create-and-release-products-and-product-variants",
+      "target": "/dynamics365/supply-chain/pim/uom-conversion-per-product-variant",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/introduce-products/create-and-release-products-and-product-variants",
+      "target": "/dynamics365/supply-chain/production-control/default-order-settings",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/introduce-products/create-bills-of-materials-boms-and-bom-versions",
+      "target": "/dynamics365/supply-chain/cost-management/bom-calculations",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/introduce-products/create-bills-of-materials-boms-and-bom-versions",
+      "target": "/dynamics365/supply-chain/cost-management/cost-calculation-level",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/manage-active-products/calculate-and-activate-item-cost-prices",
+      "target": "/dynamics365/business-central/application/base-application/report/microsoft.inventory.item.adjust-item-costs-prices",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-design-to-retire-process/manage-active-products/calculate-and-activate-item-cost-prices",
+      "target": "/dynamics365/supply-chain/cost-management/simulate-cost-changes-costing-version-planned-costs",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/conduct-sales-and-operations-planning/@foundations",
+      "target": "/dynamics365/supply-chain/master-planning/deprecated-master-planning-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/conduct-sales-and-operations-planning/configure-and-maintain-master-planning-parameters-and-master",
+      "target": "/dynamics365/supply-chain/master-planning/generate-statistical-baseline-forecast",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/conduct-sales-and-operations-planning/configure-and-maintain-master-planning-parameters-and-master",
+      "target": "/dynamics365/supply-chain/master-planning/maintain-planned-orders",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/conduct-sales-and-operations-planning/configure-and-maintain-master-planning-parameters-and-master",
+      "target": "/dynamics365/supply-chain/master-planning/master-plan-bom-version-determined",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/conduct-sales-and-operations-planning/configure-and-maintain-master-planning-parameters-and-master",
+      "target": "/dynamics365/supply-chain/master-planning/master-plan-site-coverage-warehouse-mandatory",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/conduct-sales-and-operations-planning/configure-and-maintain-master-planning-parameters-and-master",
+      "target": "/dynamics365/supply-chain/master-planning/master-plan-site-coverage-warehouse-not-mandatory",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/conduct-sales-and-operations-planning/configure-and-maintain-master-planning-parameters-and-master",
+      "target": "/dynamics365/supply-chain/master-planning/master-plan-site-warehouse-coverage-warehouse-not-mandatory",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/conduct-sales-and-operations-planning/configure-and-maintain-master-planning-parameters-and-master",
+      "target": "/dynamics365/supply-chain/master-planning/master-planning-architecture",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/conduct-sales-and-operations-planning/configure-and-maintain-master-planning-parameters-and-master",
+      "target": "/dynamics365/supply-chain/master-planning/tasks/constrained-plan",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/conduct-sales-and-operations-planning/configure-and-maintain-master-planning-parameters-and-master",
+      "target": "/dynamics365/supply-chain/master-planning/tasks/create-material-plan-co-products",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/develop-business-strategy/configure-supply-chain-calendars",
+      "target": "/troubleshoot/dynamics-365/supply-chain/warehousing/calendar-type-requires-appointment-checked-in-out-error",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/execute-sales-and-operations-planning/run-master-planning-and-analyze-the-results",
+      "target": "/dynamics365/supply-chain/master-planning/planning-optimization/replenishment-methods-quantity-modification",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-forecast-to-plan-process/execute-sales-and-operations-planning/run-master-planning-and-analyze-the-results",
+      "target": "/dynamics365/supply-chain/master-planning/reduction-keys",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-inventory-to-deliver-process/manage-inventory-quality/configure-components-for-the-quality-control-process",
+      "target": "/dynamics365/release-plan/2025wave1/finance-supply-chain/dynamics365-supply-chain-management/enable-quality-control-acceptance-sampling",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-inventory-to-deliver-process/manage-inventory-quality/configure-components-for-the-quality-control-process",
+      "target": "/dynamics365/supply-chain/inventory/quality-instrument-calibration",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-inventory-to-deliver-process/manage-warehouse-operations/configure-and-process-replenishment",
+      "target": "/dynamics365/guidance/business-processes/forecast-to-plan-establish-stocking-replenishment-policies-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-inventory-to-deliver-process/manage-warehouse-operations/implement-location-directives",
+      "target": "/dynamics365/supply-chain/warehousing/catch-weight-processing",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-inventory-to-deliver-process/manage-warehouse-operations/implement-location-directives",
+      "target": "/dynamics365/supply-chain/warehousing/dynamic-work-classification",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-inventory-to-deliver-process/process-inbound-goods/@foundations",
+      "target": "/dynamics365/supply-chain/transportation/plan-loads-hub-consolidation",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/develop-sales-policies/configure-unified-pricing-management",
+      "target": "/dynamics365/guidance/techtalks/supply-chain-pricing-management",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/develop-sales-policies/configure-unified-pricing-management",
+      "target": "/dynamics365/release-plan/2025wave1/commerce/dynamics365-commerce/enable-use-sales-order-attributes-define-pricing-rules",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/develop-sales-policies/configure-unified-pricing-management",
+      "target": "/dynamics365/release-plan/2025wave1/finance-supply-chain/dynamics365-supply-chain-management/allow-net-price-unified-pricing-management",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/develop-sales-policies/configure-unified-pricing-management",
+      "target": "/dynamics365/supply-chain/unified-pricing-management/upm-generic-base-currency",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/develop-sales-policies/configure-unified-pricing-management",
+      "target": "/dynamics365/supply-chain/unified-pricing-management/upm-pricing-management-overview",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "Overview of the unified pricing management module, the concept a learner needs before configuring it.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/develop-sales-policies/configure-unified-pricing-management",
+      "target": "/dynamics365/supply-chain/unified-pricing-management/upm-vendor-list-price",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/manage-customers-for-supply-chain-management/@foundations",
+      "target": "/dynamics365/supply-chain/sales-marketing/intercompany-synch-customer-information",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/manage-sales-orders/configure-and-manage-sales-reservations",
+      "target": "/dynamics365/supply-chain/sales-marketing/intercompany-reservations",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/manage-sales-orders/configure-and-process-sales-orders",
+      "target": "/dynamics365/finance/accounts-receivable/sb-support-renewals",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/manage-sales-orders/configure-and-process-sales-orders",
+      "target": "/dynamics365/supply-chain/pim/tasks/create-sales-order-configurable-product",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/manage-sales-orders/configure-and-process-sales-orders",
+      "target": "/dynamics365/supply-chain/sales-marketing/tasks/register-sales-commissions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/manage-sales-orders/configure-sales-agreements",
+      "target": "/dynamics365/supply-chain/sales-marketing/tasks/create-new-trade-agreement",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-order-to-cash-process/manage-sales-orders/configure-sales-agreements",
+      "target": "/dynamics365/supply-chain/sales-marketing/trade-agreement-export-posted-lines",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/develop-production-strategies/@foundations",
+      "target": "/dynamics365/business-central/production-manage-manufacturing",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/develop-production-strategies/configure-manufacturing-execution-features-including-product",
+      "target": "/dynamics365/guidance/techtalks/production-floor-execution-interface-refresher",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/develop-production-strategies/configure-manufacturing-execution-features-including-product",
+      "target": "/dynamics365/release-plan/2025wave2/enterprise-resource-planning/dynamics365-supply-chain-management/automate-production-reporting-electronic-sensors",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/develop-production-strategies/create-and-manage-operations-and-routes",
+      "target": "/dynamics365/supply-chain/pim/tasks/maintain-route-product-model",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/develop-production-strategies/create-production-units-production-groups-production-pools-a",
+      "target": "/dynamics365/supply-chain/production-control/production-scrap-reason-codes",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/plan-production-operations/evaluate-and-process-planned-production",
+      "target": "/dynamics365/supply-chain/production-control/mixed-mode-plan",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/plan-production-operations/evaluate-and-process-planned-production",
+      "target": "/dynamics365/supply-chain/production-control/substitute-items-bom-lines",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/plan-production-operations/set-up-and-run-operations-and-job-scheduling",
+      "target": "/dynamics365/fin-ops-core/dev-itpro/sysadmin/datamaintenanceportal",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "Covers scheduling the data maintenance processes that run as batch jobs, part of running operations and job scheduling.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/plan-production-operations/set-up-and-run-operations-and-job-scheduling",
+      "target": "/dynamics365/fin-ops-core/dev-itpro/sysadmin/priority-based-batch-scheduling",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/plan-production-operations/set-up-and-run-operations-and-job-scheduling",
+      "target": "/dynamics365/guidance/implementation-guide/data-management-product-specific-fo",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/plan-production-operations/set-up-and-run-operations-and-job-scheduling",
+      "target": "/dynamics365/release-plan/2026wave1/enterprise-resource-planning/finance-operations-crossapp-capabilities/enable-parallel-processing-archive-longterm-retention-job-execution",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/plan-production-operations/set-up-and-run-operations-and-job-scheduling",
+      "target": "/dynamics365/supply-chain/sales-marketing/sales-update-history-cleanup-performance-improvements",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/run-production-operations/@foundations",
+      "target": "/dynamics365/supply-chain/production-control/time-attendance-registrations",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/run-production-operations/configure-bom-and-formula-lines-resources-routes-and-warehou",
+      "target": "/dynamics365/supply-chain/production-control/releasing-bom-and-formula-lines-to-warehouse",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/run-production-operations/create-and-process-picking-list-journals",
+      "target": "/troubleshoot/dynamics-365/supply-chain/inventory/picking-list-report-not-show-new-notes-attached-to-journal",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/run-production-operations/manage-subcontracting-for-discrete-and-process-manufacturing",
+      "target": "/dynamics365/supply-chain/production-control/mixed-mode-plan",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/run-production-operations/manage-subcontracting-for-discrete-and-process-manufacturing",
+      "target": "/dynamics365/supply-chain/production-control/tasks/define-discrete-manufacturing-resource-group",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/run-production-operations/process-production-and-batch-orders-by-using-the-production",
+      "target": "/dynamics365/supply-chain/production-control/production-floor-execution-payroll-stats",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-plan-to-produce-process/run-production-operations/process-production-and-batch-orders-by-using-the-production",
+      "target": "/dynamics365/supply-chain/production-control/react-to-last-minute-changes",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/develop-the-procurement-and-sourcing-strategy/configure-procurement-categories-charge-codes-and-purchasing",
+      "target": "/troubleshoot/dynamics-365/supply-chain/procurement/post-setting-turned-off",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/develop-the-procurement-and-sourcing-strategy/configure-procurement-workflows",
+      "target": "/dynamics365/supply-chain/procurement/contract-lifecycle-management/clm-icertis",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/manage-supplier-relationships/@foundations",
+      "target": "/dynamics365/release-plan/2026wave1/enterprise-resource-planning/dynamics365-supply-chain-management/manage-supplier-relationships-improve-collaboration",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/manage-supplier-relationships/@foundations",
+      "target": "/dynamics365/supply-chain/procurement/procurement-agent-supplier-com-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Describes how the Procurement Agent handles supplier communications, a neighbouring part of managing supplier relationships.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/manage-supplier-relationships/@foundations",
+      "target": "/dynamics365/supply-chain/supplier-engagement/supplier-engagement-app-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/manage-supplier-relationships/configure-vendor-collaboration-features",
+      "target": "/dynamics365/supply-chain/procurement/procurement-agent-impact-analysis-testing",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/manage-supplier-relationships/configure-vendor-collaboration-features",
+      "target": "/dynamics365/supply-chain/procurement/procurement-agent-supplier-com-setup-faq",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/manage-supplier-relationships/configure-vendor-collaboration-features",
+      "target": "/dynamics365/supply-chain/procurement/procurement-agent-supplier-com-try-out",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/manage-supplier-relationships/configure-vendor-collaboration-features",
+      "target": "/dynamics365/supply-chain/procurement/vendor-collaboration-work-customers-dynamics-365-operations",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/manage-supplier-relationships/configure-vendor-collaboration-features",
+      "target": "/dynamics365/supply-chain/supplier-engagement/supplier-engagement-comparison",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Compares Supplier Engagement with the vendor collaboration interface, which helps a learner choose and configure vendor collaboration.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/procure-goods-and-services/create-and-manage-purchase-requisitions-requests-for-quotati",
+      "target": "/dynamics365/supply-chain/master-planning/planning-optimization/quotation-planning",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/procure-goods-and-services/create-and-process-vendor-returns",
+      "target": "/dynamics365/business-central/application/base-application/page/microsoft.purchases.document.purchase-credit-memos",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/procure-goods-and-services/create-and-process-vendor-returns",
+      "target": "/dynamics365/business-central/application/base-application/page/microsoft.purchases.document.purchase-return-order-list",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/procure-goods-and-services/create-and-process-vendor-returns",
+      "target": "/dynamics365/business-central/purchasing-how-process-purchase-returns-cancellations",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/source-and-contract-goods-and-services/create-purchase-agreements",
+      "target": "/dynamics365/finance/accounts-payable/apply-prepymnts-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/source-and-contract-goods-and-services/create-purchase-agreements",
+      "target": "/dynamics365/supply-chain/master-planning/planning-optimization/purchase-trade-agreement",
+      "decision": "reject",
+      "reason": "Not part of this task; another product, a release announcement, a third-party integration or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-the-source-to-pay-process/source-and-contract-goods-and-services/create-purchase-agreements",
+      "target": "/troubleshoot/dynamics-365/supply-chain/procurement/personalize-purchase-agreement-price",
+      "decision": "reject",
+      "reason": "Dropped in review: narrow troubleshooting article, deprecated or announcement page, or a page from another product area.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}

@@ -1,0 +1,454 @@
+---
+title: GH-200 Study Guide Course
+description: "Follow a structured GH-200 course organized by study guide task, with Microsoft Learn training and documentation for GitHub Actions."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official GH-200 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/gh-200?WT.mc_id=studentamb_165290) skills measured (January 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [GH-200 labs page](/certs/labs/github/gh-200/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+Candidates for this exam should have expertise in automating software development workflows with GitHub Actions. This includes creating and maintaining workflows and actions, managing GitHub Actions at scale, and ensuring secure and efficient automation for organizations and enterprises. Candidates should also be familiar with CI/CD, GitHub repositories, GitHub Packages, and integrating third-party services.
+
+## Author and manage workflows (20–25%)
+
+### Configure workflow triggers and events
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Git" href="https://learn.microsoft.com/training/modules/intro-to-git?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to DevOps" href="https://learn.microsoft.com/training/modules/introduction-to-devops?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to GitHub" href="https://learn.microsoft.com/training/modules/introduction-to-github?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to GitHub Actions" href="https://learn.microsoft.com/training/modules/introduction-to-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to GitHub administration" href="https://learn.microsoft.com/training/modules/github-introduction-administration?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure workflows to run for scheduled, manual, webhook, and repository events
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Automate development tasks by using GitHub Actions" href="https://learn.microsoft.com/training/modules/github-actions-automate-tasks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose appropriate scope, permissions, and events for workflow automation
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage GitHub Actions in the enterprise" href="https://learn.microsoft.com/training/modules/manage-github-actions-enterprise?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement workflow structure
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is GitHub Actions for Azure?" href="https://learn.microsoft.com/azure/developer/github/github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Use jobs, steps, and conditional logic
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Implement dependencies between jobs
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Use workflow commands and environment variables
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build continuous integration workflows by using GitHub Actions" href="https://learn.microsoft.com/training/modules/github-actions-ci?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn continuous integration with GitHub Actions" href="https://learn.microsoft.com/training/modules/learn-continuous-integration-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Use service containers (services:) for dependent services (databases, queues); configure ports, health checks, and container options
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Use strategy and matrix to generate job variations (OS, language/runtime versions); apply include/exclude; control fail-fast and max-parallel; optimize matrix size for cost and performance; account for runner image changes (Ubuntu 20.04 deprecation, Windows Server 2025 migration for windows-latest)
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Implement YAML anchors and aliases (&, * and merge \<\<) to reuse repeated mappings/steps within a single workflow file
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Use predefined contexts (github, runner, env, vars, secrets, inputs, matrix, needs, strategy, job, steps, github.event, github.ref) to access workflow, repository, and runtime metadata; understand immutable actions behavior and version pinning requirements
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Evaluate expressions with $\{\{ \}\} referencing contexts; distinguish static (workflow parse) vs runtime evaluation; prevent secret leakage in logs and expressions
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Leverage editor tooling (GitHub Actions VS Code extension / YAML schema completion, metadata IntelliSense, validation) to author and maintain workflows efficiently
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Manage workflow execution and outputs
+
+#### Configure caching and artifact management; apply retention policies via REST APIs (logs, artifacts, workflow runs) at org/repo level
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Pass data between jobs and steps (artifacts, outputs, environment files via GITHUB_ENV and GITHUB_OUTPUT, reusable workflow outputs)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build and deploy applications to Azure by using GitHub Actions" href="https://learn.microsoft.com/training/modules/github-actions-cd?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Generate job summaries using GITHUB_STEP_SUMMARY for rich Markdown reports (test results, coverage, links)
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Add workflow status badges and environment protections
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Build and deploy applications to Azure by using GitHub Actions": under [Pass data between jobs and steps (artifacts, outputs, environment files via GITHUB_ENV and GITHUB_OUTPUT, reusable workflow outputs)](#pass-data-between-jobs-and-steps-artifacts-outputs-environment-files-via-github_env-and-github_output-reusable-workflow-outputs)
+- "Learn continuous integration with GitHub Actions": under [Use workflow commands and environment variables](#use-workflow-commands-and-environment-variables) in the skill group Design and implement workflow structure
+:::
+
+## Consume and troubleshoot workflows (15–20%)
+
+### Interpret workflow behavior and results
+
+#### Identify workflow triggers and effects from configuration and logs
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Diagnose failed workflow runs using logs and run history
+
+:::note
+The Microsoft Learn module "Automate development tasks by using GitHub Actions" also covers this task. It is listed once, under [Configure workflows to run for scheduled, manual, webhook, and repository events](#configure-workflows-to-run-for-scheduled-manual-webhook-and-repository-events) in the skill group Configure workflow triggers and events.
+:::
+
+#### Expand and interpret YAML anchors, aliases, and merged mappings when analyzing workflow configuration
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Interpret matrix expansions, correlate job names to matrix axes, analyze failures across variants, and selectively rerun individual matrix jobs
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Access workflow artifacts and logs
+
+#### Locate workflows, logs, and artifacts in the UI and via API
+
+:::note
+The Microsoft Learn module "Build and deploy applications to Azure by using GitHub Actions" also covers this task. It is listed once, under [Pass data between jobs and steps (artifacts, outputs, environment files via GITHUB_ENV and GITHUB_OUTPUT, reusable workflow outputs)](#pass-data-between-jobs-and-steps-artifacts-outputs-environment-files-via-github_env-and-github_output-reusable-workflow-outputs) in the skill group Manage workflow execution and outputs.
+:::
+
+#### Download and manage workflow artifacts
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Build and deploy applications to Azure by using GitHub Actions": under [Pass data between jobs and steps (artifacts, outputs, environment files via GITHUB_ENV and GITHUB_OUTPUT, reusable workflow outputs)](#pass-data-between-jobs-and-steps-artifacts-outputs-environment-files-via-github_env-and-github_output-reusable-workflow-outputs) in the skill group Manage workflow execution and outputs
+- "Learn continuous integration with GitHub Actions": under [Use workflow commands and environment variables](#use-workflow-commands-and-environment-variables) in the skill group Design and implement workflow structure
+:::
+
+### Use and manage workflow templates
+
+#### Consume organization-level and reusable workflows
+
+:::note
+The Microsoft Learn module "Manage GitHub Actions in the enterprise" also covers this task. It is listed once, under [Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping](#define-and-validate-workflow_dispatch-inputs-types-required-defaults-and-pass-inputs-to-reusable-workflows-via-workflow_call-with-inputs-and-secrets-mapping) in the skill group Configure workflow triggers and events.
+:::
+
+#### Consume non-public organization workflow templates
+
+:::note
+The Microsoft Learn module "Manage GitHub Actions in the enterprise" also covers this task. It is listed once, under [Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping](#define-and-validate-workflow_dispatch-inputs-types-required-defaults-and-pass-inputs-to-reusable-workflows-via-workflow_call-with-inputs-and-secrets-mapping) in the skill group Configure workflow triggers and events.
+:::
+
+#### Use starter workflows (public and private/non-public templates); customize and adapt; distinguish from reusable workflows and composite actions
+
+:::note
+The Microsoft Learn module "Build continuous integration workflows by using GitHub Actions" also covers this task. It is listed once, under [Use workflow commands and environment variables](#use-workflow-commands-and-environment-variables) in the skill group Design and implement workflow structure.
+:::
+
+#### Differentiate starter workflows (copy scaffold, independent after creation) vs reusable workflows (central versioned definition invoked via workflow_call) vs composite actions (encapsulated step logic)
+
+:::note
+The Microsoft Learn module "Manage GitHub Actions in the enterprise" also covers this task. It is listed once, under [Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping](#define-and-validate-workflow_dispatch-inputs-types-required-defaults-and-pass-inputs-to-reusable-workflows-via-workflow_call-with-inputs-and-secrets-mapping) in the skill group Configure workflow triggers and events.
+:::
+
+#### Contrast disabling and deleting workflows
+
+:::note
+The Microsoft Learn module "Manage GitHub Actions in the enterprise" also covers this task. It is listed once, under [Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping](#define-and-validate-workflow_dispatch-inputs-types-required-defaults-and-pass-inputs-to-reusable-workflows-via-workflow_call-with-inputs-and-secrets-mapping) in the skill group Configure workflow triggers and events.
+:::
+
+## Author and maintain actions (15–20%)
+
+### Create and troubleshoot custom actions
+
+#### Identify and implement action types (JavaScript, Docker, composite); understand immutable actions rollout on hosted runners and implications for version pinning and registry sources
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create and publish custom GitHub actions" href="https://learn.microsoft.com/training/modules/create-custom-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Troubleshoot action execution and errors
+
+:::note
+The Microsoft Learn module "Create and publish custom GitHub actions" also covers this task. It is listed once, under [Identify and implement action types (JavaScript, Docker, composite); understand immutable actions rollout on hosted runners and implications for version pinning and registry sources](#identify-and-implement-action-types-javascript-docker-composite-understand-immutable-actions-rollout-on-hosted-runners-and-implications-for-version-pinning-and-registry-sources).
+:::
+
+### Define action structure and metadata
+
+#### Specify required files, directory structure, and metadata
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Implement workflow commands within actions
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Learn continuous integration with GitHub Actions": under [Use workflow commands and environment variables](#use-workflow-commands-and-environment-variables) in the skill group Design and implement workflow structure
+- "Automate development tasks by using GitHub Actions": under [Configure workflows to run for scheduled, manual, webhook, and repository events](#configure-workflows-to-run-for-scheduled-manual-webhook-and-repository-events) in the skill group Configure workflow triggers and events
+- "Build continuous integration workflows by using GitHub Actions": under [Use workflow commands and environment variables](#use-workflow-commands-and-environment-variables) in the skill group Design and implement workflow structure
+:::
+
+### Distribute and maintain actions
+
+#### Select distribution models (public, private, marketplace)
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Publish actions to the GitHub Marketplace
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Leverage GitHub Actions to publish to GitHub Packages" href="https://learn.microsoft.com/training/modules/github-actions-packages?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Apply versioning and release strategies
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement a versioning strategy" href="https://learn.microsoft.com/training/modules/implement-versioning-strategy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Manage GitHub Actions for the enterprise (20–25%)
+
+### Distribute and govern actions and workflows
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to GitHub Packages" href="https://learn.microsoft.com/training/modules/introduction-github-packages?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Define and manage reusable components and templates
+
+:::note
+The Microsoft Learn module "Manage GitHub Actions in the enterprise" also covers this task. It is listed once, under [Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping](#define-and-validate-workflow_dispatch-inputs-types-required-defaults-and-pass-inputs-to-reusable-workflows-via-workflow_call-with-inputs-and-secrets-mapping) in the skill group Configure workflow triggers and events.
+:::
+
+#### Control access to actions and workflows within the enterprise
+
+:::note
+The Microsoft Learn module "Manage GitHub Actions in the enterprise" also covers this task. It is listed once, under [Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping](#define-and-validate-workflow_dispatch-inputs-types-required-defaults-and-pass-inputs-to-reusable-workflows-via-workflow_call-with-inputs-and-secrets-mapping) in the skill group Configure workflow triggers and events.
+:::
+
+#### Configure organizational use policies
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Manage runners at scale
+
+#### Configure and monitor GitHub-hosted and self-hosted runners
+
+:::note
+The Microsoft Learn module "Manage GitHub Actions in the enterprise" also covers this task. It is listed once, under [Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping](#define-and-validate-workflow_dispatch-inputs-types-required-defaults-and-pass-inputs-to-reusable-workflows-via-workflow_call-with-inputs-and-secrets-mapping) in the skill group Configure workflow triggers and events.
+:::
+
+#### Apply IP allow lists and networking settings
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Manage runner groups and troubleshoot runner issues
+
+:::note
+The Microsoft Learn module "Manage GitHub Actions in the enterprise" also covers this task. It is listed once, under [Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping](#define-and-validate-workflow_dispatch-inputs-types-required-defaults-and-pass-inputs-to-reusable-workflows-via-workflow_call-with-inputs-and-secrets-mapping) in the skill group Configure workflow triggers and events.
+:::
+
+#### Identify preinstalled software/tool versions on GitHub-hosted runners (image release notes, toolcache) and install additional software at runtime (setup-* actions, package managers, caching, container images, custom self-hosted images)
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Manage encrypted secrets and variables
+
+#### Define and scope encrypted secrets and variables at the organization, repository, and environment levels
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Learn continuous integration with GitHub Actions": under [Use workflow commands and environment variables](#use-workflow-commands-and-environment-variables) in the skill group Design and implement workflow structure
+- "Manage GitHub Actions in the enterprise": under [Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping](#define-and-validate-workflow_dispatch-inputs-types-required-defaults-and-pass-inputs-to-reusable-workflows-via-workflow_call-with-inputs-and-secrets-mapping) in the skill group Configure workflow triggers and events
+:::
+
+#### Access and use secrets and variables in workflows and actions; manage secrets and variables programmatically via REST APIs
+
+:::note
+The Microsoft Learn module "Manage GitHub Actions in the enterprise" also covers this task. It is listed once, under [Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping](#define-and-validate-workflow_dispatch-inputs-types-required-defaults-and-pass-inputs-to-reusable-workflows-via-workflow_call-with-inputs-and-secrets-mapping) in the skill group Configure workflow triggers and events.
+:::
+
+## Secure and optimize automation (10–15%)
+
+### Implement security best practices
+
+#### Use environment protections and approval gates
+
+:::note
+The Microsoft Learn module "Build and deploy applications to Azure by using GitHub Actions" also covers this task. It is listed once, under [Pass data between jobs and steps (artifacts, outputs, environment files via GITHUB_ENV and GITHUB_OUTPUT, reusable workflow outputs)](#pass-data-between-jobs-and-steps-artifacts-outputs-environment-files-via-github_env-and-github_output-reusable-workflow-outputs) in the skill group Manage workflow execution and outputs.
+:::
+
+#### Identify and use trustworthy actions from the Marketplace
+
+:::note
+The Microsoft Learn module "Automate development tasks by using GitHub Actions" also covers this task. It is listed once, under [Configure workflows to run for scheduled, manual, webhook, and repository events](#configure-workflows-to-run-for-scheduled-manual-webhook-and-repository-events) in the skill group Configure workflow triggers and events.
+:::
+
+#### Mitigate script injection (sanitize/validate inputs, least-privilege permissions, avoid untrusted data in run:, proper shell quoting, prefer vetted actions over inline scripts)
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Understand GITHUB_TOKEN lifecycle (ephemeral, scoped), configure granular permissions, contrast with PAT; restrict write scopes
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Use OIDC token (id-token permission) for cloud provider federation to eliminate long-lived cloud secrets
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Pin third-party actions to full commit SHAs; align with immutable actions enforcement on hosted runners; avoid floating @main/@v\* without justification
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Enforce action usage policies (organization/repository allow/deny lists, required reviewers for unverified actions)
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Generate and verify artifact attestations / provenance (e.g., SLSA, build metadata) and integrate into deployment verification
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Optimize workflow performance and cost
+
+#### Configure caching and artifact retention for efficiency; apply retention policies programmatically via REST APIs
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Recommend strategies for scaling and optimizing workflows
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Build continuous integration workflows by using GitHub Actions": under [Use workflow commands and environment variables](#use-workflow-commands-and-environment-variables) in the skill group Design and implement workflow structure
+- "Manage GitHub Actions in the enterprise": under [Define and validate workflow_dispatch inputs (types, required, defaults) and pass inputs to reusable workflows via workflow_call with inputs and secrets mapping](#define-and-validate-workflow_dispatch-inputs-types-required-defaults-and-pass-inputs-to-reusable-workflows-via-workflow_call-with-inputs-and-secrets-mapping) in the skill group Configure workflow triggers and events
+:::

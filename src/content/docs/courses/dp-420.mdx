@@ -1,0 +1,974 @@
+---
+title: DP-420 Study Guide Course
+description: "Follow a structured DP-420 course organized by study guide task, with Microsoft Learn training and documentation for Building AI Applications with Azure Cosmos DB."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official DP-420 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-420?WT.mc_id=studentamb_165290) skills measured (October 6, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [DP-420 labs page](/certs/labs/azure/dp-420/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As an Azure Cosmos DB Developer Associate, you design, build, and optimize cost effective high-performance scalable applications that use Azure Cosmos DB including system of record for agent memory, conversation state, retrieval indexes, grounding data, and application data.
+
+In this role, you collaborate with AI engineers, application developers, solution architects, data engineers, and security professionals to design and implement cost effective high-performance scalable applications.
+
+You should have experience developing applications by using C# or Python. You should be familiar with Azure services, generative AI concepts, retrieval-based systems, and application development practices.
+
+### Your responsibilities include
+
+- Designing and implementing data models and data distribution
+- Ingesting and querying data with Azure Cosmos DB database
+- Optimizing application performance, scalability, and cost
+- Implementing secure and production-ready applications
+- Building AI retrieval and RAG solutions
+- Designing and implementing agent memory systems
+- Integration of Azure Cosmos DB with Microsoft Fabric for analytical querying and operational insights
+
+## Design and develop database solutions (40–45%)
+
+### Evaluate resource models and SDK solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/explore-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore fundamentals of Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/explore-non-relational-data-stores-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/introduction-to-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Evaluate consistency levels
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure resources, throughput, and consistency" href="https://learn.microsoft.com/training/modules/configure-azure-cosmos-db-resources-throughput-consistency?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use consistency models in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/use-consistency-models-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Optimize query performance for Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/optimize-query-performance-azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Consistency level choices - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/consistency-levels?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Consistency - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-manage-consistency?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Evaluate Request Unit (RU) consumption requirements
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Analyze and tune query and operation performance in Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/analyze-tune-query-performance-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Evaluating and configuring appropriate throughput
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Plan Resource Requirements" href="https://learn.microsoft.com/training/modules/plan-resource-requirements?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/configure-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Azure Cosmos DB at scale with fleets" href="https://learn.microsoft.com/training/modules/manage-azure-cosmos-db-fleets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Measure performance in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/measure-performance-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure account-level and container-level settings
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design multi-region availability and failover in Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/design-multi-region-availability-failover-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement security in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/implement-security-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage database and containers
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement backup and restore for Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/implement-backup-restore-for-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Design a data partitioning strategy" href="https://learn.microsoft.com/training/modules/design-data-partitioning-strategy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Customize an indexing policy in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/choose-indexes-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Customize indexes in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/customize-indexes-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Define indexes in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/define-indexes-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Measure index performance in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/measure-index-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Databases, containers, and items - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/resource-model?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Container Using .NET - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-dotnet-create-container?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Container Using Python - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-python-create-container?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Containers and Databases with Autoscale Throughput - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/provision-throughput-autoscale?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Container - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-create-container?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Container Using JavaScript - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-javascript-create-container?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Containers With Large Partition Key - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/large-partition-keys?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Define Unique Keys for a Container - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-define-unique-keys?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Provision Throughput for Containers and Databases - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/set-throughput?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Account - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-create-account?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Provision Autoscale Throughput - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-provision-autoscale-throughput?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Resource Manager Templates - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/samples-resource-manager-templates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Soft Delete (Preview) - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/soft-delete?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Provision Container Throughput - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-provision-container-throughput?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Merge partitions (preview) - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/merge?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Initialize SDK clients and connections
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Connect to Azure Cosmos DB with the SDK" href="https://learn.microsoft.com/training/modules/connect-azure-cosmos-db-nosql-sdk?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement database operations
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Understand Distributed NoSQL Databases - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/distributed-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement queries, parameterized queries, paging, and continuation tokens
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Query data in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/query-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement point read operations
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement Azure Cosmos DB operations with the SDK" href="https://learn.microsoft.com/training/modules/implement-azure-cosmos-db-nosql-operations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement Azure Cosmos DB for NoSQL point operations" href="https://learn.microsoft.com/training/modules/implement-azure-cosmos-db-sql-api-point-operations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Read an Item Using .NET - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-dotnet-read-item?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Request Unit Charges as a Key Value Store - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/key-value-store-cost?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement create, replace, update, patch and delete operations
+
+:::note
+The Microsoft Learn module "Implement Azure Cosmos DB operations with the SDK" also covers this task. It is listed once, under [Implement point read operations](#implement-point-read-operations).
+:::
+
+#### Implement bulk, batch, and transactional operations
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Perform cross-document transactional operations with the Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/perform-cross-document-transactional-operations-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Transactional Batch Operations - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/transactional-batch?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Time to Live (TTL)
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement Azure Cosmos DB for NoSQL point operations": under [Implement point read operations](#implement-point-read-operations)
+- "Plan Resource Requirements": under [Evaluating and configuring appropriate throughput](#evaluating-and-configuring-appropriate-throughput) in the skill group Evaluate resource models and SDK solutions
+- "Implement Azure Cosmos DB operations with the SDK": under [Implement point read operations](#implement-point-read-operations)
+- "Configure resources, throughput, and consistency": under [Evaluate consistency levels](#evaluate-consistency-levels) in the skill group Evaluate resource models and SDK solutions
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Expire Data With Time to Live - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/time-to-live?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and Manage Time to Live - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-time-to-live?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement concurrency control mechanisms
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Perform cross-document transactional operations with the Azure Cosmos DB for NoSQL": under [Implement bulk, batch, and transactional operations](#implement-bulk-batch-and-transactional-operations)
+- "Implement Azure Cosmos DB operations with the SDK": under [Implement point read operations](#implement-point-read-operations)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Database Transactions and Optimistic Concurrency Control - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/database-transactions-optimistic-concurrency?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement data models and partitioning strategies
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Understand Data Models - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/data-guide/technology-choices/understand-data-store-models?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design data models for access patterns and operational requirements
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design a data modeling and partitioning strategy" href="https://learn.microsoft.com/training/modules/design-data-modeling-partitioning-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement a non-relational data model" href="https://learn.microsoft.com/training/modules/implement-non-relational-data-model?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and select partition keys based on cardinality, access patterns, and write distribution requirements
+
+:::note
+The Microsoft Learn module "Design a data modeling and partitioning strategy" also covers this task. It is listed once, under [Design data models for access patterns and operational requirements](#design-data-models-for-access-patterns-and-operational-requirements).
+:::
+
+#### Determine when to embed or reference related data
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement a non-relational data model": under [Design data models for access patterns and operational requirements](#design-data-models-for-access-patterns-and-operational-requirements)
+- "Design a data modeling and partitioning strategy": under [Design data models for access patterns and operational requirements](#design-data-models-for-access-patterns-and-operational-requirements)
+:::
+
+#### Evaluate the impact of partition key selection on scalability and performance
+
+:::note
+The Microsoft Learn module "Design a data modeling and partitioning strategy" also covers this task. It is listed once, under [Design data models for access patterns and operational requirements](#design-data-models-for-access-patterns-and-operational-requirements).
+:::
+
+#### Implement hierarchical partition keys (HPKs) and multi-tenant partitioning strategies
+
+:::note
+The Microsoft Learn module "Design a data modeling and partitioning strategy" also covers this task. It is listed once, under [Design data models for access patterns and operational requirements](#design-data-models-for-access-patterns-and-operational-requirements).
+:::
+
+#### Implement synthetic partition keys
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement a non-relational data model": under [Design data models for access patterns and operational requirements](#design-data-models-for-access-patterns-and-operational-requirements)
+- "Design a data modeling and partitioning strategy": under [Design data models for access patterns and operational requirements](#design-data-models-for-access-patterns-and-operational-requirements)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create a Synthetic Partition Key - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/synthetic-partition-keys?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Hierarchical Partition Keys - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/hierarchical-partition-keys?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Partitioning and horizontal scaling - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/partitioning?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify partitioning anti-patterns and partitioning issues during solution reviews
+
+:::note
+The Microsoft Learn module "Design a data modeling and partitioning strategy" also covers this task. It is listed once, under [Design data models for access patterns and operational requirements](#design-data-models-for-access-patterns-and-operational-requirements).
+:::
+
+#### Estimate workload cost requirements
+
+:::note
+The Microsoft Learn module "Design a data modeling and partitioning strategy" also covers this task. It is listed once, under [Design data models for access patterns and operational requirements](#design-data-models-for-access-patterns-and-operational-requirements).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Request Units as a throughput and performance currency - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/request-units?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Estimate Costs using the Cost Estimator - API for NoSQL - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/estimate-ru-with-capacity-planner?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement change feed
+
+#### Implement change feed operations
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Process the Azure Cosmos DB for NoSQL change feed" href="https://learn.microsoft.com/training/modules/process-azure-cosmos-db-nosql-change-feed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Consume an Azure Cosmos DB for NoSQL change feed using the SDK" href="https://learn.microsoft.com/training/modules/consume-azure-cosmos-db-sql-api-change-feed-use-sdk?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Handle events with Azure Functions and Azure Cosmos DB for NoSQL change feed" href="https://learn.microsoft.com/training/modules/handle-events-azure-functions-azure-cosmos-db-sql-api-change-feed?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Work with the Change Feed - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/change-feed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change Feed Processor - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/change-feed-processor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Change Feed With Azure Functions - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/change-feed-functions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Read Change Feed - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/read-change-feed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change Feed Modes - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/change-feed-modes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change Feed Design Patterns - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/change-feed-design-patterns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change feed with Apache Spark - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/change-feed-spark?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use the Change Feed Estimator - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-use-change-feed-estimator?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Differentiate between change feed processor and pull mode models
+
+:::note
+The Microsoft Learn module "Process the Azure Cosmos DB for NoSQL change feed" also covers this task. It is listed once, under [Implement change feed operations](#implement-change-feed-operations).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Change Feed Pull Model - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/change-feed-pull-model?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure lease containers
+
+:::note
+The Microsoft Learn module "Process the Azure Cosmos DB for NoSQL change feed" also covers this task. It is listed once, under [Implement change feed operations](#implement-change-feed-operations).
+:::
+
+#### Implement change feed processing using latest mode or all versions and delete
+
+:::note
+The Microsoft Learn module "Process the Azure Cosmos DB for NoSQL change feed" also covers this task. It is listed once, under [Implement change feed operations](#implement-change-feed-operations).
+:::
+
+#### Implement copy container jobs
+
+:::note
+The Microsoft Learn module "Process the Azure Cosmos DB for NoSQL change feed" also covers this task. It is listed once, under [Implement change feed operations](#implement-change-feed-operations).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Container Copy Jobs - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/container-copy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and Manage Intra-account Container Copy Jobs - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-container-copy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement Azure Cosmos DB solutions by using AI-assisted tools
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Integrations for AI - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/gen-ai/integrations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Indexing - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/index-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Agent Kit to follow Azure Cosmos DB development recommended solutions
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement AI-assisted development tools for Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/implement-ai-assisted-development-tools-azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Agent Kit to accelerate AI application development
+
+:::note
+The Microsoft Learn module "Implement AI-assisted development tools for Azure Cosmos DB" also covers this task. It is listed once, under [Implement Agent Kit to follow Azure Cosmos DB development recommended solutions](#implement-agent-kit-to-follow-azure-cosmos-db-development-recommended-solutions).
+:::
+
+## Secure, optimize, and deploy database solutions (30–35%)
+
+### Implement database security controls
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Unified AI Database - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure authentication mechanisms
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Secure an Azure Cosmos DB solution" href="https://learn.microsoft.com/training/modules/secure-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure authorization controls
+
+:::note
+The Microsoft Learn module "Secure an Azure Cosmos DB solution" also covers this task. It is listed once, under [Configure authentication mechanisms](#configure-authentication-mechanisms).
+:::
+
+#### Configure network security
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement security in Azure Cosmos DB for NoSQL": under [Configure account-level and container-level settings](#configure-account-level-and-container-level-settings) in the skill group Evaluate resource models and SDK solutions
+- "Secure an Azure Cosmos DB solution": under [Configure authentication mechanisms](#configure-authentication-mechanisms)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure Azure Private Link - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Virtual Network Access for Account - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-configure-vnet-service-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure IP Firewall - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-configure-firewall?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Network Security Perimeter for an Account - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-configure-nsp?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure your account - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/security?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure dynamic data masking
+
+:::note
+The Microsoft Learn module "Secure an Azure Cosmos DB solution" also covers this task. It is listed once, under [Configure authentication mechanisms](#configure-authentication-mechanisms).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Dynamic Data Masking (DDM) - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/dynamic-data-masking?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement availability and recovery solutions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Reliability in Azure Cosmos DB" href="https://learn.microsoft.com/azure/reliability/reliability-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure backup and restore solutions
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure backup and restore in Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/configure-backup-restore-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure Permissions to Restore an Account. - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Periodic Backup and Restore Introduction - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/periodic-backup-restore-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Continuous Backup with Point-in-Time Restore - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restore Deleted Container or Database to Same Account - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-restore-in-account-continuous-backup?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Online Backup and On-Demand Data Restore - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/online-backup-and-restore?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Provision an Account With Continuous Backup and Point in Time Restore - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/provision-account-continuous-backup?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Request data restoration from a backup - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/periodic-backup-request-data-restore?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restore an Account That Uses Continuous Backup Mode - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/restore-account-continuous-backup?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Same-account (in-account) restore for continuous backup - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/restore-in-account-continuous-backup-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restore Azure Cosmos DB account using Azure portal - Azure Backup" href="https://learn.microsoft.com/azure/backup/backup-azure-cosmos-db-restore?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Auditing the Point in Time Restore Action for Continuous Backup Mode - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/audit-restore-continuous?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently asked questions about continuous backup - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-frequently-asked-questions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Resource Model for the Point-in-Time Restore Feature. - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-resource-model?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get the Latest Restorable Timestamp for Accounts With Continuous Backup Mode - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/get-latest-restore-timestamp?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Latest Restorable Timestamp Use Cases, Examples for an Container - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/latest-restore-timestamp-continuous-backup?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently asked questions about continuous backup point-in-time restore in same account - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/restore-in-account-continuous-backup-frequently-asked-questions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Resource model for same account restore - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/restore-in-account-continuous-backup-resource-model?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement multi-region read and write configurations
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure multi-region write in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/configure-multi-region-write-azure-cosmos-db-sql-api?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Distribute Data Globally - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/distribute-data-globally?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Multi-region writes - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/multi-region-writes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Multi-Region Writes - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-multi-master?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure partition failover solutions
+
+:::note
+The Microsoft Learn module "Design multi-region availability and failover in Azure Cosmos DB" also covers this task. It is listed once, under [Configure account-level and container-level settings](#configure-account-level-and-container-level-settings) in the skill group Evaluate resource models and SDK solutions.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure per-partition automatic failover - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-configure-per-partition-automatic-failover?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Per-partition automatic failover - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/per-partition-automatic-failover?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Optimize and remediate database performance
+
+#### Optimize query performance
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement hybrid search and optimize AI retrieval in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/implement-hybrid-search-optimize-retrieval-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Query Performance Tips for Sdks - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/performance-tips-query-sdk?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Query Issues When Using - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/troubleshoot-query-performance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Redistribute Throughput Across Partitions (Preview) - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-redistribute-throughput-across-partitions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Optimize Your Application Using Rate Limiting - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/rate-limiting-requests?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Analyze query performance metrics
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Measure index performance in Azure Cosmos DB for NoSQL": under [Create and manage database and containers](#create-and-manage-database-and-containers) in the skill group Evaluate resource models and SDK solutions
+- "Measure performance in Azure Cosmos DB for NoSQL": under [Evaluating and configuring appropriate throughput](#evaluating-and-configuring-appropriate-throughput) in the skill group Evaluate resource models and SDK solutions
+- "Analyze and tune query and operation performance in Azure Cosmos DB": under [Evaluate Request Unit (RU) consumption requirements](#evaluate-request-unit-ru-consumption-requirements) in the skill group Evaluate resource models and SDK solutions
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="SQL Query Metrics - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/query-metrics?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get SQL query performance & execution metrics - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/query-metrics-performance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get Query Performance and Execution Metrics Using Python SDK - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/query-metrics-performance-python?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Analyze index performance metrics
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Measure index performance in Azure Cosmos DB for NoSQL": under [Create and manage database and containers](#create-and-manage-database-and-containers) in the skill group Evaluate resource models and SDK solutions
+- "Analyze and tune query and operation performance in Azure Cosmos DB": under [Evaluate Request Unit (RU) consumption requirements](#evaluate-request-unit-ru-consumption-requirements) in the skill group Evaluate resource models and SDK solutions
+- "Optimize query performance for Azure Cosmos DB for NoSQL": under [Evaluate consistency levels](#evaluate-consistency-levels) in the skill group Evaluate resource models and SDK solutions
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Indexing Metrics - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/index-metrics?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor end-to-end latency against service objectives
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor and troubleshoot Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/monitor-troubleshoot-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Azure Monitor alerts
+
+:::note
+The Microsoft Learn module "Monitor and troubleshoot Azure Cosmos DB" also covers this task. It is listed once, under [Monitor end-to-end latency against service objectives](#monitor-end-to-end-latency-against-service-objectives).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create Alerts for Using Azure Monitor - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/create-alerts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create alerts to monitor if storage for a logical partition key is approaching 20 GB - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-alert-on-logical-partition-key-storage-size?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Analyze diagnostic logs in Log Analytics
+
+:::note
+The Microsoft Learn module "Monitor and troubleshoot Azure Cosmos DB" also covers this task. It is listed once, under [Monitor end-to-end latency against service objectives](#monitor-end-to-end-latency-against-service-objectives).
+:::
+
+### Implement Fleet management and monitoring across multiple accounts and subscriptions
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Fleets Overview - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/fleet?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Serverless Consumption-Based Account Type - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/serverless?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Fleet level throughput management
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage Azure Cosmos DB at scale with fleets": under [Evaluating and configuring appropriate throughput](#evaluating-and-configuring-appropriate-throughput) in the skill group Evaluate resource models and SDK solutions
+- "Configure resources, throughput, and consistency": under [Evaluate consistency levels](#evaluate-consistency-levels) in the skill group Evaluate resource models and SDK solutions
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Fleet Pools - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/fleet-pools?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Fleet monitoring with fleet analytics
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage Azure Cosmos DB at scale with fleets": under [Evaluating and configuring appropriate throughput](#evaluating-and-configuring-appropriate-throughput) in the skill group Evaluate resource models and SDK solutions
+- "Monitor and troubleshoot Azure Cosmos DB": under [Monitor end-to-end latency against service objectives](#monitor-end-to-end-latency-against-service-objectives) in the skill group Optimize and remediate database performance
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Fleet Analytics (Preview) - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/fleet-analytics?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable Fleet Analytics (Preview) - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-enable-fleet-analytics?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fleet Analytics Schema Reference (Preview) - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/fleet-analytics-schema-reference?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Implement AI and Analytics capabilities in database solutions (20–25%)
+
+### Design and implement AI retrieval
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Vector Similarity Search - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/gen-ai/vector-search-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement full-text search
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement full-text and vector search in Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/implement-full-text-vector-search-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Full-Text Search - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/gen-ai/full-text-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Full Text Search FAQ - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/gen-ai/full-text-search-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Full text search stopwords list - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/gen-ai/stopwords?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design for vector data, including vector data type, vector indexes, and size
+
+:::note
+The Microsoft Learn module "Implement full-text and vector search in Azure Cosmos DB for NoSQL" also covers this task. It is listed once, under [Design and implement full-text search](#design-and-implement-full-text-search).
+:::
+
+#### Design and implement vector partitioning and sharded DiskANN implementations
+
+:::note
+The Microsoft Learn module "Implement full-text and vector search in Azure Cosmos DB for NoSQL" also covers this task. It is listed once, under [Design and implement full-text search](#design-and-implement-full-text-search).
+:::
+
+#### Implement vector search
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build Generative AI applications with Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/build-generative-ai-applications-with-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement vector search on Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/implement-vector-search-azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Integrated Vector Store - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/vector-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Develop a RAG Solution on Azure - Generate Embeddings Phase - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/ai-ml/guide/rag/rag-generate-embeddings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sharded DiskANN Focused Vector Search for Better Performance and Lower Cost - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/gen-ai/sharded-diskann?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement hybrid search
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Build Generative AI applications with Azure Cosmos DB": under [Implement vector search](#implement-vector-search)
+- "Implement vector search on Azure Cosmos DB for NoSQL": under [Implement vector search](#implement-vector-search)
+- "Implement hybrid search and optimize AI retrieval in Azure Cosmos DB for NoSQL": under [Optimize query performance](#optimize-query-performance) in the skill group Optimize and remediate database performance
+- "Implement full-text and vector search in Azure Cosmos DB for NoSQL": under [Design and implement full-text search](#design-and-implement-full-text-search)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Hybrid Search - Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/azure/cosmos-db/gen-ai/hybrid-search?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Optimize full-text and vector performance
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement hybrid search and optimize AI retrieval in Azure Cosmos DB for NoSQL": under [Optimize query performance](#optimize-query-performance) in the skill group Optimize and remediate database performance
+- "Optimize query performance for Azure Cosmos DB for NoSQL": under [Evaluate consistency levels](#evaluate-consistency-levels) in the skill group Evaluate resource models and SDK solutions
+- "Implement full-text and vector search in Azure Cosmos DB for NoSQL": under [Design and implement full-text search](#design-and-implement-full-text-search)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Tips for optimizing vector indexing & search performance - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/gen-ai/vector-search-performance-tips?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement Retrieval-Augmented Generation (RAG)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build RAG applications with Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/training/modules/build-retrieval-augmented-generation-applications-azure-cosmos-db-nosql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Retrieval Augmented Generation - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/gen-ai/rag?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with LangChain JS/TS integration - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/gen-ai/langchain-javascript-get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement agent memory stores
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Memory?" href="https://learn.microsoft.com/azure/foundry/agents/concepts/what-is-memory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Microsoft Foundry Agent Service? - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design durable memory stores
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement agent memory stores in Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/design-implement-agent-memory-azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Agent Memory in Azure Cosmos DB for NoSQL - Azure Cosmos DB for NoSQL" href="https://learn.microsoft.com/azure/cosmos-db/gen-ai/agentic-memories?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement conversation state
+
+:::note
+The Microsoft Learn module "Design and implement agent memory stores in Azure Cosmos DB" also covers this task. It is listed once, under [Design durable memory stores](#design-durable-memory-stores).
+:::
+
+#### Implement semantic memory
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design multi-agent memory architectures with Azure Cosmos DB" href="https://learn.microsoft.com/training/modules/aaai-design-multi-agent-memory-azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement operational analytics on Azure Cosmos DB
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore core data concepts" href="https://learn.microsoft.com/training/modules/explore-core-data-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore fundamentals of large-scale analytics" href="https://learn.microsoft.com/training/modules/examine-components-of-modern-data-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to end-to-end analytics using Microsoft Fabric" href="https://learn.microsoft.com/training/modules/introduction-end-analytics-use-microsoft-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Reverse extract, transform, & load (ETL) - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/reverse-extract-transform-load?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Fabric Mirrored Databases From Azure Cosmos DB - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Analytics with Azure Synapse Link - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/synapse-link?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Mirroring Limitations in Cosmos DB" href="https://learn.microsoft.com/fabric/database/cosmos-db/mirroring-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose between Azure Cosmos DB and Cosmos DB in Microsoft Fabric
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement operational analytics with Microsoft Fabric" href="https://learn.microsoft.com/training/modules/implement-operational-analytics-fabric-azure-cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with Cosmos DB in Microsoft Fabric" href="https://learn.microsoft.com/training/modules/get-started-cosmos-db-nosql-fabric?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Cosmos DB Database" href="https://learn.microsoft.com/fabric/database/cosmos-db/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Analytics and BI - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/analytics-and-business-intelligence-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Limits and Quotas in Microsoft Fabric Mirrored Databases From Azure Cosmos DB - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Cosmos DB Database Documentation - Microsoft Fabric" href="https://learn.microsoft.com/fabric/database/cosmos-db?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Cosmos DB Database Limitations" href="https://learn.microsoft.com/fabric/database/cosmos-db/limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What Is Analytical Store? - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/analytical-store-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and monitor data mirroring into Microsoft Fabric
+
+:::note
+The Microsoft Learn module "Implement operational analytics with Microsoft Fabric" also covers this task. It is listed once, under [Choose between Azure Cosmos DB and Cosmos DB in Microsoft Fabric](#choose-between-azure-cosmos-db-and-cosmos-db-in-microsoft-fabric).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Monitor Mirrored Database Replication" href="https://learn.microsoft.com/fabric/mirroring/monitor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Mirroring for Azure Cosmos DB Accounts With Network Restrictions - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-private-network?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Mirror OneLake in Cosmos DB Database" href="https://learn.microsoft.com/fabric/database/cosmos-db/mirror-onelake?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to: Join mirrored Azure Cosmos DB data with other mirrored databases in Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-how-to-join-multiple?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate from Azure Synapse Link to Azure Cosmos DB mirroring in Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-migrate-synapse-link?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Mirrored database operation logs" href="https://learn.microsoft.com/fabric/mirroring/monitor-logs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently asked questions for Microsoft Fabric mirrored databases from Azure Cosmos DB - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Microsoft Fabric mirrored databases from Azure Cosmos DB - Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-troubleshooting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get Started with Mirroring in Fabric" href="https://learn.microsoft.com/fabric/mirroring/get-started-with-mirroring?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Fabric Mirrored Databases" href="https://learn.microsoft.com/fabric/mirroring/troubleshooting?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Query Azure Cosmos DB mirrored JSON data in Microsoft Fabric with T-SQL and Spark
+
+:::note
+The Microsoft Learn module "Implement operational analytics with Microsoft Fabric" also covers this task. It is listed once, under [Choose between Azure Cosmos DB and Cosmos DB in Microsoft Fabric](#choose-between-azure-cosmos-db-and-cosmos-db-in-microsoft-fabric).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How to: Query nested data in Microsoft Fabric mirrored databases from Azure Cosmos DB" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-how-to-query-nested?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to: Access mirrored Azure Cosmos DB data in Lakehouse and notebooks from Microsoft Fabric" href="https://learn.microsoft.com/fabric/mirroring/azure-cosmos-db-lakehouse-notebooks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Access Mirrored Cosmos DB Database Data From Lakehouse" href="https://learn.microsoft.com/fabric/database/cosmos-db/how-to-access-data-lakehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Read and write data into Azure Cosmos DB from Microsoft Fabric with Cosmos DB Spark connector
+
+:::note
+The Microsoft Learn module "Implement operational analytics with Microsoft Fabric" also covers this task. It is listed once, under [Choose between Azure Cosmos DB and Cosmos DB in Microsoft Fabric](#choose-between-azure-cosmos-db-and-cosmos-db-in-microsoft-fabric).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Cosmos DB in Spark notebook" href="https://learn.microsoft.com/fabric/database/cosmos-db/how-to-use-spark-notebooks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>

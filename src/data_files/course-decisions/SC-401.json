@@ -1,0 +1,953 @@
+{
+  "schemaVersion": 1,
+  "code": "SC-401",
+  "decisions": [
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/@foundations",
+      "target": "/purview/dlp-policy-reference",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/@foundations",
+      "target": "/training/modules/purview-explore-insider-risk-management",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/configure-data-loss-prevention-policies-for-adaptive-protect",
+      "target": "/defender-xdr/dlp-investigate-alerts-defender",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/configure-data-loss-prevention-policies-for-adaptive-protect",
+      "target": "/defender-xdr/dlp-investigate-alerts-sentinel",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/configure-data-loss-prevention-policies-for-adaptive-protect",
+      "target": "/purview/dlp-alerts-dashboard-get-started",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/configure-data-loss-prevention-policies-for-adaptive-protect",
+      "target": "/purview/dlp-alerts-get-started",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/configure-data-loss-prevention-policies-for-adaptive-protect",
+      "target": "/purview/dlp-create-policy-files-edlp-doesnt-scan",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/configure-data-loss-prevention-policies-for-adaptive-protect",
+      "target": "/purview/dlp-policy-reference",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/configure-data-loss-prevention-policies-for-adaptive-protect",
+      "target": "/purview/endpoint-dlp-getting-started",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/configure-data-loss-prevention-policies-for-adaptive-protect",
+      "target": "/purview/endpoint-dlp-learn-about",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/configure-data-loss-prevention-policies-for-adaptive-protect",
+      "target": "/training/modules/prevent-data-loss-lifecycle-purview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/configure-data-loss-prevention-policies-for-adaptive-protect",
+      "target": "/training/modules/purview-implement-endpoint-dlp",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/create-and-manage-data-loss-prevention-policies",
+      "target": "/purview/dlp-chrome-get-started",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/create-and-manage-data-loss-prevention-policies",
+      "target": "/purview/dlp-on-premises-scanner-get-started",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/create-and-manage-data-loss-prevention-policies",
+      "target": "/training/modules/purview-ai-data-security",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/create-file-policies-in-microsoft-defender-for-cloud-apps-by",
+      "target": "/purview/dlp-create-policy-files-edlp-doesnt-scan",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/create-file-policies-in-microsoft-defender-for-cloud-apps-by",
+      "target": "/training/modules/prevent-data-loss-lifecycle-purview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/create-file-policies-in-microsoft-defender-for-cloud-apps-by",
+      "target": "/training/modules/purview-data-loss-prevention-alerts",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/design-data-loss-prevention-policies-based-on-an-organizatio",
+      "target": "/purview/dlp-firefox-extension-get-started",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/design-data-loss-prevention-policies-based-on-an-organizatio",
+      "target": "/purview/dlp-network-data-security-learn",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/design-data-loss-prevention-policies-based-on-an-organizatio",
+      "target": "/training/modules/purview-ai-secure-enterprise-other",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/defender-cloud-apps/data-protection-policies",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/defender-xdr/dlp-investigate-alerts-defender",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-adaptive-protection-learn",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-alert-investigation-learn",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-alerts-get-started",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-chrome-get-started",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-configure-endpoint-settings",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-create-policy-block-to-ai-via-edge",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-create-policy-files-edlp-doesnt-scan",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-firefox-extension-get-started",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-microsoft365-copilot-location-learn-about",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-network-data-security-learn",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-on-premises-scanner-get-started",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-on-premises-scanner-learn",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-policy-reference",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-use-notifications-and-policy-tips",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/dlp-use-policies-non-microsoft-cloud-apps",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/purview/endpoint-dlp-learn-about",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/training/modules/create-configure-data-loss-prevention-policies",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/training/modules/describe-purview-data-solutions",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/training/modules/explore-examine-data-loss-prevention-microsoft-365",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/training/modules/implement-data-loss-prevention-policies-microsoft-365",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/training/modules/m365-compliance-information-prevent-data-loss",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/training/modules/m365-compliance-irm-adaptive-protection",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/training/modules/prevent-data-loss-lifecycle-purview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/training/modules/purview-ai-data-security",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/training/modules/purview-ai-secure-copilot",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/training/modules/purview-ai-secure-enterprise-other",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/implement-roles-and-permissions-for-data-loss-prevention",
+      "target": "/training/modules/respond-to-data-loss-prevention-alerts-microsoft-365",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/implement-and-manage-retention/@foundations",
+      "target": "/training/modules/m365-compliance-information-governance",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/@foundations",
+      "target": "/training/modules/m365-compliance-information-governance",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/configure-advanced-dlp-rules-for-devices-in-dlp-policies",
+      "target": "/training/modules/purview-ai-secure-enterprise-other",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/configure-advanced-dlp-rules-for-devices-in-dlp-policies",
+      "target": "/training/modules/purview-data-loss-prevention-alerts",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/monitor-endpoint-activities",
+      "target": "/training/modules/purview-insider-risk-investigate-alerts",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-data-classification/@foundations",
+      "target": "/training/modules/explore-sensitivity-labels-microsoft-365",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-data-classification/@foundations",
+      "target": "/training/modules/purview-data-loss-prevention-understand-plan",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-data-classification/configure-optical-character-recognition-ocr-support-for-sens",
+      "target": "/training/modules/create-manage-sensitive-information-types",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-data-classification/create-and-manage-custom-sensitive-info-types",
+      "target": "/training/modules/purview-exercise-information-protection-data-loss-prevention",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-data-classification/create-and-manage-trainable-classifiers",
+      "target": "/training/modules/purview-manage-records",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-data-classification/identify-sensitive-information-requirements-for-an-organizat",
+      "target": "/purview/information-protection",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-data-classification/identify-sensitive-information-requirements-for-an-organizat",
+      "target": "/training/modules/protect-information-purview",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-data-classification/identify-sensitive-information-requirements-for-an-organizat",
+      "target": "/training/modules/purview-protect-sensitive-data",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/@foundations",
+      "target": "/training/modules/explore-purview-message-encryption",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/apply-sensitivity-labels-by-using-microsoft-defender-for-clo",
+      "target": "/fabric/enterprise/powerbi/service-security-apply-data-sensitivity-labels",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/apply-sensitivity-labels-by-using-microsoft-defender-for-clo",
+      "target": "/fabric/enterprise/powerbi/service-security-sensitivity-label-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/apply-sensitivity-labels-by-using-microsoft-defender-for-clo",
+      "target": "/purview/sensitivity-labels-meetings",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/apply-sensitivity-labels-by-using-microsoft-defender-for-clo",
+      "target": "/purview/sensitivity-labels-office-apps",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/apply-sensitivity-labels-by-using-microsoft-defender-for-clo",
+      "target": "/purview/sensitivity-labels-teams-groups-sites",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/apply-sensitivity-labels-by-using-microsoft-defender-for-clo",
+      "target": "/purview/sensitivity-labels-versions",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/apply-sensitivity-labels-by-using-microsoft-defender-for-clo",
+      "target": "/training/modules/create-configure-data-loss-prevention-policies",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/apply-sensitivity-labels-by-using-microsoft-defender-for-clo",
+      "target": "/training/modules/explore-sensitivity-labels-microsoft-365",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/apply-sensitivity-labels-by-using-microsoft-defender-for-clo",
+      "target": "/training/modules/purview-exercise-information-protection-data-loss-prevention",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-and-manage-auto-labeling-policies-for-sensitivity",
+      "target": "/fabric/enterprise/powerbi/service-security-apply-data-sensitivity-labels",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-and-manage-auto-labeling-policies-for-sensitivity",
+      "target": "/fabric/enterprise/powerbi/service-security-sensitivity-label-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-and-manage-auto-labeling-policies-for-sensitivity",
+      "target": "/purview/sensitivity-labels-meetings",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-and-manage-auto-labeling-policies-for-sensitivity",
+      "target": "/purview/sensitivity-labels-office-apps",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-and-manage-auto-labeling-policies-for-sensitivity",
+      "target": "/purview/sensitivity-labels-teams-groups-sites",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-and-manage-auto-labeling-policies-for-sensitivity",
+      "target": "/purview/sensitivity-labels-versions",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-and-manage-auto-labeling-policies-for-sensitivity",
+      "target": "/training/modules/purview-exercise-information-protection-data-loss-prevention",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-and-manage-publishing-policies-for-sensitivity-lab",
+      "target": "/fabric/enterprise/powerbi/service-security-apply-data-sensitivity-labels",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-and-manage-publishing-policies-for-sensitivity-lab",
+      "target": "/purview/sensitivity-labels-meetings",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-and-manage-publishing-policies-for-sensitivity-lab",
+      "target": "/purview/sensitivity-labels-office-apps",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-protection-settings-and-content-marking-for-sensit",
+      "target": "/fabric/enterprise/powerbi/service-security-sensitivity-label-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/define-and-create-sensitivity-labels-for-items-and-container",
+      "target": "/entra/identity/users/groups-assign-sensitivity-labels",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/define-and-create-sensitivity-labels-for-items-and-container",
+      "target": "/entra/identity/users/groups-sensitivity-labels",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/define-and-create-sensitivity-labels-for-items-and-container",
+      "target": "/fabric/enterprise/powerbi/service-security-enable-data-sensitivity-labels",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/define-and-create-sensitivity-labels-for-items-and-container",
+      "target": "/fabric/enterprise/powerbi/service-security-sensitivity-label-audit-schema",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/define-and-create-sensitivity-labels-for-items-and-container",
+      "target": "/fabric/enterprise/powerbi/service-security-sensitivity-label-change-enforcement",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/define-and-create-sensitivity-labels-for-items-and-container",
+      "target": "/fabric/enterprise/powerbi/service-security-sensitivity-label-custom-help-link",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/define-and-create-sensitivity-labels-for-items-and-container",
+      "target": "/purview/sensitivity-labels-versions",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/apply-bulk-classification-to-on-premises-data-by-using-the-m",
+      "target": "/training/modules/protect-information-purview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/manage-files-by-using-the-microsoft-purview-information-prot",
+      "target": "/training/modules/protect-information-purview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect",
+      "target": "/training/modules/protect-information-purview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect",
+      "target": "/training/modules/purview-implement-endpoint-dlp",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/@foundations",
+      "target": "/training/modules/purview-data-security-investigations-understand",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/@foundations",
+      "target": "/training/modules/transition-prepare-fundamentals-level-security-compliance-identity",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/configure-and-manage-insider-risk-management-settings",
+      "target": "/purview/insider-risk-management-configure",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/enable-and-configure-insider-risk-levels-for-adaptive-protec",
+      "target": "/entra/identity/conditional-access/policy-risk-based-insider-block",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/enable-and-configure-insider-risk-levels-for-adaptive-protec",
+      "target": "/entra/identity/monitoring-health/recommendation-insider-risk-condition",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/manage-insider-risk-alerts-and-cases",
+      "target": "/purview/insider-risk-management-plan",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/manage-insider-risk-alerts-and-cases",
+      "target": "/purview/insider-risk-management-settings",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/manage-insider-risk-alerts-and-cases",
+      "target": "/purview/insider-risk-solution-privacy",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/plan-and-implement-integration-with-microsoft-defender-for-e",
+      "target": "/defender-cloud-apps/mde-integration",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/plan-and-implement-integration-with-microsoft-defender-for-e",
+      "target": "/training/modules/describe-threat-protection-with-microsoft-365-defender",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/manage-information-security-alerts-and-activities/@foundations",
+      "target": "/training/modules/m365-compliance-irm-adaptive-protection",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/manage-information-security-alerts-and-activities/configure-audit-retention-policies",
+      "target": "/training/modules/purview-manage-records",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/manage-information-security-alerts-and-activities/investigate-activities-by-using-microsoft-purview-audit",
+      "target": "/power-platform/admin/activity-logging-auditing/activity-logs-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/manage-information-security-alerts-and-activities/investigate-activities-by-using-microsoft-purview-audit",
+      "target": "/purview/audit-troubleshooting-scenarios",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/manage-information-security-alerts-and-activities/investigate-insider-risk-activities-by-using-the-microsoft-p",
+      "target": "/purview/insider-risk-management-policy-templates",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/manage-information-security-alerts-and-activities/respond-to-data-loss-prevention-alerts-in-the-microsoft-purv",
+      "target": "/purview/dlp-create-policy-files-edlp-doesnt-scan",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/manage-information-security-alerts-and-activities/respond-to-data-loss-prevention-alerts-in-the-microsoft-purv",
+      "target": "/purview/dlp-microsoft365-copilot-location-learn-about",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/protect-data-used-by-ai-services/@foundations",
+      "target": "/training/modules/describe-purview-risk-compliance-governance",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/protect-data-used-by-ai-services/@foundations",
+      "target": "/training/modules/explore-retention-policies-labels-microsoft-365",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/protect-data-used-by-ai-services/implement-controls-in-microsoft-365-productivity-workloads-t",
+      "target": "/training/modules/design-solutions-secure-microsoft-365",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}

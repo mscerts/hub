@@ -1,0 +1,1821 @@
+---
+title: AZ-700 Study Guide Course
+description: "Follow a structured AZ-700 course organized by study guide task, with Microsoft Learn training and documentation."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official AZ-700 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-700?WT.mc_id=studentamb_165290) skills measured (July 27, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AZ-700 labs page](/certs/labs/azure/az-700/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As an Azure network engineer your responsibilities include optimizing performance, resiliency, scale, and security of Azure networking solutions. You proactively monitor network environments to identify issues and minimize risk. You also identify and resolve connectivity issues.
+
+### As a candidate for this exam, you should have subject matter expertise in planning, implementing, and managing Azure networking solutions, including
+
+- Core network infrastructure
+- Hybrid connectivity
+- Application delivery services
+- Private access to Azure services
+- Network security
+
+### To deliver Azure solutions, you work with
+
+- Solution architects
+- Cloud administrators
+- Security engineers
+- Application developers
+- DevOps engineers
+
+### As a candidate for this exam, you should have experience creating and managing compute, storage, and networking resources in Azure. You should understand networking fundamentals, such as
+
+- Name resolution
+- Network protocols
+- Network address management
+
+## Design and implement core networking infrastructure (25–30%)
+
+### Design and implement IP addressing for Azure resources
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure VPN Gateway" href="https://learn.microsoft.com/training/modules/intro-to-azure-vpn-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is IP address management (IPAM) in Azure Virtual Network Manager?" href="https://learn.microsoft.com/azure/virtual-network-manager/concept-ip-address-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of IPv6 for Azure Virtual Network" href="https://learn.microsoft.com/azure/virtual-network/ip-services/ipv6-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure IP Address 168.63.129.16 Overview" href="https://learn.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Routing preference in Azure" href="https://learn.microsoft.com/azure/virtual-network/ip-services/routing-preference-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement network segmentation and address spaces
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="IP address planning for Azure virtual networks" href="https://learn.microsoft.com/azure/networking/design-guide/ip-planning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prevent IPv4 Exhaustion in Azure - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/networking/guide/internet-protocol-version-4-exhaustion?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prevent overlapping virtual network address spaces with Azure Policy and IPAM" href="https://learn.microsoft.com/azure/virtual-network-manager/prevent-overlapping-ip-address-space-policy-ipam?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Virtual Network Concepts and Best Practices" href="https://learn.microsoft.com/azure/virtual-network/concepts-and-best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create multiple prefixes for a subnet" href="https://learn.microsoft.com/azure/virtual-network/how-to-multiple-prefixes-subnet?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Update the address space for a peered virtual network - Azure portal" href="https://learn.microsoft.com/azure/virtual-network/update-virtual-network-peering-address-space?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan for landing zone network segmentation - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-landing-zone-network-segmentation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan for IP addressing - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-ip-addressing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy IPAM pools and static CIDRs with Azure Virtual Network Manager - Bicep" href="https://learn.microsoft.com/azure/virtual-network-manager/deploy-ip-address-management-pools-bicep?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage IPAM Pool Recommendations for Virtual Networks" href="https://learn.microsoft.com/azure/virtual-network-manager/how-to-ip-address-management-association-recommendations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create, change, or delete an Azure virtual network - Azure Virtual Network" href="https://learn.microsoft.com/azure/virtual-network/manage-virtual-network?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About NAT (Network Address Translation) on VPN Gateway" href="https://learn.microsoft.com/azure/vpn-gateway/nat-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure network security best practices" href="https://learn.microsoft.com/azure/security/fundamentals/network-best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a virtual network (VNet)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Virtual Networks" href="https://learn.microsoft.com/training/modules/introduction-to-azure-virtual-networks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement private access to Azure Services" href="https://learn.microsoft.com/training/modules/design-implement-private-access-to-azure-services?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Load balance HTTP(S) traffic in Azure" href="https://learn.microsoft.com/training/modules/load-balancing-https-traffic-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and configure subnet delegation
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add or Remove Subnet Delegation in Azure Virtual Network" href="https://learn.microsoft.com/azure/virtual-network/manage-subnet-delegation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Subnet Delegation in Azure Virtual Network" href="https://learn.microsoft.com/azure/virtual-network/subnet-delegation-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and configure shared or dedicated subnets
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure virtual networks and subnets" href="https://learn.microsoft.com/azure/networking/design-guide/vnets-subnets?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a Public IP Prefix
+
+:::note
+The Microsoft Learn module "Introduction to Azure Virtual Networks" also covers this task. It is listed once, under [Create a virtual network (VNet)](#create-a-virtual-network-vnet).
+:::
+
+#### Choose when to use a public IP address prefix
+
+:::note
+The Microsoft Learn module "Introduction to Azure Virtual Networks" also covers this task. It is listed once, under [Create a virtual network (VNet)](#create-a-virtual-network-vnet).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Public IP address prefix - Azure Virtual Network" href="https://learn.microsoft.com/azure/virtual-network/ip-services/public-ip-address-prefix?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage a NAT gateway" href="https://learn.microsoft.com/azure/nat-gateway/manage-nat-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage a Standard V2 NAT Gateway" href="https://learn.microsoft.com/azure/nat-gateway/manage-nat-gateway-v2?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create, change, or delete an Azure public IP address prefix" href="https://learn.microsoft.com/azure/virtual-network/ip-services/manage-public-ip-address-prefix?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement a Custom IP address prefix (bring your own IP)
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Custom IP address prefix (BYOIP)" href="https://learn.microsoft.com/azure/virtual-network/ip-services/custom-ip-address-prefix?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a public IP address
+
+:::note
+The Microsoft Learn module "Introduction to Azure Virtual Networks" also covers this task. It is listed once, under [Create a virtual network (VNet)](#create-a-virtual-network-vnet).
+:::
+
+#### Associate public IP addresses to resources
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure virtual networks" href="https://learn.microsoft.com/training/modules/configure-virtual-networks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Associate a public IP address to a virtual machine" href="https://learn.microsoft.com/azure/virtual-network/ip-services/associate-public-ip-address-vm?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement name resolution
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure DNS" href="https://learn.microsoft.com/training/modules/intro-to-azure-dns?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design name resolution inside a VNet
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement private access to Azure Services": under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources
+- "Introduction to Azure Virtual Networks": under [Create a virtual network (VNet)](#create-a-virtual-network-vnet) in the skill group Design and implement IP addressing for Azure resources
+:::
+
+#### Configure DNS settings for a VNet
+
+:::note
+The Microsoft Learn module "Introduction to Azure Virtual Networks" also covers this task. It is listed once, under [Create a virtual network (VNet)](#create-a-virtual-network-vnet) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Design public DNS zones
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Design private DNS zones
+
+:::note
+The Microsoft Learn module "Design and implement private access to Azure Services" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Private Link and DNS Integration at Scale - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Private DNS Zone Overview" href="https://learn.microsoft.com/azure/dns/private-dns-privatednszone?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scenarios for Azure Private DNS zones" href="https://learn.microsoft.com/azure/dns/private-dns-scenarios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is a virtual network link subresource of Azure DNS private zones" href="https://learn.microsoft.com/azure/dns/private-dns-virtual-network-links?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sharding private DNS zones" href="https://learn.microsoft.com/azure/dns/sharding-private-dns-zones?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Private Endpoint private DNS zone values" href="https://learn.microsoft.com/azure/private-link/private-endpoint-dns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Virtual Network Name Resolution Guide" href="https://learn.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Protecting private DNS Zones and Records - Azure DNS" href="https://learn.microsoft.com/azure/dns/dns-protect-private-zones-recordsets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Private DNS information in Azure Resource Graph" href="https://learn.microsoft.com/azure/dns/private-dns-arg?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is autoregistration feature in Azure DNS private zones?" href="https://learn.microsoft.com/azure/dns/private-dns-autoregistration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fallback to internet for Azure Private DNS zones" href="https://learn.microsoft.com/azure/dns/private-dns-fallback?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Import and export a domain zone file for Azure private DNS - Azure CLI" href="https://learn.microsoft.com/azure/dns/private-dns-import-export?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Import and export a private DNS zone file - Azure portal" href="https://learn.microsoft.com/azure/dns/private-dns-import-export-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrating legacy Azure DNS private zones to the new resource model" href="https://learn.microsoft.com/azure/dns/private-dns-migration-guide?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and manage reverse DNS zones in Azure Private DNS" href="https://learn.microsoft.com/azure/dns/private-reverse-dns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reliability in Azure DNS private zones" href="https://learn.microsoft.com/azure/reliability/reliability-dns-private?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure public and private DNS zones
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Link a private DNS zone to a VNet
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement private access to Azure Services": under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources
+- "Introduction to Azure Virtual Networks": under [Create a virtual network (VNet)](#create-a-virtual-network-vnet) in the skill group Design and implement IP addressing for Azure resources
+:::
+
+#### Design and implement Azure DNS Private Resolver
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Intro to Azure DNS Private Resolver" href="https://learn.microsoft.com/training/modules/intro-to-azure-dns-private-resolver?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure DNS Private Resolver - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/networking/architecture/azure-dns-private-resolver?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure DNS Private Resolver Overview" href="https://learn.microsoft.com/azure/dns/dns-private-resolver-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Private resolver architecture" href="https://learn.microsoft.com/azure/dns/private-resolver-architecture?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure DNS Private Resolver endpoints and rulesets" href="https://learn.microsoft.com/azure/dns/private-resolver-endpoints-rulesets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Resolve Azure and on-premises domains." href="https://learn.microsoft.com/azure/dns/private-resolver-hybrid-dns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DNS security and private name resolution" href="https://learn.microsoft.com/azure/networking/design-guide/dns-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reliability in Azure DNS Private Resolver" href="https://learn.microsoft.com/azure/reliability/reliability-dns-private-resolver?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement VNet connectivity and routing
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Network Watcher" href="https://learn.microsoft.com/training/modules/intro-to-azure-network-watcher?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure network security groups overview" href="https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Azure Virtual Network?" href="https://learn.microsoft.com/azure/virtual-network/virtual-networks-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design service chaining, including gateway transit
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Azure Virtual Network peering" href="https://learn.microsoft.com/training/modules/configure-vnet-peering?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Design and implement hybrid networking" href="https://learn.microsoft.com/training/modules/design-implement-hybrid-networking?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use a VPN or ExpressRoute gateway in a different region" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-different-region?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement VNet peering
+
+:::note
+The Microsoft Learn module "Introduction to Azure Virtual Networks" also covers this task. It is listed once, under [Create a virtual network (VNet)](#create-a-virtual-network-vnet) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure VPN gateway transit for virtual network peering" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement and manage virtual network connectivity by using Azure Virtual Network Manager
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Virtual Network Manager and Virtual WAN" href="https://learn.microsoft.com/azure/virtual-wan/virtual-network-manager-integration?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement user-defined routes (UDRs)
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure Azure Virtual Network peering": under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit)
+- "Introduction to Azure Virtual Networks": under [Create a virtual network (VNet)](#create-a-virtual-network-vnet) in the skill group Design and implement IP addressing for Azure resources
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create User-Defined Routes with Azure Virtual Network Manager" href="https://learn.microsoft.com/azure/virtual-network-manager/how-to-create-user-defined-route?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage User-defined Routes (UDRs) across multiple hub-and-spoke topologies with Azure Virtual Network Manager" href="https://learn.microsoft.com/azure/virtual-network-manager/how-to-manage-user-defined-routes-multiple-hub-spoke-topologies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure virtual network traffic routing" href="https://learn.microsoft.com/azure/virtual-network/virtual-networks-udr-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Route injection in spoke virtual networks" href="https://learn.microsoft.com/azure/route-server/route-injection-in-spokes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automate management of user-defined routes (UDRs) with Azure Virtual Network Manager" href="https://learn.microsoft.com/azure/virtual-network-manager/concept-user-defined-route?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Associate a route table with a subnet
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure virtual networks": under [Associate public IP addresses to resources](#associate-public-ip-addresses-to-resources) in the skill group Design and implement IP addressing for Azure resources
+- "Introduction to Azure Virtual Networks": under [Create a virtual network (VNet)](#create-a-virtual-network-vnet) in the skill group Design and implement IP addressing for Azure resources
+:::
+
+#### Configure forced tunneling
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Firewall forced tunneling" href="https://learn.microsoft.com/azure/firewall/forced-tunneling?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure forced tunneling for Virtual WAN Point-to-site VPN" href="https://learn.microsoft.com/azure/virtual-wan/how-to-forced-tunnel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About forced tunneling for site-to-site" href="https://learn.microsoft.com/azure/vpn-gateway/about-site-to-site-tunneling?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure forced tunneling for S2S connections - Default Site: PowerShell" href="https://learn.microsoft.com/azure/vpn-gateway/site-to-site-tunneling?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Advertise custom routes for point-to-site VPN Gateway clients" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-p2s-advertise-custom-routes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Firewall Management NIC" href="https://learn.microsoft.com/azure/firewall/management-nic?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Azure VPN Client optional settings" href="https://learn.microsoft.com/azure/vpn-gateway/azure-vpn-client-optional-configurations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Diagnose and resolve routing issues
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement Azure ExpressRoute" href="https://learn.microsoft.com/training/modules/design-implement-azure-expressroute?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Diagnose a VM Network Routing Problem - Azure CLI" href="https://learn.microsoft.com/azure/network-watcher/diagnose-vm-network-routing-problem-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Diagnose a VM Network Routing Problem - Azure PowerShell" href="https://learn.microsoft.com/azure/network-watcher/diagnose-vm-network-routing-problem-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Next Hop Overview" href="https://learn.microsoft.com/azure/network-watcher/next-hop-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Diagnose an Azure virtual machine routing problem" href="https://learn.microsoft.com/azure/virtual-network/diagnose-network-routing-problem?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure ExpressRoute: Asymmetric routing" href="https://learn.microsoft.com/azure/expressroute/expressroute-asymmetric-routing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Azure Route Server issues" href="https://learn.microsoft.com/azure/route-server/troubleshoot-route-server?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement Azure Route Server
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Identify appropriate use cases for Azure NAT Gateway
+
+:::note
+The Microsoft Learn module "Introduction to Azure Virtual Networks" also covers this task. It is listed once, under [Create a virtual network (VNet)](#create-a-virtual-network-vnet) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Implement Azure NAT Gateway
+
+:::note
+The Microsoft Learn module "Introduction to Azure Virtual Networks" also covers this task. It is listed once, under [Create a virtual network (VNet)](#create-a-virtual-network-vnet) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+### Monitor networks
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe core infrastructure security services in Azure" href="https://learn.microsoft.com/training/modules/describe-basic-security-capabilities-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Azure Firewall" href="https://learn.microsoft.com/training/modules/introduction-azure-firewall?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Network Insights" href="https://learn.microsoft.com/azure/network-watcher/network-insights-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is network monitoring and management?" href="https://learn.microsoft.com/azure/networking/monitoring-management/network-monitoring-management-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure monitoring, network diagnostics, and logs in Azure Network Watcher
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement network monitoring" href="https://learn.microsoft.com/training/modules/design-implement-network-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor and troubleshoot network health by using Azure Network Watcher
+
+:::note
+The Microsoft Learn module "Design and implement network monitoring" also covers this task. It is listed once, under [Configure monitoring, network diagnostics, and logs in Azure Network Watcher](#configure-monitoring-network-diagnostics-and-logs-in-azure-network-watcher).
+:::
+
+#### Monitor and troubleshoot networks by using Azure Monitor for Networks
+
+:::note
+The Microsoft Learn module "Design and implement network monitoring" also covers this task. It is listed once, under [Configure monitoring, network diagnostics, and logs in Azure Network Watcher](#configure-monitoring-network-diagnostics-and-logs-in-azure-network-watcher).
+:::
+
+#### Activate and monitor distributed denial-of-service (DDoS) protection
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement network security" href="https://learn.microsoft.com/training/modules/design-implement-network-security-monitoring?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Evaluate network security recommendations identified by Microsoft Defender for Cloud Secure Score
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection).
+:::
+
+#### Evaluate network security recommendations identified by Microsoft Defender for Cloud attack path analysis
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection).
+:::
+
+#### Identify network resources by using Cloud Security Explorer in Microsoft Defender for Cloud
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection).
+:::
+
+## Design, implement, and manage connectivity services (20–25%)
+
+### Design, implement, and manage a site-to-site VPN connection
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="About gateway SKUs" href="https://learn.microsoft.com/azure/vpn-gateway/about-gateway-skus?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About BGP with VPN Gateway" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About active-active VPN gateways" href="https://learn.microsoft.com/azure/vpn-gateway/about-active-active-gateways?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design a site-to-site VPN connection, including for high availability
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create site-to-site high bandwidth tunnels in the Azure portal" href="https://learn.microsoft.com/azure/vpn-gateway/site-to-site-high-bandwidth-tunnel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Select an appropriate virtual network gateway stock-keeping unit (SKU) for site-to-site VPN requirements
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+#### Implement a site-to-site VPN connection
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add or remove site-to-site connections" href="https://learn.microsoft.com/azure/vpn-gateway/add-remove-site-to-site-connections?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure a certificate-authenticated site-to-site VPN connection" href="https://learn.microsoft.com/azure/vpn-gateway/site-to-site-certificate-authentication-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create S2S VPN connection - shared key authentication - Azure PowerShell" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create S2S VPN connection - shared key authentication - Azure CLI" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Download VPN device configuration scripts for S2S VPN connections" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-download-vpndevicescript?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create site-to-site connections using Virtual WAN - PowerShell" href="https://learn.microsoft.com/azure/virtual-wan/site-to-site-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure a packet capture for S2S VPN connections using the Azure portal" href="https://learn.microsoft.com/azure/virtual-wan/packet-capture-site-to-site-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure a packet capture for Virtual WAN site-to-site connections" href="https://learn.microsoft.com/azure/virtual-wan/packet-capture-site-to-site-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About Site-to-site VPN Connections with Certificate Authentication" href="https://learn.microsoft.com/azure/vpn-gateway/site-to-site-certificate-authentication-gateway-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Site-to-Site VPN connections over ExpressRoute private peering" href="https://learn.microsoft.com/azure/vpn-gateway/site-to-site-vpn-private-peering?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About VPN devices for connections" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor S2S VPN BGP routes - BGP dashboard" href="https://learn.microsoft.com/azure/virtual-wan/monitor-bgp-dashboard?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About Azure VPN Gateway" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reset a VPN Gateway or Gateway Connection to Reestablish IPsec Tunnels" href="https://learn.microsoft.com/azure/vpn-gateway/reset-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Cryptographic requirements for VPN gateways" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify when to use a policy-based VPN versus a route-based VPN connection
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+#### Create and configure a local network gateway
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Modify gateway IP address settings: PowerShell" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-modify-local-network-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Modify gateway IP address settings: Azure CLI" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-modify-local-network-gateway-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Modify gateway IP address settings: Azure portal" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-modify-local-network-gateway-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and configure an IPsec/Internet Key Exchange (IKE) policy
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure custom IPsec/IKE connection policies for S2S VPN & VNet-to-VNet: Azure portal" href="https://learn.microsoft.com/azure/vpn-gateway/ipsec-ike-policy-howto?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure custom IPsec/IKE connection policies for S2S VPN & VNet-to-VNet: PowerShell" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and configure a virtual network gateway
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement hybrid networking": under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing
+- "Introduction to Azure Virtual Networks": under [Create a virtual network (VNet)](#create-a-virtual-network-vnet) in the skill group Design and implement IP addressing for Azure resources
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create a Basic SKU virtual network gateway: PowerShell" href="https://learn.microsoft.com/azure/vpn-gateway/create-gateway-basic-sku-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a virtual network gateway - PowerShell" href="https://learn.microsoft.com/azure/vpn-gateway/create-gateway-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a virtual network gateway - CLI" href="https://learn.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a zone-redundant virtual network gateway in Azure availability zones" href="https://learn.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure customer-controlled maintenance for your virtual network gateway" href="https://learn.microsoft.com/azure/vpn-gateway/customer-controlled-gateway-maintenance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure VPN Gateway topologies and design" href="https://learn.microsoft.com/azure/vpn-gateway/design?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delete a virtual network gateway: portal" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delete a virtual network gateway: PowerShell" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure a VNet-to-VNet VPN gateway connection: Azure portal" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Verify a gateway connection" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-verify-connection-resource-manager?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure your VPN Gateway deployment" href="https://learn.microsoft.com/azure/vpn-gateway/secure-vpn-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Diagnose and resolve virtual network gateway connectivity issues
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+#### Implement Azure Extended Network
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement hybrid networking": under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing
+- "Introduction to Azure Virtual Networks": under [Create a virtual network (VNet)](#create-a-virtual-network-vnet) in the skill group Design and implement IP addressing for Azure resources
+:::
+
+### Design, implement, and manage a point-to-site VPN connection
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="About client address pools for P2S User VPN" href="https://learn.microsoft.com/azure/virtual-wan/about-client-address-pools?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="User VPN (point-to-site) Concepts" href="https://learn.microsoft.com/azure/virtual-wan/point-to-site-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Select an appropriate virtual network gateway SKU for point-to-site VPN requirements
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Gateway SKU Mappings" href="https://learn.microsoft.com/azure/vpn-gateway/gateway-sku-consolidation?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Select and configure a tunnel type
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure an Always-On VPN tunnel" href="https://learn.microsoft.com/azure/virtual-wan/howto-always-on-device-tunnel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure an Always-On VPN tunnel" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-always-on-device-tunnel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure an Always-On VPN user tunnel" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-always-on-user-tunnel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Select an appropriate authentication method
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+#### Configure RADIUS authentication
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Connect to a virtual network using P2S and RADIUS authentication - PowerShell" href="https://learn.microsoft.com/azure/vpn-gateway/point-to-site-how-to-radius-ps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure VPN gateway for P2S RADIUS authentication - Azure portal" href="https://learn.microsoft.com/azure/vpn-gateway/point-to-site-radius-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure a VPN client for P2S RADIUS authentication connections" href="https://learn.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-radius?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Integrate P2S RADIUS authentication with NPS for MFA" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-radius-mfa-nsp?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Vender-specific Attributes for Point-to-Site - RADIUS" href="https://learn.microsoft.com/azure/vpn-gateway/point-to-site-user-groups-radius?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure authentication by using Microsoft Entra ID
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Entra tenant for User VPN connections: Microsoft Entra authentication -OpenVPN" href="https://learn.microsoft.com/azure/virtual-wan/openvpn-azure-ad-tenant?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure P2S User VPN for Microsoft Entra ID authentication - Microsoft-registered client" href="https://learn.microsoft.com/azure/virtual-wan/point-to-site-entra-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Azure VPN Client - Microsoft Entra ID authentication - Windows" href="https://learn.microsoft.com/azure/virtual-wan/point-to-site-entra-vpn-client-windows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure a P2S User VPN - Microsoft Entra ID authentication - manually registered Azure VPN Client App ID" href="https://learn.microsoft.com/azure/virtual-wan/virtual-wan-point-to-site-azure-ad?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure a P2S VPN - Microsoft Entra ID authentication - manually registered Azure VPN Client App ID" href="https://learn.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure P2S VPN gateway for Microsoft Entra ID authentication: Microsoft-registered client" href="https://learn.microsoft.com/azure/vpn-gateway/point-to-site-entra-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate manually registered Azure VPN client to Microsoft-registered for P2S Microsoft Entra ID authentication" href="https://learn.microsoft.com/azure/vpn-gateway/point-to-site-entra-gateway-update?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure a VPN client for P2S Microsoft Entra ID authentication connections" href="https://learn.microsoft.com/azure/vpn-gateway/point-to-site-entra-vpn-client?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable MFA for VPN users: Microsoft Entra ID authentication" href="https://learn.microsoft.com/azure/virtual-wan/openvpn-azure-ad-mfa?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create custom app ID for P2S VPN Microsoft Entra ID authentication" href="https://learn.microsoft.com/azure/virtual-wan/point-to-site-entra-register-custom-app?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable MFA for VPN users - Microsoft Entra ID authentication" href="https://learn.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-mfa?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create custom app ID for P2S VPN Microsoft Entra ID authentication" href="https://learn.microsoft.com/azure/vpn-gateway/point-to-site-entra-register-custom-app?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure P2S access based on users and groups - Microsoft Entra ID authentication" href="https://learn.microsoft.com/azure/vpn-gateway/point-to-site-entra-users-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Device SSO for Windows - Azure VPN Client - Microsoft Entra ID authentication" href="https://learn.microsoft.com/azure/vpn-gateway/point-to-site-entra-vpn-client-windows-device-sso?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement a VPN client configuration file
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="P2S VPN client profile configuration files - Microsoft Entra authentication" href="https://learn.microsoft.com/azure/vpn-gateway/about-vpn-profile-download?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Virtual WAN: User VPN client profiles" href="https://learn.microsoft.com/azure/virtual-wan/about-vpn-profile-download?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Diagnose and resolve client-side and authentication issues
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+#### Specify Azure requirements for Always On VPN
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure an Always-On VPN user tunnel" href="https://learn.microsoft.com/azure/virtual-wan/howto-always-on-user-tunnel?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure an Always-On VPN device tunnel for macOS" href="https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-always-on-device-tunnel-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify Azure requirements for Azure Network Adapter
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Design, implement, and manage Azure ExpressRoute
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure ExpressRoute" href="https://learn.microsoft.com/training/modules/intro-to-azure-expressroute?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure ExpressRoute Overview: Connect over a private connection" href="https://learn.microsoft.com/azure/expressroute/expressroute-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Select an ExpressRoute connectivity model
+
+:::note
+The Microsoft Learn module "Design and implement Azure ExpressRoute" also covers this task. It is listed once, under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure ExpressRoute: Connectivity models" href="https://learn.microsoft.com/azure/expressroute/expressroute-connectivity-models?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Select an appropriate ExpressRoute SKU and tier
+
+:::note
+The Microsoft Learn module "Design and implement Azure ExpressRoute" also covers this task. It is listed once, under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure a virtual network gateway for ExpressRoute using the Azure portal" href="https://learn.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement ExpressRoute to meet requirements, including cross-region connectivity, redundancy, and disaster recovery
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Design and implement ExpressRoute options, including Global Reach, FastPath, and ExpressRoute Direct
+
+:::note
+The Microsoft Learn module "Design and implement Azure ExpressRoute" also covers this task. It is listed once, under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+#### Choose between Azure private peering only, Microsoft peering only, or both
+
+:::note
+The Microsoft Learn module "Design and implement Azure ExpressRoute" also covers this task. It is listed once, under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Connect an On-Premises Network to Azure by Using ExpressRoute - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/expressroute-private-peering-connectivity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Azure private peering
+
+:::note
+The Microsoft Learn module "Design and implement Azure ExpressRoute" also covers this task. It is listed once, under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+#### Configure Microsoft peering
+
+:::note
+The Microsoft Learn module "Design and implement Azure ExpressRoute" also covers this task. It is listed once, under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+#### Create and configure an ExpressRoute gateway
+
+:::note
+The Microsoft Learn module "Design and implement Azure ExpressRoute" also covers this task. It is listed once, under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+#### Connect a virtual network to an ExpressRoute circuit
+
+:::note
+The Microsoft Learn module "Design and implement Azure ExpressRoute" also covers this task. It is listed once, under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+#### Recommend a route advertisement configuration
+
+:::note
+The Microsoft Learn module "Design and implement Azure ExpressRoute" also covers this task. It is listed once, under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="About route maps for Azure Route Server" href="https://learn.microsoft.com/azure/route-server/route-maps-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure route maps for Azure Route Server" href="https://learn.microsoft.com/azure/route-server/route-maps-how-to?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure encryption over ExpressRoute
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Plan and implement security for virtual networks" href="https://learn.microsoft.com/training/modules/security-virtual-networks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure ExpressRoute encryption: IPsec over ExpressRoute for Azure Virtual WAN" href="https://learn.microsoft.com/azure/virtual-wan/vpn-over-expressroute?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Bidirectional Forwarding Detection
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure ExpressRoute: Configure BFD" href="https://learn.microsoft.com/azure/expressroute/expressroute-bfd?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Diagnose and resolve ExpressRoute connection issues
+
+:::note
+The Microsoft Learn module "Design and implement Azure ExpressRoute" also covers this task. It is listed once, under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+### Design and implement an Azure Virtual WAN architecture
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Firewall Manager" href="https://learn.microsoft.com/training/modules/intro-to-azure-firewall-manager?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Virtual WAN Overview" href="https://learn.microsoft.com/azure/virtual-wan/virtual-wan-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About Network Virtual Appliances - Virtual WAN hub" href="https://learn.microsoft.com/azure/virtual-wan/about-nva-hub?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Select a Virtual WAN SKU
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Upgrade Virtual WAN - Basic SKU type to Standard" href="https://learn.microsoft.com/azure/virtual-wan/upgrade-virtual-wan?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design a Virtual WAN architecture, including selecting types and services
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+#### Create a virtual hub in Virtual WAN
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Connect a VNet to a Virtual WAN hub - portal" href="https://learn.microsoft.com/azure/virtual-wan/howto-connect-vnet-hub?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect a VNet to a Virtual WAN hub - PowerShell" href="https://learn.microsoft.com/azure/virtual-wan/howto-connect-vnet-hub-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About virtual hub settings" href="https://learn.microsoft.com/azure/virtual-wan/hub-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About virtual hub roles and permissions" href="https://learn.microsoft.com/azure/virtual-wan/roles-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor Azure Virtual WAN" href="https://learn.microsoft.com/azure/virtual-wan/monitor-virtual-wan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Virtual WAN partners, regions, and available locations" href="https://learn.microsoft.com/azure/virtual-wan/virtual-wan-locations-partners?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose an appropriate scale unit for each gateway type
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement Azure ExpressRoute": under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing
+- "Design and implement hybrid networking": under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="About Scalable Gateway" href="https://learn.microsoft.com/azure/expressroute/scalable-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy a gateway into a virtual hub
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement Azure ExpressRoute": under [Diagnose and resolve routing issues](#diagnose-and-resolve-routing-issues) in the skill group Design and implement VNet connectivity and routing
+- "Design and implement hybrid networking": under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="About gateway settings for Virtual WAN" href="https://learn.microsoft.com/azure/virtual-wan/gateway-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect a virtual network gateway to an Azure Virtual WAN" href="https://learn.microsoft.com/azure/virtual-wan/connect-virtual-network-gateway-vwan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure customer-controlled maintenance for your Virtual WAN gateways" href="https://learn.microsoft.com/azure/virtual-wan/customer-controlled-gateway-maintenance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure VPN NAT rules for your gateway" href="https://learn.microsoft.com/azure/virtual-wan/nat-rules-vpn-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure VPN NAT rules for your gateway using PowerShell" href="https://learn.microsoft.com/azure/virtual-wan/nat-rules-vpn-gateway-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure virtual hub routing
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="About virtual hub routing" href="https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Virtual WAN virtual hub routing preference" href="https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing-preference?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to configure Virtual WAN Hub routing policies" href="https://learn.microsoft.com/azure/virtual-wan/how-to-routing-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to configure virtual hub routing: Azure portal" href="https://learn.microsoft.com/azure/virtual-wan/how-to-virtual-hub-routing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to configure virtual hub routing: Azure PowerShell" href="https://learn.microsoft.com/azure/virtual-wan/how-to-virtual-hub-routing-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure virtual hub routing preference: Azure PowerShell" href="https://learn.microsoft.com/azure/virtual-wan/how-to-virtual-hub-routing-preference-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure virtual hub routing preference: Azure portal" href="https://learn.microsoft.com/azure/virtual-wan/howto-virtual-hub-routing-preference?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Route-maps for virtual hubs" href="https://learn.microsoft.com/azure/virtual-wan/route-maps-how-to?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to configure Route-maps to summarize routes leaving your virtual WAN" href="https://learn.microsoft.com/azure/virtual-wan/route-maps-how-to-summarize-routes-leaving-your-virtual-wan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Basic static route scenarios with Azure Firewall in Virtual WAN" href="https://learn.microsoft.com/azure/virtual-wan/static-routes-firewall-basic?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Virtual WAN: Create virtual hub route table to NVA: Azure PowerShell" href="https://learn.microsoft.com/azure/virtual-wan/virtual-wan-route-table-nva?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Virtual WAN: Create virtual hub route table to NVA: Azure portal" href="https://learn.microsoft.com/azure/virtual-wan/virtual-wan-route-table-nva-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to configure Route-maps to drop inbound routes from branch sites" href="https://learn.microsoft.com/azure/virtual-wan/route-maps-drop-inbound-branch-sites?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to configure Route-maps to prepend routes" href="https://learn.microsoft.com/azure/virtual-wan/route-maps-prepend-routes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to configure Route-maps to summarize routes from an NVA in a spoke virtual network" href="https://learn.microsoft.com/azure/virtual-wan/route-maps-summarize-from-device-spoke-vnet-nva?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to configure Route-maps to tag routes" href="https://learn.microsoft.com/azure/virtual-wan/route-maps-tag-routes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Securing Internet access with routing intent" href="https://learn.microsoft.com/azure/virtual-wan/about-internet-routing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure BGP peering to an NVA: Azure portal" href="https://learn.microsoft.com/azure/virtual-wan/create-bgp-peering-hub-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure BGP peering to an NVA: PowerShell" href="https://learn.microsoft.com/azure/virtual-wan/create-bgp-peering-hub-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Hybrid static routing with Azure Firewall and spoke NVAs" href="https://learn.microsoft.com/azure/virtual-wan/hybrid-firewall-spoke-static?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Route traffic to indirect spokes" href="https://learn.microsoft.com/azure/virtual-wan/indirect-spoke-architecture?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About Route-maps" href="https://learn.microsoft.com/azure/virtual-wan/route-maps-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Virtual WAN routing deep dive" href="https://learn.microsoft.com/azure/virtual-wan/routing-deep-dive?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use routing intent with static routes in Azure Virtual WAN" href="https://learn.microsoft.com/azure/virtual-wan/routing-intent-static-route?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scenario: any-to-any" href="https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scenario: Isolating VNets" href="https://learn.microsoft.com/azure/virtual-wan/scenario-isolate-vnets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scenario: Custom isolation for VNets" href="https://learn.microsoft.com/azure/virtual-wan/scenario-isolate-vnets-custom?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scenario: Route to shared services VNets" href="https://learn.microsoft.com/azure/virtual-wan/scenario-shared-services-vnet?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Inspect private and internet traffic with spoke NVAs" href="https://learn.microsoft.com/azure/virtual-wan/spoke-inspection-north-south?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Static routes in Azure Virtual WAN" href="https://learn.microsoft.com/azure/virtual-wan/static-routes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About BGP peering with a virtual hub" href="https://learn.microsoft.com/azure/virtual-wan/scenario-bgp-peering-hub?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View effective routes of a virtual hub: Azure Virtual WAN" href="https://learn.microsoft.com/azure/virtual-wan/effective-routes-virtual-hub?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure traffic between Application Gateway and backend pools" href="https://learn.microsoft.com/azure/virtual-wan/scenario-secured-hub-app-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor Route-maps using the Route Map Dashboard" href="https://learn.microsoft.com/azure/virtual-wan/route-maps-dashboard?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Integrate a virtual hub with a third-party NVA for cloud connectivity
+
+:::note
+The Microsoft Learn module "Design and implement hybrid networking" also covers this task. It is listed once, under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing.
+:::
+
+## Design and implement application delivery services (15–20%)
+
+### Design and implement Azure Load Balancer and Azure Traffic Manager
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Load Balancer" href="https://learn.microsoft.com/training/modules/intro-to-azure-load-balancer?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Map requirements to features and capabilities of Azure Load Balancer
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Load balance non-HTTP(S) traffic in Azure" href="https://learn.microsoft.com/training/modules/load-balancing-non-https-traffic-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify appropriate use cases for Azure Load Balancer
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Load balance non-HTTP(S) traffic in Azure": under [Map requirements to features and capabilities of Azure Load Balancer](#map-requirements-to-features-and-capabilities-of-azure-load-balancer)
+- "Load balance HTTP(S) traffic in Azure": under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources
+:::
+
+#### Choose an Azure Load Balancer SKU and tier
+
+:::note
+The Microsoft Learn module "Load balance non-HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Map requirements to features and capabilities of Azure Load Balancer](#map-requirements-to-features-and-capabilities-of-azure-load-balancer).
+:::
+
+#### Choose between public and internal load balancers
+
+:::note
+The Microsoft Learn module "Load balance non-HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Map requirements to features and capabilities of Azure Load Balancer](#map-requirements-to-features-and-capabilities-of-azure-load-balancer).
+:::
+
+#### Choose between regional and cross-region load balancers
+
+:::note
+The Microsoft Learn module "Load balance non-HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Map requirements to features and capabilities of Azure Load Balancer](#map-requirements-to-features-and-capabilities-of-azure-load-balancer).
+:::
+
+#### Create and configure an Azure Load Balancer
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement network monitoring": under [Configure monitoring, network diagnostics, and logs in Azure Network Watcher](#configure-monitoring-network-diagnostics-and-logs-in-azure-network-watcher) in the skill group Monitor networks
+- "Load balance non-HTTP(S) traffic in Azure": under [Map requirements to features and capabilities of Azure Load Balancer](#map-requirements-to-features-and-capabilities-of-azure-load-balancer)
+:::
+
+#### Implement Azure Traffic Manager
+
+:::note
+The Microsoft Learn module "Load balance non-HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Map requirements to features and capabilities of Azure Load Balancer](#map-requirements-to-features-and-capabilities-of-azure-load-balancer).
+:::
+
+#### Implement Gateway Load Balancer
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Implement a load balancing rule
+
+:::note
+The Microsoft Learn module "Load balance non-HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Map requirements to features and capabilities of Azure Load Balancer](#map-requirements-to-features-and-capabilities-of-azure-load-balancer).
+:::
+
+#### Create and configure inbound NAT rules
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure Inbound NAT Rules for Virtual Machine Scale Sets" href="https://learn.microsoft.com/azure/load-balancer/configure-inbound-nat-rules-vm-scale-set?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Inbound NAT rules" href="https://learn.microsoft.com/azure/load-balancer/inbound-nat-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage inbound NAT rules for Azure Load Balancer" href="https://learn.microsoft.com/azure/load-balancer/manage-inbound-nat-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate from Inbound NAT rules version 1 to version 2" href="https://learn.microsoft.com/azure/load-balancer/load-balancer-nat-pool-migration?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and configure explicit outbound rules, including source network address translation (SNAT)
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Source Network Address Translation (SNAT) for outbound connections" href="https://learn.microsoft.com/azure/load-balancer/load-balancer-outbound-connections?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot SNAT Port Exhaustion for a Standard Load Balancer in Azure Kubernetes Service (AKS)" href="https://learn.microsoft.com/azure/aks/troubleshoot-source-network-address-translation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Source Network Address Translation (SNAT) with Azure NAT Gateway" href="https://learn.microsoft.com/azure/nat-gateway/nat-gateway-snat?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement Azure Application Gateway
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Application Gateway" href="https://learn.microsoft.com/training/modules/intro-to-azure-application-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="TLS policy overview for Azure Application Gateway" href="https://learn.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Azure Application Gateway" href="https://learn.microsoft.com/azure/application-gateway/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Azure Application Gateway v2?" href="https://learn.microsoft.com/azure/application-gateway/overview-v2?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enabling end to end TLS on Azure Application Gateway" href="https://learn.microsoft.com/azure/application-gateway/ssl-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Application Gateway configuration overview" href="https://learn.microsoft.com/azure/application-gateway/configuration-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Hosting multiple sites on Azure Application Gateway" href="https://learn.microsoft.com/azure/application-gateway/multiple-site-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Map requirements to features and capabilities of Azure Application Gateway
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Identify appropriate use cases for Azure Application Gateway
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Choose between manual and autoscale
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Create a backend pool
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Route traffic using parameter-based path selection in portal - Azure Application Gateway" href="https://learn.microsoft.com/azure/application-gateway/parameter-based-path-selection-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure health probes
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Health monitoring overview for Azure Application Gateway" href="https://learn.microsoft.com/azure/application-gateway/application-gateway-probe-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure listeners
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Application Gateway listener configuration" href="https://learn.microsoft.com/azure/application-gateway/configuration-listeners?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure listener-specific SSL policies on Azure Application Gateway through portal" href="https://learn.microsoft.com/azure/application-gateway/application-gateway-configure-listener-specific-ssl-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="HTTP/3 support in Azure Application Gateway - Preview" href="https://learn.microsoft.com/azure/application-gateway/http3-quic-support?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="TLS termination with Azure Key Vault certificates" href="https://learn.microsoft.com/azure/application-gateway/key-vault-certs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Redirect overview for Azure Application Gateway" href="https://learn.microsoft.com/azure/application-gateway/redirect-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Renew an Azure Application Gateway certificate" href="https://learn.microsoft.com/azure/application-gateway/renew-certificates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Listener TLS certificate management in Application Gateway" href="https://learn.microsoft.com/azure/application-gateway/ssl-certificate-management?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure routing rules
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure HTTP settings
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Configure Transport Layer Security (TLS)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Plan and implement security for public access to Azure resources" href="https://learn.microsoft.com/training/modules/security-public-access-azure-resources?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure rewrite rule sets
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Rewrite HTTP headers in Azure Application Gateway" href="https://learn.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Design and implement Azure Front Door
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Front Door Overview" href="https://learn.microsoft.com/azure/frontdoor/front-door-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is a rule set?" href="https://learn.microsoft.com/azure/frontdoor/front-door-rules-engine?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Map requirements to features and capabilities of Azure Front Door
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Identify appropriate use cases for Azure Front Door
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Choose an appropriate tier
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Comparison Between Azure Front Door and Azure Content Delivery Network" href="https://learn.microsoft.com/azure/frontdoor/front-door-cdn-comparison?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Compare Pricing Between Azure Front Door Tiers" href="https://learn.microsoft.com/azure/frontdoor/understanding-pricing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Network secure ingress pattern implementation with Azure Front Door Premium tier - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/pattern-implementations/network-secure-ingress?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Front Door billing" href="https://learn.microsoft.com/azure/frontdoor/billing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Upgrade from Azure Front Door Standard to Premium" href="https://learn.microsoft.com/azure/frontdoor/tier-upgrade?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Upgrade from Azure Front Door Standard to Premium with Azure PowerShell" href="https://learn.microsoft.com/azure/frontdoor/tier-upgrade-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure an Azure Front Door, including routing, origins, and endpoints
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Configure TLS termination and end-to-end TLS encryption
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="TLS encryption" href="https://learn.microsoft.com/azure/frontdoor/end-to-end-tls?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Azure Front Door to Secure AKS Workloads - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/example-scenario/aks-front-door/aks-front-door?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure caching
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Caching" href="https://learn.microsoft.com/azure/frontdoor/front-door-caching?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure caching" href="https://learn.microsoft.com/azure/frontdoor/how-to-configure-caching?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Purge Cache for Azure Front Door" href="https://learn.microsoft.com/azure/frontdoor/cache-purge?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Integrate an Azure Storage account with Azure Front Door" href="https://learn.microsoft.com/azure/frontdoor/integrate-storage-account?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure traffic acceleration
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Traffic acceleration" href="https://learn.microsoft.com/azure/frontdoor/front-door-traffic-acceleration?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement rules, URL rewrite, and URL redirect
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="URL Redirect" href="https://learn.microsoft.com/azure/frontdoor/front-door-url-redirect?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="URL Rewrite" href="https://learn.microsoft.com/azure/frontdoor/front-door-url-rewrite?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Secure an origin by using Azure Private Link in Azure Front Door
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Secure your Origin with Private Link in Azure Front Door Premium" href="https://learn.microsoft.com/azure/frontdoor/private-link?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect to an Azure Application Gateway Origin with Private Link" href="https://learn.microsoft.com/azure/frontdoor/how-to-enable-private-link-application-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect Azure Front Door to a storage static website origin with Private Link" href="https://learn.microsoft.com/azure/frontdoor/how-to-enable-private-link-storage-static-website?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect Front Door Premium to an Azure API Management origin with Private Link" href="https://learn.microsoft.com/azure/frontdoor/standard-premium/how-to-enable-private-link-apim?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect Azure Front Door Premium to an internal load balancer origin with Private Link" href="https://learn.microsoft.com/azure/frontdoor/standard-premium/how-to-enable-private-link-internal-load-balancer?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect Azure Front Door to a Storage Account Origin" href="https://learn.microsoft.com/azure/frontdoor/standard-premium/how-to-enable-private-link-storage-account?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect Azure Front Door to an App Service Origin" href="https://learn.microsoft.com/azure/frontdoor/standard-premium/how-to-enable-private-link-web-app?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Design and implement private access to Azure services (10–15%)
+
+### Design and implement Azure Private Link service and Azure private endpoints
+
+#### Plan private endpoints
+
+:::note
+The Microsoft Learn module "Design and implement private access to Azure Services" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Create private endpoints
+
+:::note
+The Microsoft Learn module "Design and implement private access to Azure Services" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Configure access to private endpoints
+
+:::note
+The Microsoft Learn module "Design and implement private access to Azure Services" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Create a Private Link service
+
+:::note
+The Microsoft Learn module "Design and implement private access to Azure Services" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Share a private link service across Virtual WAN" href="https://learn.microsoft.com/azure/virtual-wan/howto-private-link?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Integrate Private Link and Private Endpoint with DNS
+
+:::note
+The Microsoft Learn module "Design and implement private access to Azure Services" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Integrate a Private Link service with on-premises clients
+
+:::note
+The Microsoft Learn module "Design and implement private access to Azure Services" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+### Design and implement service endpoints
+
+#### Choose when to use a service endpoint
+
+:::note
+The Microsoft Learn module "Design and implement private access to Azure Services" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Create service endpoints
+
+:::note
+The Microsoft Learn module "Design and implement private access to Azure Services" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Configure service endpoint policies
+
+:::note
+The Microsoft Learn module "Design and implement private access to Azure Services" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Configure access to service endpoints
+
+:::note
+The Microsoft Learn module "Design and implement private access to Azure Services" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+## Design and implement Azure network security services (15–20%)
+
+### Implement and manage network security groups
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Network Watcher Overview" href="https://learn.microsoft.com/azure/network-watcher/network-watcher-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a network security group (NSG)
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+#### Associate a NSG to a subnet or network interface
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+#### Create an application security group (ASG)
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+#### Associate an ASG to a network interface
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure network security groups" href="https://learn.microsoft.com/training/modules/configure-network-security-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Filter network traffic with a network security group using the Azure portal" href="https://learn.microsoft.com/training/modules/filter-network-traffic-network-security-group-using-azure-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Network security groups and application security groups" href="https://learn.microsoft.com/azure/networking/design-guide/network-application-security-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Application Security Groups Overview" href="https://learn.microsoft.com/azure/virtual-network/application-security-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and configure NSG inbound and outbound security rules
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How Network Security Groups Filter Network Traffic in Azure" href="https://learn.microsoft.com/azure/virtual-network/network-security-group-how-it-works?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement virtual network flow logs
+
+:::note
+The Microsoft Learn module "Design and implement network monitoring" also covers this task. It is listed once, under [Configure monitoring, network diagnostics, and logs in Azure Network Watcher](#configure-monitoring-network-diagnostics-and-logs-in-azure-network-watcher) in the skill group Monitor networks.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage Virtual Network Flow Logs" href="https://learn.microsoft.com/azure/network-watcher/vnet-flow-logs-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Virtual Network Flow Logs" href="https://learn.microsoft.com/azure/network-watcher/vnet-flow-logs-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate to Virtual Network Flow Logs" href="https://learn.microsoft.com/azure/network-watcher/nsg-flow-logs-migrate?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Virtual Network Flow Log by Using Bicep" href="https://learn.microsoft.com/azure/network-watcher/vnet-flow-logs-bicep?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Filter Virtual Network Flow Logs (Preview)" href="https://learn.microsoft.com/azure/network-watcher/vnet-flow-logs-filtering?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Managed Identity for Virtual Network Flow Logs" href="https://learn.microsoft.com/azure/network-watcher/vnet-flow-logs-managed-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit and Deploy Virtual Network Flow Logs Using Azure Policy" href="https://learn.microsoft.com/azure/network-watcher/vnet-flow-logs-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Virtual Network Flow Log by Using an ARM Template" href="https://learn.microsoft.com/azure/network-watcher/vnet-flow-logs-template?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Virtual Network Flow Log by Using Terraform" href="https://learn.microsoft.com/azure/network-watcher/vnet-flow-logs-terraform?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Interpret virtual network flow logs
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure monitoring for virtual networks": under [Verify IP flow](#verify-ip-flow)
+- "Design and implement network monitoring": under [Configure monitoring, network diagnostics, and logs in Azure Network Watcher](#configure-monitoring-network-diagnostics-and-logs-in-azure-network-watcher) in the skill group Monitor networks
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Monitoring security admin rules with virtual network flow logs" href="https://learn.microsoft.com/azure/virtual-network-manager/concept-virtual-network-flow-logs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Visualize Flow Logs with Power BI" href="https://learn.microsoft.com/azure/network-watcher/flow-logs-power-bi?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Read Flow Logs" href="https://learn.microsoft.com/azure/network-watcher/flow-logs-read?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Traffic Analytics Schema and Data Aggregation" href="https://learn.microsoft.com/azure/network-watcher/traffic-analytics-schema?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Network monitoring and observability" href="https://learn.microsoft.com/azure/networking/design-guide/monitor?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Verify IP flow
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure monitoring for virtual networks" href="https://learn.microsoft.com/training/modules/configure-monitoring-virtual-networks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="IP Flow Verify Overview" href="https://learn.microsoft.com/azure/network-watcher/ip-flow-verify-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure an NSG for remote server administration, including Azure Bastion
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure NSG rules for Azure Bastion" href="https://learn.microsoft.com/azure/bastion/bastion-nsg?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Design a secure hub-spoke network for regional web applications in Azure" href="https://learn.microsoft.com/azure/networking/cross-service-scenarios/design-secure-hub-spoke-network?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement and manage virtual network security by using Azure Virtual Network Manager
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Design and implement Azure Firewall and Azure Firewall Manager
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Azure Firewall?" href="https://learn.microsoft.com/azure/firewall/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is a secured virtual hub?" href="https://learn.microsoft.com/azure/firewall-manager/secured-virtual-hub?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Map requirements to features and capabilities of Azure Firewall
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+#### Select an appropriate Azure Firewall SKU
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Choose the right Azure Firewall SKU to meet your needs" href="https://learn.microsoft.com/azure/firewall/choose-firewall-sku?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Firewall features by SKU" href="https://learn.microsoft.com/azure/firewall/features-by-sku?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change Azure Firewall SKU" href="https://learn.microsoft.com/azure/firewall/change-sku?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design an Azure Firewall deployment
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Selective Azure Firewall bypass in a secure hub" href="https://learn.microsoft.com/azure/virtual-wan/firewall-custom-bypass?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and implement an Azure Firewall deployment
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Install Azure Firewall in a Virtual WAN hub" href="https://learn.microsoft.com/azure/virtual-wan/howto-firewall?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Azure Firewall rules
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage secure access to resources in spoke VNets for P2S clients" href="https://learn.microsoft.com/azure/virtual-wan/manage-secure-access-resources-spoke-p2s?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and implement Azure Firewall Manager policies
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+#### Create a secure hub by deploying Azure Firewall inside an Azure Virtual WAN hub
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement network security": under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks
+- "Design and implement hybrid networking": under [Design service chaining, including gateway transit](#design-service-chaining-including-gateway-transit) in the skill group Design and implement VNet connectivity and routing
+:::
+
+### Design and implement a Web Application Firewall (WAF) deployment
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Azure Web Application Firewall (WAF) v2 Custom Rules on Application Gateway" href="https://learn.microsoft.com/azure/web-application-firewall/ag/custom-waf-rules-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="WAF Policy Overview" href="https://learn.microsoft.com/azure/web-application-firewall/ag/policy-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Map requirements to features and capabilities of WAF
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+#### Design a WAF deployment
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+#### Configure detection or prevention mode
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement network security": under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks
+- "Load balance HTTP(S) traffic in Azure": under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources
+:::
+
+#### Configure rule sets for WAF on Azure Front Door
+
+:::note
+The Microsoft Learn module "Load balance HTTP(S) traffic in Azure" also covers this task. It is listed once, under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources.
+:::
+
+#### Configure rule sets for WAF on Application Gateway
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement network security": under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks
+- "Load balance HTTP(S) traffic in Azure": under [Plan and configure subnetting for services, including virtual network gateways, private endpoints, service endpoints, firewalls, application gateways, VNet-integrated platform services, and Azure Bastion](#plan-and-configure-subnetting-for-services-including-virtual-network-gateways-private-endpoints-service-endpoints-firewalls-application-gateways-vnet-integrated-platform-services-and-azure-bastion) in the skill group Design and implement IP addressing for Azure resources
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Application Gateway WAF CRS and DRS rule groups and rules" href="https://learn.microsoft.com/azure/web-application-firewall/ag/application-gateway-crs-rulegroups-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Customize rules using CLI" href="https://learn.microsoft.com/azure/web-application-firewall/ag/application-gateway-customize-waf-rules-cli?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Customize rules using portal" href="https://learn.microsoft.com/azure/web-application-firewall/ag/application-gateway-customize-waf-rules-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Customize rules using PowerShell" href="https://learn.microsoft.com/azure/web-application-firewall/ag/application-gateway-customize-waf-rules-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and use WAF v2 custom rules on Application Gateway" href="https://learn.microsoft.com/azure/web-application-firewall/ag/create-custom-waf-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Web Application Firewall (WAF) Geomatch Custom Rules" href="https://learn.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create rate limiting custom rules for Application Gateway WAF v2" href="https://learn.microsoft.com/azure/web-application-firewall/ag/rate-limiting-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement a WAF policy
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+#### Associate a WAF policy
+
+:::note
+The Microsoft Learn module "Design and implement network security" also covers this task. It is listed once, under [Activate and monitor distributed denial-of-service (DDoS) protection](#activate-and-monitor-distributed-denial-of-service-ddos-protection) in the skill group Monitor networks.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Associate a Web Application Firewall policy with an existing Azure Application Gateway" href="https://learn.microsoft.com/azure/web-application-firewall/ag/associate-waf-policy-existing-gateway?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
