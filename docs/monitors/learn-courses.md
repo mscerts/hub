@@ -58,6 +58,8 @@ One issue, `Learn courses: decisions needed` (label `enhancement`), created when
 
 ## Working the list
 
+On 2026-11-06 Microsoft listed AB-6007, MS-4002, MS-4017, MS-4023 and PL-400T00 as retired on 2026-10-30, and their Learn course URLs redirected to the training catalog. Their course cards were removed. The MS-4017 and MS-4023 YouTube playlists still worked, so their video cards remain and the tracker acknowledges them; the sync records the course removals after its second missing catalog read.
+
 1. **A course waiting for a decision:** in `learn-courses.json` set a proposed page to `"state": "confirmed"` (or `"rejected"`), or set the course to `"state": "no-page"`; you can also add a page by hand with origin `maintainer`. Then add the card to the exam page (`AGENTS.md > Exam Page Anatomy`, Videos and Text tabs, the usual URL rules) and the next run sees it.
 2. **A replacement proposal:** confirm it to keep the course on the replacement page for now, reject it to keep it off. A confirmed one is reported when it is due.
 3. **A confirmed page without its card:** add the card from the table.

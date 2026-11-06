@@ -2853,6 +2853,55 @@ test("the committed data files are valid and every ignored repository has a prob
   assert.ok(KINDS.includes("new-repo") && KINDS[0] === "gone");
 });
 
+test("the AB-400 page preserves the ten PL-400 labs on the maintained fork", () => {
+  const docsDir = join(root, "src", "content", "docs");
+  const text = readFileSync(
+    join(docsDir, "labs", "aibusiness", "ab-400.mdx"),
+    "utf8",
+  );
+  const prefix =
+    "https://github.com/teriaavibes/PL-400_Microsoft-Power-Platform-Developer/blob/master/Instructions/Labs/LAB%5BPL-400%5D_";
+  const filenames = [
+    "Lab00_Validate_lab_environment.md",
+    "Lab01_ImportSolution.md",
+    "Lab02_Advanced_Canvas_app..md",
+    "Lab03_Flow.md",
+    "Lab04_Tools.md",
+    "Lab05_APIs.md",
+    "Lab06_Client_Scripting.md",
+    "Lab07_PCF.md",
+    "Lab08_Plugins.md",
+    "Lab09_Azure.md",
+  ];
+  const links = extractUrls(stripComments(text))
+    .map(({ url }) => url)
+    .filter((url) => url.includes("PL-400_Microsoft-Power-Platform-Developer"));
+  assert.deepEqual(
+    links,
+    filenames.map((filename) => `${prefix}${filename}`),
+  );
+
+  const { refs } = extractReferences(docsDir);
+  assert.equal(
+    refs.get("teriaavibes/pl-400_microsoft-power-platform-developer")?.locations
+      .length,
+    10,
+  );
+  assert.ok(
+    !refs.has("microsoftlearning/pl-400_microsoft-power-platform-developer"),
+  );
+  const ignored = loadIgnore(
+    join(root, "src", "data_files", "lab-repos-ignore.json"),
+  );
+  assert.ok(
+    !ignored.some(
+      (entry) =>
+        entry.repo.toLowerCase() ===
+        "microsoftlearning/pl-400_microsoft-power-platform-developer",
+    ),
+  );
+});
+
 test("the Lab Repo Check runbook documents the monitor", () => {
   const runbook = readFileSync(
     join(root, "docs", "monitors", "lab-repo-check.md"),

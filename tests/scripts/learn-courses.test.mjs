@@ -685,6 +685,50 @@ test("a removed course that hub pages (active or archived) still link is reporte
   assert.deepEqual(view.gone, []);
 });
 
+test("retired Learn course cards are removed while their working recordings stay acknowledged", () => {
+  const root = join(import.meta.dirname, "../..");
+  const hub = scanHub({
+    docsDir: join(root, "src", "content", "docs"),
+    archiveDir: join(root, "src", "content", "archive"),
+  });
+  const tracker = parseFile(
+    readFileSync(join(root, "src", "data_files", "learn-courses.json"), "utf8"),
+  );
+  const keys = new Set([
+    "ab-6007",
+    "ms-4002",
+    "ms-4017",
+    "ms-4023",
+    "pl-400t00",
+  ]);
+  const recordings = new Set(["MS-4017", "MS-4023"]);
+  const cards = hub.cards.filter(
+    (card) =>
+      (card.kind === "learn" && keys.has(card.key)) ||
+      (card.kind === "youtube" && recordings.has(card.code)),
+  );
+  assert.ok(cards.every((card) => card.kind === "youtube"));
+  assert.equal(cards.filter((card) => card.code === "MS-4017").length, 2);
+  assert.equal(cards.filter((card) => card.code === "MS-4023").length, 1);
+
+  const previous = {
+    ...emptyFile(),
+    courses: tracker.courses.filter((entry) => keys.has(entry.key)),
+  };
+  assert.equal(previous.courses.length, keys.size);
+  assert.equal(byKey(previous).get("ms-4017").ack, true);
+  assert.equal(byKey(previous).get("ms-4023").ack, true);
+  const { file } = sync(previous, [], {
+    hubPages: hub.hubPages,
+    cards,
+    today: "2026-11-06",
+  });
+  assert.ok(file.courses.every((entry) => entry.state === "removed"));
+  const view = checkHub({ file, hubPages: hub.hubPages, cards });
+  assert.deepEqual(view.missing, []);
+  assert.deepEqual(view.gone, []);
+});
+
 test("a temporary assignment is reported when the retirement date has passed or the replacement has a course of its own", () => {
   const courses = [course("AZ-400T00")];
   const { file } = sync(emptyFile(), courses);
