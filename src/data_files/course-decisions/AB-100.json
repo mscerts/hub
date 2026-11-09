@@ -3503,6 +3503,14 @@
       "reason": "Neighbouring task, other product, generic or group-own page; not a teaching step for this task.",
       "by": "maintainer",
       "at": "2026-11-05"
+    },
+    {
+      "task": "design-ai-powered-business-solutions/design-ai-and-agents-for-business-solutions/design-prompt-and-response-agents",
+      "target": "/azure/foundry/openai/concepts/advanced-prompt-engineering",
+      "decision": "reject",
+      "reason": "Left out: the page title contains an instruction-like phrase that the MCP worker's content safety check rejects; the page is an Azure OpenAI how-to, not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
     }
   ],
   "excludedFamilies": []

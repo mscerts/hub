@@ -501,6 +501,14 @@
       "reason": "accepted by the maintainer",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/design-and-implement-advanced-prompt-engineering-techniques",
+      "target": "/azure/foundry/openai/concepts/advanced-prompt-engineering",
+      "decision": "reject",
+      "reason": "Left out: the page title contains an instruction-like phrase that the MCP worker's content safety check rejects; the page is an Azure OpenAI how-to, not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
     }
   ],
   "excludedFamilies": []
