@@ -1,0 +1,895 @@
+---
+title: AB-620 Study Guide Course
+description: "Follow a structured AB-620 course organized by study guide task, with Microsoft Learn training and documentation."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official AB-620 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ab-620?WT.mc_id=studentamb_165290) skills measured. Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AB-620 labs page](/certs/labs/aibusiness/ab-620/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As a candidate for this Microsoft Certification, you're a professional developer or advanced builder who builds, extends, and integrates custom agents for enterprise-grade solutions. You typically work as an IT application developer, consultant, or independent software vendor (ISV) partner focused on creating scalable AI solutions for organizations or customers.
+
+For this exam, you should be familiar with Power Fx, Microsoft Dataverse, Microsoft Power Platform environments and components, Microsoft 365 Copilot, Microsoft Foundry, and adaptive cards.
+
+You need intermediate knowledge of generative AI concepts, including models, orchestration, retrieval-augmented generation (RAG), Model Context Protocol (MCP), Agent2Agent (A2A) protocol, and more. You should also have experience with prompt engineering and with REST APIs and integration patterns. Additionally, you need experience configuring agents with basic knowledge sources, instructions, tools, and topics in Microsoft Copilot Studio.
+
+You collaborate with Microsoft 365 administrators, Microsoft Power Platform administrators, Microsoft Copilot administrators, Copilot Studio agent builders, Copilot Studio administrators, Foundry administrators, agentic AI business solutions architects, and Copilot Studio architects.
+
+### As a developer who works in Copilot Studio, you
+
+- Integrate agents with Microsoft Foundry.
+- Integrate agents with Model Context Protocol (MCP) servers.
+- Integrate agents with custom connectors.
+- Integrate agents with APIs.
+- Integrate agents with Microsoft Fabric.
+- Automate tasks with computer use.
+- Integrate agents with connectors.
+
+### You create
+
+- Multi-agent solutions.
+- Agents with enterprise knowledge sources (such as ServiceNow, SAP, and others).
+- Advanced agent topics and tools.
+- Computer-using agents.
+- Agents that perform advanced actions via APIs.
+
+## Plan and configure agent solutions (30–35%)
+
+### Plan an agent solution
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Microsoft Copilot Studio and agent harnesses" href="https://learn.microsoft.com/training/modules/explore-copilot-studio-agent-harnesses?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Microsoft 365 Copilot and agents" href="https://learn.microsoft.com/training/modules/explore-microsoft-365-copilot-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to agentic AI business solutions" href="https://learn.microsoft.com/training/modules/introduction-agentic-ai-business-solution-architecture?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to tools for declarative agents in Copilot Studio" href="https://learn.microsoft.com/training/modules/introduction-copilot-studio-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand features of Copilot Studio agents" href="https://learn.microsoft.com/training/modules/understand-features-copilot-studio-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft AI agent solutions" href="https://learn.microsoft.com/training/modules/introduction-microsoft-ai-agent-solutions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Design integration strategies for agents in Microsoft Copilot Studio (GitHub Copilot)" href="https://learn.microsoft.com/training/modules/design-integration-strategies-agents-github-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to developing AI agents" href="https://learn.microsoft.com/training/modules/introduction-develop-ai-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Skills overview for agents" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/skills-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan integration with enterprise systems
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Extend agents with tools in Microsoft Copilot Studio (GitHub Copilot)" href="https://learn.microsoft.com/training/modules/extend-agents-tools-github-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Ground agents in enterprise knowledge in Microsoft Copilot Studio (GitHub Copilot)" href="https://learn.microsoft.com/training/modules/ground-agents-enterprise-knowledge-github-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Determine integration requirements" href="https://learn.microsoft.com/power-platform/architecture/key-concepts/integration-patterns/requirements?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan identity strategy
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design a governance and security strategy for agents in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/design-governance-security-strategy-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan channels and deployment
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Plan an AI agent solution" href="https://learn.microsoft.com/training/modules/plan-design-ai-agent-solution?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Choose tools and services for your agent on Microsoft's agent platform" href="https://learn.microsoft.com/training/modules/build-solutions-microsoft-agent-platform?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan responsible AI strategy
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design a responsible AI strategy for agents in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/design-responsible-ai-strategy-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Design responsible AI security, governance, risk management, and compliance" href="https://learn.microsoft.com/training/modules/design-responsible-ai-security-governance-risk-management-compliance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft's Responsible AI Approach" href="https://learn.microsoft.com/training/modules/introduction-to-microsofts-responsible-ai-approach?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Apply responsible AI principles" href="https://learn.microsoft.com/microsoft-copilot-studio/guidance/responsible-ai?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Platform Card and Responsible AI FAQs for Copilot Studio" href="https://learn.microsoft.com/microsoft-copilot-studio/responsible-ai-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Evaluate security and governance considerations
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe Power Platform governance and administration" href="https://learn.microsoft.com/training/modules/describe-microsoft-power-platform-administration-governance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Copilot Studio security and governance guidance" href="https://learn.microsoft.com/microsoft-copilot-studio/guidance/sec-gov-intro?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security and governance overview for Microsoft Copilot Studio" href="https://learn.microsoft.com/microsoft-copilot-studio/security-and-governance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security and governance considerations in Power Platform" href="https://learn.microsoft.com/power-platform/admin/governance-considerations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan reuseable agent components
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design reusable behavior with skills in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/design-reusable-behavior-skills-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design agents for internal or external audiences
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design multi-agent solutions in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/design-multi-agent-solutions-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create instruction-driven agents in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/create-instruction-driven-agents-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Create and monitor agent flows in Copilot Studio
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe the business value of Microsoft Power Platform" href="https://learn.microsoft.com/training/modules/describe-business-value-microsoft-power-platform?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the business value of Microsoft Power Platform services" href="https://learn.microsoft.com/training/modules/describe-business-value-microsoft-power-platform-services?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Workflows overview" href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create an agent flow
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Automate agent tasks with workflows in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/automate-agent-tasks-workflows-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automate workflows using agent flows in Copilot Studio" href="https://learn.microsoft.com/training/modules/automate-workflows-agent-flows-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use agent flows in Copilot Studio" href="https://learn.microsoft.com/training/modules/use-agent-flows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with Power Automate" href="https://learn.microsoft.com/training/modules/get-started-flows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Take action from agent conversations using topics and tools in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/take-action-agent-topics-tools-flows-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Edit and manage your workflow in the designer" href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flow-designer?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fix save errors in your cloud or agent flow with Copilot" href="https://learn.microsoft.com/power-platform/release-plan/2025wave1/power-automate/fix-save-errors-cloud-or-agent-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a human-in-the-loop agent flow
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Add human-in-the-loop steps to workflows in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/add-human-loop-workflows-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure actions and connectors
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Take action in external systems using connector and REST API agent tools in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/take-action-external-systems-connector-rest-api-tools-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Dataverse triggers and actions in Power Automate" href="https://learn.microsoft.com/training/modules/use-dataverse-triggers-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Govern data policies in Power Platform" href="https://learn.microsoft.com/training/modules/govern-data-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create REST API actions for custom agents" href="https://learn.microsoft.com/power-platform/release-plan/2024wave2/microsoft-copilot-studio/create-rest-api-copilot-connectors-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connector action control" href="https://learn.microsoft.com/power-platform/admin/connector-action-control?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor agent flows
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor and improve agents in Microsoft Copilot Studio (GitHub Copilot)" href="https://learn.microsoft.com/training/modules/monitor-agents-github-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor, analyze, and tune AI agents" href="https://learn.microsoft.com/training/modules/analyze-monitor-tune-ai-powered-business-solutions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Monitor and analyze agent performance" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-review-activity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Resolve Agent Error Codes in Microsoft Copilot Studio - Copilot Studio" href="https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/authoring/error-codes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="FlowActionBadRequest Error Fix for Agents" href="https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/channels/agent-flow-action-bad-request?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Add input and output parameters
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Delegate agent tasks using child agents in Copilot Studio" href="https://learn.microsoft.com/training/modules/delegate-agent-tasks-child-agents-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement error handling in agent flows
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement resilient Power Automate cloud-flow logic" href="https://learn.microsoft.com/training/modules/implement-resilient-cloud-flows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Best practices for error handling in Power Automate flows" href="https://learn.microsoft.com/training/modules/error-handling?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Configure topics
+
+#### Add agent flows to a topic
+
+:::note
+The Microsoft Learn module "Automate agent tasks with workflows in Microsoft Copilot Studio" also covers this task. It is listed once, under [Create an agent flow](#create-an-agent-flow) in the skill group Create and monitor agent flows in Copilot Studio.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add a workflow as a tool to an agent" href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flow-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure agent response formatting
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Deliver rich agent responses using Adaptive Cards in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/deliver-rich-agent-responses-adaptive-cards-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Add tools to a topic
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Connect agents to MCP servers in Microsoft Copilot Studio (GitHub Copilot)" href="https://learn.microsoft.com/training/modules/connect-agents-mcp-servers-github-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add a tool to an agent (GitHub Copilot)" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure advanced agent responses with custom prompts
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Generate AI-powered agent responses using generative answers in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/generate-ai-powered-responses-generative-answers-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure advanced agent responses with custom knowledge sources
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Generate AI-powered agent responses using generative answers in Microsoft Copilot Studio": under [Configure advanced agent responses with custom prompts](#configure-advanced-agent-responses-with-custom-prompts)
+- "Ground agents in enterprise knowledge in Microsoft Copilot Studio (GitHub Copilot)": under [Plan integration with enterprise systems](#plan-integration-with-enterprise-systems) in the skill group Plan an agent solution
+:::
+
+#### Configure advanced agent responses with API and Send HTTP requests
+
+:::note
+The Microsoft Learn module "Take action from agent conversations using topics and tools in Microsoft Copilot Studio" also covers this task. It is listed once, under [Create an agent flow](#create-an-agent-flow) in the skill group Create and monitor agent flows in Copilot Studio.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Fix Connector Request Failure in Copilot Studio" href="https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/actions/connector-request-failure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure generative answers node
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Generate AI-powered agent responses using generative answers in Microsoft Copilot Studio": under [Configure advanced agent responses with custom prompts](#configure-advanced-agent-responses-with-custom-prompts)
+- "Ground agents in enterprise knowledge in Microsoft Copilot Studio (GitHub Copilot)": under [Plan integration with enterprise systems](#plan-integration-with-enterprise-systems) in the skill group Plan an agent solution
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Resolve responsible AI content filter errors" href="https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/generative-answers/agent-response-filtered-by-responsible-ai?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure adaptive cards
+
+:::note
+The Microsoft Learn module "Deliver rich agent responses using Adaptive Cards in Microsoft Copilot Studio" also covers this task. It is listed once, under [Configure agent response formatting](#configure-agent-response-formatting).
+:::
+
+#### Manage variables
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+## Integrate and extend agents in Copilot Studio (40–45%)
+
+### Connect to enterprise knowledge sources
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Connect agents to Microsoft IQ in Microsoft Copilot Studio (GitHub Copilot)" href="https://learn.microsoft.com/training/modules/connect-agents-microsoft-iq-github-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Available knowledge sources" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sources-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Foundry IQ?" href="https://learn.microsoft.com/azure/foundry/agents/concepts/what-is-foundry-iq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Knowledge sources summary (standard harness)" href="https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Connect to Copilot connectors
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Ground agents with enterprise knowledge using connectors and Azure AI Search in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/ground-agents-enterprise-knowledge-connectors-azure-ai-search-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Choose the best Microsoft 365 Copilot extensibility path for your scenario" href="https://learn.microsoft.com/training/modules/choose-microsoft-365-copilot-extensibility-path?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Copilot connectors overview - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prebuilt connectors - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/prebuilt-connectors-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Copilot connectors overview" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-copilot-connector?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Graph connector agent overview - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/connector-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connectors gallery - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-gallery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft-built connectors gallery - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-gallery-microsoft?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Partner-built connectors gallery - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-gallery-partners?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor connector errors - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Federated connectors overview - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Search and validate indexed connector content - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Self-serve sync connectors overview - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/personal-sync-connectors-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Copilot connectors as plugin capabilities" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/plugin-type-connectors?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Connect to Microsoft Power Platform connectors
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Connect external APIs with Power Platform custom connectors" href="https://learn.microsoft.com/training/modules/build-power-platform-custom-connectors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement application lifecycle management for agents in Microsoft Copilot Studio with Power Platform" href="https://learn.microsoft.com/training/modules/implement-alm-agents-power-platform?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use a connection reference in a solution with Microsoft Dataverse" href="https://learn.microsoft.com/power-apps/maker/data-platform/create-connection-reference?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Connect to Azure AI Search
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Ground agents with enterprise knowledge using connectors and Azure AI Search in Microsoft Copilot Studio": under [Connect to Copilot connectors](#connect-to-copilot-connectors)
+- "Ground agents in enterprise knowledge in Microsoft Copilot Studio (GitHub Copilot)": under [Plan integration with enterprise systems](#plan-integration-with-enterprise-systems) in the skill group Plan an agent solution
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Connect Using API Keys" href="https://learn.microsoft.com/azure/search/search-security-api-keys?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect Using Azure Roles" href="https://learn.microsoft.com/azure/search/search-security-rbac?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Add tools to agents
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Tools overview for agents" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and monitor computer use for an agent
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Automate desktop and web tasks with computer use in Copilot Studio" href="https://learn.microsoft.com/training/modules/automate-desktop-web-tasks-computer-use-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure MCP tools
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Integrate agents with external systems via MCP in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/integrate-agents-external-systems-mcp-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Design extensibility of AI solutions" href="https://learn.microsoft.com/training/modules/design-extensibility-ai-solutions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add a Model Context Protocol (MCP) server to your agent as a tool (GitHub Copilot preview)" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-add-mcp-server?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Extend your agent with Model Context Protocol" href="https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a new Model Context Protocol (MCP) server" href="https://learn.microsoft.com/microsoft-copilot-studio/mcp-create-new-server?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Add a tool by using an existing custom connector
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Take action in external systems using connector and REST API agent tools in Microsoft Copilot Studio": under [Configure actions and connectors](#configure-actions-and-connectors) in the skill group Create and monitor agent flows in Copilot Studio
+- "Extend agents with tools in Microsoft Copilot Studio (GitHub Copilot)": under [Plan integration with enterprise systems](#plan-integration-with-enterprise-systems) in the skill group Plan an agent solution
+:::
+
+#### Add REST APIs to an agent
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Take action in external systems using connector and REST API agent tools in Microsoft Copilot Studio": under [Configure actions and connectors](#configure-actions-and-connectors) in the skill group Create and monitor agent flows in Copilot Studio
+- "Extend agents with tools in Microsoft Copilot Studio (GitHub Copilot)": under [Plan integration with enterprise systems](#plan-integration-with-enterprise-systems) in the skill group Plan an agent solution
+:::
+
+### Configure multi-agent collaboration from Copilot Studio
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Copilot Studio fundamentals" href="https://learn.microsoft.com/microsoft-copilot-studio/fundamentals-what-is-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design multi-agent solutions in Copilot Studio
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Build connected agent solutions in Microsoft Copilot Studio (GitHub Copilot)": under [Integrate an existing agent in Copilot Studio](#integrate-an-existing-agent-in-copilot-studio)
+- "Choose tools and services for your agent on Microsoft's agent platform": under [Plan channels and deployment](#plan-channels-and-deployment) in the skill group Plan an agent solution
+- "Design extensibility of AI solutions": under [Configure MCP tools](#configure-mcp-tools) in the skill group Add tools to agents
+- "Build cross-platform multi-agent solutions using the Agent2Agent protocol in Microsoft Copilot Studio": under [Integrate an existing agent in Copilot Studio](#integrate-an-existing-agent-in-copilot-studio)
+- "Design multi-agent solutions in Microsoft Copilot Studio": under [Design agents for internal or external audiences](#design-agents-for-internal-or-external-audiences) in the skill group Plan an agent solution
+- "Integrate custom agents with Microsoft Power Platform": under [Integrate an existing agent in Copilot Studio](#integrate-an-existing-agent-in-copilot-studio)
+- "Plan an AI agent solution": under [Plan channels and deployment](#plan-channels-and-deployment) in the skill group Plan an agent solution
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Multi-agent orchestration patterns and best practices" href="https://learn.microsoft.com/microsoft-copilot-studio/guidance/multi-agent-patterns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connected agents overview" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-add-other-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage connected agents in an agent" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/manage-connected-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Extend Microsoft Copilot with agents" href="https://learn.microsoft.com/microsoft-copilot-studio/harnesses-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add an agent node to a workflow" href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Integrate a Foundry agent
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Discover Azure AI Agents with A2A" href="https://learn.microsoft.com/training/modules/discover-agents-with-a2a?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Develop AI agents with Microsoft Foundry and Visual Studio Code" href="https://learn.microsoft.com/training/modules/develop-ai-agents-azure-vs-code?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Integrate your agent with Microsoft 365" href="https://learn.microsoft.com/training/modules/integrate-foundry-agent-with-m365?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Build and extend AI agents with Microsoft Foundry" href="https://learn.microsoft.com/training/modules/build-extend-ai-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Develop your first agent with Microsoft Foundry" href="https://learn.microsoft.com/training/modules/develop-first-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Enable incoming A2A on a Foundry agent" href="https://learn.microsoft.com/azure/foundry/agents/how-to/enable-agent-to-agent-endpoint?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Agent endpoint authorization in Microsoft Foundry - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/concepts/agent-endpoint-authorization?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Agent applications in Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/how-to/agent-applications?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and share your Microsoft Foundry agent - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/how-to/configure-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure agent endpoint authorization in Microsoft Foundry - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/how-to/configure-agent-endpoint-authorization?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Publish agents to Microsoft Copilot and Microsoft Teams - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/how-to/publish-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect to an A2A agent endpoint from Foundry Agent Service - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/how-to/tools/agent-to-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot publishing agents to Microsoft Copilot and Microsoft Teams - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/how-to/troubleshoot-publish-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot authorization errors for agents published to Microsoft Copilot and Teams - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/how-to/troubleshoot-publish-copilot-authorization?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Microsoft Foundry Agent Service? - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/agents/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Integrate an existing agent in Copilot Studio
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build connected agent solutions in Microsoft Copilot Studio (GitHub Copilot)" href="https://learn.microsoft.com/training/modules/build-connected-agent-solutions-github-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Integrate custom agents with Microsoft Power Platform" href="https://learn.microsoft.com/training/modules/integrate-custom-agents-power-platform?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Build cross-platform multi-agent solutions using the Agent2Agent protocol in Microsoft Copilot Studio" href="https://learn.microsoft.com/training/modules/build-cross-platform-multi-agent-solutions-agent2agent-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add a child agent" href="https://learn.microsoft.com/microsoft-copilot-studio/add-agent-child-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add a connected agent to an agent" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-agent-connected?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add other agents overview" href="https://learn.microsoft.com/microsoft-copilot-studio/authoring-add-other-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Copy an agent from Agent Builder to Copilot Studio" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/copy-agent-to-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan and design integration strategies" href="https://learn.microsoft.com/microsoft-copilot-studio/guidance/integrations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Choose between Agent Builder and Copilot Studio to build your agent" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/copilot-studio-experience?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Integrate a Fabric data agent
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build a Fabric data agent with an ontology" href="https://learn.microsoft.com/training/modules/build-fabric-data-agent-ontology?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Connect to Fabric IQ from an agent (GitHub Copilot preview)" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/fabric-iq-connect?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a multi-agent solution by using A2A protocol
+
+:::note
+The Microsoft Learn module "Build cross-platform multi-agent solutions using the Agent2Agent protocol in Microsoft Copilot Studio" also covers this task. It is listed once, under [Integrate an existing agent in Copilot Studio](#integrate-an-existing-agent-in-copilot-studio).
+:::
+
+### Integrate agents with Azure
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Monitor agent performance overview" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Knowledge overview for agents" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-copilot-studio?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Agent tracing overview" href="https://learn.microsoft.com/azure/foundry/observability/concepts/trace-agent-concept?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure generative answers by using Azure AI Search with Foundry
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure custom prompts to use the Foundry model catalog
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Select, deploy, and evaluate Microsoft Foundry models" href="https://learn.microsoft.com/training/modules/model-catalog-evaluate?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to generative AI and agents" href="https://learn.microsoft.com/training/modules/fundamentals-generative-ai?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use your own generative AI model from Azure AI Foundry in prompt builder" href="https://learn.microsoft.com/power-platform/release-plan/2025wave1/ai-builder/use-own-generative-ai-model-azure-ai-foundry-prompt-builder?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prompt engineering techniques | Microsoft Foundry Models" href="https://learn.microsoft.com/azure/foundry/openai/concepts/prompt-engineering?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Safety system messages" href="https://learn.microsoft.com/azure/foundry/openai/concepts/system-message?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deployment overview for Microsoft Foundry Models - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/concepts/deployments-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor agents by using Application Insights
+
+:::note
+The Microsoft Learn module "Monitor and improve agents in Microsoft Copilot Studio (GitHub Copilot)" also covers this task. It is listed once, under [Monitor agent flows](#monitor-agent-flows) in the skill group Create and monitor agent flows in Copilot Studio.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Environment-level telemetry with Application Insights" href="https://learn.microsoft.com/microsoft-copilot-studio/advanced-environment-level-agent-telemetry?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor agents with the Agent Monitoring Dashboard - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/observability/how-to/how-to-monitor-agents-dashboard?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set Up Tracing for AI Agents in Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/observability/how-to/trace-agent-setup?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up Application Insights with Power Automate" href="https://learn.microsoft.com/power-platform/admin/app-insights-cloud-flow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Conversation diagnostics in Azure Application Insights" href="https://learn.microsoft.com/power-platform/admin/conversation-diagnostics-application-insights?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Test and manage agents (20–25%)
+
+### Evaluate agent performance
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Evaluating generative AI applications" href="https://learn.microsoft.com/training/modules/evaluate-generative-ai-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Agent Evaluators for Generative AI - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/concepts/evaluation-evaluators/agent-evaluators?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Agent evaluation overview" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/evaluation-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a test set
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Evaluate agents in Microsoft Copilot Studio (GitHub Copilot)" href="https://learn.microsoft.com/training/modules/evaluate-agents-github-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create a test set for an agent" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-create?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Test an agent" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-test-bot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Preview and test an agent" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/preview-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Agent evaluations for the Employee Self-Service declarative agent" href="https://learn.microsoft.com/microsoft-365/copilot/employee-self-service/declarative-agent-evaluations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Design evaluation prompts for Copilot agent evaluation" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/evaluation-design-prompts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Organize test categories and iterate on Copilot agent evaluation" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/evaluation-test-categories?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Write assertions for Copilot agent evaluation" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/evaluation-write-assertions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dataset schema and test design for agent evaluations" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/evaluations-cli-create-tests?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fix Copilot Studio Agent Not Responding in Test Your Agent Panel" href="https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/authoring/agent-test-no-response?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose an evaluation method
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Evaluate agents in Microsoft Copilot Studio (GitHub Copilot)": under [Create a test set](#create-a-test-set)
+- "Ground agents in enterprise knowledge in Microsoft Copilot Studio (GitHub Copilot)": under [Plan integration with enterprise systems](#plan-integration-with-enterprise-systems) in the skill group Plan an agent solution
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Evaluate an agent" href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Evaluation in Microsoft Foundry - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/concepts/evaluation-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a custom evaluation strategy for your Employee Self-Service agent" href="https://learn.microsoft.com/microsoft-365/copilot/employee-self-service/evaluations-custom-strategy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Review test results
+
+:::note
+The Microsoft Learn module "Evaluate agents in Microsoft Copilot Studio (GitHub Copilot)" also covers this task. It is listed once, under [Create a test set](#create-a-test-set).
+:::
+
+### Implement application lifecycle management (ALM) for agents in Copilot Studio
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design ALM process for AI-powered business solutions" href="https://learn.microsoft.com/training/modules/design-alm-process-ai-powered-business-solutions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Establish an application lifecycle management strategy" href="https://learn.microsoft.com/microsoft-copilot-studio/guidance/alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of tools and apps used for ALM in Power Platform" href="https://learn.microsoft.com/power-platform/alm/tools-apps-used-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Solution concepts with Power Platform" href="https://learn.microsoft.com/power-platform/alm/solution-concepts-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Move from unmanaged to managed solutions to support healthy ALM with Power Platform" href="https://learn.microsoft.com/power-platform/alm/move-from-unmanaged-managed-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dependency tracking for solution components in Microsoft Dataverse with Power Platform - Power Platform" href="https://learn.microsoft.com/power-platform/alm/dependency-tracking-solution-components?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALM environment strategy considerations" href="https://learn.microsoft.com/power-platform/alm/environment-strategy-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Application lifecycle management (ALM) with Microsoft Power Platform" href="https://learn.microsoft.com/power-platform/alm/overview-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Application lifecycle management (ALM) with Microsoft Power Platform - Power Platform" href="https://learn.microsoft.com/power-platform/alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use scenarios to implement healthy ALM with Microsoft Power Platform" href="https://learn.microsoft.com/power-platform/alm/implement-healthy-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Application lifecycle management (ALM) basics with Microsoft Power Platform" href="https://learn.microsoft.com/power-platform/alm/basics-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a solution
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Extend ALM with Git and CI/CD in Power Platform" href="https://learn.microsoft.com/training/modules/extend-alm-git-cicd?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage solutions in Power Apps and Power Automate" href="https://learn.microsoft.com/training/modules/manage-solutions-power-automate?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create and update custom solutions for ALM in Power Platform" href="https://learn.microsoft.com/power-platform/alm/update-solutions-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ALM for admins and makers" href="https://learn.microsoft.com/power-platform/alm/admins-makers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create patches to simplify solution updates with Microsoft Dataverse - Power Platform" href="https://learn.microsoft.com/power-platform/alm/create-patches-simplify-solution-updates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How managed solutions are merged in Power Platform" href="https://learn.microsoft.com/power-platform/alm/how-managed-solutions-merged?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View and edit managed properties in solutions" href="https://learn.microsoft.com/power-platform/alm/managed-properties-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Organize your solutions in Power Platform - Power Platform" href="https://learn.microsoft.com/power-platform/alm/organize-solutions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create packages for the Package Deployer tool - Power Platform" href="https://learn.microsoft.com/power-platform/alm/package-deployer-tool?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Performance recommendations" href="https://learn.microsoft.com/power-platform/alm/performance-recommendations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Removing dependencies overview in Microsoft Dataverse" href="https://learn.microsoft.com/power-platform/alm/removing-dependencies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use table segmentation in solutions in Power Apps" href="https://learn.microsoft.com/power-platform/alm/segmented-solutions-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Solution staging, with asynchronous import and export" href="https://learn.microsoft.com/power-platform/alm/solution-async?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Solution layers and merge behavior in Power Platform" href="https://learn.microsoft.com/power-platform/alm/solution-layers-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="'Use managed properties (Microsoft Dataverse) | Microsoft Docs' # Intent and product brand in a unique string of 43-59 chars including spaces" href="https://learn.microsoft.com/power-platform/alm/use-managed-properties?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use a solution to customize in Power Platform" href="https://learn.microsoft.com/power-platform/alm/use-solutions-for-your-customizations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fix solution upgrade or uninstall problems in Copilot Studio" href="https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/lifecycle-management/solution-upgrade-uninstall-errors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Can't import solutions or publish changes" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/cannot-import-solutions-publish-changes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Cannot Uninstall Solution error when removing solutions" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/cannot-uninstall-solution-error-when-deleting-solution?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Failed deleting solution error due to circular dependencies between two solutions" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/circular-dependencies-between-solutions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Concurrent solution operation failures in Power Apps" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/concurrent-solution-operation-failures?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Error code 80048539 when importing solution patch" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/error-code-80048539-when-importing-solution-patch?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Error code 8004F042 occurs when import solution patch." href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/error-code-8004f042-occurs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Can't import a solution or install an application due to missing privileges" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/install-failure-priviledge-not-assigned?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Missing Dependencies During Solution Import in Power Apps" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/missing-dependency-on-solution-import?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Solution cannot be deleted" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/solution-cannot-be-deleted?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Solution can't be deleted due to dependencies from other components" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/solution-cannot-be-deleted-due-to-dependencies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="The import of solution failed error when importing solution" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/the-import-of-solution-failed-error-when-importing-solution?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="The solution file is invalid" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/the-solution-file-is-invalid?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="The solution is installed as a managed one" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/the-solution-is-installed-a-managed-one?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="This solution package cannot be imported" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/this-solution-package-cannot-be-imported?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Resources to help troubleshoot solution import errors in Dynamics 365" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/troubleshoot-solution-import-errors-in-dynamics-365?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="An active unmanaged layer is created after importing a managed solution" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/unmanaged-active-layer-created-after-solution-import?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Solution upgrade fails due to a previously pending upgrade" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/upgrade-fails-pending-upgrade?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Add existing agents to a solution
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage solutions in Power Apps and Power Automate": under [Create a solution](#create-a-solution)
+- "Implement application lifecycle management for agents in Microsoft Copilot Studio with Power Platform": under [Connect to Microsoft Power Platform connectors](#connect-to-microsoft-power-platform-connectors) in the skill group Connect to enterprise knowledge sources
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Export and import agents using solutions" href="https://learn.microsoft.com/microsoft-copilot-studio/authoring-solutions-import-export?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fix Missing Agent Components in Copilot Studio Solutions" href="https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/lifecycle-management/agents-solution-mapping?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Source control with solution files with Microsoft Dataverse in Power Platform" href="https://learn.microsoft.com/power-platform/alm/use-source-control-solution-files?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot expression and reference errors in Copilot Studio agent publishing" href="https://learn.microsoft.com/troubleshoot/power-platform/copilot-studio/lifecycle-management/agent-publish-missing-dependencies?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and use environment variables
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Deliver Power Platform solutions through governed ALM" href="https://learn.microsoft.com/training/modules/deliver-solutions-governed-alm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deliver solutions with pipelines in Power Platform" href="https://learn.microsoft.com/training/modules/deliver-solutions-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Environment variables for Power Platform overview" href="https://learn.microsoft.com/power-apps/maker/data-platform/environmentvariables?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Using Azure Key Vault secrets with environment variables" href="https://learn.microsoft.com/power-apps/maker/data-platform/environmentvariables-azure-key-vault-secrets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Pre-populate connection references and environment variables for automated deployments using Power Platform Build Tools" href="https://learn.microsoft.com/power-platform/alm/conn-ref-env-variables-build-tools?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data source references based on environment variables aren't updated during solution import" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/dataverse-environment-variables?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Resolve environment variable key vault auth errors in Power Platform" href="https://learn.microsoft.com/troubleshoot/power-platform/dataverse/working-with-solutions/environment-variable-key-vault-auth-error?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement and extend Microsoft Power Platform Pipelines
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create a pipeline in Microsoft Power Platform" href="https://learn.microsoft.com/training/modules/create-pipeline?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Deploy pipelines as a service principal or pipeline owner" href="https://learn.microsoft.com/power-platform/alm/delegated-deployments-setup?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of pipelines in Power Platform - Power Platform" href="https://learn.microsoft.com/power-platform/alm/pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Extend pipelines in Power Platform - Power Platform" href="https://learn.microsoft.com/power-platform/alm/extend-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Extend pipelines using GitHub Actions" href="https://learn.microsoft.com/power-platform/alm/extend-pipelines-github-export?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set a default pipeline" href="https://learn.microsoft.com/power-platform/alm/default-deployment-pipeline-rule-for-environment-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create pipelines using the platform host - Power Platform" href="https://learn.microsoft.com/power-platform/alm/platform-host-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Run pipelines in Power Platform" href="https://learn.microsoft.com/power-platform/alm/run-pipeline?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up pipelines in Power Platform" href="https://learn.microsoft.com/power-platform/alm/set-up-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Redeploy past Microsoft Dataverse solution versions in Power Platform" href="https://learn.microsoft.com/power-platform/alm/redeploy-past-solution-versions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Copilot to generate deployment notes in pipelines" href="https://learn.microsoft.com/power-platform/alm/copilot-deployment-notes-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure pipelines using a custom host" href="https://learn.microsoft.com/power-platform/alm/custom-host-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable cross-geo solution deployments in Power Platform" href="https://learn.microsoft.com/power-platform/alm/enable-cross-geo-solution-deployments?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Import solutions from a pipelines host" href="https://learn.microsoft.com/power-platform/alm/import-from-pipelines-host?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set a default pipelines host instead of the platform host" href="https://learn.microsoft.com/power-platform/alm/set-a-default-pipelines-host?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
