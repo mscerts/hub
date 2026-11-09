@@ -19,7 +19,10 @@ export function redirectRules(redirects, pathnames) {
         path.endsWith("/") &&
         path !== "/certs/" &&
         !path.startsWith("/certs/archive/") &&
-        path !== "/certs/guide/markdown/",
+        path !== "/certs/guide/markdown/" &&
+        // The generated course pages (courses/<exam code>/, docs/courses.md) are new: they never had a bare or
+        // /wiki/ address, and their aliases would use up Cloudflare's limit of 2000 static redirects.
+        !/^\/certs\/courses\/[a-z]{2}-\d{3}\/$/.test(path),
     );
   for (const target of docs) {
     const id = target.slice("/certs/".length, -1);
