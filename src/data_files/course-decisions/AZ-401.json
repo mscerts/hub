@@ -1,0 +1,1663 @@
+{
+  "schemaVersion": 1,
+  "code": "AZ-401",
+  "decisions": [
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/@foundations",
+      "target": "/azure/devops/repos/security/github-advanced-security-security-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
+      "target": "/azure/cloud-adoption-framework/ready/considerations/security-considerations-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
+      "target": "/azure/defender-for-cloud/defender-cli-syntax",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
+      "target": "/azure/defender-for-cloud/episode-forty-six",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
+      "target": "/azure/defender-for-cloud/faq-defender-for-devops",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
+      "target": "/azure/defender-for-cloud/plan-multicloud-security-automate-connector-deployment",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
+      "target": "/azure/defender-for-cloud/review-security-recommendations",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
+      "target": "/azure/devops/repos/git/available-pr-status-checks",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
+      "target": "/security-exposure-management/create-azure-devops-connector",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
+      "target": "/security-exposure-management/create-github-connector",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/design-a-strategy-for-security-vulnerability-and-compliance",
+      "target": "/azure/aks/concepts-security-vulnerability-data-api",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/design-a-strategy-for-security-vulnerability-and-compliance",
+      "target": "/azure/defender-for-cloud/cluster-security-dashboard",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/design-a-strategy-for-security-vulnerability-and-compliance",
+      "target": "/azure/defender-for-cloud/defender-for-containers-enable-external-registry-for-docker-hub",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/design-a-strategy-for-security-vulnerability-and-compliance",
+      "target": "/security-exposure-management/defender-code-security-plugin",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-a-strategy-for-managing-sensitive-infor/integrate-azure-key-vault-into-azure-pipelines-and-github-ac",
+      "target": "/azure/developer/azure-developer-cli/environment-secrets",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-a-strategy-for-managing-sensitive-infor/integrate-azure-key-vault-into-azure-pipelines-and-github-ac",
+      "target": "/azure/devops/pipelines/tasks/reference/azure-key-vault-v1",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/choose-between-microsoft-entra-service-principals-and-manage",
+      "target": "/azure/azure-sql/database/authentication-aad-service-principal",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/configure-projects-in-azure-devops-ado-and-github-including",
+      "target": "/azure/devops/boards/github/connect-on-premises-to-github",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/configure-projects-in-azure-devops-ado-and-github-including",
+      "target": "/azure/devops/organizations/notifications/manage-team-group-global-organization-notifications",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/configure-projects-in-azure-devops-ado-and-github-including",
+      "target": "/azure/devops/release-notes/roadmap/2024/scale-github-repos",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/configure-projects-in-azure-devops-ado-and-github-including",
+      "target": "/dynamics365/guidance/business-processes/about-configure-azure-devops-teams-area-paths",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
+      "target": "/azure/devops/boards/github/install-github-app",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
+      "target": "/azure/devops/organizations/security",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
+      "target": "/azure/devops/release-notes/2022/sprint-205-update",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
+      "target": "/azure/devops/release-notes/2025/sprint-252-update",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
+      "target": "/azure/devops/release-notes/roadmap/2025/mdp/pool-creation",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
+      "target": "/azure/devops/release-notes/roadmap/control-access-to-github-repos",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
+      "target": "/azure/devops/report/analytics/analytics-permissions-prerequisites",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
+      "target": "/azure/devops/report/powerbi/analytics-security",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/implement-and-manage-azure-devops-service-connections-and-pe",
+      "target": "/azure/devops/release-notes/roadmap/2025/new-service-connection",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/implement-and-manage-secretless-authentication-in-azure-pipe",
+      "target": "/azure/app-service/deploy-github-actions",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/implement-and-manage-secretless-authentication-in-azure-pipe",
+      "target": "/azure/developer/azure-developer-cli/configure-devops-pipeline",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/@foundations",
+      "target": "/azure/devops/organizations/security/security-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-permissions",
+      "target": "/azure/devops/organizations/accounts/faq-user-and-permissions-management",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-permissions",
+      "target": "/azure/devops/organizations/security/about-security-roles",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-permissions",
+      "target": "/azure/devops/organizations/security/default-tfvc-permissions",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-permissions",
+      "target": "/azure/devops/organizations/security/permissions-lookup-guide",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-permissions",
+      "target": "/azure/devops/organizations/security/request-changes-permissions",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-permissions",
+      "target": "/azure/devops/repos/security/github-advanced-security-permissions",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-permissions",
+      "target": "/azure/devops/server/command-line/tfssecurity-cmd",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-tags",
+      "target": "/azure/container-registry/container-registry-image-tag-version",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-tags",
+      "target": "/azure/devops/organizations/security/set-permissions-access-work-tracking",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-tags",
+      "target": "/azure/devops/organizations/settings/naming-restrictions",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-tags",
+      "target": "/azure/devops/pipelines/build/build-tag",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/create-and-configure-git-hooks-that-automatically-check-code",
+      "target": "/azure/devops/repos/git/copilot-code-reviews",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/artifacts/how-to/follow-package-notifications",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/artifacts/build-publish-artifacts-gradle",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/artifacts/cargo-pipelines",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/artifacts/npm",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/artifacts/publish-maven-artifacts",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/artifacts/pypi",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/artifacts/universal-packages",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/process/access-tokens",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/process/artifact-policy",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/tasks/reference/download-build-artifacts-v0",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/tasks/reference/download-build-artifacts-v1",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/tasks/reference/download-fileshare-artifacts-v1",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/tasks/reference/download-pipeline-artifact-v0",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/tasks/reference/download-pipeline-artifact-v1",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/tasks/reference/gradle-authenticate-v0",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/tasks/reference/maven-authenticate-v0",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/tasks/reference/nuget-authenticate-v0",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/tasks/reference/nuget-command-v2",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/tasks/reference/publish-build-artifacts-v1",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/tasks/reference/publish-pipeline-artifact-v0",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/yaml-schema/resources-builds-build",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/pipelines/yaml-schema/steps-download-build",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/devops/release-notes/roadmap/deprecate-old-azure-artifacts",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/recommend-package-management-tools-including-azure-artifacts",
+      "target": "/azure/devops/pipelines/tasks/reference/download-package-v0",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/recommend-package-management-tools-including-azure-artifacts",
+      "target": "/azure/devops/pipelines/tasks/reference/download-package-v1",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/recommend-package-management-tools-including-azure-artifacts",
+      "target": "/azure/devops/pipelines/yaml-schema/steps-get-package",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/design-a-comprehensive-testing-strategy-including-local-test",
+      "target": "/azure/developer/javascript/core/test-azure-sdk-integrated-code",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/design-a-comprehensive-testing-strategy-including-local-test",
+      "target": "/azure/foundry/agents/how-to/test-hosted-agent",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/design-quality-and-release-gates",
+      "target": "/azure/devops/pipelines/tasks/reference/sonar-qube-publish-v4",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/design-quality-and-release-gates",
+      "target": "/azure/devops/pipelines/tasks/reference/sonar-qube-publish-v5",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/design-quality-and-release-gates",
+      "target": "/azure/devops/pipelines/tasks/reference/sonar-qube-publish-v6",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/design-quality-and-release-gates",
+      "target": "/azure/devops/repos/tfvc/set-enforce-quality-gates",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/implement-quality-and-release-gates-by-using-github-copilot",
+      "target": "/azure/developer/azure-mcp-server/get-started/tools/visual-studio",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/implement-quality-and-release-gates-by-using-github-copilot",
+      "target": "/azure/developer/azure-mcp-server/how-to/github-copilot-cloud-agent",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/implement-quality-and-release-gates-by-using-github-copilot",
+      "target": "/azure/developer/azure-mcp-server/tools",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/design-and-implement-integration-between-azure-pipelines-and",
+      "target": "/azure/devops/pipelines/tasks/reference/download-github-release-v0",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/design-and-implement-integration-between-azure-pipelines-and",
+      "target": "/azure/devops/release-notes/2019/sprint-151-update",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/develop-and-implement-pipeline-trigger-rules",
+      "target": "/azure/devops/pipelines/process/resources",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/develop-and-implement-pipeline-trigger-rules",
+      "target": "/azure/devops/pipelines/yaml-schema/resources-webhooks-webhook-filters",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/develop-and-implement-pipeline-trigger-rules",
+      "target": "/azure/devops/pipelines/yaml-schema/resources-webhooks-webhook-filters-filter",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/develop-and-implement-pipeline-trigger-rules",
+      "target": "/azure/devops/release-notes/2018/apr-03-vsts",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/develop-and-implement-pipeline-trigger-rules",
+      "target": "/azure/devops/release-notes/2019/sprint-161-update",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/develop-and-implement-pipeline-trigger-rules",
+      "target": "/azure/devops/release-notes/2021/sprint-194-update",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/implement-an-azure-devops-or-github-runner-agent-infrastruct",
+      "target": "/azure/cloud-adoption-framework/ready/considerations/security-considerations-overview",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/implement-an-azure-devops-or-github-runner-agent-infrastruct",
+      "target": "/azure/devops/pipelines/agents/github-hosted-faq",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/implement-an-azure-devops-or-github-runner-agent-infrastruct",
+      "target": "/azure/devops/pipelines/agents/nodejs-runners",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/implement-an-azure-devops-or-github-runner-agent-infrastruct",
+      "target": "/azure/devops/release-notes/2026/sprint-275-update",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/implement-an-azure-devops-or-github-runner-agent-infrastruct",
+      "target": "/azure/devops/release-notes/roadmap/2023/install-old-runner",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/implement-an-azure-devops-or-github-runner-agent-infrastruct",
+      "target": "/azure/devops/release-notes/roadmap/large-agents",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/select-a-deployment-automation-solution-including-azure-pipe",
+      "target": "/azure/developer/azure-developer-cli/configure-devops-pipeline",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/select-a-deployment-automation-solution-including-azure-pipe",
+      "target": "/azure/developer/azure-developer-cli/pipeline-github-actions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/select-a-deployment-automation-solution-including-azure-pipe",
+      "target": "/azure/devops/release-notes/2019/sprint-161-update",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-deployments/implement-deployment-by-using-containers-binaries-scripts-an",
+      "target": "/azure/azure-arc/workload-orchestration/verify-artifact-signatures",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/@foundations",
+      "target": "/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code-updates",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/@foundations",
+      "target": "/azure/cloud-adoption-framework/ready/landing-zone/design-area/platform-automation-devops",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/implement-a-configuration-management-strategy-for-applicatio",
+      "target": "/azure/cyclecloud/cluster-references/chef-reference",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/recommend-a-strategy-for-iac-and-configuration-management",
+      "target": "/azure/databricks/lakehouse-architecture/deployment-guide/iac",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/recommend-a-strategy-for-iac-and-configuration-management",
+      "target": "/azure/service-connector/how-to-build-connections-with-iac-tools",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/configure-integration-between-azure-boards-and-github-reposi",
+      "target": "/azure/devops/release-notes/roadmap/2025/boards/boards-github-integration-scale-improvements",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
+      "target": "/azure/devops/boards/backlogs/office/track-work",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
+      "target": "/azure/devops/boards/best-practices-agile-project-management",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
+      "target": "/azure/devops/boards/extensions/migrate-integrate",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
+      "target": "/azure/devops/boards/plans/safe-configure-boards",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
+      "target": "/azure/devops/boards/work-items/guidance/guidance-code-review-feedback-field-reference",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
+      "target": "/azure/devops/organizations/settings/work/object-limits",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/analyze-application-performance-by-using-telemetry-and-instr",
+      "target": "/azure/azure-monitor",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/analyze-application-performance-by-using-telemetry-and-instr",
+      "target": "/azure/developer/azure-skills/skills/app-insights-instrumentation",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/analyze-application-performance-by-using-telemetry-and-instr",
+      "target": "/dynamics365/fin-ops-core/dev-itpro/monitoring-telemetry/monitoring-analyze-telemetry-driven-alerts",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/configure-and-collection-and-management-github-copilot-agent",
+      "target": "/azure/azure-monitor/optimization-insights/code-optimizations-github-copilot",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/configure-and-collection-and-management-github-copilot-agent",
+      "target": "/azure/developer/github-copilot-azure/troubleshoot-examples",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/configure-and-collection-and-management-github-copilot-agent",
+      "target": "/azure/managed-grafana/azure-monitor-dashboards-mcp-server",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/configure-and-collection-and-management-github-copilot-agent",
+      "target": "/azure/sre-agent/github-connector",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/interrogate-logs-by-using-natural-language-queries-or-basic",
+      "target": "/azure/cosmos-db/monitor-logs-basic-queries",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/interrogate-logs-by-using-natural-language-queries-or-basic",
+      "target": "/azure/data-explorer/web-ui-samples-query",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/interrogate-logs-by-using-natural-language-queries-or-basic",
+      "target": "/azure/developer/azure-skills/skills/azure-kusto",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/configure-monitoring-for-azure-devops-and-github-platforms/configure-azure-monitor-and-log-analytics-to-integrate-with",
+      "target": "/azure/azure-monitor/logs/api/overview",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/configure-monitoring-for-azure-devops-and-github-platforms/configure-azure-monitor-and-log-analytics-to-integrate-with",
+      "target": "/azure/developer/github/integrate-azure-devops",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/configure-monitoring-for-azure-devops-and-github-platforms/configure-azure-monitor-and-log-analytics-to-integrate-with",
+      "target": "/azure/devops/boards/github/connect-on-premises-to-github",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/configure-monitoring-for-azure-devops-and-github-platforms/configure-azure-monitor-and-log-analytics-to-integrate-with",
+      "target": "/azure/devops/boards/github/connect-to-github",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/configure-monitoring-for-azure-devops-and-github-platforms/configure-azure-monitor-and-log-analytics-to-integrate-with",
+      "target": "/azure/devops/cross-service",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/configure-monitoring-for-azure-devops-and-github-platforms/configure-azure-monitor-and-log-analytics-to-integrate-with",
+      "target": "/azure/devops/report/powerbi/odataquery-connect",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/@foundations",
+      "target": "/azure/sre-agent/security-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-copilot-observability-agent",
+      "target": "/azure/azure-monitor/aiops/observability-agent-autonomous-operations",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-copilot-observability-agent",
+      "target": "/azure/azure-monitor/aiops/observability-agent-context-memory",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-copilot-observability-agent",
+      "target": "/azure/azure-monitor/aiops/observability-agent-deep-investigation-examples",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-copilot-observability-agent",
+      "target": "/azure/azure-monitor/aiops/observability-agent-transparency",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/cosmos-db/site-reliability-engineering-agent",
+      "decision": "reject",
+      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/developer/azure-mcp-server/tools/azure-sre-agent",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/add-private-marketplace",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/add-web-page-knowledge",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/ado-connector",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/agent-hooks",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/agent-reasoning",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/allow-list-key-vault-firewall",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/api-reference",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/automate-workflows",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/azure-devops-wiki-knowledge",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/code-interpreter",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/connect-github-enterprise-cloud",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/connect-notification-service",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/create-support-request",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/cross-account-ado-oauth",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/deep-investigation",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/default-agent-override-info",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/disaster-recovery",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/evaluate",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/faq",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/first-value",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/global-tools-page",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/install-plugin-from-marketplace",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/install-plugin-from-url",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/kusto-cluster-grouping",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/kusto-tools",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/live-reports",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/log-analytics-app-insights",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/managed-connectors",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/mcp-connectors",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/mcp-server",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/memory",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/outlook-connector",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/plugin-marketplace",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/python-code-execution",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/review-agent-insights",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/root-cause-analysis",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "Explains how Azure SRE Agent reasons about root causes during investigations; running and understanding the agent is part of the job of deploying and configuring it.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/send-notifications",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/servicenow-incidents",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/set-up-teams-connector",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/setup-github-byo-app",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/setup-managed-connector",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/setup-mcp-server",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/skills",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/subscription-permission-visibility",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/tool-access-policies",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/tools",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/track-incident-value",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/upload-knowledge-document",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/azure/sre-agent/workflow-automation",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/investigate-and-resolve-issues-raised-by-azure-sre-agent",
+      "target": "/azure/sre-agent/troubleshoot-java-aks",
+      "decision": "reject",
+      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}

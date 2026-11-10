@@ -84,3 +84,16 @@ test("GA4 loader pushes native Arguments objects rather than arrays", () => {
   assert.equal(Object.prototype.toString.call(entry), "[object Arguments]");
   assert.deepEqual(Array.from(entry), ["config", "G-TEST"]);
 });
+
+test("generated course pages get no legacy aliases, the older course pages keep theirs", () => {
+  const rules = redirectRules({}, [
+    "certs/courses/ab-100/",
+    "certs/courses/az-104course-v3/",
+  ]);
+  const sources = rules
+    .trim()
+    .split("\n")
+    .map((line) => line.split(" ")[0]);
+  assert.ok(!sources.some((source) => source.includes("ab-100")));
+  assert.ok(sources.includes("/courses/az-104course-v3/"));
+});

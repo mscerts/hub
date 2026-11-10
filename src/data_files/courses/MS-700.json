@@ -1,0 +1,2487 @@
+{
+  "schemaVersion": 1,
+  "code": "MS-700",
+  "name": "Managing Microsoft Teams",
+  "inputs": {
+    "guideHash": "66df26dcbeb4160a20f68fc779d6561c985c5286b17c7391cbb7a3ea1b505b52",
+    "guideAsOf": "October 27, 2026",
+    "scopeFingerprint": "f262a0d34687bb57d56c431e82e24f1ed56cfc23",
+    "scope": {
+      "courses": [
+        [
+          "MS-700T00",
+          "2026-01-27T19:23:00+00:00"
+        ]
+      ],
+      "modules": [
+        [
+          "/training/modules/configure-auto-attendants-call-queues",
+          "dbbaa4f5d741b781f330aeb7507b613a2ead259d",
+          "c29da262a8e8"
+        ],
+        [
+          "/training/modules/configure-deploy-manage-teams-devices",
+          "174c2ad7283d0955c3771de40aebee6b9a5973ff",
+          "52692e1efbec"
+        ],
+        [
+          "/training/modules/configure-manage-voice-users",
+          "ffa2486af1c18c2bc700d17dd3aceed9438df9bf",
+          "8d1c2d82502a"
+        ],
+        [
+          "/training/modules/configure-teams-phone-system",
+          "36000c15045b8d07db7d4a0062825439fb481c3c",
+          "9f9c2ce5171f"
+        ],
+        [
+          "/training/modules/create-manage-teams",
+          "6f59f6a3ef11c84146254c4d6465a18c02d737b9",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/explore-teams",
+          "4372627ea825132103001718df21d76b879c72c4",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/implement-compliance-for-microsoft-teams",
+          "bb0e6d5b787a65894c742391aa7ffe4fb90e9624",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+          "f5a7aed3a0ba466377c5744b4c5cb3f2f8cf5f82",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/implement-security-for-microsoft-teams",
+          "2804e204b3110cd5e4ba1e8415153751fa2eded7",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/introduction-teams-meetings-calling",
+          "fee1a33b2eae108df6cf012dfa5525ce0d54818c",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/manage-access-for-external-users",
+          "8bfa2648004a92bf135df8cab87aa5825809a343",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/manage-apps-for-microsoft-teams",
+          "2bc18546a65a1f0ef293fa24c4210436d3368ee4",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/manage-collaboration-experiences-for-chat-channels",
+          "cfe77a9fbeebbb69ecd1f9993ac62ffc4be55742",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/manage-meetings-virtual-events-experiences",
+          "f3ddbbb8115e03bfff534f7f26b2c2f785a8e5c5",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/monitor-your-microsoft-teams-environment",
+          "ea42d9b137bed821cc98a085c5cc3258fac84db1",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/plan-configure-network-settings-for-microsoft-teams",
+          "b7ee7cfb9c7a8d6da46678521715e66986d4b614",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/plan-deploy-microsoft-teams",
+          "d06123468cc741081d0efe6a5277b5f6ee222ad7",
+          "97d170e1550e"
+        ],
+        [
+          "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+          "a485c27c27c9dffccca9b2f8e1f0b99538654ca2",
+          "415d206eedc3"
+        ],
+        [
+          "/training/modules/plan-teams-phone-system",
+          "69bc999d26518bdf54729549ffdc1677230d8baf",
+          "341bf6c0aa4d"
+        ],
+        [
+          "/training/modules/troubleshoot-audio-video-client-issues",
+          "c94be78cd50125c9319c118cdbad34ca0340eed9",
+          "97d170e1550e"
+        ]
+      ]
+    },
+    "picked": [
+      [
+        "/training/modules/introduction-to-collaborating-microsoft-teams",
+        "e73cb8d4d72837d36102615935349c99366368a6"
+      ],
+      [
+        "/training/modules/m365-introduction-deliver-virtual-events-using-microsoft-teams",
+        "efc00353260121e2417fddc574d887bb908a5426"
+      ],
+      [
+        "/training/modules/monitor-troubleshoot-teams-phone-system",
+        "20e57625aa0026b1b8bfeca633ff05fbcec3eece"
+      ]
+    ],
+    "builtAt": "2026-11-04"
+  },
+  "audience": {
+    "intro": [
+      "As a Microsoft Teams administrator, you plan, implement, manage, and maintain internal and external collaboration and communication solutions using Teams.",
+      "You're responsible for configuring and managing teams, channels, chat, apps, events, and calling.",
+      "As a candidate for this exam, you should have a working knowledge of how Teams integrates into Microsoft 365 services."
+    ],
+    "lists": [
+      {
+        "lead": "You collaborate with owners of other areas, including",
+        "kind": "role",
+        "items": [
+          {
+            "text": "Identity"
+          },
+          {
+            "text": "Licensing"
+          },
+          {
+            "text": "Information management"
+          },
+          {
+            "text": "User adoption"
+          },
+          {
+            "text": "Security"
+          },
+          {
+            "text": "Compliance"
+          },
+          {
+            "text": "Devices"
+          },
+          {
+            "text": "Networking"
+          }
+        ]
+      }
+    ]
+  },
+  "domains": [
+    {
+      "title": "Configure and manage a Teams environment",
+      "weight": {
+        "min": 40,
+        "max": 45
+      },
+      "groups": [
+        {
+          "title": "Plan network settings for Teams",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-teams"
+              },
+              "title": "Explore Microsoft Teams",
+              "class": "foundation",
+              "source": "P1",
+              "why": "Teaches the architecture of Microsoft Teams, background that explains where network traffic flows.",
+              "evidence": "Illustrate Microsoft Teams architecture",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/introduction-teams-meetings-calling"
+              },
+              "title": "Introduction to Teams meetings and calling",
+              "class": "foundation",
+              "source": "P1",
+              "why": "Introduces meetings and calling, the workloads whose network needs this group plans for; unsure how much network content it gives.",
+              "evidence": "Overview of Teams meetings and events",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/calculate-network-bandwidth-capacity-for-teams-voice-video-m",
+              "text": "Calculate network bandwidth capacity for Teams voice, video, meetings, and events",
+              "picks": []
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/analyze-network-impact-by-using-teams-network-planner",
+              "text": "Analyze network impact by using Teams Network planner",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/plan-configure-network-settings-for-microsoft-teams"
+                  },
+                  "title": "Plan and configure network settings for Microsoft Teams",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/specify-network-ports-and-protocols-used-by-teams",
+              "text": "Specify network ports and protocols used by Teams",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-configure-network-settings-for-microsoft-teams",
+                  "title": "Plan and configure network settings for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/analyze-network-impact-by-using-teams-network-planner"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/assess-network-readiness-and-connectivity-by-using-the-micro",
+              "text": "Assess network readiness and connectivity by using the Microsoft Teams Network Assessment Tool and Microsoft 365 network connectivity test tool",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/monitor-your-microsoft-teams-environment"
+                  },
+                  "title": "Monitor your Microsoft Teams environment",
+                  "class": "supporting",
+                  "relation": "operate",
+                  "source": "P1",
+                  "why": "After readiness is assessed, an administrator monitors connectivity through the Microsoft 365 network connectivity dashboard.",
+                  "evidence": "Monitor the Microsoft 365 network connectivity dashboard",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Manage security and compliance settings for Teams",
+          "tasks": [
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/identify-licensing-requirements-for-security-and-compliance",
+              "text": "Identify licensing requirements for security and compliance features",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-compliance-for-microsoft-teams",
+                  "title": "Implement compliance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-security-and-compliance-alert-policies-for-teams"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-security-and-compliance-alert-policies-for-teams",
+              "text": "Specify security and compliance alert policies for Teams",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-compliance-for-microsoft-teams"
+                  },
+                  "title": "Implement compliance for Microsoft Teams",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/choose-appropriate-teams-administrator-roles",
+              "text": "Choose appropriate Teams administrator roles",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/plan-deploy-microsoft-teams"
+                  },
+                  "title": "Plan and deploy Microsoft Teams",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/plan-and-configure-threat-policies-in-microsoft-defender-for",
+              "text": "Plan and configure threat policies in Microsoft Defender for Office 365",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-security-for-microsoft-teams"
+                  },
+                  "title": "Implement security for Microsoft Teams",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-retention-policies",
+              "text": "Specify retention policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-compliance-for-microsoft-teams",
+                  "title": "Implement compliance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-security-and-compliance-alert-policies-for-teams"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-sensitivity-labels-and-publishing-policies-including",
+              "text": "Specify sensitivity labels and publishing policies, including for Teams meetings",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-compliance-for-microsoft-teams",
+                  "title": "Implement compliance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-security-and-compliance-alert-policies-for-teams"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-microsoft-purview-data-loss-prevention-dlp-policies",
+              "text": "Specify Microsoft Purview Data Loss Prevention (DLP) policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-compliance-for-microsoft-teams",
+                  "title": "Implement compliance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-security-and-compliance-alert-policies-for-teams"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-microsoft-entra-conditional-access-policies-for-team",
+              "text": "Specify Microsoft Entra Conditional Access policies for Teams",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-security-for-microsoft-teams",
+                  "title": "Implement security for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/plan-and-configure-threat-policies-in-microsoft-defender-for"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-microsoft-purview-information-barriers-policies",
+              "text": "Specify Microsoft Purview Information Barriers policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-compliance-for-microsoft-teams",
+                  "title": "Implement compliance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-security-and-compliance-alert-policies-for-teams"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/identify-appropriate-use-cases-for-microsoft-purview-communi",
+              "text": "Identify appropriate use cases for Microsoft Purview Communication Compliance and Microsoft Purview Insider Risk Management",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-compliance-for-microsoft-teams",
+                  "title": "Implement compliance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-security-and-compliance-alert-policies-for-teams"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Plan and implement governance for Teams",
+          "tasks": [
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/identify-licensing-requirements-for-lifecycle-management-of",
+              "text": "Identify licensing requirements for lifecycle management of teams",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-deploy-microsoft-teams",
+                  "title": "Plan and deploy Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/choose-appropriate-teams-administrator-roles"
+                },
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/identify-where-teams-stores-content",
+              "text": "Identify where Teams stores content",
+              "picks": []
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies",
+              "text": "Plan and manage update policies",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams"
+                  },
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/configure-deploy-manage-teams-devices"
+                  },
+                  "title": "Configure, deploy, and manage Teams devices",
+                  "class": "supporting",
+                  "relation": "operate",
+                  "source": "P1",
+                  "why": "A professional managing Teams update policies also updates the Teams devices, which this module covers, though not the policies themselves.",
+                  "evidence": "Update Microsoft Teams devices remotely",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams",
+              "text": "Create and manage policy packages in Teams",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/manage-policy-packages"
+                  },
+                  "title": "Manage policy packages in Teams",
+                  "class": "core",
+                  "source": "P2",
+                  "via": "/training/modules/configure-teams-phone-system",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-collaboration-experiences-for-chat-channels"
+                  },
+                  "title": "Manage collaboration experiences for chat and channels",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "A professional building a policy package also sets the messaging policies it bundles, which this module teaches.",
+                  "evidence": "Create and manage messaging policies",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-meetings-virtual-events-experiences"
+                  },
+                  "title": "Manage meetings and events experiences",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "A professional building a policy package also sets the meeting policies it bundles, which this module teaches.",
+                  "evidence": "Create and manage meeting policies",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/assign-policy-packages"
+                  },
+                  "title": "Assign policy packages",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P2",
+                  "via": "/training/modules/configure-teams-phone-system",
+                  "why": "Once a policy package is created, the professional assigns it to users, a neighbouring step of the same job.",
+                  "evidence": "Assign policy packages",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-configure-policy-assignment-for-users-and-groups",
+              "text": "Plan and configure policy assignment for users and groups",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/configure-settings-for-microsoft-365-group-creation",
+              "text": "Configure settings for Microsoft 365 group creation",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/configure-an-expiration-policy-for-microsoft-365-groups",
+              "text": "Configure an expiration policy for Microsoft 365 groups",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/configure-a-naming-policy-for-microsoft-365-groups-including",
+              "text": "Configure a naming policy for Microsoft 365 groups, including blocked words",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/archive-delete-or-unarchive-one-or-more-teams",
+              "text": "Archive, delete, or unarchive one or more teams",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/create-manage-teams"
+                  },
+                  "title": "Create and manage teams",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/restore-or-troubleshoot-the-deletion-of-a-microsoft-365-grou",
+              "text": "Restore or troubleshoot the deletion of a Microsoft 365 group",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-teams",
+                  "title": "Create and manage teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/archive-delete-or-unarchive-one-or-more-teams"
+                },
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/identify-when-to-use-microsoft-entra-access-reviews-for-team",
+              "text": "Identify when to use Microsoft Entra Access reviews for teams and groups",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-your-microsoft-teams-environment",
+                  "title": "Monitor your Microsoft Teams environment",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/assess-network-readiness-and-connectivity-by-using-the-micro"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/perform-operations-for-teams-by-using-powershell-and-microso",
+              "text": "Perform operations for Teams by using PowerShell and Microsoft Graph",
+              "picks": []
+            }
+          ]
+        },
+        {
+          "title": "Configure and manage external collaboration",
+          "tasks": [
+            {
+              "key": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/identify-licensing-requirements-for-external-collaboration",
+              "text": "Identify licensing requirements for external collaboration",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-access-for-external-users",
+                  "title": "Manage access for external users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se",
+              "text": "Configure SharePoint Online and OneDrive external sharing settings",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-access-for-external-users"
+                  },
+                  "title": "Manage access for external users",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-external-access-in-the-teams-admin-center",
+              "text": "Configure External access in the Teams admin center",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-access-for-external-users",
+                  "title": "Manage access for external users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/control-external-access-by-domain-for-specific-users-and-gro",
+              "text": "Control External Access by Domain for Specific Users and Groups",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-access-for-external-users",
+                  "title": "Manage access for external users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-external-collaboration-settings-in-microsoft-entra",
+              "text": "Configure External collaboration settings in Microsoft Entra ID for guest access",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-access-for-external-users",
+                  "title": "Manage access for external users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-guest-access-and-sharing-in-the-teams-admin-center",
+              "text": "Configure guest access and sharing in the Teams admin center, Microsoft 365 admin center, Microsoft Entra admin center, or the SharePoint admin center",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-access-for-external-users",
+                  "title": "Manage access for external users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/control-guest-access-to-a-specific-team-by-using-microsoft-p",
+              "text": "Control guest access to a specific team by using Microsoft Purview and Microsoft Entra ID",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-your-microsoft-teams-environment",
+                  "title": "Monitor your Microsoft Teams environment",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/assess-network-readiness-and-connectivity-by-using-the-micro"
+                },
+                {
+                  "path": "/training/modules/manage-access-for-external-users",
+                  "title": "Manage access for external users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/remove-guests-from-teams-including-from-a-team-or-a-tenant",
+              "text": "Remove guests from Teams, including from a team or a tenant",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-access-for-external-users",
+                  "title": "Manage access for external users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-shared-channels-for-external-access",
+              "text": "Configure shared channels for external access",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+                  "title": "Manage collaboration experiences for chat and channels",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                },
+                {
+                  "path": "/training/modules/manage-access-for-external-users",
+                  "title": "Manage access for external users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-and-manage-b2b-direct-connect-cross-tenant-access",
+              "text": "Configure and manage B2B direct connect cross-tenant access settings in Microsoft Entra ID for shared channels",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-access-for-external-users",
+                  "title": "Manage access for external users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-a-multitenant-organization-mto",
+              "text": "Configure a multitenant organization (MTO)",
+              "picks": []
+            }
+          ]
+        },
+        {
+          "title": "Manage Teams clients and devices",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/introduction-to-collaborating-microsoft-teams"
+              },
+              "title": "Introduction to collaborating with Microsoft Teams",
+              "class": "foundation",
+              "source": "P4",
+              "why": "A light introduction to what Teams is and how people use it, a basic base for the group's client and device tasks.",
+              "evidence": "What is Microsoft Teams?",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and",
+              "text": "Identify licensing requirements for Teams Phone accounts and resource accounts",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/plan-teams-phone-system"
+                  },
+                  "title": "Plan for Microsoft Teams Phone",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/teams-add-on-licensing/virtual-user"
+                  },
+                  "title": "Microsoft Teams Phone Resource Account licenses",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Microsoft Teams Phone Resource Account licenses",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/configure-auto-attendants-call-queues"
+                  },
+                  "title": "Configure auto attendants and call queues",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "Resource accounts for call queues are set up here, a neighbouring step to licensing the phone and resource accounts.",
+                  "evidence": "Configure resource accounts",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/configure-manage-voice-users"
+                  },
+                  "title": "Configure and manage voice users",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "A professional who checks licences for phone accounts next enables the users for Teams Phone in this module.",
+                  "evidence": "Enable users for Teams Phone",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-devices",
+              "text": "Identify licensing requirements for Teams devices",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/plan-microsoft-teams-rooms-surface-hub"
+                  },
+                  "title": "Plan for Microsoft Teams Rooms and shared meeting spaces",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/rooms/rooms-licensing"
+                  },
+                  "title": "Microsoft Teams Rooms licenses",
+                  "class": "core",
+                  "source": "P2",
+                  "via": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/teams-add-on-licensing/microsoft-teams-add-on-licensing"
+                  },
+                  "title": "Microsoft Teams add-on licenses - Microsoft Docs",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P2",
+                  "via": "/training/modules/plan-teams-phone-system",
+                  "why": "Add-on licences such as Teams Phone add-ons are checked alongside device licences by a professional doing this task.",
+                  "evidence": "Microsoft Teams add-on licenses",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-configuration-profiles-for-teams-devices",
+              "text": "Manage configuration profiles for Teams devices",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/devices/device-management"
+                  },
+                  "title": "Manage your devices in Microsoft Teams",
+                  "class": "core",
+                  "source": "P2",
+                  "via": "/training/modules/configure-deploy-manage-teams-devices",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+                  "title": "Plan for Microsoft Teams Rooms and shared meeting spaces",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-devices"
+                },
+                {
+                  "path": "/training/modules/plan-teams-phone-system",
+                  "title": "Plan for Microsoft Teams Phone",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and"
+                },
+                {
+                  "path": "/training/modules/configure-deploy-manage-teams-devices",
+                  "title": "Configure, deploy, and manage Teams devices",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/configure-accounts-and-systems-for-microsoft-teams-rooms",
+              "text": "Configure accounts and systems for Microsoft Teams Rooms",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/rooms/create-resource-account"
+                  },
+                  "title": "Create and configure resource accounts for rooms and shared Teams devices",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Create and configure resource accounts for rooms and shared Teams devices",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1"
+                  },
+                  "title": "Transitioning Teams Android device management from Teams admin center to the Teams Rooms Pro Management portal",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P2",
+                  "via": "/training/modules/configure-deploy-manage-teams-devices",
+                  "why": "Covers moving Teams Rooms and Android device management to the Pro Management portal, a neighbouring step.",
+                  "evidence": "Transitioning Teams Android device management from Teams admin center",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/rooms/coordinated-meetings"
+                  },
+                  "title": "Set up Coordinated Meetings with Microsoft Teams Rooms on Windows and Surface Hub",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P2",
+                  "via": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+                  "why": "Sets up one optional Teams Rooms feature in more depth than the task asks for.",
+                  "evidence": "Set up Coordinated Meetings with Microsoft Teams Rooms on Windows and Surface Hub",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/rooms/rooms-manage"
+                  },
+                  "title": "Manage Microsoft Teams Rooms",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P2",
+                  "via": "/training/modules/configure-deploy-manage-teams-devices",
+                  "why": "Managing Teams Rooms follows setting up their accounts and systems in the same job.",
+                  "evidence": "Manage Microsoft Teams Rooms",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/rooms/rooms-plan"
+                  },
+                  "title": "Plan for Microsoft Teams Rooms",
+                  "class": "supporting",
+                  "relation": "prerequisite",
+                  "source": "P2",
+                  "via": "/training/modules/configure-deploy-manage-teams-devices",
+                  "why": "Planning Microsoft Teams Rooms comes before configuring accounts and systems for them.",
+                  "evidence": "Plan for Microsoft Teams Rooms",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/rooms/rooms-pro-management"
+                  },
+                  "title": "Microsoft Teams Rooms Pro Management",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P2",
+                  "via": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+                  "why": "The Pro Management portal is where a professional manages Teams Rooms devices after their accounts are set up.",
+                  "evidence": "Microsoft Teams Rooms Pro Management",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-auto-attendants-call-queues",
+                  "title": "Configure auto attendants and call queues",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and"
+                },
+                {
+                  "path": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+                  "title": "Plan for Microsoft Teams Rooms and shared meeting spaces",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-devices"
+                },
+                {
+                  "path": "/training/modules/configure-deploy-manage-teams-devices",
+                  "title": "Configure, deploy, and manage Teams devices",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-device-settings-and-firmware",
+              "text": "Manage device settings and firmware",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-deploy-manage-teams-devices",
+                  "title": "Configure, deploy, and manage Teams devices",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-teams-device-tags",
+              "text": "Manage Teams device tags",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-deploy-manage-teams-devices",
+                  "title": "Configure, deploy, and manage Teams devices",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/provision-and-configure-remote-sign-in-for-new-devices",
+              "text": "Provision and configure remote sign-in for new devices",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-deploy-manage-teams-devices",
+                  "title": "Configure, deploy, and manage Teams devices",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/plan-and-configure-teams-for-vdi",
+              "text": "Plan and configure Teams for VDI",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-deploy-microsoft-teams",
+                  "title": "Plan and deploy Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/choose-appropriate-teams-administrator-roles"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Manage teams, channels, chats, and apps",
+      "weight": {
+        "min": 20,
+        "max": 25
+      },
+      "groups": [
+        {
+          "title": "Create and manage teams",
+          "tasks": [
+            {
+              "key": "manage-teams-channels-chats-and-apps/create-and-manage-teams/plan-for-a-teams-rollout-by-using-teams-advisor",
+              "text": "Plan for a Teams rollout by using Teams Advisor",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-deploy-microsoft-teams",
+                  "title": "Plan and deploy Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/choose-appropriate-teams-administrator-roles"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-a-team-by-using-the-teams-admin-center-teams-client-t",
+              "text": "Create a team by using the Teams admin center, Teams client, the Teams PowerShell module, or Microsoft Graph",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-deploy-microsoft-teams",
+                  "title": "Plan and deploy Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/choose-appropriate-teams-administrator-roles"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-a-team-from-an-existing-microsoft-365-group-sharepoin",
+              "text": "Create a team from an existing Microsoft 365 group, SharePoint site, or team",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-a-team-from-a-template",
+              "text": "Create a team from a template",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-teams",
+                  "title": "Create and manage teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/archive-delete-or-unarchive-one-or-more-teams"
+                },
+                {
+                  "path": "/training/modules/plan-deploy-microsoft-teams",
+                  "title": "Plan and deploy Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/choose-appropriate-teams-administrator-roles"
+                },
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-and-manage-templates-and-template-policies-for-teams",
+              "text": "Create and manage templates and template policies for teams",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-teams",
+                  "title": "Create and manage teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/archive-delete-or-unarchive-one-or-more-teams"
+                },
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/create-and-manage-teams/manage-the-membership-and-roles-for-a-team",
+              "text": "Manage the membership and roles for a team",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-teams",
+                  "title": "Create and manage teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/archive-delete-or-unarchive-one-or-more-teams"
+                },
+                {
+                  "path": "/training/modules/plan-deploy-microsoft-teams",
+                  "title": "Plan and deploy Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/choose-appropriate-teams-administrator-roles"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/create-and-manage-teams/manage-a-team-in-the-teams-admin-center",
+              "text": "Manage a team in the Teams admin center",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-deploy-microsoft-teams",
+                  "title": "Plan and deploy Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/choose-appropriate-teams-administrator-roles"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/create-and-manage-teams/manage-teams-environment-settings",
+              "text": "Manage Teams environment settings",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-configure-network-settings-for-microsoft-teams",
+                  "title": "Plan and configure network settings for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/analyze-network-impact-by-using-teams-network-planner"
+                },
+                {
+                  "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+                  "title": "Manage collaboration experiences for chat and channels",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                },
+                {
+                  "path": "/training/modules/monitor-your-microsoft-teams-environment",
+                  "title": "Monitor your Microsoft Teams environment",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/assess-network-readiness-and-connectivity-by-using-the-micro"
+                },
+                {
+                  "path": "/training/modules/manage-meetings-virtual-events-experiences",
+                  "title": "Manage meetings and events experiences",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/create-and-manage-teams/configure-privacy-and-sensitivity-settings-for-a-team",
+              "text": "Configure privacy and sensitivity settings for a team",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-compliance-for-microsoft-teams",
+                  "title": "Implement compliance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/specify-security-and-compliance-alert-policies-for-teams"
+                },
+                {
+                  "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+                  "title": "Manage collaboration experiences for chat and channels",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-and-manage-frontline-teams-and-experiences",
+              "text": "Create and manage frontline teams and experiences",
+              "picks": []
+            }
+          ]
+        },
+        {
+          "title": "Manage channels and chats",
+          "tasks": [
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/recommend-channel-types-including-standard-private-and-share",
+              "text": "Recommend channel types, including standard, private, and shared",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+                  "title": "Manage collaboration experiences for chat and channels",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/add-edit-and-remove-channels",
+              "text": "Add, edit, and remove channels",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+                  "title": "Manage collaboration experiences for chat and channels",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/manage-channel-settings",
+              "text": "Manage channel settings",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+                  "title": "Manage collaboration experiences for chat and channels",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-teams-policies-for-channel-creation-and-sh",
+              "text": "Create and manage Teams policies for channel creation and sharing",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+                  "title": "Manage collaboration experiences for chat and channels",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                },
+                {
+                  "path": "/training/modules/manage-access-for-external-users",
+                  "title": "Manage access for external users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se"
+                },
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/manage-private-and-shared-channel-membership",
+              "text": "Manage private and shared channel membership",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/create-manage-teams",
+                  "title": "Create and manage teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/archive-delete-or-unarchive-one-or-more-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies",
+              "text": "Create and manage messaging policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+                  "title": "Manage collaboration experiences for chat and channels",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Manage apps for Teams",
+          "tasks": [
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/manage-org-wide-app-settings-in-the-teams-admin-center",
+              "text": "Manage Org-wide app settings in the Teams admin center",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-apps-for-microsoft-teams"
+                  },
+                  "title": "Manage apps for Microsoft Teams",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/create-and-manage-app-assignments-and-app-setup-policies",
+              "text": "Create and manage app assignments and app setup policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-apps-for-microsoft-teams",
+                  "title": "Manage apps for Microsoft Teams",
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/manage-org-wide-app-settings-in-the-teams-admin-center"
+                },
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/manage-permissions-and-consent-for-apps-including-blocking-a",
+              "text": "Manage permissions and consent for apps, including blocking apps",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-apps-for-microsoft-teams",
+                  "title": "Manage apps for Microsoft Teams",
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/manage-org-wide-app-settings-in-the-teams-admin-center"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/recommend-appropriate-extensibility-options-including-apps-t",
+              "text": "Recommend appropriate extensibility options, including apps, tabs, meetings, messaging extensions, and workflows",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-apps-for-microsoft-teams",
+                  "title": "Manage apps for Microsoft Teams",
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/manage-org-wide-app-settings-in-the-teams-admin-center"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/manage-purchasing-of-apps-in-the-teams-app-store",
+              "text": "Manage purchasing of apps in the Teams app store",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-apps-for-microsoft-teams",
+                  "title": "Manage apps for Microsoft Teams",
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/manage-org-wide-app-settings-in-the-teams-admin-center"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/customize-the-appearance-of-the-teams-app-store",
+              "text": "Customize the appearance of the Teams app store",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-apps-for-microsoft-teams",
+                  "title": "Manage apps for Microsoft Teams",
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/manage-org-wide-app-settings-in-the-teams-admin-center"
+                }
+              ]
+            },
+            {
+              "key": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/upload-an-app-to-teams",
+              "text": "Upload an app to Teams",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-apps-for-microsoft-teams",
+                  "title": "Manage apps for Microsoft Teams",
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/manage-org-wide-app-settings-in-the-teams-admin-center"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Manage meetings and calling",
+      "weight": {
+        "min": 15,
+        "max": 20
+      },
+      "groups": [
+        {
+          "title": "Manage meetings and events",
+          "foundations": [
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/m365-introduction-deliver-virtual-events-using-microsoft-teams"
+              },
+              "title": "Introduction to delivering virtual events using Microsoft Teams and Microsoft 365",
+              "class": "foundation",
+              "source": "P4",
+              "why": "Introduces virtual events and the event design model, the concepts behind event settings.",
+              "evidence": "What are virtual events?",
+              "decision": {
+                "by": "auto",
+                "at": "2026-11-04"
+              }
+            }
+          ],
+          "tasks": [
+            {
+              "key": "manage-meetings-and-calling/manage-meetings-and-events/recommend-meeting-types-based-on-business-requirements-inclu",
+              "text": "Recommend meeting types based on business requirements, including Appointments with Microsoft Teams, webinars, Teams town halls, and meetings",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-meetings-virtual-events-experiences",
+                  "title": "Manage meetings and events experiences",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-meetings-and-events/configure-meeting-settings-including-for-microsoft-365-copil",
+              "text": "Configure meeting settings, including for Microsoft 365 Copilot",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-meetings-virtual-events-experiences",
+                  "title": "Manage meetings and events experiences",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-templates-and-template-policies",
+              "text": "Create and manage meeting templates and template policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-meetings-virtual-events-experiences",
+                  "title": "Manage meetings and events experiences",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies",
+              "text": "Create and manage meeting policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-meetings-virtual-events-experiences",
+                  "title": "Manage meetings and events experiences",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-customization-policies",
+              "text": "Create and manage meeting customization policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-meetings-virtual-events-experiences",
+                  "title": "Manage meetings and events experiences",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-event-settings-and-policies",
+              "text": "Create and manage event settings and policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-meetings-virtual-events-experiences",
+                  "title": "Manage meetings and events experiences",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-meetings-and-events/configure-and-manage-teams-webinars",
+              "text": "Configure and manage Teams webinars",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-meetings-virtual-events-experiences",
+                  "title": "Manage meetings and events experiences",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-meetings-and-events/configure-and-manage-teams-town-halls",
+              "text": "Configure and manage Teams town halls",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-meetings-virtual-events-experiences",
+                  "title": "Manage meetings and events experiences",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Manage phone numbers and services for Teams Phone",
+          "tasks": [
+            {
+              "key": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/provision-and-manage-phone-numbers-for-users-services-and-co",
+              "text": "Provision and manage phone numbers for users, services, and conferencing bridges",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/configure-teams-phone-system"
+                  },
+                  "title": "Configure and deploy Teams Phone",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/assign-change-or-remove-a-phone-number-for-a-user-or-a-resou",
+              "text": "Assign, change, or remove a phone number for a user or a resource account",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/getting-phone-numbers-for-your-users"
+                  },
+                  "title": "Manage phone numbers for your organization in Microsoft Teams",
+                  "class": "core",
+                  "source": "P2",
+                  "via": "/training/modules/configure-teams-phone-system",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-teams-phone-system",
+                  "title": "Configure and deploy Teams Phone",
+                  "shownUnder": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/provision-and-manage-phone-numbers-for-users-services-and-co"
+                },
+                {
+                  "path": "/training/modules/configure-manage-voice-users",
+                  "title": "Configure and manage voice users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and"
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/manage-voice-settings-and-policies-for-users",
+              "text": "Manage voice settings and policies for users",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-manage-voice-users",
+                  "title": "Configure and manage voice users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and"
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/create-and-manage-voicemail-policies",
+              "text": "Create and manage voicemail policies",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/set-up-phone-system-voicemail"
+                  },
+                  "title": "Set up Cloud Voicemail - Microsoft Docs",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P2",
+                  "via": "/training/modules/plan-teams-phone-system",
+                  "why": "A professional managing voicemail policies also sets up the Cloud Voicemail feature that those policies control.",
+                  "evidence": "Set up Cloud Voicemail",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-teams-phone-system",
+                  "title": "Plan for Microsoft Teams Phone",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and"
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/manage-auto-attendants-and-call-queues",
+              "text": "Manage auto-attendants and call queues",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/aa-cq-setup-authorized-users"
+                  },
+                  "title": "Set up Auto attendant and Call queue authorized users",
+                  "class": "core",
+                  "source": "P2",
+                  "via": "/training/modules/configure-auto-attendants-call-queues",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-auto-attendants-call-queues",
+                  "title": "Configure auto attendants and call queues",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and"
+                }
+              ]
+            },
+            {
+              "key": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/create-and-manage-calling-policies",
+              "text": "Create and manage calling policies",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoftteams/settings-policies-reference"
+                  },
+                  "title": "Manage voice and calling policies in Microsoft Teams",
+                  "class": "core",
+                  "source": "P2",
+                  "via": "/training/modules/configure-manage-voice-users",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-teams-phone-system",
+                  "title": "Configure and deploy Teams Phone",
+                  "shownUnder": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/provision-and-manage-phone-numbers-for-users-services-and-co"
+                },
+                {
+                  "path": "/training/modules/configure-manage-voice-users",
+                  "title": "Configure and manage voice users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Monitor, report on, and troubleshoot Teams",
+      "weight": {
+        "min": 15,
+        "max": 20
+      },
+      "groups": [
+        {
+          "title": "Monitor and report on Teams",
+          "tasks": [
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/monitor-and-report-on-teams/monitor-and-report-on-voice-and-meeting-quality",
+              "text": "Monitor and report on voice and meeting quality",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/plan-configure-network-settings-for-microsoft-teams",
+                  "title": "Plan and configure network settings for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/analyze-network-impact-by-using-teams-network-planner"
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/monitor-and-report-on-teams/configure-alert-rules",
+              "text": "Configure alert rules",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-your-microsoft-teams-environment",
+                  "title": "Monitor your Microsoft Teams environment",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/assess-network-readiness-and-connectivity-by-using-the-micro"
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/monitor-and-report-on-teams/report-on-teams-usage-including-team-activity-app-usage-acti",
+              "text": "Report on Teams usage, including team activity, app usage, active users, per-meeting metrics, and storage usage",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-your-microsoft-teams-environment",
+                  "title": "Monitor your Microsoft Teams environment",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/assess-network-readiness-and-connectivity-by-using-the-micro"
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/monitor-and-report-on-teams/monitor-and-report-on-the-creation-and-deletion-of-teams",
+              "text": "Monitor and report on the creation and deletion of teams",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-your-microsoft-teams-environment",
+                  "title": "Monitor your Microsoft Teams environment",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/assess-network-readiness-and-connectivity-by-using-the-micro"
+                },
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/monitor-and-report-on-teams/monitor-and-report-on-guest-access",
+              "text": "Monitor and report on guest access",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-your-microsoft-teams-environment",
+                  "title": "Monitor your Microsoft Teams environment",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/assess-network-readiness-and-connectivity-by-using-the-micro"
+                },
+                {
+                  "path": "/training/modules/manage-access-for-external-users",
+                  "title": "Manage access for external users",
+                  "shownUnder": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-sharepoint-online-and-onedrive-external-sharing-se"
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/monitor-and-report-on-teams/monitor-the-microsoft-365-network-connectivity-test-tool",
+              "text": "Monitor the Microsoft 365 network connectivity test tool",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-your-microsoft-teams-environment",
+                  "title": "Monitor your Microsoft Teams environment",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/assess-network-readiness-and-connectivity-by-using-the-micro"
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/monitor-and-report-on-teams/manage-feedback-including-policies",
+              "text": "Manage feedback, including policies",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/monitor-your-microsoft-teams-environment",
+                  "title": "Monitor your Microsoft Teams environment",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/assess-network-readiness-and-connectivity-by-using-the-micro"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Troubleshoot audio, video, and client issues",
+          "tasks": [
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/collect-client-side-logs",
+              "text": "Collect client-side logs",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/troubleshoot-audio-video-client-issues"
+                  },
+                  "title": "Troubleshoot audio, video, and client issues",
+                  "class": "core",
+                  "source": "P1",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/clear-the-teams-client-cache",
+              "text": "Clear the Teams client cache",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/troubleshoot-audio-video-client-issues",
+                  "title": "Troubleshoot audio, video, and client issues",
+                  "shownUnder": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/collect-client-side-logs"
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/troubleshoot-issues-by-using-self-help-diagnostics-for-teams",
+              "text": "Troubleshoot issues by using self-help diagnostics for Teams",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/troubleshoot-audio-video-client-issues",
+                  "title": "Troubleshoot audio, video, and client issues",
+                  "shownUnder": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/collect-client-side-logs"
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/troubleshoot-teams-client-installation-and-update-issues",
+              "text": "Troubleshoot Teams client installation and update issues",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/troubleshoot-audio-video-client-issues",
+                  "title": "Troubleshoot audio, video, and client issues",
+                  "shownUnder": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/collect-client-side-logs"
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/troubleshoot-teams-client-health-and-issues-in-the-teams-adm",
+              "text": "Troubleshoot Teams client health and issues in the Teams admin center",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/troubleshoot-audio-video-client-issues",
+                  "title": "Troubleshoot audio, video, and client issues",
+                  "shownUnder": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/collect-client-side-logs"
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/troubleshoot-sign-in-issues-to-teams",
+              "text": "Troubleshoot sign-in issues to Teams",
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/troubleshoot-audio-video-client-issues",
+                  "title": "Troubleshoot audio, video, and client issues",
+                  "shownUnder": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/collect-client-side-logs"
+                }
+              ]
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/troubleshoot-microsoft-365-copilot-and-ai-experiences-in-tea",
+              "text": "Troubleshoot Microsoft 365 Copilot and AI experiences in Teams",
+              "picks": []
+            },
+            {
+              "key": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/troubleshoot-issues-with-joining-meetings-and-accessing-feat",
+              "text": "Troubleshoot issues with joining meetings and accessing features in meetings",
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/monitor-troubleshoot-teams-phone-system"
+                  },
+                  "title": "Monitor and troubleshoot Teams collaboration communications systems",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Troubleshoot Teams meetings and calling",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/@foundations",
+      "path": "/entra/global-secure-access/concept-external-user-access",
+      "reason": "Covers Global Secure Access for partner users through its client and Azure Virtual Desktop, a network security product rather than Teams external collaboration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/@foundations",
+      "path": "/entra/id-governance/entitlement-management-overview",
+      "reason": "Entitlement management is identity governance, a different sub-product from the Teams and Entra guest access settings in this group.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/@foundations",
+      "path": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "reason": "Dropped in review: end-user introduction or a narrow device migration note.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-and-manage-b2b-direct-connect-cross-tenant-access",
+      "path": "/training/modules/configure-manage-voice-users",
+      "reason": "Covers enabling users for Teams Phone calling, not cross-tenant access.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-external-access-in-the-teams-admin-center",
+      "path": "/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "reason": "Covers moving Teams Android device management to the Teams Rooms Pro Management portal, a device topic.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/configure-external-access-in-the-teams-admin-center",
+      "path": "/training/modules/build-digital-learning-hub-class-teams",
+      "reason": "Written for educators building a class learning hub, a different job role from the Teams administrator.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/identify-licensing-requirements-for-external-collaboration",
+      "path": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+      "reason": "Covers licence requirements for Teams Rooms and shared devices, not for external collaboration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/configure-and-manage-external-collaboration/identify-licensing-requirements-for-external-collaboration",
+      "path": "/training/modules/plan-teams-phone-system",
+      "reason": "Covers licence requirements for Teams Phone, a different product area from external collaboration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/@foundations",
+      "path": "/training/modules/explore-copilot-stack",
+      "reason": "Teaches the Microsoft 365 Agents SDK, a different product area with no link to Teams security and compliance.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-security-and-compliance-settings-for-teams/identify-licensing-requirements-for-security-and-compliance",
+      "path": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+      "reason": "Covers licensing for Teams Rooms and shared devices, a different product area from security and compliance features.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/@foundations",
+      "path": "/azure/communication-services/concepts/call-automation/call-automation-teams-interop",
+      "reason": "Covers Azure Communication Services Call Automation interop, a different product from Teams client and device management.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/@foundations",
+      "path": "/azure/communication-services/concepts/interop/tpe/teams-phone-extensibility-overview",
+      "reason": "Covers Teams Phone extensibility through Azure Communication Services, a developer product rather than Teams device management.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/@foundations",
+      "path": "/azure/communication-services/resources/troubleshooting/voice-video-calling/device-issues/overview",
+      "reason": "Covers Azure Communication Services device and permission troubleshooting, a different product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/configure-accounts-and-systems-for-microsoft-teams-rooms",
+      "path": "/microsoftteams/rooms/bookable-desks",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and",
+      "path": "/training/modules/configure-teams-phone-system",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and",
+      "path": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+      "reason": "Its licence unit covers Teams Rooms and shared devices, a different product area from Teams Phone accounts.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-configuration-profiles-for-teams-devices",
+      "path": "/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "reason": "Dropped in review: end-user introduction or a narrow device migration note.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/plan-and-configure-teams-for-vdi",
+      "path": "/microsoftteams/calling-plan-overview",
+      "reason": "Covers calling plan availability by country, not VDI.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/plan-and-configure-teams-for-vdi",
+      "path": "/microsoftteams/create-and-manage-dial-plans",
+      "reason": "Covers dial plans for Teams Phone, not VDI.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/plan-and-configure-teams-for-vdi",
+      "path": "/microsoftteams/getting-phone-numbers-for-your-users",
+      "reason": "Covers phone numbers for users, not VDI.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/plan-and-configure-teams-for-vdi",
+      "path": "/microsoftteams/operator-connect-mobile-configure",
+      "reason": "Configures Teams Phone Mobile, not VDI.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/plan-and-configure-teams-for-vdi",
+      "path": "/microsoftteams/operator-connect-plan",
+      "reason": "Covers Operator Connect for Teams Phone, not VDI.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/plan-and-configure-teams-for-vdi",
+      "path": "/microsoftteams/phones/phones-for-teams",
+      "reason": "Covers phones for Teams, not VDI.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/plan-and-configure-teams-for-vdi",
+      "path": "/training/modules/configure-manage-voice-users",
+      "reason": "Enables voice users for Teams Phone, with no VDI content.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/@foundations",
+      "path": "/training/modules/explore-copilot-stack",
+      "reason": "Teaches the Microsoft 365 Agents SDK, a different product area with no link to Teams governance.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/identify-licensing-requirements-for-lifecycle-management-of",
+      "path": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
+      "reason": "Its licence unit covers Teams Rooms and shared devices, a different product area from lifecycle management licensing.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/identify-licensing-requirements-for-lifecycle-management-of",
+      "path": "/training/modules/plan-teams-phone-system",
+      "reason": "Its licence unit covers Teams Phone licensing, a different product area from lifecycle management licensing.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/identify-when-to-use-microsoft-entra-access-reviews-for-team",
+      "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/identify-where-teams-stores-content",
+      "path": "/training/modules/build-digital-learning-hub-class-teams",
+      "reason": "A Class Teams education module about building a learning hub, a different specialty from storing Teams content.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/identify-where-teams-stores-content",
+      "path": "/training/modules/create-instructional-materials-teach-microsoft-365-copilot",
+      "reason": "Covers creating instructional materials with Teach in Copilot, an education scenario unrelated to where Teams stores content.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/identify-where-teams-stores-content",
+      "path": "/training/modules/msteams-monetize-apps",
+      "reason": "Covers building and selling Teams apps through AppSource, a developer topic unrelated to where Teams stores content.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/perform-operations-for-teams-by-using-powershell-and-microso",
+      "path": "/training/modules/review-azure-powershell-module",
+      "reason": "Covers the Azure PowerShell module, a different product area from Teams PowerShell and Microsoft Graph.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/@foundations",
+      "path": "/training/modules/explore-copilot-stack",
+      "reason": "Teaches the Microsoft 365 Agents SDK and Copilot stack, a different product area with no link to network planning.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-meetings-and-calling/manage-meetings-and-events/@foundations",
+      "path": "/training/modules/explore-copilot-stack",
+      "reason": "Covers the Microsoft 365 Agents SDK for developers, not meeting management.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies",
+      "path": "/training/modules/migrate-voice-services-from-skype-for-business-server-to-teams",
+      "reason": "Covers migrating Skype for Business voice services, a different topic on a retired product.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/@foundations",
+      "path": "/training/modules/explore-copilot-stack",
+      "reason": "Covers the Microsoft 365 Agents SDK for developers, not phone numbers or calling.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/create-and-manage-calling-policies",
+      "path": "/microsoftteams/calling-plan-overview",
+      "reason": "Covers calling plan availability by country and region, a licensing and scope topic rather than calling policies.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/create-and-manage-calling-policies",
+      "path": "/microsoftteams/calling-plans-for-office-365",
+      "reason": "Covers calling plan licensing for Microsoft 365, not calling policies.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/create-and-manage-calling-policies",
+      "path": "/microsoftteams/what-are-emergency-locations-addresses-and-call-routing",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-meetings-and-calling/manage-phone-numbers-and-services-for-teams-phone/create-and-manage-voicemail-policies",
+      "path": "/training/modules/configure-auto-attendants-call-queues",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/@foundations",
+      "path": "/training/modules/explore-copilot-stack",
+      "reason": "Microsoft 365 Agents SDK, a developer topic.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/@foundations",
+      "path": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/@foundations",
+      "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-a-team-from-a-template",
+      "path": "/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "reason": "Device management migration, another product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-a-team-from-a-template",
+      "path": "/microsoftteams/rooms/rooms-licensing",
+      "reason": "Teams Rooms licensing.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-a-team-from-a-template",
+      "path": "/microsoftteams/teams-add-on-licensing/microsoft-teams-add-on-licensing",
+      "reason": "Licensing, not team templates.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-a-team-from-a-template",
+      "path": "/training/modules/manage-meetings-virtual-events-experiences",
+      "reason": "Its template content is for meetings, not for teams.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-and-manage-frontline-teams-and-experiences",
+      "path": "/training/modules/manage-apps-for-microsoft-teams",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-and-manage-frontline-teams-and-experiences",
+      "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/create-and-manage-templates-and-template-policies-for-teams",
+      "path": "/training/modules/manage-meetings-virtual-events-experiences",
+      "reason": "Its templates are for meetings, not for teams.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/manage-a-team-in-the-teams-admin-center",
+      "path": "/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1",
+      "reason": "Device management migration for Teams Android devices, another product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/manage-a-team-in-the-teams-admin-center",
+      "path": "/training/modules/build-digital-learning-hub-class-teams",
+      "reason": "Class Teams guidance for educators.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/manage-a-team-in-the-teams-admin-center",
+      "path": "/training/modules/deploy-microsoft-education-solution-guide",
+      "reason": "Microsoft 365 for Education deployment; another job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/manage-a-team-in-the-teams-admin-center",
+      "path": "/training/modules/extend-microsoft-teams-learning-management-systems",
+      "reason": "Integrates Teams with learning management systems; another role and product area.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/manage-teams-environment-settings",
+      "path": "/training/modules/enhance-school-communication-collaboration-microsoft-teams",
+      "reason": "Written for school staff, a different job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/manage-teams-environment-settings",
+      "path": "/training/modules/harden-microsoft-365-secure-score",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/create-and-manage-teams/manage-teams-environment-settings",
+      "path": "/training/modules/introduction-ai-special-education",
+      "reason": "Special-education AI guidance for educators.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/@foundations",
+      "path": "/training/modules/explore-copilot-stack",
+      "reason": "Developer-oriented Microsoft 365 Agents SDK overview, not app administration.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/@foundations",
+      "path": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/manage-purchasing-of-apps-in-the-teams-app-store",
+      "path": "/training/modules/msteams-monetize-apps",
+      "reason": "Written for developers who sell their apps, a different job role from an admin buying apps.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/manage-apps-for-teams/recommend-appropriate-extensibility-options-including-apps-t",
+      "path": "/training/modules/manage-meetings-virtual-events-experiences",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/@foundations",
+      "path": "/training/modules/explore-copilot-stack",
+      "reason": "Microsoft 365 Agents SDK, a developer topic.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/@foundations",
+      "path": "/training/modules/introduction-to-collaborating-microsoft-teams",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies",
+      "path": "/training/modules/copilot-message-extension-plugins",
+      "reason": "Developer course on building Copilot message extensions in .NET; another job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies",
+      "path": "/training/modules/copilot-message-extension-plugins-typescript",
+      "reason": "Developer course on building Copilot message extensions in TypeScript; another job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies",
+      "path": "/training/modules/microsoft-teams-significant-app-value",
+      "reason": "Guidance for app developers on the value of a Teams app; another job role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/manage-channel-settings",
+      "path": "/training/modules/enhance-school-communication-collaboration-microsoft-teams",
+      "reason": "Written for school staff and teachers, a different job role, though it covers channels.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/monitor-and-report-on-teams/@foundations",
+      "path": "/training/modules/explore-copilot-stack",
+      "reason": "Covers the Microsoft 365 Agents SDK for developers, not monitoring or reporting on Teams.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/monitor-and-report-on-teams/configure-alert-rules",
+      "path": "/training/modules/implement-compliance-for-microsoft-teams",
+      "reason": "Not part of this task; the page fits a neighbouring task or is an end-user or generic overview.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/@foundations",
+      "path": "/azure/communication-services/concepts/call-automation/audio-streaming-concept",
+      "reason": "Covers Azure Communication Services audio streaming for developers, a different product area and role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/@foundations",
+      "path": "/azure/communication-services/concepts/voice-video-calling/calling-sdk-features",
+      "reason": "Covers the Azure Communication Services Calling SDK for developers, a different product area and role.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/@foundations",
+      "path": "/azure/communication-services/resources/troubleshooting/voice-video-calling/audio-issues/overview",
+      "reason": "Troubleshoots audio in Azure Communication Services apps, a different product area from Teams clients.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/@foundations",
+      "path": "/azure/communication-services/resources/troubleshooting/voice-video-calling/call-setup-issues/overview",
+      "reason": "Troubleshoots call setup in Azure Communication Services apps, a different product area from Teams clients.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/@foundations",
+      "path": "/azure/communication-services/resources/troubleshooting/voice-video-calling/device-issues/overview",
+      "reason": "Covers device and permission issues in Azure Communication Services apps, a different product area from Teams clients.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/@foundations",
+      "path": "/azure/communication-services/resources/troubleshooting/voice-video-calling/general-troubleshooting-strategies/overview",
+      "reason": "General troubleshooting for Azure Communication Services apps, a different product area; unsure whether its general strategies carry over.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/@foundations",
+      "path": "/azure/communication-services/resources/troubleshooting/voice-video-calling/video-issues/overview",
+      "reason": "Troubleshoots video in Azure Communication Services apps, a different product area from Teams clients.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/@foundations",
+      "path": "/training/modules/explore-copilot-stack",
+      "reason": "Covers the Microsoft 365 Agents SDK for developers, not troubleshooting Teams clients.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/@foundations",
+      "path": "/troubleshoot/windows-client/networking/networking-overview",
+      "reason": "Covers Windows client networking articles, a different product area from the Teams client.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/@foundations",
+      "path": "/troubleshoot/windows-client/performance/performance-overview",
+      "reason": "Covers Windows client performance articles, a different product area from the Teams client.",
+      "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-report-on-and-troubleshoot-teams/troubleshoot-audio-video-and-client-issues/@foundations",
+      "path": "/troubleshoot/windows-client/setup-upgrade-and-drivers/windows-device-and-driver-management-overview",
+      "reason": "Covers Windows device and driver troubleshooting, a different product area from the Teams client.",
+      "at": "2026-11-04"
+    }
+  ]
+}

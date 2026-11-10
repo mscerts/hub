@@ -325,6 +325,7 @@ export function routePicks({ accepted, taskKeys, rejected = new Map() }) {
  *   gated        the gated file ({ code, builtAt, inputs, items })
  *   today        YYYY-MM-DD, the day the course is built
  *   allowStale   build even when the guide or Learn changed since the candidates were made
+ *   allowNoScope build an exam that has no official course on Learn: the scope is empty, every pick comes from search
  *   audienceDecisions   the maintainer's picks for the guide's audience profile (course-audience.mjs), or null
  * Returns { ok, course, problems, warnings, stats }; a course with problems is not returned.
  */
@@ -336,15 +337,20 @@ export function buildCourse({
   gated,
   today,
   allowStale = false,
+  allowNoScope = false,
   audienceDecisions = null,
 }) {
   const problems = [];
   const warnings = [];
   if (!guide?.ok) problems.push("the study guide does not parse completely");
-  if (!scope?.ok)
-    problems.push(
-      `${code} has no official course in Learn's catalog: there is no scope to build on`,
-    );
+  if (!scope?.ok) {
+    const noCourse = `${code} has no official course in Learn's catalog: there is no scope to build on`;
+    if (allowNoScope && scope?.inputs?.fingerprint)
+      warnings.push(
+        `${noCourse}; built anyway (--no-official-course), so every pick comes from search and the rebuild check will ask for a review once an official course exists`,
+      );
+    else problems.push(noCourse);
+  }
   if (gated.code !== code)
     problems.push(`the gated file is for ${gated.code}, not ${code}`);
   if (problems.length)

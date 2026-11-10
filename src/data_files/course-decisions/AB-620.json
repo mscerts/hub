@@ -1,0 +1,1273 @@
+{
+  "schemaVersion": 1,
+  "code": "AB-620",
+  "decisions": [
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/add-tools-to-agents/@foundations",
+      "target": "/training/modules/introduction-microsoft-ai-agent-solutions",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/add-tools-to-agents/configure-mcp-tools",
+      "target": "/microsoft-copilot-studio/mcp-create-new-server",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/add-tools-to-agents/configure-mcp-tools",
+      "target": "/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/add-tools-to-agents/configure-mcp-tools",
+      "target": "/training/modules/consume-dataverse-mcp-servers",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/@foundations",
+      "target": "/microsoft-copilot-studio/agent-extend-action-mcp",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/design-multi-agent-solutions-in-copilot-studio",
+      "target": "/microsoft-copilot-studio/admin-use-entra-agent-identities",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/design-multi-agent-solutions-in-copilot-studio",
+      "target": "/microsoft-copilot-studio/agents-experience/authoring-activity-trace",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/design-multi-agent-solutions-in-copilot-studio",
+      "target": "/power-automate/call-copilot-studio-agent",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/design-multi-agent-solutions-in-copilot-studio",
+      "target": "/training/modules/aaai-implement-multi-agent-orchestration-azure-ai-foundry",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-fabric-data-agent",
+      "target": "/azure/foundry/agents/how-to/tools/fabric",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-fabric-data-agent",
+      "target": "/azure/foundry/agents/how-to/tools/fabric-iq",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-fabric-data-agent",
+      "target": "/fabric/iq/ontology/how-to-create-data-agent",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-fabric-data-agent",
+      "target": "/microsoft-copilot-studio/agents-experience/fabric-iq-connect",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-fabric-data-agent",
+      "target": "/training/modules/build-fabric-data-agent-ontology",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-foundry-agent",
+      "target": "/azure/foundry/agents/concepts/agent-endpoint-authorization",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-foundry-agent",
+      "target": "/azure/foundry/agents/concepts/prompt-agents",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-foundry-agent",
+      "target": "/azure/foundry/agents/how-to/agent-applications",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-foundry-agent",
+      "target": "/azure/foundry/agents/how-to/configure-agent-endpoint-authorization",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-foundry-agent",
+      "target": "/azure/foundry/agents/how-to/enable-agent-to-agent-endpoint",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-foundry-agent",
+      "target": "/azure/foundry/agents/how-to/publish-copilot-virtual-network",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-foundry-agent",
+      "target": "/azure/foundry/reference/rest/microsoft365-publishing-get-microsoft365-app-package",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-foundry-agent",
+      "target": "/azure/foundry/reference/rest/microsoft365-publishing-get-microsoft365-publish-defaults",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-foundry-agent",
+      "target": "/training/modules/integrate-foundry-agent-with-m365",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-a-foundry-agent",
+      "target": "/training/modules/intro-ai-agent-service-security-controls",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-an-existing-agent-in-copilot-studio",
+      "target": "/microsoft-365/copilot/agent-essentials/agent-lifecycle/agent-availability",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-an-existing-agent-in-copilot-studio",
+      "target": "/microsoft-365/copilot/agent-essentials/agent-lifecycle/agent-copilot-studio-requested",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-an-existing-agent-in-copilot-studio",
+      "target": "/microsoft-365/copilot/agent-essentials/agent-lifecycle/agent-deploy",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-an-existing-agent-in-copilot-studio",
+      "target": "/microsoft-copilot-studio/harnesses-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-an-existing-agent-in-copilot-studio",
+      "target": "/power-automate/call-copilot-studio-agent",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/configure-multi-agent-collaboration-from-copilot-studio/integrate-an-existing-agent-in-copilot-studio",
+      "target": "/training/modules/design-multi-agent-solutions-copilot-studio",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/microsoft-365/copilot/connectors/frequently-asked-questions",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/microsoft-365/copilot/connectors/jira-cloud-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/microsoft-365/copilot/connectors/manage-connector",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/microsoft-365/copilot/connectors/prerequisites",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/microsoft-365/copilot/employee-self-service/declarative-agent-servicenow-knowledge",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/microsoft-365/copilot/extensibility/build-connectors-with-people-data",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/microsoft-365/copilot/extensibility/build-declarative-agents-add-knowledge",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/microsoft-365/copilot/extensibility/plugin-type-connectors",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/microsoft-copilot-studio/agents-experience/foundry-iq-connect",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/training/modules/configure-copilot-settings-extensibility",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/training/modules/copilot-declarative-agent-graph-connector-vsc",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-copilot-connectors",
+      "target": "/training/modules/manage-microsoft-365-copilot-extensibility",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-microsoft-power-platform-connectors",
+      "target": "/power-platform/sap/connect/sap-erp-connector",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-microsoft-power-platform-connectors",
+      "target": "/power-platform/sap/connect/sap-odata-connector",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/connect-to-enterprise-knowledge-sources/connect-to-microsoft-power-platform-connectors",
+      "target": "/training/modules/implement-alm-agents-power-platform",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/@foundations",
+      "target": "/azure/foundry/observability/concepts/trace-agent-concept",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/configure-custom-prompts-to-use-the-foundry-model-catalog",
+      "target": "/azure/foundry/agents/concepts/agent-optimizer-overview",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/configure-custom-prompts-to-use-the-foundry-model-catalog",
+      "target": "/azure/foundry/how-to/deploy-models-managed",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/configure-custom-prompts-to-use-the-foundry-model-catalog",
+      "target": "/azure/foundry/openai/concepts/content-filter-prompt-shields",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/configure-custom-prompts-to-use-the-foundry-model-catalog",
+      "target": "/azure/machine-learning/foundry-models-overview",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/configure-custom-prompts-to-use-the-foundry-model-catalog",
+      "target": "/microsoft-copilot-studio/prompt-model-settings",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/configure-custom-prompts-to-use-the-foundry-model-catalog",
+      "target": "/training/modules/create-prompts-for-generative-ai-training-tools",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/configure-custom-prompts-to-use-the-foundry-model-catalog",
+      "target": "/training/modules/govern-ai-enabled-resources",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/configure-custom-prompts-to-use-the-foundry-model-catalog",
+      "target": "/training/modules/optimize-generative-ai-model-performance",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/monitor-agents-by-using-application-insights",
+      "target": "/azure/foundry/agents/how-to/configure-hosted-agent-telemetry",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/monitor-agents-by-using-application-insights",
+      "target": "/azure/foundry/observability/how-to/how-to-monitor-agents-dashboard",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/monitor-agents-by-using-application-insights",
+      "target": "/azure/foundry/observability/how-to/trace-agent-setup",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/monitor-agents-by-using-application-insights",
+      "target": "/azure/foundry/observability/how-to/trace-ingestion-entra-authentication",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "integrate-and-extend-agents-in-copilot-studio/integrate-agents-with-azure/monitor-agents-by-using-application-insights",
+      "target": "/power-platform/admin/app-insights-cloud-flow",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/configure-topics/add-agent-flows-to-a-topic",
+      "target": "/training/modules/build-connected-agent-solutions-github-copilot",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/configure-topics/add-tools-to-a-topic",
+      "target": "/training/modules/introduction-copilot-studio-actions",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/configure-topics/configure-advanced-agent-responses-with-custom-prompts",
+      "target": "/power-platform/release-plan/2025wave1/ai-builder/copilots-process-generate-documents",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/@foundations",
+      "target": "/training/modules/describe-business-value-microsoft-power-platform",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/@foundations",
+      "target": "/training/modules/describe-business-value-microsoft-power-platform-services",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/@foundations",
+      "target": "/training/modules/explore-microsoft-365-copilot-agents",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/@foundations",
+      "target": "/training/modules/extend-agents-tools-github-copilot",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/add-input-and-output-parameters",
+      "target": "/training/modules/delegate-agent-tasks-child-agents-copilot-studio",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/configure-actions-and-connectors",
+      "target": "/azure/logic-apps/add-agent-tools-connector-actions",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/configure-actions-and-connectors",
+      "target": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/create-rest-api-copilot-connectors-copilot-studio",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/configure-actions-and-connectors",
+      "target": "/training/modules/use-dataverse-triggers-actions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/create-an-agent-flow",
+      "target": "/training/modules/get-started-flows",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/implement-error-handling-in-agent-flows",
+      "target": "/training/modules/error-handling",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/implement-error-handling-in-agent-flows",
+      "target": "/training/modules/implement-resilient-cloud-flows",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/implement-error-handling-in-agent-flows",
+      "target": "/training/modules/power-automate-architecture",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/monitor-agent-flows",
+      "target": "/power-platform/admin/app-insights-cloud-flow",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/monitor-agent-flows",
+      "target": "/power-platform/admin/power-automate-licensing/power-automate-usage-report",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/monitor-agent-flows",
+      "target": "/power-platform/admin/power-platform-inventory",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/monitor-agent-flows",
+      "target": "/training/modules/analyze-monitor-tune-ai-powered-business-solutions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/monitor-agent-flows",
+      "target": "/training/modules/multiple-data-sources",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/plan-an-agent-solution/@foundations",
+      "target": "/training/modules/design-integration-strategies-agents-github-copilot",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/plan-an-agent-solution/@foundations",
+      "target": "/training/modules/explore-microsoft-365-copilot-agents",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/plan-an-agent-solution/@foundations",
+      "target": "/training/modules/introduction-copilot-studio-actions",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/plan-an-agent-solution/design-agents-for-internal-or-external-audiences",
+      "target": "/training/modules/design-multi-agent-solutions-copilot-studio",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/plan-an-agent-solution/evaluate-security-and-governance-considerations",
+      "target": "/training/modules/manage-usage-cost-agents-copilot-studio",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/plan-an-agent-solution/plan-identity-strategy",
+      "target": "/training/modules/entra-ai-understand",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/plan-an-agent-solution/plan-responsible-ai-strategy",
+      "target": "/azure/foundry/agents/how-to/add-hosted-agent-guardrails",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "plan-and-configure-agent-solutions/plan-an-agent-solution/plan-responsible-ai-strategy",
+      "target": "/training/modules/responsible-ai-studio",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/@foundations",
+      "target": "/azure/foundry/concepts/evaluation-evaluators/agent-evaluators",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/@foundations",
+      "target": "/azure/foundry/concepts/evaluation-evaluators/rubric-evaluators",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/@foundations",
+      "target": "/azure/foundry/concepts/evaluation-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/@foundations",
+      "target": "/azure/foundry/observability/concepts/trace-agent-concept",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/@foundations",
+      "target": "/microsoft-365/copilot/extensibility/evaluation-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/@foundations",
+      "target": "/microsoft-copilot-studio/agents-experience/analytics-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/@foundations",
+      "target": "/training/modules/evaluate-agents-github-copilot",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/@foundations",
+      "target": "/training/modules/explore-copilot-studio-agent-harnesses",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/azure/foundry/concepts/evaluation-evaluators/agent-evaluators",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/azure/foundry/concepts/evaluation-evaluators/custom-evaluators",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/azure/foundry/concepts/evaluation-evaluators/general-purpose-evaluators",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/azure/foundry/concepts/evaluation-evaluators/rag-evaluators",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/azure/foundry/concepts/evaluation-evaluators/rubric-evaluators",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/azure/foundry/concepts/evaluation-overview",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/azure/foundry/how-to/evaluate-generative-ai-app",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/azure/foundry/observability/how-to/human-evaluation",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/microsoft-365/copilot/employee-self-service/evaluations-custom-strategy",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/microsoft-365/copilot/extensibility/evaluation-multi-turn",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/microsoft-365/copilot/extensibility/evaluations-cli-custom-evaluators",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/training/modules/aaai-design-evaluation-frameworks-multi-agent-azure",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/choose-an-evaluation-method",
+      "target": "/training/modules/automated-evaluation-genaiops",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/create-a-test-set",
+      "target": "/microsoft-365/copilot/employee-self-service/declarative-agent-evaluations",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/create-a-test-set",
+      "target": "/microsoft-365/copilot/employee-self-service/evaluations-run-tests",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/create-a-test-set",
+      "target": "/microsoft-365/copilot/extensibility/evaluation-design-prompts",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/create-a-test-set",
+      "target": "/microsoft-365/copilot/extensibility/evaluation-multi-turn",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/create-a-test-set",
+      "target": "/microsoft-365/copilot/extensibility/evaluation-test-categories",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/create-a-test-set",
+      "target": "/microsoft-365/copilot/extensibility/evaluation-write-assertions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/create-a-test-set",
+      "target": "/microsoft-365/copilot/extensibility/evaluations-cli-create-tests",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/evaluate-agent-performance/create-a-test-set",
+      "target": "/training/modules/aaai-design-evaluation-frameworks-multi-agent-azure",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/@foundations",
+      "target": "/microsoft-copilot-studio/authoring-solutions-import-export",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/@foundations",
+      "target": "/microsoft-copilot-studio/harnesses-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/@foundations",
+      "target": "/microsoft-copilot-studio/workflows-experience/flows-overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/@foundations",
+      "target": "/power-platform/alm/managed-properties-alm",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/@foundations",
+      "target": "/power-platform/alm/move-from-unmanaged-managed-alm",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/@foundations",
+      "target": "/power-platform/alm/use-source-control-solution-files",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/@foundations",
+      "target": "/training/modules/introduction-agentic-ai-business-solution-architecture",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/@foundations",
+      "target": "/training/modules/introduction-microsoft-ai-agent-solutions",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/add-existing-agents-to-a-solution",
+      "target": "/power-platform/alm/canvas-apps-solution-default",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/add-existing-agents-to-a-solution",
+      "target": "/power-platform/alm/create-patches-simplify-solution-updates",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/add-existing-agents-to-a-solution",
+      "target": "/power-platform/alm/web-resource-component",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/power-platform/alm/create-solutions-support-multiple-languages",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/power-platform/alm/package-deployer-tool",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/training/modules/design-alm-process-ai-powered-business-solutions",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/training/modules/manage-solutions-power-automate",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/an-error-calculating-dependencies",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/changes-not-effective-solution-import",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/duplicate-security-roles",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/entitykey-selected-attributes-already-exists",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/error-code-80040203-invalid-argument-error",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/error-importing-savedquery-in-dynamics-365",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/error-when-you-import-delete-solution",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/label-text-not-displayed",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/maximum-row-size-exceeds",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/multiple-publisher-shared-component-failure",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/newly-added-components-dont-appear",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/primaryname-attribute-not-found",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/schematype-mismatch-on-solution-import",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/solution-checker-enforcement-import-issues",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/the-import-file-is-too-large-upload",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/the-record-could-not-be-deleted",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/create-a-solution",
+      "target": "/troubleshoot/power-platform/dataverse/working-with-solutions/version-mismatch-on-solution-import",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    },
+    {
+      "task": "test-and-manage-agents/implement-application-lifecycle-management-alm-for-agents-in/implement-and-extend-microsoft-power-platform-pipelines",
+      "target": "/power-platform/alm/faqs-ai-deployment-notes-pipelines",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-09"
+    }
+  ],
+  "excludedFamilies": []
+}

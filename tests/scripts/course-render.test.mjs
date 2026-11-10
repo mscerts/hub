@@ -150,6 +150,17 @@ test("the label says why a card is marked", () => {
   );
 });
 
+test("a long exam name is left out of the description so it stays within the site's limit", () => {
+  const { course } = exampleCourse();
+  const long = {
+    ...course,
+    name: "Designing and Implementing Microsoft Agentic DevOps Solutions for Large Organizations",
+  };
+  const description = renderCourse(long).match(/^description: "(.*)"$/m)[1];
+  assert.ok(description.length <= 170, `${description.length} characters`);
+  assert.doesNotMatch(description, /Agentic/);
+});
+
 test("the page opens with frontmatter, the import and a note that cites the study guide and says where the hands-on pages are", () => {
   const { course } = exampleCourse();
   const page = renderCourse(course);

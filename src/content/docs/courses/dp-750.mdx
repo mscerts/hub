@@ -1,0 +1,1082 @@
+---
+title: DP-750 Study Guide Course
+description: "Follow a structured DP-750 course organized by study guide task, with Microsoft Learn training and documentation."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official DP-750 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/dp-750?WT.mc_id=studentamb_165290) skills measured (March 11, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [DP-750 labs page](/certs/labs/azure/dp-750/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As a candidate for this Microsoft Certification, you should have subject matter expertise in integrating and modeling data, building and deploying optimized pipelines, and troubleshooting and maintaining workloads in Azure Databricks. You should also have experience applying data quality and data governance best practices in Unity Catalog.
+
+You need to know how to ingest and transform data by using Structured Query Language (SQL) and Python. You need experience with software development lifecycle (SDLC) practices, including Git. Additionally, you should be familiar with Microsoft Entra, Azure Data Factory, and Azure Monitor.
+
+You work closely with administrators, platform architects, solution architects, data scientists, and data analysts to design, deploy, and secure data engineering solutions by using Azure Databricks.
+
+### Your responsibilities for this role include
+
+- Setting up and configuring an Azure Databricks environment.
+- Securing and governing Unity Catalog objects.
+- Preparing and processing data.
+- Deploying and maintaining data pipelines and workloads.
+
+## Set up and configure an Azure Databricks environment (15–20%)
+
+### Select and configure compute in a workspace
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Azure Databricks" href="https://learn.microsoft.com/training/modules/explore-azure-databricks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Azure Databricks architecture" href="https://learn.microsoft.com/training/modules/understand-azure-databricks-architecture?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Dedicated compute overview - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/compute/dedicated-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Standard compute overview - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/compute/standard-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to workspace objects - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/workspace/workspace-assets?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose an appropriate compute type, including job compute, serverless, warehouse, classic compute, and shared compute
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Select and Configure Compute in Azure Databricks" href="https://learn.microsoft.com/training/modules/select-and-configure-compute?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure compute for jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/compute?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure compute performance settings, including CPU, node count, autoscaling, termination, node type, cluster size, and pooling
+
+:::note
+The Microsoft Learn module "Select and Configure Compute in Azure Databricks" also covers this task. It is listed once, under [Choose an appropriate compute type, including job compute, serverless, warehouse, classic compute, and shared compute](#choose-an-appropriate-compute-type-including-job-compute-serverless-warehouse-classic-compute-and-shared-compute).
+:::
+
+#### Configure compute feature settings, including Photon acceleration, Azure Databricks runtime/Spark version, and machine learning
+
+:::note
+The Microsoft Learn module "Select and Configure Compute in Azure Databricks" also covers this task. It is listed once, under [Choose an appropriate compute type, including job compute, serverless, warehouse, classic compute, and shared compute](#choose-an-appropriate-compute-type-including-job-compute-serverless-warehouse-classic-compute-and-shared-compute).
+:::
+
+#### Install libraries for a compute resource
+
+:::note
+The Microsoft Learn module "Select and Configure Compute in Azure Databricks" also covers this task. It is listed once, under [Choose an appropriate compute type, including job compute, serverless, warehouse, classic compute, and shared compute](#choose-an-appropriate-compute-type-including-job-compute-serverless-warehouse-classic-compute-and-shared-compute).
+:::
+
+#### Configure access permissions to a compute resource
+
+:::note
+The Microsoft Learn module "Select and Configure Compute in Azure Databricks" also covers this task. It is listed once, under [Choose an appropriate compute type, including job compute, serverless, warehouse, classic compute, and shared compute](#choose-an-appropriate-compute-type-including-job-compute-serverless-warehouse-classic-compute-and-shared-compute).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Default access mode for jobs compute - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/admin/workspace-settings/default-access-mode?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dedicated compute group access - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/compute/group-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with RBAC - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/security/auth/rbac/get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Azure Databricks groups - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/admin/users-groups/manage-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Role-based access control (RBAC) - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/security/auth/rbac?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Unity Catalog setup guide - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/setup-uc?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Create and organize objects in Unity Catalog
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Catalog Explorer? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/catalog-explorer?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Apply naming conventions based on requirements, including isolation, development environment, and external sharing
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create and organize objects in Unity Catalog" href="https://learn.microsoft.com/training/modules/create-and-organize-objects-in-unity-catalog?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a catalog based on requirements
+
+:::note
+The Microsoft Learn module "Create and organize objects in Unity Catalog" also covers this task. It is listed once, under [Apply naming conventions based on requirements, including isolation, development environment, and external sharing](#apply-naming-conventions-based-on-requirements-including-isolation-development-environment-and-external-sharing).
+:::
+
+#### Create a schema based on requirements
+
+:::note
+The Microsoft Learn module "Create and organize objects in Unity Catalog" also covers this task. It is listed once, under [Apply naming conventions based on requirements, including isolation, development environment, and external sharing](#apply-naming-conventions-based-on-requirements-including-isolation-development-environment-and-external-sharing).
+:::
+
+#### Create volumes based on requirements
+
+:::note
+The Microsoft Learn module "Create and organize objects in Unity Catalog" also covers this task. It is listed once, under [Apply naming conventions based on requirements, including isolation, development environment, and external sharing](#apply-naming-conventions-based-on-requirements-including-isolation-development-environment-and-external-sharing).
+:::
+
+#### Create tables, views, and materialized views
+
+:::note
+The Microsoft Learn module "Create and organize objects in Unity Catalog" also covers this task. It is listed once, under [Apply naming conventions based on requirements, including isolation, development environment, and external sharing](#apply-naming-conventions-based-on-requirements-including-isolation-development-environment-and-external-sharing).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Tables and views in Azure Databricks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-engineering/tables-views?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Develop pipeline code with Python - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/developer/python-dev?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Develop Lakeflow pipelines code with SQL - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/developer/sql-dev?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Standalone materialized views and streaming tables - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/mv-st?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Python with standalone pipelines - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/mv-st/using-python?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE MATERIALIZED VIEW (pipelines) - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/developer/ldp-sql-ref-create-materialized-view?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE MATERIALIZED VIEW - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use standalone materialized views - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/mv-st/materialized?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How do pipelines refresh? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/concepts/refresh?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Standalone pipelines vs. Lakeflow pipelines - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/concepts/standalone-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Pipeline SQL language reference - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/developer/sql-ref?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="REFRESH (MATERIALIZED VIEW or STREAMING TABLE) - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-refresh-full?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="UNDROP - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-undrop-table?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Requirements for standalone pipelines - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/mv-st/compute?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Schedule refreshes - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/mv-st/schedule-refreshes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="REFRESH POLICY clause (pipelines) - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/developer/ldp-sql-ref-create-materialized-view-refresh-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="REFRESH POLICY clause - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-materialized-view-refresh-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="EXPLAIN CREATE MATERIALIZED VIEW - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-qry-explain-materialized-view?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement a foreign catalog by configuring connections
+
+:::note
+The Microsoft Learn module "Create and organize objects in Unity Catalog" also covers this task. It is listed once, under [Apply naming conventions based on requirements, including isolation, development environment, and external sharing](#apply-naming-conventions-based-on-requirements-including-isolation-development-environment-and-external-sharing).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage and work with foreign catalogs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/query-federation/foreign-catalogs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE CONNECTION - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-connection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE SERVER - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-server?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CONNECTIONS - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/information-schema/connections?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DROP CONNECTION (foreign catalog) - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-alter-catalog-drop-connection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="REFRESH FOREIGN (CATALOG, SCHEMA, and TABLE) - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-refresh-foreign?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Convert a foreign table to an external Unity Catalog table - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/tables/convert-foreign-external?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Work with foreign tables - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/tables/foreign?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Databricks Unity Catalog table types - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/tables/types?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DROP CONNECTION - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-drop-connection?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement data definition language (DDL) operations on managed and external tables
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement data modeling with Azure Databricks" href="https://learn.microsoft.com/training/modules/design-implement-data-modeling-unity-catalog?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure AI/BI Genie instructions for data discovery
+
+:::note
+The Microsoft Learn module "Create and organize objects in Unity Catalog" also covers this task. It is listed once, under [Apply naming conventions based on requirements, including isolation, development environment, and external sharing](#apply-naming-conventions-based-on-requirements-including-isolation-development-environment-and-external-sharing).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Genie Agents with dashboards - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/dashboards/genie-spaces?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Databricks AI/BI - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ai-bi?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Secure and govern Unity Catalog objects (15–20%)
+
+### Secure Unity Catalog objects
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Secrets in Unity Catalog - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/security/secrets/unity-catalog-secrets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Access control in Unity Catalog - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/access-control?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Credentials - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-storage-credentials?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Grant privileges to a principal (user, service principal, or group) for securable objects in Unity Catalog
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Secure Unity Catalog objects" href="https://learn.microsoft.com/training/modules/secure-unity-catalog-objects?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement table- and column-level access control and row-level security
+
+:::note
+The Microsoft Learn module "Secure Unity Catalog objects" also covers this task. It is listed once, under [Grant privileges to a principal (user, service principal, or group) for securable objects in Unity Catalog](#grant-privileges-to-a-principal-user-service-principal-or-group-for-securable-objects-in-unity-catalog).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use mapping tables for dynamic access control - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/mapping-tables?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="When to use ABAC vs table-level row filters and column masks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/abac-vs-rls-cm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fine-grained access control on dedicated compute - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/compute/single-user-fgac?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Access Azure Key Vault secrets from within Azure Databricks
+
+:::note
+The Microsoft Learn module "Secure Unity Catalog objects" also covers this task. It is listed once, under [Grant privileges to a principal (user, service principal, or group) for securable objects in Unity Catalog](#grant-privileges-to-a-principal-user-service-principal-or-group-for-securable-objects-in-unity-catalog).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure external secrets in Unity Catalog - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/security/secrets/configure-external-secrets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="External secrets in Unity Catalog - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/security/secrets/external-secrets?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secret management - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/security/secrets?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Authenticate data access by using service principals
+
+:::note
+The Microsoft Learn module "Secure Unity Catalog objects" also covers this task. It is listed once, under [Grant privileges to a principal (user, service principal, or group) for securable objects in Unity Catalog](#grant-privileges-to-a-principal-user-service-principal-or-group-for-securable-objects-in-unity-catalog).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Authenticate with Microsoft Entra service principals - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/dev-tools/auth/azure-sp?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect to Azure Data Lake Storage and Blob Storage - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/connect/storage/azure-storage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get Microsoft Entra ID tokens manually - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/dev-tools/auth/aad-token-manual?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Authenticate resource access by using managed identities
+
+:::note
+The Microsoft Learn module "Secure Unity Catalog objects" also covers this task. It is listed once, under [Grant privileges to a principal (user, service principal, or group) for securable objects in Unity Catalog](#grant-privileges-to-a-principal-user-service-principal-or-group-for-securable-objects-in-unity-catalog).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Authenticate with Azure managed identities - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/dev-tools/auth/azure-mi?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Azure managed identities with Azure Databricks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/dev-tools/auth/azure-mi-auth?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Govern Unity Catalog objects
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Unity Catalog permissions model concepts - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/access-control/permissions-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create, implement, and preserve table and column definitions and descriptions for data discovery
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Govern Unity Catalog objects" href="https://learn.microsoft.com/training/modules/govern-unity-catalog-objects?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure attribute-based access control (ABAC) by using tags and policies
+
+:::note
+The Microsoft Learn module "Govern Unity Catalog objects" also covers this task. It is listed once, under [Create, implement, and preserve table and column definitions and descriptions for data discovery](#create-implement-and-preserve-table-and-column-definitions-and-descriptions-for-data-discovery).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Attribute-based access control in Unity Catalog - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Core concepts for attribute-based access control (ABAC) - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/core-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ABAC DENY policies (Beta) - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/deny-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ABAC GRANT policies - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/grant-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure new tables by default with control tags - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/secure-by-default?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure row filters and column masks
+
+:::note
+The Microsoft Learn module "Secure Unity Catalog objects" also covers this task. It is listed once, under [Grant privileges to a principal (user, service principal, or group) for securable objects in Unity Catalog](#grant-privileges-to-a-principal-user-service-principal-or-group-for-securable-objects-in-unity-catalog) in the skill group Secure Unity Catalog objects.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Common patterns for row filtering and column masking - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/common-patterns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and manage row filter and column mask policies - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Row filters and column masks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/filters-and-masks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manually apply row filters and column masks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/filters-and-masks/manually-apply?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="CREATE POLICY - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Column mask clause - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-column-mask?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement multi-domain column masking with sensitivity tiers - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/multi-domain?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Performance considerations for row filter and column mask policies - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/performance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Row filter and column mask policy evaluation and runtime behavior - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/policy-evaluation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Requirements, quotas, and limitations for row filter and column mask policies - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog/abac/requirements?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use RBAC with ABAC - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/security/auth/rbac/abac-interaction?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DESCRIBE POLICY - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-aux-describe-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SHOW POLICIES - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-aux-show-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DROP POLICY - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-drop-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Apply data retention policies
+
+:::note
+The Microsoft Learn module "Govern Unity Catalog objects" also covers this task. It is listed once, under [Create, implement, and preserve table and column definitions and descriptions for data discovery](#create-implement-and-preserve-table-and-column-definitions-and-descriptions-for-data-discovery).
+:::
+
+#### Set up and manage data lineage tracking by using Catalog Explorer, including owner, history, dependencies, and lineage
+
+:::note
+The Microsoft Learn module "Govern Unity Catalog objects" also covers this task. It is listed once, under [Create, implement, and preserve table and column definitions and descriptions for data discovery](#create-implement-and-preserve-table-and-column-definitions-and-descriptions-for-data-discovery).
+:::
+
+#### Configure audit logging
+
+:::note
+The Microsoft Learn module "Govern Unity Catalog objects" also covers this task. It is listed once, under [Create, implement, and preserve table and column definitions and descriptions for data discovery](#create-implement-and-preserve-table-and-column-definitions-and-descriptions-for-data-discovery).
+:::
+
+#### Design and implement a secure strategy for Delta Sharing
+
+:::note
+The Microsoft Learn module "Govern Unity Catalog objects" also covers this task. It is listed once, under [Create, implement, and preserve table and column definitions and descriptions for data discovery](#create-implement-and-preserve-table-and-column-definitions-and-descriptions-for-data-discovery).
+:::
+
+## Prepare and process data (30–35%)
+
+### Design and implement data modeling in Unity Catalog
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore fundamentals of large-scale analytics" href="https://learn.microsoft.com/training/modules/examine-components-of-modern-data-warehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore core data concepts" href="https://learn.microsoft.com/training/modules/explore-core-data-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore fundamentals of real-time analytics" href="https://learn.microsoft.com/training/modules/explore-fundamentals-stream-processing?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design logic for data ingestion and data source configuration, including extraction type and file type
+
+:::note
+The Microsoft Learn module "Design and implement data modeling with Azure Databricks" also covers this task. It is listed once, under [Implement data definition language (DDL) operations on managed and external tables](#implement-data-definition-language-ddl-operations-on-managed-and-external-tables) in the skill group Create and organize objects in Unity Catalog.
+:::
+
+#### Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Ingest data into Unity Catalog" href="https://learn.microsoft.com/training/modules/ingest-data-into-unity-catalog?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Design and implement data pipelines with Azure Databricks" href="https://learn.microsoft.com/training/modules/design-implement-data-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose a data loading method, including batch and streaming
+
+:::note
+The Microsoft Learn module "Ingest data into Unity Catalog" also covers this task. It is listed once, under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory).
+:::
+
+#### Choose a data table format, such as Parquet, Delta, CSV, JSON, or Iceberg
+
+:::note
+The Microsoft Learn module "Design and implement data modeling with Azure Databricks" also covers this task. It is listed once, under [Implement data definition language (DDL) operations on managed and external tables](#implement-data-definition-language-ddl-operations-on-managed-and-external-tables) in the skill group Create and organize objects in Unity Catalog.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Incrementally clone Parquet and Apache Iceberg tables to Delta Lake - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ingestion/data-migration/clone-parquet?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Convert to Delta Lake - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ingestion/data-migration/convert-to-delta?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deletion vectors in Databricks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/tables/features/deletion-vectors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Review table details with describe detail - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/tables/operations/table-details?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement a data partitioning scheme
+
+:::note
+The Microsoft Learn module "Design and implement data modeling with Azure Databricks" also covers this task. It is listed once, under [Implement data definition language (DDL) operations on managed and external tables](#implement-data-definition-language-ddl-operations-on-managed-and-external-tables) in the skill group Create and organize objects in Unity Catalog.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="partitionBy (DataFrameWriter) - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/pyspark/reference/classes/dataframewriter/partitionby?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="partitionBy (DataStreamWriter) - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/pyspark/reference/classes/datastreamwriter/partitionby?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose a slowly changing dimension (SCD) type
+
+:::note
+The Microsoft Learn module "Design and implement data modeling with Azure Databricks" also covers this task. It is listed once, under [Implement data definition language (DDL) operations on managed and external tables](#implement-data-definition-language-ddl-operations-on-managed-and-external-tables) in the skill group Create and organize objects in Unity Catalog.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Change data capture and snapshots - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-engineering/what-is-cdc?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose granularity on a column or table based on requirements
+
+:::note
+The Microsoft Learn module "Design and implement data modeling with Azure Databricks" also covers this task. It is listed once, under [Implement data definition language (DDL) operations on managed and external tables](#implement-data-definition-language-ddl-operations-on-managed-and-external-tables) in the skill group Create and organize objects in Unity Catalog.
+:::
+
+#### Design and implement a temporal (history) table to record changes over time
+
+:::note
+The Microsoft Learn module "Design and implement data modeling with Azure Databricks" also covers this task. It is listed once, under [Implement data definition language (DDL) operations on managed and external tables](#implement-data-definition-language-ddl-operations-on-managed-and-external-tables) in the skill group Create and organize objects in Unity Catalog.
+:::
+
+#### Design and implement a clustering strategy, including liquid clustering, Z-ordering, and deletion vectors
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use liquid clustering for tables - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/tables/clustering?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose between managed and unmanaged tables
+
+:::note
+The Microsoft Learn module "Design and implement data modeling with Azure Databricks" also covers this task. It is listed once, under [Implement data definition language (DDL) operations on managed and external tables](#implement-data-definition-language-ddl-operations-on-managed-and-external-tables) in the skill group Create and organize objects in Unity Catalog.
+:::
+
+### Ingest data into Unity Catalog
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What are catalogs in Azure Databricks? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/catalogs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What are Unity Catalog volumes? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/volumes?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Ingest data by using Lakeflow Connect, including batch and streaming
+
+:::note
+The Microsoft Learn module "Ingest data into Unity Catalog" also covers this task. It is listed once, under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Streaming connectors - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ingestion/lakeflow-connect/streaming-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Ingest data by using notebooks, including batch and streaming
+
+:::note
+The Microsoft Learn module "Ingest data into Unity Catalog" also covers this task. It is listed once, under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog.
+:::
+
+#### Ingest data by using SQL methods, including CREATE TABLE … AS (CTAS), CREATE OR REPLACE TABLE, and COPY INTO
+
+:::note
+The Microsoft Learn module "Ingest data into Unity Catalog" also covers this task. It is listed once, under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog.
+:::
+
+#### Ingest data by using a change data capture (CDC) feed
+
+:::note
+The Microsoft Learn module "Ingest data into Unity Catalog" also covers this task. It is listed once, under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="The AUTO CDC APIs: Simplify change data capture with pipelines - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/cdc?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="AUTO CDC FLOW Clause - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/sql-ref-syntax-ddl-create-streaming-table-auto-cdc?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="create_auto_cdc_flow - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/developer/ldp-python-ref-apply-changes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Managed database connectors - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ingestion/lakeflow-connect/cdc-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Ingest data by using Spark Structured Streaming
+
+:::note
+The Microsoft Learn module "Ingest data into Unity Catalog" also covers this task. It is listed once, under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Structured Streaming concepts - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/structured-streaming/concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Structured Streaming patterns on Azure Databricks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/structured-streaming/examples?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Ingest streaming data from Azure Event Hubs
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Azure Event Hubs as a pipeline data source - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/event-hubs?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Ingest data by using Lakeflow Spark Declarative Pipelines, including Auto Loader
+
+:::note
+The Microsoft Learn module "Ingest data into Unity Catalog" also covers this task. It is listed once, under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Ingest data from an API in pipelines - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/api-ingestion?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Cleanse, transform, and load data into Unity Catalog
+
+#### Profile data to generate summary statistics and assess data distributions
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Cleanse, transform, and load data into Unity Catalog" href="https://learn.microsoft.com/training/modules/cleanse-transform-load-data-into-unity-catalog?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose appropriate column data types
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement and manage data quality constraints with Azure Databricks" href="https://learn.microsoft.com/training/modules/implement-manage-data-quality-constraints-unity-catalog?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="cast - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/pyspark/reference/classes/column/cast?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="try_cast - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/pyspark/reference/classes/column/try_cast?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="dtypes - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/pyspark/reference/classes/dataframe/dtypes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Type widening - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/tables/features/type-widening?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Variant type support for Apache Iceberg and Delta Lake - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/tables/features/variant?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Schema evolution in Azure Databricks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-engineering/schema-evolution?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify and resolve duplicate, missing, and null values
+
+:::note
+The Microsoft Learn module "Cleanse, transform, and load data into Unity Catalog" also covers this task. It is listed once, under [Profile data to generate summary statistics and assess data distributions](#profile-data-to-generate-summary-statistics-and-assess-data-distributions).
+:::
+
+#### Transform data, including filtering, grouping, and aggregating data
+
+:::note
+The Microsoft Learn module "Cleanse, transform, and load data into Unity Catalog" also covers this task. It is listed once, under [Profile data to generate summary statistics and assess data distributions](#profile-data-to-generate-summary-statistics-and-assess-data-distributions).
+:::
+
+#### Transform data by using join, union, intersect, and except operators
+
+:::note
+The Microsoft Learn module "Cleanse, transform, and load data into Unity Catalog" also covers this task. It is listed once, under [Profile data to generate summary statistics and assess data distributions](#profile-data-to-generate-summary-statistics-and-assess-data-distributions).
+:::
+
+#### Transform data by denormalizing, pivoting, and unpivoting data
+
+:::note
+The Microsoft Learn module "Cleanse, transform, and load data into Unity Catalog" also covers this task. It is listed once, under [Profile data to generate summary statistics and assess data distributions](#profile-data-to-generate-summary-statistics-and-assess-data-distributions).
+:::
+
+#### Load data by using merge, insert, and append operations
+
+:::note
+The Microsoft Learn module "Cleanse, transform, and load data into Unity Catalog" also covers this task. It is listed once, under [Profile data to generate summary statistics and assess data distributions](#profile-data-to-generate-summary-statistics-and-assess-data-distributions).
+:::
+
+### Implement and manage data quality constraints in Unity Catalog
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Unity Catalog? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-governance/unity-catalog?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement validation checks, including nullability, data cardinality, and range checking
+
+:::note
+The Microsoft Learn module "Implement and manage data quality constraints with Azure Databricks" also covers this task. It is listed once, under [Choose appropriate column data types](#choose-appropriate-column-data-types) in the skill group Cleanse, transform, and load data into Unity Catalog.
+:::
+
+#### Implement data type checks
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement and manage data quality constraints with Azure Databricks": under [Choose appropriate column data types](#choose-appropriate-column-data-types) in the skill group Cleanse, transform, and load data into Unity Catalog
+- "Cleanse, transform, and load data into Unity Catalog": under [Profile data to generate summary statistics and assess data distributions](#profile-data-to-generate-summary-statistics-and-assess-data-distributions) in the skill group Cleanse, transform, and load data into Unity Catalog
+:::
+
+#### Implement schema enforcement and manage schema drift
+
+:::note
+The Microsoft Learn module "Implement and manage data quality constraints with Azure Databricks" also covers this task. It is listed once, under [Choose appropriate column data types](#choose-appropriate-column-data-types) in the skill group Cleanse, transform, and load data into Unity Catalog.
+:::
+
+#### Manage data quality with pipeline expectations in Lakeflow Spark Declarative Pipelines
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement and manage data quality constraints with Azure Databricks": under [Choose appropriate column data types](#choose-appropriate-column-data-types) in the skill group Cleanse, transform, and load data into Unity Catalog
+- "Design and implement data pipelines with Azure Databricks": under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Expectations - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/developer/ldp-python-ref-expectations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage data quality with pipeline expectations - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/expectations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Deploy and maintain data pipelines and workloads (30–35%)
+
+### Design and implement data pipelines
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data engineering concepts - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-engineering/concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is a data lakehouse? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/lakehouse?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Spark Declarative Pipelines on Lakeflow - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Pipeline concepts - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design order of operations for a data pipeline
+
+:::note
+The Microsoft Learn module "Design and implement data pipelines with Azure Databricks" also covers this task. It is listed once, under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog.
+:::
+
+#### Choose between notebook and Lakeflow Spark Declarative Pipelines
+
+:::note
+The Microsoft Learn module "Design and implement data pipelines with Azure Databricks" also covers this task. It is listed once, under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How to use Spark Declarative Pipelines on Lakeflow - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/concepts/how-to-use-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Choose an ETL approach on Azure Databricks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-engineering/choose-etl-approach?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apache Spark Declarative Pipelines - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/concepts/spark-declarative-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design task logic for Lakeflow Jobs
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement Lakeflow Jobs with Azure Databricks" href="https://learn.microsoft.com/training/modules/implement-lakeflow-jobs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor, troubleshoot and optimize workloads in Azure Databricks" href="https://learn.microsoft.com/training/modules/monitor-troubleshoot-optimize-workloads-azure-databricks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add branching logic to a job with the If/else task - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/tasks/if-else?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Control the flow of tasks within Lakeflow Jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/control-flow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Parameterize jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/parameters?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure task dependencies - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/run-if?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use task values to pass information between tasks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/task-values?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use a For each task to run another task in a loop - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/tasks/for-each?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and edit tasks in Lakeflow Jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/configure-task?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Disabled tasks in Lakeflow Jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/disabled-tasks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Dynamic value references - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/dynamic-value-references?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure job parameters - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/job-parameters?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor Lakeflow Jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/monitor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add notifications on a job - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/notifications?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot and repair job failures - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/repair-job-failures?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure task parameters - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/task-parameters?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use a lookup table for large parameter arrays in a For each task - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/tasks/for-each-lookup-example?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Notebook task for jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/tasks/notebook?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Pipeline task for jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/tasks/pipeline?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Python script task for jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/tasks/python-script?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Run Job task for jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/tasks/run-job?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="SQL task for jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/tasks/sql?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement error handling in data pipelines, notebooks, and jobs
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement data pipelines with Azure Databricks": under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog
+- "Monitor, troubleshoot and optimize workloads in Azure Databricks": under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs)
+:::
+
+#### Create a data pipeline by using a notebook, including precedence constraints
+
+:::note
+The Microsoft Learn module "Design and implement data pipelines with Azure Databricks" also covers this task. It is listed once, under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog.
+:::
+
+#### Create a data pipeline by using Lakeflow Spark Declarative Pipelines
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Design and implement data pipelines with Azure Databricks": under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog
+- "Ingest data into Unity Catalog": under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Transform data with pipelines - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/transform?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Best practices for Lakeflow pipelines - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Functions to define datasets - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/developer/definition-function?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement Lakeflow Jobs
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Lakeflow Jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data engineering with Databricks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-engineering?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Triggered vs. continuous pipeline mode - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/concepts/pipeline-mode?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create a job, including setup and configuration
+
+:::note
+The Microsoft Learn module "Implement Lakeflow Jobs with Azure Databricks" also covers this task. It is listed once, under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines.
+:::
+
+#### Configure job triggers
+
+:::note
+The Microsoft Learn module "Implement Lakeflow Jobs with Azure Databricks" also covers this task. It is listed once, under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Trigger jobs when new files arrive - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/file-arrival-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Trigger jobs when upstream jobs complete - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/job-completion-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Trigger jobs when models are updated - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/model-update-triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Run jobs on a schedule - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/scheduled?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Trigger jobs when source tables are updated - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/trigger-table-update?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Trigger a single job run - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/run-now?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Schedule a job
+
+:::note
+The Microsoft Learn module "Implement Lakeflow Jobs with Azure Databricks" also covers this task. It is listed once, under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Automate jobs with schedules and triggers - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/triggers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Production job scheduling cheat sheet - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/cheat-sheet/jobs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and edit Lakeflow Jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/configure-job?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up a recurring query with backfill support using Lakeflow Jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/how-to/create-recurring-job?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Run Databricks notebooks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/notebooks/run-notebook?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and manage scheduled notebook jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/notebooks/schedule-notebook-jobs?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure alerts for a job
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement Lakeflow Jobs with Azure Databricks": under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines
+- "Monitor, troubleshoot and optimize workloads in Azure Databricks": under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="SQL alert task for jobs - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/jobs/tasks/alert?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure automatic restarts for a job or a data pipeline
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement Lakeflow Jobs with Azure Databricks": under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines
+- "Design and implement data pipelines with Azure Databricks": under [Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory](#choose-an-appropriate-data-ingestion-tool-including-lakeflow-connect-notebooks-and-azure-data-factory) in the skill group Design and implement data modeling in Unity Catalog
+:::
+
+### Implement development lifecycle processes in Azure Databricks
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Azure Databricks? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What are pipelines? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/concepts/pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Apply version control best practices using Git
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement development lifecycle processes in Azure Databricks" href="https://learn.microsoft.com/training/modules/implement-development-lifecycle-processes-in-azure-databricks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Software engineering best practices for Databricks notebooks - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/notebooks/best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage branching, pull requests, and conflict resolution
+
+:::note
+The Microsoft Learn module "Implement development lifecycle processes in Azure Databricks" also covers this task. It is listed once, under [Apply version control best practices using Git](#apply-version-control-best-practices-using-git).
+:::
+
+#### Implement a testing strategy, including unit tests, integration tests, end-to-end tests, and user acceptance testing (UAT)
+
+:::note
+The Microsoft Learn module "Implement development lifecycle processes in Azure Databricks" also covers this task. It is listed once, under [Apply version control best practices using Git](#apply-version-control-best-practices-using-git).
+:::
+
+#### Configure and package Databricks Asset Bundles
+
+:::note
+The Microsoft Learn module "Implement development lifecycle processes in Azure Databricks" also covers this task. It is listed once, under [Apply version control best practices using Git](#apply-version-control-best-practices-using-git).
+:::
+
+#### Deploy a bundle by using the Azure Databricks command-line interface (CLI)
+
+:::note
+The Microsoft Learn module "Implement development lifecycle processes in Azure Databricks" also covers this task. It is listed once, under [Apply version control best practices using Git](#apply-version-control-best-practices-using-git).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="bundle command group - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/dev-tools/cli/bundle-commands?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Databricks CLI - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/dev-tools/cli?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy a bundle by using REST APIs
+
+:::note
+The Microsoft Learn module "Implement development lifecycle processes in Azure Databricks" also covers this task. It is listed once, under [Apply version control best practices using Git](#apply-version-control-best-practices-using-git).
+:::
+
+### Monitor, troubleshoot, and optimize workloads in Azure Databricks
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Delta Lake in Azure Databricks? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/delta?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What are ACID guarantees on Azure Databricks? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/lakehouse/acid?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is predictive I/O? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/optimizations/predictive-io?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Photon? - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/compute/photon?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor and manage cluster consumption to optimize performance and cost
+
+:::note
+The Microsoft Learn module "Monitor, troubleshoot and optimize workloads in Azure Databricks" also covers this task. It is listed once, under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines.
+:::
+
+#### Troubleshoot and repair issues in Lakeflow Jobs, including repair, restart, stop, and run functions
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement Lakeflow Jobs with Azure Databricks": under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines
+- "Monitor, troubleshoot and optimize workloads in Azure Databricks": under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines
+:::
+
+#### Troubleshoot and repair issues in Apache Spark jobs and notebooks, including performance tuning, resolving resource bottlenecks, and cluster restart
+
+:::note
+The Microsoft Learn module "Monitor, troubleshoot and optimize workloads in Azure Databricks" also covers this task. It is listed once, under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines.
+:::
+
+#### Investigate and resolve caching, skewing, spilling, and shuffle issues by using a Directed Acyclic Graph (DAG), the Spark UI, and query profile
+
+:::note
+The Microsoft Learn module "Monitor, troubleshoot and optimize workloads in Azure Databricks" also covers this task. It is listed once, under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines.
+:::
+
+#### Optimize Delta tables for performance and cost, including OPTIMIZE and VACUUM commands
+
+:::note
+The Microsoft Learn module "Monitor, troubleshoot and optimize workloads in Azure Databricks" also covers this task. It is listed once, under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="VACUUM - Azure Databricks - Databricks SQL" href="https://learn.microsoft.com/azure/databricks/sql/language-manual/delta-vacuum?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Remove unused data files with vacuum - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/tables/operations/vacuum?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Predictive optimization for Unity Catalog managed tables - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/optimizations/predictive-optimization?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement log streaming by using Log Analytics in Azure Monitor
+
+:::note
+The Microsoft Learn module "Monitor, troubleshoot and optimize workloads in Azure Databricks" also covers this task. It is listed once, under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Observability in Azure Databricks for jobs, Lakeflow pipelines, and Lakeflow Connect - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/data-engineering/observability-best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Pipeline event log - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/monitor-event-logs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor pipelines - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/ldp/observability?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure alerts by using Azure Monitor
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement Lakeflow Jobs with Azure Databricks": under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines
+- "Monitor, troubleshoot and optimize workloads in Azure Databricks": under [Design task logic for Lakeflow Jobs](#design-task-logic-for-lakeflow-jobs) in the skill group Design and implement data pipelines
+:::

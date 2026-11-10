@@ -1,0 +1,813 @@
+{
+  "schemaVersion": 1,
+  "code": "MB-230",
+  "decisions": [
+    {
+      "task": "configure-representative-experience-and-routing/configure-productivity-tools/@foundations",
+      "target": "/training/modules/agents-app-profile-manager",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-productivity-tools/@foundations",
+      "target": "/training/modules/configure-productivity-tools-contact-center",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/@foundations",
+      "target": "/dynamics365/customer-service/administer/overview-skill-work-distribution",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/@foundations",
+      "target": "/training/modules/introduction-integration-customer-engagement-apps",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-basic-routing-rulesets",
+      "target": "/dynamics365/release-plan/2025wave1/service/dynamics365-contact-center/manage-routing-rules-bulk",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-queues",
+      "target": "/dynamics365/customer-service/administer/average-wait-time",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-queues",
+      "target": "/dynamics365/customer-service/administer/show-queue",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-queues",
+      "target": "/dynamics365/customer-service/administer/voice-channel-inbound-calling",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-queues",
+      "target": "/dynamics365/customer-service/use/rr-overview",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-queues",
+      "target": "/dynamics365/customer-service/use/rr-summary",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-queues",
+      "target": "/training/modules/configure-voice-channel-contact-center",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-routing-for-records",
+      "target": "/dynamics365/customer-service/administer/migrate-config-data-troubleshoot",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-routing-for-records",
+      "target": "/dynamics365/customer-service/administer/migrate-config-data-verify",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-routing-for-records",
+      "target": "/dynamics365/customer-service/use/record-routing-intent-group",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-routing-for-records",
+      "target": "/dynamics365/customer-service/use/record-routing-user-group",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-routing-for-records",
+      "target": "/dynamics365/customer-service/use/rr-agent",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-routing-for-records",
+      "target": "/dynamics365/customer-service/use/rr-backlogitems",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-routing-for-records",
+      "target": "/dynamics365/customer-service/use/rr-ongoingworkitems",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-routing-for-records",
+      "target": "/dynamics365/customer-service/use/rr-overview",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-routing-for-records",
+      "target": "/dynamics365/customer-service/use/rr-summary",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-routing-for-records",
+      "target": "/training/modules/configure-routing-contact-center",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-work-classification-and-assignments-including-rule",
+      "target": "/training/modules/configure-routing-contact-center",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-workstreams",
+      "target": "/dynamics365/customer-service/administer/voice-channel-inbound-calling",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-workstreams",
+      "target": "/training/modules/configure-routing-contact-center",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-workstreams",
+      "target": "/training/modules/configure-voice-channel-contact-center",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-the-copilot-service-workspace/@foundations",
+      "target": "/dynamics365/contact-center/use/ccw-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-the-copilot-service-workspace/@foundations",
+      "target": "/dynamics365/customer-service/implement/customer-service-hub-user-guide-basics",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-the-copilot-service-workspace/@foundations",
+      "target": "/training/modules/configure-experience-profiles-contact-center",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-the-copilot-service-workspace/@foundations",
+      "target": "/training/modules/getting-started-omnichannel",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/capture-customer-feedback-by-using-customer-voice/@foundations",
+      "target": "/dynamics365/customer-service/administer/voice-channel",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/@foundations",
+      "target": "/dynamics365/guidance/develop/introduction-customer-engagement-ui-ux-design-guide",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/@foundations",
+      "target": "/dynamics365/guidance/develop/ui-ux-design-principles",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/@foundations",
+      "target": "/training/modules/introduction-integration-customer-engagement-apps",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-alerts-and-in-app-notifications",
+      "target": "/dynamics365/contact-center/use/workforce-management-use-adherence-alerts",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-alerts-and-in-app-notifications",
+      "target": "/dynamics365/unified-service-desk/oc-customizer/alertnotification-step1-create-forms-define-layout-behavior-notification",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-alerts-and-in-app-notifications",
+      "target": "/dynamics365/unified-service-desk/oc-customizer/alertnotification-step2-create-hosted-controls",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-alerts-and-in-app-notifications",
+      "target": "/dynamics365/unified-service-desk/oc-customizer/alertnotification-step3-create-action-call-display-notification",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-alerts-and-in-app-notifications",
+      "target": "/dynamics365/unified-service-desk/oc-customizer/alertnotification-step4-add-action-calls-events",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-alerts-and-in-app-notifications",
+      "target": "/dynamics365/unified-service-desk/oc-customizer/configure-alert-notification-unified-service-desk",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-model-driven-app-components",
+      "target": "/dynamics365/guidance/reference-architectures/custom-copilot-agent-dynamics-365-power-apps",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
+      "target": "/dynamics365/customerengagement/on-premises/basics/create-connections-view-relationships-between-records",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
+      "target": "/dynamics365/customerengagement/on-premises/customize/create-and-edit-1n-relationships",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
+      "target": "/dynamics365/customerengagement/on-premises/customize/create-and-edit-nn-many-to-many-relationships",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
+      "target": "/dynamics365/customerengagement/on-premises/customize/create-edit-entity-relationships",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
+      "target": "/dynamics365/customerengagement/on-premises/customize/set-managed-properties-relationships",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
+      "target": "/dynamics365/customerengagement/on-premises/developer/describe-relationship-entities-connection-roles",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
+      "target": "/dynamics365/customerengagement/on-premises/developer/entity-relationship-behavior",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
+      "target": "/training/modules/functional-consultant-skills",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
+      "target": "/training/modules/get-started-with-powerapps-common-data-service",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/create-and-configure-forms",
+      "target": "/dynamics365/customer-service/develop/configure-governance-email-send",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/create-and-manage-email-templates",
+      "target": "/training/modules/customer-voice-service-feedback",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "extend-customer-service/configure-the-data-model-and-ui-components/create-and-manage-email-templates",
+      "target": "/training/modules/send-customer-voice-surveys",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-administer-knowledge-management/@foundations",
+      "target": "/training/modules/explore-dynamics-365-contact-center",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-administer-knowledge-management/@foundations",
+      "target": "/training/modules/get-started-ai-fundamentals",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-administer-knowledge-management/@foundations",
+      "target": "/training/modules/introduction-to-microsofts-responsible-ai-approach",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-administer-knowledge-management/@foundations",
+      "target": "/training/modules/search-filter-knowledge-articles",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-administer-knowledge-management/@foundations",
+      "target": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-administer-knowledge-management/configure-tables-for-knowledge-management",
+      "target": "/dynamics365/customer-service/administer/set-up-knowledge-management-embedded-knowledge-search",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-administer-knowledge-management/configure-tables-for-knowledge-management",
+      "target": "/dynamics365/customer-service/administer/work-knowledge-articles",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/@foundations",
+      "target": "/dynamics365/customer-service/administer/overview-cases",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/@foundations",
+      "target": "/dynamics365/customer-service/use/case-analytics-overview",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/apply-slas",
+      "target": "/dynamics365/customer-service/administer/configure-live-conv-counter",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/apply-slas",
+      "target": "/dynamics365/customer-service/administer/export-import-solution",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/apply-slas",
+      "target": "/dynamics365/customer-service/administer/manage-solution",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/apply-slas",
+      "target": "/dynamics365/customer-service/implement/cs-troubleshooting-faqs",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/apply-slas",
+      "target": "/dynamics365/customer-service/use/case-dashboard",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/apply-slas",
+      "target": "/dynamics365/customer-service/use/monitor-live-conv-counter",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/configure-sla-settings",
+      "target": "/dynamics365/customer-service/administer/configure-live-conv-counter",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/configure-sla-settings",
+      "target": "/dynamics365/customer-service/administer/export-import-solution",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/configure-sla-settings",
+      "target": "/dynamics365/customer-service/administer/manage-solution",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/configure-sla-settings",
+      "target": "/dynamics365/customer-service/implement/cs-troubleshooting-faqs",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/create-sla-kpis",
+      "target": "/dynamics365/customer-service/implement/cs-troubleshooting-faqs",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/implement-actions-by-using-power-automate",
+      "target": "/dynamics365/customer-service/administer/reopen-resolved-case",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/implement-actions-by-using-power-automate",
+      "target": "/dynamics365/customer-service/administer/update-resolved-canceled-cases",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/define-and-configure-foundational-customer-service-component/@foundations",
+      "target": "/dynamics365/customer-service/use/user-guide-customer-service-hub",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/define-and-configure-foundational-customer-service-component/@foundations",
+      "target": "/training/modules/custom-apps-customer-service",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/define-and-configure-foundational-customer-service-component/@foundations",
+      "target": "/training/modules/manage-cases-customer-service-workspace",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/define-and-configure-foundational-customer-service-component/configure-and-manage-security-roles",
+      "target": "/dynamics365/customer-service/administer/manage-security-roles",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/define-and-configure-foundational-customer-service-component/configure-and-manage-security-roles",
+      "target": "/dynamics365/release-plan/2026wave1/service/dynamics365-contact-center/manage-users-through-entra-security-groups",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/define-and-configure-foundational-customer-service-component/configure-and-modify-the-case-resolution-experience",
+      "target": "/training/modules/configure-copilot",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/dynamics365/contact-center/use/copilot-language-support",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/dynamics365/customer-service/administer/case-summary-forms",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/dynamics365/customer-service/implement/overview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/dynamics365/customer-service/use/copilot-language-support",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/dynamics365/guidance/agent-templates/service-agent-templates",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/training/modules/copilot-custom-engine-agents-intro",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/training/modules/copilot-declarative-agent-api-plugin-intro",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/training/modules/describe-dynamics-365-contact-center-representative-experience",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/training/modules/explore-dynamics-365-contact-center",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/training/modules/get-started-ai-fundamentals",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/training/modules/get-started-microsoft-365-copilot-business-chat",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/training/modules/introduction-to-microsofts-responsible-ai-approach",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/@foundations",
+      "target": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/configure-draft-a-response",
+      "target": "/dynamics365/developer/reference/mcp-tools/get_response_preview",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/configure-the-case-management-agent",
+      "target": "/dynamics365/customer-service/develop/case-management-agent-integration",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/configure-the-case-management-agent",
+      "target": "/dynamics365/customer-service/develop/use-case-processing-agent",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-cases-in-customer-service/manage-collaboration/configure-teams-collaboration-experience",
+      "target": "/training/modules/agents-app-profile-manager",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    }
+  ],
+  "excludedFamilies": []
+}

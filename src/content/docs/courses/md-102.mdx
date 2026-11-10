@@ -1,0 +1,1638 @@
+---
+title: MD-102 Study Guide Course
+description: "Follow a structured MD-102 course organized by study guide task, with Microsoft Learn training and documentation."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official MD-102 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/md-102?WT.mc_id=studentamb_165290) skills measured (October 27, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [MD-102 labs page](/certs/labs/microsoft365/md-102/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As an endpoint administrator, you collaborate with architects, Microsoft 365 administrators, security administrators, and other workload administrators to plan and implement a modern workplace strategy that meets the business needs of an organization.
+
+You must have experience with Microsoft Entra ID and Microsoft 365 technologies, including Intune, as well as strong skills and experience in deploying, configuring, and maintaining Windows client and non-Windows devices. You should also have an understanding of Microsoft Security Copilot, Intune agents, and Microsoft Defender XDR.
+
+### As a candidate for this exam, you have subject matter expertise managing devices and client applications in a Microsoft 365 tenant by using Microsoft Intune and agentic tools and workflows. You're responsible for
+
+- Implementing solutions for efficient deployment and management of endpoints on various platforms and device types
+- Implementing and managing endpoints at scale by using Microsoft Intune, Microsoft Intune Suite, Windows Autopilot, Microsoft Defender for Endpoint, Microsoft Entra ID, PowerShell, Microsoft Graph, and Windows 365
+- Implementing identity, security, access, policies, updates, and apps for endpoints
+- Optimizing endpoint operations through automation, monitoring, and reporting
+
+## Prepare infrastructure for devices (20–25%)
+
+### Add devices to Microsoft Entra ID
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand endpoint management strategies and Microsoft Intune" href="https://learn.microsoft.com/training/modules/understand-intune-strategies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe identity concepts" href="https://learn.microsoft.com/training/modules/describe-identity-principles-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the function and identity types of Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-basic-services-identity-types?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore identity in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-identity-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/understand-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/introduction-to-entra-id-2026?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Understanding Primary Refresh Token (PRT) in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/devices/concept-primary-refresh-token?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose an appropriate device join type, including considerations such as device registration and Microsoft Entra join
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Administer device identity and authentication using Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/device-identity-authentication-entra-id?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Join devices to Microsoft Entra ID
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Enroll and validate devices with Microsoft Intune" href="https://learn.microsoft.com/training/modules/enroll-validate-devices-microsoft-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prepare Microsoft Entra ID and Intune for device management" href="https://learn.microsoft.com/training/modules/prepare-microsoft-entra-id-intune-device-management?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is a Microsoft Entra hybrid joined device? - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/devices/concept-hybrid-join?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Join Windows 11 Devices to Microsoft Entra ID During OOBE" href="https://learn.microsoft.com/entra/identity/devices/device-join-out-of-box?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is a Microsoft Entra joined device?" href="https://learn.microsoft.com/entra/identity/devices/concept-directory-join?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan your Microsoft Entra join deployment" href="https://learn.microsoft.com/entra/identity/devices/device-join-plan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Microsoft Entra hybrid join" href="https://learn.microsoft.com/entra/identity/devices/how-to-hybrid-join?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manual configuration for Microsoft Entra hybrid join" href="https://learn.microsoft.com/entra/identity/devices/hybrid-join-manual?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan your Microsoft Entra hybrid join deployment" href="https://learn.microsoft.com/entra/identity/devices/hybrid-join-plan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Join your cloud-native endpoints to Microsoft Entra" href="https://learn.microsoft.com/intune/solutions/cloud-native-endpoints/entra-join-types?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to manage local administrators on Microsoft Entra joined devices" href="https://learn.microsoft.com/entra/identity/devices/assign-local-admin?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How SSO to on-premises resources works on Microsoft Entra joined devices" href="https://learn.microsoft.com/entra/identity/devices/device-sso-to-on-premises-resources?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra hybrid join using Microsoft Entra Kerberos (preview)" href="https://learn.microsoft.com/entra/identity/devices/how-to-hybrid-join-using-microsoft-entra-kerberos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Targeted deployments of Microsoft Entra hybrid join" href="https://learn.microsoft.com/entra/identity/devices/hybrid-join-control?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Microsoft Entra hybrid joined devices" href="https://learn.microsoft.com/entra/identity/devices/troubleshoot-hybrid-join-windows-current?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot legacy Microsoft Entra hybrid joined devices" href="https://learn.microsoft.com/entra/identity/devices/troubleshoot-hybrid-join-windows-legacy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot primary refresh token issues on Windows devices" href="https://learn.microsoft.com/entra/identity/devices/troubleshoot-primary-refresh-token?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Domain join profile settings for Windows devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-domain-join-windows?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Register devices to Microsoft Entra ID
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Microsoft Entra ID for device and policy management" href="https://learn.microsoft.com/training/modules/configure-entraid-device-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy Windows devices using Windows Autopilot" href="https://learn.microsoft.com/training/modules/deploy-windows-autopilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What are Microsoft Entra registered devices?" href="https://learn.microsoft.com/entra/identity/devices/concept-device-registration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Redo Workplace Join for Android Enterprise devices in Intune" href="https://learn.microsoft.com/intune/device-enrollment/android/redo-workplace-join-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage devices in Microsoft Entra ID using the Microsoft Entra admin center" href="https://learn.microsoft.com/entra/identity/devices/manage-device-identities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to manage stale devices in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/devices/manage-stale-devices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot registered, hybrid, and Microsoft Entra joined Windows machines" href="https://learn.microsoft.com/entra/identity/devices/troubleshoot-device-windows-joined?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Verify Microsoft Entra hybrid join state - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/devices/how-to-hybrid-join-verify?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot devices by using the dsregcmd command" href="https://learn.microsoft.com/entra/identity/devices/troubleshoot-device-dsregcmd?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure device sync with Microsoft Entra Cloud Sync - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/hybrid/cloud-sync/device-sync?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure your integration with Active Directory - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/hybrid/configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started integrating with Microsoft Entra ID - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/hybrid/get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Microsoft Entra device registration and Windows Autopilot" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/azure-ad-device-registration-autopilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement groups for devices in Microsoft Entra ID, including dynamic group membership rules
+
+:::note
+The Microsoft Learn module "Configure Microsoft Entra ID for device and policy management" also covers this task. It is listed once, under [Register devices to Microsoft Entra ID](#register-devices-to-microsoft-entra-id).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage rules for dynamic membership groups in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-membership?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to manage groups" href="https://learn.microsoft.com/entra/fundamentals/how-to-manage-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create or Edit a Dynamic Membership Group and Get Its Processing Status" href="https://learn.microsoft.com/entra/identity/users/groups-create-rule?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Validate rules for dynamic membership groups" href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-rule-validation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure dynamic membership groups with the memberOf operator in the Entra Admin Center (preview)" href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-rule-member-of?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="PowerShell samples for dynamic membership processing" href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-membership-powershell-samples?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create simpler and faster rules for dynamic membership groups" href="https://learn.microsoft.com/entra/identity/users/groups-dynamic-rule-more-efficient?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fix problems with dynamic membership groups" href="https://learn.microsoft.com/entra/identity/users/groups-troubleshooting?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Enroll devices to Microsoft Intune
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Overview of Android work profile management in Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/android/enterprise-work-profile?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Device staging overview" href="https://learn.microsoft.com/intune/device-enrollment/android/device-staging?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Intune and Microsoft Entra device limit restrictions" href="https://learn.microsoft.com/intune/device-enrollment/limits-intune-entra?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure enrollment settings in Microsoft Intune
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Plan and implement device enrollment using Microsoft Intune" href="https://learn.microsoft.com/training/modules/plan-implement-device-enrollment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot device and policy issues using Microsoft Intune" href="https://learn.microsoft.com/training/modules/troubleshoot-intune-devices?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Require multifactor authentication for Intune device enrollment" href="https://learn.microsoft.com/intune/device-enrollment/configure-multifactor-authentication?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create device limit restrictions" href="https://learn.microsoft.com/intune/device-enrollment/create-device-limit-restrictions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create device platform restrictions" href="https://learn.microsoft.com/intune/device-enrollment/create-platform-restrictions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of enrollment restrictions" href="https://learn.microsoft.com/intune/device-enrollment/restrictions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up enrollment time grouping - Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/setup-time-grouping?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up enrollment notifications in Intune" href="https://learn.microsoft.com/intune/device-enrollment/setup-notifications?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up the Enrollment Status Page in the admin center copy" href="https://learn.microsoft.com/intune/device-enrollment/windows/setup-status-page?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot device enrollment in Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/troubleshoot-device-enrollment-in-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up Intune enrollment for Android Enterprise dedicated devices" href="https://learn.microsoft.com/intune/device-enrollment/android/setup-dedicated?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to configure Android enterprise devices in Microsoft Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/configure-android-enterprise-devices-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add corporate identifiers to Intune" href="https://learn.microsoft.com/intune/device-enrollment/add-corporate-identifiers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="macOS device enrollment guide for Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/guide-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage macOS ADE devices and tokens in Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/manage-devices-tokens-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Apple Automated Device Enrollment for macOS in Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/overview-automated-enrollment-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Authentication methods for Apple automated device enrollment | Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/ref-automated-authentication-methods?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up account driven Apple User Enrollment" href="https://learn.microsoft.com/intune/device-enrollment/apple/setup-account-driven-user?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up an iOS/iPadOS ADE token in Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/setup-apple-token?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use direct enrollment for macOS devices" href="https://learn.microsoft.com/intune/device-enrollment/apple/setup-direct-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up a macOS ADE token in Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/setup-macos-token?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up user enrollment with Company Portal for iOS" href="https://learn.microsoft.com/intune/device-enrollment/apple/setup-user-company-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set terms and conditions in Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/create-terms-and-conditions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Bulk enrollment for Windows devices" href="https://learn.microsoft.com/intune/device-enrollment/windows/create-bulk-package?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apple ADE devices don't start auto-enrollment in Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/apple-dep-device-fails-auto-enrollment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apple Automated Device Enrollment (ADE) Intune enrollment error XPC_TYPE_ERROR" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/dep-enrollment-xpc-type-error?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot error 806 or 808 when importing Windows Autopilot CSV files" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/import-windows-autopilot-device-csv-files-errors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Keychain error -25244 when enrolling macOS devices in Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/keychain-error-enrolling-macos-devices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Android Enterprise device enrollment in Microsoft Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/troubleshoot-android-enrollment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect Intune account to managed Google Play account" href="https://learn.microsoft.com/intune/device-enrollment/android/connect-managed-google-play?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up enrollment for Android Enterprise fully managed devices" href="https://learn.microsoft.com/intune/device-enrollment/android/setup-fully-managed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up enrollment for macOS devices" href="https://learn.microsoft.com/intune/device-enrollment/apple/methods-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up Apple device management in Intune for corporate-owned userless devices" href="https://learn.microsoft.com/intune/device-enrollment/apple/setup-corporate-userless?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up just-in-time registration" href="https://learn.microsoft.com/intune/device-enrollment/apple/setup-just-in-time-registration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View enrollment reports" href="https://learn.microsoft.com/intune/device-enrollment/monitor-reports?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enroll devices using a device enrollment manager account" href="https://learn.microsoft.com/intune/device-enrollment/setup-enrollment-manager?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Can't update enrollment when enrolling devices in the Intune Company Portal" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/cannot-update-enrollment?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure automatic enrollment for Windows
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Plan and implement device enrollment using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune)
+- "Troubleshoot device and policy issues using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Enable MDM automatic enrollment for Windows | Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/windows/enable-automatic-mdm?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable autodiscovery of Intune enrollment server" href="https://learn.microsoft.com/intune/device-enrollment/windows/create-cname-autodiscovery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Windows device enrollment guide for Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/windows/guide?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Step 5 - Enroll devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/enroll-devices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="You don't have permissions to enroll a Windows device in Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/no-permission-to-enroll-windows-devices?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Windows 10 Group Policy auto-enrollment in Microsoft Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/troubleshoot-windows-auto-enrollment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshooting Windows device enrollment problems in Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/troubleshoot-windows-enrollment-errors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot 'Set up for work or school' enrollment in Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/troubleshoot-windows-work-school?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Windows user is not authorized to enroll in Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/windows-user-cannot-enroll?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Windows 10 Intune auto-enrollment error 80180002b" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/windows10-enroll-error-80180002b?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Windows 10 devices that can't sync with Intune after enrollment" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-management/cannot-sync-windows-10-devices?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure personal enrollment for macOS, iOS, iPadOS
+
+:::note
+The Microsoft Learn module "Plan and implement device enrollment using Microsoft Intune" also covers this task. It is listed once, under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Overview of Apple device enrollment in Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/personal-device-options-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="iOS/iPadOS device enrollment guide for Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/guide-ios-ipados?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up web based device enrollment" href="https://learn.microsoft.com/intune/device-enrollment/apple/setup-web-based-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Apple User Enrollment in Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/user-enrollment-methods-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get an Apple MDM Push certificate for Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/create-mdm-push-certificate?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Turn on iOS/iPadOS supervised mode with Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/enable-supervised-mode?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Apple Automated Device Enrollment for iOS/iPadOS in Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/overview-automated-enrollment-apple?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="iOS/iPadOS direct enrollment - Apple Configurator-Setup Assistant" href="https://learn.microsoft.com/intune/device-enrollment/apple/setup-configurator-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="iOS or iPadOS device stuck on Intune enrollment screen" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/device-stuck-in-enrollment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="iOS or iPadOS devices won't check in with Microsoft Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/ios-devices-inactive?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshooting iOS/iPadOS device enrollment errors in Microsoft Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/troubleshoot-ios-enrollment-errors?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure enrollment profiles for Android devices, including fully managed, dedicated, corporate-owned devices with a work profile, enrollment restrictions and troubleshooting enrollment failures
+
+:::note
+The Microsoft Learn module "Plan and implement device enrollment using Microsoft Intune" also covers this task. It is listed once, under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune).
+:::
+
+#### Configure corporate enrollment for macOS and iOS devices by integrating Intune with Apple Business Manager
+
+:::note
+The Microsoft Learn module "Plan and implement device enrollment using Microsoft Intune" also covers this task. It is listed once, under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Set up automated device enrollment (ADE) for iOS/iPadOS" href="https://learn.microsoft.com/intune/device-enrollment/apple/setup-automated-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up automated device enrollment (ADE) for macOS" href="https://learn.microsoft.com/intune/device-enrollment/apple/setup-automated-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with macOS endpoints" href="https://learn.microsoft.com/intune/solutions/end-to-end-guides/macos-endpoints-get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Apple Volume-Purchased Apps" href="https://learn.microsoft.com/intune/app-management/deployment/manage-vpp-apple?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure enrollment for Android devices by integrating Intune with Samsung Knox Mobile Enrollment or Google zero-touch enrollment
+
+:::note
+The Microsoft Learn module "Plan and implement device enrollment using Microsoft Intune" also covers this task. It is listed once, under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Automatically enroll devices with Samsung Knox Mobile Enrollment" href="https://learn.microsoft.com/intune/device-enrollment/android/setup-samsung-knox-mobile?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement identity and compliance
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Understand Microsoft's SSO model" href="https://learn.microsoft.com/entra/identity/enterprise-apps/understand-microsoft-sso-model?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is hybrid identity with Microsoft Entra ID?" href="https://learn.microsoft.com/entra/identity/hybrid/whatis-hybrid-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Conditional Access with Microsoft Intune compliance policies" href="https://learn.microsoft.com/intune/device-security/conditional-access-integration/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage authentication methods" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage built-in and custom roles for Intune and Windows 365, including role assignments
+
+:::note
+The Microsoft Learn module "Configure Microsoft Entra ID for device and policy management" also covers this task. It is listed once, under [Register devices to Microsoft Entra ID](#register-devices-to-microsoft-entra-id) in the skill group Add devices to Microsoft Entra ID.
+:::
+
+#### Configure scope tags and scoped administration for multi-admin environments
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Apply RBAC and admin delegation in Microsoft Intune" href="https://learn.microsoft.com/training/modules/apply-rbac-admin-delegation?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Permissions, scope tags, and approvals for deployments in Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-management/deployments/rbac-scope-tags?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement and manage multi-admin approval
+
+:::note
+The Microsoft Learn module "Apply RBAC and admin delegation in Microsoft Intune" also covers this task. It is listed once, under [Configure scope tags and scoped administration for multi-admin environments](#configure-scope-tags-and-scoped-administration-for-multi-admin-environments).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Multi Admin Approval in Intune" href="https://learn.microsoft.com/intune/fundamentals/role-based-access-control/multi-admin-approval?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Multi Admin Approval with the Microsoft Graph API" href="https://learn.microsoft.com/intune/fundamentals/role-based-access-control/multi-admin-approval-graph-api?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement compliance policies for all supported device platforms by using Intune
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Enforce compliance and remediate security issues by using Microsoft Intune" href="https://learn.microsoft.com/training/modules/enforce-compliance-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure device profiles and policy management using Microsoft Intune" href="https://learn.microsoft.com/training/modules/configure-device-profiles-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and secure devices with Microsoft Intune policies" href="https://learn.microsoft.com/training/modules/configure-secure-devices-intune-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor and maintain devices using Microsoft Intune" href="https://learn.microsoft.com/training/modules/monitor-maintain-devices-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Device compliance policies in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/compliance/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure compliance policies with actions for noncompliance in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/compliance/configure-noncompliance-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create device compliance policies in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/compliance/create-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure compliance policies" href="https://learn.microsoft.com/intune/fundamentals/deploy-compliance-step-3?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor results of your device compliance policies in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/compliance/monitor-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Platforms and policy types supported by assignment filters - Microsoft Intune" href="https://learn.microsoft.com/intune/fundamentals/filters/ref-supported-workloads?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a JSON file for custom compliance settings in Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/compliance/create-custom-json?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create discovery scripts for custom compliance policy in Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/compliance/create-custom-script?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View the Android device administrator compliance settings for Microsoft Intune compliance policies" href="https://learn.microsoft.com/intune/device-security/compliance/ref-android-administrator-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="iOS/iPadOS device compliance settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/compliance/ref-ios-ipados-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Linux device compliance settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/compliance/ref-linux-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="macOS device compliance settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/compliance/ref-macos-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Mobile Threat Defense compliance policies in Intune" href="https://learn.microsoft.com/intune/device-security/mobile-threat-defense/create-compliance-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot policies and configuration profiles in Microsoft Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-configuration/troubleshoot-policies-in-microsoft-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Android Enterprise compliance settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/compliance/ref-android-enterprise-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Windows compliance settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/compliance/ref-windows-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Microsoft Entra Conditional Access policies that require a compliance status
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How to Require Device Compliance with Conditional Access" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-all-users-device-compliance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Windows Hello for Business by using Intune
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Replace passwords with secure authentication methods" href="https://learn.microsoft.com/training/modules/passwordless-authentication?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure a tenant-wide Windows Hello for Business policy with Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/identity-protection/configure-tenant-wide-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy policy for Windows Hello to groups of Windows devices" href="https://learn.microsoft.com/intune/device-security/identity-protection/deploy-group-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Windows Hello for Business settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/identity-protection/ref-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Windows Hello for Business authentication method in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-windows-hello?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement and manage Windows Local Administrator Password Solution (Windows LAPS) by using Microsoft Intune and Microsoft Entra ID
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Windows Local Administrator Password Solution (LAPS) with Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/devices/howto-manage-local-admin-passwords?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Windows LAPS with Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/laps/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage the membership of local groups on Windows devices by using Intune
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure Microsoft Entra ID for device and policy management": under [Register devices to Microsoft Entra ID](#register-devices-to-microsoft-entra-id) in the skill group Add devices to Microsoft Entra ID
+- "Configure device profiles and policy management using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune)
+:::
+
+## Manage and maintain devices (25–30%)
+
+### Deploy and upgrade Windows clients by using cloud-based tools
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Windows 365 for cloud PC deployment" href="https://learn.microsoft.com/training/modules/explore-windows-365-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Windows 11 and cloud-native concepts: myths, realities, and best practices" href="https://learn.microsoft.com/training/modules/cloud-native-myths?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What are cloud-native Windows endpoints" href="https://learn.microsoft.com/intune/solutions/cloud-native-endpoints/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose between Windows Autopilot deployment profiles and device preparation policies
+
+:::note
+The Microsoft Learn module "Deploy Windows devices using Windows Autopilot" also covers this task. It is listed once, under [Register devices to Microsoft Entra ID](#register-devices-to-microsoft-entra-id) in the skill group Add devices to Microsoft Entra ID.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Troubleshoot when you cannot delete a Windows Autopilot deployment profile" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/cannot-delete-autopilot-deployment-profile?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Choose between Windows Autopilot deployment modes, including user-driven, pre-provisioning, and self-deploying
+
+:::note
+The Microsoft Learn module "Deploy Windows devices using Windows Autopilot" also covers this task. It is listed once, under [Register devices to Microsoft Entra ID](#register-devices-to-microsoft-entra-id) in the skill group Add devices to Microsoft Entra ID.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Windows Autopilot User-Driven Mode" href="https://learn.microsoft.com/autopilot/user-driven?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Apply a device name template by using Windows Autopilot
+
+:::note
+The Microsoft Learn module "Deploy Windows devices using Windows Autopilot" also covers this task. It is listed once, under [Register devices to Microsoft Entra ID](#register-devices-to-microsoft-entra-id) in the skill group Add devices to Microsoft Entra ID.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create Device Groups for Windows Autopilot" href="https://learn.microsoft.com/autopilot/enrollment-autopilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Windows client deployment by using Windows Autopilot
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Deploy and manage applications using Microsoft Intune" href="https://learn.microsoft.com/training/modules/deploy-manage-applications-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Windows Autopilot Troubleshooting FAQ" href="https://learn.microsoft.com/autopilot/troubleshooting-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create an Enrollment Status Page (ESP)
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Troubleshoot the Enrollment Status Page (ESP)" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/understand-troubleshoot-esp?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement device upgrades for Windows 11 by using Intune
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Windows updates and lifecycle using Microsoft Intune" href="https://learn.microsoft.com/training/modules/manage-windows-updates-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Hotpatch updates for Windows client devices" href="https://learn.microsoft.com/training/modules/hotpatch-updates-2026?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Upgrade Devices to Windows 11 Using Feature Updates" href="https://learn.microsoft.com/intune/device-updates/windows/upgrade-to-windows-11?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Update ring policies for Windows devices" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-protection/troubleshoot-update-rings?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Provision and configure Windows 365 Cloud PCs by using Intune, including provisioning policies, network connections, and image management
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure and manage Windows 365 with Microsoft Intune" href="https://learn.microsoft.com/training/modules/configure-manage-windows-365-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Windows Backup by using Intune
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Enable Windows Backup for Organizations" href="https://learn.microsoft.com/intune/device-enrollment/windows/enable-backup-restore?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate Microsoft Entra Enterprise State Roaming" href="https://learn.microsoft.com/entra/identity/devices/enterprise-state-roaming-enable?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Plan and implement device configuration profiles
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to mixed reality" href="https://learn.microsoft.com/training/modules/intro-to-mixed-reality?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Device enrollment guide for Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/guide?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create device configuration profiles for Windows devices, including importing ADMX files and using Group Policy analytics
+
+:::note
+The Microsoft Learn module "Configure device profiles and policy management using Microsoft Intune" also covers this task. It is listed once, under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Microsoft Intune to import and analyze group policies" href="https://learn.microsoft.com/intune/device-configuration/import-group-policy-analytics?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create device configuration profiles for Android devices
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure and secure devices with Microsoft Intune policies": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Configure device profiles and policy management using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Plan and implement device enrollment using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+- "Troubleshoot device and policy issues using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add custom settings to Android DA devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-custom-settings-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Custom per-app VPN profile for Android DA in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-per-app-vpn-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Zebra Mobility Extensions on Android devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-zebra-mx-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Wi-Fi profile with preshared key in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/create-wifi-preshared-key?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy OEMConfig profiles to Zebra devices using Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/deploy-oemconfig-zebra-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Allow or block apps for Samsung Knox Standard devices" href="https://learn.microsoft.com/intune/device-configuration/templates/manage-apps-samsung-knox?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Android DA email settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-email-settings-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Android Enterprise email settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-email-settings-android-enterprise?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Wi-Fi settings for Android DA devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-wifi-settings-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add Wi-Fi settings for Android devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-wifi-settings-android-enterprise?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Android Enterprise security configurations for corporate-owned fully managed profiles" href="https://learn.microsoft.com/intune/device-security/security-configurations/android-fully-managed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Android Enterprise security configurations for personally-owned work profiles" href="https://learn.microsoft.com/intune/device-security/security-configurations/android-personally-owned?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Tips for assigning device password settings to Android Enterprise fully managed devices in Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-configuration/assign-password-setting-android-fully-managed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot common issues with email profiles in Microsoft Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-configuration/troubleshoot-email-profiles-in-microsoft-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Android device enrollment guide for Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/android/guide?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enroll Android Enterprise dedicated, fully managed, or corporate-owned work profile devices in Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-enrollment/android/ref-corporate-methods?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up Android Enterprise work profile for corporate owned devices" href="https://learn.microsoft.com/intune/device-enrollment/android/setup-corporate-work-profile?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enroll personal devices in Intune with Android Enterprise work profile management" href="https://learn.microsoft.com/intune/device-enrollment/android/setup-personal-work-profile?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Android device ownership changed from Personal to Corporate" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/device-ownership-changed-to-corporate?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use VPN settings for Android DA devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-vpn-settings-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use VPN settings for Android Enterprise in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-vpn-settings-android-enterprise?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Android settings catalog in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/settings-catalog/ref-android-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Device restriction settings for Android DA in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Device restriction settings for Android in Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-android-enterprise?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Password expiration setting for Android devices in Intune doesn't work" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-configuration/password-expiration-setting-not-working?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create device configuration profiles for iOS/iPadOS devices
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure device profiles and policy management using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Plan and implement device enrollment using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+- "Troubleshoot device and policy issues using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create iOS/iPadOS or macOS device profile with Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-device-features-apple?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure iOS/iPadOS Enterprise SSO app extension with MDMs" href="https://learn.microsoft.com/intune/device-configuration/settings-catalog/configure-enterprise-sso-plugin-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use custom device settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-custom-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add custom settings to Apple devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-custom-settings-apple?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restrict devices features using policy in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-device-restrictions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure email settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-email?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up per-app VPN for iOS/iPadOS devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-per-app-vpn-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure 802.1x wired network settings for Apple and Windows devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-wired-networks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apple device feature settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-device-features-apple?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Email settings for iOS/iPadOS devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-email-settings-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure VPN settings for Apple devices in Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-vpn-settings-apple?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Wi-Fi Settings for Apple Devices in Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-wifi-settings-apple?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot and review Wi-Fi device configuration profiles in Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-configuration/troubleshoot-wi-fi-profiles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Intune Profile installation failed on iOS/iPadOS device in Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-enrollment/profile-installation-failed?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Single sign-on (SSO) for iOS/iPadOS and macOS" href="https://learn.microsoft.com/intune/device-configuration/enterprise-sso-plugin?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add VPN settings to devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-vpn?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="iOS/iPadOS personal device security configurations" href="https://learn.microsoft.com/intune/device-security/security-configurations/ios-ipados-personal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="iOS/iPadOS supervised device security configurations" href="https://learn.microsoft.com/intune/device-security/security-configurations/ios-ipados-supervised?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="iOS device is currently busy error when deploying a profile with Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-configuration/2016341112-ios-device-is-currently-busy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="No password prompt after iOS email profile change in Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-configuration/no-password-prompt-after-password-change?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot VPN profile issues" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-configuration/troubleshoot-vpn-profiles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Apple mobile devices and tokens in Intune" href="https://learn.microsoft.com/intune/device-enrollment/apple/manage-devices-tokens-apple?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create device configuration profiles for macOS devices
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure and secure devices with Microsoft Intune policies": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Configure device profiles and policy management using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Plan and implement device enrollment using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+- "Troubleshoot device and policy issues using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Device features and settings in Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add preference file settings to macOS devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-preference-file-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Apple device restriction settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-device-restrictions-apple?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure device configuration profiles in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/create-device-profile?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use SCEP certificate profiles with Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/certificates/scep-profiles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Endpoint protection settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/configure-endpoint-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add Platform SSO policy to ADE Profile on macOS devices" href="https://learn.microsoft.com/intune/device-configuration/settings-catalog/configure-platform-sso-during-enrollment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure macOS Enterprise SSO app extension with MDMs" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-enterprise-sso-plugin-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a Wi-Fi profile for devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-wifi?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure wired network settings for Apple devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-wired-network-settings-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Common tasks and features in the settings catalog" href="https://learn.microsoft.com/intune/device-configuration/settings-catalog/common-tasks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy Microsoft Edge policy using settings catalog in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/settings-catalog/configure-edge?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Platform SSO for macOS devices" href="https://learn.microsoft.com/intune/device-configuration/settings-catalog/configure-platform-sso-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Recovery Lock using the settings catalog" href="https://learn.microsoft.com/intune/device-configuration/settings-catalog/configure-recovery-lock-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create macOS system and kernel extensions with Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-kernel-extensions-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="macOS extension settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-kernel-extensions-settings-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Encrypt macOS devices with FileVault using Intune" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/encrypt-filevault-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Platform SSO scenarios for macOS devices" href="https://learn.microsoft.com/intune/device-configuration/settings-catalog/configure-platform-sso-scenarios-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="App Settings Configuration for Apple Devices - Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/apple-ddm-app-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use imported PFX certificates in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/certificates/imported-pfx-profiles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create trusted certificate profiles in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/certificates/trusted-root-profiles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure security, email, VPN, and Wi-Fi device configuration profiles" href="https://learn.microsoft.com/intune/fundamentals/deploy-configuration-step-4?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use a PKCS certificate profile to provision devices with certificates in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/certificates/pkcs-profiles?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create device configuration profiles for specialty devices, including Microsoft Teams Rooms, HoloLens 2, and Zebra
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure device profiles and policy management using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Troubleshoot device and policy issues using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+#### Target a profile by using assignment filters and enrollment time grouping
+
+:::note
+The Microsoft Learn module "Configure device profiles and policy management using Microsoft Intune" also covers this task. It is listed once, under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Choose the right targeting method in Microsoft Intune" href="https://learn.microsoft.com/intune/fundamentals/choose-targeting-method?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement Intune Suite add-on capabilities
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Microsoft Intune Suite capabilities" href="https://learn.microsoft.com/training/modules/explore-intune-suite-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement application protection and security using Microsoft Intune" href="https://learn.microsoft.com/training/modules/implement-application-protection-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Endpoint analytics overview" href="https://learn.microsoft.com/intune/endpoint-analytics?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about using Endpoint Privilege Management with Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/epm/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Intune cloud PKI fundamentals" href="https://learn.microsoft.com/intune/cloud-pki/fundamentals?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fundamentals - Microsoft Intune" href="https://learn.microsoft.com/intune/fundamentals?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about using Microsoft Tunnel with Mobile Application Management" href="https://learn.microsoft.com/intune/device-security/microsoft-tunnel/mam?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Endpoint Privilege Management including configuring elevation policies, monitoring elevated actions, and adjusting EPM settings
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Evaluate Endpoint Privilege Management with Microsoft Intune" href="https://learn.microsoft.com/training/modules/evaluate-endpoint-privilege-management?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage applications by using the Enterprise App Catalog
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Enterprise App Catalog applications" href="https://learn.microsoft.com/training/modules/manage-enterprise-application-catalog?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage application lifecycle and user experience using Microsoft Intune" href="https://learn.microsoft.com/training/modules/manage-application-lifecycle-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Intune Enterprise Application Management" href="https://learn.microsoft.com/intune/app-management/deployment/enterprise-app-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add an Enterprise App Catalog App to Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/add-enterprise-catalog-app?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Guided Update Supersedence for Enterprise App Management" href="https://learn.microsoft.com/intune/app-management/deployment/update-enterprise-supersedence?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Microsoft Intune Remote Help
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement Remote Help scenarios using Microsoft Intune" href="https://learn.microsoft.com/training/modules/implement-remote-help?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Remote Help to Assist Users Authenticated by your Organization" href="https://learn.microsoft.com/intune/remote-help?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy Remote Help with Microsoft Intune" href="https://learn.microsoft.com/intune/remote-help/deploy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan for Remote Help with Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/remote-help/plan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot and monitor Remote Help for Microsoft Intune." href="https://learn.microsoft.com/intune/remote-help/troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Using Remote Help on Windows to Assist Authenticated Users" href="https://learn.microsoft.com/intune/remote-help/start-session?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Device Action: New Remote Assistance Session" href="https://learn.microsoft.com/intune/device-management/actions/remote-assist?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement Microsoft Cloud PKI, including setting up cloud-based PKI, automating certificate issuance, and monitoring certificate health
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement Microsoft Cloud PKI" href="https://learn.microsoft.com/training/modules/microsoft-cloud-pki?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Microsoft Tunnel for Mobile Application Management, including configuring the Microsoft Tunnel VPN Gateway, extending support to MAM devices, and monitoring tunnel connections
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Secure mobile access using Microsoft Tunnel" href="https://learn.microsoft.com/training/modules/secure-mobile-access-microsoft-tunnel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Microsoft Tunnel VPN with Android devices that don't enroll with Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/microsoft-tunnel/mam-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Microsoft Tunnel VPN with iOS/iPad devices that don't enroll with Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/microsoft-tunnel/mam-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Microsoft Intune Advanced Analytics, including anomaly detection, proactive insights, and risk-based policy recommendations
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Analyze advanced device signals with Microsoft Intune Suite" href="https://learn.microsoft.com/training/modules/analyze-advanced-device-signals?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Perform remote actions on devices
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Advanced Analytics Overview" href="https://learn.microsoft.com/intune/advanced-analytics?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Sync, restart, retire, or wipe devices
+
+:::note
+The Microsoft Learn module "Manage Windows updates and lifecycle using Microsoft Intune" also covers this task. It is listed once, under [Plan and implement device upgrades for Windows 11 by using Intune](#plan-and-implement-device-upgrades-for-windows-11-by-using-intune) in the skill group Deploy and upgrade Windows clients by using cloud-based tools.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Device Actions - Wipe, Lock, Locate, and More - Microsoft Intune" href="https://learn.microsoft.com/intune/device-management/actions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Perform bulk remote actions
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Update Microsoft Defender Antivirus security intelligence
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement endpoint security with Microsoft Defender and Microsoft Intune" href="https://learn.microsoft.com/training/modules/implement-defender-endpoint-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Rotate BitLocker recovery keys
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement device encryption and security policies using Microsoft Intune" href="https://learn.microsoft.com/training/modules/implement-device-encryption?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Device Action: BitLocker Key Rotation - Microsoft Intune" href="https://learn.microsoft.com/intune/device-management/actions/rotate-bitlocker-keys?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Device Action: Rotate FileVault Recovery Key" href="https://learn.microsoft.com/intune/device-management/actions/rotate-filevault-recovery-key?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Rotate local administrator passwords
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Device Action: Rotate local admin password" href="https://learn.microsoft.com/intune/device-management/actions/rotate-local-admin-password?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Run a device query by using KQL
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Device Query" href="https://learn.microsoft.com/intune/advanced-analytics/device-query?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Device Query for Multiple Devices" href="https://learn.microsoft.com/intune/advanced-analytics/device-query-multiple-devices?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Collect device diagnostics and logs by using Microsoft Intune, including using the Troubleshooting blade for user-based diagnostics
+
+:::note
+The Microsoft Learn module "Troubleshoot device and policy issues using Microsoft Intune" also covers this task. It is listed once, under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune.
+:::
+
+## Protect devices (15–20%)
+
+### Configure endpoint security
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe threat protection with Microsoft Defender XDR" href="https://learn.microsoft.com/training/modules/describe-threat-protection-with-microsoft-365-defender?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Microsoft Intune?" href="https://learn.microsoft.com/intune/fundamentals/what-is-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Protect data and devices with Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Integrate Microsoft Defender for Endpoint with Intune for Device Compliance" href="https://learn.microsoft.com/intune/device-security/microsoft-defender/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create antivirus policies by using Microsoft Intune
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement endpoint security with Microsoft Defender and Microsoft Intune": under [Update Microsoft Defender Antivirus security intelligence](#update-microsoft-defender-antivirus-security-intelligence) in the skill group Perform remote actions on devices
+- "Monitor and maintain devices using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Troubleshoot device and policy issues using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage antivirus settings with endpoint security policies in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/antivirus?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="macOS Antivirus policy settings for Microsoft Defender Antivirus for Intune" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/ref-antivirus-defender-settings-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Windows Antivirus policy settings for Microsoft Defender Antivirus for Intune" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/ref-antivirus-defender-settings-windows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Antivirus policy settings for Windows Security experience policy for Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/ref-security-experience-settings-windows?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage disk encryption policies by using Microsoft Intune, including managing BitLocker recovery keys, configuring user self-service recovery, and monitoring encryption compliance status
+
+:::note
+The Microsoft Learn module "Implement device encryption and security policies using Microsoft Intune" also covers this task. It is listed once, under [Rotate BitLocker recovery keys](#rotate-bitlocker-recovery-keys) in the skill group Perform remote actions on devices.
+:::
+
+#### Create firewall policies by using Microsoft Intune
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Monitor and maintain devices using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Troubleshoot device and policy issues using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage firewall settings with endpoint security policies in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/firewall?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Intune endpoint security firewall settings" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/ref-firewall-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure endpoint protection on macOS devices with Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/ref-endpoint-protection-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage endpoint security policies in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Endpoint security in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/endpoint-security-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Attack surface reduction policies by using Microsoft Intune, including applying Zero Trust principles for endpoint protection
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement advanced threat protection using Microsoft Intune and Microsoft Defender" href="https://learn.microsoft.com/training/modules/implement-advanced-threat-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement security baselines by using Microsoft Intune
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement endpoint security with Microsoft Defender and Microsoft Intune": under [Update Microsoft Defender Antivirus security intelligence](#update-microsoft-defender-antivirus-security-intelligence) in the skill group Perform remote actions on devices
+- "Configure device profiles and policy management using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure security baseline policies in Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/security-baselines/configure-baselines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about Intune security baselines for Windows devices - Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/security-baselines/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Default configuration of Intune's Windows security baselines - Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/security-baselines/ref-windows-mdm-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Settings insight" href="https://learn.microsoft.com/intune/device-configuration/settings-insight?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor security baselines deployed by Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/security-baselines/monitor-baselines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Settings list for the Microsoft Intune security baseline for Microsoft Defender for Endpoint" href="https://learn.microsoft.com/intune/device-security/security-baselines/ref-defender-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Settings list for the Microsoft Edge security baseline in Intune" href="https://learn.microsoft.com/intune/device-security/security-baselines/ref-edge-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="List of settings for the Microsoft Edge security baseline in Intune" href="https://learn.microsoft.com/intune/device-security/security-baselines/ref-v2-edge-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="List of settings for the Microsoft 365 Apps for Enterprise security baseline in Intune" href="https://learn.microsoft.com/intune/device-security/security-baselines/ref-v2-office-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Integrate Intune with Microsoft Defender for Endpoint, including configuring Endpoint Detection and Response (EDR) policies, investigating endpoint threats, and triaging incidents
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Analyze advanced device signals with Microsoft Intune Suite": under [Implement Microsoft Intune Advanced Analytics, including anomaly detection, proactive insights, and risk-based policy recommendations](#implement-microsoft-intune-advanced-analytics-including-anomaly-detection-proactive-insights-and-risk-based-policy-recommendations) in the skill group Implement Intune Suite add-on capabilities
+- "Implement endpoint security with Microsoft Defender and Microsoft Intune": under [Update Microsoft Defender Antivirus security intelligence](#update-microsoft-defender-antivirus-security-intelligence) in the skill group Perform remote actions on devices
+:::
+
+#### Onboard devices into Microsoft Defender for Endpoint
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Prepare Microsoft Entra ID and Intune for device management": under [Join devices to Microsoft Entra ID](#join-devices-to-microsoft-entra-id) in the skill group Add devices to Microsoft Entra ID
+- "Implement endpoint security with Microsoft Defender and Microsoft Intune": under [Update Microsoft Defender Antivirus security intelligence](#update-microsoft-defender-antivirus-security-intelligence) in the skill group Perform remote actions on devices
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure Microsoft Defender for Endpoint with Intune and onboard devices" href="https://learn.microsoft.com/intune/device-security/microsoft-defender/configure-integration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy and configure Microsoft Defender for Endpoint on Android" href="https://learn.microsoft.com/intune/device-security/microsoft-defender/deploy-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add Microsoft Defender for Endpoint to macOS Devices Using Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/add-defender-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor Microsoft Defender for Endpoint with Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/microsoft-defender/monitor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy endpoint detection and response policy with Intune" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/deploy-edr?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure App Control for Business policies by using Microsoft Intune
+
+:::note
+The Microsoft Learn module "Configure device profiles and policy management using Microsoft Intune" also covers this task. It is listed once, under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage approved apps for Windows devices with App Control for Business policy and Managed Installers in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/endpoint-security/manage-app-control?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Manage device updates
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is device identity in Microsoft Entra ID?" href="https://learn.microsoft.com/entra/identity/devices/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan for device updates by using Intune
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Windows updates in the cloud" href="https://learn.microsoft.com/training/modules/m365-windows-manage-cloud-device-updates?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Device updates - Microsoft Intune" href="https://learn.microsoft.com/intune/device-updates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Admin checklist for Android software updates in Microsoft Intune" href="https://learn.microsoft.com/intune/device-updates/android/planning-guide?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Admin guide and checklist for macOS software updates" href="https://learn.microsoft.com/intune/device-updates/apple/planning-guide-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Admin checklist for software updates on BYOD in Microsoft Intune" href="https://learn.microsoft.com/intune/device-updates/byod-planning-guide?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage device operating system versions with Intune" href="https://learn.microsoft.com/intune/device-updates/manage-os-versions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Co-management for Windows devices" href="https://learn.microsoft.com/intune/configmgr/comanage/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Update Policies for Apple Devices" href="https://learn.microsoft.com/intune/device-updates/apple?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Windows Driver Update Policies" href="https://learn.microsoft.com/intune/device-updates/windows/configure-driver-update-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Windows Feature Update Policies" href="https://learn.microsoft.com/intune/device-updates/windows/configure-feature-update-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Rollout Options for Feature Update Policies" href="https://learn.microsoft.com/intune/device-updates/windows/configure-rollout-options?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Frequently Asked Questions About Windows Driver Update Policies - Microsoft Intune" href="https://learn.microsoft.com/intune/device-updates/windows/driver-updates-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Windows Driver Updates" href="https://learn.microsoft.com/intune/device-updates/windows/manage-driver-updates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Windows Feature Updates" href="https://learn.microsoft.com/intune/device-updates/windows/manage-feature-updates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a deployment plan in Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-management/deployments/create-deployment-plan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and manage a deployment in Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-management/deployments/create-deployment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assignment filter properties and operators reference - Microsoft Intune" href="https://learn.microsoft.com/intune/fundamentals/filters/ref-device-properties?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage update rings, feature updates, and quality updates for Windows devices by using Intune
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage Windows updates in the cloud": under [Plan for device updates by using Intune](#plan-for-device-updates-by-using-intune)
+- "Manage Windows updates and lifecycle using Microsoft Intune": under [Plan and implement device upgrades for Windows 11 by using Intune](#plan-and-implement-device-upgrades-for-windows-11-by-using-intune) in the skill group Deploy and upgrade Windows clients by using cloud-based tools
+- "Monitor and maintain devices using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Windows Update Management Overview" href="https://learn.microsoft.com/intune/device-updates/windows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Windows Update Ring Policies" href="https://learn.microsoft.com/intune/device-updates/windows/manage-update-rings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Update Rings Policy Settings" href="https://learn.microsoft.com/intune/device-updates/windows/ref-update-ring-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Windows quality updates" href="https://learn.microsoft.com/intune/device-updates/windows/manage-quality-updates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Expedite Policies for Windows Quality Updates" href="https://learn.microsoft.com/intune/device-updates/windows/configure-expedite-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Compatibility Reports for Windows Updates in Intune" href="https://learn.microsoft.com/intune/device-updates/windows/monitor-compatibility?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Hotpatch With Windows Quality Updates" href="https://learn.microsoft.com/intune/device-updates/windows/configure-hotpatch?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Windows Autopatch and configure Hotpatch policies
+
+:::note
+The Microsoft Learn module "Manage Windows updates and lifecycle using Microsoft Intune" also covers this task. It is listed once, under [Plan and implement device upgrades for Windows 11 by using Intune](#plan-and-implement-device-upgrades-for-windows-11-by-using-intune) in the skill group Deploy and upgrade Windows clients by using cloud-based tools.
+:::
+
+#### Create and manage update policies for iOS/iPadOS and macOS devices by using the Settings Catalog in Microsoft Intune
+
+:::note
+The Microsoft Learn module "Plan and implement device enrollment using Microsoft Intune" also covers this task. It is listed once, under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create a policy using settings catalog in Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/settings-catalog?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Admin checklist for iOS/iPadOS software updates in Microsoft Intune" href="https://learn.microsoft.com/intune/device-updates/apple/planning-guide-ios-ipados?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage Android updates by using configuration profiles or firmware-over-the-air (FOTA) deployments
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure device profiles and policy management using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Plan and implement device enrollment using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Zebra LifeGuard Over-the-Air Integration with Microsoft Intune" href="https://learn.microsoft.com/intune/device-updates/android/setup-zebra-lifeguard?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Android FOTA updates with Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-updates/android/manage-fota?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Integrate Samsung Knox E-FOTA with Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-updates/android/setup-samsung-knox?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Windows client Delivery Optimization by using Intune
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Windows Delivery Optimization settings in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-delivery-optimization-windows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Windows Delivery Optimization settings for Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-delivery-optimization-settings-windows?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor device updates by using Intune
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement reporting and data visibility using Microsoft Intune" href="https://learn.microsoft.com/training/modules/implement-reporting-data-visibility?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="View Software Update Reports for Apple Devices" href="https://learn.microsoft.com/intune/device-updates/apple/monitor-reports?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reports for Windows Driver Update Policies reports" href="https://learn.microsoft.com/intune/device-updates/windows/monitor-driver-updates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reports for Windows Feature Update Policies" href="https://learn.microsoft.com/intune/device-updates/windows/monitor-feature-updates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reports for Windows Quality Update Policies" href="https://learn.microsoft.com/intune/device-updates/windows/monitor-quality-updates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reports for Windows Update Ring Policies" href="https://learn.microsoft.com/intune/device-updates/windows/monitor-update-rings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security update status dashboard" href="https://learn.microsoft.com/intune/device-security/security-update-status-dashboard?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Intune Reports" href="https://learn.microsoft.com/intune/device-management/reports/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Software Update Errors and Descriptions" href="https://learn.microsoft.com/intune/device-updates/windows/ref-agent-error-codes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Windows 10 feature updates not offered on Intune-managed devices" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-configuration/windows-feature-updates-never-offered?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Manage and secure applications (15–20%)
+
+### Deploy and update apps
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Overview of the App Lifecycle for Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/lifecycle?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What Is App Management in Microsoft Intune?" href="https://learn.microsoft.com/intune/app-management/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deployment plans and deployments overview in Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/device-management/deployments/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Intune core concepts" href="https://learn.microsoft.com/intune/fundamentals/core-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Prepare applications for deployment by using Intune
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage Enterprise App Catalog applications": under [Manage applications by using the Enterprise App Catalog](#manage-applications-by-using-the-enterprise-app-catalog) in the skill group Implement Intune Suite add-on capabilities
+- "Manage application lifecycle and user experience using Microsoft Intune": under [Manage applications by using the Enterprise App Catalog](#manage-applications-by-using-the-enterprise-app-catalog) in the skill group Implement Intune Suite add-on capabilities
+- "Deploy and manage applications using Microsoft Intune": under [Implement Windows client deployment by using Windows Autopilot](#implement-windows-client-deployment-by-using-windows-autopilot) in the skill group Deploy and upgrade Windows clients by using cloud-based tools
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Prepare a Win32 App to Be Uploaded to Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/create-win32-package?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add Web Apps to Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/add-web?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy apps by using Intune, including Win32 apps, line-of-business (LOB) apps, and Microsoft Store apps
+
+:::note
+The Microsoft Learn module "Deploy and manage applications using Microsoft Intune" also covers this task. It is listed once, under [Implement Windows client deployment by using Windows Autopilot](#implement-windows-client-deployment-by-using-windows-autopilot) in the skill group Deploy and upgrade Windows clients by using cloud-based tools.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add an Android Line-of-Business App to Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/add-lob-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add an iOS/iPadOS Line-of-Business App to Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/add-lob-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to Add macOS Line-of-Business Apps to Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/add-lob-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add a Windows Line-of-Business App to Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/add-lob-windows?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Quiet Time policies for Android and iOS apps
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create Quiet Time Policies in Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/protection/configure-quiet-time?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy Microsoft 365 Apps by using Intune
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Enroll and validate devices with Microsoft Intune": under [Join devices to Microsoft Entra ID](#join-devices-to-microsoft-entra-id) in the skill group Add devices to Microsoft Entra ID
+- "Manage application lifecycle and user experience using Microsoft Intune": under [Manage applications by using the Enterprise App Catalog](#manage-applications-by-using-the-enterprise-app-catalog) in the skill group Implement Intune Suite add-on capabilities
+- "Monitor and optimize application performance using Microsoft Intune": under [Monitor app deployment status and troubleshoot installation failures by using Microsoft Intune](#monitor-app-deployment-status-and-troubleshoot-installation-failures-by-using-microsoft-intune)
+- "Deploy and manage applications using Microsoft Intune": under [Implement Windows client deployment by using Windows Autopilot](#implement-windows-client-deployment-by-using-windows-autopilot) in the skill group Deploy and upgrade Windows clients by using cloud-based tools
+- "Plan and implement device enrollment using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add Microsoft 365 Apps to Windows Devices Using Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/add-microsoft-365-windows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Install Microsoft 365 Apps to macOS Devices Using Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/add-microsoft-365-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add Apps to Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor App Information and Assignments" href="https://learn.microsoft.com/intune/app-management/monitor-assignments?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshooting app installation issues with Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/app-management/troubleshoot-app-install?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 apps for macOS close and reinstall without notification" href="https://learn.microsoft.com/troubleshoot/mem/intune/app-management/no-notification-microsoft365-apps-macos-reinstall?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign Apps to Groups in Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/assign-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Include and Exclude App Assignments in Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/configure-assignment-scope?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create assignment filters in Microsoft Intune" href="https://learn.microsoft.com/intune/fundamentals/filters/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="App installation error codes for Microsoft Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/app-management/app-install-error-codes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add, Configure, and Protect Apps with Intune" href="https://learn.microsoft.com/intune/fundamentals/deploy-protect-apps-step-2?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure policies for Microsoft 365 apps by using Microsoft Intune or the Microsoft 365 Apps admin center
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Deploy and manage applications using Microsoft Intune": under [Implement Windows client deployment by using Windows Autopilot](#implement-windows-client-deployment-by-using-windows-autopilot) in the skill group Deploy and upgrade Windows clients by using cloud-based tools
+- "Configure device profiles and policy management using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Troubleshoot device and policy issues using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage Microsoft 365 (Office) for iOS and Android With Intune" href="https://learn.microsoft.com/intune/app-management/configuration/configure-microsoft-365-mobile?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Policies for Microsoft 365 Apps" href="https://learn.microsoft.com/intune/app-management/configuration/microsoft-365-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Update Microsoft 365 Apps With the Settings Catalog in Intune" href="https://learn.microsoft.com/intune/device-configuration/settings-catalog/update-office?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Deploy Microsoft 365 Apps as part of a Windows Autopilot deployment, including using the Office Deployment Tool (ODT) or Microsoft Intune
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Deploy Windows devices using Windows Autopilot": under [Register devices to Microsoft Entra ID](#register-devices-to-microsoft-entra-id) in the skill group Add devices to Microsoft Entra ID
+- "Deploy and manage applications using Microsoft Intune": under [Implement Windows client deployment by using Windows Autopilot](#implement-windows-client-deployment-by-using-windows-autopilot) in the skill group Deploy and upgrade Windows clients by using cloud-based tools
+:::
+
+#### Manage Microsoft 365 Apps by using the Microsoft 365 Apps admin center
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Deploy apps from platform-specific app stores by using Intune, including Apple Business Manager and Managed Google Play
+
+:::note
+The Microsoft Learn module "Deploy and manage applications using Microsoft Intune" also covers this task. It is listed once, under [Implement Windows client deployment by using Windows Autopilot](#implement-windows-client-deployment-by-using-windows-autopilot) in the skill group Deploy and upgrade Windows clients by using cloud-based tools.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add and Assign Managed Google Play Apps to Android Enterprise Devices" href="https://learn.microsoft.com/intune/app-management/deployment/add-managed-google-play?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add Android Store Apps to Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/deployment/add-store-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Managed Google Play apps on Intune-managed devices" href="https://learn.microsoft.com/troubleshoot/mem/intune/app-management/troubleshoot-google-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor app deployment status and troubleshoot installation failures by using Microsoft Intune
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor and optimize application performance using Microsoft Intune" href="https://learn.microsoft.com/training/modules/monitor-optimize-application-performance-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Troubleshooting Win32 app installations with Intune" href="https://learn.microsoft.com/troubleshoot/mem/intune/app-management/troubleshoot-win32-app-install?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Plan and implement app protection and app configuration policies
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Device management with Microsoft Intune" href="https://learn.microsoft.com/training/modules/microsoft-intune-2026?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan, implement, and administer Conditional Access" href="https://learn.microsoft.com/training/modules/plan-implement-administer-conditional-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Conditional Access policies using Microsoft Intune" href="https://learn.microsoft.com/training/modules/policy-security-management-using-microsoft-endpoint-manager?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Zero Trust deployment approach with Microsoft Intune" href="https://learn.microsoft.com/intune/fundamentals/zero-trust-deployment?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="App Protection Policies Overview" href="https://learn.microsoft.com/intune/app-management/protection/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="App protection - Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Protection and configuration levels overview in Microsoft Intune" href="https://learn.microsoft.com/intune/fundamentals/protection-configuration-levels?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Scenarios for using Conditional Access with Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/conditional-access-integration/scenarios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to Use Conditions in Conditional Access Policies" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-conditions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to Configure Grant Controls in Microsoft Entra" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-grant?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Build Conditional Access policies in Microsoft Entra" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra Conditional Access: Zero Trust Policy Engine" href="https://learn.microsoft.com/entra/identity/conditional-access/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data Protection Framework Using App Protection Policies" href="https://learn.microsoft.com/intune/app-management/protection/data-protection-framework?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand App Protection Policy Delivery and Timing" href="https://learn.microsoft.com/intune/app-management/protection/policy-delivery-timing?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement app protection policies for managed and unmanaged (BYOD) devices by using Microsoft Intune
+
+:::note
+The Microsoft Learn module "Configure Microsoft Entra ID for device and policy management" also covers this task. It is listed once, under [Register devices to Microsoft Entra ID](#register-devices-to-microsoft-entra-id) in the skill group Add devices to Microsoft Entra ID.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Mobile Application Management (MAM) and Android Enterprise Personally-Owned Work Profiles in Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/protection/mam-vs-work-profiles-android?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement Microsoft Entra Conditional Access policies for app protection policies
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Protect data and control access with Microsoft Intune and Conditional Access" href="https://learn.microsoft.com/training/modules/protect-data-control-access-intune-conditional-access?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Conditional Access - Require approved app or app protection policy" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-all-users-approved-app-or-app-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Conditional Access - Require app protection policy for Windows" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-all-users-windows-app-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use app-based Conditional Access policies with Intune" href="https://learn.microsoft.com/intune/device-security/conditional-access-integration/app-based-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate approved client app to application protection policy in Conditional Access" href="https://learn.microsoft.com/entra/identity/conditional-access/migrate-approved-client-app?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Targeting Resources in Conditional Access Policies" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use application enforced restrictions to protect access from unmanaged devices" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-all-users-app-enforced-restrictions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Wipe Data Using App Protection Policy Conditional Launch Actions" href="https://learn.microsoft.com/intune/app-management/protection/configure-conditional-launch?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Conditional Access insights and reporting workbook" href="https://learn.microsoft.com/entra/identity/conditional-access/howto-conditional-access-insights-reporting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan Your Microsoft Entra Conditional Access Deployment" href="https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Conditional Access policy changes" href="https://learn.microsoft.com/entra/identity/conditional-access/troubleshoot-policy-changes-audit-log?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Conditional Access and Microsoft Entra activity logs" href="https://learn.microsoft.com/entra/identity/monitoring-health/how-to-view-applied-conditional-access-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Conditional Access Policy Insights: Monitoring and Evaluation" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-report-only?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Conditional Access Setup: Users, Groups, Agents, and Workload Identities" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-users-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshooting sign-in problems with Conditional Access" href="https://learn.microsoft.com/entra/identity/conditional-access/troubleshoot-conditional-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="The Conditional Access What If tool" href="https://learn.microsoft.com/entra/identity/conditional-access/what-if-tool?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Can't access company resources on Intune-enrolled ADE devices" href="https://learn.microsoft.com/troubleshoot/mem/intune/device-protection/cannot-access-company-resources-on-dep?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement app configuration policies for managed apps and managed devices
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure and secure devices with Microsoft Intune policies": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Enforce compliance and remediate security issues by using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Manage application lifecycle and user experience using Microsoft Intune": under [Manage applications by using the Enterprise App Catalog](#manage-applications-by-using-the-enterprise-app-catalog) in the skill group Implement Intune Suite add-on capabilities
+- "Configure Microsoft Entra ID for device and policy management": under [Register devices to Microsoft Entra ID](#register-devices-to-microsoft-entra-id) in the skill group Add devices to Microsoft Entra ID
+- "Configure device profiles and policy management using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Monitor and maintain devices using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Troubleshoot device and policy issues using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure Managed Android Apps with Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/configuration/configure-managed-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add App Configuration Policies for Managed iOS/iPadOS Devices" href="https://learn.microsoft.com/intune/app-management/configuration/configure-managed-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Google Chrome for Android Devices Using Intune" href="https://learn.microsoft.com/intune/app-management/configuration/configure-chrome-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure a VPN or Per-App VPN for Android Enterprise Devices in Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/configuration/configure-vpn-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="App Configuration Policies for Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/configuration/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Microsoft Edge on iOS and Android With Intune" href="https://learn.microsoft.com/intune/app-management/configuration/configure-edge-ios-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configuration Policies for Intune App SDK Managed Apps" href="https://learn.microsoft.com/intune/app-management/configuration/configure-managed-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Outlook for iOS and Android With Intune" href="https://learn.microsoft.com/intune/app-management/configuration/configure-outlook?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Teams for iOS and Android With Intune" href="https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use OEMConfig on Android Enterprise devices in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-oemconfig-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="See device configuration policies with Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/monitor-device-profile?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get App Bundle ID" href="https://learn.microsoft.com/intune/app-management/collect-bundle-ids?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="iOS/iPadOS bundle IDs for built-in apps in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/ref-bundle-ids-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add and assign MTD apps to Microsoft Intune" href="https://learn.microsoft.com/intune/device-security/mobile-threat-defense/assign-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage AOSP Referenced Apps in Microsoft Intune - Microsoft Intune" href="https://learn.microsoft.com/intune/app-management/configuration/manage-referenced-apps-aosp?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set permissions to Managed Home Screen using Android Enterprise OEMConfig" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-managed-home-screen-permissions-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Only one Intune app policy applied to Edge or Managed Browser" href="https://learn.microsoft.com/troubleshoot/mem/intune/app-management/only-one-app-policy-applied-edge-managed-browser?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign device profiles in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/assign-device-profile?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Questions with policies and profiles in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/troubleshoot-device-profiles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Android App Protection Policy Settings" href="https://learn.microsoft.com/intune/app-management/protection/ref-settings-android?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="iOS/iPadOS App Protection Policy Settings" href="https://learn.microsoft.com/intune/app-management/protection/ref-settings-ios?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Mobile Threat Defense (MTD) app protection policy with Intune" href="https://learn.microsoft.com/intune/device-security/mobile-threat-defense/create-app-protection-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Optimize endpoint operations by using automation, monitoring, and reporting (10–15%)
+
+### Automate management tasks
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe the core features of Microsoft Security Copilot" href="https://learn.microsoft.com/training/modules/security-copilot-describe-core-features?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe Microsoft Security Copilot" href="https://learn.microsoft.com/training/modules/security-copilot-getting-started?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Understand Microsoft Intune Management Extension - Microsoft Intune" href="https://learn.microsoft.com/intune/device-management/tools/management-extension-windows?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Automate Intune management tasks by using PowerShell and Microsoft Graph
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Automate endpoint management using PowerShell and Microsoft Graph" href="https://learn.microsoft.com/training/modules/automate-endpoint-management-powershell-graph?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate threats identified by Security Copilot agents in Intune
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Optimize device management using AI and Copilot tools" href="https://learn.microsoft.com/training/modules/optimize-device-management-ai-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Analyze device performance by using Security Copilot agents in Intune
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor and optimize endpoint performance using Microsoft Intune" href="https://learn.microsoft.com/training/modules/monitor-optimize-endpoint-performance-intune?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Application Reliability Report in Endpoint Analytics" href="https://learn.microsoft.com/intune/endpoint-analytics/app-reliability?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Startup Performance Report in Endpoint Analytics" href="https://learn.microsoft.com/intune/endpoint-analytics/startup-performance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Review and respond to Security Copilot agent recommendations to make management decisions
+
+:::note
+The Microsoft Learn module "Optimize device management using AI and Copilot tools" also covers this task. It is listed once, under [Investigate threats identified by Security Copilot agents in Intune](#investigate-threats-identified-by-security-copilot-agents-in-intune).
+:::
+
+#### Extend device compliance by using PowerShell
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Automate endpoint management using PowerShell and Microsoft Graph": under [Automate Intune management tasks by using PowerShell and Microsoft Graph](#automate-intune-management-tasks-by-using-powershell-and-microsoft-graph)
+- "Enforce compliance and remediate security issues by using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Configure device profiles and policy management using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Monitor and maintain devices using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Troubleshoot device and policy issues using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+### Monitor and optimize health
+
+#### Implement reporting and data visibility in Microsoft Intune, including customizing reports and filters, using workbooks and dashboards, and exporting reporting data
+
+:::note
+The Microsoft Learn module "Implement reporting and data visibility using Microsoft Intune" also covers this task. It is listed once, under [Monitor device updates by using Intune](#monitor-device-updates-by-using-intune) in the skill group Manage device updates.
+:::
+
+#### Monitor endpoint performance by using Endpoint Analytics, including Remediations, device health scores, and app startup performance
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Monitor and optimize endpoint performance using Microsoft Intune": under [Analyze device performance by using Security Copilot agents in Intune](#analyze-device-performance-by-using-security-copilot-agents-in-intune) in the skill group Automate management tasks
+- "Monitor and optimize application performance using Microsoft Intune": under [Monitor app deployment status and troubleshoot installation failures by using Microsoft Intune](#monitor-app-deployment-status-and-troubleshoot-installation-failures-by-using-microsoft-intune) in the skill group Deploy and update apps
+- "Monitor and maintain devices using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create a Windows Health Monitoring profile in Microsoft Intune" href="https://learn.microsoft.com/intune/device-configuration/templates/configure-health-monitoring-windows?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and manage remediation scripts, including detecting and fixing common device issues, and scheduling remediation runs
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Monitor and optimize endpoint performance using Microsoft Intune": under [Analyze device performance by using Security Copilot agents in Intune](#analyze-device-performance-by-using-security-copilot-agents-in-intune) in the skill group Automate management tasks
+- "Monitor and maintain devices using Microsoft Intune": under [Implement compliance policies for all supported device platforms by using Intune](#implement-compliance-policies-for-all-supported-device-platforms-by-using-intune) in the skill group Implement identity and compliance
+- "Troubleshoot device and policy issues using Microsoft Intune": under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Remediations to Detect and Fix Support Issues" href="https://learn.microsoft.com/intune/device-management/tools/deploy-remediations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Analyze endpoint reliability and user experience scores, including startup performance, restart frequency, and application reliability metrics
+
+:::note
+The Microsoft Learn module "Monitor and optimize application performance using Microsoft Intune" also covers this task. It is listed once, under [Monitor app deployment status and troubleshoot installation failures by using Microsoft Intune](#monitor-app-deployment-status-and-troubleshoot-installation-failures-by-using-microsoft-intune) in the skill group Deploy and update apps.
+:::
+
+#### Monitor tenant health and Intune service communications, including reviewing service health dashboards, message center notifications, and establishing operational baselines
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Maintain tenant health and support readiness" href="https://learn.microsoft.com/training/modules/maintain-tenant-health?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure alerts and notifications for policy and compliance changes, including setting up alert rules for compliance drift, enrollment failures, and configuration conflicts
+
+:::note
+The Microsoft Learn module "Troubleshoot device and policy issues using Microsoft Intune" also covers this task. It is listed once, under [Configure enrollment settings in Microsoft Intune](#configure-enrollment-settings-in-microsoft-intune) in the skill group Enroll devices to Microsoft Intune.
+:::

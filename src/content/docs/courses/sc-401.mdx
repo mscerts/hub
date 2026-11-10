@@ -1,0 +1,1045 @@
+---
+title: SC-401 Study Guide Course
+description: "Follow a structured SC-401 course organized by study guide task, with Microsoft Learn training and documentation."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+Structured directly from the [official SC-401 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-401?WT.mc_id=studentamb_165290) skills measured (October 28, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [SC-401 labs page](/certs/labs/security/sc-401/), not here, and every page appears once.
+:::
+
+## Audience profile
+
+As an information security administrator, you plan and implement information security of sensitive data by using Microsoft Purview and related services. You're responsible for mitigating risks by protecting data inside collaboration environments that are managed by Microsoft 365 from internal and external threats and protecting data used by AI services. You also implement information protection, data loss prevention, retention, insider risk management, and manage information security alerts and activities.
+
+You work with other roles that are responsible for governance, data, and security to evaluate and develop policies to address an organization's information security and risk reduction goals. You collaborate with workload administrators, business application owners, and governance stakeholders to implement technology solutions that support the necessary policies and controls. This role also participates in responding to information security incidents.
+
+You should be familiar with all Microsoft 365 services, PowerShell, Microsoft Entra, the Microsoft Defender portal, and Microsoft Defender for Cloud Apps.
+
+## Implement information protection (30–35%)
+
+### Implement and manage data classification
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe the data security solutions of Microsoft Purview" href="https://learn.microsoft.com/training/modules/describe-purview-data-solutions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to information security and compliance in Microsoft Purview" href="https://learn.microsoft.com/training/modules/m365-compliance-information-governance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore sensitivity labels" href="https://learn.microsoft.com/training/modules/explore-sensitivity-labels-microsoft-365?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify sensitive information requirements for an organization's data
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Protect sensitive data in a digital world" href="https://learn.microsoft.com/training/modules/purview-protect-sensitive-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Protect information with Microsoft Purview information protection" href="https://learn.microsoft.com/training/modules/protect-information-purview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Translate sensitive information requirements into built-in or custom sensitive info types
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create and manage sensitive information types" href="https://learn.microsoft.com/training/modules/create-manage-sensitive-information-types?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage custom sensitive info types
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement information protection and data loss prevention with Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-exercise-information-protection-data-loss-prevention?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create custom sensitive information types" href="https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement document fingerprinting
+
+:::note
+The Microsoft Learn module "Create and manage sensitive information types" also covers this task. It is listed once, under [Translate sensitive information requirements into built-in or custom sensitive info types](#translate-sensitive-information-requirements-into-built-in-or-custom-sensitive-info-types).
+:::
+
+#### Create and manage exact data match based sensitive information types (EDM)
+
+:::note
+The Microsoft Learn module "Create and manage sensitive information types" also covers this task. It is listed once, under [Translate sensitive information requirements into built-in or custom sensitive info types](#translate-sensitive-information-requirements-into-built-in-or-custom-sensitive-info-types).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Get started with exact data match based sensitive information types" href="https://learn.microsoft.com/purview/sit-get-started-exact-data-match-based-sits-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage trainable classifiers
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Classify data for protection and governance" href="https://learn.microsoft.com/training/modules/m365-compliance-information-classify-data?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Get started with trainable classifiers" href="https://learn.microsoft.com/purview/trainable-classifiers-get-started-with?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about trainable classifiers" href="https://learn.microsoft.com/purview/trainable-classifiers-learn-about?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor data classification and label usage by using Data explorer and Content explorer
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Review and analyze data classification and protection" href="https://learn.microsoft.com/training/modules/purview-review-analyze-data-classification?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Labeling activities that are available in Activity explorer" href="https://learn.microsoft.com/purview/data-classification-activity-explorer-available-events?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with Content Explorer" href="https://learn.microsoft.com/purview/data-classification-content-explorer?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure optical character recognition (OCR) support for sensitive info types
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+### Implement and manage sensitivity labels in Microsoft Purview
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Learn about sensitivity labels" href="https://learn.microsoft.com/purview/sensitivity-labels?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement roles and permissions for administering sensitivity labels
+
+:::note
+The Microsoft Learn module "Create and configure sensitivity labels with Microsoft Purview" also covers this task. It is listed once, under [Define and create sensitivity labels for items and containers](#define-and-create-sensitivity-labels-for-items-and-containers).
+:::
+
+#### Define and create sensitivity labels for items and containers
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create and configure sensitivity labels with Microsoft Purview" href="https://learn.microsoft.com/training/modules/m365-compliance-information-protect-information?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement sensitivity labels" href="https://learn.microsoft.com/training/modules/implement-sensitivity-labels-microsoft-365?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How to apply sensitivity labels in Power BI - Microsoft Fabric" href="https://learn.microsoft.com/fabric/enterprise/powerbi/service-security-apply-data-sensitivity-labels?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sensitivity Labels in Power BI - Microsoft Purview Information Protection" href="https://learn.microsoft.com/fabric/enterprise/powerbi/service-security-sensitivity-label-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage sensitivity labels in Office apps" href="https://learn.microsoft.com/purview/sensitivity-labels-office-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure protection settings and content marking for sensitivity labels
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Create and configure sensitivity labels with Microsoft Purview": under [Define and create sensitivity labels for items and containers](#define-and-create-sensitivity-labels-for-items-and-containers)
+- "Apply sensitivity labels for data protection": under [Apply sensitivity labels to containers, such as Microsoft Teams, Microsoft 365 Groups, and Microsoft SharePoint sites, and to Power BI items](#apply-sensitivity-labels-to-containers-such-as-microsoft-teams-microsoft-365-groups-and-microsoft-sharepoint-sites-and-to-power-bi-items)
+:::
+
+#### Configure and manage publishing policies for sensitivity labels
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement sensitivity labels": under [Define and create sensitivity labels for items and containers](#define-and-create-sensitivity-labels-for-items-and-containers)
+- "Protect information with Microsoft Purview information protection": under [Identify sensitive information requirements for an organization's data](#identify-sensitive-information-requirements-for-an-organizations-data) in the skill group Implement and manage data classification
+- "Implement information protection and data loss prevention with Microsoft Purview": under [Create and manage custom sensitive info types](#create-and-manage-custom-sensitive-info-types) in the skill group Implement and manage data classification
+- "Create and configure sensitivity labels with Microsoft Purview": under [Define and create sensitivity labels for items and containers](#define-and-create-sensitivity-labels-for-items-and-containers)
+- "Apply sensitivity labels for data protection": under [Apply sensitivity labels to containers, such as Microsoft Teams, Microsoft 365 Groups, and Microsoft SharePoint sites, and to Power BI items](#apply-sensitivity-labels-to-containers-such-as-microsoft-teams-microsoft-365-groups-and-microsoft-sharepoint-sites-and-to-power-bi-items)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use sensitivity labels to protect calendar items, Teams meetings, and chat" href="https://learn.microsoft.com/purview/sensitivity-labels-meetings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Minimum versions for sensitivity labels in Office apps" href="https://learn.microsoft.com/purview/sensitivity-labels-versions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and manage auto-labeling policies for sensitivity labels
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement sensitivity labels": under [Define and create sensitivity labels for items and containers](#define-and-create-sensitivity-labels-for-items-and-containers)
+- "Create and configure sensitivity labels with Microsoft Purview": under [Define and create sensitivity labels for items and containers](#define-and-create-sensitivity-labels-for-items-and-containers)
+- "Apply sensitivity labels for data protection": under [Apply sensitivity labels to containers, such as Microsoft Teams, Microsoft 365 Groups, and Microsoft SharePoint sites, and to Power BI items](#apply-sensitivity-labels-to-containers-such-as-microsoft-teams-microsoft-365-groups-and-microsoft-sharepoint-sites-and-to-power-bi-items)
+:::
+
+#### Apply sensitivity labels to containers, such as Microsoft Teams, Microsoft 365 Groups, and Microsoft SharePoint sites, and to Power BI items
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Apply sensitivity labels for data protection" href="https://learn.microsoft.com/training/modules/apply-manage-sensitivity-labels?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use sensitivity labels to protect content in Microsoft Teams, Microsoft 365 groups, and SharePoint sites" href="https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Apply sensitivity labels by using Microsoft Defender for Cloud Apps
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Create and configure sensitivity labels with Microsoft Purview": under [Define and create sensitivity labels for items and containers](#define-and-create-sensitivity-labels-for-items-and-containers)
+- "Apply sensitivity labels for data protection": under [Apply sensitivity labels to containers, such as Microsoft Teams, Microsoft 365 Groups, and Microsoft SharePoint sites, and to Power BI items](#apply-sensitivity-labels-to-containers-such-as-microsoft-teams-microsoft-365-groups-and-microsoft-sharepoint-sites-and-to-power-bi-items)
+:::
+
+### Implement information protection for Windows, file shares, and Exchange
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand and plan data loss prevention" href="https://learn.microsoft.com/training/modules/purview-data-loss-prevention-understand-plan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Microsoft 365 encryption" href="https://learn.microsoft.com/training/modules/audit-encryption?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Learn about the data loss prevention on-premises repositories" href="https://learn.microsoft.com/purview/dlp-on-premises-scanner-learn?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement the Microsoft Purview Information Protection client
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement endpoint data loss prevention (DLP) with Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-implement-endpoint-dlp?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage files by using the Microsoft Purview Information Protection client
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Review and analyze data classification and protection": under [Monitor data classification and label usage by using Data explorer and Content explorer](#monitor-data-classification-and-label-usage-by-using-data-explorer-and-content-explorer) in the skill group Implement and manage data classification
+- "Classify and protect on-premises data with Microsoft Purview": under [Apply bulk classification to on-premises data by using the Microsoft Purview Information Protection scanner](#apply-bulk-classification-to-on-premises-data-by-using-the-microsoft-purview-information-protection-scanner)
+- "Classify data for protection and governance": under [Create and manage trainable classifiers](#create-and-manage-trainable-classifiers) in the skill group Implement and manage data classification
+- "Apply sensitivity labels for data protection": under [Apply sensitivity labels to containers, such as Microsoft Teams, Microsoft 365 Groups, and Microsoft SharePoint sites, and to Power BI items](#apply-sensitivity-labels-to-containers-such-as-microsoft-teams-microsoft-365-groups-and-microsoft-sharepoint-sites-and-to-power-bi-items) in the skill group Implement and manage sensitivity labels in Microsoft Purview
+- "Implement endpoint data loss prevention (DLP) with Microsoft Purview": under [Plan and implement the Microsoft Purview Information Protection client](#plan-and-implement-the-microsoft-purview-information-protection-client)
+:::
+
+#### Apply bulk classification to on-premises data by using the Microsoft Purview Information Protection scanner
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Classify and protect on-premises data with Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-protect-on-premises-data?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Learn about the information protection scanner" href="https://learn.microsoft.com/purview/deploy-scanner?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Running the information protection scanner" href="https://learn.microsoft.com/purview/deploy-scanner-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and install the information protection scanner" href="https://learn.microsoft.com/purview/deploy-scanner-configure-install?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with the information protection scanner" href="https://learn.microsoft.com/purview/deploy-scanner-prereqs?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement Microsoft Purview Message Encryption
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Protect email with Microsoft Purview Message Encryption" href="https://learn.microsoft.com/training/modules/deploy-message-encryption-microsoft-365?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Microsoft Purview Message Encryption" href="https://learn.microsoft.com/training/modules/explore-purview-message-encryption?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Message encryption" href="https://learn.microsoft.com/purview/ome?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up Message Encryption" href="https://learn.microsoft.com/purview/set-up-new-message-encryption-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Email encryption" href="https://learn.microsoft.com/purview/email-encryption?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Define mail flow rules to encrypt email messages" href="https://learn.microsoft.com/purview/define-mail-flow-rules-to-encrypt-email?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design and implement Microsoft Purview Advanced Message Encryption
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Explore Microsoft Purview Message Encryption": under [Design and implement Microsoft Purview Message Encryption](#design-and-implement-microsoft-purview-message-encryption)
+- "Protect email with Microsoft Purview Message Encryption": under [Design and implement Microsoft Purview Message Encryption](#design-and-implement-microsoft-purview-message-encryption)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Advanced Message Encryption" href="https://learn.microsoft.com/purview/ome-advanced-message-encryption?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Implement data loss prevention and retention (30–35%)
+
+### Create and configure data loss prevention policies
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Microsoft Purview Data Loss Prevention" href="https://learn.microsoft.com/training/modules/explore-examine-data-loss-prevention-microsoft-365?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data loss prevention policy reference" href="https://learn.microsoft.com/purview/dlp-policy-reference?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about data loss prevention" href="https://learn.microsoft.com/purview/dlp-learn-about-dlp?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Design data loss prevention policies based on an organization's requirements
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Prevent data loss and govern the data lifecycle with Microsoft Purview" href="https://learn.microsoft.com/training/modules/prevent-data-loss-lifecycle-purview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement Microsoft Purview Data Loss Prevention" href="https://learn.microsoft.com/training/modules/implement-data-loss-prevention-policies-microsoft-365?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure enterprise and browser-based AI apps with Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-ai-secure-enterprise-other?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure Microsoft 365 Copilot interactions with Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-ai-secure-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="DLP for Microsoft 365 Copilot and Copilot Chat" href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with the Microsoft Purview Extension for Chrome" href="https://learn.microsoft.com/purview/dlp-chrome-get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement roles and permissions for data loss prevention
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement information protection and data loss prevention with Microsoft Purview": under [Create and manage custom sensitive info types](#create-and-manage-custom-sensitive-info-types) in the skill group Implement and manage data classification
+- "Classify and protect on-premises data with Microsoft Purview": under [Apply bulk classification to on-premises data by using the Microsoft Purview Information Protection scanner](#apply-bulk-classification-to-on-premises-data-by-using-the-microsoft-purview-information-protection-scanner) in the skill group Implement information protection for Windows, file shares, and Exchange
+- "Investigate and respond to Microsoft Purview Data Loss Prevention alerts": under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies)
+- "Create and manage data loss prevention policies": under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies)
+- "Implement endpoint data loss prevention (DLP) with Microsoft Purview": under [Plan and implement the Microsoft Purview Information Protection client](#plan-and-implement-the-microsoft-purview-information-protection-client) in the skill group Implement information protection for Windows, file shares, and Exchange
+:::
+
+#### Create and manage data loss prevention policies
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create and manage data loss prevention policies" href="https://learn.microsoft.com/training/modules/purview-data-loss-prevention-create-manage-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prevent data loss with Microsoft Purview" href="https://learn.microsoft.com/training/modules/m365-compliance-information-prevent-data-loss?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Investigate and respond to Microsoft Purview Data Loss Prevention alerts" href="https://learn.microsoft.com/training/modules/purview-data-loss-prevention-alerts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage AI data security challenges with Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-ai-data-security?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create and deploy data loss prevention policies" href="https://learn.microsoft.com/purview/dlp-create-deploy-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with the Microsoft Purview Extension for Firefox" href="https://learn.microsoft.com/purview/dlp-firefox-extension-get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about Microsoft Purview Network Data Security (preview)" href="https://learn.microsoft.com/purview/dlp-network-data-security-learn?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with the data loss prevention on-premises repositories" href="https://learn.microsoft.com/purview/dlp-on-premises-scanner-get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure data loss prevention policies for Adaptive Protection
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement Adaptive Protection in Microsoft Purview" href="https://learn.microsoft.com/training/modules/m365-compliance-irm-adaptive-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Learn about Adaptive Protection in Data Loss Prevention" href="https://learn.microsoft.com/purview/dlp-adaptive-protection-learn?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Interpret policy and rule precedence in data loss prevention
+
+:::note
+The Microsoft Learn module "Create and manage data loss prevention policies" also covers this task. It is listed once, under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies).
+:::
+
+#### Create file policies in Microsoft Defender for Cloud Apps by using a DLP policy
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure DLP policies for Microsoft Defender for Cloud Apps and Power Platform" href="https://learn.microsoft.com/training/modules/create-configure-data-loss-prevention-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Respond to data loss prevention alerts using Microsoft 365" href="https://learn.microsoft.com/training/modules/respond-to-data-loss-prevention-alerts-microsoft-365?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="File policies in Microsoft Defender for Cloud Apps" href="https://learn.microsoft.com/defender-cloud-apps/data-protection-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use data loss prevention policies for non-Microsoft cloud apps" href="https://learn.microsoft.com/purview/dlp-use-policies-non-microsoft-cloud-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Work with the regular expression engine in Defender for Cloud Apps" href="https://learn.microsoft.com/defender-cloud-apps/working-with-the-regex-engine?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement and monitor Microsoft Purview Endpoint DLP
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Learn about Endpoint data loss prevention" href="https://learn.microsoft.com/purview/endpoint-dlp-learn-about?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Specify device requirements for Endpoint DLP, including extensions
+
+:::note
+The Microsoft Learn module "Implement endpoint data loss prevention (DLP) with Microsoft Purview" also covers this task. It is listed once, under [Plan and implement the Microsoft Purview Information Protection client](#plan-and-implement-the-microsoft-purview-information-protection-client) in the skill group Implement information protection for Windows, file shares, and Exchange.
+:::
+
+#### Configure advanced DLP rules for devices in DLP policies
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Create and manage data loss prevention policies": under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies) in the skill group Create and configure data loss prevention policies
+- "Implement endpoint data loss prevention (DLP) with Microsoft Purview": under [Plan and implement the Microsoft Purview Information Protection client](#plan-and-implement-the-microsoft-purview-information-protection-client) in the skill group Implement information protection for Windows, file shares, and Exchange
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Help prevent sharing via Microsoft Edge for Business to unmanaged AI apps from managed devices" href="https://learn.microsoft.com/purview/dlp-create-policy-block-to-ai-via-edge?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Endpoint DLP settings
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage AI data security challenges with Microsoft Purview": under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies) in the skill group Create and configure data loss prevention policies
+- "Create and manage data loss prevention policies": under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies) in the skill group Create and configure data loss prevention policies
+- "Implement endpoint data loss prevention (DLP) with Microsoft Purview": under [Plan and implement the Microsoft Purview Information Protection client](#plan-and-implement-the-microsoft-purview-information-protection-client) in the skill group Implement information protection for Windows, file shares, and Exchange
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure endpoint DLP settings" href="https://learn.microsoft.com/purview/dlp-configure-endpoint-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Help protect files that Endpoint DLP doesn't scan" href="https://learn.microsoft.com/purview/dlp-create-policy-files-edlp-doesnt-scan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with endpoint data loss prevention" href="https://learn.microsoft.com/purview/endpoint-dlp-getting-started?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure just-in-time protection
+
+:::note
+The Microsoft Learn module "Implement endpoint data loss prevention (DLP) with Microsoft Purview" also covers this task. It is listed once, under [Plan and implement the Microsoft Purview Information Protection client](#plan-and-implement-the-microsoft-purview-information-protection-client) in the skill group Implement information protection for Windows, file shares, and Exchange.
+:::
+
+#### Monitor endpoint activities
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Conduct investigations with Microsoft Purview Audit" href="https://learn.microsoft.com/training/modules/purview-audit-search-investigate?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement and manage retention
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe the data compliance solutions of Microsoft Purview" href="https://learn.microsoft.com/training/modules/describe-purview-risk-compliance-governance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand retention in Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-understand-retention?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Learn about retention policies and retention labels" href="https://learn.microsoft.com/purview/retention?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan for information retention and disposition by using retention labels
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement and manage Microsoft 365 retention and recovery" href="https://learn.microsoft.com/training/modules/purview-retention-recovery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage records and disposition with Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-manage-records?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create, configure, and manage adaptive policu scopes
+
+:::note
+The Microsoft Learn module "Implement and manage Microsoft 365 retention and recovery" also covers this task. It is listed once, under [Plan for information retention and disposition by using retention labels](#plan-for-information-retention-and-disposition-by-using-retention-labels).
+:::
+
+#### Create retention labels for data lifecycle management
+
+:::note
+The Microsoft Learn module "Implement and manage Microsoft 365 retention and recovery" also covers this task. It is listed once, under [Plan for information retention and disposition by using retention labels](#plan-for-information-retention-and-disposition-by-using-retention-labels).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use file plan to create and manage retention labels" href="https://learn.microsoft.com/purview/file-plan-manager?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure a retention label policy to publish labels
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage records and disposition with Microsoft Purview": under [Plan for information retention and disposition by using retention labels](#plan-for-information-retention-and-disposition-by-using-retention-labels)
+- "Implement and manage Microsoft 365 retention and recovery": under [Plan for information retention and disposition by using retention labels](#plan-for-information-retention-and-disposition-by-using-retention-labels)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Publish retention labels and apply them in apps" href="https://learn.microsoft.com/purview/create-apply-retention-labels?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure a retention label policy to auto-apply labels
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage records and disposition with Microsoft Purview": under [Plan for information retention and disposition by using retention labels](#plan-for-information-retention-and-disposition-by-using-retention-labels)
+- "Implement and manage Microsoft 365 retention and recovery": under [Plan for information retention and disposition by using retention labels](#plan-for-information-retention-and-disposition-by-using-retention-labels)
+:::
+
+#### Interpret the results of policy precedence, including using Policy lookup
+
+:::note
+The Microsoft Learn module "Implement and manage Microsoft 365 retention and recovery" also covers this task. It is listed once, under [Plan for information retention and disposition by using retention labels](#plan-for-information-retention-and-disposition-by-using-retention-labels).
+:::
+
+#### Create and configure retention policies
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage records and disposition with Microsoft Purview": under [Plan for information retention and disposition by using retention labels](#plan-for-information-retention-and-disposition-by-using-retention-labels)
+- "Implement and manage Microsoft 365 retention and recovery": under [Plan for information retention and disposition by using retention labels](#plan-for-information-retention-and-disposition-by-using-retention-labels)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create and configure retention policies" href="https://learn.microsoft.com/purview/create-retention-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Flowchart to determine when an item will be retained or permanently deleted" href="https://learn.microsoft.com/purview/retention-flowchart?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Recover retained content in Microsoft 365
+
+:::note
+The Microsoft Learn module "Implement and manage Microsoft 365 retention and recovery" also covers this task. It is listed once, under [Plan for information retention and disposition by using retention labels](#plan-for-information-retention-and-disposition-by-using-retention-labels).
+:::
+
+## Manage risks, alerts, and activities (30–35%)
+
+### Implement and manage Microsoft Purview Insider Risk Management
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand Microsoft Purview Insider Risk Management" href="https://learn.microsoft.com/training/modules/purview-explore-insider-risk-management?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement roles and permissions for Insider Risk Management
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement Microsoft Purview Insider Risk Management": under [Create and manage Insider Risk Management policies](#create-and-manage-insider-risk-management-policies)
+- "Prepare for Microsoft Purview Insider Risk Management": under [Plan and implement Insider Risk Management connectors](#plan-and-implement-insider-risk-management-connectors)
+- "Create and manage Insider Risk Management policies": under [Select an appropriate policy template](#select-an-appropriate-policy-template)
+- "Implement Adaptive Protection in Microsoft Purview": under [Configure data loss prevention policies for Adaptive Protection](#configure-data-loss-prevention-policies-for-adaptive-protection) in the skill group Create and configure data loss prevention policies
+- "Investigate insider risk alerts and related activity": under [Manage insider risk alerts and cases](#manage-insider-risk-alerts-and-cases)
+- "Secure enterprise and browser-based AI apps with Microsoft Purview": under [Design data loss prevention policies based on an organization's requirements](#design-data-loss-prevention-policies-based-on-an-organizations-requirements) in the skill group Create and configure data loss prevention policies
+:::
+
+#### Plan and implement Insider Risk Management connectors
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Prepare for Microsoft Purview Insider Risk Management" href="https://learn.microsoft.com/training/modules/purview-prepare-insider-risk-management?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Plan for insider risk management" href="https://learn.microsoft.com/purview/insider-risk-management-plan?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Plan and implement integration with Microsoft Defender for Endpoint
+
+:::note
+The Microsoft Learn module "Investigate insider risk alerts and related activity" also covers this task. It is listed once, under [Manage insider risk alerts and cases](#manage-insider-risk-alerts-and-cases).
+:::
+
+#### Configure and manage Insider Risk Management settings
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement Microsoft Purview Insider Risk Management": under [Create and manage Insider Risk Management policies](#create-and-manage-insider-risk-management-policies)
+- "Prepare for Microsoft Purview Insider Risk Management": under [Plan and implement Insider Risk Management connectors](#plan-and-implement-insider-risk-management-connectors)
+- "Create and manage Insider Risk Management policies": under [Select an appropriate policy template](#select-an-appropriate-policy-template)
+- "Implement Adaptive Protection in Microsoft Purview": under [Configure data loss prevention policies for Adaptive Protection](#configure-data-loss-prevention-policies-for-adaptive-protection) in the skill group Create and configure data loss prevention policies
+- "Investigate insider risk alerts and related activity": under [Manage insider risk alerts and cases](#manage-insider-risk-alerts-and-cases)
+- "Secure enterprise and browser-based AI apps with Microsoft Purview": under [Design data loss prevention policies based on an organization's requirements](#design-data-loss-prevention-policies-based-on-an-organizations-requirements) in the skill group Create and configure data loss prevention policies
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Learn about insider risk management settings" href="https://learn.microsoft.com/purview/insider-risk-management-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with insider risk management" href="https://learn.microsoft.com/purview/insider-risk-management-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure policy indicators
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Select an appropriate policy template
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create and manage Insider Risk Management policies" href="https://learn.microsoft.com/training/modules/purview-create-manage-insider-risk-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Risky AI usage policy template" href="https://learn.microsoft.com/purview/insider-risk-management-policy-templates?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage Insider Risk Management policies
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement Microsoft Purview Insider Risk Management" href="https://learn.microsoft.com/training/modules/implement-insider-risk-management?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create and manage insider risk management policies" href="https://learn.microsoft.com/purview/insider-risk-management-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about insider risk management" href="https://learn.microsoft.com/purview/insider-risk-management?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage forensic evidence settings
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Enable and configure insider risk levels for Adaptive Protection
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Prepare for Microsoft Purview Insider Risk Management": under [Plan and implement Insider Risk Management connectors](#plan-and-implement-insider-risk-management-connectors)
+- "Create and manage Insider Risk Management policies": under [Select an appropriate policy template](#select-an-appropriate-policy-template)
+- "Implement Adaptive Protection in Microsoft Purview": under [Configure data loss prevention policies for Adaptive Protection](#configure-data-loss-prevention-policies-for-adaptive-protection) in the skill group Create and configure data loss prevention policies
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Help dynamically mitigate risks with adaptive protection" href="https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Adaptive Protection configuration guide" href="https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection-guide?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage insider risk alerts and cases
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Investigate insider risk alerts and related activity" href="https://learn.microsoft.com/training/modules/purview-insider-risk-investigate-alerts?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Best practices for managing your alert volume in insider risk management" href="https://learn.microsoft.com/purview/insider-risk-management-best-practices-alert-tuning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Take action on insider risk management cases" href="https://learn.microsoft.com/purview/insider-risk-management-cases?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage Insider Risk Management workflow, including notice templates
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Prepare for Microsoft Purview Insider Risk Management": under [Plan and implement Insider Risk Management connectors](#plan-and-implement-insider-risk-management-connectors)
+- "Create and manage Insider Risk Management policies": under [Select an appropriate policy template](#select-an-appropriate-policy-template)
+- "Investigate insider risk alerts and related activity": under [Manage insider risk alerts and cases](#manage-insider-risk-alerts-and-cases)
+:::
+
+### Manage information security alerts and activities
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand Data Security Investigations" href="https://learn.microsoft.com/training/modules/purview-data-security-investigations-understand?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Defender XDR threat protection" href="https://learn.microsoft.com/training/modules/introduction-microsoft-365-threat-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Defender XDR" href="https://learn.microsoft.com/training/modules/defender-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Microsoft Purview eDiscovery" href="https://learn.microsoft.com/training/modules/purview-ediscovery-understand?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Assign Microsoft Purview Audit (Premium) user licenses
+
+:::note
+The Microsoft Learn module "Conduct investigations with Microsoft Purview Audit" also covers this task. It is listed once, under [Monitor endpoint activities](#monitor-endpoint-activities) in the skill group Implement and monitor Microsoft Purview Endpoint DLP.
+:::
+
+#### Investigate activities by using Microsoft Purview Audit
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Investigate threats by using audit features in Microsoft Defender XDR and Microsoft Purview Standard" href="https://learn.microsoft.com/training/modules/investigate-threats-using-audit-in-microsoft-365-defender-microsoft-purview-standard?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Investigate threats using audit in Microsoft Defender XDR and Microsoft Purview (Premium)" href="https://learn.microsoft.com/training/modules/investigate-threats-using-audit-in-microsoft-365-defender-microsoft-purview-premium?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use Microsoft Purview Audit (Premium) to investigate compromised accounts" href="https://learn.microsoft.com/purview/audit-log-investigate-accounts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit logs for Copilot and AI activities" href="https://learn.microsoft.com/purview/audit-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about auditing solutions in Microsoft Purview" href="https://learn.microsoft.com/purview/audit-solutions-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Search the audit log for events in Microsoft Teams" href="https://learn.microsoft.com/purview/audit-teams-audit-log-events?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure audit retention policies
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement retention, eDiscovery, and Communication compliance in Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-exercise-implement-retention-ediscovery-communication-compliance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage audit log retention policies" href="https://learn.microsoft.com/purview/audit-log-retention-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Analyze Purview activities by using Activity explorer
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Investigate data security risks with Microsoft Purview Data Security Posture Management" href="https://learn.microsoft.com/training/modules/purview-data-security-posture-management-investigate-risks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Get started with activity explorer" href="https://learn.microsoft.com/purview/data-classification-activity-explorer?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with data explorer" href="https://learn.microsoft.com/purview/data-classification-data-explorer?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Respond to data loss prevention alerts in the Microsoft Purview portal
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Prevent data loss with Microsoft Purview": under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies) in the skill group Create and configure data loss prevention policies
+- "Implement Microsoft Purview Data Loss Prevention": under [Design data loss prevention policies based on an organization's requirements](#design-data-loss-prevention-policies-based-on-an-organizations-requirements) in the skill group Create and configure data loss prevention policies
+- "Prevent data loss and govern the data lifecycle with Microsoft Purview": under [Design data loss prevention policies based on an organization's requirements](#design-data-loss-prevention-policies-based-on-an-organizations-requirements) in the skill group Create and configure data loss prevention policies
+- "Respond to data loss prevention alerts using Microsoft 365": under [Create file policies in Microsoft Defender for Cloud Apps by using a DLP policy](#create-file-policies-in-microsoft-defender-for-cloud-apps-by-using-a-dlp-policy) in the skill group Create and configure data loss prevention policies
+- "Configure DLP policies for Microsoft Defender for Cloud Apps and Power Platform": under [Create file policies in Microsoft Defender for Cloud Apps by using a DLP policy](#create-file-policies-in-microsoft-defender-for-cloud-apps-by-using-a-dlp-policy) in the skill group Create and configure data loss prevention policies
+- "Investigate and respond to Microsoft Purview Data Loss Prevention alerts": under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies) in the skill group Create and configure data loss prevention policies
+- "Create and manage data loss prevention policies": under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies) in the skill group Create and configure data loss prevention policies
+- "Implement endpoint data loss prevention (DLP) with Microsoft Purview": under [Plan and implement the Microsoft Purview Information Protection client](#plan-and-implement-the-microsoft-purview-information-protection-client) in the skill group Implement information protection for Windows, file shares, and Exchange
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Learn about investigating data loss prevention alerts" href="https://learn.microsoft.com/purview/dlp-alert-investigation-learn?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with the data loss prevention Alerts dashboard" href="https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with the data loss prevention alerts" href="https://learn.microsoft.com/purview/dlp-alerts-get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Send email notifications and show policy tips for DLP policies" href="https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate insider risk activities by using the Microsoft Purview portal
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement Microsoft Purview Insider Risk Management": under [Create and manage Insider Risk Management policies](#create-and-manage-insider-risk-management-policies) in the skill group Implement and manage Microsoft Purview Insider Risk Management
+- "Prepare for Microsoft Purview Insider Risk Management": under [Plan and implement Insider Risk Management connectors](#plan-and-implement-insider-risk-management-connectors) in the skill group Implement and manage Microsoft Purview Insider Risk Management
+- "Create and manage Insider Risk Management policies": under [Select an appropriate policy template](#select-an-appropriate-policy-template) in the skill group Implement and manage Microsoft Purview Insider Risk Management
+- "Implement Adaptive Protection in Microsoft Purview": under [Configure data loss prevention policies for Adaptive Protection](#configure-data-loss-prevention-policies-for-adaptive-protection) in the skill group Create and configure data loss prevention policies
+- "Investigate insider risk alerts and related activity": under [Manage insider risk alerts and cases](#manage-insider-risk-alerts-and-cases) in the skill group Implement and manage Microsoft Purview Insider Risk Management
+- "Secure enterprise and browser-based AI apps with Microsoft Purview": under [Design data loss prevention policies based on an organization's requirements](#design-data-loss-prevention-policies-based-on-an-organizations-requirements) in the skill group Create and configure data loss prevention policies
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Investigate insider risk management activities" href="https://learn.microsoft.com/purview/insider-risk-management-activities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Purview Insider Risk Management and Communication Compliance privacy guide" href="https://learn.microsoft.com/purview/insider-risk-solution-privacy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Respond to Purview alerts in Microsoft Defender XDR
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Prevent data loss and govern the data lifecycle with Microsoft Purview": under [Design data loss prevention policies based on an organization's requirements](#design-data-loss-prevention-policies-based-on-an-organizations-requirements) in the skill group Create and configure data loss prevention policies
+- "Respond to data loss prevention alerts using Microsoft 365": under [Create file policies in Microsoft Defender for Cloud Apps by using a DLP policy](#create-file-policies-in-microsoft-defender-for-cloud-apps-by-using-a-dlp-policy) in the skill group Create and configure data loss prevention policies
+- "Configure DLP policies for Microsoft Defender for Cloud Apps and Power Platform": under [Create file policies in Microsoft Defender for Cloud Apps by using a DLP policy](#create-file-policies-in-microsoft-defender-for-cloud-apps-by-using-a-dlp-policy) in the skill group Create and configure data loss prevention policies
+- "Investigate and respond to Microsoft Purview Data Loss Prevention alerts": under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies) in the skill group Create and configure data loss prevention policies
+- "Investigate insider risk alerts and related activity": under [Manage insider risk alerts and cases](#manage-insider-risk-alerts-and-cases) in the skill group Implement and manage Microsoft Purview Insider Risk Management
+- "Create and manage data loss prevention policies": under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies) in the skill group Create and configure data loss prevention policies
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Investigate data loss alerts with Microsoft Defender XDR" href="https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Investigate insider risk threats in the Microsoft Defender portal with insights from Microsoft Purview Insider Risk Management" href="https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Respond to Defender for Cloud Apps file policy alerts
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Respond to data loss prevention alerts using Microsoft 365": under [Create file policies in Microsoft Defender for Cloud Apps by using a DLP policy](#create-file-policies-in-microsoft-defender-for-cloud-apps-by-using-a-dlp-policy) in the skill group Create and configure data loss prevention policies
+- "Configure DLP policies for Microsoft Defender for Cloud Apps and Power Platform": under [Create file policies in Microsoft Defender for Cloud Apps by using a DLP policy](#create-file-policies-in-microsoft-defender-for-cloud-apps-by-using-a-dlp-policy) in the skill group Create and configure data loss prevention policies
+- "Investigate and respond to Microsoft Purview Data Loss Prevention alerts": under [Create and manage data loss prevention policies](#create-and-manage-data-loss-prevention-policies) in the skill group Create and configure data loss prevention policies
+:::
+
+#### Perform searches by using eDiscovery
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Search for content with Microsoft Purview eDiscovery" href="https://learn.microsoft.com/training/modules/purview-ediscovery-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Analyze and prepare content in eDiscovery review sets" href="https://learn.microsoft.com/training/modules/purview-ediscovery-review-set?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Use the condition builder to create search queries in eDiscovery" href="https://learn.microsoft.com/purview/edisc-condition-builder?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a search query for a case in eDiscovery" href="https://learn.microsoft.com/purview/edisc-search-query?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Evaluate and refine search results in eDiscovery" href="https://learn.microsoft.com/purview/edisc-search-results?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Search for and delete AI application data in eDiscovery" href="https://learn.microsoft.com/purview/edisc-search-copilot-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Export search results in eDiscovery" href="https://learn.microsoft.com/purview/edisc-search-export?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Protect data used by AI services
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Microsoft 365 Copilot and agents" href="https://learn.microsoft.com/training/modules/explore-microsoft-365-copilot-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore the Zero Trust security model" href="https://learn.microsoft.com/training/modules/explore-zero-trust-security-model?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Transition to and prepare for fundamentals-level security, compliance, and identity course" href="https://learn.microsoft.com/training/modules/transition-prepare-fundamentals-level-security-compliance-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand the foundations of generative AI for business leaders" href="https://learn.microsoft.com/training/modules/understand-foundations-generative-ai-business-leaders?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to generative AI - Exploring the basics" href="https://learn.microsoft.com/training/modules/intro-generative-ai-explore-basics?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand AI agents and prompting" href="https://learn.microsoft.com/training/modules/understand-ai-agents-prompting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand data security posture management in Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-data-security-posture-management-understand?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore retention in Microsoft 365" href="https://learn.microsoft.com/training/modules/explore-retention-policies-labels-microsoft-365?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data Security Posture Management for AI" href="https://learn.microsoft.com/purview/dspm-for-ai?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement controls in Microsoft Purview to protect content in an environment that uses AI services
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Secure developer AI environments with Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-ai-developer-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand How to Secure AI Data with Microsoft Purview" href="https://learn.microsoft.com/training/modules/purview-ai-understand-risks?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement controls in Microsoft 365 productivity workloads to protect content in an environment that uses AI services
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Understand How to Secure AI Data with Microsoft Purview": under [Implement controls in Microsoft Purview to protect content in an environment that uses AI services](#implement-controls-in-microsoft-purview-to-protect-content-in-an-environment-that-uses-ai-services)
+- "Secure Microsoft 365 Copilot interactions with Microsoft Purview": under [Design data loss prevention policies based on an organization's requirements](#design-data-loss-prevention-policies-based-on-an-organizations-requirements) in the skill group Create and configure data loss prevention policies
+:::
+
+#### Implement pre-requisites for Data Security Posture Management (DSPM) for AI
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Secure Microsoft 365 Copilot interactions with Microsoft Purview": under [Design data loss prevention policies based on an organization's requirements](#design-data-loss-prevention-policies-based-on-an-organizations-requirements) in the skill group Create and configure data loss prevention policies
+- "Apply sensitivity labels for data protection": under [Apply sensitivity labels to containers, such as Microsoft Teams, Microsoft 365 Groups, and Microsoft SharePoint sites, and to Power BI items](#apply-sensitivity-labels-to-containers-such-as-microsoft-teams-microsoft-365-groups-and-microsoft-sharepoint-sites-and-to-power-bi-items) in the skill group Implement and manage sensitivity labels in Microsoft Purview
+- "Secure enterprise and browser-based AI apps with Microsoft Purview": under [Design data loss prevention policies based on an organization's requirements](#design-data-loss-prevention-policies-based-on-an-organizations-requirements) in the skill group Create and configure data loss prevention policies
+:::
+
+#### Manage roles and permissions for DSPM for AI
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Configure DSPM for AI policies
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Secure developer AI environments with Microsoft Purview": under [Implement controls in Microsoft Purview to protect content in an environment that uses AI services](#implement-controls-in-microsoft-purview-to-protect-content-in-an-environment-that-uses-ai-services)
+- "Investigate data security risks with Microsoft Purview Data Security Posture Management": under [Analyze Purview activities by using Activity explorer](#analyze-purview-activities-by-using-activity-explorer) in the skill group Manage information security alerts and activities
+- "Secure enterprise and browser-based AI apps with Microsoft Purview": under [Design data loss prevention policies based on an organization's requirements](#design-data-loss-prevention-policies-based-on-an-organizations-requirements) in the skill group Create and configure data loss prevention policies
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure Microsoft Purview solutions in Data Security Posture Management (DSPM) for AI for Custom AI Applications" href="https://learn.microsoft.com/purview/developer/configurepurview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor activities in DSPM for AI
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Secure developer AI environments with Microsoft Purview": under [Implement controls in Microsoft Purview to protect content in an environment that uses AI services](#implement-controls-in-microsoft-purview-to-protect-content-in-an-environment-that-uses-ai-services)
+- "Investigate data security risks with Microsoft Purview Data Security Posture Management": under [Analyze Purview activities by using Activity explorer](#analyze-purview-activities-by-using-activity-explorer) in the skill group Manage information security alerts and activities
+- "Understand How to Secure AI Data with Microsoft Purview": under [Implement controls in Microsoft Purview to protect content in an environment that uses AI services](#implement-controls-in-microsoft-purview-to-protect-content-in-an-environment-that-uses-ai-services)
+- "Prevent data loss and govern the data lifecycle with Microsoft Purview": under [Design data loss prevention policies based on an organization's requirements](#design-data-loss-prevention-policies-based-on-an-organizations-requirements) in the skill group Create and configure data loss prevention policies
+- "Conduct investigations with Microsoft Purview Audit": under [Monitor endpoint activities](#monitor-endpoint-activities) in the skill group Implement and monitor Microsoft Purview Endpoint DLP
+:::

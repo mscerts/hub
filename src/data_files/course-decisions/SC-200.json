@@ -1,0 +1,780 @@
+{
+  "schemaVersion": 1,
+  "code": "SC-200",
+  "decisions": [
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/@foundations",
+      "target": "/training/modules/introduction-zero-trust-best-practice-frameworks",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/@foundations",
+      "target": "/training/modules/mitigate-incidents-microsoft-365-defender",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/configure-microsoft-defender-for-endpoint-advanced-features",
+      "target": "/defender-endpoint/production-deployment",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/configure-microsoft-defender-for-endpoint-advanced-features",
+      "target": "/defender-endpoint/web-protection-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/configure-microsoft-defender-for-endpoint-advanced-features",
+      "target": "/training/modules/m365-security-threat-protect",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/configure-rules-settings-in-microsoft-defender-for-endpoint",
+      "target": "/defender-endpoint/exploit-protection",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/configure-rules-settings-in-microsoft-defender-for-endpoint",
+      "target": "/defender-endpoint/web-protection-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/create-and-configure-automation-rules-in-microsoft-sentinel",
+      "target": "/azure/sentinel/automation/integrations",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Catalog of the service integrations that playbooks and automation rules connect to, part of the same automation workflow.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/create-and-configure-automation-rules-in-microsoft-sentinel",
+      "target": "/azure/sentinel/configure-content",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/create-and-configure-automation-rules-in-microsoft-sentinel",
+      "target": "/training/modules/manage-content-microsoft-sentinel",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/create-and-configure-microsoft-sentinel-playbooks",
+      "target": "/azure/sentinel/automation/define-playbook-access-restrictions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/create-and-configure-microsoft-sentinel-playbooks",
+      "target": "/training/modules/manage-content-microsoft-sentinel",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-automation-for-microsoft-defender-xdr-and-microsof/manage-automated-investigation-and-response-capabilities-in",
+      "target": "/training/modules/m365-security-threat-protect",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-detections/@foundations",
+      "target": "/training/modules/project-perception-agentic-security-introduction",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-detections/@foundations",
+      "target": "/training/modules/project-perception-agentic-security-orientation",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-detections/analyze-attack-vector-coverage-by-using-the-mitre-att-and-ck",
+      "target": "/training/modules/what-is-threat-hunting-azure-sentinel",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-the-microsoft-sentinel-siem-and-platform/@foundations",
+      "target": "/training/modules/construct-kusto-query-language-statements",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-the-microsoft-sentinel-siem-and-platform/create-and-configure-microsoft-sentinel-workbooks",
+      "target": "/azure/sentinel/get-visibility",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-the-microsoft-sentinel-siem-and-platform/create-and-configure-microsoft-sentinel-workbooks",
+      "target": "/azure/sentinel/isv/sentinel-workbook-creation",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-the-microsoft-sentinel-siem-and-platform/create-and-configure-microsoft-sentinel-workbooks",
+      "target": "/azure/sentinel/migration-convert-dashboards",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-the-microsoft-sentinel-siem-and-platform/create-and-configure-microsoft-sentinel-workbooks",
+      "target": "/training/modules/analyze-results-kusto-query-language",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-the-microsoft-sentinel-siem-and-platform/create-and-configure-microsoft-sentinel-workbooks",
+      "target": "/training/modules/query-logs-azure-sentinel",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "Teaches basic log querying in Microsoft Sentinel, the KQL background a learner needs to build workbook queries.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/configure-the-microsoft-sentinel-siem-and-platform/specify-microsoft-sentinel-roles",
+      "target": "/azure/sentinel/datalake/sentinel-lake-onboarding",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/ingest-data-into-the-microsoft-sentinel-siem-and-platform/@foundations",
+      "target": "/azure/sentinel/datalake/data-federation-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "manage-a-security-operations-environment/ingest-data-into-the-microsoft-sentinel-siem-and-platform/configure-collection-of-windows-security-events-by-using-win",
+      "target": "/azure/azure-monitor/agents/azure-monitor-agent-migration-data-collection-rule-generator",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/defender-office-365-introduction",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/m365-security-threat-protect",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/project-perception-agentic-security-introduction",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/project-perception-agentic-security-orientation",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/query-data-sentinel",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/analyze-relationships-between-entities-by-using-sentinel-gra",
+      "target": "/training/modules/mitigate-incidents-microsoft-365-defender",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/create-advanced-hunting-queries",
+      "target": "/azure/defender-for-cloud/episode-sixty-four",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/create-advanced-hunting-queries",
+      "target": "/azure/sentinel/datalake/sentinel-mcp-create-custom-tool",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/create-advanced-hunting-queries",
+      "target": "/azure/sentinel/datalake/sentinel-mcp-triage-tool",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/create-advanced-hunting-queries",
+      "target": "/azure/sentinel/sentinel-solutions-deploy",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/create-advanced-hunting-queries",
+      "target": "/training/modules/perform-threat-hunting-sentinel-with-notebooks",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/create-hunting-graphs-including-blast-radius",
+      "target": "/training/modules/analyze-ai-identity-risks-defender-xdr",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/create-hunting-graphs-including-blast-radius",
+      "target": "/training/modules/security-copilot-getting-started",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/identify-the-appropriate-table-to-use-in-a-kql-query",
+      "target": "/azure/azure-monitor/logs/get-started-queries",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/identify-the-appropriate-table-to-use-in-a-kql-query",
+      "target": "/azure/sentinel/datalake/kql-sample-queries",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/identify-the-appropriate-table-to-use-in-a-kql-query",
+      "target": "/azure/sentinel/datalake/kql-troubleshoot",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/identify-the-appropriate-table-to-use-in-a-kql-query",
+      "target": "/azure/sentinel/datalake/sentinel-mcp-data-exploration-tool",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/identify-the-appropriate-table-to-use-in-a-kql-query",
+      "target": "/azure/sentinel/datalake/using-data-federation",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/identify-the-appropriate-table-to-use-in-a-kql-query",
+      "target": "/azure/sentinel/watchlists-queries",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/identify-the-appropriate-table-to-use-in-a-kql-query",
+      "target": "/training/modules/data-normalization-microsoft-sentinel",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/identify-the-appropriate-table-to-use-in-a-kql-query",
+      "target": "/training/modules/manage-data-storage-audit-logs-sentinel",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/identify-threats-by-using-kusto-query-language-kql",
+      "target": "/azure/azure-monitor/logs/cross-workspace-query",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/identify-threats-by-using-kusto-query-language-kql",
+      "target": "/azure/azure-monitor/logs/log-query-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/identify-threats-by-using-kusto-query-language-kql",
+      "target": "/azure/sentinel/normalization-about-parsers",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/interpret-threat-analytics-in-microsoft-defender-xdr",
+      "target": "/training/modules/configure-siem-security-operations-using-microsoft-sentinel",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/interpret-threat-analytics-in-microsoft-defender-xdr",
+      "target": "/training/modules/connect-threat-indicators-to-azure-sentinel",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/interpret-threat-analytics-in-microsoft-defender-xdr",
+      "target": "/training/modules/integrate-microsoft-defender-xdr-with-microsoft-sentinel",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/interpret-threat-analytics-in-microsoft-defender-xdr",
+      "target": "/training/modules/utilize-threat-intelligence-azure-sentinel",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-microsoft-defender-xdr/interpret-threat-analytics-in-microsoft-defender-xdr",
+      "target": "/training/modules/what-is-threat-hunting-azure-sentinel",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-the-microsoft-sentinel-platform/@foundations",
+      "target": "/training/modules/project-perception-agentic-security-introduction",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-the-microsoft-sentinel-platform/@foundations",
+      "target": "/training/modules/project-perception-agentic-security-orientation",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-the-microsoft-sentinel-platform/create-and-manage-kql-jobs-in-data-lake",
+      "target": "/azure/sentinel/isv/ingest-sample-data",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-the-microsoft-sentinel-platform/create-and-manage-summary-rule-tables-for-querying",
+      "target": "/azure/sentinel/sentinel-solutions-deploy",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-the-microsoft-sentinel-platform/create-and-monitor-hunting-queries",
+      "target": "/azure/sentinel/datalake/sentinel-mcp-create-custom-tool",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-the-microsoft-sentinel-platform/create-and-monitor-hunting-queries",
+      "target": "/azure/sentinel/datalake/sentinel-mcp-triage-tool",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-threat-hunting/detect-threats-by-using-the-microsoft-sentinel-platform/create-and-monitor-hunting-queries",
+      "target": "/azure/sentinel/sentinel-solutions-deploy",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/@foundations",
+      "target": "/training/modules/defender-office-365-introduction",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/@foundations",
+      "target": "/training/modules/describe-purview-data-solutions",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/@foundations",
+      "target": "/training/modules/describe-security-capabilities-of-azure-sentinel",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/@foundations",
+      "target": "/training/modules/explore-zero-trust-security-model",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/@foundations",
+      "target": "/training/modules/mitigate-incidents-microsoft-365-defender",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/@foundations",
+      "target": "/training/modules/project-perception-agentic-security-introduction",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/@foundations",
+      "target": "/training/modules/project-perception-agentic-security-orientation",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/@foundations",
+      "target": "/training/modules/transition-prepare-fundamentals-level-security-compliance-identity",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/investigate-threats-by-using-microsoft-graph-activity-logs",
+      "target": "/azure/sentinel/datalake/create-custom-graphs",
+      "decision": "reject",
+      "reason": "Not part of this task; preview or other-product module, generic overview, or a page that belongs to a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/investigate-threats-by-using-microsoft-purview-audit",
+      "target": "/defender-xdr/dlp-investigate-alerts-defender",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/investigate-threats-by-using-microsoft-purview-audit",
+      "target": "/purview/audit-troubleshooting-scenarios",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/investigate-threats-by-using-microsoft-purview-audit",
+      "target": "/purview/dlp-alert-investigation-learn",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/investigate-microsoft-365-activities-to-identify-threats/investigate-threats-by-using-microsoft-purview-audit",
+      "target": "/training/modules/manage-data-storage-audit-logs-sentinel",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-for-en/@foundations",
+      "target": "/training/modules/explore-threat-intelligence-microsoft-365-defender",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-for-en/@foundations",
+      "target": "/training/modules/transition-prepare-fundamentals-level-security-compliance-identity",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-for-en/perform-evidence-and-entity-investigation",
+      "target": "/training/modules/incident-management-sentinel",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Covers incident handling and evidence in Microsoft Sentinel, a neighbouring part of evidence and entity investigations.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/azure/defender-for-cloud/defender-for-apis-introduction",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/azure/defender-for-cloud/defender-for-container-registries-introduction",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/azure/defender-for-cloud/defender-for-containers-introduction",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/azure/defender-for-cloud/defender-for-sql-servers-introduction",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/azure/defender-for-cloud/defender-for-storage-introduction",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/azure/defender-for-cloud/defender-portal/defender-for-cloud-defender-portal",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/explore-access-management-capabilities",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/explore-authentication-capabilities",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/explore-identity-azure-active-directory",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/introduction-zero-trust-best-practice-frameworks",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/m365-compliance-information-governance",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/project-perception-agentic-security-introduction",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/project-perception-agentic-security-orientation",
+      "decision": "reject",
+      "reason": "Dropped in review: another product area or exam, preview or ISV page, troubleshooting or generic page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "respond-to-security-incidents/respond-to-alerts-and-incidents-in-microsoft-defender-xdr/@foundations",
+      "target": "/training/modules/understand-azure-active-directory",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}

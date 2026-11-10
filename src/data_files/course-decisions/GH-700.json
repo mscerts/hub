@@ -1,0 +1,1374 @@
+{
+  "schemaVersion": 1,
+  "code": "GH-700",
+  "decisions": [
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/design-agentic-workflows-and-automations/align-agentic-workflows-with-common-design-patterns",
+      "target": "/azure/durable-task",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/design-agentic-workflows-and-automations/align-agentic-workflows-with-common-design-patterns",
+      "target": "/azure/durable-task/sdks/durable-agents-patterns",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/design-agentic-workflows-and-automations/align-agentic-workflows-with-common-design-patterns",
+      "target": "/azure/logic-apps/set-up-prompt-chain-agent-workflow",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/design-agentic-workflows-and-automations/align-agentic-workflows-with-common-design-patterns",
+      "target": "/azure/search/retrieval-augmented-generation-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/design-agentic-workflows-and-automations/decompose-use-cases-into-processes-and-tasks",
+      "target": "/azure/durable-task/common",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/design-agentic-workflows-and-automations/specify-decision-making-criteria",
+      "target": "/azure/architecture/ai-ml/guide/choose-ai-model",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/implement-agentic-workflows/@foundations",
+      "target": "/azure/foundry/concepts/evaluation-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/implement-automations/@foundations",
+      "target": "/azure/logic-apps/logic-apps-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/implement-automations/@foundations",
+      "target": "/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/implement-automations/@foundations",
+      "target": "/azure/sre-agent/workflow-automation",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/implement-automations/select-and-configure-tools-within-automations",
+      "target": "/azure/logic-apps/create-model-context-protocol-server-standard",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/implement-automations/select-and-configure-tools-within-automations",
+      "target": "/azure/sre-agent/workflow-automation",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/@foundations",
+      "target": "/azure/developer/azure-skills/overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/@foundations",
+      "target": "/azure/foundry/agents/concepts/toolbox-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/@foundations",
+      "target": "/fabric/fundamentals/skills-for-fabric-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/connect-agentic-workflows-to-mcp-servers-to-improve-context",
+      "target": "/azure/aks/aks-model-context-protocol-server",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/connect-agentic-workflows-to-mcp-servers-to-improve-context",
+      "target": "/azure/foundry/agents/how-to/tools/model-context-protocol",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/connect-agentic-workflows-to-mcp-servers-to-improve-context",
+      "target": "/azure/foundry/mcp/build-your-own-mcp-server",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/connect-agentic-workflows-to-mcp-servers-to-improve-context",
+      "target": "/azure/logic-apps/create-model-context-protocol-server-standard",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/connect-agentic-workflows-to-mcp-servers-to-improve-context",
+      "target": "/dynamics365/customer-service/administer/configure-service-agent-mcp-servers",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/connect-agentic-workflows-to-mcp-servers-to-improve-context",
+      "target": "/dynamics365/customer-service/develop/connect-agent-model-context-protocol",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/connect-agentic-workflows-to-mcp-servers-to-improve-context",
+      "target": "/dynamics365/sales/connect-agents-to-model-context-protocol",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/connect-agentic-workflows-to-mcp-servers-to-improve-context",
+      "target": "/entra/agent-id/secure-mcp-server-with-entra-id",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/connect-agentic-workflows-to-mcp-servers-to-improve-context",
+      "target": "/fabric/data-engineering/api-graphql-local-model-context-protocol",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/connect-agentic-workflows-to-mcp-servers-to-improve-context",
+      "target": "/microsoft-copilot-studio/mcp-add-existing-server-to-agent",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/create-custom-skills",
+      "target": "/azure/databricks/genie-code/skills",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/create-custom-skills",
+      "target": "/azure/developer/github-copilot-app-modernization/modernization-agent/customization",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/create-custom-skills",
+      "target": "/azure/devops/repos/git/configure-copilot-code-review-instructions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Shows how to tailor Copilot code review with instructions and agent skills, the same mechanism the task teaches.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/create-custom-skills",
+      "target": "/microsoft-365/copilot/extensibility/build-declarative-agents-add-custom-skills",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/azure/cosmos-db/gen-ai/agent-kit/overview",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/azure/cosmos-db/gen-ai/agent-kit/setup",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/azure/databricks/agent-skills",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/azure/databricks/machine-learning/ai-runtime/develop-workloads/coding-agents/agent-skills",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/azure/databricks/mlflow3/genai/recipes/set-up-coding-agent",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/azure/developer/azure-skills/install",
+      "decision": "accept",
+      "class": "core",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/azure/foundry/how-to/develop/use-microsoft-foundry-skill",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/azure/sre-agent/add-private-marketplace",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/azure/sre-agent/install-plugin-from-marketplace",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/azure/sre-agent/plugin-marketplace",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/fabric/database/sql/skills",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/fabric/fundamentals/skills-for-fabric-discover",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
+      "target": "/fabric/fundamentals/skills-for-fabric-install",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/@foundations",
+      "target": "/sql/tools/visual-studio-code-extensions/github-copilot/overview",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/choose-an-appropriate-model-for-business-purpose-or-task",
+      "target": "/azure/foundry/openai/how-to/model-router",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/select-an-agent",
+      "target": "/azure/developer/java/migration/migrate-github-copilot-app-modernization-for-java-custom-agent",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/select-an-agent",
+      "target": "/azure/devops/release-notes/2026/sprint-269-update",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/select-an-agent",
+      "target": "/azure/postgresql/development/vs-code-extension/copilot-integration",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/select-an-agent",
+      "target": "/azure/quantum/qdk-vscode-agent-setup",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/select-an-agent",
+      "target": "/copilot/manage-agents-copilot-chat",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/select-an-agent",
+      "target": "/fabric/data-engineering/notebook-custom-agent-with-vs-code",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/@foundations",
+      "target": "/azure/foundry/guardrails/guardrails-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/@foundations",
+      "target": "/fabric/data-engineering/data-engineering-agent-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/@foundations",
+      "target": "/microsoft-copilot-studio/agents-experience/analytics-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/implement-agent-guardrails",
+      "target": "/azure/foundry/guardrails/guardrails-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/implement-agent-guardrails",
+      "target": "/azure/foundry/guardrails/task-adherence",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/review-custom-agent-activities",
+      "target": "/microsoft-copilot-studio/agents-experience/authoring-activity-trace",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/review-custom-agent-activities",
+      "target": "/microsoft-copilot-studio/agents-experience/authoring-review-activity",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/azure/app-service/scenario-ai-model-context-protocol-server",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/azure/cloud-adoption-framework/ready/considerations/security-considerations-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/azure/developer/azure-developer-cli/build-templates-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/azure/developer/azure-mcp-server/get-started/tools/visual-studio",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/azure/developer/azure-mcp-server/how-to/github-copilot-cloud-agent",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/azure/foundry/agents/concepts/foundry-canvas",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/azure/managed-grafana/grafana-opentelemetry-app-insights",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/microsoft-copilot-studio/agents-experience/add-work-iq",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/microsoft-copilot-studio/agents-experience/authoring-agent-model-availability",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/microsoft-copilot-studio/agents-experience/settings-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-add-mcp-server",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-manage",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/save-an-agent-to-a-github-project",
+      "target": "/power-platform/admin/manage-usage-github-copilot-harness",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/write-instructions-and-prompts-that-produce-reliable-outputs/revert-changes-by-using-checkpoints",
+      "target": "/azure/devops/repos/git/undo",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-human-in-the-loop-tasks-for-agentic-workflows/design-human-review-and-validation-practices/choose-how-the-agent-will-perform-work-including-interactive",
+      "target": "/azure/developer/github-copilot-app-modernization/modernization-agent/cli-commands",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-human-in-the-loop-tasks-for-agentic-workflows/interact-with-agentic-workflows/interact-with-agentic-workflows-to-resolve-failures",
+      "target": "/azure/logic-apps/create-conversational-agent-workflows",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-human-in-the-loop-tasks-for-agentic-workflows/interact-with-agentic-workflows/interact-with-an-agentic-workflow-while-it-is-running",
+      "target": "/azure/logic-apps/create-conversational-agent-workflows",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-human-in-the-loop-tasks-for-agentic-workflows/interact-with-agentic-workflows/stop-an-agentic-workflow-that-is-running",
+      "target": "/dynamics365/release-plan/2026wave1/smb/dynamics365-business-central/stop-all-active-tasks-selected-agent",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-human-in-the-loop-tasks-for-agentic-workflows/supervise-and-monitor-agentic-workflows/ensure-that-agentic-workflows-meet-requirements",
+      "target": "/azure/foundry/guardrails/task-adherence",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-human-in-the-loop-tasks-for-agentic-workflows/supervise-and-monitor-agentic-workflows/review-agentic-workflow-outputs",
+      "target": "/azure/resiliency/resiliency-agent-transparency",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-human-in-the-loop-tasks-for-agentic-workflows/supervise-and-monitor-agentic-workflows/review-agentic-workflow-outputs",
+      "target": "/security-exposure-management/review-portal-results",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-human-in-the-loop-tasks-for-agentic-workflows/supervise-and-monitor-agentic-workflows/review-agentic-workflow-outputs",
+      "target": "/security-exposure-management/review-terminal-results",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "perform-human-in-the-loop-tasks-for-agentic-workflows/supervise-and-monitor-agentic-workflows/review-agentic-workflow-outputs",
+      "target": "/security-exposure-management/understanding-mdash-results",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/@foundations",
+      "target": "/power-platform/guidance/adoption/admin-best-practices",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/apply-responsible-ai-principles",
+      "target": "/azure/architecture/guide/responsible-innovation",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/apply-responsible-ai-principles",
+      "target": "/microsoft-copilot-studio/guidance/responsible-ai",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-budget-guardrails",
+      "target": "/azure/developer/azure-skills/plugins/azure-cost/cost-governance",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-governance-privacy-usage-and-risk-controls",
+      "target": "/azure/azure-monitor/aiops/observability-agent-governance-faq",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-governance-privacy-usage-and-risk-controls",
+      "target": "/azure/databricks/ai-gateway",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-governance-privacy-usage-and-risk-controls",
+      "target": "/azure/databricks/ai-gateway/ai-governance",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-governance-privacy-usage-and-risk-controls",
+      "target": "/fabric/real-time-intelligence/operations-agent/fabric-observability-investigation-governance-faq",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-token-usage",
+      "target": "/azure/api-management/api-management-howto-llm-logs",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-token-usage",
+      "target": "/azure/foundry/agents/concepts/agent-optimizer-costs",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-token-usage",
+      "target": "/azure/foundry/observability/how-to/how-to-monitor-agents-dashboard",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-token-usage",
+      "target": "/azure/managed-grafana/agent-framework-dashboard",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-token-usage",
+      "target": "/fabric/fundamentals/copilot-fabric-consumption",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/identify-the-characteristics-of-skills-prompts-and-instructi",
+      "target": "/azure/databricks/agents/uc-skills",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/identify-the-characteristics-of-skills-prompts-and-instructi",
+      "target": "/azure/devops/repos/git/configure-copilot-code-review-instructions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/identify-the-characteristics-of-skills-prompts-and-instructi",
+      "target": "/azure/foundry/agents/concepts/agent-optimizer-overview",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/identify-the-characteristics-of-skills-prompts-and-instructi",
+      "target": "/azure/foundry/agents/how-to/optimize-agent-targets",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-branch-strategies-and-policies",
+      "target": "/azure/devops/cli/policy-configuration-file",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-branch-strategies-and-policies",
+      "target": "/azure/devops/repos/git/branch-policies",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-branch-strategies-and-policies",
+      "target": "/azure/devops/repos/git/branch-policies-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-branch-strategies-and-policies",
+      "target": "/azure/devops/repos/git/create-pr-status-server-with-azure-functions",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-branch-strategies-and-policies",
+      "target": "/azure/devops/repos/git/pr-status-policy",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-branch-strategies-and-policies",
+      "target": "/azure/devops/repos/git/secure-repositories-pull-requests",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/api-management/export-rest-mcp-server",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/api-management/expose-existing-mcp-server",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/app-service/configure-authentication-mcp",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/app-service/configure-mcp-built-in",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/app-service/scenario-ai-model-context-protocol-server",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/azure-functions/functions-bindings-mcp",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/azure-functions/functions-bindings-mcp-prompt-trigger",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/azure-functions/functions-bindings-mcp-resource-trigger",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/azure-functions/functions-bindings-mcp-tool-trigger",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/azure-functions/scenario-custom-remote-mcp-server",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/developer/azure-developer-cli/extensions/develop/extension-mcp-server",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/devops/mcp-server/mcp-server-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/foundry/agents/how-to/mcp-authentication",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/foundry/mcp/build-your-own-mcp-server",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/logic-apps/add-agent-tools-connector-actions",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/logic-apps/create-mcp-server-api-center",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/logic-apps/create-model-context-protocol-server-standard",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/sre-agent/mcp-connectors",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/entra/global-secure-access/concept-generative-ai-insights",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/entra/global-secure-access/how-to-configure-mcp-firewall",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/entra/global-secure-access/how-to-view-model-context-protocol-logging",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/microsoft-copilot-studio/agent-extend-action-mcp",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/microsoft-copilot-studio/agents-experience/tools-add-mcp-server",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/microsoft-copilot-studio/mcp-create-new-server",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/understand-considerations-for-secrets-management",
+      "target": "/azure/architecture/guide/multitenant/considerations/agentic-systems",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/understand-considerations-for-secrets-management",
+      "target": "/azure/container-instances/container-instances-image-security",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/understand-considerations-for-secrets-management",
+      "target": "/azure/key-vault/general/overview",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/understand-considerations-for-secrets-management",
+      "target": "/azure/key-vault/secrets/secure-secrets",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/@foundations",
+      "target": "/azure/devops/project/wiki/markdown-guidance",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/boards/github/work-item-integration-github-copilot",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/repos/git/configure-copilot-code-review-instructions",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/repos/git/copilot-code-reviews",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/repos/git/create-pr-status-server",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/repos/git/create-pr-status-server-with-azure-functions",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/repos/git/pr-status-policy",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/repos/git/review-pull-requests",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/user-guide/code-with-git",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-and-update-wikis",
+      "target": "/azure/devops/project/wiki/wiki-update-offline",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/boards/github/work-item-integration-github-copilot",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/release-notes/2026/sprint-280-update",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/about-pull-requests",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/branch-policies",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/complete-pull-requests",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/configure-copilot-code-review-instructions",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/copilot-code-reviews",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/create-pr-status-server",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/create-pr-status-server-with-azure-functions",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/merging-with-squash",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/pr-status-policy",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/pull-request-status",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/pull-request-targets",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/pull-request-templates",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/pull-requests",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/secure-repositories-pull-requests",
+      "decision": "reject",
+      "reason": "Not part of this task; another product area, a build how-to or a generic overview.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/view-pull-requests",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/user-guide/code-with-git",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
+      "target": "/azure/devops/boards/backlogs/connect-work-items-to-git-dev-ops",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
+      "target": "/azure/devops/boards/github",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
+      "target": "/azure/devops/boards/github/link-to-from-github",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
+      "target": "/azure/devops/release-notes/2024/sprint-235-update",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
+      "target": "/azure/devops/release-notes/2024/sprint-245-update",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
+      "target": "/azure/devops/release-notes/roadmap/2024/add-link-to-github-from-work-item",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
+      "target": "/azure/devops/release-notes/roadmap/2024/boards-ab-links-github-pr",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
+      "target": "/azure/devops/release-notes/roadmap/2024/boards-auto-link-github-branch",
+      "decision": "reject",
+      "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}

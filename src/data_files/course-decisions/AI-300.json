@@ -1,0 +1,441 @@
+{
+  "schemaVersion": 1,
+  "code": "AI-300",
+  "decisions": [
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-foundry-environments-and-platform-configuration/@foundations",
+      "target": "/azure/azure-app-configuration/concept-private-endpoint",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-foundry-environments-and-platform-configuration/@foundations",
+      "target": "/entra/identity-platform/authorization-basics",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-foundry-environments-and-platform-configuration/configure-identity-and-access-management-with-managed-identi",
+      "target": "/azure/cost-management-billing/manage/add-change-subscription-administrator",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-foundry-environments-and-platform-configuration/configure-identity-and-access-management-with-managed-identi",
+      "target": "/azure/role-based-access-control/conditions-custom-security-attributes-example",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-foundry-environments-and-platform-configuration/configure-identity-and-access-management-with-managed-identi",
+      "target": "/azure/role-based-access-control/delegate-role-assignments-examples",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-foundry-environments-and-platform-configuration/configure-identity-and-access-management-with-managed-identi",
+      "target": "/azure/role-based-access-control/delegate-role-assignments-portal",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-foundry-environments-and-platform-configuration/configure-identity-and-access-management-with-managed-identi",
+      "target": "/azure/role-based-access-control/permissions/identity",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-foundry-environments-and-platform-configuration/deploy-infrastructure-using-bicep-templates-and-azure-cli",
+      "target": "/training/modules/configure-automatic-deployment-azure-sql-database",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-foundry-environments-and-platform-configuration/deploy-infrastructure-using-bicep-templates-and-azure-cli",
+      "target": "/training/modules/use-github-copilot-cloud-operations",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-prompt-versioning-and-management-with-source-contr/@foundations",
+      "target": "/azure/machine-learning/prompt-flow/concept-tools",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-prompt-versioning-and-management-with-source-contr/@foundations",
+      "target": "/training/modules/evaluate-optimize-agents",
+      "decision": "reject",
+      "reason": "Neighbouring-task or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-prompt-versioning-and-management-with-source-contr/@foundations",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-prompt-versioning-and-management-with-source-contr/design-and-develop-prompts",
+      "target": "/azure/machine-learning/prompt-flow/tools-reference/prompt-tool",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/@foundations",
+      "target": "/azure/machine-learning/concept-compute-instance",
+      "decision": "reject",
+      "reason": "Neighbouring-task or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/@foundations",
+      "target": "/training/modules/design-machine-learning-model-training-solution",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/create-and-manage-components",
+      "target": "/azure/machine-learning/component-reference/create-python-model",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/create-and-manage-data-assets",
+      "target": "/training/modules/trigger-azure-machine-learn-jobs-github-actions",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/create-and-manage-environments",
+      "target": "/azure/machine-learning/concept-machine-learning-registries-mlops",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/create-and-manage-environments",
+      "target": "/azure/machine-learning/how-to-customize-compute-instance",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/create-and-manage-environments",
+      "target": "/azure/machine-learning/how-to-setup-mlops-azureml",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/create-and-manage-environments",
+      "target": "/azure/machine-learning/how-to-setup-mlops-github-azure-ml",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/create-and-manage-environments",
+      "target": "/training/modules/deploy-model-github-actions",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/share-assets-across-workspaces-by-using-registries",
+      "target": "/training/modules/trigger-azure-machine-learn-jobs-github-actions",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-resources-in-a-machine-learning-workspace/@foundations",
+      "target": "/azure/machine-learning/concept-secure-network-traffic-flow",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-resources-in-a-machine-learning-workspace/create-and-manage-a-workspace",
+      "target": "/azure/event-grid/event-schema-machine-learning",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-resources-in-a-machine-learning-workspace/create-and-manage-a-workspace",
+      "target": "/azure/machine-learning/how-to-change-storage-access-key",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-resources-in-a-machine-learning-workspace/create-and-manage-a-workspace",
+      "target": "/azure/machine-learning/how-to-custom-dns",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-resources-in-a-machine-learning-workspace/create-and-manage-compute-targets",
+      "target": "/azure/machine-learning/how-to-deploy-mlflow-models",
+      "decision": "reject",
+      "reason": "Not part of this task; the page fits a neighbouring task.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-resources-in-a-machine-learning-workspace/create-and-manage-datastores",
+      "target": "/azure/machine-learning/reference-yaml-datastore-data-lake-gen1",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/implement-iac-for-machine-learning/@foundations",
+      "target": "/training/modules/explore-git-hooks",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/implement-iac-for-machine-learning/@foundations",
+      "target": "/training/modules/github-introduction-administration",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-generative-ai-quality-assurance-and-observability/configure-evaluation-and-validation-for-generative-ai-applic/@foundations",
+      "target": "/azure/foundry/observability/how-to/cloud-evaluation",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-generative-ai-quality-assurance-and-observability/configure-evaluation-and-validation-for-generative-ai-applic/@foundations",
+      "target": "/microsoft-365/copilot/extensibility/evaluation-overview",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/deploy-machine-learning-models-for-production-environments/@foundations",
+      "target": "/azure/machine-learning/concept-compute-instance",
+      "decision": "reject",
+      "reason": "Neighbouring-task or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/deploy-machine-learning-models-for-production-environments/@foundations",
+      "target": "/azure/machine-learning/concept-data-privacy",
+      "decision": "reject",
+      "reason": "Neighbouring-task or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/deploy-machine-learning-models-for-production-environments/@foundations",
+      "target": "/azure/machine-learning/concept-ml-pipelines",
+      "decision": "reject",
+      "reason": "Neighbouring-task or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/deploy-machine-learning-models-for-production-environments/@foundations",
+      "target": "/azure/machine-learning/foundry-models-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/deploy-machine-learning-models-for-production-environments/@foundations",
+      "target": "/training/modules/explore-release-strategy-recommendations",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/implement-model-registration-and-versioning/@foundations",
+      "target": "/azure/foundry/concepts/deployments-overview",
+      "decision": "reject",
+      "reason": "Neighbouring-task or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/implement-model-registration-and-versioning/@foundations",
+      "target": "/azure/foundry/concepts/foundry-models-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/implement-model-registration-and-versioning/@foundations",
+      "target": "/azure/foundry/openai/concepts/model-router",
+      "decision": "reject",
+      "reason": "Neighbouring-task or generic page; not needed as a foundation for this exam.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/implement-model-registration-and-versioning/@foundations",
+      "target": "/training/modules/understand-foundations-generative-ai-business-leaders",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/implement-model-registration-and-versioning/manage-model-lifecycle-including-archiving-models",
+      "target": "/azure/architecture/ai-ml/guide/manage-foundation-models-lifecycle",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/implement-model-registration-and-versioning/manage-model-lifecycle-including-archiving-models",
+      "target": "/azure/foundry/how-to/model-deployment-policy",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/implement-model-registration-and-versioning/manage-model-lifecycle-including-archiving-models",
+      "target": "/azure/foundry/openai/concepts/model-retirements",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/orchestrate-model-training/@foundations",
+      "target": "/training/modules/intro-computer-vision-tensorflow",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/orchestrate-model-training/automate-hyperparameter-tuning",
+      "target": "/azure/machine-learning/reference-automl-images-hyperparameters",
+      "decision": "reject",
+      "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, neighbouring-task or other-role page.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/orchestrate-model-training/configure-experiment-tracking-with-mlflow",
+      "target": "/azure/machine-learning/data-science-virtual-machine/how-to-track-experiments",
+      "decision": "reject",
+      "reason": "Other product area than Azure Machine Learning.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "implement-machine-learning-model-lifecycle-and-operations/orchestrate-model-training/manage-distributed-training-for-large-and-deep-learning-mode",
+      "target": "/training/modules/deep-learning-azure-databricks",
+      "decision": "reject",
+      "reason": "Other product area than Azure Machine Learning.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "optimize-generative-ai-systems-and-model-performance/optimize-retrieval-augmented-generation-rag-performance-and/implement-and-optimize-hybrid-search-approaches-combining-se",
+      "target": "/azure/documentdb/full-text-search-hybrid",
+      "decision": "reject",
+      "reason": "Other product area than Azure Machine Learning.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "optimize-generative-ai-systems-and-model-performance/optimize-retrieval-augmented-generation-rag-performance-and/implement-and-optimize-hybrid-search-approaches-combining-se",
+      "target": "/azure/horizondb/ai/ai-search-overview",
+      "decision": "reject",
+      "reason": "Other product area than Azure Machine Learning.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    },
+    {
+      "task": "optimize-generative-ai-systems-and-model-performance/optimize-retrieval-augmented-generation-rag-performance-and/implement-and-optimize-hybrid-search-approaches-combining-se",
+      "target": "/azure/horizondb/ai/hybrid-search",
+      "decision": "reject",
+      "reason": "Other product area than Azure Machine Learning.",
+      "by": "maintainer",
+      "at": "2026-11-04"
+    }
+  ],
+  "excludedFamilies": []
+}
