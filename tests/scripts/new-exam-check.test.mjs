@@ -6216,6 +6216,15 @@ test("a notice box is read for the retirement, transition, rename or cancellatio
   assert.equal(rename.date, "2026-10-06");
   assert.equal(rename.newName, "Azure Cosmos DB AI Developer Associate");
 
+  // A product rename in a notice is not a certification rename (AB-730, AB-731, 2026-11-10).
+  assert.deepEqual(
+    classifyNotice(
+      notice(
+        "Microsoft has updated the product name Microsoft 365 Copilot to Microsoft Copilot. During this transition, some exam questions may continue to use Microsoft 365 Copilot when referring to the product. The Microsoft 365 Copilot name remains applicable to the license.",
+      ),
+    ),
+    [],
+  );
   assert.deepEqual(
     classifyNotice(notice("The beta for this exam has been cancelled.")).map(
       (entry) => entry.type,

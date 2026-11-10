@@ -3519,7 +3519,11 @@ export function classifyNotice(box) {
   const rename = sentences.find(
     (sentence) =>
       /\brenam(?:e|es|ed|ing)\b/i.test(sentence) ||
-      /\b(?:updat|chang)\w*\b[^.]{0,80}\bname\b/i.test(sentence),
+      // "updated ... name" counts only when the sentence is about the certification or the exam: a
+      // product rename ("updated the product name Microsoft 365 Copilot to Microsoft Copilot", AB-730)
+      // is not a certification rename.
+      (/\b(?:updat|chang)\w*\b[^.]{0,80}\bname\b/i.test(sentence) &&
+        /\b(?:certification|exam)\b/i.test(sentence)),
   );
   if (rename) {
     const effect = sentences.find((sentence) =>
