@@ -94,6 +94,10 @@ export default defineConfig({
     "/certs/vouchers/ai500beta.md": "/certs/archive/vouchers/ai500beta/",
     "/certs/vouchers/az802beta/": "/certs/archive/vouchers/az802beta/",
     "/certs/vouchers/az802beta.md": "/certs/archive/vouchers/az802beta/",
+    "/certs/vouchers/az401beta/": "/certs/archive/vouchers/az401beta/",
+    "/certs/vouchers/az401beta.md": "/certs/archive/vouchers/az401beta/",
+    "/certs/vouchers/gh700beta/": "/certs/archive/vouchers/gh700beta/",
+    "/certs/vouchers/gh700beta.md": "/certs/archive/vouchers/gh700beta/",
     "/certs/vouchers/githubuniverse2026/":
       "/certs/archive/vouchers/githubuniverse2026/",
     "/certs/vouchers/githubuniverse2026.md":
@@ -139,6 +143,8 @@ export default defineConfig({
       "/certs/archive/vouchers/getsqlaidevelopercertified/",
     "/vouchers/ai500beta/": "/certs/archive/vouchers/ai500beta/",
     "/vouchers/az802beta/": "/certs/archive/vouchers/az802beta/",
+    "/vouchers/az401beta/": "/certs/archive/vouchers/az401beta/",
+    "/vouchers/gh700beta/": "/certs/archive/vouchers/gh700beta/",
     "/vouchers/githubuniverse2026/":
       "/certs/archive/vouchers/githubuniverse2026/",
     "/dynamics/mb-280": "/certs/archive/dynamics/mb-280/",
