@@ -9714,6 +9714,8 @@ test("the forced baseline also covers study guides, and nothing the monitor ship
 const bash = findBash();
 const bashSkip = bashSkipReason(bash);
 const TRACKER = "src/data_files/learn-exams.json";
+// The study guide history the monitor writes beside the tracker (one file per exam).
+const HISTORY = "src/data_files/study-guide-history/AZ-950.json";
 // The wait between the tries (5, 10 and 15 seconds on the runner) is cut to
 // nothing by a function that shadows `sleep`; the script itself is not touched.
 const SLEEPLESS = "sleep() { :; }\n";
@@ -9733,7 +9735,10 @@ function commitScript() {
 async function commitStepRemote(prefix, options = {}) {
   const remote = await makeScratchRemote({
     prefix,
-    files: { [TRACKER]: '{"exams":[]}\n' },
+    files: {
+      [TRACKER]: '{"exams":[]}\n',
+      [HISTORY]: '{"code":"AZ-950","versions":[]}\n',
+    },
     ...options,
   });
   const script = SLEEPLESS + commitScript();
@@ -9797,6 +9802,11 @@ test(
       // Someone pushed to main after the checkout: the step rebases onto it.
       await remote.concurrentPush("notes.txt", "x\n", "elsewhere");
       await remote.write(remote.work, TRACKER, '{"exams":["AZ-950"]}\n');
+      await remote.write(
+        remote.work,
+        HISTORY,
+        '{"code":"AZ-950","versions":[{"n":1}]}\n',
+      );
       const pushed = await run();
       assert.equal(pushed.code, 0, pushed.stderr);
       assert.deepEqual(await remote.subjects(), [
@@ -9805,8 +9815,88 @@ test(
         "init",
       ]);
       assert.equal(await remote.show(TRACKER), '{"exams":["AZ-950"]}');
+      assert.equal(
+        await remote.show(HISTORY),
+        '{"code":"AZ-950","versions":[{"n":1}]}',
+        "the study guide history is committed with the tracker",
+      );
     } finally {
       await remote.cleanup();
     }
   },
 );
+
+test("the monitor records every covered study guide in the study guide history, next to the tracker", async () => {
+  const { world, learn, box } = await guideBaselined({});
+  const historyFile = (code) =>
+    join(box.dir, "study-guide-history", `${code}.json`);
+  const history = async (code) => JSON.parse(await readFile(historyFile(code)));
+  try {
+    // The baseline run: version 1 of every covered guide, seen that day.
+    const tracker = await readTracker(box);
+    for (const { code } of tracker.studyGuides.filter((g) => g.hash)) {
+      const { versions } = await history(code);
+      assert.equal(versions.length, 1, code);
+      assert.equal(versions[0].firstSeen, "2026-10-09", code);
+      assert.equal(versions[0].asOf, "2026-09-01", code);
+      assert.match(versions[0].lines[0], /^## Skills measured as of /);
+    }
+    assert.equal(
+      await exists(historyFile("AZ-980")),
+      false,
+      "a guide the monitor never read in full has no history",
+    );
+
+    // Nothing changed: the files are not touched.
+    const before = await readFile(historyFile("AZ-901"), "utf8");
+    const quiet = await runMonitor(box, learn, { TODAY: "2026-10-10" });
+    assert.equal(quiet.code, 0, quiet.stderr);
+    assert.equal(await readFile(historyFile("AZ-901"), "utf8"), before);
+
+    // Microsoft publishes a new version of AZ-901: version 2, seen on the day of the run.
+    Object.assign(world.guides["AZ-901"], {
+      lastmod: "2026-10-12",
+      updatedAt: "2026-10-12T10:00:00Z",
+      heading: "Skills measured as of November 16, 2026",
+      groups: [
+        {
+          title: "Group A (20–25%)",
+          bullets: ["Do A1", "Do A2", "Do A3", "Do A4"],
+        },
+        { title: "Group B (30–35%)", bullets: ["Do B1", "Do B2"] },
+      ],
+    });
+    const changed = await runMonitor(box, learn, { TODAY: "2026-10-12" });
+    assert.equal(changed.code, 0, changed.stderr);
+    assert.match(changed.stdout, /Study guide history: AZ-901 \(new\)\./);
+    const { versions } = await history("AZ-901");
+    assert.deepEqual(
+      versions.map((v) => [v.n, v.asOf, v.firstSeen]),
+      [
+        [1, "2026-09-01", "2026-10-09"],
+        [2, "2026-11-16", "2026-10-12"],
+      ],
+    );
+    assert.equal((await history("AZ-902")).versions.length, 1);
+
+    // A text accepted silently (FORCE_GUIDE_BASELINE, after the way the text is read changed) is
+    // not a version of the guide: nothing is recorded for it.
+    Object.assign(world.guides["AZ-902"], {
+      lastmod: "2026-10-13",
+      updatedAt: "2026-10-13T10:00:00Z",
+      groups: [
+        { title: "Group A (20–25%)", bullets: ["Do A1", "Do A2"] },
+        { title: "Group B (30–35%)", bullets: ["Do B1", "Do B2"] },
+      ],
+    });
+    const forced = await runMonitor(box, learn, {
+      TODAY: "2026-10-13",
+      FORCE_GUIDE_BASELINE: "1",
+    });
+    assert.equal(forced.code, 0, forced.stderr);
+    assert.equal((await history("AZ-902")).versions.length, 1);
+    assert.doesNotMatch(forced.stdout, /Study guide history: AZ-902/);
+  } finally {
+    await learn.close();
+  }
+});

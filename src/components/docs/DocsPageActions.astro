@@ -43,7 +43,8 @@ const aiActions: Action[] = [
 if (
   currentPath !== "/certs" &&
   currentPath !== "/wiki" &&
-  currentPath !== "/certs/archive"
+  currentPath !== "/certs/archive" &&
+  !currentPath.startsWith("/certs/changelog")
 ) {
   aiActions.push({
     label: "View as Markdown",

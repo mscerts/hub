@@ -4,6 +4,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import DocsPage from "@components/docs/templates/DocsPage.astro";
 import { Aside } from "@components/docs";
 import { docsSectionLabel } from "@utils/docs";
+import { examCodeOfEntry, guideChangeFor } from "@utils/guide-change.mjs";
 import type { ImageMetadata } from "astro";
 import { dirname, resolve, relative } from "node:path";
 
@@ -23,6 +24,9 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
+// An exam page gets a banner while its study guide change is upcoming or recent (docs/study-guide-changes.md).
+const examCode = examCodeOfEntry(entry.id);
+const guideChange = (examCode && guideChangeFor(examCode)) || undefined;
 const images = import.meta.glob<ImageMetadata>(
   "/src/assets/images/*.{svg,png,jpg,jpeg,webp,avif}",
   { eager: true, import: "default" },
@@ -58,6 +62,7 @@ if (heroData?.image) {
     tableOfContents={entry.data.tableOfContents !== false}
     hero={heroData ? { ...heroData, image: heroImage } : undefined}
     pagination={entry.data.prev !== false || entry.data.next !== false}
+    {guideChange}
   >
     <Content components={{ Aside }} />
   </DocsPage>

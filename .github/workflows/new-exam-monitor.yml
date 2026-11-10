@@ -92,7 +92,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data_files/learn-exams.json
+          git add src/data_files/learn-exams.json src/data_files/study-guide-history
           git diff --cached --quiet && exit 0
           git commit -m "Update Learn exam tracker"
           # A push can land on main between the checkout and here: retry on top of it.

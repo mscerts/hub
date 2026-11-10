@@ -92,6 +92,7 @@ src/
 │   ├── archive/               # Retired exams, their lab pages and expired offers (see Docs Rendering)
 │   └── blog/                  # Blog collection (authors, pubDate, cardImage, readTime, tags)
 ├── pages/certs/               # Canonical wiki index, docs renderer and Markdown endpoint
+│   └── changelog/[code].astro # Study Guide Changes page of every exam page (docs/study-guide-changes.md)
 ├── data_files/
 │   ├── constants.ts           # Site metadata (title, description, SEO, OG)
 │   ├── docs-sidebar.ts, exam-status.mjs, related-certs.ts, public-routes.json, resource-favicons.json
@@ -99,6 +100,7 @@ src/
 │   ├── beta-exams.json, retiring-exams.json   # Beta and retirement trackers (docs/monitors/beta-and-retiring-exams.md)
 │   ├── lab-repos-ignore.json, watched-sources.json   # Edited by hand (lab-repo-check.md, source-watch.md)
 │   ├── learn-courses.json     # Written by the Learn Course Tracker; the maintainer's decisions are in it
+│   ├── study-guide-history/   # <CODE>.json: every version of each covered study guide, written by the New Exam Monitor
 │   └── *.json                 # Every other tracker is written by its monitor script and described in that monitor's runbook:
 │                              # applied-skills-cache, course-videos, lab-registry, lab-repos, learn-content-watch, learn-exams,
 │                              # learn-url-check, link-failures, measureup-products, missing-resources (the audit script, see
@@ -106,6 +108,8 @@ src/
 │                              # source-watch, voucher-challenges, voucher-review
 ├── utils/voucher-fields.ts    # Schema of the optional voucher fields (voucherEnds, reviewBy, linkedExam, voucherStarts)
 ├── utils/voucher-upcoming.mjs # isUpcomingVoucher() and the frontmatter reader behind the UPCOMING voucher tag
+├── utils/guide-changes/       # Study Guide Changes: diff, state, render, codes, load (docs/study-guide-changes.md)
+├── utils/guide-change.mjs, guide-change-date.mjs   # What an exam page needs (card, banner) and the 30-day window
 ├── content.config.ts          # Content schemas (docs + blog collections)
 astro.config.mjs               # Redirects and Astro integrations
 scripts/
@@ -122,6 +126,7 @@ tests/
 ├── workflows/                 # CI and the monitors' schedules (see CI/CD)
 └── dependabot.yml             # Weekly update of the pinned GitHub Actions and the npm packages
 docs/
+├── study-guide-changes.md     # Runbook of the Study Guide Changes pages: data, version rules, views, banner
 └── monitors/                  # Runbook of each monitor and an index (README.md); see Monitors
 ```
 
@@ -174,7 +179,7 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 1. Frontmatter: `title: "<CODE> Study Materials"`, `description`
 2. Imports from `@components/docs`: `LinkCard`, `CardGrid`, `Card`, `Tabs`, `TabItem`, `Aside`
 3. Optional status banner: `:::tip` for beta/resource scarcity (every beta exam page also gets a separate `:::note` box with the beta timeline, see "Beta Exam Pages" below); `:::caution` for retirement, replacement details, or an unconfirmed at-risk change
-4. `<Card title="Get Started" icon="star">` -> Exam link, Study Guide link, optional Exam Labs/Case Studies link, and the matching How to Prepare LinkCard as the final resource
+4. `<Card title="Get Started" icon="star">` -> Exam link, Study Guide link, the `<CODE> Study Guide Changes` card directly under it (see "Study Guide Changes card" below), optional Exam Labs/Case Studies link, and the matching How to Prepare LinkCard as the final resource
 5. `<Tabs>` with `TabItem`s: Text, Videos, Tests, Paid, Misc
 6. Closing `</Card>`, then a shared `<MeasureUpCard>` for existing MeasureUp products. Keep the verified LinkCards in a `<CardGrid slot="products">` so product order, labels and `#u44` URLs remain explicit. The component owns subscription/discount copy; optional slots preserve page-specific wording and predecessor notes. If no products exist, keep the unavailable-material tip instead of adding an empty card.
 
@@ -234,6 +239,11 @@ The other two states change only the announcement sentence (the `:::tip` and the
 
 - `pending` (the exam was just released in beta and the Skills Hub post, which normally carries the 80% beta discount code for the first 300 candidates, has not appeared; use it for at most 7 days after the beta start): "Microsoft usually announces a new beta exam on the [Skills Hub blog](https://techcommunity.microsoft.com/category/skills-hub/blog/skills-hub-blog?WT.mc_id=studentamb_165290) with an 80% discount code for the first 300 candidates. That announcement has not been published for this exam yet and should arrive within a few days, so check back before you pay full price." The closing sentence also becomes "See the [Beta Exams](/certs/vouchers/betaexams/) page for more information about the 80% discount and early access to codes."
 - `unannounced` (more than 7 days after the beta start and still no announcement: stop promising "within a few days"): "We have not found an official go-live announcement from Microsoft yet."
+
+### Study Guide Changes card (all exam pages)
+- Every exam page has `<LinkCard title="<CODE> Study Guide Changes" href="/certs/changelog/<code>/" .../>` on the line directly under its Study Guide card, with the Study Guide card's indentation and no `target="_blank"`. The change page it points to exists for every exam page and is built from `src/data_files/study-guide-history/<CODE>.json`; see `docs/study-guide-changes.md`.
+- `scripts/new-exam.mjs` writes the card into every new page. `node scripts/study-guide-changes-cards.mjs` adds missing cards and `--check` lists problems; `tests/scripts/study-guide-changes-cards.test.mjs` fails an exam page without its card.
+- The history files are written only by the New Exam Monitor (and the one-off backfill script); do not edit them by hand. The card is the only change an exam page needs: the banner under the exam tagline appears by itself while a change is upcoming or recent.
 
 ### How to Prepare LinkCard (all exam pages)
 - Every exam page's "Get Started" card ends with a `LinkCard` to the matching `/certs/prepare/` guide: the last `LinkCard`-type resource (after Exam Labs/Exam Case Studies/GitHub Case Studies if present, otherwise right after Study Guide) and before any `RelatedCerts` component.
@@ -359,6 +369,7 @@ Verify all voucher percentages, codes, limits, deadlines, exclusions, announceme
 - Archived MDX pages live in `src/content/archive/` and render at `/certs/archive/<content-id>/`, with a matching Markdown endpoint. `/certs/archive/` automatically lists published entries. Archived pages display a historical-content notice (chosen by path: `vouchers/` is an expired offer, `security/sc-730` is historical, everything else a retired exam), are excluded from the sitemap and search-engine indexing, and must pass `Aside` to `<Content />` (`src/pages/certs/archive/[...slug].astro`) because `remark-callouts.mjs` turns `:::note` into `<Aside>`. When moving a page: preserve its content, update active listings/internal links, and add a redirect from its former canonical URL to the archive URL in `astro.config.mjs` (the HTML route and its `.md` variant). `src/utils/deployment-redirects.mjs` then generates the bare, `/wiki/` and `/wiki-next/` aliases from that pair. Refresh `src/data_files/public-routes.json` after the build; the old routes leave the baseline and the archive routes join it. A retired exam's lab page moves with it to `src/content/archive/labs/<area>/<code>.mdx`, which drops it from `LabList`; the archived exam page then links the archived lab route. Do not move pages without an explicit request.
 - `/certs/` is the all-exams index, owned by `src/pages/certs/index.astro`. It uses WikiList for all seven exam areas and excludes drafts. It lists the exam pages still under `src/content/docs/<area>/`; an exam moved to the archive is listed at `/certs/archive/` instead. `/wiki/` redirects to it.
 - `/certs/<content-id>/` is rendered by `src/pages/certs/[...slug].astro` through `DocsPage.astro` and `DocsShell.astro`.
+- `/certs/changelog/<code>/` (Study Guide Changes) is rendered by `src/pages/certs/changelog/[code].astro`, one page per exam page, from the history files. It is not indexed (`noindex`, left out of the sitemap in `astro.config.mjs`), has no Markdown endpoint and no "View as Markdown" action. `DocsShell.astro` shows `GuideChangeBanner.astro` under an exam's tagline while a change is upcoming or recent (30 days, `GUIDE_CHANGE_RECENT_DAYS`); its script recomputes the day count in the browser. Everything is described in `docs/study-guide-changes.md`.
 - Legacy content paths and `/wiki-next/*` redirect permanently to `/certs/*`.
 - `remark-callouts.mjs` converts `:::note`, `:::tip`, `:::caution`, and `:::danger` directives to the local `Aside` component.
 
@@ -516,7 +527,7 @@ Scheduled GitHub Actions workflows, each with a dependency-free Node script in `
 | Monitor | What it does | Runbook |
 |---------|--------------|---------|
 | Beta Exam Monitor, Retiring Exam Monitor | Beta exams that went GA; retiring exams against Learn's retirement tables, with a notification on the retirement day and a follow-up once Learn lists the exam as retired | `docs/monitors/beta-and-retiring-exams.md` |
-| New Exam Monitor | New exams and certifications on Learn, changed study guides, hub pages that no longer match Learn | `docs/monitors/new-exam-monitor.md` |
+| New Exam Monitor | New exams and certifications on Learn, changed study guides (and the version history behind the Study Guide Changes pages), hub pages that no longer match Learn | `docs/monitors/new-exam-monitor.md` |
 | Applied Skills Monitor | New and retired Applied Skills against the lab pages that link them | `docs/monitors/applied-skills.md` |
 | MeasureUp Monitor | MeasureUp's Microsoft catalog: new products and stale MeasureUp links | `docs/monitors/measureup.md` |
 | Course Videos Monitor | Which `aka.ms/<CODE>onYouTube` short links resolve to a playlist, and cards that do not use the short link | `docs/monitors/course-videos.md` |

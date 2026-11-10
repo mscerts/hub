@@ -182,6 +182,7 @@ export default defineConfig({
             pathname.startsWith("/certs/archive/") &&
             pathname !== "/certs/archive/"
           ) &&
+          !pathname.startsWith("/certs/changelog/") &&
           !pathname.endsWith(".md") &&
           !isLegacyDoc
         );

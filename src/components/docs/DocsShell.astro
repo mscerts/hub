@@ -16,10 +16,14 @@ interface Props {
   tableOfContents?: boolean;
   pagination?: boolean;
   archiveNotice?: "retired-exam" | "expired-offer" | "historical";
+  guideChange?: { href: string; state: Record<string, any> | null };
+  /** Replaces the last breadcrumb item with a trail (for example exam page, then the change page). */
+  trail?: { label: string; href?: string }[];
 }
 
 import DocsSidebar from "./DocsSidebar.astro";
 import DocsPageActions from "./DocsPageActions.astro";
+import GuideChangeBanner from "./GuideChangeBanner.astro";
 import DocsTableOfContents from "./DocsTableOfContents.astro";
 import DocsCreditCard from "./DocsCreditCard.astro";
 import CodeBlocks from "./CodeBlocks.astro";
@@ -37,6 +41,8 @@ const {
   tableOfContents = true,
   pagination = true,
   archiveNotice,
+  guideChange,
+  trail,
 } = Astro.props;
 const currentPath = Astro.url.pathname;
 const { previous, next } = docsPagination(sidebarItems, currentPath);
@@ -86,7 +92,31 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
           <span class="px-2" aria-hidden="true">
             /
           </span>
-          <span>{breadcrumbLabel}</span>
+          {
+            trail ? (
+              trail.map((item, index) => (
+                <>
+                  {index > 0 && (
+                    <span class="px-2" aria-hidden="true">
+                      /
+                    </span>
+                  )}
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      class="hover:text-blue-700 dark:hover:text-blue-300"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <span>{item.label}</span>
+                  )}
+                </>
+              ))
+            ) : (
+              <span>{breadcrumbLabel}</span>
+            )
+          }
         </nav>
 
         <header class="mt-6 border-b border-neutral-200 pb-8 dark:border-neutral-700">
@@ -97,6 +127,18 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
           <p class="mt-4 max-w-2xl text-lg leading-relaxed text-neutral-600 dark:text-[#b8b8b8]">
             {hero?.tagline ?? description}
           </p>
+          {guideChange?.state && (
+            <GuideChangeBanner
+              kind={guideChange.state.kind}
+              effective={guideChange.state.effective}
+              days={guideChange.state.days}
+              daysAgo={guideChange.state.daysAgo}
+              basis={guideChange.state.basis}
+              dateNote={guideChange.state.dateNote}
+              summary={guideChange.state.summary}
+              href={guideChange.href}
+            />
+          )}
           {archiveNotice && (
             <div
               class="mt-6 border border-amber-300 border-l-4 border-l-amber-700 bg-amber-50 px-4 py-3 text-sm text-amber-950 dark:border-amber-800 dark:border-l-amber-400 dark:bg-amber-950/40 dark:text-amber-100"

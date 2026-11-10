@@ -19,6 +19,8 @@ export function redirectRules(redirects, pathnames) {
         path.endsWith("/") &&
         path !== "/certs/" &&
         !path.startsWith("/certs/archive/") &&
+        // Study Guide Changes pages are new: no legacy address to keep, no Markdown endpoint.
+        !path.startsWith("/certs/changelog/") &&
         path !== "/certs/guide/markdown/",
     );
   for (const target of docs) {

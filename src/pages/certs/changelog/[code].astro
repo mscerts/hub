@@ -1,0 +1,87 @@
+---
+// The Study Guide Changes page of one exam, built from src/data_files/study-guide-history/<CODE>.json.
+// Not indexed (robots noindex, left out of the sitemap): docs/study-guide-changes.md.
+import { getCollection } from "astro:content";
+import MainLayout from "@/layouts/MainLayout.astro";
+import DocsPage from "@components/docs/templates/DocsPage.astro";
+import { Aside, LinkCard, TabItem, Tabs } from "@components/docs";
+import { studyGuideHistory } from "@utils/guide-changes/load.mjs";
+import { buildChangePage } from "@utils/guide-changes/render.mjs";
+import { examCodeOfEntry } from "@utils/guide-change.mjs";
+
+export async function getStaticPaths() {
+  // One page per exam page, whether or not its guide has been recorded yet; a retired or renamed exam
+  // (AZ-800, AZ-801, PL-400) keeps its history file but has no exam page, so no change page.
+  const docs = await getCollection("docs");
+  return docs.flatMap((entry) => {
+    const code = examCodeOfEntry(entry.id);
+    if (!code) return [];
+    const history = studyGuideHistory(code) ?? { code, versions: [] };
+    return [{ params: { code: code.toLowerCase() }, props: { history } }];
+  });
+}
+
+const { history } = Astro.props;
+const code = history.code;
+const docs = await getCollection("docs");
+const exam = docs.find((entry) => examCodeOfEntry(entry.id) === code);
+const page = buildChangePage(history);
+const studyGuide = `https://learn.microsoft.com/credentials/certifications/resources/study-guides/${code.toLowerCase()}?WT.mc_id=studentamb_165290`;
+const trail = exam
+  ? [
+      { label: `${code} Study Materials`, href: `/certs/${exam.id}/` },
+      { label: "Study guide changes" },
+    ]
+  : [{ label: "Study guide changes" }];
+---
+
+<MainLayout
+  title={`${page.title} | Microsoft Certification Hub`}
+  customDescription={page.description}
+  wide
+  noindex
+>
+  <DocsPage
+    title={page.title}
+    description={page.description}
+    headings={page.headings}
+    sectionLabel="Exam Study Materials"
+    pagination={false}
+    {trail}
+  >
+    <p>
+      {exam?.data.examName
+        ? `Exam ${code}: ${exam.data.examName}. `
+        : `Exam ${code}. `}
+      This page shows what changed in the study guide, which Microsoft's own
+      page does not. Microsoft's page only ever shows one version, so a version
+      that is still in force can disappear from it before a new one takes
+      effect.
+    </p>
+    <LinkCard
+      title={`${code} study guide on Microsoft Learn`}
+      href={studyGuide}
+      target="_blank"
+      description="The official guide: skills measured, audience profile and exam details."
+    />
+    {exam && (
+      <LinkCard
+        title={`${code} Study Materials`}
+        href={`/certs/${exam.id}/`}
+        description="Courses, videos, practice tests and more for this exam."
+      />
+    )}
+    <Tabs>
+      {page.tabs.map((tab) => (
+        <TabItem label={tab.label}>
+          {tab.note && (
+            <Aside type="note">
+              <Fragment set:html={tab.note} />
+            </Aside>
+          )}
+          <Fragment set:html={tab.html} />
+        </TabItem>
+      ))}
+    </Tabs>
+  </DocsPage>
+</MainLayout>

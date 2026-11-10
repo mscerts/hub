@@ -246,6 +246,10 @@
  * Env overrides (defaults shown):
  *   LEARN_BASE_URL       https://learn.microsoft.com
  *   TRACKER_FILE         src/data_files/learn-exams.json
+ *   GUIDE_HISTORY_DIR    <folder of TRACKER_FILE>/study-guide-history (the version
+ *                        history behind the Study Guide Changes pages: every run
+ *                        records the live version of each stored guide there,
+ *                        docs/study-guide-changes.md)
  *   DOCS_DIR             src/content/docs
  *   REPORT_FILE          <tmpdir>/new-exam-report.md
  *   ERROR_FILE           <tmpdir>/new-exam-error.md
@@ -346,6 +350,7 @@ import {
   writeOutput,
 } from "./lib/actions.mjs";
 import { AREA_BY_PREFIX } from "./lib/areas.mjs";
+import { recordGuides } from "./lib/guide-history.mjs";
 import { listOpenIssues, makeGh, readIssueBody } from "./lib/gh.mjs";
 import { retryDelayMs } from "./lib/retry.mjs";
 import { readExamName } from "../src/utils/exam-name.mjs";
@@ -417,11 +422,16 @@ export function loadConfig(env = process.env) {
     ? env.TODAY
     : new Date().toISOString().slice(0, 10);
 
+  const trackerFile = resolveFromRoot(
+    env.TRACKER_FILE ?? "src/data_files/learn-exams.json",
+  );
   return {
     baseUrl: (env.LEARN_BASE_URL || PUBLIC_BASE).replace(/\/+$/, ""),
-    trackerFile: resolveFromRoot(
-      env.TRACKER_FILE ?? "src/data_files/learn-exams.json",
-    ),
+    trackerFile,
+    // Next to the tracker, so a run against a scratch tracker writes its history there too.
+    guideHistoryDir: env.GUIDE_HISTORY_DIR
+      ? resolveFromRoot(env.GUIDE_HISTORY_DIR)
+      : join(dirname(trackerFile), "study-guide-history"),
     docsDir: resolveFromRoot(env.DOCS_DIR ?? "src/content/docs"),
     reportFile: env.REPORT_FILE ?? join(tmpdir(), "new-exam-report.md"),
     errorFile: env.ERROR_FILE ?? join(tmpdir(), "new-exam-error.md"),
@@ -5609,6 +5619,24 @@ async function main(cfg) {
     );
   } else if (existsSync(cfg.trackerFile)) {
     console.log("Tracker unchanged.");
+  }
+
+  // The version history behind the Study Guide Changes pages: the live version of every stored
+  // guide, recorded on the day the run saw it. Skipped with the guide check itself. A guide whose
+  // hash was re-recorded silently (FORCE_GUIDE_BASELINE / FORCE_BASELINE, after a change in how the
+  // text is normalized) is left out: its lines changed in form, not in content, and recording them
+  // would show a version that never existed (docs/study-guide-changes.md).
+  if (guideRun) {
+    const silent = new Set(guideRun.rebaselined);
+    const recorded = recordGuides({
+      dir: cfg.guideHistoryDir,
+      guides: guideRun.guides.filter((guide) => !silent.has(guide.code)),
+      today: cfg.today,
+    });
+    if (recorded.length)
+      console.log(
+        `Study guide history: ${recorded.map((e) => `${e.code} (${e.kind})`).join(", ")}.`,
+      );
   }
 
   // The report needs to know whether the status is known and where the exam was
