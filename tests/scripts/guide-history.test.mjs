@@ -364,3 +364,40 @@ test("replayCommits rebuilds the history from the commits of the tracker, oldest
     ],
   );
 });
+
+// ---------------------------------------------------------------------------
+// scripts/study-guide-history-retired.mjs
+// ---------------------------------------------------------------------------
+
+import { readFileSync as readFixture } from "node:fs";
+import { historyOfPage } from "../../scripts/study-guide-history-retired.mjs";
+
+const page = (name) =>
+  readFixture(new URL(`../fixtures/new-exam/${name}`, import.meta.url), "utf8");
+
+test("a retired exam's guide page becomes version 1 of a history, dated by its heading", () => {
+  const { history, error } = historyOfPage(
+    page("study-guide-az-801.html"),
+    "AZ-801",
+    "2026-11-10",
+  );
+  assert.equal(error, undefined);
+  assert.equal(history.code, "AZ-801");
+  assert.equal(history.versions.length, 1);
+  const [version] = history.versions;
+  assert.equal(version.firstSeen, "2026-11-10", "the day it was pulled");
+  assert.match(version.lines[0], /^## Skills measured/);
+  assert.doesNotThrow(() => validateHistory(history));
+  assert.ok(
+    version.lines.every((line) => !/^## (Notices|Updates)/.test(line)),
+    "only the skills part is kept",
+  );
+});
+
+test("a page that is not a readable study guide is an error, not a history", () => {
+  assert.ok(
+    historyOfPage(page("study-guide-no-skills.html"), "AZ-999", "2026-11-10")
+      .error,
+  );
+  assert.ok(historyOfPage("<html></html>", "AZ-999", "2026-11-10").error);
+});

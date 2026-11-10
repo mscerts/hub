@@ -5,6 +5,8 @@ import { getCollection } from "astro:content";
 import MainLayout from "@/layouts/MainLayout.astro";
 import DocsPage from "@components/docs/templates/DocsPage.astro";
 import { Aside, LinkCard, TabItem, Tabs } from "@components/docs";
+import retiringExams from "@data/retiring-exams.json";
+import { comparisonInput } from "@utils/guide-changes/compare.mjs";
 import { studyGuideHistory } from "@utils/guide-changes/load.mjs";
 import { buildChangePage } from "@utils/guide-changes/render.mjs";
 import { examCodeOfEntry } from "@utils/guide-change.mjs";
@@ -25,7 +27,9 @@ const { history } = Astro.props;
 const code = history.code;
 const docs = await getCollection("docs");
 const exam = docs.find((entry) => examCodeOfEntry(entry.id) === code);
-const page = buildChangePage(history);
+// The exams being replaced and their replacement have a tab that compares their guides.
+const compare = comparisonInput(code, studyGuideHistory, retiringExams.exams);
+const page = buildChangePage(history, compare ? { compare } : {});
 const studyGuide = `https://learn.microsoft.com/credentials/certifications/resources/study-guides/${code.toLowerCase()}?WT.mc_id=studentamb_165290`;
 const trail = exam
   ? [
@@ -85,3 +89,23 @@ const trail = exam
     </Tabs>
   </DocsPage>
 </MainLayout>
+
+<script>
+  // A link to an area of the full guide lands inside a closed dropdown ("Show every difference"): open the
+  // dropdowns around the target first, then scroll to it, so the link works from anywhere on the page.
+  function openAround() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const target = id ? document.getElementById(id) : null;
+    if (!target) return;
+    let opened = false;
+    for (let el = target.parentElement; el; el = el.parentElement) {
+      if (el instanceof HTMLDetailsElement && !el.open) {
+        el.open = true;
+        opened = true;
+      }
+    }
+    if (opened) target.scrollIntoView();
+  }
+  addEventListener("hashchange", openAround);
+  openAround();
+</script>

@@ -1,7 +1,15 @@
 // The Study Guide Changes page of one exam, as HTML, from its history. Pure: the Astro route
 // (src/pages/certs/changelog/[code].astro) only places the result. Runbook: docs/study-guide-changes.md.
 import { parseGuide } from "../../../scripts/lib/course-guide.mjs";
-import { audienceLines, diffVersions, changeKind, entryKind } from "./diff.mjs";
+import { areaGraph, groupGraph, mergeGuides } from "./compare.mjs";
+import {
+  MOVE_THRESHOLD,
+  REWRITTEN_SHARE,
+  audienceLines,
+  diffVersions,
+  changeKind,
+  entryKind,
+} from "./diff.mjs";
 import { dayBefore, prettyDate, summarise, versionState } from "./state.mjs";
 
 export const esc = (text) =>
@@ -57,8 +65,20 @@ export function wordDiff(a, b) {
   return out.join(" ");
 }
 
-/** The HTML of one aligned entry: unchanged, reworded in place, added or removed. */
-function entryHtml(entry, strip = (s) => s) {
+/**
+ * The HTML of one aligned entry: unchanged, reworded in place, added or removed. `links` turns the name of a
+ * domain into a link to its heading (the comparison of two exams): `{ old(title), new(title) }`.
+ */
+const MOVED_TAG = "ml-1 text-xs text-muted-foreground";
+const plainLinks = { old: esc, new: esc, group: esc };
+function entryHtml(entry, strip = (s) => s, links = plainLinks) {
+  // A skill that moved to another domain (a comparison of two exams): in place, with where it went or came from.
+  if (entry.kind === "moved-in")
+    return `${wordDiff(strip(entry.old), strip(entry.new))} <span class="${MOVED_TAG}">← from ${links.old(entry.from.domain)}${entry.alsoFrom ? ` and ${entry.alsoFrom} more skill${entry.alsoFrom === 1 ? "" : "s"} of the old guide` : ""}</span>`;
+  if (entry.kind === "covered")
+    return `<span class="text-muted-foreground">${esc(strip(entry.old))}</span> <span class="${MOVED_TAG}">→ covered at a higher level by ${links.group(entry.to.group)}</span>`;
+  if (entry.kind === "moved-out")
+    return `${del(strip(entry.old))} <span class="${MOVED_TAG}">→ now in ${links.new(entry.to.domain)}</span>`;
   const kind = entryKind(entry);
   if (kind === "same") return esc(strip(entry.new));
   if (kind === "reworded") return wordDiff(strip(entry.old), strip(entry.new));
@@ -142,6 +162,10 @@ function plainDoc(lines) {
   return guideDoc({ title: titleOfLines(lines), audience, glance, body });
 }
 
+// A title that Microsoft reworded between two exams (`oldTitle` is set by diffVersions) is a word diff.
+const titleHtml = (entry) =>
+  entry.oldTitle ? wordDiff(entry.oldTitle, entry.title) : esc(entry.title);
+
 const domainHead = (domain) => {
   const { old: oldWeight, new: newWeight } = domain.weights;
   if (domain.status === "added")
@@ -150,24 +174,33 @@ const domainHead = (domain) => {
     return del(`${domain.title} (${range(oldWeight)})`);
   const a = range(oldWeight);
   const b = range(newWeight);
-  return `${esc(domain.title)} (${a === b ? a : `${del(a)} ${ins(b)}`})`;
+  return `${titleHtml(domain)} (${a === b ? a : `${del(a)} ${ins(b)}`})`;
 };
 
-/** The skills part of a comparison: glance list and the domains, with the differences in place. */
-function diffSkills(diff) {
-  const glance = `<ul>${diff.domains.map((d) => `<li>${domainHead(d)}</li>`).join("")}</ul>`;
+/**
+ * The skills part of a comparison: glance list and the domains, with the differences in place. `compare` is set
+ * for the comparison of two exams: `{ id(domain), links, glanceNote(domain) }` gives every domain heading an id
+ * (so notes can link to it), turns the names of domains in the notes into links, and adds to each line of the
+ * glance list how that area changed.
+ */
+function diffSkills(diff, compare = null) {
+  const note = (d) => {
+    const html = compare?.glanceNote(d);
+    return html ? ` <span class="${MOVED_TAG}">${html}</span>` : "";
+  };
+  const glance = `<ul>${diff.domains.map((d) => `<li>${domainHead(d)}${note(d)}</li>`).join("")}</ul>`;
   const body = diff.domains
     .map(
       (d) =>
-        `<h4>${domainHead(d)}</h4>${d.groups
+        `<h4${compare ? ` id="${compare.id(d)}" class="scroll-mt-24"` : ""}>${domainHead(d)}</h4>${d.groups
           .map((g) => {
             const head =
               g.status === "added"
                 ? ins(g.title)
                 : g.status === "removed"
                   ? del(g.title)
-                  : esc(g.title);
-            return `<h5>${head}</h5><ul>${g.items.map((item) => `<li>${entryHtml(item)}</li>`).join("")}</ul>`;
+                  : titleHtml(g);
+            return `<h5${compare ? ` id="${compare.groupId(d, g)}" class="scroll-mt-24"` : ""}>${head}</h5><ul>${g.items.map((item) => `<li>${entryHtml(item, undefined, compare?.links)}</li>`).join("")}</ul>`;
           })
           .join("")}`,
     )
@@ -177,10 +210,10 @@ function diffSkills(diff) {
 
 const LEGEND = `${ins("Green underlined")} text was added or reworded. ${del("Red strikethrough")} text was removed or replaced. Everything else is unchanged. This is the whole study guide, so you can see each change in place.`;
 
-function diffDoc(diff, titleLines, { audienceOpen }) {
-  const { glance, body } = diffSkills(diff);
+function diffDoc(diff, titleLines, { audienceOpen, title, compare = null }) {
+  const { glance, body } = diffSkills(diff, compare);
   return guideDoc({
-    title: titleOfLines(titleLines),
+    title: title ?? titleOfLines(titleLines),
     audience: linesHtml(diff.audience.entries),
     glance,
     body,
@@ -207,55 +240,93 @@ function weightsTable(diff, newLabel) {
   return table(["Domain", "Now", esc(newLabel)], rows);
 }
 
-function domainSummary(diff) {
+/** The skills of a domain of a comparison: those of the old guide (`old`) or of the new one. */
+function skillsOf(domain, side) {
+  return domain.groups.reduce(
+    (n, g) =>
+      n +
+      g.items.filter((i) =>
+        side === "old"
+          ? i.kind !== "added" && i.kind !== "moved-in"
+          : i.new !== undefined,
+      ).length,
+    0,
+  );
+}
+
+/** `wentTo(domain)` is what to say in place of the new weight of a domain that is not in the new guide. */
+function domainSummary(
+  diff,
+  labels = ["Before", "Now"],
+  tag = () => "",
+  wentTo = () => "–",
+) {
   const cell = (weight, skills) =>
-    `${nowrap(range(weight))} · ${skills} skills`;
-  const skillsOf = (domain, side) =>
-    domain.groups.reduce(
-      (n, g) =>
-        n +
-        g.items.filter((i) =>
-          side === "old" ? i.old !== undefined : i.new !== undefined,
-        ).length,
-      0,
-    );
+    `${nowrap(range(weight))} · ${skills} skill${skills === 1 ? "" : "s"}`;
   const ordered = [
     ...diff.domains.filter((d) => d.status !== "removed"),
     ...diff.domains.filter((d) => d.status === "removed"),
   ];
   return table(
-    ["Domain", "Before", "Now"],
+    ["Domain", ...labels.map(esc)],
     ordered.map((d) => [
       d.status === "added"
         ? ins(d.title)
         : d.status === "removed"
           ? del(d.title)
-          : esc(d.title),
-      d.weights.old ? cell(d.weights.old, skillsOf(d, "old")) : "–",
+          : titleHtml(d),
+      d.weights.old
+        ? `${tag(d) ? `${esc(tag(d))}: ` : ""}${cell(d.weights.old, skillsOf(d, "old"))}`
+        : "–",
       d.weights.new
         ? `<strong>${cell(d.weights.new, skillsOf(d, "new"))}</strong>`
-        : "–",
+        : wentTo(d),
     ]),
   );
 }
 
-function countsTable(diff) {
+/** `matching`: the skills of two different exams are matched by topic, so unmatched skills may just be reworded a lot. */
+function countsTable(diff, { matching = false } = {}) {
   const { stats, audience } = diff;
   return table(
     ["What", "Result"],
     [
-      ["Skills added", `<strong>${stats.added}</strong>`],
-      ["Skills removed", `<strong>${stats.removed}</strong>`],
+      [
+        matching ? "New skills with no close match" : "Skills added",
+        `<strong>${stats.added}</strong>`,
+      ],
+      [
+        matching ? "Old skills with no close match" : "Skills removed",
+        `<strong>${stats.removed}</strong>`,
+      ],
       ["Skills reworded", `<strong>${stats.reworded}</strong>`],
+      ...(stats.moved
+        ? [
+            [
+              "Skills moved to another domain",
+              `<strong>${stats.moved}</strong>`,
+            ],
+          ]
+        : []),
+      ...(stats.covered
+        ? [
+            [
+              "Skills covered at a higher level",
+              `<strong>${stats.covered}</strong>`,
+            ],
+          ]
+        : []),
       [
         "Skills in total",
         `<strong>${stats.totalNow}</strong> (was ${stats.totalBefore})`,
       ],
       [
         "Domain weights",
-        stats.weightsChanged
-          ? "<strong>changed</strong> (shown in the headings below)"
-          : "unchanged",
+        !diff.domains.some((d) => d.status === "same")
+          ? "<strong>not comparable</strong>: no domain is the same"
+          : stats.weightsChanged
+            ? "<strong>changed</strong> (shown in the headings below)"
+            : "unchanged",
       ],
       [
         "Audience profile",
@@ -453,11 +524,355 @@ function changesTab(history, st) {
   return { note, html: body.html, headings: body.headings };
 }
 
+// ---------------------------------------------------------------------------
+// Comparison with the exam that replaces / is replaced by this one
+// ---------------------------------------------------------------------------
+
+const slug = (text) =>
+  String(text)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+/**
+ * How the areas of the old guide(s) became those of the new one, from the hand-made areas of the pair
+ * (compare-areas.mjs) and the diff: links to the domain headings, a note for each line of the glance list, the
+ * line to show for a domain that is not in the new guide, and the table of every area. Entries that name a
+ * title no guide has any more are skipped.
+ */
+function areaModel(diff, areas, groups, { to, tag }) {
+  const oldOf = new Map();
+  const newOf = new Map();
+  const ids = new Map();
+  for (const d of diff.domains) {
+    const id = `cmp-${slug(d.title)}${d.status === "removed" ? "-old" : ""}`;
+    ids.set(d, id);
+    if (d.status !== "added") oldOf.set(d.oldTitle ?? d.title, d);
+    if (d.status !== "removed") newOf.set(d.title, d);
+  }
+  const link = (map) => (title) => {
+    const d = map.get(title);
+    return d
+      ? `<a href="#${ids.get(d)}" class="text-inherit underline decoration-dotted underline-offset-2 hover:text-primary">${esc(title)}</a>`
+      : esc(title);
+  };
+  const oldGroupOf = new Map();
+  const newGroupOf = new Map();
+  const groupIds = new Map();
+  for (const d of diff.domains)
+    for (const g of d.groups) {
+      groupIds.set(
+        g,
+        `cmp-g-${slug(d.title)}-${slug(g.title)}${g.status === "added" ? "" : d.status === "removed" || g.status === "removed" ? "-old" : ""}`,
+      );
+      if (g.status !== "added") oldGroupOf.set(g.oldTitle ?? g.title, g);
+      if (g.status !== "removed") newGroupOf.set(g.title, g);
+    }
+  const groupLink = (title) => {
+    const g = newGroupOf.get(title);
+    return g
+      ? `<a href="#${groupIds.get(g)}" class="text-inherit underline decoration-dotted underline-offset-2 hover:text-primary">${esc(title)}</a>`
+      : esc(title);
+  };
+  const links = { old: link(oldOf), new: link(newOf), group: groupLink };
+  const entries = (areas ?? [])
+    .map((a) => ({
+      from: a.from.filter((t) => oldOf.has(t)),
+      to: a.to.filter((t) => newOf.has(t)),
+      note: a.note,
+      whole: a,
+    }))
+    .filter(
+      (e) =>
+        (e.whole.from.length === 0 || e.from.length > 0) &&
+        (e.whole.to.length === 0 || e.to.length > 0) &&
+        e.from.length + e.to.length > 0,
+    );
+  const union = (pick, match) => [
+    ...new Set(entries.filter(match).flatMap(pick)),
+  ];
+  // A minor entry (a small part of a domain went somewhere else) is in the table but not in the notes.
+  const sourcesOf = (title) =>
+    union(
+      (e) => e.from,
+      (e) => !e.whole.minor && e.to.includes(title),
+    );
+  const targetsOf = (title) =>
+    union(
+      (e) => e.to,
+      (e) => !e.whole.minor && e.from.includes(title),
+    );
+  const minorTargetsOf = (title) =>
+    union(
+      (e) => e.to,
+      (e) => e.whole.minor && e.from.includes(title),
+    );
+  const list = (titles, linkOf) => {
+    const html = titles.map(linkOf);
+    return html.length > 1
+      ? `${html.slice(0, -1).join(", ")} and ${html.at(-1)}`
+      : html[0];
+  };
+
+  const glanceNote = (d) => {
+    if (d.status === "removed") {
+      const targets = targetsOf(d.title);
+      if (!targets.length)
+        return minorTargetsOf(d.title).length
+          ? `— mostly not in ${to.code}`
+          : `— not in ${to.code}`;
+      return targets.length > 1
+        ? `— split into ${list(targets, links.new)}`
+        : sourcesOf(targets[0]).length > 1
+          ? `— merged into ${links.new(targets[0])}`
+          : `— now ${links.new(targets[0])}`;
+    }
+    const sources = sourcesOf(d.title);
+    if (sources.length > 1) return `— merged from ${list(sources, links.old)}`;
+    if (sources.length === 1)
+      // One to one: nothing to add, a renamed domain already shows its old title struck through.
+      return targetsOf(sources[0]).length > 1
+        ? `— split from ${links.old(sources[0])}`
+        : "";
+    return d.status === "added" ? `— new in ${to.code}` : "";
+  };
+  const wentTo = (d) => {
+    const targets = targetsOf(d.title);
+    if (targets.length) return `<em>→ ${list(targets, esc)}</em>`;
+    return minorTargetsOf(d.title).length
+      ? `<em>mostly not in ${esc(to.code)}</em>`
+      : `<em>not in ${esc(to.code)}</em>`;
+  };
+
+  const sizeOf = (d, side) => {
+    const n = skillsOf(d, side);
+    return `${nowrap(range(d.weights[side]))}, ${n} skill${n === 1 ? "" : "s"}`;
+  };
+  const cellOf = (titles, map, side, linkOf) =>
+    titles
+      .map((t) => {
+        const from = side === "old" ? tag(t) : "";
+        return `${from ? `${esc(from)}: ` : ""}${linkOf(t)} <span class="${MOVED_TAG}">(${sizeOf(map.get(t), side)})</span>`;
+      })
+      .join("<br>");
+  const labelOf = (e) =>
+    e.whole.label
+      ? `${e.whole.label}.`
+      : !e.from.length
+        ? "New."
+        : !e.to.length
+          ? `Not in ${to.code}.`
+          : e.from.length > 1 && e.to.length > 1
+            ? "Regrouped."
+            : e.from.length > 1
+              ? "Merged."
+              : e.to.length > 1
+                ? "Split."
+                : e.from[0] !== e.to[0]
+                  ? "Renamed."
+                  : "Carried over.";
+  const rows = entries.map((e) => [
+    e.from.length ? cellOf(e.from, oldOf, "old", links.old) : "–",
+    e.to.length ? cellOf(e.to, newOf, "new", links.new) : "–",
+    `<strong>${labelOf(e)}</strong> ${esc(e.note)}`,
+  ]);
+  const graph = areaGraph(areas);
+
+  // The group by group table: every entry of the hand-made group pairing that still names real groups.
+  const groupEntries = (groups ?? [])
+    .map((e) => ({
+      from: e.from.filter((t) => oldGroupOf.has(t)),
+      to: e.to.filter((t) => newGroupOf.has(t)),
+      whole: e,
+    }))
+    .filter(
+      (e) =>
+        (e.whole.from.length === 0 || e.from.length > 0) &&
+        (e.whole.to.length === 0 || e.to.length > 0) &&
+        e.from.length + e.to.length > 0,
+    );
+  const groupLabelOf = (e) =>
+    e.whole.label
+      ? `${e.whole.label}.`
+      : e.whole.broader
+        ? "Higher level."
+        : !e.from.length
+          ? "New."
+          : !e.to.length
+            ? `Not in ${to.code}.`
+            : e.from.length > 1 && e.to.length > 1
+              ? "Regrouped."
+              : e.from.length > 1
+                ? "Merged."
+                : e.to.length > 1
+                  ? "Split."
+                  : "Carried over.";
+  const groupSkills = (g, side) =>
+    g.items.filter((i) =>
+      side === "old"
+        ? i.kind !== "added" && i.kind !== "moved-in"
+        : i.new !== undefined,
+    ).length;
+  const groupCell = (titles, map, side) =>
+    titles
+      .map((t) => {
+        const g = map.get(t);
+        const n = groupSkills(g, side);
+        const from = side === "old" ? tag(t) : "";
+        return `${from ? `${esc(from)}: ` : ""}${side === "old" ? esc(t) : groupLink(t)} <span class="${MOVED_TAG}">(${n} skill${n === 1 ? "" : "s"})</span>`;
+      })
+      .join("<br>");
+  const groupRows = groupEntries.map((e) => [
+    e.from.length ? groupCell(e.from, oldGroupOf, "old") : "–",
+    e.to.length ? groupCell(e.to, newGroupOf, "new") : "–",
+    `<strong>${groupLabelOf(e)}</strong>${e.whole.note ? ` ${esc(e.whole.note)}` : ""}`,
+  ]);
+  return {
+    pairDomains: graph.pairs,
+    moveEdges: graph.edges,
+    groupMap: groupGraph(groups),
+    groupTable: (fromShort) =>
+      groupRows.length
+        ? table(
+            [`${fromShort} group`, `${to.code} group`, "What changed"],
+            groupRows,
+          )
+        : "",
+    compare: {
+      id: (d) => ids.get(d),
+      groupId: (d, g) => groupIds.get(g),
+      links,
+      glanceNote,
+    },
+    wentTo,
+    table: (fromShort) =>
+      table([`${fromShort} area`, `${to.code} area`, "What changed"], rows),
+    has: entries.length > 0,
+  };
+}
+
+/**
+ * The tab that compares the study guide of the exam(s) being replaced with the one of the replacement
+ * (AZ-400 and AZ-401), the same on the pages of all of them. `compare` is `{ from, to, retirements?, blurb?,
+ * titleThreshold? }`: `from` is a list of `{ code, history }` (several when one exam replaces two, their
+ * guides are merged, see mergeGuides), `to` the replacement, `retirements` the `{ code, date }` of the
+ * replaced exams, `areas` how the domains became the new ones, judged by hand (compare-areas.mjs). Null when a
+ * guide has not been recorded. Group titles are paired by similarity, because two exams word them differently;
+ * domains are paired, and skills matched across domains, only as `areas` says.
+ */
+function compareTab(
+  {
+    from,
+    to,
+    retirements = [],
+    blurb = "",
+    titleThreshold = 0.5,
+    areas = null,
+    groups = null,
+  },
+  now,
+) {
+  const live = (history) => {
+    const st = versionState(history, now);
+    return st.current ?? st.upcoming;
+  };
+  const olds = from
+    .map((f) => ({ code: f.code, version: live(f.history) }))
+    .filter((f) => f.version);
+  const b = live(to.history);
+  if (!b || olds.length < from.length) return null;
+  const merged =
+    olds.length > 1
+      ? mergeGuides(olds.map((o) => ({ code: o.code, lines: o.version.lines })))
+      : { lines: olds[0].version.lines, sources: new Map() };
+  const graph = areaGraph(areas);
+  const diff = diffVersions(merged.lines, b.lines, {
+    titleThreshold,
+    ...(areas
+      ? {
+          moveThreshold: MOVE_THRESHOLD,
+          pairDomains: graph.pairs,
+          moveEdges: graph.edges,
+          groupMap: groups ? groupGraph(groups) : null,
+        }
+      : {}),
+  });
+  if (!diff.ok) return null;
+
+  const list = (codes) =>
+    codes.length > 1
+      ? `${codes.slice(0, -1).join(", ")} and ${codes.at(-1)}`
+      : codes[0];
+  const fromList = list(olds.map((o) => o.code));
+  const fromShort = olds.map((o) => o.code).join(" + ");
+  const area = areaModel(diff, areas, groups, {
+    to,
+    tag: (title) => merged.sources.get(title) ?? "",
+  });
+  const guideOf = (code, v) =>
+    `the ${code} study guide (${v.asOf ? `skills measured as of ${prettyDate(v.asOf)}` : `no date stated, first seen ${prettyDate(v.firstSeen)}`})`;
+  const today = now.toISOString().slice(0, 10);
+  const dates = [...new Set(retirements.map((x) => x.date))];
+  const retired = dates
+    .map((date) => {
+      const codes = retirements
+        .filter((x) => x.date === date)
+        .map((x) => x.code);
+      return `${list(codes)} ${date < today ? "retired" : codes.length > 1 ? "retire" : "retires"} on ${prettyDate(date)}`;
+    })
+    .join("; ");
+  const note = `<p>${blurb || `<strong>${to.code} is the replacement for ${fromList}.</strong>`}${
+    retired ? ` ${retired[0].toUpperCase()}${retired.slice(1)}.` : ""
+  } This compares ${list(olds.map((o) => guideOf(o.code, o.version)))} with ${guideOf(to.code, b)}, as they stand today${
+    olds.length > 1
+      ? `; the ${fromList} guides are put together as one, and each old domain shows which exam it came from`
+      : ""
+  }. It is refreshed whenever a guide changes.</p>`;
+
+  const { stats } = diff;
+  const headings = [];
+  const h = (id, text) => {
+    headings.push({ depth: 2, slug: id, text });
+    return heading(id, text);
+  };
+  const legend = `<p>${ins("Green underlined")} text is in ${to.code} but not in ${fromList}, or is worded differently. ${del("Red strikethrough")} text is in ${fromList} but not in ${to.code}. Everything else is the same in both. Skills are matched by topic, so a skill that was reworded a lot can show as removed and added.${stats.moved ? ` A grey note after a skill says it moved to another domain: where it is now, or where it came from. The notes in "Skills at a glance" say how each area changed.` : ""} This is the whole ${to.code} study guide, so you can see each difference in place.</p>`;
+  const be = (n) => (n === 1 ? "is" : "are");
+  const skills = (n) => `${n} skill${n === 1 ? "" : "s"}`;
+  const summary = `<p>${to.code} measures ${skills(stats.totalNow)}; ${fromList} ${olds.length > 1 ? "measure" : "measures"} ${stats.totalBefore}. Compared with ${fromList}, ${skills(stats.added)} ${be(stats.added)} new, ${stats.reworded} ${be(stats.reworded)} reworded,${stats.moved ? ` ${stats.moved} ${be(stats.moved)} about the same topic but in a different domain,` : ""}${stats.covered ? ` ${stats.covered} ${be(stats.covered)} covered at a higher level by broader skills,` : ""} and ${stats.removed} ${be(stats.removed)} not matched by any skill of ${to.code}.${
+    stats.changedShare > REWRITTEN_SHARE
+      ? " Most of the guide is different, so start with the domains below."
+      : ""
+  }</p>`;
+  const same =
+    stats.added +
+      stats.removed +
+      stats.reworded +
+      stats.moved +
+      stats.covered ===
+      0 &&
+    !stats.weightsChanged &&
+    !diff.audience.changed;
+  const html = same
+    ? `<p>The skills measured, the domain weights and the audience profile are the same in both guides.</p>`
+    : `${summary}${h("what-is-different-at-a-glance", "What is different at a glance")}${countsTable(diff, { matching: true })}${h("domains-compared", "Domains")}${domainSummary(diff, [fromShort, to.code], (d) => merged.sources.get(d.oldTitle ?? d.title) ?? "", area.wentTo)}${
+        area.has
+          ? `${h("how-the-areas-changed", "How the areas changed")}<p>Judged by reading the two guides side by side. Click an area to jump to it in the full guide below.</p>${area.table(fromShort)}${area.groupTable(fromShort) ? dropdown("Group by group", `<p>The same, one level down: how each group of ${fromShort} became a group of ${to.code}. A group marked Higher level is covered by broader skills: the skills of the old group that have no counterpart are shown as covered by it, not as removed.</p>${area.groupTable(fromShort)}`) : ""}`
+          : ""
+      }${dropdown("Show every difference", `${legend}${diffDoc(diff, diff.curLines, { audienceOpen: false, title: `${to.code} skills measured, compared to ${fromList}`, compare: area.has ? area.compare : null })}`)}`;
+  return { note, html, headings };
+}
+
 /**
  * Everything the route needs for one exam: `{ title, description, tabs: [{ label, note?, html }],
- * headings, state }`. `now` decides what is current, upcoming and previous.
+ * headings, state }`. `now` decides what is current, upcoming and previous; `compare` adds the Compared to tab
+ * (see compareTab).
+ * @param {{ code: string, versions: any[] }} history
+ * @param {{ now?: Date, compare?: { from: { code: string, history: any }[], to: { code: string, history: any }, retirements?: { code: string, date: string }[], blurb?: string, titleThreshold?: number } | null }} [options]
  */
-export function buildChangePage(history, { now = new Date() } = {}) {
+export function buildChangePage(
+  history,
+  { now = new Date(), compare = null } = {},
+) {
   const code = history.code;
   const title = `${code} Study Guide Changes`;
   const description = `What changed in the ${code} study guide, shown in place, with the current, upcoming and previous versions side by side.`;
@@ -480,6 +895,17 @@ export function buildChangePage(history, { now = new Date() } = {}) {
   const tabs = [];
   const changes = changesTab(history, st);
   tabs.push({ label: "Changes", note: changes.note, html: changes.html });
+  const comparison = compare ? compareTab(compare, now) : null;
+  if (comparison) {
+    const other = compare.from.some((f) => f.history === history)
+      ? compare.to.code
+      : compare.from.map((f) => f.code).join(" + ");
+    tabs.push({
+      label: `Compared to ${other}`,
+      note: comparison.note,
+      html: comparison.html,
+    });
+  }
 
   if (st.current) {
     const until = st.upcoming
@@ -514,7 +940,7 @@ export function buildChangePage(history, { now = new Date() } = {}) {
     title,
     description,
     tabs,
-    headings: changes.headings,
+    headings: [...changes.headings, ...(comparison?.headings ?? [])],
     state: st,
   };
 }

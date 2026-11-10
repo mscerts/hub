@@ -243,7 +243,7 @@ The other two states change only the announcement sentence (the `:::tip` and the
 ### Study Guide Changes card (all exam pages)
 - Every exam page has `<LinkCard title="<CODE> Study Guide Changes" href="/certs/changelog/<code>/" .../>` on the line directly under its Study Guide card, with the Study Guide card's indentation and no `target="_blank"`. The change page it points to exists for every exam page and is built from `src/data_files/study-guide-history/<CODE>.json`; see `docs/study-guide-changes.md`.
 - `scripts/new-exam.mjs` writes the card into every new page. `node scripts/study-guide-changes-cards.mjs` adds missing cards and `--check` lists problems; `tests/scripts/study-guide-changes-cards.test.mjs` fails an exam page without its card.
-- The history files are written only by the New Exam Monitor (and the one-off backfill script); do not edit them by hand. The card is the only change an exam page needs: the banner under the exam tagline appears by itself while a change is upcoming or recent.
+- The history files are written only by the New Exam Monitor (and the one-off backfill and retired-guide scripts); do not edit them by hand. The card is the only change an exam page needs: the banner under the exam tagline appears by itself while a change is upcoming or recent.
 
 ### How to Prepare LinkCard (all exam pages)
 - Every exam page's "Get Started" card ends with a `LinkCard` to the matching `/certs/prepare/` guide: the last `LinkCard`-type resource (after Exam Labs/Exam Case Studies/GitHub Case Studies if present, otherwise right after Study Guide) and before any `RelatedCerts` component.
