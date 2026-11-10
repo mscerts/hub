@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import { CardGrid, LinkCard } from "@components/docs";
 import { getCollection } from "astro:content";
 import {
@@ -13,6 +14,10 @@ interface Props {
 }
 
 const { examCode, title = "Related certifications" } = Astro.props;
+// The trigger is a card of the same size and layout as a LinkCard (src/components/docs/preline/LinkCard.astro):
+// icon tile, title, description and a caret on the right, which turns when the dropdown is open.
+const SUMMARY_CLASS =
+  "group not-prose hover:shadow-default flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl border border-border bg-card p-4 text-inherit no-underline shadow-sm transition hover:border-border-strong sm:gap-4 sm:p-5 [&::-webkit-details-marker]:hidden";
 const code = examCode.toUpperCase();
 const requirement = certificationRequirements.find(
   (item) => item.expert === code,
@@ -78,25 +83,49 @@ const relatedItems = related.map((item) => {
 ---
 
 {relatedItems.length > 0 && (
-  <>
-    <h3>{title}</h3>
-    <p>
-      These requirements apply to earning the Expert certification, not to
-      taking its exam.
-      {requirement &&
-        (requirement.prerequisites.length > 1
-          ? ` You must ${requirement.kind === "exam" ? "pass at least one of the following exams" : "earn at least one of the following certifications"}.`
-          : " You must earn the following certification.")}
-    </p>
-    <CardGrid>
-      {relatedItems.map((item) => (
-        <LinkCard
-          title={`${item.code}${item.status}`}
-          description={`${item.relation}: ${item.name}`}
-          href={item.href}
-          target={item.external ? "_blank" : undefined}
-        />
-      ))}
-    </CardGrid>
-  </>
+  <details class="my-4">
+    <summary class={SUMMARY_CLASS}>
+      <span class="flex min-w-0 flex-1 items-start gap-2 sm:gap-3">
+        <span
+          class="border-border bg-muted text-card-foreground grid size-9 shrink-0 place-items-center rounded-lg border"
+          aria-hidden="true"
+        >
+          <Icon name="ph:certificate" class="size-4.5" />
+        </span>
+        <span class="min-w-0">
+          <span class="text-card-foreground group-hover:text-primary block text-base leading-snug font-semibold transition-colors">
+            {title}
+          </span>
+          <span class="text-muted-foreground mt-1 block text-sm leading-normal">
+            Official certification requirements that involve this exam.
+          </span>
+        </span>
+      </span>
+      <Icon
+        name="ph:caret-down"
+        class="text-muted-foreground group-hover:text-primary size-4 shrink-0 transition-transform [details[open]>summary>&]:rotate-180"
+        aria-hidden="true"
+      />
+    </summary>
+    <div class="mt-4">
+      <p>
+        These requirements apply to earning the Expert certification, not to
+        taking its exam.
+        {requirement &&
+          (requirement.prerequisites.length > 1
+            ? ` You must ${requirement.kind === "exam" ? "pass at least one of the following exams" : "earn at least one of the following certifications"}.`
+            : " You must earn the following certification.")}
+      </p>
+      <CardGrid>
+        {relatedItems.map((item) => (
+          <LinkCard
+            title={`${item.code}${item.status}`}
+            description={`${item.relation}: ${item.name}`}
+            href={item.href}
+            target={item.external ? "_blank" : undefined}
+          />
+        ))}
+      </CardGrid>
+    </div>
+  </details>
 )}
