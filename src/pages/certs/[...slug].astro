@@ -61,8 +61,9 @@ if (heroData?.image) {
     }
     tableOfContents={entry.data.tableOfContents !== false}
     hero={heroData ? { ...heroData, image: heroImage } : undefined}
-    pagination={entry.data.prev !== false || entry.data.next !== false}
     {guideChange}
+    prev={entry.data.prev}
+    next={entry.data.next}
   >
     <Content components={{ Aside }} />
   </DocsPage>

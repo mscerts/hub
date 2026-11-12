@@ -15,6 +15,8 @@ interface Props {
   hero?: import("@utils/docs").DocsHero;
   tableOfContents?: boolean;
   pagination?: boolean;
+  prev?: string | boolean;
+  next?: string | boolean;
   archiveNotice?: "retired-exam" | "expired-offer" | "historical";
   guideChange?: { href: string; state: Record<string, any> | null };
   /** Replaces the last breadcrumb item with a trail (for example exam page, then the change page). */
@@ -40,12 +42,17 @@ const {
   hero,
   tableOfContents = true,
   pagination = true,
+  prev,
+  next: nextOverride,
   archiveNotice,
   guideChange,
   trail,
 } = Astro.props;
 const currentPath = Astro.url.pathname;
-const { previous, next } = docsPagination(sidebarItems, currentPath);
+const { previous, next } = docsPagination(sidebarItems, currentPath, {
+  prev,
+  next: nextOverride,
+});
 const visibleHeadings = (tableOfContents ? headings : []).filter(
   (heading) => heading.depth >= 2 && heading.depth <= 4,
 );
