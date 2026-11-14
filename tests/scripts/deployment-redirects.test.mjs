@@ -66,6 +66,15 @@ test("archived canonical pages preserve old HTML and Markdown URLs", () => {
   }
 });
 
+test("Study Guide Changes pages get no legacy aliases and no Markdown rule", () => {
+  const rules = redirectRules({}, [
+    "certs/azure/az-104/",
+    "certs/changelog/az-104/",
+  ]);
+  assert.ok(rules.includes("/azure/az-104/ /certs/azure/az-104/ 301\n"));
+  assert.doesNotMatch(rules, /changelog/);
+});
+
 test("GA4 loader pushes native Arguments objects rather than arrays", () => {
   const source = readFileSync(
     new URL("../../src/layouts/MainLayout.astro", import.meta.url),

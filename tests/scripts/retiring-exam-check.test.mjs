@@ -47,6 +47,7 @@ import {
   isRetirementBadge,
   loadConfig,
   loadHubContext,
+  withoutPredecessorCards,
   loadRetiringExams,
   loadSchedule,
   normalizeSchedule,
@@ -1404,6 +1405,17 @@ test("the banner check: component or caution box, the date, and comments never c
       .mentionsDate,
     true,
   );
+});
+
+test("a card kept from a predecessor exam does not tie the page to the predecessor's certification", () => {
+  const text = [
+    '<LinkCard title="Exam AB-330" href="https://learn.microsoft.com/credentials/certifications/new-cert/" />',
+    '<LinkCard title="MB-330: Microsoft Learn Practice Assessment" href="https://learn.microsoft.com/credentials/certifications/old-cert/practice/assessment?assessmentId=1" target="_blank" description="x"/>',
+    '<LinkCard title="AB-330: Practice" href="https://learn.microsoft.com/credentials/certifications/own-cert/practice"/>',
+  ].join("\n");
+  const kept = withoutPredecessorCards(text, "AB-330");
+  assert.ok(!kept.includes("old-cert"));
+  assert.ok(kept.includes("new-cert") && kept.includes("own-cert"));
 });
 
 test("the hub context: pages, badges, lab skills, certification links, drafts and comments", async () => {

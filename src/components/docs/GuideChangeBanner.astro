@@ -1,0 +1,115 @@
+---
+// PROTOTYPE: banner under the exam page's tagline while a study guide change is upcoming or recent.
+// The text is built when the site is built; the script below recomputes the day count (and hides the
+// banner once the recent window is over) in the visitor's browser, so a page that was built a day
+// ago still says the right thing.
+import {
+  GUIDE_CHANGE_RECENT_DAYS,
+  guideChangeSentence,
+} from "@utils/guide-change-date.mjs";
+
+interface Props {
+  kind: "upcoming" | "recent";
+  effective: string;
+  days?: number;
+  daysAgo?: number;
+  basis?: "effective" | "seen";
+  dateNote?: string;
+  summary: string;
+  href: string;
+}
+
+const {
+  kind,
+  effective,
+  days,
+  daysAgo,
+  basis = "effective",
+  dateNote,
+  summary,
+  href,
+} = Astro.props;
+
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const [y, m, d] = effective.split("-").map(Number);
+const dateLabel = `${MONTHS[m - 1]} ${d}, ${y}`;
+const when = guideChangeSentence(
+  kind === "upcoming"
+    ? { kind, days: days ?? 0 }
+    : { kind, daysAgo: daysAgo ?? 0 },
+  dateLabel,
+  basis,
+);
+---
+
+<div
+  class="mt-6 border border-blue-300 border-l-4 border-l-blue-700 bg-blue-50 px-4 py-3 text-sm text-blue-950 dark:border-blue-800 dark:border-l-blue-400 dark:bg-blue-950/40 dark:text-blue-100"
+  role="note"
+  data-guide-change={kind}
+  data-effective={effective}
+  data-date-label={dateLabel}
+  data-basis={basis}
+  data-window={GUIDE_CHANGE_RECENT_DAYS}
+>
+  <strong class="block font-semibold" data-guide-change-label>
+    {kind === "upcoming"
+      ? "STUDY GUIDE CHANGE · UPCOMING"
+      : "STUDY GUIDE CHANGE · RECENT"}
+  </strong>
+  <span>
+    <span data-guide-change-when>{when}</span>
+    {dateNote ? ` ${dateNote}` : ""}
+    <span class="mt-1 block">{summary}</span>
+  </span>
+  <a
+    href={href}
+    class="mt-2 block w-fit font-semibold text-blue-800 underline underline-offset-2 hover:text-blue-950 dark:text-blue-300 dark:hover:text-blue-100"
+  >
+    See what changed
+  </a>
+</div>
+
+<script>
+  import {
+    guideChangeWhen,
+    guideChangeSentence,
+  } from "@utils/guide-change-date.mjs";
+
+  const banner = document.querySelector<HTMLElement>("[data-guide-change]");
+  if (banner) {
+    const when = guideChangeWhen(
+      banner.dataset.effective ?? "",
+      new Date(),
+      Number(banner.dataset.window),
+    );
+    if (!when) {
+      // The page was built before the recent window ended: nothing left to announce.
+      banner.hidden = true;
+    } else {
+      const word = when.kind === "upcoming" ? "UPCOMING" : "RECENT";
+      banner.dataset.guideChange = when.kind;
+      const label = banner.querySelector("[data-guide-change-label]");
+      if (label) label.textContent = `STUDY GUIDE CHANGE · ${word}`;
+      const text = banner.querySelector("[data-guide-change-when]");
+      if (text)
+        text.textContent = guideChangeSentence(
+          when,
+          banner.dataset.dateLabel ?? "",
+          banner.dataset.basis === "seen" ? "seen" : "effective",
+        );
+    }
+  }
+</script>

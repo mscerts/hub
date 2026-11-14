@@ -132,21 +132,11 @@ const voucherItems: DocsSidebarItem[] = [
   {
     label: "Partner LevelUp",
     href: docsPath("vouchers/levelup"),
-    badge: { text: "*100%", variant: "tip" },
+    badge: { text: "2x *100%", variant: "tip" },
   },
   {
     label: "Exam AB-330 (beta)",
     href: docsPath("vouchers/ab330beta"),
-    badge: { text: "*80%", variant: "tip" },
-  },
-  {
-    label: "Exam AZ-401 (beta)",
-    href: docsPath("vouchers/az401beta"),
-    badge: { text: "*80%", variant: "tip" },
-  },
-  {
-    label: "Exam GH-700 (beta)",
-    href: docsPath("vouchers/gh700beta"),
     badge: { text: "*80%", variant: "tip" },
   },
   {

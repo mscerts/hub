@@ -32,6 +32,7 @@ import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, isAbsolute, join, relative, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { AREA_BY_PREFIX as AREA_MAP } from "./lib/areas.mjs";
+import { changesCard } from "./study-guide-changes-cards.mjs";
 import {
   PENDING_ANNOUNCEMENT_DAYS,
   betaTimeline,
@@ -129,7 +130,8 @@ import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs
 
   <LinkCard title="Exam ${code}: ${escapeJsxAttr(name)}" href="${examUrl}" target="_blank" description=""/>
 
-  <LinkCard title="${code} Study Guide" href="${studyGuideUrl}" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for the exam."/>${labsLink}
+  <LinkCard title="${code} Study Guide" href="${studyGuideUrl}" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for the exam."/>
+  ${changesCard(code)}${labsLink}
 
 ---
 <Tabs>

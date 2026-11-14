@@ -19,6 +19,8 @@ export function redirectRules(redirects, pathnames) {
         path.endsWith("/") &&
         path !== "/certs/" &&
         !path.startsWith("/certs/archive/") &&
+        // Study Guide Changes pages are new: no legacy address to keep, no Markdown endpoint.
+        !path.startsWith("/certs/changelog/") &&
         path !== "/certs/guide/markdown/" &&
         // The generated course pages (courses/<exam code>/, docs/courses.md) are new: they never had a bare or
         // /wiki/ address, and their aliases would use up Cloudflare's limit of 2000 static redirects.
