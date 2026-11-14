@@ -1108,6 +1108,20 @@ async function loadExamStatuses(file) {
 }
 
 /**
+ * The page text without the LinkCards titled with ANOTHER exam's code
+ * ("MB-330: Microsoft Learn Practice Assessment" on AB-330): a resource kept from a
+ * predecessor links the predecessor's certification, which says nothing about the
+ * certification this page's exam belongs to, and would tie the page's exam to the
+ * predecessor's retirement row.
+ */
+export function withoutPredecessorCards(text, code) {
+  return text.replace(
+    /<LinkCard\b[^>]*?\btitle="([A-Za-z]{2,3}-\d{3}[A-Za-z]?):[^"]*"[^>]*?\/>/g,
+    (card, other) => (other.toUpperCase() === code ? card : ""),
+  );
+}
+
+/**
  * What the repository says about exams: pages, RETIRING badges, certification pages
  * the hub links, Applied Skills the lab pages link and (optionally) the Learn exam
  * tracker's certification-to-exam map.
@@ -1139,7 +1153,7 @@ export async function loadHubContext(cfg) {
         name: examNameFromDescription(text, code),
         text: body,
       });
-      for (const m of body.matchAll(
+      for (const m of withoutPredecessorCards(body, code).matchAll(
         /credentials\/certifications\/([a-z0-9][a-z0-9-]*)/gi,
       )) {
         const slug = m[1].toLowerCase();
