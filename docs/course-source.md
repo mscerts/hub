@@ -14,7 +14,7 @@ Both are computed on demand. Nothing is committed per exam: derived files would 
 ```bash
 node scripts/course-source.mjs AZ-104 [--out DIR]     # guide tree + scope map -> DIR/AZ-104.guide.json, DIR/AZ-104.scope.json
 node scripts/course-source.mjs --survey               # one line per stored guide: the shapes in the wild
-node scripts/course-source.mjs AZ-104 --check src/content/docs/courses/az-104course.mdx   # does a course page match the guide?
+node scripts/course-source.mjs AZ-104 --check src/content/docs/courses/az-104.mdx   # does a course page match the guide?
 ```
 
 Exit codes: 0 done, 1 the guide did not parse completely (or the course differs from it), 2 a usage or input error. The default output folder is `<tmp>/course-source`.
@@ -42,6 +42,10 @@ The parser anchors on the "Skills at a glance" list, which names every domain an
 Each task has a `key` (`domain/group/task` in slug form, unique in the guide) for later comparison. `asOf` is `{ text, iso }` (`iso` is `YYYY-MM-DD`, `YYYY-MM` for a month-only date such as GH-900's, or null). Thirteen guides state no date (beta or very new exams).
 
 `diffTrees(guideTree, courseTree)` compares two trees by title, level by level (whitespace, quote and dash variants are ignored, case is not), so one inserted task is one difference, not a cascade: `missing-*`, `extra-*` and `reordered-*`. `treeFromCourseMdx` reads a course page written with `##` domain (weight in the title), `###` group and `####` task headings, which is what `--check` uses.
+
+### A page with two versions
+
+A study guide page that announces a change keeps the version before it as a second section, "Skills measured prior to <date>", after a change log (AZ-104 on 2026-11-02). Only the first "Skills measured" section is the guide: `parseGuide` stops at a "Change log" or a "Skills measured prior to" heading, the same rule as the version history (`skillsSections` in `scripts/lib/guide-history.mjs`). Before 2026-11-15 the second section was read as extra skill groups of the last domain, and every course tool compared a course with a guide that had 25 groups too many.
 
 ## The scope map
 

@@ -335,12 +335,16 @@ export async function main(argv, deps = {}) {
       }
       const lookup =
         verdictsFor ?? (await learnsyncVerdicts({ dir, live: options.live }));
+      // the candidates, and the pages the maintainer accepted (one of those may not be a candidate: it is added anyway)
       const paths = [
-        ...new Set(
-          judged.flatMap((f) =>
+        ...new Set([
+          ...judged.flatMap((f) =>
             f.tasks.flatMap((t) => t.items.map((i) => i.target.path)),
           ),
-        ),
+          ...(store?.decisions ?? [])
+            .filter((d) => d.decision === "accept")
+            .map((d) => d.target),
+        ]),
       ];
       const verdicts = await lookup(paths);
       isCurrent = (path) => currentFromVerdict(verdicts.get(path));
@@ -362,6 +366,8 @@ export async function main(argv, deps = {}) {
       inputs: judged[0].inputs,
       stats: gated.stats,
       items: gated.items,
+      // the maintainer's accepts that no candidate answers: the builder turns them into picks
+      manual: gated.manual,
     });
     write(queueFile, queue);
     const s = gated.stats;
@@ -379,6 +385,14 @@ export async function main(argv, deps = {}) {
         )
           .map(([w, n]) => `${w} (${n})`)
           .join(", ")}`,
+      );
+    if (s.acceptedWithoutCandidate)
+      log(
+        `  ${s.acceptedWithoutCandidate} pages the maintainer accepted are not among the candidates: the builder adds them anyway (a decision is remembered)`,
+      );
+    if (s.acceptedWithoutCandidateNotCurrent)
+      log(
+        `  ${s.acceptedWithoutCandidateNotCurrent} pages the maintainer accepted are not among the candidates and are no longer current Learn pages: they are left out`,
       );
     for (const [reason, n] of Object.entries(s.queueReasons))
       log(`  queued: ${reason} (${n})`);

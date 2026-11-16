@@ -538,3 +538,38 @@ test("through the builder: a task with no module of its own points to the module
     "a task with a module of its own needs no pointer",
   );
 });
+
+test("a page the maintainer pinned is shown under that task, whatever the rules would choose", () => {
+  const pin = { gate: { pinned: true } };
+  // a documentation page: core under t1 would win, the pinned supporting row under t3 does
+  const docs = route({
+    "d/g/t1": [row("/a")],
+    "d/g/t3": [row("/a", { class: "supporting", relation: "deeper" }, pin)],
+  });
+  assert.deepEqual(pathsAt(docs, "d/g/t3"), ["/a"]);
+  assert.deepEqual(pathsAt(docs, "d/g/t1"), []);
+  assert.deepEqual(docs.repeats, [
+    {
+      path: "/a",
+      title: "Page /a",
+      kind: "docs",
+      shownUnder: "d/g/t3",
+      alsoFits: ["d/g/t1"],
+    },
+  ]);
+  // a module: the first skill group where it was accepted would win, the pinned row in a later group does
+  const module = (over, itemOver) =>
+    row(
+      "/training/modules/m",
+      { target: { kind: "module", path: "/training/modules/m" }, ...over },
+      itemOver,
+    );
+  const result = routePicks({
+    accepted: accepted({ "d/g1/t1": [module()], "d/g2/t2": [module({}, pin)] }),
+    taskKeys: ["d/g1/t1", "d/g2/t2"],
+  });
+  assert.deepEqual(pathsAt(result, "d/g2/t2"), ["/training/modules/m"]);
+  assert.deepEqual(pathsAt(result, "d/g1/t1"), []);
+  assert.equal(result.repeats[0].shownUnder, "d/g2/t2");
+  assert.deepEqual(result.repeats[0].alsoFits, ["d/g1/t1"]);
+});

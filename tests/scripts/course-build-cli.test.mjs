@@ -13,7 +13,11 @@ import test, { after } from "node:test";
 import { main } from "../../scripts/course-build.mjs";
 import { gateJudged } from "../../scripts/lib/course-gates.mjs";
 import { validateCourse } from "../../scripts/lib/course-format.mjs";
-import { guideOf, scopeOf } from "./helpers/example-candidates.mjs";
+import {
+  candidateWorld,
+  guideOf,
+  scopeOf,
+} from "./helpers/example-candidates.mjs";
 import { TASKS, exampleJudged } from "./helpers/example-judging.mjs";
 
 const temps = [];
@@ -295,5 +299,67 @@ test("the picks marked for review are written beside the course and the summary 
   assert.ok(
     !/still in the queue/.test(io.out.join("\n")),
     "nothing waits in the queue",
+  );
+});
+
+test("the gated file's manual list becomes picks: learnsync's catalog gives a module its title and signature", async () => {
+  const w = world();
+  const gated = readJson(w.file);
+  const task = "networking/configure/t1";
+  gated.manual = [
+    {
+      task,
+      target: { kind: "module", path: "/training/modules/cosmos-routes" },
+      class: "supporting",
+      relation: "deeper",
+      reason: "Shows the same routing idea in another service.",
+      at: "2026-10-16",
+      pinned: true,
+    },
+    {
+      task,
+      target: { kind: "docs", path: "/azure/added/by-hand" },
+      class: "supporting",
+      relation: "operate",
+      reason: "Explains the limits an administrator runs into.",
+      at: "2026-10-16",
+      title: "A page added by hand",
+    },
+  ];
+  writeFileSync(w.file, JSON.stringify(gated));
+  const { code, io } = await run(["NET-100", "--out", w.out], w, capture(), {
+    scopeFor: async () => ({
+      scope: scopeOf(),
+      learnsync: { catalog: candidateWorld().catalog },
+    }),
+  });
+  assert.equal(code, 0, io.err.join("\n"));
+  const course = readJson(w.out);
+  const picks = course.domains
+    .flatMap((d) => d.groups.flatMap((g) => g.tasks))
+    .find((t) => t.key === task).picks;
+  const module = picks.find(
+    (p) => p.target.path === "/training/modules/cosmos-routes",
+  );
+  assert.equal(module.source, "P3");
+  assert.equal(
+    module.title,
+    candidateWorld().catalog.modules.find(
+      (m) => m.path === "/training/modules/cosmos-routes",
+    ).title,
+  );
+  assert.deepEqual(module.decision, { by: "maintainer", at: "2026-10-16" });
+  assert.ok(
+    course.inputs.picked.some(
+      ([path]) => path === "/training/modules/cosmos-routes",
+    ),
+  );
+  assert.equal(
+    picks.find((p) => p.target.path === "/azure/added/by-hand").title,
+    "A page added by hand",
+  );
+  assert.match(
+    io.out.join("\n"),
+    /2 picks are pages the maintainer accepted that were not among the candidates/,
   );
 });

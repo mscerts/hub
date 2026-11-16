@@ -262,6 +262,40 @@ test("render links the exam's lab page in the opening note when the hub has one,
   );
 });
 
+test("render names the How to Prepare page of the exam page's own card and links the exam page, when the hub has that page", async () => {
+  const root = world();
+  const render = async () => {
+    const io = capture();
+    await main(["render", "GH-900"], {
+      root,
+      env: {},
+      log: io.log,
+      error: io.error,
+      write: io.write,
+    });
+    return io.written.join("");
+  };
+  assert.doesNotMatch(await render(), /How to Prepare|Study Materials/);
+  const dir = join(root, "src", "content", "docs", "github");
+  mkdirSync(dir, { recursive: true });
+  // an exam page without the card: the exam page is linked, no guide is named
+  writeFileSync(join(dir, "GH-900.mdx"), "---\ntitle: GH-900\n---\n");
+  const plainPage = await render();
+  assert.match(
+    plainPage,
+    /are on the \[GH-900 Study Materials\]\(\/certs\/github\/gh-900\/\) page/,
+  );
+  assert.doesNotMatch(plainPage, /How to Prepare/);
+  writeFileSync(
+    join(dir, "GH-900.mdx"),
+    '---\ntitle: GH-900\n---\n<LinkCard title="How to Prepare for Fundamentals Exams" href="/certs/prepare/fundamentals/" description="Guidance."/>\n',
+  );
+  assert.match(
+    await render(),
+    /The course follows the approach of \[How to Prepare for Fundamentals Exams\]\(\/certs\/prepare\/fundamentals\/\)/,
+  );
+});
+
 test("render refuses a course file with errors and writes nothing", async () => {
   const { course } = exampleCourse();
   course.domains[0].groups[0].tasks[0].picks[0].decision = {
