@@ -21,6 +21,7 @@ For every exam page there is a page `/certs/changelog/<code>/` (for example `/ce
 | Which exam replaced which, and how their areas changed (judged by hand)                | `src/utils/guide-changes/compare.mjs` (pairs), `compare-areas.mjs` (areas), `compare-groups.mjs` (groups)                                                                                                                                                                                                                         |
 | Where every skill of an old guide went in its replacement (matched by hand)            | `src/utils/guide-changes/compare-tasks.mjs` (the reviews), `task-review.mjs` (applies a review to the diff)                                                                                                                                                                                                                       |
 | The 30-day window and the banner sentences (pure, shared by the build and the browser) | `src/utils/guide-change-date.mjs`                                                                                                                                                                                                                                                                                                 |
+| Selected study-guide notices shown with Changes | `src/utils/guide-changes/notes.mjs`                                                                                                                                                                                                                                                                                                 |
 | Loading the history files in Astro                                                     | `src/utils/guide-changes/load.mjs` (`import.meta.glob`, so Vite only: scripts and tests import the other modules)                                                                                                                                                                                                                 |
 | The route                                                                              | `src/pages/certs/changelog/[code].astro`                                                                                                                                                                                                                                                                                          |
 | The banner                                                                             | `src/components/docs/GuideChangeBanner.astro`, rendered by `DocsShell.astro`                                                                                                                                                                                                                                                      |
@@ -33,7 +34,7 @@ The [New Exam Monitor](monitors/new-exam-monitor.md) already stores the normaliz
 
 A history file is `{ schemaVersion, code, versions: [{ n, asOf, firstSeen, lines, priorOnPage?, corrections? }] }`:
 
-- `lines` is only the skills part of the guide: the audience profile, skills at a glance, domains, groups and skills. Notices and "Updates to the exam" are left out because the change pages never show them (the monitor still alerts on them through its own hash).
+- `lines` is only the skills part of the guide: the audience profile, skills at a glance, domains, groups and skills. Notices and "Updates to the exam" are not versioned here; selected notices maintained in `src/utils/guide-changes/notes.mjs` appear in the Changes tab as context (the monitor still alerts on guide notice changes through its own hash).
 - `asOf` is the date in the heading of the version ("Skills measured as of October 14, 2026" gives `2026-10-14`), or `null` when the heading states none. About a third of the guides have no date.
 - `firstSeen` is the UTC day the monitor first saw the version.
 - `priorOnPage` is Microsoft's own "Skills measured prior to ..." section, when the page carried one with that version. It has no date of its own.
@@ -65,7 +66,7 @@ When a run accepts a guide silently (`FORCE_GUIDE_BASELINE` or `FORCE_BASELINE`,
 
 ### Tabs
 
-**Changes** is always first and the page's default, even with nothing to show (it then says "No changes recorded"). Then **Current**, **Upcoming** (only when a version dated in the future exists), **Previous** and **History**. An exam whose guide has not been recorded has one Changes tab that says so. Notices are never shown.
+**Changes** is always first and the page's default, even with no skill changes recorded. It can also show a selected, manually maintained study-guide notice for context. Then **Current**, **Upcoming** (only when a version dated in the future exists), **Previous** and **History**. An exam whose guide has not been recorded has one Changes tab that says so; a selected notice can still appear there.
 
 The state of a history on a day (`versionState`):
 

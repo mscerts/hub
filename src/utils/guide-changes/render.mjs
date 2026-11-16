@@ -12,6 +12,7 @@ import {
 } from "./diff.mjs";
 import { dayBefore, prettyDate, summarise, versionState } from "./state.mjs";
 import { applyTaskReview } from "./task-review.mjs";
+import { guideChangeNoteFor } from "./notes.mjs";
 
 export const esc = (text) =>
   String(text)
@@ -1039,6 +1040,7 @@ export function buildChangePage(
           label: "Changes",
           note: "<p><strong>We have not recorded this study guide yet.</strong> The study guides of the exams the hub covers are recorded every day; once this exam's guide has been recorded, what changes in it appears here.</p>",
           html: "<p>Until then, the official guide is linked above.</p>",
+          guideNote: guideChangeNoteFor(code),
         },
       ],
       headings: [],
@@ -1047,7 +1049,12 @@ export function buildChangePage(
   const st = versionState(history, now);
   const tabs = [];
   const changes = changesTab(history, st);
-  tabs.push({ label: "Changes", note: changes.note, html: changes.html });
+  tabs.push({
+    label: "Changes",
+    note: changes.note,
+    html: changes.html,
+    guideNote: guideChangeNoteFor(code),
+  });
   const comparison = compare ? compareTab(compare, now) : null;
   if (comparison) {
     const other = compare.from.some((f) => f.history === history)

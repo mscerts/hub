@@ -449,6 +449,24 @@ test("an exam whose guide has not been recorded says so, on a Changes tab alone"
   assert.match(page.title, /GH-900/);
 });
 
+test("selected study-guide notices appear on Changes tabs, not as skill-history entries", () => {
+  for (const code of ["AB-730", "AB-731"]) {
+    const page = buildChangePage(emptyHistory(code), {
+      now: at("2026-11-10"),
+    });
+    const changes = tab(page, "Changes");
+    assert.match(changes.guideNote, /renamed Microsoft Copilot/);
+    assert.match(changes.guideNote, /Microsoft 365 Copilot remains the license name/);
+  }
+  assert.equal(
+    tab(
+      buildChangePage(emptyHistory("GH-900"), { now: at("2026-11-10") }),
+      "Changes",
+    ).guideNote,
+    null,
+  );
+});
+
 test("one recorded version: Changes first and default, saying nothing has changed, then Current and History", () => {
   const page = buildChangePage(
     historyOf(["2026-10-14", domains(), "2026-10-15"]),

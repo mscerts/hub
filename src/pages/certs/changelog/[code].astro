@@ -83,6 +83,15 @@ const trail = exam
               <Fragment set:html={tab.note} />
             </Aside>
           )}
+          {tab.guideNote && (
+            <Aside type="note">
+              <strong>Study guide notice:</strong> {tab.guideNote} See the{" "}
+              <a href={studyGuide} target="_blank">
+                {code} study guide
+              </a>
+              .
+            </Aside>
+          )}
           <Fragment set:html={tab.html} />
         </TabItem>
       ))}
