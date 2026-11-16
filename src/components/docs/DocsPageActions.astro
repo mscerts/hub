@@ -13,8 +13,13 @@ const encodedUrl = encodeURIComponent(currentUrl);
 const encodedTitle = encodeURIComponent(
   Astro.props.title ?? "Microsoft Certification Hub",
 );
+// A course page can hold two versions of the course while a study guide change is upcoming (docs/course-next.md);
+// its Markdown copy is the course in force, so that is what an assistant is pointed at.
+const promptUrl = currentPath.startsWith("/certs/courses/")
+  ? new URL(`${currentPath}.md`, Astro.url).href
+  : currentUrl;
 const prompt = encodeURIComponent(
-  `Help me understand this page: ${currentUrl}`,
+  `Help me understand this page: ${promptUrl}`,
 );
 
 const aiActions: Action[] = [

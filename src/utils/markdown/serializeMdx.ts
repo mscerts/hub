@@ -3,6 +3,7 @@ import remarkMdx from "remark-mdx";
 import remarkParse from "remark-parse";
 import remarkStringify from "remark-stringify";
 import { visit } from "unist-util-visit";
+import { daysUntil } from "../guide-change-date.mjs";
 
 type MdxAttribute = {
   type: string;
@@ -51,6 +52,14 @@ function childrenOf(node: MdxNode): MdxNode[] {
   return node.children ?? [];
 }
 
+
+/** The text of a node and its children, leaving out the badges of a course page with two versions. */
+function plainText(node: MdxNode): string {
+  if (node.type === "text") return node.value ?? "";
+  if (attributeValue(node, "class")?.split(/\s+/).includes("course-mark")) return "";
+  return childrenOf(node).map(plainText).join("");
+}
+
 export async function serializeMdx(body: string): Promise<string> {
   const processor = unified()
     .use(remarkParse)
@@ -69,6 +78,34 @@ export async function serializeMdx(body: string): Promise<string> {
 
         const name = node.name;
         const children = childrenOf(node);
+
+        // A course page with two versions (docs/course-next.md): the copy is the course in force on the day the
+        // site is built, the upcoming one from its effective day on, without the notes about the marks.
+        if (name === "CourseVersions") {
+          const effective = attributeValue(node, "effective");
+          const wanted = effective && daysUntil(effective) <= 0 ? "upcoming" : "current";
+          const slot = children.find(
+            (child) => child.name === "div" && attributeValue(child, "slot") === wanted,
+          );
+          parent.children?.splice(index, 1, ...(slot ? childrenOf(slot) : []));
+          return index;
+        }
+
+        if (name === "div" && attributeValue(node, "class")?.split(/\s+/).includes("course-legend")) {
+          parent.children?.splice(index, 1);
+          return index;
+        }
+
+        // the plain HTML headings of such a page are headings of the copy
+        const level = name?.match(/^h([1-6])$/)?.[1];
+        if (level) {
+          parent.children?.splice(index, 1, {
+            type: "heading",
+            depth: Number(level),
+            children: [textNode(plainText(node).replace(/\s+/g, " ").trim())],
+          });
+          return index;
+        }
 
         if (name === "Tabs" || name === "CardGrid" || name === "Steps") {
           parent.children?.splice(index, 1, ...children);
