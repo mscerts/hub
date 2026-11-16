@@ -361,7 +361,7 @@ Verify all voucher percentages, codes, limits, deadlines, exclusions, announceme
 - Use `CardGrid` for groups of `LinkCard`s. Empty grids are tolerated on canonical exam tabs but should not be introduced on lab tabs.
 - When adding a new resource `LinkCard` to an existing `CardGrid`, place it last unless it is an official Microsoft resource — a Microsoft resource goes after any other Microsoft resources already in that grid, or first if it would be the only resource in the grid.
 - External `LinkCard` and `LinkButton` targets use `target="_blank"`; internal links generally do not need it.
-- `LinkCard` requires `title` and `href`; `description` is optional and should stay concise. `tone="review"` (orange) is only for the generated review copy of a course page (`docs/courses.md`); never use it on an exam page.
+- `LinkCard` requires `title` and `href`; `description` is optional and should stay concise. `tone="review"` (orange) is only for the generated review copy of a course page (`docs/courses.md`); never use it on an exam page. `change` (`added` or `removed`) with `tag` marks a card that only one version of a course page has while a study guide change is upcoming (green or red, with the tag as text); only the generated page with two versions uses it (`docs/course-next.md`).
 - For new exam tab blocks, prefer two-space increments (`TabItem` 2, `CardGrid` 4, `LinkCard` 6) without reformatting unrelated legacy content.
 
 ### Docs Rendering

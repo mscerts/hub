@@ -28,7 +28,15 @@ import {
 } from "./lib/course-format.mjs";
 import { parseGuide } from "./lib/course-guide.mjs";
 import { AREA_BY_PREFIX } from "./lib/areas.mjs";
-import { numberReview, renderCourse } from "./lib/course-render.mjs";
+import {
+  numberReview,
+  renderCourse,
+  renderCourseVersions,
+} from "./lib/course-render.mjs";
+import { isComplete, versionLabels, versionMarks } from "./lib/course-next.mjs";
+import { NEXT_SUFFIX } from "./lib/course-format.mjs";
+import { findVersion, guideOfVersion } from "./lib/course-version.mjs";
+import { readHistory } from "./lib/guide-history.mjs";
 import { readGuides } from "./course-source.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -100,7 +108,8 @@ function parseArgs(argv) {
   return options;
 }
 
-const isCode = (value) => /^[A-Za-z]{2,3}-\d{3}$/.test(value);
+/** An exam code, or `<CODE>.next` for the upcoming course of the exam. */
+const isCode = (value) => /^[A-Za-z]{2,3}-\d{3}(\.next)?$/i.test(value);
 
 /** The address of the exam's lab page when the hub has one (the course page points there), else null. */
 function labPageOf(code, root) {
@@ -137,6 +146,37 @@ function preparePageOf(examPage) {
 }
 
 /**
+ * The upcoming course of an exam, read for the page: { course, effective } when it is valid against the version of
+ * the guide it names and complete, { reason } when it is not ready to be shown (it still has things to build or
+ * to confirm), and an Error when the file is wrong.
+ */
+function readUpcoming({ file, env, root, code }) {
+  const course = JSON.parse(readFileSync(file, "utf8"));
+  const history = readHistory(
+    env.HISTORY_DIR || join(root, "src", "data_files", "study-guide-history"),
+    code,
+  );
+  const version = findVersion(history, course.inputs?.guideVersion);
+  const result = validateCourse(course, {
+    guide: version ? guideOfVersion(version) : undefined,
+    history,
+    next: true,
+  });
+  if (!result.ok)
+    throw new Error(
+      `the upcoming course has errors, not rendered: ${result.errors.join("; ")}`,
+    );
+  if (!isComplete(course))
+    return {
+      reason:
+        "The upcoming course is not complete yet (node scripts/course-next.mjs status).",
+    };
+  if (!version?.asOf)
+    return { reason: "The upcoming version states no day it counts from." };
+  return { course, effective: version.asOf };
+}
+
+/**
  * The command line, dependencies injectable. Exit code: 0 done, 1 the course file has errors,
  * 2 usage or input problem.
  */
@@ -162,9 +202,10 @@ export async function main(argv, deps = {}) {
         "src",
         "data_files",
         "courses",
-        `${options.target.toUpperCase()}.json`,
+        `${options.target.toUpperCase().replace(NEXT_SUFFIX.toUpperCase(), NEXT_SUFFIX)}.json`,
       )
     : resolve(options.target);
+  const next = file.endsWith(`${NEXT_SUFFIX}.json`);
   let course;
   try {
     course = JSON.parse(readFileSync(file, "utf8"));
@@ -181,17 +222,37 @@ export async function main(argv, deps = {}) {
     return 1;
   }
 
+  // The guide the course follows: the version it names in the history of the guide (the live page may already
+  // carry an upcoming version), else the guide the New Exam Monitor stores.
   let guide = null;
-  try {
-    const stored = readGuides(
-      env.LEARN_EXAMS_FILE ||
-        join(root, "src", "data_files", "learn-exams.json"),
-    ).get(course.code);
-    if (stored) guide = { ...parseGuide(stored.lines), hash: stored.hash };
-  } catch (e) {
-    error(e.message);
-    return 2;
+  let history = null;
+  if (course.inputs?.guideVersion !== undefined) {
+    try {
+      history = readHistory(
+        env.HISTORY_DIR ||
+          join(root, "src", "data_files", "study-guide-history"),
+        course.code,
+      );
+    } catch (e) {
+      error(
+        `The study guide history of ${course.code} cannot be read: ${e.message}`,
+      );
+      return 2;
+    }
+    const version = findVersion(history, course.inputs.guideVersion);
+    if (version) guide = guideOfVersion(version);
   }
+  if (!guide)
+    try {
+      const stored = readGuides(
+        env.LEARN_EXAMS_FILE ||
+          join(root, "src", "data_files", "learn-exams.json"),
+      ).get(course.code);
+      if (stored) guide = { ...parseGuide(stored.lines), hash: stored.hash };
+    } catch (e) {
+      error(e.message);
+      return 2;
+    }
   if (!guide) {
     error(
       `No stored study guide text for ${course.code}: the tree cannot be checked.`,
@@ -223,7 +284,7 @@ export async function main(argv, deps = {}) {
       return 2;
     }
   }
-  const result = validateCourse(course, { guide, isCurrent });
+  const result = validateCourse(course, { guide, isCurrent, history, next });
 
   if (options.command === "validate") {
     const s = result.stats;
@@ -262,13 +323,56 @@ export async function main(argv, deps = {}) {
     }
   }
   const examPage = examPageOf(course.code, root);
-  const page = renderCourse(course, {
+  const around = {
     labPage: labPageOf(course.code, root),
     examPage: examPage?.path ?? null,
     prepare: preparePageOf(examPage),
-    review,
-    only: options.group,
-  });
+  };
+  // While the study guide announces other tasks, the page has a tab for the course in force and one for the
+  // upcoming course (docs/course-next.md): when the upcoming course exists, is valid and is complete.
+  let upcoming = null;
+  const upcomingFile = next
+    ? null
+    : file.replace(/\.json$/, `${NEXT_SUFFIX}.json`);
+  if (
+    upcomingFile &&
+    existsSync(upcomingFile) &&
+    !options.review &&
+    !options.group
+  ) {
+    try {
+      upcoming = readUpcoming({
+        file: upcomingFile,
+        env,
+        root,
+        code: course.code,
+      });
+    } catch (e) {
+      error(`${course.code}: ${e.message}`);
+      return 1;
+    }
+    if (upcoming.reason) {
+      log(
+        `${course.code}: ${upcoming.reason} The page shows the course in force only.`,
+      );
+      upcoming = null;
+    }
+  }
+  let page;
+  if (upcoming) {
+    const marks = versionMarks({ current: course, next: upcoming.course });
+    page = renderCourseVersions(course, upcoming.course, {
+      ...around,
+      marks,
+      effective: upcoming.effective,
+      labels: versionLabels({
+        effective: upcoming.effective,
+        counts: marks.counts,
+      }),
+    });
+  } else {
+    page = renderCourse(course, { ...around, review, only: options.group });
+  }
   if (options.out) {
     mkdirSync(dirname(resolve(options.out)), { recursive: true });
     writeFileSync(resolve(options.out), page);

@@ -56,20 +56,27 @@ export function reviewLabel(reasons) {
   return [...new Set(parts)].join(" · ");
 }
 
-function card(pick, indent, mark) {
+function card(pick, indent, mark, change = null) {
   const base = `${indent}<LinkCard title="${attr(pick.title)}" href="${learnHref(pick.target.path)}" target="_blank"`;
-  if (!mark) return `${base}/>`;
+  // a card that only one of the two versions of a course has (docs/course-next.md), said in words as well
+  const changed = change
+    ? ` change="${change.change}" tag="${attr(change.tag)}"`
+    : "";
+  if (!mark) return `${base}${changed}/>`;
   const text = `#${mark.n} ${reviewLabel(mark.reasons)}. ${mark.why}`;
   return `${base} tone="review" description="${attr(text)}"/>`;
 }
 
-/** The tab of a task. `markOf(pick)` returns the numbered review mark of a pick, or null. */
-function tab(label, picks, markOf) {
+/**
+ * The tab of a task. `markOf(pick)` returns the numbered review mark of a pick, or null; `changeOf(pick)` the
+ * { change, tag } of a card that only one version of the course has, or null.
+ */
+function tab(label, picks, markOf, changeOf = () => null) {
   if (picks.length === 0) return [];
   return [
     `  <TabItem label="${label}">`,
     "    <CardGrid>",
-    ...picks.map((p) => card(p, "      ", markOf(p))),
+    ...picks.map((p) => card(p, "      ", markOf(p), changeOf(p))),
     "    </CardGrid>",
     "  </TabItem>",
   ];
@@ -208,12 +215,12 @@ function overlapNote(task, shown) {
  * (the concept is the title, the resource its description), then the concepts that have no resource as a list.
  * A page of Learn gets the tracking parameter; a page of another site is linked as it is.
  */
-function audienceSection(audience, { review }) {
-  const out = ["## Audience profile", ""];
+function audienceSection(audience, { review, headings = markdownHeadings }) {
+  const out = [headings.h(2, "Audience profile"), ""];
   for (const paragraph of audience.intro) out.push(plain(paragraph), "");
   let open = 0;
   for (const list of audience.lists) {
-    if (list.lead) out.push(`### ${plain(list.lead)}`, "");
+    if (list.lead) out.push(headings.h(3, list.lead), "");
     if (list.kind !== "prerequisite") {
       out.push(...list.items.map((i) => `- ${plain(i.text)}`), "");
       continue;
@@ -282,6 +289,171 @@ function introGuidance(code, { examPage, prepare }) {
   return sentences.length ? ["", sentences.join(" ")] : [];
 }
 
+/** An HTML-escaped text. */
+const esc = (text) =>
+  String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
+/** How headings are written: markdown (the page's own table of contents lists them) or plain HTML with ids. */
+const markdownHeadings = {
+  h: (level, raw, _task = null, suffix = "") =>
+    `${"#".repeat(level)} ${plain(raw)}${suffix}`,
+};
+
+/** The texts of the headings of a course, in the order the page writes them (the html mode gives each an id). */
+function headingTexts(course, only) {
+  const list = [];
+  if (course.audience) {
+    list.push({ text: "Audience profile" });
+    for (const l of course.audience.lists)
+      if (l.lead) list.push({ text: l.lead });
+  }
+  for (const domain of course.domains) {
+    const groups = domain.groups.filter((g) => shownGroup(g, only));
+    if (groups.length === 0) continue;
+    list.push({ text: `${domain.title}${weightText(domain.weight)}` });
+    for (const group of groups) {
+      list.push({ text: group.title });
+      if (foundationsOf(group)) list.push({ text: "Fundamentals" });
+      for (const task of group.tasks)
+        list.push({ text: task.text, key: task.key });
+    }
+  }
+  return list;
+}
+
+/**
+ * Plain HTML headings with ids that start with `prefix`, for a version of a course inside a tab: a heading of
+ * the page's markdown would be listed in "On this page" once for every version. The ids follow GitHub's rule, so
+ * the links between the tasks of one version keep working; `tasks` has the shape headingIds returns.
+ */
+function htmlHeadings(course, only, prefix, taskHeading) {
+  const seen = new Map();
+  const texts = headingTexts(course, only);
+  const ids = texts.map(({ text }) => {
+    const base = squish(text)
+      .toLowerCase()
+      .replace(/[^\p{L}\p{M}\p{N}\p{Pc}\- ]/gu, "")
+      .replace(/ /g, "-");
+    const n = seen.get(base) ?? 0;
+    seen.set(base, n + 1);
+    return `${prefix}${n === 0 ? base : `${base}-${n}`}`;
+  });
+  const tasks = new Map();
+  const groupOf = new Map();
+  for (const domain of course.domains)
+    for (const group of domain.groups)
+      for (const task of group.tasks) groupOf.set(task.key, group.title);
+  texts.forEach((t, i) => {
+    if (t.key)
+      tasks.set(t.key, {
+        id: ids[i],
+        text: t.text,
+        group: groupOf.get(t.key),
+      });
+  });
+  let at = 0;
+  return {
+    tasks,
+    h(level, raw, task = null, suffix = "") {
+      const id = ids[at++];
+      const inner = task && taskHeading ? taskHeading(task) : null;
+      return `<h${level} id="${id}">${inner ?? esc(`${squish(raw)}${suffix}`)}</h${level}>`;
+    },
+  };
+}
+
+/**
+ * The lines of a course page after its opening note: the audience profile, then every domain, skill group and
+ * task with its picks. `headings` writes the headings; `changeOf(task, pick)` says of a card that only one
+ * version of the course has so (docs/course-next.md).
+ */
+function courseBody(
+  course,
+  {
+    review = null,
+    only = null,
+    headings = markdownHeadings,
+    shown = null,
+    changeOf = null,
+    marks = new Map(),
+  },
+) {
+  const taskIds = shown ?? headingIds(course, only);
+  const out = [];
+  if (course.audience)
+    out.push(
+      ...audienceSection(course.audience, {
+        review: Boolean(review),
+        headings,
+      }),
+    );
+  for (const domain of course.domains) {
+    const groups = domain.groups.filter((g) => shownGroup(g, only));
+    if (groups.length === 0) continue;
+    out.push(headings.h(2, domain.title, null, weightText(domain.weight)), "");
+    for (const group of groups) {
+      out.push(headings.h(3, group.title), "");
+      const foundations = foundationsOf(group);
+      if (foundations) {
+        const markOf = (pick) =>
+          marks.get(`${foundations.key}|${pick.target.path}`) ?? null;
+        out.push(
+          headings.h(4, "Fundamentals"),
+          "",
+          "The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.",
+          "",
+          "<Tabs>",
+          ...tab("Learning", foundations.learning, markOf),
+          ...tab("Documentation", foundations.docs, markOf),
+          "</Tabs>",
+          "",
+        );
+      }
+      for (const task of group.tasks) {
+        out.push(headings.h(4, task.text, task), "");
+        const { learning, docs } = shownPicks(task);
+        const markOf = (pick) =>
+          marks.get(`${task.key}|${pick.target.path}`) ?? null;
+        const change = (pick) => (changeOf ? changeOf(task, pick) : null);
+        const tabs = [
+          ...tab("Learning", learning, markOf, change),
+          ...tab("Documentation", docs, markOf, change),
+        ];
+        const overlap = overlapNote(task, taskIds);
+        if (tabs.length === 0 && overlap.length) out.push(...overlap);
+        else if (tabs.length === 0)
+          out.push(
+            ":::note",
+            "No Learn module or documentation page covers this task yet.",
+            ":::",
+            "",
+          );
+        else out.push(...overlap, "<Tabs>", ...tabs, "</Tabs>", "");
+      }
+    }
+  }
+  return out;
+}
+
+/** The opening note of a course page: what the course is, and how it fits the hub's preparation guidance. */
+function introNote(
+  course,
+  { labPage, examPage, prepare, version, hasFoundations },
+) {
+  const guideUrl = `https://learn.microsoft.com/credentials/certifications/resources/study-guides/${course.code.toLowerCase()}${TRACKING}`;
+  return [
+    ":::note",
+    `This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official ${course.code} study guide](${guideUrl})${version}. Each task of the guide links to the Microsoft Learn training and the documentation that cover it.${hasFoundations ? " Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks." : ""} Exercises, guided projects, tutorials and quickstarts are on ${labPage ? `the [${course.code} labs page](${labPage})` : "the lab page"}, not here.`,
+    ...introGuidance(course.code, { examPage, prepare }),
+    ":::",
+    "",
+  ];
+}
+
 export function renderCourse(
   course,
   {
@@ -292,7 +464,6 @@ export function renderCourse(
     prepare = null,
   } = {},
 ) {
-  const guideUrl = `https://learn.microsoft.com/credentials/certifications/resources/study-guides/${course.code.toLowerCase()}${TRACKING}`;
   const version = course.inputs?.guideAsOf
     ? ` (${plain(course.inputs.guideAsOf)} version)`
     : "";
@@ -302,7 +473,6 @@ export function renderCourse(
       m,
     ]),
   );
-  const shown = headingIds(course, only);
   const hasFoundations = course.domains.some((d) =>
     (d.groups ?? []).some((g) => g.foundations?.length),
   );
@@ -319,11 +489,13 @@ export function renderCourse(
     "---",
     "import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';",
     "",
-    ":::note",
-    `This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official ${course.code} study guide](${guideUrl})${version}. Each task of the guide links to the Microsoft Learn training and the documentation that cover it.${hasFoundations ? " Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks." : ""} Exercises, guided projects, tutorials and quickstarts are on ${labPage ? `the [${course.code} labs page](${labPage})` : "the lab page"}, not here.`,
-    ...introGuidance(course.code, { examPage, prepare }),
-    ":::",
-    "",
+    ...introNote(course, {
+      labPage,
+      examPage,
+      prepare,
+      version,
+      hasFoundations,
+    }),
   ];
   if (only)
     out.push(
@@ -339,51 +511,110 @@ export function renderCourse(
       ":::",
       "",
     );
-  if (course.audience)
-    out.push(...audienceSection(course.audience, { review: Boolean(review) }));
-  for (const domain of course.domains) {
-    const groups = domain.groups.filter((g) => shownGroup(g, only));
-    if (groups.length === 0) continue;
-    out.push(`## ${plain(domain.title)}${weightText(domain.weight)}`, "");
-    for (const group of groups) {
-      out.push(`### ${plain(group.title)}`, "");
-      const foundations = foundationsOf(group);
-      if (foundations) {
-        const markOf = (pick) =>
-          marks.get(`${foundations.key}|${pick.target.path}`) ?? null;
-        out.push(
-          "#### Fundamentals",
-          "",
-          "The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.",
-          "",
-          "<Tabs>",
-          ...tab("Learning", foundations.learning, markOf),
-          ...tab("Documentation", foundations.docs, markOf),
-          "</Tabs>",
-          "",
-        );
-      }
-      for (const task of group.tasks) {
-        out.push(`#### ${plain(task.text)}`, "");
-        const { learning, docs } = shownPicks(task);
-        const markOf = (pick) =>
-          marks.get(`${task.key}|${pick.target.path}`) ?? null;
-        const tabs = [
-          ...tab("Learning", learning, markOf),
-          ...tab("Documentation", docs, markOf),
-        ];
-        const overlap = overlapNote(task, shown);
-        if (tabs.length === 0 && overlap.length) out.push(...overlap);
-        else if (tabs.length === 0)
-          out.push(
-            ":::note",
-            "No Learn module or documentation page covers this task yet.",
-            ":::",
-            "",
-          );
-        else out.push(...overlap, "<Tabs>", ...tabs, "</Tabs>", "");
-      }
-    }
+  out.push(...courseBody(course, { review, only, marks }));
+  return `${out.join("\n").replace(/\n+$/, "")}\n`;
+}
+
+/** The markup of a marked task heading: its words, then a badge that says it in words (colour is never the only cue). */
+function taskMarkup(kind, text, labels) {
+  const badge = (cls, label) =>
+    ` <span class="course-mark course-mark--${cls}">${esc(label)}</span>`;
+  switch (kind) {
+    case "new":
+      return `<ins class="course-ins">${esc(text)}</ins>${badge("added", labels.added)}`;
+    case "reworded-upcoming":
+      return `<ins class="course-ins">${esc(text)}</ins>${badge("added", labels.reworded)}`;
+    case "reworded-current":
+      return `${esc(text)}${badge("neutral", labels.rewordedCurrent)}`;
+    case "leaves":
+      return `<span class="course-leaves">${esc(text)}</span>${badge("removed", labels.leaves)}`;
+    default:
+      return null;
   }
+}
+
+/**
+ * The page of a course while the study guide announces other tasks: the course in force and the upcoming course,
+ * a tab each (docs/course-next.md). `marks` is versionMarks of the two (scripts/lib/course-next.mjs);
+ * `effective` is the day the upcoming skills count from (YYYY-MM-DD); `labels` holds the words of the two tabs
+ * and of the marks, written by the caller from the day (see versionLabels in scripts/lib/course-next.mjs).
+ * The headings are plain HTML (see htmlHeadings) and every mark says what differs in words as well as colour.
+ */
+export function renderCourseVersions(
+  current,
+  next,
+  { marks, effective, labels, labPage = null, examPage = null, prepare = null },
+) {
+  const version = next.inputs?.guideAsOf
+    ? ` (${plain(next.inputs.guideAsOf)} version)`
+    : "";
+  const hasFoundations = [current, next].some((c) =>
+    c.domains.some((d) => (d.groups ?? []).some((g) => g.foundations?.length)),
+  );
+  const side = (course, prefix, taskMarks, cardMarks) => {
+    const headings = htmlHeadings(course, null, prefix, (task) => {
+      const kind = taskMarks.get(task.key);
+      return kind ? taskMarkup(kind, task.text, labels) : null;
+    });
+    return courseBody(course, {
+      headings,
+      shown: headings.tasks,
+      changeOf: (task, pick) => {
+        const kind = cardMarks.get(`${task.key}|${pick.target.path}`);
+        return kind
+          ? {
+              change: kind,
+              tag: kind === "added" ? labels.cardAdded : labels.cardRemoved,
+            }
+          : null;
+      },
+    });
+  };
+  // the notes are wrapped so that they disappear on the effective day (CourseVersions.astro)
+  const note = (text) => [
+    '<div class="course-legend">',
+    "",
+    ":::note",
+    text,
+    ":::",
+    "",
+    "</div>",
+    "",
+  ];
+  const out = [
+    "---",
+    `title: ${next.code} Study Guide Course`,
+    `description: "${attr(fullDescription(next))}"`,
+    "---",
+    "import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';",
+    "import CourseVersions from '@components/CourseVersions.astro';",
+    "",
+    ...introNote(next, { labPage, examPage, prepare, version, hasFoundations }),
+    `<CourseVersions effective="${effective}" currentLabel="${attr(labels.current)}" upcomingLabel="${attr(labels.upcoming)}">`,
+    "",
+    '<div slot="intro">',
+    "",
+    ":::caution",
+    labels.intro,
+    ":::",
+    "",
+    "</div>",
+    "",
+    '<div slot="current">',
+    "",
+    ...note(labels.currentLegend),
+    ...side(current, "current-", marks.current.task, marks.current.card),
+    "",
+    "</div>",
+    "",
+    '<div slot="upcoming">',
+    "",
+    ...note(marks.largely ? labels.rewritten : labels.upcomingLegend),
+    ...side(next, "upcoming-", marks.upcoming.task, marks.upcoming.card),
+    "",
+    "</div>",
+    "",
+    "</CourseVersions>",
+  ];
   return `${out.join("\n").replace(/\n+$/, "")}\n`;
 }

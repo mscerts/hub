@@ -11,12 +11,18 @@ interface Props extends HTMLAttributes<"a"> {
   href: string;
   /** "review" marks a pick the course builder wants the maintainer to look at (orange); only generated review copies use it. */
   tone?: "review";
+  /** On a course page with two versions: "added" is a card only the upcoming course has, "removed" one only the course in force has. */
+  change?: "added" | "removed";
+  /** The short text that says it ("New from November 30, 2026"); shown with `change`, as text so colour is never the only cue. */
+  tag?: string;
 }
 const {
   title,
   description,
   href,
   tone,
+  change,
+  tag,
   target,
   rel,
   class: className,
@@ -50,6 +56,7 @@ const cardIcon = isExternal
   href={href}
   target={resolvedTarget}
   rel={resolvedRel}
+  data-change={change}
   class:list={[
     "docs-link-card group not-prose hover:shadow-default flex items-center justify-between gap-3 sm:gap-4 rounded-xl border p-4 sm:p-5 text-inherit no-underline shadow-sm transition hover:-translate-y-0.5",
     tone === "review"
@@ -82,6 +89,11 @@ const cardIcon = isExternal
       <span class="text-card-foreground group-hover:text-primary block text-base leading-snug font-semibold transition-colors">
         {title}
       </span>
+      {change && tag && (
+        <span class="docs-link-card__tag mt-1 inline-block rounded-md border px-2 py-0.5 text-xs font-semibold">
+          {tag}
+        </span>
+      )}
       {description && (
         <span
           class:list={[
