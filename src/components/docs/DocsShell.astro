@@ -18,7 +18,11 @@ interface Props {
   prev?: string | boolean;
   next?: string | boolean;
   archiveNotice?: "retired-exam" | "expired-offer" | "historical";
-  guideChange?: { href: string; state: Record<string, any> | null };
+  guideChange?: {
+    href: string;
+    state: Record<string, any> | null;
+    courseHref?: string;
+  };
   /** Replaces the last breadcrumb item with a trail (for example exam page, then the change page). */
   trail?: { label: string; href?: string }[];
 }
@@ -144,6 +148,7 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
               dateNote={guideChange.state.dateNote}
               summary={guideChange.state.summary}
               href={guideChange.href}
+              courseHref={guideChange.courseHref}
             />
           )}
           {archiveNotice && (

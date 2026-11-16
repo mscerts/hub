@@ -17,6 +17,8 @@ interface Props {
   dateNote?: string;
   summary: string;
   href: string;
+  /** The upcoming tab of the exam's course page, while a complete upcoming course exists. */
+  courseHref?: string;
 }
 
 const {
@@ -28,6 +30,7 @@ const {
   dateNote,
   summary,
   href,
+  courseHref,
 } = Astro.props;
 
 const MONTHS = [
@@ -80,6 +83,17 @@ const when = guideChangeSentence(
   >
     See what changed
   </a>
+  {
+    courseHref && (
+      <a
+        href={courseHref}
+        data-guide-change-course
+        class="mt-2 block w-fit font-semibold text-blue-800 underline underline-offset-2 hover:text-blue-950 dark:text-blue-300 dark:hover:text-blue-100"
+      >
+        See the course for the upcoming skills
+      </a>
+    )
+  }
 </div>
 
 <script>
@@ -100,6 +114,11 @@ const when = guideChangeSentence(
       banner.hidden = true;
     } else {
       const word = when.kind === "upcoming" ? "UPCOMING" : "RECENT";
+      // the upcoming tab of the course page exists only until the change takes effect
+      const course = banner.querySelector<HTMLElement>(
+        "[data-guide-change-course]",
+      );
+      if (course) course.hidden = when.kind !== "upcoming";
       banner.dataset.guideChange = when.kind;
       const label = banner.querySelector("[data-guide-change-label]");
       if (label) label.textContent = `STUDY GUIDE CHANGE · ${word}`;
