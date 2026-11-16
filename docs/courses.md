@@ -100,6 +100,7 @@ A module is not split into its units across the page (maintainer, 2026-10-21; th
   "inputs": {
     "guideHash": "<hash of the guide text>",
     "guideAsOf": "April 17, 2026",
+    "guideVersion": { "n": 1, "asOf": "2026-04-17", "firstSeen": "2026-10-15" },
     "builtAt": "2026-10-17",
     "scopeFingerprint": "<40 hex, computed from scope>",
     "scope": {
@@ -229,7 +230,12 @@ node scripts/course-file.mjs validate AZ-104 --live
 node scripts/course-file.mjs render AZ-104 --out src/content/docs/courses/az-104.mdx
 node scripts/course-source.mjs AZ-104 --check src/content/docs/courses/az-104.mdx
 node scripts/course-status.mjs AZ-104                   # is the course still right? (--all, --urls, --json)
+node scripts/course-versions-backfill.mjs               # names the guide version of every course (--write)
+node scripts/course-next.mjs build AZ-104               # the upcoming course, carried forward (course-next.md)
+node scripts/course-promote.mjs AZ-104                  # on the day: the upcoming course takes over (--write)
 ```
+
+`inputs.guideVersion` (`{ n, asOf, firstSeen }`) names the version of the study guide the course follows, as in the guide's history (`src/data_files/study-guide-history/<CODE>.json`), so a course is checked against that version and not against the live page, which may already carry an upcoming one. While a change of tasks is upcoming, a second file per exam, `<CODE>.next.json`, holds the course for the new version: how it is made, shown and taken over is in [course-next.md](course-next.md).
 
 Exit codes: 0 done, 1 the course file has errors, 2 an input problem (no such file, no stored guide, no learnsync checkout).
 
