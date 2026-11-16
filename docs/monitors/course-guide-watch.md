@@ -30,6 +30,21 @@ A history file holds every version of a guide with the day it says its skills ar
 
 The day a change counts from is the date the version states. For a version without a date, or dated before the version it replaced, it is the day the hub first saw it, and the issue says so (the same rule as the Study Guide Changes pages).
 
+## The upcoming course
+
+An exam may have an upcoming course beside its course in force: `src/data_files/courses/<CODE>.next.json` ([course-next.md](../course-next.md)). The watch reads it with the course (a file that is not a course of that exam, or cannot be read, stops the run like any other file) and says where it stands against the version it is for:
+
+| The upcoming course | State | What the issue asks for |
+| --- | --- | --- |
+| does not exist | the course carries forward to the upcoming version when the change is an update, `major` lists the reasons when it is a rewrite | update: `node scripts/course-next.mjs build <CODE>`, then the pipeline for the tasks to build and `merge`; rewrite: the whole pipeline, its result moved to `<CODE>.next.json` |
+| has the tasks of the version, with `pending` | `pending` | what is left: tasks to build, reworded tasks to confirm, groups without fundamentals |
+| has other tasks than the version | `stale` | what the guide has that the file lacks (and the other way round); `course-next.mjs build <CODE> --write --force` carries the course forward again |
+| has the tasks of the version, nothing pending | `ready` | nothing: the status is `next-ready` and an open issue **closes** with a comment that the upcoming course is complete (the page shows both versions until the day) |
+
+When the day has come and the course in force is behind, an upcoming course that is `ready` makes the status `promote`: the issue asks only for the upcoming course to take over the course file (it points at `node scripts/course-promote.mjs <CODE>`, [course-next.md](../course-next.md)). With an upcoming course that is not ready, `changed` is the same as without one, with a line that says so.
+
+The state of the upcoming course is part of the issue's fingerprint, so the text is rewritten when it changes (the file was built, a task was merged, the guide changed again).
+
 ## The issue
 
 Title `Course <CODE>: the study guide's skills changed`, label `courses` (created when the repository lacks it), no assignee. One issue per exam; the title never changes, so the same issue is kept from the announcement to the day the course is updated.
@@ -70,16 +85,25 @@ Without `CREATE_ISSUES=1` nothing on GitHub is touched. After the workflow is on
 
 ## Working an issue
 
+**An upcoming change** ([course-next.md](../course-next.md)): the course in force stays as it is until the day, and the upcoming course is built beside it.
+
+1. `node scripts/course-next.mjs build <CODE>` prints what carries over, what is reworded and what has to be built, and writes nothing; `--write` writes `<CODE>.next.json`. A rewrite is refused with its reasons: build it with the whole pipeline of [course-build.md](../course-build.md) and move the result to `<CODE>.next.json`.
+2. For the tasks and groups the issue lists as to be built, run the chain of [course-playbook.md](../course-playbook.md) from the upcoming version, then `node scripts/course-next.mjs merge <CODE> --from <the built course>`.
+3. `confirm <CODE> --all` (or a task key) for the reworded tasks whose carried picks still fit, `reject <CODE> <task key>` for those that do not.
+4. `node scripts/course-next.mjs status <CODE>`, `node scripts/course-file.mjs validate <CODE>.next --live`, then `render <CODE> --out <page>`: once the upcoming course is complete the page has a tab for each version and shows only the new one from the effective day by itself. The issue closes at the first run after the upcoming course is complete.
+5. Nothing is merged on the day. When it comes the issue returns as "promote": the upcoming course takes over the course file: `node scripts/course-promote.mjs <CODE>` says what it would do and `--write` does it (the course file, the decision list, the page); then `validate` and commit.
+
+**A change that is already in effect** (no upcoming course in the picture): the course is rebuilt.
+
 1. `node scripts/course-status.mjs <CODE>` prints the same plan with what Learn changed for the picks since the course was built.
 2. Run the chain of [course-playbook.md](../course-playbook.md) for the exam: candidates, judging, gates. The remembered decisions (`src/data_files/course-decisions/<CODE>.json`) apply themselves to every task whose key is unchanged, the hand-placed picks and pointer notes included ([course-gates.md](../course-gates.md), "Pages added by hand, and pages placed by hand").
 3. A decision is remembered per task key, and a reworded or moved task has a new key. For each task the issue lists as reworded or moved, copy the decisions that should carry over to the new key in the decisions file and leave out what no longer fits. Nothing does this by itself.
-4. `node scripts/course-build.mjs <CODE>`, move the result to `src/data_files/courses/<CODE>.json`, then `node scripts/course-file.mjs validate <CODE> --live` and `render`.
-5. **An upcoming change waits for its day.** Until then the page must follow what the exam measures, so the new version is prepared on a branch and merged on that day; the issue is rewritten on that day ("in effect since"), which is the reminder. A change that is already in effect is merged as soon as it is ready.
-6. The issue closes itself at the first run after the course has the tasks of the newest version.
+4. `node scripts/course-build.mjs <CODE>`, move the result to `src/data_files/courses/<CODE>.json`, then `node scripts/course-file.mjs validate <CODE> --live` and `render`. Merge it as soon as it is ready: the page is behind the exam.
+5. The issue closes itself at the first run after the course has the tasks of the newest version.
 
 ## Not covered
 
-- **Two versions on one course page.** While a change is upcoming, the page shows the course for the skills measured today and nothing of what comes; the Study Guide Changes page and the banner on the exam page are what tell a visitor. A course page with a tab for the current skills and a tab for the upcoming ones needs a second course file per exam and changes to the validator, the builder and the renderer; it is not built.
+- **Two versions on one course page.** The second course file (`<CODE>.next.json`), the tool that carries a course forward to it, the page with a tab for each version and this watch's part in it exist ([course-next.md](../course-next.md)). The promote script (`scripts/course-promote.mjs`) is built too.
 - **What Learn changed.** A module a pick relies on that changed, left the official course or moved is the other half of the rebuild check (`course-status.mjs`: `review`, and `stale` for a pick that has to be replaced). It needs learnsync's data and Learn's catalog API, which this watch does not read.
 - **Exams without a course.** An exam whose guide changes and that has no course file is the New Exam Monitor's business alone.
 - **Not in the Tests Review Reminder's table.** `MONITORS` in `scripts/tests-review-reminder.mjs` lists the monitors that must have raised a real alert before their tests are offered for removal; this one is not on it, so it neither delays that reminder nor is covered by it.

@@ -17,6 +17,8 @@ import {
   buildReport,
   checkCourse,
   describe,
+  needsIssue,
+  nextStateFor,
   fingerprintIn,
   fingerprintOf,
   issueTitle,
@@ -28,6 +30,7 @@ import {
   whenSentence,
 } from "../../scripts/course-guide-watch.mjs";
 import { parseGuide } from "../../scripts/lib/course-guide.mjs";
+import { buildNext, mergeBuilt } from "../../scripts/lib/course-next.mjs";
 import { domains, guide } from "../fixtures/study-guide-changes/guides.mjs";
 
 const root = resolve(import.meta.dirname, "../..");
@@ -142,8 +145,8 @@ function memoryGh(seed = []) {
 }
 
 /** Plan and carry out the issue step of one course, as main does. */
-function sync(gh, course, hist, now = NOW, today = TODAY) {
-  const result = checkCourse({ course, history: hist, now });
+function sync(gh, course, hist, now = NOW, today = TODAY, next = null) {
+  const result = checkCourse({ course, history: hist, now, next });
   const step = planIssue({
     gh,
     result,
@@ -228,7 +231,7 @@ test("a version dated ahead with other tasks is an upcoming change: what is meas
   assert.equal(result.staying, 9);
   assert.match(
     describe(result),
-    /^DP-700: the skills change on January 15, 2027: 1 new, 1 gone, 1 reworded, 1 moved$/,
+    /^DP-700: the skills change on January 15, 2027: 1 new, 1 gone, 1 reworded, 1 moved; no upcoming course yet$/,
   );
 });
 
@@ -348,8 +351,14 @@ test("the issue says when the new skills count, what changes task by task with t
     /- Monitor semantic model refresh: from _Monitor Fabric items_ to _Implement lifecycle management_/,
   );
   assert.match(report, /node scripts\/course-status\.mjs DP-700/);
-  assert.match(report, /course-decisions\/DP-700\.json/);
-  assert.match(report, /Do not replace the page before January 15, 2027/);
+  // no upcoming course yet: it is carried forward, and nothing is merged on the day
+  assert.match(report, /node scripts\/course-next\.mjs build DP-700/);
+  assert.match(
+    report,
+    /shows only the new one from January 15, 2027, by itself/,
+  );
+  assert.match(report, /There is no upcoming course yet/);
+  assert.doesNotMatch(report, /Do not replace the page/);
   assert.match(
     report,
     /Run: https:\/\/github\.com\/mscerts\/hub\/actions\/runs\/42$/,
@@ -366,6 +375,8 @@ test("the issue says when the new skills count, what changes task by task with t
   });
   const lateReport = buildReport({ result: late, course });
   assert.match(lateReport, /Merge it as soon as it is ready/);
+  // the rebuild route remembers decisions per task key
+  assert.match(lateReport, /course-decisions\/DP-700\.json/);
   assert.doesNotMatch(lateReport, /Do not replace the page/);
   assert.notEqual(fingerprintIn(lateReport), fingerprintIn(report));
 });
@@ -658,4 +669,241 @@ test("the repository's own courses can be checked: every one is read and none is
     result.results.filter((r) => r.status === "unknown").map((r) => r.code),
     [],
   );
+});
+
+// ---------------------------------------------------------------------------------------------------
+// The upcoming course (docs/course-next.md)
+
+const futureHistory = () =>
+  history(
+    version(V1, "2026-06-01", "2026-06-02"),
+    version(v2("2027-01-15"), "2027-01-15", "2026-11-10"),
+  );
+
+/** The upcoming course of the fixture exam, carried forward from the course in force. */
+function upcomingCourse(hist = futureHistory()) {
+  const target = hist.versions.at(-1);
+  const built = buildNext({
+    course: courseOf(V1),
+    guide: parseGuide(target.lines),
+    version: target,
+    today: "2026-11-16",
+  });
+  assert.equal(built.ok, true);
+  return built.next;
+}
+
+/** The same course with what was left to build built: nothing is left to confirm either. */
+function completed(next) {
+  return mergeBuilt(structuredClone(next), structuredClone(next)).next;
+}
+
+/** The guide of the fixture exam after Microsoft changed it a second time: another task in the first group. */
+const thirdVersion = () =>
+  version(
+    guide({
+      asOf: "2027-01-15",
+      domains: domains((d) => {
+        d[0].groups[0].tasks.push(
+          "Configure data workflow workspace settings",
+          "Configure a task that came later",
+        );
+      }),
+    }),
+    "2027-01-15",
+    "2026-11-12",
+  );
+
+test("the upcoming course has three states against the guide: pending, ready and stale, and no file is not one of them", () => {
+  const hist = futureHistory();
+  const course = courseOf(V1);
+  const upcoming = versionsFor({ history: hist, now: NOW }).upcoming;
+  assert.deepEqual(nextStateFor({ next: null, version: upcoming, course }), {
+    exists: false,
+    major: null,
+  });
+
+  const next = upcomingCourse(hist);
+  const pending = nextStateFor({ next, version: upcoming, course });
+  assert.equal(pending.state, "pending");
+  assert.equal(pending.pending.added.length, 1);
+  assert.equal(pending.builtFor.n, 2);
+  assert.equal(
+    nextStateFor({ next: completed(next), version: upcoming, course }).state,
+    "ready",
+  );
+
+  // Microsoft changes the guide again: the file has other tasks than the newest version
+  const later = history(
+    version(V1, "2026-06-01", "2026-06-02"),
+    version(v2("2027-01-15"), "2027-01-15", "2026-11-10"),
+    thirdVersion(),
+  );
+  const newer = versionsFor({ history: later, now: NOW }).upcoming;
+  const stale = nextStateFor({ next, version: newer, course });
+  assert.equal(stale.state, "stale");
+  assert.ok(stale.plan.added.length > 0);
+});
+
+test("an upcoming course that is not complete: the issue lists what is left, and the steps carry the course forward", () => {
+  const course = courseOf(V1);
+  const next = upcomingCourse();
+  const result = checkCourse({
+    course,
+    history: futureHistory(),
+    now: NOW,
+    next,
+  });
+  assert.equal(result.status, "upcoming");
+  assert.equal(needsIssue(result), true);
+  const report = buildReport({ result, course, runUrl: RUN });
+  assert.match(
+    report,
+    /The upcoming course \(`src\/data_files\/courses\/DP-700\.next\.json`\) for version 2 of the guide has the tasks of this version, but it is not complete/,
+  );
+  assert.match(
+    report,
+    /\*\*Tasks still to be built \(they have no picks yet\)\*\*/,
+  );
+  assert.match(report, /configure-data-workflow-workspace-settings/);
+  assert.match(report, /node scripts\/course-next\.mjs status DP-700/);
+  assert.match(report, /course-next\.mjs merge DP-700 --from/);
+  assert.equal(fingerprintIn(report), fingerprintOf(result));
+  assert.match(describe(result), /; upcoming course: pending$/);
+  // the state is part of what the issue says: another state, another fingerprint
+  const without = checkCourse({ course, history: futureHistory(), now: NOW });
+  assert.notEqual(fingerprintOf(without), fingerprintOf(result));
+});
+
+test("a complete upcoming course closes the issue until the day, and the day asks only for the take-over", () => {
+  const { gh, issues } = memoryGh();
+  const course = courseOf(V1);
+  const hist = futureHistory();
+  // no upcoming course yet: an issue is created
+  assert.equal(sync(gh, course, hist).outcome.action, "created");
+  // the upcoming course is built and merged: the issue closes with its own comment
+  const ready = completed(upcomingCourse(hist));
+  const closed = sync(gh, course, hist, NOW, TODAY, ready);
+  assert.equal(closed.result.status, "next-ready");
+  assert.equal(closed.outcome.action, "closed");
+  assert.equal(issues[0].state, "closed");
+  assert.match(
+    issues[0].comments.at(-1),
+    /upcoming course is complete as of .*January 15, 2027/s,
+  );
+  assert.match(
+    describe(closed.result),
+    /the skills change on January 15, 2027: .*; upcoming course: ready$/,
+  );
+  // nothing happens on the days after
+  assert.equal(
+    sync(gh, course, hist, NOW, TODAY, ready).outcome.action,
+    "none",
+  );
+  // the day comes: the course in force is behind and the upcoming course only has to take over
+  const day = new Date("2027-01-15T12:00:00Z");
+  const promote = sync(gh, course, hist, day, "2027-01-15", ready);
+  assert.equal(promote.result.status, "promote");
+  assert.equal(promote.outcome.action, "created");
+  const text = issues.at(-1).body;
+  assert.match(text, /node scripts\/course-promote\.mjs DP-700/);
+  assert.match(text, /the decision list moves to the new task keys/);
+  assert.doesNotMatch(text, /Merge it as soon as it is ready/);
+  // the course file takes over: the course in force has the tasks, the issue closes
+  const after = sync(gh, ready, hist, day, "2027-01-16");
+  assert.equal(after.result.status, "current");
+  assert.equal(after.outcome.action, "closed");
+});
+
+test("a rewrite is not carried forward: the steps say so and name the whole pipeline", () => {
+  const course = courseOf(V1);
+  const hist = history(
+    version(V1, "2026-06-01", "2026-06-02"),
+    version(
+      guide({
+        asOf: "2027-01-15",
+        domains: domains((d) => {
+          for (const group of d.flatMap((x) => x.groups))
+            group.tasks = group.tasks.map(
+              (t) =>
+                `Something else entirely about ${t.split(" ").at(-1)} topics ${t.length}`,
+            );
+        }),
+      }),
+      "2027-01-15",
+      "2026-11-10",
+    ),
+  );
+  const result = checkCourse({ course, history: hist, now: NOW });
+  assert.equal(result.status, "upcoming");
+  assert.ok(result.next.major.length > 0);
+  const report = buildReport({ result, course });
+  assert.match(
+    report,
+    /This change is a rewrite, so the course is not carried forward/,
+  );
+  assert.match(report, /node scripts\/course-build\.mjs DP-700/);
+  assert.match(
+    report,
+    /Move the result to `src\/data_files\/courses\/DP-700\.next\.json`/,
+  );
+  assert.doesNotMatch(report, /course-next\.mjs build/);
+});
+
+test("an upcoming course that is out of date: the issue says what the guide has that the file lacks", () => {
+  const course = courseOf(V1);
+  const next = upcomingCourse();
+  const later = history(
+    version(V1, "2026-06-01", "2026-06-02"),
+    version(v2("2027-01-15"), "2027-01-15", "2026-11-10"),
+    thirdVersion(),
+  );
+  const result = checkCourse({ course, history: later, now: NOW, next });
+  assert.equal(result.status, "upcoming");
+  assert.equal(result.next.state, "stale");
+  const report = buildReport({ result, course });
+  assert.match(
+    report,
+    /has other tasks than this version of the guide: it is out of date/,
+  );
+  assert.match(report, /\*\*In the guide, not in the upcoming course\*\*/);
+  assert.match(report, /build DP-700 --write --force/);
+});
+
+test("the upcoming course is read beside the course, and one that cannot be read stops the run like the others", () => {
+  const dir = mkdtempSync(join(tmpdir(), "course-guide-next-"));
+  after(() => rmSync(dir, { recursive: true, force: true }));
+  const coursesDir = join(dir, "courses");
+  const historyDir = join(dir, "history");
+  mkdirSync(coursesDir, { recursive: true });
+  mkdirSync(historyDir, { recursive: true });
+  writeFileSync(join(coursesDir, "DP-700.json"), JSON.stringify(courseOf(V1)));
+  writeFileSync(
+    join(historyDir, "DP-700.json"),
+    JSON.stringify(futureHistory()),
+  );
+  writeFileSync(
+    join(coursesDir, "DP-700.next.json"),
+    JSON.stringify(upcomingCourse()),
+  );
+  const read = () =>
+    readCourses({ coursesDir, historyDir, examsFile: join(dir, "none.json") });
+  const ok = read();
+  assert.deepEqual(ok.problems, []);
+  assert.equal(
+    ok.rows.length,
+    1,
+    "the upcoming file is not a course of the list",
+  );
+  assert.equal(ok.rows[0].next.inputs.guideVersion.n, 2);
+
+  writeFileSync(join(coursesDir, "DP-700.next.json"), "{ not json");
+  const broken = read();
+  assert.equal(broken.rows.length, 0);
+  assert.match(broken.problems[0], /DP-700\.next\.json cannot be read/);
+  writeFileSync(
+    join(coursesDir, "DP-700.next.json"),
+    JSON.stringify({ code: "DP-800", domains: [] }),
+  );
+  assert.match(read().problems[0], /not a course file of that exam/);
 });
