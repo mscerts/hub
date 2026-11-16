@@ -1,6 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { parseFragment } from "parse5";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
 import { renderTabPanels } from "../../src/utils/render-tabs.mjs";
 
 const panelsOf = (html) =>
@@ -9,6 +12,22 @@ const panelsOf = (html) =>
   );
 const attr = (node, name) =>
   node.attrs.find((item) => item.name === name)?.value;
+
+test("wrapped mobile tabs keep a visible selected-state border", () => {
+  const source = readFileSync(
+    join(
+      dirname(fileURLToPath(import.meta.url)),
+      "../../src/components/docs/preline/Tabs.astro",
+    ),
+    "utf8",
+  );
+  const triggerClass = source.match(/class="([^"]+)"\s*>\s*\{label\}/)?.[1];
+  assert.ok(triggerClass, "tab trigger class is present");
+  assert.match(triggerClass, /aria-selected:border-primary/);
+  assert.match(triggerClass, /sm:aria-selected:border-primary/);
+  assert.match(triggerClass, /aria-selected:bg-muted/);
+  assert.match(triggerClass, /sm:aria-selected:bg-transparent/);
+});
 
 test("server tabs label and hide panels before scripts run, preserving escaped text and rich HTML", () => {
   const { html, tabs } = renderTabPanels(

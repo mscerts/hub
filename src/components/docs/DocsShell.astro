@@ -103,35 +103,36 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
           <span class="px-2" aria-hidden="true">
             /
           </span>
-          {
-            trail ? (
-              trail.map((item, index) => (
-                <>
-                  {index > 0 && (
-                    <span class="px-2" aria-hidden="true">
-                      /
-                    </span>
-                  )}
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      class="hover:text-blue-700 dark:hover:text-blue-300"
-                    >
-                      {item.label}
-                    </a>
-                  ) : (
-                    <span>{item.label}</span>
-                  )}
-                </>
-              ))
-            ) : (
-              <span>{breadcrumbLabel}</span>
-            )
-          }
+          {trail ? (
+            trail.map((item, index) => (
+              <>
+                {index > 0 && (
+                  <span class="px-2" aria-hidden="true">
+                    /
+                  </span>
+                )}
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    class="hover:text-blue-700 dark:hover:text-blue-300"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <span>{item.label}</span>
+                )}
+              </>
+            ))
+          ) : (
+            <span>{breadcrumbLabel}</span>
+          )}
         </nav>
 
         <header class="mt-6 border-b border-neutral-200 pb-8 dark:border-neutral-700">
-          <h1 class="text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl dark:text-[#f4f4f4]">
+          <h1
+            data-docs-title
+            class="text-4xl font-bold tracking-tight text-neutral-950 sm:text-5xl dark:text-[#f4f4f4]"
+          >
             {hero?.title ?? title}
           </h1>
           <DocsPageActions title={title} />

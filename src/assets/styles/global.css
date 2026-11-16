@@ -152,6 +152,32 @@ h6 {
   --nb-shadow-lg: 0 4px 12px oklch(0 0 0 / 0.4), 0 2px 4px oklch(0 0 0 / 0.2);
 }
 
+/* Exam study-material pages get a quiet blue identity without changing status colours. */
+[data-docs]:has([data-docs-title$="Study Materials"]) [data-docs-title] {
+  text-decoration: underline;
+  text-decoration-color: #bfdbfe;
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.2em;
+}
+
+.dark [data-docs]:has([data-docs-title$="Study Materials"]) [data-docs-title] {
+  text-decoration-color: #1d4ed8;
+}
+
+[data-docs]:has([data-docs-title$="Study Materials"]) .docs-card {
+  border-color: #bfdbfe;
+  box-shadow:
+    0 1px 2px rgb(29 78 216 / 0.06),
+    0 8px 24px -18px rgb(29 78 216 / 0.3);
+}
+
+.dark [data-docs]:has([data-docs-title$="Study Materials"]) .docs-card {
+  border-color: #1e3a5f;
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.2),
+    0 8px 24px -18px rgb(59 130 246 / 0.35);
+}
+
 .subtle-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;

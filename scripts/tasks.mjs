@@ -8,7 +8,7 @@
  * Usage:
  *   node scripts/tasks.mjs list [--all] [--mine] [--json]
  *   node scripts/tasks.mjs show <ref> [--json]
- *   node scripts/tasks.mjs add "<title>" [--body "<text>"] [--status "<option>"] [--priority "<P0|P1|P2>"] [--due "<yyyy-mm-dd>"]
+ *   node scripts/tasks.mjs add "<title>" [--body "<text>" | --body-file <path>] [--status "<option>"] [--priority "<P0|P1|P2>"] [--due "<yyyy-mm-dd>"]
  *   node scripts/tasks.mjs start <ref> [--force]
  *   node scripts/tasks.mjs done|unclaim <ref>
  *   node scripts/tasks.mjs archive <ref>
@@ -28,8 +28,8 @@
  * gh details this script handles:
  *   - Field edits need the project ITEM id (PVTI_...) plus --project-id,
  *     --field-id and --single-select-option-id (or --text).
- *   - Title/body edits need the DRAFT content id (DI_..., "content.id" in
- *     `gh project item-list --format json`).
+ *   - Draft item creation, body updates and assignment use GraphQL mutations;
+ *     large bodies are sent as JSON on stdin, never in process arguments.
  *   - gh cannot edit a draft's field by name: --field only works with an
  *     issue or PR --url.
  *   - Ownership is tracked with real GitHub assignees, not a custom field.
@@ -42,8 +42,9 @@
  *     retries on a miss); a direct `node(id: ...)` lookup does not, which is
  *     why `note` reads/verifies the Log body that way instead.
  *   - The Log body has no compare-and-swap in the API: `note` reads fresh,
- *     writes, and reads back to confirm nothing raced it, retrying from the
- *     latest body otherwise so a concurrent note is never silently dropped.
+ *     writes, and reads back to detect a concurrent edit, retrying from the
+ *     latest body when possible. A later writer can still overwrite a verified
+ *     note.
  */
 
 import { execFileSync } from "node:child_process";
@@ -59,7 +60,7 @@ const USAGE = `Usage: node scripts/tasks.mjs <command> [ref] [text] [options]
 
   list [--all] [--mine] [--json]     Open items (Done hidden unless --all)
   show <ref> [--json]                Title, status, priority, due, owner, link and Log
-  add "<title>" [--body "<text>"] [--force]  New draft item (default Status,
+  add "<title>" [--body "<text>" | --body-file <path>] [--force]  New draft item (default Status,
                                       or --status/--priority/--due; fails on a
                                       duplicate open title unless --force)
   start <ref> [--force]              Claim: sets you as assignee
@@ -86,11 +87,12 @@ function fail(message) {
 // ---------------------------------------------------------------------------
 // gh wrappers
 // ---------------------------------------------------------------------------
-function gh(args) {
+function gh(args, { input } = {}) {
   try {
     return execFileSync("gh", args, {
       encoding: "utf8",
-      stdio: ["ignore", "pipe", "pipe"],
+      input,
+      stdio: [input === undefined ? "ignore" : "pipe", "pipe", "pipe"],
       maxBuffer: 64 * 1024 * 1024,
     });
   } catch (error) {
@@ -103,8 +105,23 @@ function gh(args) {
       .trim()
       .split("\n")
       .pop();
+    const cause = error.code
+      ? `process error ${error.code}`
+      : error.signal
+        ? `terminated by ${error.signal}`
+        : `exit ${error.status}`;
+    const diagnostic = detail || cause;
+    const authHint = /authentication|permission|scope|forbidden/i.test(
+      diagnostic,
+    )
+      ? " Check 'gh auth status' and verify the project scope."
+      : "";
+    const inputHint =
+      args[0] === "api" && args[1] === "graphql"
+        ? " Check that this token can access GitHub Projects and that the GraphQL mutation is supported."
+        : "";
     fail(
-      `gh ${args[0]} ${args[1]} failed: ${detail || `exit ${error.status}`}. Check 'gh auth status' (needs the project scope).`,
+      `gh ${args[0]} ${args[1]} failed: ${diagnostic}.${authHint}${inputHint}`,
     );
   }
 }
@@ -168,33 +185,77 @@ function readFields(owner, project) {
   return fields;
 }
 
-// `gh project item-list` already returns a top-level "assignees" array of
-// logins when an item has any (it's simply absent when empty) -- read that
-// directly in toView(). Writing has no CLI flag, though: `gh project
-// item-edit` only supports custom fields, so start/unclaim call the
-// `updateProjectV2DraftIssue` mutation directly.
-function setAssignee(draftId, userId) {
-  gh([
-    "api",
-    "graphql",
-    "-f",
-    "query=mutation($id: ID!, $user: ID!) { updateProjectV2DraftIssue(input: { draftIssueId: $id, assigneeIds: [$user] }) { draftIssue { id } } }",
-    "-F",
-    `id=${draftId}`,
-    "-F",
-    `user=${userId}`,
-  ]);
+function graphqlRequest(query, variables) {
+  const payload = JSON.stringify({ query, variables });
+  const raw = gh(["api", "graphql", "--input", "-"], { input: payload });
+  let response;
+  try {
+    response = JSON.parse(raw);
+  } catch {
+    fail("GitHub returned an invalid GraphQL response.");
+  }
+  if (response.errors?.length) {
+    fail(response.errors.map(({ message }) => message).join("; "));
+  }
+  return response.data;
+}
+
+function updateDraft(draftId, changes) {
+  const fields = Object.keys(changes);
+  const definitions = fields.map(
+    (field) =>
+      `$${field}: ${field === "assigneeIds" ? "[ID!]!" : field === "body" ? "String!" : "String!"}`,
+  );
+  const inputFields = fields.map((field) => `${field}: $${field}`).join(", ");
+  const isCreate = "projectId" in changes;
+  const mutation = isCreate
+    ? "addProjectV2DraftIssue"
+    : "updateProjectV2DraftIssue";
+  const idField = isCreate ? "projectId: $projectId" : "draftIssueId: $draftId";
+  const idDefinition = isCreate ? "$projectId: ID!" : "$draftId: ID!";
+  const query = `mutation(${[idDefinition, ...definitions].join(", ")}) { ${mutation}(input: {${idField}, ${inputFields}}) { ${isCreate ? "projectItem" : "draftIssue"} { id body } } }`;
+  const variables = { ...changes };
+  if (!isCreate) variables.draftId = draftId;
+  let data;
+  try {
+    data = graphqlRequest(query, variables);
+  } catch (error) {
+    if (
+      isCreate &&
+      error instanceof TaskError &&
+      /Variable \$body.*invalid value|expected value of type String/i.test(
+        error.message,
+      )
+    ) {
+      const fallbackQuery = `mutation($projectId: ID!, $title: String!) { addProjectV2DraftIssue(input: {projectId: $projectId, title: $title}) { projectItem { id } } }`;
+      const created = graphqlRequest(fallbackQuery, {
+        projectId: changes.projectId,
+        title: changes.title,
+      });
+      const item = created?.addProjectV2DraftIssue?.projectItem;
+      if (!item?.id) throw error;
+      try {
+        const draft = graphqlRequest(
+          `mutation($draftId: ID!, $body: String) { updateProjectV2DraftIssue(input: {draftIssueId: $draftId, body: $body}) { draftIssue { id body } } }`,
+          { draftId: item.id, body: changes.body },
+        )?.updateProjectV2DraftIssue?.draftIssue;
+        if (!draft) fail("GitHub returned no updated draft item.");
+        return draft;
+      } catch (bodyError) {
+        fail(
+          `Created ${shortRef(item.id)}, but could not set its body. The item remains on the board; inspect it before retrying. ${bodyError.message}`,
+        );
+      }
+    }
+    throw error;
+  }
+  const draft = data?.[mutation]?.[isCreate ? "projectItem" : "draftIssue"];
+  if (!draft) fail("GitHub returned no updated draft item.");
+  return draft;
 }
 
 function clearAssignees(draftId) {
-  gh([
-    "api",
-    "graphql",
-    "-f",
-    "query=mutation($id: ID!) { updateProjectV2DraftIssue(input: { draftIssueId: $id, assigneeIds: [] }) { draftIssue { id } } }",
-    "-F",
-    `id=${draftId}`,
-  ]);
+  updateDraft(draftId, { assigneeIds: [] });
 }
 
 function archiveItem(cfg, itemId) {
@@ -365,38 +426,47 @@ function appendLog(body, line) {
 }
 
 // Read the draft's body directly by its own id, not via listItems()/item-list
-// (which can lag a few seconds behind writes -- see resolveItem). A direct
-// node lookup has shown no such lag in testing.
+// (which can lag a few seconds behind writes -- see resolveItem).
 function fetchDraftBody(draftId) {
-  const res = ghJson([
-    "api",
-    "graphql",
-    "-f",
-    "query=query($id: ID!) { node(id: $id) { ... on DraftIssue { body } } }",
-    "-F",
-    `id=${draftId}`,
-  ]);
-  return res?.data?.node?.body ?? "";
+  const data = graphqlRequest(
+    "query($id: ID!) { node(id: $id) { ... on DraftIssue { body } } }",
+    { id: draftId },
+  );
+  return data?.node?.body ?? "";
 }
 
-// `gh project item-edit --body` replaces the whole body, and there's no
-// compare-and-swap for it in the API -- so two near-simultaneous notes can
-// race: both read the same body, both append, the second write silently
-// drops the first note. Mitigate with optimistic retry: read fresh, write,
-// then read back to confirm nothing else wrote in between. If it doesn't
-// match, someone raced us -- re-read their latest body and try again from
-// there, so our line is never silently lost. Worst case on a genuine
-// collision is our line appearing twice, never disappearing.
+// GitHub exposes no compare-and-swap for draft bodies. Read-back detects
+// concurrent edits during a write, but a later writer can still overwrite it.
 const LOG_WRITE_ATTEMPTS = 3;
 
 function writeLogLine(draftId, line) {
   for (let attempt = 1; attempt <= LOG_WRITE_ATTEMPTS; attempt++) {
     const next = appendLog(fetchDraftBody(draftId), line);
-    gh(["project", "item-edit", "--id", draftId, "--body", next]);
-    if (fetchDraftBody(draftId) === next) return;
+    const result = updateDraft(draftId, { body: next });
+    if (result.body === next || fetchDraftBody(draftId) === next) return;
+    // Another writer changed the body during our update. Retry from its latest
+    // version; a later writer can still overwrite a note after verification.
+    if (attempt === LOG_WRITE_ATTEMPTS) {
+      fail(
+        `Could not append the note without a conflicting concurrent edit after ${LOG_WRITE_ATTEMPTS} attempts. If this was 'start', the claim may have succeeded; retry the note to record the handoff.`,
+      );
+    }
   }
+}
+
+function claimDraft(draftId, userId, checkoutNote) {
+  const query = `mutation($draftId: ID!, $assigneeIds: [ID!]!, $body: String!) { updateProjectV2DraftIssue(input: {draftIssueId: $draftId, assigneeIds: $assigneeIds, body: $body}) { draftIssue { id body } } }`;
+  const next = appendLog(fetchDraftBody(draftId), checkoutNote);
+  const data = graphqlRequest(query, {
+    draftId,
+    assigneeIds: [userId],
+    body: next,
+  });
+  const updated = data?.updateProjectV2DraftIssue?.draftIssue;
+  if (!updated) fail("GitHub returned no updated draft item.");
+  if (updated.body === next || fetchDraftBody(draftId) === next) return;
   fail(
-    `Could not append the note without a conflicting concurrent edit after ${LOG_WRITE_ATTEMPTS} attempts. Try again.`,
+    `The task was claimed, but its checkout note conflicted with a concurrent edit. The task remains assigned; retry 'note ${shortRef(draftId)} "Checked out"' to record the handoff.`,
   );
 }
 
@@ -549,26 +619,28 @@ function add(cfg, title, opts) {
       );
     }
   }
-  const args = [
-    "project",
-    "item-create",
-    String(cfg.project),
-    "--owner",
-    cfg.owner,
-    "--title",
+  const mutation = `mutation($projectId: ID!, $title: String!, $body: String) { addProjectV2DraftIssue(input: {projectId: $projectId, title: $title, body: $body}) { projectItem { id } } }`;
+  const data = graphqlRequest(mutation, {
+    projectId: cfg.projectId,
     title,
-    "--format",
-    "json",
-  ];
-  if (opts.body) args.push("--body", opts.body);
-  const created = ghJson(args);
-  const status = opts.status ?? cfg.defaultStatus;
-  setSingleSelect(cfg, created.id, "Status", status);
-  if (opts.priority) {
-    setSingleSelect(cfg, created.id, "Priority", opts.priority);
-  }
-  if (opts.due) {
-    setDate(cfg, created.id, "End date", opts.due);
+    body: opts.body ?? null,
+  });
+  const created = data?.addProjectV2DraftIssue?.projectItem;
+  if (!created?.id) fail("GitHub returned no created draft item.");
+  let status = "Draft";
+  try {
+    status = opts.status ?? cfg.defaultStatus;
+    setSingleSelect(cfg, created.id, "Status", status);
+    if (opts.priority)
+      setSingleSelect(cfg, created.id, "Priority", opts.priority);
+    if (opts.due) setDate(cfg, created.id, "End date", opts.due);
+  } catch (error) {
+    if (error instanceof TaskError) {
+      fail(
+        `Created ${shortRef(created.id)}, but could not finish setting its fields. The item remains on the board as a draft. ${error.message}`,
+      );
+    }
+    throw error;
   }
   console.log(
     `Created ${shortRef(created.id)} [${status}${opts.priority ? `, ${opts.priority}` : ""}${opts.due ? `, due ${opts.due}` : ""}] ${title}`,
@@ -585,11 +657,19 @@ function start(cfg, ref, opts) {
     );
   }
   const draftId = requireDraft(item, "set its assignee");
-  setAssignee(draftId, cfg.meId);
   const checkoutNote = others.length
     ? `- ${timestamp()} [${cfg.me}] Checked out (was claimed by ${others.join(", ")})`
     : `- ${timestamp()} [${cfg.me}] Checked out`;
-  writeLogLine(draftId, checkoutNote);
+  try {
+    claimDraft(draftId, cfg.meId, checkoutNote);
+  } catch (error) {
+    if (error instanceof TaskError) {
+      fail(
+        `Could not complete start for ${v.ref}: the task may now be assigned to you. ${error.message}`,
+      );
+    }
+    throw error;
+  }
   console.log(`Started ${v.ref}: ${v.title}`);
 }
 
@@ -610,10 +690,12 @@ function main() {
       force: { type: "boolean" },
       json: { type: "boolean" },
       help: { type: "boolean", short: "h" },
+      "body-file": { type: "string" },
     },
   });
   const [command = "help", ref, ...rest] = positionals;
   const text = rest.join(" ").trim();
+  if (opts["body-file"]) opts.body = readFileSync(opts["body-file"], "utf8");
 
   if (opts.help || command === "help") {
     console.log(USAGE);
