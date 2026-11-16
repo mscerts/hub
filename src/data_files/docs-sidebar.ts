@@ -135,11 +135,6 @@ const voucherItems: DocsSidebarItem[] = [
     badge: { text: "2x *100%", variant: "tip" },
   },
   {
-    label: "Exam AB-330 (beta)",
-    href: docsPath("vouchers/ab330beta"),
-    badge: { text: "*80%", variant: "tip" },
-  },
-  {
     label: "Partner Certification Week",
     href: docsPath("vouchers/partnerweek"),
     badge: { text: "*100%", variant: "tip" },

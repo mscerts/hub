@@ -255,6 +255,22 @@ Recommended extensions:
 - [Astro VSCode Extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode)
 - [MDX Extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx)
 
+## Content rules
+
+The conventions for exam, lab and voucher pages (page structure, URL formats, where each kind of resource goes) are written down in [AGENTS.md](https://github.com/mscerts/hub/blob/main/AGENTS.md). It is the reference for people and for AI coding tools alike, so read it before you write content. The rules that matter most:
+
+- **No exam dumps. Ever.** Do not add or link sites that sell or share real exam questions.
+- **Verify, do not guess.** Check exam names, links, dates, voucher details and course titles against Microsoft Learn or the vendor's own page. Never infer a URL or an ID from a pattern.
+- **Keep the tracking parameters.** Microsoft Learn links keep `?WT.mc_id=studentamb_165290` and MeasureUp links keep `#u44`; do not add `/en-us/` to Learn links.
+- **Prefer official resources.** Microsoft and Microsoft-maintained repositories first; third-party resources must be reputable and directly relevant to the exam.
+
+## Before you open a pull request
+
+1. Run `pnpm build`. It must finish with 0 errors: it type-checks, builds the site and indexes search.
+2. Run `pnpm test:scripts` and `pnpm format:check`. The same checks run on every pull request, and the script tests also read the pages (for example, every exam page must link its Study Guide Changes page).
+3. If you added a resource link to an exam page, run `node scripts/audit-missing-resources.mjs` and include the regenerated `src/data_files/missing-resources.json`.
+4. Describe what the change does and where you verified it, so a maintainer can check the source quickly.
+
 ## Where to begin?
 
 If you're new to the project, you can start by fixing typos, adding new studying resources, or improving existing guides.
