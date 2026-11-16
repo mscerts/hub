@@ -19,6 +19,7 @@ import {
   scopeOf,
 } from "./helpers/example-candidates.mjs";
 import { TASKS, exampleJudged } from "./helpers/example-judging.mjs";
+import { guide as guideLines } from "../fixtures/study-guide-changes/guides.mjs";
 
 const temps = [];
 after(() =>
@@ -362,4 +363,48 @@ test("the gated file's manual list becomes picks: learnsync's catalog gives a mo
     io.out.join("\n"),
     /2 picks are pages the maintainer accepted that were not among the candidates/,
   );
+});
+
+test("the built course names the version of the guide it follows when the hub has the guide's history", async () => {
+  const w = world();
+  // the first build, without a history: nothing to name
+  const first = await run(["NET-100"], w);
+  assert.equal(first.code, 0, first.io.err.join(" | "));
+  const file = join(w.tmp, "course-build", "NET-100.json");
+  const built = readJson(file);
+  assert.equal(built.inputs.guideVersion, undefined);
+
+  // a history with a version that has the course's tasks, as the New Exam Monitor keeps it
+  const historyDir = join(w.base, "history");
+  mkdirSync(historyDir, { recursive: true });
+  // the example exam's keys are not slugs of its texts, so the guide is written with the key's own words
+  const lines = guideLines({
+    asOf: "2026-06-01",
+    domains: built.domains.map((d) => ({
+      title: d.title,
+      min: 30,
+      max: 35,
+      groups: d.groups.map((g) => ({
+        title: g.tasks[0].key.split("/")[1],
+        tasks: g.tasks.map((t) => t.key.split("/")[2]),
+      })),
+    })),
+  });
+  writeFileSync(
+    join(historyDir, "NET-100.json"),
+    JSON.stringify({
+      schemaVersion: 1,
+      code: "NET-100",
+      versions: [{ n: 1, asOf: "2026-06-01", firstSeen: "2026-06-02", lines }],
+    }),
+  );
+  const second = await run(["NET-100"], w, capture(), {
+    env: { HISTORY_DIR: historyDir },
+  });
+  assert.equal(second.code, 0, second.io.err.join(" | "));
+  assert.deepEqual(readJson(file).inputs.guideVersion, {
+    n: 1,
+    asOf: "2026-06-01",
+    firstSeen: "2026-06-02",
+  });
 });

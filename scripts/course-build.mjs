@@ -33,6 +33,12 @@ import { decisionsProblems } from "./lib/course-audience.mjs";
 import { buildCourse } from "./lib/course-build.mjs";
 import { eachPick } from "./lib/course-format.mjs";
 import { parseGuide } from "./lib/course-guide.mjs";
+import {
+  builtForVersion,
+  versionRef,
+  withVersion,
+} from "./lib/course-version.mjs";
+import { readHistory } from "./lib/guide-history.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 const USAGE = `Usage: node scripts/course-build.mjs <CODE> [--gated FILE] [--out FILE] [--today YYYY-MM-DD] [--allow-stale] [--no-official-course] [--audience FILE] [--urls [--live]]`;
@@ -237,9 +243,21 @@ export async function main(argv, deps = {}) {
     }
   }
 
+  // name the version of the guide the course follows (docs/course-next.md), when the hub has its history
+  let course = result.course;
+  try {
+    const history = readHistory(
+      env.HISTORY_DIR || join(root, "src", "data_files", "study-guide-history"),
+      code,
+    );
+    const version = builtForVersion(history, course);
+    if (version) course = withVersion(course, versionRef(version));
+  } catch {
+    // no history recorded: the course is checked against the stored guide, as before
+  }
   const out = resolve(options.out ?? join(tmp, "course-build", `${code}.json`));
   mkdirSync(dirname(out), { recursive: true });
-  writeFileSync(out, `${JSON.stringify(result.course, null, 2)}\n`);
+  writeFileSync(out, `${JSON.stringify(course, null, 2)}\n`);
   const s = result.stats;
   log(
     `${code}: built a course of ${s.tasks} tasks, ${s.picks} picks (${s.core} core, ${s.supporting} supporting; ${s.byDecider.auto} automatic, ${s.byDecider.maintainer} approved by the maintainer), ${s.tasksWithoutPicks} tasks with no picks, ${result.course.rejected.length} remembered rejections.`,

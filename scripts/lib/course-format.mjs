@@ -83,6 +83,63 @@ const isDay = (value) =>
   new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) === value;
 const present = (value) => typeof value === "string" && value.trim() !== "";
 
+/** The suffix of the file of an exam's upcoming course: src/data_files/courses/<CODE>.next.json (docs/courses.md). */
+export const NEXT_SUFFIX = ".next";
+
+/**
+ * What is wrong with the `inputs.guideVersion` of a course, or null: the version of the study guide the course
+ * follows, named as in the guide's history file (src/data_files/study-guide-history/<CODE>.json), `{ n, asOf,
+ * firstSeen }`. With `history` the named version must exist and say the same.
+ */
+export function guideVersionProblem(ref, history = null) {
+  if (ref === undefined) return null;
+  if (!ref || typeof ref !== "object" || Array.isArray(ref))
+    return "inputs.guideVersion must be { n, asOf, firstSeen }";
+  if (!Number.isInteger(ref.n) || ref.n < 1)
+    return "inputs.guideVersion.n must be a version number of the guide's history (1 or more)";
+  if (ref.asOf !== null && !isDay(ref.asOf))
+    return "inputs.guideVersion.asOf must be YYYY-MM-DD, or null for a guide without a date";
+  if (!isDay(ref.firstSeen))
+    return "inputs.guideVersion.firstSeen must be YYYY-MM-DD";
+  if (!history) return null;
+  const version = (history.versions ?? []).find((v) => v.n === ref.n);
+  if (!version)
+    return `inputs.guideVersion names version ${ref.n}, which the history of ${history.code} does not have`;
+  if (
+    (version.asOf ?? null) !== ref.asOf ||
+    version.firstSeen !== ref.firstSeen
+  )
+    return `inputs.guideVersion says as of ${ref.asOf}, first seen ${ref.firstSeen}, but version ${ref.n} of the history says as of ${version.asOf ?? null}, first seen ${version.firstSeen}`;
+  return null;
+}
+
+/**
+ * What is wrong with the `pending` list of an upcoming course (null when it is fine). The list names what is still
+ * to be decided before the course may be shown: `added` (tasks that have no picks yet), `confirm` (reworded
+ * tasks whose picks were carried over and need a person to say they still fit: [{ key, was, similarity }]) and
+ * `foundations` (the groups that have no fundamentals yet).
+ */
+export function pendingProblem(pending, taskKeys, groupKeys) {
+  if (pending === undefined) return null;
+  if (!pending || typeof pending !== "object" || Array.isArray(pending))
+    return "pending must be { added, confirm, foundations }";
+  const keys = new Set(taskKeys);
+  const groups = new Set(groupKeys);
+  for (const key of pending.added ?? [])
+    if (!keys.has(key))
+      return `pending.added names a task that is not in the course: ${key}`;
+  for (const entry of pending.confirm ?? []) {
+    if (!keys.has(entry?.key))
+      return `pending.confirm names a task that is not in the course: ${entry?.key}`;
+    if (!present(entry.was))
+      return `pending.confirm of ${entry.key} needs "was" (the old wording)`;
+  }
+  for (const key of pending.foundations ?? [])
+    if (!groups.has(key))
+      return `pending.foundations names a group that is not in the course: ${key}`;
+  return null;
+}
+
 /**
  * Check one pick (without its context); returns a list of problems. `foundation` is true for a pick of a group's
  * fundamentals, whose class is `foundation` (it has a `why`, no relation) instead of core or supporting.
@@ -292,7 +349,10 @@ export function courseStats(course) {
  *   titleOf    (path) => string | undefined: the catalog title of a target; a different `title` is a warning
  * Returns { ok, errors, warnings, stats }. `ok` is true only when there is no error.
  */
-export function validateCourse(course, { guide, isCurrent, titleOf } = {}) {
+export function validateCourse(
+  course,
+  { guide, isCurrent, titleOf, history, next = false } = {},
+) {
   const errors = [];
   const warnings = [];
   if (!course || typeof course !== "object" || Array.isArray(course))
@@ -310,7 +370,15 @@ export function validateCourse(course, { guide, isCurrent, titleOf } = {}) {
     errors.push(`code "${course.code}" is not an exam code`);
   if (!present(course.name)) errors.push("name (the exam name) is missing");
   const inputs = course.inputs ?? {};
-  if (!present(inputs.guideHash)) errors.push("inputs.guideHash is missing");
+  // the guide the course follows is named by its hash, or (an upcoming course) by its version in the history
+  if (!present(inputs.guideHash) && inputs.guideVersion === undefined)
+    errors.push("inputs.guideHash is missing");
+  const versionProblem = guideVersionProblem(inputs.guideVersion, history);
+  if (versionProblem) errors.push(versionProblem);
+  if (next && inputs.guideVersion === undefined)
+    errors.push(
+      "an upcoming course must name the version of the guide it follows (inputs.guideVersion)",
+    );
   if (!/^[0-9a-f]{40}$/.test(String(inputs.scopeFingerprint ?? "")))
     errors.push(
       "inputs.scopeFingerprint must be the 40-character fingerprint of the exam scope map",
@@ -367,6 +435,22 @@ export function validateCourse(course, { guide, isCurrent, titleOf } = {}) {
     if (inputs.guideHash && guide.hash && inputs.guideHash !== guide.hash)
       warnings.push(
         "inputs.guideHash is not the guide's current hash: the guide changed since the course was built",
+      );
+  }
+
+  {
+    const taskKeys = course.domains.flatMap((d) =>
+      (d.groups ?? []).flatMap((g) => (g.tasks ?? []).map((t) => t.key)),
+    );
+    const problem = pendingProblem(
+      course.pending,
+      taskKeys,
+      taskKeys.map(groupKeyOf),
+    );
+    if (problem) errors.push(problem);
+    if (course.pending !== undefined && !next)
+      errors.push(
+        "pending belongs to an upcoming course (<CODE>.next.json), not to the course in force",
       );
   }
 
