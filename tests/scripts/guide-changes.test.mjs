@@ -456,7 +456,10 @@ test("selected study-guide notices appear on Changes tabs, not as skill-history 
     });
     const changes = tab(page, "Changes");
     assert.match(changes.guideNote, /renamed Microsoft Copilot/);
-    assert.match(changes.guideNote, /Microsoft 365 Copilot remains the license name/);
+    assert.match(
+      changes.guideNote,
+      /Microsoft 365 Copilot remains the license name/,
+    );
   }
   assert.equal(
     tab(
