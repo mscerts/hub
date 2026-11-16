@@ -342,6 +342,18 @@ test("a course built on a newer guide or a newer Learn than the candidates were 
   );
 });
 
+test("an exam with no official course builds only when allowNoScope is set, and says so", () => {
+  const noCourse = { ...scopeOf(), ok: false };
+  assert.equal(build({ scope: noCourse }).ok, false);
+  const r = build({ scope: noCourse, allowNoScope: true });
+  assert.equal(r.ok, true);
+  assert.ok(r.course);
+  assert.ok(
+    r.warnings.some((w) => /no official course .* built anyway/.test(w)),
+    "the missing official course is a warning, not silence",
+  );
+});
+
 test("what cannot be built stops the build with the reasons and returns no course", () => {
   const bad = (opts) => {
     const r = build(opts);
@@ -485,4 +497,195 @@ test("a pick the judge was not sure of is in the course and listed for review, w
     assert.ok(!seen.has(r.path), "a page is marked once");
     seen.add(r.path);
   }
+});
+
+const T0 = "networking/configure/t0";
+const T1 = "networking/configure/t1";
+/** What learnsync's module catalog says about a module of the invented corner of Learn. */
+const describeModule = (path) => {
+  const m = candidateWorld().catalog.modules.find((x) => x.path === path);
+  return m ? { title: m.title, unitSig: m.unitSig } : null;
+};
+/** The gated file with the maintainer's decisions applied, the accepts without a candidate included. */
+function gatedWith(decisions) {
+  const judged = exampleJudged();
+  const { items, manual } = gateJudged([judged], {
+    decisions,
+    today: TODAY,
+    options: { queueUnsure: true },
+  });
+  return {
+    schemaVersion: 1,
+    kind: "gated",
+    code: "NET-100",
+    builtAt: TODAY,
+    inputs: judged.inputs,
+    items,
+    manual,
+  };
+}
+/** A core accept or a reject: neither has a relation. */
+const plain = (task, target, over) => {
+  const d = decided(task, target, over);
+  delete d.relation;
+  if (d.decision === "reject") delete d.class;
+  return d;
+};
+
+test("a page the maintainer accepted that is not a candidate is a pick all the same, with what its kind needs", () => {
+  const decisions = store([
+    // a module of the exam's own course: P1, and a core pick of it needs neither reason nor evidence
+    plain(T1, "/training/modules/configure-peering", {
+      class: "core",
+      reason: "Peering is how the users' networks are joined.",
+    }),
+    // a module of another course: P3, its title and signature come from learnsync's catalog
+    decided(T1, "/training/modules/cosmos-routes", {
+      reason: "Shows the same routing idea in another service.",
+    }),
+    // a documentation page a module of the course lists: P2, with that module as its via
+    decided(T1, "/azure/virtual-network/virtual-network-peering-overview", {
+      title: "Virtual network peering",
+      reason: "The overview the peering module points to.",
+    }),
+    // a documentation page nothing lists: P4, with the title the decision carries
+    decided(T1, "/azure/added/by-hand", {
+      title: "A page added by hand",
+      reason: "Explains the limits an administrator runs into.",
+    }),
+  ]);
+  const result = build({
+    gated: gatedWith(decisions),
+    describe: describeModule,
+  });
+  assert.equal(result.ok, true, result.problems.join("\n"));
+  assert.equal(result.addedWithoutCandidate, 4);
+  const at = (path) =>
+    picksOf(result.course).find(({ pick }) => pick.target.path === path);
+  const own = at("/training/modules/configure-peering");
+  assert.equal(own.task, T1);
+  assert.equal(own.pick.source, "P1");
+  assert.equal(own.pick.class, "core");
+  assert.equal(own.pick.why, undefined);
+  assert.deepEqual(own.pick.decision, { by: "maintainer", at: "2026-10-16" });
+  const other = at("/training/modules/cosmos-routes").pick;
+  assert.equal(other.source, "P3");
+  assert.equal(
+    other.title,
+    describeModule("/training/modules/cosmos-routes").title,
+  );
+  assert.equal(other.why, "Shows the same routing idea in another service.");
+  assert.equal(
+    other.evidence,
+    "Shows the same routing idea in another service.",
+  );
+  assert.ok(
+    result.course.inputs.picked.some(
+      ([path, sig]) =>
+        path === "/training/modules/cosmos-routes" &&
+        sig === "sig-cosmos-routes",
+    ),
+    "the module a hand-added pick depends on is recorded with its signature",
+  );
+  const listed = at(
+    "/azure/virtual-network/virtual-network-peering-overview",
+  ).pick;
+  assert.equal(listed.source, "P2");
+  assert.equal(listed.via, "/training/modules/configure-peering");
+  const page = at("/azure/added/by-hand").pick;
+  assert.equal(page.source, "P4");
+  assert.equal(page.title, "A page added by hand");
+  assert.deepEqual(
+    validateCourse(result.course, { guide: guide() }).errors,
+    [],
+  );
+});
+
+test("an accept without a candidate that has no title, no signature or no note is left out, and the build says so", () => {
+  const decisions = store([
+    decided(T1, "/azure/added/no-title", { reason: "Worth knowing." }),
+    decided(T1, "/training/modules/not-in-the-catalog", {
+      reason: "Worth knowing.",
+    }),
+    decided(T1, "/azure/added/no-note", {
+      title: "A page",
+      reason: "accepted by the maintainer",
+    }),
+    decided("networking/configure/gone-task", "/azure/added/old", {
+      title: "A page",
+      reason: "Worth knowing.",
+    }),
+  ]);
+  const result = build({
+    gated: gatedWith(decisions),
+    describe: describeModule,
+  });
+  assert.equal(result.ok, true, result.problems.join("\n"));
+  assert.equal(result.addedWithoutCandidate, 0);
+  const warnings = result.warnings.join("\n");
+  assert.match(warnings, /\/azure\/added\/no-title.*nothing gives its title/);
+  assert.match(
+    warnings,
+    /\/training\/modules\/not-in-the-catalog.*nothing gives its title/,
+  );
+  assert.match(warnings, /\/azure\/added\/no-note.*without a note.*left out/);
+  assert.match(warnings, /gone-task.*not in the study guide any more/);
+  // without learnsync's catalog a module of another course has no signature
+  const noCatalog = build({
+    gated: gatedWith(
+      store([
+        decided(T1, "/training/modules/cosmos-routes", {
+          title: "Routes in another service",
+          reason: "Worth knowing.",
+        }),
+      ]),
+    ),
+  });
+  assert.equal(noCatalog.ok, true);
+  assert.match(noCatalog.warnings.join("\n"), /has no signature for it/);
+});
+
+test("a course edited by hand comes out of a rebuild as it went in: the pinned place holds and the other task points to it", () => {
+  // the maintainer moved the course's own module from the first task to the second (a pinned accept where it
+  // belongs) and said that it also covers the first task
+  const module = "/training/modules/manage-traffic-routes";
+  const otherModules = exampleJudged()
+    .tasks.find((t) => t.key === T0)
+    .items.filter((i) => i.target.kind !== "docs" && i.target.path !== module);
+  const decisions = store([
+    plain(T0, module, {
+      class: "core",
+      reason:
+        'Also covers this task; the module is shown once, under "Manage external users".',
+    }),
+    plain(T1, module, {
+      class: "core",
+      reason: "The last units of the module are about the routes of users.",
+      pinned: true,
+    }),
+    // the other modules and units of the first task leave, so that the task has no module of its own
+    ...otherModules.map((i) =>
+      plain(T0, i.target.path, { decision: "reject", reason: "Not here." }),
+    ),
+  ]);
+  const result = build({
+    gated: gatedWith(decisions),
+    describe: describeModule,
+  });
+  assert.equal(result.ok, true, result.problems.join("\n"));
+  const tasks = result.course.domains.flatMap((d) =>
+    d.groups.flatMap((g) => g.tasks),
+  );
+  const t0 = tasks.find((t) => t.key === T0);
+  const t1 = tasks.find((t) => t.key === T1);
+  assert.ok(
+    t1.picks.some((p) => p.target.path === module),
+    "the module is shown under the task it was pinned to",
+  );
+  assert.ok(!t0.picks.some((p) => p.target.path === module));
+  assert.deepEqual(
+    t0.overlaps?.map((o) => [o.path, o.shownUnder]),
+    [[module, T1]],
+    "the task it also covers points to it",
+  );
 });

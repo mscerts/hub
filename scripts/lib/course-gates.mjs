@@ -20,7 +20,10 @@
  *            reasons, for the maintainer
  *
  * The maintainer's decisions live in src/data_files/course-decisions/<CODE>.json (committed, like the course file);
- * they are applied before anything else, so a decided candidate never comes back to the queue.
+ * they are applied before anything else, so a decided candidate never comes back to the queue. An accept stands
+ * even when the candidate generator does not propose the page (a page the maintainer added by hand, or one the
+ * generator stopped offering): gateJudged lists those in `manual`, and the builder turns them into picks. An accept
+ * with `pinned: true` is where the page is shown, whatever the builder's page rules would choose.
  */
 
 import { docFamily } from "./course-candidates.mjs";
@@ -84,7 +87,10 @@ export const emptyDecisions = (code) => ({
 
 /**
  * Check a decisions file. A decision is { task, target, decision: accept | reject, class + relation for an accept,
- * reason, by: "maintainer", at }; an excluded family is { family, reason, at }. Returns a list of problems.
+ * reason, by: "maintainer", at }; an excluded family is { family, reason, at }. An accept may also carry
+ * `pinned: true` (the page is shown under this task; one pinned accept per page) and `title` (the card title of a
+ * page the generator does not propose, when learnsync's module catalog cannot supply it: a documentation page).
+ * Returns a list of problems.
  */
 export function validateDecisions(store, code = null) {
   const errors = [];
@@ -98,6 +104,7 @@ export function validateDecisions(store, code = null) {
   if (!Array.isArray(store.excludedFamilies))
     errors.push("excludedFamilies must be a list");
   const seen = new Set();
+  const pinnedAt = new Map();
   for (const d of Array.isArray(store.decisions) ? store.decisions : []) {
     const label = `${d?.task} | ${d?.target}`;
     if (!present(d?.task) || !present(d?.target)) {
@@ -120,8 +127,21 @@ export function validateDecisions(store, code = null) {
         );
       if (d.class !== "supporting" && d.relation !== undefined)
         errors.push(`${label}: only a supporting accept has a relation`);
+      if (d.pinned !== undefined && d.pinned !== true)
+        errors.push(`${label}: pinned is true or left out`);
+      if (d.pinned === true) {
+        if (pinnedAt.has(d.target))
+          errors.push(
+            `${label}: the page is already pinned under ${pinnedAt.get(d.target)} (a page is shown once)`,
+          );
+        else pinnedAt.set(d.target, d.task);
+      }
+      if (d.title !== undefined && !present(d.title))
+        errors.push(`${label}: title must be a non-empty text when given`);
     } else if (d.class !== undefined || d.relation !== undefined)
       errors.push(`${label}: only an accept has a class or a relation`);
+    else if (d.pinned !== undefined || d.title !== undefined)
+      errors.push(`${label}: only an accept is pinned or has a title`);
     if (!present(d.reason)) errors.push(`${label}: reason is required`);
     if (d.by !== "maintainer") errors.push(`${label}: by must be "maintainer"`);
     if (!isDay(d.at)) errors.push(`${label}: at must be a YYYY-MM-DD day`);
@@ -198,6 +218,7 @@ export function gateItem(task, item, ctx) {
       reasons: [`accepted by the maintainer: ${remembered.reason}`],
       reason: remembered.reason,
       at: remembered.at,
+      ...(remembered.pinned ? { pinned: true } : {}),
     };
   }
 
@@ -391,10 +412,55 @@ export function indexDecisions(store) {
   };
 }
 
+/** The kind of a Learn path: a training module, one of its units, or a documentation page. */
+export const kindOfPath = (path) =>
+  /^\/training\/modules\/[^/]+$/.test(path)
+    ? "module"
+    : /^\/training\/modules\/[^/]+\/[^/]+$/.test(path)
+      ? "unit"
+      : "docs";
+
 /**
- * Gate every candidate of the judged files of an exam. Returns { items, stats }; an item is
+ * The maintainer's accepts that no judged candidate answers: a page added by hand, or one the generator stopped
+ * proposing for that task. They stand (a decision is remembered), so they are listed for the builder, which turns
+ * them into picks. `candidates` is the Set of "<task>|<path>" of the judged candidates. Returns
+ * { manual: [{ task, target: { kind, path }, class, relation?, reason, at, pinned?, title? }], notCurrent }:
+ * a page that is no longer a current Learn page (`isCurrent`) is left out and counted.
+ */
+export function manualAccepts(store, candidates, { isCurrent } = {}) {
+  const manual = [];
+  let notCurrent = 0;
+  for (const d of store?.decisions ?? []) {
+    if (d.decision !== "accept" || candidates.has(pairKey(d.task, d.target)))
+      continue;
+    const kind = kindOfPath(d.target);
+    const current = isCurrent?.(d.target, kind);
+    if (current && current.ok === false) {
+      notCurrent++;
+      continue;
+    }
+    manual.push({
+      task: d.task,
+      target: { kind, path: d.target },
+      class: d.class,
+      ...(d.relation ? { relation: d.relation } : {}),
+      reason: d.reason,
+      at: d.at,
+      ...(d.pinned ? { pinned: true } : {}),
+      ...(d.title ? { title: d.title } : {}),
+    });
+  }
+  manual.sort(
+    (a, b) => byText(a.task, b.task) || byText(a.target.path, b.target.path),
+  );
+  return { manual, notCurrent };
+}
+
+/**
+ * Gate every candidate of the judged files of an exam. Returns { items, manual, stats }; an item is
  * { task: { key, text, group }, target, title, source, via?, signals, flags, judge, gate }
- * with `gate` the result of gateItem. `today` is a YYYY-MM-DD day.
+ * with `gate` the result of gateItem; `manual` is manualAccepts (the maintainer's accepts without a candidate).
+ * `today` is a YYYY-MM-DD day.
  */
 export function gateJudged(judgedFiles, ctx) {
   const decisions = ctx.decisions ? indexDecisions(ctx.decisions) : null;
@@ -426,7 +492,21 @@ export function gateJudged(judgedFiles, ctx) {
     (a, b) =>
       byText(a.task.key, b.task.key) || byText(a.target.path, b.target.path),
   );
-  return { items, stats: gateStats(items) };
+  const { manual, notCurrent } = manualAccepts(
+    ctx.decisions,
+    new Set(items.map((i) => pairKey(i.task.key, i.target.path))),
+    { isCurrent: ctx.isCurrent },
+  );
+  return {
+    items,
+    manual,
+    stats: {
+      ...gateStats(items),
+      // the maintainer's accepts that no candidate answers: the builder adds them as picks
+      acceptedWithoutCandidate: manual.length,
+      acceptedWithoutCandidateNotCurrent: notCurrent,
+    },
+  };
 }
 
 export function gateStats(items) {

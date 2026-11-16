@@ -16,7 +16,7 @@ What the maintainer decides is **remembered**, per exam, and never asked twice. 
 
 Applied in this order; the first that fits decides.
 
-1. **The maintainer already decided it** (same task and page): the decision stands, as an `accept` with its class and relation or a `reject`. The one exception is a page that is no longer a current Learn page, which is rejected whatever was decided.
+1. **The maintainer already decided it** (same task and page): the decision stands, as an `accept` with its class and relation or a `reject`. The one exception is a page that is no longer a current Learn page, which is rejected whatever was decided. An accept stands even when the page is **not among the candidates** (see "Pages added by hand" below).
 2. **An excluded sub-product:** a documentation page whose family (`/entra/id-governance`) the maintainer excluded is rejected.
 3. **Not a current Learn page** (with `--urls`: learnsync's validator says it moved, was removed or is a landing page) is rejected.
 3a. **Classic material** (`scripts/lib/course-classic.mjs`: the word "classic" in the title or an address segment) is rejected and nobody is asked: a course leaves it out.
@@ -77,7 +77,26 @@ A skill group's fundamentals ([courses.md](courses.md)) are candidates of the ps
 }
 ```
 
+An `accept` may carry two more fields, both optional: `"pinned": true` (the page is shown under this task) and `"title"` (the card title of a documentation page that is not a candidate); see "Pages added by hand, and pages placed by hand" below.
+
 Decisions are per task and page (the same page can belong under one task and not another). The file is validated every time it is read (a bad one stops the run with exit code 1); `resolve` applies **nothing** when one answer is wrong; an item that is already decided is an error unless `--replace` says the maintainer changed their mind. After `resolve` the answered items leave the queue file, and the next `gate` uses the decisions: what was decided is not asked again, and an excluded sub-product takes its other pages with it.
+
+### Pages added by hand, and pages placed by hand
+
+A course that was edited by hand (a page added, moved to another task, a pointer note written) must come out of a rebuild as it went in. The course file is rebuilt from scratch, so **the decisions file is where a hand edit lives**; an edit made only in `src/data_files/courses/<CODE>.json` is gone at the next build. Two things make that work (2026-11-15):
+
+- **An accept stands without a candidate.** The gates only see what the candidate generator proposes, and a page the maintainer added by hand (a module of another course, a page found while reading) is usually not proposed, or not for that task. `gate` therefore lists every `accept` of the decisions file that no candidate answers in the gated file's `manual` list (`stats.acceptedWithoutCandidate`; with `--urls` a page that is no longer current is left out and counted in `acceptedWithoutCandidateNotCurrent`), and the builder turns each into a pick ([course-build.md](course-build.md)). Such a decision needs a real `reason`: it is the pick's reason and evidence, because there is no judge to quote ("accepted by the maintainer" is not one, and the builder leaves the page out with a warning). A documentation page also needs `title`, the title its card shows; a module takes its title from learnsync's catalog.
+- **`"pinned": true` on an accept fixes the place.** The builder shows a page once and chooses the task by its page rules (core before supporting, a module in the first skill group where it was accepted). A pinned accept overrides them: the page is shown under that task. A page is pinned at most once. Pin what was placed by hand; leave the rest to the rules.
+
+| To do this by hand | Write this into the decisions file |
+| --- | --- |
+| Add a page to a task | An `accept` for that task with `class` (and `relation` for `supporting`), a `reason`, `pinned: true`, and `title` for a documentation page. |
+| Move a page to another task | A `reject` for the task it leaves (so that it cannot come back there) and a pinned `accept` for the task it goes to. |
+| Add to, or move into, a skill group's fundamentals | The same, with the pseudo-task key `<group>/@foundations` and the class `foundation`. |
+| Say that a module shown under one task also covers another (the pointer note) | An `accept` for the other task, class `core`, **not** pinned, and a pinned `accept` where the module is shown. The builder writes the note when the other task has no module of its own. |
+| Follow a page that Learn moved | An `accept` for the new address and a `reject` for the old one, so that the old address is not added back. |
+
+Measured on 2026-11-15 on the 42 course files, with the candidates reconstructed from each course and none of the 357 pinned hand placements offered as a candidate again: the rebuild returned every pick under its task with its class, and every pointer note. Without the two rules the same rebuild lost 340 picks and all 125 hand-written pointer notes. The same day AZ-104 was rebuilt for real from its stored judgments (`gate`, then `build`) after eleven pages had been moved or added by hand: the builder returned the hand-edited course exactly, 1192 picks and 41 pointer notes, twelve of the picks from the `manual` list. What a rebuild does not keep for a page that is no candidate any more: the judge's evidence quote (the maintainer's reason takes its place), the `was` of a moved page, and the exact source label of a module (`P1` when it is in the exam's course, else `P3`).
 
 ## Running it
 

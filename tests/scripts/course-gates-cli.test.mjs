@@ -8,7 +8,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import test, { after } from "node:test";
 import { describeQueue, loadAges, main } from "../../scripts/course-gates.mjs";
 import { eachPick } from "../../scripts/lib/course-format.mjs";
@@ -628,4 +628,66 @@ test("gate: by default the unsure picks are accepted and counted as marked for r
     marked.io.out.join("\n"),
     /\d+ of the accepted are marked for review on the course page/,
   );
+});
+
+test("gate: a page the maintainer accepted that is not a candidate is written to the gated file's manual list, unless it is gone", async () => {
+  const w = world();
+  const task = exampleJudged({ units: "all" }).tasks[0].key;
+  const accept = (target, over = {}) => ({
+    task,
+    target,
+    decision: "accept",
+    class: "supporting",
+    relation: "deeper",
+    reason: "Added by hand.",
+    by: "maintainer",
+    at: "2026-10-16",
+    ...over,
+  });
+  mkdirSync(dirname(w.decisions), { recursive: true });
+  writeFileSync(
+    w.decisions,
+    JSON.stringify({
+      schemaVersion: 1,
+      code: "NET-100",
+      decisions: [
+        accept("/azure/added/by-hand", { title: "A page added by hand" }),
+        accept("/training/modules/cosmos-routes", { pinned: true }),
+        accept("/azure/added/gone", { title: "A page that left Learn" }),
+      ],
+      excludedFamilies: [],
+    }),
+  );
+  const verdictsFor = async (paths) =>
+    new Map(
+      paths.map((p) => [
+        p,
+        p === "/azure/added/gone"
+          ? { path: p, verdict: "removed", reason: "gone" }
+          : { path: p, verdict: "valid" },
+      ]),
+    );
+  const result = await run(
+    ["gate", "NET-100", "--out", w.out, "--urls"],
+    w,
+    capture(),
+    { verdictsFor },
+  );
+  assert.equal(result.code, 0, result.io.err.join("\n"));
+  const gated = readJson(join(w.out, "NET-100.gated.json"));
+  assert.deepEqual(
+    gated.manual.map((m) => [m.target.path, m.target.kind, m.pinned ?? false]),
+    [
+      ["/azure/added/by-hand", "docs", false],
+      ["/training/modules/cosmos-routes", "module", true],
+    ],
+  );
+  assert.equal(gated.stats.acceptedWithoutCandidate, 2);
+  assert.equal(gated.stats.acceptedWithoutCandidateNotCurrent, 1);
+  const out = result.io.out.join("\n");
+  assert.match(
+    out,
+    /2 pages the maintainer accepted are not among the candidates: the builder adds them anyway/,
+  );
+  assert.match(out, /1 pages the maintainer accepted .* no longer current/);
 });

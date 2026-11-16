@@ -150,6 +150,17 @@ test("the label says why a card is marked", () => {
   );
 });
 
+test("a long exam name is left out of the description so it stays within the site's limit", () => {
+  const { course } = exampleCourse();
+  const long = {
+    ...course,
+    name: "Designing and Implementing Microsoft Agentic DevOps Solutions for Large Organizations",
+  };
+  const description = renderCourse(long).match(/^description: "(.*)"$/m)[1];
+  assert.ok(description.length <= 170, `${description.length} characters`);
+  assert.doesNotMatch(description, /Agentic/);
+});
+
 test("the page opens with frontmatter, the import and a note that cites the study guide and says where the hands-on pages are", () => {
   const { course } = exampleCourse();
   const page = renderCourse(course);
@@ -164,13 +175,37 @@ test("the page opens with frontmatter, the import and a note that cites the stud
   );
   assert.match(
     page,
-    /\[official GH-900 study guide\]\(https:\/\/learn\.microsoft\.com\/credentials\/certifications\/resources\/study-guides\/gh-900\?WT\.mc_id=studentamb_165290\) skills measured \(January 2026 version\)/,
+    /This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the \[official GH-900 study guide\]\(https:\/\/learn\.microsoft\.com\/credentials\/certifications\/resources\/study-guides\/gh-900\?WT\.mc_id=studentamb_165290\) \(January 2026 version\)\./,
   );
   assert.match(
     page,
-    /Each task links to the relevant Microsoft Learn training and documentation\. Exercises, guided projects, tutorials and quickstarts are on the lab page, not here, and every page appears once\./,
+    /Each task of the guide links to the Microsoft Learn training and the documentation that cover it\. Exercises, guided projects, tutorials and quickstarts are on the lab page, not here\.\n:::\n/,
+  );
+  assert.doesNotMatch(
+    page,
+    /How to Prepare|Study Materials/,
+    "without the exam page the note has one paragraph",
   );
   assert.ok(page.endsWith("\n") && !page.endsWith("\n\n"));
+});
+
+test("the note names the How to Prepare page the course follows and links the exam page, when it is given them", () => {
+  const { course } = exampleCourse();
+  const page = renderCourse(course, {
+    examPage: "/certs/github/gh-900/",
+    prepare: {
+      title: "How to Prepare for Fundamentals Exams",
+      href: "/certs/prepare/fundamentals/",
+    },
+  });
+  assert.match(
+    page,
+    /are on the lab page, not here\.\n\nThe course follows the approach of \[How to Prepare for Fundamentals Exams\]\(\/certs\/prepare\/fundamentals\/\): the study guide is the source of truth for what the exam covers, so work through it task by task, with the training to learn a topic and the documentation for the details and for hands-on work\. Videos, practice tests and the other resources for the exam are on the \[GH-900 Study Materials\]\(\/certs\/github\/gh-900\/\) page\.\n:::\n/,
+  );
+  // one of the two alone is one sentence
+  const onlyExam = renderCourse(course, { examPage: "/certs/github/gh-900/" });
+  assert.match(onlyExam, /\n\nVideos, practice tests and the other resources/);
+  assert.doesNotMatch(onlyExam, /How to Prepare/);
 });
 
 test("the note links the lab page when it is given one", () => {

@@ -339,6 +339,56 @@ test("a heading that looks like page furniture inside a domain is reported, and 
   );
 });
 
+test("the version before, which a page keeps as a second section, is not part of the guide", () => {
+  const r = parseGuide(
+    lines(
+      "## Skills measured as of October 26, 2023",
+      "### Skills at a glance",
+      "- Alpha (40-60%)",
+      "- Beta (40-60%)",
+      "### Alpha (40-60%)",
+      "#### Group",
+      "- Task one",
+      "### Beta (40-60%)",
+      "#### Other group",
+      "- Task two",
+      "## Skills measured prior to October 26, 2023",
+      "### Skills at a glance",
+      "- Alpha (40-60%)",
+      "- Beta (40-60%)",
+      "### Alpha (40-60%)",
+      "#### Old group",
+      "- Old task one",
+      "### Beta (40-60%)",
+      "#### Other old group",
+      "- Old task two",
+    ),
+  );
+  assert.equal(r.ok, true);
+  assert.deepEqual(
+    r.domains.map((d) => [d.title, d.groups.map((g) => g.title)]),
+    [
+      ["Alpha", ["Group"]],
+      ["Beta", ["Other group"]],
+    ],
+  );
+  assert.equal(r.stats.tasks, 2);
+  // a change log between the two sections ends the skills as well
+  const withLog = parseGuide(
+    lines(
+      "## Skills measured",
+      "### Skills at a glance",
+      "- Alpha (100%)",
+      "### Alpha (100%)",
+      "#### Group",
+      "- Task",
+      "## Change log",
+      "- Not a task",
+    ),
+  );
+  assert.equal(withLog.stats.tasks, 1);
+});
+
 test("task keys stay unique when a task repeats within a group", () => {
   const r = parseGuide(
     lines(

@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "code": "GH-100",
+  "decisions": [
+    {
+      "task": "administer-github-enterprise-environment/manage-deployment-and-licensing/@foundations",
+      "target": "/training/modules/manage-github-actions-enterprise",
+      "decision": "reject",
+      "reason": "Belongs under \"Manage runner groups and administer GitHub-hosted vs. self-hosted runner options\", not here.",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "administer-github-enterprise-environment/support-github-enterprise-users-and-stakeholders/@foundations",
+      "target": "/training/modules/explore-release-strategy-recommendations",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "administer-github-enterprise-environment/support-github-enterprise-users-and-stakeholders/@foundations",
+      "target": "/training/modules/github-enterprise-server-developer-fundamentals",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "administer-github-enterprise-environment/support-github-enterprise-users-and-stakeholders/@foundations",
+      "target": "/training/modules/github-enterprise-server-repository-workflows",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "administer-github-enterprise-environment/support-github-enterprise-users-and-stakeholders/@foundations",
+      "target": "/training/modules/introduction-to-github-actions",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "administer-github-enterprise-environment/support-github-enterprise-users-and-stakeholders/define-standards-for-workflows-branching-reviews-and-release",
+      "target": "/training/modules/github-administration-for-enterprise-support-adoption",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "administer-github-enterprise-environment/support-github-enterprise-users-and-stakeholders/define-standards-for-workflows-branching-reviews-and-release",
+      "target": "/training/modules/introduction-to-github-actions",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "administer-github-enterprise-environment/support-github-enterprise-users-and-stakeholders/define-standards-for-workflows-branching-reviews-and-release",
+      "target": "/training/modules/spec-driven-development-github-spec-kit-enterprise-developers",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/configure-security-policies-and-rulesets/@foundations",
+      "target": "/training/modules/intro-to-git",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/configure-security-policies-and-rulesets/define-organization-and-enterprise-policies",
+      "target": "/training/modules/github-administration-for-enterprise-support-adoption",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/enable-repository-security-features/@foundations",
+      "target": "/training/modules/explore-package-dependencies",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/enable-repository-security-features/@foundations",
+      "target": "/training/modules/manage-sensitive-data-security-policies",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/enable-repository-security-features/manage-dependabot-and-security-advisories",
+      "target": "/training/modules/manage-sensitive-data-security-policies",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/enable-repository-security-features/manage-dependabot-and-security-advisories",
+      "target": "/training/modules/software-composition-analysis",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/manage-api-access-and-integrations/@foundations",
+      "target": "/training/modules/mcp-server",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-github-actions/configure-workflows-and-reusable-components/@foundations",
+      "target": "/training/modules/mcp-server",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-github-actions/manage-encrypted-secrets/configure-secrets-at-organization-and-repository-levels",
+      "target": "/training/modules/manage-sensitive-data-security-policies",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-github-actions/manage-runners/@foundations",
+      "target": "/training/modules/github-enterprise-server-developer-fundamentals",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-github-actions/manage-runners/apply-ip-allow-lists-and-configure-networking-including-azur",
+      "target": "/azure/architecture/networking/guide/private-link-hub-spoke-network",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-github-actions/manage-runners/apply-ip-allow-lists-and-configure-networking-including-azur",
+      "target": "/azure/virtual-network/ip-services/private-ip-addresses",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-github-identities-and-access/manage-access-and-permissions/@foundations",
+      "target": "/training/modules/introduction-github-packages",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-github-identities-and-access/manage-user-identities-and-authentication/choose-and-configure-identity-providers",
+      "target": "/entra/identity/app-provisioning/scim-support-in-entra-id",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "monitor-and-optimize-github-usage/monitor-enterprise-usage-and-activity/analyze-audit-logs-and-api-usage",
+      "target": "/azure/databricks/lakewatch/ingest-data/supported-logs/github",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-06"
+    },
+    {
+      "task": "manage-github-actions/manage-runners/manage-runner-groups-and-administer-github-hosted-vs-self-ho",
+      "target": "/training/modules/manage-github-actions-enterprise",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task as the study guide words it.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/manage-api-access-and-integrations/describe-github-apps-and-oauth-apps",
+      "target": "/training/modules/automate-devops-github-apps",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"What are GitHub Apps?\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/enable-repository-security-features/configure-vulnerability-alerts-secret-scanning-and-codeql",
+      "target": "/training/modules/github-administration-github-advanced-security",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Covers how an administrator enables GitHub Advanced Security and manages who can use its features and alerts.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "manage-github-actions/configure-workflows-and-reusable-components/configure-and-manage-reuse-of-actions-and-workflows-to-the-e",
+      "target": "/training/modules/manage-github-actions-enterprise",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Manage runner groups and administer GitHub-hosted vs. self-hosted runner options\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "manage-github-actions/configure-workflows-and-reusable-components/apply-organizational-policies-for-github-actions",
+      "target": "/training/modules/manage-github-actions-enterprise",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Manage runner groups and administer GitHub-hosted vs. self-hosted runner options\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "manage-github-actions/manage-encrypted-secrets/define-scope-and-access-for-secrets",
+      "target": "/training/modules/manage-github-actions-enterprise",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Manage runner groups and administer GitHub-hosted vs. self-hosted runner options\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "manage-github-actions/manage-encrypted-secrets/configure-secrets-at-organization-and-repository-levels",
+      "target": "/training/modules/manage-github-actions-enterprise",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Manage runner groups and administer GitHub-hosted vs. self-hosted runner options\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "manage-github-identities-and-access/manage-access-and-permissions/configure-organization-and-repository-roles",
+      "target": "/training/modules/github-introduction-administration",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Explain GitHub's authentication and authorization model\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "monitor-and-optimize-github-usage/monitor-enterprise-usage-and-activity/distinguish-admin-responsibilities-vs-github-support-and-gen",
+      "target": "/training/modules/github-administration-for-enterprise-support-adoption",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Describe differences between managed users and personal accounts\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "manage-github-identities-and-access/manage-user-identities-and-authentication/explain-github-s-authentication-and-authorization-model",
+      "target": "/training/modules/github-introduction-administration",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "manage-github-identities-and-access/manage-user-identities-and-authentication/describe-differences-between-managed-users-and-personal-acco",
+      "target": "/training/modules/github-administration-for-enterprise-support-adoption",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    }
+  ],
+  "excludedFamilies": []
+}

@@ -114,6 +114,28 @@ function labPageOf(code, root) {
     : null;
 }
 
+/** The exam's page on the hub as { file, path }, or null when the hub has none. */
+function examPageOf(code, root) {
+  const area = AREA_BY_PREFIX[code.split("-")[0]];
+  const file =
+    area && join(root, "src", "content", "docs", area, `${code}.mdx`);
+  return file && existsSync(file)
+    ? { file, path: `/certs/${area}/${code.toLowerCase()}/` }
+    : null;
+}
+
+/**
+ * The How to Prepare page the exam page links ({ title, href }), read from its card, so that the course page and
+ * the exam page always name the same one; null when the page has no such card.
+ */
+function preparePageOf(examPage) {
+  if (!examPage) return null;
+  const card = readFileSync(examPage.file, "utf8").match(
+    /<LinkCard\s+title="(How to Prepare for [^"]+)"\s+href="(\/certs\/prepare\/[a-z-]+\/)"/,
+  );
+  return card ? { title: card[1], href: card[2] } : null;
+}
+
 /**
  * The command line, dependencies injectable. Exit code: 0 done, 1 the course file has errors,
  * 2 usage or input problem.
@@ -239,8 +261,11 @@ export async function main(argv, deps = {}) {
       return 1;
     }
   }
+  const examPage = examPageOf(course.code, root);
   const page = renderCourse(course, {
     labPage: labPageOf(course.code, root),
+    examPage: examPage?.path ?? null,
+    prepare: preparePageOf(examPage),
     review,
     only: options.group,
   });

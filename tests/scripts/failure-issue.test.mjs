@@ -765,6 +765,18 @@ const WORKFLOWS = [
     ],
   },
   {
+    file: "course-guide-watch.yml",
+    issues: [
+      {
+        title: "Course Guide Watch Failed",
+        raiseWhen: "failure() && steps.check.outputs.check_failed == 'true'",
+        clearWhen: "steps.check.outputs.check_failed == 'false'",
+        errorFile: "/tmp/course-guide-watch-error.md",
+        repeat: "--repeat-hours 24",
+      },
+    ],
+  },
+  {
     file: "course-videos-monitor.yml",
     issues: [
       {

@@ -1,0 +1,80 @@
+name: Course Guide Watch
+
+on:
+  schedule:
+    # Daily 08:15 UTC, after the New Exam Monitor (06:45 UTC) has recorded the study
+    # guides of the day. Daily on purpose: an announced change becomes "in effect"
+    # on a day, whether or not anything was pushed. This workflow makes no commit,
+    # so it needs no slot of its own among the monitors that push to main.
+    - cron: "15 8 * * *"
+  # A person's push that changes a course or a recorded guide: the issue of a
+  # course that was just updated closes without waiting for the next morning.
+  # (The New Exam Monitor's own commits do not start workflows; the schedule
+  # picks those up.)
+  push:
+    branches: [main]
+    paths:
+      - "src/data_files/courses/**"
+      - "src/data_files/study-guide-history/**"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print what the issues would say, but create, rewrite and close nothing"
+        type: boolean
+        default: false
+      force:
+        description: "Open the issues even when more courses changed at once than the failsafe believes"
+        type: boolean
+        default: false
+
+# A run waits for the one in progress instead of cancelling it.
+concurrency:
+  group: course-guide-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    env:
+      ERROR_FILE: /tmp/course-guide-watch-error.md
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      # Compares every course with the recorded versions of its study guide and
+      # keeps ONE issue per exam whose skills changed: created, rewritten when
+      # what it says changes, closed once the course follows the newest version.
+      # Nothing is written into the repository.
+      - name: Compare the courses with their study guides
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CREATE_ISSUES: "1"
+          DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+          FORCE: ${{ inputs.force && '1' || '' }}
+        run: node scripts/course-guide-watch.mjs
+
+      # ONE issue with a stable title for a check that stopped (a file that cannot
+      # be read, the too-many-at-once failsafe, a failing `gh`): a comment for
+      # every further failed run, closed by the next healthy run.
+      - name: Create issue if the check failed
+        if: failure() && steps.check.outputs.check_failed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs raise --title "Course Guide Watch Failed" --label bug --file /tmp/course-guide-watch-error.md --repeat-hours 24
+
+      - name: Close the failure issue once the check runs again
+        if: steps.check.outputs.check_failed == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs clear --title "Course Guide Watch Failed" --label bug --comment "The Course Guide Watch ran normally again. Closing this issue."

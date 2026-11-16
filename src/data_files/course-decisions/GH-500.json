@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "code": "GH-500",
+  "decisions": [
+    {
+      "task": "configure-and-use-code-security-formerly-code-scanning-with/analyze-triage-and-remediate-code-scanning-results/@foundations",
+      "target": "/training/modules/github-introduction-administration",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-and-use-code-security-formerly-code-scanning-with/set-up-and-configure-code-security/@foundations",
+      "target": "/training/modules/github-introduction-administration",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-and-use-code-security-formerly-code-scanning-with/set-up-and-configure-code-security/enable-code-security-using-github-actions-or-external-ci-sys",
+      "target": "/security-exposure-management/defender-cli-cicd",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-and-use-code-security-formerly-code-scanning-with/understand-code-scanning-approaches-and-tooling/sarif-file-ingestion-management-and-interoperability",
+      "target": "/security-exposure-management/review-terminal-results",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-and-use-secret-protection-formerly-secret-scanning/enable-and-configure-secret-protection/@foundations",
+      "target": "/training/modules/github-enterprise-server-developer-fundamentals",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-and-use-secret-protection-formerly-secret-scanning/enable-and-configure-secret-protection/@foundations",
+      "target": "/training/modules/github-introduction-products",
+      "decision": "reject",
+      "reason": "Dropped on review: marked again after an earlier drop; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-and-use-secret-protection-formerly-secret-scanning/enable-and-configure-secret-protection/configure-secret-protection-settings-and-feature-availabilit",
+      "target": "/azure/devops/release-notes/roadmap/2025/ghazdo/secret-protection",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-and-use-secret-protection-formerly-secret-scanning/prevent-secret-exposure/@foundations",
+      "target": "/training/modules/introduction-to-secure-devops",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-and-use-supply-chain-security-formerly-dependabot/secure-dependencies-during-development/@foundations",
+      "target": "/training/modules/introduction-to-secure-devops",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "configure-and-use-supply-chain-security-formerly-dependabot/understand-and-manage-dependency-and-supply-chain-risks/@foundations",
+      "target": "/training/modules/introduction-to-secure-devops",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/apply-secure-sdlc-and-security-strategies/explain-differences-and-interplay-between-secret-protection",
+      "target": "/azure/devops/release-notes/roadmap/2025/ghazdo/secret-protection",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/apply-secure-sdlc-and-security-strategies/explain-security-campaigns-and-their-role-in-reducing-risk",
+      "target": "/training/modules/introduction-github-advanced-security",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/detect-manage-and-respond-to-security-alerts/@foundations",
+      "target": "/training/modules/explore-package-dependencies",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/detect-manage-and-respond-to-security-alerts/@foundations",
+      "target": "/training/modules/github-enterprise-server-developer-fundamentals",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/manage-access-governance-and-supply-chain-security/@foundations",
+      "target": "/training/modules/explore-package-dependencies",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/manage-access-governance-and-supply-chain-security/@foundations",
+      "target": "/training/modules/github-enterprise-server-developer-fundamentals",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/manage-access-governance-and-supply-chain-security/@foundations",
+      "target": "/training/modules/introduction-github-packages",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/manage-access-governance-and-supply-chain-security/@foundations",
+      "target": "/training/modules/introduction-to-github-actions",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/manage-access-governance-and-supply-chain-security/@foundations",
+      "target": "/training/modules/understand-package-management",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/@foundations",
+      "target": "/training/modules/explore-package-dependencies",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/@foundations",
+      "target": "/training/modules/github-enterprise-server-developer-fundamentals",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/@foundations",
+      "target": "/training/modules/github-introduction-administration",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/@foundations",
+      "target": "/training/modules/github-introduction-products",
+      "decision": "reject",
+      "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/@foundations",
+      "target": "/training/modules/introduction-to-github",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "accepted by the maintainer",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/contrast-code-security-secret-protection-and-supply-chain-se",
+      "target": "/azure/devops/release-notes/roadmap/2025/ghazdo/secret-protection",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "github-security-suites-administration/configure-security-features-and-defaults/@foundations",
+      "target": "/training/modules/introduction-to-github",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "github-security-suites-administration/define-governance-access-and-code-security-workflows/@foundations",
+      "target": "/training/modules/introduction-to-github",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "github-security-suites-administration/manage-codeql-and-security-automation/@foundations",
+      "target": "/training/modules/introduction-to-github",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "github-security-suites-administration/manage-codeql-and-security-automation/understand-available-apis-and-automation-methods-for-large-s",
+      "target": "/training/modules/code-scanning-with-github-codeql",
+      "decision": "reject",
+      "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
+      "by": "maintainer",
+      "at": "2026-11-05"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/@foundations",
+      "target": "/training/modules/configure-use-secret-scanning-github-repository",
+      "decision": "reject",
+      "reason": "Belongs under \"Enable GitHub Secret Protection at the repository and organization levels\", not here.",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "configure-and-use-secret-protection-formerly-secret-scanning/enable-and-configure-secret-protection/enable-github-secret-protection-at-the-repository-and-organi",
+      "target": "/training/modules/configure-use-secret-scanning-github-repository",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task as the study guide words it.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "configure-and-use-secret-protection-formerly-secret-scanning/enable-and-configure-secret-protection/configure-secret-protection-settings-and-feature-availabilit",
+      "target": "/training/modules/configure-use-secret-scanning-github-repository",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Enable GitHub Secret Protection at the repository and organization levels\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "configure-and-use-secret-protection-formerly-secret-scanning/manage-and-respond-to-secret-protection-alerts/respond-to-secret-alerts-and-apply-appropriate-remediation-a",
+      "target": "/training/modules/configure-use-secret-scanning-github-repository",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Enable GitHub Secret Protection at the repository and organization levels\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/apply-secure-sdlc-and-security-strategies/explain-security-campaigns-and-their-role-in-reducing-risk",
+      "target": "/training/modules/security-campaign",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Campaign-based remediation strategies and bulk alert management\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/apply-secure-sdlc-and-security-strategies/compare-prevention-first-approaches-vs-gate-based-security-s",
+      "target": "/training/modules/security-campaign",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Campaign-based remediation strategies and bulk alert management\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "configure-and-use-supply-chain-security-formerly-dependabot/detect-prioritize-and-respond-to-supply-chain-alerts/remediating-supply-chain-alerts-through-campaigns-and-pull-r",
+      "target": "/training/modules/security-campaign",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Campaign-based remediation strategies and bulk alert management\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/detect-manage-and-respond-to-security-alerts/explain-implications-and-best-practices-for-ignoring-or-dism",
+      "target": "/training/modules/security-remediation",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Alert lifecycles, autofix capabilities, and remediation workflows\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "configure-and-use-code-security-formerly-code-scanning-with/analyze-triage-and-remediate-code-scanning-results/dismissing-alerts-and-managing-severity-and-category-classif",
+      "target": "/training/modules/security-remediation",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Alert lifecycles, autofix capabilities, and remediation workflows\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "github-security-suites-administration/define-governance-access-and-code-security-workflows/define-administrator-security-manager-and-developer-roles",
+      "target": "/training/modules/github-administration-github-advanced-security",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Describe GitHub Security suite structure and navigation\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "configure-and-use-code-security-formerly-code-scanning-with/set-up-and-configure-code-security/use-matrix-builds-and-define-appropriate-scan-frequency",
+      "target": "/training/modules/configure-code-scanning",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Native and third-party code scanning options\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "github-security-suites-administration/define-governance-access-and-code-security-workflows/enable-and-configure-default-or-approved-custom-codeql-workf",
+      "target": "/training/modules/configure-code-scanning",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Native and third-party code scanning options\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "github-security-suites-administration/manage-codeql-and-security-automation/enable-and-configure-default-or-approved-custom-codeql-workf",
+      "target": "/training/modules/configure-code-scanning",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Native and third-party code scanning options\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "security-operations-best-practices-prioritization-and-remedi/prioritize-and-manage-security-work-at-scale/campaign-based-remediation-strategies-and-bulk-alert-managem",
+      "target": "/training/modules/security-campaign",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "configure-and-use-code-security-formerly-code-scanning-with/analyze-triage-and-remediate-code-scanning-results/alert-lifecycles-autofix-capabilities-and-remediation-workfl",
+      "target": "/training/modules/security-remediation",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "configure-and-use-code-security-formerly-code-scanning-with/understand-code-scanning-approaches-and-tooling/native-and-third-party-code-scanning-options",
+      "target": "/training/modules/configure-code-scanning",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/describe-github-security-suite-structure-and-navigation",
+      "target": "/training/modules/github-administration-github-advanced-security",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    }
+  ],
+  "excludedFamilies": []
+}

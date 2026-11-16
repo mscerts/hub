@@ -12,6 +12,7 @@
  *       src/data_files/courses/<CODE>.json when it is wanted.
  *       The build stops when the study guide or Learn changed since the candidates were made, because the
  *       course would record a state its picks were never judged against; --allow-stale builds anyway.
+ *   --no-official-course  build an exam that has no official course on Learn (empty scope, every pick from search)
  *       Hands-on pages (exercises, simulations, guided projects, tutorials, quickstarts) are left out of the
  *       course, a page that fits several tasks is shown once and a classic page is left out; all three are
  *       listed in FILE.routing.json. The picks the judge was not sure of (or flagged as another role or product
@@ -34,7 +35,7 @@ import { eachPick } from "./lib/course-format.mjs";
 import { parseGuide } from "./lib/course-guide.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-build.mjs <CODE> [--gated FILE] [--out FILE] [--today YYYY-MM-DD] [--allow-stale] [--audience FILE] [--urls [--live]]`;
+const USAGE = `Usage: node scripts/course-build.mjs <CODE> [--gated FILE] [--out FILE] [--today YYYY-MM-DD] [--allow-stale] [--no-official-course] [--audience FILE] [--urls [--live]]`;
 
 function parseArgs(argv) {
   const options = {
@@ -43,12 +44,14 @@ function parseArgs(argv) {
     out: null,
     today: null,
     allowStale: false,
+    noOfficialCourse: false,
     urls: false,
     live: false,
   };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--allow-stale") options.allowStale = true;
+    else if (arg === "--no-official-course") options.noOfficialCourse = true;
     else if (arg === "--urls") options.urls = true;
     else if (arg === "--live") options.live = options.urls = true;
     else if (["--gated", "--out", "--today", "--audience"].includes(arg)) {
@@ -119,6 +122,7 @@ export async function main(argv, deps = {}) {
   let guide;
   let name;
   let scope;
+  let learnsync = null;
   try {
     const loaded = loadGuide({ code, root, env });
     if (!loaded) {
@@ -126,7 +130,12 @@ export async function main(argv, deps = {}) {
       return 2;
     }
     ({ guide, name } = loaded);
-    ({ scope } = await scopeFor({ code, root, env, fetchImpl }));
+    ({ scope, learnsync = null } = await scopeFor({
+      code,
+      root,
+      env,
+      fetchImpl,
+    }));
   } catch (e) {
     error(`Cannot load the inputs: ${e.message}`);
     return 2;
@@ -164,6 +173,17 @@ export async function main(argv, deps = {}) {
     error(`No audience decisions: ${audienceFile} does not exist.`);
     return 2;
   }
+  // what learnsync's catalog says about a module, for the maintainer's accepts that are not candidates
+  const catalogModules = new Map(
+    (Array.isArray(learnsync?.catalog?.modules)
+      ? learnsync.catalog.modules
+      : Object.values(learnsync?.catalog?.modules ?? {})
+    ).map((m) => [m.path, m]),
+  );
+  const describe = (path) => {
+    const m = catalogModules.get(path);
+    return m ? { title: m.title, unitSig: m.unitSig } : null;
+  };
   const result = buildCourse({
     code,
     name,
@@ -172,7 +192,9 @@ export async function main(argv, deps = {}) {
     gated,
     today,
     allowStale: options.allowStale,
+    allowNoScope: options.noOfficialCourse,
     audienceDecisions,
+    describe,
   });
   for (const w of result.warnings) log(`warning: ${w}`);
   if (!result.ok) {
@@ -223,6 +245,10 @@ export async function main(argv, deps = {}) {
     `${code}: built a course of ${s.tasks} tasks, ${s.picks} picks (${s.core} core, ${s.supporting} supporting; ${s.byDecider.auto} automatic, ${s.byDecider.maintainer} approved by the maintainer), ${s.tasksWithoutPicks} tasks with no picks, ${result.course.rejected.length} remembered rejections.`,
   );
   log(`Wrote ${out}`);
+  if (result.addedWithoutCandidate)
+    log(
+      `${result.addedWithoutCandidate} picks are pages the maintainer accepted that were not among the candidates (the gated file's manual list).`,
+    );
   // what the page rules took out of the course, for scripts/course-labs.mjs and the maintainer
   const routing = result.routing;
   const routingFile = out.replace(/\.json$/, "") + ".routing.json";

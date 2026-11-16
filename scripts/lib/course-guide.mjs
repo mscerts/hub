@@ -102,8 +102,10 @@ export function parseAsOf(lines) {
 }
 
 /** Headings after the last domain that end the skills measured. */
+// (A page that announces a change keeps the version before it in a second section, "Skills measured prior to
+// <date>", after a change log: only the first section is the guide, as for the version history in guide-history.mjs.)
 const END_OF_SKILLS =
-  /^(study resources|additional study resources|study guide resources|related content|next steps|feedback|learn more)\b/i;
+  /^(study resources|additional study resources|study guide resources|related content|next steps|feedback|learn more|change log|skills measured prior to)\b/i;
 /** A group title that looks like page furniture rather than a skill group: reported as a warning. */
 const SUSPICIOUS_GROUP =
   /^(study|practice|resources|training|certification|exam\b)/i;
