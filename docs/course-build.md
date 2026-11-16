@@ -10,7 +10,7 @@ node scripts/course-build.mjs AZ-104 [--gated FILE] [--out FILE] [--allow-stale]
 
 Inputs:
 
-- the **gated file** (`<tmp>/course-gates/<CODE>.gated.json`, `--gated FILE`): every candidate with its decision;
+- the **gated file** (`<tmp>/course-gates/<CODE>.gated.json`, `--gated FILE`): every candidate with its decision, and in `manual` the maintainer's accepts that no candidate answers (a page added by hand);
 - the **study guide** the New Exam Monitor stores (`src/data_files/learn-exams.json`, `LEARN_EXAMS_FILE`), parsed: the tree, the exam's name and the guide's hash and date;
 - **what Learn offers the exam today**, as for the other course tools (a learnsync checkout, `LEARNSYNC_DIR`, and the catalog API's course list): the scope snapshot the course stores.
 
@@ -35,6 +35,18 @@ The course file is written to `<tmp>/course-build/<CODE>.json`, or to `--out`, w
 
 A candidate that is still **in the queue** is not in the course; the build lists each as a warning so that none is forgotten.
 
+**A page the maintainer accepted that is not a candidate** (the gated file's `manual` list, [course-gates.md](course-gates.md)) is a pick like the others: a decision is remembered, whether or not the generator proposes the page again. What a candidate would have carried is worked out here:
+
+| Part | Where it comes from |
+| --- | --- |
+| `source` | `P1` for a module of the exam's own course (the scope snapshot), `P3` for any other module, `P2` with `via` for a documentation page that a module of the course lists, `P4` for any other documentation page. |
+| `title` | Learn's catalog (learnsync) for a module, the decision's `title` for a documentation page. |
+| `why`, `evidence` | The maintainer's `reason`, for the picks that need them. |
+| `inputs.picked` | The signature learnsync's catalog has for a module outside the exam's course. |
+| `decision` | `{ by: "maintainer", at: <the day of the decision> }`. |
+
+Such a page is **left out, with a warning**, when nothing gives its title, when a module outside the course has no signature in the catalog, when the decision has no reason of its own and the pick needs one, or when its task is no longer in the study guide. The summary says how many picks came this way.
+
 ## The rules of the page
 
 After the accepted items are read, and before the course is written, the builder applies four rules (maintainer, 2026-10-20 and 2026-10-21; the format is in [courses.md](courses.md)). Neither decides relevance; what they take out is written to `<out>.routing.json` and counted in the summary line.
@@ -44,6 +56,8 @@ After the accepted items are read, and before the course is written, the builder
 - **A page is shown once.** A page accepted for several tasks, or for a task and the fundamentals of its group, stays under one: **core before foundation before supporting, a sure judgement (the judge not unsure) before an unsure one, the exam's own course (`P1`) before the other sources, then the task that has the fewest picks so far** (so that the thin tasks fill first), then the better evidence quote, then the earlier task. A **module** is the exception: when the rules above tie, it stays under the earliest task of the guide that it fits, not the thinnest (a module introduces its skill group, so it belongs with the first task it fits; measured on AZ-104, "Create, configure, and manage identities" went under "Manage licenses" because that task had the fewest picks, although the judge called it the exact fit for "Create users and groups"). The better quote cannot settle this: a quote that names the task's words ("licenses") scores higher than one that describes the module as the task itself. The pages that fit one task are placed first, so that the load is known; the result does not depend on the order of the gated file. `routing.repeats` lists, for every such page, the task it stays under and the tasks it also fitted.
 
 - **A module is placed once, in the first skill group where it was accepted.** A module accepted for tasks of several skill groups stays in the earliest group of the guide (a group's fundamentals count as that group), whatever its class elsewhere; the rule above then chooses the task inside that group. `routing.repeats` lists the tasks it also fits. An accepted **unit** that is not hands-on (the generator no longer offers one, an older gated file may hold it) is collapsed into its **module**: the pick takes the module's path and title (a warning says when the gated file has no module title), several units of a module accepted for one task are one pick, and the module's own row wins over a unit's. `routing.collapsed` lists every unit that became its module, with its tasks, and the build prints how many. A unit whose module the maintainer rejected for that task is dropped instead (the module must not come back) and listed in `routing.blocked`; measured on the stored AZ-104 judgments (2026-10-21): 111 accepted units became their module, 17 were blocked this way, 33 modules that fitted several tasks are shown once, and the course has 523 picks instead of 649. A documentation page is not subject to this rule.
+
+- **A pinned page stays where the maintainer put it.** An accept with `pinned: true` in the decisions file ([course-gates.md](course-gates.md)) decides the task before the two rules above are asked: the page is shown there, and `routing.repeats` lists the other tasks it was accepted for, like for any page that fits several. It is still left out when it is classic or hands-on.
 
 - **A task without a module points to the module that also covers it.** For every task that ended up with no module of its own, `routing.repeats` (each entry carries the page's `kind`) says which accepted modules fit it and are shown under another task; the builder writes them into the task as `overlaps` (`path`, `title`, `shownUnder`), and the page renders a note above the task's tabs ([courses.md](courses.md)). A module shown in a group's fundamentals is not listed, and a task with a module of its own gets no `overlaps`.
 
@@ -67,11 +81,11 @@ Exit code 2 is an input problem: no gated file, no stored guide or exam name, Le
 
 ## Not covered here
 
-- **Rendering.** The page is `node scripts/course-file.mjs render <CODE> --out <page>` from the course file. There are no draft pages (maintainer, 2026-10-21): the page is an ordinary page of the site, and nothing links it until the maintainer links it from the exam pages, the sidebar or the landing page.
+- **Rendering.** The page is `node scripts/course-file.mjs render <CODE> --out <page>` from the course file. There are no draft pages (maintainer, 2026-10-21): the page is an ordinary page of the site, and its exam page links it once `node scripts/course-cards.mjs` has added the card ([courses.md](courses.md), "The card on the exam page").
 - **The picks to look at.** The build writes `<out>.review.json` beside the course file: every pick the judge was not sure of or flagged as another role, product area or licensing tier (`reasons`, the judge's `why`, `class`, `relation`), in the guide's order. They are in the course; `render <CODE> --review <out>.review.json --out <page>` writes the review copy ([courses.md](courses.md)). A pick the maintainer decided has no mark.
-- **Rebuilding a course.** When the guide or Learn changes, `node scripts/course-status.mjs <CODE>` says what to redo; a rebuild is the pipeline again for the tasks it names. Nothing merges an old course with a new build yet: a rebuilt course is the whole new file.
+- **Rebuilding a course.** When the guide or Learn changes, `node scripts/course-status.mjs <CODE>` says what to redo; a rebuild is the pipeline again for the tasks it names. Nothing merges an old course with a new build: a rebuilt course is the whole new file. What was edited by hand survives because it is in the decisions file (an accept stands without a candidate, a pinned accept fixes the place, a reject keeps a page out); an edit that exists only in the course file does not ([course-gates.md](course-gates.md), "Pages added by hand, and pages placed by hand").
 - **No exam has been built.** The builder and its tests exist, with an invented exam; the first real build is the pilot, which waits for the maintainer.
 
 ## Tests
 
-`tests/scripts/course-build.test.mjs`, `course-routing.test.mjs` (the page rules) and `course-build-cli.test.mjs`, offline, on the invented exam of `tests/scripts/helpers/example-judging.mjs` and `example-candidates.mjs`. One test closes the loop: a built course renders, and the rebuild check says `current` the moment it is built.
+`tests/scripts/course-build.test.mjs`, `course-routing.test.mjs` (the page rules) and `course-build-cli.test.mjs`, offline, on the invented exam of `tests/scripts/helpers/example-judging.mjs` and `example-candidates.mjs`. One test closes the loop: a built course renders, and the rebuild check says `current` the moment it is built. Another builds a course that was edited by hand (a module moved to another task and pinned there, with a pointer note on the task it left) from the decisions alone.

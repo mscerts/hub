@@ -82,6 +82,10 @@
     },
     "picked": [
       [
+        "/training/modules/aaai-implement-advanced-rag-azure-ai-search",
+        "478521b5a1a96ae11e6158387f9d77ab4d214c27"
+      ],
+      [
         "/training/modules/ai-agent-cost-structure",
         "df88e810c626c7ad5e6850038b3e94fe9c82246d"
       ],
@@ -180,6 +184,10 @@
       [
         "/training/modules/restrict-azure-machine-learning-workspace-network",
         "59bc41eb6cfa7348f8578f11b380f2bbcbf71e2d"
+      ],
+      [
+        "/training/modules/run-evaluations-generate-synthetic-datasets",
+        "776bbe5b8de01863c4e1eb9c860e34fde4c022e1"
       ],
       [
         "/training/modules/security-private-access-azure-resources",
@@ -1210,22 +1218,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/azure/machine-learning/how-to-setup-mlops-github-azure-ml"
-                  },
-                  "title": "Set up MLOps with GitHub",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Setting up the MLOps pipeline with GitHub Actions is a neighbouring job that uses environments.",
-                  "evidence": "Learn how to set up a sample MLOps environment in Azure Machine Learning with GitHub Actions",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/azure/machine-learning/how-to-troubleshoot-environments"
                   },
                   "title": "Troubleshoot environment images",
@@ -1531,6 +1523,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/machine-learning/concept-machine-learning-registries-mlops"
+                  },
+                  "title": "Machine Learning registries",
+                  "class": "supporting",
+                  "relation": "prerequisite",
+                  "source": "P4",
+                  "why": "Explains what a registry is and how it shares models, components and environments across workspaces.",
+                  "evidence": "Learn about Azure Machine Learning registries and their role in scaling MLOps across different environments.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             }
@@ -1722,6 +1730,22 @@
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/machine-learning/how-to-setup-mlops-github-azure-ml"
+                  },
+                  "title": "Set up MLOps with GitHub",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "The MLOps setup with GitHub provisions the workspace resources from GitHub Actions workflows.",
+                  "evidence": "Learn how to set up a sample MLOps environment in Azure Machine Learning with GitHub Actions",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 }
               ],
@@ -2858,6 +2882,21 @@
                 "by": "auto",
                 "at": "2026-11-04"
               }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/plan-prepare-genaiops"
+              },
+              "title": "Plan and prepare a GenAIOps solution",
+              "class": "foundation",
+              "source": "P1",
+              "why": "Introduces the GenAIOps lifecycle and the tools and frameworks that the generative AI half of the exam works with.",
+              "evidence": "Explore available tools and frameworks to implement GenAIOps",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-15"
+              }
             }
           ],
           "tasks": [
@@ -3679,6 +3718,20 @@
               "picks": [
                 {
                   "target": {
+                    "kind": "module",
+                    "path": "/training/modules/run-evaluations-generate-synthetic-datasets"
+                  },
+                  "title": "Run evaluations and generate synthetic datasets",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Exercise - Performance and quality metrics",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                },
+                {
+                  "target": {
                     "kind": "docs",
                     "path": "/azure/foundry/concepts/evaluation-evaluators/general-purpose-evaluators"
                   },
@@ -3742,6 +3795,13 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/run-evaluations-generate-synthetic-datasets",
+                  "title": "Run evaluations and generate synthetic datasets",
+                  "shownUnder": "implement-generative-ai-quality-assurance-and-observability/configure-evaluation-and-validation-for-generative-ai-applic/implement-ai-quality-metrics-including-groundedness-relevanc"
                 }
               ]
             },
@@ -3869,7 +3929,14 @@
             {
               "key": "optimize-generative-ai-systems-and-model-performance/optimize-retrieval-augmented-generation-rag-performance-and/optimize-retrieval-performance-by-tuning-similarity-threshol",
               "text": "Optimize retrieval performance by tuning similarity thresholds, chunk sizes, and retrieval strategies",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/aaai-implement-advanced-rag-azure-ai-search",
+                  "title": "Implement advanced RAG pipelines with Azure AI Search and Microsoft Foundry",
+                  "shownUnder": "optimize-generative-ai-systems-and-model-performance/optimize-retrieval-augmented-generation-rag-performance-and/implement-and-optimize-hybrid-search-approaches-combining-se"
+                }
+              ]
             },
             {
               "key": "optimize-generative-ai-systems-and-model-performance/optimize-retrieval-augmented-generation-rag-performance-and/select-and-fine-tune-embedding-models-for-domain-specific-us",
@@ -3879,7 +3946,22 @@
             {
               "key": "optimize-generative-ai-systems-and-model-performance/optimize-retrieval-augmented-generation-rag-performance-and/implement-and-optimize-hybrid-search-approaches-combining-se",
               "text": "Implement and optimize hybrid search approaches combining semantic and keyword-based retrieval",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-implement-advanced-rag-azure-ai-search"
+                  },
+                  "title": "Implement advanced RAG pipelines with Azure AI Search and Microsoft Foundry",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Design hybrid search architectures",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "optimize-generative-ai-systems-and-model-performance/optimize-retrieval-augmented-generation-rag-performance-and/evaluate-and-improve-rag-system-performance-by-using-relevan",
@@ -3905,8 +3987,8 @@
                   "source": "P4",
                   "evidence": "Select the appropriate fine-tuning method",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 }
               ]
@@ -3934,7 +4016,14 @@
             {
               "key": "optimize-generative-ai-systems-and-model-performance/implement-advanced-fine-tuning-and-model-customization/monitor-and-optimize-fine-tuned-model-performance",
               "text": "Monitor and optimize fine-tuned model performance",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/optimize-finetune-agents",
+                  "title": "Optimize and fine-tune AI agents for production",
+                  "shownUnder": "optimize-generative-ai-systems-and-model-performance/implement-advanced-fine-tuning-and-model-customization/design-and-implement-advanced-fine-tuning-methods"
+                }
+              ]
             },
             {
               "key": "optimize-generative-ai-systems-and-model-performance/implement-advanced-fine-tuning-and-model-customization/manage-a-fine-tuned-model-from-development-through-productio",
@@ -10527,6 +10616,12 @@
       "path": "/azure/horizondb/ai/hybrid-search",
       "reason": "Other product area than Azure Machine Learning.",
       "at": "2026-11-04"
+    },
+    {
+      "taskKey": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/create-and-manage-environments",
+      "path": "/azure/machine-learning/how-to-setup-mlops-github-azure-ml",
+      "reason": "Belongs under \"Automate resource provisioning by using GitHub Actions workflows\", not here.",
+      "at": "2026-11-14"
     }
   ]
 }

@@ -14,19 +14,21 @@
       "task": "design-and-implement-agentic-workflows-and-automations/design-agentic-workflows-and-automations/align-agentic-workflows-with-common-design-patterns",
       "target": "/azure/durable-task/sdks/durable-agents-patterns",
       "decision": "accept",
-      "class": "core",
-      "reason": "accepted by the maintainer",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Names the common agentic patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer), with code samples a business user does not need.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Agentic Application Patterns - Azure"
     },
     {
       "task": "design-and-implement-agentic-workflows-and-automations/design-agentic-workflows-and-automations/align-agentic-workflows-with-common-design-patterns",
       "target": "/azure/logic-apps/set-up-prompt-chain-agent-workflow",
-      "decision": "accept",
-      "class": "core",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "A build how-to in Azure Logic Apps, another product.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-agentic-workflows-and-automations/design-agentic-workflows-and-automations/align-agentic-workflows-with-common-design-patterns",
@@ -107,7 +109,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What is Azure Skills?"
     },
     {
       "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/@foundations",
@@ -217,10 +220,13 @@
       "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/create-custom-skills",
       "target": "/azure/developer/github-copilot-app-modernization/modernization-agent/customization",
       "decision": "accept",
-      "class": "core",
-      "reason": "accepted by the maintainer",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Shows how a custom skill is written as a SKILL.md file under .github/skills, in the setting of one migration tool.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Customize the GitHub Copilot Modernization Agent for Migrations"
     },
     {
       "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/create-custom-skills",
@@ -284,10 +290,13 @@
       "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
       "target": "/azure/developer/azure-skills/install",
       "decision": "accept",
-      "class": "core",
-      "reason": "accepted by the maintainer",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Installing the Azure Skills plugin is one example of installing external skills.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Install and configure Azure Skills"
     },
     {
       "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/install-external-skills",
@@ -364,22 +373,18 @@
     {
       "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/select-an-agent",
       "target": "/azure/developer/java/migration/migrate-github-copilot-app-modernization-for-java-custom-agent",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "deeper",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "A developer tutorial for migrating Java apps, not about selecting an agent in Copilot Chat.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/select-an-agent",
       "target": "/azure/devops/release-notes/2026/sprint-269-update",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "A release note, and about Azure Boards.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/select-an-agent",
@@ -781,7 +786,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Configure Copilot code review instructions - Azure Repos"
     },
     {
       "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/identify-the-characteristics-of-skills-prompts-and-instructi",
@@ -1154,12 +1160,10 @@
     {
       "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
       "target": "/azure/devops/boards/github/work-item-integration-github-copilot",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "An Azure DevOps page: this exam is about pull requests, projects and policies on GitHub itself.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
@@ -1204,12 +1208,10 @@
     {
       "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
       "target": "/azure/devops/repos/git/copilot-code-reviews",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "An Azure DevOps page: this exam is about pull requests, projects and policies on GitHub itself.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
@@ -1302,32 +1304,26 @@
     {
       "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
       "target": "/azure/devops/boards/backlogs/connect-work-items-to-git-dev-ops",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "An Azure DevOps page: this exam is about pull requests, projects and policies on GitHub itself.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
       "target": "/azure/devops/boards/github",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "An Azure DevOps page: this exam is about pull requests, projects and policies on GitHub itself.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
       "target": "/azure/devops/boards/github/link-to-from-github",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "An Azure DevOps page: this exam is about pull requests, projects and policies on GitHub itself.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "use-github-platform-features/track-and-capture-work/link-pull-requests",
@@ -1368,6 +1364,306 @@
       "reason": "Dropped in review: another product's page or an Azure Repos page that does not teach the GitHub task, or an old release note or roadmap item.",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/@foundations",
+      "target": "/azure/devops/repos/git/branch-policies-overview",
+      "decision": "reject",
+      "reason": "An Azure DevOps page: this exam is about pull requests, projects and policies on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/azure/devops/repos/git/review-pull-requests",
+      "decision": "reject",
+      "reason": "An Azure DevOps page: this exam is about pull requests, projects and policies on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/repos/git/about-pull-requests",
+      "decision": "reject",
+      "reason": "An Azure DevOps page: this exam is about pull requests, projects and policies on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/repos/git/branch-policies",
+      "decision": "reject",
+      "reason": "An Azure DevOps page: this exam is about pull requests, projects and policies on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/repos/git/pull-requests",
+      "decision": "reject",
+      "reason": "An Azure DevOps page: this exam is about pull requests, projects and policies on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/azure/devops/repos/git/secure-repositories-pull-requests",
+      "decision": "reject",
+      "reason": "An Azure DevOps page: this exam is about pull requests, projects and policies on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/azure/foundry/agents/how-to/tools/model-context-protocol",
+      "decision": "reject",
+      "reason": "A how-to for connecting MCP servers in another product, not about when to use MCP servers with GitHub Copilot.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/dynamics365/customer-service/administer/configure-service-agent-mcp-servers",
+      "decision": "reject",
+      "reason": "A how-to for connecting MCP servers in another product, not about when to use MCP servers with GitHub Copilot.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/entra/agent-id/secure-mcp-server-with-entra-id",
+      "decision": "reject",
+      "reason": "A how-to for connecting MCP servers in another product, not about when to use MCP servers with GitHub Copilot.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/microsoft-copilot-studio/mcp-add-existing-server-to-agent",
+      "decision": "reject",
+      "reason": "A how-to for connecting MCP servers in another product, not about when to use MCP servers with GitHub Copilot.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recognize-considerations-for-choosing-between-models-includi",
+      "target": "/azure/architecture/ai-ml/guide/choose-ai-model",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Sets out the criteria for choosing between AI models (task fit, cost, speed, context size), written for Azure workloads but true of any model choice.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Choose the Right AI Model for Your Workload - Azure Architecture Center"
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/apply-responsible-ai-principles",
+      "target": "/training/modules/responsible-ai-with-github-copilot",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-governance-privacy-usage-and-risk-controls",
+      "target": "/training/modules/github-copilot-management-and-customizations",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "use-github-platform-features/apply-github-management-best-practices-and-policies/recommend-when-to-use-model-context-protocol-mcp-servers",
+      "target": "/training/modules/mcp-server",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "use-github-platform-features/plan-and-manage-work/create-projects-including-selecting-an-appropriate-template",
+      "target": "/training/modules/manage-work-github-projects",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "use-github-platform-features/plan-and-manage-work/manage-and-customize-views-including-columns-automation-and",
+      "target": "/training/modules/manage-work-github-projects",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Create projects, including selecting an appropriate template\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/plan-and-manage-work/configure-access-to-github-projects",
+      "target": "/training/modules/manage-work-github-projects",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Create projects, including selecting an appropriate template\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/plan-and-manage-work/manage-issues-including-creating-assigning-linking-and-taggi",
+      "target": "/training/modules/introduction-to-github",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "use-github-platform-features/plan-and-manage-work/utilize-the-github-platform-for-collaboration",
+      "target": "/training/modules/introduction-to-github",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Manage issues, including creating, assigning, linking, and tagging\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-pull-requests",
+      "target": "/training/modules/manage-changes-pull-requests-github",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/assign-pull-requests",
+      "target": "/training/modules/code-reviews-pull-requests-github-copilot",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Requesting a review from Copilot on GitHub.com is one way of assigning a reviewer to a pull request.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "use-github-platform-features/track-and-capture-work/create-and-update-wikis",
+      "target": "/training/modules/communicate-using-markdown",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "Wiki pages, like issues and pull requests on GitHub, are written in Markdown.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/use-slash-commands-including-explain-fix-tests-doc-clear-del",
+      "target": "/training/modules/github-copilot-across-environments",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/choose-an-appropriate-model-for-business-purpose-or-task",
+      "target": "/training/modules/github-copilot-across-environments",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Also covers this task; the module is shown once, under \"Use slash commands, including /explain, /fix, /tests, /doc, /clear, /delete, and /chronicle\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "perform-human-in-the-loop-tasks-for-agentic-workflows/design-human-review-and-validation-practices/choose-how-the-agent-will-perform-work-including-interactive",
+      "target": "/training/modules/github-copilot-across-environments",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Use slash commands, including /explain, /fix, /tests, /doc, /clear, /delete, and /chronicle\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/write-instructions-and-prompts-that-produce-reliable-outputs/@foundations",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Teaches how a prompt is built and why its wording changes the answer, the base for the group's tasks.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/@foundations",
+      "target": "/training/modules/configure-customize-github-copilot-visual-studio-code",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Explains what instruction files, prompt files and custom agents are and how a custom agent is defined; its examples are for developers in Visual Studio Code.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "enhance-productivity-by-using-github-copilot/create-and-manage-custom-agents/implement-agent-guardrails",
+      "target": "/training/modules/governance-guardrails-operations",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "perform-human-in-the-loop-tasks-for-agentic-workflows/design-human-review-and-validation-practices/identify-critical-decision-points-where-human-judgment-is-re",
+      "target": "/training/modules/governance-guardrails-operations",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Implement agent guardrails\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/design-agentic-workflows-and-automations/@foundations",
+      "target": "/training/modules/foundations-agentic-ai",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Defines agentic AI, how an agent differs from an assistant and the plan, act, evaluate lifecycle, the concepts the group's design tasks build on.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/design-agentic-workflows-and-automations/decompose-use-cases-into-processes-and-tasks",
+      "target": "/training/modules/design-agent-architecture-integration",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Shows how agent work is broken into structured tasks with inputs, outputs and success criteria; written for the people who build the workflows, so deeper than this exam asks.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-agentic-workflows-and-automations/integrate-skills-and-mcp-servers/connect-agentic-workflows-to-mcp-servers-to-improve-context",
+      "target": "/training/modules/agent-tooling-mcp-execution-environments",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task on GitHub itself.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

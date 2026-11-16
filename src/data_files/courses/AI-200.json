@@ -208,6 +208,10 @@
         "cb3572c4c89d2d7564bd58df0be41f4dd846da3e"
       ],
       [
+        "/training/modules/manage-keys-secrets-key-vault",
+        "cd0d10f8140d609c44432de5953bb3dee2a07b4f"
+      ],
+      [
         "/training/modules/manage-secrets-java-applications-zero-trust",
         "37fb16ea4d56658292a2be5c8a9eec16ecdac16d"
       ],
@@ -1292,6 +1296,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/dynamic-sessions-azure-container-apps"
+                  },
+                  "title": "Run AI-generated code securely in Azure Container Apps dynamic sessions",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P1",
+                  "why": "Dynamic sessions are the Container Apps feature for running AI-generated code in isolated session pools, a step beyond deploying an app.",
+                  "evidence": "Exercise - Execute AI-generated code securely in Azure Container Apps dynamic sessions",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -2329,6 +2349,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-event-messaging-azure-managed-redis"
+                  },
+                  "title": "Implement event messaging with Azure Managed Redis",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "Pub/sub and Streams are the messaging side of the Redis data operations this task covers.",
+                  "evidence": "Exercise - Publish and subscribe to events in Azure Managed Redis",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -3002,6 +3038,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/orchestrate-durable-functions"
+                  },
+                  "title": "Orchestrate durable AI workflows with Azure Durable Functions",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P1",
+                  "why": "Durable Functions builds orchestrations and activities on top of the trigger and binding model of this task.",
+                  "evidence": "Exercise - Build a durable document-processing workflow",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -3104,20 +3156,6 @@
                   "evidence": "App settings reference for Azure Functions",
                   "decision": {
                     "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/azure/azure-functions/functions-cli-samples"
-                  },
-                  "title": "Azure CLI samples for Azure Functions",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Azure CLI samples for Azure Functions",
-                  "decision": {
-                    "by": "maintainer",
                     "at": "2026-11-04"
                   }
                 },
@@ -3361,6 +3399,38 @@
                 },
                 {
                   "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-security-controls-function-logic-apps"
+                  },
+                  "title": "Implement security controls for Azure Function apps and Logic apps",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Configuring authentication and network access for function apps is a step a professional deploying them meets, although the module is written for security engineers.",
+                  "evidence": "Implement security controls for Azure Function apps and Logic apps",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/azure-functions/functions-cli-samples"
+                  },
+                  "title": "Azure CLI samples for Azure Functions",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "A list of Azure CLI sample scripts for creating and deploying function apps, useful beside the task but not the task itself.",
+                  "evidence": "Azure CLI samples for Azure Functions",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
                     "kind": "docs",
                     "path": "/azure/app-service/app-service-key-vault-references"
                   },
@@ -3373,22 +3443,6 @@
                   "evidence": "set up Azure App Service and Azure Functions to use Azure Key Vault references",
                   "decision": {
                     "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/implement-security-controls-function-logic-apps"
-                  },
-                  "title": "Implement security controls for Azure Function apps and Logic apps",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P3",
-                  "why": "Configuring authentication and network access for function apps is a step a professional deploying them meets, although the module is written for security engineers.",
-                  "evidence": "Implement security controls for Azure Function apps and Logic apps",
-                  "decision": {
-                    "by": "maintainer",
                     "at": "2026-11-04"
                   }
                 },
@@ -4250,6 +4304,22 @@
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-keys-secrets-key-vault"
+                  },
+                  "title": "Manage keys and secrets in Azure Key Vault",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Covers creating, storing and retrieving secrets and keys in a vault, the operations this task secures.",
+                  "evidence": "Manage cryptographic keys in Azure Key Vault",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 }
               ]

@@ -102,6 +102,10 @@
     },
     "picked": [
       [
+        "/training/modules/azure-ai-foundry-configure-manage-guardrails",
+        "e5a2e751b962051b6c1e3bafa21165dcb8988566"
+      ],
+      [
         "/training/modules/defender-for-cloud-ai-understand-protections",
         "71b2721141c72c80b9838b5df26971250c9bcea4"
       ],
@@ -212,6 +216,10 @@
       [
         "/training/modules/memory-state-evaluation",
         "2e32092412d217267ec1003a6e4502a7ce43a6eb"
+      ],
+      [
+        "/training/modules/model-catalog-evaluate",
+        "ffdf5635587509dfb47cf6bd543e1b2a19936ed4"
       ],
       [
         "/training/modules/optimize-finetune-agents",
@@ -420,6 +428,20 @@
                     "by": "auto",
                     "at": "2026-11-09"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-design-agentic-loops-azure-ai-agent-service"
+                  },
+                  "title": "Design stateful agentic loops with Microsoft Foundry agent service",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Migrate stateful agentic loops from agents v1 to agents v2",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -483,12 +505,20 @@
             {
               "key": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/design-controls-and-functionality-to-support-human-ai-experi",
               "text": "Design controls and functionality to support human-AI experience (HAX) and to adhere to responsible AI principles",
-              "picks": [],
-              "overlaps": [
+              "picks": [
                 {
-                  "path": "/training/modules/aaai-design-advanced-prompt-production-agents",
-                  "title": "Design advanced prompting strategies for production AI agents",
-                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-agent-personas-scopes-boundaries-autonomy-levels-and"
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aaai-scale-responsible-ai-governance-multi-agent"
+                  },
+                  "title": "Scale responsible AI governance with Azure AI Content Safety and Microsoft Foundry",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Design fairness and bias monitoring",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -514,7 +544,24 @@
             {
               "key": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/match-task-demands-to-model-family-capacities",
               "text": "Match task demands to model family capacities",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/model-catalog-evaluate"
+                  },
+                  "title": "Select, deploy, and evaluate Microsoft Foundry models",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Shows how to compare models in the Foundry catalog by benchmark, the practical side of matching a task to a model.",
+                  "evidence": "Explore the model catalog",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -1600,12 +1647,22 @@
             {
               "key": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-guardrails-for-multi-agent-solutions/design-and-implement-a-multi-intervention-guardrail-strategy",
               "text": "Design and implement a multi-intervention guardrail strategy covering user inputs, tool calls, tool responses, and outputs",
-              "picks": [],
-              "overlaps": [
+              "picks": [
                 {
-                  "path": "/training/modules/aaai-design-advanced-prompt-production-agents",
-                  "title": "Design advanced prompting strategies for production AI agents",
-                  "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-agent-personas-scopes-boundaries-autonomy-levels-and"
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/azure-ai-foundry-configure-manage-guardrails"
+                  },
+                  "title": "Configure and manage guardrails in Microsoft Foundry",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Shows how guardrails and blocklists are configured in Foundry, the controls a guardrail strategy is built from.",
+                  "evidence": "Understand guardrails and Microsoft Content Safety",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -1618,6 +1675,11 @@
                   "path": "/training/modules/aaai-design-advanced-prompt-production-agents",
                   "title": "Design advanced prompting strategies for production AI agents",
                   "shownUnder": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/specify-agent-personas-scopes-boundaries-autonomy-levels-and"
+                },
+                {
+                  "path": "/training/modules/azure-ai-foundry-configure-manage-guardrails",
+                  "title": "Configure and manage guardrails in Microsoft Foundry",
+                  "shownUnder": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-guardrails-for-multi-agent-solutions/design-and-implement-a-multi-intervention-guardrail-strategy"
                 }
               ]
             },

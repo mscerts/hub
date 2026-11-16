@@ -628,12 +628,14 @@
                     "path": "/dynamics365/sales/developer/create-manage-product-families-products-bundles-product-properties"
                   },
                   "title": "Create and manage product families, products, bundles, and product properties",
-                  "class": "core",
+                  "class": "supporting",
+                  "relation": "deeper",
                   "source": "P4",
+                  "why": "The developer's view of product families, bundles and properties: the same records this task configures, created through code.",
                   "evidence": "creation and management products and bundles under a product family",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-05"
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -798,6 +800,21 @@
               "decision": {
                 "by": "maintainer",
                 "at": "2026-11-05"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/create-powerful-customer-experiences-organizations"
+              },
+              "title": "Transform customer experiences with AI in Dynamics 365 apps",
+              "class": "foundation",
+              "source": "P1",
+              "why": "Shows where Sales sits among the Dynamics 365 customer experience apps and which AI components they share.",
+              "evidence": "Dynamics 365 customer experience apps in an organization’s journey",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-15"
               }
             }
           ],
@@ -1906,20 +1923,6 @@
               "picks": [
                 {
                   "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/sales/create-edit-goal-metric"
-                  },
-                  "title": "Define a goal metric | MicrosoftDocs",
-                  "class": "core",
-                  "source": "P2",
-                  "via": "/training/modules/analyze-forecast-sales-performance-dynamics-365-sales",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-05"
-                  }
-                },
-                {
-                  "target": {
                     "kind": "module",
                     "path": "/training/modules/use-goal-metrics-in-dynamics-365"
                   },
@@ -1935,14 +1938,14 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/dynamics365/sales/developer/define-goal-metric-rollup-fields"
+                    "path": "/dynamics365/sales/create-edit-goal-metric"
                   },
-                  "title": "Define goal metric and rollup fields (Dynamics 365 Sales)",
+                  "title": "Define a goal metric | MicrosoftDocs",
                   "class": "core",
-                  "source": "P4",
-                  "evidence": "Define goal metric and rollup fields (Dynamics 365 Sales)",
+                  "source": "P2",
+                  "via": "/training/modules/analyze-forecast-sales-performance-dynamics-365-sales",
                   "decision": {
-                    "by": "maintainer",
+                    "by": "auto",
                     "at": "2026-11-05"
                   }
                 },
@@ -1963,15 +1966,33 @@
                 {
                   "target": {
                     "kind": "docs",
+                    "path": "/dynamics365/sales/developer/define-goal-metric-rollup-fields"
+                  },
+                  "title": "Define goal metric and rollup fields (Dynamics 365 Sales)",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P4",
+                  "why": "The developer's view of goal metrics and rollup fields: the same records this task configures, created through code.",
+                  "evidence": "Define goal metric and rollup fields (Dynamics 365 Sales)",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
                     "path": "/dynamics365/sales/developer/create-goal-hierarchy-goals-targets"
                   },
                   "title": "Create goal hierarchy, goals, and targets (Dynamics 365 Sales)",
-                  "class": "core",
+                  "class": "supporting",
+                  "relation": "deeper",
                   "source": "P4",
+                  "why": "The developer's view of goal hierarchies and targets: the same records this task configures, created through code.",
                   "evidence": "create a goal hierarchy, set and monitor the targets",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-05"
+                    "at": "2026-11-14"
                   }
                 }
               ]
@@ -3752,6 +3773,20 @@
               "key": "extend-and-enhance-sales/configure-supporting-apps-and-services/configure-an-sms-channel",
               "text": "Configure an SMS channel",
               "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/engage-customers-text-messages"
+                  },
+                  "title": "Engage with customers through text messages in Dynamics 365 Sales",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Set up the text messaging provider",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                },
                 {
                   "target": {
                     "kind": "docs",

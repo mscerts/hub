@@ -82,6 +82,10 @@
         "ab1deef1c51ffeb5d36f79cbed3947671b355029"
       ],
       [
+        "/training/modules/host-domain-azure-dns",
+        "3bc8ac423a800753f0d7229020766390cbf725e3"
+      ],
+      [
         "/training/modules/intro-to-azure-application-gateway",
         "50077de337095b296138dfac1e9b394de6036b25"
       ],
@@ -796,7 +800,14 @@
             {
               "key": "design-and-implement-core-networking-infrastructure/design-and-implement-name-resolution/design-public-dns-zones",
               "text": "Design public DNS zones",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/host-domain-azure-dns",
+                  "title": "Host your domain on Azure DNS",
+                  "shownUnder": "design-and-implement-core-networking-infrastructure/design-and-implement-name-resolution/configure-public-and-private-dns-zones"
+                }
+              ]
             },
             {
               "key": "design-and-implement-core-networking-infrastructure/design-and-implement-name-resolution/design-private-dns-zones",
@@ -1056,7 +1067,22 @@
             {
               "key": "design-and-implement-core-networking-infrastructure/design-and-implement-name-resolution/configure-public-and-private-dns-zones",
               "text": "Configure public and private DNS zones",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/host-domain-azure-dns"
+                  },
+                  "title": "Host your domain on Azure DNS",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Configure Azure DNS to host your domain",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "design-and-implement-core-networking-infrastructure/design-and-implement-name-resolution/link-a-private-dns-zone-to-a-vnet",
@@ -1343,6 +1369,13 @@
                     "by": "auto",
                     "at": "2026-11-05"
                   }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/security-virtual-networks",
+                  "title": "Plan and implement security for virtual networks",
+                  "shownUnder": "design-implement-and-manage-connectivity-services/design-implement-and-manage-azure-expressroute/configure-encryption-over-expressroute"
                 }
               ]
             },
@@ -5966,7 +5999,14 @@
             {
               "key": "design-and-implement-azure-network-security-services/implement-and-manage-network-security-groups/implement-and-manage-virtual-network-security-by-using-azure",
               "text": "Implement and manage virtual network security by using Azure Virtual Network Manager",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/security-virtual-networks",
+                  "title": "Plan and implement security for virtual networks",
+                  "shownUnder": "design-implement-and-manage-connectivity-services/design-implement-and-manage-azure-expressroute/configure-encryption-over-expressroute"
+                }
+              ]
             }
           ]
         },

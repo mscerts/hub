@@ -5,7 +5,9 @@ description: "Follow a structured AZ-401 course organized by study guide task, w
 import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
 
 :::note
-Structured directly from the [official AZ-401 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-401?WT.mc_id=studentamb_165290) skills measured. Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the lab page, not here, and every page appears once.
+This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official AZ-401 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-401?WT.mc_id=studentamb_165290). Each task of the guide links to the Microsoft Learn training and the documentation that cover it. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the lab page, not here.
+
+The course follows the approach of [How to Prepare for Role-Based Exams](/certs/prepare/role-based/): the study guide is the source of truth for what the exam covers, so work through it task by task, with the training to learn a topic and the documentation for the details and for hands-on work. Videos, practice tests and the other resources for the exam are on the [AZ-401 Study Materials](/certs/azure/az-401/) page.
 :::
 
 ## Audience profile
@@ -28,6 +30,18 @@ You must have strong skills in either administering or developing solutions usin
 
 ### Design traceability and flow of work
 
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to DevOps" href="https://learn.microsoft.com/training/modules/introduction-to-devops?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
 #### Design a structure for the flow of work, including plan, build, deploy, and operate phases
 
 :::note
@@ -36,11 +50,25 @@ No Learn module or documentation page covers this task yet.
 
 #### Design a strategy for feedback cycles, including notifications
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Plan Agile with GitHub Projects and Azure Boards" href="https://learn.microsoft.com/training/modules/plan-agile-github-projects-azure-boards?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automate inspection of health" href="https://learn.microsoft.com/training/modules/automate-inspection-health?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage Notifications - Team, Project, Organization - Azure DevOps" href="https://learn.microsoft.com/azure/devops/organizations/notifications/manage-team-group-global-organization-notifications?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Design a strategy for tracking work using Azure Boards
+
+:::note
+The Microsoft Learn module "Plan Agile with GitHub Projects and Azure Boards" also covers this task. It is listed once, under [Design a strategy for feedback cycles, including notifications](#design-a-strategy-for-feedback-cycles-including-notifications).
+:::
 
 <Tabs>
   <TabItem label="Documentation">
@@ -66,7 +94,6 @@ No Learn module or documentation page covers this task yet.
       <LinkCard title="Understand CMMI process template artifacts - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/work-items/guidance/cmmi-process?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Capability Maturity Model Integration (CMMI) process work item types & workflow - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/work-items/guidance/cmmi-process-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Track bugs, issues, & risks in Azure Boards - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/work-items/guidance/cmmi/guidance-bugs-issues-risks-field-reference-cmmi?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Code review and feedback field reference - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/work-items/guidance/guidance-code-review-feedback-field-reference?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Manage Scrum process template objects - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/work-items/guidance/scrum-process?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Manage Scrum process work item types and workflow - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/work-items/guidance/scrum-process-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Requirements Management for Agile Teams in Azure DevOps - Azure DevOps" href="https://learn.microsoft.com/azure/devops/cross-service/manage-requirements?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -77,11 +104,17 @@ No Learn module or documentation page covers this task yet.
       <LinkCard title="Configure hierarchical teams - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/plans/configure-hierarchical-teams?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Use team delivery plans - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/plans/review-team-plans?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Show bugs on backlogs and boards - Azure DevOps" href="https://learn.microsoft.com/azure/devops/organizations/settings/show-bugs-on-backlog?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Best practices for Agile product management - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/best-practices-agile-project-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement SAFe® with Azure Boards - Complete guide - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/plans/safe-configure-boards?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
 
 #### Design traceability, including repositories, bugs, and quality
+
+:::note
+The Microsoft Learn module "Plan Agile with GitHub Projects and Azure Boards" also covers this task. It is listed once, under [Design a strategy for feedback cycles, including notifications](#design-a-strategy-for-feedback-cycles-including-notifications).
+:::
 
 <Tabs>
   <TabItem label="Documentation">
@@ -101,41 +134,88 @@ No Learn module or documentation page covers this task yet.
 
 #### Implement queries to evaluate success metrics for DevOps by using AI-assisted tools
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Connect with Data by Using OData Queries - Azure DevOps" href="https://learn.microsoft.com/azure/devops/report/powerbi/odataquery-connect?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 ### Configure collaboration and communication
 
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to agentic DevOps using Microsoft tools on Azure" href="https://learn.microsoft.com/training/modules/introduction-agentic-devops-microsoft-tools-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Foundations of Agentic AI in GitHub" href="https://learn.microsoft.com/training/modules/foundations-agentic-ai?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
 #### Document a project, including wikis, readmes, change logs, releases, licenses, code owners, and process diagrams, by using AI-assisted tools
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage and configure repositories" href="https://learn.microsoft.com/training/modules/manage-git-repositories?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Generate documentation using GitHub Copilot tools" href="https://learn.microsoft.com/training/modules/generate-documentation-using-github-copilot-tools?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Share knowledge within teams" href="https://learn.microsoft.com/training/modules/share-knowledge-within-teams?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Specify requirements and restrictions for agentic development, including agents, skills, and loops
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Transition from traditional ops to agentic DevOps workflows" href="https://learn.microsoft.com/training/modules/transition-traditional-ops-agent-automation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Governance, guardrails, and operations" href="https://learn.microsoft.com/training/modules/governance-guardrails-operations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Configure MCP servers, including Azure DevOps MCP server and GitHub MCP server
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Azure DevOps by using MCP Server" href="https://learn.microsoft.com/training/modules/manage-ado-mcp-server?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to MCP Server" href="https://learn.microsoft.com/training/modules/mcp-server?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Connect GitHub Copilot Cloud Agent to the Azure MCP Server - Azure MCP Server" href="https://learn.microsoft.com/azure/developer/azure-mcp-server/how-to/github-copilot-cloud-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure MCP Server Tools - Azure MCP Server" href="https://learn.microsoft.com/azure/developer/azure-mcp-server/tools?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Configure integration by using webhooks, MCP servers, and skills
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Tooling, MCP, and Agent Execution Environments" href="https://learn.microsoft.com/training/modules/agent-tooling-mcp-execution-environments?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Configure integration between Azure Boards and GitHub repositories by using MCP
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Azure Boards by using GitHub Copilot integration" href="https://learn.microsoft.com/training/modules/manage-azure-boards-using-github-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 ## Design and implement a source control strategy (10–15%)
 
@@ -143,13 +223,23 @@ No Learn module or documentation page covers this task yet.
 
 #### Design a branch strategy, including trunk-based, feature branch, release branch, Git Worktree, Git flow, and GitHub flow
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement branch strategies and workflows" href="https://learn.microsoft.com/training/modules/manage-git-branches-workflows?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Design and implement pull request workflows by using branch policies and branch protection rules
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Collaborate with pull requests in Azure Repos" href="https://learn.microsoft.com/training/modules/collaborate-pull-requests-azure-repos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage repository changes by using pull requests on GitHub" href="https://learn.microsoft.com/training/modules/manage-changes-pull-requests-github?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Set and manage branch policies - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/git/branch-policies?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -166,14 +256,23 @@ No Learn module or documentation page covers this task yet.
 #### Implement branch merging restrictions by using branch policies and branch protection rules
 
 :::note
-No Learn module or documentation page covers this task yet.
+The Microsoft Learn module "Design and implement branch strategies and workflows" also covers this task. It is listed once, under [Design a branch strategy, including trunk-based, feature branch, release branch, Git Worktree, Git flow, and GitHub flow](#design-a-branch-strategy-including-trunk-based-feature-branch-release-branch-git-worktree-git-flow-and-github-flow).
 :::
 
 #### Implement branch policies and branch protection rules for GitHub Copilot
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Leveling up code reviews and pull requests with GitHub Copilot" href="https://learn.microsoft.com/training/modules/code-reviews-pull-requests-github-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Get started with Copilot code review for pull requests - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/git/copilot-code-reviews?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 ### Configure and manage repositories for Azure DevOps and GitHub
 
@@ -191,6 +290,10 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Configure permissions
 
+:::note
+The Microsoft Learn module "Manage and configure repositories" also covers this task. It is listed once, under [Document a project, including wikis, readmes, change logs, releases, licenses, code owners, and process diagrams, by using AI-assisted tools](#document-a-project-including-wikis-readmes-change-logs-releases-licenses-code-owners-and-process-diagrams-by-using-ai-assisted-tools) in the skill group Configure collaboration and communication.
+:::
+
 <Tabs>
   <TabItem label="Documentation">
     <CardGrid>
@@ -198,7 +301,6 @@ The concepts behind the tasks of this skill group. Work through them first: the 
       <LinkCard title="Set Git branch security and permissions - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/git/branch-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Set Git repository permissions - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/git/set-git-repository-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Control access to Team Foundation Version Control - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/tfvc/control-access-team-foundation-version-control?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="User and permissions management FAQs - Azure DevOps" href="https://learn.microsoft.com/azure/devops/organizations/accounts/faq-user-and-permissions-management?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Download permissions report for a repository - Azure DevOps Services" href="https://learn.microsoft.com/azure/devops/organizations/security/download-permissions-report?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Manage permissions with a command line tool - Azure DevOps" href="https://learn.microsoft.com/azure/devops/organizations/security/manage-tokens-namespaces?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Namespace reference - Azure DevOps" href="https://learn.microsoft.com/azure/devops/organizations/security/namespace-reference?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -215,6 +317,10 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Configure tags
 
+:::note
+The Microsoft Learn module "Manage and configure repositories" also covers this task. It is listed once, under [Document a project, including wikis, readmes, change logs, releases, licenses, code owners, and process diagrams, by using AI-assisted tools](#document-a-project-including-wikis-readmes-change-logs-releases-licenses-code-owners-and-process-diagrams-by-using-ai-assisted-tools) in the skill group Configure collaboration and communication.
+:::
+
 <Tabs>
   <TabItem label="Documentation">
     <CardGrid>
@@ -225,16 +331,20 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Implement traceability in repositories, including code quality, code coverage, and deep links to the work item or issue
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Identify technical debt" href="https://learn.microsoft.com/training/modules/identify-technical-debt?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Create and configure Git hooks that automatically check code
 
 <Tabs>
-  <TabItem label="Documentation">
+  <TabItem label="Learning">
     <CardGrid>
-      <LinkCard title="Get started with Copilot code review for pull requests - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/git/copilot-code-reviews?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Git hooks" href="https://learn.microsoft.com/training/modules/explore-git-hooks?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -242,6 +352,14 @@ No Learn module or documentation page covers this task yet.
 #### Perform a repository-to-repository migration from Azure DevOps to GitHub
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure DevOps to GitHub migration" href="https://learn.microsoft.com/training/modules/introduction-to-ado-to-github-migration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Devops to GitHub Enterprise Migrations Part III - Migration Testing and Production Migration" href="https://learn.microsoft.com/training/modules/ado-github-migrations-3?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Devops to GitHub Enterprise Migrations Part II - Source Environment Assessment and Target Environment Setup" href="https://learn.microsoft.com/training/modules/ado-github-migrations-2?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure DevOps to GitHub Enterprise Migrations Part IV - Post-Migration Stabilization, Enablement, and Operations" href="https://learn.microsoft.com/training/modules/ado-github-migrations-four?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Introduction to Enterprise Live Migrations (ELM) - Azure DevOps" href="https://learn.microsoft.com/azure/devops/repos/enterprise-live-migrations/overview?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -253,7 +371,7 @@ No Learn module or documentation page covers this task yet.
 #### Recover or remove specific data by using Git commands
 
 :::note
-No Learn module or documentation page covers this task yet.
+The Microsoft Learn module "Manage and configure repositories" also covers this task. It is listed once, under [Document a project, including wikis, readmes, change logs, releases, licenses, code owners, and process diagrams, by using AI-assisted tools](#document-a-project-including-wikis-readmes-change-logs-releases-licenses-code-owners-and-process-diagrams-by-using-ai-assisted-tools) in the skill group Configure collaboration and communication.
 :::
 
 ## Design and implement build and release pipelines (35–40%)
@@ -263,6 +381,13 @@ No Learn module or documentation page covers this task yet.
 #### Recommend package management tools including Azure Artifacts and GitHub Packages
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand package management" href="https://learn.microsoft.com/training/modules/understand-package-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to GitHub Packages" href="https://learn.microsoft.com/training/modules/introduction-github-packages?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Leverage GitHub Actions to publish to GitHub Packages" href="https://learn.microsoft.com/training/modules/github-actions-packages?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="What are upstream sources? - Azure Artifacts" href="https://learn.microsoft.com/azure/devops/artifacts/concepts/upstream-sources?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -274,6 +399,13 @@ No Learn module or documentation page covers this task yet.
 
 #### Design and implement package feeds and views for local and upstream sources
 
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Understand package management": under [Recommend package management tools including Azure Artifacts and GitHub Packages](#recommend-package-management-tools-including-azure-artifacts-and-github-packages)
+- "Implement a versioning strategy": under [Design and implement a dependency versioning strategy for code assets and packages, including semantic versioning (SemVer) and date-based (CalVer)](#design-and-implement-a-dependency-versioning-strategy-for-code-assets-and-packages-including-semantic-versioning-semver-and-date-based-calver)
+:::
+
 <Tabs>
   <TabItem label="Documentation">
     <CardGrid>
@@ -284,11 +416,20 @@ No Learn module or documentation page covers this task yet.
 
 #### Design and implement a dependency versioning strategy for code assets and packages, including semantic versioning (SemVer) and date-based (CalVer)
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement a versioning strategy" href="https://learn.microsoft.com/training/modules/implement-versioning-strategy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore package dependencies" href="https://learn.microsoft.com/training/modules/explore-package-dependencies?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Design and implement a versioning strategy for pipeline artifacts
+
+:::note
+The Microsoft Learn module "Implement a versioning strategy" also covers this task. It is listed once, under [Design and implement a dependency versioning strategy for code assets and packages, including semantic versioning (SemVer) and date-based (CalVer)](#design-and-implement-a-dependency-versioning-strategy-for-code-assets-and-packages-including-semantic-versioning-semver-and-date-based-calver).
+:::
 
 <Tabs>
   <TabItem label="Documentation">
@@ -306,10 +447,7 @@ No Learn module or documentation page covers this task yet.
       <LinkCard title="Publish Maven artifacts with Azure Pipelines - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/artifacts/publish-maven-artifacts?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Publish Python packages with Azure Pipelines - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/artifacts/pypi?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Publish & download Universal Packages - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/artifacts/universal-packages?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Understand job access tokens - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/process/access-tokens?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Artifact policy checks - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/process/artifact-policy?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="DownloadBuildArtifacts@1 - Download build artifacts v1 task" href="https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/download-build-artifacts-v1?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="DownloadPipelineArtifact@1 - Download pipeline artifact v1 task" href="https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/download-pipeline-artifact-v1?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="DownloadPipelineArtifact@2 - Download Pipeline Artifacts v2 task" href="https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/download-pipeline-artifact-v2?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="MavenAuthenticate@0 - Maven Authenticate v0 task" href="https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/maven-authenticate-v0?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="NuGetAuthenticate@1 - NuGet authenticate v1 task" href="https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/nuget-authenticate-v1?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -320,6 +458,7 @@ No Learn module or documentation page covers this task yet.
       <LinkCard title="steps.download definition" href="https://learn.microsoft.com/azure/devops/pipelines/yaml-schema/steps-download?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="steps.downloadBuild definition" href="https://learn.microsoft.com/azure/devops/pipelines/yaml-schema/steps-download-build?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="steps.publish definition" href="https://learn.microsoft.com/azure/devops/pipelines/yaml-schema/steps-publish?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Image Tag Best Practices" href="https://learn.microsoft.com/azure/container-registry/container-registry-image-tag-version?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -329,6 +468,11 @@ No Learn module or documentation page covers this task yet.
 #### Design quality and release gates
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore release strategy recommendations" href="https://learn.microsoft.com/training/modules/explore-release-strategy-recommendations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="SonarQubePublish@7 - Publish Quality Gate Result v7 task" href="https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/sonar-qube-publish-v7?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -339,21 +483,20 @@ No Learn module or documentation page covers this task yet.
 
 #### Implement quality and release gates by using GitHub Copilot and MCP servers
 
-<Tabs>
-  <TabItem label="Documentation">
-    <CardGrid>
-      <LinkCard title="Get started with Azure MCP Server using Visual Studio - Azure MCP Server" href="https://learn.microsoft.com/azure/developer/azure-mcp-server/get-started/tools/visual-studio?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Connect GitHub Copilot Cloud Agent to the Azure MCP Server - Azure MCP Server" href="https://learn.microsoft.com/azure/developer/azure-mcp-server/how-to/github-copilot-cloud-agent?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Azure MCP Server Tools - Azure MCP Server" href="https://learn.microsoft.com/azure/developer/azure-mcp-server/tools?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-</Tabs>
-
-#### Design a comprehensive testing strategy, including local tests, unit tests, integration tests, and load tests
-
 :::note
 No Learn module or documentation page covers this task yet.
 :::
+
+#### Design a comprehensive testing strategy, including local tests, unit tests, integration tests, and load tests
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design and implement a pipeline strategy" href="https://learn.microsoft.com/training/modules/implement-pipeline-strategy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and Provision Environments" href="https://learn.microsoft.com/training/modules/configure-provision-environments?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Implement tests in a pipeline, including configuring test tasks, configuring test agents, and documenting test results, by using GitHub Copilot and MCP servers
 
@@ -362,6 +505,10 @@ No Learn module or documentation page covers this task yet.
 :::
 
 #### Implement code coverage analysis by using GitHub Copilot and MCP servers
+
+:::note
+The Microsoft Learn module "Design and implement a pipeline strategy" also covers this task. It is listed once, under [Design a comprehensive testing strategy, including local tests, unit tests, integration tests, and load tests](#design-a-comprehensive-testing-strategy-including-local-tests-unit-tests-integration-tests-and-load-tests).
+:::
 
 <Tabs>
   <TabItem label="Documentation">
@@ -378,6 +525,11 @@ No Learn module or documentation page covers this task yet.
 The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Integrate with Azure Pipelines" href="https://learn.microsoft.com/training/modules/integrate-azure-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Managed DevOps Pools Overview - Managed DevOps Pools" href="https://learn.microsoft.com/azure/devops/managed-devops-pools/overview?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -388,6 +540,12 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Select a deployment automation solution, including Azure Pipelines and GitHub Actions
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Azure Pipelines" href="https://learn.microsoft.com/training/modules/explore-azure-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to GitHub Actions" href="https://learn.microsoft.com/training/modules/introduction-to-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Explore Azure Developer CLI support for CI/CD pipelines" href="https://learn.microsoft.com/azure/developer/azure-developer-cli/configure-devops-pipeline?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -398,13 +556,23 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Design an Azure DevOps agent or GitHub runner infrastructure, including cost, tool selection, licenses, connectivity, and maintainability
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Azure Pipeline agents and pools" href="https://learn.microsoft.com/training/modules/manage-azure-pipeline-agents-pools?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe pipelines and concurrency" href="https://learn.microsoft.com/training/modules/describe-pipelines-concurrency?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Implement an Azure DevOps or GitHub runner agent infrastructure
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage GitHub Actions in the enterprise" href="https://learn.microsoft.com/training/modules/manage-github-actions-enterprise?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Node.js runners in Azure Pipelines Agent - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/agents/nodejs-runners?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -417,6 +585,10 @@ No Learn module or documentation page covers this task yet.
 </Tabs>
 
 #### Design and implement integration between Azure Pipelines and GitHub repositories
+
+:::note
+The Microsoft Learn module "Design and implement a pipeline strategy" also covers this task. It is listed once, under [Design a comprehensive testing strategy, including local tests, unit tests, integration tests, and load tests](#design-a-comprehensive-testing-strategy-including-local-tests-unit-tests-integration-tests-and-load-tests) in the skill group Design and implement a testing strategy for Azure DevOps pipelines and GitHub Actions.
+:::
 
 <Tabs>
   <TabItem label="Documentation">
@@ -431,9 +603,13 @@ No Learn module or documentation page covers this task yet.
 
 #### Develop pipelines in YAML by using GitHub Copilot
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Use GitHub Copilot for cloud operations" href="https://learn.microsoft.com/training/modules/use-github-copilot-cloud-operations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Develop and implement pipeline trigger rules
 
@@ -470,6 +646,12 @@ No Learn module or documentation page covers this task yet.
 #### Create reusable pipeline elements, including YAML templates, task groups, variables, and variable groups
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage and Modularize Tasks and Templates" href="https://learn.microsoft.com/training/modules/manage-modularize-tasks-templates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Extend a pipeline to use multiple templates" href="https://learn.microsoft.com/training/modules/extend-pipeline-use-multiple-templates?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="How to use YAML templates for reusable and secure pipelines - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/process/templates?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -479,14 +661,23 @@ No Learn module or documentation page covers this task yet.
 
 #### Design and implement checks and approvals by using YAML-based environments
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Build and deploy applications to Azure by using GitHub Actions" href="https://learn.microsoft.com/training/modules/github-actions-cd?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Artifact policy checks - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/process/artifact-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Design and implement GitHub Agentic Workflows
 
 :::note
-No Learn module or documentation page covers this task yet.
+The Microsoft Learn module "Tooling, MCP, and Agent Execution Environments" also covers this task. It is listed once, under [Configure integration by using webhooks, MCP servers, and skills](#configure-integration-by-using-webhooks-mcp-servers-and-skills) in the skill group Configure collaboration and communication.
 :::
 
 ### Design and implement deployments
@@ -494,6 +685,14 @@ No Learn module or documentation page covers this task yet.
 #### Design a deployment strategy, including blue-green, canary, ring, progressive exposure, feature flags, and A/B testing
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to deployment patterns" href="https://learn.microsoft.com/training/modules/introduction-to-deployment-patterns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement blue-green deployment and feature toggles" href="https://learn.microsoft.com/training/modules/implement-blue-green-deployment-feature-toggles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement canary releases and dark launching" href="https://learn.microsoft.com/training/modules/implement-canary-releases-dark-launching?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement A/B testing and progressive exposure deployment" href="https://learn.microsoft.com/training/modules/implement-test-progressive-exposure-deployment?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Deploy cloud-native solutions - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/cloud-native/deploy-cloud-native-solutions?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -512,6 +711,10 @@ No Learn module or documentation page covers this task yet.
 </Tabs>
 
 #### Plan for minimizing downtime during deployments by using load balancing, deployment slot usage and swap, and rolling deployments
+
+:::note
+The Microsoft Learn module "Implement blue-green deployment and feature toggles" also covers this task. It is listed once, under [Design a deployment strategy, including blue-green, canary, ring, progressive exposure, feature flags, and A/B testing](#design-a-deployment-strategy-including-blue-green-canary-ring-progressive-exposure-feature-flags-and-ab-testing).
+:::
 
 <Tabs>
   <TabItem label="Documentation">
@@ -536,6 +739,12 @@ No Learn module or documentation page covers this task yet.
 #### Implement deployment by using containers, binaries, scripts, and database tasks
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create a Release Pipeline" href="https://learn.microsoft.com/training/modules/create-release-pipeline-devops?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Design a container build strategy" href="https://learn.microsoft.com/training/modules/design-container-build-strategy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="AzureMysqlDeployment@1 - Azure Database for MySQL deployment v1 task" href="https://learn.microsoft.com/azure/devops/pipelines/tasks/reference/azure-mysql-deployment-v1?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -554,9 +763,13 @@ No Learn module or documentation page covers this task yet.
 The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Explore Infrastructure as Code and configuration management" href="https://learn.microsoft.com/training/modules/explore-infrastructure-code-configuration-management?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
-      <LinkCard title="Use infrastructure as code to update an Azure landing zone - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code-updates?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Platform automation and DevOps design area - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/platform-automation-devops?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Get started with Infrastructure as Code (IaC)" href="https://learn.microsoft.com/azure/developer/iac?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
@@ -566,6 +779,11 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Recommend a strategy for IaC and configuration management
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement Bicep" href="https://learn.microsoft.com/training/modules/implement-bicep?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Architecture strategies for using infrastructure as code - Microsoft Azure Well-Architected Framework" href="https://learn.microsoft.com/azure/well-architected/operational-excellence/infrastructure-as-code-design?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -576,6 +794,12 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Implement a configuration management strategy for application infrastructure
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement Desired State Configuration (DSC)" href="https://learn.microsoft.com/training/modules/implement-desired-state-configuration-dsc?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage application configuration data" href="https://learn.microsoft.com/training/modules/manage-application-configuration-data?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Phase 7: Plan Infrastructure as Code approach - Azure Databricks" href="https://learn.microsoft.com/azure/databricks/lakehouse-architecture/deployment-guide/iac?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -588,14 +812,18 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Monitor pipeline health, including failure rate, duration, and flaky tests
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Develop monitor and status dashboards" href="https://learn.microsoft.com/training/modules/develop-monitor-status-dashboards?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Optimize a pipeline for cost, time, performance, and reliability
 
 :::note
-No Learn module or documentation page covers this task yet.
+The Microsoft Learn module "Develop monitor and status dashboards" also covers this task. It is listed once, under [Monitor pipeline health, including failure rate, duration, and flaky tests](#monitor-pipeline-health-including-failure-rate-duration-and-flaky-tests).
 :::
 
 #### Design and implement a retention strategy for pipeline artifacts and dependencies
@@ -623,6 +851,11 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Choose between Microsoft Entra service principals and managed identities for Azure resources
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Integrate with identity management systems" href="https://learn.microsoft.com/training/modules/integrate-identity-management-systems?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Register a Microsoft Entra app and create a service principal" href="https://learn.microsoft.com/entra/identity-platform/howto-create-service-principal-portal?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -646,9 +879,13 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Implement and manage GitHub authentication, including GitHub Apps, GITHUB_TOKEN, and personal access tokens
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Automate DevOps processes by using GitHub Apps" href="https://learn.microsoft.com/training/modules/automate-devops-github-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Implement and manage secretless authentication in Azure Pipelines and GitHub Actions
 
@@ -657,6 +894,7 @@ No Learn module or documentation page covers this task yet.
     <CardGrid>
       <LinkCard title="Secretless authentication in Azure" href="https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/secretless-authentication?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Deploy to Azure Functions by using GitHub Actions" href="https://learn.microsoft.com/azure/azure-functions/functions-how-to-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy by Using GitHub Actions" href="https://learn.microsoft.com/azure/app-service/deploy-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -664,11 +902,17 @@ No Learn module or documentation page covers this task yet.
 #### Implement and manage Azure DevOps service connections and personal access tokens
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage identity for projects, pipelines, and agents" href="https://learn.microsoft.com/training/modules/manage-identity-projects-pipelines-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Access Azure DevOps with Microsoft Entra workload identity - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/library/add-devops-entra-service-connection?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Use personal access tokens - Azure DevOps" href="https://learn.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Change application connection and security policies for organizations - Azure DevOps Services" href="https://learn.microsoft.com/azure/devops/organizations/accounts/change-application-access-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand job access tokens - Azure Pipelines" href="https://learn.microsoft.com/azure/devops/pipelines/process/access-tokens?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -676,6 +920,11 @@ No Learn module or documentation page covers this task yet.
 #### Design and implement permissions and access levels in Azure DevOps and GitHub
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure and validate permissions" href="https://learn.microsoft.com/training/modules/configure-validate-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Add group rule, assign access levels - Azure DevOps Services" href="https://learn.microsoft.com/azure/devops/organizations/accounts/assign-access-levels-by-group-membership?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -692,7 +941,6 @@ No Learn module or documentation page covers this task yet.
       <LinkCard title="Permissions and access for charts and dashboards - Azure DevOps" href="https://learn.microsoft.com/azure/devops/report/dashboards/charts-dashboard-permissions-access?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Permissions, licensing, and access for manual testing - Azure Test Plans" href="https://learn.microsoft.com/azure/devops/test/manual-test-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Request an increase in permission levels - Azure DevOps" href="https://learn.microsoft.com/azure/devops/organizations/security/request-changes-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Install the Azure Boards App for GitHub - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/github/install-github-app?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Manage permissions - Azure Artifacts" href="https://learn.microsoft.com/azure/devops/artifacts/feeds/feed-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Export a list of users and their access levels - Azure DevOps" href="https://learn.microsoft.com/azure/devops/organizations/security/export-users-audit-log?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Set permissions and access for manual testing - Azure DevOps" href="https://learn.microsoft.com/azure/devops/organizations/security/set-permissions-access-test?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -701,6 +949,9 @@ No Learn module or documentation page covers this task yet.
       <LinkCard title="Manage Permissions for Wikis, READMEs, and Collaboration Tools - Azure DevOps" href="https://learn.microsoft.com/azure/devops/project/wiki/manage-readme-wiki-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Permission command (Team Foundation Version Control) - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/tfvc/permission-command?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Set TFVC repository permissions - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/tfvc/set-tfvc-repository-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Permissions and prerequisites to access Analytics - Azure DevOps" href="https://learn.microsoft.com/azure/devops/report/analytics/analytics-permissions-prerequisites?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About pipeline security roles - Azure DevOps" href="https://learn.microsoft.com/azure/devops/organizations/security/about-security-roles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="User and permissions management FAQs - Azure DevOps" href="https://learn.microsoft.com/azure/devops/organizations/accounts/faq-user-and-permissions-management?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -708,9 +959,15 @@ No Learn module or documentation page covers this task yet.
 #### Configure projects in Azure DevOps (ADO) and GitHub, including ADO teams
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure a project and repository structure to support secure pipelines" href="https://learn.microsoft.com/training/modules/configure-project-repository-structure-support-secure-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Connect an Azure Boards or Azure DevOps project to a GitHub repository - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/github/connect-to-github?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Install the Azure Boards App for GitHub - Azure Boards" href="https://learn.microsoft.com/azure/devops/boards/github/install-github-app?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -720,6 +977,11 @@ No Learn module or documentation page covers this task yet.
 #### Integrate Azure Key Vault into Azure Pipelines and GitHub Actions
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure secure access to Azure Repos from pipelines" href="https://learn.microsoft.com/training/modules/configure-secure-access-azure-repos-from-pipelines?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Use Azure Key Vault secrets in a GitHub Actions workflow" href="https://learn.microsoft.com/azure/developer/github/github-actions-key-vault?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -735,6 +997,12 @@ No Learn module or documentation page covers this task yet.
 #### Implement and manage secrets, keys, and certificates
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage keys and secrets in Azure Key Vault" href="https://learn.microsoft.com/training/modules/manage-keys-secrets-key-vault?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage certificates and monitor Azure Key Vault" href="https://learn.microsoft.com/training/modules/manage-certificates-monitor-key-vault?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Azure Key Vault documentation - Certificates" href="https://learn.microsoft.com/azure/key-vault/certificates?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -752,15 +1020,24 @@ No Learn module or documentation page covers this task yet.
 
 #### Design and implement a strategy for managing sensitive information during deployment, including Azure Pipelines secure files and GitHub secrets
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure secure access to pipeline resources" href="https://learn.microsoft.com/training/modules/configure-secure-access-pipeline-resources?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn continuous integration with GitHub Actions" href="https://learn.microsoft.com/training/modules/learn-continuous-integration-github-actions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Design Azure Pipelines and GitHub Actions to prevent leakage of sensitive information
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure pipelines to securely use variables and parameters" href="https://learn.microsoft.com/training/modules/configure-pipelines-securely-use-variables-parameters?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 ### Automate security and compliance scanning
 
@@ -769,6 +1046,12 @@ No Learn module or documentation page covers this task yet.
 The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Secure DevOps" href="https://learn.microsoft.com/training/modules/introduction-to-secure-devops?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to GitHub Advanced Security" href="https://learn.microsoft.com/training/modules/introduction-github-advanced-security?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="DevOps environment posture management overview" href="https://learn.microsoft.com/azure/defender-for-cloud/concept-devops-environment-posture-management-overview?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -780,6 +1063,12 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Design a strategy for security, vulnerability, and compliance scanning
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Software Composition Analysis" href="https://learn.microsoft.com/training/modules/software-composition-analysis?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security monitoring and governance" href="https://learn.microsoft.com/training/modules/security-monitoring-and-governance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Scan for misconfigurations in Infrastructure as Code" href="https://learn.microsoft.com/azure/defender-for-cloud/iac-vulnerabilities?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -796,15 +1085,27 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Configure dependency scanning, code scanning, and secret scanning by using GitHub Advanced Security for Azure DevOps and GitHub Advanced Security
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Dependabot security updates on your GitHub repo" href="https://learn.microsoft.com/training/modules/configure-dependabot-security-updates-on-github-repo?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure code scanning on GitHub" href="https://learn.microsoft.com/training/modules/configure-code-scanning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure and use secret scanning in your GitHub repository" href="https://learn.microsoft.com/training/modules/configure-use-secret-scanning-github-repository?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Configure GitHub Advanced Security for Azure DevOps features - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/security/configure-github-advanced-security-features?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Copilot Autofix for code security alerts (Preview) - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/security/github-advanced-security-autofix?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security overview on GitHub Advanced Security for Azure DevOps - Azure Repos" href="https://learn.microsoft.com/azure/devops/repos/security/github-advanced-security-security-overview?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
 
 #### Connect Microsoft Defender for Cloud DevOps Security to other DevOps environments, including Azure DevOps and GitHub
+
+:::note
+The Microsoft Learn module "Security monitoring and governance" also covers this task. It is listed once, under [Design a strategy for security, vulnerability, and compliance scanning](#design-a-strategy-for-security-vulnerability-and-compliance-scanning).
+:::
 
 <Tabs>
   <TabItem label="Documentation">
@@ -823,6 +1124,9 @@ The concepts behind the tasks of this skill group. Work through them first: the 
       <LinkCard title="Support and prerequisites" href="https://learn.microsoft.com/azure/defender-for-cloud/devops-support?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Common questions - DevOps Security - Microsoft Defender for Cloud" href="https://learn.microsoft.com/azure/defender-for-cloud/faq-defender-for-devops?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Reference table for all security recommendations for DevOps" href="https://learn.microsoft.com/azure/defender-for-cloud/recommendations-reference-devops?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an Azure DevOps connector for agentic code security - Microsoft Security Exposure Management" href="https://learn.microsoft.com/security-exposure-management/create-azure-devops-connector?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a GitHub connector for agentic code security - Microsoft Security Exposure Management" href="https://learn.microsoft.com/security-exposure-management/create-github-connector?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Defender for Cloud CLI Syntax" href="https://learn.microsoft.com/azure/defender-for-cloud/defender-cli-syntax?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -832,6 +1136,10 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 ### Configure monitoring for Azure DevOps and GitHub platforms
 
 #### Design dashboards, including flow of work, cycle time, time to recovery, and lead time
+
+:::note
+The Microsoft Learn module "Develop monitor and status dashboards" also covers this task. It is listed once, under [Monitor pipeline health, including failure rate, duration, and flaky tests](#monitor-pipeline-health-including-failure-rate-duration-and-flaky-tests) in the skill group Maintain Azure DevOps pipelines and GitHub Actions.
+:::
 
 <Tabs>
   <TabItem label="Documentation">
@@ -856,13 +1164,13 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Configure monitoring in GitHub, including enabling GitHub insights and creating and configuring charts
 
 :::note
-No Learn module or documentation page covers this task yet.
+The Microsoft Learn module "Develop monitor and status dashboards" also covers this task. It is listed once, under [Monitor pipeline health, including failure rate, duration, and flaky tests](#monitor-pipeline-health-including-failure-rate-duration-and-flaky-tests) in the skill group Maintain Azure DevOps pipelines and GitHub Actions.
 :::
 
 #### Configure alerts for events in Azure Pipelines and GitHub Actions
 
 :::note
-No Learn module or documentation page covers this task yet.
+The Microsoft Learn module "Automate inspection of health" also covers this task. It is listed once, under [Design a strategy for feedback cycles, including notifications](#design-a-strategy-for-feedback-cycles-including-notifications) in the skill group Design traceability and flow of work.
 :::
 
 ### Monitor Azure workloads by using AI agents
@@ -872,6 +1180,12 @@ No Learn module or documentation page covers this task yet.
 The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Site Reliability Engineering (SRE)" href="https://learn.microsoft.com/training/modules/intro-to-site-reliability-engineering?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Azure SRE Agent" href="https://learn.microsoft.com/training/modules/intro-to-azure-sre-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Overview of Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/overview?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -883,6 +1197,11 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Deploy and configure Azure Copilot Observability Agent
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Azure Copilot agents" href="https://learn.microsoft.com/training/modules/introduction-azure-copilot-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Best practices - Azure Copilot Observability Agent" href="https://learn.microsoft.com/azure/azure-monitor/aiops/observability-agent-best-practices?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -906,6 +1225,11 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Deploy and configure Azure SRE Agent
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Optimize Azure reliability by using Azure SRE Agent" href="https://learn.microsoft.com/training/modules/optimize-azure-reliability-with-sre-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Complete setup for Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/complete-setup?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -936,10 +1260,8 @@ The concepts behind the tasks of this skill group. Work through them first: the 
       <LinkCard title="Connect a Notification Service in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/connect-notification-service?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Connect a Telemetry Source in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/connect-telemetry-source?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Connectors in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/connectors?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Create Azure support requests in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/create-support-request?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Cross-Account Azure DevOps Access in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/cross-account-ado-oauth?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Data residency and privacy in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/data-privacy?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Use deep investigation in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/deep-investigation?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Default Agent Override Info in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/default-agent-override-info?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Diagnose with Azure Observability - Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/diagnose-azure-observability?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Diagnose with External Observability in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/diagnose-observability?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -969,8 +1291,6 @@ The concepts behind the tasks of this skill group. Work through them first: the 
       <LinkCard title="Plugin Marketplace in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/plugin-marketplace?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Pricing and billing for Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/pricing-billing?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Python Tools in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/python-code-execution?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Review agent insights in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/review-agent-insights?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Root Cause Analysis in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/root-cause-analysis?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Run Modes in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/run-modes?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Schedule tasks with Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/scheduled-tasks?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Send Notifications in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/send-notifications?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -986,7 +1306,6 @@ The concepts behind the tasks of this skill group. Work through them first: the 
       <LinkCard title="Team onboarding for Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/team-onboard?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Tool access policies in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/tool-access-policies?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Tools in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/tools?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Track Incident Value in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/track-incident-value?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Upload Knowledge Documents to Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/upload-knowledge-document?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="User Roles and Permissions in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/user-roles?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Workflow automation in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/workflow-automation?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -1011,6 +1330,11 @@ The concepts behind the tasks of this skill group. Work through them first: the 
       <LinkCard title="Connect source code to Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/connect-source-code?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="GitHub connector in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/github-connector?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Set up GitHub connector (OAuth or PAT) in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/setup-github-connector?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Azure support requests in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/create-support-request?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use deep investigation in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/deep-investigation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Review agent insights in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/review-agent-insights?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Root Cause Analysis in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/root-cause-analysis?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Track Incident Value in Azure SRE Agent" href="https://learn.microsoft.com/azure/sre-agent/track-incident-value?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -1020,6 +1344,11 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Analyze infrastructure performance indicators, including CPU, memory, disk, and network
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor your Azure virtual machines with Azure Monitor" href="https://learn.microsoft.com/training/modules/monitor-azure-vm-using-diagnostic-data?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Troubleshoot performance issues and isolate bottlenecks in Linux" href="https://learn.microsoft.com/troubleshoot/azure/virtual-machines/linux/troubleshoot-performance-bottlenecks-linux?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -1030,12 +1359,19 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Analyze application performance by using telemetry and instrumentation data
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement Tools to Track Usage and Flow" href="https://learn.microsoft.com/training/modules/implement-tools-track-usage-flow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage alerts, blameless retrospectives and a just culture" href="https://learn.microsoft.com/training/modules/manage-alerts-blameless-retrospectives-just-culture?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Analyze Azure Functions telemetry in Application Insights" href="https://learn.microsoft.com/azure/azure-functions/analyze-telemetry-data?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Smart detection - performance anomalies" href="https://learn.microsoft.com/azure/azure-monitor/alerts/smart-detection-performance?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Azure Skill for App Insights Instrumentation" href="https://learn.microsoft.com/azure/developer/azure-skills/skills/app-insights-instrumentation?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Troubleshoot Application Insights Autoinstrumentation" href="https://learn.microsoft.com/troubleshoot/azure/azure-monitor/app-insights/telemetry/auto-instrumentation-troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign Code Optimizations insights to GitHub Copilot" href="https://learn.microsoft.com/azure/azure-monitor/optimization-insights/code-optimizations-github-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -1043,6 +1379,11 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Analyze distributed tracing by using Azure Monitor Application Insights
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Instrument an app with OpenTelemetry" href="https://learn.microsoft.com/training/modules/instrument-app-opentelemetry?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Onboard Application Insights resources to Azure Monitor traces - Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/app/traces-onboard-app-insights?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -1059,7 +1400,6 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 <Tabs>
   <TabItem label="Documentation">
     <CardGrid>
-      <LinkCard title="Troubleshoot Azure Applications with GitHub Copilot for Azure - GitHub Copilot for Azure" href="https://learn.microsoft.com/azure/developer/github-copilot-azure/troubleshoot-examples?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Monitor AI coding agents with Grafana" href="https://learn.microsoft.com/azure/managed-grafana/grafana-opentelemetry-app-insights?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
@@ -1068,14 +1408,21 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Interrogate logs by using natural language queries or basic Kusto Query Language (KQL) queries
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Write your first query with Kusto Query Language" href="https://learn.microsoft.com/training/modules/write-first-query-kusto-query-language?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Log queries in Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/logs/log-query-overview?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Azure Skill for Azure Kusto (Data Explorer)" href="https://learn.microsoft.com/azure/developer/azure-skills/skills/azure-kusto?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Kusto Query Language learning resources - Azure Data Explorer" href="https://learn.microsoft.com/azure/data-explorer/kql-learning-resources?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Write Kusto Query Language Queries in the Azure Data Explorer Web UI - Azure Data Explorer" href="https://learn.microsoft.com/azure/data-explorer/web-ui-kql?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Azure Skill for Azure Kusto (Data Explorer)" href="https://learn.microsoft.com/azure/developer/azure-skills/skills/azure-kusto?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Azure Data Explorer: Explore Sample Data - Azure Data Explorer" href="https://learn.microsoft.com/azure/data-explorer/web-ui-samples-query?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Query across resources with Azure Monitor" href="https://learn.microsoft.com/azure/azure-monitor/logs/cross-workspace-query?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect to the Azure Monitor dashboards with Grafana remote MCP server" href="https://learn.microsoft.com/azure/managed-grafana/azure-monitor-dashboards-mcp-server?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Azure Applications with GitHub Copilot for Azure - GitHub Copilot for Azure" href="https://learn.microsoft.com/azure/developer/github-copilot-azure/troubleshoot-examples?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>

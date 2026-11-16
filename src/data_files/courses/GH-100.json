@@ -63,6 +63,10 @@
     },
     "picked": [
       [
+        "/training/modules/automate-devops-github-apps",
+        "8a5e07042459b6bc26bef58fcf3307e533658975"
+      ],
+      [
         "/training/modules/configure-dependabot-security-updates-on-github-repo",
         "920a2a7050dd440f5aaedd34076b742b39517c5d"
       ],
@@ -77,6 +81,10 @@
       [
         "/training/modules/github-actions-automate-tasks",
         "22e0bed025ccd4b4e9ea0260b8e2e1cfb64f10c0"
+      ],
+      [
+        "/training/modules/github-administration-github-advanced-security",
+        "ef8a27c52cd3a19dbd37f46870e04c213eea05fc"
       ],
       [
         "/training/modules/github-enterprise-server-developer-fundamentals",
@@ -156,8 +164,8 @@
                   "class": "core",
                   "source": "P1",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-06"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 }
               ]
@@ -218,8 +226,8 @@
                   "class": "core",
                   "source": "P1",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-06"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 }
               ]
@@ -249,7 +257,14 @@
             {
               "key": "manage-github-identities-and-access/manage-access-and-permissions/configure-organization-and-repository-roles",
               "text": "Configure organization and repository roles",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/github-introduction-administration",
+                  "title": "Introduction to GitHub administration",
+                  "shownUnder": "manage-github-identities-and-access/manage-user-identities-and-authentication/explain-github-s-authentication-and-authorization-model"
+                }
+              ]
             },
             {
               "key": "manage-github-identities-and-access/manage-access-and-permissions/define-and-manage-enterprise-teams",
@@ -435,23 +450,7 @@
         },
         {
           "title": "Manage deployment and licensing",
-          "foundations": [
-            {
-              "target": {
-                "kind": "module",
-                "path": "/training/modules/manage-github-actions-enterprise"
-              },
-              "title": "Manage GitHub Actions in the enterprise",
-              "class": "foundation",
-              "source": "P1",
-              "why": "Its concept unit explains GitHub enterprise models, which the group's deployment scenarios assume; the rest of the module is procedure.",
-              "evidence": "Understanding GitHub enterprise models",
-              "decision": {
-                "by": "maintainer",
-                "at": "2026-11-06"
-              }
-            }
-          ],
+          "foundations": [],
           "tasks": [
             {
               "key": "administer-github-enterprise-environment/manage-deployment-and-licensing/describe-github-enterprise-deployment-scenarios-ghec-with-em",
@@ -613,6 +612,22 @@
                     "by": "auto",
                     "at": "2026-11-06"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/github-administration-github-advanced-security"
+                  },
+                  "title": "GitHub administration for GitHub Advanced Security",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Covers how an administrator enables GitHub Advanced Security and manages who can use its features and alerts.",
+                  "evidence": "Manage the GitHub Advanced Security features and alerts",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -659,7 +674,22 @@
             {
               "key": "implement-secure-software-development-and-compliance/manage-api-access-and-integrations/describe-github-apps-and-oauth-apps",
               "text": "Describe GitHub Apps and OAuth Apps",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/automate-devops-github-apps"
+                  },
+                  "title": "Automate DevOps processes by using GitHub Apps",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "What are GitHub Apps?",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "implement-secure-software-development-and-compliance/manage-api-access-and-integrations/approve-or-deny-app-usage-based-on-policy",
@@ -700,7 +730,14 @@
             {
               "key": "manage-github-actions/configure-workflows-and-reusable-components/configure-and-manage-reuse-of-actions-and-workflows-to-the-e",
               "text": "Configure and manage reuse of actions and workflows to the enterprise repository",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-github-actions-enterprise",
+                  "title": "Manage GitHub Actions in the enterprise",
+                  "shownUnder": "manage-github-actions/manage-runners/manage-runner-groups-and-administer-github-hosted-vs-self-ho"
+                }
+              ]
             },
             {
               "key": "manage-github-actions/configure-workflows-and-reusable-components/apply-organizational-policies-for-github-actions",
@@ -711,6 +748,11 @@
                   "path": "/training/modules/manage-sensitive-data-security-policies",
                   "title": "Manage sensitive data and security policies within GitHub",
                   "shownUnder": "manage-github-identities-and-access/manage-access-and-permissions/manage-settings-policies-rulesets-and-roles"
+                },
+                {
+                  "path": "/training/modules/manage-github-actions-enterprise",
+                  "title": "Manage GitHub Actions in the enterprise",
+                  "shownUnder": "manage-github-actions/manage-runners/manage-runner-groups-and-administer-github-hosted-vs-self-ho"
                 }
               ]
             }
@@ -722,7 +764,22 @@
             {
               "key": "manage-github-actions/manage-runners/manage-runner-groups-and-administer-github-hosted-vs-self-ho",
               "text": "Manage runner groups and administer GitHub-hosted vs. self-hosted runner options",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-github-actions-enterprise"
+                  },
+                  "title": "Manage GitHub Actions in the enterprise",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Understanding GitHub enterprise models",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "manage-github-actions/manage-runners/apply-ip-allow-lists-and-configure-networking-including-azur",
@@ -742,12 +799,26 @@
             {
               "key": "manage-github-actions/manage-encrypted-secrets/define-scope-and-access-for-secrets",
               "text": "Define scope and access for secrets",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-github-actions-enterprise",
+                  "title": "Manage GitHub Actions in the enterprise",
+                  "shownUnder": "manage-github-actions/manage-runners/manage-runner-groups-and-administer-github-hosted-vs-self-ho"
+                }
+              ]
             },
             {
               "key": "manage-github-actions/manage-encrypted-secrets/configure-secrets-at-organization-and-repository-levels",
               "text": "Configure secrets at organization and repository levels",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-github-actions-enterprise",
+                  "title": "Manage GitHub Actions in the enterprise",
+                  "shownUnder": "manage-github-actions/manage-runners/manage-runner-groups-and-administer-github-hosted-vs-self-ho"
+                }
+              ]
             },
             {
               "key": "manage-github-actions/manage-encrypted-secrets/integrate-third-party-vaults",
@@ -776,7 +847,14 @@
             {
               "key": "monitor-and-optimize-github-usage/monitor-enterprise-usage-and-activity/distinguish-admin-responsibilities-vs-github-support-and-gen",
               "text": "Distinguish admin responsibilities vs. GitHub Support and generate diagnostics",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/github-administration-for-enterprise-support-adoption",
+                  "title": "GitHub administration for enterprise support and adoption",
+                  "shownUnder": "manage-github-identities-and-access/manage-user-identities-and-authentication/describe-differences-between-managed-users-and-personal-acco"
+                }
+              ]
             },
             {
               "key": "monitor-and-optimize-github-usage/monitor-enterprise-usage-and-activity/evaluate-enterprise-usage-patterns-to-identify-adoption-acti",
@@ -9936,6 +10014,12 @@
       "path": "/training/modules/introduction-to-devops",
       "reason": "A general DevOps module whose license unit is about Azure DevOps license strategy, a different product from GitHub Enterprise licensing.",
       "at": "2026-11-06"
+    },
+    {
+      "taskKey": "administer-github-enterprise-environment/manage-deployment-and-licensing/@foundations",
+      "path": "/training/modules/manage-github-actions-enterprise",
+      "reason": "Belongs under \"Manage runner groups and administer GitHub-hosted vs. self-hosted runner options\", not here.",
+      "at": "2026-11-15"
     }
   ]
 }

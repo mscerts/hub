@@ -81,7 +81,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What are tools in Azure Machine Learning prompt flow"
     },
     {
       "task": "design-and-implement-a-genaiops-infrastructure/implement-prompt-versioning-and-management-with-source-contr/@foundations",
@@ -107,7 +108,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Prompt tool in Azure Machine Learning prompt flow"
     },
     {
       "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/@foundations",
@@ -165,17 +167,16 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Set up MLOps with Azure DevOps"
     },
     {
       "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/create-and-manage-environments",
       "target": "/azure/machine-learning/how-to-setup-mlops-github-azure-ml",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Automate resource provisioning by using GitHub Actions workflows\", not here.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/create-and-manage-environments",
@@ -200,7 +201,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Secure network traffic flow"
     },
     {
       "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-resources-in-a-machine-learning-workspace/create-and-manage-a-workspace",
@@ -265,7 +267,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Introduction to cloud evaluation with Microsoft Foundry SDK - Microsoft Foundry"
     },
     {
       "task": "implement-generative-ai-quality-assurance-and-observability/configure-evaluation-and-validation-for-generative-ai-applic/@foundations",
@@ -306,7 +309,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Explore Microsoft Foundry Models in Azure Machine Learning"
     },
     {
       "task": "implement-machine-learning-model-lifecycle-and-operations/deploy-machine-learning-models-for-production-environments/@foundations",
@@ -332,7 +336,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Foundry Models overview"
     },
     {
       "task": "implement-machine-learning-model-lifecycle-and-operations/implement-model-registration-and-versioning/@foundations",
@@ -358,7 +363,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Design to Support Foundation Model Life Cycles - Azure Architecture Center"
     },
     {
       "task": "implement-machine-learning-model-lifecycle-and-operations/implement-model-registration-and-versioning/manage-model-lifecycle-including-archiving-models",
@@ -368,7 +374,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Built-in policies for model deployment"
     },
     {
       "task": "implement-machine-learning-model-lifecycle-and-operations/implement-model-registration-and-versioning/manage-model-lifecycle-including-archiving-models",
@@ -378,7 +385,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Foundry Models lifecycle and support policy"
     },
     {
       "task": "implement-machine-learning-model-lifecycle-and-operations/orchestrate-model-training/@foundations",
@@ -435,6 +443,97 @@
       "reason": "Other product area than Azure Machine Learning.",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/implement-iac-for-machine-learning/automate-resource-provisioning-by-using-github-actions-workf",
+      "target": "/azure/machine-learning/how-to-setup-mlops-github-azure-ml",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "The MLOps setup with GitHub provisions the workspace resources from GitHub Actions workflows.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Set up MLOps with GitHub"
+    },
+    {
+      "task": "design-and-implement-an-mlops-infrastructure/create-and-manage-assets-in-a-machine-learning-workspace/share-assets-across-workspaces-by-using-registries",
+      "target": "/azure/machine-learning/concept-machine-learning-registries-mlops",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "Explains what a registry is and how it shares models, components and environments across workspaces.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Machine Learning registries"
+    },
+    {
+      "task": "design-and-implement-a-genaiops-infrastructure/implement-foundry-environments-and-platform-configuration/@foundations",
+      "target": "/training/modules/plan-prepare-genaiops",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Introduces the GenAIOps lifecycle and the tools and frameworks that the generative AI half of the exam works with.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "implement-generative-ai-quality-assurance-and-observability/configure-evaluation-and-validation-for-generative-ai-applic/implement-ai-quality-metrics-including-groundedness-relevanc",
+      "target": "/training/modules/run-evaluations-generate-synthetic-datasets",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Exercise - Performance and quality metrics\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "implement-generative-ai-quality-assurance-and-observability/configure-evaluation-and-validation-for-generative-ai-applic/configure-risk-and-safety-evaluations-for-harmful-content-de",
+      "target": "/training/modules/run-evaluations-generate-synthetic-datasets",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Implement AI quality metrics, including groundedness, relevance, coherence, and fluency\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "optimize-generative-ai-systems-and-model-performance/optimize-retrieval-augmented-generation-rag-performance-and/implement-and-optimize-hybrid-search-approaches-combining-se",
+      "target": "/training/modules/aaai-implement-advanced-rag-azure-ai-search",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Design hybrid search architectures\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "optimize-generative-ai-systems-and-model-performance/optimize-retrieval-augmented-generation-rag-performance-and/optimize-retrieval-performance-by-tuning-similarity-threshol",
+      "target": "/training/modules/aaai-implement-advanced-rag-azure-ai-search",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Implement and optimize hybrid search approaches combining semantic and keyword-based retrieval\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "optimize-generative-ai-systems-and-model-performance/implement-advanced-fine-tuning-and-model-customization/monitor-and-optimize-fine-tuned-model-performance",
+      "target": "/training/modules/optimize-finetune-agents",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Design and implement advanced fine-tuning methods\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "optimize-generative-ai-systems-and-model-performance/implement-advanced-fine-tuning-and-model-customization/design-and-implement-advanced-fine-tuning-methods",
+      "target": "/training/modules/optimize-finetune-agents",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

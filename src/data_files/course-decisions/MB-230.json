@@ -27,7 +27,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-06",
+      "title": "Skill-based routing in Dynamics 365 Contact Center"
     },
     {
       "task": "configure-representative-experience-and-routing/configure-routing/@foundations",
@@ -212,7 +213,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-06",
+      "title": "Overview of Copilot Service workspace"
     },
     {
       "task": "configure-representative-experience-and-routing/configure-the-copilot-service-workspace/@foundations",
@@ -355,12 +357,10 @@
     {
       "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
       "target": "/dynamics365/customerengagement/on-premises/customize/create-edit-entity-relationships",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "prerequisite",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Documentation of the on-premises product, which this exam does not cover.",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-14"
     },
     {
       "task": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
@@ -427,12 +427,10 @@
     {
       "task": "extend-customer-service/configure-the-data-model-and-ui-components/create-and-manage-email-templates",
       "target": "/training/modules/send-customer-voice-surveys",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Learn moved this page to /training/modules/work-customer-voice-projects, which is already in the course.",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-14"
     },
     {
       "task": "manage-cases-in-customer-service/create-and-administer-knowledge-management/@foundations",
@@ -481,7 +479,8 @@
       "class": "core",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-06",
+      "title": "Configure knowledge management"
     },
     {
       "task": "manage-cases-in-customer-service/create-and-administer-knowledge-management/configure-tables-for-knowledge-management",
@@ -491,7 +490,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-06",
+      "title": "KnowledgeArticle table in Dynamics 365 Customer Service"
     },
     {
       "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/@foundations",
@@ -500,7 +500,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-06",
+      "title": "Overview of case management"
     },
     {
       "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/@foundations",
@@ -550,7 +551,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-06",
+      "title": "Use Case historical analytics dashboard"
     },
     {
       "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/apply-slas",
@@ -560,7 +562,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-06",
+      "title": "Monitor customer wait time through live conversation counter"
     },
     {
       "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/configure-sla-settings",
@@ -625,7 +628,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-06",
+      "title": "Introduction to Customer Service"
     },
     {
       "task": "manage-cases-in-customer-service/define-and-configure-foundational-customer-service-component/@foundations",
@@ -807,6 +811,51 @@
       "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
       "by": "maintainer",
       "at": "2026-11-06"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-workstreams",
+      "target": "/training/modules/configure-apple-message-business-google-business-messages",
+      "decision": "reject",
+      "reason": "Learn moved this page to /training/modules/customer-engagement-channels-overview, which is already in the course.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "configure-representative-experience-and-routing/configure-routing/configure-workstreams",
+      "target": "/training/modules/sms-channels",
+      "decision": "reject",
+      "reason": "Learn moved this page to /training/modules/customer-engagement-channels-overview, which is already in the course.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "extend-customer-service/capture-customer-feedback-by-using-customer-voice/personalize-a-survey",
+      "target": "/training/modules/create-customer-voice-surveys",
+      "decision": "reject",
+      "reason": "Learn moved this page to /training/modules/work-customer-voice-projects, which is already in the course.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "manage-cases-in-customer-service/create-and-manage-slas-for-cases/configure-sla-settings",
+      "target": "/training/modules/creating-and-managing-entitlements-in-dynamics-365",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Entitlements set the support terms a customer has, and an entitlement can carry the SLA that is applied to its cases.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "manage-cases-in-customer-service/define-and-configure-foundational-customer-service-component/@foundations",
+      "target": "/training/modules/get-started-with-dynamics-365-for-customer-service",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Gives the overall picture of Customer Service, its data foundation and where AI agents fit in before the configuration tasks start.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

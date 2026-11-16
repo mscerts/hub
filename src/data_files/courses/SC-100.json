@@ -205,6 +205,10 @@
         "d846e71743850bdaf189ca0e179c35fbfd5df2a2"
       ],
       [
+        "/training/modules/design-governance",
+        "70a54111bc72f14bbe4f96fad89e99dfacc0abf6"
+      ],
+      [
         "/training/modules/discover-external-assets-vulnerabilities",
         "6d6790d036d6fdab7858f509942da5bb418d7116"
       ],
@@ -273,8 +277,16 @@
         "a9d27744c5e8f840686361159238e985be96d554"
       ],
       [
+        "/training/modules/harden-microsoft-365-secure-score",
+        "61dfad6d96863970289ee9460f953fb13cfd4fe3"
+      ],
+      [
         "/training/modules/identify-ai-data-risks-purview",
         "16eb27bc0a5549c2c88e2d6711e4c59a8a5a4638"
+      ],
+      [
+        "/training/modules/implement-application-interface-security-management",
+        "33d0f9b1bbe842cf6f8cf7f0780e663780e485b1"
       ],
       [
         "/training/modules/implement-authentication-access-entra",
@@ -918,17 +930,18 @@
             {
               "target": {
                 "kind": "docs",
-                "path": "/security/adoption/mcra"
+                "path": "/security/zero-trust/microsoft-reference-architecture"
               },
               "title": "Microsoft Cybersecurity Reference Architecture (MCRA)",
               "class": "foundation",
               "source": "P2",
               "via": "/training/modules/design-solutions-microsoft-cybersecurity-cloud-security-benchmark",
+              "was": "/security/adoption/mcra",
               "why": "The page introduces the Microsoft Cybersecurity Reference Architecture, the central concept of the group.",
               "evidence": "Microsoft Cybersecurity Reference Architecture (MCRA)",
               "decision": {
-                "by": "auto",
-                "at": "2026-11-04"
+                "by": "maintainer",
+                "at": "2026-11-14"
               }
             },
             {
@@ -1742,7 +1755,24 @@
             {
               "key": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-security-operations/design-a-solution-for-detection-and-response-that-includes-e",
               "text": "Design a solution for detection and response that includes extended detection and response (XDR) and security information and event management (SIEM)",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/sentinel/sentinel-overview"
+                  },
+                  "title": "What is Microsoft Sentinel?",
+                  "class": "supporting",
+                  "relation": "prerequisite",
+                  "source": "P4",
+                  "why": "Describes Microsoft Sentinel, the SIEM half of a detection and response design, before the design is made.",
+                  "evidence": "provides unified tools for detecting, investigating, and responding to threats across hybrid and multicloud environments",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                }
+              ]
             },
             {
               "key": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-security-operations/design-a-solution-for-centralized-logging-and-auditing-inclu",
@@ -1798,22 +1828,6 @@
                   "evidence": "Monitor your hybrid and multicloud machines through Azure Arc-enabled servers",
                   "decision": {
                     "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/azure/sentinel/sentinel-overview"
-                  },
-                  "title": "What is Microsoft Sentinel?",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "The Sentinel overview describes the SIEM that detects threats across hybrid and multicloud environments, a neighbouring product a monitoring designer meets.",
-                  "evidence": "provides unified tools for detecting, investigating, and responding to threats across hybrid and multicloud environments",
-                  "decision": {
-                    "by": "maintainer",
                     "at": "2026-11-04"
                   }
                 },
@@ -3966,12 +3980,38 @@
             {
               "key": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-regulatory-compliance/design-azure-policy-solutions-to-address-security-and-compli",
               "text": "Design Azure Policy solutions to address security and compliance requirements",
-              "picks": [],
-              "overlaps": [
+              "picks": [
                 {
-                  "path": "/training/modules/design-solutions-regulatory-compliance",
-                  "title": "Design solutions for regulatory compliance",
-                  "shownUnder": "design-solutions-that-align-with-security-best-practices-and/design-solutions-that-align-with-the-microsoft-cybersecurity/design-ai-solutions-that-align-to-the-microsoft-cloud-securi"
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/design-governance"
+                  },
+                  "title": "Design governance",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Covers designing governance with Azure Policy, management groups and role-based access control.",
+                  "evidence": "Design for governance",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/governance/policy/samples/azure-security-benchmark"
+                  },
+                  "title": "Regulatory Compliance details for Microsoft cloud security benchmark - Azure Policy",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P4",
+                  "why": "Lists the Azure Policy definitions behind each control of the Microsoft cloud security benchmark, the mapping a policy design starts from.",
+                  "evidence": "Details of the Microsoft cloud security benchmark Regulatory Compliance built-in initiative. Each control is mapped to one or more Azure Policy definitions that assist with assessment.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             },
@@ -4005,6 +4045,22 @@
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/defender-for-cloud/regulatory-compliance-dashboard"
+                  },
+                  "title": "Improve regulatory compliance in Microsoft Defender for Cloud",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "The regulatory compliance dashboard of Defender for Cloud is where alignment with a standard is evaluated.",
+                  "evidence": "Learn how to improve regulatory compliance in Microsoft Defender for Cloud.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 }
               ]
@@ -4641,38 +4697,6 @@
                   "evidence": "Learn about the benefits, features, and security capabilities of Microsoft Defender for Storage to protect your data and workloads.",
                   "decision": {
                     "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/case-study-apps-data"
-                  },
-                  "title": "Interactive case study: Securing apps and data",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P1",
-                  "why": "A scenario review of app and data protection using Defender for Cloud and Kubernetes; it reviews other modules rather than teaching the task.",
-                  "evidence": "Interactive case study: Securing apps and data",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/case-study-endpoints-infrastructure"
-                  },
-                  "title": "Interactive case study: Securing endpoints and infrastructure",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P1",
-                  "why": "A scenario review of endpoint and infrastructure protection using Defender for Cloud and Arc; it reviews other modules rather than teaching the task.",
-                  "evidence": "Interactive case study: Securing endpoints and infrastructure",
-                  "decision": {
-                    "by": "maintainer",
                     "at": "2026-11-04"
                   }
                 },
@@ -6158,22 +6182,6 @@
                 },
                 {
                   "target": {
-                    "kind": "module",
-                    "path": "/training/modules/case-study-access-control-threat-resilience"
-                  },
-                  "title": "Interactive case study: Modernizing user access control and threat resilience",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P1",
-                  "why": "An interactive case study on modernizing user access control is a neighbouring exercise in the same job.",
-                  "evidence": "Interactive case study: Modernizing user access control and threat resilience",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
                     "kind": "docs",
                     "path": "/entra/global-secure-access/concept-connectors"
                   },
@@ -6595,16 +6603,17 @@
             {
               "target": {
                 "kind": "docs",
-                "path": "/microsoft-365/copilot/copilot-controls/copilot-controls-overview"
+                "path": "/copilot/implement/copilot-controls-overview"
               },
               "title": "Copilot controls overview",
               "class": "foundation",
               "source": "P4",
+              "was": "/microsoft-365/copilot/copilot-controls/copilot-controls-overview",
               "why": "Introduces the framework of Copilot controls for securing, managing and measuring Copilot, the concept behind the Copilot tasks.",
               "evidence": "Learn about the framework for Copilot controls to secure, manage, and measure",
               "decision": {
-                "by": "auto",
-                "at": "2026-11-04"
+                "by": "maintainer",
+                "at": "2026-11-14"
               }
             },
             {
@@ -6675,17 +6684,20 @@
             {
               "key": "design-security-solutions-for-applications-and-data/evaluate-solutions-for-securing-microsoft-365/evaluate-security-posture-for-productivity-and-collaboration",
               "text": "Evaluate security posture for productivity and collaboration workloads by using metrics, including Microsoft Secure Score",
-              "picks": [],
-              "overlaps": [
+              "picks": [
                 {
-                  "path": "/training/modules/design-solutions-secure-microsoft-365",
-                  "title": "Evaluate solutions for securing Microsoft 365",
-                  "shownUnder": "design-solutions-that-align-with-security-best-practices-and/design-solutions-that-align-with-the-microsoft-cybersecurity/design-ai-solutions-that-align-to-the-microsoft-cloud-securi"
-                },
-                {
-                  "path": "/training/modules/design-solutions-security-posture-management-hybrid-multicloud-environments",
-                  "title": "Design solutions for security posture management in hybrid and multicloud environments",
-                  "shownUnder": "design-solutions-that-align-with-security-best-practices-and/design-solutions-that-align-with-the-microsoft-cybersecurity/design-ai-solutions-that-align-to-the-microsoft-cloud-securi"
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/harden-microsoft-365-secure-score"
+                  },
+                  "title": "Harden a Microsoft 365 tenant with Microsoft Secure Score",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Prepare a safe administrative environment",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             },
@@ -7024,15 +7036,17 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/copilot-controls/copilot-controls-security-governance"
+                    "path": "/copilot/implement/copilot-controls-security-governance"
                   },
                   "title": "Copilot controls security and governance",
                   "class": "core",
                   "source": "P2",
                   "via": "/training/modules/design-solutions-secure-microsoft-365",
+                  "was": "/microsoft-365/copilot/copilot-controls/copilot-controls-security-governance",
+                  "evidence": "Copilot controls security and governance",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -7066,15 +7080,17 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/security-microsoft-copilot"
+                    "path": "/copilot/plan/security-microsoft-copilot"
                   },
                   "title": "Security for Microsoft Copilot",
                   "class": "core",
                   "source": "P2",
                   "via": "/training/modules/design-solutions-secure-microsoft-365",
+                  "was": "/microsoft-365/copilot/security-microsoft-copilot",
+                  "evidence": "Security for Microsoft Copilot",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -7136,15 +7152,16 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/architecture-data-protection-auditing"
+                    "path": "/copilot/plan/architecture-data-protection-auditing"
                   },
                   "title": "Microsoft Copilot data protection architecture",
                   "class": "core",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/architecture-data-protection-auditing",
                   "evidence": "how Microsoft Purview data protection, SharePoint oversharing controls, and auditing work with Microsoft Copilot",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -7279,7 +7296,22 @@
             {
               "key": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-and-implement-standards-and-practices-for-securing-th",
               "text": "Design and implement standards and practices for securing the application development process",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/security/develop/secure-dev-overview"
+                  },
+                  "title": "Secure development best practices on Microsoft Azure",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Best practices to help you develop more secure code and deploy a more secure application in the cloud.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/design-solutions-secure-applications",
@@ -7471,6 +7503,22 @@
                 },
                 {
                   "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-application-interface-security-management"
+                  },
+                  "title": "Implement API backend security using Azure API Management",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P3",
+                  "why": "Shows the backend security controls of Azure API Management that a design for API security chooses between.",
+                  "evidence": "Configure API authentication and authorization policies",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
                     "kind": "docs",
                     "path": "/azure/architecture/guide/multitenant/service/api-management"
                   },
@@ -7532,13 +7580,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
-                }
-              ],
-              "overlaps": [
+                },
                 {
-                  "path": "/training/modules/design-solutions-secure-applications",
-                  "title": "Design solutions for securing applications",
-                  "shownUnder": "design-security-solutions-for-infrastructure/design-solutions-for-security-posture-management-in-hybrid-a/evaluate-security-posture-by-using-microsoft-defender-for-cl"
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/defender-for-cloud/api-security-posture-overview"
+                  },
+                  "title": "API security posture overview",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "API security posture in Defender for Cloud is how the APIs behind API Management are assessed.",
+                  "evidence": "Learn how Microsoft Defender for Cloud enhances API security posture management for your APIs across Azure API Management, Function Apps, and Logic Apps.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             },
@@ -10386,12 +10443,6 @@
     },
     {
       "taskKey": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-a-solution-for-api-management-and-security",
-      "path": "/azure/defender-for-cloud/api-security-posture-overview",
-      "reason": "Dropped in review: implementation detail, outdated or other-role page, video episode, billing or landing page.",
-      "at": "2026-11-04"
-    },
-    {
-      "taskKey": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-a-solution-for-api-management-and-security",
       "path": "/azure/defender-for-cloud/enable-api-security-posture",
       "reason": "Dropped in review: implementation detail, outdated or other-role page, video episode, billing or landing page.",
       "at": "2026-11-04"
@@ -10418,12 +10469,6 @@
       "taskKey": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-a-solution-for-api-management-and-security",
       "path": "/training/modules/design-solutions-secure-microsoft-365",
       "reason": "Microsoft 365 workload security, not API management.",
-      "at": "2026-11-04"
-    },
-    {
-      "taskKey": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-a-solution-for-api-management-and-security",
-      "path": "/training/modules/implement-application-interface-security-management",
-      "reason": "Dropped in review: implementation detail, outdated or other-role page, video episode, billing or landing page.",
       "at": "2026-11-04"
     },
     {
@@ -10466,12 +10511,6 @@
       "taskKey": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-and-implement-standards-and-practices-for-securing-th",
       "path": "/azure/security/develop",
       "reason": "Hub page of developer-focused secure development docs with no task-specific guidance.",
-      "at": "2026-11-04"
-    },
-    {
-      "taskKey": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-and-implement-standards-and-practices-for-securing-th",
-      "path": "/azure/security/develop/secure-dev-overview",
-      "reason": "Dropped in review: implementation detail, outdated or other-role page, video episode, billing or landing page.",
       "at": "2026-11-04"
     },
     {
@@ -12105,6 +12144,30 @@
       "path": "/azure/sentinel/sentinel-solution",
       "reason": "Dropped in review: implementation detail, outdated or other-role page, video episode, billing or landing page.",
       "at": "2026-11-04"
+    },
+    {
+      "taskKey": "design-security-solutions-for-infrastructure/design-solutions-for-security-posture-management-in-hybrid-a/select-cloud-workload-protection-solutions-in-microsoft-defe",
+      "path": "/training/modules/case-study-apps-data",
+      "reason": "An interactive case study: it is on the SC-100 lab page, not in the course.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "design-security-solutions-for-infrastructure/design-solutions-for-security-posture-management-in-hybrid-a/select-cloud-workload-protection-solutions-in-microsoft-defe",
+      "path": "/training/modules/case-study-endpoints-infrastructure",
+      "reason": "An interactive case study: it is on the SC-100 lab page, not in the course.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "design-security-solutions-for-infrastructure/evaluate-solutions-for-network-security-and-security-service/evaluate-solutions-that-use-microsoft-entra-private-access",
+      "path": "/training/modules/case-study-access-control-threat-resilience",
+      "reason": "An interactive case study: it is on the SC-100 lab page, not in the course.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-security-operations/design-monitoring-to-support-hybrid-and-multicloud-environme",
+      "path": "/azure/sentinel/sentinel-overview",
+      "reason": "Belongs under \"Design a solution for detection and response that includes extended detection and response (XDR) and security information and event management (SIEM)\", not here.",
+      "at": "2026-11-14"
     }
   ]
 }

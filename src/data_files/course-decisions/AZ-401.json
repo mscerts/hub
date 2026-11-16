@@ -21,10 +21,14 @@
     {
       "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
       "target": "/azure/defender-for-cloud/defender-cli-syntax",
-      "decision": "reject",
-      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Reference of the Defender for Cloud CLI that pipelines run for their scans, beside the CLI authentication page of this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Defender for Cloud CLI Syntax"
     },
     {
       "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
@@ -42,7 +46,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Common questions - DevOps Security - Microsoft Defender for Cloud"
     },
     {
       "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
@@ -71,18 +76,26 @@
     {
       "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
       "target": "/security-exposure-management/create-azure-devops-connector",
-      "decision": "reject",
-      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "The Defender portal's connector for an Azure DevOps organization, the onboarding path for agentic code scans beside the Azure portal's DevOps connector.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Create an Azure DevOps connector for agentic code security - Microsoft Security Exposure Management"
     },
     {
       "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
       "target": "/security-exposure-management/create-github-connector",
-      "decision": "reject",
-      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "The Defender portal's connector for a GitHub organization, the onboarding path for agentic code scans beside the Azure portal's DevOps connector.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Create a GitHub connector for agentic code security - Microsoft Security Exposure Management"
     },
     {
       "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/design-a-strategy-for-security-vulnerability-and-compliance",
@@ -116,7 +129,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Defender Code Security skills overview"
     },
     {
       "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-a-strategy-for-managing-sensitive-infor/integrate-azure-key-vault-into-azure-pipelines-and-github-ac",
@@ -177,12 +191,10 @@
     {
       "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
       "target": "/azure/devops/boards/github/install-github-app",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Configure projects in Azure DevOps (ADO) and GitHub, including ADO teams\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
@@ -227,10 +239,14 @@
     {
       "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
       "target": "/azure/devops/report/analytics/analytics-permissions-prerequisites",
-      "decision": "reject",
-      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Analytics has its own permissions and access-level prerequisites, which a professional sets together with the other permissions.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Permissions and prerequisites to access Analytics - Azure DevOps"
     },
     {
       "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
@@ -251,10 +267,14 @@
     {
       "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/implement-and-manage-secretless-authentication-in-azure-pipe",
       "target": "/azure/app-service/deploy-github-actions",
-      "decision": "reject",
-      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Deploying to App Service from GitHub Actions signs in with OpenID Connect, the secretless method in practice.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Deploy by Using GitHub Actions"
     },
     {
       "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/implement-and-manage-secretless-authentication-in-azure-pipe",
@@ -271,17 +291,16 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Make your Azure DevOps secure - Azure DevOps"
     },
     {
       "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-permissions",
       "target": "/azure/devops/organizations/accounts/faq-user-and-permissions-management",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "prerequisite",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Design and implement permissions and access levels in Azure DevOps and GitHub\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-permissions",
@@ -307,7 +326,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Permissions and role lookup guide - Azure DevOps"
     },
     {
       "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-permissions",
@@ -368,12 +388,10 @@
     {
       "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/create-and-configure-git-hooks-that-automatically-check-code",
       "target": "/azure/devops/repos/git/copilot-code-reviews",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Implement branch policies and branch protection rules for GitHub Copilot\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -391,7 +409,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Build and publish pipeline artifacts with Gradle - Azure Pipelines"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -401,7 +420,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Publish Cargo packages with Azure Pipelines - Azure Pipelines"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -411,7 +431,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Publish npm packages with Azure Pipelines - Azure Pipelines"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -421,7 +442,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Publish Maven artifacts with Azure Pipelines - Azure Pipelines"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -431,7 +453,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Publish Python packages with Azure Pipelines - Azure Pipelines"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -441,27 +464,24 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Publish & download Universal Packages - Azure Pipelines"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
       "target": "/azure/devops/pipelines/process/access-tokens",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "prerequisite",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Implement and manage Azure DevOps service connections and personal access tokens\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
       "target": "/azure/devops/pipelines/process/artifact-policy",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "operate",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Design and implement checks and approvals by using YAML-based environments\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -479,7 +499,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "DownloadBuildArtifacts@1 - Download build artifacts v1 task"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -500,12 +521,10 @@
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
       "target": "/azure/devops/pipelines/tasks/reference/download-pipeline-artifact-v1",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Superseded task version: DownloadPipelineArtifact@2 is in the course.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -515,7 +534,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "GradleAuthenticate@0 - Gradle Authenticate v0 task"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -525,7 +545,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "MavenAuthenticate@0 - Maven Authenticate v0 task"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -543,7 +564,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "NuGetCommand@2 - NuGet v2 task"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -553,7 +575,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "PublishBuildArtifacts@1 - Publish build artifacts v1 task"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -571,7 +594,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "resources.builds.build definition"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -581,7 +605,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "steps.downloadBuild definition"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
@@ -607,7 +632,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "DownloadPackage@1 - Download package v1 task"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/recommend-package-management-tools-including-azure-artifacts",
@@ -617,7 +643,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "steps.getPackage definition"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/design-a-comprehensive-testing-strategy-including-local-test",
@@ -670,32 +697,26 @@
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/implement-quality-and-release-gates-by-using-github-copilot",
       "target": "/azure/developer/azure-mcp-server/get-started/tools/visual-studio",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "prerequisite",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "A get-started walkthrough for one IDE, and not about quality or release gates.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/implement-quality-and-release-gates-by-using-github-copilot",
       "target": "/azure/developer/azure-mcp-server/how-to/github-copilot-cloud-agent",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "prerequisite",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Configure MCP servers, including Azure DevOps MCP server and GitHub MCP server\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/implement-quality-and-release-gates-by-using-github-copilot",
       "target": "/azure/developer/azure-mcp-server/tools",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "prerequisite",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Configure MCP servers, including Azure DevOps MCP server and GitHub MCP server\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/design-and-implement-integration-between-azure-pipelines-and",
@@ -705,7 +726,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "DownloadGitHubRelease@0 - Download GitHub Release v0 task"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/design-and-implement-integration-between-azure-pipelines-and",
@@ -723,7 +745,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Resources in YAML pipelines - Azure Pipelines"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/develop-and-implement-pipeline-trigger-rules",
@@ -733,7 +756,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "resources.webhooks.webhook.filters definition"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/develop-and-implement-pipeline-trigger-rules",
@@ -775,7 +799,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "DevOps security considerations overview - Cloud Adoption Framework"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/implement-an-azure-devops-or-github-runner-agent-infrastruct",
@@ -785,7 +810,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "GitHub-hosted agents FAQ"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/implement-an-azure-devops-or-github-runner-agent-infrastruct",
@@ -795,7 +821,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Node.js runners in Azure Pipelines Agent - Azure Pipelines"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/implement-an-azure-devops-or-github-runner-agent-infrastruct",
@@ -829,7 +856,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Explore Azure Developer CLI support for CI/CD pipelines"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/select-a-deployment-automation-solution-including-azure-pipe",
@@ -839,7 +867,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Configure a pipeline using GitHub Actions"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/select-a-deployment-automation-solution-including-azure-pipe",
@@ -860,11 +889,10 @@
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/@foundations",
       "target": "/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code-updates",
-      "decision": "accept",
-      "class": "foundation",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Specific to updating an Azure landing zone; the group already has its IaC concept pages.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/@foundations",
@@ -873,7 +901,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Platform automation and DevOps design area - Cloud Adoption Framework"
     },
     {
       "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/implement-a-configuration-management-strategy-for-applicatio",
@@ -918,10 +947,14 @@
     {
       "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
       "target": "/azure/devops/boards/best-practices-agile-project-management",
-      "decision": "reject",
-      "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Best practices for planning and tracking products in Azure Boards, the choices a tracking strategy is made of.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Best practices for Agile product management - Azure Boards"
     },
     {
       "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
@@ -934,20 +967,22 @@
     {
       "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
       "target": "/azure/devops/boards/plans/safe-configure-boards",
-      "decision": "reject",
-      "reason": "Not part of this task; wrong product area, outdated release note or generic landing page.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Shows how teams, portfolio backlogs and delivery plans are configured together when work is tracked across many teams.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Implement SAFe® with Azure Boards - Complete guide - Azure Boards"
     },
     {
       "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
       "target": "/azure/devops/boards/work-items/guidance/guidance-code-review-feedback-field-reference",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Legacy: code review requests only exist for Team Foundation Version Control shelvesets and changesets.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
@@ -957,7 +992,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Work tracking, process, and project limits - Azure DevOps"
     },
     {
       "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/analyze-application-performance-by-using-telemetry-and-instr",
@@ -975,7 +1011,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Skill for App Insights Instrumentation"
     },
     {
       "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/analyze-application-performance-by-using-telemetry-and-instr",
@@ -996,12 +1033,10 @@
     {
       "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/configure-and-collection-and-management-github-copilot-agent",
       "target": "/azure/developer/github-copilot-azure/troubleshoot-examples",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Interrogate logs by using natural language queries or basic Kusto Query Language (KQL) queries\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/configure-and-collection-and-management-github-copilot-agent",
@@ -1031,19 +1066,25 @@
       "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/interrogate-logs-by-using-natural-language-queries-or-basic",
       "target": "/azure/data-explorer/web-ui-samples-query",
       "decision": "accept",
-      "class": "core",
-      "reason": "accepted by the maintainer",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "The sample data of the free help cluster is where the basic KQL queries the task names can be tried.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Azure Data Explorer: Explore Sample Data - Azure Data Explorer"
     },
     {
       "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/interrogate-logs-by-using-natural-language-queries-or-basic",
       "target": "/azure/developer/azure-skills/skills/azure-kusto",
       "decision": "accept",
-      "class": "core",
-      "reason": "accepted by the maintainer",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "A coding-agent skill that writes KQL from a plain-language request, the natural-language side of the task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Azure Skill for Azure Kusto (Data Explorer)"
     },
     {
       "task": "implement-an-instrumentation-strategy/configure-monitoring-for-azure-devops-and-github-platforms/configure-azure-monitor-and-log-analytics-to-integrate-with",
@@ -1100,7 +1141,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Security overview for Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-copilot-observability-agent",
@@ -1110,7 +1152,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Autonomous operations - Azure Copilot Observability Agent (preview)"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-copilot-observability-agent",
@@ -1120,7 +1163,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Operational context and memory in Azure Copilot Observability Agent (preview)"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-copilot-observability-agent",
@@ -1130,7 +1174,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Deep investigation examples in the Azure Copilot Observability Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-copilot-observability-agent",
@@ -1140,7 +1185,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Transparency FAQ for Azure Copilot Observability Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1158,7 +1204,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure MCP Server Tools for Azure SRE Agent - Azure MCP Server"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1168,7 +1215,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Add a private marketplace to Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1178,7 +1226,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Add Web Page Knowledge Sources in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1188,7 +1237,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure DevOps connector in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1198,7 +1248,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Agent Hooks in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1208,7 +1259,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Agent Reasoning in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1218,7 +1270,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Allow List Outbound IPs for Key Vault in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1228,7 +1281,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "API reference for Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1238,7 +1292,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Automate workflows in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1248,7 +1303,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure DevOps Wiki Knowledge in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1258,7 +1314,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Run code with code interpreter in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1268,7 +1325,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Connect GitHub Enterprise Cloud Repositories to Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1278,17 +1336,16 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Connect a Notification Service in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
       "target": "/azure/sre-agent/create-support-request",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "operate",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Investigate and resolve issues raised by Azure SRE Agent\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1298,17 +1355,16 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Cross-Account Azure DevOps Access in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
       "target": "/azure/sre-agent/deep-investigation",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Investigate and resolve issues raised by Azure SRE Agent\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1318,7 +1374,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Default Agent Override Info in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1328,7 +1385,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Set up disaster recovery for Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1338,7 +1396,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Evaluate Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1348,7 +1407,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure SRE Agent general FAQ"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1358,7 +1418,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Add Your Team's Knowledge to Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1368,7 +1429,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Tools and Skills in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1378,7 +1440,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Install a Plugin From a Public Marketplace"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1388,7 +1451,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Install a plugin from a URL in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1398,7 +1462,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Data Explorer connector in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1408,7 +1473,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Kusto Tools in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1418,7 +1484,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Live Reports in Azure SRE Agent (preview)"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1428,7 +1495,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Log Analytics & Application Insights connectors in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1438,7 +1506,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Managed connectors in Azure SRE Agent (preview)"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1448,7 +1517,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "MCP connectors and tools in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1458,7 +1528,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "SRE Agent MCP server in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1468,7 +1539,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Memory and Knowledge in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1478,7 +1550,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Set Up an Outlook Connector in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1488,7 +1561,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Plugin Marketplace in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1498,27 +1572,24 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Python Tools in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
       "target": "/azure/sre-agent/review-agent-insights",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "operate",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Investigate and resolve issues raised by Azure SRE Agent\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
       "target": "/azure/sre-agent/root-cause-analysis",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "operate",
-      "reason": "Explains how Azure SRE Agent reasons about root causes during investigations; running and understanding the agent is part of the job of deploying and configuring it.",
+      "decision": "reject",
+      "reason": "Belongs under \"Investigate and resolve issues raised by Azure SRE Agent\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1528,7 +1599,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Send Notifications in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1538,7 +1610,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "ServiceNow incident indexing in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1548,7 +1621,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Set Up the Teams Connector in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1558,7 +1632,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Set up GitHub BYO App connector in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1568,7 +1643,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Set Up a Managed Connector in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1578,7 +1654,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Set Up the SRE Agent MCP Server in Azure"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1588,7 +1665,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Skills in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1598,7 +1676,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Subscription Permission Visibility in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1608,7 +1687,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Tool access policies in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1618,17 +1698,16 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Tools in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
       "target": "/azure/sre-agent/track-incident-value",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "operate",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Investigate and resolve issues raised by Azure SRE Agent\", not under this task.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1638,7 +1717,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Upload Knowledge Documents to Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
@@ -1648,7 +1728,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Workflow automation in Azure SRE Agent"
     },
     {
       "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/investigate-and-resolve-issues-raised-by-azure-sre-agent",
@@ -1657,6 +1738,1232 @@
       "reason": "Dropped in review: outdated release note or roadmap item, superseded task version, legacy or other-product page, or a landing page.",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/configure-dependency-scanning-code-scanning-and-secret-scann",
+      "target": "/azure/devops/repos/security/github-advanced-security-security-overview",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "The security overview is where a professional sees which repositories have Advanced Security enabled and reads the alerts across the organization once the scans are configured.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Security overview on GitHub Advanced Security for Azure DevOps - Azure Repos"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-feedback-cycles-including-notification",
+      "target": "/azure/devops/organizations/notifications/manage-team-group-global-organization-notifications",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Team, project and organization notifications are how a feedback cycle reaches people when code, work items and builds change.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Manage Notifications - Team, Project, Organization - Azure DevOps"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
+      "target": "/azure/devops/organizations/security/about-security-roles",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Security roles are how pipeline resources such as agent pools, service connections and environments are permissioned, beside the permissions and access levels the guide names.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "About pipeline security roles - Azure DevOps"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/azure/container-registry/container-registry-image-tag-version",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Container images are pipeline artifacts too, and stable or unique tags are how they are versioned.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Image Tag Best Practices"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/analyze-application-performance-by-using-telemetry-and-instr",
+      "target": "/azure/azure-monitor/optimization-insights/code-optimizations-github-copilot",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "Hands a performance finding from Application Insights to the GitHub Copilot coding agent for a fix, the step after the analysis.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Assign Code Optimizations insights to GitHub Copilot"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/interrogate-logs-by-using-natural-language-queries-or-basic",
+      "target": "/azure/managed-grafana/azure-monitor-dashboards-mcp-server",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Lets GitHub Copilot query Azure Monitor logs, metrics and traces from plain-language prompts through an MCP endpoint.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Connect to the Azure Monitor dashboards with Grafana remote MCP server"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-and-implement-success-metrics-for-devops/implement-queries-to-evaluate-success-metrics-for-devops-by",
+      "target": "/azure/devops/report/powerbi/odataquery-connect",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "OData queries against Azure DevOps Analytics are how DevOps metrics are queried for reports.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Connect with Data by Using OData Queries - Azure DevOps"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/configure-projects-in-azure-devops-ado-and-github-including",
+      "target": "/azure/devops/boards/github/install-github-app",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Installing the Azure Boards app is how a GitHub repository is connected to an Azure DevOps project, with the choice of which repositories it can access.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Install the Azure Boards App for GitHub - Azure Boards"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
+      "target": "/azure/devops/organizations/accounts/faq-user-and-permissions-management",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "FAQs on the permissions needed to manage users and their access, background for setting permissions and access levels.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "User and permissions management FAQs - Azure DevOps"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/design-and-implement-branching-strategies-for-azure-devops-a/implement-branch-policies-and-branch-protection-rules-for-gi",
+      "target": "/azure/devops/repos/git/copilot-code-reviews",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Automatic GitHub Copilot review of pull requests in Azure Repos, the Copilot check a pull request policy sits beside.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Get started with Copilot code review for pull requests - Azure Repos"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/implement-and-manage-azure-devops-service-connections-and-pe",
+      "target": "/azure/devops/pipelines/process/access-tokens",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "The job access token is what a pipeline uses to reach Azure DevOps resources where a personal access token would otherwise be used.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Understand job access tokens - Azure Pipelines"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/design-and-implement-checks-and-approvals-by-using-yaml-base",
+      "target": "/azure/devops/pipelines/process/artifact-policy",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "The artifact policy check is one of the checks an environment runs before a stage may deploy.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Artifact policy checks - Azure Pipelines"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/configure-mcp-servers-including-azure-devops-mcp-server-and",
+      "target": "/azure/developer/azure-mcp-server/how-to/github-copilot-cloud-agent",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Connecting the Azure MCP Server to the GitHub Copilot cloud agent is the same configuration work as for the MCP servers the guide names.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Connect GitHub Copilot Cloud Agent to the Azure MCP Server - Azure MCP Server"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/configure-mcp-servers-including-azure-devops-mcp-server-and",
+      "target": "/azure/developer/azure-mcp-server/tools",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Reference of the Azure MCP Server tools that Copilot can call once the server is configured.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Azure MCP Server Tools - Azure MCP Server"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/interrogate-logs-by-using-natural-language-queries-or-basic",
+      "target": "/azure/developer/github-copilot-azure/troubleshoot-examples",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Examples of asking GitHub Copilot for Azure in plain language to analyse logs while troubleshooting.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Troubleshoot Azure Applications with GitHub Copilot for Azure - GitHub Copilot for Azure"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/investigate-and-resolve-issues-raised-by-azure-sre-agent",
+      "target": "/azure/sre-agent/create-support-request",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Filing an Azure support request from the chat is a way to resolve an issue the agent raised.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Create Azure support requests in Azure SRE Agent"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/investigate-and-resolve-issues-raised-by-azure-sre-agent",
+      "target": "/azure/sre-agent/deep-investigation",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Hypothesis-driven deep investigation is how the agent works through an issue it raised.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Use deep investigation in Azure SRE Agent"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/investigate-and-resolve-issues-raised-by-azure-sre-agent",
+      "target": "/azure/sre-agent/review-agent-insights",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Reviewing the insights from past investigations is part of following up the issues the agent raised.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Review agent insights in Azure SRE Agent"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/investigate-and-resolve-issues-raised-by-azure-sre-agent",
+      "target": "/azure/sre-agent/root-cause-analysis",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Explains how Azure SRE Agent reasons about root causes during an investigation.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Root Cause Analysis in Azure SRE Agent"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/investigate-and-resolve-issues-raised-by-azure-sre-agent",
+      "target": "/azure/sre-agent/track-incident-value",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "Tracking incident value and response quality is how a professional reviews how the raised issues were handled.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Track Incident Value in Azure SRE Agent"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/@foundations",
+      "target": "/training/modules/introduction-to-devops",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Introduces DevOps, the journey from planning to operating, Azure DevOps and GitHub, the base for designing the flow of work.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-feedback-cycles-including-notification",
+      "target": "/training/modules/plan-agile-github-projects-azure-boards",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-tracking-work-using-azure-boards",
+      "target": "/training/modules/plan-agile-github-projects-azure-boards",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Design a strategy for feedback cycles, including notifications\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-traceability-including-repositories-bugs-and-quality",
+      "target": "/training/modules/plan-agile-github-projects-azure-boards",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Design a strategy for feedback cycles, including notifications\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/design-traceability-and-flow-of-work/design-a-strategy-for-feedback-cycles-including-notification",
+      "target": "/training/modules/automate-inspection-health",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/configure-monitoring-for-azure-devops-and-github-platforms/configure-alerts-for-events-in-azure-pipelines-and-github-ac",
+      "target": "/training/modules/automate-inspection-health",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Also covers this task; the module is shown once, under \"Design a strategy for feedback cycles, including notifications\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/@foundations",
+      "target": "/training/modules/introduction-agentic-devops-microsoft-tools-azure",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Defines agentic DevOps, where agents fit into day-to-day DevOps work and where human control points belong.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/@foundations",
+      "target": "/training/modules/foundations-agentic-ai",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Explains what an agent is, the plan, act, evaluate lifecycle and GitHub's role as the control plane for agent work.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/document-a-project-including-wikis-readmes-change-logs-relea",
+      "target": "/training/modules/manage-git-repositories",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-permissions",
+      "target": "/training/modules/manage-git-repositories",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Document a project, including wikis, readmes, change logs, releases, licenses, code owners, and process diagrams, by using AI-assisted tools\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/configure-tags",
+      "target": "/training/modules/manage-git-repositories",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Document a project, including wikis, readmes, change logs, releases, licenses, code owners, and process diagrams, by using AI-assisted tools\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/recover-or-remove-specific-data-by-using-git-commands",
+      "target": "/training/modules/manage-git-repositories",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Document a project, including wikis, readmes, change logs, releases, licenses, code owners, and process diagrams, by using AI-assisted tools\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/document-a-project-including-wikis-readmes-change-logs-relea",
+      "target": "/training/modules/generate-documentation-using-github-copilot-tools",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/document-a-project-including-wikis-readmes-change-logs-relea",
+      "target": "/training/modules/share-knowledge-within-teams",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Project wikis are one of the places the documentation of this task lives.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/specify-requirements-and-restrictions-for-agentic-developmen",
+      "target": "/training/modules/transition-traditional-ops-agent-automation",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/specify-requirements-and-restrictions-for-agentic-developmen",
+      "target": "/training/modules/governance-guardrails-operations",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Risk-based autonomy, least privilege and human approval are the restrictions an agentic development setup specifies.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/configure-mcp-servers-including-azure-devops-mcp-server-and",
+      "target": "/training/modules/manage-ado-mcp-server",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/configure-mcp-servers-including-azure-devops-mcp-server-and",
+      "target": "/training/modules/mcp-server",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/configure-integration-by-using-webhooks-mcp-servers-and-skil",
+      "target": "/training/modules/agent-tooling-mcp-execution-environments",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Explains how agents reach tools through MCP servers, registries and allow lists, the MCP side of the integrations this task configures.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/design-and-implement-github-agentic-workflows",
+      "target": "/training/modules/agent-tooling-mcp-execution-environments",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Configure integration by using webhooks, MCP servers, and skills\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/configure-integration-between-azure-boards-and-github-reposi",
+      "target": "/training/modules/manage-azure-boards-using-github-copilot",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Connects Azure Boards to GitHub repositories and hands work items to GitHub Copilot, through the built-in integration and not through MCP.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/design-and-implement-branching-strategies-for-azure-devops-a/design-a-branch-strategy-including-trunk-based-feature-branc",
+      "target": "/training/modules/manage-git-branches-workflows",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/design-and-implement-branching-strategies-for-azure-devops-a/implement-branch-merging-restrictions-by-using-branch-polici",
+      "target": "/training/modules/manage-git-branches-workflows",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Design a branch strategy, including trunk-based, feature branch, release branch, Git Worktree, Git flow, and GitHub flow\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/design-and-implement-branching-strategies-for-azure-devops-a/design-and-implement-pull-request-workflows-by-using-branch",
+      "target": "/training/modules/collaborate-pull-requests-azure-repos",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/design-and-implement-branching-strategies-for-azure-devops-a/design-and-implement-pull-request-workflows-by-using-branch",
+      "target": "/training/modules/manage-changes-pull-requests-github",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/design-and-implement-branching-strategies-for-azure-devops-a/implement-branch-policies-and-branch-protection-rules-for-gi",
+      "target": "/training/modules/code-reviews-pull-requests-github-copilot",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/implement-traceability-in-repositories-including-code-qualit",
+      "target": "/training/modules/identify-technical-debt",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Code quality and its metrics are what the traceability of this task reports on.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/create-and-configure-git-hooks-that-automatically-check-code",
+      "target": "/training/modules/explore-git-hooks",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/perform-a-repository-to-repository-migration-from-azure-devo",
+      "target": "/training/modules/introduction-to-ado-to-github-migration",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/perform-a-repository-to-repository-migration-from-azure-devo",
+      "target": "/training/modules/ado-github-migrations-3",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/perform-a-repository-to-repository-migration-from-azure-devo",
+      "target": "/training/modules/ado-github-migrations-2",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "Assessing the Azure DevOps source and setting up the GitHub target come before the repositories are migrated.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-source-control-strategy/configure-and-manage-repositories-for-azure-devops-and-githu/perform-a-repository-to-repository-migration-from-azure-devo",
+      "target": "/training/modules/ado-github-migrations-four",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "Stabilising identities and history and validating integrations is the work that follows the migration.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/recommend-package-management-tools-including-azure-artifacts",
+      "target": "/training/modules/understand-package-management",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-package-feeds-and-views-for-local-and-u",
+      "target": "/training/modules/understand-package-management",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Recommend package management tools including Azure Artifacts and GitHub Packages\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/recommend-package-management-tools-including-azure-artifacts",
+      "target": "/training/modules/introduction-github-packages",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/recommend-package-management-tools-including-azure-artifacts",
+      "target": "/training/modules/github-actions-packages",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Publishing to GitHub Packages from a workflow is how the recommended tool is used in practice.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-dependency-versioning-strategy-for-co",
+      "target": "/training/modules/implement-versioning-strategy",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-package-feeds-and-views-for-local-and-u",
+      "target": "/training/modules/implement-versioning-strategy",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Also covers this task; the module is shown once, under \"Design and implement a dependency versioning strategy for code assets and packages, including semantic versioning (SemVer) and date-based (CalVer)\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-versioning-strategy-for-pipeline-arti",
+      "target": "/training/modules/implement-versioning-strategy",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Design and implement a dependency versioning strategy for code assets and packages, including semantic versioning (SemVer) and date-based (CalVer)\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-package-management-strategy/design-and-implement-a-dependency-versioning-strategy-for-co",
+      "target": "/training/modules/explore-package-dependencies",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "Dependencies are identified and split into components before they are versioned.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/design-quality-and-release-gates",
+      "target": "/training/modules/explore-release-strategy-recommendations",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/design-a-comprehensive-testing-strategy-including-local-test",
+      "target": "/training/modules/implement-pipeline-strategy",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/implement-code-coverage-analysis-by-using-github-copilot-and",
+      "target": "/training/modules/implement-pipeline-strategy",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Design a comprehensive testing strategy, including local tests, unit tests, integration tests, and load tests\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/design-and-implement-integration-between-azure-pipelines-and",
+      "target": "/training/modules/implement-pipeline-strategy",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Design a comprehensive testing strategy, including local tests, unit tests, integration tests, and load tests\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-a-testing-strategy-for-azure-devops-pip/design-a-comprehensive-testing-strategy-including-local-test",
+      "target": "/training/modules/configure-provision-environments",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Covers functional, availability and load tests against provisioned environments, the later stages of the testing strategy.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/@foundations",
+      "target": "/training/modules/integrate-azure-pipelines",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Explains the anatomy and structure of a YAML pipeline, its templates and resources, before the group's tasks.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/select-a-deployment-automation-solution-including-azure-pipe",
+      "target": "/training/modules/explore-azure-pipelines",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/select-a-deployment-automation-solution-including-azure-pipe",
+      "target": "/training/modules/introduction-to-github-actions",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/design-an-azure-devops-agent-or-github-runner-infrastructure",
+      "target": "/training/modules/manage-azure-pipeline-agents-pools",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/design-an-azure-devops-agent-or-github-runner-infrastructure",
+      "target": "/training/modules/describe-pipelines-concurrency",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Parallel jobs and how many to buy are the cost and licence side of an agent infrastructure.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/implement-an-azure-devops-or-github-runner-agent-infrastruct",
+      "target": "/training/modules/manage-github-actions-enterprise",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/develop-pipelines-in-yaml-by-using-github-copilot",
+      "target": "/training/modules/use-github-copilot-cloud-operations",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/create-reusable-pipeline-elements-including-yaml-templates-t",
+      "target": "/training/modules/manage-modularize-tasks-templates",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/create-reusable-pipeline-elements-including-yaml-templates-t",
+      "target": "/training/modules/extend-pipeline-use-multiple-templates",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Nested templates take the reusable elements of this task a step further.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-azure-devops-pipelines-and-github-actio/design-and-implement-checks-and-approvals-by-using-yaml-base",
+      "target": "/training/modules/github-actions-cd",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Environment protection rules are how a GitHub Actions deployment waits for a check or an approval.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-deployments/design-a-deployment-strategy-including-blue-green-canary-rin",
+      "target": "/training/modules/introduction-to-deployment-patterns",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-deployments/design-a-deployment-strategy-including-blue-green-canary-rin",
+      "target": "/training/modules/implement-blue-green-deployment-feature-toggles",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-deployments/plan-for-minimizing-downtime-during-deployments-by-using-loa",
+      "target": "/training/modules/implement-blue-green-deployment-feature-toggles",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Design a deployment strategy, including blue-green, canary, ring, progressive exposure, feature flags, and A/B testing\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-deployments/design-a-deployment-strategy-including-blue-green-canary-rin",
+      "target": "/training/modules/implement-canary-releases-dark-launching",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-deployments/design-a-deployment-strategy-including-blue-green-canary-rin",
+      "target": "/training/modules/implement-test-progressive-exposure-deployment",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-deployments/implement-deployment-by-using-containers-binaries-scripts-an",
+      "target": "/training/modules/create-release-pipeline-devops",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Covers the build and release tasks, the database deployment task among them, that a release pipeline runs.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-deployments/implement-deployment-by-using-containers-binaries-scripts-an",
+      "target": "/training/modules/design-container-build-strategy",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "The container image is built before it is deployed.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/@foundations",
+      "target": "/training/modules/explore-infrastructure-code-configuration-management",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Explains environment deployment and configuration, imperative against declarative and idempotent configuration, the ideas behind the group's tasks.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/recommend-a-strategy-for-iac-and-configuration-management",
+      "target": "/training/modules/implement-bicep",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Bicep is the Azure-native IaC language a strategy is likely to recommend, deployed from Azure Pipelines and GitHub workflows.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/implement-a-configuration-management-strategy-for-applicatio",
+      "target": "/training/modules/implement-desired-state-configuration-dsc",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/implement-a-configuration-management-strategy-for-applicatio",
+      "target": "/training/modules/manage-application-configuration-data",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Keeping application configuration outside the code, in Azure App Configuration and Key Vault, is the application side of configuration management.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/maintain-azure-devops-pipelines-and-github-actions/monitor-pipeline-health-including-failure-rate-duration-and",
+      "target": "/training/modules/develop-monitor-status-dashboards",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/maintain-azure-devops-pipelines-and-github-actions/optimize-a-pipeline-for-cost-time-performance-and-reliabilit",
+      "target": "/training/modules/develop-monitor-status-dashboards",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Monitor pipeline health, including failure rate, duration, and flaky tests\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/configure-monitoring-for-azure-devops-and-github-platforms/design-dashboards-including-flow-of-work-cycle-time-time-to",
+      "target": "/training/modules/develop-monitor-status-dashboards",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Monitor pipeline health, including failure rate, duration, and flaky tests\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/configure-monitoring-for-azure-devops-and-github-platforms/configure-monitoring-in-github-including-enabling-github-ins",
+      "target": "/training/modules/develop-monitor-status-dashboards",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Monitor pipeline health, including failure rate, duration, and flaky tests\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/choose-between-microsoft-entra-service-principals-and-manage",
+      "target": "/training/modules/integrate-identity-management-systems",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/implement-and-manage-github-authentication-including-github",
+      "target": "/training/modules/automate-devops-github-apps",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/implement-and-manage-azure-devops-service-connections-and-pe",
+      "target": "/training/modules/manage-identity-projects-pipelines-agents",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/design-and-implement-permissions-and-access-levels-in-azure",
+      "target": "/training/modules/configure-validate-permissions",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-authentication-and-authorization-method/configure-projects-in-azure-devops-ado-and-github-including",
+      "target": "/training/modules/configure-project-repository-structure-support-secure-pipelines",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "How projects and repositories are organised decides how they can be secured.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-a-strategy-for-managing-sensitive-infor/integrate-azure-key-vault-into-azure-pipelines-and-github-ac",
+      "target": "/training/modules/configure-secure-access-azure-repos-from-pipelines",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-a-strategy-for-managing-sensitive-infor/implement-and-manage-secrets-keys-and-certificates",
+      "target": "/training/modules/manage-keys-secrets-key-vault",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-a-strategy-for-managing-sensitive-infor/implement-and-manage-secrets-keys-and-certificates",
+      "target": "/training/modules/manage-certificates-monitor-key-vault",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-a-strategy-for-managing-sensitive-infor/design-and-implement-a-strategy-for-managing-sensitive-infor",
+      "target": "/training/modules/configure-secure-access-pipeline-resources",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-a-strategy-for-managing-sensitive-infor/design-and-implement-a-strategy-for-managing-sensitive-infor",
+      "target": "/training/modules/learn-continuous-integration-github-actions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Creating encrypted secrets and using them in a workflow is the GitHub side of this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/design-and-implement-a-strategy-for-managing-sensitive-infor/design-azure-pipelines-and-github-actions-to-prevent-leakage",
+      "target": "/training/modules/configure-pipelines-securely-use-variables-parameters",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/@foundations",
+      "target": "/training/modules/introduction-to-secure-devops",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Explains DevSecOps, the secure pipeline and its validation points before the scanning tasks.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/@foundations",
+      "target": "/training/modules/introduction-github-advanced-security",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Defines GitHub Advanced Security and its features, which the scanning tasks configure.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/design-a-strategy-for-security-vulnerability-and-compliance",
+      "target": "/training/modules/software-composition-analysis",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/design-a-strategy-for-security-vulnerability-and-compliance",
+      "target": "/training/modules/security-monitoring-and-governance",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/connect-microsoft-defender-for-cloud-devops-security-to-othe",
+      "target": "/training/modules/security-monitoring-and-governance",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Design a strategy for security, vulnerability, and compliance scanning\".",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/configure-dependency-scanning-code-scanning-and-secret-scann",
+      "target": "/training/modules/configure-dependabot-security-updates-on-github-repo",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/configure-dependency-scanning-code-scanning-and-secret-scann",
+      "target": "/training/modules/configure-code-scanning",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-a-security-and-compliance-plan/automate-security-and-compliance-scanning/configure-dependency-scanning-code-scanning-and-secret-scann",
+      "target": "/training/modules/configure-use-secret-scanning-github-repository",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/@foundations",
+      "target": "/training/modules/intro-to-site-reliability-engineering",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Explains what site reliability engineering is, the practice the agents of this group automate.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/@foundations",
+      "target": "/training/modules/intro-to-azure-sre-agent",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Describes what Azure SRE Agent is, how it investigates issues and controls access, and when to use it, before it is deployed.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-copilot-observability-agent",
+      "target": "/training/modules/introduction-azure-copilot-agents",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "Introduces the Azure Copilot agents, the observability agent among them, before one is deployed.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/monitor-azure-workloads-by-using-ai-agents/deploy-and-configure-azure-sre-agent",
+      "target": "/training/modules/optimize-azure-reliability-with-sre-agent",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/analyze-infrastructure-performance-indicators-including-cpu",
+      "target": "/training/modules/monitor-azure-vm-using-diagnostic-data",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/analyze-application-performance-by-using-telemetry-and-instr",
+      "target": "/training/modules/implement-tools-track-usage-flow",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/analyze-application-performance-by-using-telemetry-and-instr",
+      "target": "/training/modules/manage-alerts-blameless-retrospectives-just-culture",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "Smart detection and performance alerts are how degraded application performance is noticed and followed up.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/analyze-distributed-tracing-by-using-azure-monitor-applicati",
+      "target": "/training/modules/instrument-app-opentelemetry",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "An application is instrumented with OpenTelemetry before its traces can be analysed in Application Insights.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-an-instrumentation-strategy/analyze-metrics-from-instrumentation-by-using-ai-agents/interrogate-logs-by-using-natural-language-queries-or-basic",
+      "target": "/training/modules/write-first-query-kusto-query-language",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The Learn module that covers this task.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

@@ -2253,6 +2253,20 @@
               "picks": [
                 {
                   "target": {
+                    "kind": "module",
+                    "path": "/training/modules/design-optimize-indexing-strategy-azure-cosmos-db-nosql"
+                  },
+                  "title": "Design and optimize an indexing strategy in Azure Cosmos DB",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Exercise: Optimize an indexing strategy",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                },
+                {
+                  "target": {
                     "kind": "docs",
                     "path": "/azure/cosmos-db/performance-tips-query-sdk"
                   },
@@ -2431,6 +2445,11 @@
                   "path": "/training/modules/optimize-query-performance-azure-cosmos-db",
                   "title": "Optimize query performance for Azure Cosmos DB for NoSQL",
                   "shownUnder": "design-and-develop-database-solutions/evaluate-resource-models-and-sdk-solutions/evaluate-consistency-levels"
+                },
+                {
+                  "path": "/training/modules/design-optimize-indexing-strategy-azure-cosmos-db-nosql",
+                  "title": "Design and optimize an indexing strategy in Azure Cosmos DB",
+                  "shownUnder": "secure-optimize-and-deploy-database-solutions/optimize-and-remediate-database-performance/optimize-query-performance"
                 }
               ]
             },

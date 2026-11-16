@@ -78,12 +78,10 @@
     {
       "task": "implement-and-manage-user-identities/configure-and-manage-a-microsoft-entra-tenant/configure-and-manage-domains-in-microsoft-entra-id-and-micro",
       "target": "/entra/identity/users",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "Hub page for users, groups, licenses and domains, the closest page to domain configuration among this task's candidates.",
+      "decision": "reject",
+      "reason": "A landing page of the users, groups, licenses and domains documentation.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "implement-and-manage-user-identities/configure-and-manage-a-microsoft-entra-tenant/configure-and-manage-domains-in-microsoft-entra-id-and-micro",
@@ -154,11 +152,10 @@
     {
       "task": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/@foundations",
       "target": "/entra/fundamentals/bulk-operations",
-      "decision": "accept",
-      "class": "foundation",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Automate bulk operations by using the Microsoft Entra admin center and PowerShell\", not here.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/@foundations",
@@ -189,22 +186,18 @@
     {
       "task": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/create-configure-and-manage-groups",
       "target": "/entra/identity/users/groups-bulk-download",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Automate bulk operations by using the Microsoft Entra admin center and PowerShell\", not here.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/create-configure-and-manage-groups",
       "target": "/entra/identity/users/groups-bulk-download-members",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Automate bulk operations by using the Microsoft Entra admin center and PowerShell\", not here.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/create-configure-and-manage-groups",
@@ -358,7 +351,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Plan and troubleshoot User Principal Name changes in Microsoft Entra ID"
     },
     {
       "task": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/create-configure-and-manage-users",
@@ -583,7 +577,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Understand the Microsoft Entra schema and custom expressions"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/@foundations",
@@ -592,7 +587,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra Connect: Design concepts"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/@foundations",
@@ -601,7 +597,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What is the Microsoft Entra Connect Administration Agent - Microsoft Entra Connect"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/@foundations",
@@ -610,7 +607,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Introduction to Microsoft Entra Connect V2"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/implement-and-manage-microsoft-entra-cloud-sync",
@@ -660,7 +658,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra Connect Health FAQ - Azure - Microsoft Entra ID"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/implement-and-manage-microsoft-entra-connect-health",
@@ -670,7 +669,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "How to configure Health notifications (preview)"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/implement-and-manage-microsoft-entra-connect-health",
@@ -680,7 +680,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "How to investigate Health monitoring alerts (Preview)"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/implement-and-manage-microsoft-entra-connect-sync",
@@ -690,7 +691,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Directory synchronization with Microsoft Entra ID"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/implement-and-manage-microsoft-entra-connect-sync",
@@ -708,7 +710,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra Connect: Understanding Declarative Provisioning"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/implement-and-manage-microsoft-entra-connect-sync",
@@ -726,7 +729,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Hardening updates for Microsoft Entra Connect Sync - Microsoft Entra ID"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/implement-and-manage-microsoft-entra-connect-sync",
@@ -736,7 +740,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra Connect - Manage AD FS trust with Microsoft Entra ID using Microsoft Entra Connect"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/implement-and-manage-microsoft-entra-connect-sync",
@@ -746,7 +751,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra Connect - AD FS management and customization"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/implement-and-manage-microsoft-entra-connect-sync",
@@ -788,7 +794,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra Connect Sync service features and configuration"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/implement-and-manage-microsoft-entra-connect-sync",
@@ -845,7 +852,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra External ID deployment architectures with Microsoft Entra"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-identities-for-external-users-and-tenan/@foundations",
@@ -854,7 +862,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "External Tenant Features"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-identities-for-external-users-and-tenan/configure-external-identity-providers-including-protocols-su",
@@ -896,7 +905,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Transition to governed collaboration with Microsoft Entra B2B collaboration"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-identities-for-external-users-and-tenan/manage-external-collaboration-settings-in-microsoft-entra-id",
@@ -970,7 +980,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra B2B best practices and recommendations"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-identities-for-external-users-and-tenan/manage-external-user-accounts-in-microsoft-entra-id",
@@ -996,7 +1007,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Limitations of B2B collaboration"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-identities-for-external-users-and-tenan/manage-external-user-accounts-in-microsoft-entra-id",
@@ -1046,7 +1058,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Email one-time passcode authentication"
     },
     {
       "task": "implement-and-manage-user-identities/implement-and-manage-identities-for-external-users-and-tenan/manage-external-user-accounts-in-microsoft-entra-id",
@@ -1056,7 +1069,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Self-service sign-up portal for B2B collaboration"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/@foundations",
@@ -1065,7 +1079,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Explicit Forward Proxy Overview"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/@foundations",
@@ -1082,7 +1097,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra Private DNS - Configure Secure Internal Name Resolution - Global Secure Access"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/@foundations",
@@ -1091,7 +1107,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Proxy Automatic Configuration (PAC)"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/@foundations",
@@ -1100,7 +1117,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Web filtering in Global Secure Access (V2) - Global Secure Access"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/@foundations",
@@ -1109,7 +1127,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Global Secure Access points of presence and IP addresses"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/@foundations",
@@ -1118,7 +1137,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Global Secure Access built-in roles"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/deploy-and-manage-microsoft-entra-internet-access",
@@ -1216,7 +1236,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "How to access Global Secure Access audit logs (preview)"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/deploy-and-manage-microsoft-entra-private-access",
@@ -1234,7 +1255,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Common operations for Microsoft Entra Global Secure Access"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/deploy-and-manage-microsoft-entra-private-access",
@@ -1324,7 +1346,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Manage users and groups assignment to an application"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/deploy-and-manage-the-microsoft-traffic-profile-for-microsof",
@@ -1334,7 +1357,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "How to Assign a Remote Network to a Traffic Forwarding Profile for Global Secure Access"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/deploy-global-secure-access-clients",
@@ -1368,7 +1392,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Assign users and groups to traffic forwarding profiles"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/deploy-global-secure-access-clients",
@@ -1394,7 +1419,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Known Limitations for Global Secure Access - Global Secure Access"
     },
     {
       "task": "implement-authentication-and-access-management/implement-global-secure-access/deploy-global-secure-access-clients",
@@ -1419,7 +1445,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra ID Protection scenario for mastering risk analysis for effective remediation"
     },
     {
       "task": "implement-authentication-and-access-management/manage-risk-by-using-microsoft-entra-id-protection/@foundations",
@@ -1428,7 +1455,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra ID Protection to Self-Remediate User Risk"
     },
     {
       "task": "implement-authentication-and-access-management/manage-risk-by-using-microsoft-entra-id-protection/@foundations",
@@ -1437,7 +1465,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra ID Protection for B2B Users"
     },
     {
       "task": "implement-authentication-and-access-management/manage-risk-by-using-microsoft-entra-id-protection/implement-and-manage-user-risk-by-using-microsoft-entra-id-p",
@@ -1458,10 +1487,14 @@
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/configure-authentication-context",
       "target": "/entra/identity-platform/developer-guide-conditional-access-authentication-context",
-      "decision": "reject",
-      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview or sample.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Explains how an application asks for an authentication context, the other side of the context an administrator configures.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Developer guidance for Microsoft Entra Conditional Access authentication context"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/create-a-conditional-access-policy-from-a-template",
@@ -1471,7 +1504,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Authentication and Conditional Access for B2B users"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/create-a-conditional-access-policy-from-a-template",
@@ -1486,12 +1520,10 @@
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/create-a-conditional-access-policy-from-a-template",
       "target": "/entra/identity/conditional-access/terms-of-use",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "Explains setting up Terms of Use with Conditional Access, a neighbouring policy scenario of the template task.",
+      "decision": "reject",
+      "reason": "Belongs under \"Implement and manage terms of use (ToU)\", not here.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/create-a-conditional-access-policy-from-a-template",
@@ -1533,7 +1565,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Conditional Access - Block access"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/implement-conditional-access-policy-controls",
@@ -1551,15 +1584,20 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Conditional Access - Require approved app or app protection policy"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/implement-continuous-access-evaluation",
       "target": "/entra/global-secure-access/concept-universal-continuous-access-evaluation",
-      "decision": "reject",
-      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview or sample.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Universal continuous access evaluation extends continuous access evaluation to traffic through Global Secure Access.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Learn about Universal Continuous Evaluation"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/implement-session-management",
@@ -1577,7 +1615,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Enforcement for baseline scopes in Conditional Access - Microsoft Entra ID"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/plan-conditional-access-policies",
@@ -1602,7 +1641,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Understand Microsoft Entra certificate-based authentication Certificate revocation list"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/@foundations",
@@ -1611,7 +1651,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "System-preferred authentication in Microsoft Entra ID - Microsoft Entra ID"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/@foundations",
@@ -1637,7 +1678,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "License self-service password reset"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/configure-and-deploy-self-service-password-reset-sspr",
@@ -1687,7 +1729,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Enable Microsoft Entra passkey on Windows"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/implement-and-manage-windows-hello-for-business",
@@ -1697,7 +1740,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Register a Microsoft Entra passkey on Windows"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/implement-and-manage-windows-hello-for-business",
@@ -1707,7 +1751,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Sign in with a Microsoft Entra passkey on Windows"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/plan-for-authentication",
@@ -1725,7 +1770,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Backup Authentication System for Microsoft Entra ID"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/plan-for-authentication",
@@ -1767,7 +1813,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Android certificate-based authentication with federation"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/plan-for-authentication",
@@ -1785,7 +1832,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra ID attestation for FIDO2 security key vendors - Microsoft Entra ID"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/plan-for-authentication",
@@ -1795,7 +1843,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra multifactor authentication data residency"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/plan-for-authentication",
@@ -1813,7 +1862,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Understanding telephony fraud risk for Microsoft Entra multifactor authentication"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/plan-for-authentication",
@@ -1839,7 +1889,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Remove Passwords from Microsoft Entra ID"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/plan-for-authentication",
@@ -1849,7 +1900,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Register a synced passkey (FIDO2)"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/plan-for-authentication",
@@ -1867,7 +1919,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Register a passkey with a FIDO2 security key"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/plan-for-authentication",
@@ -1877,7 +1930,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Sign in with a FIDO2 security key"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/plan-for-authentication",
@@ -1887,7 +1941,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Sign in with a synced passkey (FIDO2)"
     },
     {
       "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/plan-for-authentication",
@@ -2016,7 +2071,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Manage external access with Microsoft Entra entitlement management"
     },
     {
       "task": "plan-and-automate-identity-governance/plan-and-implement-entitlement-management-in-microsoft-entra/@foundations",
@@ -2025,7 +2081,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra B2B collaboration invitation redemption"
     },
     {
       "task": "plan-and-automate-identity-governance/plan-and-implement-entitlement-management-in-microsoft-entra/@foundations",
@@ -2042,7 +2099,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Govern access with an organizational role model"
     },
     {
       "task": "plan-and-automate-identity-governance/plan-and-implement-entitlement-management-in-microsoft-entra/@foundations",
@@ -2060,7 +2118,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Externally determine the approval requirements for an access package using custom extensions"
     },
     {
       "task": "plan-and-automate-identity-governance/plan-and-implement-entitlement-management-in-microsoft-entra/create-and-configure-access-packages",
@@ -2070,7 +2129,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Assign Microsoft Entra roles - Entitlement management (Preview)"
     },
     {
       "task": "plan-and-automate-identity-governance/plan-and-implement-entitlement-management-in-microsoft-entra/create-and-configure-access-packages",
@@ -2128,7 +2188,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Dynamic groups setup"
     },
     {
       "task": "plan-and-automate-identity-governance/plan-and-implement-entitlement-management-in-microsoft-entra/manage-the-lifecycle-of-external-users",
@@ -2138,7 +2199,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Plan new governance scenarios for business partners and external users with Microsoft ID Governance"
     },
     {
       "task": "plan-and-automate-identity-governance/plan-and-implement-entitlement-management-in-microsoft-entra/plan-entitlements",
@@ -2189,7 +2251,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Govern an application's existing users in Microsoft Entra ID with Microsoft PowerShell"
     },
     {
       "task": "plan-and-automate-identity-governance/plan-implement-and-manage-access-reviews-in-microsoft-entra/create-and-configure-access-reviews",
@@ -2199,7 +2262,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Govern the existing users of an application that does not support provisioning in Microsoft Entra ID with Microsoft PowerShell"
     },
     {
       "task": "plan-and-automate-identity-governance/plan-implement-and-manage-access-reviews-in-microsoft-entra/monitor-access-review-activity",
@@ -2217,7 +2281,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Integrate your applications for identity governance and establishing a baseline of reviewed access"
     },
     {
       "task": "plan-and-implement-workload-identities/manage-and-monitor-app-access-by-using-microsoft-defender-fo/@foundations",
@@ -2243,7 +2308,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Authentication transfer as a condition to secure mobile users"
     },
     {
       "task": "plan-and-implement-workload-identities/manage-and-monitor-app-access-by-using-microsoft-defender-fo/configure-conditional-access-app-control",
@@ -2261,7 +2327,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Require reauthentication with Conditional Access"
     },
     {
       "task": "plan-and-implement-workload-identities/manage-and-monitor-app-access-by-using-microsoft-defender-fo/configure-conditional-access-app-control",
@@ -2271,7 +2338,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Resilience defaults for Microsoft Entra Conditional Access"
     },
     {
       "task": "plan-and-implement-workload-identities/manage-and-monitor-app-access-by-using-microsoft-defender-fo/configure-conditional-access-app-control",
@@ -2345,7 +2413,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "OpenID Connect authentication with Microsoft Entra ID"
     },
     {
       "task": "plan-and-implement-workload-identities/plan-and-implement-app-registrations/configure-app-authentication",
@@ -2443,7 +2512,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Configure sign-in auto-acceleration"
     },
     {
       "task": "plan-and-implement-workload-identities/plan-and-implement-app-registrations/configure-app-authentication",
@@ -2453,7 +2523,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Home Realm Discovery Policy for an Application"
     },
     {
       "task": "plan-and-implement-workload-identities/plan-and-implement-app-registrations/configure-app-authentication",
@@ -2566,7 +2637,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Understand how Application Provisioning in Microsoft Entra ID"
     },
     {
       "task": "plan-and-implement-workload-identities/plan-and-implement-identities-for-applications-and-azure-wor/@foundations",
@@ -2591,7 +2663,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Isolation Scope For User Assigned Managed Identities"
     },
     {
       "task": "plan-and-implement-workload-identities/plan-and-implement-identities-for-applications-and-azure-wor/@foundations",
@@ -2658,7 +2731,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "How managed identities for Azure resources work with Azure virtual machines"
     },
     {
       "task": "plan-and-implement-workload-identities/plan-and-implement-identities-for-applications-and-azure-wor/assign-a-managed-identity-to-an-azure-resource",
@@ -2708,7 +2782,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Securing managed identities in Microsoft Entra ID"
     },
     {
       "task": "plan-and-implement-workload-identities/plan-and-implement-identities-for-applications-and-azure-wor/create-managed-identities",
@@ -2721,12 +2796,10 @@
     {
       "task": "plan-and-implement-workload-identities/plan-and-implement-identities-for-applications-and-azure-wor/create-managed-identities",
       "target": "/entra/identity/managed-identities-azure-resources",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "prerequisite",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "A landing page of the managed identities documentation.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "plan-and-implement-workload-identities/plan-and-implement-identities-for-applications-and-azure-wor/create-managed-identities",
@@ -2791,7 +2864,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "My Apps portal overview"
     },
     {
       "task": "plan-and-implement-workload-identities/plan-implement-and-monitor-the-integration-of-enterprise-app/@foundations",
@@ -2808,6 +2882,107 @@
       "reason": "Dropped in review: another exam's scope (Microsoft 365 admin, devices, Lifecycle Workflows, user SOA), narrow reference or sample, vendor coexistence, preview or licensing page.",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/automate-bulk-operations-by-using-the-microsoft-entra-admin",
+      "target": "/entra/fundamentals/bulk-operations",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task as the study guide words it.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Bulk operations in Microsoft Entra ID (Preview)"
+    },
+    {
+      "task": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/create-configure-and-manage-users",
+      "target": "/entra/fundamentals/bulk-operations-service-limitations",
+      "decision": "reject",
+      "reason": "Belongs under \"Automate bulk operations by using the Microsoft Entra admin center and PowerShell\", not here.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/automate-bulk-operations-by-using-the-microsoft-entra-admin",
+      "target": "/entra/fundamentals/bulk-operations-service-limitations",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "The service limits of bulk operations decide how large a bulk job can be.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Bulk operations service limitations"
+    },
+    {
+      "task": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/automate-bulk-operations-by-using-the-microsoft-entra-admin",
+      "target": "/entra/identity/users/groups-bulk-download",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Downloading the list of groups is one of the bulk operations of the admin center.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Download a list of groups in the Azure portal"
+    },
+    {
+      "task": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/automate-bulk-operations-by-using-the-microsoft-entra-admin",
+      "target": "/entra/identity/users/groups-bulk-download-members",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Downloading a group's members is one of the bulk operations of the admin center.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Bulk download group membership list - Azure portal"
+    },
+    {
+      "task": "plan-and-automate-identity-governance/plan-and-implement-entitlement-management-in-microsoft-entra/implement-and-manage-terms-of-use-tou",
+      "target": "/entra/identity/conditional-access/terms-of-use",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task as the study guide words it.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Set Up Microsoft Entra Terms of Use with Conditional Access"
+    },
+    {
+      "task": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-user-authenticatio/disable-accounts-and-revoke-user-sessions",
+      "target": "/microsoft-365/admin/add-users/remove-former-employee-step-1",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Blocking sign-in for a departing user is the first step of disabling an account.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Step 1 - Prevent user sign-in and block access to Microsoft 365"
+    },
+    {
+      "task": "implement-and-manage-user-identities/implement-and-manage-hybrid-identity/migrate-from-ad-fs-to-other-authentication-and-authorization",
+      "target": "/entra/identity/hybrid/connect/migrate-from-federation-to-cloud-authentication",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"This article has information about moving your hybrid identity environment from federation to cloud authentication\".",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Migrate from federation to cloud authentication in Microsoft Entra ID"
+    },
+    {
+      "task": "plan-and-implement-workload-identities/plan-implement-and-monitor-the-integration-of-enterprise-app/design-and-implement-integration-for-software-as-a-service-s",
+      "target": "/entra/identity/enterprise-apps/plan-sso-deployment",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Planning single sign-on is the first design step of integrating a SaaS app.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Plan a single sign-on deployment"
     }
   ],
   "excludedFamilies": []

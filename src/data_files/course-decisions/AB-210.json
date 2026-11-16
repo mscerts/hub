@@ -9,7 +9,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Understand what is sales accelerator"
     },
     {
       "task": "configure-dynamics-365-sales-core-features-for-ai/configure-sales/@foundations",
@@ -85,7 +86,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Product catalog tables"
     },
     {
       "task": "configure-dynamics-365-sales-core-features-for-ai/create-and-manage-the-product-catalog/@foundations",
@@ -99,10 +101,13 @@
       "task": "configure-dynamics-365-sales-core-features-for-ai/create-and-manage-the-product-catalog/configure-products-and-product-families",
       "target": "/dynamics365/sales/developer/create-manage-product-families-products-bundles-product-properties",
       "decision": "accept",
-      "class": "core",
-      "reason": "accepted by the maintainer",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "The developer's view of product families, bundles and properties: the same records this task configures, created through code.",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Create and manage product families, products, bundles, and product properties"
     },
     {
       "task": "develop-deals-by-using-intelligent-opportunity-research/automate-deal-closing-by-using-the-sales-close-agent/@foundations",
@@ -208,7 +213,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Create business functions with Business Function Builder (preview)"
     },
     {
       "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/configure-the-sales-research-agent",
@@ -218,7 +224,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Share business functions (preview)"
     },
     {
       "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/configure-the-sales-research-agent",
@@ -236,7 +243,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Connect Sales Research Agent to Microsoft Fabric Lakehouse"
     },
     {
       "task": "develop-deals-by-using-intelligent-opportunity-research/gather-intelligence-on-sales-deals-by-using-the-sales-resear/evaluate-use-cases-for-the-sales-research-agent",
@@ -333,7 +341,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Overview of SMS channels"
     },
     {
       "task": "extend-and-enhance-sales/configure-supporting-apps-and-services/@foundations",
@@ -422,7 +431,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Understand team overview feature in conversation intelligence"
     },
     {
       "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/configure-copilot-features-including-record-summarization",
@@ -476,19 +486,25 @@
       "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/set-up-goals-and-goal-metrics",
       "target": "/dynamics365/sales/developer/create-goal-hierarchy-goals-targets",
       "decision": "accept",
-      "class": "core",
-      "reason": "accepted by the maintainer",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "The developer's view of goal hierarchies and targets: the same records this task configures, created through code.",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Create goal hierarchy, goals, and targets (Dynamics 365 Sales)"
     },
     {
       "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/set-up-goals-and-goal-metrics",
       "target": "/dynamics365/sales/developer/define-goal-metric-rollup-fields",
       "decision": "accept",
-      "class": "core",
-      "reason": "accepted by the maintainer",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "The developer's view of goal metrics and rollup fields: the same records this task configures, created through code.",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Define goal metric and rollup fields (Dynamics 365 Sales)"
     },
     {
       "task": "optimize-ai-driven-sales/configure-ai-powered-intelligence-and-insights-features/set-up-relationship-intelligence",
@@ -703,7 +719,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Copilot in Dynamics 365 Sales overview"
     },
     {
       "task": "qualify-and-prioritize-leads-by-using-ai/generate-and-nurture-leads/@foundations",
@@ -712,7 +729,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Recommended actions overview"
     },
     {
       "task": "qualify-and-prioritize-leads-by-using-ai/generate-and-nurture-leads/configure-the-lead-and-opportunity-experience",
@@ -721,6 +739,26 @@
       "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
       "by": "maintainer",
       "at": "2026-11-05"
+    },
+    {
+      "task": "extend-and-enhance-sales/configure-supporting-apps-and-services/configure-an-sms-channel",
+      "target": "/training/modules/engage-customers-text-messages",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Set up the text messaging provider\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "optimize-ai-driven-sales/design-an-ai-first-sales-strategy/@foundations",
+      "target": "/training/modules/create-powerful-customer-experiences-organizations",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Shows where Sales sits among the Dynamics 365 customer experience apps and which AI components they share.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

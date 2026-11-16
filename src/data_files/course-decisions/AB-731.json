@@ -217,12 +217,10 @@
     {
       "task": "identify-benefits-capabilities-and-opportunities-for-microso/identify-benefits-and-capabilities-of-microsoft-365-copilot/understand-capabilities-of-microsoft-copilot-studio",
       "target": "/microsoft-365/copilot/usage-based-billing-manage-copilot-studio-costs",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Learn moved this page to /copilot/implement/usage-based-billing-manage-copilot-studio-costs; the pick follows it.",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-15"
     },
     {
       "task": "identify-benefits-capabilities-and-opportunities-for-microso/identify-benefits-and-capabilities-of-microsoft-365-copilot/understand-capabilities-of-microsoft-copilot-studio",
@@ -383,6 +381,120 @@
       "reason": "Left out: the page title contains an instruction-like phrase that the MCP worker's content safety check rejects; the page is an Azure OpenAI how-to, not a teaching step for this task.",
       "by": "maintainer",
       "at": "2026-11-09"
+    },
+    {
+      "task": "identify-benefits-capabilities-and-opportunities-for-microso/identify-benefits-and-capabilities-of-microsoft-365-copilot/@foundations",
+      "target": "/copilot/plan/copilot-app-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/copilot-app-overview here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Microsoft Copilot app"
+    },
+    {
+      "task": "identify-benefits-capabilities-and-opportunities-for-microso/identify-benefits-and-capabilities-of-microsoft-365-copilot/understand-capabilities-of-microsoft-365-copilot-chat-web-an",
+      "target": "/copilot/plan/copilot-overview",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Learn moved the picked page /copilot/overview here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Overview of Microsoft Copilot Chat"
+    },
+    {
+      "task": "identify-benefits-capabilities-and-opportunities-for-microso/identify-benefits-and-capabilities-of-microsoft-365-copilot/understand-capabilities-of-the-copilot-experience-in-various",
+      "target": "/microsoft-365/copilot/copilot-overview",
+      "decision": "reject",
+      "reason": "Learn moved this page to /copilot/plan/copilot-overview, which is already in the course.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "identify-benefits-capabilities-and-opportunities-for-microso/identify-benefits-and-capabilities-of-microsoft-365-copilot/understand-capabilities-of-the-copilot-experience-in-various",
+      "target": "/copilot/plan/microsoft-copilot-requirements",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/microsoft-copilot-requirements here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Microsoft Copilot requirements"
+    },
+    {
+      "task": "identify-benefits-capabilities-and-opportunities-for-microso/identify-benefits-and-capabilities-of-microsoft-365-copilot/understand-capabilities-of-microsoft-copilot-studio",
+      "target": "/copilot/implement/copilot-controls-overview",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/copilot-controls/copilot-controls-overview here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Copilot controls overview"
+    },
+    {
+      "task": "identify-benefits-capabilities-and-opportunities-for-microso/identify-benefits-and-capabilities-of-microsoft-365-copilot/understand-capabilities-of-microsoft-copilot-studio",
+      "target": "/copilot/employee-self-service/evaluations-run-tests",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/employee-self-service/evaluations-run-tests here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Run different kinds of tests using the Copilot Studio evaluator tool"
+    },
+    {
+      "task": "identify-benefits-capabilities-and-opportunities-for-microso/identify-benefits-and-capabilities-of-microsoft-365-copilot/understand-capabilities-of-microsoft-copilot-studio",
+      "target": "/copilot/implement/usage-based-billing-manage-copilot-studio-costs",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/usage-based-billing-manage-copilot-studio-costs here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Manage Copilot Studio costs in the Microsoft 365 admin center"
+    },
+    {
+      "task": "identify-an-implementation-and-adoption-strategy-for-microso/plan-for-ai-adoption-across-the-organization/understand-copilot-license-types-including-pay-as-you-go-mon",
+      "target": "/copilot/plan/pay-as-you-go-meters",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/pay-as-you-go/pay-as-you-go-meters here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Meters for Microsoft Copilot Pay-as-You-Go Services"
+    },
+    {
+      "task": "identify-an-implementation-and-adoption-strategy-for-microso/plan-for-ai-adoption-across-the-organization/understand-copilot-license-types-including-pay-as-you-go-mon",
+      "target": "/copilot/implement/setup-pay-as-you-go",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/pay-as-you-go/setup-pay-as-you-go here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Set Up Microsoft Copilot Pay-as-You-Go Services"
+    },
+    {
+      "task": "identify-an-implementation-and-adoption-strategy-for-microso/plan-for-ai-adoption-across-the-organization/understand-copilot-license-types-including-pay-as-you-go-mon",
+      "target": "/copilot/manage/view-cost",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/pay-as-you-go/view-cost here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "View costs for Microsoft 365 Copilot pay-as-you-go"
     }
   ],
   "excludedFamilies": []

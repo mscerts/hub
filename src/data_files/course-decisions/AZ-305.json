@@ -5,11 +5,10 @@
     {
       "task": "design-business-continuity-solutions/design-for-high-availability/@foundations",
       "target": "/training/modules/design-compute-solution",
-      "decision": "accept",
-      "class": "foundation",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Specify components of a compute solution based on workload requirements\", not here.",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-15"
     },
     {
       "task": "design-business-continuity-solutions/design-for-high-availability/recommend-a-high-availability-solution-for-compute",
@@ -42,7 +41,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Multiuser Authorization Using Resource Guard - Azure Backup"
     },
     {
       "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/@foundations",
@@ -59,7 +59,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Overview of security features - Azure Backup"
     },
     {
       "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-backup-and-recovery-solution-for-databases",
@@ -69,7 +70,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Design a Ransomware-Resilient Backup Architecture by Using Azure Backup - Azure Architecture Center"
     },
     {
       "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-backup-and-recovery-solution-for-databases",
@@ -79,7 +81,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Design Globally Available Services - Azure SQL Database"
     },
     {
       "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-backup-and-recovery-solution-for-databases",
@@ -235,7 +238,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Create a Modern Analytics Architecture by Using Azure Databricks - Azure Architecture Center"
     },
     {
       "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
@@ -245,7 +249,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "IoT Analytics with Azure Data Explorer and Azure IoT Hub - Azure Architecture Center"
     },
     {
       "task": "design-data-storage-solutions/design-data-integration/recommend-a-solution-for-data-integration",
@@ -434,7 +439,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Best Practices for Disaster Recovery with Azure File Sync"
     },
     {
       "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
@@ -460,7 +466,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Architecture strategies for data classification - Microsoft Azure Well-Architected Framework"
     },
     {
       "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
@@ -470,7 +477,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Data protection in MCSB"
     },
     {
       "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
@@ -563,7 +571,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "How Authentication Strengths Work in a Conditional Access Policy"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/@foundations",
@@ -572,7 +581,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Overview of Conditional Access Authentication Strengths"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/@foundations",
@@ -617,7 +627,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Azure Key Vault Keys, Secrets, and Certificates Overview"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-authentication-solution",
@@ -682,12 +693,10 @@
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
       "target": "/entra/identity",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "prerequisite",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "A landing page of the Microsoft Entra ID documentation.",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-14"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
@@ -721,7 +730,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Management concepts for Microsoft Entra Domain Services"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
@@ -779,7 +789,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Add and verify custom domain names"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
@@ -812,7 +823,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Overview of Azure Blueprints"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
@@ -821,7 +833,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Overview of Azure Resource Graph"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
@@ -846,7 +859,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Privileged Identity Management (PIM) for Groups"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
@@ -896,7 +910,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Using groups managed by Privileged Identity Management with access packages"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
@@ -922,7 +937,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Email notifications in Privileged Identity Management (PIM)"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
@@ -940,7 +956,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Microsoft Entra roles Discovery and insights (preview) in Privileged Identity Management former Security Wizard"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-identity-governance",
@@ -1040,7 +1057,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Architectural Approaches for Governance and Compliance in Multitenant Solutions - Azure Architecture Center"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-governance/recommend-a-solution-for-managing-compliance",
@@ -1177,7 +1195,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Azure Monitor traces overview - Azure Monitor"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
@@ -1194,7 +1213,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Configure a Table Plan in a Log Analytics Workspace"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
@@ -1251,7 +1271,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Monitoring and reporting solutions for Azure Backup"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
@@ -1260,7 +1281,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Learn about the audit logs in Microsoft Entra ID"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
@@ -1285,7 +1307,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Sign-in logs in Microsoft Entra ID"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
@@ -1302,7 +1325,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "What is Microsoft Entra monitoring and health?"
     },
     {
       "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
@@ -1354,7 +1378,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Architectural Approaches for the Deployment and Configuration of Multitenant Solutions - Azure Architecture Center"
     },
     {
       "task": "design-infrastructure-solutions/design-an-application-architecture/@foundations",
@@ -1363,16 +1388,16 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Architectural Approaches for Tenant Integration and Data Access - Azure Architecture Center"
     },
     {
       "task": "design-infrastructure-solutions/design-an-application-architecture/@foundations",
       "target": "/azure/azure-functions",
-      "decision": "accept",
-      "class": "foundation",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "A landing page of the Azure Functions documentation.",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-14"
     },
     {
       "task": "design-infrastructure-solutions/design-an-application-architecture/@foundations",
@@ -1399,7 +1424,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Mission-Critical Global Content Delivery - Azure Architecture Center"
     },
     {
       "task": "design-infrastructure-solutions/design-an-application-architecture/recommend-a-caching-solution-for-applications",
@@ -1427,7 +1453,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Architectural Approaches for Messaging in Multitenant Solutions - Azure Architecture Center"
     },
     {
       "task": "design-infrastructure-solutions/design-an-application-architecture/recommend-a-messaging-architecture",
@@ -1493,12 +1520,10 @@
     {
       "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-compute-solution-for-batch-processing",
       "target": "/azure/batch",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "prerequisite",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "A landing page of the Azure Batch documentation.",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-14"
     },
     {
       "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-compute-solution-for-batch-processing",
@@ -1532,7 +1557,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Use Application Gateway for Containers with a Multitenant Azure Kubernetes Service Cluster - Azure Architecture Center"
     },
     {
       "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-container-based-solution",
@@ -1550,7 +1576,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Considerations for Using Azure Container Apps in a Multitenant Solution - Azure Architecture Center"
     },
     {
       "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-container-based-solution",
@@ -1576,7 +1603,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Deploy Microservices with Azure Container Apps and Dapr - Azure Architecture Center"
     },
     {
       "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-serverless-based-solution",
@@ -1596,7 +1624,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Multilayered Protection for Azure Virtual Machines - Azure Architecture Center"
     },
     {
       "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-virtual-machine-based-solution",
@@ -1606,7 +1635,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Selective Disk Backup and Restore for Azure Virtual Machines - Azure Backup"
     },
     {
       "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-virtual-machine-based-solution",
@@ -1655,7 +1685,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Migration wave planning - Cloud Adoption Framework"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/@foundations",
@@ -1664,7 +1695,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Plan your migration - Cloud Adoption Framework"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/@foundations",
@@ -1673,7 +1705,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Prepare workloads for cloud migration to Azure - Cloud Adoption Framework"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/@foundations",
@@ -1686,11 +1719,10 @@
     {
       "task": "design-infrastructure-solutions/design-migrations/@foundations",
       "target": "/azure/migrate/overview",
-      "decision": "accept",
-      "class": "foundation",
-      "reason": "Overview of Azure Migrate, the base tool for the migration design tasks.",
+      "decision": "reject",
+      "reason": "Learn moved this page to /azure/migrate/wave-plan-overview; the pick follows it.",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-15"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/evaluate-a-migration-solution-that-leverages-the-microsoft-c",
@@ -1700,7 +1732,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Azure Virtual Network Manager in an Azure landing zone - Cloud Adoption Framework"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/evaluate-a-migration-solution-that-leverages-the-microsoft-c",
@@ -1734,7 +1767,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "AIX UNIX on-premises to Azure Linux migration - Azure Architecture Center"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/evaluate-on-premises-servers-data-and-applications-for-migra",
@@ -1760,7 +1794,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "On-premises NAS migration to Azure Files"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/evaluate-on-premises-servers-data-and-applications-for-migra",
@@ -1777,7 +1812,8 @@
       "class": "core",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Migrate an Oracle Database to OD@A Exadata Database Service - Azure Architecture Center"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
@@ -1787,7 +1823,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "How to Manage a Hyperscale Database - Azure SQL Database"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
@@ -1805,7 +1842,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Create Instance Pool - Azure SQL Managed Instance"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
@@ -1827,10 +1865,13 @@
       "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
       "target": "/azure/cosmos-db/migrate-data-striim",
       "decision": "accept",
-      "class": "core",
-      "reason": "accepted by the maintainer",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "A walkthrough of one third-party migration tool, more depth than recommending a database migration solution needs.",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Migrate Data Using Striim - Azure Cosmos DB"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
@@ -1856,7 +1897,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Redeploy SSIS Packages to SQL Single Database - Azure Database Migration Service"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
@@ -1866,7 +1908,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Migrate SSIS Packages to SQL Managed Instance - Azure Database Migration Service"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
@@ -1876,7 +1919,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Provide Infrastructure Credentials to Discover Storage and Network, and Guest OS Credentials to Discover Software, Dependencies, and Databases - Azure Migrate"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
@@ -1886,7 +1930,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Review Discovered Inventory (Preview) in Azure Migrate - Azure Migrate"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
@@ -1895,7 +1940,8 @@
       "class": "core",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Migrate Oracle workloads to Oracle Database@Azure"
     },
     {
       "task": "design-infrastructure-solutions/design-migrations/recommend-a-solution-for-migrating-databases",
@@ -1943,6 +1989,123 @@
       "reason": "accepted by the maintainer",
       "by": "maintainer",
       "at": "2026-11-05"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-migrations/@foundations",
+      "target": "/azure/migrate/wave-plan-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Learn moved the picked page /azure/migrate/overview here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Wave planning overview in Azure Migrate - Azure Migrate"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/specify-components-of-a-compute-solution-based-on-workload-r",
+      "target": "/training/modules/design-compute-solution",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task as the study guide words it.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-solutions-for-logging-and-monitoring/@foundations",
+      "target": "/training/modules/azure-well-architected-introduction",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "The Well-Architected Framework pillars are the yardstick for every recommendation this exam asks for.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/@foundations",
+      "target": "/training/modules/azure-well-architected-security",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "The security pillar's design principles frame the identity and access recommendations of this group.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "design-identity-governance-and-monitoring-solutions/design-governance/@foundations",
+      "target": "/training/modules/describe-core-architectural-components-of-azure",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Explains subscriptions, management groups and resource groups, the building blocks a governance structure is made of.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/@foundations",
+      "target": "/training/modules/azure-well-architected-cost-optimization",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Cost is a deciding factor between compute options; this pillar module gives the principles to weigh it.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-container-based-solution",
+      "target": "/training/modules/design-compute-solution",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Specify components of a compute solution based on workload requirements\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "design-infrastructure-solutions/design-compute-solutions/recommend-a-compute-solution-for-batch-processing",
+      "target": "/training/modules/design-compute-solution",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Specify components of a compute solution based on workload requirements\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-recovery-solution-for-azure-and-hybrid-workloads",
+      "target": "/training/modules/design-solution-for-backup-disaster-recovery",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Recommend a backup and recovery solution for compute\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-for-high-availability/recommend-a-high-availability-solution-for-semi-structured-a",
+      "target": "/training/modules/design-data-storage-solution-for-non-relational-data",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Recommend a solution for data protection\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-backup-and-recovery-solution-for-compute",
+      "target": "/training/modules/design-solution-for-backup-disaster-recovery",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection",
+      "target": "/training/modules/design-data-storage-solution-for-non-relational-data",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

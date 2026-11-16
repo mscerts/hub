@@ -10,7 +10,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Prompt engineering techniques | Microsoft Foundry Models"
     },
     {
       "task": "configure-privacy-content-exclusions-and-safeguards/apply-safeguards-and-troubleshoot/@foundations",
@@ -207,6 +208,78 @@
       "reason": "Dropped on review: neighbouring-step, FAQ, developer-reference or niche page.",
       "by": "maintainer",
       "at": "2026-11-05"
+    },
+    {
+      "task": "use-github-copilot-responsibly/understand-responsible-ai-principles/@foundations",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "reject",
+      "reason": "Belongs under \"Apply best practices for prompt crafting\", not here.",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/apply-best-practices-for-prompt-crafting",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task as the study guide words it.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/describe-prompt-structure-and-context",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Apply best practices for prompt crafting\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/understand-how-context-is-determined",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Apply best practices for prompt crafting\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/use-zero-shot-and-few-shot-prompting",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Apply best practices for prompt crafting\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "apply-prompt-engineering-and-context-crafting/engineer-prompts-for-performance/describe-prompt-process-flow-and-chat-history-usage",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Apply best practices for prompt crafting\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "understand-github-copilot-data-and-architecture/describe-data-handling-and-flow/explain-data-usage-flow-and-sharing",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Apply best practices for prompt crafting\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "understand-github-copilot-data-and-architecture/describe-data-handling-and-flow/describe-input-processing-and-prompt-building",
+      "target": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Apply best practices for prompt crafting\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
     }
   ],
   "excludedFamilies": []

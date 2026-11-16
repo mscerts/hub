@@ -18,7 +18,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create a video edit Create a video edit"
     },
     {
       "task": "implement-computer-vision-solutions/design-and-implement-multimodal-understanding-workflows/@foundations",
@@ -27,7 +28,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Content Understanding in Foundry Tools image overview"
     },
     {
       "task": "implement-computer-vision-solutions/design-and-implement-multimodal-understanding-workflows/@foundations",
@@ -36,7 +38,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Content Understanding in Foundry Tools video overview"
     },
     {
       "task": "implement-computer-vision-solutions/design-and-implement-multimodal-understanding-workflows/@foundations",
@@ -86,7 +89,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Agent identity concepts in Microsoft Foundry - Microsoft Foundry"
     },
     {
       "task": "implement-generative-ai-and-agentic-solutions/build-agents-by-using-foundry/@foundations",
@@ -95,7 +99,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Identity and access overview for Foundry Agent Service - Microsoft Foundry"
     },
     {
       "task": "implement-generative-ai-and-agentic-solutions/build-agents-by-using-foundry/@foundations",
@@ -104,7 +109,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What is Toolbox in Microsoft Foundry? - Microsoft Foundry"
     },
     {
       "task": "implement-generative-ai-and-agentic-solutions/build-agents-by-using-foundry/@foundations",
@@ -329,7 +335,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Content Understanding in Foundry Tools audio overview"
     },
     {
       "task": "implement-information-extraction-solutions/extract-content-from-documents/@foundations",
@@ -338,7 +345,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Agentic mode overview for document analysis (preview)"
     },
     {
       "task": "implement-information-extraction-solutions/extract-content-from-documents/@foundations",
@@ -372,7 +380,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What is Azure Translator in Foundry Tools?"
     },
     {
       "task": "implement-text-analysis-solutions/implement-speech-solutions/@foundations",
@@ -461,7 +470,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Model router for Microsoft Foundry concepts"
     },
     {
       "task": "plan-and-manage-an-azure-ai-solution/set-up-ai-solutions-in-foundry/@foundations",
@@ -526,6 +536,90 @@
       "reason": "Dropped in review: generic introduction, other-role or neighbouring-task page, retired service, or narrow reference.",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "plan-and-manage-an-azure-ai-solution/implement-responsible-ai-across-generative-ai-and-agentic-sy/configure-safety-filters-guardrails-risk-detection-and-conte",
+      "target": "/azure/foundry/guardrails/how-to-create-guardrails",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Creating guardrails and controls in Microsoft Foundry is the procedure behind the safety filters this task configures.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "How to configure guardrails and controls in Microsoft Foundry - Microsoft Foundry"
+    },
+    {
+      "task": "implement-generative-ai-and-agentic-solutions/build-agents-by-using-foundry/build-agents-that-integrate-retrieval-function-calling-and-c",
+      "target": "/training/modules/develop-ai-agent-with-semantic-kernel",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Understand Microsoft Agent Framework AI agents\".",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-generative-ai-and-agentic-solutions/build-generative-applications-by-using-foundry/deploy-and-consume-llms-small-models-code-models-and-multimo",
+      "target": "/training/modules/model-catalog-evaluate",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Deploy models to endpoints\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "implement-generative-ai-and-agentic-solutions/build-generative-applications-by-using-foundry/evaluate-models-and-apps-including-detecting-fabrications-re",
+      "target": "/training/modules/model-catalog-evaluate",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Deploy and consume LLMs, small models, code models, and multimodal models\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "implement-generative-ai-and-agentic-solutions/build-agents-by-using-foundry/implement-orchestrated-multi-agent-solutions",
+      "target": "/training/modules/discover-agents-with-a2a",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "The A2A protocol is how the agents of a multi-agent solution find and call each other.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "plan-and-manage-an-azure-ai-solution/set-up-ai-solutions-in-foundry/integrate-foundry-projects-with-continuous-integration-and-c",
+      "target": "/training/modules/automated-evaluation-genaiops",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Runs Foundry evaluations from a GitHub Actions workflow, one way a Foundry project is wired into a pipeline.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "plan-and-manage-an-azure-ai-solution/set-up-ai-solutions-in-foundry/design-azure-infrastructure-for-ai-apps-and-agent-based-solu",
+      "target": "/training/modules/configure-ai-ready-infrastructure-microsoft-foundry",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Covers the Azure and Foundry resources that the infrastructure of an AI app is built from.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "implement-generative-ai-and-agentic-solutions/build-agents-by-using-foundry/integrate-agent-tools-including-apis-knowledge-stores-search",
+      "target": "/training/modules/get-started-web-iq",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Exercise - Integrate web search into an agent using Web IQ\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

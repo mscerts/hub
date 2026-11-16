@@ -176,8 +176,20 @@
         "2985559c8521043b88a1ef94ce4faa73ef3eb16e"
       ],
       [
+        "/training/modules/automated-evaluation-genaiops",
+        "d2623a2edf5825af78673e7f3fc2c1a3b424ba26"
+      ],
+      [
+        "/training/modules/configure-ai-ready-infrastructure-microsoft-foundry",
+        "0b3c8d50d3d78e2f517dba94e1dd28f83a00d84d"
+      ],
+      [
         "/training/modules/fundamentals-generative-ai",
         "72bf0174ffb19a04bcdb0cd8811a6b5b9b0e3e44"
+      ],
+      [
+        "/training/modules/get-started-web-iq",
+        "1994876b232f7f2ac3a7859e3598af885ec5e1b6"
       ],
       [
         "/training/modules/implement-manage-enforcement-cloud-governance-policies",
@@ -595,6 +607,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/configure-ai-ready-infrastructure-microsoft-foundry"
+                  },
+                  "title": "Configure AI-ready infrastructure with Microsoft Foundry",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Covers the Azure and Foundry resources that the infrastructure of an AI app is built from.",
+                  "evidence": "Connect Foundry projects to Azure AI Search",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -807,7 +835,24 @@
             {
               "key": "plan-and-manage-an-azure-ai-solution/set-up-ai-solutions-in-foundry/integrate-foundry-projects-with-continuous-integration-and-c",
               "text": "Integrate Foundry projects with continuous integration and continuous deployment (CI/CD) pipelines",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/automated-evaluation-genaiops"
+                  },
+                  "title": "Automate AI evaluations with Microsoft Foundry and GitHub Actions",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Runs Foundry evaluations from a GitHub Actions workflow, one way a Foundry project is wired into a pipeline.",
+                  "evidence": "Align evaluators with human criteria",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -1014,6 +1059,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/foundry/guardrails/how-to-create-guardrails"
+                  },
+                  "title": "How to configure guardrails and controls in Microsoft Foundry - Microsoft Foundry",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Creating guardrails and controls in Microsoft Foundry is the procedure behind the safety filters this task configures.",
+                  "evidence": "Create, configure, and manage guardrails and controls for model deployments and agents in Microsoft Foundry using the portal or REST API.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             },
@@ -1148,12 +1209,20 @@
             {
               "key": "implement-generative-ai-and-agentic-solutions/build-generative-applications-by-using-foundry/deploy-and-consume-llms-small-models-code-models-and-multimo",
               "text": "Deploy and consume LLMs, small models, code models, and multimodal models",
-              "picks": [],
-              "overlaps": [
+              "picks": [
                 {
-                  "path": "/training/modules/analyze-content-ai",
-                  "title": "Create a multimodal analysis solution with Azure Content Understanding",
-                  "shownUnder": "plan-and-manage-an-azure-ai-solution/choose-the-appropriate-foundry-services-for-generative-ai-an/choose-an-appropriate-model-for-each-task-including-large-la"
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/model-catalog-evaluate"
+                  },
+                  "title": "Select, deploy, and evaluate Microsoft Foundry models",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Deploy models to endpoints",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -1234,6 +1303,11 @@
                   "path": "/training/modules/responsible-ai-studio",
                   "title": "Implement a responsible generative AI solution in Microsoft Foundry",
                   "shownUnder": "plan-and-manage-an-azure-ai-solution/implement-responsible-ai-across-generative-ai-and-agentic-sy/configure-safety-filters-guardrails-risk-detection-and-conte"
+                },
+                {
+                  "path": "/training/modules/model-catalog-evaluate",
+                  "title": "Select, deploy, and evaluate Microsoft Foundry models",
+                  "shownUnder": "implement-generative-ai-and-agentic-solutions/build-generative-applications-by-using-foundry/deploy-and-consume-llms-small-models-code-models-and-multimo"
                 }
               ]
             },
@@ -1516,24 +1590,40 @@
             {
               "key": "implement-generative-ai-and-agentic-solutions/build-agents-by-using-foundry/build-agents-that-integrate-retrieval-function-calling-and-c",
               "text": "Build agents that integrate retrieval, function-calling, and conversation memory",
-              "picks": [],
-              "overlaps": [
+              "picks": [
                 {
-                  "path": "/training/modules/introduction-foundry-iq",
-                  "title": "Build knowledge-enhanced AI agents with Foundry IQ",
-                  "shownUnder": "plan-and-manage-an-azure-ai-solution/choose-the-appropriate-foundry-services-for-generative-ai-an/choose-an-appropriate-method-for-retrieval-and-indexing"
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/develop-ai-agent-with-semantic-kernel"
+                  },
+                  "title": "Develop an AI agent with Microsoft Agent Framework",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Understand Microsoft Agent Framework AI agents",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             },
             {
               "key": "implement-generative-ai-and-agentic-solutions/build-agents-by-using-foundry/integrate-agent-tools-including-apis-knowledge-stores-search",
               "text": "Integrate agent tools, including APIs, knowledge stores, search, content understanding, and custom functions",
-              "picks": [],
-              "overlaps": [
+              "picks": [
                 {
-                  "path": "/training/modules/ai-knowldge-mining",
-                  "title": "Create a knowledge mining solution with Azure AI Search",
-                  "shownUnder": "plan-and-manage-an-azure-ai-solution/choose-the-appropriate-foundry-services-for-generative-ai-an/choose-appropriate-memory-tool-and-knowledge-integration-ser"
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/get-started-web-iq"
+                  },
+                  "title": "Integrate web-based knowledge into your agent with Web IQ",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Exercise - Integrate web search into an agent using Web IQ",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -1552,6 +1642,22 @@
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/discover-agents-with-a2a"
+                  },
+                  "title": "Discover Azure AI Agents with A2A",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "The A2A protocol is how the agents of a multi-agent solution find and call each other.",
+                  "evidence": "Implement an agent executor",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 },
                 {

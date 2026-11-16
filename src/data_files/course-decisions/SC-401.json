@@ -9,7 +9,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Data loss prevention policy reference"
     },
     {
       "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/@foundations",
@@ -117,7 +118,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Get started with the data loss prevention on-premises repositories"
     },
     {
       "task": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/create-and-manage-data-loss-prevention-policies",
@@ -676,7 +678,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Use sensitivity labels to protect calendar items, Teams meetings, and chat"
     },
     {
       "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/configure-and-manage-publishing-policies-for-sensitivity-lab",
@@ -779,12 +782,10 @@
     {
       "task": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect",
       "target": "/training/modules/purview-implement-endpoint-dlp",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Configure Endpoint DLP settings\", not here.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/@foundations",
@@ -809,15 +810,20 @@
       "class": "core",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Get started with insider risk management"
     },
     {
       "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/enable-and-configure-insider-risk-levels-for-adaptive-protec",
       "target": "/entra/identity/conditional-access/policy-risk-based-insider-block",
-      "decision": "reject",
-      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "A Conditional Access policy that blocks users with an elevated insider risk level is what the risk levels of Adaptive Protection are used for.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Block access for users with elevated insider risk"
     },
     {
       "task": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/enable-and-configure-insider-risk-levels-for-adaptive-protec",
@@ -934,11 +940,10 @@
     {
       "task": "manage-risks-alerts-and-activities/protect-data-used-by-ai-services/@foundations",
       "target": "/training/modules/explore-retention-policies-labels-microsoft-365",
-      "decision": "accept",
-      "class": "foundation",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under the fundamentals of \"Implement and manage retention\", not here.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "manage-risks-alerts-and-activities/protect-data-used-by-ai-services/implement-controls-in-microsoft-365-productivity-workloads-t",
@@ -947,6 +952,49 @@
       "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview.",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/configure-endpoint-dlp-settings",
+      "target": "/training/modules/purview-implement-endpoint-dlp",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task as the study guide words it.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-data-loss-prevention-and-retention/implement-and-manage-retention/@foundations",
+      "target": "/training/modules/explore-retention-policies-labels-microsoft-365",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Explains the principles of retention, retention policies and retention labels before the group's tasks configure them.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "implement-information-protection/implement-and-manage-sensitivity-labels-in-microsoft-purview/apply-sensitivity-labels-to-containers-such-as-microsoft-tea",
+      "target": "/entra/identity/users/groups-assign-sensitivity-labels",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Assigning a sensitivity label to a Microsoft 365 group is the Microsoft Entra side of labelling containers.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Assign sensitivity labels to groups"
+    },
+    {
+      "task": "manage-risks-alerts-and-activities/protect-data-used-by-ai-services/manage-roles-and-permissions-for-dspm-for-ai",
+      "target": "/training/modules/identify-ai-data-risks-purview",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Covers configuring and using Data Security Posture Management for AI, the feature whose roles this task manages.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

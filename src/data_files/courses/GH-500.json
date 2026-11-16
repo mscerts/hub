@@ -120,21 +120,6 @@
             {
               "target": {
                 "kind": "module",
-                "path": "/training/modules/configure-use-secret-scanning-github-repository"
-              },
-              "title": "Configure and use secret scanning in your GitHub repository",
-              "class": "foundation",
-              "source": "P1",
-              "why": "Teaches what secret scanning is, the concept behind the group's secret protection tasks, before the configuration steps.",
-              "evidence": "What is Secret Scanning?",
-              "decision": {
-                "by": "auto",
-                "at": "2026-11-05"
-              }
-            },
-            {
-              "target": {
-                "kind": "module",
                 "path": "/training/modules/github-introduction-administration"
               },
               "title": "Introduction to GitHub administration",
@@ -192,8 +177,8 @@
                   "class": "core",
                   "source": "P1",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-05"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 },
                 {
@@ -280,12 +265,26 @@
             {
               "key": "describe-github-security-suites-features-and-ecosystem/apply-secure-sdlc-and-security-strategies/compare-prevention-first-approaches-vs-gate-based-security-s",
               "text": "Compare prevention-first approaches vs. gate-based security strategies",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/security-campaign",
+                  "title": "Security campaigns and prevention-first strategy",
+                  "shownUnder": "security-operations-best-practices-prioritization-and-remedi/prioritize-and-manage-security-work-at-scale/campaign-based-remediation-strategies-and-bulk-alert-managem"
+                }
+              ]
             },
             {
               "key": "describe-github-security-suites-features-and-ecosystem/apply-secure-sdlc-and-security-strategies/explain-security-campaigns-and-their-role-in-reducing-risk",
               "text": "Explain security campaigns and their role in reducing risk",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/security-campaign",
+                  "title": "Security campaigns and prevention-first strategy",
+                  "shownUnder": "security-operations-best-practices-prioritization-and-remedi/prioritize-and-manage-security-work-at-scale/campaign-based-remediation-strategies-and-bulk-alert-managem"
+                }
+              ]
             }
           ]
         },
@@ -346,7 +345,14 @@
             {
               "key": "describe-github-security-suites-features-and-ecosystem/detect-manage-and-respond-to-security-alerts/explain-implications-and-best-practices-for-ignoring-or-dism",
               "text": "Explain implications and best practices for ignoring or dismissing alerts",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/security-remediation",
+                  "title": "Security operations and remediation workflows with GitHub Advanced Security",
+                  "shownUnder": "configure-and-use-code-security-formerly-code-scanning-with/analyze-triage-and-remediate-code-scanning-results/alert-lifecycles-autofix-capabilities-and-remediation-workfl"
+                }
+              ]
             },
             {
               "key": "describe-github-security-suites-features-and-ecosystem/detect-manage-and-respond-to-security-alerts/describe-developer-security-and-admin-responsibilities-for-a",
@@ -478,12 +484,34 @@
             {
               "key": "configure-and-use-secret-protection-formerly-secret-scanning/enable-and-configure-secret-protection/enable-github-secret-protection-at-the-repository-and-organi",
               "text": "Enable GitHub Secret Protection at the repository and organization levels",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/configure-use-secret-scanning-github-repository"
+                  },
+                  "title": "Configure and use secret scanning in your GitHub repository",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "What is Secret Scanning?",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "configure-and-use-secret-protection-formerly-secret-scanning/enable-and-configure-secret-protection/configure-secret-protection-settings-and-feature-availabilit",
               "text": "Configure Secret Protection settings and feature availability",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-use-secret-scanning-github-repository",
+                  "title": "Configure and use secret scanning in your GitHub repository",
+                  "shownUnder": "configure-and-use-secret-protection-formerly-secret-scanning/enable-and-configure-secret-protection/enable-github-secret-protection-at-the-repository-and-organi"
+                }
+              ]
             },
             {
               "key": "configure-and-use-secret-protection-formerly-secret-scanning/enable-and-configure-secret-protection/contrast-secret-protection-behavior-for-public-vs-private-en",
@@ -525,7 +553,14 @@
             {
               "key": "configure-and-use-secret-protection-formerly-secret-scanning/manage-and-respond-to-secret-protection-alerts/respond-to-secret-alerts-and-apply-appropriate-remediation-a",
               "text": "Respond to secret alerts and apply appropriate remediation actions",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-use-secret-scanning-github-repository",
+                  "title": "Configure and use secret scanning in your GitHub repository",
+                  "shownUnder": "configure-and-use-secret-protection-formerly-secret-scanning/enable-and-configure-secret-protection/enable-github-secret-protection-at-the-repository-and-organi"
+                }
+              ]
             },
             {
               "key": "configure-and-use-secret-protection-formerly-secret-scanning/manage-and-respond-to-secret-protection-alerts/explain-implications-and-best-practices-for-dismissing-or-ig",
@@ -615,7 +650,14 @@
             {
               "key": "configure-and-use-supply-chain-security-formerly-dependabot/detect-prioritize-and-respond-to-supply-chain-alerts/remediating-supply-chain-alerts-through-campaigns-and-pull-r",
               "text": "Remediating supply chain alerts through campaigns and pull requests",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/security-campaign",
+                  "title": "Security campaigns and prevention-first strategy",
+                  "shownUnder": "security-operations-best-practices-prioritization-and-remedi/prioritize-and-manage-security-work-at-scale/campaign-based-remediation-strategies-and-bulk-alert-managem"
+                }
+              ]
             },
             {
               "key": "configure-and-use-supply-chain-security-formerly-dependabot/detect-prioritize-and-respond-to-supply-chain-alerts/auto-dismiss-behavior-and-security-campaign-configuration",
@@ -722,8 +764,8 @@
                   "class": "core",
                   "source": "P1",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-05"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 }
               ]
@@ -794,7 +836,14 @@
             {
               "key": "configure-and-use-code-security-formerly-code-scanning-with/set-up-and-configure-code-security/use-matrix-builds-and-define-appropriate-scan-frequency",
               "text": "Use matrix builds and define appropriate scan frequency",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-code-scanning",
+                  "title": "Configure code scanning on GitHub",
+                  "shownUnder": "configure-and-use-code-security-formerly-code-scanning-with/understand-code-scanning-approaches-and-tooling/native-and-third-party-code-scanning-options"
+                }
+              ]
             }
           ]
         },
@@ -820,8 +869,8 @@
                   "source": "P4",
                   "evidence": "Managing security alerts through a standardized lifecycle",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-05"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 }
               ]
@@ -829,7 +878,14 @@
             {
               "key": "configure-and-use-code-security-formerly-code-scanning-with/analyze-triage-and-remediate-code-scanning-results/dismissing-alerts-and-managing-severity-and-category-classif",
               "text": "Dismissing alerts and managing severity and category classifications",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/security-remediation",
+                  "title": "Security operations and remediation workflows with GitHub Advanced Security",
+                  "shownUnder": "configure-and-use-code-security-formerly-code-scanning-with/analyze-triage-and-remediate-code-scanning-results/alert-lifecycles-autofix-capabilities-and-remediation-workfl"
+                }
+              ]
             }
           ]
         },
@@ -925,8 +981,8 @@
                   "source": "P4",
                   "evidence": "Understand Security Campaigns",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-05"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 }
               ]
@@ -1097,7 +1153,14 @@
             {
               "key": "github-security-suites-administration/define-governance-access-and-code-security-workflows/define-administrator-security-manager-and-developer-roles",
               "text": "Define administrator, security manager, and developer roles",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/github-administration-github-advanced-security",
+                  "title": "GitHub administration for GitHub Advanced Security",
+                  "shownUnder": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/describe-github-security-suite-structure-and-navigation"
+                }
+              ]
             },
             {
               "key": "github-security-suites-administration/define-governance-access-and-code-security-workflows/configure-permissions-for-managing-and-dismissing-security-a",
@@ -1119,7 +1182,14 @@
             {
               "key": "github-security-suites-administration/define-governance-access-and-code-security-workflows/enable-and-configure-default-or-approved-custom-codeql-workf",
               "text": "Enable and configure default or approved custom CodeQL workflows",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-code-scanning",
+                  "title": "Configure code scanning on GitHub",
+                  "shownUnder": "configure-and-use-code-security-formerly-code-scanning-with/understand-code-scanning-approaches-and-tooling/native-and-third-party-code-scanning-options"
+                }
+              ]
             },
             {
               "key": "github-security-suites-administration/define-governance-access-and-code-security-workflows/understand-apis-and-automation-methods-for-large-scale-secur",
@@ -1134,7 +1204,14 @@
             {
               "key": "github-security-suites-administration/manage-codeql-and-security-automation/enable-and-configure-default-or-approved-custom-codeql-workf",
               "text": "Enable and configure default or approved custom CodeQL workflows",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-code-scanning",
+                  "title": "Configure code scanning on GitHub",
+                  "shownUnder": "configure-and-use-code-security-formerly-code-scanning-with/understand-code-scanning-approaches-and-tooling/native-and-third-party-code-scanning-options"
+                }
+              ]
             },
             {
               "key": "github-security-suites-administration/manage-codeql-and-security-automation/understand-available-apis-and-automation-methods-for-large-s",
@@ -3912,6 +3989,12 @@
       "path": "/azure/developer/java/migration/migrate-github-copilot-app-modernization-for-java-secure-your-application",
       "reason": "Scanning and fixing Java applications with GitHub Copilot modernization is an app modernization tool, not the CVE, CWE and advisory concepts in GitHub.",
       "at": "2026-11-05"
+    },
+    {
+      "taskKey": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/@foundations",
+      "path": "/training/modules/configure-use-secret-scanning-github-repository",
+      "reason": "Belongs under \"Enable GitHub Secret Protection at the repository and organization levels\", not here.",
+      "at": "2026-11-15"
     }
   ]
 }

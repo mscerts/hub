@@ -81,6 +81,10 @@
         "f2c794b35b89c86b3b073b52d519cdeb4504d18a"
       ],
       [
+        "/training/modules/design-solution-to-log-monitor-azure-resources",
+        "00799b08b2e3f7d501eb526c3911f90e34ddf215"
+      ],
+      [
         "/training/modules/explore-core-data-concepts",
         "4cf2169ef7e13e523752b7ce3c4cbe786f9bbda4"
       ],
@@ -5844,18 +5848,18 @@
               "picks": [
                 {
                   "target": {
-                    "kind": "docs",
-                    "path": "/azure/azure-monitor"
+                    "kind": "module",
+                    "path": "/training/modules/design-solution-to-log-monitor-azure-resources"
                   },
-                  "title": "Azure Monitor documentation - Azure Monitor",
+                  "title": "Design a solution to log and monitor Azure resources",
                   "class": "supporting",
-                  "relation": "prerequisite",
-                  "source": "P4",
-                  "why": "The Azure Monitor hub introduces Log Analytics and Application Insights, which a learner meets before choosing configurations; it is a broad overview, so confidence is low.",
-                  "evidence": "Azure Monitor, which now includes Log Analytics and Application Insights",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Explains how to choose between Azure Monitor data sources, Log Analytics workspaces and Application Insights, the choices this task asks you to recommend.",
+                  "evidence": "Design for Azure Monitor Logs (Log Analytics) workspaces",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-04"
+                    "at": "2026-11-15"
                   }
                 }
               ]
@@ -13233,6 +13237,12 @@
       "path": "/training/modules/integrate-sql-solutions-azure-services",
       "reason": "Not part of this task; the page fits a neighbouring task, another product, or is a generic overview.",
       "at": "2026-11-04"
+    },
+    {
+      "taskKey": "secure-optimize-and-deploy-database-solutions/integrate-sql-solutions-with-azure-services/recommend-azure-monitor-configurations-including-application",
+      "path": "/azure/azure-monitor",
+      "reason": "A landing page of the Azure Monitor documentation.",
+      "at": "2026-11-14"
     }
   ]
 }

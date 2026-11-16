@@ -259,6 +259,10 @@
         "70a54111bc72f14bbe4f96fad89e99dfacc0abf6"
       ],
       [
+        "/training/modules/design-implement-network-monitoring",
+        "f93b0121042264d5831cb51028fa366b78ab82e7"
+      ],
+      [
         "/training/modules/design-solutions-secure-organization-data",
         "ebaf45a27f2c03b8cb0cf91f5096bd09e9bca8b6"
       ],
@@ -4599,22 +4603,6 @@
                   "evidence": "help you harden and protect your resources",
                   "decision": {
                     "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/azure/firewall"
-                  },
-                  "title": "Azure Firewall documentation",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Azure Firewall is a network security service that a professional may place beside NSGs for SAP networks.",
-                  "evidence": "Learn how to deploy Azure Firewall, a cloud-based network security service.",
-                  "decision": {
-                    "by": "maintainer",
                     "at": "2026-11-04"
                   }
                 },
@@ -13355,7 +13343,24 @@
             {
               "key": "maintain-sap-workloads-on-azure/monitor-and-maintain-sap-on-azure/monitor-networking-by-using-azure-monitor-and-azure-network",
               "text": "Monitor networking by using Azure Monitor and Azure Network Watcher",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/design-implement-network-monitoring"
+                  },
+                  "title": "Design and implement network monitoring",
+                  "class": "supporting",
+                  "relation": "prerequisite",
+                  "source": "P3",
+                  "why": "Introduces Azure Monitor for networks and Network Watcher, the two tools this task names; it is not specific to SAP.",
+                  "evidence": "Monitor your networks using Azure Network Watcher",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "maintain-sap-workloads-on-azure/monitor-and-maintain-sap-on-azure/configure-azure-monitor-for-sap-solutions",
@@ -28350,6 +28355,12 @@
       "path": "/training/modules/explore-azure-networking",
       "reason": "Not part of this task; the page fits a neighbouring task, a storage- or product-specific variant, or is a generic overview.",
       "at": "2026-11-04"
+    },
+    {
+      "taskKey": "design-and-implement-an-infrastructure-to-support-sap-worklo/design-and-implement-networking-for-sap-on-azure-virtual-mac/design-and-implement-network-security",
+      "path": "/azure/firewall",
+      "reason": "A landing page of the Azure Firewall documentation.",
+      "at": "2026-11-14"
     }
   ]
 }

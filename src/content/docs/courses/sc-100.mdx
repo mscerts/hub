@@ -5,7 +5,9 @@ description: "Follow a structured SC-100 course organized by study guide task, w
 import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
 
 :::note
-Structured directly from the [official SC-100 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-100?WT.mc_id=studentamb_165290) skills measured (October 21, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [SC-100 labs page](/certs/labs/security/sc-100/), not here, and every page appears once.
+This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official SC-100 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-100?WT.mc_id=studentamb_165290) (October 21, 2026 version). Each task of the guide links to the Microsoft Learn training and the documentation that cover it. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [SC-100 labs page](/certs/labs/security/sc-100/), not here.
+
+The course follows the approach of [How to Prepare for Role-Based Exams](/certs/prepare/role-based/): the study guide is the source of truth for what the exam covers, so work through it task by task, with the training to learn a topic and the documentation for the details and for hands-on work. Videos, practice tests and the other resources for the exam are on the [SC-100 Study Materials](/certs/security/sc-100/) page.
 :::
 
 ## Audience profile
@@ -111,7 +113,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
   </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
-      <LinkCard title="Microsoft Cybersecurity Reference Architecture (MCRA)" href="https://learn.microsoft.com/security/adoption/mcra?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Cybersecurity Reference Architecture (MCRA)" href="https://learn.microsoft.com/security/zero-trust/microsoft-reference-architecture?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Introduction to the Microsoft cloud security benchmark" href="https://learn.microsoft.com/security/benchmark/azure/introduction?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="The Microsoft cloud security benchmark in Microsoft Defender for Cloud" href="https://learn.microsoft.com/azure/defender-for-cloud/concept-regulatory-compliance?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
@@ -289,9 +291,13 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Design a solution for detection and response that includes extended detection and response (XDR) and security information and event management (SIEM)
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Microsoft Sentinel?" href="https://learn.microsoft.com/azure/sentinel/sentinel-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Design a solution for centralized logging and auditing, including Microsoft Purview Audit
 
@@ -311,7 +317,6 @@ No Learn module or documentation page covers this task yet.
   </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
-      <LinkCard title="What is Microsoft Sentinel?" href="https://learn.microsoft.com/azure/sentinel/sentinel-overview?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Overview of the Azure Connected Machine agent" href="https://learn.microsoft.com/azure/azure-arc/servers/agent-overview?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Cloud overview dashboard in Microsoft Defender for Cloud" href="https://learn.microsoft.com/azure/defender-for-cloud/cloud-infrastructure-dashboard?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
@@ -712,9 +717,18 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 
 #### Design Azure Policy solutions to address security and compliance requirements
 
-:::note
-The Microsoft Learn module "Design solutions for regulatory compliance" also covers this task. It is listed once, under [Design AI solutions that align to the Microsoft Cloud Security Benchmark.](#design-ai-solutions-that-align-to-the-microsoft-cloud-security-benchmark) in the skill group Design solutions that align with the Microsoft Cybersecurity Reference Architectures (MCRA) and Microsoft Cloud Security Benchmark (MCSB).
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design governance" href="https://learn.microsoft.com/training/modules/design-governance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Regulatory Compliance details for Microsoft cloud security benchmark - Azure Policy" href="https://learn.microsoft.com/azure/governance/policy/samples/azure-security-benchmark?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Evaluate and validate alignment with regulatory standards and benchmarks by using Microsoft Defender for Cloud
 
@@ -723,6 +737,11 @@ The Microsoft Learn module "Design solutions for regulatory compliance" also cov
     <CardGrid>
       <LinkCard title="Evaluate regulatory compliance in Defender for Cloud" href="https://learn.microsoft.com/training/modules/evaluate-regulatory-compliance?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Examine Defender for Cloud regulatory compliance standards" href="https://learn.microsoft.com/training/modules/examine-defender-cloud-regulatory-compliance-standards?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Improve regulatory compliance in Microsoft Defender for Cloud" href="https://learn.microsoft.com/azure/defender-for-cloud/regulatory-compliance-dashboard?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -815,8 +834,6 @@ The Microsoft Learn module "Design solutions for security posture management in 
       <LinkCard title="Configure and manage threat protection by using Microsoft Defender for Cloud" href="https://learn.microsoft.com/training/modules/microsoft-defender-cloud-threat-protection?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Set up Microsoft Defender for Cloud" href="https://learn.microsoft.com/training/modules/set-up-microsoft-defender-cloud?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Configure Microsoft Defender for Cloud for Azure Arc-enabled servers" href="https://learn.microsoft.com/training/modules/configure-defender-cloud-azure-arc-enabled-servers?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Interactive case study: Securing apps and data" href="https://learn.microsoft.com/training/modules/case-study-apps-data?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Interactive case study: Securing endpoints and infrastructure" href="https://learn.microsoft.com/training/modules/case-study-endpoints-infrastructure?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Implement security controls for Azure Kubernetes Service" href="https://learn.microsoft.com/training/modules/implement-security-controls-kubernetes?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Enable Defender for Cloud on your Azure subscription" href="https://learn.microsoft.com/training/modules/enable-defender-cloud-azure-subscription?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
@@ -1121,7 +1138,6 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 <Tabs>
   <TabItem label="Learning">
     <CardGrid>
-      <LinkCard title="Interactive case study: Modernizing user access control and threat resilience" href="https://learn.microsoft.com/training/modules/case-study-access-control-threat-resilience?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Deploy and Configure Microsoft Entra Global Secure Access" href="https://learn.microsoft.com/training/modules/deploy-configure-microsoft-entra-global-secure-access?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Secure remote and hybrid connectivity using VPN gateways and Microsoft Entra Private Access" href="https://learn.microsoft.com/training/modules/secure-hybrid-connectivity-azure?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
@@ -1167,7 +1183,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 <Tabs>
   <TabItem label="Documentation">
     <CardGrid>
-      <LinkCard title="Copilot controls overview" href="https://learn.microsoft.com/microsoft-365/copilot/copilot-controls/copilot-controls-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Copilot controls overview" href="https://learn.microsoft.com/copilot/implement/copilot-controls-overview?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="What is Microsoft Defender XDR?" href="https://learn.microsoft.com/defender-xdr/microsoft-365-defender?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Microsoft Secure Score for Devices" href="https://learn.microsoft.com/defender-vulnerability-management/tvm-microsoft-secure-score-devices?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="What is Microsoft Intune?" href="https://learn.microsoft.com/intune/fundamentals/what-is-intune?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -1178,12 +1194,13 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Evaluate security posture for productivity and collaboration workloads by using metrics, including Microsoft Secure Score
 
-:::note
-These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
-
-- "Evaluate solutions for securing Microsoft 365": under [Design AI solutions that align to the Microsoft Cloud Security Benchmark.](#design-ai-solutions-that-align-to-the-microsoft-cloud-security-benchmark) in the skill group Design solutions that align with the Microsoft Cybersecurity Reference Architectures (MCRA) and Microsoft Cloud Security Benchmark (MCSB)
-- "Design solutions for security posture management in hybrid and multicloud environments": under [Design AI solutions that align to the Microsoft Cloud Security Benchmark.](#design-ai-solutions-that-align-to-the-microsoft-cloud-security-benchmark) in the skill group Design solutions that align with the Microsoft Cybersecurity Reference Architectures (MCRA) and Microsoft Cloud Security Benchmark (MCSB)
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Harden a Microsoft 365 tenant with Microsoft Secure Score" href="https://learn.microsoft.com/training/modules/harden-microsoft-365-secure-score?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Evaluate solutions that include Microsoft Defender for Office 365 and Microsoft Defender for Cloud Apps
 
@@ -1256,11 +1273,11 @@ The Microsoft Learn module "Evaluate solutions for securing Microsoft 365" also 
   </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
-      <LinkCard title="Copilot controls security and governance" href="https://learn.microsoft.com/microsoft-365/copilot/copilot-controls/copilot-controls-security-governance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Copilot controls security and governance" href="https://learn.microsoft.com/copilot/implement/copilot-controls-security-governance?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Use Microsoft Purview to manage data security and compliance for Microsoft 365 Copilot" href="https://learn.microsoft.com/purview/ai-m365-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Microsoft Purview data security and compliance protections for Microsoft 365 Copilot" href="https://learn.microsoft.com/purview/ai-microsoft-purview?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Security for Microsoft Copilot" href="https://learn.microsoft.com/microsoft-365/copilot/security-microsoft-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Microsoft Copilot data protection architecture" href="https://learn.microsoft.com/microsoft-365/copilot/architecture-data-protection-auditing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security for Microsoft Copilot" href="https://learn.microsoft.com/copilot/plan/security-microsoft-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Copilot data protection architecture" href="https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Zero Query Logging Overview" href="https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-zero-query-logging?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
@@ -1324,6 +1341,14 @@ The Microsoft Learn module "Design solutions for securing applications" also cov
 The Microsoft Learn module "Design solutions for securing applications" also covers this task. It is listed once, under [Evaluate security posture by using Microsoft Defender for Cloud, including the Microsoft Cloud Security Benchmark (MCSB)](#evaluate-security-posture-by-using-microsoft-defender-for-cloud-including-the-microsoft-cloud-security-benchmark-mcsb) in the skill group Design solutions for security posture management in hybrid and multicloud environments.
 :::
 
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Secure development best practices on Microsoft Azure" href="https://learn.microsoft.com/azure/security/develop/secure-dev-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
 #### Map technologies to application security requirements
 
 :::note
@@ -1358,11 +1383,12 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 
 #### Design a solution for API management and security
 
-:::note
-The Microsoft Learn module "Design solutions for securing applications" also covers this task. It is listed once, under [Evaluate security posture by using Microsoft Defender for Cloud, including the Microsoft Cloud Security Benchmark (MCSB)](#evaluate-security-posture-by-using-microsoft-defender-for-cloud-including-the-microsoft-cloud-security-benchmark-mcsb) in the skill group Design solutions for security posture management in hybrid and multicloud environments.
-:::
-
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement API backend security using Azure API Management" href="https://learn.microsoft.com/training/modules/implement-application-interface-security-management?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Azure API Management security baseline" href="https://learn.microsoft.com/security/benchmark/azure/baselines/api-management-security-baseline?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -1373,6 +1399,7 @@ The Microsoft Learn module "Design solutions for securing applications" also cov
       <LinkCard title="Manage Protocols and Ciphers in Azure API Management" href="https://learn.microsoft.com/azure/api-management/api-management-howto-manage-protocols-ciphers?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="How to front a network security perimeter-protected Azure resource with Azure API Management" href="https://learn.microsoft.com/azure/api-management/using-network-security-perimeter?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Use API Management to Protect Access Tokens in Single-Page Applications - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/web-apps/guides/security/secure-single-page-application-authorization?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="API security posture overview" href="https://learn.microsoft.com/azure/defender-for-cloud/api-security-posture-overview?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>

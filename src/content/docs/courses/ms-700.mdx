@@ -5,7 +5,9 @@ description: "Follow a structured MS-700 course organized by study guide task, w
 import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
 
 :::note
-Structured directly from the [official MS-700 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ms-700?WT.mc_id=studentamb_165290) skills measured (October 27, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [MS-700 labs page](/certs/labs/microsoft365/ms-700/), not here, and every page appears once.
+This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official MS-700 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ms-700?WT.mc_id=studentamb_165290) (October 27, 2026 version). Each task of the guide links to the Microsoft Learn training and the documentation that cover it. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [MS-700 labs page](/certs/labs/microsoft365/ms-700/), not here.
+
+The course follows the approach of [How to Prepare for Role-Based Exams](/certs/prepare/role-based/): the study guide is the source of truth for what the exam covers, so work through it task by task, with the training to learn a topic and the documentation for the details and for hands-on work. Videos, practice tests and the other resources for the exam are on the [MS-700 Study Materials](/certs/microsoft365/ms-700/) page.
 :::
 
 ## Audience profile
@@ -173,20 +175,17 @@ No Learn module or documentation page covers this task yet.
   <TabItem label="Learning">
     <CardGrid>
       <LinkCard title="Implement lifecycle management and governance for Microsoft Teams" href="https://learn.microsoft.com/training/modules/implement-lifecycle-management-governance-for-microsoft-teams?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Configure, deploy, and manage Teams devices" href="https://learn.microsoft.com/training/modules/configure-deploy-manage-teams-devices?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
 
 #### Create and manage policy packages in Teams
 
+:::note
+The Microsoft Learn module "Implement lifecycle management and governance for Microsoft Teams" also covers this task. It is listed once, under [Plan and manage update policies](#plan-and-manage-update-policies).
+:::
+
 <Tabs>
-  <TabItem label="Learning">
-    <CardGrid>
-      <LinkCard title="Manage collaboration experiences for chat and channels" href="https://learn.microsoft.com/training/modules/manage-collaboration-experiences-for-chat-channels?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Manage meetings and events experiences" href="https://learn.microsoft.com/training/modules/manage-meetings-virtual-events-experiences?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Manage policy packages in Teams" href="https://learn.microsoft.com/microsoftteams/manage-policy-packages?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -246,9 +245,13 @@ The Microsoft Learn module "Monitor your Microsoft Teams environment" also cover
 
 #### Perform operations for Teams by using PowerShell and Microsoft Graph
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Microsoft Teams by using Windows PowerShell" href="https://learn.microsoft.com/training/modules/manage-microsoft-teams-use-windows-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 ### Configure and manage external collaboration
 
@@ -312,7 +315,7 @@ The Microsoft Learn module "Manage access for external users" also covers this t
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
-- "Manage collaboration experiences for chat and channels": under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams
+- "Manage collaboration experiences for chat and channels": under [Create and manage messaging policies](#create-and-manage-messaging-policies) in the skill group Manage channels and chats
 - "Manage access for external users": under [Configure SharePoint Online and OneDrive external sharing settings](#configure-sharepoint-online-and-onedrive-external-sharing-settings)
 :::
 
@@ -377,15 +380,12 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Manage configuration profiles for Teams devices
 
-:::note
-These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
-
-- "Plan for Microsoft Teams Rooms and shared meeting spaces": under [Identify licensing requirements for Teams devices](#identify-licensing-requirements-for-teams-devices)
-- "Plan for Microsoft Teams Phone": under [Identify licensing requirements for Teams Phone accounts and resource accounts](#identify-licensing-requirements-for-teams-phone-accounts-and-resource-accounts)
-- "Configure, deploy, and manage Teams devices": under [Plan and manage update policies](#plan-and-manage-update-policies) in the skill group Plan and implement governance for Teams
-:::
-
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure, deploy, and manage Teams devices" href="https://learn.microsoft.com/training/modules/configure-deploy-manage-teams-devices?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Manage your devices in Microsoft Teams" href="https://learn.microsoft.com/microsoftteams/devices/device-management?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -400,7 +400,7 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 
 - "Configure auto attendants and call queues": under [Identify licensing requirements for Teams Phone accounts and resource accounts](#identify-licensing-requirements-for-teams-phone-accounts-and-resource-accounts)
 - "Plan for Microsoft Teams Rooms and shared meeting spaces": under [Identify licensing requirements for Teams devices](#identify-licensing-requirements-for-teams-devices)
-- "Configure, deploy, and manage Teams devices": under [Plan and manage update policies](#plan-and-manage-update-policies) in the skill group Plan and implement governance for Teams
+- "Configure, deploy, and manage Teams devices": under [Manage configuration profiles for Teams devices](#manage-configuration-profiles-for-teams-devices)
 :::
 
 <Tabs>
@@ -419,19 +419,19 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 #### Manage device settings and firmware
 
 :::note
-The Microsoft Learn module "Configure, deploy, and manage Teams devices" also covers this task. It is listed once, under [Plan and manage update policies](#plan-and-manage-update-policies) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Configure, deploy, and manage Teams devices" also covers this task. It is listed once, under [Manage configuration profiles for Teams devices](#manage-configuration-profiles-for-teams-devices).
 :::
 
 #### Manage Teams device tags
 
 :::note
-The Microsoft Learn module "Configure, deploy, and manage Teams devices" also covers this task. It is listed once, under [Plan and manage update policies](#plan-and-manage-update-policies) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Configure, deploy, and manage Teams devices" also covers this task. It is listed once, under [Manage configuration profiles for Teams devices](#manage-configuration-profiles-for-teams-devices).
 :::
 
 #### Provision and configure remote sign-in for new devices
 
 :::note
-The Microsoft Learn module "Configure, deploy, and manage Teams devices" also covers this task. It is listed once, under [Plan and manage update policies](#plan-and-manage-update-policies) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Configure, deploy, and manage Teams devices" also covers this task. It is listed once, under [Manage configuration profiles for Teams devices](#manage-configuration-profiles-for-teams-devices).
 :::
 
 #### Plan and configure Teams for VDI
@@ -502,9 +502,9 @@ The Microsoft Learn module "Plan and deploy Microsoft Teams" also covers this ta
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
 - "Plan and configure network settings for Microsoft Teams": under [Analyze network impact by using Teams Network planner](#analyze-network-impact-by-using-teams-network-planner) in the skill group Plan network settings for Teams
-- "Manage collaboration experiences for chat and channels": under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams
+- "Manage collaboration experiences for chat and channels": under [Create and manage messaging policies](#create-and-manage-messaging-policies) in the skill group Manage channels and chats
 - "Monitor your Microsoft Teams environment": under [Assess network readiness and connectivity by using the Microsoft Teams Network Assessment Tool and Microsoft 365 network connectivity test tool](#assess-network-readiness-and-connectivity-by-using-the-microsoft-teams-network-assessment-tool-and-microsoft-365-network-connectivity-test-tool) in the skill group Plan network settings for Teams
-- "Manage meetings and events experiences": under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams
+- "Manage meetings and events experiences": under [Create and manage meeting policies](#create-and-manage-meeting-policies) in the skill group Manage meetings and events
 :::
 
 #### Configure privacy and sensitivity settings for a team
@@ -513,7 +513,7 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
 - "Implement compliance for Microsoft Teams": under [Specify security and compliance alert policies for Teams](#specify-security-and-compliance-alert-policies-for-teams) in the skill group Manage security and compliance settings for Teams
-- "Manage collaboration experiences for chat and channels": under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams
+- "Manage collaboration experiences for chat and channels": under [Create and manage messaging policies](#create-and-manage-messaging-policies) in the skill group Manage channels and chats
 :::
 
 #### Create and manage frontline teams and experiences
@@ -527,19 +527,19 @@ No Learn module or documentation page covers this task yet.
 #### Recommend channel types, including standard, private, and shared
 
 :::note
-The Microsoft Learn module "Manage collaboration experiences for chat and channels" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Manage collaboration experiences for chat and channels" also covers this task. It is listed once, under [Create and manage messaging policies](#create-and-manage-messaging-policies).
 :::
 
 #### Add, edit, and remove channels
 
 :::note
-The Microsoft Learn module "Manage collaboration experiences for chat and channels" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Manage collaboration experiences for chat and channels" also covers this task. It is listed once, under [Create and manage messaging policies](#create-and-manage-messaging-policies).
 :::
 
 #### Manage channel settings
 
 :::note
-The Microsoft Learn module "Manage collaboration experiences for chat and channels" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Manage collaboration experiences for chat and channels" also covers this task. It is listed once, under [Create and manage messaging policies](#create-and-manage-messaging-policies).
 :::
 
 #### Create and manage Teams policies for channel creation and sharing
@@ -547,7 +547,7 @@ The Microsoft Learn module "Manage collaboration experiences for chat and channe
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
-- "Manage collaboration experiences for chat and channels": under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams
+- "Manage collaboration experiences for chat and channels": under [Create and manage messaging policies](#create-and-manage-messaging-policies)
 - "Manage access for external users": under [Configure SharePoint Online and OneDrive external sharing settings](#configure-sharepoint-online-and-onedrive-external-sharing-settings) in the skill group Configure and manage external collaboration
 - "Implement lifecycle management and governance for Microsoft Teams": under [Plan and manage update policies](#plan-and-manage-update-policies) in the skill group Plan and implement governance for Teams
 :::
@@ -560,9 +560,13 @@ The Microsoft Learn module "Create and manage teams" also covers this task. It i
 
 #### Create and manage messaging policies
 
-:::note
-The Microsoft Learn module "Manage collaboration experiences for chat and channels" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage collaboration experiences for chat and channels" href="https://learn.microsoft.com/training/modules/manage-collaboration-experiences-for-chat-channels?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 ### Manage apps for Teams
 
@@ -634,49 +638,53 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Recommend meeting types based on business requirements, including Appointments with Microsoft Teams, webinars, Teams town halls, and meetings
 
 :::note
-The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage meeting policies](#create-and-manage-meeting-policies).
 :::
 
 #### Configure meeting settings, including for Microsoft 365 Copilot
 
 :::note
-The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage meeting policies](#create-and-manage-meeting-policies).
 :::
 
 #### Create and manage meeting templates and template policies
 
 :::note
-The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage meeting policies](#create-and-manage-meeting-policies).
 :::
 
 #### Create and manage meeting policies
 
-:::note
-The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage meetings and events experiences" href="https://learn.microsoft.com/training/modules/manage-meetings-virtual-events-experiences?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Create and manage meeting customization policies
 
 :::note
-The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage meeting policies](#create-and-manage-meeting-policies).
 :::
 
 #### Create and manage event settings and policies
 
 :::note
-The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage meeting policies](#create-and-manage-meeting-policies).
 :::
 
 #### Configure and manage Teams webinars
 
 :::note
-The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage meeting policies](#create-and-manage-meeting-policies).
 :::
 
 #### Configure and manage Teams town halls
 
 :::note
-The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage policy packages in Teams](#create-and-manage-policy-packages-in-teams) in the skill group Plan and implement governance for Teams.
+The Microsoft Learn module "Manage meetings and events experiences" also covers this task. It is listed once, under [Create and manage meeting policies](#create-and-manage-meeting-policies).
 :::
 
 ### Manage phone numbers and services for Teams Phone

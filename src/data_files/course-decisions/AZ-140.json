@@ -105,6 +105,28 @@
       "reason": "General introduction to Azure Virtual Desktop, the base for the exam topics.",
       "by": "maintainer",
       "at": "2026-11-05"
+    },
+    {
+      "task": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/select-an-identity-scenario-for-azure-virtual-desktop-includ",
+      "target": "/training/modules/m365-prepare-for-wvd",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Walks through connecting Microsoft Entra ID with AD DS for Azure Virtual Desktop, one of the identity scenarios to choose from.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "plan-and-implement-an-azure-virtual-desktop-infrastructure/plan-implement-and-manage-networking-for-azure-virtual-deskt/design-network-configuration-for-session-hosts-to-meet-requi",
+      "target": "/training/modules/create-configure-host-pools-session-hosts",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Session host setup module that includes network planning, a step a professional does alongside designing session host networking.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

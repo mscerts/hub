@@ -713,22 +713,6 @@
                     "by": "auto",
                     "at": "2026-11-09"
                   }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/azure/ai-services/content-understanding"
-                  },
-                  "title": "Azure Content Understanding documentation",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "The service turns documents and media into structured, searchable data for AI use, which a professional organizing data for AI systems meets.",
-                  "evidence": "transforming it into structured, organized, and searchable data",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-05"
-                  }
                 }
               ]
             }
@@ -5784,20 +5768,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/extend-m365-copilot-copilot-studio-custom-engine-agents"
-                  },
-                  "title": "Extend M365 Copilot with Copilot Studio custom engine agents",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Extend M365 Copilot with Copilot Studio custom engine agents",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-05"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/use-agent-builder-copilot-chat"
                   },
                   "title": "Use Agent Builder in Copilot Chat",
@@ -6064,129 +6034,137 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/copilot-agent-store"
+                    "path": "/copilot/manage/copilot-agent-store"
                   },
                   "title": "Agent Store in Microsoft 365 Copilot",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/copilot-agent-store",
                   "why": "The Agent Store is where a designed agent is distributed, a neighbouring step of the same job.",
                   "evidence": "Learn about Agent Store in Microsoft 365 Copilot.",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/copilot-controls/copilot-controls-management"
+                    "path": "/copilot/implement/copilot-controls-management"
                   },
                   "title": "Copilot controls for management",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/copilot-controls/copilot-controls-management",
                   "why": "Managing licensing and the agent lifecycle is the governance step that follows designing an agent.",
                   "evidence": "Copilot controls for management",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/copilot-controls/copilot-controls-overview"
+                    "path": "/copilot/implement/copilot-controls-overview"
                   },
                   "title": "Copilot controls overview",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/copilot-controls/copilot-controls-overview",
                   "why": "The framework for securing and managing agents is a step next to designing them.",
                   "evidence": "Copilot controls overview",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/employee-self-service/declarative-agent-instructions"
+                    "path": "/copilot/employee-self-service/declarative-agent-instructions"
                   },
                   "title": "Craft agent instructions for the Employee Self-Service declarative agent",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/employee-self-service/declarative-agent-instructions",
                   "why": "Writing instructions is part of designing an agent, here for one Employee Self-Service template.",
                   "evidence": "Craft agent instructions for the Employee Self-Service declarative agent",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-05"
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/employee-self-service/declarative-agent-knowledge-sources"
+                    "path": "/copilot/employee-self-service/declarative-agent-knowledge-sources"
                   },
                   "title": "Configure knowledge sources for the Employee Self-Service declarative agent",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/employee-self-service/declarative-agent-knowledge-sources",
                   "why": "Choosing knowledge sources is part of designing an agent, here for one template.",
                   "evidence": "Configure knowledge sources for the Employee Self-Service declarative agent",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-05"
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/employee-self-service/declarative-agent-overview"
+                    "path": "/copilot/employee-self-service/declarative-agent-overview"
                   },
                   "title": "Introduction to Employee Self-Service Declarative Agents",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/employee-self-service/declarative-agent-overview",
                   "why": "An overview of a packaged Employee Self-Service agent shows a design pattern, but it is one specific product.",
                   "evidence": "Introduction to Employee Self-Service Declarative Agents",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-05"
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/employee-self-service/design-best-practices"
+                    "path": "/copilot/employee-self-service/design-best-practices"
                   },
                   "title": "Design guidance and best practices",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/employee-self-service/design-best-practices",
                   "why": "Design guidance for crafting instructions of an Employee Self-Service agent, for one template.",
                   "evidence": "Design guidance and best practices",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-05"
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/employee-self-service/overview"
+                    "path": "/copilot/employee-self-service/overview"
                   },
                   "title": "Introduction to Employee Self-Service Custom Engine Agent",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/employee-self-service/overview",
                   "why": "An overview of a packaged Custom Engine Agent shows a design pattern, but it is one specific product.",
                   "evidence": "Introduction to Employee Self-Service Custom Engine Agent",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-05"
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -7232,33 +7210,35 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/architecture-data-protection-auditing"
+                    "path": "/copilot/plan/architecture-data-protection-auditing"
                   },
                   "title": "Microsoft Copilot data protection architecture",
                   "class": "supporting",
                   "relation": "prerequisite",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/architecture-data-protection-auditing",
                   "why": "Knowing how data protection, oversharing controls and auditing work is needed before designing agents that touch organizational content.",
                   "evidence": "describe how Microsoft Purview data protection, SharePoint oversharing controls, and auditing work",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-05"
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/configure-copilot-admin-center"
+                    "path": "/copilot/implement/configure-copilot-admin-center"
                   },
                   "title": "Configure Microsoft Copilot settings in the Microsoft 365 admin center",
                   "class": "supporting",
                   "relation": "prerequisite",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/configure-copilot-admin-center",
                   "why": "An admin sets user and data access in the Microsoft 365 admin center before users can use a designed agent.",
                   "evidence": "Configure Microsoft Copilot settings in the Microsoft 365 admin center",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -7904,49 +7884,52 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/microsoft-365-copilot-privacy"
+                    "path": "/copilot/plan/microsoft-365-copilot-privacy"
                   },
                   "title": "Data, Privacy, and Security for Microsoft 365 Copilot",
                   "class": "supporting",
                   "relation": "prerequisite",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/microsoft-365-copilot-privacy",
                   "why": "How Microsoft 365 Copilot uses and protects data is background an architect needs before designing agents that use it.",
                   "evidence": "Learn how Microsoft 365 Copilot uses data and how it stores and protects that data.",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/secure-govern-copilot-foundational-deployment-guidance"
+                    "path": "/copilot/plan/secure-govern-copilot-foundational-deployment-guidance"
                   },
                   "title": "Secure & Governed Data Foundation for Microsoft Copilot - Foundational Deployment Guidance",
                   "class": "supporting",
                   "relation": "prerequisite",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/secure-govern-copilot-foundational-deployment-guidance",
                   "why": "A professional designing Copilot agents needs the data foundation that prevents oversharing before agents can safely reach organizational content.",
                   "evidence": "prevent oversharing when using Microsoft Copilot",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/security-microsoft-copilot"
+                    "path": "/copilot/plan/security-microsoft-copilot"
                   },
                   "title": "Security for Microsoft Copilot",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/security-microsoft-copilot",
                   "why": "Securing Microsoft Copilot and its agents is a governance step next to design, though the security topic may belong to another group.",
                   "evidence": "Security for Microsoft Copilot",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-05"
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -8785,15 +8768,16 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/employee-self-service/declarative-agent-optimize-sharepoint"
+                    "path": "/copilot/employee-self-service/declarative-agent-optimize-sharepoint"
                   },
                   "title": "Optimize SharePoint knowledge sources for the Employee Self-Service declarative agent",
                   "class": "core",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/employee-self-service/declarative-agent-optimize-sharepoint",
                   "evidence": "Learn the top recommendations for SharePoint knowledge sources used by the Employee Self-Service declarative agent",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -8813,17 +8797,18 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/employee-self-service/optimization-sharepoint"
+                    "path": "/copilot/employee-self-service/optimization-sharepoint"
                   },
                   "title": "Optimizing SharePoint content for Employee Self-Service agents",
                   "class": "supporting",
                   "relation": "deeper",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/employee-self-service/optimization-sharepoint",
                   "why": "A second page on the same SharePoint knowledge source optimization, with more depth than the task asks for.",
                   "evidence": "Learn the top recommendations for SharePoint knowledge sources in relation to Employee Self-Service agents",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 }
               ],
@@ -9890,17 +9875,18 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/copilot-controls/copilot-controls-security-governance"
+                    "path": "/copilot/implement/copilot-controls-security-governance"
                   },
                   "title": "Copilot controls security and governance",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/copilot-controls/copilot-controls-security-governance",
                   "why": "Copilot controls for securing data and agents in Microsoft 365 are a neighbouring governance step.",
                   "evidence": "Copilot controls for Microsoft Copilot and agents",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -10268,17 +10254,18 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/copilot-agent-install"
+                    "path": "/copilot/manage/copilot-agent-install"
                   },
                   "title": "Agent installation in Microsoft 365 Copilot",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/copilot-agent-install",
                   "why": "Deployment and governance methods for installing agents in Microsoft 365 Copilot are a neighbouring step of agent governance.",
                   "evidence": "deployment and governance methods for agents in Microsoft 365 Copilot",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -27201,6 +27188,18 @@
       "path": "/training/modules/explore-prebuilt-microsoft-365-copilot-agents",
       "reason": "Neighbouring task, other product, generic or group-own page; not a teaching step for this task.",
       "at": "2026-11-05"
+    },
+    {
+      "taskKey": "design-ai-powered-business-solutions/design-extensibility-of-ai-solutions/design-agents-in-microsoft-365-copilot",
+      "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/extend-m365-copilot-copilot-studio-custom-engine-agents",
+      "reason": "A release plan item from 2024, not documentation of the feature.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "plan-ai-powered-business-solutions/analyze-requirements-for-ai-powered-business-solutions/organize-business-solution-data-to-be-available-for-other-ai",
+      "path": "/azure/ai-services/content-understanding",
+      "reason": "A landing page of the Azure Content Understanding documentation.",
+      "at": "2026-11-14"
     }
   ]
 }

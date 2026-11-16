@@ -26,7 +26,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Set up Coordinated Meetings with Microsoft Teams Rooms on Windows and Surface Hub"
     },
     {
       "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/configure-accounts-and-systems-for-microsoft-teams-rooms",
@@ -36,7 +37,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Plan for Microsoft Teams Rooms"
     },
     {
       "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/configure-accounts-and-systems-for-microsoft-teams-rooms",
@@ -46,7 +48,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Teams Rooms Pro Management"
     },
     {
       "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and",
@@ -63,7 +66,8 @@
       "class": "core",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Manage your devices in Microsoft Teams"
     },
     {
       "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-configuration-profiles-for-teams-devices",
@@ -76,22 +80,18 @@
     {
       "task": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams",
       "target": "/training/modules/manage-collaboration-experiences-for-chat-channels",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Create and manage messaging policies\", not here.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams",
       "target": "/training/modules/manage-meetings-virtual-events-experiences",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Create and manage meeting policies\", not here.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/identify-when-to-use-microsoft-entra-access-reviews-for-team",
@@ -104,12 +104,10 @@
     {
       "task": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies",
       "target": "/training/modules/configure-deploy-manage-teams-devices",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "operate",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Manage configuration profiles for Teams devices\", not here.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "configure-and-manage-a-teams-environment/plan-network-settings-for-teams/@foundations",
@@ -225,6 +223,65 @@
       "reason": "accepted by the maintainer",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies",
+      "target": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task as the study guide words it.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies",
+      "target": "/training/modules/manage-meetings-virtual-events-experiences",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task as the study guide words it.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-configuration-profiles-for-teams-devices",
+      "target": "/training/modules/configure-deploy-manage-teams-devices",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task as the study guide words it.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/perform-operations-for-teams-by-using-powershell-and-microso",
+      "target": "/training/modules/manage-microsoft-teams-use-windows-powershell",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Review Microsoft Teams PowerShell module\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams",
+      "target": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Plan and manage update policies\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies",
+      "target": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

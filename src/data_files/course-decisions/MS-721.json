@@ -360,7 +360,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Set up Coordinated Meetings with Microsoft Teams Rooms on Windows and Surface Hub"
     },
     {
       "task": "configure-and-manage-teams-rooms-and-devices/configure-and-manage-teams-rooms-on-windows/configure-custom-displays-for-teams-rooms-on-windows",
@@ -915,6 +916,42 @@
       "reason": "Not part of this task; the page fits a neighbouring task, another product area, or is a generic overview.",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-audio-conferencing/assign-a-specific-audio-conferencing-number-to-a-user",
+      "target": "/troubleshoot/microsoftteams/teams-conferencing/need-a-license-error-when-assigning-a-number",
+      "decision": "reject",
+      "reason": "A troubleshooting article for one error message.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/create-and-configure-auto-attendants-and-call-queues/assign-phone-numbers-to-resource-accounts-including-toll-fre",
+      "target": "/troubleshoot/microsoftteams/teams-administration/following-application-instance-not-present-error",
+      "decision": "reject",
+      "reason": "A troubleshooting article for one error message.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "configure-and-manage-teams-phone/configure-emergency-calling/troubleshoot-dynamic-emergency-address",
+      "target": "/training/modules/troubleshoot-microsoft-teams-voice-issues",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Understand emergency calling issues\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "plan-and-design-collaboration-communications-systems/plan-and-design-teams-phone-and-pstn-connectivity/plan-for-shared-calling",
+      "target": "/training/modules/configure-manage-voice-users",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

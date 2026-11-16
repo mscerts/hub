@@ -388,7 +388,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Add, Configure, and Protect Apps with Intune"
     },
     {
       "task": "manage-and-secure-applications/deploy-and-update-apps/deploy-microsoft-365-apps-by-using-intune",
@@ -406,7 +407,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "App installation error codes for Microsoft Intune"
     },
     {
       "task": "manage-and-secure-applications/deploy-and-update-apps/monitor-app-deployment-status-and-troubleshoot-installation",
@@ -552,7 +554,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Application Reliability Report in Endpoint Analytics"
     },
     {
       "task": "prepare-infrastructure-for-devices/add-devices-to-microsoft-entra-id/@foundations",
@@ -922,7 +925,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Windows Hello for Business authentication method in Microsoft Entra ID"
     },
     {
       "task": "prepare-infrastructure-for-devices/implement-identity-and-compliance/configure-windows-hello-for-business-by-using-intune",
@@ -940,7 +944,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create a JSON file for custom compliance settings in Microsoft Intune - Microsoft Intune"
     },
     {
       "task": "prepare-infrastructure-for-devices/implement-identity-and-compliance/implement-compliance-policies-for-all-supported-device-platf",
@@ -950,7 +955,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create discovery scripts for custom compliance policy in Microsoft Intune - Microsoft Intune"
     },
     {
       "task": "prepare-infrastructure-for-devices/implement-identity-and-compliance/implement-compliance-policies-for-all-supported-device-platf",
@@ -968,7 +974,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Platforms and policy types supported by assignment filters - Microsoft Intune"
     },
     {
       "task": "protect-devices/configure-endpoint-security/@foundations",
@@ -1074,7 +1081,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Endpoint security in Microsoft Intune"
     },
     {
       "task": "protect-devices/configure-endpoint-security/create-firewall-policies-by-using-microsoft-intune",
@@ -1333,6 +1341,38 @@
       "reason": "Dropped in review: other-role or other-exam page, niche device or platform, narrow troubleshooting, or generic overview.",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "manage-and-secure-applications/deploy-and-update-apps/manage-microsoft-365-apps-by-using-the-microsoft-365-apps-ad",
+      "target": "/training/modules/deploy-microsoft-365-apps-enterprise",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Manage your cloud apps using the Microsoft 365 Apps admin center\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "prepare-infrastructure-for-devices/implement-identity-and-compliance/implement-microsoft-entra-conditional-access-policies-that-r",
+      "target": "/training/modules/implement-authentication-access-entra",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Covers Conditional Access policies that check device compliance, seen from the Microsoft Entra side.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "manage-and-maintain-devices/perform-remote-actions-on-devices/run-a-device-query-by-using-kql",
+      "target": "/training/modules/construct-kusto-query-language-statements",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "Teaches the structure of the KQL statements a device query is written in.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

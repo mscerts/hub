@@ -882,16 +882,17 @@
             {
               "target": {
                 "kind": "docs",
-                "path": "/microsoft-365/copilot/copilot-app-overview"
+                "path": "/copilot/plan/copilot-app-overview"
               },
               "title": "Microsoft Copilot app",
               "class": "foundation",
               "source": "P4",
+              "was": "/microsoft-365/copilot/copilot-app-overview",
               "why": "Explains the Microsoft Copilot app and how its features differ between a Microsoft 365 subscription and a Copilot license, which is the versions topic.",
               "evidence": "compare the features available with a Microsoft 365 subscription and a Microsoft Copilot license",
               "decision": {
-                "by": "auto",
-                "at": "2026-11-09"
+                "by": "maintainer",
+                "at": "2026-11-14"
               }
             },
             {
@@ -972,15 +973,17 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/copilot/overview"
+                    "path": "/copilot/plan/copilot-overview"
                   },
                   "title": "Overview of Microsoft Copilot Chat",
                   "class": "core",
                   "source": "P2",
                   "via": "/training/modules/business-value-microsoft-copilot-solutions",
+                  "was": "/copilot/overview",
+                  "evidence": "Overview of Microsoft Copilot Chat",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -1006,31 +1009,18 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/copilot-overview"
-                  },
-                  "title": "What is Microsoft Copilot?",
-                  "class": "core",
-                  "source": "P2",
-                  "via": "/training/modules/business-value-microsoft-copilot-solutions",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/microsoft-365/copilot/microsoft-copilot-requirements"
+                    "path": "/copilot/plan/microsoft-copilot-requirements"
                   },
                   "title": "Microsoft Copilot requirements",
                   "class": "supporting",
                   "relation": "prerequisite",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/microsoft-copilot-requirements",
                   "why": "A professional checking which app experiences work meets the requirements for Copilot and Copilot Chat first.",
                   "evidence": "Understand requirements for Microsoft Copilot and Copilot Chat experiences.",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 }
               ],
@@ -1308,33 +1298,35 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/copilot-controls/copilot-controls-overview"
+                    "path": "/copilot/implement/copilot-controls-overview"
                   },
                   "title": "Copilot controls overview",
                   "class": "supporting",
                   "relation": "operate",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/copilot-controls/copilot-controls-overview",
                   "why": "Framework for securing and managing Copilot Studio agents, what runs after an agent is built.",
                   "evidence": "Copilot controls overview",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/employee-self-service/evaluations-run-tests"
+                    "path": "/copilot/employee-self-service/evaluations-run-tests"
                   },
                   "title": "Run different kinds of tests using the Copilot Studio evaluator tool",
                   "class": "supporting",
                   "relation": "operate",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/employee-self-service/evaluations-run-tests",
                   "why": "Running tests on a Copilot Studio agent, an operating step a professional meets after building it.",
                   "evidence": "Run different kinds of tests using the Copilot Studio evaluator tool",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -1356,17 +1348,18 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/usage-based-billing-manage-copilot-studio-costs"
+                    "path": "/copilot/implement/usage-based-billing-manage-copilot-studio-costs"
                   },
                   "title": "Manage Copilot Studio costs in the Microsoft 365 admin center",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/usage-based-billing-manage-copilot-studio-costs",
                   "why": "Managing Copilot Studio costs is a step a leader takes when rolling out agents.",
                   "evidence": "Manage Copilot Studio costs in the Microsoft 365 admin center",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-05"
+                    "at": "2026-11-14"
                   }
                 }
               ]
@@ -2437,49 +2430,52 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/pay-as-you-go/pay-as-you-go-meters"
+                    "path": "/copilot/plan/pay-as-you-go-meters"
                   },
                   "title": "Meters for Microsoft Copilot Pay-as-You-Go Services",
                   "class": "supporting",
                   "relation": "deeper",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/pay-as-you-go/pay-as-you-go-meters",
                   "why": "Lists the meters that price pay-as-you-go Copilot services, more detail on the same licence model than the task asks for.",
                   "evidence": "Meters for Microsoft Copilot Pay-as-You-Go Services",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/pay-as-you-go/setup-pay-as-you-go"
+                    "path": "/copilot/implement/setup-pay-as-you-go"
                   },
                   "title": "Set Up Microsoft Copilot Pay-as-You-Go Services",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/pay-as-you-go/setup-pay-as-you-go",
                   "why": "Explains how IT admins set up pay-as-you-go Copilot services, the next step after an organisation chooses that licence type.",
                   "evidence": "Set Up Microsoft Copilot Pay-as-You-Go Services",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/pay-as-you-go/view-cost"
+                    "path": "/copilot/manage/view-cost"
                   },
                   "title": "View costs for Microsoft 365 Copilot pay-as-you-go",
                   "class": "supporting",
                   "relation": "operate",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/pay-as-you-go/view-cost",
                   "why": "Shows how administrators view the costs of pay-as-you-go Copilot, which a leader monitors after the licence model is chosen.",
                   "evidence": "View costs for Microsoft 365 Copilot pay-as-you-go",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 }
               ]
@@ -5576,6 +5572,12 @@
       "path": "/training/modules/tracing-generative-ai-app",
       "reason": "Developer-level tracing and debugging of a generative AI app, a different job role from choosing a solution for a business need.",
       "at": "2026-11-09"
+    },
+    {
+      "taskKey": "identify-benefits-capabilities-and-opportunities-for-microso/identify-benefits-and-capabilities-of-microsoft-365-copilot/understand-capabilities-of-the-copilot-experience-in-various",
+      "path": "/microsoft-365/copilot/copilot-overview",
+      "reason": "Learn moved this page to /copilot/plan/copilot-overview, which is already in the course.",
+      "at": "2026-11-14"
     }
   ]
 }

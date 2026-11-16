@@ -115,6 +115,10 @@
       [
         "/training/modules/troubleshoot-issues-signing-into-microsoft-teams",
         "5e7d522df589206dc7df42b982bbf8344b913274"
+      ],
+      [
+        "/training/modules/troubleshoot-microsoft-teams-voice-issues",
+        "d13e55462b8c17fee342ecc49117f91a3c2c505a"
       ]
     ],
     "builtAt": "2026-11-04"
@@ -595,8 +599,8 @@
                   "class": "core",
                   "source": "P1",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 },
                 {
@@ -1824,24 +1828,7 @@
             {
               "key": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-audio-conferencing/assign-a-specific-audio-conferencing-number-to-a-user",
               "text": "Assign a specific Audio Conferencing number to a user",
-              "picks": [
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/troubleshoot/microsoftteams/teams-conferencing/need-a-license-error-when-assigning-a-number"
-                  },
-                  "title": "You need a phone system license error when you assign a toll service number",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "An admin assigning a specific number to a user meets this license error when the assignment fails.",
-                  "evidence": "Resolves an issue where assigning a toll service number in the Teams admin center gives an error.",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                }
-              ],
+              "picks": [],
               "overlaps": [
                 {
                   "path": "/training/modules/manage-meetings-virtual-events-experiences",
@@ -2420,24 +2407,7 @@
             {
               "key": "configure-and-manage-teams-phone/create-and-configure-auto-attendants-and-call-queues/assign-phone-numbers-to-resource-accounts-including-toll-fre",
               "text": "Assign phone numbers to resource accounts, including toll-free phone numbers",
-              "picks": [
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/troubleshoot/microsoftteams/teams-administration/following-application-instance-not-present-error"
-                  },
-                  "title": "BVD error when assigning a phone number to a resource account in Teams",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "Fixes the error a professional gets when assigning a phone number to a resource account.",
-                  "evidence": "BVD error when assigning a phone number to a resource account in Teams",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                }
-              ],
+              "picks": [],
               "overlaps": [
                 {
                   "path": "/training/modules/monitor-troubleshoot-teams-phone-system",
@@ -2685,7 +2655,22 @@
             {
               "key": "configure-and-manage-teams-phone/configure-emergency-calling/troubleshoot-dynamic-emergency-address",
               "text": "Troubleshoot dynamic emergency address",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/troubleshoot-microsoft-teams-voice-issues"
+                  },
+                  "title": "Troubleshoot Microsoft Teams Voice Issues",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Understand emergency calling issues",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -10259,6 +10244,18 @@
       "path": "/azure/virtual-network/concepts-and-best-practices",
       "reason": "Azure virtual network design, a different product area from the Teams network architecture.",
       "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-teams-meetings-webinars-and-town-halls/configure-and-manage-audio-conferencing/assign-a-specific-audio-conferencing-number-to-a-user",
+      "path": "/troubleshoot/microsoftteams/teams-conferencing/need-a-license-error-when-assigning-a-number",
+      "reason": "A troubleshooting article for one error message.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "configure-and-manage-teams-phone/create-and-configure-auto-attendants-and-call-queues/assign-phone-numbers-to-resource-accounts-including-toll-fre",
+      "path": "/troubleshoot/microsoftteams/teams-administration/following-application-instance-not-present-error",
+      "reason": "A troubleshooting article for one error message.",
+      "at": "2026-11-14"
     }
   ]
 }

@@ -5,7 +5,9 @@ description: "Follow a structured AI-103 course organized by study guide task, w
 import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
 
 :::note
-Structured directly from the [official AI-103 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-103?WT.mc_id=studentamb_165290) skills measured (April 16, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AI-103 labs page](/certs/labs/azure/ai-103/), not here, and every page appears once.
+This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official AI-103 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-103?WT.mc_id=studentamb_165290) (April 16, 2026 version). Each task of the guide links to the Microsoft Learn training and the documentation that cover it. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AI-103 labs page](/certs/labs/azure/ai-103/), not here.
+
+The course follows the approach of [How to Prepare for Role-Based Exams](/certs/prepare/role-based/): the study guide is the source of truth for what the exam covers, so work through it task by task, with the training to learn a topic and the documentation for the details and for hands-on work. Videos, practice tests and the other resources for the exam are on the [AI-103 Study Materials](/certs/azure/ai-103/) page.
 :::
 
 ## Audience profile
@@ -126,6 +128,11 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Design Azure infrastructure for AI apps and agent-based solutions
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure AI-ready infrastructure with Microsoft Foundry" href="https://learn.microsoft.com/training/modules/configure-ai-ready-infrastructure-microsoft-foundry?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Build a Multiple-Agent Workflow Automation Solution by using Microsoft Agent Framework - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/ai-ml/idea/multiple-agent-workflow-automation?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -174,9 +181,13 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Integrate Foundry projects with continuous integration and continuous deployment (CI/CD) pipelines
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Automate AI evaluations with Microsoft Foundry and GitHub Actions" href="https://learn.microsoft.com/training/modules/automated-evaluation-genaiops?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 ### Manage, monitor, and secure AI systems
 
@@ -245,6 +256,11 @@ The concepts behind the tasks of this skill group. Work through them first: the 
       <LinkCard title="Implement generative AI guardrails in Azure AI Foundry" href="https://learn.microsoft.com/training/modules/moderate-content-detect-harm-azure-ai-content-safety-studio?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How to configure guardrails and controls in Microsoft Foundry - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/guardrails/how-to-create-guardrails?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
 </Tabs>
 
 #### Apply responsible AI instrumentation, including evaluators, safety evaluations, and explanation tooling
@@ -299,9 +315,13 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Deploy and consume LLMs, small models, code models, and multimodal models
 
-:::note
-The Microsoft Learn module "Create a multimodal analysis solution with Azure Content Understanding" also covers this task. It is listed once, under [Choose an appropriate model for each task, including large language models (LLMs), small language models, multimodal models, and Foundry Tools](#choose-an-appropriate-model-for-each-task-including-large-language-models-llms-small-language-models-multimodal-models-and-foundry-tools) in the skill group Choose the appropriate Foundry services for generative AI and agents.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Select, deploy, and evaluate Microsoft Foundry models" href="https://learn.microsoft.com/training/modules/model-catalog-evaluate?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Implement retrieval-augmented generation (RAG) in an application
 
@@ -334,7 +354,10 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 #### Evaluate models and apps, including detecting fabrications, relevance, quality, and safety
 
 :::note
-The Microsoft Learn module "Implement a responsible generative AI solution in Microsoft Foundry" also covers this task. It is listed once, under [Configure safety filters, guardrails, risk detection, and content moderation](#configure-safety-filters-guardrails-risk-detection-and-content-moderation) in the skill group Implement responsible AI across generative AI and agentic systems.
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement a responsible generative AI solution in Microsoft Foundry": under [Configure safety filters, guardrails, risk detection, and content moderation](#configure-safety-filters-guardrails-risk-detection-and-content-moderation) in the skill group Implement responsible AI across generative AI and agentic systems
+- "Select, deploy, and evaluate Microsoft Foundry models": under [Deploy and consume LLMs, small models, code models, and multimodal models](#deploy-and-consume-llms-small-models-code-models-and-multimodal-models)
 :::
 
 #### Integrate generative workflows into applications by using Foundry SDKs and connectors
@@ -396,15 +419,23 @@ The Microsoft Learn module "Develop AI agents with Microsoft Foundry and Visual 
 
 #### Build agents that integrate retrieval, function-calling, and conversation memory
 
-:::note
-The Microsoft Learn module "Build knowledge-enhanced AI agents with Foundry IQ" also covers this task. It is listed once, under [Choose an appropriate method for retrieval and indexing](#choose-an-appropriate-method-for-retrieval-and-indexing) in the skill group Choose the appropriate Foundry services for generative AI and agents.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Develop an AI agent with Microsoft Agent Framework" href="https://learn.microsoft.com/training/modules/develop-ai-agent-with-semantic-kernel?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Integrate agent tools, including APIs, knowledge stores, search, content understanding, and custom functions
 
-:::note
-The Microsoft Learn module "Create a knowledge mining solution with Azure AI Search" also covers this task. It is listed once, under [Choose appropriate memory, tool, and knowledge integration services for agent solutions](#choose-appropriate-memory-tool-and-knowledge-integration-services-for-agent-solutions) in the skill group Choose the appropriate Foundry services for generative AI and agents.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Integrate web-based knowledge into your agent with Web IQ" href="https://learn.microsoft.com/training/modules/get-started-web-iq?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Implement orchestrated multi-agent solutions
 
@@ -412,6 +443,7 @@ The Microsoft Learn module "Create a knowledge mining solution with Azure AI Sea
   <TabItem label="Learning">
     <CardGrid>
       <LinkCard title="Orchestrate a multi-agent solution using the Microsoft Agent Framework" href="https://learn.microsoft.com/training/modules/orchestrate-semantic-kernel-multi-agent-solution?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Discover Azure AI Agents with A2A" href="https://learn.microsoft.com/training/modules/discover-agents-with-a2a?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
   <TabItem label="Documentation">

@@ -147,21 +147,6 @@
             {
               "target": {
                 "kind": "module",
-                "path": "/training/modules/introduction-prompt-engineering-with-github-copilot"
-              },
-              "title": "Introduction to prompt engineering with GitHub Copilot",
-              "class": "foundation",
-              "source": "P1",
-              "why": "Explains how Copilot prompts, data and large language models work, the concepts behind the limitations the group's tasks cover.",
-              "evidence": "GitHub Copilot Large Language Models (LLMs)",
-              "decision": {
-                "by": "auto",
-                "at": "2026-11-05"
-              }
-            },
-            {
-              "target": {
-                "kind": "module",
                 "path": "/training/modules/introduction-to-github-copilot"
               },
               "title": "Introduction to GitHub Copilot",
@@ -589,12 +574,26 @@
             {
               "key": "understand-github-copilot-data-and-architecture/describe-data-handling-and-flow/explain-data-usage-flow-and-sharing",
               "text": "Explain data usage, flow, and sharing",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+                  "title": "Introduction to prompt engineering with GitHub Copilot",
+                  "shownUnder": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/apply-best-practices-for-prompt-crafting"
+                }
+              ]
             },
             {
               "key": "understand-github-copilot-data-and-architecture/describe-data-handling-and-flow/describe-input-processing-and-prompt-building",
               "text": "Describe input processing and prompt building",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+                  "title": "Introduction to prompt engineering with GitHub Copilot",
+                  "shownUnder": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/apply-best-practices-for-prompt-crafting"
+                }
+              ]
             },
             {
               "key": "understand-github-copilot-data-and-architecture/describe-data-handling-and-flow/explain-proxy-filtering-and-post-processing",
@@ -645,22 +644,58 @@
             {
               "key": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/describe-prompt-structure-and-context",
               "text": "Describe prompt structure and context",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+                  "title": "Introduction to prompt engineering with GitHub Copilot",
+                  "shownUnder": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/apply-best-practices-for-prompt-crafting"
+                }
+              ]
             },
             {
               "key": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/understand-how-context-is-determined",
               "text": "Understand how context is determined",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+                  "title": "Introduction to prompt engineering with GitHub Copilot",
+                  "shownUnder": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/apply-best-practices-for-prompt-crafting"
+                }
+              ]
             },
             {
               "key": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/use-zero-shot-and-few-shot-prompting",
               "text": "Use zero-shot and few-shot prompting",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+                  "title": "Introduction to prompt engineering with GitHub Copilot",
+                  "shownUnder": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/apply-best-practices-for-prompt-crafting"
+                }
+              ]
             },
             {
               "key": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/apply-best-practices-for-prompt-crafting",
               "text": "Apply best practices for prompt crafting",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/introduction-prompt-engineering-with-github-copilot"
+                  },
+                  "title": "Introduction to prompt engineering with GitHub Copilot",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "GitHub Copilot Large Language Models (LLMs)",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -692,7 +727,14 @@
             {
               "key": "apply-prompt-engineering-and-context-crafting/engineer-prompts-for-performance/describe-prompt-process-flow-and-chat-history-usage",
               "text": "Describe prompt process flow and chat history usage",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+                  "title": "Introduction to prompt engineering with GitHub Copilot",
+                  "shownUnder": "apply-prompt-engineering-and-context-crafting/craft-effective-prompts/apply-best-practices-for-prompt-crafting"
+                }
+              ]
             }
           ]
         }
@@ -4087,6 +4129,12 @@
       "path": "/training/modules/multi-agent-systems-orchestration",
       "reason": "Multi-agent orchestration for a GH-600 agent exam, not operating Copilot responsibly.",
       "at": "2026-11-05"
+    },
+    {
+      "taskKey": "use-github-copilot-responsibly/understand-responsible-ai-principles/@foundations",
+      "path": "/training/modules/introduction-prompt-engineering-with-github-copilot",
+      "reason": "Belongs under \"Apply best practices for prompt crafting\", not here.",
+      "at": "2026-11-15"
     }
   ]
 }

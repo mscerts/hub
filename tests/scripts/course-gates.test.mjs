@@ -1129,3 +1129,141 @@ test("the answers on the review copy: the dropped numbers are rejected, every ot
     "deeper",
   );
 });
+
+test("an accept may be pinned and may carry the title of its page; a page is pinned once, and a reject has neither", () => {
+  const accept = (over = {}) => ({
+    task: TASK.key,
+    target: "/azure/storage/blobs/x",
+    decision: "accept",
+    class: "core",
+    reason: "Covers the task.",
+    by: "maintainer",
+    at: TODAY,
+    ...over,
+  });
+  const check = (decisions) =>
+    validateDecisions({ ...emptyDecisions("X"), decisions }, "X");
+  assert.deepEqual(check([accept({ pinned: true, title: "A page" })]), []);
+  assert.match(
+    check([accept({ pinned: false })]).join("\n"),
+    /pinned is true or left out/,
+  );
+  assert.match(
+    check([accept({ title: " " })]).join("\n"),
+    /title must be a non-empty text/,
+  );
+  assert.match(
+    check([
+      accept({ pinned: true }),
+      accept({ task: "domain/group/another", pinned: true }),
+    ]).join("\n"),
+    /already pinned under domain\/group\/manage-external-users/,
+  );
+  const reject = {
+    task: TASK.key,
+    target: "/azure/storage/blobs/y",
+    decision: "reject",
+    reason: "Another job.",
+    by: "maintainer",
+    at: TODAY,
+  };
+  assert.match(
+    check([{ ...reject, pinned: true }]).join("\n"),
+    /only an accept is pinned or has a title/,
+  );
+});
+
+test("a pinned accept reaches the gated item, so that the builder can show the page under that task", () => {
+  const pinned = gate(
+    {},
+    {
+      decisions: withStore([
+        {
+          task: TASK.key,
+          target: "/azure/storage/blobs/x",
+          decision: "accept",
+          class: "core",
+          reason: "It belongs here.",
+          by: "maintainer",
+          at: TODAY,
+          pinned: true,
+        },
+      ]),
+    },
+  );
+  assert.equal(pinned.decision, "accept");
+  assert.equal(pinned.pinned, true);
+  assert.equal(gate({}).pinned, undefined);
+});
+
+test("an accept that no candidate answers stands: it is listed for the builder, unless the page is gone", () => {
+  const files = judgedFiles();
+  const task = files[0].tasks[0];
+  const candidate = task.items[0].target.path;
+  const accept = (target, over = {}) => ({
+    task: task.key,
+    target,
+    decision: "accept",
+    class: "supporting",
+    relation: "deeper",
+    reason: "Added by hand.",
+    by: "maintainer",
+    at: TODAY,
+    ...over,
+  });
+  const decisions = {
+    ...emptyDecisions("NET-100"),
+    decisions: [
+      accept(candidate),
+      accept("/training/modules/added-by-hand", { pinned: true }),
+      accept("/azure/added/page", { title: "A page added by hand" }),
+      accept("/azure/added/gone"),
+      {
+        task: task.key,
+        target: "/azure/added/rejected",
+        decision: "reject",
+        reason: "No.",
+        by: "maintainer",
+        at: TODAY,
+      },
+    ],
+  };
+  const { items, manual, stats } = gateJudged(files, {
+    today: TODAY,
+    decisions,
+    isCurrent: (path) =>
+      path === "/azure/added/gone"
+        ? { ok: false, reason: "removed" }
+        : { ok: true },
+  });
+  // the candidate is decided as before, and is not listed twice
+  assert.equal(
+    items.find((i) => i.task.key === task.key && i.target.path === candidate)
+      .gate.via,
+    "remembered",
+  );
+  assert.deepEqual(manual, [
+    {
+      task: task.key,
+      target: { kind: "docs", path: "/azure/added/page" },
+      class: "supporting",
+      relation: "deeper",
+      reason: "Added by hand.",
+      at: TODAY,
+      title: "A page added by hand",
+    },
+    {
+      task: task.key,
+      target: { kind: "module", path: "/training/modules/added-by-hand" },
+      class: "supporting",
+      relation: "deeper",
+      reason: "Added by hand.",
+      at: TODAY,
+      pinned: true,
+    },
+  ]);
+  assert.equal(stats.acceptedWithoutCandidate, 2);
+  assert.equal(stats.acceptedWithoutCandidateNotCurrent, 1);
+  // without decisions there is nothing to add
+  assert.deepEqual(gateJudged(files, { today: TODAY }).manual, []);
+});

@@ -33,6 +33,11 @@
  *     the tasks of that group is the rule above; `routing.repeats` lists the groups it left). A unit whose module
  *     the maintainer rejected for that task is not collapsed (the module must not come back): it is dropped and listed
  *     in `routing.blocked`.
+ *
+ * The maintainer's accepts that no candidate answers (the gated file's `manual` list: a page added by hand, or one
+ * the generator stopped proposing) become picks too, with the maintainer's reason as their reason and evidence; and
+ * an accept the maintainer pinned (`pinned: true` in the decisions file) is where its page is shown, before the
+ * page rules above choose. So a course edited by hand comes out of a rebuild as it went in.
  */
 
 import {
@@ -42,7 +47,7 @@ import {
   validateCourse,
 } from "./course-format.mjs";
 import { isClassic } from "./course-classic.mjs";
-import { ACCEPTED_BY_MAINTAINER } from "./course-gates.mjs";
+import { ACCEPTED_BY_MAINTAINER, kindOfPath } from "./course-gates.mjs";
 import { buildAudience } from "./course-audience.mjs";
 import { handsOnReason } from "./course-handson.mjs";
 import {
@@ -86,7 +91,8 @@ function pickOf(item, day) {
   // The judge's words describe the page as the judge saw it. When the judge rejected the page and the maintainer
   // accepted it, they argue against the pick: the maintainer's note is its reason and its evidence. A note the
   // maintainer wrote also replaces the judge's reason when the judge picked the page too.
-  const judgePicked = item.judge.verdict !== "reject";
+  // (an accept without a candidate has no judge at all: the maintainer's note is everything it has)
+  const judgePicked = Boolean(item.judge) && item.judge.verdict !== "reject";
   const note =
     g.by === "maintainer" &&
     typeof g.reason === "string" &&
@@ -98,7 +104,9 @@ function pickOf(item, day) {
     pick.why = note ?? (judgePicked ? item.judge.why : null);
     if (!pick.why)
       return {
-        problem: `${item.task.key}: ${target.path} is accepted as supporting over the judge's reject without a note, so it has no reason (answer it again with a note)`,
+        problem: item.judge
+          ? `${item.task.key}: ${target.path} is accepted as supporting over the judge's reject without a note, so it has no reason (answer it again with a note)`
+          : `${item.task.key}: ${target.path} was accepted by the maintainer without being a candidate and without a note, so it has no reason (give the decision a reason)`,
       };
   }
   if (needsEvidence) {
@@ -107,7 +115,9 @@ function pickOf(item, day) {
       return {
         problem: judgePicked
           ? `${item.task.key}: ${target.path} (${item.source}) needs an evidence quote and the judge gave none`
-          : `${item.task.key}: ${target.path} (${item.source}) was rejected by the judge and accepted without a note, so it has no evidence (answer it again with a note)`,
+          : item.judge
+            ? `${item.task.key}: ${target.path} (${item.source}) was rejected by the judge and accepted without a note, so it has no evidence (answer it again with a note)`
+            : `${item.task.key}: ${target.path} (${item.source}) was accepted by the maintainer without being a candidate and without a note, so it has no evidence (give the decision a reason)`,
       };
     pick.evidence = evidence;
   }
@@ -252,9 +262,14 @@ export function routePicks({ accepted, taskKeys, rejected = new Map() }) {
     (a, b) => a[1].length - b[1].length || byText(a[0], b[0]),
   );
   for (const [path, allRows] of paths) {
+    // the maintainer pinned the page under one task: it is shown there, and the rules below are not asked
+    const pinned = allRows
+      .filter((r) => r.item.gate?.pinned)
+      .sort((a, b) => order.get(a.taskKey) - order.get(b.taskKey))[0];
     // a module stays in the first skill group where it was accepted; the rest of the rule is within that group
     let rows = allRows;
-    if (allRows[0].pick.target.kind === "module" && allRows.length > 1) {
+    if (pinned) rows = [pinned];
+    else if (allRows[0].pick.target.kind === "module" && allRows.length > 1) {
       const first = Math.min(
         ...allRows.map((r) => groupOrder.get(groupKeyOf(r.taskKey))),
       );
@@ -327,6 +342,9 @@ export function routePicks({ accepted, taskKeys, rejected = new Map() }) {
  *   allowStale   build even when the guide or Learn changed since the candidates were made
  *   allowNoScope build an exam that has no official course on Learn: the scope is empty, every pick comes from search
  *   audienceDecisions   the maintainer's picks for the guide's audience profile (course-audience.mjs), or null
+ *   describe     (path) => { title, unitSig } | null: what learnsync's module catalog says about a module, for the
+ *                maintainer's accepts that are not candidates (`gated.manual`); without it only such an accept of
+ *                a documentation page, or of a module of the exam's own course, that carries its own title is added
  * Returns { ok, course, problems, warnings, stats }; a course with problems is not returned.
  */
 export function buildCourse({
@@ -339,6 +357,7 @@ export function buildCourse({
   allowStale = false,
   allowNoScope = false,
   audienceDecisions = null,
+  describe = null,
 }) {
   const problems = [];
   const warnings = [];
@@ -416,6 +435,89 @@ export function buildCourse({
       );
   }
 
+  // The maintainer's accepts that no candidate answers (a page added by hand, or one the generator no longer
+  // proposes): a decision is remembered, so they are picks like the others. What the candidate would have carried
+  // comes from the exam's scope (a module of the exam's own course is P1; a documentation page that such a module
+  // lists is P2, with the module as its `via`), from learnsync's catalog (`describe`: the title and the signature
+  // of another module, P3) or from the decision itself (the title of a documentation page, P4 when no module of
+  // the course lists it); the maintainer's reason is the pick's reason and evidence.
+  const ownModules = new Set(
+    (scope.inputs?.snapshot?.modules ?? []).map((m) => m[0]),
+  );
+  // the documentation pages the modules of the exam's course list, with the first module that lists each
+  const listedBy = new Map();
+  for (const module of scope.modules ?? [])
+    for (const link of module.resources?.links ?? [])
+      if (link.path && !listedBy.has(link.path))
+        listedBy.set(link.path, module.path);
+  const judgedPairs = new Set(
+    gated.items.map((i) => `${i.task.key}|${i.target.path}`),
+  );
+  let addedWithoutCandidate = 0;
+  for (const m of gated.manual ?? []) {
+    const path = m.target.path;
+    if (judgedPairs.has(`${m.task}|${path}`)) continue;
+    if (!taskKeys.has(m.task)) {
+      warnings.push(
+        `${m.task}: the maintainer accepted ${path} for a task that is not in the study guide any more: it is left out`,
+      );
+      continue;
+    }
+    const kind = m.target.kind ?? kindOfPath(path);
+    const modulePath =
+      kind === "docs" ? null : path.split("/").slice(0, 4).join("/");
+    const title =
+      (kind === "docs" ? null : describe?.(path)?.title) ?? m.title ?? null;
+    if (!title) {
+      warnings.push(
+        `${m.task}: the maintainer accepted ${path}, which is not a candidate, and nothing gives its title (learnsync's catalog does not list it and the decision has no title): it is left out`,
+      );
+      continue;
+    }
+    const own = modulePath !== null && ownModules.has(modulePath);
+    const unitSig =
+      modulePath && !own ? (describe?.(modulePath)?.unitSig ?? null) : null;
+    if (modulePath && !own && !unitSig) {
+      warnings.push(
+        `${m.task}: the maintainer accepted ${path}, which is not a candidate and not a module of the exam's course, and learnsync's catalog has no signature for it: it is left out`,
+      );
+      continue;
+    }
+    const item = {
+      task: { key: m.task },
+      target: { kind, path },
+      title,
+      source: own ? "P1" : modulePath ? "P3" : listedBy.has(path) ? "P2" : "P4",
+      ...(!modulePath && listedBy.has(path) ? { via: listedBy.get(path) } : {}),
+      ...(unitSig ? { unitSig } : {}),
+      signals: {},
+      flags: [],
+      judge: null,
+      manual: true,
+      gate: {
+        decision: "accept",
+        class: m.class,
+        ...(m.relation ? { relation: m.relation } : {}),
+        by: "maintainer",
+        via: "remembered",
+        reasons: [`accepted by the maintainer: ${m.reason}`],
+        reason: m.reason,
+        at: m.at,
+        ...(m.pinned ? { pinned: true } : {}),
+      },
+    };
+    const built = pickOf(item, gated.builtAt ?? today);
+    // an accept that only confirmed the judge's pick has no note of its own: without the candidate there is nothing
+    // to say why the page is in the course, so it is left out (and said), not a reason to stop the build
+    if (built.problem) warnings.push(`${built.problem}: it is left out`);
+    else {
+      const list = decided.get(m.task) ?? [];
+      list.push({ pick: built.pick, item });
+      decided.set(m.task, list);
+      addedWithoutCandidate++;
+    }
+  }
+
   // hands-on material goes to the lab page and a page is shown once (the top of this file)
   const routed = routePicks({
     accepted: decided,
@@ -438,9 +540,9 @@ export function buildCourse({
         class: pick.class,
         ...(pick.relation ? { relation: pick.relation } : {}),
         reasons: marks,
-        why: item.judge.why,
-        confidence: item.judge.confidence,
-        flags: item.judge.flags ?? [],
+        why: item.judge?.why,
+        confidence: item.judge?.confidence,
+        flags: item.judge?.flags ?? [],
       });
     }
   }
@@ -560,5 +662,7 @@ export function buildCourse({
     stats: courseStats(course),
     routing,
     review,
+    // how many of the maintainer's accepts became picks although they are not candidates
+    addedWithoutCandidate,
   };
 }

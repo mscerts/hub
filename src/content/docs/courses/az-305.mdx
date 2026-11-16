@@ -5,7 +5,9 @@ description: "Follow a structured AZ-305 course organized by study guide task, w
 import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
 
 :::note
-Structured directly from the [official AZ-305 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-305?WT.mc_id=studentamb_165290) skills measured (April 17, 2026 version). Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the lab page, not here, and every page appears once.
+This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official AZ-305 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-305?WT.mc_id=studentamb_165290) (April 17, 2026 version). Each task of the guide links to the Microsoft Learn training and the documentation that cover it. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the lab page, not here.
+
+The course follows the approach of [How to Prepare for Role-Based Exams](/certs/prepare/role-based/): the study guide is the source of truth for what the exam covers, so work through it task by task, with the training to learn a topic and the documentation for the details and for hands-on work. Videos, practice tests and the other resources for the exam are on the [AZ-305 Study Materials](/certs/azure/az-305/) page.
 :::
 
 ## Audience profile
@@ -44,6 +46,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
     <CardGrid>
       <LinkCard title="Monitor your Azure virtual machines with Azure Monitor" href="https://learn.microsoft.com/training/modules/monitor-azure-vm-using-diagnostic-data?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Configure monitoring for applications" href="https://learn.microsoft.com/training/modules/configure-monitoring-applications?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to the Microsoft Azure Well-Architected Framework" href="https://learn.microsoft.com/training/modules/azure-well-architected-introduction?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
   <TabItem label="Documentation">
@@ -143,6 +146,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
       <LinkCard title="Describe the function and identity types of Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-basic-services-identity-types?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Understand Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/understand-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Manage Microsoft Entra application access" href="https://learn.microsoft.com/training/modules/manage-application-access-microsoft-entra-id?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Azure Well-Architected Framework - Security" href="https://learn.microsoft.com/training/modules/azure-well-architected-security?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
   <TabItem label="Documentation">
@@ -214,7 +218,6 @@ The concepts behind the tasks of this skill group. Work through them first: the 
       <LinkCard title="Identity providers for external tenants" href="https://learn.microsoft.com/entra/external-id/customers/concept-authentication-methods-customers?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="What is Microsoft Entra B2B collaboration?" href="https://learn.microsoft.com/entra/external-id/what-is-b2b?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Plan a CIAM Deployment" href="https://learn.microsoft.com/entra/external-id/customers/concept-planning-your-solution?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Microsoft Entra ID documentation - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Microsoft Entra External ID Overview" href="https://learn.microsoft.com/entra/external-id/external-identities-overview?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Application identity and access management - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-application-access?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Landing zone identity and access management - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -284,6 +287,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
   <TabItem label="Learning">
     <CardGrid>
       <LinkCard title="Intro to Azure Policy" href="https://learn.microsoft.com/training/modules/intro-to-azure-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the core architectural components of Azure" href="https://learn.microsoft.com/training/modules/describe-core-architectural-components-of-azure?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
   <TabItem label="Documentation">
@@ -672,7 +676,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Recommend a recovery solution for Azure and hybrid workloads that meets recovery objectives
 
 :::note
-No Learn module or documentation page covers this task yet.
+The Microsoft Learn module "Design a solution for backup and disaster recovery" also covers this task. It is listed once, under [Recommend a backup and recovery solution for compute](#recommend-a-backup-and-recovery-solution-for-compute).
 :::
 
 #### Recommend a backup and recovery solution for compute
@@ -750,11 +754,6 @@ The Microsoft Learn module "Design a solution for backup and disaster recovery" 
 The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
 
 <Tabs>
-  <TabItem label="Learning">
-    <CardGrid>
-      <LinkCard title="Design an Azure compute solution" href="https://learn.microsoft.com/training/modules/design-compute-solution?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="Overview of SQL Server Always on Availability Groups - SQL Server on Azure VMs" href="https://learn.microsoft.com/azure/azure-sql/virtual-machines/windows/availability-group-overview?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -791,7 +790,7 @@ The Microsoft Learn module "Design a data storage solution for relational data" 
 #### Recommend a high availability solution for semi-structured and unstructured data
 
 :::note
-No Learn module or documentation page covers this task yet.
+The Microsoft Learn module "Design a data storage solution for non-relational data" also covers this task. It is listed once, under [Recommend a solution for data protection](#recommend-a-solution-for-data-protection) in the skill group Design data storage solutions for relational data.
 :::
 
 ## Design infrastructure solutions (30–35%)
@@ -807,6 +806,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
     <CardGrid>
       <LinkCard title="Describe Azure compute services" href="https://learn.microsoft.com/training/modules/describe-azure-compute-networking-services?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Introduction to Azure virtual machines" href="https://learn.microsoft.com/training/modules/intro-to-azure-virtual-machines?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Azure Well-Architected Framework - Cost Optimization" href="https://learn.microsoft.com/training/modules/azure-well-architected-cost-optimization?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
   <TabItem label="Documentation">
@@ -818,9 +818,13 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 
 #### Specify components of a compute solution based on workload requirements
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Design an Azure compute solution" href="https://learn.microsoft.com/training/modules/design-compute-solution?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Recommend a virtual machine-based solution
 
@@ -840,6 +844,10 @@ The Microsoft Learn module "Design a solution for backup and disaster recovery" 
 </Tabs>
 
 #### Recommend a container-based solution
+
+:::note
+The Microsoft Learn module "Design an Azure compute solution" also covers this task. It is listed once, under [Specify components of a compute solution based on workload requirements](#specify-components-of-a-compute-solution-based-on-workload-requirements).
+:::
 
 <Tabs>
   <TabItem label="Documentation">
@@ -873,10 +881,13 @@ The Microsoft Learn module "Design a solution for backup and disaster recovery" 
 
 #### Recommend a compute solution for batch processing
 
+:::note
+The Microsoft Learn module "Design an Azure compute solution" also covers this task. It is listed once, under [Specify components of a compute solution based on workload requirements](#specify-components-of-a-compute-solution-based-on-workload-requirements).
+:::
+
 <Tabs>
   <TabItem label="Documentation">
     <CardGrid>
-      <LinkCard title="Azure Batch documentation - Azure Batch" href="https://learn.microsoft.com/azure/batch?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Run Linux on virtual machine compute nodes" href="https://learn.microsoft.com/azure/batch/batch-linux-nodes?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
@@ -901,7 +912,6 @@ The concepts behind the tasks of this skill group. Work through them first: the 
       <LinkCard title="Architectural Approaches for Tenant Integration and Data Access - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/guide/multitenant/approaches/integration?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Use a Message Broker and Events to Integrate Enterprise Systems - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/example-scenario/integration/queues-events?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Azure Well-Architected Framework - Microsoft Azure Well-Architected Framework" href="https://learn.microsoft.com/azure/well-architected?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Azure Functions documentation" href="https://learn.microsoft.com/azure/azure-functions?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Architectural Approaches for the Deployment and Configuration of Multitenant Solutions - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/guide/multitenant/approaches/deployment-configuration?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
@@ -1013,7 +1023,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
     <CardGrid>
       <LinkCard title="Modernization guidance to replatform, refactor, rearchitect - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/modernize/modernization-cloud-replatform-refactor-rearchitect?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Plan your migration - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/migrate/plan-migration?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Wave Planning Overview" href="https://learn.microsoft.com/azure/migrate/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Wave planning overview in Azure Migrate - Azure Migrate" href="https://learn.microsoft.com/azure/migrate/wave-plan-overview?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Agentless and Agent-based Migration Methods in Azure Migrate" href="https://learn.microsoft.com/azure/migrate/server-migrate-overview?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Prepare workloads for cloud migration to Azure - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/migrate/prepare-workloads-cloud?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Migration wave planning - Cloud Adoption Framework" href="https://learn.microsoft.com/azure/cloud-adoption-framework/migrate/migration-wave-planning?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -1107,7 +1117,6 @@ No Learn module or documentation page covers this task yet.
       <LinkCard title="Migrate data to Azure Cosmos DB for Apache Cassandra account using Striim - Azure Cosmos DB for Apache Cassandra" href="https://learn.microsoft.com/azure/cosmos-db/cassandra/migrate-data-striim?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Migrate data from Oracle to Azure Cosmos DB for Apache Cassandra using Arcion - Azure Cosmos DB for Apache Cassandra" href="https://learn.microsoft.com/azure/cosmos-db/cassandra/oracle-migrate-cosmos-db-arcion?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Migrate Data Using the Data Migration Tool - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/how-to-migrate-desktop-tool?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Migrate Data Using Striim - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/migrate-data-striim?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Migrate one-to-few relational data - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/migrate-relational-data?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Migrate Azure SQL Database tables to Azure Cosmos DB with Azure Data Factory" href="https://learn.microsoft.com/azure/data-factory/how-to-sqldb-to-cosmosdb?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Azure Database Migration Service Tools Matrix" href="https://learn.microsoft.com/azure/dms/dms-tools-matrix?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -1115,6 +1124,7 @@ No Learn module or documentation page covers this task yet.
       <LinkCard title="Migrate Databases at Scale Using Azure PowerShell / CLI" href="https://learn.microsoft.com/azure/dms/migration-dms-powershell-cli?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Azure Synapse Analytics: Migration guide" href="https://learn.microsoft.com/azure/synapse-analytics/migration-guides/migrate-to-synapse-analytics-guide?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Migrate Oracle workloads to Oracle Database@Azure" href="https://learn.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-migration-oracle-database-at-azure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate Data Using Striim - Azure Cosmos DB" href="https://learn.microsoft.com/azure/cosmos-db/migrate-data-striim?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Migrate Mainframe Data Tier to Azure with mLogica LIBER*IRIS - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/example-scenario/mainframe/mainframe-data-replication-azure-data-platform?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Migrate Mainframe Data to Azure - Azure Architecture Center" href="https://learn.microsoft.com/azure/architecture/example-scenario/mainframe/mainframe-data-replication-azure-rdrs?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Manage After Migration - Azure SQL Database" href="https://learn.microsoft.com/azure/azure-sql/database/manage-data-after-migrating-to-database?WT.mc_id=studentamb_165290" target="_blank"/>

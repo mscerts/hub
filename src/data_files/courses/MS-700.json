@@ -126,6 +126,10 @@
         "efc00353260121e2417fddc574d887bb908a5426"
       ],
       [
+        "/training/modules/manage-microsoft-teams-use-windows-powershell",
+        "3223847417f7a5a7efcfbd8049fcc27be227c267"
+      ],
+      [
         "/training/modules/monitor-troubleshoot-teams-phone-system",
         "20e57625aa0026b1b8bfeca633ff05fbcec3eece"
       ]
@@ -458,24 +462,8 @@
                   "class": "core",
                   "source": "P1",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/configure-deploy-manage-teams-devices"
-                  },
-                  "title": "Configure, deploy, and manage Teams devices",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P1",
-                  "why": "A professional managing Teams update policies also updates the Teams devices, which this module covers, though not the policies themselves.",
-                  "evidence": "Update Microsoft Teams devices remotely",
-                  "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-04"
+                    "at": "2026-11-15"
                   }
                 }
               ]
@@ -500,38 +488,6 @@
                 },
                 {
                   "target": {
-                    "kind": "module",
-                    "path": "/training/modules/manage-collaboration-experiences-for-chat-channels"
-                  },
-                  "title": "Manage collaboration experiences for chat and channels",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P1",
-                  "why": "A professional building a policy package also sets the messaging policies it bundles, which this module teaches.",
-                  "evidence": "Create and manage messaging policies",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/manage-meetings-virtual-events-experiences"
-                  },
-                  "title": "Manage meetings and events experiences",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P1",
-                  "why": "A professional building a policy package also sets the meeting policies it bundles, which this module teaches.",
-                  "evidence": "Create and manage meeting policies",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
                     "kind": "docs",
                     "path": "/microsoftteams/assign-policy-packages"
                   },
@@ -546,6 +502,13 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-lifecycle-management-governance-for-microsoft-teams",
+                  "title": "Implement lifecycle management and governance for Microsoft Teams",
+                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
                 }
               ]
             },
@@ -648,7 +611,22 @@
             {
               "key": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/perform-operations-for-teams-by-using-powershell-and-microso",
               "text": "Perform operations for Teams by using PowerShell and Microsoft Graph",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-microsoft-teams-use-windows-powershell"
+                  },
+                  "title": "Manage Microsoft Teams by using Windows PowerShell",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Review Microsoft Teams PowerShell module",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -771,7 +749,7 @@
                 {
                   "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
                   "title": "Manage collaboration experiences for chat and channels",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies"
                 },
                 {
                   "path": "/training/modules/manage-access-for-external-users",
@@ -940,6 +918,20 @@
               "picks": [
                 {
                   "target": {
+                    "kind": "module",
+                    "path": "/training/modules/configure-deploy-manage-teams-devices"
+                  },
+                  "title": "Configure, deploy, and manage Teams devices",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Update Microsoft Teams devices remotely",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
                     "kind": "docs",
                     "path": "/microsoftteams/devices/device-management"
                   },
@@ -951,23 +943,6 @@
                     "by": "maintainer",
                     "at": "2026-11-04"
                   }
-                }
-              ],
-              "overlaps": [
-                {
-                  "path": "/training/modules/plan-microsoft-teams-rooms-surface-hub",
-                  "title": "Plan for Microsoft Teams Rooms and shared meeting spaces",
-                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-devices"
-                },
-                {
-                  "path": "/training/modules/plan-teams-phone-system",
-                  "title": "Plan for Microsoft Teams Phone",
-                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/identify-licensing-requirements-for-teams-phone-accounts-and"
-                },
-                {
-                  "path": "/training/modules/configure-deploy-manage-teams-devices",
-                  "title": "Configure, deploy, and manage Teams devices",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
                 }
               ]
             },
@@ -1089,7 +1064,7 @@
                 {
                   "path": "/training/modules/configure-deploy-manage-teams-devices",
                   "title": "Configure, deploy, and manage Teams devices",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-configuration-profiles-for-teams-devices"
                 }
               ]
             },
@@ -1101,7 +1076,7 @@
                 {
                   "path": "/training/modules/configure-deploy-manage-teams-devices",
                   "title": "Configure, deploy, and manage Teams devices",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-configuration-profiles-for-teams-devices"
                 }
               ]
             },
@@ -1113,7 +1088,7 @@
                 {
                   "path": "/training/modules/configure-deploy-manage-teams-devices",
                   "title": "Configure, deploy, and manage Teams devices",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-configuration-profiles-for-teams-devices"
                 }
               ]
             },
@@ -1125,7 +1100,7 @@
                 {
                   "path": "/training/modules/configure-deploy-manage-teams-devices",
                   "title": "Configure, deploy, and manage Teams devices",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies"
+                  "shownUnder": "configure-and-manage-a-teams-environment/manage-teams-clients-and-devices/manage-configuration-profiles-for-teams-devices"
                 }
               ]
             },
@@ -1272,7 +1247,7 @@
                 {
                   "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
                   "title": "Manage collaboration experiences for chat and channels",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies"
                 },
                 {
                   "path": "/training/modules/monitor-your-microsoft-teams-environment",
@@ -1282,7 +1257,7 @@
                 {
                   "path": "/training/modules/manage-meetings-virtual-events-experiences",
                   "title": "Manage meetings and events experiences",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies"
                 }
               ]
             },
@@ -1299,7 +1274,7 @@
                 {
                   "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
                   "title": "Manage collaboration experiences for chat and channels",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies"
                 }
               ]
             },
@@ -1321,7 +1296,7 @@
                 {
                   "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
                   "title": "Manage collaboration experiences for chat and channels",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies"
                 }
               ]
             },
@@ -1333,7 +1308,7 @@
                 {
                   "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
                   "title": "Manage collaboration experiences for chat and channels",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies"
                 }
               ]
             },
@@ -1345,7 +1320,7 @@
                 {
                   "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
                   "title": "Manage collaboration experiences for chat and channels",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies"
                 }
               ]
             },
@@ -1357,7 +1332,7 @@
                 {
                   "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
                   "title": "Manage collaboration experiences for chat and channels",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies"
                 },
                 {
                   "path": "/training/modules/manage-access-for-external-users",
@@ -1386,12 +1361,20 @@
             {
               "key": "manage-teams-channels-chats-and-apps/manage-channels-and-chats/create-and-manage-messaging-policies",
               "text": "Create and manage messaging policies",
-              "picks": [],
-              "overlaps": [
+              "picks": [
                 {
-                  "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-collaboration-experiences-for-chat-channels"
+                  },
                   "title": "Manage collaboration experiences for chat and channels",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Create and manage messaging policies",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             }
@@ -1535,7 +1518,7 @@
                 {
                   "path": "/training/modules/manage-meetings-virtual-events-experiences",
                   "title": "Manage meetings and events experiences",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies"
                 }
               ]
             },
@@ -1547,7 +1530,7 @@
                 {
                   "path": "/training/modules/manage-meetings-virtual-events-experiences",
                   "title": "Manage meetings and events experiences",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies"
                 }
               ]
             },
@@ -1559,19 +1542,27 @@
                 {
                   "path": "/training/modules/manage-meetings-virtual-events-experiences",
                   "title": "Manage meetings and events experiences",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies"
                 }
               ]
             },
             {
               "key": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies",
               "text": "Create and manage meeting policies",
-              "picks": [],
-              "overlaps": [
+              "picks": [
                 {
-                  "path": "/training/modules/manage-meetings-virtual-events-experiences",
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-meetings-virtual-events-experiences"
+                  },
                   "title": "Manage meetings and events experiences",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Create and manage meeting policies",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             },
@@ -1583,7 +1574,7 @@
                 {
                   "path": "/training/modules/manage-meetings-virtual-events-experiences",
                   "title": "Manage meetings and events experiences",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies"
                 }
               ]
             },
@@ -1595,7 +1586,7 @@
                 {
                   "path": "/training/modules/manage-meetings-virtual-events-experiences",
                   "title": "Manage meetings and events experiences",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies"
                 }
               ]
             },
@@ -1607,7 +1598,7 @@
                 {
                   "path": "/training/modules/manage-meetings-virtual-events-experiences",
                   "title": "Manage meetings and events experiences",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies"
                 }
               ]
             },
@@ -1619,7 +1610,7 @@
                 {
                   "path": "/training/modules/manage-meetings-virtual-events-experiences",
                   "title": "Manage meetings and events experiences",
-                  "shownUnder": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams"
+                  "shownUnder": "manage-meetings-and-calling/manage-meetings-and-events/create-and-manage-meeting-policies"
                 }
               ]
             }
@@ -2482,6 +2473,24 @@
       "path": "/troubleshoot/windows-client/setup-upgrade-and-drivers/windows-device-and-driver-management-overview",
       "reason": "Covers Windows device and driver troubleshooting, a different product area from the Teams client.",
       "at": "2026-11-04"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams",
+      "path": "/training/modules/manage-collaboration-experiences-for-chat-channels",
+      "reason": "Belongs under \"Create and manage messaging policies\", not here.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/create-and-manage-policy-packages-in-teams",
+      "path": "/training/modules/manage-meetings-virtual-events-experiences",
+      "reason": "Belongs under \"Create and manage meeting policies\", not here.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "configure-and-manage-a-teams-environment/plan-and-implement-governance-for-teams/plan-and-manage-update-policies",
+      "path": "/training/modules/configure-deploy-manage-teams-devices",
+      "reason": "Belongs under \"Manage configuration profiles for Teams devices\", not here.",
+      "at": "2026-11-14"
     }
   ]
 }

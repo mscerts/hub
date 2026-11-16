@@ -150,6 +150,10 @@
         "fe25abe22b76a9f1ccf473f63ad83ca23a694689"
       ],
       [
+        "/training/modules/define-create-business-rules",
+        "eb8ba12793421be2e569cd1730bcc71cb2b22dbf"
+      ],
+      [
         "/training/modules/describe-business-value-microsoft-power-platform",
         "49058f3c2148d1e9ec25ea616a5cafb5ff119ef2"
       ],
@@ -2388,7 +2392,22 @@
             {
               "key": "build-business-application-logic-and-automation/implement-business-and-process-logic/configure-business-rules",
               "text": "Configure business rules",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/define-create-business-rules"
+                  },
+                  "title": "Define and create business rules in Dataverse",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Define business rules - Introduction",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "build-business-application-logic-and-automation/implement-business-and-process-logic/configure-business-process-flows",

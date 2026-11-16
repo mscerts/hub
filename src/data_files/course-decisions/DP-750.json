@@ -41,7 +41,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What are ACID guarantees on Azure Databricks? - Azure Databricks"
     },
     {
       "task": "deploy-and-maintain-data-pipelines-and-workloads/monitor-troubleshoot-and-optimize-workloads-in-azure-databri/@foundations",
@@ -50,7 +51,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What is predictive I/O? - Azure Databricks"
     },
     {
       "task": "deploy-and-maintain-data-pipelines-and-workloads/monitor-troubleshoot-and-optimize-workloads-in-azure-databri/implement-log-streaming-by-using-log-analytics-in-azure-moni",
@@ -60,7 +62,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Pipeline event log - Azure Databricks"
     },
     {
       "task": "prepare-and-process-data/cleanse-transform-and-load-data-into-unity-catalog/choose-appropriate-column-data-types",
@@ -110,7 +113,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Deletion vectors in Databricks - Azure Databricks"
     },
     {
       "task": "prepare-and-process-data/design-and-implement-data-modeling-in-unity-catalog/choose-a-data-table-format-such-as-parquet-delta-csv-json-or",
@@ -120,7 +124,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Review table details with describe detail - Azure Databricks"
     },
     {
       "task": "prepare-and-process-data/implement-and-manage-data-quality-constraints-in-unity-catal/@foundations",
@@ -226,7 +231,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Get Microsoft Entra ID tokens manually - Azure Databricks"
     },
     {
       "task": "set-up-and-configure-an-azure-databricks-environment/create-and-organize-objects-in-unity-catalog/@foundations",
@@ -244,7 +250,8 @@
       "relation": "prerequisite",
       "reason": "Product overview of AI/BI, the background for configuring Genie instructions.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Databricks AI/BI - Azure Databricks"
     },
     {
       "task": "set-up-and-configure-an-azure-databricks-environment/create-and-organize-objects-in-unity-catalog/configure-ai-bi-genie-instructions-for-data-discovery",
@@ -254,7 +261,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Genie Agents with dashboards - Azure Databricks"
     },
     {
       "task": "set-up-and-configure-an-azure-databricks-environment/select-and-configure-compute-in-a-workspace/@foundations",
@@ -263,7 +271,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Introduction to workspace objects - Azure Databricks"
     },
     {
       "task": "set-up-and-configure-an-azure-databricks-environment/select-and-configure-compute-in-a-workspace/configure-access-permissions-to-a-compute-resource",
@@ -273,7 +282,27 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Role-based access control (RBAC) - Azure Databricks"
+    },
+    {
+      "task": "prepare-and-process-data/ingest-data-into-unity-catalog/ingest-streaming-data-from-azure-event-hubs",
+      "target": "/training/modules/ingest-data-into-unity-catalog",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Choose an appropriate data ingestion tool, including Lakeflow Connect, notebooks, and Azure Data Factory\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "prepare-and-process-data/design-and-implement-data-modeling-in-unity-catalog/choose-an-appropriate-data-ingestion-tool-including-lakeflow",
+      "target": "/training/modules/ingest-data-into-unity-catalog",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

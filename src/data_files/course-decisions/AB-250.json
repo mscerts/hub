@@ -203,7 +203,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-09"
+      "at": "2026-11-09",
+      "title": "Configure conversation orchestration in Dynamics 365 Contact Center (preview)"
     },
     {
       "task": "configure-work-distribution/configure-basic-and-unified-routing/configure-basic-routing-rule-sets",
@@ -268,7 +269,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-09"
+      "at": "2026-11-09",
+      "title": "Understand how unified routing affects queue items and live work items for routed records"
     },
     {
       "task": "configure-work-distribution/configure-queues/create-and-manage-queues",
@@ -533,7 +535,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-09"
+      "at": "2026-11-09",
+      "title": "Create rollout plans to manage AI agents"
     },
     {
       "task": "deploy-dynamics-365-contact-center/deploy-dynamics-365-contact-center/create-solutions-for-dynamics-365-contact-center-deployments",
@@ -1072,7 +1075,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-09"
+      "at": "2026-11-09",
+      "title": "Welcome to Dynamics 365 Customer Service"
     },
     {
       "task": "deploy-dynamics-365-contact-center/implement-dynamics-365-contact-center/@foundations",
@@ -1543,7 +1547,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-09"
+      "at": "2026-11-09",
+      "title": "Security FAQs about AI agents"
     },
     {
       "task": "implement-channels/configure-channel-features/design-the-dynamics-365-contact-center-setup",
@@ -1609,7 +1614,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-09"
+      "at": "2026-11-09",
+      "title": "Trust center for Dynamics 365"
     },
     {
       "task": "implement-channels/configure-channel-features/design-the-dynamics-365-contact-center-setup",
@@ -2140,7 +2146,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-09"
+      "at": "2026-11-09",
+      "title": "Overview of channels"
     },
     {
       "task": "implement-channels/provision-and-manage-the-voice-channel/configure-the-voice-channel",
@@ -2229,7 +2236,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-09"
+      "at": "2026-11-09",
+      "title": "Calculate conversation metrics"
     },
     {
       "task": "manage-analytics-for-the-dynamics-365-contact-center/configure-the-dynamics-365-contact-center-supervisor-experie/@foundations",
@@ -2238,7 +2246,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-09"
+      "at": "2026-11-09",
+      "title": "Service Agent Templates Overview"
     },
     {
       "task": "manage-analytics-for-the-dynamics-365-contact-center/customize-analytics-and-reporting/@foundations",
@@ -2255,6 +2264,33 @@
       "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
       "by": "maintainer",
       "at": "2026-11-09"
+    },
+    {
+      "task": "implement-channels/configure-channel-features/design-the-dynamics-365-contact-center-setup",
+      "target": "/training/modules/omnichannel-power-virtual-agents",
+      "decision": "reject",
+      "reason": "Learn moved this page to /training/modules/customer-engagement-channels-overview, which is already in the course.",
+      "by": "maintainer",
+      "at": "2026-11-14"
+    },
+    {
+      "task": "deploy-dynamics-365-contact-center/deploy-dynamics-365-contact-center/configure-application-lifecycle-management-alm-for-dynamics",
+      "target": "/training/modules/configure-core-capabilities-contact-center",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Configure the Copilot Service workspace\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "deploy-dynamics-365-contact-center/implement-dynamics-365-contact-center/configure-the-copilot-service-workspace",
+      "target": "/training/modules/configure-core-capabilities-contact-center",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

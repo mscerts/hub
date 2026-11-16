@@ -125,12 +125,20 @@
         "ff05e357eff324de176e8875bfc2609d56320371"
       ],
       [
+        "/training/modules/design-data-storage-solution-for-relational-data",
+        "d846e71743850bdaf189ca0e179c35fbfd5df2a2"
+      ],
+      [
         "/training/modules/design-implement-database-objects",
         "d208551ad5bbdfa723b2bce1000dafb4c108e4a3"
       ],
       [
         "/training/modules/design-implement-private-access-to-azure-services",
         "dce0fce5189ddd6f84834a3891a71da60173295f"
+      ],
+      [
+        "/training/modules/design-migrations",
+        "1cb62a4905248381d52b950d4f28ff11d0a70d92"
       ],
       [
         "/training/modules/eliminate-public-exposure-paas-private-link",
@@ -151,6 +159,10 @@
       [
         "/training/modules/explore-security-practices-azure-sql-database",
         "fd54af10294d1b268c8ee86c216e7b67dc6befa3"
+      ],
+      [
+        "/training/modules/get-started-sql-database-microsoft-fabric",
+        "731972c3714c37a0a85ac5e00d52bf6b9af2f925"
       ],
       [
         "/training/modules/implement-data-security-compliance",
@@ -377,7 +389,24 @@
             {
               "key": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/recommend-a-database-offering-based-on-specific-requirements",
               "text": "Recommend a database offering based on specific requirements",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/design-data-storage-solution-for-relational-data"
+                  },
+                  "title": "Design a data storage solution for relational data",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Covers choosing between Azure SQL Database, SQL Managed Instance and SQL Server on a virtual machine for a set of requirements.",
+                  "evidence": "Design for Azure SQL Database",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                }
+              ]
             },
             {
               "key": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/choose-an-automated-deployment-method",
@@ -564,6 +593,20 @@
               "key": "plan-and-implement-data-platform-resources/plan-and-deploy-azure-sql-solutions/identify-use-cases-for-azure-sql-database-in-microsoft-fabri",
               "text": "Identify use cases for Azure SQL Database in Microsoft Fabric",
               "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/get-started-sql-database-microsoft-fabric"
+                  },
+                  "title": "Get started with SQL Database in Microsoft Fabric",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Exercise: Work with SQL Database in Microsoft Fabric",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                },
                 {
                   "target": {
                     "kind": "docs",
@@ -1739,12 +1782,22 @@
             {
               "key": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/evaluate-offline-or-online-migration-strategies",
               "text": "Evaluate offline or online migration strategies",
-              "picks": [],
-              "overlaps": [
+              "picks": [
                 {
-                  "path": "/training/modules/migrate-sql-workloads-azure-sql-databases",
-                  "title": "Migrate SQL Server workloads to Azure SQL Database",
-                  "shownUnder": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/evaluate-requirements-for-a-migration"
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/design-migrations"
+                  },
+                  "title": "Design migrations",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Covers evaluating a migration and choosing between the offline and online migration tools.",
+                  "evidence": "Evaluate migration with the Cloud Adoption Framework",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             },
@@ -17493,12 +17546,6 @@
       "taskKey": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/@foundations",
       "path": "/training/modules/migrate-mongodb-database-to-azure-cosmos-db",
       "reason": "Migrates MongoDB to Azure Cosmos DB, a different product area from Azure SQL.",
-      "at": "2026-11-04"
-    },
-    {
-      "taskKey": "plan-and-implement-data-platform-resources/plan-and-implement-a-migration-strategy/evaluate-offline-or-online-migration-strategies",
-      "path": "/training/modules/design-migrations",
-      "reason": "Not part of this task; the page fits a neighbouring task, another platform or is a generic overview.",
       "at": "2026-11-04"
     },
     {

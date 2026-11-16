@@ -146,6 +146,10 @@
         "8dafa0ed1ddcf1315db3f154b841e469dbe245cf"
       ],
       [
+        "/training/modules/fabric-govern-analytics-data",
+        "95499138efcf9d24b6012dc6d3d75fffd29d2cd0"
+      ],
+      [
         "/training/modules/fabric-transform-data-dataflows",
         "9d410ce771c2975c90a7872ce5686c0d14c0a5b6"
       ],
@@ -1073,6 +1077,20 @@
               "picks": [
                 {
                   "target": {
+                    "kind": "module",
+                    "path": "/training/modules/fabric-govern-analytics-data"
+                  },
+                  "title": "Govern analytics data in Microsoft Fabric",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Classify and protect data in Microsoft Fabric",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                },
+                {
+                  "target": {
                     "kind": "docs",
                     "path": "/fabric/fundamentals/apply-sensitivity-labels"
                   },
@@ -1136,6 +1154,13 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/fabric-govern-analytics-data",
+                  "title": "Govern analytics data in Microsoft Fabric",
+                  "shownUnder": "implement-and-manage-an-analytics-solution/configure-security-and-governance/apply-sensitivity-labels-to-items"
                 }
               ]
             }
@@ -4589,6 +4614,22 @@
                 },
                 {
                   "target": {
+                    "kind": "module",
+                    "path": "/training/modules/use-fabric-activator"
+                  },
+                  "title": "Use Activator in Microsoft Fabric",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "Activator is the engine behind Fabric alerts; this module shows how its rules and actions are set up.",
+                  "evidence": "Configure Activator for your data",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                },
+                {
+                  "target": {
                     "kind": "docs",
                     "path": "/fabric/data-factory/monitor-pipeline-runs"
                   },
@@ -4600,22 +4641,6 @@
                   "evidence": "creating alerts",
                   "decision": {
                     "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/fabric/real-time-intelligence/data-activator"
-                  },
-                  "title": "Activator documentation - Microsoft Fabric",
-                  "class": "supporting",
-                  "relation": "prerequisite",
-                  "source": "P4",
-                  "why": "The Activator landing page introduces the tool in which alerts are built; a general overview.",
-                  "evidence": "create alerts, rules, and triggers",
-                  "decision": {
-                    "by": "maintainer",
                     "at": "2026-11-04"
                   }
                 }
@@ -7432,6 +7457,12 @@
       "path": "/training/modules/fabric-transform-data-dataflows",
       "reason": "Dataflow Gen2 tuning, not Spark.",
       "at": "2026-11-04"
+    },
+    {
+      "taskKey": "monitor-and-optimize-an-analytics-solution/monitor-fabric-items/configure-alerts",
+      "path": "/fabric/real-time-intelligence/data-activator",
+      "reason": "A landing page of the Activator documentation.",
+      "at": "2026-11-14"
     }
   ]
 }

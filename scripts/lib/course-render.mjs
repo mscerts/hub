@@ -261,10 +261,36 @@ function weightText(weight) {
  * lab page, which the opening note links when the hub has one. `review` is the review file of the build
  * ({ picks: [{ task, path, reasons, why }] }); with it the page is the review copy (see the top of this file).
  * `only` (a text) renders just the skill groups whose title contains it, as a preview of one group.
+ * `examPage` (the address of the exam's page on the hub) and `prepare` ({ title, href }: the How to Prepare page
+ * that exam page links) add the second paragraph of the intro: which preparation guide the course follows and
+ * where the exam's other resources are. Both are optional; the command line reads them from the exam page.
  */
+/**
+ * The second paragraph of the intro, as lines (empty when neither address is known): the How to Prepare page the
+ * course follows, and the exam page with everything that is not Microsoft Learn reading.
+ */
+function introGuidance(code, { examPage, prepare }) {
+  const sentences = [];
+  if (prepare?.href && prepare?.title)
+    sentences.push(
+      `The course follows the approach of [${plain(prepare.title)}](${prepare.href}): the study guide is the source of truth for what the exam covers, so work through it task by task, with the training to learn a topic and the documentation for the details and for hands-on work.`,
+    );
+  if (examPage)
+    sentences.push(
+      `Videos, practice tests and the other resources for the exam are on the [${code} Study Materials](${examPage}) page.`,
+    );
+  return sentences.length ? ["", sentences.join(" ")] : [];
+}
+
 export function renderCourse(
   course,
-  { labPage = null, review = null, only = null } = {},
+  {
+    labPage = null,
+    review = null,
+    only = null,
+    examPage = null,
+    prepare = null,
+  } = {},
 ) {
   const guideUrl = `https://learn.microsoft.com/credentials/certifications/resources/study-guides/${course.code.toLowerCase()}${TRACKING}`;
   const version = course.inputs?.guideAsOf
@@ -294,7 +320,8 @@ export function renderCourse(
     "import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';",
     "",
     ":::note",
-    `Structured directly from the [official ${course.code} study guide](${guideUrl}) skills measured${version}. Each task links to the relevant Microsoft Learn training and documentation.${hasFoundations ? " Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks." : ""} Exercises, guided projects, tutorials and quickstarts are on ${labPage ? `the [${course.code} labs page](${labPage})` : "the lab page"}, not here, and every page appears once.`,
+    `This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official ${course.code} study guide](${guideUrl})${version}. Each task of the guide links to the Microsoft Learn training and the documentation that cover it.${hasFoundations ? " Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks." : ""} Exercises, guided projects, tutorials and quickstarts are on ${labPage ? `the [${course.code} labs page](${labPage})` : "the lab page"}, not here.`,
+    ...introGuidance(course.code, { examPage, prepare }),
     ":::",
     "",
   ];

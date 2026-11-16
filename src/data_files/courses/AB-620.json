@@ -1022,20 +1022,6 @@
                 },
                 {
                   "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/create-rest-api-copilot-connectors-copilot-studio"
-                  },
-                  "title": "Create REST API actions for custom agents",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Create REST API actions for custom agents",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
                     "kind": "module",
                     "path": "/training/modules/use-dataverse-triggers-actions"
                   },
@@ -2948,17 +2934,18 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/employee-self-service/declarative-agent-evaluations"
+                    "path": "/copilot/employee-self-service/declarative-agent-evaluations"
                   },
                   "title": "Agent evaluations for the Employee Self-Service declarative agent",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/employee-self-service/declarative-agent-evaluations",
                   "why": "Generating, reviewing and running evaluation test sets is this task, though the page is about an employee self-service agent in another product.",
                   "evidence": "Learn how to generate, review, run, and maintain evaluation test sets",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-09"
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -3080,17 +3067,18 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/employee-self-service/evaluations-custom-strategy"
+                    "path": "/copilot/employee-self-service/evaluations-custom-strategy"
                   },
                   "title": "Create a custom evaluation strategy for your Employee Self-Service agent",
                   "class": "supporting",
                   "relation": "deeper",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/employee-self-service/evaluations-custom-strategy",
                   "why": "Explains how to create a custom evaluation strategy, a method choice deeper than the exam asks, for an employee self-service agent.",
                   "evidence": "Create a custom evaluation strategy for your Employee Self-Service agent",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-09"
+                    "at": "2026-11-14"
                   }
                 }
               ],
@@ -13505,6 +13493,12 @@
       "path": "/training/modules/configure-model-driven-apps-customer-engagement-apps",
       "reason": "Forms, charts and dashboards in model-driven apps are a different product area.",
       "at": "2026-11-09"
+    },
+    {
+      "taskKey": "plan-and-configure-agent-solutions/create-and-monitor-agent-flows-in-copilot-studio/configure-actions-and-connectors",
+      "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/create-rest-api-copilot-connectors-copilot-studio",
+      "reason": "A release plan item from 2024, not documentation of the feature.",
+      "at": "2026-11-14"
     }
   ]
 }

@@ -5,7 +5,9 @@ description: "Follow a structured AI-300 course organized by study guide task, w
 import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
 
 :::note
-Structured directly from the [official AI-300 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-300?WT.mc_id=studentamb_165290) skills measured. Each task links to the relevant Microsoft Learn training and documentation. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AI-300 labs page](/certs/labs/azure/ai-300/), not here, and every page appears once.
+This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official AI-300 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ai-300?WT.mc_id=studentamb_165290). Each task of the guide links to the Microsoft Learn training and the documentation that cover it. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AI-300 labs page](/certs/labs/azure/ai-300/), not here.
+
+The course follows the approach of [How to Prepare for Role-Based Exams](/certs/prepare/role-based/): the study guide is the source of truth for what the exam covers, so work through it task by task, with the training to learn a topic and the documentation for the details and for hands-on work. Videos, practice tests and the other resources for the exam are on the [AI-300 Study Materials](/certs/azure/ai-300/) page.
 :::
 
 ## Audience profile
@@ -178,7 +180,6 @@ The concepts behind the tasks of this skill group. Work through them first: the 
       <LinkCard title="Curated environments" href="https://learn.microsoft.com/azure/machine-learning/resource-curated-environments?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Apache Spark - environment configuration - Azure Machine Learning" href="https://learn.microsoft.com/azure/machine-learning/apache-spark-environment-configuration?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Set up MLOps with Azure DevOps" href="https://learn.microsoft.com/azure/machine-learning/how-to-setup-mlops-azureml?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Set up MLOps with GitHub" href="https://learn.microsoft.com/azure/machine-learning/how-to-setup-mlops-github-azure-ml?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Troubleshoot environment images" href="https://learn.microsoft.com/azure/machine-learning/how-to-troubleshoot-environments?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="CLI (v2) environment YAML schema" href="https://learn.microsoft.com/azure/machine-learning/reference-yaml-environment?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Azure Container for PyTorch" href="https://learn.microsoft.com/azure/machine-learning/resource-azure-container-for-pytorch?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -221,6 +222,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
     <CardGrid>
       <LinkCard title="Share data across workspaces with registries" href="https://learn.microsoft.com/azure/machine-learning/how-to-share-data-across-workspaces-with-registries?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Share models, components, and environments across workspaces with registries" href="https://learn.microsoft.com/azure/machine-learning/how-to-share-models-pipelines-across-workspaces-with-registries?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Machine Learning registries" href="https://learn.microsoft.com/azure/machine-learning/concept-machine-learning-registries-mlops?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -280,6 +282,7 @@ The Microsoft Learn module "Automate model training with GitHub Actions" also co
     <CardGrid>
       <LinkCard title="Authenticate to Azure from GitHub Actions workflows" href="https://learn.microsoft.com/azure/developer/github/connect-from-azure?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Authenticate to Azure from GitHub Actions by OpenID Connect" href="https://learn.microsoft.com/azure/developer/github/connect-from-azure-openid-connect?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up MLOps with GitHub" href="https://learn.microsoft.com/azure/machine-learning/how-to-setup-mlops-github-azure-ml?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -622,6 +625,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
   <TabItem label="Learning">
     <CardGrid>
       <LinkCard title="Implement and manage enforcement of cloud governance policies" href="https://learn.microsoft.com/training/modules/implement-manage-enforcement-cloud-governance-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan and prepare a GenAIOps solution" href="https://learn.microsoft.com/training/modules/plan-prepare-genaiops?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -846,6 +850,11 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Implement AI quality metrics, including groundedness, relevance, coherence, and fluency
 
 <Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Run evaluations and generate synthetic datasets" href="https://learn.microsoft.com/training/modules/run-evaluations-generate-synthetic-datasets?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
       <LinkCard title="General Purpose Evaluators for Generative AI - Microsoft Foundry" href="https://learn.microsoft.com/azure/foundry/concepts/evaluation-evaluators/general-purpose-evaluators?WT.mc_id=studentamb_165290" target="_blank"/>
@@ -854,6 +863,10 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 </Tabs>
 
 #### Configure risk and safety evaluations for harmful content detection
+
+:::note
+The Microsoft Learn module "Run evaluations and generate synthetic datasets" also covers this task. It is listed once, under [Implement AI quality metrics, including groundedness, relevance, coherence, and fluency](#implement-ai-quality-metrics-including-groundedness-relevance-coherence-and-fluency).
+:::
 
 <Tabs>
   <TabItem label="Documentation">
@@ -930,7 +943,7 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 #### Optimize retrieval performance by tuning similarity thresholds, chunk sizes, and retrieval strategies
 
 :::note
-No Learn module or documentation page covers this task yet.
+The Microsoft Learn module "Implement advanced RAG pipelines with Azure AI Search and Microsoft Foundry" also covers this task. It is listed once, under [Implement and optimize hybrid search approaches combining semantic and keyword-based retrieval](#implement-and-optimize-hybrid-search-approaches-combining-semantic-and-keyword-based-retrieval).
 :::
 
 #### Select and fine-tune embedding models for domain-specific use cases and accuracy improvements
@@ -941,9 +954,13 @@ No Learn module or documentation page covers this task yet.
 
 #### Implement and optimize hybrid search approaches combining semantic and keyword-based retrieval
 
-:::note
-No Learn module or documentation page covers this task yet.
-:::
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement advanced RAG pipelines with Azure AI Search and Microsoft Foundry" href="https://learn.microsoft.com/training/modules/aaai-implement-advanced-rag-azure-ai-search?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
 
 #### Evaluate and improve RAG system performance by using relevance metrics and A/B testing frameworks
 
@@ -976,7 +993,7 @@ No Learn module or documentation page covers this task yet.
 #### Monitor and optimize fine-tuned model performance
 
 :::note
-No Learn module or documentation page covers this task yet.
+The Microsoft Learn module "Optimize and fine-tune AI agents for production" also covers this task. It is listed once, under [Design and implement advanced fine-tuning methods](#design-and-implement-advanced-fine-tuning-methods).
 :::
 
 #### Manage a fine-tuned model from development through production deployment

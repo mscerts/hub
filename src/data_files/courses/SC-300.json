@@ -877,22 +877,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/entra/identity/users"
-                  },
-                  "title": "Microsoft Entra users, groups, licenses, and domains documentation - Microsoft Entra ID",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Hub page for users, groups, licenses and domains, the closest page to domain configuration among this task's candidates.",
-                  "evidence": "Hub page for users, groups, licenses and domains, the closest page to domain configuration among this task's candidates.",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/entra/identity/monitoring-health/troubleshoot-audit-data-verified-domain"
                   },
                   "title": "Bulk changes to usernames during verified domain changes",
@@ -1067,21 +1051,6 @@
               "evidence": "Describes overview of identity provisioning.",
               "decision": {
                 "by": "auto",
-                "at": "2026-11-04"
-              }
-            },
-            {
-              "target": {
-                "kind": "docs",
-                "path": "/entra/fundamentals/bulk-operations"
-              },
-              "title": "Bulk operations in Microsoft Entra ID (Preview)",
-              "class": "foundation",
-              "source": "P4",
-              "why": "Introduces the bulk operations experience for users, groups and devices, the concept the automation task builds on.",
-              "evidence": "Learn about the new Microsoft Entra bulk operations experience for managing users, groups, and devices.",
-              "decision": {
-                "by": "maintainer",
                 "at": "2026-11-04"
               }
             },
@@ -1378,22 +1347,6 @@
                   "source": "P4",
                   "why": "Inviting existing partner accounts as B2B users is a neighbouring step of guest account creation.",
                   "evidence": "Use either PowerShell or the Microsoft Graph invitation API.",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/entra/fundamentals/bulk-operations-service-limitations"
-                  },
-                  "title": "Bulk operations service limitations",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "A professional using bulk operations on users meets the service limits, a neighbouring step in this group, though the page is about a preview feature.",
-                  "evidence": "bulk operations related to users, groups",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-04"
@@ -1750,38 +1703,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/entra/identity/users/groups-bulk-download"
-                  },
-                  "title": "Download a list of groups in the Azure portal",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "A group administrator who maintains groups also exports their properties in bulk, a neighbouring step that the bulk operations task covers.",
-                  "evidence": "Download group properties in bulk",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/entra/identity/users/groups-bulk-download-members"
-                  },
-                  "title": "Bulk download group membership list - Azure portal",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "A group administrator exports group membership in bulk, a neighbouring step of group maintenance.",
-                  "evidence": "Download group members in bulk in the Microsoft Entra admin center.",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/entra/identity/users/groups-bulk-import-members"
                   },
                   "title": "Bulk add group members by uploading a CSV file",
@@ -2120,7 +2041,70 @@
             {
               "key": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/automate-bulk-operations-by-using-the-microsoft-entra-admin",
               "text": "Automate bulk operations by using the Microsoft Entra admin center and PowerShell",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/fundamentals/bulk-operations"
+                  },
+                  "title": "Bulk operations in Microsoft Entra ID (Preview)",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Learn about the new Microsoft Entra bulk operations experience for managing users, groups, and devices.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/fundamentals/bulk-operations-service-limitations"
+                  },
+                  "title": "Bulk operations service limitations",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "The service limits of bulk operations decide how large a bulk job can be.",
+                  "evidence": "bulk operations related to users, groups",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/identity/users/groups-bulk-download"
+                  },
+                  "title": "Download a list of groups in the Azure portal",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Downloading the list of groups is one of the bulk operations of the admin center.",
+                  "evidence": "Download group properties in bulk",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/identity/users/groups-bulk-download-members"
+                  },
+                  "title": "Bulk download group membership list - Azure portal",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Downloading a group's members is one of the bulk operations of the admin center.",
+                  "evidence": "Download group members in bulk in the Microsoft Entra admin center.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/implement-manage-external-identities",
@@ -5010,6 +4994,20 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/identity/hybrid/connect/migrate-from-federation-to-cloud-authentication"
+                  },
+                  "title": "Migrate from federation to cloud authentication in Microsoft Entra ID",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "This article has information about moving your hybrid identity environment from federation to cloud authentication",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             },
@@ -6957,6 +6955,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/microsoft-365/admin/add-users/remove-former-employee-step-1"
+                  },
+                  "title": "Step 1 - Prevent user sign-in and block access to Microsoft 365",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Blocking sign-in for a departing user is the first step of disabling an account.",
+                  "evidence": "Learn how to block a user from signing in and restrict their access to Microsoft 365 services with step-by-step instructions for admins.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             },
@@ -8157,6 +8171,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/global-secure-access/concept-universal-continuous-access-evaluation"
+                  },
+                  "title": "Learn about Universal Continuous Evaluation",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Universal continuous access evaluation extends continuous access evaluation to traffic through Global Secure Access.",
+                  "evidence": "Learn about Universal Continuous Evaluation concepts",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ],
               "overlaps": [
@@ -8170,7 +8200,24 @@
             {
               "key": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/configure-authentication-context",
               "text": "Configure authentication context",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/identity-platform/developer-guide-conditional-access-authentication-context"
+                  },
+                  "title": "Developer guidance for Microsoft Entra Conditional Access authentication context",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P4",
+                  "why": "Explains how an application asks for an authentication context, the other side of the context an administrator configures.",
+                  "evidence": "Developer guidance and scenarios for Microsoft Entra Conditional Access authentication context",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/secure-aad-users-with-mfa",
@@ -8259,23 +8306,6 @@
                   "evidence": "Learn how to create a Conditional Access policy plan from a template or from scratch",
                   "decision": {
                     "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/entra/identity/conditional-access/terms-of-use"
-                  },
-                  "title": "Set Up Microsoft Entra Terms of Use with Conditional Access",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P2",
-                  "via": "/training/modules/plan-implement-entitlement-management",
-                  "why": "Explains setting up Terms of Use with Conditional Access, a neighbouring policy scenario of the template task.",
-                  "evidence": "Explains setting up Terms of Use with Conditional Access, a neighbouring policy scenario of the template task.",
-                  "decision": {
-                    "by": "maintainer",
                     "at": "2026-11-04"
                   }
                 },
@@ -10602,23 +10632,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/entra/identity/managed-identities-azure-resources"
-                  },
-                  "title": "Microsoft Entra managed identities for Azure resources documentation - Managed identities for Azure resources",
-                  "class": "supporting",
-                  "relation": "prerequisite",
-                  "source": "P2",
-                  "via": "/training/modules/implement-access-management-for-azure-resources",
-                  "why": "Landing page for managed identities documentation; useful orientation before creating one.",
-                  "evidence": "Learn how to use managed identities for Azure resources in Microsoft Entra ID.",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/entra/architecture/service-accounts-managed-identities"
                   },
                   "title": "Securing managed identities in Microsoft Entra ID",
@@ -12327,6 +12340,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/identity/enterprise-apps/plan-sso-deployment"
+                  },
+                  "title": "Plan a single sign-on deployment",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Planning single sign-on is the first design step of integrating a SaaS app.",
+                  "evidence": "Plan your single sign‑on deployment in Microsoft Entra ID. Streamline role assignments, certificate management, and licensing to ensure uninterrupted access.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ],
               "overlaps": [
@@ -13920,7 +13949,23 @@
             {
               "key": "plan-and-automate-identity-governance/plan-and-implement-entitlement-management-in-microsoft-entra/implement-and-manage-terms-of-use-tou",
               "text": "Implement and manage terms of use (ToU)",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/identity/conditional-access/terms-of-use"
+                  },
+                  "title": "Set Up Microsoft Entra Terms of Use with Conditional Access",
+                  "class": "core",
+                  "source": "P2",
+                  "via": "/training/modules/plan-implement-entitlement-management",
+                  "evidence": "Explains setting up Terms of Use with Conditional Access, a neighbouring policy scenario of the template task.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/plan-implement-entitlement-management",
@@ -22735,12 +22780,6 @@
     },
     {
       "taskKey": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/configure-authentication-context",
-      "path": "/entra/identity-platform/developer-guide-conditional-access-authentication-context",
-      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview or sample.",
-      "at": "2026-11-04"
-    },
-    {
-      "taskKey": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/configure-authentication-context",
       "path": "/entra/msal/javascript/browser/mcp",
       "reason": "MSAL Browser developer library guidance, outside an administrator's task.",
       "at": "2026-11-04"
@@ -23229,12 +23268,6 @@
       "taskKey": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/implement-conditional-access-policy-controls",
       "path": "/training/modules/secure-access-entra-agent-identity",
       "reason": "Agent identity access is a separate, newer area.",
-      "at": "2026-11-04"
-    },
-    {
-      "taskKey": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/implement-continuous-access-evaluation",
-      "path": "/entra/global-secure-access/concept-universal-continuous-access-evaluation",
-      "reason": "Not part of this task; the page fits a different task, product area or exam, or is a generic overview or sample.",
       "at": "2026-11-04"
     },
     {
@@ -30388,6 +30421,48 @@
       "path": "/training/modules/design-solutions-identity-access-management",
       "reason": "An architect-level design module (SC-100) on identity solutions, written for a different job role.",
       "at": "2026-11-04"
+    },
+    {
+      "taskKey": "implement-and-manage-user-identities/configure-and-manage-a-microsoft-entra-tenant/configure-and-manage-domains-in-microsoft-entra-id-and-micro",
+      "path": "/entra/identity/users",
+      "reason": "A landing page of the users, groups, licenses and domains documentation.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "plan-and-implement-workload-identities/plan-and-implement-identities-for-applications-and-azure-wor/create-managed-identities",
+      "path": "/entra/identity/managed-identities-azure-resources",
+      "reason": "A landing page of the managed identities documentation.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/@foundations",
+      "path": "/entra/fundamentals/bulk-operations",
+      "reason": "Belongs under \"Automate bulk operations by using the Microsoft Entra admin center and PowerShell\", not here.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/create-configure-and-manage-users",
+      "path": "/entra/fundamentals/bulk-operations-service-limitations",
+      "reason": "Belongs under \"Automate bulk operations by using the Microsoft Entra admin center and PowerShell\", not here.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/create-configure-and-manage-groups",
+      "path": "/entra/identity/users/groups-bulk-download",
+      "reason": "Belongs under \"Automate bulk operations by using the Microsoft Entra admin center and PowerShell\", not here.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "implement-and-manage-user-identities/create-configure-and-manage-microsoft-entra-identities/create-configure-and-manage-groups",
+      "path": "/entra/identity/users/groups-bulk-download-members",
+      "reason": "Belongs under \"Automate bulk operations by using the Microsoft Entra admin center and PowerShell\", not here.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "implement-authentication-and-access-management/plan-implement-and-manage-microsoft-entra-conditional-access/create-a-conditional-access-policy-from-a-template",
+      "path": "/entra/identity/conditional-access/terms-of-use",
+      "reason": "Belongs under \"Implement and manage terms of use (ToU)\", not here.",
+      "at": "2026-11-14"
     }
   ]
 }

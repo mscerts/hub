@@ -360,6 +360,21 @@
                 "by": "auto",
                 "at": "2026-11-06"
               }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/get-started-with-dynamics-365-for-customer-service"
+              },
+              "title": "Transform service delivery with AI in Dynamics 365",
+              "class": "foundation",
+              "source": "P1",
+              "why": "Gives the overall picture of Customer Service, its data foundation and where AI agents fit in before the configuration tasks start.",
+              "evidence": "Connect customer needs to service work",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-15"
+              }
             }
           ],
           "tasks": [
@@ -1387,6 +1402,22 @@
                 },
                 {
                   "target": {
+                    "kind": "module",
+                    "path": "/training/modules/creating-and-managing-entitlements-in-dynamics-365"
+                  },
+                  "title": "Create and manage entitlements in Microsoft Dynamics 365 Customer Service",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P1",
+                  "why": "Entitlements set the support terms a customer has, and an entitlement can carry the SLA that is applied to its cases.",
+                  "evidence": "Configure entitlement channels",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                },
+                {
+                  "target": {
                     "kind": "docs",
                     "path": "/dynamics365/customer-service/administer/create-enhanced-sla"
                   },
@@ -1670,38 +1701,6 @@
                   "class": "core",
                   "source": "P4",
                   "evidence": "Create and manage workstreams",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-06"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/configure-apple-message-business-google-business-messages"
-                  },
-                  "title": "Set up Apple Message for Business and Google Business Messages as channels in Dynamics 365 Customer Service",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Channel setup for messaging apps includes creating a workstream for each channel, a neighbouring step.",
-                  "evidence": "Set up a Google Business Messages workstream",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-06"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/sms-channels"
-                  },
-                  "title": "Deploy an SMS channel in Omnichannel for Dynamics 365 Customer Service",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Deploying an SMS channel includes configuring the SMS workstream, a step a professional doing this task meets.",
-                  "evidence": "Configure SMS workstream",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-06"
@@ -3201,22 +3200,6 @@
                     "by": "maintainer",
                     "at": "2026-11-06"
                   }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/customerengagement/on-premises/customize/create-edit-entity-relationships"
-                  },
-                  "title": "Types of entity relationships in Dynamics 365 Customer Engagement (on-premises)",
-                  "class": "supporting",
-                  "relation": "prerequisite",
-                  "source": "P4",
-                  "why": "Explains the two kinds of entity relationship before any are created; it is on-premises, so unsure it matches the cloud product.",
-                  "evidence": "Learn about the difference between the two main types of relationships.",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-06"
-                  }
                 }
               ]
             },
@@ -3314,22 +3297,6 @@
                 },
                 {
                   "target": {
-                    "kind": "module",
-                    "path": "/training/modules/send-customer-voice-surveys"
-                  },
-                  "title": "Send Dynamics 365 Customer Voice surveys",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "A large part of this module creates and personalises email templates, used to send surveys; the survey focus makes it a neighbouring use rather than the core task.",
-                  "evidence": "Create and personalize email templates",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-06"
-                  }
-                },
-                {
-                  "target": {
                     "kind": "docs",
                     "path": "/dynamics365/customer-service/administer/add-signature-template-queue"
                   },
@@ -3403,22 +3370,7 @@
             {
               "key": "extend-customer-service/capture-customer-feedback-by-using-customer-voice/personalize-a-survey",
               "text": "Personalize a survey",
-              "picks": [
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/create-customer-voice-surveys"
-                  },
-                  "title": "Create customer surveys with Dynamics 365 Customer Voice",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Personalize a survey with variables",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-06"
-                  }
-                }
-              ]
+              "picks": []
             },
             {
               "key": "extend-customer-service/capture-customer-feedback-by-using-customer-voice/populate-survey-results-against-cases-and-conversations",
@@ -8933,6 +8885,36 @@
       "path": "/training/modules/agents-app-profile-manager",
       "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
       "at": "2026-11-06"
+    },
+    {
+      "taskKey": "extend-customer-service/configure-the-data-model-and-ui-components/configure-relationships",
+      "path": "/dynamics365/customerengagement/on-premises/customize/create-edit-entity-relationships",
+      "reason": "Documentation of the on-premises product, which this exam does not cover.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "configure-representative-experience-and-routing/configure-routing/configure-workstreams",
+      "path": "/training/modules/configure-apple-message-business-google-business-messages",
+      "reason": "Learn moved this page to /training/modules/customer-engagement-channels-overview, which is already in the course.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "configure-representative-experience-and-routing/configure-routing/configure-workstreams",
+      "path": "/training/modules/sms-channels",
+      "reason": "Learn moved this page to /training/modules/customer-engagement-channels-overview, which is already in the course.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "extend-customer-service/configure-the-data-model-and-ui-components/create-and-manage-email-templates",
+      "path": "/training/modules/send-customer-voice-surveys",
+      "reason": "Learn moved this page to /training/modules/work-customer-voice-projects, which is already in the course.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "extend-customer-service/capture-customer-feedback-by-using-customer-voice/personalize-a-survey",
+      "path": "/training/modules/create-customer-voice-surveys",
+      "reason": "Learn moved this page to /training/modules/work-customer-voice-projects, which is already in the course.",
+      "at": "2026-11-14"
     }
   ]
 }

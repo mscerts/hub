@@ -437,8 +437,8 @@
                   "class": "core",
                   "source": "P1",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 },
                 {
@@ -1228,6 +1228,13 @@
                     "by": "auto",
                     "at": "2026-11-09"
                   }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/configure-core-capabilities-contact-center",
+                  "title": "Configure Dynamics 365 Contact Center core capabilities",
+                  "shownUnder": "deploy-dynamics-365-contact-center/implement-dynamics-365-contact-center/configure-the-copilot-service-workspace"
                 }
               ]
             },
@@ -4312,22 +4319,6 @@
                   "via": "/training/modules/configure-routing-contact-center",
                   "why": "Workstreams are a core routing element of the setup a design specifies.",
                   "evidence": "Create and manage workstreams",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/omnichannel-power-virtual-agents"
-                  },
-                  "title": "Integrate an agent for Contact Center and Dynamics 365 Customer Service",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Integrating a Copilot Studio agent with the contact center is part of the setup a design includes.",
-                  "evidence": "Integrate an agent for Contact Center and Dynamics 365 Customer Service",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-09"
@@ -13654,6 +13645,12 @@
       "path": "/training/modules/configure-supervisor-experience-contact-center",
       "reason": "Neighbouring task, other product, FAQ or generic page; not a teaching step for this task.",
       "at": "2026-11-09"
+    },
+    {
+      "taskKey": "implement-channels/configure-channel-features/design-the-dynamics-365-contact-center-setup",
+      "path": "/training/modules/omnichannel-power-virtual-agents",
+      "reason": "Learn moved this page to /training/modules/customer-engagement-channels-overview, which is already in the course.",
+      "at": "2026-11-14"
     }
   ]
 }

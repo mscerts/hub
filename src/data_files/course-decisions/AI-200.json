@@ -9,7 +9,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Managed Identities"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -42,7 +43,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Choose a file access strategy for Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -67,7 +69,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Cosmos DB trigger for Functions 2.x and higher"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -92,7 +95,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Functions Error Handling and Retry Guidance"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -101,7 +105,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Event Hubs trigger for Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -134,7 +139,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure OpenAI extension for Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -159,7 +165,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Service Bus trigger for Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -168,7 +175,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Blob storage trigger for Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -177,7 +185,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Queue storage trigger for Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -210,7 +219,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Serverless Database Computing With Azure Functions - Azure Cosmos DB"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -219,7 +229,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Durable Orchestrations Overview - Azure"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -228,7 +239,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Durable Task Programming Model: Orchestrators, Activities, and Entities"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/@foundations",
@@ -237,7 +249,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Durable Functions Overview: Stateful Serverless Workflows"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
@@ -347,10 +360,13 @@
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
       "target": "/azure/azure-functions/functions-cli-samples",
       "decision": "accept",
-      "class": "core",
-      "reason": "accepted by the maintainer",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "A list of Azure CLI sample scripts for creating and deploying function apps, useful beside the task but not the task itself.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Azure CLI samples for Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
@@ -360,7 +376,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Estimating consumption-based costs in Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
@@ -378,7 +395,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create an HTTP endpoint using Azure Functions in the portal"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
@@ -484,7 +502,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Respond to blob storage events using Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
@@ -502,7 +521,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Respond to database changes in Azure Cosmos DB using Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
@@ -544,7 +564,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Process real-time events using Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
@@ -554,7 +575,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Run scheduled tasks using Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
@@ -564,7 +586,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Supported Languages in Azure Functions"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
@@ -622,7 +645,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create an Azure Functions app with auto scaling rules on Azure Container Apps"
     },
     {
       "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/configure-and-deploy-function-apps",
@@ -745,7 +769,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Message Deferral Overview"
     },
     {
       "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/@foundations",
@@ -803,7 +828,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create a Container - Azure Cosmos DB"
     },
     {
       "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
@@ -813,7 +839,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create a Container Using .NET - Azure Cosmos DB"
     },
     {
       "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
@@ -823,7 +850,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create a Database Using .NET - Azure Cosmos DB"
     },
     {
       "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
@@ -833,7 +861,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create an Item Using .NET - Azure Cosmos DB"
     },
     {
       "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
@@ -843,7 +872,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Read an Item Using .NET - Azure Cosmos DB"
     },
     {
       "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
@@ -861,7 +891,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create a Container Using JavaScript - Azure Cosmos DB"
     },
     {
       "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
@@ -871,7 +902,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create a Database Using JavaScript - Azure Cosmos DB"
     },
     {
       "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
@@ -881,7 +913,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create an Item Using JavaScript - Azure Cosmos DB"
     },
     {
       "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
@@ -915,7 +948,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create a Container Using Python - Azure Cosmos DB"
     },
     {
       "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
@@ -925,7 +959,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create a Database Using Python - Azure Cosmos DB"
     },
     {
       "task": "develop-ai-solutions-by-using-azure-data-management-services/develop-ai-solutions-by-using-azure-cosmos-db-for-nosql/connect-to-azure-cosmos-db-for-nosql-by-using-the-sdk-and-ru",
@@ -1006,7 +1041,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Security overview for Azure Container Registry - Azure Container Registry"
     },
     {
       "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/@foundations",
@@ -1088,7 +1124,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Overview of Signing and Verifying OCI Artifacts"
     },
     {
       "task": "develop-containerized-solutions-on-azure/implement-container-application-hosting/build-store-version-and-manage-container-images-by-using-azu",
@@ -1161,7 +1198,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Introduction to Azure Kubernetes Service (AKS) Automatic"
     },
     {
       "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/@foundations",
@@ -1170,7 +1208,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Functions on Azure Container Apps overview"
     },
     {
       "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/@foundations",
@@ -1212,7 +1251,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Kubernetes Service (AKS) managed NGINX ingress with the application routing add-on - Azure Kubernetes Service"
     },
     {
       "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
@@ -1238,7 +1278,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Best Practices for Azure Kubernetes Service (AKS)"
     },
     {
       "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
@@ -1296,7 +1337,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Install existing applications with Helm in Azure Kubernetes Service (AKS)"
     },
     {
       "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-and-manage-applications-to-azure-kubernetes-service-a",
@@ -1369,7 +1411,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Secure your Azure Key Vault"
     },
     {
       "task": "secure-monitor-troubleshoot-azure-solutions/implement-secure-azure-solutions/@foundations",
@@ -1402,6 +1445,50 @@
       "reason": "Dropped in review: troubleshooting detail, deeper than the exam needs, language-specific reference, or neighbouring-task page.",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "secure-monitor-troubleshoot-azure-solutions/implement-secure-azure-solutions/secure-secrets-by-using-azure-key-vault-including-rotation-a",
+      "target": "/training/modules/manage-keys-secrets-key-vault",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Covers creating, storing and retrieving secrets and keys in a vault, the operations this task secures.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "develop-ai-solutions-by-using-azure-data-management-services/integrate-azure-managed-redis-in-ai-solutions/implement-azure-managed-redis-data-operations-including-cach",
+      "target": "/training/modules/implement-event-messaging-azure-managed-redis",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Pub/sub and Streams are the messaging side of the Redis data operations this task covers.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "develop-containerized-solutions-on-azure/implement-container-orchestrated-solutions/deploy-applications-to-azure-container-apps-including-enviro",
+      "target": "/training/modules/dynamic-sessions-azure-container-apps",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Dynamic sessions are the Container Apps feature for running AI-generated code in isolated session pools, a step beyond deploying an app.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "connect-to-and-consume-azure-services/develop-and-implement-azure-functions/build-serverless-apis-including-implementing-triggers-and-bi",
+      "target": "/training/modules/orchestrate-durable-functions",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Durable Functions builds orchestrations and activities on top of the trigger and binding model of this task.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

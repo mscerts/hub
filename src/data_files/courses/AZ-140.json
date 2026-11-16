@@ -116,6 +116,10 @@
         "b9c9741e9f6b758b3215d99cbe4b79a01cb0b7b7"
       ],
       [
+        "/training/modules/m365-prepare-for-wvd",
+        "387c6f5ef8cc60fe48d05509cfe5fcb0481c0f23"
+      ],
+      [
         "/training/modules/m365-wvd-intro",
         "a4346d1027dd700ea4008602626de985b8b909ec"
       ],
@@ -296,8 +300,8 @@
                   "why": "Session host setup module that includes network planning, a step a professional does alongside designing session host networking.",
                   "evidence": "Network and Remote Desktop client planning",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-05"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 }
               ]
@@ -1102,6 +1106,22 @@
               "key": "plan-and-implement-identity-and-security/plan-and-implement-identity-integration/select-an-identity-scenario-for-azure-virtual-desktop-includ",
               "text": "Select an identity scenario for Azure Virtual Desktop, including Active Directory Domain Services (AD DS), Microsoft Entra ID, and Microsoft Entra Domain Services",
               "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/m365-prepare-for-wvd"
+                  },
+                  "title": "Prepare for Azure Virtual Desktop",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Walks through connecting Microsoft Entra ID with AD DS for Azure Virtual Desktop, one of the identity scenarios to choose from.",
+                  "evidence": "Integrate Microsoft Entra ID with Active Directory Domain Services",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                },
                 {
                   "target": {
                     "kind": "docs",

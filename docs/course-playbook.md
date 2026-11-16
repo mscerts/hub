@@ -44,6 +44,8 @@ The pilot answers one question: **can the automatic part be trusted, so that the
 node scripts/course-pilot.mjs gold-template src/content/docs/courses/az-104course.mdx --include entitlement
 ```
 
+(The hand-made page and the pilot's other pages, `az-104course*.mdx`, were removed on 2026-11-16, when the generated course `courses/az-104` replaced them. `git log --diff-filter=D -- src/content/docs/courses/az-104course.mdx` finds the commit that removed it, should a gold set ever be drawn from it again.)
+
 It draws 25 picks of the existing page, spread over the domains and tasks, always including every pick whose address or title contains the `--include` text (the entitlement management card, which does not belong to AZ-104). `--size` and `--seed` change the sample; the same seed draws the same picks again.
 
 The maintainer opens the file (`<tmp>/course-pilot/AZ-104.gold.json`) and sets `mark` of **every** pick:
@@ -141,7 +143,7 @@ Wave 1 is long. Work it in **batches of about five exams**, richest first, and m
 3. **Stop the batch** when an exam's sample is under 90% right, a false accept turns up in what the maintainer reads anyway, or the learnsync caches are older than a week. Find the cause with the table in P6, fix it, and re-run the exam that tripped it before going on.
 4. After the batch, `course-rollout.mjs` again with the measured numbers: the review budget for the next one is the batch's own minutes per exam, not the estimate.
 
-Each finished exam ends the same way: `course-build.mjs`, the maintainer moves the file to `src/data_files/courses/<CODE>.json`, `course-file.mjs validate <CODE> --live`, `render --out src/content/docs/courses/<code>course.mdx`, and `pnpm build`. There are no draft pages: the page is an ordinary page of the site that nothing links until the maintainer does.
+Each finished exam ends the same way: `course-build.mjs`, the maintainer moves the file to `src/data_files/courses/<CODE>.json`, `course-file.mjs validate <CODE> --live`, `render --out src/content/docs/courses/<code>.mdx`, `node scripts/course-cards.mjs` (the card on the exam page), and `pnpm build`. There are no draft pages: the page is an ordinary page of the site, linked from its exam page.
 
 ### The review budget
 
@@ -149,13 +151,13 @@ For an exam with `T` tasks: expected picks = `T` × picks per task, expected que
 
 ### Keeping courses true
 
-The rebuild check (`course-status.mjs <CODE>`, or `--all`) compares a course with today's guide and today's Learn: `current`, `review` (the official course changed shape) or `stale` (tasks changed, or a pick's target is gone). It says which tasks to redo; a rebuild is the chain again for those tasks, and the decisions file means the maintainer is not asked twice. Nothing runs it on a schedule yet; whether it should is a decision for after the pilot.
+The rebuild check (`course-status.mjs <CODE>`, or `--all`) compares a course with today's guide and today's Learn: `current`, `review` (the official course changed shape) or `stale` (tasks changed, or a pick's target is gone). It says which tasks to redo; a rebuild is the chain again for those tasks, and the decisions file means the maintainer is not asked twice. The study guide half of it runs every day: the [Course Guide Watch](monitors/course-guide-watch.md) opens one issue per exam whose tasks changed, or will change on a stated day, and closes it when the course follows the guide again. The Learn half (a module a pick relies on that changed or left) is still a command.
 
 ## Not covered
 
 - **Running anything.** The pilot, a batch and the rollout all start with the maintainer asking.
-- **A scheduled monitor** for courses. The rebuild check is a command.
-- **Linking.** A course page is reachable by its address from the day it is rendered (there are no drafts); linking courses from the exam pages, the sidebar or the landing page is a separate decision.
+- **A scheduled monitor for what Learn changed.** The Course Guide Watch covers the study guide; the rest of the rebuild check is a command.
+- **Linking from the sidebar or the landing page.** A course page is reachable by its address from the day it is rendered (there are no drafts) and its exam page links it with a card (`node scripts/course-cards.mjs`, [courses.md](courses.md)); listing the courses anywhere else is a separate decision.
 - **Judging quality beyond the four criteria.** The criteria say the automatic part is as good as a person's pick on a sample; they do not say a course is complete, and a task with no pick is the explicit "nothing for this task" state, not an error.
 
 ## Tests

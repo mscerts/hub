@@ -196,6 +196,14 @@
         "d8144ef69d800d4dd892959c076c5e53979d9b57"
       ],
       [
+        "/training/modules/construct-kusto-query-language-statements",
+        "780e4b568f88b372470a2e730751a29c44d49dfa"
+      ],
+      [
+        "/training/modules/deploy-microsoft-365-apps-enterprise",
+        "416b9f38018f8a9a53e5d43ffdae3b76a27e8c56"
+      ],
+      [
         "/training/modules/describe-identity-principles-concepts",
         "ee4f6625fd492608b15caef29b2f853608db0999"
       ],
@@ -218,6 +226,10 @@
       [
         "/training/modules/hotpatch-updates-2026",
         "cd803d34e5b9a7bc203bf7f1ad0e1700e9147ffd"
+      ],
+      [
+        "/training/modules/implement-authentication-access-entra",
+        "379aa8d4aeb6cf5b3c48ec4ab7095fe156742dab"
       ],
       [
         "/training/modules/intro-to-mixed-reality",
@@ -2654,6 +2666,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-authentication-access-entra"
+                  },
+                  "title": "Implement authentication and access in Microsoft Entra",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Covers Conditional Access policies that check device compliance, seen from the Microsoft Entra side.",
+                  "evidence": "Evaluate Conditional Access policies and client app conditions",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -4998,6 +5026,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/construct-kusto-query-language-statements"
+                  },
+                  "title": "Construct KQL statements for Microsoft Sentinel",
+                  "class": "supporting",
+                  "relation": "prerequisite",
+                  "source": "P3",
+                  "why": "Teaches the structure of the KQL statements a device query is written in.",
+                  "evidence": "Understand the Kusto Query Language statement structure",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -6818,7 +6862,22 @@
             {
               "key": "manage-and-secure-applications/deploy-and-update-apps/manage-microsoft-365-apps-by-using-the-microsoft-365-apps-ad",
               "text": "Manage Microsoft 365 Apps by using the Microsoft 365 Apps admin center",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/deploy-microsoft-365-apps-enterprise"
+                  },
+                  "title": "Deploy Microsoft 365 Apps for enterprise",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Manage your cloud apps using the Microsoft 365 Apps admin center",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "manage-and-secure-applications/deploy-and-update-apps/deploy-apps-from-platform-specific-app-stores-by-using-intun",

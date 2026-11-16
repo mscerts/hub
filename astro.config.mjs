@@ -119,6 +119,9 @@ export default defineConfig({
     "/labs/power/pl-400": "/certs/labs/aibusiness/ab-400/",
     "/certs/power/pl-400": "/certs/aibusiness/ab-400/",
     "/certs/labs/power/pl-400": "/certs/labs/aibusiness/ab-400/",
+    // The pilot's AZ-104 course page gave way to the generated course (courses/az-104, docs/courses.md).
+    "/courses/az-104course-v3": "/certs/courses/az-104/",
+    "/certs/courses/az-104course-v3": "/certs/courses/az-104/",
     "/power/pl-600": "/certs/archive/power/pl-600/",
     "/power/pl-200": "/certs/archive/power/pl-200/",
     "/labs/power/pl-200": "/certs/labs/aibusiness/ab-410/",

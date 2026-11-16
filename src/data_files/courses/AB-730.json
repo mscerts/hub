@@ -244,6 +244,21 @@
                 "by": "auto",
                 "at": "2026-11-05"
               }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/what-generative-ai"
+              },
+              "title": "Prepare to use generative AI at work",
+              "class": "foundation",
+              "source": "P1",
+              "why": "Explains what generative AI is, the responsible AI basics and which Copilot mode fits which kind of work.",
+              "evidence": "What is generative AI?",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-15"
+              }
             }
           ],
           "tasks": [
@@ -371,31 +386,33 @@
             {
               "target": {
                 "kind": "docs",
-                "path": "/microsoft-365/copilot/ai-models-overview"
+                "path": "/copilot/plan/ai-models-overview"
               },
               "title": "Understanding AI functionality and models in Microsoft Online Services",
               "class": "foundation",
               "source": "P4",
+              "was": "/microsoft-365/copilot/ai-models-overview",
               "why": "Explains which AI models are hosted by Microsoft and which are subprocessor models, the data protection context of Copilot responses.",
               "evidence": "Learn about AI models hosted by Microsoft",
               "decision": {
-                "by": "auto",
-                "at": "2026-11-05"
+                "by": "maintainer",
+                "at": "2026-11-14"
               }
             },
             {
               "target": {
                 "kind": "docs",
-                "path": "/microsoft-365/copilot/copilot-subprocessor-overview"
+                "path": "/copilot/plan/copilot-subprocessor-overview"
               },
               "title": "Overview of AI Subprocessors",
               "class": "foundation",
               "source": "P4",
+              "was": "/microsoft-365/copilot/copilot-subprocessor-overview",
               "why": "Explains AI subprocessors in Microsoft Copilot, a data protection concept the group's tasks depend on.",
               "evidence": "Learn about AI Subprocessors in Microsoft Copilot.",
               "decision": {
-                "by": "auto",
-                "at": "2026-11-05"
+                "by": "maintainer",
+                "at": "2026-11-14"
               }
             }
           ],
@@ -482,16 +499,17 @@
             {
               "target": {
                 "kind": "docs",
-                "path": "/microsoft-365/copilot/copilot-prompt-gallery"
+                "path": "/copilot/manage/copilot-prompt-gallery"
               },
               "title": "Understand Prompt Gallery in Copilot",
               "class": "foundation",
               "source": "P4",
+              "was": "/microsoft-365/copilot/copilot-prompt-gallery",
               "why": "Explains the Prompt Gallery, where users find and share prompts, a concept behind saving and sharing prompts.",
               "evidence": "Learn about the Copilot Prompt Gallery and how your users can use Copilot prompts",
               "decision": {
-                "by": "auto",
-                "at": "2026-11-05"
+                "by": "maintainer",
+                "at": "2026-11-14"
               }
             }
           ],
@@ -595,31 +613,33 @@
             {
               "target": {
                 "kind": "docs",
-                "path": "/microsoft-365/copilot/copilot-app-overview"
+                "path": "/copilot/plan/copilot-app-overview"
               },
               "title": "Microsoft Copilot app",
               "class": "foundation",
               "source": "P4",
+              "was": "/microsoft-365/copilot/copilot-app-overview",
               "why": "Describes the Microsoft Copilot app, the interface where chats are kept, and its features by licence.",
               "evidence": "The app is available as a website and an app that can be installed on Windows, Android, and iOS devices.",
               "decision": {
                 "by": "maintainer",
-                "at": "2026-11-05"
+                "at": "2026-11-14"
               }
             },
             {
               "target": {
                 "kind": "docs",
-                "path": "/microsoft-365/copilot/copilot-overview"
+                "path": "/copilot/plan/copilot-overview"
               },
               "title": "What is Microsoft Copilot?",
               "class": "foundation",
               "source": "P4",
+              "was": "/microsoft-365/copilot/copilot-overview",
               "why": "Explains what Microsoft Copilot is and its common features, the base concept for the chat tasks.",
               "evidence": "What is Microsoft Copilot?",
               "decision": {
-                "by": "auto",
-                "at": "2026-11-05"
+                "by": "maintainer",
+                "at": "2026-11-14"
               }
             }
           ],
@@ -1024,16 +1044,17 @@
             {
               "target": {
                 "kind": "docs",
-                "path": "/microsoft-365/copilot/researcher-agent"
+                "path": "/copilot/manage/researcher-agent"
               },
               "title": "What is Researcher Agent in Microsoft 365 Copilot?",
               "class": "foundation",
               "source": "P4",
+              "was": "/microsoft-365/copilot/researcher-agent",
               "why": "Explains the Researcher prebuilt agent, a core example of the group's subject.",
               "evidence": "What is Researcher Agent in Microsoft 365 Copilot?",
               "decision": {
-                "by": "auto",
-                "at": "2026-11-05"
+                "by": "maintainer",
+                "at": "2026-11-14"
               }
             }
           ],
@@ -1209,15 +1230,16 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/scheduled-prompts"
+                    "path": "/copilot/manage/scheduled-prompts"
                   },
                   "title": "Manage Scheduled Prompts for Microsoft 365 Copilot",
                   "class": "core",
                   "source": "P4",
+                  "was": "/microsoft-365/copilot/scheduled-prompts",
                   "evidence": "Learn how to manage scheduled prompts in Microsoft 365 Copilot",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-05"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 }
               ],

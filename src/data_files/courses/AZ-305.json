@@ -1011,6 +1011,21 @@
                 "by": "maintainer",
                 "at": "2026-11-05"
               }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/azure-well-architected-introduction"
+              },
+              "title": "Introduction to the Microsoft Azure Well-Architected Framework",
+              "class": "foundation",
+              "source": "P1",
+              "why": "The Well-Architected Framework pillars are the yardstick for every recommendation this exam asks for.",
+              "evidence": "Azure Well-Architected Framework pillars",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-15"
+              }
             }
           ],
           "tasks": [
@@ -1537,6 +1552,21 @@
                 "by": "maintainer",
                 "at": "2026-11-05"
               }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/azure-well-architected-security"
+              },
+              "title": "Microsoft Azure Well-Architected Framework - Security",
+              "class": "foundation",
+              "source": "P1",
+              "why": "The security pillar's design principles frame the identity and access recommendations of this group.",
+              "evidence": "Design to protect confidentiality",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-15"
+              }
             }
           ],
           "tasks": [
@@ -2020,22 +2050,6 @@
                   "evidence": "setting up a customer identity and access management (CIAM) solution in an external tenant",
                   "decision": {
                     "by": "auto",
-                    "at": "2026-11-05"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/entra/identity"
-                  },
-                  "title": "Microsoft Entra ID documentation - Microsoft Entra ID",
-                  "class": "supporting",
-                  "relation": "prerequisite",
-                  "source": "P4",
-                  "why": "The Entra ID documentation landing page defines the directory and identity management service; a short orientation, leaning supporting.",
-                  "evidence": "Microsoft Entra ID is Microsoft's multitenant, cloud-based directory, and identity management service",
-                  "decision": {
-                    "by": "maintainer",
                     "at": "2026-11-05"
                   }
                 },
@@ -2650,6 +2664,21 @@
               "decision": {
                 "by": "maintainer",
                 "at": "2026-11-05"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/describe-core-architectural-components-of-azure"
+              },
+              "title": "Describe the core architectural components of Azure",
+              "class": "foundation",
+              "source": "P1",
+              "why": "Explains subscriptions, management groups and resource groups, the building blocks a governance structure is made of.",
+              "evidence": "What is Microsoft Azure",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-15"
               }
             }
           ],
@@ -4222,8 +4251,8 @@
                   "class": "core",
                   "source": "P1",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-05"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 },
                 {
@@ -5290,7 +5319,14 @@
             {
               "key": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-recovery-solution-for-azure-and-hybrid-workloads",
               "text": "Recommend a recovery solution for Azure and hybrid workloads that meets recovery objectives",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/design-solution-for-backup-disaster-recovery",
+                  "title": "Design a solution for backup and disaster recovery",
+                  "shownUnder": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-backup-and-recovery-solution-for-compute"
+                }
+              ]
             },
             {
               "key": "design-business-continuity-solutions/design-solutions-for-backup-and-disaster-recovery/recommend-a-backup-and-recovery-solution-for-compute",
@@ -5305,8 +5341,8 @@
                   "class": "core",
                   "source": "P1",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-05"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 },
                 {
@@ -5809,21 +5845,6 @@
                 "by": "auto",
                 "at": "2026-11-05"
               }
-            },
-            {
-              "target": {
-                "kind": "module",
-                "path": "/training/modules/design-compute-solution"
-              },
-              "title": "Design an Azure compute solution",
-              "class": "foundation",
-              "source": "P1",
-              "why": "It introduces the Azure compute services whose availability this group designs; unsure how much it is a concept rather than a selection procedure.",
-              "evidence": "Choose an Azure compute service",
-              "decision": {
-                "by": "maintainer",
-                "at": "2026-11-05"
-              }
             }
           ],
           "tasks": [
@@ -5877,7 +5898,14 @@
             {
               "key": "design-business-continuity-solutions/design-for-high-availability/recommend-a-high-availability-solution-for-semi-structured-a",
               "text": "Recommend a high availability solution for semi-structured and unstructured data",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/design-data-storage-solution-for-non-relational-data",
+                  "title": "Design a data storage solution for non-relational data",
+                  "shownUnder": "design-data-storage-solutions/design-data-storage-solutions-for-relational-data/recommend-a-solution-for-data-protection"
+                }
+              ]
             }
           ]
         }
@@ -5938,13 +5966,43 @@
                 "by": "auto",
                 "at": "2026-11-05"
               }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/azure-well-architected-cost-optimization"
+              },
+              "title": "Microsoft Azure Well-Architected Framework - Cost Optimization",
+              "class": "foundation",
+              "source": "P1",
+              "why": "Cost is a deciding factor between compute options; this pillar module gives the principles to weigh it.",
+              "evidence": "Design with a cost-efficiency mindset",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-15"
+              }
             }
           ],
           "tasks": [
             {
               "key": "design-infrastructure-solutions/design-compute-solutions/specify-components-of-a-compute-solution-based-on-workload-r",
               "text": "Specify components of a compute solution based on workload requirements",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/design-compute-solution"
+                  },
+                  "title": "Design an Azure compute solution",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Choose an Azure compute service",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "design-infrastructure-solutions/design-compute-solutions/recommend-a-virtual-machine-based-solution",
@@ -6091,6 +6149,13 @@
                     "at": "2026-11-05"
                   }
                 }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/design-compute-solution",
+                  "title": "Design an Azure compute solution",
+                  "shownUnder": "design-infrastructure-solutions/design-compute-solutions/specify-components-of-a-compute-solution-based-on-workload-r"
+                }
               ]
             },
             {
@@ -6198,22 +6263,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/azure/batch"
-                  },
-                  "title": "Azure Batch documentation - Azure Batch",
-                  "class": "supporting",
-                  "relation": "prerequisite",
-                  "source": "P4",
-                  "why": "The Azure Batch landing page introduces the service a learner must know before choosing batch compute.",
-                  "evidence": "Azure Batch runs large-scale applications efficiently in the cloud",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-05"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/azure/batch/batch-linux-nodes"
                   },
                   "title": "Run Linux on virtual machine compute nodes",
@@ -6226,6 +6275,13 @@
                     "by": "auto",
                     "at": "2026-11-05"
                   }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/design-compute-solution",
+                  "title": "Design an Azure compute solution",
+                  "shownUnder": "design-infrastructure-solutions/design-compute-solutions/specify-components-of-a-compute-solution-based-on-workload-r"
                 }
               ]
             }
@@ -6322,21 +6378,6 @@
               "evidence": "Azure Well-Architected Framework is a set of quality-driven tenets",
               "decision": {
                 "by": "auto",
-                "at": "2026-11-05"
-              }
-            },
-            {
-              "target": {
-                "kind": "docs",
-                "path": "/azure/azure-functions"
-              },
-              "title": "Azure Functions documentation",
-              "class": "foundation",
-              "source": "P4",
-              "why": "Introduces Azure Functions as event-driven compute, a basic concept behind event-driven architecture.",
-              "evidence": "provides event-driven and scheduled compute resources",
-              "decision": {
-                "by": "maintainer",
                 "at": "2026-11-05"
               }
             },
@@ -6946,16 +6987,17 @@
             {
               "target": {
                 "kind": "docs",
-                "path": "/azure/migrate/overview"
+                "path": "/azure/migrate/wave-plan-overview"
               },
-              "title": "Wave Planning Overview",
+              "title": "Wave planning overview in Azure Migrate - Azure Migrate",
               "class": "foundation",
               "source": "P4",
+              "was": "/azure/migrate/overview",
               "why": "Overview of Azure Migrate, the base tool for the migration design tasks.",
-              "evidence": "Overview of Azure Migrate, the base tool for the migration design tasks.",
+              "evidence": "Understand migration wave plans in Azure Migrate, including wave composition, sequencing, dependencies, risks, and the planning engine.",
               "decision": {
                 "by": "maintainer",
-                "at": "2026-11-05"
+                "at": "2026-11-14"
               }
             },
             {
@@ -7363,20 +7405,6 @@
               "picks": [
                 {
                   "target": {
-                    "kind": "docs",
-                    "path": "/azure/dms/dms-overview"
-                  },
-                  "title": "What Is Azure Database Migration Service?",
-                  "class": "core",
-                  "source": "P2",
-                  "via": "/training/modules/design-migrations",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-05"
-                  }
-                },
-                {
-                  "target": {
                     "kind": "module",
                     "path": "/training/modules/migrate-sql-workloads-azure-managed-instances"
                   },
@@ -7470,6 +7498,20 @@
                   "evidence": "Migrate Oracle workloads to Oracle Database@Azure",
                   "decision": {
                     "by": "maintainer",
+                    "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/dms/dms-overview"
+                  },
+                  "title": "What Is Azure Database Migration Service?",
+                  "class": "core",
+                  "source": "P2",
+                  "via": "/training/modules/design-migrations",
+                  "decision": {
+                    "by": "auto",
                     "at": "2026-11-05"
                   }
                 },
@@ -7658,20 +7700,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/azure/cosmos-db/migrate-data-striim"
-                  },
-                  "title": "Migrate Data Using Striim - Azure Cosmos DB",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Migrate Data Using Striim",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-05"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/azure/cosmos-db/migrate-relational-data"
                   },
                   "title": "Migrate one-to-few relational data - Azure Cosmos DB",
@@ -7797,6 +7825,22 @@
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/cosmos-db/migrate-data-striim"
+                  },
+                  "title": "Migrate Data Using Striim - Azure Cosmos DB",
+                  "class": "supporting",
+                  "relation": "deeper",
+                  "source": "P4",
+                  "why": "A walkthrough of one third-party migration tool, more depth than recommending a database migration solution needs.",
+                  "evidence": "Migrate Data Using Striim",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -14681,6 +14725,30 @@
       "path": "/training/modules/secure-azure-cosmos-db-nosql",
       "reason": "Securing a Cosmos DB account with Entra authentication, RBAC and masking is database security rather than network security design.",
       "at": "2026-11-05"
+    },
+    {
+      "taskKey": "design-identity-governance-and-monitoring-solutions/design-authentication-and-authorization-solutions/recommend-an-identity-management-solution",
+      "path": "/entra/identity",
+      "reason": "A landing page of the Microsoft Entra ID documentation.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "design-infrastructure-solutions/design-an-application-architecture/@foundations",
+      "path": "/azure/azure-functions",
+      "reason": "A landing page of the Azure Functions documentation.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "design-infrastructure-solutions/design-compute-solutions/recommend-a-compute-solution-for-batch-processing",
+      "path": "/azure/batch",
+      "reason": "A landing page of the Azure Batch documentation.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "design-business-continuity-solutions/design-for-high-availability/@foundations",
+      "path": "/training/modules/design-compute-solution",
+      "reason": "Belongs under \"Specify components of a compute solution based on workload requirements\", not here.",
+      "at": "2026-11-15"
     }
   ]
 }

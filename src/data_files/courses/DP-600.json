@@ -166,6 +166,10 @@
         "31488687fe0dd3730994e4475bee417ee5e0c43c"
       ],
       [
+        "/training/modules/perform-analytics-power-bi",
+        "2075b35df48264df337639c61904e01dba46992f"
+      ],
+      [
         "/training/modules/query-data-warehouse-microsoft-fabric",
         "77aa5da8723e8e08c12289b10eb9bf0b69985805"
       ]
@@ -1266,6 +1270,20 @@
               "picks": [
                 {
                   "target": {
+                    "kind": "module",
+                    "path": "/training/modules/fabric-govern-analytics-data"
+                  },
+                  "title": "Govern analytics data in Microsoft Fabric",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Monitor and manage governance",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                },
+                {
+                  "target": {
                     "kind": "docs",
                     "path": "/fabric/enterprise/powerbi/service-security-apply-data-sensitivity-labels"
                   },
@@ -2190,33 +2208,35 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/fabric/enterprise/metrics-app-feature-autoscale-detail-page"
+                    "path": "/fabric/enterprise/metrics-app-on-demand-compute-for-spark-detail-page"
                   },
-                  "title": "Understand Autoscale compute for Spark detail page",
+                  "title": "Understand On-demand Compute for Spark detail page - Microsoft Fabric",
                   "class": "supporting",
                   "relation": "deeper",
                   "source": "P4",
+                  "was": "/fabric/enterprise/metrics-app-feature-autoscale-detail-page",
                   "why": "Reads the Autoscale compute for Spark detail page of the Capacity Metrics app, more depth than the exam asks for.",
-                  "evidence": "Learn how to read the Microsoft Fabric Capacity Metrics app's Autoscale compute for Spark detail page",
+                  "evidence": "Learn how to read the Microsoft Fabric Capacity Metrics app's On-demand Compute for Spark detail page.",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/fabric/enterprise/metrics-app-feature-autoscale-page"
+                    "path": "/fabric/enterprise/metrics-app-on-demand-compute-for-spark-page"
                   },
-                  "title": "Understand the metrics app autoscale compute for Spark page",
+                  "title": "Understand the metrics app On-demand Compute for Spark page - Microsoft Fabric",
                   "class": "supporting",
                   "relation": "deeper",
                   "source": "P4",
+                  "was": "/fabric/enterprise/metrics-app-feature-autoscale-page",
                   "why": "Reads the Autoscale compute for Spark page of the Capacity Metrics app, more depth than the exam asks for.",
-                  "evidence": "Learn how to read the Microsoft Fabric Capacity metrics app's Autoscale compute for Spark page",
+                  "evidence": "Learn how to read the Microsoft Fabric Capacity Metrics app's On-demand Compute for Spark page.",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
+                    "by": "maintainer",
+                    "at": "2026-11-14"
                   }
                 },
                 {
@@ -2591,8 +2611,8 @@
                   "source": "P3",
                   "evidence": "Implement version control and Git integration",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 },
                 {
@@ -2674,12 +2694,26 @@
                     "at": "2026-11-04"
                   }
                 }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/implement-cicd-in-fabric",
+                  "title": "Implement continuous integration and continuous delivery (CI/CD) in Microsoft Fabric",
+                  "shownUnder": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/implement-version-control-for-a-workspace"
+                }
               ]
             },
             {
               "key": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/perform-impact-analysis-of-downstream-dependencies-from-lake",
               "text": "Perform impact analysis of downstream dependencies from lakehouses, data warehouses, dataflows, and semantic models",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/manage-datasets-power-bi",
+                  "title": "Manage semantic models in Power BI",
+                  "shownUnder": "implement-and-manage-semantic-models/optimize-enterprise-scale-semantic-models/implement-incremental-refresh"
+                }
+              ]
             },
             {
               "key": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/deploy-and-manage-semantic-models-by-using-the-xmla-endpoint",
@@ -3951,8 +3985,8 @@
                   "source": "P3",
                   "evidence": "Configure incremental refresh settings",
                   "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
+                    "by": "maintainer",
+                    "at": "2026-11-15"
                   }
                 }
               ]
@@ -3974,12 +4008,34 @@
             {
               "key": "explore-and-analyze-data/perform-exploratory-analytics/implement-descriptive-and-diagnostic-analytics",
               "text": "Implement descriptive and diagnostic analytics",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/perform-analytics-power-bi"
+                  },
+                  "title": "Perform analytics in Power BI",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Introduction to analytics",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "explore-and-analyze-data/perform-exploratory-analytics/integrate-prescriptive-and-predictive-analytics-into-a-visua",
               "text": "Integrate prescriptive and predictive analytics into a visual or report",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/perform-analytics-power-bi",
+                  "title": "Perform analytics in Power BI",
+                  "shownUnder": "explore-and-analyze-data/perform-exploratory-analytics/implement-descriptive-and-diagnostic-analytics"
+                }
+              ]
             },
             {
               "key": "explore-and-analyze-data/perform-exploratory-analytics/profile-data",

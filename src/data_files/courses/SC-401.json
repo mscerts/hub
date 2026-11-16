@@ -189,6 +189,10 @@
         "cec60b5a40e144a26451599174337ab9ab244561"
       ],
       [
+        "/training/modules/identify-ai-data-risks-purview",
+        "16eb27bc0a5549c2c88e2d6711e4c59a8a5a4638"
+      ],
+      [
         "/training/modules/implement-data-loss-prevention-policies-microsoft-365",
         "7ca723262ce2beb729fb0acacfe2616a43d69615"
       ],
@@ -839,6 +843,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/identity/users/groups-assign-sensitivity-labels"
+                  },
+                  "title": "Assign sensitivity labels to groups",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Assigning a sensitivity label to a Microsoft 365 group is the Microsoft Entra side of labelling containers.",
+                  "evidence": "Learn how to assign sensitivity labels to groups. See troubleshooting information and view more resources.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             },
@@ -915,24 +935,7 @@
             {
               "key": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect",
               "text": "Plan and implement the Microsoft Purview Information Protection client",
-              "picks": [
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/purview-implement-endpoint-dlp"
-                  },
-                  "title": "Implement endpoint data loss prevention (DLP) with Microsoft Purview",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P1",
-                  "why": "Endpoint DLP is deployed on the same Windows devices as the client, so an admin doing this task meets it.",
-                  "evidence": "Understand endpoint data loss prevention",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                }
-              ]
+              "picks": []
             },
             {
               "key": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/manage-files-by-using-the-microsoft-purview-information-prot",
@@ -962,7 +965,7 @@
                 {
                   "path": "/training/modules/purview-implement-endpoint-dlp",
                   "title": "Implement endpoint data loss prevention (DLP) with Microsoft Purview",
-                  "shownUnder": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect"
+                  "shownUnder": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/configure-endpoint-dlp-settings"
                 }
               ]
             },
@@ -1359,7 +1362,7 @@
                 {
                   "path": "/training/modules/purview-implement-endpoint-dlp",
                   "title": "Implement endpoint data loss prevention (DLP) with Microsoft Purview",
-                  "shownUnder": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect"
+                  "shownUnder": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/configure-endpoint-dlp-settings"
                 }
               ]
             },
@@ -1649,7 +1652,7 @@
                 {
                   "path": "/training/modules/purview-implement-endpoint-dlp",
                   "title": "Implement endpoint data loss prevention (DLP) with Microsoft Purview",
-                  "shownUnder": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect"
+                  "shownUnder": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/configure-endpoint-dlp-settings"
                 }
               ]
             },
@@ -1681,7 +1684,7 @@
                 {
                   "path": "/training/modules/purview-implement-endpoint-dlp",
                   "title": "Implement endpoint data loss prevention (DLP) with Microsoft Purview",
-                  "shownUnder": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect"
+                  "shownUnder": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/configure-endpoint-dlp-settings"
                 }
               ]
             },
@@ -1689,6 +1692,20 @@
               "key": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/configure-endpoint-dlp-settings",
               "text": "Configure Endpoint DLP settings",
               "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/purview-implement-endpoint-dlp"
+                  },
+                  "title": "Implement endpoint data loss prevention (DLP) with Microsoft Purview",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Understand endpoint data loss prevention",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
                 {
                   "target": {
                     "kind": "docs",
@@ -1737,23 +1754,6 @@
                     "at": "2026-11-04"
                   }
                 }
-              ],
-              "overlaps": [
-                {
-                  "path": "/training/modules/purview-ai-data-security",
-                  "title": "Manage AI data security challenges with Microsoft Purview",
-                  "shownUnder": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/create-and-manage-data-loss-prevention-policies"
-                },
-                {
-                  "path": "/training/modules/purview-data-loss-prevention-create-manage-policies",
-                  "title": "Create and manage data loss prevention policies",
-                  "shownUnder": "implement-data-loss-prevention-and-retention/create-and-configure-data-loss-prevention-policies/create-and-manage-data-loss-prevention-policies"
-                },
-                {
-                  "path": "/training/modules/purview-implement-endpoint-dlp",
-                  "title": "Implement endpoint data loss prevention (DLP) with Microsoft Purview",
-                  "shownUnder": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect"
-                }
               ]
             },
             {
@@ -1764,7 +1764,7 @@
                 {
                   "path": "/training/modules/purview-implement-endpoint-dlp",
                   "title": "Implement endpoint data loss prevention (DLP) with Microsoft Purview",
-                  "shownUnder": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect"
+                  "shownUnder": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/configure-endpoint-dlp-settings"
                 }
               ]
             },
@@ -1839,6 +1839,21 @@
               "decision": {
                 "by": "auto",
                 "at": "2026-11-04"
+              }
+            },
+            {
+              "target": {
+                "kind": "module",
+                "path": "/training/modules/explore-retention-policies-labels-microsoft-365"
+              },
+              "title": "Explore retention in Microsoft 365",
+              "class": "foundation",
+              "source": "P3",
+              "why": "Explains the principles of retention, retention policies and retention labels before the group's tasks configure them.",
+              "evidence": "Examine the principles of retention",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-14"
               }
             }
           ],
@@ -2344,6 +2359,22 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/entra/identity/conditional-access/policy-risk-based-insider-block"
+                  },
+                  "title": "Block access for users with elevated insider risk",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "A Conditional Access policy that blocks users with an elevated insider risk level is what the risk levels of Adaptive Protection are used for.",
+                  "evidence": "Create Conditional Access policies using signals from Adaptive protection in Microsoft Purview.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ],
               "overlaps": [
@@ -2803,7 +2834,7 @@
                 {
                   "path": "/training/modules/purview-implement-endpoint-dlp",
                   "title": "Implement endpoint data loss prevention (DLP) with Microsoft Purview",
-                  "shownUnder": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect"
+                  "shownUnder": "implement-data-loss-prevention-and-retention/implement-and-monitor-microsoft-purview-endpoint-dlp/configure-endpoint-dlp-settings"
                 }
               ]
             },
@@ -3200,21 +3231,6 @@
                 "by": "auto",
                 "at": "2026-11-04"
               }
-            },
-            {
-              "target": {
-                "kind": "module",
-                "path": "/training/modules/explore-retention-policies-labels-microsoft-365"
-              },
-              "title": "Explore retention in Microsoft 365",
-              "class": "foundation",
-              "source": "P3",
-              "why": "Explains the principles of retention, retention policies and retention labels, which govern how AI prompts and responses are kept.",
-              "evidence": "Examine the principles of retention",
-              "decision": {
-                "by": "maintainer",
-                "at": "2026-11-04"
-              }
             }
           ],
           "tasks": [
@@ -3292,7 +3308,24 @@
             {
               "key": "manage-risks-alerts-and-activities/protect-data-used-by-ai-services/manage-roles-and-permissions-for-dspm-for-ai",
               "text": "Manage roles and permissions for DSPM for AI",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/identify-ai-data-risks-purview"
+                  },
+                  "title": "Identify AI data risks using Microsoft Purview Data Security Posture Management",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P3",
+                  "why": "Covers configuring and using Data Security Posture Management for AI, the feature whose roles this task manages.",
+                  "evidence": "Configure Data Security Posture Management (DSPM) for AI",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "manage-risks-alerts-and-activities/protect-data-used-by-ai-services/configure-dspm-for-ai-policies",
@@ -5375,12 +5408,6 @@
     },
     {
       "taskKey": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/enable-and-configure-insider-risk-levels-for-adaptive-protec",
-      "path": "/entra/identity/conditional-access/policy-risk-based-insider-block",
-      "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
-      "at": "2026-11-04"
-    },
-    {
-      "taskKey": "manage-risks-alerts-and-activities/implement-and-manage-microsoft-purview-insider-risk-manageme/enable-and-configure-insider-risk-levels-for-adaptive-protec",
       "path": "/entra/identity/monitoring-health/recommendation-insider-risk-condition",
       "reason": "Dropped in review: another product area, version table, preview feature, troubleshooting or generic page.",
       "at": "2026-11-04"
@@ -5810,6 +5837,18 @@
       "path": "/fabric/enterprise/powerbi/service-security-sensitivity-label-overview",
       "reason": "Sensitivity labels in Power BI, a different product area than Purview controls for AI services.",
       "at": "2026-11-04"
+    },
+    {
+      "taskKey": "implement-information-protection/implement-information-protection-for-windows-file-shares-and/plan-and-implement-the-microsoft-purview-information-protect",
+      "path": "/training/modules/purview-implement-endpoint-dlp",
+      "reason": "Belongs under \"Configure Endpoint DLP settings\", not here.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "manage-risks-alerts-and-activities/protect-data-used-by-ai-services/@foundations",
+      "path": "/training/modules/explore-retention-policies-labels-microsoft-365",
+      "reason": "Belongs under the fundamentals of \"Implement and manage retention\", not here.",
+      "at": "2026-11-14"
     }
   ]
 }

@@ -4265,6 +4265,22 @@
                     "by": "auto",
                     "at": "2026-11-05"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/perform-windows-server-secure-administration"
+                  },
+                  "title": "Perform Windows Server secure administration",
+                  "class": "supporting",
+                  "relation": "prerequisite",
+                  "source": "P1",
+                  "why": "Least-privilege administration, privileged access workstations and jump servers are the practices that Just Enough Administration builds on.",
+                  "evidence": "Define least privilege administration",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
                 }
               ]
             },
@@ -18769,34 +18785,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/troubleshoot/windows-client/installing-updates-features-roles/determine-whether-wsus-configuration-causes-wu-issue"
-                  },
-                  "title": "Determine Whether WSUS Configuration Causes WU Installation Failures",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Helps you isolate whether the cause of a WU issue is with the WSUS configuration or the WU service.",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-05"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/troubleshoot/windows-client/installing-updates-features-roles/error-0x8024402c-installing-update-feature-on-demand"
-                  },
-                  "title": "Error Code 0x8024402C When You Try to Install a Windows Update or a Feature on Demand",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Provides methods to resolve error code 0x8024402C when you install a Windows update or a Feature on Demand.",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-05"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/troubleshoot/windows-client/installing-updates-features-roles/error-80072ee6-downlaod-wsus-update"
                   },
                   "title": "80072EE6 error code when you download an update",
@@ -19371,6 +19359,22 @@
                 {
                   "target": {
                     "kind": "docs",
+                    "path": "/troubleshoot/windows-client/installing-updates-features-roles/determine-whether-wsus-configuration-causes-wu-issue"
+                  },
+                  "title": "Determine Whether WSUS Configuration Causes WU Installation Failures",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Checking whether the WSUS configuration is the cause is one step of troubleshooting failed update installations.",
+                  "evidence": "Helps you isolate whether the cause of a WU issue is with the WSUS configuration or the WU service.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
                     "path": "/windows-server/administration/windows-server-update-services/manage/update-management-with-windows-server-update-services"
                   },
                   "title": "Update Management with Windows Server Update Services",
@@ -19397,22 +19401,6 @@
                   "via": "/training/modules/troubleshoot-windows-server-virtual-machines-azure",
                   "why": "Serial Console gives access to a Windows VM that will not boot after a failed update, a recovery step a professional uses.",
                   "evidence": "Bi-Directional Serial Console for Azure Virtual Machines and Virtual Machine Scale Sets using a Windows example.",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-05"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/troubleshoot/windows-client/installing-updates-features-roles/automatic-updates-cannot-download-updates-event-16"
-                  },
-                  "title": "Automatic Updates can't download updates and event ID 16 is logged",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "Automatic Updates failing to download, the same Windows Update client a server administrator would check, though this article is written for Windows client computers.",
-                  "evidence": "Describes an issue where Automatic Updates can't download updates and event ID 16 is recorded in the system log.",
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-05"
@@ -49841,6 +49829,18 @@
       "path": "/azure/osconfig/server2025machineconfigdoc",
       "reason": "Neighbouring task, other product, generic or legacy page; not a teaching step for this task.",
       "at": "2026-11-05"
+    },
+    {
+      "taskKey": "monitor-and-troubleshoot-windows-server-environments/troubleshoot-windows-server-issues/troubleshoot-windows-update",
+      "path": "/troubleshoot/windows-client/installing-updates-features-roles/automatic-updates-cannot-download-updates-event-16",
+      "reason": "A troubleshooting article for one event ID on Windows client.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "monitor-and-troubleshoot-windows-server-environments/troubleshoot-windows-server-issues/troubleshoot-windows-update",
+      "path": "/troubleshoot/windows-client/installing-updates-features-roles/error-0x8024402c-installing-update-feature-on-demand",
+      "reason": "A troubleshooting article for one error code on Windows client.",
+      "at": "2026-11-14"
     }
   ]
 }

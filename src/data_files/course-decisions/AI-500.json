@@ -322,7 +322,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Introduction to cloud evaluation with Microsoft Foundry SDK - Microsoft Foundry"
     },
     {
       "task": "evaluate-optimize-and-monitor-multi-agent-solutions/design-and-implement-evaluation-and-validation-strategies-fo/@foundations",
@@ -365,7 +366,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Agent optimizer in Foundry Agent Service overview - Microsoft Foundry"
     },
     {
       "task": "evaluate-optimize-and-monitor-multi-agent-solutions/optimize-prompt-and-model-performance-for-multi-agent-soluti/@foundations",
@@ -471,7 +473,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Pipelines baseline architecture - Azure Pipelines"
     },
     {
       "task": "secure-govern-and-deploy-multi-agent-solutions/deploy-multi-agent-solutions-to-azure/specify-continuous-integration-and-continuous-deployment-ci",
@@ -500,7 +503,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Authorize Agent Access with On-Behalf-Of Flow"
     },
     {
       "task": "develop-multi-agent-solutions-in-azure/design-and-implement-advanced-prompt-engineering-strategies/design-and-implement-advanced-prompt-engineering-techniques",
@@ -509,6 +513,57 @@
       "reason": "Left out: the page title contains an instruction-like phrase that the MCP worker's content safety check rejects; the page is an Azure OpenAI how-to, not a teaching step for this task.",
       "by": "maintainer",
       "at": "2026-11-09"
+    },
+    {
+      "task": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/design-workflows-including-agents-subagents-control-loops-an",
+      "target": "/training/modules/aaai-design-agentic-loops-azure-ai-agent-service",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Migrate stateful agentic loops from agents v1 to agents v2\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/design-controls-and-functionality-to-support-human-ai-experi",
+      "target": "/training/modules/aaai-scale-responsible-ai-governance-multi-agent",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Design fairness and bias monitoring\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "architect-multi-agent-solutions/design-logical-architecture-for-multi-agent-solutions/match-task-demands-to-model-family-capacities",
+      "target": "/training/modules/model-catalog-evaluate",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Shows how to compare models in the Foundry catalog by benchmark, the practical side of matching a task to a model.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-guardrails-for-multi-agent-solutions/design-and-implement-a-multi-intervention-guardrail-strategy",
+      "target": "/training/modules/azure-ai-foundry-configure-manage-guardrails",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Shows how guardrails and blocklists are configured in Foundry, the controls a guardrail strategy is built from.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "secure-govern-and-deploy-multi-agent-solutions/design-and-implement-guardrails-for-multi-agent-solutions/design-and-implement-custom-guardrails-for-domain-specific-c",
+      "target": "/training/modules/azure-ai-foundry-configure-manage-guardrails",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Design and implement a multi-intervention guardrail strategy covering user inputs, tool calls, tool responses, and outputs\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
     }
   ],
   "excludedFamilies": []

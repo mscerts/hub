@@ -49,7 +49,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-05",
+      "title": "Agent Builder overview"
     },
     {
       "task": "drive-business-outcomes-by-using-agents/select-and-apply-prebuilt-microsoft-365-copilot-agents/@foundations",
@@ -139,11 +140,10 @@
     {
       "task": "manage-prompts-and-chats-by-using-microsoft-365-copilot/manage-chats-in-microsoft-365-copilot/@foundations",
       "target": "/microsoft-365/copilot/copilot-app-overview",
-      "decision": "accept",
-      "class": "foundation",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Learn moved this page to /copilot/plan/copilot-app-overview; the pick follows it.",
       "by": "maintainer",
-      "at": "2026-11-05"
+      "at": "2026-11-15"
     },
     {
       "task": "understand-generative-ai-fundamentals/identify-responsible-ai-and-data-protection-practices/recognize-and-mitigate-risks-to-sensitive-data",
@@ -187,6 +187,93 @@
       "reason": "accepted by the maintainer",
       "by": "maintainer",
       "at": "2026-11-05"
+    },
+    {
+      "task": "understand-generative-ai-fundamentals/identify-responsible-ai-and-data-protection-practices/@foundations",
+      "target": "/copilot/plan/ai-models-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/ai-models-overview here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Understanding AI functionality and models in Microsoft Online Services"
+    },
+    {
+      "task": "understand-generative-ai-fundamentals/identify-responsible-ai-and-data-protection-practices/@foundations",
+      "target": "/copilot/plan/copilot-subprocessor-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/copilot-subprocessor-overview here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Overview of AI Subprocessors"
+    },
+    {
+      "task": "manage-prompts-and-chats-by-using-microsoft-365-copilot/create-and-manage-prompts-in-microsoft-365-copilot/@foundations",
+      "target": "/copilot/manage/copilot-prompt-gallery",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/copilot-prompt-gallery here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Understand Prompt Gallery in Copilot"
+    },
+    {
+      "task": "manage-prompts-and-chats-by-using-microsoft-365-copilot/manage-chats-in-microsoft-365-copilot/@foundations",
+      "target": "/copilot/plan/copilot-app-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/copilot-app-overview here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Microsoft Copilot app"
+    },
+    {
+      "task": "manage-prompts-and-chats-by-using-microsoft-365-copilot/manage-chats-in-microsoft-365-copilot/@foundations",
+      "target": "/copilot/plan/copilot-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/copilot-overview here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "What is Microsoft Copilot?"
+    },
+    {
+      "task": "drive-business-outcomes-by-using-agents/select-and-apply-prebuilt-microsoft-365-copilot-agents/@foundations",
+      "target": "/copilot/manage/researcher-agent",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/researcher-agent here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "What is Researcher Agent in Microsoft 365 Copilot?"
+    },
+    {
+      "task": "drive-business-outcomes-by-using-agents/perform-business-tasks-by-using-microsoft-copilot-cowork/manage-scheduled-tasks-or-prompts",
+      "target": "/copilot/manage/scheduled-prompts",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/scheduled-prompts here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Manage Scheduled Prompts for Microsoft 365 Copilot"
+    },
+    {
+      "task": "understand-generative-ai-fundamentals/understand-generative-ai-capabilities-across-microsoft-365-e/@foundations",
+      "target": "/training/modules/what-generative-ai",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Explains what generative AI is, the responsible AI basics and which Copilot mode fits which kind of work.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

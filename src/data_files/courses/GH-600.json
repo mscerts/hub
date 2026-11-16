@@ -332,38 +332,7 @@
         },
         {
           "title": "Define boundaries between planning, reasoning, and action",
-          "foundations": [
-            {
-              "target": {
-                "kind": "module",
-                "path": "/training/modules/governance-guardrails-operations"
-              },
-              "title": "Governance, guardrails, and operations",
-              "class": "foundation",
-              "source": "P1",
-              "why": "Teaches risk-based autonomy and action boundaries and human-in-the-loop workflows, the concepts of boundaries between action and approval.",
-              "evidence": "Define risk-based autonomy and action boundaries",
-              "decision": {
-                "by": "auto",
-                "at": "2026-11-06"
-              }
-            },
-            {
-              "target": {
-                "kind": "module",
-                "path": "/training/modules/agent-tooling-mcp-execution-environments"
-              },
-              "title": "Tooling, MCP, and Agent Execution Environments",
-              "class": "foundation",
-              "source": "P1",
-              "why": "Teaches what MCP servers and allow lists are and the execution context and limits an agent runs in, the concepts behind the boundaries of this group.",
-              "evidence": "Model Context Protocol (MCP) servers, registries, and allow lists",
-              "decision": {
-                "by": "auto",
-                "at": "2026-11-06"
-              }
-            }
-          ],
+          "foundations": [],
           "tasks": [
             {
               "key": "prepare-agent-architecture-and-sdlc-processes/define-boundaries-between-planning-reasoning-and-action/configure-agent-planning-to-be-distinct-from-agent-execution",
@@ -465,7 +434,22 @@
             {
               "key": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/plan-and-implement-the-degree-of-agent-autonomy-including-gu",
               "text": "Plan and implement the degree of agent autonomy, including guardrails",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/governance-guardrails-operations"
+                  },
+                  "title": "Governance, guardrails, and operations",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Define risk-based autonomy and action boundaries",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/configure-agent-to-produce-inspectable-artifacts-within-stan",
@@ -482,7 +466,14 @@
             {
               "key": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/configure-human-intervention-for-autonomous-agents-without-s",
               "text": "Configure human intervention for autonomous agents without slowing delivery",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/governance-guardrails-operations",
+                  "title": "Governance, guardrails, and operations",
+                  "shownUnder": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/plan-and-implement-the-degree-of-agent-autonomy-including-gu"
+                }
+              ]
             }
           ]
         }
@@ -952,13 +943,33 @@
                   "path": "/training/modules/design-agent-architecture-integration",
                   "title": "Designing Agent Architecture and SDLC Integration",
                   "shownUnder": "prepare-agent-architecture-and-sdlc-processes/integrate-agents-into-the-software-development-lifecycle-sdl/define-inputs-outputs-and-success-criteria-for-agents"
+                },
+                {
+                  "path": "/training/modules/agent-tooling-mcp-execution-environments",
+                  "title": "Tooling, MCP, and Agent Execution Environments",
+                  "shownUnder": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-the-mcp-registries"
                 }
               ]
             },
             {
               "key": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-the-mcp-registries",
               "text": "Configure the MCP registries",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/agent-tooling-mcp-execution-environments"
+                  },
+                  "title": "Tooling, MCP, and Agent Execution Environments",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Model Context Protocol (MCP) servers, registries, and allow lists",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                }
+              ]
             },
             {
               "key": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-mcp-allow-lists",
@@ -979,6 +990,13 @@
                     "by": "maintainer",
                     "at": "2026-11-06"
                   }
+                }
+              ],
+              "overlaps": [
+                {
+                  "path": "/training/modules/agent-tooling-mcp-execution-environments",
+                  "title": "Tooling, MCP, and Agent Execution Environments",
+                  "shownUnder": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-the-mcp-registries"
                 }
               ]
             }
@@ -1044,7 +1062,14 @@
             {
               "key": "implement-tool-use-and-environment-interaction/integrate-agents-within-development-environments/configure-an-agent-s-scope-to-a-specific-repository",
               "text": "Configure an agent's scope to a specific repository",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/agent-tooling-mcp-execution-environments",
+                  "title": "Tooling, MCP, and Agent Execution Environments",
+                  "shownUnder": "implement-tool-use-and-environment-interaction/configure-mcp-servers/configure-the-mcp-registries"
+                }
+              ]
             },
             {
               "key": "implement-tool-use-and-environment-interaction/integrate-agents-within-development-environments/configure-an-agent-to-be-invoked-in-a-ci-workflow",
@@ -1865,12 +1890,26 @@
             {
               "key": "implement-guardrails-and-accountability/define-autonomy-levels/classify-agent-actions-by-operational-security-and-complianc",
               "text": "Classify agent actions by operational, security, and compliance risk to right-size human interventions",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/governance-guardrails-operations",
+                  "title": "Governance, guardrails, and operations",
+                  "shownUnder": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/plan-and-implement-the-degree-of-agent-autonomy-including-gu"
+                }
+              ]
             },
             {
               "key": "implement-guardrails-and-accountability/define-autonomy-levels/assign-autonomy-levels-to-maximize-delivery-speed-while-rema",
               "text": "Assign autonomy levels to maximize delivery speed while remaining compliant with organizational security and Responsible AI standards",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/governance-guardrails-operations",
+                  "title": "Governance, guardrails, and operations",
+                  "shownUnder": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/plan-and-implement-the-degree-of-agent-autonomy-including-gu"
+                }
+              ]
             }
           ]
         },
@@ -1880,22 +1919,50 @@
             {
               "key": "implement-guardrails-and-accountability/implement-guardrails-and-human-in-the-loop-workflows/identify-the-subset-of-actions-that-require-human-judgment",
               "text": "Identify the subset of actions that require human judgment",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/governance-guardrails-operations",
+                  "title": "Governance, guardrails, and operations",
+                  "shownUnder": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/plan-and-implement-the-degree-of-agent-autonomy-including-gu"
+                }
+              ]
             },
             {
               "key": "implement-guardrails-and-accountability/implement-guardrails-and-human-in-the-loop-workflows/block-actions-that-violate-defined-security-compliance-or-re",
               "text": "Block actions that violate defined security, compliance, or Responsible AI policies",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/governance-guardrails-operations",
+                  "title": "Governance, guardrails, and operations",
+                  "shownUnder": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/plan-and-implement-the-degree-of-agent-autonomy-including-gu"
+                }
+              ]
             },
             {
               "key": "implement-guardrails-and-accountability/implement-guardrails-and-human-in-the-loop-workflows/scope-permissions-and-execution-contexts-to-enforce-least-pr",
               "text": "Scope permissions and execution contexts to enforce least-privilege access",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/governance-guardrails-operations",
+                  "title": "Governance, guardrails, and operations",
+                  "shownUnder": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/plan-and-implement-the-degree-of-agent-autonomy-including-gu"
+                }
+              ]
             },
             {
               "key": "implement-guardrails-and-accountability/implement-guardrails-and-human-in-the-loop-workflows/require-explicit-authorization-or-controlled-paths-for-irrev",
               "text": "Require explicit authorization or controlled paths for irreversible or compliance-sensitive changes",
-              "picks": []
+              "picks": [],
+              "overlaps": [
+                {
+                  "path": "/training/modules/governance-guardrails-operations",
+                  "title": "Governance, guardrails, and operations",
+                  "shownUnder": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/plan-and-implement-the-degree-of-agent-autonomy-including-gu"
+                }
+              ]
             },
             {
               "key": "implement-guardrails-and-accountability/implement-guardrails-and-human-in-the-loop-workflows/preserve-execution-velocity-by-minimizing-approvals-that-do",
@@ -15599,6 +15666,18 @@
       "path": "/troubleshoot/sales-copilot/crm-permissions-and-configurations/invalid-crm-record-id-error",
       "reason": "Sales agent CRM record error troubleshooting, a sales product topic.",
       "at": "2026-11-06"
+    },
+    {
+      "taskKey": "prepare-agent-architecture-and-sdlc-processes/define-boundaries-between-planning-reasoning-and-action/@foundations",
+      "path": "/training/modules/governance-guardrails-operations",
+      "reason": "Belongs under \"Plan and implement the degree of agent autonomy, including guardrails\", not here.",
+      "at": "2026-11-15"
+    },
+    {
+      "taskKey": "prepare-agent-architecture-and-sdlc-processes/define-boundaries-between-planning-reasoning-and-action/@foundations",
+      "path": "/training/modules/agent-tooling-mcp-execution-environments",
+      "reason": "Belongs under \"Configure the MCP registries\", not here.",
+      "at": "2026-11-15"
     }
   ]
 }

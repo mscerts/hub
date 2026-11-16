@@ -527,6 +527,10 @@
         "c97ae294442eacb98c03c8f8581dac2fdbd53097"
       ],
       [
+        "/training/modules/implement-app-registration",
+        "7a43bdd365f2ffe8f4f0fddc6111f81df6d81410"
+      ],
+      [
         "/training/modules/implement-authentication-access-entra",
         "379aa8d4aeb6cf5b3c48ec4ab7095fe156742dab"
       ],
@@ -537,6 +541,10 @@
       [
         "/training/modules/implement-initial-configuration-of-azure-active-directory",
         "8965232ba135488dae65730a23d24ee6178f8fcb"
+      ],
+      [
+        "/training/modules/implement-monitor-integration-of-enterprise-apps-for-sso",
+        "ce05d7072333fbfa2137fe98a01cc715cba02553"
       ],
       [
         "/training/modules/implement-windows-server-iaas-virtual-machine-network-security",
@@ -609,6 +617,10 @@
       [
         "/training/modules/manage-cloud-security-posture-management",
         "e9ad9b3ea4eaa24eb8cfab951d5bf6a9b531d1c7"
+      ],
+      [
+        "/training/modules/manage-security-controls-identity-access",
+        "e7ed38f9d97b14f2fac38d266571b4783c807539"
       ],
       [
         "/training/modules/microsoft-defender-cloud-security-posture",
@@ -1136,20 +1148,6 @@
                   "evidence": "Eligible and time-bound role assignments in Azure RBAC",
                   "decision": {
                     "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/entra/id-governance/privileged-identity-management"
-                  },
-                  "title": "Privileged Identity Management documentation - Microsoft Entra ID Governance",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Privileged Identity Management documentation - Microsoft Entra ID Governance",
-                  "decision": {
-                    "by": "maintainer",
                     "at": "2026-11-04"
                   }
                 },
@@ -2745,6 +2743,34 @@
                 },
                 {
                   "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-app-registration"
+                  },
+                  "title": "Implement app registration",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Plan your line of business application registration strategy",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-monitor-integration-of-enterprise-apps-for-sso"
+                  },
+                  "title": "Implement and monitor the integration of enterprise apps for SSO",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Implement token customizations",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
                     "kind": "docs",
                     "path": "/entra/identity/enterprise-apps/deactivate-app-registration"
                   },
@@ -2754,22 +2780,6 @@
                   "evidence": "Learn how to deactivate an app registration in Microsoft Entra ID",
                   "decision": {
                     "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/implement-security-controls-kubernetes"
-                  },
-                  "title": "Implement security controls for Azure Kubernetes Service",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P1",
-                  "why": "A professional securing applications on AKS meets workload identity for the cluster workloads, a neighbouring step.",
-                  "evidence": "Implement workload identity and secrets management for AKS",
-                  "decision": {
-                    "by": "maintainer",
                     "at": "2026-11-04"
                   }
                 }
@@ -3945,23 +3955,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/azure/key-vault/keys/how-to-configure-key-rotation"
-                  },
-                  "title": "Configure cryptographic key auto-rotation in Azure Key Vault",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P2",
-                  "via": "/training/modules/manage-keys-secrets-key-vault",
-                  "why": "Key auto-rotation is a neighbouring key-management step, not the deploy task itself.",
-                  "evidence": "Use this guide to learn how to configure automated the rotation of a key in Azure Key Vault",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/azure/key-vault/general/overview-vnet-service-endpoints"
                   },
                   "title": "Virtual network service endpoints for Azure Key Vault",
@@ -4020,38 +4013,6 @@
                   "evidence": "Troubleshooting Azure Key Vault access policy issues",
                   "decision": {
                     "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/azure/key-vault/keys"
-                  },
-                  "title": "Keys",
-                  "class": "supporting",
-                  "relation": "prerequisite",
-                  "source": "P4",
-                  "why": "Overview of the keys a vault stores, background needed before deploying and configuring it.",
-                  "evidence": "Azure Key Vault enables Microsoft Azure applications and users to store and use keys.",
-                  "decision": {
-                    "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/azure/key-vault/keys/secure-keys"
-                  },
-                  "title": "Secure your Azure Key Vault keys",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Securing vault keys is a neighbouring step after deployment.",
-                  "evidence": "Learn how to secure Azure Key Vault keys",
-                  "decision": {
-                    "by": "maintainer",
                     "at": "2026-11-04"
                   }
                 },
@@ -4755,6 +4716,39 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/key-vault/keys/how-to-configure-key-rotation"
+                  },
+                  "title": "Configure cryptographic key auto-rotation in Azure Key Vault",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P2",
+                  "via": "/training/modules/manage-keys-secrets-key-vault",
+                  "why": "Automatic key rotation is part of managing keys once the vault exists.",
+                  "evidence": "Use this guide to learn how to configure automated the rotation of a key in Azure Key Vault",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/key-vault/keys/secure-keys"
+                  },
+                  "title": "Secure your Azure Key Vault keys",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "The security recommendations for keys are applied while managing them.",
+                  "evidence": "Learn how to secure Azure Key Vault keys",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
                 }
               ]
             },
@@ -5420,6 +5414,20 @@
               "key": "manage-identity-access-and-governance/implement-governance-to-enforce-security-and-regulatory-comp/manage-azure-built-in-role-assignments",
               "text": "Manage Azure built-in role assignments",
               "picks": [
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/manage-security-controls-identity-access"
+                  },
+                  "title": "Manage security controls for identity and access",
+                  "class": "core",
+                  "source": "P3",
+                  "evidence": "Configure Azure role permissions for management groups, subscriptions, resource groups, and resources",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-15"
+                  }
+                },
                 {
                   "target": {
                     "kind": "docs",
@@ -14203,6 +14211,48 @@
               "picks": [
                 {
                   "target": {
+                    "kind": "module",
+                    "path": "/training/modules/configure-azure-kubernetes-service-cluster"
+                  },
+                  "title": "Configure an Azure Kubernetes Service cluster",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Host-based encryption on Azure Kubernetes Service",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/aks-governance-azure-policy"
+                  },
+                  "title": "Azure Kubernetes Service governance with Azure Policy",
+                  "class": "core",
+                  "source": "P4",
+                  "evidence": "Azure Kubernetes Service governance with Azure Policy",
+                  "decision": {
+                    "by": "auto",
+                    "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/implement-security-controls-kubernetes"
+                  },
+                  "title": "Implement security controls for Azure Kubernetes Service",
+                  "class": "core",
+                  "source": "P1",
+                  "evidence": "Implement workload identity and secrets management for AKS",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
                     "kind": "docs",
                     "path": "/azure/aks/use-network-policies"
                   },
@@ -14266,34 +14316,6 @@
                   "class": "core",
                   "source": "P2",
                   "via": "/training/modules/implement-security-controls-kubernetes",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/configure-azure-kubernetes-service-cluster"
-                  },
-                  "title": "Configure an Azure Kubernetes Service cluster",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Host-based encryption on Azure Kubernetes Service",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "module",
-                    "path": "/training/modules/aks-governance-azure-policy"
-                  },
-                  "title": "Azure Kubernetes Service governance with Azure Policy",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Azure Kubernetes Service governance with Azure Policy",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-04"
@@ -18081,7 +18103,24 @@
             {
               "key": "secure-compute/implement-security-for-application-platform-services/implement-security-policies-for-back-end-api-protection-by-u",
               "text": "Implement security policies for back-end API protection by using API Management",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/azure/api-management/authentication-managed-identity-policy"
+                  },
+                  "title": "Azure API Management policy reference - authentication-managed-identity",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "The managed identity authentication policy is how API Management signs in to a back-end API without a stored secret.",
+                  "evidence": "Reference for the authentication-managed-identity policy available for use in Azure API Management. Provides policy usage, settings, and examples.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-14"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/implement-application-interface-security-management",
@@ -38812,6 +38851,36 @@
       "path": "/training/modules/secure-access-entra-agent-identity",
       "reason": "Access for Entra Agent Identity and Conditional Access for agents; a different identity area.",
       "at": "2026-11-04"
+    },
+    {
+      "taskKey": "manage-identity-access-and-governance/secure-access-to-resources-by-using-microsoft-entra-id/implement-and-configure-privileged-identity-management-pim",
+      "path": "/entra/id-governance/privileged-identity-management",
+      "reason": "A landing page of the Privileged Identity Management documentation.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "manage-identity-access-and-governance/secure-secrets-and-keys-by-using-azure-key-vault/deploy-key-vault",
+      "path": "/azure/key-vault/keys",
+      "reason": "A landing page of the Key Vault keys documentation.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "manage-identity-access-and-governance/secure-access-to-resources-by-using-microsoft-entra-id/implement-and-configure-identity-for-applications-including",
+      "path": "/training/modules/implement-security-controls-kubernetes",
+      "reason": "Belongs under \"Implement and configure security controls for Azure Kubernetes Service (AKS)\", not here.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "manage-identity-access-and-governance/secure-secrets-and-keys-by-using-azure-key-vault/deploy-key-vault",
+      "path": "/azure/key-vault/keys/how-to-configure-key-rotation",
+      "reason": "Belongs under \"Manage keys, secrets, and certificates\", not here.",
+      "at": "2026-11-14"
+    },
+    {
+      "taskKey": "manage-identity-access-and-governance/secure-secrets-and-keys-by-using-azure-key-vault/deploy-key-vault",
+      "path": "/azure/key-vault/keys/secure-keys",
+      "reason": "Belongs under \"Manage keys, secrets, and certificates\", not here.",
+      "at": "2026-11-14"
     }
   ]
 }

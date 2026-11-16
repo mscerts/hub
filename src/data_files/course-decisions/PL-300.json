@@ -74,7 +74,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-06",
+      "title": "Enable sensitivity labels in Fabric and Power BI - Microsoft Fabric"
     },
     {
       "task": "manage-and-secure-power-bi/secure-and-govern-power-bi-items/apply-sensitivity-labels",
@@ -318,7 +319,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-06",
+      "title": "Prepare your data for AI in Power BI"
     },
     {
       "task": "visualize-and-analyze-the-data/enhance-reports-for-usability-and-storytelling/configure-automatic-page-refresh",
@@ -401,7 +403,18 @@
       "class": "core",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-06"
+      "at": "2026-11-06",
+      "title": "Use Copilot with semantic models"
+    },
+    {
+      "task": "prepare-the-data/get-or-connect-to-data/@foundations",
+      "target": "/training/modules/get-started-with-power-bi",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Introduces the building blocks of Power BI and the Power BI service that every later task works in.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     }
   ],
   "excludedFamilies": []

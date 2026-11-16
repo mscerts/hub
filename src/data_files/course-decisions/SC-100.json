@@ -26,7 +26,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "How to Configure Grant Controls in Microsoft Entra"
     },
     {
       "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-identity-and-access-management/design-a-solution-for-agent-identities-using-microsoft-entra",
@@ -36,7 +37,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Conditional Access Templates: Simplify Security"
     },
     {
       "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-identity-and-access-management/design-a-solution-for-agent-identities-using-microsoft-entra",
@@ -46,7 +48,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What are Microsoft Entra Conditional Access policy plans? (preview) - Microsoft Entra ID"
     },
     {
       "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-identity-and-access-management/design-a-solution-for-agent-identities-using-microsoft-entra",
@@ -64,7 +67,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Create a Conditional Access policy plan (preview) - Microsoft Entra ID"
     },
     {
       "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-identity-and-access-management/design-a-solution-for-agent-identities-using-microsoft-entra",
@@ -98,7 +102,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Entra Conditional Access for workload identities"
     },
     {
       "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-identity-and-access-management/design-a-solution-for-agent-identities-using-microsoft-entra",
@@ -251,7 +256,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Delegation of Control in AD DS on Windows Server"
     },
     {
       "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-identity-and-access-management/specify-requirements-to-harden-active-directory-domain-servi",
@@ -261,7 +267,8 @@
       "relation": "same-workflow",
       "reason": "Group Policy is how hardening settings reach domain controllers and members, a neighbouring part of hardening Active Directory.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Group Policy overview for Windows Server"
     },
     {
       "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-identity-and-access-management/specify-requirements-to-harden-active-directory-domain-servi",
@@ -492,12 +499,10 @@
     {
       "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-security-operations/design-monitoring-to-support-hybrid-and-multicloud-environme",
       "target": "/azure/sentinel/sentinel-overview",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "Belongs under \"Design a solution for detection and response that includes extended detection and response (XDR) and security information and event management (SIEM)\", not here.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-security-operations/design-monitoring-to-support-hybrid-and-multicloud-environme",
@@ -587,7 +592,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Learn about Data Security Posture Management"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-an-organization-s-data/design-security-for-data-used-in-ai-workloads",
@@ -597,7 +603,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Security for AI"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-an-organization-s-data/design-security-for-data-used-in-ai-workloads",
@@ -607,7 +614,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Discover, sanction, and block AI apps"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-an-organization-s-data/design-security-for-data-used-in-ai-workloads",
@@ -640,7 +648,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Securing workload identities with Microsoft Entra ID Protection"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/@foundations",
@@ -661,10 +670,14 @@
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-a-solution-for-api-management-and-security",
       "target": "/azure/defender-for-cloud/api-security-posture-overview",
-      "decision": "reject",
-      "reason": "Dropped in review: implementation detail, outdated or other-role page, video episode, billing or landing page.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "API security posture in Defender for Cloud is how the APIs behind API Management are assessed.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "API security posture overview"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-a-solution-for-api-management-and-security",
@@ -677,10 +690,13 @@
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-a-solution-for-api-management-and-security",
       "target": "/training/modules/implement-application-interface-security-management",
-      "decision": "reject",
-      "reason": "Dropped in review: implementation detail, outdated or other-role page, video episode, billing or landing page.",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Shows the backend security controls of Azure API Management that a design for API security chooses between.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true
     },
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-a-solution-for-workload-identities-to-authenticate-an",
@@ -709,10 +725,13 @@
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-and-implement-standards-and-practices-for-securing-th",
       "target": "/azure/security/develop/secure-dev-overview",
-      "decision": "reject",
-      "reason": "Dropped in review: implementation detail, outdated or other-role page, video episode, billing or landing page.",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Best practices to help you develop more secure code and deploy a more secure application in the cloud.\".",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Secure development best practices on Microsoft Azure"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-solutions-that-secure-applications-by-using-azure-web",
@@ -730,7 +749,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Web Application Firewall on Azure Front Door - Frequently Asked Questions"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-solutions-that-secure-applications-by-using-azure-web",
@@ -764,7 +784,8 @@
       "relation": "deeper",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Web Application Firewall on Application Gateway - Frequently Asked Questions"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/design-solutions-for-securing-applications/design-solutions-that-secure-applications-by-using-azure-web",
@@ -821,7 +842,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Integrate Microsoft Defender for Endpoint with Intune for Device Compliance"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/evaluate-solutions-for-securing-microsoft-365/@foundations",
@@ -871,7 +893,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Mobile Application Management (MAM) and Android Enterprise Personally-Owned Work Profiles in Microsoft Intune"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/evaluate-solutions-for-securing-microsoft-365/evaluate-device-management-solutions-that-include-microsoft",
@@ -881,7 +904,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Mobile Application Management (MAM) for unenrolled devices in Microsoft Intune"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/evaluate-solutions-for-securing-microsoft-365/evaluate-device-management-solutions-that-include-microsoft",
@@ -947,7 +971,8 @@
       "class": "core",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Deploy an information protection solution"
     },
     {
       "task": "design-security-solutions-for-applications-and-data/evaluate-solutions-for-securing-microsoft-365/evaluate-solutions-for-securing-data-in-microsoft-365-by-usi",
@@ -1039,7 +1064,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What Is Discovery?"
     },
     {
       "task": "design-security-solutions-for-infrastructure/design-solutions-for-security-posture-management-in-hybrid-a/design-integrated-security-posture-management-solutions-that",
@@ -1049,7 +1075,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Microsoft Defender for Cloud DevOps Security Benefits"
     },
     {
       "task": "design-security-solutions-for-infrastructure/design-solutions-for-security-posture-management-in-hybrid-a/evaluate-security-posture-by-using-microsoft-defender-for-cl",
@@ -1101,7 +1128,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What is the Identity Secure Score?"
     },
     {
       "task": "design-security-solutions-for-infrastructure/design-solutions-for-security-posture-management-in-hybrid-a/evaluate-security-posture-by-using-microsoft-secure-score",
@@ -1160,7 +1188,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Kubernetes data plane hardening"
     },
     {
       "task": "design-security-solutions-for-infrastructure/design-solutions-for-security-posture-management-in-hybrid-a/select-cloud-workload-protection-solutions-in-microsoft-defe",
@@ -1173,22 +1202,18 @@
     {
       "task": "design-security-solutions-for-infrastructure/design-solutions-for-security-posture-management-in-hybrid-a/select-cloud-workload-protection-solutions-in-microsoft-defe",
       "target": "/training/modules/case-study-apps-data",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "An interactive case study: it is on the SC-100 lab page, not in the course.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-security-solutions-for-infrastructure/design-solutions-for-security-posture-management-in-hybrid-a/select-cloud-workload-protection-solutions-in-microsoft-defe",
       "target": "/training/modules/case-study-endpoints-infrastructure",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "An interactive case study: it is on the SC-100 lab page, not in the course.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-security-solutions-for-infrastructure/design-solutions-for-security-posture-management-in-hybrid-a/select-cloud-workload-protection-solutions-in-microsoft-defe",
@@ -1258,7 +1283,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Partner Ecosystem Overview"
     },
     {
       "task": "design-security-solutions-for-infrastructure/evaluate-solutions-for-network-security-and-security-service/evaluate-network-designs-to-align-with-security-requirements",
@@ -1268,7 +1294,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Define network encryption requirements - Cloud Adoption Framework"
     },
     {
       "task": "design-security-solutions-for-infrastructure/evaluate-solutions-for-network-security-and-security-service/evaluate-network-designs-to-align-with-security-requirements",
@@ -1278,7 +1305,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Security best practices for IaaS workloads in Azure"
     },
     {
       "task": "design-security-solutions-for-infrastructure/evaluate-solutions-for-network-security-and-security-service/evaluate-network-designs-to-align-with-security-requirements",
@@ -1288,7 +1316,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Secure your VPN Gateway deployment"
     },
     {
       "task": "design-security-solutions-for-infrastructure/evaluate-solutions-for-network-security-and-security-service/evaluate-network-designs-to-align-with-security-requirements",
@@ -1298,7 +1327,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Azure Virtual WAN Service Guide - Microsoft Azure Well-Architected Framework"
     },
     {
       "task": "design-security-solutions-for-infrastructure/evaluate-solutions-for-network-security-and-security-service/evaluate-solutions-that-use-microsoft-entra-internet-access",
@@ -1503,12 +1533,10 @@
     {
       "task": "design-security-solutions-for-infrastructure/evaluate-solutions-for-network-security-and-security-service/evaluate-solutions-that-use-microsoft-entra-private-access",
       "target": "/training/modules/case-study-access-control-threat-resilience",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "accepted by the maintainer",
+      "decision": "reject",
+      "reason": "An interactive case study: it is on the SC-100 lab page, not in the course.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-14"
     },
     {
       "task": "design-security-solutions-for-infrastructure/specify-requirements-for-securing-saas-paas-and-iaas-service/@foundations",
@@ -1754,7 +1782,8 @@
       "class": "foundation",
       "reason": "Explains how to perform cloud adoption securely in the CAF Secure methodology, a concept behind the framework alignment tasks.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Perform Your Cloud Adoption Securely - Cloud Adoption Framework"
     },
     {
       "task": "design-solutions-that-align-with-security-best-practices-and/design-solutions-that-align-with-the-microsoft-cloud-adoptio/@foundations",
@@ -1763,7 +1792,8 @@
       "class": "foundation",
       "reason": "Explains how to manage the cloud estate securely in the CAF Secure methodology, a concept behind the framework alignment tasks.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Manage Your Cloud Estate with Enhanced Security - Cloud Adoption Framework"
     },
     {
       "task": "design-solutions-that-align-with-security-best-practices-and/design-solutions-that-align-with-the-microsoft-cloud-adoptio/@foundations",
@@ -1772,7 +1802,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Plan for a Secure Cloud Adoption - Cloud Adoption Framework"
     },
     {
       "task": "design-solutions-that-align-with-security-best-practices-and/design-solutions-that-align-with-the-microsoft-cloud-adoptio/@foundations",
@@ -1781,7 +1812,8 @@
       "class": "foundation",
       "reason": "Explains how to prepare a secure cloud estate in the CAF Secure methodology, a concept behind the framework alignment tasks.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Prepare Your Secure Cloud Estate - Cloud Adoption Framework"
     },
     {
       "task": "design-solutions-that-align-with-security-best-practices-and/design-solutions-that-align-with-the-microsoft-cloud-adoptio/@foundations",
@@ -1807,7 +1839,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Architecture strategies for data classification - Microsoft Azure Well-Architected Framework"
     },
     {
       "task": "design-solutions-that-align-with-security-best-practices-and/design-solutions-that-align-with-the-microsoft-cloud-adoptio/design-a-strategy-for-secure-ai-adoption",
@@ -1841,7 +1874,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Security Considerations for Your Cloud Strategy - Cloud Adoption Framework"
     },
     {
       "task": "design-solutions-that-align-with-security-best-practices-and/design-solutions-that-align-with-the-microsoft-cloud-adoptio/design-solutions-for-implementing-and-governing-security-by",
@@ -1858,7 +1892,8 @@
       "class": "core",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Enforce cloud governance policies - Cloud Adoption Framework"
     },
     {
       "task": "design-solutions-that-align-with-security-best-practices-and/design-solutions-that-align-with-the-microsoft-cybersecurity/design-ai-solutions-that-align-to-the-microsoft-cloud-securi",
@@ -1901,6 +1936,118 @@
       "reason": "Dropped in review: implementation detail, outdated or other-role page, video episode, billing or landing page.",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-security-operations/design-a-solution-for-detection-and-response-that-includes-e",
+      "target": "/azure/sentinel/sentinel-overview",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "prerequisite",
+      "reason": "Describes Microsoft Sentinel, the SIEM half of a detection and response design, before the design is made.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "What is Microsoft Sentinel?"
+    },
+    {
+      "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-regulatory-compliance/evaluate-and-validate-alignment-with-regulatory-standards-an",
+      "target": "/azure/defender-for-cloud/regulatory-compliance-dashboard",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "The regulatory compliance dashboard of Defender for Cloud is where alignment with a standard is evaluated.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Improve regulatory compliance in Microsoft Defender for Cloud"
+    },
+    {
+      "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-regulatory-compliance/design-azure-policy-solutions-to-address-security-and-compli",
+      "target": "/azure/governance/policy/samples/azure-security-benchmark",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Lists the Azure Policy definitions behind each control of the Microsoft cloud security benchmark, the mapping a policy design starts from.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Regulatory Compliance details for Microsoft cloud security benchmark - Azure Policy"
+    },
+    {
+      "task": "design-security-operations-identity-and-compliance-capabilit/design-solutions-for-regulatory-compliance/design-azure-policy-solutions-to-address-security-and-compli",
+      "target": "/training/modules/design-governance",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Covers designing governance with Azure Policy, management groups and role-based access control.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-security-solutions-for-applications-and-data/evaluate-solutions-for-securing-microsoft-365/evaluate-security-posture-for-productivity-and-collaboration",
+      "target": "/training/modules/harden-microsoft-365-secure-score",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Prepare a safe administrative environment\".",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-solutions-that-align-with-security-best-practices-and/design-solutions-that-align-with-the-microsoft-cybersecurity/@foundations",
+      "target": "/security/zero-trust/microsoft-reference-architecture",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Learn moved the picked page /security/adoption/mcra here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Microsoft Cybersecurity Reference Architecture (MCRA)"
+    },
+    {
+      "task": "design-security-solutions-for-applications-and-data/evaluate-solutions-for-securing-microsoft-365/@foundations",
+      "target": "/copilot/implement/copilot-controls-overview",
+      "decision": "accept",
+      "class": "foundation",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/copilot-controls/copilot-controls-overview here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Copilot controls overview"
+    },
+    {
+      "task": "design-security-solutions-for-applications-and-data/evaluate-solutions-for-securing-microsoft-365/evaluate-data-security-and-compliance-controls-in-microsoft",
+      "target": "/copilot/implement/copilot-controls-security-governance",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/copilot-controls/copilot-controls-security-governance here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Copilot controls security and governance"
+    },
+    {
+      "task": "design-security-solutions-for-applications-and-data/evaluate-solutions-for-securing-microsoft-365/evaluate-data-security-and-compliance-controls-in-microsoft",
+      "target": "/copilot/plan/security-microsoft-copilot",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/security-microsoft-copilot here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Security for Microsoft Copilot"
+    },
+    {
+      "task": "design-security-solutions-for-applications-and-data/evaluate-solutions-for-securing-microsoft-365/evaluate-data-security-and-compliance-controls-in-microsoft",
+      "target": "/copilot/plan/architecture-data-protection-auditing",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Learn moved the picked page /microsoft-365/copilot/architecture-data-protection-auditing here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Microsoft Copilot data protection architecture"
     }
   ],
   "excludedFamilies": []

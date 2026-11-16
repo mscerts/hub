@@ -17,7 +17,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Integrations for AI - Azure Cosmos DB"
     },
     {
       "task": "design-and-develop-database-solutions/design-and-implement-azure-cosmos-db-solutions-by-using-ai-a/@foundations",
@@ -26,7 +27,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Overview of Indexing - Azure Cosmos DB"
     },
     {
       "task": "design-and-develop-database-solutions/design-and-implement-azure-cosmos-db-solutions-by-using-ai-a/@foundations",
@@ -76,7 +78,8 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Soft Delete (Preview) - Azure Cosmos DB"
     },
     {
       "task": "design-and-develop-database-solutions/evaluate-resource-models-and-sdk-solutions/create-and-manage-database-and-containers",
@@ -144,7 +147,8 @@
       "relation": "deeper",
       "reason": "Reading the change feed with the Spark connector, a deeper way to consume the change feed.",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Change feed with Apache Spark - Azure Cosmos DB"
     },
     {
       "task": "design-and-develop-database-solutions/implement-change-feed/implement-change-feed-operations",
@@ -193,7 +197,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What is Memory?"
     },
     {
       "task": "implement-ai-and-analytics-capabilities-in-database-solution/design-and-implement-agent-memory-stores/@foundations",
@@ -202,7 +207,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What is Microsoft Foundry Agent Service? - Microsoft Foundry"
     },
     {
       "task": "implement-ai-and-analytics-capabilities-in-database-solution/design-and-implement-agent-memory-stores/@foundations",
@@ -246,7 +252,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Develop a RAG Solution on Azure - Generate Embeddings Phase - Azure Architecture Center"
     },
     {
       "task": "implement-ai-and-analytics-capabilities-in-database-solution/design-and-implement-ai-retrieval/implement-vector-search",
@@ -271,7 +278,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Reverse extract, transform, & load (ETL) - Azure Cosmos DB"
     },
     {
       "task": "implement-ai-and-analytics-capabilities-in-database-solution/design-and-implement-operational-analytics-on-azure-cosmos-d/@foundations",
@@ -280,7 +288,8 @@
       "class": "foundation",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Analytics with Azure Synapse Link - Azure Cosmos DB"
     },
     {
       "task": "implement-ai-and-analytics-capabilities-in-database-solution/design-and-implement-operational-analytics-on-azure-cosmos-d/@foundations",
@@ -322,7 +331,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "What Is Analytical Store? - Azure Cosmos DB"
     },
     {
       "task": "implement-ai-and-analytics-capabilities-in-database-solution/design-and-implement-operational-analytics-on-azure-cosmos-d/choose-between-azure-cosmos-db-and-cosmos-db-in-microsoft-fa",
@@ -428,7 +438,8 @@
       "relation": "prerequisite",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Get Started with Mirroring in Fabric"
     },
     {
       "task": "secure-optimize-and-deploy-database-solutions/implement-availability-and-recovery-solutions/@foundations",
@@ -446,7 +457,8 @@
       "relation": "same-workflow",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Restore Azure Cosmos DB account using Azure portal - Azure Backup"
     },
     {
       "task": "secure-optimize-and-deploy-database-solutions/implement-availability-and-recovery-solutions/configure-backup-and-restore-solutions",
@@ -528,7 +540,27 @@
       "relation": "operate",
       "reason": "accepted by the maintainer",
       "by": "maintainer",
-      "at": "2026-11-04"
+      "at": "2026-11-04",
+      "title": "Redistribute Throughput Across Partitions (Preview) - Azure Cosmos DB"
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-and-remediate-database-performance/optimize-query-performance",
+      "target": "/training/modules/design-optimize-indexing-strategy-azure-cosmos-db-nosql",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Exercise: Optimize an indexing strategy\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "secure-optimize-and-deploy-database-solutions/optimize-and-remediate-database-performance/analyze-index-performance-metrics",
+      "target": "/training/modules/design-optimize-indexing-strategy-azure-cosmos-db-nosql",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Optimize query performance\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
     }
   ],
   "excludedFamilies": []
