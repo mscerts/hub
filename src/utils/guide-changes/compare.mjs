@@ -5,6 +5,7 @@
 import { parseGuide } from "../../../scripts/lib/course-guide.mjs";
 import { areasByTarget } from "./compare-areas.mjs";
 import { groupAreasByTarget } from "./compare-groups.mjs";
+import { taskReviews } from "./compare-tasks.mjs";
 import { moveEdge } from "./diff.mjs";
 
 /**
@@ -47,8 +48,9 @@ export const comparisonFor = (code) =>
 
 /**
  * What buildChangePage needs to compare the guide of `code` with its partner(s): `{ from, to, retirements,
- * blurb, titleThreshold }`, or null when the exam is in no pair or one of the guides has not been recorded.
- * `historyOf(code)` gives a recorded history; `retiringExams` is the `exams` list of retiring-exams.json.
+ * blurb, titleThreshold, areas, groups, tasks }`, or null when the exam is in no pair or one of the guides has
+ * not been recorded. `tasks` is the hand-made review of every skill (compare-tasks.mjs). `historyOf(code)` gives
+ * a recorded history; `retiringExams` is the `exams` list of retiring-exams.json.
  */
 export function comparisonInput(code, historyOf, retiringExams = []) {
   const pair = comparisonFor(code);
@@ -69,6 +71,7 @@ export function comparisonInput(code, historyOf, retiringExams = []) {
     titleThreshold: pair.titleThreshold,
     areas: areasByTarget[pair.to] ?? null,
     groups: groupAreasByTarget[pair.to] ?? null,
+    tasks: taskReviews[pair.to] ?? null,
   };
 }
 

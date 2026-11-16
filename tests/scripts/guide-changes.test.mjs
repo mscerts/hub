@@ -37,6 +37,10 @@ import {
   versionState,
 } from "../../src/utils/guide-changes/state.mjs";
 import {
+  taskFingerprint,
+  taskTuples,
+} from "../../src/utils/guide-changes/task-review.mjs";
+import {
   domains,
   guide,
   withPriorSection,
@@ -1215,4 +1219,143 @@ test("a covered skill and a group table show up on the comparison page", () => {
     new RegExp(`→ covered at a higher level by <a href="#${groupId}"`),
   );
   assert.match(t.html, /and 1 more skill of the old guide/);
+});
+
+/** The comparison of DETAILED (MS-102) and BROAD (AB-650) with a hand review of their skills (compare-tasks.mjs). */
+const compareReviewed = (review, toLines = BROAD()) => {
+  const hist = (lines) =>
+    recordVersion(emptyHistory("X"), lines, "2026-10-15").history;
+  const to = { code: "AB-650", history: hist(toLines) };
+  const page = buildChangePage(to.history, {
+    now: at("2026-11-10"),
+    compare: {
+      from: [{ code: "MS-102", history: hist(DETAILED()) }],
+      to,
+      areas: [{ from: ["Manage compliance"], to: ["Govern"], note: "" }],
+      groups: BROAD_GROUPS,
+      tasks: {
+        reviewed: "2026-11-10",
+        sources: [DETAILED(), BROAD()].map((lines) =>
+          taskFingerprint(taskTuples(lines)),
+        ),
+        ...review,
+      },
+    },
+  });
+  return tab(page, "Compared to MS-102");
+};
+
+test("a hand review places every skill: merged skills are listed under the skill that replaces them", () => {
+  const t = compareReviewed({
+    matches: [
+      [1, 1],
+      [
+        [3, 4],
+        2,
+        "Endpoint DLP and the workload DLP policies become one requirements skill.",
+      ],
+      [5, 3],
+    ],
+    removed: [2],
+    added: [],
+  });
+  const text = words(t);
+  assert.match(
+    text,
+    /AB-650 measures 3 skills; MS-102 measures 5\. We matched every skill of both guides by hand on November 10, 2026\. Compared with MS-102, 0 skills are the same and 2 are reworded \(both now in another group or domain\); 1 skill of AB-650 replaces 2 of MS-102 that were merged or split; 0 are new; and 1 skill of MS-102 is not in AB-650\./,
+  );
+  assert.match(text, /Skills merged or split 1 \(from 2 of MS-102\)/);
+  assert.match(text, /Skills of MS-102 not in AB-650 1/);
+  // The two old skills are struck through under the new one, each saying which group it came from (a link).
+  const oldGroup = t.html.match(
+    /<h5 id="([^"]+)"[^>]*><del[^>]*>Implement information protection and DLP/,
+  )[1];
+  assert.match(
+    text,
+    /Identify requirements for DLP policies, including those for Exchange Online and SharePoint, and Endpoint DLP ← merged from 2 skills of MS-102: Configure Endpoint DLP \(from Implement information protection and DLP ?\) Configure DLP policies for Microsoft 365 workloads, including Exchange Online and SharePoint \(from Implement information protection and DLP ?\) Endpoint DLP and the workload DLP policies become one requirements skill\./,
+  );
+  assert.match(t.html, new RegExp(`\\(from <a href="#${oldGroup}"`));
+  assert.match(
+    t.html,
+    /<del[^>]*>Configure Endpoint DLP<\/del> <span[^>]*>→ merged with 1 other skill into one skill in <a href="#[^"]+"[^>]*>Protect data<\/a>/,
+  );
+  // Nothing is "covered at a higher level": the review says the skill about sensitive information types is gone.
+  assert.match(
+    t.html,
+    /<del[^>]*>Implement and manage sensitive information types by using keywords<\/del><\/li>/,
+  );
+  assert.doesNotMatch(text, /covered at a higher level|Higher level/);
+});
+
+test("a hand review of a split: every new skill names the one it replaces", () => {
+  const text = words(
+    compareReviewed({
+      matches: [
+        [4, [1, 2], "One broad skill becomes two requirements skills."],
+        [5, 3],
+      ],
+      removed: [1, 2, 3],
+      added: [],
+    }),
+  );
+  assert.match(
+    text,
+    /← one of 2 skills split from 1 skill of MS-102: Configure DLP policies for Microsoft 365 workloads, including Exchange Online and SharePoint \(from Implement information protection and DLP ?\) One broad skill becomes two requirements skills\. Identify requirements for DLP policies, including those for Exchange Online and SharePoint, and Endpoint DLP ← part of the same change as the skill above/,
+  );
+  assert.match(text, /Skills merged or split 2 \(from 1 of MS-102\)/);
+});
+
+test("when a guide changes after the hand review, the page says so and matches skills by topic again", () => {
+  const changed = BROAD();
+  changed[changed.length - 1] += " and Microsoft Purview";
+  const t = compareReviewed(
+    {
+      matches: [
+        [1, 1],
+        [[3, 4], 2, "Merged into one requirements skill."],
+        [5, 3],
+      ],
+      removed: [2],
+      added: [],
+    },
+    changed,
+  );
+  const text = words(t);
+  assert.match(
+    text,
+    /A study guide changed after we matched the skills of MS-102 and AB-650 by hand on November 10, 2026\. Until the matching is updated, the skills below are matched automatically by topic/,
+  );
+  assert.doesNotMatch(text, /We matched every skill/);
+  assert.match(text, /covered at a higher level/);
+});
+
+test("invalid hand reviews fail explicitly instead of silently replacing relationships", () => {
+  for (const matches of [
+    [
+      [1, 1],
+      [1, 1],
+      [4, 2],
+      [5, 3],
+    ],
+    [
+      [1, [1, 1]],
+      [4, 2],
+      [5, 3],
+    ],
+    [
+      [[], []],
+      [1, 1],
+      [4, 2],
+      [5, 3],
+    ],
+    [
+      [1, 1],
+      [4, 2],
+    ],
+  ]) {
+    assert.throws(
+      () => compareReviewed({ matches, removed: [2, 3], added: [] }),
+      /Invalid hand review for MS-102/,
+    );
+  }
 });

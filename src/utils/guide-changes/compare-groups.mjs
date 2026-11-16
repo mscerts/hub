@@ -1,14 +1,17 @@
 // The same as compare-areas.mjs, one level down: how the groups of the old guide became the groups of the new
 // one, for the pairs where the domain-level areas are not enough to compare the skills (a domain was merged or
 // split, or the new guide covers a topic with fewer, broader skills). Judged by hand, from the skills of both
-// guides, and every claim in a note checked against them on 2026-11-10. Each entry is
+// guides, every claim in a note checked against them on 2026-11-10 and again against the hand review of every
+// skill in compare-tasks.mjs on 2026-11-16 (a note must agree with it; an old group is in one entry only, which
+// names every group its skills went to). Each entry is
 // `{ from: [old group titles], to: [new group titles], note, label?, broader? }`:
 // - `to` empty: the old groups are not in the new guide; `from` empty: the new groups are new;
 // - `broader`: the new group covers the topic of the old one at a higher level (fewer, more general skills,
 //   for example "implement sensitivity labels" became "identify requirements for information protection").
-//   Skills of the old group that no new skill matches are then shown as covered by the new group, not removed;
-// - `label` replaces the bold word in front of the note (Carried over, Merged, Split, New, Not in <exam>,
-//   Higher level).
+//   Only used when the pair has no current task review: skills of the old group that no new skill matches
+//   are then shown as covered by the new group, not removed;
+// - `label` replaces the bold word in front of the note (Carried over, Merged, Split, Regrouped, New,
+//   Not in <exam>, and Higher level without a current task review).
 // A skill of an old group listed here can only count as moved to a group the same entry names. Old groups that
 // are not listed fall back to the domain-level areas, so a pair needs no complete list, and group titles must
 // be unique in a guide (tests/scripts/guide-compare-areas.test.mjs checks both that and that every title
@@ -18,13 +21,17 @@ export const groupAreasByTarget = {
   "AB-650": [
     {
       from: ["Implement and manage a Microsoft 365 tenant"],
-      to: ["Configure and manage a Microsoft 365 tenant"],
-      note: "Domains, organization settings, service health, network connectivity insights and Microsoft 365 Backup carry over. Branding and licenses (moved here from users and groups), including licenses for AI services, are added. Creating a tenant, software updates and adoption and usage reports are gone.",
+      to: [
+        "Configure and manage a Microsoft 365 tenant",
+        "Monitor AI services in Microsoft 365",
+      ],
+      label: "Part moved",
+      note: "Domains, organization settings, service health, network connectivity insights and Microsoft 365 Backup carry over to the tenant group, where branding and licenses (moved here from users and groups), including licenses for AI services, are added. Monitoring Microsoft 365 adoption and usage becomes two skills on Copilot usage reports and AI adoption in the Copilot Control System. Creating a tenant and software updates are gone.",
     },
     {
       from: ["Manage users and groups", "Manage roles and role groups"],
       to: ["Manage identities in Microsoft Entra"],
-      note: "Users, groups, contacts, bulk management, roles, Privileged Identity Management and administrative units are one group. Managing guest users and external access gets a skill of its own; licenses and shared mailboxes move out to the tenant and workloads groups.",
+      note: "Users, groups, contacts, bulk management, roles, Privileged Identity Management and administrative units are one group, with the three role skills combined into one. Managing guest users and external access gets a skill of its own; licenses and shared mailboxes move out to the tenant and workloads groups.",
     },
     {
       from: [
@@ -75,7 +82,7 @@ export const groupAreasByTarget = {
     {
       from: [],
       to: ["Manage Microsoft 365 workloads"],
-      note: "Mailboxes, Teams, SharePoint and OneDrive for Copilot.",
+      note: "Mailboxes (shared mailboxes come from Manage users and groups), Teams, SharePoint and OneDrive for Copilot.",
     },
     {
       from: [],
@@ -85,7 +92,7 @@ export const groupAreasByTarget = {
         "Secure and govern agents by using Agent 365",
         "Monitor AI services in Microsoft 365",
       ],
-      note: "The whole AI services domain.",
+      note: "The AI services domain, except that two skills of Monitor AI services in Microsoft 365 (Copilot usage reports and AI adoption) come from the tenant group.",
     },
   ],
 
@@ -108,12 +115,12 @@ export const groupAreasByTarget = {
     {
       from: ["Manage inventory pricing and costing"],
       to: ["Manage active products", "Introduce products"],
-      note: "Costing versions and standard costs go to Manage active products; prices and discounts in trade agreements to Introduce products. Price groups are gone.",
+      note: "Costing versions and standard costs go to Manage active products, where calculating and activating item cost prices becomes a skill of its own; prices and discounts in trade agreements go to Introduce products. Price groups are gone.",
     },
     {
       from: ["Manage and process inventory activities"],
       to: ["Maintain inventory levels"],
-      note: "Journals, transfer orders, inventory closing and adjustment, and blocking carry over.",
+      note: "Journals, transfer orders, inventory closing and adjustment, and blocking carry over. Batch disposition codes and inventory reports, including ABC classification, are gone.",
     },
     {
       from: ["Manage quality"],
@@ -133,8 +140,9 @@ export const groupAreasByTarget = {
         "Source and contract goods and services",
         "Procure goods and services",
         "Maintain inventory levels",
+        "Process inbound goods",
       ],
-      note: "Procurement is split into four groups with 8 skills instead of 10; consignment inventory moves to Maintain inventory levels.",
+      note: "Procurement is split into four groups that take 8 of its 10 skills. Consignment inventory moves to Maintain inventory levels, and registration and product receipt joins receiving with a mobile device in Process inbound goods.",
     },
     {
       from: ["Implement landed cost"],
@@ -148,13 +156,12 @@ export const groupAreasByTarget = {
         "Manage sales orders",
         "Manage customers for supply chain management",
       ],
-      note: "Sales agreements, quotations, orders, reservations, returns, commissions and intercompany orders carry over, with unified pricing management added. Customer rebates, bundles and creating customers are gone or reduced to customer details.",
+      note: "Sales agreements, quotations, orders, reservations, returns, commissions and intercompany orders carry over (quotations, orders, reservations and returns as four skills), delivery schedules become order promising, and unified pricing management is added. Creating customers narrows to their supply chain details, and setting up customers for intercompany operations gets a skill of its own. Customer rebates and product bundles are gone.",
     },
     {
       from: [
         "Configure warehouse management",
         "Perform warehouse management processes",
-        "Implement the Warehouse Management mobile app",
       ],
       to: [
         "Manage warehouse operations",
@@ -162,7 +169,12 @@ export const groupAreasByTarget = {
         "Process outbound goods",
         "Maintain inventory levels",
       ],
-      note: "Warehouse setup, work and replenishment go to Manage warehouse operations; load planning, cross docking and mobile receiving to the inbound and outbound groups; cycle counting to Maintain inventory levels.",
+      note: "Warehouse setup, work and replenishment go to Manage warehouse operations; load planning, cross docking and receiving with a mobile device to the inbound and outbound groups; cycle counting to Maintain inventory levels. Packing dimensions and containerization are gone.",
+    },
+    {
+      from: ["Implement the Warehouse Management mobile app"],
+      to: [],
+      note: "Mobile device menus and detours, installing the app and creating warehouse workers.",
     },
     {
       from: ["Implement transportation management"],
@@ -175,8 +187,9 @@ export const groupAreasByTarget = {
       to: [
         "Conduct sales and operations planning",
         "Execute sales and operations planning",
+        "Maintain inventory levels",
       ],
-      note: "Master planning parameters, coverage groups, time fences and planned orders carry over under the new process name.",
+      note: "Master planning parameters, coverage groups, time fences, safety margins and planned orders carry over under the new process name, and intercompany master planning is added. Safety stock journals move to Maintain inventory levels; period templates and the Supply schedule page are gone.",
     },
     {
       from: [],
@@ -197,14 +210,15 @@ export const groupAreasByTarget = {
         "Secure access to resources by using Microsoft Entra ID",
         "Implement governance to enforce security and regulatory compliance",
       ],
-      note: "Privileged Identity Management, MFA and Conditional Access go to the Entra ID access group; Azure built-in and custom roles move to governance.",
+      note: "Privileged Identity Management, MFA (now with passwordless authentication) and Conditional Access go to the Entra ID access group; Azure built-in and custom roles move to governance.",
     },
     {
       from: [
         "Manage Microsoft Entra application access and managed identities",
       ],
       to: ["Secure access to resources by using Microsoft Entra ID"],
-      note: "Enterprise applications, app registrations, OAuth permission grants and managed identities carry over.",
+      label: "Fewer, broader skills",
+      note: "Enterprise applications, app registrations, permission scopes, consent and service principals become two skills, identity for applications and OAuth permission grants and consent; managed identities carry over.",
     },
     {
       from: [
@@ -212,20 +226,28 @@ export const groupAreasByTarget = {
         "Plan and implement security for private access to Azure resources",
         "Plan and implement security for public access to Azure resources",
       ],
-      to: ["Implement security for Azure network services"],
-      note: "Three networking groups with 21 skills become one with 9. Application Gateway, Front Door, TLS and DDoS Protection have no skill of their own any more.",
+      to: [
+        "Implement security for Azure network services",
+        "Implement security for application platform services",
+        "Secure secrets and keys by using Azure Key Vault",
+        "Implement security for storage accounts",
+        "Implement security for databases",
+      ],
+      note: "Three networking groups with 21 skills mostly feed one network services group of 9: NSGs and ASGs, Virtual Network Manager, Virtual WAN, Azure Firewall, Network Watcher, Private Endpoints and Private Link carry over, peering, VPN gateway and VPN connectivity become one VPN skill, and Entra Private Access is added. App Service and Functions network integration, App Service Environment network security and TLS go to the App Service and Functions skills, and Application Gateway, Front Door and Web Application Firewall become one Web Application Firewall skill. Firewall settings on Azure resources become the Key Vault and storage firewall skills, and SQL Managed Instance network security joins the Azure SQL platform security skill. User-defined routes, ExpressRoute encryption, Service Endpoints and DDoS Protection are gone.",
     },
     {
       from: ["Plan and implement security for storage"],
       to: ["Implement security for storage accounts"],
-      note: "Storage security carries over with fewer skills; Defender for Storage is added to it.",
+      label: "Fewer, broader skills",
+      note: "Access control, access keys, Azure Files and Blob Storage access become one access skill, and data protection, BYOK and double encryption one storage security skill. The storage firewall and Defender for Storage come in from the networking and threat protection groups.",
     },
     {
       from: [
         "Plan and implement security for Azure SQL Database and Azure SQL Managed Instance",
       ],
       to: ["Implement security for databases"],
-      note: "Platform security and auditing carry over; Defender for Databases is added to it. Dynamic masking, Transparent Data Encryption and Always Encrypted have no skill of their own any more.",
+      label: "Fewer, broader skills",
+      note: "Entra database authentication, dynamic masking, Transparent Data Encryption and Always Encrypted become one Azure SQL platform security skill, which also takes SQL Managed Instance network security from the private access group. Auditing carries over, and Defender for Databases comes in from the threat protection group.",
     },
     {
       from: ["Plan and implement advanced security for compute"],
@@ -233,7 +255,7 @@ export const groupAreasByTarget = {
         "Implement security for servers and virtual machines (VMs)",
         "Implement security for application platform services",
       ],
-      note: "Compute security is split into servers and virtual machines (Bastion, just-in-time access, disk encryption), and application platform services (AKS, Container Registry, Container Instances and Apps, API Management).",
+      note: "Remote access to VMs becomes separate Bastion and just-in-time access skills, and disk encryption carries over. The three AKS skills become AKS security controls and Defender for Containers, Container Instances and Container Apps monitoring become one skill, and Container Registry and API Management carry over. Azure Arc, Defender for Servers onboarding, VM security features, Machine Configuration and Logic Apps are added.",
     },
     {
       from: ["Implement and manage enforcement of cloud governance policies"],
@@ -241,7 +263,7 @@ export const groupAreasByTarget = {
         "Implement governance to enforce security and regulatory compliance",
         "Secure secrets and keys by using Azure Key Vault",
       ],
-      note: "Azure Policy and backup protection stay in governance; the Key Vault skills (network settings, access, certificates, secrets and keys, rotation, backup) become a group of their own.",
+      note: "Azure Policy and backup protection stay in governance, which adds resource locks, overprivileged access assignments and infrastructure as code. The Key Vault skills become a group of their own: access carries over, network settings become the firewall skill, and certificates, secrets and keys, rotation and backup become one skill; deploying Key Vault, its settings, secret scanning with Defender CSPM and Defender for Key Vault are added. Security controls for asset management are gone.",
     },
     {
       from: [
@@ -250,23 +272,24 @@ export const groupAreasByTarget = {
       ],
       to: [
         "Manage security posture by using Defender for Cloud",
+        "Implement governance to enforce security and regulatory compliance",
         "Implement security for servers and virtual machines (VMs)",
         "Implement security for databases",
         "Implement security for storage accounts",
       ],
-      note: "Secure Score, compliance, hybrid and multicloud connections, workload protection plans and EASM go to the posture group; Defender for Servers (with agentless scanning), Databases and Storage move into the security group of each service. DevOps security is gone.",
+      note: "Secure Score and Inventory become Defender CSPM; compliance assessment, hybrid and multicloud connections, EASM, workload protection plans and Defender Vulnerability Management go to the posture group. Managing compliance standards and custom standards moves to governance. Defender for Servers (with agentless scanning), Databases and Storage move into the security group of each service. DevOps security is gone.",
     },
     {
       from: [
         "Configure and manage security monitoring and automation solutions",
       ],
       to: ["Implement activity and event collection in Microsoft Sentinel"],
-      note: "Sentinel data connectors, data collection rules and automation carry over, with much more detail on collecting events. Defender for Cloud alerts and workflow automation, and Sentinel analytics rules, are gone.",
+      note: "Sentinel data connectors and automation carry over, and data collection rules now collect Windows Security events. Workspaces, roles, content hub, syslog and CEF, custom tables, retention and Purview Audit are added. Defender for Cloud alerts and workflow automation, and Sentinel analytics rules, are gone.",
     },
     {
       from: [],
       to: ["Implement security for AI", "Implement Microsoft Security Copilot"],
-      note: "Security for AI and Security Copilot.",
+      note: "Security for AI (SharePoint oversharing, Purview DSPM, Copilot Studio agent protection, Entra Agent ID, AI Gateway, Defender for AI Services, Foundry guardrails and agent management) and Security Copilot (workspaces, roles, plugins and agents).",
     },
   ],
 
@@ -277,37 +300,39 @@ export const groupAreasByTarget = {
         "Manage Dataverse",
         "Configure security settings",
       ],
-      to: ["Build data models"],
-      note: "Tables, columns and relationships carry over, with prompt columns, row summaries, views and forms added. Dataverse search, auditing, import and export, duplicate detection and bulk deletion are gone, and security shrinks to one skill.",
+      to: ["Build data models", "Implement business and process logic"],
+      label: "Merged",
+      note: "Tables, columns, relationships and table properties carry over, with prompt columns and row summaries added, and the six security skills become one. Rollup and formula columns also become a skill of business and process logic. Dataverse search, auditing, import and export, duplicate detection and bulk deletion are gone.",
     },
     {
       from: ["Participate in application lifecycle management (ALM)"],
       to: [
         "Design Microsoft Power Platform solutions by using AI-enabled tools",
       ],
-      label: "Mostly dropped",
-      note: "Environment types and a solution and ALM strategy are now skills of the design group. App checker and solution checker, managing solutions, and importing and exporting them are gone.",
+      label: "Fewer, broader skills",
+      note: "Managing Dataverse solutions, managed and unmanaged solutions, and importing and exporting them become one skill on a solution and ALM strategy, and development environments become recommending environment types. App checker and solution checker are gone. The design group adds analyzing requirements, evaluating built-in agents and recommending extensibility options.",
     },
     {
       from: ["Create model-driven apps"],
-      to: ["Create model-driven apps"],
-      note: "Forms, views and dashboards carry over, with generative pages added. Custom pages, modern commanding and embedding a canvas app are gone.",
+      to: ["Create model-driven apps", "Build data models"],
+      note: "Forms, views and Power BI dashboards carry over (dashboards now with charts), and forms and views also become main forms and public views in Build data models. Custom pages become generative pages created by using natural language. Composing an app and configuring access to forms, views and apps are added; modern commanding and embedding a canvas app are gone.",
     },
     {
       from: ["Describe canvas apps"],
       to: ["Create canvas apps"],
       label: "Expanded",
-      note: "From describing canvas apps to creating them.",
+      note: "From describing canvas apps to creating them: the app structure becomes creating a canvas app using data, calling flows becomes automating business processes, and navigation, formulas, variables and error handling become reusable components, variables and collections, and error handling. Designing for accessibility and usability, testing with Monitor and creating a Copilot Studio agent from a canvas app are added.",
     },
     {
       from: ["Build Microsoft Power Pages"],
       to: [],
-      note: "Power Pages sites.",
+      note: "Pages, forms, lists, navigation, advanced features, website security, templates and authentication of Power Pages sites.",
     },
     {
       from: ["Create and manage cloud flows"],
-      to: ["Create cloud flows"],
-      note: "",
+      to: ["Create cloud flows", "Implement business and process logic"],
+      label: "Carried over",
+      note: "Types of flows becomes recommending triggers, and also evaluating use cases for business logic; dynamic content and the Dataverse connector become configuring actions. Connectors, flow control and troubleshooting carry over, and approvals are added.",
     },
     {
       from: [
@@ -315,7 +340,7 @@ export const groupAreasByTarget = {
         "Implement low-code logic",
       ],
       to: ["Implement business and process logic"],
-      note: "Business process flows and business rules carry over. Low-code plug-ins and Power Fx functions are gone.",
+      note: "The three business process flow skills become one, and business rules carry over; rollup and formula columns come in from the data model and use cases for business logic from cloud flows. Low-code plug-ins and Power Fx functions are gone.",
     },
     {
       from: ["Create and manage classic Dataverse workflows"],
@@ -330,7 +355,7 @@ export const groupAreasByTarget = {
     {
       from: [],
       to: ["Create prompts and models in AI Hub"],
-      note: "Prompts and models in AI Hub.",
+      note: "Building prompts, adding knowledge, inputs and settings to them, and consuming prompts and AI models in apps and cloud flows.",
     },
   ],
 
@@ -344,13 +369,17 @@ export const groupAreasByTarget = {
       from: [
         "Create and manage resources in an Azure Machine Learning workspace",
       ],
-      to: ["Create and manage resources in a Machine Learning workspace"],
-      note: "Workspaces, datastores and compute targets carry over; identity and access management is added, and Git integration moves to the infrastructure as code group.",
+      to: [
+        "Create and manage resources in a Machine Learning workspace",
+        "Implement IaC for Machine Learning",
+      ],
+      label: "Part moved",
+      note: "Workspaces, datastores and compute targets carry over, and identity and access management is added. Setting up Git integration moves to the infrastructure as code group, as GitHub integration and Git source control.",
     },
     {
       from: ["Create and manage assets in an Azure Machine Learning workspace"],
       to: ["Create and manage assets in a Machine Learning workspace"],
-      note: "Data assets, environments and sharing by using registries carry over; components are added.",
+      note: "Data assets, environments and sharing by using registries carry over; components come from the training pipelines group.",
     },
     {
       from: [
@@ -358,49 +387,59 @@ export const groupAreasByTarget = {
         "Use notebooks for custom model training",
         "Automate hyperparameter tuning",
       ],
-      to: ["Orchestrate model training"],
+      to: [
+        "Orchestrate model training",
+        "Implement model registration and versioning",
+      ],
       broader: true,
       label: "Fewer, broader skills",
-      note: "Automated machine learning (5 skills), notebooks (6) and hyperparameter tuning (4) each become one skill of the training orchestration group; the detail under them is not listed any more.",
+      note: "Automated machine learning (5 skills), notebook experimentation (3) and hyperparameter tuning (4) each become one skill of the training orchestration group, and MLflow tracking joins its experiment tracking skill; the detail under them is not listed any more. Evaluating a model with responsible AI guidelines joins the responsible AI skill of model registration, and retrieving features from a feature store is gone.",
     },
     {
       from: ["Run model training scripts", "Implement training pipelines"],
-      to: ["Orchestrate model training"],
-      note: "Training scripts and training pipelines carry over, with MLflow experiment tracking, distributed training and comparing jobs.",
+      to: [
+        "Orchestrate model training",
+        "Create and manage assets in a Machine Learning workspace",
+      ],
+      label: "Fewer, broader skills",
+      note: "The six job skills become one skill to run training scripts, the four pipeline skills one to implement training pipelines, and MLflow tracking in a job becomes experiment tracking with MLflow. Creating custom components moves to the assets group. Distributed training and comparing model performance across jobs are added.",
     },
     {
       from: ["Manage models"],
       to: ["Implement model registration and versioning"],
-      note: "Packaging a feature retrieval specification, registering an MLflow model and responsible AI evaluation carry over, with model lifecycle management added.",
+      note: "Packaging a feature retrieval specification, registering an MLflow model (with its MLmodel signature) and responsible AI evaluation carry over, with model lifecycle management added.",
     },
     {
       from: ["Deploy a model"],
       to: ["Deploy machine learning models for production environments"],
-      note: "Online and batch deployment carry over, with progressive rollout and rollback added.",
+      note: "Online and batch deployment become one skill to deploy endpoints and one to test and troubleshoot them, with progressive rollout and rollback added.",
     },
     {
       from: ["Prepare for model optimization"],
       to: ["Deploy and manage foundation models for production workloads"],
-      label: "Mostly dropped",
-      note: "Selecting and deploying a model carry over. Comparing models by benchmarks, testing in the playground and choosing an optimization approach are gone.",
+      label: "Narrowed",
+      note: "Selecting, comparing and deploying a language model become deploying foundation models and selecting models for a use case. Testing in the playground and choosing an optimization approach are gone. Model versioning and production deployment strategies and provisioned throughput units are added.",
     },
     {
       from: ["Optimize through prompt engineering and prompt flow"],
-      to: ["Implement prompt versioning and management with source control"],
+      to: [
+        "Implement prompt versioning and management with source control",
+        "Implement observability for generative AI applications and agents",
+      ],
       label: "Reshaped",
-      note: "From optimizing prompts to versioning and managing them with source control: prompt variants carry over, prompt flow chaining is gone.",
+      note: "From optimizing prompts to versioning and managing them with source control: prompt templates become designing prompts, manual testing and prompt variants become comparing variants, and Git version control is added. Tracing a flow moves to observability as logging, tracing and debugging; prompt flow chaining is gone.",
     },
     {
       from: ["Optimize through Retrieval Augmented Generation (RAG)"],
       to: [
         "Optimize retrieval-augmented generation (RAG) performance and accuracy",
       ],
-      note: "RAG carries over, now about tuning retrieval performance and accuracy.",
+      note: "RAG carries over, now about tuning it: preparing data becomes tuning chunks and retrieval and choosing embedding models, the vector and Azure AI Search index stores become hybrid search, and evaluation adds A/B testing.",
     },
     {
       from: ["Optimize through fine-tuning"],
       to: ["Implement advanced fine-tuning and model customization"],
-      note: "Fine-tuning carries over as advanced fine-tuning, synthetic data and managing a fine-tuned model.",
+      note: "Fine-tuning carries over as advanced fine-tuning methods, preparing data becomes managing synthetic data, and managing a fine-tuned model through to production is added.",
     },
     {
       from: [],
@@ -411,7 +450,7 @@ export const groupAreasByTarget = {
         "Configure evaluation and validation for generative AI applications and agents",
         "Implement observability for generative AI applications and agents",
       ],
-      note: "Infrastructure as code, production monitoring, Foundry environments, and evaluation and observability of generative AI.",
+      note: "Production monitoring, Foundry environments and evaluating generative AI are new, and so is most of infrastructure as code (Bicep and Azure CLI, GitHub Actions, network restrictions) and of observability (continuous monitoring, performance and cost metrics).",
     },
   ],
 
@@ -422,18 +461,18 @@ export const groupAreasByTarget = {
         "Implement container application hosting",
         "Implement container-orchestrated solutions",
       ],
-      note: "Container images and Azure Container Apps carry over; Azure Container Instances is gone. Container Registry Tasks, AKS and KEDA scaling are added.",
+      note: "Creating images and publishing them to Container Registry become one skill, and Azure Container Apps carries over; Azure Container Instances is gone. Container Registry Tasks, AKS, KEDA scaling and troubleshooting AKS and Container Apps are added.",
     },
     {
       from: ["Implement Azure App Service Web Apps"],
       to: ["Implement container application hosting"],
-      label: "Mostly dropped",
-      note: "Only deploying containers to App Service remains. Creating web apps, diagnostics, TLS and service connection settings, autoscaling and deployment slots are gone.",
+      label: "Narrowed",
+      note: "Creating a web app, deploying code and containers, and TLS, API and service connection settings become one skill on deploying containers to App Service with environment variables and secrets. Diagnostics and logging, autoscaling and deployment slots are gone.",
     },
     {
       from: ["Implement Azure Functions"],
       to: ["Develop and implement Azure Functions"],
-      note: "Function apps, triggers and bindings carry over.",
+      note: "Function apps carry over, and triggers and bindings become one skill on building serverless APIs.",
     },
     {
       from: ["Develop solutions that use Azure Cosmos DB"],
@@ -462,7 +501,7 @@ export const groupAreasByTarget = {
       ],
       to: ["Monitor and troubleshoot Azure solutions"],
       label: "Reshaped",
-      note: "Application Insights becomes tracing with OpenTelemetry and KQL queries.",
+      note: "Application Insights becomes tracing with OpenTelemetry and KQL queries; availability tests and alerts are gone.",
     },
     {
       from: ["Implement Azure API Management"],
@@ -490,8 +529,12 @@ export const groupAreasByTarget = {
   "AB-210": [
     {
       from: ["Set up the product catalog"],
-      to: ["Create and manage the product catalog"],
-      note: "Products, product families and price lists carry over. Bundles, the product lifecycle and the enhanced add-products experience are gone.",
+      to: [
+        "Create and manage the product catalog",
+        "Optimize opportunity management",
+      ],
+      label: "Fewer, broader skills",
+      note: "Catalog settings, catalog components, the product lifecycle, bundles and families become one skill on products and product families. Price lists and the enhanced add-products experience become a price list skill (now with currencies) and adding opportunity products and pricing in Optimize opportunity management.",
     },
     {
       from: [
@@ -499,42 +542,69 @@ export const groupAreasByTarget = {
         "Configure and use Sales Insights",
         "Configure sales engagement",
       ],
-      to: ["Configure AI-powered intelligence and insights features"],
-      note: "Forecasts, goals, conversation and relationship intelligence, the Sales accelerator and work assignment are one group of AI-powered features. Sequences and segments are gone.",
+      to: [
+        "Configure AI-powered intelligence and insights features",
+        "Design an AI-first sales strategy",
+      ],
+      note: "Forecasts, goals, conversation and relationship intelligence, the Sales accelerator and work assignment become one group of AI-powered features: the six Sales accelerator, workspace, work list and sequence skills become one, and assignment rules, segments and work assignment another. Standard and premium Sales Insights features become differentiating the Sales plans in the AI-first strategy group, and the assistant is gone.",
     },
     {
       from: ["Configure core functionality of Dynamics 365 Sales"],
       to: [
-        "Configure Sales",
         "Generate and nurture leads",
         "Optimize opportunity management",
         "Configure AI-powered intelligence and insights features",
+        "Design an AI-first sales strategy",
         "Configure supporting apps and services",
       ],
-      note: "Split by topic: the lead experience and predictive scoring to Generate and nurture leads, the opportunity pipeline to Optimize opportunity management, Copilot to the AI-powered features, the Sales mobile app to supporting apps. Sales order processing, territories and automatic lead creation rules have no skill of their own any more.",
+      note: "Split by topic: the lead qualification experience, status reasons and opportunity close become one lead and opportunity experience skill in Generate and nurture leads, and predictive scoring becomes configuring it in the AI-powered features and fine-tuning the model in Generate and nurture leads. The opportunity pipeline view goes to Optimize opportunity management, Copilot to the AI-powered features, the Sales Pipeline chart to reporting options in the AI-first strategy and the Sales mobile app to supporting apps. Sales order processing, territories and automatic lead creation rules are gone.",
     },
     {
       from: ["Implement collaboration features"],
-      to: ["Configure supporting apps and services"],
-      label: "Mostly dropped",
-      note: "Only Teams calling remains. Document management and Teams collaboration are gone.",
+      to: ["Configure Sales", "Configure supporting apps and services"],
+      note: "Document management and Teams collaboration become part of the Microsoft 365 functionality skill (Teams, SharePoint, Outlook and OneDrive) of Configure Sales, together with the Outlook skills; Teams calling and dialer becomes setting up Teams calling in supporting apps.",
     },
     {
       from: ["Manage sales data and interactions in Outlook"],
-      to: [],
-      note: "Tracking records in Outlook and the Dynamics 365 App for Outlook.",
+      to: ["Configure Sales"],
+      label: "Fewer, broader skills",
+      note: "The common Outlook tasks and the Dynamics 365 App for Outlook become part of the Microsoft 365 functionality skill, together with document management and Teams collaboration.",
     },
     {
       from: [
         "Perform tasks and manage settings in the Power Platform Environment Settings app",
-        "Configure Dataverse table components",
-        "Implement business logic",
-        "Customize the user experience",
-        "Manage security",
       ],
+      to: [],
+      note: "Email, Word and Excel templates, and duplicate detection.",
+    },
+    {
+      from: ["Configure Dataverse table components"],
+      to: ["Design an AI-first sales strategy"],
+      label: "Fewer, broader skills",
+      note: "Tables, columns and relationship behaviors become one skill on designing the sales data model in Dataverse. Auditing and connection roles are gone.",
+    },
+    {
+      from: ["Implement business logic"],
+      to: [
+        "Configure Sales",
+        "Expand the sales footprint by using Microsoft Power Platform",
+      ],
+      note: "Business process flows go to Configure Sales, and cloud flows with the Dataverse connector become creating Power Automate flows in Expand the sales footprint. Business rules and formula and rollup columns are gone.",
+    },
+    {
+      from: ["Customize the user experience"],
+      to: [
+        "Configure Sales",
+        "Expand the sales footprint by using Microsoft Power Platform",
+        "Design an AI-first sales strategy",
+      ],
+      note: "The timeline goes to Configure Sales, embedded Power BI to Expand the sales footprint, and model-driven app visualizations join the Sales Pipeline chart in a reporting options skill of the AI-first strategy group. Form and view types, creating model-driven apps and the types of Power Apps are gone.",
+    },
+    {
+      from: ["Manage security"],
       to: ["Configure Sales"],
-      label: "Mostly dropped",
-      note: "Only business process flows (from business logic) and the timeline control (from user experience customization) remain, as skills of Configure Sales.",
+      label: "Fewer, broader skills",
+      note: "Hierarchy security, security roles, owner and access teams, app sharing, the access checker, Entra ID groups, user access diagnosis and column security become one skill on examining the Sales security model.",
     },
     {
       from: [
@@ -542,19 +612,17 @@ export const groupAreasByTarget = {
         "Create and manage events",
       ],
       to: [],
-      note: "Marketing emails, journeys, segments, consent management and events.",
+      note: "Marketing emails, journeys, forms, text messages, segments, consent management and events.",
     },
     {
       from: [],
       to: [
-        "Design an AI-first sales strategy",
         "Prepare to deploy agents",
         "Automate lead qualification by using the Sales Qualification Agent",
         "Automate deal closing by using the Sales Close Agent",
         "Gather intelligence on sales deals by using the Sales Research Agent",
-        "Expand the sales footprint by using Microsoft Power Platform",
       ],
-      note: "An AI-first sales strategy, preparing to deploy agents, the three agent groups, and extending Sales by using Power Platform.",
+      note: "Preparing to deploy agents (prerequisites, capacity, billing and credits) and the Sales Qualification, Sales Close and Sales Research Agent groups. Other groups gain new skills too: deployment prerequisites, mailboxes and data import and export in Configure Sales, Copilot and agents in seller workflows in the AI-first strategy, the Sales Opportunity Agent and coordination with the Sales Close Agent in Optimize opportunity management, an SMS channel, and embedded Power Apps components.",
     },
   ],
 
@@ -562,7 +630,7 @@ export const groupAreasByTarget = {
     {
       from: ["Identify features of common AI workloads"],
       to: ["Identify AI workloads"],
-      note: "",
+      note: "The computer vision, NLP and generative AI workloads become one scenarios skill that also names agentic AI, and document processing becomes the information extraction techniques. The workload skills of the computer vision, NLP and generative AI groups join this group.",
     },
     {
       from: ["Identify guiding principles for responsible AI"],
@@ -583,37 +651,48 @@ export const groupAreasByTarget = {
         "Identify common types of computer vision solution",
         "Identify Azure tools and services for computer vision tasks",
       ],
-      to: [
-        "Implement AI solutions with computer vision and image-generation capabilities by using Foundry",
-      ],
-      label: "Describe becomes implement",
-      note: "Identifying computer vision solutions and tools becomes implementing them by using Foundry.",
+      to: ["Identify AI workloads"],
+      label: "Moved",
+      note: "Image classification, object detection and Azure AI Vision become one skill on computer vision and image-generation models, and optical character recognition becomes part of the information extraction techniques. Facial detection and analysis and the Face service are gone.",
     },
     {
-      from: [
-        "Identify features of common NLP Workload Scenarios",
-        "Identify Azure tools and services for NLP workloads",
-      ],
+      from: ["Identify features of common NLP Workload Scenarios"],
+      to: ["Identify AI workloads"],
+      label: "Moved",
+      note: "Key phrase extraction, entity recognition and sentiment analysis become one text analysis skill that adds summarization, and speech recognition and synthesis carries over. Language modeling and translation are gone.",
+    },
+    {
+      from: ["Identify Azure tools and services for NLP workloads"],
       to: ["Implement AI solutions for text and speech by using Foundry"],
       label: "Describe becomes implement",
-      note: "Identifying NLP scenarios and tools becomes implementing text and speech solutions by using Foundry.",
+      note: "Describing the Language and Speech services becomes building lightweight applications for text analysis and with Azure Speech in Foundry Tools. Responding to spoken prompts with a multimodal model is added.",
+    },
+    {
+      from: ["Identify features of generative AI solutions"],
+      to: [
+        "Identify AI model components and configurations",
+        "Identify AI workloads",
+        "Describe principles of responsible AI",
+      ],
+      note: "Features of generative AI models become how generative AI models work, the scenarios join the workloads skill, and responsible AI for generative AI is covered by the six principles.",
     },
     {
       from: [
-        "Identify features of generative AI solutions",
         "Identify generative AI services and capabilities in Microsoft Azure",
       ],
-      to: ["Implement generative AI apps and agents by using Foundry"],
-      label: "Describe becomes implement",
-      note: "Identifying generative AI features and services becomes implementing apps and agents by using Foundry.",
+      to: [
+        "Identify AI model components and configurations",
+        "Implement generative AI apps and agents by using Foundry",
+      ],
+      note: "The overview of Azure AI Foundry, Azure OpenAI and the model catalog becomes choosing a model and its deployment options and configuration, and deploying a model and interacting with it in the Foundry portal. Prompts, a chat client with the Foundry SDK and single-agent solutions are new in the Foundry group.",
     },
     {
       from: [],
       to: [
-        "Identify AI model components and configurations",
+        "Implement AI solutions with computer vision and image-generation capabilities by using Foundry",
         "Implement AI solutions for information extraction by using Foundry",
       ],
-      note: "How generative AI models work and how to configure them, and information extraction by using Foundry.",
+      note: "Visual prompts to a multimodal model, generating images and a vision application; extracting information from documents, images, audio and video with Content Understanding.",
     },
   ],
 };

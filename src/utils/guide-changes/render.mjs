@@ -11,6 +11,7 @@ import {
   entryKind,
 } from "./diff.mjs";
 import { dayBefore, prettyDate, summarise, versionState } from "./state.mjs";
+import { applyTaskReview } from "./task-review.mjs";
 
 export const esc = (text) =>
   String(text)
@@ -65,13 +66,83 @@ export function wordDiff(a, b) {
   return out.join(" ");
 }
 
+const MOVED_TAG = "ml-1 text-xs text-muted-foreground";
+const NOTE_CLASS = "mt-1 block text-xs text-muted-foreground";
+
+/** The title of a place of a reviewed item (task-review.mjs): its group in the same domain, else its domain. */
+const placeTitle = (p) => {
+  const at = p.near ? p.group : p.domain;
+  return p.side === "old" ? (at.oldTitle ?? at.title) : at.title;
+};
+const plainLinks = {
+  old: esc,
+  new: esc,
+  group: esc,
+  place: (p) => esc(placeTitle(p)),
+};
+const andList = (items) =>
+  items.length > 1
+    ? `${items.slice(0, -1).join(", ")} and ${items.at(-1)}`
+    : items[0];
+const skillCount = (n) => `${n} skill${n === 1 ? "" : "s"}`;
+
+/** An item of a comparison matched by hand (task-review.mjs), with the scope note of its relationship. */
+function reviewedEntryHtml(entry, links) {
+  const place = links.place ?? plainLinks.place;
+  const tag = (html) => ` <span class="${MOVED_TAG}">${html}</span>`;
+  const note = entry.note
+    ? `<span class="${NOTE_CLASS}">${esc(entry.note)}</span>`
+    : "";
+  const { n, m } = entry.rel ?? {};
+  switch (entry.kind) {
+    case "same":
+      return `${esc(entry.new)}${note}`;
+    case "reworded":
+      return `${wordDiff(entry.old, entry.new)}${note}`;
+    case "moved-in":
+      return `${wordDiff(entry.old, entry.new)}${tag(`← from ${place(entry.from)}`)}${note}`;
+    case "moved-out":
+      return `${del(entry.old)}${tag(`→ now in ${andList(entry.to.map(place))}`)}`;
+    case "merged-out": {
+      const how =
+        m === 1
+          ? `merged with ${n - 1} other skill${n === 2 ? "" : "s"} into one skill`
+          : n === 1
+            ? `split into ${m} skills`
+            : `regrouped with ${n - 1} other skill${n === 2 ? "" : "s"} into ${m} skills`;
+      return `${del(entry.old)}${tag(`→ ${how} in ${andList(entry.to.map(place))}`)}`;
+    }
+    case "merged": {
+      if (!entry.lead)
+        return `${esc(entry.new)}${tag("← part of the same change as the skill above")}`;
+      const how =
+        m === 1
+          ? `merged from ${skillCount(n)} of ${esc(entry.of)}:`
+          : n === 1
+            ? `one of ${m} skills split from 1 skill of ${esc(entry.of)}:`
+            : `one of ${m} skills that replace ${skillCount(n)} of ${esc(entry.of)}:`;
+      const olds = entry.olds
+        .map(
+          (o) =>
+            `<li>${del(o.text)}${o.from ? tag(`(from ${place(o.from)})`) : ""}</li>`,
+        )
+        .join("");
+      return `${esc(entry.new)}${tag(`← ${how}`)}<ul class="mt-1 mb-0 text-sm">${olds}</ul>${note}`;
+    }
+    case "added":
+      return ins(entry.new);
+    default:
+      return del(entry.old);
+  }
+}
+
 /**
  * The HTML of one aligned entry: unchanged, reworded in place, added or removed. `links` turns the name of a
- * domain into a link to its heading (the comparison of two exams): `{ old(title), new(title) }`.
+ * domain into a link to its heading (the comparison of two exams): `{ old(title), new(title), group(title),
+ * place(place) }`.
  */
-const MOVED_TAG = "ml-1 text-xs text-muted-foreground";
-const plainLinks = { old: esc, new: esc, group: esc };
 function entryHtml(entry, strip = (s) => s, links = plainLinks) {
+  if (entry.review) return reviewedEntryHtml(entry, links);
   // A skill that moved to another domain (a comparison of two exams): in place, with where it went or came from.
   if (entry.kind === "moved-in")
     return `${wordDiff(strip(entry.old), strip(entry.new))} <span class="${MOVED_TAG}">← from ${links.old(entry.from.domain)}${entry.alsoFrom ? ` and ${entry.alsoFrom} more skill${entry.alsoFrom === 1 ? "" : "s"} of the old guide` : ""}</span>`;
@@ -240,18 +311,22 @@ function weightsTable(diff, newLabel) {
   return table(["Domain", "Now", esc(newLabel)], rows);
 }
 
-/** The skills of a domain of a comparison: those of the old guide (`old`) or of the new one. */
-function skillsOf(domain, side) {
-  return domain.groups.reduce(
-    (n, g) =>
-      n +
-      g.items.filter((i) =>
+/**
+ * The skills of a group of a comparison: those of the old guide (`old`) or of the new one. A reviewed diff
+ * counts where each task is (`counts`), because one of its items can stand for several old skills.
+ */
+const groupSkillsOf = (g, side) =>
+  g.counts
+    ? g.counts[side]
+    : g.items.filter((i) =>
         side === "old"
           ? i.kind !== "added" && i.kind !== "moved-in"
           : i.new !== undefined,
-      ).length,
-    0,
-  );
+      ).length;
+
+/** The skills of a domain of a comparison: those of the old guide (`old`) or of the new one. */
+function skillsOf(domain, side) {
+  return domain.groups.reduce((n, g) => n + groupSkillsOf(g, side), 0);
 }
 
 /** `wentTo(domain)` is what to say in place of the new weight of a domain that is not in the new guide. */
@@ -285,29 +360,52 @@ function domainSummary(
   );
 }
 
-/** `matching`: the skills of two different exams are matched by topic, so unmatched skills may just be reworded a lot. */
-function countsTable(diff, { matching = false } = {}) {
-  const { stats, audience } = diff;
+/**
+ * `matching`: the skills of two different exams are matched by topic, so unmatched skills may just be reworded
+ * a lot. A diff with `reviewed` (task-review.mjs) was matched by hand, so its rows say what the review found.
+ */
+function countsTable(diff, { matching = false, to = "" } = {}) {
+  const { stats, audience, reviewed } = diff;
+  const strong = (n) => `<strong>${n}</strong>`;
+  const skillRows = reviewed
+    ? [
+        ["Skills that are the same", strong(stats.same)],
+        ["Skills reworded", strong(stats.reworded)],
+        ...(stats.moved
+          ? [["Of those, now in another group or domain", strong(stats.moved)]]
+          : []),
+        ...(stats.mergedNew
+          ? [
+              [
+                "Skills merged or split",
+                `${strong(stats.mergedNew)} (from ${stats.mergedOld} of ${esc(reviewed.from)})`,
+              ],
+            ]
+          : []),
+        ["New skills", strong(stats.added)],
+        [
+          `Skills of ${esc(reviewed.from)} not in ${esc(to)}`,
+          strong(stats.removed),
+        ],
+      ]
+    : [
+        [
+          matching ? "New skills with no close match" : "Skills added",
+          strong(stats.added),
+        ],
+        [
+          matching ? "Old skills with no close match" : "Skills removed",
+          strong(stats.removed),
+        ],
+        ["Skills reworded", strong(stats.reworded)],
+        ...(stats.moved
+          ? [["Skills moved to another domain", strong(stats.moved)]]
+          : []),
+      ];
   return table(
     ["What", "Result"],
     [
-      [
-        matching ? "New skills with no close match" : "Skills added",
-        `<strong>${stats.added}</strong>`,
-      ],
-      [
-        matching ? "Old skills with no close match" : "Skills removed",
-        `<strong>${stats.removed}</strong>`,
-      ],
-      ["Skills reworded", `<strong>${stats.reworded}</strong>`],
-      ...(stats.moved
-        ? [
-            [
-              "Skills moved to another domain",
-              `<strong>${stats.moved}</strong>`,
-            ],
-          ]
-        : []),
+      ...skillRows,
       ...(stats.covered
         ? [
             [
@@ -574,7 +672,18 @@ function areaModel(diff, areas, groups, { to, tag }) {
       ? `<a href="#${groupIds.get(g)}" class="text-inherit underline decoration-dotted underline-offset-2 hover:text-primary">${esc(title)}</a>`
       : esc(title);
   };
-  const links = { old: link(oldOf), new: link(newOf), group: groupLink };
+  const links = {
+    old: link(oldOf),
+    new: link(newOf),
+    group: groupLink,
+    // A place of a reviewed item (task-review.mjs): its group in the same domain, else its domain.
+    place: (p) => {
+      const id = p.near ? groupIds.get(p.group) : ids.get(p.domain);
+      return id
+        ? `<a href="#${id}" class="text-inherit underline decoration-dotted underline-offset-2 hover:text-primary">${esc(placeTitle(p))}</a>`
+        : esc(placeTitle(p));
+    },
+  };
   const entries = (areas ?? [])
     .map((a) => ({
       from: a.from.filter((t) => oldOf.has(t)),
@@ -694,7 +803,7 @@ function areaModel(diff, areas, groups, { to, tag }) {
   const groupLabelOf = (e) =>
     e.whole.label
       ? `${e.whole.label}.`
-      : e.whole.broader
+      : e.whole.broader && !diff.reviewed
         ? "Higher level."
         : !e.from.length
           ? "New."
@@ -707,17 +816,11 @@ function areaModel(diff, areas, groups, { to, tag }) {
                 : e.to.length > 1
                   ? "Split."
                   : "Carried over.";
-  const groupSkills = (g, side) =>
-    g.items.filter((i) =>
-      side === "old"
-        ? i.kind !== "added" && i.kind !== "moved-in"
-        : i.new !== undefined,
-    ).length;
   const groupCell = (titles, map, side) =>
     titles
       .map((t) => {
         const g = map.get(t);
-        const n = groupSkills(g, side);
+        const n = groupSkillsOf(g, side);
         const from = side === "old" ? tag(t) : "";
         return `${from ? `${esc(from)}: ` : ""}${side === "old" ? esc(t) : groupLink(t)} <span class="${MOVED_TAG}">(${n} skill${n === 1 ? "" : "s"})</span>`;
       })
@@ -758,7 +861,10 @@ function areaModel(diff, areas, groups, { to, tag }) {
  * guides are merged, see mergeGuides), `to` the replacement, `retirements` the `{ code, date }` of the
  * replaced exams, `areas` how the domains became the new ones, judged by hand (compare-areas.mjs). Null when a
  * guide has not been recorded. Group titles are paired by similarity, because two exams word them differently;
- * domains are paired, and skills matched across domains, only as `areas` says.
+ * domains are paired, and skills matched across domains, only as `areas` says. `tasks` is the hand-made review
+ * of every skill of both guides (compare-tasks.mjs): when it was made against the guides of today, it places
+ * every skill in place of the matching by topic; when a guide has changed since, the page says so and falls
+ * back to the matching by topic.
  */
 function compareTab(
   {
@@ -769,6 +875,7 @@ function compareTab(
     titleThreshold = 0.5,
     areas = null,
     groups = null,
+    tasks = null,
   },
   now,
 ) {
@@ -786,25 +893,39 @@ function compareTab(
       ? mergeGuides(olds.map((o) => ({ code: o.code, lines: o.version.lines })))
       : { lines: olds[0].version.lines, sources: new Map() };
   const graph = areaGraph(areas);
-  const diff = diffVersions(merged.lines, b.lines, {
-    titleThreshold,
-    ...(areas
-      ? {
-          moveThreshold: MOVE_THRESHOLD,
-          pairDomains: graph.pairs,
-          moveEdges: graph.edges,
-          groupMap: groups ? groupGraph(groups) : null,
-        }
-      : {}),
-  });
-  if (!diff.ok) return null;
-
   const list = (codes) =>
     codes.length > 1
       ? `${codes.slice(0, -1).join(", ")} and ${codes.at(-1)}`
       : codes[0];
   const fromList = list(olds.map((o) => o.code));
   const fromShort = olds.map((o) => o.code).join(" + ");
+  const reviewedDiff = tasks
+    ? applyTaskReview(
+        diffVersions(merged.lines, b.lines, {
+          titleThreshold,
+          ...(areas ? { pairDomains: graph.pairs } : {}),
+        }),
+        tasks,
+        olds.map((o) => o.version.lines),
+        fromList,
+      )
+    : null;
+  const stale = Boolean(tasks) && !reviewedDiff;
+  const diff =
+    reviewedDiff ??
+    diffVersions(merged.lines, b.lines, {
+      titleThreshold,
+      ...(areas
+        ? {
+            moveThreshold: MOVE_THRESHOLD,
+            pairDomains: graph.pairs,
+            moveEdges: graph.edges,
+            groupMap: groups ? groupGraph(groups) : null,
+          }
+        : {}),
+    });
+  if (!diff.ok) return null;
+
   const area = areaModel(diff, areas, groups, {
     to,
     tag: (title) => merged.sources.get(title) ?? "",
@@ -830,33 +951,65 @@ function compareTab(
   }. It is refreshed whenever a guide changes.</p>`;
 
   const { stats } = diff;
+  const reviewed = diff.reviewed ?? null;
   const headings = [];
   const h = (id, text) => {
     headings.push({ depth: 2, slug: id, text });
     return heading(id, text);
   };
-  const legend = `<p>${ins("Green underlined")} text is in ${to.code} but not in ${fromList}, or is worded differently. ${del("Red strikethrough")} text is in ${fromList} but not in ${to.code}. Everything else is the same in both. Skills are matched by topic, so a skill that was reworded a lot can show as removed and added.${stats.moved ? ` A grey note after a skill says it moved to another domain: where it is now, or where it came from. The notes in "Skills at a glance" say how each area changed.` : ""} This is the whole ${to.code} study guide, so you can see each difference in place.</p>`;
+  const legend = reviewed
+    ? `<p>${ins("Green underlined")} text is new or reworded. ${del("Red strikethrough")} shows old wording that was removed or replaced, not necessarily a topic that disappeared. Unmarked text in a one-to-one comparison is unchanged. Every skill of both guides was matched by hand, by what it asks of a candidate and not only by its words. A grey note after a skill says where it moved to or came from. A merged or split skill is shown in its current wording with the previous skills struck through below it; read the note for retained topics, new requirements and details no longer named. This is the whole ${to.code} study guide, so you can see each difference in place.</p>`
+    : `<p>${ins("Green underlined")} text is in ${to.code} but not in ${fromList}, or is worded differently. ${del("Red strikethrough")} text is in ${fromList} but not in ${to.code}. Everything else is the same in both. Skills are matched by topic, so a skill that was reworded a lot can show as removed and added.${stats.moved ? ` A grey note after a skill says it moved to another domain: where it is now, or where it came from. The notes in "Skills at a glance" say how each area changed.` : ""} This is the whole ${to.code} study guide, so you can see each difference in place.</p>`;
   const be = (n) => (n === 1 ? "is" : "are");
   const skills = (n) => `${n} skill${n === 1 ? "" : "s"}`;
-  const summary = `<p>${to.code} measures ${skills(stats.totalNow)}; ${fromList} ${olds.length > 1 ? "measure" : "measures"} ${stats.totalBefore}. Compared with ${fromList}, ${skills(stats.added)} ${be(stats.added)} new, ${stats.reworded} ${be(stats.reworded)} reworded,${stats.moved ? ` ${stats.moved} ${be(stats.moved)} about the same topic but in a different domain,` : ""}${stats.covered ? ` ${stats.covered} ${be(stats.covered)} covered at a higher level by broader skills,` : ""} and ${stats.removed} ${be(stats.removed)} not matched by any skill of ${to.code}.${
+  const rewritten =
     stats.changedShare > REWRITTEN_SHARE
       ? " Most of the guide is different, so start with the domains below."
-      : ""
-  }</p>`;
+      : "";
+  const summary = reviewed
+    ? `<p>${to.code} measures ${skills(stats.totalNow)}; ${fromList} ${olds.length > 1 ? "measure" : "measures"} ${stats.totalBefore}. We matched every skill of both guides by hand on ${prettyDate(reviewed.date)}. Compared with ${fromList}, ${[
+        `${skills(stats.same)} ${be(stats.same)} the same and ${stats.reworded} ${be(stats.reworded)} reworded${
+          stats.moved
+            ? ` (${
+                stats.moved < stats.same + stats.reworded
+                  ? `${stats.moved} of these ${stats.same + stats.reworded}`
+                  : stats.moved === 1
+                    ? "it is"
+                    : stats.moved === 2
+                      ? "both"
+                      : `all ${stats.moved}`
+              } now in another group or domain)`
+            : ""
+        }`,
+        ...(stats.mergedNew
+          ? [
+              `${skills(stats.mergedNew)} of ${to.code} ${stats.mergedNew === 1 ? "replaces" : "replace"} ${stats.mergedOld} of ${fromList} that ${stats.mergedOld === 1 ? "was" : "were"} merged or split`,
+            ]
+          : []),
+        `${stats.added} ${be(stats.added)} new`,
+      ].join(
+        "; ",
+      )}; and ${skills(stats.removed)} of ${fromList} ${be(stats.removed)} not in ${to.code}.${rewritten}</p>`
+    : `<p>${to.code} measures ${skills(stats.totalNow)}; ${fromList} ${olds.length > 1 ? "measure" : "measures"} ${stats.totalBefore}. Compared with ${fromList}, ${skills(stats.added)} ${be(stats.added)} new, ${stats.reworded} ${be(stats.reworded)} reworded,${stats.moved ? ` ${stats.moved} ${be(stats.moved)} about the same topic but in a different domain,` : ""}${stats.covered ? ` ${stats.covered} ${be(stats.covered)} covered at a higher level by broader skills,` : ""} and ${stats.removed} ${be(stats.removed)} not matched by any skill of ${to.code}.${rewritten}</p>`;
+  const staleNotice = stale
+    ? `<p><strong>A study guide changed after we matched the skills of ${fromList} and ${to.code} by hand on ${prettyDate(tasks.reviewed)}.</strong> Until the matching is updated, the skills below are matched automatically by topic, which can miss skills that were merged or split.</p>`
+    : "";
   const same =
     stats.added +
       stats.removed +
       stats.reworded +
       stats.moved +
-      stats.covered ===
+      stats.covered +
+      (stats.mergedNew ?? 0) ===
       0 &&
     !stats.weightsChanged &&
     !diff.audience.changed;
+  const groupIntro = `The same, one level down: how each group of ${fromShort} became a group of ${to.code}.${reviewed ? "" : " A group marked Higher level is covered by broader skills: the skills of the old group that have no counterpart are shown as covered by it, not as removed."}`;
   const html = same
-    ? `<p>The skills measured, the domain weights and the audience profile are the same in both guides.</p>`
-    : `${summary}${h("what-is-different-at-a-glance", "What is different at a glance")}${countsTable(diff, { matching: true })}${h("domains-compared", "Domains")}${domainSummary(diff, [fromShort, to.code], (d) => merged.sources.get(d.oldTitle ?? d.title) ?? "", area.wentTo)}${
+    ? `${staleNotice}<p>The skills measured, the domain weights and the audience profile are the same in both guides.</p>`
+    : `${staleNotice}${summary}${h("what-is-different-at-a-glance", "What is different at a glance")}${countsTable(diff, { matching: true, to: to.code })}${h("domains-compared", "Domains")}${domainSummary(diff, [fromShort, to.code], (d) => merged.sources.get(d.oldTitle ?? d.title) ?? "", area.wentTo)}${
         area.has
-          ? `${h("how-the-areas-changed", "How the areas changed")}<p>Judged by reading the two guides side by side. Click an area to jump to it in the full guide below.</p>${area.table(fromShort)}${area.groupTable(fromShort) ? dropdown("Group by group", `<p>The same, one level down: how each group of ${fromShort} became a group of ${to.code}. A group marked Higher level is covered by broader skills: the skills of the old group that have no counterpart are shown as covered by it, not as removed.</p>${area.groupTable(fromShort)}`) : ""}`
+          ? `${h("how-the-areas-changed", "How the areas changed")}<p>Judged by reading the two guides side by side. Click an area to jump to it in the full guide below.</p>${area.table(fromShort)}${area.groupTable(fromShort) ? dropdown("Group by group", `<p>${groupIntro}</p>${area.groupTable(fromShort)}`) : ""}`
           : ""
       }${dropdown("Show every difference", `${legend}${diffDoc(diff, diff.curLines, { audienceOpen: false, title: `${to.code} skills measured, compared to ${fromList}`, compare: area.has ? area.compare : null })}`)}`;
   return { note, html, headings };
@@ -867,7 +1020,7 @@ function compareTab(
  * headings, state }`. `now` decides what is current, upcoming and previous; `compare` adds the Compared to tab
  * (see compareTab).
  * @param {{ code: string, versions: any[] }} history
- * @param {{ now?: Date, compare?: { from: { code: string, history: any }[], to: { code: string, history: any }, retirements?: { code: string, date: string }[], blurb?: string, titleThreshold?: number } | null }} [options]
+ * @param {{ now?: Date, compare?: { from: { code: string, history: any }[], to: { code: string, history: any }, retirements?: { code: string, date: string }[], blurb?: string, titleThreshold?: number, areas?: any, groups?: any, tasks?: any } | null }} [options]
  */
 export function buildChangePage(
   history,
