@@ -54,6 +54,17 @@ interface Props {
     <meta name="mitgo-verification" content={VERIFICATIONS.mitgo} />
     <script is:inline data-cfasync="false">
       (() => {
+        try {
+          if (localStorage.getItem("docs-sidebar:desktop:v1") === "closed") {
+            document.documentElement.dataset.docsSidebarCollapsed = "true";
+          }
+        } catch {
+          // Keep the default expanded layout when storage is unavailable.
+        }
+      })();
+    </script>
+    <script is:inline data-cfasync="false">
+      (() => {
         const raw =
           localStorage.getItem("hs_theme") ||
           localStorage.getItem("starlight-theme");

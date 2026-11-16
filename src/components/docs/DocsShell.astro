@@ -65,8 +65,9 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
 
 <div data-docs class="w-full bg-neutral-50 dark:bg-neutral-900">
   <CodeBlocks />
-  <div class="flex min-h-[calc(100vh-4rem)] w-full">
+  <div class="docs-layout relative flex min-h-[calc(100vh-4rem)] w-full" data-docs-layout>
     <aside
+      id="docs-desktop-sidebar"
       class="docs-sidebar hidden min-h-[calc(100vh-4rem)] w-80 shrink-0 border-r border-neutral-200 bg-neutral-100/70 lg:block dark:border-neutral-700 dark:bg-neutral-900"
       aria-label={`${sectionLabel} navigation`}
     >
@@ -84,6 +85,28 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
         </nav>
       </div>
     </aside>
+
+    <button
+      type="button"
+      class="docs-sidebar-toggle fixed left-80 top-20 z-40 hidden size-8 -translate-x-1/2 place-items-center rounded-full border border-neutral-300 bg-white text-neutral-700 shadow-md hover:border-blue-400 hover:text-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 lg:grid dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200 dark:hover:border-blue-500 dark:hover:text-blue-300"
+      data-docs-sidebar-toggle
+      aria-controls="docs-desktop-sidebar"
+      aria-expanded="true"
+      aria-label="Hide sidebar"
+      title="Hide sidebar"
+    >
+      <svg
+        viewBox="0 0 20 20"
+        class="size-4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M4 5.5h12M4 10h12M4 14.5h12" />
+      </svg>
+    </button>
 
     <div class="min-w-0 flex-1">
       <div
@@ -360,13 +383,57 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
     transform: rotate(180deg);
   }
 
+  .docs-sidebar-toggle {
+    transition:
+      color 160ms ease,
+      border-color 160ms ease,
+      background-color 160ms ease,
+      transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
   @media (min-width: 64rem) {
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 20rem minmax(0, 1fr);
+      transition: grid-template-columns 200ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
     .docs-sidebar {
       display: block;
+      min-width: 0;
+      width: auto;
+      overflow: clip;
+      opacity: 1;
+      transform: translateX(0);
+      transition:
+        opacity 160ms ease-out,
+        transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    :global(html[data-docs-sidebar-collapsed="true"]) .docs-layout {
+      grid-template-columns: 0 minmax(0, 1fr);
+    }
+
+    :global(html[data-docs-sidebar-collapsed="true"]) .docs-sidebar {
+      opacity: 0;
+      transform: translateX(-0.75rem);
+      pointer-events: none;
+    }
+
+    :global(html[data-docs-sidebar-collapsed="true"]) .docs-sidebar-toggle {
+      transform: translateX(-18.5rem);
     }
   }
 
   @media (min-width: 80rem) {
+    .docs-layout {
+      grid-template-columns: 20rem minmax(0, 1fr) 16rem;
+    }
+
+    :global(html[data-docs-sidebar-collapsed="true"]) .docs-layout {
+      grid-template-columns: 0 minmax(0, 1fr) 16rem;
+    }
+
     .docs-toc {
       display: block;
     }
@@ -599,6 +666,18 @@ const breadcrumbLabel = sectionLabel.replace(/^Certification Program /, "");
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .docs-layout,
+    .docs-sidebar {
+      transition: none;
+    }
+
+    .docs-sidebar-toggle {
+      transition:
+        color 160ms ease,
+        border-color 160ms ease,
+        background-color 160ms ease;
+    }
+
     .docs-content :global(.heading-anchor-icon) {
       transition: none;
     }

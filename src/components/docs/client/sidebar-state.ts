@@ -1,4 +1,5 @@
 const groupStorageKey = "docs-sidebar:groups:v1";
+const desktopSidebarStorageKey = "docs-sidebar:desktop:v1";
 
 function readState(key: string): unknown {
   try {
@@ -29,6 +30,42 @@ function setExpanded(group: HTMLElement, open: boolean) {
 }
 
 export default function initializeSidebarState() {
+  const sidebar = document.querySelector<HTMLElement>("#docs-desktop-sidebar");
+  const toggle = document.querySelector<HTMLButtonElement>(
+    "[data-docs-sidebar-toggle]",
+  );
+
+  if (sidebar && toggle && !toggle.dataset.sidebarToggleReady) {
+    toggle.dataset.sidebarToggleReady = "true";
+
+    const sync = () => {
+      const collapsed =
+        document.documentElement.dataset.docsSidebarCollapsed === "true";
+      toggle.setAttribute("aria-expanded", String(!collapsed));
+      const action = collapsed ? "Show" : "Hide";
+      toggle.setAttribute("aria-label", `${action} sidebar`);
+      toggle.title = `${action} sidebar`;
+      sidebar.setAttribute("aria-hidden", String(collapsed));
+      sidebar.toggleAttribute("inert", collapsed);
+    };
+
+    sync();
+    toggle.addEventListener("click", () => {
+      const collapsed =
+        document.documentElement.dataset.docsSidebarCollapsed !== "true";
+      document.documentElement.dataset.docsSidebarCollapsed = String(collapsed);
+      try {
+        localStorage.setItem(
+          desktopSidebarStorageKey,
+          collapsed ? "closed" : "open",
+        );
+      } catch {
+        // The toggle still works for this page when storage is unavailable.
+      }
+      sync();
+    });
+  }
+
   document
     .querySelectorAll<HTMLElement>("[data-docs-sidebar-scroll]")
     .forEach((scroller) => {
