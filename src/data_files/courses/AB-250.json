@@ -2431,34 +2431,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave1/service/dynamics365-contact-center/search-phone-numbers-copilot-service-admin-center"
-                  },
-                  "title": "Search for phone numbers in Copilot Service admin center",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Search for phone numbers in Copilot Service admin center",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave1/service/dynamics365-contact-center/upload-phone-numbers-bulk-direct-routing"
-                  },
-                  "title": "Upload phone numbers in bulk for direct routing",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Upload phone numbers in bulk for direct routing",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/dynamics365/customer-service/administer/voice-channel-outbound-calling"
                   },
                   "title": "Set up outbound calling in the voice channel",
@@ -2741,38 +2713,6 @@
                   "class": "core",
                   "source": "P4",
                   "evidence": "Learn how to create and manage data masking rules to block sensitive data in Dynamics 365 Contact Center.",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave2/service/dynamics365-contact-center/mask-sensitive-data-prevent-unauthorized-access"
-                  },
-                  "title": "Mask sensitive data and prevent unauthorized access",
-                  "class": "supporting",
-                  "relation": "deeper",
-                  "source": "P4",
-                  "why": "Release-plan announcement of the masking feature; it adds background on the same feature rather than new steps.",
-                  "evidence": "Secure customer trust with sensitive data masking",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2026wave1/service/dynamics365-contact-center/use-data-masking-protect-customer-data"
-                  },
-                  "title": "Use data masking to protect customer data",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Manual masking by representatives is a neighbouring step to configuring masking that a professional meets on the same job.",
-                  "evidence": "Manually mask and redact sensitive data",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-09"
@@ -5174,22 +5114,7 @@
             {
               "key": "configure-agents-and-ai-capabilities/configure-voice-agents/configure-sip-header-transfers",
               "text": "Configure SIP header transfers",
-              "picks": [
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave2/service/dynamics365-contact-center/enable-sip-x-header-support-context-transfer"
-                  },
-                  "title": "Enable SIP X header support for context transfer",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Enable SIP X header support for context transfer",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                }
-              ],
+              "picks": [],
               "overlaps": [
                 {
                   "path": "/training/modules/configure-voice-channel-contact-center",
@@ -5475,22 +5400,7 @@
             {
               "key": "configure-work-distribution/configure-queues/configure-overflow-and-fallback",
               "text": "Configure overflow and fallback",
-              "picks": [
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2026wave1/service/dynamics365-contact-center/handle-waiting-conversations-when-queues-close-or-become-unstaffed"
-                  },
-                  "title": "Handle waiting conversations when queues close or become unstaffed",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "immediately apply fallback overflow actions",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                }
-              ],
+              "picks": [],
               "overlaps": [
                 {
                   "path": "/training/modules/configure-queues-contact-center",
@@ -5526,34 +5436,6 @@
                   "class": "core",
                   "source": "P4",
                   "evidence": "Configure assignment methods for queues",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave1/service/dynamics365-contact-center/route-least-active-service-reps-messaging-channels"
-                  },
-                  "title": "Route to least active representatives in messaging channels",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "use the least active assignment method to route the work items",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2026wave1/service/dynamics365-contact-center/use-pick-based-assignment-method-work-items"
-                  },
-                  "title": "Use pick-based assignment method for work items",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Use pick-based assignment method for work items",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-09"

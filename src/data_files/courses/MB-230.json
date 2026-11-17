@@ -386,22 +386,7 @@
             {
               "key": "manage-cases-in-customer-service/define-and-configure-foundational-customer-service-component/implement-and-monitor-record-creation-and-update-rules",
               "text": "Implement and monitor record creation and update rules",
-              "picks": [
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave1/service/dynamics365-customer-service/configure-one-arc-rule-multiple-queues"
-                  },
-                  "title": "Use one record creation and update rule for multiple queues",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "configure one automatic record creation and update rule to track multiple queues",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-06"
-                  }
-                }
-              ]
+              "picks": []
             },
             {
               "key": "manage-cases-in-customer-service/define-and-configure-foundational-customer-service-component/configure-and-modify-the-case-resolution-experience",
@@ -1067,22 +1052,7 @@
             {
               "key": "manage-cases-in-customer-service/manage-agents-and-copilot-in-service-features/configure-ask-a-question-including-filtering-content",
               "text": "Configure Ask a Question, including filtering content",
-              "picks": [
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave2/service/dynamics365-customer-service/tag-knowledge-articles-verbatim-responses-copilot"
-                  },
-                  "title": "Tag knowledge articles for verbatim responses in Copilot",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Ask a question experience",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-06"
-                  }
-                }
-              ],
+              "picks": [],
               "overlaps": [
                 {
                   "path": "/training/modules/configure-copilot",
@@ -1884,22 +1854,6 @@
                   "source": "P4",
                   "why": "Work classification rulesets are configured next to basic routing rulesets in the same routing setup.",
                   "evidence": "Configure work classification rulesets",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-06"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave1/service/dynamics365-customer-service/maintain-routing-rules-bulk"
-                  },
-                  "title": "Maintain routing rules in bulk",
-                  "class": "supporting",
-                  "relation": "deeper",
-                  "source": "P4",
-                  "why": "Bulk maintenance of routing rules with ruleset templates in Customer Service; a release-plan item on the same feature.",
-                  "evidence": "Administrators can effortlessly manage common routing rules across queues and workstreams by using the ruleset templates.",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-06"
@@ -3116,24 +3070,7 @@
             {
               "key": "extend-customer-service/configure-the-data-model-and-ui-components/configure-alerts-and-in-app-notifications",
               "text": "Configure alerts and in-app notifications",
-              "picks": [
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2024wave2/service/dynamics365-contact-center/use-custom-notification-template-new-messages-persistent-chats"
-                  },
-                  "title": "Use custom alerts for new messages in persistent chat",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "A separate notification template for new messages in persistent chat is an in-app alert a Contact Center professional configures alongside the notification task.",
-                  "evidence": "Allow new messages in an existing persistent chat conversation to have a separate notification template",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-06"
-                  }
-                }
-              ]
+              "picks": []
             },
             {
               "key": "extend-customer-service/configure-the-data-model-and-ui-components/create-or-modify-a-table",

@@ -672,9 +672,9 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/azure/cloud-adoption-framework/ai-agents/data-architecture-plan"
+                    "path": "/azure/cloud-adoption-framework/ai-agents/architecture-governance"
                   },
-                  "title": "Data architecture for AI agents across your organization - Cloud Adoption Framework",
+                  "title": "Architecture and governance for AI agents - Cloud Adoption Framework",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
@@ -862,9 +862,9 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/azure/cloud-adoption-framework/ai-agents"
+                    "path": "/azure/cloud-adoption-framework/ai-agents/executive-strategy"
                   },
-                  "title": "AI Agent Adoption Guidance for Organizations - Cloud Adoption Framework",
+                  "title": "AI agent adoption strategy - Cloud Adoption Framework",
                   "class": "supporting",
                   "relation": "same-workflow",
                   "source": "P4",
@@ -878,9 +878,9 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/azure/cloud-adoption-framework/ai-agents/integrate-manage-operate"
+                    "path": "/azure/cloud-adoption-framework/ai-agents/operational-standards"
                   },
-                  "title": "Manage AI agents across your organization - Cloud Adoption Framework",
+                  "title": "Operational standards for AI agents - Cloud Adoption Framework",
                   "class": "supporting",
                   "relation": "operate",
                   "source": "P4",
@@ -943,23 +943,9 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/azure/cloud-adoption-framework/ai-agents/single-agent-multiple-agents"
+                    "path": "/azure/cloud-adoption-framework/ai-agents/organizational-readiness"
                   },
-                  "title": "Choosing Between Building a Single-Agent System or Multi-Agent System - Cloud Adoption Framework",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Explore decision criteria for selecting single-agent or multi-agent architectures",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/azure/cloud-adoption-framework/ai-agents/business-strategy-plan"
-                  },
-                  "title": "Business plan for AI agents - Cloud Adoption Framework",
+                  "title": "Organizational readiness for AI agents - Cloud Adoption Framework",
                   "class": "core",
                   "source": "P4",
                   "evidence": "use cases for AI agents that align with organizational goals",
@@ -1086,20 +1072,6 @@
                   "class": "core",
                   "source": "P4",
                   "evidence": "Build cross-platform multi-agent solutions using the Agent2Agent protocol",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/azure/cloud-adoption-framework/ai-agents/technology-solutions-plan-strategy"
-                  },
-                  "title": "Technology Plan for AI Agents across your organization using the Microsoft Ecosystem - Cloud Adoption Framework",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "using Microsoft SaaS agents, Microsoft Foundry, and Copilot Studio",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-09"
@@ -1646,22 +1618,6 @@
                     "by": "auto",
                     "at": "2026-11-09"
                   }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/azure/cloud-adoption-framework/ai-agents/organization-people-readiness-plan"
-                  },
-                  "title": "Organizational readiness for AI agents - Cloud Adoption Framework",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Organizational readiness for AI agents is a neighbouring step that a person setting up an AI Center of Excellence also handles.",
-                  "evidence": "AI Center of Excellence integration",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
                 }
               ],
               "overlaps": [
@@ -1839,22 +1795,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave2/enterprise-resource-planning/finance-operations-crossapp-capabilities/connect-ai-agents-finance-operations-data-business-logic-expanded-model-context-protocol-server"
-                  },
-                  "title": "Connect AI agents to finance and operations data and business logic",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Connects AI agents to finance and operations data and business logic, a cross-app integration a multi-app AI design must plan.",
-                  "evidence": "provides access to data and business logic of Dynamics 365 finance and operations apps",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/dynamics365/guidance/implementation-guide/solution-architecture-design-pillars-data"
                   },
                   "title": "Design your data solution for your Dynamics 365 solutions",
@@ -2023,20 +1963,6 @@
               "key": "design-ai-powered-business-solutions/design-ai-and-agents-for-business-solutions/design-customizations-of-copilot-in-dynamics-365-apps-for-cu",
               "text": "Design customizations of Copilot in Dynamics 365 apps for customer experience and service",
               "picks": [
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave1/service/dynamics365-field-service/tailor-copilot-chat-experience-copilot-studio"
-                  },
-                  "title": "Tailor Copilot chat experience with Copilot Studio",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Empower makers to customize experience of the Copilot side pane by using the customization capabilities of Copilot Studio.",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
                 {
                   "target": {
                     "kind": "docs",
@@ -3133,22 +3059,6 @@
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-05"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2025wave1/ai-builder/ground-connectors-prompt-builder"
-                  },
-                  "title": "Add enterprise knowledge to prompt builder with connectors",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "A professional designing grounding data for Power Platform AI meets connector-based grounding of prompts, which is a neighbouring design choice.",
-                  "evidence": "Use connector data in prompts within Microsoft Copilot Studio, Power Automate, and Power Apps",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
                   }
                 }
               ],
@@ -9441,24 +9351,7 @@
             {
               "key": "deploy-ai-powered-business-solutions/design-the-alm-process-for-ai-powered-business-solutions/design-the-alm-process-for-microsoft-foundry-agents-service",
               "text": "Design the ALM process for Microsoft Foundry Agents Service",
-              "picks": [
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/azure/cloud-adoption-framework/ai-agents/build-secure-process"
-                  },
-                  "title": "Process to build agents across your organization with Microsoft Foundry and Copilot Studio - Cloud Adoption Framework",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "A process framework for building and governing agents across Foundry and Copilot Studio, the job the ALM process sits in.",
-                  "evidence": "Follow a strategic framework for consistent, governed development",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                }
-              ],
+              "picks": [],
               "overlaps": [
                 {
                   "path": "/training/modules/integrate-foundry-agent-with-m365",
@@ -9619,20 +9512,6 @@
               "key": "deploy-ai-powered-business-solutions/design-responsible-ai-security-governance-risk-management-an/design-security-for-agents",
               "text": "Design security for agents",
               "picks": [
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/azure/cloud-adoption-framework/ai-agents/governance-security-across-organization"
-                  },
-                  "title": "Govern and secure AI agents AI agents across the organization - Cloud Adoption Framework",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Govern and secure AI agents",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
                 {
                   "target": {
                     "kind": "docs",
@@ -9937,38 +9816,6 @@
                   "source": "P4",
                   "why": "Network security controls for Copilot Studio agents are a step a professional designing agent security meets.",
                   "evidence": "configure the Secure Web and AI Gateway for Microsoft Copilot Studio agents",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2026wave1/data-platform/create-dataverse-agent-users-entra-agent-identity"
-                  },
-                  "title": "Create Dataverse agent users with Microsoft Entra agent identity",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Dataverse agent users with role assignment and auditing are a security step a designer meets for agent identities.",
-                  "evidence": "Create Microsoft Dataverse agent users with role assignment, auditing, and lifecycle management",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2026wave1/power-platform-governance-administration/manage-copilot-security-enhanced-admin-controls"
-                  },
-                  "title": "Manage agent security with enhanced admin controls",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "Admin controls that govern Copilot use in Power Platform environments are run after an agent security design is set.",
-                  "evidence": "Use new security controls to govern Copilot use in Power Platform environments",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-09"
@@ -10300,102 +10147,6 @@
                   "source": "P4",
                   "why": "A connector allow list for agents is a governance control an admin sets and runs.",
                   "evidence": "Admins can create an allow list of connectors for apps, flows, or agents",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2025wave1/power-platform-governance-administration/control-agent-capacity-consumption"
-                  },
-                  "title": "Control agent capacity consumption",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "Agent message limits are a governance control a professional sets up and runs after the design.",
-                  "evidence": "Set agent message limits to enforce fairness and prevent runaway costs",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2025wave1/power-platform-governance-administration/search-inventory-custom-agents-copilot-studio"
-                  },
-                  "title": "Search your inventory of custom agents from Copilot Studio",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "An inventory of custom agents is what a governance admin searches and reviews.",
-                  "evidence": "Search across your entire inventory of custom agents from Copilot Studio",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2025wave1/power-platform-governance-administration/turn-sharing-off-copilot-studio"
-                  },
-                  "title": "Block and limit sharing for Copilot Studio",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "Admin controls that block or limit sharing of Copilot Studio agents are governance controls a professional runs.",
-                  "evidence": "allows admins to limit and block how agents created in Microsoft Copilot Studio are shared",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2025wave1/power-platform-governance-administration/view-copilot-agent-settings"
-                  },
-                  "title": "View Copilot and agent settings",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "A central view of Copilot and agent settings is an admin step that supports governance of agents.",
-                  "evidence": "Admins can now centrally view Copilot and agent settings",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2025wave2/power-platform-governance-administration/search-inventory-custom-agents-copilot-studio"
-                  },
-                  "title": "Search your inventory of custom agents from Copilot Studio",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "An inventory of custom agents is what a governance admin searches and reviews.",
-                  "evidence": "Search across your entire inventory of custom agents from Copilot Studio",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2026wave1/power-platform-governance-administration/automate-governance-agentic-center-enablement"
-                  },
-                  "title": "Automate governance with Agentic Center of Enablement",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "Automated governance of agents in Power Platform is the operating step after the governance design is set.",
-                  "evidence": "Power Platform admins get AI agents that scan tenants, detect governance issues",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-09"

@@ -1430,22 +1430,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/troubleshoot/dynamics-365/supply-chain/planning/no-parameters-for-master-plan"
-                  },
-                  "title": "Parameters for the master plan don't exist",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "A professional who maintains master plan parameters meets this error when firming a planned order without parameters for the master plan.",
-                  "evidence": "no parameters exist for the master plan",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/dynamics365/supply-chain/master-planning/master-planning-performance"
                   },
                   "title": "Improve master planning performance",
@@ -1772,22 +1756,6 @@
                   "class": "core",
                   "source": "P4",
                   "evidence": "Learn how safety margins work during master planning",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/troubleshoot/dynamics-365/supply-chain/planning/production-schedule-not-consider-safety-margins"
-                  },
-                  "title": "Production scheduling doesn't consider the safety margins",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "A professional who configures safety margins meets this case where production scheduling does not consider them.",
-                  "evidence": "Production scheduling doesn't consider the safety margins",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-04"
@@ -3414,22 +3382,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave2/enterprise-resource-planning/dynamics365-supply-chain-management/enable-quality-control-sample-management"
-                  },
-                  "title": "Enable quality control with sample management",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Enabling quality control with sample management is a neighbouring setup step for the quality control process.",
-                  "evidence": "Sample management ensures product quality by tracking and testing production samples",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/dynamics365/supply-chain/inventory/quality-instrument-calibration"
                   },
                   "title": "Test instrument calibration",
@@ -3867,22 +3819,6 @@
                   "class": "core",
                   "source": "P4",
                   "evidence": "Learn about sales trade agreement prices, including an outline on configuring sales trade agreements and concurrence rules",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2025wave2/enterprise-resource-planning/dynamics365-supply-chain-management/calculate-prices-discounts-without-creating-sales-orders"
-                  },
-                  "title": "Calculate prices and discounts without creating sales orders",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "A release note on calculating prices without sales orders, a neighbouring use of the configured pricing in Supply Chain Management.",
-                  "evidence": "Unified pricing management can now calculate customer and volume-specific prices and discounts without requiring you to create a sales order.",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-04"
@@ -5526,22 +5462,6 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/troubleshoot/dynamics-365/supply-chain/planning/planned-order-must-be-scheduled"
-                  },
-                  "title": "Planned production order must be scheduled before it can be firmed",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "Explains the error when a planned order must be scheduled before firming, a problem met while managing schedules.",
-                  "evidence": "Planned production order must be scheduled before it can be firmed",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-04"
-                  }
                 }
               ],
               "overlaps": [
@@ -7008,22 +6928,6 @@
                   "evidence": "Learn how to set up master planning to consider quotations and requests for quotation (RFQs) when it generates planned orders.",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-04"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/dynamics365/release-plan/2024wave2/finance-supply-chain/dynamics365-supply-chain-management/approve-purchase-orders-requisitions-mobile-device"
-                  },
-                  "title": "Approve POs and requisitions from mobile device",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Mobile approval of purchase orders and requisitions, a neighbouring step in managing requisitions and POs.",
-                  "evidence": "Dynamics 365 Supply Chain Management now provides a mobile approval experience",
-                  "decision": {
-                    "by": "auto",
                     "at": "2026-11-04"
                   }
                 },
