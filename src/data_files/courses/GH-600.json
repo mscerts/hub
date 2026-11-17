@@ -289,7 +289,22 @@
             {
               "key": "prepare-agent-architecture-and-sdlc-processes/integrate-agents-into-the-software-development-lifecycle-sdl/identify-and-mitigate-common-anti-patterns-in-agents",
               "text": "Identify and mitigate common anti-patterns in agents",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/well-architected/governance/recommendations/agentic-engineering-system-on-github"
+                  },
+                  "title": "Building an agentic engineering system on GitHub - GitHub Well-Architected",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "This guide maps the moving parts of such a system to the GitHub primitives that implement them, and identifies common patterns and anti-patterns when teams put them together.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/foundations-agentic-ai",
@@ -452,6 +467,22 @@
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-15"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/tutorials/optimize-ai-usage"
+                  },
+                  "title": "Optimizing your AI usage to maximize efficiency and reduce cost - GitHub Docs",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P6",
+                  "why": "The tutorial shows how to add guardrails so that Copilot completes tasks efficiently, the same control the task asks a learner to plan for an agent.",
+                  "evidence": "Learn how to choose the right models, structure your prompts, and add guardrails so that Copilot completes tasks more efficiently and uses fewer AI credits.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ]
@@ -928,6 +959,20 @@
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-06"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/concepts/context/mcp"
+                  },
+                  "title": "Model Context Protocol (MCP) - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Connect Copilot to external tools and data through Model Context Protocol (MCP) servers.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ],
@@ -1418,7 +1463,24 @@
             {
               "key": "manage-memory-state-and-execution/persist-agent-state-and-manage-context-drift/detect-and-correct-drift-during-extended-agent-execution",
               "text": "Detect and correct drift during extended agent execution",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/concepts/agents/copilot-cli/context-management"
+                  },
+                  "title": "Managing context for GitHub Copilot - GitHub Docs",
+                  "class": "supporting",
+                  "relation": "operate",
+                  "source": "P6",
+                  "why": "Explains what happens to context during long sessions and how to stay in control of it, the drift this task asks a learner to detect and correct.",
+                  "evidence": "Understand how Copilot manages conversation context, what happens during long sessions, and how to stay in control of your context window.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/multi-agent-systems-orchestration",
@@ -1936,7 +1998,22 @@
             {
               "key": "implement-guardrails-and-accountability/implement-guardrails-and-human-in-the-loop-workflows/block-actions-that-violate-defined-security-compliance-or-re",
               "text": "Block actions that violate defined security, compliance, or Responsible AI policies",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/well-architected/governance/recommendations/governing-agents"
+                  },
+                  "title": "Governing agents in GitHub Enterprise - GitHub Well-Architected",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Agents are becoming significant contributors to enterprise codebases. GitHub lets teams assign tasks to agents from issues, PRs, and Visual Studio Code in a single workflow.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/governance-guardrails-operations",

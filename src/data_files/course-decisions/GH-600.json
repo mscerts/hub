@@ -1567,6 +1567,63 @@
       "reason": "Also covers this task; the module is shown once, under \"Configure the MCP registries\".",
       "by": "maintainer",
       "at": "2026-11-15"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/integrate-agents-into-the-software-development-lifecycle-sdl/identify-and-mitigate-common-anti-patterns-in-agents",
+      "target": "/well-architected/governance/recommendations/agentic-engineering-system-on-github",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: This guide maps the moving parts of such a system to the GitHub primitives that implement them, and identifies common patterns and anti-patterns when teams put them together.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Building an agentic engineering system on GitHub - GitHub Well-Architected"
+    },
+    {
+      "task": "prepare-agent-architecture-and-sdlc-processes/configure-observability-and-control-for-autonomous-agents/plan-and-implement-the-degree-of-agent-autonomy-including-gu",
+      "target": "/en/copilot/tutorials/optimize-ai-usage",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "The tutorial shows how to add guardrails so that Copilot completes tasks efficiently, the same control the task asks a learner to plan for an agent.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Optimizing your AI usage to maximize efficiency and reduce cost - GitHub Docs"
+    },
+    {
+      "task": "implement-tool-use-and-environment-interaction/configure-mcp-servers/add-an-mcp-server-as-a-tool-to-an-agent",
+      "target": "/en/copilot/concepts/context/mcp",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: Connect Copilot to external tools and data through Model Context Protocol (MCP) servers.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Model Context Protocol (MCP) - GitHub Docs"
+    },
+    {
+      "task": "manage-memory-state-and-execution/persist-agent-state-and-manage-context-drift/detect-and-correct-drift-during-extended-agent-execution",
+      "target": "/en/copilot/concepts/agents/copilot-cli/context-management",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "operate",
+      "reason": "Explains what happens to context during long sessions and how to stay in control of it, the drift this task asks a learner to detect and correct.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Managing context for GitHub Copilot - GitHub Docs"
+    },
+    {
+      "task": "implement-guardrails-and-accountability/implement-guardrails-and-human-in-the-loop-workflows/block-actions-that-violate-defined-security-compliance-or-re",
+      "target": "/well-architected/governance/recommendations/governing-agents",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: Agents are becoming significant contributors to enterprise codebases. GitHub lets teams assign tasks to agents from issues, PRs, and Visual Studio Code in a single workflow.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Governing agents in GitHub Enterprise - GitHub Well-Architected"
     }
   ],
   "excludedFamilies": []

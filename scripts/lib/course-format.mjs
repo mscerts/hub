@@ -63,9 +63,25 @@ export const RELATIONS = Object.freeze({
  * else found by searching the catalogs, P5 a page a model named from its own knowledge for the task and a
  * script confirmed exists (docs/course-proposals.md).
  */
-export const SOURCES = Object.freeze(["P1", "P2", "P3", "P4", "P5"]);
+export const SOURCES = Object.freeze(["P1", "P2", "P3", "P4", "P5", "P6"]);
 
-export const PICK_KINDS = Object.freeze(["module", "unit", "docs"]);
+export const PICK_KINDS = Object.freeze(["module", "unit", "docs", "github"]);
+
+/**
+ * A `github` pick is a page of GitHub's own sites, not of Microsoft Learn, and only the courses of the GitHub exams
+ * (GH-*) have them: a docs.github.com page (`/en/...`) or a learn.github.com page (`/well-architected/...`), that
+ * GitHub Learn lists for the exam's topic. Its source is `P6`; Microsoft Learn's validator knows nothing of it.
+ */
+export const GITHUB_PATH =
+  /^\/(en|well-architected)\/[a-z0-9][a-z0-9._~()%@/-]*[a-z0-9]$/;
+export const GITHUB_COURSE = /^GH-\d{3}$/;
+
+/** The address of a `github` target: docs.github.com for `/en/...`, learn.github.com for the rest. */
+export function githubHref(path) {
+  return path.startsWith("/en/")
+    ? `https://docs.github.com${path}`
+    : `https://learn.github.com${path}`;
+}
 /**
  * Who decided a pick: `auto` (the gates took it: the judge was sure of it, whatever the source;
  * docs/course-gates.md) or `maintainer` (an answer of the review queue). The format does not limit which sources
@@ -155,7 +171,16 @@ export function pickProblems(pick, { foundation = false } = {}) {
       "a course places a module, not its units: the pick must be the module (/training/modules/<slug>); a hands-on unit belongs on the lab page",
     );
   const path = pick.target?.path;
-  if (!present(path) || !CANONICAL_PATH.test(path) || path.endsWith("/"))
+  if (pick.target?.kind === "github") {
+    if (!present(path) || !GITHUB_PATH.test(path))
+      problems.push(
+        `a github target must be a docs.github.com path (/en/...) or a learn.github.com path (/well-architected/...), lower case, no host, query, fragment or trailing slash, got ${path}`,
+      );
+  } else if (
+    !present(path) ||
+    !CANONICAL_PATH.test(path) ||
+    path.endsWith("/")
+  )
     problems.push(
       `target.path "${path}" is not a canonical Learn path (lower case, no host, locale, query or trailing slash)`,
     );
@@ -210,7 +235,8 @@ export function pickProblems(pick, { foundation = false } = {}) {
       pick.class === FOUNDATION_CLASS ||
       pick.source === "P3" ||
       pick.source === "P4" ||
-      pick.source === "P5") &&
+      pick.source === "P5" ||
+      pick.source === "P6") &&
     !present(pick.evidence)
   )
     problems.push(
@@ -223,6 +249,10 @@ export function pickProblems(pick, { foundation = false } = {}) {
     problems.push("was must be a non-empty path when present");
   // `via`: the module whose last unit lists a documentation page. It lets the rebuild check trace a change of
   // that module's resource list to the picks it affects.
+  if (pick.target?.kind === "github" && pick.source !== "P6")
+    problems.push("a github page is a P6 pick");
+  if (pick.source === "P6" && pick.target?.kind !== "github")
+    problems.push("a P6 pick is a page of GitHub's own sites: kind github");
   if (pick.source === "P2") {
     if (pick.target?.kind !== "docs")
       problems.push(
@@ -505,6 +535,10 @@ export function validateCourse(
         `${task.key}: ${path} is already shown under ${first}: a page appears once in a course`,
       );
     else shownAt.set(path, task.key);
+    if (pick.target?.kind === "github" && !GITHUB_COURSE.test(course.code))
+      errors.push(
+        `${task.key}: ${path} is a GitHub page; only the courses of the GitHub exams (GH-*) have them`,
+      );
     if (isClassic({ title: pick.title, path }))
       errors.push(
         `${task.key}: ${path} is classic material; a course leaves it out`,
@@ -522,14 +556,14 @@ export function validateCourse(
       errors.push(
         `${task.key}: ${path} was rejected by the maintainer and must not come back`,
       );
-    if (isCurrent) {
+    if (isCurrent && pick.target.kind !== "github") {
       const verdict = isCurrent(path, pick.target.kind);
       if (verdict && verdict.ok === false)
         errors.push(
           `${task.key}: ${path} is not a current Learn page${verdict.reason ? ` (${verdict.reason})` : ""}`,
         );
     }
-    if (titleOf) {
+    if (titleOf && pick.target.kind !== "github") {
       const official = titleOf(path);
       if (official && squish(official) !== squish(pick.title))
         warnings.push(

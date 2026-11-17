@@ -414,7 +414,9 @@ export function indexDecisions(store) {
 
 /** The kind of a Learn path: a training module, one of its units, or a documentation page. */
 export const kindOfPath = (path) =>
-  /^\/training\/modules\/[^/]+$/.test(path)
+  /^\/(en|well-architected)\//.test(path)
+    ? "github"
+    : /^\/training\/modules\/[^/]+$/.test(path)
     ? "module"
     : /^\/training\/modules\/[^/]+\/[^/]+$/.test(path)
       ? "unit"
@@ -434,7 +436,7 @@ export function manualAccepts(store, candidates, { isCurrent } = {}) {
     if (d.decision !== "accept" || candidates.has(pairKey(d.task, d.target)))
       continue;
     const kind = kindOfPath(d.target);
-    const current = isCurrent?.(d.target, kind);
+    const current = kind === "github" ? undefined : isCurrent?.(d.target, kind);
     if (current && current.ok === false) {
       notCurrent++;
       continue;

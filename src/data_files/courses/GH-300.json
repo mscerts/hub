@@ -429,7 +429,24 @@
             {
               "key": "use-github-copilot-features/use-github-copilot-cli/use-github-copilot-cli-interactively-and-in-sessions",
               "text": "Use GitHub Copilot CLI interactively and in sessions",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/concepts/agents/copilot-cli/context-management"
+                  },
+                  "title": "Managing context for GitHub Copilot - GitHub Docs",
+                  "class": "supporting",
+                  "relation": "operate",
+                  "source": "P6",
+                  "why": "Explains how Copilot CLI manages conversation context and what happens in long sessions, which a learner meets when working interactively in sessions.",
+                  "evidence": "Understand how Copilot manages conversation context, what happens during long sessions, and how to stay in control of your context window.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/github-copilot-across-environments",
@@ -484,6 +501,20 @@
                     "by": "auto",
                     "at": "2026-11-05"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/concepts/context/mcp"
+                  },
+                  "title": "Model Context Protocol (MCP) - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Connect Copilot to external tools and data through Model Context Protocol (MCP) servers.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
                 }
               ]
             },
@@ -521,7 +552,22 @@
             {
               "key": "use-github-copilot-features/use-github-copilot-features-and-capabilities/understand-the-limits-options-feedback-and-commands-of-githu",
               "text": "Understand the limits, options, feedback, and commands of GitHub Copilot Chat; include prompt file reuse for consistent responses",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/reference/chat-cheat-sheet"
+                  },
+                  "title": "GitHub Copilot Chat cheat sheet - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Use this cheat sheet to quickly reference the most common commands and options for using GitHub Copilot Chat.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/github-copilot-across-environments",
@@ -538,7 +584,22 @@
             {
               "key": "use-github-copilot-features/manage-organization-wide-settings-and-policies/configure-organization-wide-policy-management-enable-copilot",
               "text": "Configure organization-wide policy management; enable Copilot Code Review policies and manage feature availability across IDEs and github.com",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/how-tos/copilot-on-github/set-up-copilot/configure-access-to-ai-models"
+                  },
+                  "title": "Configuring access to AI models in GitHub Copilot - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Control which AI models your organization or enterprise can use with Copilot.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/code-reviews-pull-requests-github-copilot",
@@ -698,6 +759,20 @@
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-15"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/concepts/prompting/prompt-engineering"
+                  },
+                  "title": "Prompt engineering for GitHub Copilot - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Follow these strategies to improve your Copilot results.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ]

@@ -198,6 +198,20 @@
                     "by": "auto",
                     "at": "2026-11-05"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/getting-started/github-security-features"
+                  },
+                  "title": "GitHub security features - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "An overview of GitHub's security features.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
                 }
               ]
             },
@@ -226,12 +240,42 @@
             {
               "key": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/differentiate-security-feature-availability-for-public-repos",
               "text": "Differentiate security feature availability for public repositories vs. enterprise environments",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/get-started/learning-about-github/about-github-advanced-security"
+                  },
+                  "title": "About GitHub Advanced Security - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "GitHub makes extra security features available to customers who purchase GitHub Code Security or GitHub Secret Protection. Some features are enabled for public repositories by default.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             },
             {
               "key": "describe-github-security-suites-features-and-ecosystem/understand-github-security-suites-and-architecture/explain-features-and-benefits-of-the-security-overview",
               "text": "Explain features and benefits of the Security Overview",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/concepts/security-at-scale/security-overview"
+                  },
+                  "title": "Security overview - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "You can gain insights into the overall security landscape of your organization or enterprise and identify repositories that require intervention using security overview.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/github-administration-github-advanced-security",
@@ -282,7 +326,22 @@
             {
               "key": "describe-github-security-suites-features-and-ecosystem/apply-secure-sdlc-and-security-strategies/explain-security-campaigns-and-their-role-in-reducing-risk",
               "text": "Explain security campaigns and their role in reducing risk",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/concepts/security-at-scale/about-security-campaigns"
+                  },
+                  "title": "About security campaigns - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "You can fix security alerts at scale by creating security campaigns and collaborating with developers to burn down your security backlog.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/security-campaign",
@@ -311,6 +370,20 @@
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/concepts/secret-security/secret-scanning"
+                  },
+                  "title": "Secret scanning - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Prevent fraudulent use of your secrets by automatically detecting exposed credentials before they can be exploited.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ]
@@ -543,7 +616,22 @@
             {
               "key": "configure-and-use-secret-protection-formerly-secret-scanning/prevent-secret-exposure/describe-validity-checks-and-prioritized-alerting-for-high-c",
               "text": "Describe validity checks and prioritized alerting for high-confidence secrets",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/concepts/secret-security/validity-checks"
+                  },
+                  "title": "Validity checks - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Validity checks and extended metadata checks help you prioritize remediation of exposed credentials that pose immediate security risks.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -580,7 +668,22 @@
             {
               "key": "configure-and-use-secret-protection-formerly-secret-scanning/control-access-policies-and-customization/explain-role-based-and-delegated-bypass-policies-in-secret-p",
               "text": "Explain role-based and delegated bypass policies in Secret Protection",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/concepts/secret-security/delegated-bypass"
+                  },
+                  "title": "Delegated bypass for push protection - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Maintain your secret security while unblocking trusted actors with delegated bypass for push protection.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             },
             {
               "key": "configure-and-use-secret-protection-formerly-secret-scanning/control-access-policies-and-customization/configure-alert-recipients-and-exclusions",
@@ -590,7 +693,22 @@
             {
               "key": "configure-and-use-secret-protection-formerly-secret-scanning/control-access-policies-and-customization/create-and-manage-custom-secret-patterns",
               "text": "Create and manage custom secret patterns",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/how-tos/secure-your-secrets/customize-leak-detection/define-custom-patterns"
+                  },
+                  "title": "Defining custom patterns for secret scanning - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Protect your unique secret types by defining custom patterns with regular expressions.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             }
           ]
         }
@@ -643,7 +761,22 @@
             {
               "key": "configure-and-use-supply-chain-security-formerly-dependabot/detect-prioritize-and-respond-to-supply-chain-alerts/supply-chain-alerts-and-security-updates-prioritization-epss",
               "text": "Supply chain alerts and security updates (prioritization, EPSS scoring)",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/concepts/supply-chain-security/dependabot-alerts"
+                  },
+                  "title": "Dependabot alerts - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Dependabot alerts help you find and fix vulnerable dependencies before they become security risks.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/configure-dependabot-security-updates-on-github-repo",
@@ -667,7 +800,22 @@
             {
               "key": "configure-and-use-supply-chain-security-formerly-dependabot/detect-prioritize-and-respond-to-supply-chain-alerts/auto-dismiss-behavior-and-security-campaign-configuration",
               "text": "Auto-dismiss behavior and security campaign configuration",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/concepts/supply-chain-security/dependabot-auto-triage-rules"
+                  },
+                  "title": "Dependabot auto-triage rules - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Control how Dependabot handles security alerts, including filtering, ignoring, snoozing, or triggering security updates.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -772,6 +920,20 @@
                     "by": "maintainer",
                     "at": "2026-11-15"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/concepts/code-scanning/code-scanning"
+                  },
+                  "title": "Code scanning - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "You can use code scanning to find security vulnerabilities and errors in the code for your project on GitHub.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
                 }
               ]
             },
@@ -829,7 +991,22 @@
             {
               "key": "configure-and-use-code-security-formerly-code-scanning-with/set-up-and-configure-code-security/configure-code-scanning-workflows-and-workflow-templates",
               "text": "Configure code scanning workflows and workflow templates",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/concepts/code-scanning/setup-types"
+                  },
+                  "title": "About setup types for code scanning - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Depending on your needs, GitHub offers a default or advanced setup for code scanning.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/configure-code-scanning",
@@ -1005,7 +1182,22 @@
             {
               "key": "security-operations-best-practices-prioritization-and-remedi/customize-and-optimize-security-detection/customizing-codeql-query-suites-and-language-specific-analys",
               "text": "Customizing CodeQL query suites and language-specific analysis",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/concepts/code-scanning/codeql/codeql-query-suites"
+                  },
+                  "title": "CodeQL query suites - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "You can choose from different built-in CodeQL query suites to use in your CodeQL code scanning setup.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             },
             {
               "key": "security-operations-best-practices-prioritization-and-remedi/customize-and-optimize-security-detection/tailoring-security-detection-to-organizational-risk-profiles",
@@ -1090,7 +1282,22 @@
             {
               "key": "github-security-suites-administration/roll-out-and-manage-security-features-at-scale/enable-github-security-suites-at-enterprise-organization-and",
               "text": "Enable GitHub Security Suites at enterprise, organization, and repository levels",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/code-security/concepts/security-at-scale/organization-security"
+                  },
+                  "title": "Enabling security features at scale - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "You can quickly secure your organization at scale with security configurations and global settings.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/manage-sensitive-data-security-policies",

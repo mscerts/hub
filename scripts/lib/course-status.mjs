@@ -237,7 +237,11 @@ export function affectedPicks({
         }
       }
     }
-    if (isCurrent && !found.some((f) => f.level === "hard")) {
+    if (
+      isCurrent &&
+      pick.target.kind !== "github" &&
+      !found.some((f) => f.level === "hard")
+    ) {
       const verdict = isCurrent(pick.target.path, pick.target.kind);
       if (verdict && verdict.ok === false)
         add(

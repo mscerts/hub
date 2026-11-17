@@ -60,8 +60,8 @@ import {
 } from "./course-foundations.mjs";
 
 const byText = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
-const SOURCE_ORDER = { P1: 0, P2: 1, P3: 2, P4: 3, P5: 4 };
-const KIND_ORDER = { module: 0, unit: 1, docs: 2 };
+const SOURCE_ORDER = { P1: 0, P2: 1, P3: 2, P4: 3, P5: 4, P6: 5 };
+const KIND_ORDER = { module: 0, unit: 1, docs: 2, github: 3 };
 // a page that fits a task as core stays there; a page of the fundamentals comes before one that only supports a task
 const CLASS_ORDER = { core: 0, [FOUNDATION_CLASS]: 1, supporting: 2 };
 
@@ -87,7 +87,8 @@ function pickOf(item, day) {
     g.class === FOUNDATION_CLASS ||
     item.source === "P3" ||
     item.source === "P4" ||
-    item.source === "P5";
+    item.source === "P5" ||
+    item.source === "P6";
   // The judge's words describe the page as the judge saw it. When the judge rejected the page and the maintainer
   // accepted it, they argue against the pick: the maintainer's note is its reason and its evidence. A note the
   // maintainer wrote also replaces the judge's reason when the judge picked the page too.
@@ -465,9 +466,15 @@ export function buildCourse({
     }
     const kind = m.target.kind ?? kindOfPath(path);
     const modulePath =
-      kind === "docs" ? null : path.split("/").slice(0, 4).join("/");
+      kind === "docs" || kind === "github"
+        ? null
+        : path.split("/").slice(0, 4).join("/");
     const title =
-      (kind === "docs" ? null : describe?.(path)?.title) ?? m.title ?? null;
+      (kind === "docs" || kind === "github"
+        ? null
+        : describe?.(path)?.title) ??
+      m.title ??
+      null;
     if (!title) {
       warnings.push(
         `${m.task}: the maintainer accepted ${path}, which is not a candidate, and nothing gives its title (learnsync's catalog does not list it and the decision has no title): it is left out`,
@@ -487,7 +494,16 @@ export function buildCourse({
       task: { key: m.task },
       target: { kind, path },
       title,
-      source: own ? "P1" : modulePath ? "P3" : listedBy.has(path) ? "P2" : "P4",
+      source:
+        kind === "github"
+          ? "P6"
+          : own
+            ? "P1"
+            : modulePath
+              ? "P3"
+              : listedBy.has(path)
+                ? "P2"
+                : "P4",
       ...(!modulePath && listedBy.has(path) ? { via: listedBy.get(path) } : {}),
       ...(unitSig ? { unitSig } : {}),
       signals: {},
@@ -567,7 +583,8 @@ export function buildCourse({
       if (
         pick.source === "P3" ||
         pick.source === "P4" ||
-        pick.source === "P5"
+        pick.source === "P5" ||
+        pick.source === "P6"
       ) {
         const module = moduleOfPick(pick);
         if (module && !picked.has(module)) {

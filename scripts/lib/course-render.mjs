@@ -22,6 +22,7 @@
  */
 
 import { eachConcept } from "./course-audience.mjs";
+import { githubHref } from "./course-format.mjs";
 import { foundationKey, groupKeyOf } from "./course-foundations.mjs";
 import { squish } from "./course-guide.mjs";
 
@@ -30,6 +31,13 @@ export const TRACKING = "?WT.mc_id=studentamb_165290";
 /** The address of a Learn target with the hub's tracking parameter and no locale. */
 export function learnHref(path) {
   return `https://learn.microsoft.com${path}${TRACKING}`;
+}
+
+/** The address of a pick's target: a Learn page with the tracking parameter, a GitHub page as it is. */
+export function hrefOf(target) {
+  return target.kind === "github"
+    ? githubHref(target.path)
+    : learnHref(target.path);
 }
 
 /** Text for a double-quoted JSX attribute: no line breaks, no double quotes. */
@@ -57,7 +65,7 @@ export function reviewLabel(reasons) {
 }
 
 function card(pick, indent, mark, change = null) {
-  const base = `${indent}<LinkCard title="${attr(pick.title)}" href="${learnHref(pick.target.path)}" target="_blank"`;
+  const base = `${indent}<LinkCard title="${attr(pick.title)}" href="${hrefOf(pick.target)}" target="_blank"`;
   // a card that only one of the two versions of a course has (docs/course-next.md), said in words as well
   const changed = change
     ? ` change="${change.change}" tag="${attr(change.tag)}"`
@@ -84,8 +92,12 @@ function tab(label, picks, markOf, changeOf = () => null) {
 
 /** Picks split into the two tabs of the page: the Learning tab (modules and units), then the Documentation tab. */
 const byTab = (picks) => ({
-  learning: picks.filter((p) => p.target.kind !== "docs"),
-  docs: picks.filter((p) => p.target.kind === "docs"),
+  learning: picks.filter(
+    (p) => p.target.kind !== "docs" && p.target.kind !== "github",
+  ),
+  docs: picks.filter(
+    (p) => p.target.kind === "docs" || p.target.kind === "github",
+  ),
 });
 
 /** The picks of a task as the page shows them: the Learning tab, then the Documentation tab; core before supporting. */

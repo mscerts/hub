@@ -366,6 +366,7 @@ const SOURCE_TEXT = {
   P3: "another exam's course",
   P4: "found by search",
   P5: "named by a model",
+  P6: "GitHub Learn",
 };
 
 /**

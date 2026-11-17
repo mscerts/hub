@@ -23,7 +23,7 @@ const supporting = (extra = {}) =>
     ...extra,
   });
 
-test("the vocabulary of the format is fixed: two classes, four relations, five sources", () => {
+test("the vocabulary of the format is fixed: two classes, four relations, six sources", () => {
   assert.deepEqual(CLASSES, ["core", "supporting"]);
   assert.deepEqual(Object.keys(RELATIONS), [
     "prerequisite",
@@ -31,7 +31,7 @@ test("the vocabulary of the format is fixed: two classes, four relations, five s
     "operate",
     "deeper",
   ]);
-  assert.deepEqual(SOURCES, ["P1", "P2", "P3", "P4", "P5"]);
+  assert.deepEqual(SOURCES, ["P1", "P2", "P3", "P4", "P5", "P6"]);
   for (const relation of Object.values(RELATIONS))
     assert.ok(relation.label && relation.meaning);
   assert.equal(COURSE_SCHEMA_VERSION, 1);
@@ -59,6 +59,81 @@ test("a valid pick has no problems", () => {
     [],
   );
   assert.deepEqual(pickProblems(pick({ was: "/azure/old" })), []);
+});
+
+const github = (extra = {}) =>
+  pick({
+    target: { kind: "github", path: "/en/actions/concepts/runners/self-hosted-runners" },
+    source: "P6",
+    evidence: "You can host your own runners and customize the environment.",
+    ...extra,
+  });
+
+test("a github pick is a page of GitHub's own sites with the source P6 and an evidence quote", () => {
+  assert.deepEqual(pickProblems(github()), []);
+  assert.deepEqual(
+    pickProblems(
+      github({
+        target: {
+          kind: "github",
+          path: "/well-architected/governance/recommendations/governing-agents",
+        },
+      }),
+    ),
+    [],
+  );
+  assert.deepEqual(
+    pickProblems(
+      github({
+        target: {
+          kind: "github",
+          path: "/en/enterprise-cloud@latest/admin/data-residency/about-github-enterprise-cloud-with-data-residency",
+        },
+      }),
+    ),
+    [],
+  );
+  assert.match(
+    pickProblems(github({ source: "P4" })).join("|"),
+    /a github page is a P6 pick/,
+  );
+  assert.match(
+    pickProblems(github({ evidence: undefined })).join("|"),
+    /evidence is required/,
+  );
+  assert.match(
+    pickProblems(pick({ source: "P6" })).join("|"),
+    /a P6 pick is a page of GitHub's own sites/,
+  );
+  for (const path of [
+    "/actions/concepts/runners",
+    "/en/actions/",
+    "/en/actions/x?a=1",
+    "/en/actions/x#top",
+    "/en/Actions/x",
+    "https://docs.github.com/en/actions/x",
+  ])
+    assert.match(
+      pickProblems(github({ target: { kind: "github", path } })).join("|"),
+      /a github target must be a docs.github.com path/,
+      path,
+    );
+});
+
+test("only the courses of the GitHub exams may show a github page", () => {
+  const { course, guide } = exampleCourse();
+  const task = course.domains[0].groups[0].tasks[0];
+  task.picks = [...(task.picks ?? []), github()];
+  const own = validateCourse(structuredClone(course), { guide });
+  assert.ok(
+    !own.errors.some((e) => /GitHub page/.test(e)),
+    own.errors.join("|"),
+  );
+  const other = validateCourse({ ...structuredClone(course), code: "AZ-104" }, { guide });
+  assert.ok(
+    other.errors.some((e) => /only the courses of the GitHub exams/.test(e)),
+    other.errors.join("|"),
+  );
 });
 
 test("a course places a module, not its units: a unit pick is a problem whatever else is right", () => {

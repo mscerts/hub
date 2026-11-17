@@ -87,8 +87,19 @@ A module is not split into its units across the page (maintainer, 2026-10-21; th
 | `P3`   | Material of another exam's official course (for example an AZ-700 module for an AZ-104 networking task).                             |
 | `P4`   | Anything else, found by searching the catalogs.                                                                                      |
 | `P5`   | A page a model named from its own knowledge for the task and a script confirmed exists ([course-proposals.md](course-proposals.md)). |
+| `P6`   | A page of GitHub's own sites that GitHub Learn lists for the exam's topic (GH-* courses only, see "GitHub pages"). |
 
 **Who approves a pick** (maintainer, 2026-10-20). The automatic gates accept a pick of **any source, class and confidence** when the judge picked it and the quote is in the evidence; its `decision.by` is `auto`. That a page was found by search only (`P4`) or named by a model only (`P5`), is core material of another exam's course (`P3`) or is a deeper dive no longer sends it to the maintainer: marked samples of AZ-104 support it ([course-gates.md](course-gates.md)). Hands-on pages and classic pages are decided by the gates alone. A pick the judge was not sure of, or flagged `other-role`, `other-sub-product` or `licensing-tier`, is accepted too and marked on the review copy for the maintainer to look at. What the gates do not accept (a quote that is not in the evidence, an unsure reject) is the maintainer's decision (`decision.by: maintainer`). The validator checks that a decider is named, not who it was.
+
+### GitHub pages (the GH-* courses only)
+
+The Learn catalog has little for the GitHub exams, so the courses of GH-100, GH-200, GH-300, GH-500, GH-600 and GH-700 also hold pages that [GitHub Learn](https://learn.github.com) lists for the exam's topic (2026-11-17, maintainer): the pages its learning pathways (`learn.github.com/learning-pathways/<name>`, one per product, three skill levels each) and its GitHub Well-Architected articles point to. They are picks of `target.kind` `github` and the source `P6`:
+
+- `target.path` is `/en/...` for a docs.github.com page or `/well-architected/...` for a learn.github.com page, lower case, with no host, query, fragment or trailing slash (`GITHUB_PATH`, `githubHref` of `scripts/lib/course-format.mjs`). The address on the page is the page's own: no `WT.mc_id` parameter. The card shows in the task's Documentation tab, after the Learn pages.
+- The title is the page's heading plus ` - GitHub Docs` (` - GitHub Well-Architected`); `evidence` is a sentence of the page itself (its description). A page is shown once in a course, as for any pick.
+- Only a GH-* course may have one (`validateCourse`). Learn's validator knows nothing of these pages: `isCurrent` and the catalog title are not asked, so **a dead link is found by the Link Checker, not here**; check a changed page by hand when you rebuild a GH course.
+- Placed by hand from the pathway of the product (Actions for GH-200, Copilot for GH-300 and GH-600, Advanced Security for GH-500, the platform and enterprise pathways for GH-100). Each pick has a pinned `accept` in `src/data_files/course-decisions/<CODE>.json` (`kindOfPath` knows `/en/` and `/well-architected/`), so a rebuild keeps it. The learning pathways' Microsoft Learn courses and GitHub Skills are not picks: the first are in the catalog already, the second belong on the lab pages (AGENTS.md > Lab Pages).
+- **Left out on purpose:** the product guides (`learn.github.com/product-guides`, rollout playbooks for administrators, no exam topic), the Code Quality pages (not in GH-500's study guide), the YouTube series and third-party providers on GitHub Learn.
 
 ## The course file
 

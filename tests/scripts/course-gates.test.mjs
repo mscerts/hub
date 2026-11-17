@@ -11,7 +11,9 @@ import {
   gateJudged,
   gateStats,
   indexDecisions,
+  kindOfPath,
   learnUrl,
+  manualAccepts,
   parseNumbers,
   validateDecisions,
 } from "../../scripts/lib/course-gates.mjs";
@@ -1266,4 +1268,40 @@ test("an accept that no candidate answers stands: it is listed for the builder, 
   assert.equal(stats.acceptedWithoutCandidateNotCurrent, 1);
   // without decisions there is nothing to add
   assert.deepEqual(gateJudged(files, { today: TODAY }).manual, []);
+});
+
+test("a page of GitHub's own sites is kind github, and Learn's validator is never asked about it", () => {
+  assert.equal(kindOfPath("/en/actions/concepts/runners/self-hosted-runners"), "github");
+  assert.equal(kindOfPath("/well-architected/governance/recommendations/governing-agents"), "github");
+  assert.equal(kindOfPath("/training/modules/m"), "module");
+  assert.equal(kindOfPath("/azure/storage/blobs"), "docs");
+  const asked = [];
+  const store = {
+    decisions: [
+      {
+        task: "d/g/t",
+        target: "/en/actions/concepts/runners/self-hosted-runners",
+        decision: "accept",
+        class: "core",
+        reason: "Listed by GitHub Learn.",
+        by: "maintainer",
+        at: "2026-11-17",
+        pinned: true,
+        title: "Self-hosted runners - GitHub Docs",
+      },
+    ],
+  };
+  const result = manualAccepts(store, new Set(), {
+    isCurrent: (path, kind) => {
+      asked.push(kind);
+      return { ok: false };
+    },
+  });
+  assert.deepEqual(asked, []);
+  assert.equal(result.notCurrent, 0);
+  assert.equal(result.manual.length, 1);
+  assert.deepEqual(result.manual[0].target, {
+    kind: "github",
+    path: "/en/actions/concepts/runners/self-hosted-runners",
+  });
 });

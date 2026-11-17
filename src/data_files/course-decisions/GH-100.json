@@ -294,6 +294,173 @@
       "by": "maintainer",
       "at": "2026-11-15",
       "pinned": true
+    },
+    {
+      "task": "manage-github-identities-and-access/manage-user-identities-and-authentication/describe-differences-between-managed-users-and-personal-acco",
+      "target": "/en/enterprise-cloud@latest/admin/concepts/identity-and-access-management/enterprise-managed-users",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: Learn how your enterprise can manage the lifecycle and authentication of users on GitHub from your identity provider (IdP).",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "About Enterprise Managed Users - GitHub Docs"
+    },
+    {
+      "task": "manage-github-identities-and-access/manage-access-and-permissions/manage-settings-policies-rulesets-and-roles",
+      "target": "/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: Rulesets help you to control how people can interact with branches and tags in a repository.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "About rulesets - GitHub Docs"
+    },
+    {
+      "task": "administer-github-enterprise-environment/manage-deployment-and-licensing/describe-github-enterprise-deployment-scenarios-ghec-with-em",
+      "target": "/en/enterprise-cloud@latest/admin/data-residency/about-github-enterprise-cloud-with-data-residency",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: With GitHub Enterprise Cloud, you can have more control over your data without needing to host your own platform.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "About GitHub Enterprise Cloud with data residency - GitHub Docs"
+    },
+    {
+      "task": "administer-github-enterprise-environment/manage-deployment-and-licensing/describe-github-enterprise-deployment-scenarios-ghec-with-em",
+      "target": "/en/enterprise-server@latest/admin/configuring-settings/configuring-github-connect/about-github-connect",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "GitHub Connect is how a GitHub Enterprise Server deployment is combined with GitHub Enterprise Cloud, a scenario the deployment task compares.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "About GitHub Connect - GitHub Docs"
+    },
+    {
+      "task": "administer-github-enterprise-environment/manage-deployment-and-licensing/describe-github-enterprise-deployment-scenarios-ghec-with-em",
+      "target": "/en/enterprise-server@latest/admin/overview/about-upgrades-to-new-releases",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Describes how GitHub Enterprise Server receives features and fixes through releases, which an administrator choosing between deployments weighs.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "About upgrades to new releases - GitHub Docs"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/configure-security-policies-and-rulesets/strengthen-enterprise-security-posture-and-data-protection",
+      "target": "/en/code-security/concepts/security-at-scale/organization-security",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: You can quickly secure your organization at scale with security configurations and global settings.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Enabling security features at scale - GitHub Docs"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/enable-repository-security-features/configure-vulnerability-alerts-secret-scanning-and-codeql",
+      "target": "/en/code-security/concepts/secret-security/secret-scanning",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: Prevent fraudulent use of your secrets by automatically detecting exposed credentials before they can be exploited.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Secret scanning - GitHub Docs"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/enable-repository-security-features/configure-vulnerability-alerts-secret-scanning-and-codeql",
+      "target": "/en/code-security/concepts/code-scanning/code-scanning",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: You can use code scanning to find security vulnerabilities and errors in the code for your project on GitHub.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Code scanning - GitHub Docs"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/enable-repository-security-features/manage-dependabot-and-security-advisories",
+      "target": "/en/code-security/concepts/supply-chain-security/dependabot-alerts",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: Dependabot alerts help you find and fix vulnerable dependencies before they become security risks.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Dependabot alerts - GitHub Docs"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/manage-api-access-and-integrations/understand-rate-limits-for-pats-and-github-apps",
+      "target": "/en/rest/using-the-rest-api/rate-limits-for-the-rest-api",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: Learn about REST API rate limits, how to avoid exceeding them, and what to do if you do exceed them.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Rate limits for the REST API - GitHub Docs"
+    },
+    {
+      "task": "implement-secure-software-development-and-compliance/manage-api-access-and-integrations/describe-github-apps-and-oauth-apps",
+      "target": "/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: GitHub Apps let you build integrations to automate processes and extend GitHub's functionality.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "About creating GitHub Apps - GitHub Docs"
+    },
+    {
+      "task": "manage-github-actions/configure-workflows-and-reusable-components/configure-and-manage-reuse-of-actions-and-workflows-to-the-e",
+      "target": "/en/actions/how-tos/reuse-automations/reuse-workflows",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: Learn how to avoid duplication when creating a workflow by reusing existing workflows.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Reuse workflows - GitHub Docs"
+    },
+    {
+      "task": "manage-github-actions/configure-workflows-and-reusable-components/apply-organizational-policies-for-github-actions",
+      "target": "/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: You can enable, disable, and limit GitHub Actions for an organization.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Disabling or limiting GitHub Actions for your organization - GitHub Docs"
+    },
+    {
+      "task": "manage-github-actions/manage-runners/manage-runner-groups-and-administer-github-hosted-vs-self-ho",
+      "target": "/en/actions/concepts/runners/self-hosted-runners",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: You can host your own runners and customize the environment used to run jobs in your GitHub Actions workflows.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Self-hosted runners - GitHub Docs"
+    },
+    {
+      "task": "manage-github-actions/manage-encrypted-secrets/configure-secrets-at-organization-and-repository-levels",
+      "target": "/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Listed by GitHub Learn for this topic: Learn how to create secrets at the repository, environment, and organization levels for GitHub Actions workflows.",
+      "by": "maintainer",
+      "at": "2026-11-17",
+      "pinned": true,
+      "title": "Using secrets in GitHub Actions - GitHub Docs"
     }
   ],
   "excludedFamilies": []

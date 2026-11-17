@@ -183,6 +183,21 @@
                 "by": "maintainer",
                 "at": "2026-11-05"
               }
+            },
+            {
+              "target": {
+                "kind": "github",
+                "path": "/en/actions/about-github-actions/understanding-github-actions"
+              },
+              "title": "Understanding GitHub Actions - GitHub Docs",
+              "class": "foundation",
+              "source": "P6",
+              "why": "Defines the core concepts and terminology (workflows, events, jobs, runners) that every later task of the course builds on.",
+              "evidence": "Learn the basics of core concepts and essential terminology in GitHub Actions.",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-17"
+              }
             }
           ],
           "tasks": [
@@ -204,6 +219,20 @@
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow"
+                  },
+                  "title": "Manually running a workflow - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "When a workflow is configured to run on the workflow_dispatch event, you can run the workflow using the Actions tab on GitHub, GitHub CLI, or the REST API.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ]
@@ -296,6 +325,20 @@
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-05"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables"
+                  },
+                  "title": "Store information in variables - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "GitHub sets default variables for each GitHub Actions workflow run. You can also set custom variables for use in a single workflow or multiple workflows.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ]
@@ -403,7 +446,38 @@
             {
               "key": "consume-and-troubleshoot-workflows/interpret-workflow-behavior-and-results/diagnose-failed-workflow-runs-using-logs-and-run-history",
               "text": "Diagnose failed workflow runs using logs and run history",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/actions/how-tos/monitor-workflows/enable-debug-logging"
+                  },
+                  "title": "Enabling debug logging - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "If the workflow logs do not provide enough detail to diagnose why a workflow, job, or step is not working as expected, you can enable additional debug logging.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/actions/how-tos/monitor-workflows/use-the-visualization-graph"
+                  },
+                  "title": "Using the visualization graph - GitHub Docs",
+                  "class": "supporting",
+                  "relation": "operate",
+                  "source": "P6",
+                  "why": "The run graph shows each job's progress and dependencies in real time, which is how a learner sees which job failed before reading its logs.",
+                  "evidence": "Every workflow run generates a real-time graph that illustrates the run progress. You can use this graph to monitor and debug workflows.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/github-actions-automate-tasks",
@@ -464,7 +538,22 @@
             {
               "key": "consume-and-troubleshoot-workflows/use-and-manage-workflow-templates/consume-organization-level-and-reusable-workflows",
               "text": "Consume organization-level and reusable workflows",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/actions/how-tos/reuse-automations/reuse-workflows"
+                  },
+                  "title": "Reuse workflows - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Learn how to avoid duplication when creating a workflow by reusing existing workflows.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/manage-github-actions-enterprise",
@@ -567,6 +656,20 @@
                     "by": "maintainer",
                     "at": "2026-11-15"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/actions/tutorials/creating-a-javascript-action"
+                  },
+                  "title": "Creating a JavaScript action - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "In this tutorial, you'll learn how to build a JavaScript action using the actions toolkit.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
                 }
               ]
             },
@@ -595,7 +698,22 @@
             {
               "key": "author-and-maintain-actions/define-action-structure-and-metadata/implement-workflow-commands-within-actions",
               "text": "Implement workflow commands within actions",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/actions/reference/workflows-and-actions/workflow-commands"
+                  },
+                  "title": "Workflow commands for GitHub Actions - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "You can use workflow commands when running shell commands in a workflow or in an action's code.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/learn-continuous-integration-github-actions",
@@ -731,7 +849,22 @@
             {
               "key": "manage-github-actions-for-the-enterprise/manage-runners-at-scale/configure-and-monitor-github-hosted-and-self-hosted-runners",
               "text": "Configure and monitor GitHub-hosted and self-hosted runners",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/actions/concepts/runners/self-hosted-runners"
+                  },
+                  "title": "Self-hosted runners - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "You can host your own runners and customize the environment used to run jobs in your GitHub Actions workflows.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/manage-github-actions-enterprise",
@@ -770,7 +903,22 @@
             {
               "key": "manage-github-actions-for-the-enterprise/manage-encrypted-secrets-and-variables/define-and-scope-encrypted-secrets-and-variables-at-the-orga",
               "text": "Define and scope encrypted secrets and variables at the organization, repository, and environment levels",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets"
+                  },
+                  "title": "Using secrets in GitHub Actions - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Learn how to create secrets at the repository, environment, and organization levels for GitHub Actions workflows.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/learn-continuous-integration-github-actions",
@@ -813,7 +961,22 @@
             {
               "key": "secure-and-optimize-automation/implement-security-best-practices/use-environment-protections-and-approval-gates",
               "text": "Use environment protections and approval gates",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments"
+                  },
+                  "title": "Managing environments for deployment - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "You can create environments and secure those environments with deployment protection rules. A job that references an environment must follow any protection rules for the environment before running or accessing the environment's secrets.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/github-actions-cd",
@@ -837,7 +1000,22 @@
             {
               "key": "secure-and-optimize-automation/implement-security-best-practices/mitigate-script-injection-sanitize-validate-inputs-least-pri",
               "text": "Mitigate script injection (sanitize/validate inputs, least-privilege permissions, avoid untrusted data in run:, proper shell quoting, prefer vetted actions over inline scripts)",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/actions/reference/security/secure-use"
+                  },
+                  "title": "Secure use reference - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Security practices for writing workflows and using GitHub Actions features.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             },
             {
               "key": "secure-and-optimize-automation/implement-security-best-practices/understand-github-token-lifecycle-ephemeral-scoped-configure",
@@ -857,7 +1035,22 @@
             {
               "key": "secure-and-optimize-automation/implement-security-best-practices/enforce-action-usage-policies-organization-repository-allow",
               "text": "Enforce action usage policies (organization/repository allow/deny lists, required reviewers for unverified actions)",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization"
+                  },
+                  "title": "Disabling or limiting GitHub Actions for your organization - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "You can enable, disable, and limit GitHub Actions for an organization.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             },
             {
               "key": "secure-and-optimize-automation/implement-security-best-practices/generate-and-verify-artifact-attestations-provenance-e-g-sls",

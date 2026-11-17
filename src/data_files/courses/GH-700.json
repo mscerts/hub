@@ -142,17 +142,79 @@
       "groups": [
         {
           "title": "Apply GitHub management best practices and policies",
-          "foundations": [],
+          "foundations": [
+            {
+              "target": {
+                "kind": "github",
+                "path": "/en/get-started/start-your-journey"
+              },
+              "title": "Start your journey - GitHub Docs",
+              "class": "foundation",
+              "source": "P6",
+              "why": "Introduces the basics of GitHub for someone new to the platform, which the platform, management and work-tracking tasks assume.",
+              "evidence": "Brand new to GitHub? Learn the basics here.",
+              "decision": {
+                "by": "maintainer",
+                "at": "2026-11-17"
+              }
+            }
+          ],
           "tasks": [
             {
               "key": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-budget-guardrails",
               "text": "Evaluate budget guardrails",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/well-architected/governance/recommendations/managing-ai-credits"
+                  },
+                  "title": "Managing AI credits - GitHub Well-Architected",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Governing AI credits requires practices similar to managing cloud infrastructure: granular cost attribution, tiered budget controls, and workload-appropriate model selection.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/billing/concepts/product-billing/github-copilot-billing"
+                  },
+                  "title": "GitHub Copilot billing - GitHub Docs",
+                  "class": "supporting",
+                  "relation": "prerequisite",
+                  "source": "P6",
+                  "why": "How Copilot usage is measured and billed is needed before a learner can judge whether budget guardrails fit.",
+                  "evidence": "Copilot usage is measured and billed according to your plan.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             },
             {
               "key": "use-github-platform-features/apply-github-management-best-practices-and-policies/evaluate-token-usage",
               "text": "Evaluate token usage",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/how-tos/manage-and-track-spending/monitor-ai-usage"
+                  },
+                  "title": "Monitoring your GitHub AI Credits usage - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Learn how to monitor the AI credits you consume when using Copilot.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             },
             {
               "key": "use-github-platform-features/apply-github-management-best-practices-and-policies/adhere-to-organizational-standards",
@@ -180,6 +242,22 @@
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/well-architected/governance/recommendations/governing-agents"
+                  },
+                  "title": "Governing agents in GitHub Enterprise - GitHub Well-Architected",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P6",
+                  "why": "Covers governance and risk controls for agents in an enterprise, the neighbouring subject of the governance, privacy, usage and risk controls the task evaluates.",
+                  "evidence": "Agents are becoming significant contributors to enterprise codebases. GitHub lets teams assign tasks to agents from issues, PRs, and Visual Studio Code in a single workflow.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ]
@@ -235,13 +313,42 @@
                     "by": "auto",
                     "at": "2026-11-04"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets"
+                  },
+                  "title": "About rulesets - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Rulesets help you to control how people can interact with branches and tags in a repository.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
                 }
               ]
             },
             {
               "key": "use-github-platform-features/apply-github-management-best-practices-and-policies/identify-how-different-models-affect-model-output-and-explai",
               "text": "Identify how different models affect model output and explainability",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/reference/ai-models/model-comparison"
+                  },
+                  "title": "AI model comparison (reference) - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Compare available AI models in Copilot Chat and choose the best model for your task.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             },
             {
               "key": "use-github-platform-features/apply-github-management-best-practices-and-policies/recognize-considerations-for-choosing-between-models-includi",
@@ -261,6 +368,20 @@
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/tutorials/compare-ai-models"
+                  },
+                  "title": "AI model comparison (tutorial) - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Compare available AI models in Copilot Chat and choose the best model for your task.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ]
@@ -304,6 +425,20 @@
                     "by": "maintainer",
                     "at": "2026-11-14"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/concepts/context/mcp"
+                  },
+                  "title": "Model Context Protocol (MCP) - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Connect Copilot to external tools and data through Model Context Protocol (MCP) servers.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
                 }
               ]
             }
@@ -328,6 +463,20 @@
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects"
+                  },
+                  "title": "About Projects - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Projects is an adaptable, flexible tool for planning and tracking work on GitHub.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ]
@@ -410,6 +559,20 @@
                     "by": "maintainer",
                     "at": "2026-11-14"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+                  },
+                  "title": "Pull requests - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Propose, review, and merge code changes using pull requests to collaborate effectively and maintain code quality.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
                 }
               ]
             },
@@ -484,7 +647,24 @@
             {
               "key": "enhance-productivity-by-using-github-copilot/chat-with-github-copilot/choose-an-appropriate-model-for-business-purpose-or-task",
               "text": "Choose an appropriate model for business purpose or task",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/reference/copilot-billing/models-and-pricing"
+                  },
+                  "title": "Models and pricing for GitHub Copilot - GitHub Docs",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P6",
+                  "why": "Lists the models available in Copilot with their per-token pricing, a factor a learner weighs when choosing a model for a business purpose.",
+                  "evidence": "See per-token pricing for the models available in GitHub Copilot and reference rates for additional usage across plans.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/github-copilot-across-environments",
@@ -525,6 +705,20 @@
                     "by": "maintainer",
                     "at": "2026-11-14"
                   }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/reference/chat-cheat-sheet"
+                  },
+                  "title": "GitHub Copilot Chat cheat sheet - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Use this cheat sheet to quickly reference the most common commands and options for using GitHub Copilot Chat.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
                 }
               ]
             }
@@ -553,7 +747,22 @@
             {
               "key": "enhance-productivity-by-using-github-copilot/write-instructions-and-prompts-that-produce-reliable-outputs/define-information-to-be-included-in-the-response-such-as-se",
               "text": "Define information to be included in the response, such as sentiment, coherence, and creativity",
-              "picks": []
+              "picks": [
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/concepts/prompting/prompt-engineering"
+                  },
+                  "title": "Prompt engineering for GitHub Copilot - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "Follow these strategies to improve your Copilot results.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
+                  }
+                }
+              ]
             },
             {
               "key": "enhance-productivity-by-using-github-copilot/write-instructions-and-prompts-that-produce-reliable-outputs/define-the-data-to-be-acted-on-and-input-variables",
@@ -618,6 +827,22 @@
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/tutorials/optimize-ai-usage"
+                  },
+                  "title": "Optimizing your AI usage to maximize efficiency and reduce cost - GitHub Docs",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P6",
+                  "why": "The tutorial shows how to add guardrails so that Copilot completes tasks efficiently, the same control the task asks a learner to implement for a custom agent.",
+                  "evidence": "Learn how to choose the right models, structure your prompts, and add guardrails so that Copilot completes tasks more efficiently and uses fewer AI credits.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ]
@@ -708,6 +933,22 @@
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/well-architected/governance/recommendations/agentic-engineering-system-on-github"
+                  },
+                  "title": "Building an agentic engineering system on GitHub - GitHub Well-Architected",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P6",
+                  "why": "Identifies common patterns and anti-patterns when teams build agentic systems on GitHub, the design patterns this task asks a learner to align workflows with.",
+                  "evidence": "This guide maps the moving parts of such a system to the GitHub primitives that implement them, and identifies common patterns and anti-patterns when teams put them together.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ]
@@ -824,6 +1065,20 @@
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-14"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "github",
+                    "path": "/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills"
+                  },
+                  "title": "Adding agent skills for GitHub Copilot - GitHub Docs",
+                  "class": "core",
+                  "source": "P6",
+                  "evidence": "You can modify Copilot's behavior and abilities when it works on particular tasks.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-17"
                   }
                 }
               ]
