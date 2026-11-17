@@ -3,6 +3,25 @@
   "code": "DP-600",
   "decisions": [
     {
+      "task": "explore-and-analyze-data/perform-exploratory-analytics/implement-descriptive-and-diagnostic-analytics",
+      "target": "/training/modules/perform-analytics-power-bi",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Introduction to analytics\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "explore-and-analyze-data/perform-exploratory-analytics/integrate-prescriptive-and-predictive-analytics-into-a-visua",
+      "target": "/training/modules/perform-analytics-power-bi",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Implement descriptive and diagnostic analytics\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
       "task": "explore-and-analyze-data/query-data-by-using-sql/connect-to-and-query-datasets-by-using-the-xmla-endpoint",
       "target": "/fabric/enterprise/powerbi/service-premium-connect-tools",
       "decision": "accept",
@@ -11,6 +30,14 @@
       "by": "maintainer",
       "at": "2026-11-04",
       "title": "Semantic model connectivity and management with the XMLA endpoint in Power BI"
+    },
+    {
+      "task": "implement-and-manage-semantic-models/design-and-build-semantic-models/@foundations",
+      "target": "/fabric/fundamentals/direct-lake-power-bi-desktop",
+      "decision": "reject",
+      "reason": "A tool page on editing models in Desktop, not introductory theory.",
+      "by": "maintainer",
+      "at": "2026-11-17"
     },
     {
       "task": "implement-and-manage-semantic-models/design-and-build-semantic-models/@foundations",
@@ -81,6 +108,16 @@
       "reason": "accepted by the maintainer",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "implement-and-manage-semantic-models/optimize-enterprise-scale-semantic-models/implement-incremental-refresh",
+      "target": "/training/modules/manage-datasets-power-bi",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
     },
     {
       "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/@foundations",
@@ -305,6 +342,30 @@
     },
     {
       "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/enterprise/metrics-app-on-demand-compute-for-spark-detail-page",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Learn moved the picked page /fabric/enterprise/metrics-app-feature-autoscale-detail-page here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Understand On-demand Compute for Spark detail page - Microsoft Fabric"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
+      "target": "/fabric/enterprise/metrics-app-on-demand-compute-for-spark-page",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "deeper",
+      "reason": "Learn moved the picked page /fabric/enterprise/metrics-app-feature-autoscale-page here.",
+      "by": "maintainer",
+      "at": "2026-11-14",
+      "pinned": true,
+      "title": "Understand the metrics app On-demand Compute for Spark page - Microsoft Fabric"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
       "target": "/fabric/enterprise/powerbi/service-premium-what-is",
       "decision": "reject",
       "reason": "Not part of this task; the page fits a neighbouring task or another product area.",
@@ -412,6 +473,16 @@
       "at": "2026-11-04"
     },
     {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-sensitivity-labels-in-semantic-models-and-lakehouses",
+      "target": "/training/modules/fabric-govern-analytics-data",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Covers this task directly: see \"Monitor and manage governance\".",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
       "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/@foundations",
       "target": "/fabric/fundamentals",
       "decision": "reject",
@@ -450,6 +521,34 @@
       "reason": "Dropped in review: generic introduction, deeper detail than the exam needs, other-role or neighbouring-task page.",
       "by": "maintainer",
       "at": "2026-11-04"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/implement-version-control-for-a-workspace",
+      "target": "/training/modules/implement-cicd-in-fabric",
+      "decision": "accept",
+      "class": "core",
+      "reason": "The module is shown under this task; the other tasks it covers point here.",
+      "by": "maintainer",
+      "at": "2026-11-15",
+      "pinned": true
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/perform-impact-analysis-of-downstream-dependencies-from-lake",
+      "target": "/training/modules/manage-datasets-power-bi",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Implement incremental refresh\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
+    },
+    {
+      "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/plan-and-implement-deployment-solutions",
+      "target": "/training/modules/implement-cicd-in-fabric",
+      "decision": "accept",
+      "class": "core",
+      "reason": "Also covers this task; the module is shown once, under \"Implement version control for a workspace\".",
+      "by": "maintainer",
+      "at": "2026-11-15"
     },
     {
       "task": "plan-implement-and-manage-a-solution-for-data-analytics/plan-a-data-analytics-environment/@foundations",
@@ -697,95 +796,95 @@
       "at": "2026-11-04"
     },
     {
-      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
-      "target": "/fabric/enterprise/metrics-app-on-demand-compute-for-spark-detail-page",
+      "task": "prepare-data/transform-data/@foundations",
+      "target": "/fabric/data-engineering/user-data-functions/user-data-functions-overview",
+      "decision": "reject",
+      "reason": "A developer feature for hosting reusable code, not the SQL functions the group means.",
+      "by": "maintainer",
+      "at": "2026-11-17"
+    },
+    {
+      "task": "prepare-data/transform-data/@foundations",
+      "target": "/training/modules/explore-data-for-data-science-microsoft-fabric",
+      "decision": "reject",
+      "reason": "A data science exploration module for another role.",
+      "by": "maintainer",
+      "at": "2026-11-17"
+    },
+    {
+      "task": "prepare-data/transform-data/filter-data",
+      "target": "/fabric/data-factory/filter-activity",
+      "decision": "reject",
+      "reason": "The pipeline Filter activity filters an array in orchestration; it is not filtering data in a lakehouse or warehouse.",
+      "by": "maintainer",
+      "at": "2026-11-17"
+    },
+    {
+      "task": "prepare-data/transform-data/denormalize-data",
+      "target": "/training/modules/get-started-lakehouses",
+      "decision": "reject",
+      "reason": "A generic introduction, not about this task.",
+      "by": "maintainer",
+      "at": "2026-11-17"
+    },
+    {
+      "task": "prepare-data/transform-data/merge-or-join-data",
+      "target": "/training/modules/get-started-lakehouses",
+      "decision": "reject",
+      "reason": "A generic introduction, not about this task.",
+      "by": "maintainer",
+      "at": "2026-11-17"
+    },
+    {
+      "task": "prepare-data/transform-data/identify-and-resolve-duplicate-data-missing-data-or-null-val",
+      "target": "/training/modules/get-started-lakehouses",
+      "decision": "reject",
+      "reason": "A generic introduction, not about this task.",
+      "by": "maintainer",
+      "at": "2026-11-17"
+    },
+    {
+      "task": "prepare-data/transform-data/filter-data",
+      "target": "/training/modules/get-started-lakehouses",
+      "decision": "reject",
+      "reason": "A generic introduction, not about this task.",
+      "by": "maintainer",
+      "at": "2026-11-17"
+    },
+    {
+      "task": "prepare-data/transform-data/identify-and-resolve-duplicate-data-missing-data-or-null-val",
+      "target": "/training/modules/get-started-data-warehouse",
+      "decision": "reject",
+      "reason": "A generic introduction, not about this task.",
+      "by": "maintainer",
+      "at": "2026-11-17"
+    },
+    {
+      "task": "prepare-data/transform-data/filter-data",
+      "target": "/training/modules/get-started-data-warehouse",
+      "decision": "reject",
+      "reason": "A generic introduction, not about this task.",
+      "by": "maintainer",
+      "at": "2026-11-17"
+    },
+    {
+      "task": "prepare-data/query-and-analyze-data/select-filter-and-aggregate-data-by-using-the-visual-query-e",
+      "target": "/training/modules/get-started-kusto-fabric",
+      "decision": "reject",
+      "reason": "It does not cover the Visual query editor; it is placed under the KQL task instead.",
+      "by": "maintainer",
+      "at": "2026-11-17"
+    },
+    {
+      "task": "prepare-data/query-and-analyze-data/select-filter-and-aggregate-data-by-using-kql",
+      "target": "/training/modules/get-started-kusto-fabric",
       "decision": "accept",
       "class": "supporting",
-      "relation": "deeper",
-      "reason": "Learn moved the picked page /fabric/enterprise/metrics-app-feature-autoscale-detail-page here.",
+      "relation": "same-workflow",
+      "reason": "Its unit on storing and querying real-time data introduces KQL querying, the language this task asks for.",
       "by": "maintainer",
-      "at": "2026-11-14",
-      "pinned": true,
-      "title": "Understand On-demand Compute for Spark detail page - Microsoft Fabric"
-    },
-    {
-      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-fabric-capacity",
-      "target": "/fabric/enterprise/metrics-app-on-demand-compute-for-spark-page",
-      "decision": "accept",
-      "class": "supporting",
-      "relation": "deeper",
-      "reason": "Learn moved the picked page /fabric/enterprise/metrics-app-feature-autoscale-page here.",
-      "by": "maintainer",
-      "at": "2026-11-14",
-      "pinned": true,
-      "title": "Understand the metrics app On-demand Compute for Spark page - Microsoft Fabric"
-    },
-    {
-      "task": "plan-implement-and-manage-a-solution-for-data-analytics/implement-and-manage-a-data-analytics-environment/manage-sensitivity-labels-in-semantic-models-and-lakehouses",
-      "target": "/training/modules/fabric-govern-analytics-data",
-      "decision": "accept",
-      "class": "core",
-      "reason": "Covers this task directly: see \"Monitor and manage governance\".",
-      "by": "maintainer",
-      "at": "2026-11-15",
-      "pinned": true
-    },
-    {
-      "task": "explore-and-analyze-data/perform-exploratory-analytics/implement-descriptive-and-diagnostic-analytics",
-      "target": "/training/modules/perform-analytics-power-bi",
-      "decision": "accept",
-      "class": "core",
-      "reason": "Covers this task directly: see \"Introduction to analytics\".",
-      "by": "maintainer",
-      "at": "2026-11-15",
-      "pinned": true
-    },
-    {
-      "task": "explore-and-analyze-data/perform-exploratory-analytics/integrate-prescriptive-and-predictive-analytics-into-a-visua",
-      "target": "/training/modules/perform-analytics-power-bi",
-      "decision": "accept",
-      "class": "core",
-      "reason": "Also covers this task; the module is shown once, under \"Implement descriptive and diagnostic analytics\".",
-      "by": "maintainer",
-      "at": "2026-11-15"
-    },
-    {
-      "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/perform-impact-analysis-of-downstream-dependencies-from-lake",
-      "target": "/training/modules/manage-datasets-power-bi",
-      "decision": "accept",
-      "class": "core",
-      "reason": "Also covers this task; the module is shown once, under \"Implement incremental refresh\".",
-      "by": "maintainer",
-      "at": "2026-11-15"
-    },
-    {
-      "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/plan-and-implement-deployment-solutions",
-      "target": "/training/modules/implement-cicd-in-fabric",
-      "decision": "accept",
-      "class": "core",
-      "reason": "Also covers this task; the module is shown once, under \"Implement version control for a workspace\".",
-      "by": "maintainer",
-      "at": "2026-11-15"
-    },
-    {
-      "task": "plan-implement-and-manage-a-solution-for-data-analytics/manage-the-analytics-development-lifecycle/implement-version-control-for-a-workspace",
-      "target": "/training/modules/implement-cicd-in-fabric",
-      "decision": "accept",
-      "class": "core",
-      "reason": "The module is shown under this task; the other tasks it covers point here.",
-      "by": "maintainer",
-      "at": "2026-11-15",
-      "pinned": true
-    },
-    {
-      "task": "implement-and-manage-semantic-models/optimize-enterprise-scale-semantic-models/implement-incremental-refresh",
-      "target": "/training/modules/manage-datasets-power-bi",
-      "decision": "accept",
-      "class": "core",
-      "reason": "The module is shown under this task; the other tasks it covers point here.",
-      "by": "maintainer",
-      "at": "2026-11-15",
-      "pinned": true
+      "at": "2026-11-17",
+      "title": "Get started with Real-Time Intelligence in Microsoft Fabric"
     }
   ],
   "excludedFamilies": []

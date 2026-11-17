@@ -1128,20 +1128,6 @@
                     "by": "auto",
                     "at": "2026-11-09"
                   }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/use-prebuilt-agents-as-starting-point-copilot-creation"
-                  },
-                  "title": "Use managed agents as a starting point for Copilot creation",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Browse and install managed agents in Copilot Studio",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
                 }
               ],
               "overlaps": [
@@ -1216,20 +1202,6 @@
                   "class": "core",
                   "source": "P4",
                   "evidence": "Ground agents with enterprise knowledge using connectors and Azure AI Search in Microsoft Copilot Studio",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/use-generative-actions-now-generally"
-                  },
-                  "title": "Use generative orchestration",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Makers can set up agents to use AI for choosing actions, knowledge, and topics",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-09"
@@ -2027,20 +1999,6 @@
                   "class": "core",
                   "source": "P4",
                   "evidence": "Connect Dynamics 365 CX MCP Server - Sales through Agent 365 Tooling Gateway",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/publish-connector-actions-multiple-copilot-deployments"
-                  },
-                  "title": "Publish connector actions to multiple Copilot deployments",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Publish the same connector actions to multiple Copilot for Sales and Copilot for Customer Service deployments",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-09"
@@ -4720,22 +4678,6 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/create-automated-copilots-triggered-events"
-                  },
-                  "title": "Create automated copilots triggered by events",
-                  "class": "supporting",
-                  "relation": "prerequisite",
-                  "source": "P4",
-                  "why": "Event-triggered agents are a trigger design a designer must choose.",
-                  "evidence": "Create automated copilots triggered by events",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
                     "path": "/troubleshoot/power-platform/copilot-studio/generative-answers/agent-response-filtered-by-responsible-ai"
                   },
                   "title": "Resolve responsible AI content filter errors",
@@ -4844,22 +4786,6 @@
                   "source": "P4",
                   "why": "Understanding how prompts drive text generation is needed before designing prompt actions.",
                   "evidence": "How text generation works",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/create-perfect-prompt-help-copilot"
-                  },
-                  "title": "Create the perfect prompt with help from Copilot",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Drafting prompts with Copilot is the prompt-writing step a professional does while designing prompt actions.",
-                  "evidence": "helps low-code developers quickly create AI prompts",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-09"
@@ -5459,7 +5385,7 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/extensibility/agent-builder-add-skills"
+                    "path": "/plugins/agent-builder-add-skills"
                   },
                   "title": "Add skills to your declarative agent in Agent Builder",
                   "class": "core",
@@ -5515,7 +5441,7 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/extensibility/choose-plugin-development-tools"
+                    "path": "/plugins/choose-plugin-development-tools"
                   },
                   "title": "Choose Development Tools for Your Microsoft 365 Copilot Plugin",
                   "class": "core",
@@ -5675,20 +5601,6 @@
                   "class": "core",
                   "source": "P4",
                   "evidence": "Learn when a declarative agent can provide the conversational experience",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/use-agent-builder-copilot-chat"
-                  },
-                  "title": "Use Agent Builder in Copilot Chat",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Use Agent Builder in Copilot Chat",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-09"
@@ -6581,7 +6493,7 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/extensibility/evaluation-overview"
+                    "path": "/plugins/evaluation-overview"
                   },
                   "title": "Agent evaluation overview",
                   "class": "supporting",
@@ -6629,7 +6541,7 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/extensibility/evaluations-cli-create-tests"
+                    "path": "/plugins/evaluations-cli-create-tests"
                   },
                   "title": "Dataset schema and test design for agent evaluations",
                   "class": "supporting",
@@ -7399,9 +7311,9 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/extensibility/improve-plugin"
+                    "path": "/plugins/improve-plugin"
                   },
-                  "title": "Improve and update your Microsoft 365 Copilot plugin",
+                  "title": "Monitor, update, and retire your plugin or agent",
                   "class": "supporting",
                   "relation": "operate",
                   "source": "P4",
@@ -8151,34 +8063,6 @@
                 },
                 {
                   "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/create-rest-api-copilot-connectors-copilot-studio"
-                  },
-                  "title": "Create REST API actions for custom agents",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Create REST API actions for custom agents",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/enrich-agents-third-party-data-using-extensions"
-                  },
-                  "title": "Enrich agents with third party data using extensions",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Enrich agents with third party data using extensions",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
                     "kind": "module",
                     "path": "/training/modules/integrate-custom-agents-power-platform"
                   },
@@ -8492,22 +8376,6 @@
                   "source": "P4",
                   "why": "A maker who extends a flow with an agent, or an agent with a flow, meets this neighbouring integration step.",
                   "evidence": "Call Microsoft Copilot Studio agents from Power Automate",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/microsoft-copilot-studio/enable-makers-configure-sharepoint-as-knowledge-source-agents"
-                  },
-                  "title": "Configure SharePoint as a knowledge source for agents",
-                  "class": "supporting",
-                  "relation": "same-workflow",
-                  "source": "P4",
-                  "why": "Adding SharePoint as a knowledge source extends an agent with data, a neighbouring step to adding tools and connectors.",
-                  "evidence": "Configure SharePoint as a knowledge source for agents",
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-09"
@@ -9077,9 +8945,9 @@
                 {
                   "target": {
                     "kind": "docs",
-                    "path": "/microsoft-365/copilot/extensibility/evaluations-cli-overview"
+                    "path": "/plugins/evaluations-cli-overview"
                   },
-                  "title": "Agent Evaluations CLI overview",
+                  "title": "Microsoft 365 Copilot Evaluations CLI overview",
                   "class": "core",
                   "source": "P4",
                   "evidence": "evaluate Microsoft 365 Copilot agents using automated testing",
@@ -9294,22 +9162,7 @@
             {
               "key": "deploy-ai-powered-business-solutions/design-the-alm-process-for-ai-powered-business-solutions/design-the-alm-process-for-copilot-studio-agents-connectors",
               "text": "Design the ALM process for Copilot Studio agents, connectors, and actions",
-              "picks": [
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/data-platform/use-application-lifecycle-management-copilot-studio"
-                  },
-                  "title": "Use application lifecycle management in Copilot Studio",
-                  "class": "core",
-                  "source": "P4",
-                  "evidence": "Use application lifecycle management in Copilot Studio",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                }
-              ],
+              "picks": [],
               "overlaps": [
                 {
                   "path": "/training/modules/implement-alm-agents-power-platform",
@@ -10118,38 +9971,6 @@
                   "decision": {
                     "by": "maintainer",
                     "at": "2026-11-14"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/power-platform-governance-administration/turn-sharing-off-copilot-studio"
-                  },
-                  "title": "Block and limit sharing for Copilot Studio",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "Admin controls that block or limit sharing of Copilot Studio agents are governance controls a professional runs.",
-                  "evidence": "allows admins to limit and block how agents created in Microsoft Copilot Studio are shared",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
-                  }
-                },
-                {
-                  "target": {
-                    "kind": "docs",
-                    "path": "/power-platform/release-plan/2024wave2/power-platform-governance-administration/use-new-connector-management-rule"
-                  },
-                  "title": "Use the new connector management rule",
-                  "class": "supporting",
-                  "relation": "operate",
-                  "source": "P4",
-                  "why": "A connector allow list for agents is a governance control an admin sets and runs.",
-                  "evidence": "Admins can create an allow list of connectors for apps, flows, or agents",
-                  "decision": {
-                    "by": "auto",
-                    "at": "2026-11-09"
                   }
                 }
               ]

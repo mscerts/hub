@@ -309,7 +309,9 @@ export function buildNext({ course, guide, version, today, force = false }) {
     code: course.code,
     name: course.name,
     inputs: { ...inputs, builtAt: today },
-    ...(course.audience ? { audience: clone(course.audience) } : {}),
+    ...(guide.audience || course.audience
+      ? { audience: clone(guide.audience ?? course.audience) }
+      : {}),
     domains,
     rejected,
     ...(Object.keys(pending).length ? { pending } : {}),

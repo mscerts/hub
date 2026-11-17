@@ -236,6 +236,33 @@ test("buildNext: picks and decisions carry over, new tasks wait to be built, wea
   );
 });
 
+test("buildNext: the upcoming course follows the audience profile of the new version", () => {
+  const course = {
+    ...courseOf(V1),
+    audience: parseGuide(V1).audience,
+  };
+  const changed = parseGuide(
+    guide({
+      asOf: "2026-12-01",
+      domains: domains(),
+      audience: [
+        "## Audience profile",
+        "As a candidate for this exam, you work with the renamed product and its new tools.",
+      ],
+    }),
+  );
+  const result = buildNext({
+    course,
+    guide: changed,
+    version: { ...VERSION, lines: [] },
+    today: "2026-11-16",
+  });
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.next.audience, changed.audience);
+  assert.notDeepEqual(result.next.audience, course.audience);
+  assert.equal(result.report.audienceChanged, true);
+});
+
 test("buildNext: a rewrite builds nothing unless it is forced", () => {
   const course = courseOf(V1);
   const target = upcoming((d) => d.pop());

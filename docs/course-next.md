@@ -35,7 +35,7 @@ A course names the version of its study guide it follows, as in the guide's hist
 | added      | no counterpart                                                       | no picks, listed in `pending.added`                                         |
 | removed    | no counterpart in the new guide                                      | gone, with its picks                                                        |
 
-Weights, domain and task titles come from the new guide. A skill group that has a counterpart (the same title, in the same domain first) keeps its fundamentals; one without gets `pending.foundations`. The audience profile is carried; the build says when its concepts changed. `rejected` entries follow their tasks. Nothing is read from the network.
+Weights, domain and task titles come from the new guide. A skill group that has a counterpart (the same title, in the same domain first) keeps its fundamentals; one without gets `pending.foundations`. The audience profile is the new version's (the validator compares it with the guide version the course names); the build says when it differs from the course in force, so a person can look at the prerequisite concepts. `rejected` entries follow their tasks. Nothing is read from the network.
 
 **A rewrite is not patched.** When more than half of the tasks are new or reworded (`MAJOR_SHARE`, the "largely rewritten" rule of the Changes page), or a domain or a skill group appeared or went, `build` stops and says why: build the course with the whole pipeline ([course-build.md](course-build.md)) from the upcoming version. `--force` patches anyway.
 
