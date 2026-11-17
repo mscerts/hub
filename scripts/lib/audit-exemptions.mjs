@@ -19,8 +19,6 @@ export const EXEMPT = Object.freeze({
       "no-code leadership exam; no lab repository found (checked 2026-10-16)",
     "AZ-401":
       "no course yet, so no lab repository; the Learn plan exercises are Learn-hosted (checked 2026-10-16). The Lab Repo Check reports the repository when it appears",
-    "GH-500":
-      "no GitHub lab repository for GitHub's own certifications; the Learn exercises wrap GitHub Skills repositories and are on the Microsoft Learn tab (checked 2026-10-16)",
     "AZ-700":
       "the course repository's exercises are the Learn exercise units that wrap them, already on the Microsoft Learn tab; its 17 instructor demos (Instructions/Demos) are not on Learn, and the maintainers decided not to list them (2026-10-16)",
     "DP-750":
