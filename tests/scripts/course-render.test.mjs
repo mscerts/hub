@@ -23,11 +23,17 @@ test("learnHref gives a Learn address with the hub's tracking parameter and no l
 
 test("a github pick is shown in the Documentation tab with its own address and no tracking parameter", () => {
   assert.equal(
-    hrefOf({ kind: "github", path: "/en/actions/concepts/runners/self-hosted-runners" }),
+    hrefOf({
+      kind: "github",
+      path: "/en/actions/concepts/runners/self-hosted-runners",
+    }),
     "https://docs.github.com/en/actions/concepts/runners/self-hosted-runners",
   );
   assert.equal(
-    hrefOf({ kind: "github", path: "/well-architected/governance/recommendations/governing-agents" }),
+    hrefOf({
+      kind: "github",
+      path: "/well-architected/governance/recommendations/governing-agents",
+    }),
     "https://learn.github.com/well-architected/governance/recommendations/governing-agents",
   );
   assert.equal(
@@ -38,7 +44,10 @@ test("a github pick is shown in the Documentation tab with its own address and n
   const task = course.domains[0].groups[0].tasks[0];
   task.picks = [
     {
-      target: { kind: "github", path: "/en/actions/concepts/runners/self-hosted-runners" },
+      target: {
+        kind: "github",
+        path: "/en/actions/concepts/runners/self-hosted-runners",
+      },
       title: "Self-hosted runners - GitHub Docs",
       class: "core",
       source: "P6",

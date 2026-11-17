@@ -417,10 +417,10 @@ export const kindOfPath = (path) =>
   /^\/(en|well-architected)\//.test(path)
     ? "github"
     : /^\/training\/modules\/[^/]+$/.test(path)
-    ? "module"
-    : /^\/training\/modules\/[^/]+\/[^/]+$/.test(path)
-      ? "unit"
-      : "docs";
+      ? "module"
+      : /^\/training\/modules\/[^/]+\/[^/]+$/.test(path)
+        ? "unit"
+        : "docs";
 
 /**
  * The maintainer's accepts that no judged candidate answers: a page added by hand, or one the generator stopped

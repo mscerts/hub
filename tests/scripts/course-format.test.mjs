@@ -63,7 +63,10 @@ test("a valid pick has no problems", () => {
 
 const github = (extra = {}) =>
   pick({
-    target: { kind: "github", path: "/en/actions/concepts/runners/self-hosted-runners" },
+    target: {
+      kind: "github",
+      path: "/en/actions/concepts/runners/self-hosted-runners",
+    },
     source: "P6",
     evidence: "You can host your own runners and customize the environment.",
     ...extra,
@@ -129,7 +132,10 @@ test("only the courses of the GitHub exams may show a github page", () => {
     !own.errors.some((e) => /GitHub page/.test(e)),
     own.errors.join("|"),
   );
-  const other = validateCourse({ ...structuredClone(course), code: "AZ-104" }, { guide });
+  const other = validateCourse(
+    { ...structuredClone(course), code: "AZ-104" },
+    { guide },
+  );
   assert.ok(
     other.errors.some((e) => /only the courses of the GitHub exams/.test(e)),
     other.errors.join("|"),

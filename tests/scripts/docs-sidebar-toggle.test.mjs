@@ -9,7 +9,9 @@ const read = (...parts) => readFileSync(join(root, ...parts), "utf8");
 
 test("desktop docs sidebar preference is restored before paint", () => {
   const layout = read("src/layouts/MainLayout.astro");
-  const restore = layout.indexOf('localStorage.getItem("docs-sidebar:desktop:v1")');
+  const restore = layout.indexOf(
+    'localStorage.getItem("docs-sidebar:desktop:v1")',
+  );
   const body = layout.indexOf("</head>");
 
   assert.notEqual(restore, -1);
@@ -27,7 +29,10 @@ test("desktop sidebar toggle persists state and exposes its accessible state", (
   assert.match(shell, /transform: translateX\(-18\.5rem\)/);
   assert.match(shell, /aria-controls="docs-desktop-sidebar"/);
   assert.match(state, /localStorage\.setItem\(\s*desktopSidebarStorageKey/);
-  assert.match(state, /toggle\.setAttribute\("aria-expanded", String\(!collapsed\)\)/);
+  assert.match(
+    state,
+    /toggle\.setAttribute\("aria-expanded", String\(!collapsed\)\)/,
+  );
   assert.match(state, /sidebar\.toggleAttribute\("inert", collapsed\)/);
   assert.match(shell, /grid-template-columns 200ms/);
   assert.match(shell, /prefers-reduced-motion: reduce/);

@@ -470,9 +470,7 @@ export function buildCourse({
         ? null
         : path.split("/").slice(0, 4).join("/");
     const title =
-      (kind === "docs" || kind === "github"
-        ? null
-        : describe?.(path)?.title) ??
+      (kind === "docs" || kind === "github" ? null : describe?.(path)?.title) ??
       m.title ??
       null;
     if (!title) {

@@ -176,11 +176,7 @@ export function pickProblems(pick, { foundation = false } = {}) {
       problems.push(
         `a github target must be a docs.github.com path (/en/...) or a learn.github.com path (/well-architected/...), lower case, no host, query, fragment or trailing slash, got ${path}`,
       );
-  } else if (
-    !present(path) ||
-    !CANONICAL_PATH.test(path) ||
-    path.endsWith("/")
-  )
+  } else if (!present(path) || !CANONICAL_PATH.test(path) || path.endsWith("/"))
     problems.push(
       `target.path "${path}" is not a canonical Learn path (lower case, no host, locale, query or trailing slash)`,
     );

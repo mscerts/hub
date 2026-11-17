@@ -1271,8 +1271,14 @@ test("an accept that no candidate answers stands: it is listed for the builder, 
 });
 
 test("a page of GitHub's own sites is kind github, and Learn's validator is never asked about it", () => {
-  assert.equal(kindOfPath("/en/actions/concepts/runners/self-hosted-runners"), "github");
-  assert.equal(kindOfPath("/well-architected/governance/recommendations/governing-agents"), "github");
+  assert.equal(
+    kindOfPath("/en/actions/concepts/runners/self-hosted-runners"),
+    "github",
+  );
+  assert.equal(
+    kindOfPath("/well-architected/governance/recommendations/governing-agents"),
+    "github",
+  );
   assert.equal(kindOfPath("/training/modules/m"), "module");
   assert.equal(kindOfPath("/azure/storage/blobs"), "docs");
   const asked = [];
