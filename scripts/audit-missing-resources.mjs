@@ -13,7 +13,7 @@
  */
 
 import { readdirSync, readFileSync, existsSync, writeFileSync } from "node:fs";
-import { join, dirname, relative } from "node:path";
+import { join, dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { hasGithubLabsTab, isExempt } from "./lib/audit-exemptions.mjs";
 
@@ -122,9 +122,9 @@ function collectTitles(examMdx) {
   return titles;
 }
 
-function buildLabText(area, codeLower) {
+function buildLabText(repoRoot, area, codeLower) {
   const labPath = join(
-    root,
+    repoRoot,
     "src",
     "content",
     "docs",
@@ -139,64 +139,71 @@ function buildLabText(area, codeLower) {
 // ---------------------------------------------------------------------------
 // Scan
 // ---------------------------------------------------------------------------
-const results = {};
-const exempted = {};
-for (const { key } of RESOURCE_TYPES) {
-  results[key] = [];
-  exempted[key] = 0;
-}
+export function computeMissingResources(repoRoot = root) {
+  const results = {};
+  const exempted = {};
+  for (const { key } of RESOURCE_TYPES) {
+    results[key] = [];
+    exempted[key] = 0;
+  }
 
-let scannedCount = 0;
+  let scannedCount = 0;
 
-for (const area of AREAS) {
-  const areaDir = join(root, "src", "content", "docs", area);
-  if (!existsSync(areaDir)) continue;
+  for (const area of AREAS) {
+    const areaDir = join(repoRoot, "src", "content", "docs", area);
+    if (!existsSync(areaDir)) continue;
 
-  for (const entry of readdirSync(areaDir)) {
-    const match = entry.match(EXAM_FILE_RE);
-    if (!match) continue;
-    const code = match[1];
+    for (const entry of readdirSync(areaDir)) {
+      const match = entry.match(EXAM_FILE_RE);
+      if (!match) continue;
+      const code = match[1];
 
-    const raw = normalize(readFileSync(join(areaDir, entry), "utf8"));
-    if (isDraft(raw)) continue;
+      const raw = normalize(readFileSync(join(areaDir, entry), "utf8"));
+      if (isDraft(raw)) continue;
 
-    scannedCount++;
+      scannedCount++;
 
-    const examMdx = stripComments(raw);
-    const titles = collectTitles(examMdx);
-    const labText = buildLabText(area, code.toLowerCase());
-    const ctx = { titles, labText, code };
+      const examMdx = stripComments(raw);
+      const titles = collectTitles(examMdx);
+      const labText = buildLabText(repoRoot, area, code.toLowerCase());
+      const ctx = { titles, labText, code };
 
-    for (const { key, test } of RESOURCE_TYPES) {
-      if (test(ctx)) continue;
-      // left out on purpose, with the reason in scripts/lib/audit-exemptions.mjs
-      if (isExempt(key, code)) exempted[key]++;
-      else results[key].push(code);
+      for (const { key, test } of RESOURCE_TYPES) {
+        if (test(ctx)) continue;
+        // left out on purpose, with the reason in scripts/lib/audit-exemptions.mjs
+        if (isExempt(key, code)) exempted[key]++;
+        else results[key].push(code);
+      }
     }
   }
+
+  for (const key of Object.keys(results)) {
+    results[key].sort((a, b) => a.localeCompare(b, "en", { numeric: true }));
+  }
+
+  return { results, exempted, scannedCount };
 }
 
-if (scannedCount === 0) {
-  console.error(
-    "❌  No exam pages found. Check the area directories under src/content/docs/.",
-  );
-  process.exit(1);
-}
+if (
+  process.argv[1] &&
+  resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  const { results, exempted, scannedCount } = computeMissingResources(root);
+  if (scannedCount === 0) {
+    console.error(
+      "❌  No exam pages found. Check the area directories under src/content/docs/.",
+    );
+    process.exit(1);
+  }
 
-for (const key of Object.keys(results)) {
-  results[key].sort((a, b) => a.localeCompare(b, "en", { numeric: true }));
-}
+  const outPath = join(root, "src", "data_files", "missing-resources.json");
+  writeFileSync(outPath, JSON.stringify(results, null, 2) + "\n", "utf8");
 
-// ---------------------------------------------------------------------------
-// Write and report
-// ---------------------------------------------------------------------------
-const outPath = join(root, "src", "data_files", "missing-resources.json");
-writeFileSync(outPath, JSON.stringify(results, null, 2) + "\n", "utf8");
-
-console.log(`Scanned ${scannedCount} exam pages.`);
-for (const [key, codes] of Object.entries(results)) {
-  console.log(
-    `${key}: ${codes.length} missing${exempted[key] ? ` (${exempted[key]} exempt)` : ""}`,
-  );
+  console.log(`Scanned ${scannedCount} exam pages.`);
+  for (const [key, codes] of Object.entries(results)) {
+    console.log(
+      `${key}: ${codes.length} missing${exempted[key] ? ` (${exempted[key]} exempt)` : ""}`,
+    );
+  }
+  console.log(relative(root, outPath));
 }
-console.log(relative(root, outPath));

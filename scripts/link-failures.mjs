@@ -556,18 +556,31 @@ export function normalizeUrl(url) {
 
 /**
  * How the final address of a redirect chain relates to the link it started from:
- *   same          the same page (http to https, www, a slash, a locale, a query: nothing to say)
- *   redirect-hub  the final path is a PROPER PREFIX of the link's: a parent page of the same site,
- *                 the site root included (a link to the root itself can never be demoted)
- *   moved         another page of the same site
- *   other-site    another host (a short link, a domain move): not judged
- *   unknown       an address that is not http(s)
+ *   same            the same page (http to https, www, a slash, a locale, a query: nothing to say)
+ *   redirect-hub    the final path is a PROPER PREFIX of the link's: a parent page of the same site,
+ *                   the site root included (a link to the root itself can never be demoted)
+ *   dead-shortlink  an `aka.ms` short link that Microsoft resolved to `bing.com/?ref=aka` because the
+ *                   alias does not exist or was retired
+ *   moved           another page of the same site
+ *   other-site      another host (a short link, a domain move): not judged
+ *   unknown         an address that is not http(s)
  */
 export function redirectRelation(origin, final) {
   const from = normalizeUrl(origin);
   const to = normalizeUrl(final);
   if (!from || !to) return "unknown";
-  if (from.host !== to.host) return "other-site";
+  if (from.host !== to.host) {
+    if (from.host === "aka.ms" && to.host === "bing.com") {
+      try {
+        if (new URL(final).searchParams.get("ref") === "aka") {
+          return "dead-shortlink";
+        }
+      } catch {
+        // Unparseable URL already rejected by normalizeUrl.
+      }
+    }
+    return "other-site";
+  }
   const prefix =
     to.segments.length <= from.segments.length &&
     to.segments.every((segment, i) => segment === from.segments[i]);
@@ -724,7 +737,9 @@ export function analyzeRedirects(
     else {
       analysis.candidates.push({
         ...seen,
-        permanent: seen.codes.some((c) => PERMANENT_REDIRECT_CODES.has(c)),
+        permanent:
+          relation === "dead-shortlink" ||
+          seen.codes.some((c) => PERMANENT_REDIRECT_CODES.has(c)),
       });
     }
   }

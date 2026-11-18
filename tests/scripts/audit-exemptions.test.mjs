@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import test from "node:test";
+import { computeMissingResources } from "../../scripts/audit-missing-resources.mjs";
 import { EXAM_AREAS } from "../../scripts/lib/areas.mjs";
 import {
   EXEMPT,
@@ -150,4 +151,13 @@ test("isExempt answers for the resource type and the code, and only for those", 
 test("AGENTS.md says where the exemptions are", () => {
   const agents = lf(readFileSync(join(root, "AGENTS.md"), "utf8"));
   assert.ok(agents.includes("scripts/lib/audit-exemptions.mjs"));
+});
+
+test("committed src/data_files/missing-resources.json matches the current exam and lab pages", () => {
+  const { results } = computeMissingResources(root);
+  assert.deepEqual(
+    results,
+    missing,
+    "src/data_files/missing-resources.json is out of date: run `node scripts/audit-missing-resources.mjs` and commit the regenerated file",
+  );
 });

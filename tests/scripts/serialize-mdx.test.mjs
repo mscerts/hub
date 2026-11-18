@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { join, resolve } from "node:path";
 import test from "node:test";
 import { renderCourseVersions } from "../../scripts/lib/course-render.mjs";
 import { versionLabels, versionMarks } from "../../scripts/lib/course-next.mjs";
@@ -143,4 +145,31 @@ test("RetirementBanner and MeasureUpCard retain their dates, replacement links a
   assert.match(copy, /\*\*Predecessor material:\*\*/);
   assert.match(copy, /Material is from AZ-400\./);
   assert.doesNotMatch(copy, /<|import/);
+});
+
+test("real docs pages serialize cleanly without leaking JSX components or raw ::: callout fences", async () => {
+  const root = resolve(import.meta.dirname, "../..");
+  for (const rel of [
+    "src/content/docs/prepare/studymaterials.mdx",
+    "src/content/docs/azure/AZ-400.mdx",
+    "src/content/docs/azure/AZ-401.mdx",
+    "src/content/docs/courses/ab-731.mdx",
+  ]) {
+    const raw = readFileSync(join(root, rel), "utf8").replace(
+      /^---[\s\S]*?---\r?\n/,
+      "",
+    );
+    const md = await serializeMdx(raw);
+    const withoutFences = md.replace(/^```[\s\S]*?^```/gm, "");
+    assert.doesNotMatch(
+      withoutFences,
+      /<(?:Aside|BetaBanner|RetirementBanner|MeasureUpCard|RelatedCerts|LinkCard|LinkButton|CardGrid|Card|Tabs|TabItem|Steps)\b/,
+      rel,
+    );
+    assert.doesNotMatch(
+      withoutFences,
+      /^:::(?:note|tip|caution|danger)\b/m,
+      rel,
+    );
+  }
 });

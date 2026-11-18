@@ -2297,7 +2297,36 @@ test("a link is demoted only when its answer lands on a proper parent of its own
     ),
     "other-site",
   );
+  assert.equal(
+    redirectRelation(
+      "https://aka.ms/RetiredExamShortLink",
+      "https://www.bing.com/?ref=aka&shorturl=RetiredExamShortLink",
+    ),
+    "dead-shortlink",
+  );
+  assert.equal(
+    redirectRelation("https://aka.ms/BingHome", "https://www.bing.com/"),
+    "other-site",
+  );
   assert.equal(redirectRelation(link, "ftp://www.microsoft.com/"), "unknown");
+});
+
+test("a dead aka.ms alias redirecting to Bing with ref=aka is flagged even on a 302 hop", () => {
+  const deadAlias = "https://aka.ms/NoSuchCoursePlaylist";
+  const liveAlias = "https://aka.ms/AZ-104onYouTube";
+  const analysis = analyse(
+    redirectReport([
+      chain(deadAlias, [
+        [302, "https://www.bing.com/?ref=aka&shorturl=NoSuchCoursePlaylist"],
+      ]),
+      chain(liveAlias, [[301, "https://www.youtube.com/playlist?list=PL123"]]),
+    ]),
+  );
+  assert.equal(analysis.otherSite, 1);
+  assert.equal(analysis.permanent, 1);
+  assert.equal(analysis.candidates.length, 1);
+  assert.equal(analysis.candidates[0].url, deadAlias);
+  assert.equal(analysis.candidates[0].permanent, true);
 });
 
 test("only a permanent hop (301, 308) makes a redirect to a parent page a finding; temporary ones are warnings", () => {
