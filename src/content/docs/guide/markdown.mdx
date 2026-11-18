@@ -3,7 +3,7 @@ title: Markdown
 draft: true
 description: "A visual test page for Markdown rendering and the custom documentation components."
 ---
-import { Aside, Button, Card, CardGrid, LinkButton, LinkCard, Step, Steps, TabItem, Tabs, TabsContent, TabsList, TabsTrigger } from '@components/docs';
+import { Button, Card, CardGrid, LinkButton, LinkCard, Step, Steps, TabItem, Tabs, TabsContent, TabsList, TabsTrigger } from '@components/docs';
 
 This page is a deliberately busy rendering test. It covers the Markdown syntax and components that editors are likely to use in the wiki.
 
@@ -66,21 +66,21 @@ Task lists are useful for editorial checklists:
 
 ## Callouts
 
-<Aside type="note">
-  Notes provide context without interrupting the reader's flow.
-</Aside>
+:::note
+Notes provide context without interrupting the reader's flow.
+:::
 
-<Aside type="tip" title="A quieter tip">
-  Tips should feel helpful, not like an alert. They can contain **formatted text**, links, and `inline code`.
-</Aside>
+:::tip[A quieter tip]
+Tips should feel helpful, not like an alert. They can contain **formatted text**, links, and `inline code`.
+:::
 
-<Aside type="caution">
-  Confirm dates, exam names, and registration requirements against the official source before publishing.
-</Aside>
+:::caution
+Confirm dates, exam names, and registration requirements against the official source before publishing.
+:::
 
-<Aside type="danger" title="Do not publish exam dumps">
-  This site does not publish stolen or unauthorized exam content.
-</Aside>
+:::danger[Do not publish exam dumps]
+This site does not publish stolen or unauthorized exam content.
+:::
 
 ## Cards and buttons
 

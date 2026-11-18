@@ -22,9 +22,7 @@ const btnTitle = "Go Back";
   <section class="grid h-svh place-content-center">
     <div class="mx-auto max-w-(--breakpoint-xl) px-4 py-8 lg:px-6 lg:py-16">
       <div class="mx-auto max-w-(--breakpoint-sm) text-center">
-        <h1
-          class="text-dark mb-4 text-7xl font-extrabold text-blue-700 lg:text-9xl dark:text-blue-300"
-        >
+        <h1 class="text-dark mb-4 text-7xl font-extrabold text-blue-700 lg:text-9xl dark:text-blue-300">
           404
         </h1>
         <p
@@ -39,8 +37,29 @@ const btnTitle = "Go Back";
         >
           {content}
         </p>
-        <!-- Display a button that navigates user back to the previous page -->
-        <Btn404 title={btnTitle} id="go-back" />
+        <!-- Display recovery actions so visitors can find current resources -->
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <Btn404 title={btnTitle} id="go-back" />
+          <a
+            href="/certs/"
+            class="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-4 py-3 text-sm font-bold text-neutral-800 transition hover:bg-neutral-100 focus-visible:ring-3 focus-visible:ring-orange-400 focus-visible:outline-hidden dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700"
+          >
+            Browse Exams
+          </a>
+          <a
+            href="/certs/vouchers/"
+            class="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-4 py-3 text-sm font-bold text-neutral-800 transition hover:bg-neutral-100 focus-visible:ring-3 focus-visible:ring-orange-400 focus-visible:outline-hidden dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700"
+          >
+            Exam Vouchers
+          </a>
+          <button
+            type="button"
+            data-search-trigger
+            class="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-4 py-3 text-sm font-bold text-neutral-800 transition hover:bg-neutral-100 focus-visible:ring-3 focus-visible:ring-orange-400 focus-visible:outline-hidden dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-700"
+          >
+            Search Hub
+          </button>
+        </div>
       </div>
     </div>
   </section>

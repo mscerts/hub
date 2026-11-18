@@ -122,6 +122,10 @@ test("RetirementBanner and MeasureUpCard retain their dates, replacement links a
       '  <CardGrid slot="products">',
       '    <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/az-400.html#u44" />',
       "  </CardGrid>",
+      "",
+      ":::note[Predecessor material]",
+      "Material is from AZ-400.",
+      ":::",
       "</MeasureUpCard>",
       "",
     ].join("\n"),
@@ -136,5 +140,7 @@ test("RetirementBanner and MeasureUpCard retain their dates, replacement links a
     /^### \[MeasureUp Practice Test\]\(https:\/\/www\.measureup\.com\/az-400\.html#u44\)$/m,
   );
   assert.match(copy, /\*\*MSFTHUB\*\*/);
+  assert.match(copy, /\*\*Predecessor material:\*\*/);
+  assert.match(copy, /Material is from AZ-400\./);
   assert.doesNotMatch(copy, /<|import/);
 });

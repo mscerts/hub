@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import DropdownButton from "@components/ui/DropdownButton.astro";
 
 interface Action {
@@ -18,9 +19,7 @@ const encodedTitle = encodeURIComponent(
 const promptUrl = currentPath.startsWith("/certs/courses/")
   ? new URL(`${currentPath}.md`, Astro.url).href
   : currentUrl;
-const prompt = encodeURIComponent(
-  `Help me understand this page: ${promptUrl}`,
-);
+const prompt = encodeURIComponent(`Help me understand this page: ${promptUrl}`);
 
 const aiActions: Action[] = [
   {
@@ -119,4 +118,13 @@ const shareActions: Action[] = [
       target: "_blank" as const,
     }))}
   />
+  <button
+    type="button"
+    data-bookmark-page-btn
+    aria-pressed="false"
+    class="inline-flex h-8 items-center gap-x-1.5 rounded-md border border-gray-700 bg-gray-800 px-3 text-xs font-semibold text-gray-100 transition hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 aria-pressed:border-blue-500 aria-pressed:bg-blue-950 aria-pressed:text-blue-200"
+  >
+    <Icon name="ph:bookmark-simple-fill" class="size-3.5" aria-hidden="true" />
+    <span data-bookmark-page-label>Save</span>
+  </button>
 </div>

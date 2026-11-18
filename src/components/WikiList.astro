@@ -1,6 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-import { LinkCard, CardGrid } from "@components/docs";
+import { Icon } from "astro-icon/components";
+import { CardGrid } from "@components/docs";
+import { sidebarIconForHref } from "@data/docs-sidebar";
+import { visibleExamStatuses } from "@data/exam-status.mjs";
+import { guideChangeFor } from "@utils/guide-change.mjs";
 
 interface Props {
   category:
@@ -16,36 +20,157 @@ interface Props {
 const { category } = Astro.props;
 
 const docs = await getCollection("docs");
+const docIds = new Set(docs.filter((d) => !d.data.draft).map((d) => d.id));
+const statuses =
+  (
+    visibleExamStatuses() as Record<
+      string,
+      Record<string, { text: string; variant: string }>
+    >
+  )[category] ?? {};
 
 const exams = docs.filter(
   (doc) => doc.id.startsWith(`${category}/`) && !doc.data.draft,
 );
 
-exams.sort((a, b) => a.id.localeCompare(b.id));
+exams.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
+
+function statusPillClass(status: string): string {
+  switch (status) {
+    case "BETA":
+      return "border-[#f0abfc] bg-[#fae8ff] text-[#86198f] dark:border-[#d946ef]/60 dark:bg-[#d946ef]/15 dark:text-[#f0abfc]";
+    case "NEW":
+    case "GA":
+      return "border-green-300 bg-green-100 text-green-800 dark:border-[#22c55e]/60 dark:bg-[#22c55e]/15 dark:text-[#86efac]";
+    case "AT RISK":
+      return "border-amber-300 bg-amber-100 text-amber-950 dark:border-[#f59e0b]/60 dark:bg-[#f59e0b]/15 dark:text-[#fcd34d]";
+    case "RETIRING":
+      return "border-red-300 bg-red-100 text-red-800 dark:border-red-400/60 dark:bg-red-400/15 dark:text-red-300";
+    default:
+      return "border-gray-300 bg-gray-100 text-gray-700 dark:border-[#7f8da0]/60 dark:bg-[#64748b]/15 dark:text-[#cbd5e1]";
+  }
+}
+
+function examTier(
+  code: string,
+  body: string | undefined,
+  examName: string,
+): string {
+  if (
+    body?.includes("/certs/prepare/business/") ||
+    ["AB-730", "AB-731", "GH-700"].includes(code)
+  ) {
+    return "Business";
+  }
+  if (
+    body?.includes("/certs/prepare/fundamentals/") ||
+    /-90\d$/.test(code) ||
+    /\b(?:Fundamentals|Foundations)\b/i.test(examName)
+  ) {
+    return "Fundamentals";
+  }
+  return "Role-Based";
+}
 ---
 
 {exams.length > 0 ? (
   <CardGrid>
     {exams.map((exam) => {
-      const examCode = exam.id.split("/").pop()?.toUpperCase() ?? "";
+      const codeLower = exam.id.split("/").pop() ?? "";
+      const examCode = codeLower.toUpperCase();
       const href = `/certs/${exam.id}/`;
       const desc = exam.data.description ?? "";
-      // Older content can still use the legacy description template.
       let shortDesc =
         exam.data.examName ??
         desc.match(/exam [A-Z]+-\d+:\s*(.+?)\.\s*Contains/)?.[1] ??
         "";
-      // Fallback: text after "exam CODE:" up to first period
       if (!shortDesc) {
         shortDesc = desc.match(/exam [A-Z]+-\d+:\s*(.+?)\./)?.[1] ?? "";
       }
-      // Fallback: first 80 chars
       if (!shortDesc) {
         shortDesc = desc.slice(0, 80).trim();
       }
-      return <LinkCard title={examCode} description={shortDesc} href={href} />;
+
+      const status = statuses[examCode]?.text;
+      const changeKind = guideChangeFor(examCode)?.state?.kind;
+      const tier = examTier(examCode, exam.body, shortDesc);
+      const hasCourse = docIds.has(`courses/${codeLower}`);
+      const hasLabs = docIds.has(`labs/${category}/${codeLower}`);
+      const areaIcon = sidebarIconForHref(href) ?? "ph:book-open-text";
+
+      return (
+        <a
+          href={href}
+          class="docs-link-card docs-card border-border bg-card hover:border-border-strong group not-prose hover:shadow-default flex items-center justify-between gap-3 rounded-xl border p-4 text-inherit no-underline shadow-sm transition hover:-translate-y-0.5 sm:gap-4 sm:p-5"
+        >
+          <span class="flex min-w-0 flex-1 items-start gap-2 sm:gap-3">
+            <span
+              class="border-border bg-muted text-card-foreground grid size-9 shrink-0 place-items-center rounded-lg border"
+              aria-hidden="true"
+            >
+              <Icon name={areaIcon} class="size-4.5" />
+            </span>
+            <span class="min-w-0 flex-1">
+              <span class="flex flex-wrap items-center gap-1.5">
+                <span class="text-card-foreground group-hover:text-primary text-base leading-snug font-semibold transition-colors">
+                  {examCode}
+                </span>
+                {status && (
+                  <span
+                    class:list={[
+                      "rounded-full border px-1.5 py-0.5 text-[0.62rem] leading-none font-bold tracking-wide uppercase",
+                      statusPillClass(status),
+                    ]}
+                  >
+                    {status}
+                  </span>
+                )}
+                {changeKind && (
+                  <span class="rounded-full border border-blue-300 bg-blue-100 px-1.5 py-0.5 text-[0.62rem] leading-none font-bold tracking-wide text-blue-800 uppercase dark:border-blue-400/50 dark:bg-blue-400/15 dark:text-blue-200">
+                    {changeKind === "upcoming"
+                      ? "Guide update soon"
+                      : "Guide updated"}
+                  </span>
+                )}
+              </span>
+              {shortDesc && (
+                <span class="text-muted-foreground mt-1 block text-sm leading-normal">
+                  {shortDesc}
+                </span>
+              )}
+              <span class="mt-2 flex flex-wrap items-center gap-1.5">
+                <span class="border-border bg-muted text-muted-foreground rounded-md border px-1.5 py-0.5 text-[0.68rem] font-medium">
+                  {tier}
+                </span>
+                {hasCourse && (
+                  <span class="border-border bg-muted text-muted-foreground rounded-md border px-1.5 py-0.5 text-[0.68rem] font-medium">
+                    Course
+                  </span>
+                )}
+                {hasLabs && (
+                  <span class="border-border bg-muted text-muted-foreground rounded-md border px-1.5 py-0.5 text-[0.68rem] font-medium">
+                    Labs
+                  </span>
+                )}
+              </span>
+            </span>
+          </span>
+          <Icon
+            name="ph:caret-right"
+            class="text-muted-foreground group-hover:text-primary size-4 shrink-0 transition-transform group-hover:translate-x-0.5"
+            aria-hidden="true"
+          />
+        </a>
+      );
     })}
   </CardGrid>
 ) : (
   <p>No study materials available in this category.</p>
 )}
+
+<style>
+  .docs-link-card,
+  .docs-link-card :global(*) {
+    text-decoration: none !important;
+  }
+</style>

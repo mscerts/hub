@@ -3,9 +3,18 @@
 import MainLayout from "@/layouts/MainLayout.astro";
 import CardBlog from "@components/ui/cards/CardBlog.astro";
 import CardBlogRecent from "@components/ui/cards/CardBlogRecent.astro";
+import { getImage } from "astro:assets";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { SITE } from "@data/constants";
+import { OG, SITE } from "@data/constants";
+
+const defaultSocialImg = await getImage({
+  src: OG.image,
+  width: 1200,
+  height: 600,
+  format: "png",
+});
+const fallbackSocialImage = new URL(defaultSocialImg.src, `${SITE.url}/`).href;
 
 // Get all blog posts and sort them based on publish date
 const allBlogEntries = await getCollection("blog", ({ data }) => {
@@ -66,61 +75,49 @@ const ogTitle = "Microsoft Certification News | MSFTHub";
       })),
       image: post.data.cardImage?.src
         ? new URL(post.data.cardImage.src, `${SITE.url}/`).href
-        : `${SITE.url}/social.png`,
+        : fallbackSocialImage,
     })),
   }}
 >
-  <section
-    class="mx-auto max-w-[85rem] space-y-8 px-4 pt-16 sm:px-6 lg:px-8 2xl:max-w-full"
-  >
+  <section class="mx-auto max-w-[85rem] space-y-8 px-4 pt-16 sm:px-6 lg:px-8 2xl:max-w-full">
     {/* Page header */}
     <div class="mx-auto max-w-3xl text-left sm:text-center">
-      <h1
-        class="block text-4xl font-bold tracking-tight text-balance text-neutral-800 md:text-5xl lg:text-6xl dark:text-neutral-200"
-      >
+      <h1 class="block text-4xl font-bold tracking-tight text-balance text-neutral-800 md:text-5xl lg:text-6xl dark:text-neutral-200">
         {title}
       </h1>
 
-      <p
-        class="mt-4 text-lg text-pretty text-neutral-600 dark:text-neutral-400"
-      >
+      <p class="mt-4 text-lg text-pretty text-neutral-600 dark:text-neutral-400">
         {subTitle}
       </p>
     </div>
   </section>
 
   {/* Most recent blog post - featured */}
-  {
-    mostRecentPost && (
-      <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
-        <CardBlogRecent blogEntry={mostRecentPost} />
-      </section>
-    )
-  }
+  {mostRecentPost && (
+    <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+      <CardBlogRecent blogEntry={mostRecentPost} />
+    </section>
+  )}
 
   {/* Blog posts grid */}
-  {
-    otherPosts.length > 0 && (
-      <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
-        <div class="grid gap-6 lg:grid-cols-2">
-          {otherPosts.map((blogEntry) => (
-            <CardBlog blogEntry={blogEntry} />
-          ))}
-        </div>
-      </section>
-    )
-  }
+  {otherPosts.length > 0 && (
+    <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+      <div class="grid gap-6 lg:grid-cols-2">
+        {otherPosts.map((blogEntry) => (
+          <CardBlog blogEntry={blogEntry} />
+        ))}
+      </div>
+    </section>
+  )}
 
   {/* Empty state */}
-  {
-    blogPosts.length === 0 && (
-      <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
-        <div class="text-center">
-          <p class="text-lg text-neutral-600 dark:text-neutral-400">
-            No blog posts available yet. Check back soon!
-          </p>
-        </div>
-      </section>
-    )
-  }
+  {blogPosts.length === 0 && (
+    <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+      <div class="text-center">
+        <p class="text-lg text-neutral-600 dark:text-neutral-400">
+          No blog posts available yet. Check back soon!
+        </p>
+      </div>
+    </section>
+  )}
 </MainLayout>

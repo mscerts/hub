@@ -21,18 +21,18 @@ The board is a private GitHub Projects board. It is the source of truth for what
 node scripts/tasks.mjs <command>
 ```
 
-| Command | Purpose |
-|---------|---------|
-| `list` | Open items (`--all` includes Done, `--mine` shows only yours) |
-| `show <ref>` | Title, status, priority, due date, owner, link, and the item's Log |
-| `start <ref>` | Claim the item: sets you as assignee |
-| `note <ref> "<text>"` | Append a timestamped line to the item's Log |
-| `add "<title>" --body "<text>"` | Create a new item (default Status, or `--status`/`--priority`/`--due`) |
-| `link <ref> <pr-url>` | Record the pull request on the item |
-| `status <ref> "<option>"` / `priority <ref> "<P0\|P1\|P2>"` / `due <ref> "<date>"` | Set the item's category, urgency, or due date |
-| `done <ref>` | Move the item to Done |
-| `unclaim <ref>` | Release your claim: clears the assignee |
-| `archive <ref>` | Archive the item (hides it from `list`) |
+| Command                                                                            | Purpose                                                                |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `list`                                                                             | Open items (`--all` includes Done, `--mine` shows only yours)          |
+| `show <ref>`                                                                       | Title, status, priority, due date, owner, link, and the item's Log     |
+| `start <ref>`                                                                      | Claim the item: sets you as assignee                                   |
+| `note <ref> "<text>"`                                                              | Append a timestamped line to the item's Log                            |
+| `add "<title>" --body "<text>"`                                                    | Create a new item (default Status, or `--status`/`--priority`/`--due`) |
+| `link <ref> <pr-url>`                                                              | Record the pull request on the item                                    |
+| `status <ref> "<option>"` / `priority <ref> "<P0\|P1\|P2>"` / `due <ref> "<date>"` | Set the item's category, urgency, or due date                          |
+| `done <ref>`                                                                       | Move the item to Done                                                  |
+| `unclaim <ref>`                                                                    | Release your claim: clears the assignee                                |
+| `archive <ref>`                                                                    | Archive the item (hides it from `list`)                                |
 
 `<ref>` is the REF column from `list`. Run `node scripts/tasks.mjs help` for all options.
 
@@ -89,7 +89,7 @@ src/
 │   └── PartnerBadge.astro
 ├── content/
 │   ├── docs/                  # Exam pages in aibusiness | azure | dynamics | github | microsoft365 | power | security,
-│   │                          # plus guide/ (8 pages), prepare/ (5), vouchers/, labs/<area>/ (one lab page per exam), labs.mdx (uses LabList)
+│   │                          # plus guide/ (8 pages), prepare/ (5), vouchers/, courses/, labs/<area>/ (one lab page per exam), labs.mdx (uses LabList)
 │   ├── archive/               # Retired exams, their lab pages and expired offers (see Docs Rendering)
 │   └── blog/                  # Blog collection (authors, pubDate, cardImage, readTime, tags)
 ├── layouts/MainLayout.astro   # Global document shell, metadata, consent-gated analytics, full-page component initialization
@@ -145,17 +145,21 @@ docs/
 ## Content Collections
 
 ### `docs` collection
+
 Uses the local schema in `src/content.config.ts`, including:
+
 ```ts
-voucherCategory: z.enum(["100%", "50%", "Special"]).optional()
-voucherEnds: voucherDate.optional()  // last day of the offer, YYYY-MM-DD
-reviewBy: voucherDate.optional()     // day to re-check the offer, YYYY-MM-DD
-linkedExam: examCode.optional()      // exam code the offer is tied to, e.g. AB-650
-voucherStarts: voucherDate.optional() // first day of an offer that has not started, YYYY-MM-DD
+voucherCategory: z.enum(["100%", "50%", "Special"]).optional();
+voucherEnds: voucherDate.optional(); // last day of the offer, YYYY-MM-DD
+reviewBy: voucherDate.optional(); // day to re-check the offer, YYYY-MM-DD
+linkedExam: examCode.optional(); // exam code the offer is tied to, e.g. AB-650
+voucherStarts: voucherDate.optional(); // first day of an offer that has not started, YYYY-MM-DD
 ```
+
 `voucherCategory` is used by `VoucherList.astro` to auto-categorize voucher pages. `voucherEnds`, `reviewBy` and `linkedExam` are defined in `src/utils/voucher-fields.ts`, are read only by the Voucher Review Monitor (`docs/monitors/voucher-review.md`; nothing on the site renders them) and are all optional (see "Voucher Pages"). `voucherStarts` is the exception: the site reads it (`src/utils/voucher-upcoming.mjs`) to tag an offer UPCOMING and the monitor ignores it. A date may be written bare (`2026-10-31`, which YAML turns into a Date at UTC midnight), as an unquoted midnight timestamp (`2026-10-31T00:00:00Z`, the very same Date) or quoted (`"2026-10-31"`); all of them come out as a Date. A quoted timestamp, an unquoted date with any other time of day, or a day that does not exist (`2026-02-31`) fails the build.
 
 ### `blog` collection
+
 Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `updatedDate?`, `cardImage`, `cardImageAlt?`, `readTime`, `tags?`, `draft?`
 
 ---
@@ -163,11 +167,12 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 ## Conventions
 
 ### Exam Pages
+
 - One MDX file per exam at `src/content/docs/<area>/<CODE>.mdx`
 - Canonical routes are lowercase under `/certs/`: `/certs/azure/az-800/`, `/certs/power/pl-300/`
 - Filenames are uppercase: `AZ-800.mdx`, `PL-300.mdx`
 - `<area>` ∈ `aibusiness | azure | dynamics | github | microsoft365 | power | security`
-- Area mapping: `azure` = AZ-*, AI-*, DP-*; `aibusiness` = AB-*; `dynamics` = MB-*; `github` = GH-*; `microsoft365` = MS-* and MD-*; `power` = PL-*; `security` = SC-*.
+- Area mapping: `azure` = AZ-_, AI-_, DP-_; `aibusiness` = AB-_; `dynamics` = MB-_; `github` = GH-_; `microsoft365` = MS-* and MD-_; `power` = PL-_; `security` = SC-*.
 - Astro collection IDs are lowercase regardless of filename case (`AZ-800.mdx` -> id `azure/az-800`), and the canonical renderer exposes them at `/certs/azure/az-800/`. Changing only a filename's case never changes its URL and needs no redirect. It does, however, poison Astro's incremental content-layer cache; `pnpm build` passes `--force` to clear that cache, which makes such renames safe.
 - Frontmatter title is `<CODE> Study Materials`.
 - Store the verified official exam name in `examName` frontmatter. Write a concise, page-specific `description` using the exam code, relevant topics and resources actually present. Aim for about 140-160 characters where practical; do not reuse a fixed resource-list template or add em dashes. Index cards and monitors read `examName`, with legacy description parsing retained for older pages.
@@ -176,6 +181,7 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 - After creating a new exam page (or adding resource links to an existing one), run `node scripts/audit-missing-resources.mjs` and commit the regenerated `src/data_files/missing-resources.json` (see Missing Resources Audit).
 
 ### URL Formats (normalized — preserve these)
+
 - **Exam (preferred when published):** `https://learn.microsoft.com/credentials/certifications/exams/<code>?WT.mc_id=studentamb_165290`
 - Some beta/new exams use a certification slug instead of `/exams/<code>`; use Microsoft's verified current destination rather than forcing a URL pattern.
 - **Study guide:** `https://learn.microsoft.com/credentials/certifications/resources/study-guides/<code>?WT.mc_id=studentamb_165290`
@@ -188,6 +194,7 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 - Practice assessment IDs are exam-specific and have no reliable public registry; obtain and verify each ID from Microsoft Learn.
 
 ### Exam Page Anatomy (canonical structure)
+
 1. Frontmatter: `title: "<CODE> Study Materials"`, `description`
 2. Imports from `@components/docs`: `LinkCard`, `CardGrid`, `Card`, `Tabs`, `TabItem`, `Aside`
 3. Optional status banner: `:::tip` for beta/resource scarcity (every beta exam page also gets a separate `:::note` box with the beta timeline, see "Beta Exam Pages" below); `:::caution` for retirement, replacement details, or an unconfirmed at-risk change
@@ -196,6 +203,7 @@ Schema: `title`, `description`, `authors` (array with name/image), `pubDate`, `u
 6. Closing `</Card>`, then a shared `<MeasureUpCard>` for existing MeasureUp products. Keep the verified LinkCards in a `<CardGrid slot="products">` so product order, labels and `#u44` URLs remain explicit. The component owns subscription/discount copy; optional slots preserve page-specific wording and predecessor notes. If no products exist, keep the unavailable-material tip instead of adding an empty card.
 
 Resource placement:
+
 - **Text:** Official Learn courses/paths, documentation, and reputable written guides. The Learn page of the exam's own course is titled `Microsoft Learn`; a course that is no exam's own (`AI-3026`, `SC-5009`) is titled `Microsoft Learn <CODE> Course` with the course title as its description, and the Learn Course Tracker (see Videos) says which pages need it.
 - **Study Guide Course card (Text tab):** an exam that has a course page (`src/content/docs/courses/<code>.mdx`, `docs/courses.md`) links it with `<LinkCard title="<CODE> Study Guide Course" href="/certs/courses/<code>/" description="A collection of Microsoft Learn modules and documentation pages, based on the study guide."/>` directly under the exam's own `Microsoft Learn` course card, or as the first card of the Text tab when the page has no such card yet (a beta exam). No `target="_blank"`. `node scripts/course-cards.mjs` adds missing cards and `--check` lists problems; `tests/scripts/course-cards.test.mjs` fails a course page that its exam page does not link, a misplaced card and a card without a course page. The course page's opening note names the same How to Prepare page as the exam page's own card (it is read from that card when the page is rendered).
 - **Videos:** Verified video courses, exam reviews, and directly relevant technical sessions. Microsoft's instructor-led recordings are on YouTube (Microsoft Learn's channel) and are titled `Microsoft Learn <CODE> Course on YouTube` (`AZ-400: ` in front for a predecessor's, as elsewhere); link the short link `https://aka.ms/<CODE>onYouTube` (for example `https://aka.ms/AZ-104onYouTube`; Microsoft keeps it pointed at the current playlist, so the card survives a re-recording), and a `youtube.com/playlist` address only for a course whose short link does not resolve to a playlist (check where it leads before linking: an unknown code redirects to a Bing page). A series whose playlist is named after another course keeps that course's code in the title (`Microsoft Learn AZ-2008 Course on YouTube` on AZ-400, whose playlist is AZ-2008: DevOps Foundations). The Learn Course Tracker (`docs/monitors/learn-courses.md`) decides which exam pages a course belongs on (an exam course only on its exam's page, or temporarily its replacement's; any other course by relevancy, always confirmed by the maintainer) and reports a course card that is missing or whose course Learn removed. The Course Videos Monitor (`docs/monitors/course-videos.md`) opens an issue when a short link starts resolving and flags the cards that link a playlist directly. The Learn "On Demand Instructor-led Training Series" (`learn.microsoft.com/shows/on-demand-instructor-led-training-series/...` and its `learn.microsoft.com/collections/...` lists) was retired by Microsoft and the maintainers had every such card removed on 2026-10-19: do not add one back and do not give a YouTube card that title.
@@ -208,23 +216,27 @@ Resource placement:
 - Retiring pages retain valid existing resources and link to the verified replacement exam.
 
 ### Beta Exam Pages (timeline note box at the top)
+
 Active beta pages use `<BetaBanner>` with the standard beta text as slot content; legacy `:::tip` blocks remain supported by the scaffolder and consistency checks. Keep the separate timeline `:::note` immediately after the banner. `RetirementBanner` standardizes active retirement notices; preserve announcement links as slot content and verified replacement details as props.
 Every exam page that is in beta (`{ text: "BETA", variant: "tip" }` in `src/data_files/exam-status.mjs`, tracked in `beta-exams.json`) opens, above the Get Started card, with the usual `:::tip` beta/resource-scarcity banner followed by a SEPARATE `:::note` box with the beta timeline and **real dates**, so visitors know when the exam is expected to leave beta and when beta scores arrive. The timeline never goes inside the `:::tip`: the tip keeps its existing beta text unchanged, and the `:::note` is its own box right after it.
 
 Facts (Microsoft's "About beta Certification exams" page, `https://learn.microsoft.com/credentials/support/about-beta-exams?WT.mc_id=studentamb_165290`, section "Beta exam scoring and results"; re-read it before relying on these numbers, they are Microsoft's to change):
+
 - A beta exam goes live (leaves beta, becomes generally available) approximately 10-12 weeks after the beta period begins.
 - Beta scores are released about 10 days after the exam goes live. Depending on when in the beta process a candidate took the exam, waiting for a score can take up to 14 weeks, and the whole process can vary.
 
 What the `:::note` must contain:
+
 1. The date the beta period began, the first day the beta exam could be scheduled, as given by the official beta announcement (the Microsoft Learn / Skills Hub blog post that the beta voucher page's "Read Official Announcement" button points to, or the exam's own Microsoft Learn page if it states it).
 2. The go-live expectation, shown two ways so readers can see both what Microsoft said and how the estimate is worked out:
    - What Microsoft announced, when it announced something: the expected go-live date or month exactly as Microsoft wrote it (for example "general availability in October 2026"), linked to the announcement. Never make it more precise than Microsoft did. When no announcement exists yet, say so in one short sentence ("We have not found an official go-live announcement from Microsoft yet.", the `unannounced` state; in the first 7 days after the beta start the `pending` state says instead that the announcement is still due, see "Announcement states").
    - The calculation: beta start + 10 weeks to beta start + 12 weeks as two real dates, with the start date and the "10-12 weeks" stated in the sentence so the arithmetic is visible ("counting from July 28, 2026 ...").
-   When the two disagree, keep both and say so; do not drop either one.
+     When the two disagree, keep both and say so; do not drop either one.
 3. The expected score release as a real date range: about 10 days after the calculated go-live window (the 10-week date + 10 days to the 12-week date + 10 days). When Microsoft stated a different scoring timeline for that exam (for example "approximately eight weeks after the beta period concludes" on the GH-700 certification page), state it too, with the date range it implies (the calculated go-live window plus that period), and say that it differs from the usual timeline.
 4. A plain statement that these are estimates that can shift (scores can take up to 14 weeks), and a link to the hub's `[Beta Exams](/certs/vouchers/betaexams/)` page for more information (internal link, no `target="_blank"`). When the Microsoft source is cited, link `https://learn.microsoft.com/credentials/support/about-beta-exams?WT.mc_id=studentamb_165290` (not the old `/certifications/beta-exams` path, which only redirects).
 
 Rules:
+
 - Never guess or back-calculate the beta start date. If you cannot verify it from an official Microsoft source, stop and ask the user for it instead of publishing a date.
 - The state of the announcement is recorded per exam in `src/data_files/beta-exams.json`, in two fields that are optional in the file's schema but required for every exam that is BETA: `betaStart` (`"YYYY-MM-DD"`, the day the beta period began, from the official source or the maintainers, never guessed) and `announcement` (`"pending"`, `"unannounced"` or the https URL of the announcement, with the `?WT.mc_id=studentamb_165290` parameter like other Microsoft links). The variant of the note must match `announcement` (see "Announcement states" below).
 - When the announcement appears: set `announcement` to its URL, rewrite the note as `announced` (the announced go-live date or month as Microsoft wrote it, plus the calculation), add the beta voucher page (`node scripts/new-beta-voucher.mjs`, the "Beta voucher format" under "Voucher Pages", with `voucherEnds` and `linkedExam`) and link it from the exam page. If 7 days pass without an announcement, switch `announcement` to `"unannounced"` and the note to that variant.
@@ -254,11 +266,13 @@ The other two states change only the announcement sentence (the `:::tip` and the
 - `unannounced` (more than 7 days after the beta start and still no announcement: stop promising "within a few days"): "We have not found an official go-live announcement from Microsoft yet."
 
 ### Study Guide Changes card (all exam pages)
+
 - Every exam page has `<LinkCard title="<CODE> Study Guide Changes" href="/certs/changelog/<code>/" .../>` on the line directly under its Study Guide card, with the Study Guide card's indentation and no `target="_blank"`. The change page it points to exists for every exam page and is built from `src/data_files/study-guide-history/<CODE>.json`; see `docs/study-guide-changes.md`.
 - `scripts/new-exam.mjs` writes the card into every new page. `node scripts/study-guide-changes-cards.mjs` adds missing cards and `--check` lists problems; `tests/scripts/study-guide-changes-cards.test.mjs` fails an exam page without its card.
 - The history files are written only by the New Exam Monitor (and the one-off backfill and retired-guide scripts); do not edit them by hand. The card is the only change an exam page needs: the banner under the exam tagline appears by itself while a change is upcoming or recent.
 
 ### How to Prepare LinkCard (all exam pages)
+
 - Every exam page's "Get Started" card ends with a `LinkCard` to the matching `/certs/prepare/` guide: the last `LinkCard`-type resource (after Exam Labs/Exam Case Studies/GitHub Case Studies if present, otherwise right after Study Guide) and before any `RelatedCerts` component.
 - Classification (verify against Microsoft Learn for any new exam before assuming):
   - **Fundamentals** -> `/certs/prepare/fundamentals/`: exam name contains "Fundamentals" (AI-901, AZ-900, DP-900, PL-900, SC-900), GitHub's "Foundations" tier (GH-900), and AB-900.
@@ -271,7 +285,8 @@ The other two states change only the announcement sentence (the `:::tip` and the
 - No `target="_blank"` (internal link). Add this LinkCard, with the correct classification, to any new exam page.
 
 ### At Risk Exam Treatment (unconfirmed change — distinct from Retiring)
-- Use when Microsoft signals a *possible* future change (a new exam, a level change, an objective-domain/blueprint survey) but nothing is confirmed — do not use RETIRING language or badges for these.
+
+- Use when Microsoft signals a _possible_ future change (a new exam, a level change, an objective-domain/blueprint survey) but nothing is confirmed — do not use RETIRING language or badges for these.
 - Add a `:::caution` banner at the top citing the concrete evidence (announcement post, survey, etc.) with a source link. Keep it terse and structurally consistent: new exam code + title (if known), "may replace X", "could mean retirement", "neither confirmed", one source link.
 - Sidebar badge: `{ text: "AT RISK", variant: "caution" }` in `src/data_files/exam-status.mjs`, keyed by area then exam code.
 - Example: AZ-400 carried this treatment (2026-10-14) while AZ-401 was only a blueprint survey and then a beta exam of its own, with a `:::caution` saying AZ-401 may replace AZ-400 (unconfirmed) and that the AZ-400 Learn page showed no retirement date. Learn's footnote "Complete this exam before the retirement date..." appears on many exam pages (also on ones that are not retiring), so it is not evidence of a retirement by itself: quote it only together with that caveat. It was resolved on 2026-10-15, when Microsoft's Skills Hub announcement of AZ-401 (beta) gave AZ-400 a retirement date (February 1, 2027): AZ-400 then moved to the retirement rules (`RETIRING` badge, a `:::caution` linking the announcement, an entry in `retiring-exams.json` with `replacementCode` AZ-401).
@@ -279,6 +294,7 @@ The other two states change only the announcement sentence (the `:::tip` and the
 - Keep all existing resources intact; this is an informational heads-up, not a retirement.
 
 ### Lab Pages
+
 - Files are lowercase at `src/content/docs/labs/<area>/<code>.mdx`; routes are `/certs/labs/<area>/<code>/`.
 - Required title: `<CODE> Hands-on Labs` (SC-100 uses `SC-100 Labs and Case Studies`). Write a short, distinct description of the practical activities linked on that page rather than copying the exam page's resource summary. LabList gets the official name from the matching exam's `examName`.
 - No blank line before the closing frontmatter fence, between frontmatter and imports, or between `<Tabs>` and the first `<TabItem>`.
@@ -293,11 +309,12 @@ The other two states change only the announcement sentence (the `:::tip` and the
 - Preserve the known SC-900 setup `LinkCard` outside its `CardGrid`; it is an intentional out-of-scope legacy exception.
 - Known verified resources: AZ-120 has three Learn exercises from `explore-azure-center-sap-solutions`; AZ-900 uses `MicrosoftLearning/AZ-900-Microsoft-Azure-Fundamentals`; SC-401 already includes `MicrosoftLearning/SC-401T00-Information-Security-Administrator`; the Azure Monitor Lab (Learn labs index) is a good cross-fit for monitoring-heavy Azure exams and is already used on AZ-104, AZ-204, AZ-700, and AZ-801. Do not duplicate them.
 - AB-400 keeps the ten PL-400 labs on the maintainer's `teriaavibes/PL-400_Microsoft-Power-Platform-Developer` fork after the MicrosoftLearning original returned 404 when checked on 2026-11-06. The links use the Markdown files on `master`; the Lab02 filename ends in `app..md` (two dots). The fork was not archived when checked on 2026-11-06, so it has no ignore entry.
-- More known verified GitHub repos (all under `MicrosoftLearning`, GitHub Pages exercise index at `microsoftlearning.github.io/<repo>/`): AI-901 uses `mslearn-ai-fundamentals` and `mslearn-ai-concepts` (current successor to the archived `AI-900-AIFundamentals`), but its page links the Learn exercise units that wrap those labs, not the repository (replaced 2026-10-21 by the wrapper rule, see Lab Page Workflow; the same for the nine AI-200 labs of `mslearn-azure-ai` that have a Learn exercise and for three of the AB-730 labs); AI-200 uses `mslearn-azure-ai`; AI-500 uses `mslearn-ai-multi-agents`; SC-500 uses `mslearn-sec-identity`; AB-900 uses `Administer-and-Secure-agents-with-Microsoft-Agent-365`; AZ-802 uses `AZ-802-Windows-Server-Administrator-Associate` (8 labs, no `LAB_AK_` answer-key variants yet) and no longer carries the AZ-800/AZ-801 repo labs (removed 2026-10-15 at the maintainers' request: both courses retired on 2026-09-30 and those repos' READMEs say the repos will be removed; the labs stay on the archived AZ-800 and AZ-801 lab pages (`src/content/archive/labs/azure/`) while the repos exist, with both repos in `lab-repos-ignore.json` for their README's retirement notice). **When MicrosoftLearning archives or removes the AZ-800 or AZ-801 repo** (the Lab Repo Check then reports it as `archived` or `gone`), point that page's lab cards at the maintainer's fork instead of removing them: `github.com/teriaavibes/AZ-800-Administering-Windows-Server-Hybrid-Core-Infrastructure` and `github.com/teriaavibes/AZ-801-Configuring-Windows-Server-Hybrid-Advanced-Services` (snapshots from 2026-09-25 and 2026-09-30; default branch `master`; all 20 AZ-800 and 14 AZ-801 linked lab files exist there as `.md`, checked 2026-10-15). The forks have no GitHub Pages site, so link the Markdown files, `https://github.com/teriaavibes/<repo>/blob/master/Instructions/Labs/<file>.md` (the `.html` of the old `microsoftlearning.github.io` links becomes `.md`; keep the `%20` in the two names that have a space), the same pattern as SC-100, MB-230 and MS-102. The maintainer keeps the forks archived with a sync, so the Lab Repo Check will report each fork as `archived`: add it to `lab-repos-ignore.json` then, with that reason, and drop the old MicrosoftLearning entry. — the AZ-802T00 Learn paths are knowledge-based apart from the Azure Monitor VM exercise. When a repo has been superseded (older repo's README says "please use \<new-repo\>"), always use the new one. GitHub's own certifications (GH-*) do not have dedicated GitHub-org lab repos — their official prep path is Microsoft Learn only (per `resources.github.com/learn/certifications/`); do not invent one. The GitHub Skills courses (`github.com/skills/*`, listed at `learn.github.com/skills`) are the exception that is real: many Learn exercises wrap them, so a GH lab page links a course on its Microsoft GitHub tab only when no unit on its Microsoft Learn tab links that repository (checked 2026-11-02 by reading the unit pages: GH-100 Create and use reusable workflows; GH-200 Publish Docker Images and Create and use reusable workflows; GH-300 Customize your GitHub Copilot Experience, Create Applications with the Copilot CLI and Modernize your legacy code; GH-600 Build applications with GitHub Copilot agent mode; GH-900 Introduction to Repository Management and Hello GitHub Actions; GH-500 had none until 2026-11-17, when Secure code game, which GitHub's own pathway lists and no Learn unit wraps, went on its Microsoft GitHub tab). The Spaces course `scale-institutional-knowledge-using-copilot-spaces` is the same repository as the `democratize-tribal-knowledge-using-copilot-spaces` that Learn links. Re-check the unit pages when a course or unit is added. GitHub-tagged Applied Skills do exist, though (product `GitHub` in the Applied Skills cache — currently the GitHub Copilot ones, GitHub Actions load testing, and GitHub secret scanning), and they belong on the matching GH-* lab page's Applied Skills tab (GH-200, GH-300, GH-500) as well as on AZ-400 where the study guide covers the same topic. Microsoft occasionally renames a skill without changing its slug (e.g. "Accelerate app development…" → "Accelerate AI-assisted development by using GitHub Copilot"); when the cache's `name` differs from a LinkCard title, update the title and keep the href.
+- More known verified GitHub repos (all under `MicrosoftLearning`, GitHub Pages exercise index at `microsoftlearning.github.io/<repo>/`): AI-901 uses `mslearn-ai-fundamentals` and `mslearn-ai-concepts` (current successor to the archived `AI-900-AIFundamentals`), but its page links the Learn exercise units that wrap those labs, not the repository (replaced 2026-10-21 by the wrapper rule, see Lab Page Workflow; the same for the nine AI-200 labs of `mslearn-azure-ai` that have a Learn exercise and for three of the AB-730 labs); AI-200 uses `mslearn-azure-ai`; AI-500 uses `mslearn-ai-multi-agents`; SC-500 uses `mslearn-sec-identity`; AB-900 uses `Administer-and-Secure-agents-with-Microsoft-Agent-365`; AZ-802 uses `AZ-802-Windows-Server-Administrator-Associate` (8 labs, no `LAB_AK_` answer-key variants yet) and no longer carries the AZ-800/AZ-801 repo labs (removed 2026-10-15 at the maintainers' request: both courses retired on 2026-09-30 and those repos' READMEs say the repos will be removed; the labs stay on the archived AZ-800 and AZ-801 lab pages (`src/content/archive/labs/azure/`) while the repos exist, with both repos in `lab-repos-ignore.json` for their README's retirement notice). **When MicrosoftLearning archives or removes the AZ-800 or AZ-801 repo** (the Lab Repo Check then reports it as `archived` or `gone`), point that page's lab cards at the maintainer's fork instead of removing them: `github.com/teriaavibes/AZ-800-Administering-Windows-Server-Hybrid-Core-Infrastructure` and `github.com/teriaavibes/AZ-801-Configuring-Windows-Server-Hybrid-Advanced-Services` (snapshots from 2026-09-25 and 2026-09-30; default branch `master`; all 20 AZ-800 and 14 AZ-801 linked lab files exist there as `.md`, checked 2026-10-15). The forks have no GitHub Pages site, so link the Markdown files, `https://github.com/teriaavibes/<repo>/blob/master/Instructions/Labs/<file>.md` (the `.html` of the old `microsoftlearning.github.io` links becomes `.md`; keep the `%20` in the two names that have a space), the same pattern as SC-100, MB-230 and MS-102. The maintainer keeps the forks archived with a sync, so the Lab Repo Check will report each fork as `archived`: add it to `lab-repos-ignore.json` then, with that reason, and drop the old MicrosoftLearning entry. — the AZ-802T00 Learn paths are knowledge-based apart from the Azure Monitor VM exercise. When a repo has been superseded (older repo's README says "please use \<new-repo\>"), always use the new one. GitHub's own certifications (GH-_) do not have dedicated GitHub-org lab repos — their official prep path is Microsoft Learn only (per `resources.github.com/learn/certifications/`); do not invent one. The GitHub Skills courses (`github.com/skills/*`, listed at `learn.github.com/skills`) are the exception that is real: many Learn exercises wrap them, so a GH lab page links a course on its Microsoft GitHub tab only when no unit on its Microsoft Learn tab links that repository (checked 2026-11-02 by reading the unit pages: GH-100 Create and use reusable workflows; GH-200 Publish Docker Images and Create and use reusable workflows; GH-300 Customize your GitHub Copilot Experience, Create Applications with the Copilot CLI and Modernize your legacy code; GH-600 Build applications with GitHub Copilot agent mode; GH-900 Introduction to Repository Management and Hello GitHub Actions; GH-500 had none until 2026-11-17, when Secure code game, which GitHub's own pathway lists and no Learn unit wraps, went on its Microsoft GitHub tab). The Spaces course `scale-institutional-knowledge-using-copilot-spaces` is the same repository as the `democratize-tribal-knowledge-using-copilot-spaces` that Learn links. Re-check the unit pages when a course or unit is added. GitHub-tagged Applied Skills do exist, though (product `GitHub` in the Applied Skills cache — currently the GitHub Copilot ones, GitHub Actions load testing, and GitHub secret scanning), and they belong on the matching GH-_ lab page's Applied Skills tab (GH-200, GH-300, GH-500) as well as on AZ-400 where the study guide covers the same topic. Microsoft occasionally renames a skill without changing its slug (e.g. "Accelerate app development…" → "Accelerate AI-assisted development by using GitHub Copilot"); when the cache's `name` differs from a LinkCard title, update the title and keep the href.
 - When searching GitHub for a course's lab repo, `github.com/search?q=...` rate-limits quickly (HTTP 429); prefer `github.com/orgs/MicrosoftLearning/repositories?q=<term>` instead, which is not rate-limited and searches the same repo set by keyword.
 - Old claims that AZ-140, MD-102, MS-102, MS-700, or SC-900 have zero Learn exercises are unverified and must not be relied on.
 
 ### Lab Page Workflow
+
 - Start from the nearest existing lab page for the same exam family or area, then match its structure instead of inventing a new layout.
 - Create or edit lab pages to stay consistent with the canonical lab format used across the repo: frontmatter, imports, optional note, then `<Tabs>` with the established tab order.
 - Keep descriptions aligned to the verified exam name and the exam-focused wording used elsewhere in the repository.
@@ -312,6 +329,7 @@ The other two states change only the announcement sentence (the `:::tip` and the
 - Validate every lab-page edit with `pnpm build` before finishing.
 
 To discover genuine Microsoft Learn exercise units:
+
 1. Fetch `https://learn.microsoft.com/training/courses/<code>t00` and read its `learn_item` learning-path UIDs.
 2. Query `https://learn.microsoft.com/api/catalog/?uid=<comma-separated-path-uids>` to obtain each learning path's module UIDs.
 3. Resolve each module's ordered `units` from the catalog.
@@ -319,15 +337,17 @@ To discover genuine Microsoft Learn exercise units:
 5. Build the unit URL as `<module-base-url>/<1-based-unit-position>-<unit-slug>/?WT.mc_id=studentamb_165290`, remove `/en-us/`, and use the catalog's unit title as display text. **Caveat**: the catalog's `units` array position does not always match the real live-page URL number — some modules have hidden/non-sequential units in their live nav (numbering can skip a value, e.g. 1,2,3,5,6,7,8,9) that the catalog silently compresses into a gapless array, shifting every position from the gap onward. When adding a brand-new reference or resolving any doubt/conflict, cross-check by fetching the module's own index page (`https://learn.microsoft.com/training/modules/<slug>/`) — its nav list shows the real numbered slugs directly — rather than trusting the catalog's bare position number alone.
 
 **Hands-on unit/module syntax** (verified 2026-08-29 against all ~27,000 cached unit titles — see `data/learn-catalog.json` in [mscerts/learnsync](https://github.com/mscerts/learnsync)):
+
 - Primary signal: `unit.title` contains the whole word `Exercise` **anywhere** (case-insensitive), not just as a prefix — real titles include `Exercise - X`, `Exercise – X` (en dash), `Optional exercise - X`, `Hands-on exercise - X`, and suffix forms like `X exercise`/`X Exercise`. A prefix-only check misses ~3% of genuine exercises.
 - Secondary signal: `unit.title` **starts with** `Lab` or `Simulation` followed by a separator (space, colon, or dash/en dash/em dash), e.g. `Lab - Configure...`, `Simulation - Create...`. Do not match these words anywhere in the title (bare "lab"/"simulation" appear often in non-hands-on reading content, e.g. "Understand DLP...simulation mode").
 - Module-level override: if the **module's own title** starts with `Guided Project` or `Challenge Project`/`Challenge project` (any dash variant), treat every unit in that module as hands-on — these are whole modules structured as a single guided build, not individual "Exercise"-titled steps.
 - The lab registry adds to this syntax (maintainer, 2026-10-21): a unit whose **address** has the word `exercise` while its title does not is an exercise too (except a set-up unit, "Prepare for ..."); a unit whose title starts with `Demo` or `Demonstration` (or whose address starts with `demo-`) is a demonstration, whether it is a video, a procedure or a click-through guide; a unit whose page links a demo host (`mslearn.cloudguides.com`, `app.highlights.guide`) is a demo link; docs tutorials and quickstarts count in the docs families the hub already links or that the course of an exam links from its modules, without the Microsoft Entra app gallery tutorials and without landing pages (a title with "documentation", starting or ending with "overview", or with "overview and"). Reading and concept modules, practical modules without an `Exercise` label, how-to and overview docs and learning paths do not count. The rules are in `scripts/lib/lab-registry.mjs`.
-- Rejected as too noisy after sampling (majority of hits were unrelated reading content, not hands-on): bare `Practice` (almost always "best practices"), bare `Challenge` outside the module-title override (mostly topical "challenges" discussions), `Sandbox`, `Workshop` as a unit-level signal (an "Online workshop" *module* is just a title label — its own units still use the normal `Exercise -` pattern, so no extra rule is needed).
+- Rejected as too noisy after sampling (majority of hits were unrelated reading content, not hands-on): bare `Practice` (almost always "best practices"), bare `Challenge` outside the module-title override (mostly topical "challenges" discussions), `Sandbox`, `Workshop` as a unit-level signal (an "Online workshop" _module_ is just a title label — its own units still use the normal `Exercise -` pattern, so no extra rule is needed).
 - Fallback for the rare unit whose title didn't resolve in the catalog (falls back to its raw uid in the cache): check whether the uid contains `.exercise-`.
 - **Applied Skills are a separate content type**, not part of this modules/units catalog at all — they live under `https://learn.microsoft.com/credentials/applied-skills/<slug>` (a distinct URL namespace, inherently hands-on by definition, no title-pattern matching needed). Don't expect to find them in `learn-catalog.json`; discover and verify them the normal way (search Microsoft Learn directly) for the Applied Skills tab.
 
 ### Voucher Pages
+
 - The homepage's New vouchers list sorts by explicit `lastUpdated` dates (newest first, title as a tie-breaker). Set a date when adding or updating an offer; undated pages sort last. Initial dates were seeded from each active page's last Git modification, including maintenance edits, rather than treated as offer launch dates. The voucher index and sidebar keep their existing ordering.
 - Files are lowercase slugs at `src/content/docs/vouchers/<slug>.mdx`; routes are `/certs/vouchers/<slug>/`.
 - Frontmatter requires `title`, `description`, and `voucherCategory`, with category exactly `"100%"`, `"50%"`, or `"Special"`.
@@ -347,6 +367,7 @@ To discover genuine Microsoft Learn exercise units:
 - A page without `voucherCategory` is not on any voucher list and is not reviewed.
 
 Beta voucher format (the one layout of every beta voucher page; write it with `node scripts/new-beta-voucher.mjs`, which also prints the follow-up edits, `node scripts/new-beta-voucher.mjs` without arguments shows the options; the layout is defined once in `scripts/lib/beta-voucher.mjs` and `tests/scripts/beta-vouchers.test.mjs` fails when a page does not follow it, is not named `<code>beta.mdx`, or lacks its card on the exam page or its entry in `voucherItems`):
+
 1. Frontmatter: title `Exam <CODE> (beta)` (the `(beta)` is what the Voucher Review Monitor uses to recognise a beta voucher page, `docs/monitors/voucher-review.md`), a quoted description `"Get 80% off the new Exam <CODE> (beta) for <certification>."` (a colon in an unquoted description breaks the page), `voucherCategory: "Special"`, `voucherEnds` (the last day of the registration/discount window stated in the official announcement) and `linkedExam` (the exam code), so the Voucher Review Monitor reminds you to retire the page when the window has passed or the exam leaves beta.
 2. Import `LinkButton`, `LinkCard` and `Steps` from `@components/docs`.
 3. A `:::tip` on top about the second, more private 80% beta code for another 300 people that the SME mailing list and LinkedIn group share (they last longer because they are not public), linking both and the Beta Exams page (`/certs/vouchers/betaexams/`) for how to get access.
@@ -363,6 +384,7 @@ Beta voucher format (the one layout of every beta voucher page; write it with `n
 Verify all voucher percentages, codes, limits, deadlines, exclusions, announcement links, and scheduling links from the official source. These facts are time-sensitive; do not record changing inventory totals in this file.
 
 ### Components
+
 - `RelatedCerts.astro` renders inside a closed dropdown (a native `<details>` whose trigger, "Related certifications", looks like the secondary button) and shows only official Expert certification requirements from `src/data_files/related-certs.ts`, with exactly two labels: `Prerequisite` and the reverse `Qualifies toward`. Each requirement records its Microsoft source. Alternative prerequisites mean at least one, not all; requirements apply to earning the certification, not sitting the exam. AZ-401's source requires passing AZ-104 or GH-300 specifically. PL-400's prerequisite certification is now earned through AB-400; do not assume a replacement exam earns the same certification. Missing hub pages link to the explicitly recorded Microsoft certification pages. Preserve retirement/beta context, and do not add sibling or suggested-progression links.
 - Microsoft Learn (`learn.microsoft.com` and its subdomains) deliberately keeps the monochrome `simple-icons:microsoft` Windows mark in LinkCard, even when a cached favicon exists. Other external hosts prefer their cached icons. The DClouds cache entry is a manually extracted Digital China mark from its official event banner, not a published favicon; preserve it if refresh cannot retrieve a replacement.
 - LinkCard uses local grayscale favicons from `src/data_files/resource-favicons.json` for known external hosts, falling back to the platform icon mapping. Internal links keep the book icon. Run `node scripts/resource-favicons-sync.mjs` to fetch missing icons, or add `--refresh` to refresh existing ones; `--list` previews discovered hosts and `--google-fallbacks` retries unavailable host favicons via Google's favicon cache. Commit the manifest and matching `public/resource-favicons/*.png` assets together. Downloads run separately from builds, use declared site icons with `/favicon.ico` fallback, and are normalized to 32px grayscale PNGs. Existing cached icons survive refresh failures; visitors never request a third-party favicon service.
@@ -377,39 +399,46 @@ Verify all voucher percentages, codes, limits, deadlines, exclusions, announceme
 - For new exam tab blocks, prefer two-space increments (`TabItem` 2, `CardGrid` 4, `LinkCard` 6) without reformatting unrelated legacy content.
 
 ### Docs Rendering
+
 - `Tabs.astro` renders its slot once and prepares direct child panels with `src/utils/render-tabs.mjs` (parse5). Tab buttons, unique IDs, ARIA relationships, and the first-panel state are server-rendered; client code handles switching, keyboard navigation, and saved/hash selection. Do not let Preline initialize these tablists. Without JavaScript, scoped noscript styles reveal all panels with their labels; the styles use the base cascade layer to override Tailwind's important hidden rule.
 - Navigation uses full document loads, not Astro ClientRouter. Initialize page components on script execution; do not register unused `astro:page-load`/swap hooks. Keep ordinary browser events such as `pagehide` (sidebar persistence), `hashchange` (tab links), and `resize`. Do not tear down listeners on `pagehide`, because back/forward cache restores the same document.
 - Archived MDX pages live in `src/content/archive/` and render at `/certs/archive/<content-id>/`, with a matching Markdown endpoint. `/certs/archive/` automatically lists published entries. Archived pages display a historical-content notice (chosen by path: `vouchers/` is an expired offer, `security/sc-730` is historical, everything else a retired exam), are excluded from the sitemap and search-engine indexing, and must pass `Aside` to `<Content />` (`src/pages/certs/archive/[...slug].astro`) because `remark-callouts.mjs` turns `:::note` into `<Aside>`. When moving a page: preserve its content, update active listings/internal links, and add a redirect from its former canonical URL to the archive URL in `astro.config.mjs` (the HTML route and its `.md` variant). `src/utils/deployment-redirects.mjs` then generates the bare, `/wiki/` and `/wiki-next/` aliases from that pair. Refresh `src/data_files/public-routes.json` after the build; the old routes leave the baseline and the archive routes join it. A retired exam's lab page moves with it to `src/content/archive/labs/<area>/<code>.mdx`, which drops it from `LabList`; the archived exam page then links the archived lab route. Do not move pages without an explicit request.
 - `/certs/` is the all-exams index, owned by `src/pages/certs/index.astro`. It uses WikiList for all seven exam areas and excludes drafts. It lists the exam pages still under `src/content/docs/<area>/`; an exam moved to the archive is listed at `/certs/archive/` instead. `/wiki/` redirects to it.
 - `/certs/<content-id>/` is rendered by `src/pages/certs/[...slug].astro` through `DocsPage.astro` and `DocsShell.astro`.
-- `/certs/changelog/<code>/` (Study Guide Changes) is rendered by `src/pages/certs/changelog/[code].astro`, one page per exam page, from the history files. It is not indexed (`noindex`, left out of the sitemap in `astro.config.mjs`), has no Markdown endpoint and no "View as Markdown" action. `DocsShell.astro` shows `GuideChangeBanner.astro` under an exam's tagline while a change is upcoming or recent (30 days, `GUIDE_CHANGE_RECENT_DAYS`); its script recomputes the day count in the browser. Everything is described in `docs/study-guide-changes.md`.
+- `/certs/changelog/<code>/` (Study Guide Changes) is rendered by `src/pages/certs/changelog/[code].astro`, one page per exam page, from the history files (there is no `/certs/changelog/` or `/certs/courses/` index page). It is not indexed (`noindex`, left out of the sitemap in `astro.config.mjs`), has no Markdown endpoint and no "View as Markdown" action. `DocsShell.astro` shows `GuideChangeBanner.astro` under an exam's tagline while a change is upcoming or recent (30 days, `GUIDE_CHANGE_RECENT_DAYS`); its script recomputes the day count in the browser. Everything is described in `docs/study-guide-changes.md`.
 - Legacy content paths and `/wiki-next/*` redirect permanently to `/certs/*`.
 - `remark-callouts.mjs` converts `:::note`, `:::tip`, `:::caution`, and `:::danger` directives to the local `Aside` component.
 
 ### Banner System
+
 `AnnouncementBanner.astro` — dismissible banner with localStorage persistence (versioned via `version` prop).
 `MainLayout.astro` conditionally renders the site-wide announcement strip above the navbar. Configure `ANNOUNCEMENT` in `src/data_files/constants.ts`; it is disabled by default. Set the message, optional href/linkLabel and enabled flag, and bump version to show a new announcement to visitors who dismissed the previous one. Dismissal is remembered in localStorage per version; the strip is hidden when printing. The homepage's separate announcement card remains part of `QuickLinksCenter.astro`.
 
 ### Retained Templates
+
 `HeroSection.astro`, `LanguagePicker.astro`, `GithubBtn.astro`, the feature/testimonial section templates, and `BetaBanner.astro` are retained components, not evidence that those features are active. Verify imports before describing a template as rendered. `WikiList.astro` is active on the exam index. Do not delete unused templates as incidental cleanup.
 
 ### Key Dependencies
+
 - **@astrojs/mdx** + **@astrojs/markdown-remark** — MDX and Unified remark processing
 - **sharp** + **sharp-ico** — Image processing
 - **preline** — UI components
 - **tailwindcss v4** + **@tailwindcss/typography** + **@tailwindcss/forms**
 
 ### CSS
+
 Global styles are in `src/assets/styles/global.css`; docs-specific styles are scoped to the canonical docs components.
 
 ### Logo
+
 - Light: `/src/assets/images/logo_light.svg` (navbar)
 - Dark: `/src/assets/images/logo_dark.svg` (navbar)
 - Favicon: `/favicon.svg`
 
 ### Sidebar
+
 - Groups use native details/summary controls, with their initial open state rendered on the server. JavaScript enhances them with session-scoped group and scroll persistence; opening and closing still works without scripts.
-- Guide, preparation, voucher, and top-level area groups are hand-maintained in `src/data_files/docs-sidebar.ts`.
+- Guide, preparation, voucher, and top-level area groups are hand-maintained in `src/data_files/docs-sidebar.ts`. Do not add top-level sidebar entries for Labs, Study Guide Courses, or Study Guide Changes — those pages are accessed from their respective exam pages only.
 - Exam entries are generated from the matching `src/content/docs/<area>/` directory by `buildExamItems()`; new exam pages appear automatically.
 - Exam status badges are maintained in `src/data_files/exam-status.mjs`: `NEW`, `RETIRED`, `RETIRING`, `BETA`, `UPCOMING`, and `AT RISK`. The same file names each status (`examStatusNames`, e.g. "Retired") and gives the landing page its colours (`examStatusStyles`); the landing page's "Recent status changes" list (`QuickLinksCenter.astro`, which has its own `getStatusClass` switch: a new badge text needs a `case` there) shows every exam that carries one, except that a RETIRED exam is only listed for 90 days after its retirement date (below). The list keeps the order of `examStatuses` (by area, then by exam as written in the file); it is not sorted by date and has no cap. The sidebar reads the statuses through `visibleExamStatuses()` and that list through `recentExamStatuses()`, not `examStatuses` directly.
 - Keep exam entries in code order. GA exams have no badge, except NEW (below); beta uses `{ text: "BETA", variant: "tip" }`; retiring uses `{ text: "RETIRING", variant: "danger" }`; retired uses `{ text: "RETIRED", variant: "note" }`.
@@ -419,6 +448,7 @@ Global styles are in `src/assets/styles/global.css`; docs-specific styles are sc
 - `VoucherList.astro` filters docs by `voucherCategory`, sorts by title, and constructs `/certs/${voucher.id}/` routes.
 
 ### Redirects
+
 - Defined in `astro.config.mjs` under `redirects: { ... }`
 - `src/utils/deployment-redirects.mjs` generates `dist/_redirects` from those definitions and built docs routes, including legacy HTML and Markdown addresses. Do not maintain a second `public/_redirects` file. Exact rename rules override generated aliases; static HTML redirect stubs remain a fallback. Cloudflare HTTP status behavior must be verified after deployment, not with plain Astro preview.
 - Add redirects when exams are renamed/moved or certification structures change; retain legacy routes to avoid broken inbound links.
@@ -484,20 +514,21 @@ Internal to-do list of exam pages that lack a link of a given resource type. Not
 - **Scope:** every `<CODE>.mdx` in the seven exam areas; pages with `draft: true` are skipped
 
 ### What it checks
+
 Only whether the button is present **on our page** — it does not verify that the resource exists on Microsoft Learn or the vendor site. Detection is by `LinkCard` **title**, not URL: a page counts as having a resource type when one of its `<LinkCard title="...">` buttons matches. Hrefs are never inspected.
 
-| Key | Counts as present when the page has a `LinkCard` titled |
-|-----|----------------------------------------------------------|
-| MS Learn Course | exactly `Microsoft Learn` |
-| MS Learn Practice Assessment | starting with `Microsoft Learn Practice Assessment` (covers the `(AI Skills Navigator)` variant) |
-| MS Learn Exam Readiness Zone | exactly `Microsoft Learn Exam Readiness Zone` |
-| Exam Labs | exactly `Exam Labs`, or `Labs and Case Studies` (used only by SC-100, whose lab page also holds case studies) |
-| GitHub Labs | n/a on the exam page — present when `labs/<area>/<code>.mdx` exists and its active `<TabItem label="Microsoft GitHub">` tab contains at least one `LinkCard` that is not titled with another exam's code (`MB-330: Case Study 1 Prod Mgmt EX 1 to 4` on AB-330 is a lab kept from the predecessor and does not count) |
-| MeasureUp | starting with `MeasureUp ` except `MeasureUp Subscriptions` (the generic link on every page); data-driven pages also count `measureUpReleased: true` |
-| Whizlabs | starting with `Whizlab`/`Whizlabs` (case-insensitive) |
-| Pluralsight | starting with `Pluralsight` |
-| Udemy | containing the word `Udemy` anywhere |
-| Microsoft ESI | starting with `Microsoft Enterprise Skills Initiative` (a suffix such as `Instructor-led course` is fine) |
+| Key                          | Counts as present when the page has a `LinkCard` titled                                                                                                                                                                                                                                                               |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MS Learn Course              | exactly `Microsoft Learn`                                                                                                                                                                                                                                                                                             |
+| MS Learn Practice Assessment | starting with `Microsoft Learn Practice Assessment` (covers the `(AI Skills Navigator)` variant)                                                                                                                                                                                                                      |
+| MS Learn Exam Readiness Zone | exactly `Microsoft Learn Exam Readiness Zone`                                                                                                                                                                                                                                                                         |
+| Exam Labs                    | exactly `Exam Labs`, or `Labs and Case Studies` (used only by SC-100, whose lab page also holds case studies)                                                                                                                                                                                                         |
+| GitHub Labs                  | n/a on the exam page — present when `labs/<area>/<code>.mdx` exists and its active `<TabItem label="Microsoft GitHub">` tab contains at least one `LinkCard` that is not titled with another exam's code (`MB-330: Case Study 1 Prod Mgmt EX 1 to 4` on AB-330 is a lab kept from the predecessor and does not count) |
+| MeasureUp                    | starting with `MeasureUp ` except `MeasureUp Subscriptions` (the generic link on every page); data-driven pages also count `measureUpReleased: true`                                                                                                                                                                  |
+| Whizlabs                     | starting with `Whizlab`/`Whizlabs` (case-insensitive)                                                                                                                                                                                                                                                                 |
+| Pluralsight                  | starting with `Pluralsight`                                                                                                                                                                                                                                                                                           |
+| Udemy                        | containing the word `Udemy` anywhere                                                                                                                                                                                                                                                                                  |
+| Microsoft ESI                | starting with `Microsoft Enterprise Skills Initiative` (a suffix such as `Instructor-led course` is fine)                                                                                                                                                                                                             |
 
 - **ESI is checked by hand.** `esi.microsoft.com` is not public and its page is a script shell, so no monitor can tell whether ESI has training for an exam (the Link Checker and Source Watch cannot read it either, see `docs/monitors/source-watch.md`). The ESI Check Reminder (`docs/monitors/esi-check-reminder.md`) turns this list into a checklist issue every second month, leaving out the exams on the `MS Learn Course` list (no course on Learn, so nothing for ESI to offer). The card is a search by exam code, `https://esi.microsoft.com/Search?q=<CODE>&avail=Available&learningoption=Advanced+Role+Based`: a maintainer with ESI access opens it for each exam of the list and adds the card (Videos tab, next to the other instructor-led training) only when the search returns training. The ESI voucher page (`src/content/docs/vouchers/microsoftesi.mdx`) names the exams the 50% voucher covers (Azure, Security/Compliance/Identity, Power Platform, Dynamics 365 except MB-335) but not which exams have ESI training, so the list is not narrowed to those areas. On 2026-11-02 the maintainer checked ESI by hand and 19 exams without a NEW badge were exempted (`scripts/lib/audit-exemptions.mjs`, `Microsoft ESI`); the NEW exams stay on the list for a later round.
 - MDX (`{/* */}`) and HTML (`<!-- -->`) comments are stripped first, so commented-out placeholders count as missing.
@@ -508,6 +539,7 @@ Only whether the button is present **on our page** — it does not verify that t
 - An exam that cannot have a resource on purpose is exempt: add it, with the reason, to `scripts/lib/audit-exemptions.mjs` (resource type, then exam code) and re-run the audit; it then no longer appears in that list. Only add an exemption after checking, and write the date of the check in the reason.
 
 ### Working the list
+
 1. Pick a key and an exam code from the JSON.
 2. Verify the resource actually exists for that exam (Microsoft Learn, MeasureUp, vendor site). Never infer it from URL patterns — see Content Rules.
 3. If it exists, add it to the exam page in the correct tab (Exam Page Anatomy) using the normalized URL Formats and tracking params.
@@ -515,6 +547,7 @@ Only whether the button is present **on our page** — it does not verify that t
 5. Re-run the script and commit the regenerated JSON together with the page edits.
 
 ### Known intentional gaps (do not "fix")
+
 - **Exam Labs / GitHub Labs:** AB-100, AZ-305 — design/architect-tier exams with no lab page by design (see Lab Pages). SC-100 is no longer a gap: it is the documented exception with a lab page.
 - **GitHub Labs, exempt (left out of the list):** AB-100, AZ-305, AB-731, AZ-401, AZ-700, DP-750 and AI-901 have no GitHub lab that is not already on the Microsoft Learn tab, so `scripts/lib/audit-exemptions.mjs` leaves them out of the list, each with its reason (checked 2026-10-16; AI-901 on 2026-10-21, when its GitHub cards were replaced by the Learn exercise units that wrap those labs). In short: AI-901's labs are the Learn exercise units that wrap `mslearn-ai-fundamentals` and `mslearn-ai-concepts`; AB-100 and AZ-305 have no lab page by design (see Lab Pages); GH-500 is no longer exempt (2026-11-17): the Learn exercises wrap the GitHub Skills repositories of its three topics, but Secure code game is not wrapped and went on its Microsoft GitHub tab (GH-100, GH-200, GH-300 and GH-900 were exempt too until 2026-11-02, when GitHub Skills courses that no Learn unit wraps went on their Microsoft GitHub tabs; GH-600 is covered via other Microsoft-owned GitHub repos); DP-750 has a course repository (`MicrosoftLearning/DP-750T00-Implement-Data-Engineering-Solutions-using-Azure-Databricks`) whose labs are the Learn exercise units that wrap them (the unit pages link the repository's Pages instructions), so the Microsoft GitHub tab stays commented out (Lab Page Workflow, no duplicates); AB-731 (a no-code leadership exam) has no repository; AZ-401 has no course yet, and the Lab Repo Check reports its repository when it appears (GH-700 was exempt too until 2026-11-02, when its lab page was created with GitHub Skills courses). `tests/scripts/audit-exemptions.test.mjs` fails when an exempt exam names no page, still sits in the JSON, or has got a Microsoft GitHub tab (remove its exemption then).
 - **GitHub Labs, AZ-700 (exempt too):** the course repository (`MicrosoftLearning/AZ-700-Designing-and-Implementing-Microsoft-Azure-Networking-Solutions`) is mirrored by the Learn exercises already on the page; its 17 instructor demos in `Instructions/Demos` are not on Learn (checked 2026-10-16), and the maintainers decided on 2026-10-16 not to list them. The list is empty as a result; link the demos on the AZ-700 lab page's Microsoft GitHub tab and remove the exemption if that ever changes.
@@ -526,27 +559,27 @@ Only whether the button is present **on our page** — it does not verify that t
 
 Scheduled GitHub Actions workflows, each with a dependency-free Node script in `scripts/`, that watch Microsoft Learn and other sources, or the hub's own pages, and open GitHub issues when a page needs attention. None of them is rendered on the site or part of the build. Their detail is not in this file: every monitor has a runbook in `docs/monitors/` (workflow, script, tracker, what is alerted, failsafes, running it locally, working its issues), and `docs/monitors/README.md` is the index with the conventions they share.
 
-| Monitor | What it does | Runbook |
-|---------|--------------|---------|
-| Beta Exam Monitor, Retiring Exam Monitor | Beta exams that went GA; retiring exams against Learn's retirement tables, with a notification on the retirement day and a follow-up once Learn lists the exam as retired | `docs/monitors/beta-and-retiring-exams.md` |
-| New Exam Monitor | New exams and certifications on Learn, changed study guides (and the version history behind the Study Guide Changes pages), hub pages that no longer match Learn | `docs/monitors/new-exam-monitor.md` |
-| Applied Skills Monitor | New and retired Applied Skills against the lab pages that link them | `docs/monitors/applied-skills.md` |
-| MeasureUp Monitor | MeasureUp's Microsoft catalog: new products and stale MeasureUp links | `docs/monitors/measureup.md` |
-| Course Videos Monitor | Which `aka.ms/<CODE>onYouTube` short links resolve to a playlist, and cards that do not use the short link | `docs/monitors/course-videos.md` |
-| Learn Course Tracker | Every Learn catalog course and the exam pages it is assigned to (exam courses by rule, others by relevancy, confirmed by the maintainer); new courses, missing cards, removed courses | `docs/monitors/learn-courses.md` |
-| Partner Designation Skilling Requirements | Partner Center pages behind the partner skilling guide page | `docs/monitors/partner-designations.md` |
-| Voucher Challenge Monitor | New Microsoft voucher challenge and sweepstakes pages | `docs/monitors/voucher-challenge.md` |
-| Voucher Review Monitor | Voucher pages that need a second look (end date, review date, linked exam) and the announcement state of beta exams | `docs/monitors/voucher-review.md` |
-| Learn URL Check | Every `learn.microsoft.com` URL in `src/` against learnsync's data | `docs/monitors/learn-url-check.md` |
-| Link Checker | Internal links of the built site, allowlisted external links, links that now redirect to a parent page of their own site | `docs/monitors/link-checker.md` |
-| Skills Hub Watch | Skills Hub blog announcements of exams, betas, vouchers and retirements | `docs/monitors/skills-hub-watch.md` |
-| Lab Registry Monitor | Every Learn hands-on page and its exams: pages without an exam, pages a lab page lacks, pages Learn stopped listing | `docs/monitors/lab-registry.md` |
-| Lab Repo Check | Archived, deleted and new GitHub lab repositories | `docs/monitors/lab-repo-check.md` |
-| Learn Content Watch | New practice assessments and instructor-led courses on Learn for the exams the hub covers | `docs/monitors/learn-content-watch.md` |
-| Source Watch | The Microsoft program and policy pages, and other hosts' programme pages, that the guide pages are written from | `docs/monitors/source-watch.md` |
-| Tests Review Reminder | One-time issue asking whether the monitors' tests can go | `docs/monitors/tests-review-reminder.md` |
-| ESI Check Reminder | Every second month, a checklist issue of the exams with no ESI card, to check by hand | `docs/monitors/esi-check-reminder.md` |
-| Course Guide Watch | Every course against the recorded versions of its study guide: one issue per exam whose tasks changed, saying when the new skills count (upcoming or in effect) and what changes for the course | `docs/monitors/course-guide-watch.md` |
+| Monitor                                   | What it does                                                                                                                                                                                    | Runbook                                    |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Beta Exam Monitor, Retiring Exam Monitor  | Beta exams that went GA; retiring exams against Learn's retirement tables, with a notification on the retirement day and a follow-up once Learn lists the exam as retired                       | `docs/monitors/beta-and-retiring-exams.md` |
+| New Exam Monitor                          | New exams and certifications on Learn, changed study guides (and the version history behind the Study Guide Changes pages), hub pages that no longer match Learn                                | `docs/monitors/new-exam-monitor.md`        |
+| Applied Skills Monitor                    | New and retired Applied Skills against the lab pages that link them                                                                                                                             | `docs/monitors/applied-skills.md`          |
+| MeasureUp Monitor                         | MeasureUp's Microsoft catalog: new products and stale MeasureUp links                                                                                                                           | `docs/monitors/measureup.md`               |
+| Course Videos Monitor                     | Which `aka.ms/<CODE>onYouTube` short links resolve to a playlist, and cards that do not use the short link                                                                                      | `docs/monitors/course-videos.md`           |
+| Learn Course Tracker                      | Every Learn catalog course and the exam pages it is assigned to (exam courses by rule, others by relevancy, confirmed by the maintainer); new courses, missing cards, removed courses           | `docs/monitors/learn-courses.md`           |
+| Partner Designation Skilling Requirements | Partner Center pages behind the partner skilling guide page                                                                                                                                     | `docs/monitors/partner-designations.md`    |
+| Voucher Challenge Monitor                 | New Microsoft voucher challenge and sweepstakes pages                                                                                                                                           | `docs/monitors/voucher-challenge.md`       |
+| Voucher Review Monitor                    | Voucher pages that need a second look (end date, review date, linked exam) and the announcement state of beta exams                                                                             | `docs/monitors/voucher-review.md`          |
+| Learn URL Check                           | Every `learn.microsoft.com` URL in `src/` against learnsync's data                                                                                                                              | `docs/monitors/learn-url-check.md`         |
+| Link Checker                              | Internal links of the built site, allowlisted external links, links that now redirect to a parent page of their own site                                                                        | `docs/monitors/link-checker.md`            |
+| Skills Hub Watch                          | Skills Hub blog announcements of exams, betas, vouchers and retirements                                                                                                                         | `docs/monitors/skills-hub-watch.md`        |
+| Lab Registry Monitor                      | Every Learn hands-on page and its exams: pages without an exam, pages a lab page lacks, pages Learn stopped listing                                                                             | `docs/monitors/lab-registry.md`            |
+| Lab Repo Check                            | Archived, deleted and new GitHub lab repositories                                                                                                                                               | `docs/monitors/lab-repo-check.md`          |
+| Learn Content Watch                       | New practice assessments and instructor-led courses on Learn for the exams the hub covers                                                                                                       | `docs/monitors/learn-content-watch.md`     |
+| Source Watch                              | The Microsoft program and policy pages, and other hosts' programme pages, that the guide pages are written from                                                                                 | `docs/monitors/source-watch.md`            |
+| Tests Review Reminder                     | One-time issue asking whether the monitors' tests can go                                                                                                                                        | `docs/monitors/tests-review-reminder.md`   |
+| ESI Check Reminder                        | Every second month, a checklist issue of the exams with no ESI card, to check by hand                                                                                                           | `docs/monitors/esi-check-reminder.md`      |
+| Course Guide Watch                        | Every course against the recorded versions of its study guide: one issue per exam whose tasks changed, saying when the new skills count (upcoming or in effect) and what changes for the course | `docs/monitors/course-guide-watch.md`      |
 
 `docs/monitors/learn-research-caches.md` is not a monitor: it records where the Microsoft Learn research caches live (`mscerts/learnsync`) and which monitor reads them. The Missing Resources Audit stays in this file: it is a script run by hand, not a workflow.
 

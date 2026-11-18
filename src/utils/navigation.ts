@@ -13,10 +13,11 @@ const footerLinks = [
     section: "Resources",
     links: [
       { name: "Study Materials", url: "/certs/" },
-      { name: "Labs", url: "/certs/labs/" },
+      { name: "Vouchers", url: "/certs/vouchers/" },
+      { name: "Archive", url: "/certs/archive/" },
       { name: "Contributing", url: "/certs/contributing/" },
-      { name: "Privacy Policy", url: "/privacy" },
-      { name: "Contact", url: "/contact" },
+      { name: "Privacy Policy", url: "/privacy/" },
+      { name: "Contact", url: "/contact/" },
     ],
   },
   {

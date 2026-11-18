@@ -86,18 +86,15 @@ const appleTouchIcon = await getImage({
 });
 ---
 
-{
-  /*  Inject structured data into the page if provided. This data is formatted as JSON-LD, a method recommended by Google for structured data pass:
-     https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data */
-}{
-  pageStructuredData && (
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(pageStructuredData)}
-      is:inline
-    />
-  )
-}
+{/*  Inject structured data into the page if provided. This data is formatted as JSON-LD, a method recommended by Google for structured data pass:
+     https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data */}
+{pageStructuredData && (
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(pageStructuredData)}
+    is:inline
+  />
+)}
 {/* Define the character set, description, author, and viewport settings */}
 <meta charset="utf-8" />
 <meta content={description} name="description" />
@@ -130,8 +127,14 @@ const appleTouchIcon = await getImage({
 <meta name="twitter:description" content={ogDescription} />
 <meta name="twitter:image" content={socialImage} />
 
-{/* Links to the webmanifest and sitemap */}
+{/* Links to the webmanifest, RSS feed, and sitemap */}
 <link rel="manifest" href="/manifest.json" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={`${SITE.title} News`}
+  href={`${siteUrl}/rss.xml`}
+/>
 {/* https://docs.astro.build/en/guides/integrations-guide/sitemap/ */}
 <link rel="sitemap" href="/sitemap-index.xml" />
 

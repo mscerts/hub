@@ -62,13 +62,11 @@ const metaDescription = `Browse all articles tagged with "${displayTag}" on MSFT
     },
   }}
 >
-  <section
-    class="mx-auto max-w-[85rem] space-y-8 px-4 pt-16 sm:px-6 lg:px-8 2xl:max-w-full"
-  >
+  <section class="mx-auto max-w-[85rem] space-y-8 px-4 pt-16 sm:px-6 lg:px-8 2xl:max-w-full">
     {/* Page header */}
     <div class="mx-auto max-w-3xl text-left sm:text-center">
       <a
-        href="/news"
+        href="/news/"
         class="mb-4 inline-flex items-center gap-x-1.5 text-sm text-blue-700 hover:text-blue-600 dark:text-blue-300 dark:hover:text-blue-200"
       >
         <svg
@@ -81,13 +79,12 @@ const metaDescription = `Browse all articles tagged with "${displayTag}" on MSFT
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+            d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+          ></path>
         </svg>
         Back to all posts
       </a>
-      <h1
-        class="block text-4xl font-bold tracking-tight text-balance text-neutral-800 md:text-5xl dark:text-neutral-200"
-      >
+      <h1 class="block text-4xl font-bold tracking-tight text-balance text-neutral-800 md:text-5xl dark:text-neutral-200">
         Posts tagged "{displayTag}"
       </h1>
       <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
@@ -98,28 +95,24 @@ const metaDescription = `Browse all articles tagged with "${displayTag}" on MSFT
   </section>
 
   {/* Blog posts grid */}
-  {
-    blogPosts.length > 0 && (
-      <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
-        <div class="grid gap-6 lg:grid-cols-2">
-          {blogPosts.map((blogEntry) => (
-            <CardBlog blogEntry={blogEntry} />
-          ))}
-        </div>
-      </section>
-    )
-  }
+  {blogPosts.length > 0 && (
+    <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+      <div class="grid gap-6 lg:grid-cols-2">
+        {blogPosts.map((blogEntry) => (
+          <CardBlog blogEntry={blogEntry} />
+        ))}
+      </div>
+    </section>
+  )}
 
   {/* Empty state */}
-  {
-    blogPosts.length === 0 && (
-      <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
-        <div class="text-center">
-          <p class="text-lg text-neutral-600 dark:text-neutral-400">
-            No posts found with this tag.
-          </p>
-        </div>
-      </section>
-    )
-  }
+  {blogPosts.length === 0 && (
+    <section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+      <div class="text-center">
+        <p class="text-lg text-neutral-600 dark:text-neutral-400">
+          No posts found with this tag.
+        </p>
+      </div>
+    </section>
+  )}
 </MainLayout>
