@@ -351,7 +351,17 @@ export function diffVersions(
     };
   }
 
-  const stats = { added: 0, removed: 0, reworded: 0, weightsChanged: false };
+  const stats = {
+    added: 0,
+    removed: 0,
+    reworded: 0,
+    moved: 0,
+    covered: 0,
+    totalNow: 0,
+    totalBefore: 0,
+    changedShare: 0,
+    weightsChanged: false,
+  };
   const oldDomainTitles = prev.domains.map((d) => d.title);
   const newDomainTitles = cur.domains.map((d) => d.title);
   const domainEntries = pairDomains
@@ -423,7 +433,12 @@ export function diffVersions(
 export function changeKind(diff) {
   if (!diff.ok) return diff.linesChanged ? "unreadable" : "none";
   const { stats, audience } = diff;
-  const skills = stats.added + stats.removed + stats.reworded;
+  const skills =
+    stats.added +
+    stats.removed +
+    stats.reworded +
+    (stats.moved ?? 0) +
+    (stats.covered ?? 0);
   if (stats.changedShare > REWRITTEN_SHARE) return "rewritten";
   if (skills > 0 || audience.changed) return "topics";
   return stats.weightsChanged ? "weights" : "none";

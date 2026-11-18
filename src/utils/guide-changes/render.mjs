@@ -844,7 +844,7 @@ function areaModel(diff, areas, groups, { to, tag }) {
         : "",
     compare: {
       id: (d) => ids.get(d),
-      groupId: (d, g) => groupIds.get(g),
+      groupId: (_d, g) => groupIds.get(g),
       links,
       glanceNote,
     },

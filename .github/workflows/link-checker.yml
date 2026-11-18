@@ -23,8 +23,12 @@ on:
       - ".lycheeignore"
       - "src/data_files/**"
       - "src/components/**"
+      - "src/layouts/**"
       - "src/pages/**"
+      - "src/utils/**"
       - "astro.config.mjs"
+      - "package.json"
+      - "pnpm-lock.yaml"
       - "public/**"
   schedule:
     # Monday 10:30 UTC, a slot of its own (the MeasureUp monitor has 06:00). That is only a

@@ -101,8 +101,33 @@ export function betaFor(start, today) {
 const escapeYaml = (text) => text.replace(/"/g, '\\"');
 const escapeJsxAttr = (text) => text.replace(/"/g, "&quot;");
 
+const PREPARE_CARDS = {
+  fundamentals: `<LinkCard title="How to Prepare for Fundamentals Exams" href="/certs/prepare/fundamentals/" description="Guidance on study time, resources, and readiness for Microsoft Fundamentals exams."/>`,
+  business: `<LinkCard title="How to Prepare for Business Exams" href="/certs/prepare/business/" description="Guidance on study time, resources, and readiness for Microsoft Business exams."/>`,
+  "role-based": `<LinkCard title="How to Prepare for Role-Based Exams" href="/certs/prepare/role-based/" description="Guidance on hands-on practice, documentation, and readiness for Microsoft role-based exams."/>`,
+};
+
+export function inferPrepareTier(code, name) {
+  if (/-90\d$/.test(code) || /\b(?:Fundamentals|Foundations)\b/i.test(name)) {
+    return "fundamentals";
+  }
+  return "role-based";
+}
+
 /** The MDX of the new page; `beta` is { start, state } for a beta exam. */
-export function buildPage({ code, name, area, labs = false, beta = null }) {
+export function buildPage({
+  code,
+  name,
+  area,
+  labs = false,
+  beta = null,
+  tier = inferPrepareTier(code, name),
+}) {
+  if (!(tier in PREPARE_CARDS)) {
+    throw new UsageError(
+      `--tier must be one of ${Object.keys(PREPARE_CARDS).join(", ")} (got ${JSON.stringify(tier)}).`,
+    );
+  }
   const codeLC = code.toLowerCase();
   const description = `Study resources for ${code}: ${name}.`;
 
@@ -113,6 +138,7 @@ export function buildPage({ code, name, area, labs = false, beta = null }) {
   const labsLink = labs
     ? `\n  <LinkCard title="Exam Labs" href="/certs/labs/${area}/${codeLC}/" description="Collection of all lab exercises that Microsoft offers."/>`
     : "";
+  const prepareLink = `\n  ${PREPARE_CARDS[tier]}`;
 
   // The beta tip, then its timeline note as a box of its own right after it.
   const betaBlock = beta
@@ -131,7 +157,7 @@ import { Aside, Card, CardGrid, LinkCard, TabItem, Tabs } from '@components/docs
   <LinkCard title="Exam ${code}: ${escapeJsxAttr(name)}" href="${examUrl}" target="_blank" description=""/>
 
   <LinkCard title="${code} Study Guide" href="${studyGuideUrl}" target="_blank" description="Study guide contains topics and information you need to know to successfully prepare for the exam."/>
-  ${changesCard(code)}${labsLink}
+  ${changesCard(code)}${labsLink}${prepareLink}
 
 ---
 <Tabs>
@@ -179,6 +205,7 @@ function scaffold(args, env) {
   const name = args.name?.toString();
   const isBeta = Boolean(args.beta);
   const hasLabs = Boolean(args.labs);
+  const tierArg = args.tier !== undefined ? String(args.tier) : undefined;
 
   if (!code || !name) {
     throw new UsageError(
@@ -244,7 +271,14 @@ function scaffold(args, env) {
   mkdirSync(dirname(filePath), { recursive: true });
   writeFileSync(
     filePath,
-    buildPage({ code, name, area, labs: hasLabs, beta }),
+    buildPage({
+      code,
+      name,
+      area,
+      labs: hasLabs,
+      beta,
+      ...(tierArg !== undefined ? { tier: tierArg } : {}),
+    }),
     "utf8",
   );
 

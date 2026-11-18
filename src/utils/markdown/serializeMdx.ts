@@ -34,6 +34,63 @@ function attributeValue(node: MdxNode, name: string): string | undefined {
   return typeof attribute?.value === "string" ? attribute.value : undefined;
 }
 
+function attributeBoolean(node: MdxNode, name: string): boolean {
+  const attribute = node.attributes?.find(
+    (item) => item.type === "mdxJsxAttribute" && item.name === name,
+  );
+  if (!attribute) return false;
+  if (attribute.value === null) return true;
+  if (typeof attribute.value === "string") return attribute.value === "true";
+  if (
+    typeof attribute.value === "object" &&
+    attribute.value !== null &&
+    "value" in attribute.value
+  ) {
+    return (
+      String((attribute.value as { value?: unknown }).value).trim() === "true"
+    );
+  }
+  return false;
+}
+
+const MONTHS = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december",
+];
+
+function parseRetireDateUtc(value: string | undefined): number | null {
+  if (!value) return null;
+  const match = value.match(/([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})/);
+  if (!match) return null;
+  const month = MONTHS.indexOf((match[1] ?? "").toLowerCase());
+  if (month === -1) return null;
+  return Date.UTC(Number(match[3]), month, Number(match[2]));
+}
+
+function paragraphNode(...children: MdxNode[]): MdxNode {
+  return { type: "paragraph", children };
+}
+
+function asideBlockquoteNode(label: string, children: MdxNode[]): MdxNode {
+  return {
+    type: "blockquote",
+    children: [
+      paragraphNode({ type: "strong", children: [textNode(`${label}:`)] }),
+      ...children,
+    ],
+  };
+}
+
 function textNode(value: string): MdxNode {
   return { type: "text", value };
 }
@@ -120,10 +177,147 @@ export async function serializeMdx(body: string): Promise<string> {
 
         if (name === "Aside") {
           const type = (attributeValue(node, "type") ?? "note").toUpperCase();
-          parent.children?.splice(index, 1, {
-            type: "blockquote",
-            children: [{ type: "paragraph", children: [{ type: "strong", children: [textNode(`${type}:`)] }] }, ...children],
-          });
+          parent.children?.splice(index, 1, asideBlockquoteNode(type, children));
+          return index;
+        }
+
+        if (name === "BetaBanner") {
+          const summary = attributeValue(node, "summary");
+          const note = attributeValue(node, "note");
+          const extra: MdxNode[] = [];
+          if (summary) extra.push(paragraphNode(textNode(summary)));
+          if (note) extra.push(paragraphNode(textNode(note)));
+          parent.children?.splice(
+            index,
+            1,
+            asideBlockquoteNode("TIP", [...extra, ...children]),
+          );
+          return index;
+        }
+
+        if (name === "RetirementBanner") {
+          const retireDate = attributeValue(node, "retireDate") ?? "an upcoming date";
+          const certRetires = attributeBoolean(node, "certRetires");
+          const certificationName = attributeValue(node, "certificationName");
+          const replacementCode = attributeValue(node, "replacementCode");
+          const replacementName = attributeValue(node, "replacementName");
+          const replacementArea = attributeValue(node, "replacementArea");
+          const replacementHref =
+            attributeValue(node, "replacementHref") ??
+            (replacementArea && replacementCode
+              ? `/certs/${replacementArea}/${replacementCode.toLowerCase()}/`
+              : undefined);
+          const betaNote = attributeValue(node, "betaNote");
+          const customNote = attributeValue(node, "note");
+
+          const retireTime = parseRetireDateUtc(retireDate);
+          const now = new Date();
+          const todayUtc = Date.UTC(
+            now.getUTCFullYear(),
+            now.getUTCMonth(),
+            now.getUTCDate(),
+          );
+          const retired = retireTime !== null && retireTime < todayUtc;
+          const leadText = retired
+            ? certRetires
+              ? `Exam and its certification${certificationName ? `, ${certificationName},` : ""} were retired on ${retireDate}.`
+              : `The exam was retired on ${retireDate}. The certification remains, meaning you can renew it if you already have it.`
+            : certRetires
+              ? `Exam and its certification${certificationName ? `, ${certificationName},` : ""} are being retired on ${retireDate}.`
+              : `The exam is being retired on ${retireDate}. The certification will remain, meaning you can renew it if you already have it.`;
+
+          const bannerChildren: MdxNode[] = [paragraphNode(textNode(leadText))];
+          if (replacementHref && replacementCode) {
+            const label = `${replacementCode}${replacementName ? `: ${replacementName}` : ""}`;
+            bannerChildren.push(
+              paragraphNode(
+                textNode(retired ? "It was replaced by " : "It will be replaced by "),
+                { type: "link", url: replacementHref, children: [textNode(label)] },
+                textNode("."),
+              ),
+            );
+          }
+          if (betaNote) bannerChildren.push(paragraphNode(textNode(betaNote)));
+          bannerChildren.push(...children);
+          const closingNote =
+            customNote ??
+            (retired
+              ? undefined
+              : "Microsoft Learn always takes a while to update with certification retirements so don't panic if you can't see it there yet.");
+          if (closingNote) {
+            bannerChildren.push(paragraphNode(textNode(closingNote)));
+          }
+          parent.children?.splice(
+            index,
+            1,
+            asideBlockquoteNode("CAUTION", bannerChildren),
+          );
+          return index;
+        }
+
+        if (name === "MeasureUpCard") {
+          const ensureU44 = (url: string) =>
+            url.includes("#u44") ? url : `${url}#u44`;
+          const assessmentUrl = attributeValue(node, "assessmentUrl");
+          const practiceTestUrl = attributeValue(node, "practiceTestUrl");
+          const productsSlot = children.filter(
+            (child) => attributeValue(child, "slot") === "products",
+          );
+          const beforeDiscountSlot = children.filter(
+            (child) => attributeValue(child, "slot") === "before-discount",
+          );
+          const defaultSlot = children.filter((child) => !attributeValue(child, "slot"));
+          const productNodes: MdxNode[] =
+            productsSlot.length > 0
+              ? productsSlot
+              : [
+                  ...(assessmentUrl
+                    ? [headingNode("MeasureUp Assessment", ensureU44(assessmentUrl))]
+                    : []),
+                  ...(practiceTestUrl
+                    ? [
+                        headingNode(
+                          "MeasureUp Practice Test",
+                          ensureU44(practiceTestUrl),
+                        ),
+                      ]
+                    : []),
+                ];
+
+          parent.children?.splice(
+            index,
+            1,
+            headingNode("MeasureUp Practice Tests"),
+            ...productNodes,
+            headingNode(
+              "MeasureUp Subscriptions",
+              "https://www.measureup.com/subscription-plans-for-individuals#u44",
+            ),
+            paragraphNode(
+              textNode(
+                "Official Microsoft Practice tests. They are expensive but they will prepare you for the exam. They are harder than normal exam questions but that helps even more to identify your weak areas and where you need to study more. There are also cheaper assessments but they contain less questions and no explanations.",
+              ),
+            ),
+            paragraphNode(
+              textNode(
+                "MeasureUp also offers subscriptions in case you are planning to take multiple exams in the next 12 months.",
+              ),
+            ),
+            ...beforeDiscountSlot,
+            asideBlockquoteNode("TIP", [
+              paragraphNode(
+                textNode("Use our code "),
+                { type: "strong", children: [textNode("MSFTHUB")] },
+                textNode(" for an exclusive 15% discount on the MeasureUp store!"),
+              ),
+            ]),
+            ...defaultSlot,
+          );
+          return index;
+        }
+
+        if (name === "RelatedCerts") {
+          parent.children?.splice(index, 1);
           return index;
         }
 

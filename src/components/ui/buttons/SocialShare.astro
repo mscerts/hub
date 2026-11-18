@@ -19,6 +19,7 @@ type SocialPlatform = {
 };
 
 const encoded_url = encodeURIComponent(Astro.url.href);
+const encoded_title = encodeURIComponent(pageTitle);
 
 const socialPlatforms: SocialPlatform[] = [
   {
@@ -28,12 +29,12 @@ const socialPlatforms: SocialPlatform[] = [
   },
   {
     name: "X",
-    url: `https://twitter.com/intent/tweet?url=${encoded_url}&text=${pageTitle}`,
+    url: `https://x.com/intent/tweet?url=${encoded_url}&text=${encoded_title}`,
     svg: "x",
   },
   {
     name: "LinkedIn",
-    url: `https://www.linkedin.com/sharing/share-offsite/?url=${encoded_url}&title=${pageTitle}`,
+    url: `https://www.linkedin.com/sharing/share-offsite/?url=${encoded_url}&title=${encoded_title}`,
     svg: "linkedIn",
   },
 ];
@@ -114,60 +115,50 @@ const socialPlatforms: SocialPlatform[] = [
   </div>
 </div>
 
-<!--Import the necessary Clipboard plugin-->
-<!-- https://clipboardjs.com/ -->
-
 <script>
-  import ClipboardJS from "clipboard";
+  async function copyCurrentUrl(text: string): Promise<void> {
+    if (!navigator.clipboard) throw new Error("Clipboard API unavailable");
+    await navigator.clipboard.writeText(text);
+  }
 
-  // Initialization of Clipboard
-  (function () {
-    window.addEventListener("load", () => {
-      const clipboards =
-        document.querySelectorAll<HTMLElement>(".js-clipboard");
+  document.querySelectorAll<HTMLElement>(".js-clipboard").forEach((el) => {
+    if (el.dataset.clipboardReady) return;
+    el.dataset.clipboardReady = "true";
+    el.addEventListener("click", async () => {
+      try {
+        await copyCurrentUrl(window.location.href);
+      } catch {
+        return;
+      }
+      const defaultElement = el.querySelector<HTMLElement>(
+        ".js-clipboard-default",
+      );
+      const successElement = el.querySelector<HTMLElement>(
+        ".js-clipboard-success",
+      );
+      const successTextElement = el.querySelector<HTMLElement>(
+        ".js-clipboard-success-text",
+      );
+      const successText = el.dataset.clipboardSuccessText || "Copied";
+      const oldSuccessText = successTextElement?.textContent ?? "Copy link";
 
-      clipboards.forEach((el) => {
-        const clipboard = new ClipboardJS(el, {
-          text: () => {
-            return window.location.href;
-          },
-        });
+      if (successTextElement) {
+        successTextElement.textContent = successText;
+      }
+      if (defaultElement && successElement) {
+        defaultElement.style.display = "none";
+        successElement.style.display = "block";
+      }
 
-        clipboard.on("success", () => {
-          const defaultElement = el.querySelector<HTMLElement>(
-            ".js-clipboard-default"
-          );
-          const successElement = el.querySelector<HTMLElement>(
-            ".js-clipboard-success"
-          );
-          const successTextElement = el.querySelector<HTMLElement>(
-            ".js-clipboard-success-text"
-          );
-          const successText = el.dataset.clipboardSuccessText || "";
-          let oldSuccessText: string | undefined;
-
-          if (successTextElement) {
-            oldSuccessText = successTextElement.textContent || "";
-            successTextElement.textContent = successText;
-          }
-
-          if (defaultElement && successElement) {
-            defaultElement.style.display = "none";
-            successElement.style.display = "block";
-          }
-
-          setTimeout(() => {
-            if (successTextElement && oldSuccessText !== undefined) {
-              successTextElement.textContent = oldSuccessText;
-            }
-
-            if (defaultElement && successElement) {
-              successElement.style.display = "";
-              defaultElement.style.display = "";
-            }
-          }, 800);
-        });
-      });
+      window.setTimeout(() => {
+        if (successTextElement) {
+          successTextElement.textContent = oldSuccessText;
+        }
+        if (defaultElement && successElement) {
+          successElement.style.display = "";
+          defaultElement.style.display = "";
+        }
+      }, 800);
     });
-  })();
+  });
 </script>

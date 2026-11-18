@@ -62,9 +62,15 @@ const flipped = daysUntil(effective) <= 0;
       ),
     );
 
-  const showUpcoming = (root: HTMLElement) => {
+  const showUpcoming = (root: HTMLElement, preserveHash = false) => {
+    const savedUrl = preserveHash
+      ? `${location.pathname}${location.search}${location.hash}`
+      : null;
     // after the tabs script has set itself up
-    requestAnimationFrame(() => triggersOf(root)[1]?.click());
+    requestAnimationFrame(() => {
+      triggersOf(root)[1]?.click();
+      if (savedUrl) history.replaceState(null, "", savedUrl);
+    });
   };
 
   for (const root of roots) {
@@ -74,7 +80,7 @@ const flipped = daysUntil(effective) <= 0;
     if (!root.hasAttribute("data-flipped") && daysUntil(effective) <= 0) {
       root.setAttribute("data-flipped", "");
       root.removeAttribute("id");
-      showUpcoming(root);
+      showUpcoming(root, location.hash !== "#upcoming");
       continue;
     }
     // the exam page's banner links #upcoming: open that tab

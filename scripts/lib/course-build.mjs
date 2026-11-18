@@ -52,7 +52,6 @@ import { buildAudience } from "./course-audience.mjs";
 import { handsOnReason } from "./course-handson.mjs";
 import {
   FOUNDATION_CLASS,
-  flattenFoundations,
   foundationKey,
   groupKeyOf,
   isFoundationKey,
@@ -469,8 +468,12 @@ export function buildCourse({
       kind === "docs" || kind === "github"
         ? null
         : path.split("/").slice(0, 4).join("/");
+    const moduleInfo = modulePath ? (describe?.(modulePath) ?? null) : null;
     const title =
-      (kind === "docs" || kind === "github" ? null : describe?.(path)?.title) ??
+      (kind === "docs" || kind === "github"
+        ? null
+        : (describe?.(path)?.title ??
+          (kind === "module" ? moduleInfo?.title : null))) ??
       m.title ??
       null;
     if (!title) {
@@ -480,8 +483,7 @@ export function buildCourse({
       continue;
     }
     const own = modulePath !== null && ownModules.has(modulePath);
-    const unitSig =
-      modulePath && !own ? (describe?.(modulePath)?.unitSig ?? null) : null;
+    const unitSig = modulePath && !own ? (moduleInfo?.unitSig ?? null) : null;
     if (modulePath && !own && !unitSig) {
       warnings.push(
         `${m.task}: the maintainer accepted ${path}, which is not a candidate and not a module of the exam's course, and learnsync's catalog has no signature for it: it is left out`,
@@ -492,6 +494,14 @@ export function buildCourse({
       task: { key: m.task },
       target: { kind, path },
       title,
+      ...(kind === "unit" && modulePath
+        ? {
+            module: {
+              path: modulePath,
+              title: moduleInfo?.title ?? null,
+            },
+          }
+        : {}),
       source:
         kind === "github"
           ? "P6"
@@ -538,7 +548,9 @@ export function buildCourse({
     taskKeys: orderedKeys,
     rejected,
   });
-  const accepted = routed.accepted;
+  const accepted = new Map(
+    [...routed.accepted].map(([key, rows]) => [key, [...rows].sort(pickOrder)]),
+  );
   // the picks that stay in the course but are marked for the maintainer, in the guide's order
   const review = [];
   for (const key of orderedKeys) {
@@ -576,7 +588,7 @@ export function buildCourse({
   // everything a pick of another exam's course (or found by search) depends on is recorded with its signature
   const picked = new Map();
   const rowsOf = (key) => {
-    const rows = (accepted.get(key) ?? []).sort(pickOrder);
+    const rows = accepted.get(key) ?? [];
     for (const { pick, item } of rows) {
       if (
         pick.source === "P3" ||

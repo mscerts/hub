@@ -21,7 +21,6 @@
  * where they would be read, and answer with the numbers to drop.
  */
 
-import { eachConcept } from "./course-audience.mjs";
 import { githubHref } from "./course-format.mjs";
 import { foundationKey, groupKeyOf } from "./course-foundations.mjs";
 import { squish } from "./course-guide.mjs";

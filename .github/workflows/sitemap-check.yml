@@ -31,22 +31,29 @@ jobs:
 
       - name: Validate sitemap
         id: check
-        continue-on-error: true
         run: |
           python3 -m http.server 4321 --directory dist >/tmp/sitemap-server.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
-          sleep 1
-          CHECK_ORIGIN=http://127.0.0.1:4321 bash scripts/sitemap-check.sh
+          for _ in $(seq 1 20); do
+            curl --silent --fail http://127.0.0.1:4321/ >/dev/null && break
+            sleep 0.25
+          done
+          CHECK_ORIGIN=http://127.0.0.1:4321 REPORT=/tmp/sitemap-report.md bash scripts/sitemap-check.sh
 
-      - name: Create issue on failure
-        if: always() && steps.check.outcome == 'failure'
-        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
-        with:
-          title: "Sitemap Validator Report"
-          content-filepath: /tmp/sitemap-report.md
-          labels: report, automated
+      - name: Raise or update failure issue
+        if: failure() && steps.check.outputs.has_issues == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs raise --title "Sitemap Validator Report" \
+            --file /tmp/sitemap-report.md \
+            --label bug
 
-      - name: Fail on sitemap errors
-        if: always() && steps.check.outcome == 'failure'
-        run: exit 1
+      - name: Close failure issue after healthy run
+        if: steps.check.outputs.has_issues == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/failure-issue.mjs clear --title "Sitemap Validator Report" \
+            --comment "Sitemap validation passed cleanly."

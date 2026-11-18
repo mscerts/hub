@@ -97,3 +97,44 @@ test("a page without versions is serialized as before: components are unwrapped,
   assert.match(copy, /About it/);
   assert.doesNotMatch(copy, /<|import/);
 });
+
+test("RetirementBanner and MeasureUpCard retain their dates, replacement links and discount info in Markdown", async () => {
+  const copy = await serializeMdx(
+    [
+      "import { CardGrid, LinkCard } from '@components/docs';",
+      "import MeasureUpCard from '@components/MeasureUpCard.astro';",
+      "import RetirementBanner from '@components/RetirementBanner.astro';",
+      "",
+      "<RetirementBanner",
+      '  retireDate="February 1, 2099"',
+      "  certRetires={true}",
+      '  certificationName="Microsoft Certified: DevOps Engineer Expert"',
+      '  replacementCode="AZ-401"',
+      '  replacementName="Agentic DevOps"',
+      '  replacementArea="azure"',
+      ">",
+      "",
+      "Announcement link.",
+      "",
+      "</RetirementBanner>",
+      "",
+      "<MeasureUpCard>",
+      '  <CardGrid slot="products">',
+      '    <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/az-400.html#u44" />',
+      "  </CardGrid>",
+      "</MeasureUpCard>",
+      "",
+    ].join("\n"),
+  );
+  assert.match(copy, /CAUTION:/);
+  assert.match(copy, /February 1, 2099/);
+  assert.match(copy, /\[AZ-401: Agentic DevOps\]\(\/certs\/azure\/az-401\/\)/);
+  assert.match(copy, /Announcement link\./);
+  assert.match(copy, /^### MeasureUp Practice Tests$/m);
+  assert.match(
+    copy,
+    /^### \[MeasureUp Practice Test\]\(https:\/\/www\.measureup\.com\/az-400\.html#u44\)$/m,
+  );
+  assert.match(copy, /\*\*MSFTHUB\*\*/);
+  assert.doesNotMatch(copy, /<|import/);
+});

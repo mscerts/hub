@@ -2,7 +2,6 @@
 import { getImage } from "astro:assets";
 import { OG, SITE } from "@data/constants";
 import faviconSvgSrc from "@images/favicon.svg";
-import faviconSrc from "@images/favicon.svg";
 
 const {
   title = SITE.title,
@@ -47,7 +46,7 @@ const socialImageRes = await getImage({
 });
 const socialImage = socialImageRes.src.startsWith("http")
   ? socialImageRes.src
-  : new URL(socialImageRes.src, `${Astro.url.origin}/`).href;
+  : new URL(socialImageRes.src, `${siteUrl}/`).href;
 
 const languages: { [key: string]: string } = {
   en: "",
@@ -80,7 +79,7 @@ const faviconSvg = await getImage({
 });
 
 const appleTouchIcon = await getImage({
-  src: faviconSrc,
+  src: faviconSvgSrc,
   width: 180,
   height: 180,
   format: "png",
@@ -141,6 +140,5 @@ const appleTouchIcon = await getImage({
 <link href={faviconSvg.src} rel="icon" type="image/svg+xml" sizes="any" />
 <meta name="mobile-web-app-capable" content="yes" />
 <link href={appleTouchIcon.src} rel="apple-touch-icon" />
-<link href={appleTouchIcon.src} rel="shortcut icon" />
 {/* Set theme color */}
-<meta name="theme-color" content="#e5e5e5" />
+<meta name="theme-color" content="#222222" />

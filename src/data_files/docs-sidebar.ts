@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { examStatuses, visibleExamStatuses } from "./exam-status.mjs";
 import { docsPath } from "@utils/docs";
@@ -47,12 +47,22 @@ const areaPrefixOrder: Record<string, string[]> = {
 // The statuses as of this build: a NEW badge that has run its 90 days is left out.
 const shownStatuses = visibleExamStatuses();
 
+function isDraftMdx(filePath: string): boolean {
+  const raw = readFileSync(filePath, "utf8");
+  const fm = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  return fm ? /^draft:\s*true\s*$/m.test(fm[1] ?? "") : false;
+}
+
 function buildExamItems(area: keyof typeof examStatuses): DocsSidebarItem[] {
   const docsDir = path.resolve(process.cwd(), "src", "content", "docs", area);
+  const isDev = Boolean(
+    (import.meta as ImportMeta & { env?: { DEV?: boolean } }).env?.DEV,
+  );
   const prefixOrder = areaPrefixOrder[area] ?? [];
   const statuses = shownStatuses[area] as Record<string, DocsSidebarBadge>;
   const codes = readdirSync(docsDir)
     .filter((entry) => entry.toLowerCase().endsWith(".mdx"))
+    .filter((entry) => isDev || !isDraftMdx(path.join(docsDir, entry)))
     .map((entry) => entry.replace(/\.mdx$/i, "").toUpperCase())
     .filter((code) => /^[A-Z]{2,3}-\d{3}$/.test(code))
     .sort((left, right) => {

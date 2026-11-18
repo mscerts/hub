@@ -346,6 +346,30 @@ test("the command line is read as --key value pairs and --flags", () => {
   assert.deepEqual(parseArgs([]), {});
 });
 
+test("buildPage classifies Fundamentals, Business and Role-Based preparation cards", () => {
+  assert.match(
+    buildPage({
+      code: "AZ-900",
+      name: "Microsoft Azure Fundamentals",
+      area: "azure",
+    }),
+    /href="\/certs\/prepare\/fundamentals\/"/,
+  );
+  assert.match(
+    buildPage({
+      code: "AB-732",
+      name: "AI Business Advisor",
+      area: "aibusiness",
+      tier: "business",
+    }),
+    /href="\/certs\/prepare\/business\/"/,
+  );
+  assert.match(
+    buildPage({ code: "AZ-999", name: "X", area: "azure" }),
+    /href="\/certs\/prepare\/role-based\/"/,
+  );
+});
+
 test("buildPage keeps the beta box out of a page that is not beta", () => {
   const page = buildPage({ code: "AZ-999", name: "X", area: "azure" });
   assert.doesNotMatch(page, /:::note|This is a beta exam/);

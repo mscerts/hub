@@ -824,6 +824,17 @@ const WORKFLOWS = [
       },
     ],
   },
+  {
+    file: "sitemap-check.yml",
+    issues: [
+      {
+        title: "Sitemap Validator Report",
+        raiseWhen: "failure() && steps.check.outputs.has_issues == 'true'",
+        clearWhen: "steps.check.outputs.has_issues == 'false'",
+        errorFile: "/tmp/sitemap-report.md",
+      },
+    ],
+  },
 ];
 
 test("the failure issues of the workflows have a stable title, a comment per failed run, and are closed by a healthy run", () => {

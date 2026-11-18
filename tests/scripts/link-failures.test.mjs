@@ -55,7 +55,12 @@ const realToml = readFileSync(join(repoRoot, "lychee-external.toml"), "utf8");
 const scratch = [];
 after(async () => {
   for (const dir of scratch) {
-    await rm(dir, { recursive: true, force: true });
+    await rm(dir, {
+      recursive: true,
+      force: true,
+      maxRetries: 5,
+      retryDelay: 100,
+    }).catch(() => {});
   }
 });
 
@@ -1325,15 +1330,20 @@ const WRITE_COMMANDS = [
   "issue close",
 ];
 
-async function makeWorld() {
+async function makeWorld({ withBuiltSite = true } = {}) {
   const base = await mkdtemp(join(tmpdir(), "link-failures-"));
   scratch.push(base);
   const hub = join(base, "hub");
-  await cp(fixtures, hub, { recursive: true });
+  await cp(fixtures, hub, {
+    recursive: true,
+    filter: (src) => withBuiltSite || !src.endsWith("built-site"),
+  });
   // the fixture site becomes the hub's dist/
-  await rename(join(hub, "built-site"), join(hub, "dist"));
+  if (withBuiltSite) {
+    await rename(join(hub, "built-site"), join(hub, "dist"));
+  }
   // the committed fixture tracker only exists to prove it is never searched
-  await rm(join(hub, "src/data_files/link-failures.json"));
+  await rm(join(hub, "src/data_files/link-failures.json"), { force: true });
   const world = {
     hub,
     lychee: join(base, "lychee-external.json"),
@@ -3415,7 +3425,7 @@ function runAsync(args, env) {
 test("the lychee-free check runs the whole pipeline against a local server, week after week", async () => {
   const server = await startServer();
   try {
-    const world = await makeWorld();
+    const world = await makeWorld({ withBuiltSite: false });
     // a built site that links the local server: 20 good links, 4 problem links, one link the
     // allowlist must not touch, and a link to a source line
     const ok = Array.from(
@@ -3434,7 +3444,6 @@ test("the lychee-free check runs the whole pipeline against a local server, week
       '<a href="/certs/local/">internal</a>',
       "</body></html>",
     ].join("\n");
-    await rm(join(world.hub, "dist"), { recursive: true });
     await mkdir(join(world.hub, "dist/certs/local"), { recursive: true });
     await writeFile(join(world.hub, "dist/certs/local/index.html"), html);
     await mkdir(join(world.hub, "src/content/docs"), { recursive: true });
@@ -3550,7 +3559,7 @@ test("the lychee-free check refuses to run without a built site", async () => {
 test("the lychee-free check writes the redirect chains in lychee's shape, so a local run gives the same findings", async () => {
   const server = await startServer();
   try {
-    const world = await makeWorld();
+    const world = await makeWorld({ withBuiltSite: false });
     const to = (path) => `${server.origin}${path}`;
     const links = [
       "section/retired",
@@ -3562,7 +3571,6 @@ test("the lychee-free check writes the redirect chains in lychee's shape, so a l
     ].map((name) => `<a href="${to(`/allowed/${name}`)}">${name}</a>`);
     const pageA = "dist/certs/local/index.html";
     const pageB = "dist/certs/other/index.html";
-    await rm(join(world.hub, "dist"), { recursive: true });
     for (const [page, anchors] of [
       [pageA, links],
       [pageB, [links[0]]],

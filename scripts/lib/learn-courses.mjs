@@ -644,7 +644,7 @@ export function checkHub({
             file: hub.file,
             // the recording's card is only suggested when the page has none yet
             cards: suggestedCards(course, videos).filter(
-              (card, i) => i === 0 || !have.some((c) => c.kind === "youtube"),
+              (_card, i) => i === 0 || !have.some((c) => c.kind === "youtube"),
             ),
           });
       }
@@ -757,7 +757,7 @@ const courseLabel = (c) => {
  *   summary  { total, byState, added, removed, changed } for the first lines
  */
 export function buildReport({
-  file,
+  file: _file,
   view,
   changes,
   summary,

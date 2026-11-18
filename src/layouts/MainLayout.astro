@@ -65,20 +65,25 @@ interface Props {
     </script>
     <script is:inline data-cfasync="false">
       (() => {
-        const raw =
-          localStorage.getItem("hs_theme") ||
-          localStorage.getItem("starlight-theme");
-        const preference = ["light", "dark", "auto"].includes(raw)
-          ? raw
-          : "dark";
+        let preference = "dark";
+        try {
+          const raw =
+            localStorage.getItem("hs_theme") ||
+            localStorage.getItem("starlight-theme");
+          if (["light", "dark", "auto"].includes(raw)) {
+            preference = raw;
+          }
+          localStorage.setItem("hs_theme", preference);
+          localStorage.removeItem("starlight-theme");
+        } catch {
+          // Keep default dark theme when storage is unavailable.
+        }
         const theme =
           preference === "auto"
             ? matchMedia("(prefers-color-scheme: dark)").matches
               ? "dark"
               : "light"
             : preference;
-        localStorage.setItem("hs_theme", preference);
-        localStorage.removeItem("starlight-theme");
         document.documentElement.classList.toggle("dark", theme === "dark");
         document.documentElement.dataset.theme = theme;
         document

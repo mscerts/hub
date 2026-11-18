@@ -3,7 +3,7 @@
 
 ---
 
-<img src="/src/assets/images/all.svg" width="170" height="200" alt="mscertified" align="right" /><a target="_blank"><img alt='microsoftazure' src='https://img.shields.io/badge/Azure-100000?style=for-the-badge&logo=microsoftazure&logoColor=white&labelColor=0078D4&color=212221'/></a> <a target="_blank"><img alt='dynamics365' src='https://img.shields.io/badge/D365-100000?style=for-the-badge&logo=dynamics365&logoColor=white&labelColor=0B53CE&color=212221'/></a> <a  target="_blank"><img alt='powerbi' src='https://img.shields.io/badge/Power_Platform-100000?style=for-the-badge&logo=powerbi&logoColor=white&labelColor=F2C811&color=212221'/></a> <a  target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/M365_& SCI-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=5E5E5E&color=212221'/></a>
+<img src="/src/assets/images/all.svg" width="170" height="200" alt="mscertified" align="right" /><a target="_blank"><img alt='microsoftazure' src='https://img.shields.io/badge/Azure-100000?style=for-the-badge&logo=microsoftazure&logoColor=white&labelColor=0078D4&color=212221'/></a> <a target="_blank"><img alt='github' src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&labelColor=181717&color=212221'/></a> <a target="_blank"><img alt='aibusiness' src='https://img.shields.io/badge/AI_Business-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=7C3AED&color=212221'/></a> <a target="_blank"><img alt='dynamics365' src='https://img.shields.io/badge/D365-100000?style=for-the-badge&logo=dynamics365&logoColor=white&labelColor=0B53CE&color=212221'/></a> <a target="_blank"><img alt='powerbi' src='https://img.shields.io/badge/Power_Platform-100000?style=for-the-badge&logo=powerbi&logoColor=white&labelColor=F2C811&color=212221'/></a> <a target="_blank"><img alt='microsoft' src='https://img.shields.io/badge/M365_%26_SCI-100000?style=for-the-badge&logo=microsoft&logoColor=white&labelColor=5E5E5E&color=212221'/></a>
 <br>
 <br>
 
@@ -15,7 +15,7 @@ Discover a world of valuable resources and guides to help you navigate the realm
 If you need any additional help or have any questions, be sure to join our [Discord server](https://discord.gg/microsoft-certification-study-group-676990910176821270).
 
 ---
-If you are new to the Microsoft Certification Program, be sure to read the [Ultimate Certification Guide](https://msfthub.com/certs/guide/introduction/). It contains all the information you may need to sucessfully navigate the program.
+If you are new to the Microsoft Certification Program, be sure to read the [Ultimate Certification Guide](https://msfthub.com/certs/guide/introduction/). It contains all the information you may need to successfully navigate the program.
 
 If you are currently preparing for an exam, be sure to check out the [Exam Study Materials](https://msfthub.com/certs/). For every Microsoft Exam there is a collection of Official and Third-Party resources you can use for studying. After that you can also check out this [post](https://msfthub.com/certs/guide/takingtheexams/) to get familiar with the exam format.
 

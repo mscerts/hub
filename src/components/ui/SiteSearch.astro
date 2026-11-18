@@ -203,6 +203,7 @@ const searchId = "site-search-dialog";
     const option = document.createElement("div");
     option.id = `search-result-${index}`;
     option.setAttribute("role", "option");
+    option.setAttribute("aria-selected", "false");
     option.className =
       "cursor-pointer rounded-lg px-2 py-2 transition-colors hover:bg-[#2d2d2d] focus-within:bg-[#2d2d2d]";
 
@@ -376,10 +377,12 @@ const searchId = "site-search-dialog";
       items.forEach((item, index) => {
         if (index === activeIndex) {
           item.dataset.highlighted = "true";
+          item.setAttribute("aria-selected", "true");
           item.scrollIntoView({ block: "nearest" });
           input.setAttribute("aria-activedescendant", item.id);
         } else {
           delete item.dataset.highlighted;
+          item.setAttribute("aria-selected", "false");
         }
       });
       if (activeIndex < 0) input.removeAttribute("aria-activedescendant");

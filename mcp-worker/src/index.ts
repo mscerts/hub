@@ -8,7 +8,13 @@ import {
   RequestBodyTooLargeError,
 } from "./security.ts";
 import { examTools } from "./tools/exams.ts";
-import { voucherTools, guideTools, labTools, blogTools } from "./tools/rest.ts";
+import {
+  voucherTools,
+  guideTools,
+  labTools,
+  courseTools,
+  blogTools,
+} from "./tools/rest.ts";
 import type { ContentBundle } from "./types.ts";
 
 // Content bundle is imported as a static JSON module at deploy time.
@@ -26,6 +32,7 @@ const tools: RegisteredTool[] = [
   ...voucherTools(bundle),
   ...guideTools(bundle),
   ...labTools(bundle),
+  ...courseTools(bundle),
   ...blogTools(bundle),
 ];
 
@@ -43,7 +50,20 @@ interface Bindings {
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-app.use("*", cors({ origin: "*", allowMethods: ["GET", "POST", "OPTIONS"] }));
+for (const publicPath of ["/", "/health"]) {
+  app.use(publicPath, cors({ origin: "*", allowMethods: ["GET", "OPTIONS"] }));
+}
+app.use(
+  "/mcp",
+  cors({
+    origin: (origin, c) => {
+      if (!origin) return "*";
+      return isAllowedOrigin(origin, c.req.url) ? origin : null;
+    },
+    allowMethods: ["POST", "OPTIONS"],
+    allowHeaders: ["Content-Type", "Accept"],
+  }),
+);
 
 // ── Root info ────────────────────────────────────────────────────────────────
 app.get("/", (c) =>

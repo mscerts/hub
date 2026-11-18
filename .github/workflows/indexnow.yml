@@ -9,7 +9,7 @@ permissions:
 
 concurrency:
   group: indexnow-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   submit:
@@ -40,7 +40,9 @@ jobs:
 
           map_url() {
             local file="$1" area code slug remainder
-            if [[ "$file" == src/pages/certs/index.astro ]]; then
+            if [[ "$file" == src/content/docs/guide/markdown.mdx || "$file" == src/content/docs/labs/labtemplate.mdx || "$file" == src/content/docs/labs/labcollection.mdx || "$file" == *-review.mdx ]]; then
+              return
+            elif [[ "$file" == src/pages/certs/index.astro ]]; then
               printf '%s/certs/\n' "$SITE"
             elif [[ "$file" == src/content/docs/prepare/*.mdx ]]; then
               slug=$(basename -- "$file" .mdx)
@@ -61,6 +63,9 @@ jobs:
               area=${remainder%%/*}
               code=$(basename -- "$file" .mdx)
               printf '%s/certs/%s/%s/\n' "$SITE" "$area" "${code,,}"
+            elif [[ "$file" == src/content/docs/*.mdx ]]; then
+              slug=$(basename -- "$file" .mdx)
+              printf '%s/certs/%s/\n' "$SITE" "${slug,,}"
             elif [[ "$file" == src/content/blog/*.mdx ]]; then
               slug=$(basename -- "$file" .mdx)
               printf '%s/news/%s/\n' "$SITE" "$slug"

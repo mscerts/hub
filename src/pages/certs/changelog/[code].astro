@@ -15,7 +15,9 @@ export async function getStaticPaths() {
   // One page per exam page, whether or not its guide has been recorded yet; a retired or renamed exam
   // (AZ-800, AZ-801, PL-400) keeps its history file but has no exam page, so no change page.
   const docs = await getCollection("docs");
+  const isDev = import.meta.env.DEV;
   return docs.flatMap((entry) => {
+    if (!isDev && entry.data.draft === true) return [];
     const code = examCodeOfEntry(entry.id);
     if (!code) return [];
     const history = studyGuideHistory(code) ?? { code, versions: [] };
@@ -86,7 +88,7 @@ const trail = exam
           {tab.guideNote && (
             <Aside type="note">
               <strong>Study guide notice:</strong> {tab.guideNote} See the{" "}
-              <a href={studyGuide} target="_blank">
+              <a href={studyGuide} target="_blank" rel="noopener noreferrer">
                 {code} study guide
               </a>
               .
@@ -103,7 +105,12 @@ const trail = exam
   // A link to an area of the full guide lands inside a closed dropdown ("Show every difference"): open the
   // dropdowns around the target first, then scroll to it, so the link works from anywhere on the page.
   function openAround() {
-    const id = decodeURIComponent(location.hash.slice(1));
+    let id = "";
+    try {
+      id = decodeURIComponent(location.hash.slice(1));
+    } catch {
+      return;
+    }
     const target = id ? document.getElementById(id) : null;
     if (!target) return;
     let opened = false;

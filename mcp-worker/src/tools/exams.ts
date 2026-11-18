@@ -15,13 +15,22 @@ function isExamCategory(cat: string): boolean {
   return (EXAM_CATEGORIES as readonly string[]).includes(cat);
 }
 
+function canonicalDocUrl(slug: string): string {
+  return `https://msfthub.com/certs/${slug}/`;
+}
+
 function findDoc(docs: DocPage[], slug: string): DocPage | undefined {
-  const lower = slug.toLowerCase();
-  return docs.find(
-    (d) =>
-      d.slug.toLowerCase() === lower ||
-      d.slug.toLowerCase().endsWith(`/${lower}`),
-  );
+  const lower = slug.trim().toLowerCase();
+  const compact = lower.replace(/[^a-z0-9]/g, "");
+  return docs.find((d) => {
+    const docSlug = d.slug.toLowerCase();
+    const tail = docSlug.split("/").pop() ?? "";
+    return (
+      docSlug === lower ||
+      tail === lower ||
+      (compact.length > 0 && tail.replace(/[^a-z0-9]/g, "") === compact)
+    );
+  });
 }
 
 function json(data: unknown): ToolResult {
@@ -60,9 +69,10 @@ export function examTools(bundle: ContentBundle): RegisteredTool[] {
           .map((d: DocPage) => ({
             slug: d.slug,
             title: d.title,
+            ...(d.examName ? { examName: d.examName } : {}),
             description: d.description,
             category: d.category,
-            url: `https://msfthub.com/${d.slug}`,
+            url: canonicalDocUrl(d.slug),
           }));
         return json(exams);
       },
@@ -114,9 +124,10 @@ export function examTools(bundle: ContentBundle): RegisteredTool[] {
         return json({
           slug: doc.slug,
           title: doc.title,
+          ...(doc.examName ? { examName: doc.examName } : {}),
           description: doc.description,
           category: doc.category,
-          url: `https://msfthub.com/${doc.slug}`,
+          url: canonicalDocUrl(doc.slug),
           content: doc.body,
           resources: grouped,
         });
@@ -129,7 +140,7 @@ export function examTools(bundle: ContentBundle): RegisteredTool[] {
         name: "msfthub_search_exams",
         description:
           "Search Microsoft certification exam pages by keyword. " +
-          "Searches titles and descriptions.",
+          "Searches exam codes, official exam names, titles, and descriptions.",
         inputSchema: {
           type: "object",
           properties: {
@@ -143,21 +154,23 @@ export function examTools(bundle: ContentBundle): RegisteredTool[] {
         },
       },
       handler({ query }) {
-        const lower = String(query).toLowerCase();
+        const lower = String(query).trim().toLowerCase();
         const matches = bundle.docs
           .filter((d: DocPage) => isExamCategory(d.category))
           .filter(
             (d: DocPage) =>
               d.title.toLowerCase().includes(lower) ||
+              (d.examName ?? "").toLowerCase().includes(lower) ||
               (d.description ?? "").toLowerCase().includes(lower) ||
               d.slug.toLowerCase().includes(lower),
           )
           .map((d: DocPage) => ({
             slug: d.slug,
             title: d.title,
+            ...(d.examName ? { examName: d.examName } : {}),
             description: d.description,
             category: d.category,
-            url: `https://msfthub.com/${d.slug}`,
+            url: canonicalDocUrl(d.slug),
           }));
         return json(matches);
       },

@@ -112,8 +112,16 @@ src/
 ├── utils/voucher-upcoming.mjs # isUpcomingVoucher() and the frontmatter reader behind the UPCOMING voucher tag
 ├── utils/guide-changes/       # Study Guide Changes: diff, state, render, codes, load (docs/study-guide-changes.md)
 ├── utils/guide-change.mjs, guide-change-date.mjs   # What an exam page needs (card, banner) and the 30-day window
-├── content.config.ts          # Content schemas (docs + blog collections)
+├── content.config.ts          # Content schemas (docs, archive + blog collections)
 astro.config.mjs               # Redirects and Astro integrations
+public/
+├── _headers                   # Cloudflare Pages HTTP security headers
+├── assets/icons/              # Microsoft Cloud product icon pack (SVG + PNG + manifest.json)
+└── resource-favicons/         # Cached normalized 32px grayscale external favicons
+mcp-worker/
+├── scripts/bundle.ts          # Builds content-bundle.json from src/content/ with safety checks
+├── src/                       # Cloudflare Worker MCP server (Hono, Streamable HTTP JSON-RPC, read-only tools)
+└── tests/                     # Worker protocol, security, HTTP, and tool unit tests (pnpm test:mcp)
 scripts/
 ├── lib/                       # Shared plumbing of the monitor scripts (docs/monitors/README.md > Shared plumbing)
 ├── beta-note.mjs              # Prints the :::note timeline of a beta exam page (see Beta Exam Pages)

@@ -8,8 +8,12 @@ export interface ResourceLink {
 export interface DocPage {
   slug: string;
   title: string;
+  examName?: string;
   description?: string;
   category: string;
+  voucherCategory?: "100%" | "50%" | "Special";
+  voucherStarts?: string;
+  voucherEnds?: string;
   links: ResourceLink[];
   body: string;
 }

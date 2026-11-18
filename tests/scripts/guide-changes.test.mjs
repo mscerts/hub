@@ -1192,6 +1192,24 @@ test("several detailed skills can land on one broad skill, and detailed skills n
     ],
     [0, 0, 3, 1],
   );
+  assert.equal(changeKind(diff), "rewritten");
+  assert.equal(
+    changeKind({
+      ok: true,
+      audience: { changed: false },
+      stats: {
+        added: 0,
+        removed: 0,
+        reworded: 0,
+        moved: 1,
+        covered: 0,
+        totalNow: 4,
+        changedShare: 0.25,
+        weightsChanged: false,
+      },
+    }),
+    "topics",
+  );
   // Without the group pairing marked broader the same skill is simply removed.
   const plain = diffVersions(DETAILED(), BROAD(), {
     moveThreshold: MOVE_THRESHOLD,

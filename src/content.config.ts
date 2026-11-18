@@ -39,13 +39,11 @@ export const collections = {
       pattern: "**/[^_]*.{md,mdx}",
       base: "./src/content/archive",
     }),
-    schema: z
-      .object({
-        title: z.string(),
-        description: z.string().optional(),
-        draft: z.boolean().optional(),
-      })
-      .passthrough(),
+    schema: z.looseObject({
+      title: z.string(),
+      description: z.string().optional(),
+      draft: z.boolean().optional(),
+    }),
   }),
   docs: defineCollection({
     loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/docs" }),

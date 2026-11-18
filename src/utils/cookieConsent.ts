@@ -175,11 +175,18 @@ export class CookieConsentManager {
 
     // Clear Clarity cookies
     if (typeof window !== "undefined" && typeof window.clarity === "function") {
-      window.clarity("consent", false);
+      try {
+        window.clarity("consentv2", {
+          ad_Storage: "denied",
+          analytics_Storage: "denied",
+        });
+      } catch {
+        // Ignore Clarity revocation failures when third-party scripts are blocked.
+      }
     }
   }
 
-  // Send consent to Microsoft Clarity
+  // Send consent to Microsoft Clarity when Clarity is already initialized
   private sendConsentToClarity(preferences: ConsentPreferences): void {
     if (typeof window !== "undefined" && typeof window.clarity === "function") {
       try {
@@ -187,22 +194,9 @@ export class CookieConsentManager {
           ad_Storage: "denied", // Always deny ad storage since we don't use advertising cookies
           analytics_Storage: preferences.analytics_storage,
         });
-
-        console.log("Consent sent to Clarity:", preferences);
-      } catch (error) {
-        console.warn("Failed to send consent to Clarity:", error);
+      } catch {
+        // Ignore Clarity consent failures when third-party scripts are blocked.
       }
-    } else {
-      console.warn(
-        "Clarity is not available. Consent will be sent when Clarity loads.",
-      );
-
-      // Store consent for when Clarity becomes available
-      window.addEventListener("load", () => {
-        if (typeof window.clarity === "function") {
-          this.sendConsentToClarity(preferences);
-        }
-      });
     }
   }
 

@@ -75,7 +75,7 @@ const statusChanges = Object.entries(
     return {
       code,
       status: status.text,
-      href: docIds.has(id) ? `/${id}/` : `/certs/archive/${id}/`,
+      href: docIds.has(id) ? `/certs/${id}/` : `/certs/archive/${id}/`,
     };
   }),
 );
@@ -100,7 +100,9 @@ const getStatusClass = (status: string) => {
   }
 };
 const getStatusName = (status: string) =>
-  examStatusNames[status as keyof typeof examStatusNames] ?? status;
+  examStatusNames[
+    status.replace(" ", "_") as keyof typeof examStatusNames
+  ] ?? status;
 
 const voucherLabels = {
   "100%": "100% off",
@@ -271,7 +273,7 @@ const vouchers = docs
           {vouchers.map((voucher) => (
             <li>
               <a
-                href={`/${voucher.id}/`}
+                href={`/certs/${voucher.id}/`}
                 class="flex items-center justify-between gap-3 py-3 text-sm font-semibold text-neutral-800 hover:text-orange-800 dark:text-neutral-200 dark:hover:text-orange-300"
               >
                 <span class="min-w-0 truncate">{voucher.data.title}</span>

@@ -136,7 +136,6 @@ export default defineConfig({
     "/aiab/ab-731/": "/certs/aibusiness/ab-731/",
     "/guide/officialstudymaterials/": "/certs/",
     "/guide/howtoprepare/": "/certs/prepare/studymaterials/",
-    "/security/sc-730/": "/certs/security/sc-900/",
     "/vouchers/aichallenge/": "/certs/vouchers/",
     "/vouchers/microsoftignite/": "/certs/vouchers/",
     "/vouchers/fabricdatadays/": "/certs/archive/vouchers/fabricdatadays/",

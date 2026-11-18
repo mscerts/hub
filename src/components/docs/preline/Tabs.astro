@@ -316,10 +316,26 @@ const { html, tabs } = renderTabPanels(
             updateUrl(triggers[next]?.dataset.docsTabHash || hash);
           });
         });
-        const hashIndex = triggers.findIndex(
-          (trigger) =>
-            trigger.dataset.docsTabHash === window.location.hash.slice(1),
-        );
+        const resolveHashMatch = (rawHash: string) => {
+          if (!rawHash) return { index: -1, direct: false, target: null };
+          const directIndex = triggers.findIndex(
+            (trigger) => trigger.dataset.docsTabHash === rawHash,
+          );
+          if (directIndex >= 0) {
+            return { index: directIndex, direct: true, target: null };
+          }
+          let decoded = rawHash;
+          try {
+            decoded = decodeURIComponent(rawHash);
+          } catch {
+            return { index: -1, direct: false, target: null };
+          }
+          const target = decoded ? document.getElementById(decoded) : null;
+          if (!target) return { index: -1, direct: false, target: null };
+          const panelIndex = panels.findIndex((panel) => panel.contains(target));
+          return { index: panelIndex, direct: false, target };
+        };
+        const initialHash = resolveHashMatch(window.location.hash.slice(1));
         let stored = NaN;
         try {
           if (root.dataset.docsSyncKey) {
@@ -332,8 +348,8 @@ const { html, tabs } = renderTabPanels(
           /* Use the first tab when storage is blocked. */
         }
         activate(
-          hashIndex >= 0
-            ? hashIndex
+          initialHash.index >= 0
+            ? initialHash.index
             : Number.isInteger(stored) && stored >= 0 && stored < panels.length
               ? stored
               : 0,
@@ -345,6 +361,13 @@ const { html, tabs } = renderTabPanels(
   function activateTabFromHash() {
     const hash = window.location.hash.slice(1);
     if (!hash) return;
+    let decoded = hash;
+    try {
+      decoded = decodeURIComponent(hash);
+    } catch {
+      decoded = "";
+    }
+    const target = decoded ? document.getElementById(decoded) : null;
     document
       .querySelectorAll<HTMLElement>("[data-docs-tabs]")
       .forEach((root) => {
@@ -353,10 +376,30 @@ const { html, tabs } = renderTabPanels(
             ":scope > [data-docs-tabs-scroll] > [data-docs-tabs-list] > [role='tab']",
           ),
         );
-        const index = triggers.findIndex(
+        const directIndex = triggers.findIndex(
           (trigger) => trigger.dataset.docsTabHash === hash,
         );
-        if (index >= 0) triggers[index]?.click();
+        if (directIndex >= 0) {
+          triggers[directIndex]?.click();
+          return;
+        }
+        if (!target) return;
+        const panels = Array.from(
+          root.querySelectorAll<HTMLElement>(
+            ":scope > [data-docs-tabs-content-wrapper] > [data-docs-tabs-content]",
+          ),
+        );
+        const panelIndex = panels.findIndex((panel) => panel.contains(target));
+        if (panelIndex >= 0 && panels[panelIndex]?.hidden) {
+          panels.forEach((panel, index) => {
+            const trigger = triggers[index];
+            const selected = index === panelIndex;
+            trigger?.setAttribute("aria-selected", String(selected));
+            if (trigger) trigger.tabIndex = selected ? 0 : -1;
+            panel.hidden = !selected;
+          });
+          target.scrollIntoView();
+        }
       });
   }
 

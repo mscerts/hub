@@ -157,7 +157,8 @@ export const examStatusStyles = {
   NEW: "bg-green-100 text-green-800 dark:bg-green-400/15 dark:text-green-300",
   BETA: "bg-[#fae8ff] text-[#86198f] dark:bg-[#d946ef]/15 dark:text-[#f0abfc]",
   GA: "bg-green-100 text-green-800 dark:bg-green-400/15 dark:text-green-300",
-  AT_RISK: "bg-amber-400/15 text-amber-300",
+  AT_RISK:
+    "bg-amber-100 text-amber-950 dark:bg-amber-400/15 dark:text-amber-300",
   RETIRING: "bg-red-100 text-red-800 dark:bg-red-400/15 dark:text-red-300",
   RETIRED: "bg-gray-100 text-gray-700 dark:bg-[#64748b]/15 dark:text-[#cbd5e1]",
   UPCOMING: "bg-blue-100 text-blue-800 dark:bg-blue-400/15 dark:text-blue-300",

@@ -599,6 +599,29 @@ test("a page the maintainer accepted that is not a candidate is a pick all the s
     validateCourse(result.course, { guide: guide() }).errors,
     [],
   );
+
+  // a hand-accepted unit collapses into its module using the module catalog's title without warning
+  const manualUnit = build({
+    gated: gatedWith(
+      store([
+        decided(T1, "/training/modules/cosmos-routes/2-unit", {
+          title: "Unit title",
+          reason: "Covers routing concepts.",
+        }),
+      ]),
+    ),
+    describe: describeModule,
+  });
+  assert.equal(manualUnit.ok, true, manualUnit.problems.join("\n"));
+  assert.equal(
+    picksOf(manualUnit.course).find(
+      ({ pick }) => pick.target.path === "/training/modules/cosmos-routes",
+    )?.pick.title,
+    describeModule("/training/modules/cosmos-routes").title,
+  );
+  assert.ok(
+    !manualUnit.warnings.some((w) => w.includes("has no title for the module")),
+  );
 });
 
 test("an accept without a candidate that has no title, no signature or no note is left out, and the build says so", () => {

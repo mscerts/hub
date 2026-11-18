@@ -72,7 +72,6 @@ function sseResponse(body: string): Response {
     headers: {
       "Content-Type": "text/event-stream",
       "Cache-Control": "no-cache",
-      "Access-Control-Allow-Origin": "*",
     },
   });
 }

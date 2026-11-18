@@ -1,6 +1,37 @@
 import type { RegisteredTool } from "../protocol.ts";
 import type { ContentBundle, DocPage } from "../types.ts";
 
+const AREA_BY_PREFIX: Record<string, string> = {
+  AB: "aibusiness",
+  AI: "azure",
+  AZ: "azure",
+  DP: "azure",
+  GH: "github",
+  MB: "dynamics",
+  MD: "microsoft365",
+  MS: "microsoft365",
+  PL: "power",
+  SC: "security",
+};
+
+const COURSE_AREAS = [
+  "azure",
+  "aibusiness",
+  "github",
+  "microsoft365",
+  "security",
+  "power",
+  "dynamics",
+] as const;
+
+function canonicalDocUrl(slug: string): string {
+  return `https://msfthub.com/certs/${slug}/`;
+}
+
+function canonicalBlogUrl(slug: string): string {
+  return `https://msfthub.com/news/${slug}/`;
+}
+
 function json(data: unknown) {
   return {
     content: [{ type: "text" as const, text: JSON.stringify(data, null, 2) }],
@@ -12,12 +43,17 @@ function notFound(msg: string) {
 }
 
 function findDoc(docs: DocPage[], slug: string): DocPage | undefined {
-  const lower = slug.toLowerCase();
-  return docs.find(
-    (d) =>
-      d.slug.toLowerCase() === lower ||
-      d.slug.toLowerCase().endsWith(`/${lower}`),
-  );
+  const lower = slug.trim().toLowerCase();
+  const compact = lower.replace(/[^a-z0-9]/g, "");
+  return docs.find((d) => {
+    const docSlug = d.slug.toLowerCase();
+    const tail = docSlug.split("/").pop() ?? "";
+    return (
+      docSlug === lower ||
+      tail === lower ||
+      (compact.length > 0 && tail.replace(/[^a-z0-9]/g, "") === compact)
+    );
+  });
 }
 
 function groupLinks(doc: DocPage) {
@@ -37,9 +73,19 @@ function groupLinks(doc: DocPage) {
   return grouped;
 }
 
+function courseExamCode(slug: string): string {
+  return (slug.split("/").pop() ?? slug).toUpperCase();
+}
+
+function courseArea(slug: string): string | undefined {
+  const prefix = courseExamCode(slug).split("-")[0] ?? "";
+  return AREA_BY_PREFIX[prefix];
+}
+
 export function voucherTools(bundle: ContentBundle): RegisteredTool[] {
+  // Only categorized voucher pages are active offers (paused/ended pages omit voucherCategory).
   const vouchers = bundle.docs.filter(
-    (d: DocPage) => d.category === "vouchers",
+    (d: DocPage) => d.category === "vouchers" && Boolean(d.voucherCategory),
   );
 
   return [
@@ -47,7 +93,7 @@ export function voucherTools(bundle: ContentBundle): RegisteredTool[] {
       definition: {
         name: "msfthub_list_vouchers",
         description:
-          "List all discounted Microsoft exam voucher programs on msfthub. " +
+          "List active discounted Microsoft exam voucher programs on msfthub. " +
           "Includes free and discounted exam voucher opportunities.",
         inputSchema: { type: "object", properties: {} },
       },
@@ -57,7 +103,10 @@ export function voucherTools(bundle: ContentBundle): RegisteredTool[] {
             slug: v.slug,
             title: v.title,
             description: v.description,
-            url: `https://msfthub.com/${v.slug}`,
+            voucherCategory: v.voucherCategory,
+            ...(v.voucherStarts ? { voucherStarts: v.voucherStarts } : {}),
+            ...(v.voucherEnds ? { voucherEnds: v.voucherEnds } : {}),
+            url: canonicalDocUrl(v.slug),
           })),
         );
       },
@@ -67,15 +116,15 @@ export function voucherTools(bundle: ContentBundle): RegisteredTool[] {
       definition: {
         name: "msfthub_get_voucher",
         description:
-          "Get full details and links for a specific exam voucher program. " +
-          "Use slug from msfthub_list_vouchers, e.g. 'virtualtrainingdays', 'betaexams'.",
+          "Get full details and links for a specific active exam voucher program. " +
+          "Use slug from msfthub_list_vouchers, e.g. 'studentdiscount', 'betaexams'.",
         inputSchema: {
           type: "object",
           properties: {
             slug: {
               type: "string",
               description:
-                "Voucher slug, e.g. 'virtualtrainingdays', 'betaexams', 'partnerweek'",
+                "Voucher slug, e.g. 'studentdiscount', 'betaexams', 'partnerweek'",
             },
           },
           required: ["slug"],
@@ -92,7 +141,10 @@ export function voucherTools(bundle: ContentBundle): RegisteredTool[] {
           slug: doc.slug,
           title: doc.title,
           description: doc.description,
-          url: `https://msfthub.com/${doc.slug}`,
+          voucherCategory: doc.voucherCategory,
+          ...(doc.voucherStarts ? { voucherStarts: doc.voucherStarts } : {}),
+          ...(doc.voucherEnds ? { voucherEnds: doc.voucherEnds } : {}),
+          url: canonicalDocUrl(doc.slug),
           content: doc.body,
           links: groupLinks(doc),
         });
@@ -102,15 +154,19 @@ export function voucherTools(bundle: ContentBundle): RegisteredTool[] {
 }
 
 export function guideTools(bundle: ContentBundle): RegisteredTool[] {
-  const guides = bundle.docs.filter((d: DocPage) => d.category === "guide");
+  const guides = bundle.docs.filter(
+    (d: DocPage) =>
+      (d.category === "guide" && d.slug !== "guide/markdown") ||
+      d.category === "prepare",
+  );
 
   return [
     {
       definition: {
         name: "msfthub_list_guides",
         description:
-          "List all certification program guide pages on msfthub. " +
-          "Covers scheduling exams, certification dashboard, renewal, student opportunities, and more.",
+          "List all certification program and exam preparation guide pages on msfthub. " +
+          "Covers scheduling exams, certification dashboard, renewal, student opportunities, and how to prepare.",
         inputSchema: { type: "object", properties: {} },
       },
       handler() {
@@ -119,7 +175,8 @@ export function guideTools(bundle: ContentBundle): RegisteredTool[] {
             slug: g.slug,
             title: g.title,
             description: g.description,
-            url: `https://msfthub.com/${g.slug}`,
+            category: g.category,
+            url: canonicalDocUrl(g.slug),
           })),
         );
       },
@@ -129,15 +186,15 @@ export function guideTools(bundle: ContentBundle): RegisteredTool[] {
       definition: {
         name: "msfthub_get_guide",
         description:
-          "Get content and links from a specific certification guide page. " +
-          "Use slug from msfthub_list_guides, e.g. 'schedulingexam', 'certificationrenewal'.",
+          "Get content and links from a specific certification or preparation guide page. " +
+          "Use slug from msfthub_list_guides, e.g. 'schedulingexam', 'certificationrenewal', 'role-based'.",
         inputSchema: {
           type: "object",
           properties: {
             slug: {
               type: "string",
               description:
-                "Guide slug, e.g. 'schedulingexam', 'certificationrenewal', 'studentopportunities'",
+                "Guide slug, e.g. 'schedulingexam', 'certificationrenewal', 'fundamentals', 'role-based'",
             },
           },
           required: ["slug"],
@@ -154,7 +211,8 @@ export function guideTools(bundle: ContentBundle): RegisteredTool[] {
           slug: doc.slug,
           title: doc.title,
           description: doc.description,
-          url: `https://msfthub.com/${doc.slug}`,
+          category: doc.category,
+          url: canonicalDocUrl(doc.slug),
           content: doc.body,
           links: doc.links,
         });
@@ -164,7 +222,9 @@ export function guideTools(bundle: ContentBundle): RegisteredTool[] {
 }
 
 export function labTools(bundle: ContentBundle): RegisteredTool[] {
-  const labs = bundle.docs.filter((d: DocPage) => d.category === "labs");
+  const labs = bundle.docs.filter(
+    (d: DocPage) => d.category === "labs" && /^labs\/[^/]+\/[^/]+$/.test(d.slug),
+  );
 
   return [
     {
@@ -172,7 +232,7 @@ export function labTools(bundle: ContentBundle): RegisteredTool[] {
         name: "msfthub_get_exam_labs",
         description:
           "Get lab exercise resources for a specific Microsoft certification exam. " +
-          "Returns links to Microsoft Learn labs and hands-on exercises.",
+          "Returns links to Applied Skills, Microsoft Learn labs, and GitHub hands-on exercises.",
         inputSchema: {
           type: "object",
           properties: {
@@ -185,12 +245,21 @@ export function labTools(bundle: ContentBundle): RegisteredTool[] {
         },
       },
       handler({ exam }) {
-        const lower = String(exam).toLowerCase().replace(/-/g, "");
-        const doc = labs.find(
-          (d: DocPage) =>
-            d.slug.toLowerCase().includes(lower) ||
-            d.slug.toLowerCase().endsWith(`/${String(exam).toLowerCase()}`),
-        );
+        const raw = String(exam).trim().toLowerCase();
+        const normalized = raw
+          .replace(/^(?:certs\/)?(?:labs\/)?(?:[a-z0-9]+\/)?/, "")
+          .replace(/[^a-z0-9]/g, "");
+        const doc =
+          normalized.length > 0
+            ? labs.find((d: DocPage) => {
+                const docSlug = d.slug.toLowerCase();
+                const code = (docSlug.split("/").pop() ?? "").replace(
+                  /[^a-z0-9]/g,
+                  "",
+                );
+                return docSlug === raw || code === normalized;
+              })
+            : undefined;
 
         if (!doc)
           return notFound(
@@ -201,9 +270,93 @@ export function labTools(bundle: ContentBundle): RegisteredTool[] {
           slug: doc.slug,
           title: doc.title,
           description: doc.description,
-          url: `https://msfthub.com/${doc.slug}`,
+          url: canonicalDocUrl(doc.slug),
           content: doc.body,
           labs: doc.links,
+          labsByCategory: groupLinks(doc),
+        });
+      },
+    },
+  ];
+}
+
+export function courseTools(bundle: ContentBundle): RegisteredTool[] {
+  const courses = bundle.docs.filter(
+    (d: DocPage) => d.category === "courses" && !d.slug.endsWith("-review"),
+  );
+
+  return [
+    {
+      definition: {
+        name: "msfthub_list_courses",
+        description:
+          "List structured Study Guide Courses on msfthub. " +
+          "Each course maps official study guide skills task-by-task to Microsoft Learn modules and documentation.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            category: {
+              type: "string",
+              enum: [...COURSE_AREAS],
+              description:
+                "Optional exam area filter: azure | aibusiness | github | microsoft365 | security | power | dynamics",
+            },
+          },
+        },
+      },
+      handler({ category }) {
+        return json(
+          courses
+            .filter(
+              (c: DocPage) => !category || courseArea(c.slug) === category,
+            )
+            .map((c: DocPage) => ({
+              exam: courseExamCode(c.slug),
+              slug: c.slug,
+              title: c.title,
+              description: c.description,
+              category: courseArea(c.slug),
+              resourceCount: c.links.length,
+              url: canonicalDocUrl(c.slug),
+            })),
+        );
+      },
+    },
+
+    {
+      definition: {
+        name: "msfthub_get_course",
+        description:
+          "Get the structured Study Guide Course for a Microsoft certification exam, " +
+          "including task-by-task learning modules and documentation links. " +
+          "Pass the exam code, e.g. 'AZ-104', 'SC-300', 'PL-300'.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            exam: {
+              type: "string",
+              description: "Exam code or course slug, e.g. 'AZ-104', 'SC-300'",
+            },
+          },
+          required: ["exam"],
+        },
+      },
+      handler({ exam }) {
+        const doc = findDoc(courses, String(exam));
+        if (!doc)
+          return notFound(
+            `Study Guide Course '${exam}' not found. Use msfthub_list_courses to see available courses.`,
+          );
+
+        return json({
+          exam: courseExamCode(doc.slug),
+          slug: doc.slug,
+          title: doc.title,
+          description: doc.description,
+          category: courseArea(doc.slug),
+          url: canonicalDocUrl(doc.slug),
+          content: doc.body,
+          resources: groupLinks(doc),
         });
       },
     },
@@ -231,7 +384,7 @@ export function blogTools(bundle: ContentBundle): RegisteredTool[] {
             authors: p.authors,
             tags: p.tags,
             readTime: p.readTime,
-            url: `https://msfthub.com/news/${p.slug}`,
+            url: canonicalBlogUrl(p.slug),
           })),
         );
       },
@@ -273,7 +426,7 @@ export function blogTools(bundle: ContentBundle): RegisteredTool[] {
           authors: post.authors,
           tags: post.tags,
           readTime: post.readTime,
-          url: `https://msfthub.com/news/${post.slug}`,
+          url: canonicalBlogUrl(post.slug),
           content: post.body,
         });
       },

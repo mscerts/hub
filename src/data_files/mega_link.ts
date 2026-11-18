@@ -1,5 +1,5 @@
 // Define data structures for services and success stories
-import mascotImage from "../images/mascot.png";
+import mascotImage from "@images/mascot.png";
 
 export const servicesData = [
   {

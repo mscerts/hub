@@ -71,6 +71,49 @@ describe("MCP HTTP endpoint", () => {
       { ...headers, origin: "https://attacker.example" },
     );
     assert.equal(response.status, 403);
+    assert.equal(response.headers.get("access-control-allow-origin"), null);
+
+    const preflight = await app.request(
+      "/mcp",
+      {
+        method: "OPTIONS",
+        headers: {
+          origin: "https://attacker.example",
+          "access-control-request-method": "POST",
+        },
+      },
+      allowBindings,
+    );
+    assert.equal(preflight.headers.get("access-control-allow-origin"), null);
+  });
+
+  test("reflects allowed web origins on CORS preflight and POST", async () => {
+    const preflight = await app.request(
+      "/mcp",
+      {
+        method: "OPTIONS",
+        headers: {
+          origin: "https://msfthub.com",
+          "access-control-request-method": "POST",
+        },
+      },
+      allowBindings,
+    );
+    assert.equal(
+      preflight.headers.get("access-control-allow-origin"),
+      "https://msfthub.com",
+    );
+
+    const response = await post(
+      '{"jsonrpc":"2.0","id":1,"method":"ping"}',
+      allowBindings,
+      { ...headers, origin: "https://msfthub.com" },
+    );
+    assert.equal(response.status, 200);
+    assert.equal(
+      response.headers.get("access-control-allow-origin"),
+      "https://msfthub.com",
+    );
   });
 
   test("rejects oversized request bodies", async () => {

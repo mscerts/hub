@@ -5,11 +5,12 @@ import AvatarBlogLarge from "@components/ui/avatars/AvatarBlogLarge.astro";
 import CardBlog from "@components/ui/cards/CardBlog.astro";
 import SocialShare from "@components/ui/buttons/SocialShare.astro";
 import Giscus from "@components/ui/comments/Giscus.astro";
-import { Image } from "astro:assets";
+import { Aside } from "@components/docs";
+import { Image, getImage } from "astro:assets";
 import { capitalize, formatDate } from "@utils/utils";
 import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { SITE } from "@data/constants";
+import { OG, SITE } from "@data/constants";
 
 // Generate static paths for all blog posts
 export async function getStaticPaths() {
@@ -57,6 +58,12 @@ const relatedPosts: CollectionEntry<"blog">[] = allBlogPosts
 const pageTitle: string = `${post.data.title} | ${SITE.title}`;
 const metaDescription = post.data.description;
 const ogTitle = `${post.data.title} | News | ${SITE.title}`;
+const fallbackSocialImage = await getImage({
+  src: OG.image,
+  width: 1200,
+  height: 600,
+  format: "png",
+});
 ---
 
 <MainLayout
@@ -72,7 +79,7 @@ const ogTitle = `${post.data.title} | News | ${SITE.title}`;
     description: post.data.description,
     image: post.data.cardImage?.src
       ? new URL(post.data.cardImage.src, `${SITE.url}/`).href
-      : `${SITE.url}/social.png`,
+      : new URL(fallbackSocialImage.src, `${SITE.url}/`).href,
     datePublished: post.data.pubDate.toISOString(),
     dateModified: post.data.updatedDate
       ? post.data.updatedDate.toISOString()
@@ -161,7 +168,7 @@ const ogTitle = `${post.data.title} | News | ${SITE.title}`;
 
       {/* Blog post content - MDX */}
       <div class="prose prose-lg prose-neutral dark:prose-invert max-w-none">
-        <Content />
+        <Content components={{ Aside }} />
       </div>
 
       {/* Tags and share section */}
