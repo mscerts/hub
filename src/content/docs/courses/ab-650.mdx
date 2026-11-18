@@ -1,0 +1,1371 @@
+---
+title: AB-650 Study Guide Course
+description: "Follow a structured AB-650 course organized by study guide task, with Microsoft Learn training and documentation for Administering Microsoft 365 and AI Services."
+---
+import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
+
+:::note
+This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official AB-650 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/ab-650?WT.mc_id=studentamb_165290). Each task of the guide links to the Microsoft Learn training and the documentation that cover it. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AB-650 labs page](/certs/labs/aibusiness/ab-650/), not here.
+
+The course follows the approach of [How to Prepare for Role-Based Exams](/certs/prepare/role-based/): the study guide is the source of truth for what the exam covers, so work through it task by task, with the training to learn a topic and the documentation for the details and for hands-on work. Videos, practice tests and the other resources for the exam are on the [AB-650 Study Materials](/certs/aibusiness/ab-650/) page.
+:::
+
+## Audience profile
+
+As a candidate for this Microsoft Certification, you configure, manage, secure, and govern Microsoft 365 tenants, workloads, and AI services, including Microsoft 365 Copilot, agents, and connected AI capabilities. You enable secure, compliant, and scalable productivity across the organization by governing data access, protecting information, and supporting collaboration between users and agents. You operate and continuously optimize Microsoft 365 and AI services at enterprise scale, helping to ensure reliable and effective outcomes in an AI-powered workplace.
+
+As a Microsoft 365 and AI services administrator, you collaborate with architects and administrators across workloads, infrastructure, identity, security, compliance, endpoints, and applications.
+
+For this exam, you should have experience with Microsoft 365 workloads and Microsoft Entra ID, an understanding of Defender XDR capabilities, and familiarity with Microsoft Graph PowerShell.
+
+## Configure and manage Microsoft 365 tenants and workloads (20–25%)
+
+### Configure and manage a Microsoft 365 tenant
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Introduction to Microsoft 365 core services and admin controls" href="https://learn.microsoft.com/training/modules/introduction-microsoft-365-core-services-admin-control?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/introduction-to-entra-id-2026?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/understand-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="What is Microsoft 365 for business" href="https://learn.microsoft.com/microsoft-365/admin/admin-overview/what-is-microsoft-365-for-business?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Modern change management for Microsoft 365 - Overview - Microsoft 365 admin" href="https://learn.microsoft.com/microsoft-365/admin/manage/plan-for-change-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 admin center - Overview" href="https://learn.microsoft.com/microsoft-365/admin/admin-overview/admin-center-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Health dashboard overview" href="https://learn.microsoft.com/microsoft-365/admin/manage/health-dashboard-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure branding in a Microsoft 365 tenant, including logo, company URL, themes, and backgrounds
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Provision and brand a Microsoft 365 tenant" href="https://learn.microsoft.com/training/modules/provision-brand-microsoft-365-tenant?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Customize the theme for your organization - Microsoft 365 admin" href="https://learn.microsoft.com/microsoft-365/admin/setup/customize-your-organization-theme?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add company branding to your organization's sign-in page" href="https://learn.microsoft.com/entra/fundamentals/how-to-customize-branding?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement and manage domains
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement initial configuration of Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/implement-initial-configuration-of-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Remove a domain from Microsoft 365" href="https://learn.microsoft.com/microsoft-365/admin/get-help-with-domains/remove-a-domain?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add a custom domain to Microsoft 365" href="https://learn.microsoft.com/microsoft-365/admin/setup/add-domain?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add your custom domain" href="https://learn.microsoft.com/entra/fundamentals/add-custom-domain?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add and verify custom domain names" href="https://learn.microsoft.com/entra/identity/users/domains-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connect your domain by adding DNS records" href="https://learn.microsoft.com/microsoft-365/admin/get-help-with-domains/create-dns-records-at-any-dns-hosting-provider?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Gather the information you need to create DNS records" href="https://learn.microsoft.com/microsoft-365/admin/get-help-with-domains/information-for-dns-records?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add or replace a onmicrosoft.com fallback domain" href="https://learn.microsoft.com/microsoft-365/admin/setup/add-or-replace-your-onmicrosoftcom-domain?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="External Domain Name System records for Microsoft 365 - Microsoft 365 Enterprise" href="https://learn.microsoft.com/microsoft-365/enterprise/external-domain-name-system-records?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Select the domain to use for email from Microsoft 365 products" href="https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Bulk changes to usernames during verified domain changes" href="https://learn.microsoft.com/entra/identity/monitoring-health/troubleshoot-audit-data-verified-domain?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Admin takeover of an unmanaged directory" href="https://learn.microsoft.com/entra/identity/users/domains-admin-takeover?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change subdomain authentication type using PowerShell and Graph" href="https://learn.microsoft.com/entra/identity/users/domains-verify-custom-subdomain?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Update DNS records to keep your website with your current hosting provider" href="https://learn.microsoft.com/microsoft-365/admin/dns/update-dns-records-to-retain-current-hosting-provider?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change your email address to use your custom domain" href="https://learn.microsoft.com/microsoft-365/admin/email/change-email-address?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Buy a domain name" href="https://learn.microsoft.com/microsoft-365/admin/get-help-with-domains/buy-a-domain-name?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Find and fix issues after adding your domain or DNS records" href="https://learn.microsoft.com/microsoft-365/admin/get-help-with-domains/find-and-fix-issues?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Find your domain registrar and DNS hosting provider" href="https://learn.microsoft.com/microsoft-365/admin/get-help-with-domains/find-your-domain-registrar?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Perform an internal admin takeover" href="https://learn.microsoft.com/microsoft-365/admin/misc/become-the-admin?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Remove a domain from another account" href="https://learn.microsoft.com/microsoft-365/admin/misc/remove-a-domain-from-another-account?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Domains Frequently Asked Questions" href="https://learn.microsoft.com/microsoft-365/admin/setup/domains-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and manage organizational settings, including security and privacy settings and the organization profile
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure your Microsoft 365 experience" href="https://learn.microsoft.com/training/modules/configure-microsoft-365-experience?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Set the password expiration policy for your organization" href="https://learn.microsoft.com/microsoft-365/admin/manage/set-password-expiration-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change your organization's address, contact preferences, and technical contact in the Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/manage/change-address-contact-and-more?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Idle session timeout for Microsoft 365" href="https://learn.microsoft.com/microsoft-365/admin/manage/idle-session-timeout-web-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Add-ins in the Microsoft 365 Admin Center" href="https://learn.microsoft.com/microsoft-365/admin/manage/manage-addins-in-the-admin-center?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage and monitor Microsoft 365 licenses, including group-based licensing and pay-as-you-go
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="License Microsoft 365 and AI services at scale" href="https://learn.microsoft.com/training/modules/license-microsoft-365-ai-services?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Perform basic administrative tasks for Microsoft 365 Copilot" href="https://learn.microsoft.com/training/modules/perform-admin-tasks-microsoft-365-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Assign or unassign licenses for users in the Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Buy or remove licenses for a Microsoft business subscription" href="https://learn.microsoft.com/microsoft-365/commerce/licenses/buy-licenses?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand subscriptions and licenses in Microsoft 365 for business" href="https://learn.microsoft.com/microsoft-365/commerce/licenses/subscriptions-and-licenses?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage and monitor licenses for AI services, including Microsoft 365 Copilot, Microsoft Agent 365, and Microsoft Copilot Studio
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor and optimize Microsoft 365 AI services" href="https://learn.microsoft.com/training/modules/monitor-optimize-m365-ai-services?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Microsoft 365 Copilot and agents" href="https://learn.microsoft.com/training/modules/explore-microsoft-365-copilot-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft 365 Copilot readiness report - Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-readiness?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Billing and licensing for Microsoft Copilot Studio" href="https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and use Microsoft 365 Backup, including setup, restore, and monitor
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Keep a Microsoft 365 tenant resilient and healthy" href="https://learn.microsoft.com/training/modules/maintain-microsoft-365-tenant-health?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Restore data in Microsoft 365 Backup" href="https://learn.microsoft.com/microsoft-365/backup/backup-restore-data?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up Microsoft 365 Backup" href="https://learn.microsoft.com/microsoft-365/backup/backup-setup?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage consumption and invoices for Microsoft 365 Backup" href="https://learn.microsoft.com/microsoft-365/backup/backup-billing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Microsoft 365 Backup" href="https://learn.microsoft.com/microsoft-365/backup/backup-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and review network connectivity insights
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage tenant health and services in Microsoft 365" href="https://learn.microsoft.com/training/modules/manage-tenant-services-microsoft-365?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft 365 Network Insights - Microsoft 365 Enterprise" href="https://learn.microsoft.com/microsoft-365/enterprise/office-365-network-mac-perf-insights?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Network connectivity in the Microsoft 365 Admin Center - Microsoft 365 Enterprise" href="https://learn.microsoft.com/microsoft-365/enterprise/office-365-network-mac-perf-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reviewing network connection failures for your tenant users when they connect to Microsoft 365 services - Microsoft 365 Enterprise" href="https://learn.microsoft.com/microsoft-365/enterprise/office-365-network-mac-perf-connection-blockers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assessing Microsoft 365 network connectivity - Microsoft 365 Enterprise" href="https://learn.microsoft.com/microsoft-365/enterprise/assessing-network-connectivity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor the health of Microsoft 365 services by using Service health, including notification configuration
+
+:::note
+The Microsoft Learn module "Keep a Microsoft 365 tenant resilient and healthy" also covers this task. It is listed once, under [Configure and use Microsoft 365 Backup, including setup, restore, and monitor](#configure-and-use-microsoft-365-backup-including-setup-restore-and-monitor).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How to check Microsoft 365 service health" href="https://learn.microsoft.com/microsoft-365/enterprise/view-service-health?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prepare for Microsoft 365 updates with Message center - Microsoft 365 admin" href="https://learn.microsoft.com/microsoft-365/admin/manage/message-center?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Manage Microsoft 365 workloads
+
+#### Create and manage mailboxes, including shared mailboxes
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Exchange Online and Microsoft Teams workloads" href="https://learn.microsoft.com/training/modules/configure-exchange-teams?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="About shared mailboxes in Microsoft 365" href="https://learn.microsoft.com/microsoft-365/admin/email/about-shared-mailboxes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Which permissions should you use for a shared mailbox" href="https://learn.microsoft.com/exchange/collaboration-exo/shared-mailboxes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Room and Equipment Mailboxes" href="https://learn.microsoft.com/microsoft-365/admin/manage/room-and-equipment-mailboxes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure shared mailbox settings" href="https://learn.microsoft.com/microsoft-365/admin/email/configure-a-shared-mailbox?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a shared mailbox" href="https://learn.microsoft.com/microsoft-365/admin/email/create-a-shared-mailbox?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Convert a user mailbox to a shared mailbox" href="https://learn.microsoft.com/microsoft-365/admin/email/convert-user-mailbox-to-shared-mailbox?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Step 4 - Forward a former employee's email to another employee or convert to a shared mailbox" href="https://learn.microsoft.com/microsoft-365/admin/add-users/remove-former-employee-step-4?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Service advisory for non-compliant shared mailboxes in Exchange Online" href="https://learn.microsoft.com/microsoft-365/enterprise/microsoft-365-non-compliant-shared-mailboxes-exo-service-advisory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Room and Equipment Mailboxes FAQ" href="https://learn.microsoft.com/microsoft-365/admin/manage/room-equipment-mailboxes-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage teams in Microsoft Teams, including channels, owners, and members
+
+:::note
+The Microsoft Learn module "Configure Exchange Online and Microsoft Teams workloads" also covers this task. It is listed once, under [Create and manage mailboxes, including shared mailboxes](#create-and-manage-mailboxes-including-shared-mailboxes).
+:::
+
+#### Configure settings for Copilot in Teams meetings, including transcription
+
+:::note
+The Microsoft Learn module "Configure Exchange Online and Microsoft Teams workloads" also covers this task. It is listed once, under [Create and manage mailboxes, including shared mailboxes](#create-and-manage-mailboxes-including-shared-mailboxes).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Copilot and transcription settings for Teams meetings" href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage SharePoint sites, including permissions
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Govern SharePoint and OneDrive for Microsoft Copilot" href="https://learn.microsoft.com/training/modules/govern-sharepoint-onedrive-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="SharePoint site permissions and sharing" href="https://learn.microsoft.com/sharepoint/modern-experience-sharing-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Turn external sharing on or off" href="https://learn.microsoft.com/sharepoint/turn-external-sharing-on-or-off?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure SharePoint and OneDrive for Copilot, including SharePoint Advanced Management, Microsoft Search in SharePoint, and site exclusions
+
+:::note
+The Microsoft Learn module "Govern SharePoint and OneDrive for Microsoft Copilot" also covers this task. It is listed once, under [Create and manage SharePoint sites, including permissions](#create-and-manage-sharepoint-sites-including-permissions).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Restricted SharePoint Search" href="https://learn.microsoft.com/sharepoint/restricted-sharepoint-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restricted Access Control" href="https://learn.microsoft.com/sharepoint/restricted-access-control?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restricted Content Discovery" href="https://learn.microsoft.com/sharepoint/restricted-content-discovery?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Govern and secure Microsoft 365 tenants and workloads (40–45%)
+
+### Manage identities in Microsoft Entra
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe the identity protection and governance capabilities of Microsoft Entra" href="https://learn.microsoft.com/training/modules/describe-identity-protection-governance-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe identity concepts" href="https://learn.microsoft.com/training/modules/describe-identity-principles-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe access management capabilities of Microsoft Entra" href="https://learn.microsoft.com/training/modules/explore-access-management-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Describe the function and identity types of Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-basic-services-identity-types?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore identity in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-identity-azure-active-directory?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand the Windows PowerShell pipeline" href="https://learn.microsoft.com/training/modules/understand-windows-powershell-pipeline?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Explore Microsoft 365 security foundations" href="https://learn.microsoft.com/training/modules/explore-microsoft-365-security-foundations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand the command syntax in Windows PowerShell" href="https://learn.microsoft.com/training/modules/understand-command-syntax-windows-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Secure access practices for administrators in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/role-based-access-control/security-planning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is identity provisioning with Microsoft Entra ID?" href="https://learn.microsoft.com/entra/identity/hybrid/what-is-provisioning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is hybrid identity with Microsoft Entra ID?" href="https://learn.microsoft.com/entra/identity/hybrid/whatis-hybrid-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Privileged Identity Management?" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Privileged Identity Management (PIM) for Groups" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/concept-pim-for-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand and manage dynamic group processing in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/manage-dynamic-group?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage Microsoft 365 users
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Provision and govern identities in Microsoft Entra" href="https://learn.microsoft.com/training/modules/provision-govern-identities-entra?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create, configure, and manage identities" href="https://learn.microsoft.com/training/modules/create-configure-manage-identities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage users and groups in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/manage-users-and-groups-in-aad?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage synchronized identities" href="https://learn.microsoft.com/training/modules/manage-synchronized?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Add users and assign licenses in Microsoft 365" href="https://learn.microsoft.com/microsoft-365/admin/add-users/add-users?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change a user name and email address" href="https://learn.microsoft.com/microsoft-365/admin/add-users/change-a-user-name-and-email-address?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Change user profile photo" href="https://learn.microsoft.com/microsoft-365/admin/add-users/change-user-profile-photos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and use a template to add users" href="https://learn.microsoft.com/microsoft-365/admin/add-users/create-and-use-a-template-to-add-users?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delete a user from your organization" href="https://learn.microsoft.com/microsoft-365/admin/add-users/delete-a-user?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Remove a former employee - Overview" href="https://learn.microsoft.com/microsoft-365/admin/add-users/remove-former-employee?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Step 1 - Prevent user sign-in and block access to Microsoft 365" href="https://learn.microsoft.com/microsoft-365/admin/add-users/remove-former-employee-step-1?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Step 7 - Delete a former employee's user account" href="https://learn.microsoft.com/microsoft-365/admin/add-users/remove-former-employee-step-7?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reset passwords" href="https://learn.microsoft.com/microsoft-365/admin/add-users/reset-passwords?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restore a user" href="https://learn.microsoft.com/microsoft-365/admin/add-users/restore-user?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add several users at the same time to Microsoft 365 - Admin Help" href="https://learn.microsoft.com/microsoft-365/enterprise/add-several-users-at-the-same-time?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Block Microsoft 365 user accounts with PowerShell" href="https://learn.microsoft.com/microsoft-365/enterprise/block-user-accounts-with-microsoft-365-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 cloud-only identity" href="https://learn.microsoft.com/microsoft-365/enterprise/cloud-only-identities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Microsoft 365 user account properties with PowerShell" href="https://learn.microsoft.com/microsoft-365/enterprise/configure-user-account-properties-with-microsoft-365-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Microsoft 365 user accounts with PowerShell" href="https://learn.microsoft.com/microsoft-365/enterprise/create-user-accounts-with-microsoft-365-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delete Microsoft 365 user accounts with PowerShell" href="https://learn.microsoft.com/microsoft-365/enterprise/delete-and-restore-user-accounts-with-microsoft-365-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Microsoft 365 user accounts" href="https://learn.microsoft.com/microsoft-365/enterprise/manage-microsoft-365-accounts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Microsoft 365 user account passwords" href="https://learn.microsoft.com/microsoft-365/enterprise/manage-microsoft-365-passwords?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Microsoft 365 user accounts, licenses, and groups with PowerShell" href="https://learn.microsoft.com/microsoft-365/enterprise/manage-user-accounts-and-licenses-with-microsoft-365-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View Microsoft 365 user accounts with PowerShell - Microsoft 365 Enterprise" href="https://learn.microsoft.com/microsoft-365/enterprise/view-user-accounts-with-microsoft-365-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Bulk operations in Microsoft Entra ID (Preview)" href="https://learn.microsoft.com/entra/fundamentals/bulk-operations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to manage user profile information in the Microsoft Entra admin center" href="https://learn.microsoft.com/entra/fundamentals/how-to-manage-user-profile-info?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to manage inactive user accounts" href="https://learn.microsoft.com/entra/identity/monitoring-health/howto-manage-inactive-user-accounts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Bulk create users in the Azure portal - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/users-bulk-add?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reset a user's password" href="https://learn.microsoft.com/entra/fundamentals/users-reset-password-azure-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restore or permanently remove recently deleted user" href="https://learn.microsoft.com/entra/fundamentals/users-restore?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Bulk delete users in Microsoft Entra ID - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/users-bulk-delete?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Download a list of users in the Azure portal (Preview)" href="https://learn.microsoft.com/entra/identity/users/users-bulk-download?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Bulk restore deleted users in the Azure portal - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/users-bulk-restore?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="User management enhancements" href="https://learn.microsoft.com/entra/identity/users/users-search-enhanced?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Step 2 - Save the contents of a former employee's mailbox" href="https://learn.microsoft.com/microsoft-365/admin/add-users/remove-former-employee-step-2?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Step 3 - Wipe and block a former employee's mobile device" href="https://learn.microsoft.com/microsoft-365/admin/add-users/remove-former-employee-step-3?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Step 5 - Give another employee access to OneDrive and Outlook data" href="https://learn.microsoft.com/microsoft-365/admin/add-users/remove-former-employee-step-5?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Step 6 - Remove and delete a Microsoft 365 for business license from a former employee" href="https://learn.microsoft.com/microsoft-365/admin/add-users/remove-former-employee-step-6?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add another email alias for a user" href="https://learn.microsoft.com/microsoft-365/admin/email/add-another-email-alias-for-a-user?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage and monitor priority accounts" href="https://learn.microsoft.com/microsoft-365/admin/security-and-compliance/priority-accounts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Synchronize domain users to Microsoft 365" href="https://learn.microsoft.com/microsoft-365/admin/setup/manage-domain-users?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Invite users to a Microsoft 365 business subscription" href="https://learn.microsoft.com/microsoft-365/admin/simplified-signup/admin-invite-business-standard?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Microsoft 365 with PowerShell" href="https://learn.microsoft.com/microsoft-365/enterprise/manage-microsoft-365-with-microsoft-365-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prepare a nonroutable domain for directory synchronization" href="https://learn.microsoft.com/microsoft-365/enterprise/prepare-a-non-routable-domain-for-directory-synchronization?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prepare for directory synchronization to Microsoft 365" href="https://learn.microsoft.com/microsoft-365/enterprise/prepare-for-directory-synchronization?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Subscriptions, licenses, accounts, and tenants for Microsoft's cloud offerings" href="https://learn.microsoft.com/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Bulk operations service limitations" href="https://learn.microsoft.com/entra/fundamentals/bulk-operations-service-limitations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Default user permissions" href="https://learn.microsoft.com/entra/fundamentals/users-default-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan and troubleshoot User Principal Name changes in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/hybrid/connect/howto-troubleshoot-upn-changes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Clean up unmanaged Microsoft Entra accounts" href="https://learn.microsoft.com/entra/identity/users/clean-up-unmanaged-accounts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Users, groups, licensing, and roles in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/directory-overview-user-model?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Self-service sign up for email-verified users" href="https://learn.microsoft.com/entra/identity/users/directory-self-service-signup?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign, update, list, or remove custom security attributes for a user" href="https://learn.microsoft.com/entra/identity/users/users-custom-security-attributes?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Revoke user access in an emergency in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/users-revoke-access?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage guest users and external access settings
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement and manage external identities" href="https://learn.microsoft.com/training/modules/implement-manage-external-identities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage access for external users" href="https://learn.microsoft.com/training/modules/manage-access-for-external-users?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Configure external collaboration" href="https://learn.microsoft.com/entra/external-id/external-collaboration-settings-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to create, invite, and delete users in Microsoft Entra ID" href="https://learn.microsoft.com/entra/fundamentals/how-to-create-delete-users?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add B2B collaboration users - Microsoft Entra External ID" href="https://learn.microsoft.com/entra/external-id/add-users-administrator?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="B2B guest user properties" href="https://learn.microsoft.com/entra/external-id/user-properties?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="IT Admins - Overview of external collaboration options in Microsoft 365" href="https://learn.microsoft.com/microsoft-365/enterprise/external-guest-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="B2B direct connect Microsoft Entra overview" href="https://learn.microsoft.com/entra/external-id/b2b-direct-connect-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Guests in the Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/add-users/about-guest-users?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Cross-tenant access overview - Microsoft Entra External ID" href="https://learn.microsoft.com/entra/external-id/cross-tenant-access-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Cross-tenant access settings - Microsoft Entra External ID" href="https://learn.microsoft.com/entra/external-id/cross-tenant-access-settings-b2b-collaboration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra B2B best practices and recommendations" href="https://learn.microsoft.com/entra/external-id/b2b-fundamentals?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About B2B Invitations" href="https://learn.microsoft.com/entra/external-id/invitation-email-elements?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Leave an organization" href="https://learn.microsoft.com/entra/external-id/leave-the-organization?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra B2B collaboration invitation redemption" href="https://learn.microsoft.com/entra/external-id/redemption-experience?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot B2B issues" href="https://learn.microsoft.com/entra/external-id/troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Microsoft Entra B2B collaboration?" href="https://learn.microsoft.com/entra/external-id/what-is-b2b?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Auditing and reporting a B2B collaboration user" href="https://learn.microsoft.com/entra/external-id/auditing-and-reporting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add sponsors to a guest user in the Microsoft Entra admin center - External ID" href="https://learn.microsoft.com/entra/external-id/b2b-sponsors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Microsoft Entra Accounts" href="https://learn.microsoft.com/entra/external-id/default-account?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Invite internal users to B2B collaboration" href="https://learn.microsoft.com/entra/external-id/invite-internal-users?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Microsoft Accounts" href="https://learn.microsoft.com/entra/external-id/microsoft-account?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reset guest redemption status" href="https://learn.microsoft.com/entra/external-id/reset-redemption-status?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage groups, including Microsoft 365 groups
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement lifecycle management and governance for Microsoft Teams" href="https://learn.microsoft.com/training/modules/implement-lifecycle-management-governance-for-microsoft-teams?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage groups in Microsoft 365" href="https://learn.microsoft.com/training/modules/manage-microsoft-365?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Set expiration for Microsoft 365 groups" href="https://learn.microsoft.com/entra/identity/users/groups-lifecycle?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage a group in the admin center" href="https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up self-service group management" href="https://learn.microsoft.com/entra/identity/users/groups-self-service-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add or remove members from Microsoft 365 groups" href="https://learn.microsoft.com/microsoft-365/admin/create-groups/add-or-remove-members-from-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage guest access in Microsoft 365 groups" href="https://learn.microsoft.com/microsoft-365/admin/create-groups/manage-guest-access-in-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Groups overview for administrators" href="https://learn.microsoft.com/microsoft-365/admin/create-groups/office-365-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage ownerless Microsoft 365 groups and teams" href="https://learn.microsoft.com/microsoft-365/admin/create-groups/ownerless-groups-teams?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage who can create Microsoft 365 Groups - Microsoft 365 Enterprise" href="https://learn.microsoft.com/microsoft-365/enterprise/manage-creation-of-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a group in the admin center" href="https://learn.microsoft.com/microsoft-365/admin/create-groups/create-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restore a deleted Microsoft 365 group" href="https://learn.microsoft.com/microsoft-365/admin/create-groups/restore-deleted-group?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create, edit, or delete a security group in the Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/email/create-edit-or-delete-a-security-group?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create Distribution Lists for Group Email" href="https://learn.microsoft.com/microsoft-365/admin/setup/create-distribution-lists?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Groups and Microsoft Teams naming policy - Microsoft 365 Enterprise" href="https://learn.microsoft.com/microsoft-365/enterprise/groups-naming-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Microsoft 365 groups" href="https://learn.microsoft.com/microsoft-365/enterprise/manage-microsoft-365-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Microsoft 365 Groups with PowerShell" href="https://learn.microsoft.com/microsoft-365/enterprise/manage-microsoft-365-groups-with-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage security groups with PowerShell" href="https://learn.microsoft.com/microsoft-365/enterprise/manage-security-groups-with-microsoft-365-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enforce a group naming policy in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/groups-naming-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restore a deleted Microsoft 365 group or cloud security group" href="https://learn.microsoft.com/entra/identity/users/groups-restore-deleted?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add a user or contact to a distribution group" href="https://learn.microsoft.com/microsoft-365/admin/email/add-user-or-contact-to-distribution-list?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to manage groups" href="https://learn.microsoft.com/entra/fundamentals/how-to-manage-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create or Edit a Dynamic Membership Group and Get Its Processing Status - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/users/groups-create-rule?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 groups and Teams" href="https://learn.microsoft.com/microsoftteams/office-365-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn About Groups, Group Membership, and Access" href="https://learn.microsoft.com/entra/fundamentals/concept-learn-about-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 admin center groups reports" href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/office-365-groups-ww?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Compare types of groups in Microsoft 365" href="https://learn.microsoft.com/microsoft-365/admin/create-groups/compare-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Group mailbox size management" href="https://learn.microsoft.com/microsoft-365/admin/create-groups/group-mailbox-size-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Send Email as a Distribution List" href="https://learn.microsoft.com/microsoft-365/admin/manage/send-email-as-distribution-list?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage Folders and Rules feature in Microsoft 365 Groups" href="https://learn.microsoft.com/microsoft-365/enterprise/manage-folders-and-rules-feature?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage roles for Microsoft 365, including Microsoft Entra Privileged Identity Management (PIM)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement and configure Privileged Identity Management (PIM)" href="https://learn.microsoft.com/training/modules/implement-configure-privileged-identity-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan and implement privileged access" href="https://learn.microsoft.com/training/modules/plan-implement-privileged-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Examine Privileged Identity Management in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/examine-privileged-identity-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure administrative roles in Microsoft 365" href="https://learn.microsoft.com/training/modules/configure-administrative-microsoft-365?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Least privileged roles by task" href="https://learn.microsoft.com/entra/identity/role-based-access-control/delegate-by-task?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Approve or deny requests for Microsoft Entra roles in PIM" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-approval-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Activate Microsoft Entra roles in PIM - Microsoft Entra ID Governance" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-activate-role?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign Microsoft Entra roles in PIM" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-add-role-to-user?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Microsoft Entra role settings in PIM" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-change-default-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Renew Microsoft Entra role assignments in PIM" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-renew-extend?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Start using PIM" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-getting-started?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Microsoft Entra groups to manage role assignments - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/role-based-access-control/groups-concept?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign Microsoft Entra roles" href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra Built-in Roles - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/role-based-access-control/permissions-reference?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="About administrator roles in the Microsoft 365 admin center - Microsoft 365 admin" href="https://learn.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign admin roles in the Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/add-users/assign-admin-roles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Complete an access review of Azure resource and Microsoft Entra roles in PIM" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-complete-roles-and-resource-roles-review?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an access review of Azure resource and Microsoft Entra roles in PIM" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-create-roles-and-resource-roles-review?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security alerts for Microsoft Entra roles in PIM" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-configure-security-alerts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View audit log report for Microsoft Entra roles in Microsoft Entra PIM" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-how-to-use-audit-log?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Perform an access review of Azure resource and Microsoft Entra roles in PIM" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-perform-roles-and-resource-roles-review?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Roles you can't manage in Privileged Identity Management" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-roles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra roles Discovery and insights (preview) in Privileged Identity Management former Security Wizard" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-security-wizard?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot resource access denied in Privileged Identity Management" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Activate your group membership or ownership in Privileged Identity Management" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/groups-activate-roles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure PIM for Groups settings" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/groups-role-settings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Approve activation requests for group members and owners" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/groups-approval-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan a Privileged Identity Management deployment" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-deployment-plan?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Email notifications in Privileged Identity Management (PIM)" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-email-notifications?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign eligibility for a group in Privileged Identity Management" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/groups-assign-member-owner?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit activity history for group assignments in Privileged Identity Management" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/groups-audit?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Bring groups into Privileged Identity Management" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/groups-discover-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Extend or renew PIM for groups assignments" href="https://learn.microsoft.com/entra/id-governance/privileged-identity-management/groups-renew-extend?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage administrative units
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure administrative roles in Microsoft 365": under [Manage roles for Microsoft 365, including Microsoft Entra Privileged Identity Management (PIM)](#manage-roles-for-microsoft-365-including-microsoft-entra-privileged-identity-management-pim)
+- "Implement initial configuration of Microsoft Entra ID": under [Implement and manage domains](#implement-and-manage-domains) in the skill group Configure and manage a Microsoft 365 tenant
+- "Provision and govern identities in Microsoft Entra": under [Create and manage Microsoft 365 users](#create-and-manage-microsoft-365-users)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Administrative units in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/role-based-access-control/administrative-units?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create or delete administrative units" href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add users, groups, or devices to an administrative unit" href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-add?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage users or devices for an administrative unit with rules for dynamic membership groups" href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-dynamic?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="List users, groups, or devices in an administrative unit" href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-list?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Remove users, groups, or devices from an administrative unit" href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-members-remove?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restricted management administrative units in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-restricted-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Administrative units troubleshooting and FAQ - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/role-based-access-control/admin-units-faq-troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use My Staff to delegate user management" href="https://learn.microsoft.com/entra/identity/role-based-access-control/my-staff-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage contacts
+
+:::note
+The Microsoft Learn module "Provision and govern identities in Microsoft Entra" also covers this task. It is listed once, under [Create and manage Microsoft 365 users](#create-and-manage-microsoft-365-users).
+:::
+
+#### Perform bulk management, including Microsoft Graph PowerShell
+
+:::note
+The Microsoft Learn module "Provision and govern identities in Microsoft Entra" also covers this task. It is listed once, under [Create and manage Microsoft 365 users](#create-and-manage-microsoft-365-users).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Bulk add group members by uploading a CSV file" href="https://learn.microsoft.com/entra/identity/users/groups-bulk-import-members?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="PowerShell examples for group-based licensing" href="https://learn.microsoft.com/entra/identity/users/licensing-powershell-graph-examples?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Assign Microsoft 365 licenses to user accounts with PowerShell" href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement and manage authentication and access in Microsoft Entra
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe the authentication capabilities of Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/explore-authentication-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Entra CBA Overview" href="https://learn.microsoft.com/entra/identity/authentication/concept-certificate-based-authentication?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra multifactor authentication overview" href="https://learn.microsoft.com/entra/identity/authentication/concept-mfa-howitworks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Account Recovery Overview in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Conditional Access Authentication Strengths" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra authentication overview" href="https://learn.microsoft.com/entra/identity/authentication/overview-authentication?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Self-service password reset deep dive - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-howitworks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Combined registration for SSPR and Microsoft Entra multifactor authentication - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-registration-mfa-sspr-combined?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What are Microsoft Entra Conditional Access policy plans? (preview) - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policy-plans?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and manage authentication methods
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement authentication and access in Microsoft Entra" href="https://learn.microsoft.com/training/modules/implement-authentication-access-entra?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage and implement authentication methods in Microsoft Entra ID" href="https://learn.microsoft.com/training/modules/manage-implement-authentication-methods?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage user authentication" href="https://learn.microsoft.com/training/modules/manage-user-authentication?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure Microsoft Entra users with multifactor authentication" href="https://learn.microsoft.com/training/modules/secure-aad-users-with-mfa?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage authentication methods" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-methods-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Email one-time passcode authentication" href="https://learn.microsoft.com/entra/external-id/one-time-passcode?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Authenticator authentication method" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-authenticator-app?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Protecting authentication methods in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-default-enablement?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="OATH tokens authentication method" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-oath-tokens?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Passkeys (FIDO2) authentication method in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-passkeys-fido2?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Voice call authentication method" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-phone-options?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="QR code authentication method in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-qr-code?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Security questions authentication method" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-security-questions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Windows Hello for Business authentication method in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-windows-hello?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="System-preferred authentication in Microsoft Entra ID - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-system-preferred-authentication?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to manage external MFA in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-external-method-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to enable QR code authentication in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-qr-code?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure a Temporary Access Pass in Microsoft Entra ID to register passwordless authentication methods" href="https://learn.microsoft.com/entra/identity/authentication/howto-authentication-temporary-access-pass?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage authentication methods for Microsoft Entra multifactor authentication - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/howto-mfa-userdevicesettings?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Passwordless sign-in with Authenticator" href="https://learn.microsoft.com/entra/identity/authentication/howto-authentication-passwordless-phone?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enhance accessibility with multifactor authentication in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/accessibility/authentication-methods-accessibility?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra External MFA Method Provider Reference" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-external-method-provider?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Platform Credential for macOS authentication method in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-authentication-platform-credential-for-macos?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra multifactor authentication versions and consumption plans" href="https://learn.microsoft.com/entra/identity/authentication/concept-mfa-licensing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Register a synced passkey (FIDO2)" href="https://learn.microsoft.com/entra/identity/authentication/how-to-register-passkey?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Authentication Methods Activity" href="https://learn.microsoft.com/entra/identity/authentication/howto-authentication-methods-activity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement and manage Microsoft Entra Password Protection
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage user authentication": under [Configure and manage authentication methods](#configure-and-manage-authentication-methods)
+- "Implement authentication and access in Microsoft Entra": under [Configure and manage authentication methods](#configure-and-manage-authentication-methods)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Password protection in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-password-ban-bad?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra Password Protection" href="https://learn.microsoft.com/entra/identity/authentication/concept-password-ban-bad-on-premises?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Combined password policy and check for weak passwords in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/concept-password-ban-bad-combined-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy on-premises Microsoft Entra Password Protection" href="https://learn.microsoft.com/entra/identity/authentication/howto-password-ban-bad-on-premises-deploy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="On-premises Microsoft Entra Password Protection FAQ - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/howto-password-ban-bad-on-premises-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor on-premises Microsoft Entra Password Protection" href="https://learn.microsoft.com/entra/identity/authentication/howto-password-ban-bad-on-premises-monitor?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable on-premises Microsoft Entra Password Protection" href="https://learn.microsoft.com/entra/identity/authentication/howto-password-ban-bad-on-premises-operations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot on-premises Microsoft Entra Password Protection" href="https://learn.microsoft.com/entra/identity/authentication/howto-password-ban-bad-on-premises-troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prevent Attacks Using Smart Lockout" href="https://learn.microsoft.com/entra/identity/authentication/howto-password-smart-lockout?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure self-service password reset (SSPR)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Allow users to reset their password with Microsoft Entra self-service password reset" href="https://learn.microsoft.com/training/modules/allow-users-reset-their-password?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Harden a Microsoft 365 tenant with Microsoft Secure Score" href="https://learn.microsoft.com/training/modules/harden-microsoft-365-secure-score?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Self-service password reset policies" href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to migrate to the Authentication methods policy" href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-methods-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prepopulate Contact Information for Self-Service Password Reset - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/howto-sspr-authenticationdata?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Customize Self-Service Password Reset" href="https://learn.microsoft.com/entra/identity/authentication/howto-sspr-customization?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Let users reset their own passwords" href="https://learn.microsoft.com/microsoft-365/admin/add-users/let-users-reset-passwords?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deployment considerations for Microsoft Entra self-service password reset" href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-deploy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="License self-service password reset" href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-licensing?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="On-premises password writeback with self-service password reset" href="https://learn.microsoft.com/entra/identity/authentication/concept-sspr-writeback?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra user data collection" href="https://learn.microsoft.com/entra/identity/authentication/howto-mfa-reporting-datacollection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Combined Security Information Registration" href="https://learn.microsoft.com/entra/identity/authentication/howto-registration-mfa-sspr-combined?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot Combined Registration" href="https://learn.microsoft.com/entra/identity/authentication/howto-registration-mfa-sspr-combined-troubleshoot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Self-service password reset reports" href="https://learn.microsoft.com/entra/identity/authentication/howto-sspr-reporting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Self-Service Password Reset for Windows Devices" href="https://learn.microsoft.com/entra/identity/authentication/howto-sspr-windows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Self-service password reset FAQ - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/passwords-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot self-service password reset writeback" href="https://learn.microsoft.com/entra/identity/authentication/troubleshoot-sspr-writeback?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate and resolve authentication issues
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Manage Microsoft Entra Identity Protection": under [Implement and manage Microsoft Entra Conditional Access policies, including Microsoft Entra ID Protection and multifactor authentication](#implement-and-manage-microsoft-entra-conditional-access-policies-including-microsoft-entra-id-protection-and-multifactor-authentication)
+- "Implement authentication and access in Microsoft Entra": under [Configure and manage authentication methods](#configure-and-manage-authentication-methods)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Troubleshoot MFA voice call and SMS problems - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/authentication/troubleshoot-voice-call-sms?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Investigate Agent ID autonomous sign-ins - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/monitoring-health/scenario-health-agent-id-autonomous-sign-ins?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Authentication prompts analysis workbook" href="https://learn.microsoft.com/entra/identity/monitoring-health/workbook-authentication-prompts-analysis?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sign-in event details for Microsoft Entra multifactor authentication" href="https://learn.microsoft.com/entra/identity/authentication/howto-mfa-reporting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshoot self-service password reset" href="https://learn.microsoft.com/entra/identity/authentication/troubleshoot-sspr?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Troubleshooting sign-in problems with Conditional Access" href="https://learn.microsoft.com/entra/identity/conditional-access/troubleshoot-conditional-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="The Conditional Access What If tool" href="https://learn.microsoft.com/entra/identity/conditional-access/what-if-tool?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sign-in logs in Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/monitoring-health/concept-sign-ins?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="How to troubleshoot sign-in errors" href="https://learn.microsoft.com/entra/identity/monitoring-health/howto-troubleshoot-sign-in-errors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Track and investigate identity activities with linkable identifiers in Microsoft Entra" href="https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-track-linkable-identifiers?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Implement and manage Microsoft Entra Conditional Access policies, including Microsoft Entra ID Protection and multifactor authentication
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Microsoft Entra Identity Protection" href="https://learn.microsoft.com/training/modules/manage-azure-active-directory-identity-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan, implement, and administer Conditional Access" href="https://learn.microsoft.com/training/modules/plan-implement-administer-conditional-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Protect data and control access with Microsoft Intune and Conditional Access" href="https://learn.microsoft.com/training/modules/protect-data-control-access-intune-conditional-access?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Entra ID Protection risk-based access policies" href="https://learn.microsoft.com/entra/id-protection/concept-identity-protection-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sign-in risk-based multifactor authentication" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-risk-based-sign-in?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Authentication and Conditional Access for B2B users" href="https://learn.microsoft.com/entra/external-id/authentication-conditional-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft-Managed Conditional Access Policies for Enhanced Security" href="https://learn.microsoft.com/entra/identity/conditional-access/managed-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Require phishing-resistant multifactor authentication for Microsoft Entra administrator roles" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-admin-phish-resistant-mfa?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Require multifactor authentication for Microsoft admin portals" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-old-require-mfa-admin-portals?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure the MFA registration policy" href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-mfa-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Require MFA for device registration" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-all-users-device-registration?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Require MFA for all users with Conditional Access" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-all-users-mfa-strength?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Require compliant, hybrid joined devices, or MFA" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-alt-all-users-compliant-hybrid-or-mfa?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Conditional Access - Authentication strength for external users" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-guests-mfa-strength?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Require MFA for administrators with Conditional Access" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-old-require-mfa-admin?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Require MFA for guest users with Conditional Access" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-old-require-mfa-guest?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Require remediation for risky users" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-risk-based-user?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Targeting Resources in Conditional Access Policies" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-cloud-apps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra Conditional Access: Zero Trust Policy Engine" href="https://learn.microsoft.com/entra/identity/conditional-access/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Plan Your Microsoft Entra Conditional Access Deployment" href="https://learn.microsoft.com/entra/identity/conditional-access/plan-conditional-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Build Conditional Access policies in Microsoft Entra" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Risk policies - Microsoft Entra ID Protection" href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-configure-risk-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Microsoft Entra ID Protection?" href="https://learn.microsoft.com/entra/id-protection/overview-identity-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Require MFA for Azure management with Conditional Access" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-old-require-mfa-azure-mgmt?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Migrate from custom controls to external MFA in Conditional Access" href="https://learn.microsoft.com/entra/identity/conditional-access/how-to-migrate-custom-controls-external-mfa?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Impact analysis of risk-based access policies workbook" href="https://learn.microsoft.com/entra/id-protection/workbook-risk-based-policy-impact?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure Security Defaults for Microsoft Entra ID - Microsoft Entra" href="https://learn.microsoft.com/entra/fundamentals/security-defaults?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Remediate risks and unblock users" href="https://learn.microsoft.com/entra/id-protection/howto-identity-protection-remediate-unblock?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Secure Microsoft 365 workloads
+
+#### Manage alerts in Microsoft Defender for Office 365
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Secure email and collaboration with Microsoft Defender for Office 365" href="https://learn.microsoft.com/training/modules/secure-email-collaboration-defender-office365?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage incidents and alerts from Defender for Office 365 in Microsoft Defender XDR" href="https://learn.microsoft.com/defender-office-365/mdo-sec-ops-manage-incidents-and-alerts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Turn on Safe Attachments for SharePoint, OneDrive, and Microsoft Teams" href="https://learn.microsoft.com/defender-office-365/safe-attachments-for-spo-odfb-teams-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automated investigation and response in Microsoft Defender for Office 365 - Microsoft Defender for Office 365" href="https://learn.microsoft.com/defender-office-365/air-about?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure threat policies and rules in Defender for Office 365
+
+:::note
+The Microsoft Learn module "Secure email and collaboration with Microsoft Defender for Office 365" also covers this task. It is listed once, under [Manage alerts in Microsoft Defender for Office 365](#manage-alerts-in-microsoft-defender-for-office-365).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Order and precedence of email protection" href="https://learn.microsoft.com/defender-office-365/how-policies-and-protections-are-combined?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Anti-phishing policies in Microsoft 365" href="https://learn.microsoft.com/defender-office-365/anti-phishing-policies-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure anti-malware policies for email" href="https://learn.microsoft.com/defender-office-365/anti-malware-policies-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure anti-phishing policies in Microsoft Defender for Office 365" href="https://learn.microsoft.com/defender-office-365/anti-phishing-policies-mdo-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure spam filter policies" href="https://learn.microsoft.com/defender-office-365/anti-spam-policies-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up Safe Attachments policies in Microsoft Defender for Office 365" href="https://learn.microsoft.com/defender-office-365/safe-attachments-policies-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up Safe Links policies in Microsoft Defender for Office 365" href="https://learn.microsoft.com/defender-office-365/safe-links-policies-configure?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Preset security policies" href="https://learn.microsoft.com/defender-office-365/preset-security-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Safe Attachments" href="https://learn.microsoft.com/defender-office-365/safe-attachments-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Complete Safe Links overview for Microsoft Defender for Office 365 - Microsoft Defender for Office 365" href="https://learn.microsoft.com/defender-office-365/safe-links-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage allows and blocks in the Tenant Allow/Block List" href="https://learn.microsoft.com/defender-office-365/tenant-allow-block-list-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Recommendations for Microsoft 365 security settings" href="https://learn.microsoft.com/defender-office-365/recommended-settings-for-eop-and-office365?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Investigate and respond to email and collaboration threats by using Defender for Office 365
+
+:::note
+The Microsoft Learn module "Secure email and collaboration with Microsoft Defender for Office 365" also covers this task. It is listed once, under [Manage alerts in Microsoft Defender for Office 365](#manage-alerts-in-microsoft-defender-for-office-365).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="About Threat Explorer and Real-time detections in Microsoft Defender for Office 365" href="https://learn.microsoft.com/defender-office-365/threat-explorer-real-time-detections-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Remediate malicious email that was delivered in Office 365" href="https://learn.microsoft.com/defender-office-365/remediate-malicious-email-delivered-office-365?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Submit messages, URLs, and attachments for analysis in the Microsoft Defender portal - Microsoft Defender for Office 365" href="https://learn.microsoft.com/defender-office-365/submissions-admin?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Campaigns in Microsoft Defender for Office 365 Plan" href="https://learn.microsoft.com/defender-office-365/campaigns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Defender for Office 365 support for Microsoft Teams - Microsoft Defender for Office 365" href="https://learn.microsoft.com/defender-office-365/mdo-support-teams-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage quarantined messages and files as an admin - Microsoft Defender for Office 365" href="https://learn.microsoft.com/defender-office-365/quarantine-admin-manage-messages-files?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and manage attack simulations, including training campaigns
+
+:::note
+The Microsoft Learn module "Secure email and collaboration with Microsoft Defender for Office 365" also covers this task. It is listed once, under [Manage alerts in Microsoft Defender for Office 365](#manage-alerts-in-microsoft-defender-for-office-365).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Training campaigns in Attack simulation training" href="https://learn.microsoft.com/defender-office-365/attack-simulation-training-training-campaigns?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Simulation automations for Attack simulation training" href="https://learn.microsoft.com/defender-office-365/attack-simulation-training-simulation-automations?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started using Attack simulation training" href="https://learn.microsoft.com/defender-office-365/attack-simulation-training-get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Payloads in Attack simulation training" href="https://learn.microsoft.com/defender-office-365/attack-simulation-training-payloads?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Simulate a phishing attack with Attack simulation training - Microsoft Defender for Office 365" href="https://learn.microsoft.com/defender-office-365/attack-simulation-training-simulations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Protect data in Microsoft 365 by using Microsoft Purview
+
+#### Identify requirements for Microsoft Purview Data Loss Prevention (DLP) policies, including those for Exchange, SharePoint, OneDrive, Teams, endpoints, and Copilot
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Prevent data loss and govern the data lifecycle with Microsoft Purview" href="https://learn.microsoft.com/training/modules/prevent-data-loss-lifecycle-purview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data loss prevention policy reference" href="https://learn.microsoft.com/purview/dlp-policy-reference?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with endpoint data loss prevention" href="https://learn.microsoft.com/purview/endpoint-dlp-getting-started?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about Endpoint data loss prevention" href="https://learn.microsoft.com/purview/endpoint-dlp-learn-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about data loss prevention" href="https://learn.microsoft.com/purview/dlp-learn-about-dlp?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="DLP for Microsoft 365 Copilot and Copilot Chat" href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and deploy data loss prevention policies" href="https://learn.microsoft.com/purview/dlp-create-deploy-policy?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify requirements for information protection, including sensitive information types, sensitivity labels, and sensitivity label policies
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Protect information with Microsoft Purview information protection" href="https://learn.microsoft.com/training/modules/protect-information-purview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Protect your sensitive data with Microsoft Purview" href="https://learn.microsoft.com/purview/information-protection?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Get started with sensitivity labels" href="https://learn.microsoft.com/purview/get-started-with-sensitivity-labels?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about sensitivity labels" href="https://learn.microsoft.com/purview/sensitivity-labels?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use sensitivity labels to protect content in Microsoft Teams, Microsoft 365 groups, and SharePoint sites" href="https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about sensitive information types" href="https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create custom sensitive information types" href="https://learn.microsoft.com/purview/sit-create-a-custom-sensitive-information-type?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify requirements for data lifecycle management, including retention labels, retention label policies, and retention policies
+
+:::note
+The Microsoft Learn module "Prevent data loss and govern the data lifecycle with Microsoft Purview" also covers this task. It is listed once, under [Identify requirements for Microsoft Purview Data Loss Prevention (DLP) policies, including those for Exchange, SharePoint, OneDrive, Teams, endpoints, and Copilot](#identify-requirements-for-microsoft-purview-data-loss-prevention-dlp-policies-including-those-for-exchange-sharepoint-onedrive-teams-endpoints-and-copilot).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Learn about retention policies and retention labels" href="https://learn.microsoft.com/purview/retention?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Publish retention labels and apply them in apps" href="https://learn.microsoft.com/purview/create-apply-retention-labels?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Learn about data lifecycle management" href="https://learn.microsoft.com/purview/data-lifecycle-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Retention policies for Copilot and AI apps" href="https://learn.microsoft.com/purview/retention-policies-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create and configure retention policies" href="https://learn.microsoft.com/purview/create-retention-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Review and respond to DLP alerts for Microsoft 365 and AI services
+
+:::note
+The Microsoft Learn module "Prevent data loss and govern the data lifecycle with Microsoft Purview" also covers this task. It is listed once, under [Identify requirements for Microsoft Purview Data Loss Prevention (DLP) policies, including those for Exchange, SharePoint, OneDrive, Teams, endpoints, and Copilot](#identify-requirements-for-microsoft-purview-data-loss-prevention-dlp-policies-including-those-for-exchange-sharepoint-onedrive-teams-endpoints-and-copilot).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Get started with the data loss prevention Alerts dashboard" href="https://learn.microsoft.com/purview/dlp-alerts-dashboard-get-started?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor and secure AI activity by using Microsoft Purview Data Security Posture Management (DSPM)
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Microsoft 365 Copilot" href="https://learn.microsoft.com/training/modules/manage-microsoft-365-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Learn about Data Security Posture Management" href="https://learn.microsoft.com/purview/data-security-posture-management-learn-about?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Purview data security and compliance protections for Microsoft 365 Copilot" href="https://learn.microsoft.com/purview/ai-microsoft-purview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+## Manage and secure AI services in Microsoft 365 (35–40%)
+
+### Enable and manage Microsoft 365 Copilot
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Understand Microsoft 365 Copilot reports" href="https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/agent-usage-billing/agent-usage-cs-reports?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Assess tenant readiness for Copilot, including in-app experiences
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Assess readiness and roll out Microsoft Copilot" href="https://learn.microsoft.com/training/modules/enable-manage-microsoft-365-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Implement Microsoft 365 Copilot" href="https://learn.microsoft.com/training/modules/implement-microsoft-365-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Identify and resolve data readiness issues for Copilot, including data leaks, data oversharing, and data compliance
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Examine data security and compliance in Microsoft 365 Copilot" href="https://learn.microsoft.com/training/modules/examine-data-security-microsoft-365-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Data Access Governance reports" href="https://learn.microsoft.com/sharepoint/data-access-governance-reports?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage web search for Copilot and Microsoft 365 Copilot Chat
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure Microsoft Copilot settings and extensibility" href="https://learn.microsoft.com/training/modules/configure-copilot-settings-extensibility?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage web search" href="https://learn.microsoft.com/copilot/plan/manage-public-web-access?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Zero Query Logging Overview" href="https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-zero-query-logging?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Overview of Microsoft Copilot Chat" href="https://learn.microsoft.com/copilot/plan/copilot-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Microsoft 365 Copilot Search
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Implement Microsoft 365 Copilot": under [Assess tenant readiness for Copilot, including in-app experiences](#assess-tenant-readiness-for-copilot-including-in-app-experiences)
+- "Govern SharePoint and OneDrive for Microsoft Copilot": under [Create and manage SharePoint sites, including permissions](#create-and-manage-sharepoint-sites-including-permissions) in the skill group Manage Microsoft 365 workloads
+- "Configure Microsoft Copilot settings and extensibility": under [Manage web search for Copilot and Microsoft 365 Copilot Chat](#manage-web-search-for-copilot-and-microsoft-365-copilot-chat)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Connectors and Copilot Search - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/copilot-search?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Copilot extension for connectors - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/copilot-extension?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Search and validate indexed connector content - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/indexed-content?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure Copilot settings for a tenant, including self-service purchases, Copilot in admin centers, release preferences, AI disclaimer, and video and image generation
+
+:::note
+The Microsoft Learn module "Configure Microsoft Copilot settings and extensibility" also covers this task. It is listed once, under [Manage web search for Copilot and Microsoft 365 Copilot Chat](#manage-web-search-for-copilot-and-microsoft-365-copilot-chat).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage self-service purchases and trials (for admins)" href="https://learn.microsoft.com/microsoft-365/commerce/subscriptions/manage-self-service-purchases-admins?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up the Standard or Targeted release options for Microsoft 365 services - Microsoft 365 admin" href="https://learn.microsoft.com/microsoft-365/admin/manage/release-options-in-office-365?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage Copilot user experiences
+
+:::note
+No Learn module or documentation page covers this task yet.
+:::
+
+#### Manage Microsoft 365 Copilot Cowork
+
+:::note
+The Microsoft Learn module "Configure Microsoft Copilot settings and extensibility" also covers this task. It is listed once, under [Manage web search for Copilot and Microsoft 365 Copilot Chat](#manage-web-search-for-copilot-and-microsoft-365-copilot-chat).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage Copilot Cowork for your organization" href="https://learn.microsoft.com/copilot/cowork/cowork-admin-governance?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Copilot Cowork usage - Microsoft 365 admin" href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/cowork-usage-report?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Data Residency for Microsoft 365 Copilot and Copilot Chat - Microsoft 365 Enterprise" href="https://learn.microsoft.com/microsoft-365/enterprise/m365-dr-service-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Cowork overview" href="https://learn.microsoft.com/copilot/cowork?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Responsible AI FAQ for Cowork" href="https://learn.microsoft.com/copilot/cowork/responsible-ai/cowork-responsible-ai-faq?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Credit usage for Cowork tasks" href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-cost?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage third-party AI providers
+
+:::note
+The Microsoft Learn module "Configure Microsoft Copilot settings and extensibility" also covers this task. It is listed once, under [Manage web search for Copilot and Microsoft 365 Copilot Chat](#manage-web-search-for-copilot-and-microsoft-365-copilot-chat).
+:::
+
+#### Configure Copilot connectors
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Microsoft 365 Copilot extensibility" href="https://learn.microsoft.com/training/modules/manage-microsoft-365-copilot-extensibility?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Choose the best Microsoft 365 Copilot extensibility path for your scenario" href="https://learn.microsoft.com/training/modules/choose-microsoft-365-copilot-extensibility-path?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Copilot connectors overview - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Admin-published federated connectors - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/admin-published-federated-connectors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Graph connector agent overview - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/connector-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Deploy connectors in the Microsoft 365 admin center - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/deployment-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enhance Copilot Discovery of connectors content - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/enhance-copilot-discovery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage access permissions for connectors - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-access-permissions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage federated connector availability - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage self-serve sync connector availability - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-personal-sync-connectors?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Map Microsoft Entra identities - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/map-entra-id?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Map non-Microsoft Entra ID Identities - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/map-non-entra-id?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Staged rollout for connectors - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/staged-rollout?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Copilot connectors overview" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-copilot-connector?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Copilot Connectors Usage Report - Microsoft 365 admin" href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-connectors-usage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Graph connector agent FAQ - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/connector-agent-frequently-asked-questions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connectors gallery - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-gallery?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft-built connectors gallery - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-gallery-microsoft?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Partner-built connectors gallery - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-gallery-partners?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Monitor connector errors - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/error-responses?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Federated connectors overview - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Copilot connectors FAQ - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/frequently-asked-questions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Connectors item delete notifications - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/item-delete-notification?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage connectors - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-connector?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Self-serve sync connectors overview - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/personal-sync-connectors-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prebuilt connectors - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/prebuilt-connectors-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Prerequisites for deploying connectors - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="View connection details - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/view-details?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Grant administrative rights to AI Administrators to manage Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/connector-admin-delegation?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement and manage agents in Microsoft 365 and Agent 365
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Understand identity architecture for AI workloads" href="https://learn.microsoft.com/training/modules/entra-ai-understand?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Introduction to Microsoft Entra Agent ID" href="https://learn.microsoft.com/training/modules/introduction-entra-agent-id?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft Copilot Managed Runtime overview and key concepts for admins (preview) - Microsoft 365 admin" href="https://learn.microsoft.com/microsoft-365/admin/manage/apps?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understand roles and responsibilities (preview) - Microsoft 365 admin" href="https://learn.microsoft.com/microsoft-365/admin/manage/apps/roles-responsibilities?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Agent Builder overview" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Agent Builder templates" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-templates-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Compare declarative and custom engine agents" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/agents-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Ways to extend Microsoft 365 Copilot" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Custom Engine Agents for Microsoft 365" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-custom-engine-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Declarative agents for Microsoft 365 Copilot" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-declarative-agent?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="MCP and API plugins for declarative agents" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-plugins?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage the lifecycle workflows for agent identities by using Microsoft Entra Agent ID
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Establish agent identities and secure access with Microsoft Entra Agent ID" href="https://learn.microsoft.com/training/modules/establish-agent-identities-entra-agent-id?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Automate identity lifecycle using Lifecycle Workflows in Microsoft Entra" href="https://learn.microsoft.com/training/modules/automate-identity-lifecycle-workflows?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Agent identity sponsor tasks in Lifecycle Workflows" href="https://learn.microsoft.com/entra/id-governance/agent-sponsor-tasks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Entra Agent ID lifecycle policies - Microsoft Entra ID Governance" href="https://learn.microsoft.com/entra/id-governance/agent-lifecycle-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Fundamental concepts in Microsoft Entra Agent ID" href="https://learn.microsoft.com/entra/agent-id/key-concepts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Agent identities, service principals, and applications" href="https://learn.microsoft.com/entra/agent-id/agent-service-principals?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Check execution user scope of a workflow - Microsoft Entra ID" href="https://learn.microsoft.com/entra/id-governance/check-workflow-execution-scope?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create a lifecycle workflow - Microsoft Entra ID" href="https://learn.microsoft.com/entra/id-governance/create-lifecycle-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What are lifecycle workflows?" href="https://learn.microsoft.com/entra/id-governance/what-are-lifecycle-workflows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure execution limits for Lifecycle Workflows" href="https://learn.microsoft.com/entra/id-governance/lifecycle-workflow-execution-limits?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delegated Workflow Management" href="https://learn.microsoft.com/entra/id-governance/manage-delegate-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage workflow properties" href="https://learn.microsoft.com/entra/id-governance/manage-workflow-properties?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage workflow versions" href="https://learn.microsoft.com/entra/id-governance/manage-workflow-tasks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Cancel workflow runs using Lifecycle Workflows" href="https://learn.microsoft.com/entra/id-governance/cancel-workflow-runs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Check status of a Lifecycle workflow" href="https://learn.microsoft.com/entra/id-governance/check-status-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Customize emails sent from workflow tasks" href="https://learn.microsoft.com/entra/id-governance/customize-workflow-email?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Customize a workflow schedule" href="https://learn.microsoft.com/entra/id-governance/customize-workflow-schedule?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Delete a lifecycle workflow" href="https://learn.microsoft.com/entra/id-governance/delete-lifecycle-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Download workflow history reports" href="https://learn.microsoft.com/entra/id-governance/download-workflow-history?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Auditing Lifecycle Workflows" href="https://learn.microsoft.com/entra/id-governance/lifecycle-workflow-audits?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Lifecycle workflow execution conditions and scheduling" href="https://learn.microsoft.com/entra/id-governance/lifecycle-workflow-execution-conditions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Lifecycle Workflow History" href="https://learn.microsoft.com/entra/id-governance/lifecycle-workflow-history?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Lifecycle Workflow Insights" href="https://learn.microsoft.com/entra/id-governance/lifecycle-workflow-insights?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Lifecycle Workflows tasks and definitions" href="https://learn.microsoft.com/entra/id-governance/lifecycle-workflow-tasks?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Lifecycle Workflows templates and categories" href="https://learn.microsoft.com/entra/id-governance/lifecycle-workflow-templates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Workflow Versioning" href="https://learn.microsoft.com/entra/id-governance/lifecycle-workflow-versioning?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Run a workflow on-demand" href="https://learn.microsoft.com/entra/id-governance/on-demand-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reprocess workflow runs using Lifecycle Workflows" href="https://learn.microsoft.com/entra/id-governance/reprocess-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Simulate workflow execution using the What-if tool" href="https://learn.microsoft.com/entra/id-governance/simulate-workflow-execution?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Understanding lifecycle workflows" href="https://learn.microsoft.com/entra/id-governance/understanding-lifecycle-workflows?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="What is Microsoft Entra Agent ID?" href="https://learn.microsoft.com/entra/agent-id/what-is-microsoft-entra-agent-id?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Secure agent access, including access packages and conditional access
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Govern agents using Agent 365" href="https://learn.microsoft.com/training/modules/agent-365-govern?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure access for Microsoft Entra Agent Identity" href="https://learn.microsoft.com/training/modules/secure-access-entra-agent-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="How to Use Conditions in Conditional Access Policies" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-conditions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Conditional Access for Agents in Microsoft Entra - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/conditional-access/agent-id?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage agent identities in your organization" href="https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Conditional Access Setup: Users, Groups, Agents, and Workload Identities" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-users-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Conditional Access Templates: Simplify Security" href="https://learn.microsoft.com/entra/identity/conditional-access/concept-conditional-access-policy-common?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure agent users with Microsoft Entra Conditional Access - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-agent-user?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Secure autonomous agents with Conditional Access - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/conditional-access/policy-autonomous-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra Conditional Access for workload identities" href="https://learn.microsoft.com/entra/identity/conditional-access/workload-identity?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Create an access package in entitlement management" href="https://learn.microsoft.com/entra/id-governance/entitlement-management-access-package-create?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage agent owners
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Curate and control agents with the Agent Registry and Agent 365 tools" href="https://learn.microsoft.com/training/modules/curate-control-agents-registry-tools?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Administrative relationships in Microsoft Entra Agent ID (Owners, sponsors, and managers)" href="https://learn.microsoft.com/entra/agent-id/agent-owners-sponsors-managers?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage agent identity blueprints in the Microsoft Entra admin center" href="https://learn.microsoft.com/entra/agent-id/manage-agent-blueprint?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Add and manage owners and sponsors for agent identities and blueprints" href="https://learn.microsoft.com/entra/agent-id/manage-owners-sponsors-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Share and manage agents built in Agent Builder" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/agent-builder-share-manage-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure agent settings, including allowed agent types, sharing, templates, and user access
+
+:::note
+The Microsoft Learn module "Govern agents using Agent 365" also covers this task. It is listed once, under [Secure agent access, including access packages and conditional access](#secure-agent-access-including-access-packages-and-conditional-access).
+:::
+
+#### Discover and manage Microsoft and third-party agents in the agent registry
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Monitor and manage agents with Microsoft Agent 365" href="https://learn.microsoft.com/training/modules/agent-365-monitor-manage?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Integrate third-party agents with Microsoft Entra Agent ID" href="https://learn.microsoft.com/entra/agent-id/configure-third-party-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Review requests and publish or reject agents in the agent registry
+
+:::note
+The Microsoft Learn module "Curate and control agents with the Agent Registry and Agent 365 tools" also covers this task. It is listed once, under [Manage agent owners](#manage-agent-owners).
+:::
+
+#### Install, block, or control access to agents in the agent registry, including uploading custom agents
+
+:::note
+The Microsoft Learn module "Curate and control agents with the Agent Registry and Agent 365 tools" also covers this task. It is listed once, under [Manage agent owners](#manage-agent-owners).
+:::
+
+#### Manage tools in Agent 365
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Govern agents using Agent 365": under [Secure agent access, including access packages and conditional access](#secure-agent-access-including-access-packages-and-conditional-access)
+- "Curate and control agents with the Agent Registry and Agent 365 tools": under [Manage agent owners](#manage-agent-owners)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="List Copilot packages" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Package Management API overview" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Work IQ MCP overview" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Use Agent Map in the Microsoft 365 admin center - Microsoft 365 admin" href="https://learn.microsoft.com/microsoft-365/admin/manage/agent-map?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Govern Microsoft 365 Copilot plugin access and connections" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/manage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Agent Registry convergence with Microsoft Agent 365" href="https://learn.microsoft.com/entra/agent-id/agent-registry-convergence?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Grant agents access to Microsoft 365 resources" href="https://learn.microsoft.com/entra/agent-id/grant-agent-access-microsoft-365?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Static IP addresses for MCP and federated connectors - Microsoft 365 Copilot connectors" href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-network-requirements?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Code Interpreter Security Architecture in Microsoft 365 Copilot" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/code-interpreter-security?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Skills in declarative agents" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-skills?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Policy governance for Work IQ MCP" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Secure and govern agents by using Agent 365
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Governing Agent Identities - Microsoft Entra ID Governance" href="https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="ID Protection for Agents" href="https://learn.microsoft.com/entra/id-protection/concept-risky-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Insights Agent overview" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/insights-agent-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor agent activity by using Agent 365
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Monitor and manage agents with Microsoft Agent 365": under [Discover and manage Microsoft and third-party agents in the agent registry](#discover-and-manage-microsoft-and-third-party-agents-in-the-agent-registry) in the skill group Implement and manage agents in Microsoft 365 and Agent 365
+- "Monitor and optimize Microsoft 365 AI services": under [Manage and monitor licenses for AI services, including Microsoft 365 Copilot, Microsoft Agent 365, and Microsoft Copilot Studio](#manage-and-monitor-licenses-for-ai-services-including-microsoft-365-copilot-microsoft-agent-365-and-microsoft-copilot-studio) in the skill group Configure and manage a Microsoft 365 tenant
+- "Prevent data loss and govern the data lifecycle with Microsoft Purview": under [Identify requirements for Microsoft Purview Data Loss Prevention (DLP) policies, including those for Exchange, SharePoint, OneDrive, Teams, endpoints, and Copilot](#identify-requirements-for-microsoft-purview-data-loss-prevention-dlp-policies-including-those-for-exchange-sharepoint-onedrive-teams-endpoints-and-copilot) in the skill group Protect data in Microsoft 365 by using Microsoft Purview
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Investigate Agent ID interactive sign-ins - Microsoft Entra ID" href="https://learn.microsoft.com/entra/identity/monitoring-health/scenario-health-agent-id-interactive-sign-ins?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sample prompts for the Microsoft 365 Insights Agent" href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/insights-agent-sample-prompts?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft Entra Agent ID logs" href="https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Audit logs for Copilot and AI activities" href="https://learn.microsoft.com/purview/audit-copilot?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Protect sensitive data by using Agent 365
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Protect information with Microsoft Purview information protection": under [Identify requirements for information protection, including sensitive information types, sensitivity labels, and sensitivity label policies](#identify-requirements-for-information-protection-including-sensitive-information-types-sensitivity-labels-and-sensitivity-label-policies) in the skill group Protect data in Microsoft 365 by using Microsoft Purview
+- "Prevent data loss and govern the data lifecycle with Microsoft Purview": under [Identify requirements for Microsoft Purview Data Loss Prevention (DLP) policies, including those for Exchange, SharePoint, OneDrive, Teams, endpoints, and Copilot](#identify-requirements-for-microsoft-purview-data-loss-prevention-dlp-policies-including-those-for-exchange-sharepoint-onedrive-teams-endpoints-and-copilot) in the skill group Protect data in Microsoft 365 by using Microsoft Purview
+:::
+
+#### Evaluate compliance gaps by using Agent 365
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Secure AI agents with Microsoft Purview data security controls" href="https://learn.microsoft.com/training/modules/purview-ai-agent-data-security?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Monitor AI services in Microsoft 365
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Active user in Microsoft 365 usage reports" href="https://learn.microsoft.com/microsoft-365/admin/usage-analytics/active-user-in-usage-reports?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Copilot credits report - Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 admin center usage reports overview" href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 usage analytics overview" href="https://learn.microsoft.com/microsoft-365/admin/usage-analytics/usage-analytics?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage and monitor costs for AI services in Microsoft 365
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Manage Copilot costs as an administrator" href="https://learn.microsoft.com/training/modules/manage-copilot-costs?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor usage reports for Copilot in the Microsoft 365 admin center, including workload-level adoption details
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Keep a Microsoft 365 tenant resilient and healthy": under [Configure and use Microsoft 365 Backup, including setup, restore, and monitor](#configure-and-use-microsoft-365-backup-including-setup-restore-and-monitor) in the skill group Configure and manage a Microsoft 365 tenant
+- "Monitor and optimize Microsoft 365 AI services": under [Manage and monitor licenses for AI services, including Microsoft 365 Copilot, Microsoft Agent 365, and Microsoft Copilot Studio](#manage-and-monitor-licenses-for-ai-services-including-microsoft-365-copilot-microsoft-agent-365-and-microsoft-copilot-studio) in the skill group Configure and manage a Microsoft 365 tenant
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Microsoft 365 Copilot usage report - Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Copilot Agents usage report - Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents-new?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Copilot Agent usage report - Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-agents?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Copilot Search usage report - Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-search-usage?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Microsoft 365 Copilot Chat usage report - Microsoft 365 admin center" href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-copilot-usage?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Monitor usage and adoption for AI services in Microsoft 365 by using the Copilot Control System
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Perform basic administrative tasks for Microsoft 365 Copilot": under [Manage and monitor Microsoft 365 licenses, including group-based licensing and pay-as-you-go](#manage-and-monitor-microsoft-365-licenses-including-group-based-licensing-and-pay-as-you-go) in the skill group Configure and manage a Microsoft 365 tenant
+- "Keep a Microsoft 365 tenant resilient and healthy": under [Configure and use Microsoft 365 Backup, including setup, restore, and monitor](#configure-and-use-microsoft-365-backup-including-setup-restore-and-monitor) in the skill group Configure and manage a Microsoft 365 tenant
+- "Monitor and optimize Microsoft 365 AI services": under [Manage and monitor licenses for AI services, including Microsoft 365 Copilot, Microsoft Agent 365, and Microsoft Copilot Studio](#manage-and-monitor-licenses-for-ai-services-including-microsoft-365-copilot-microsoft-agent-365-and-microsoft-copilot-studio) in the skill group Configure and manage a Microsoft 365 tenant
+:::
+
+#### Monitor service health by using the Copilot Control System
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Keep a Microsoft 365 tenant resilient and healthy": under [Configure and use Microsoft 365 Backup, including setup, restore, and monitor](#configure-and-use-microsoft-365-backup-including-setup-restore-and-monitor) in the skill group Configure and manage a Microsoft 365 tenant
+- "Monitor and optimize Microsoft 365 AI services": under [Manage and monitor licenses for AI services, including Microsoft 365 Copilot, Microsoft Agent 365, and Microsoft Copilot Studio](#manage-and-monitor-licenses-for-ai-services-including-microsoft-365-copilot-microsoft-agent-365-and-microsoft-copilot-studio) in the skill group Configure and manage a Microsoft 365 tenant
+:::
