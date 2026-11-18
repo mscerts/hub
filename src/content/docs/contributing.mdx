@@ -8,7 +8,7 @@ description: "How to contribute study materials, exam labs, and content updates 
 ---
 import { FileTree, Badge, Aside, Steps } from '@components/docs';
 
-<Aside type="note">This guide has been updated as per May 2026.</Aside>
+<Aside type="note">This guide has been updated as per November 2026.</Aside>
 
 If you're interested in supporting the Hub's development and are familiar with [Markdown and MDX](https://docs.astro.build/en/guides/markdown-content/), read on to learn how to contribute to the project.
 
@@ -31,15 +31,18 @@ This is not the entire project structure, but it's the most important part of th
     - ...
   - components (reusable UI components)
   - content
+    - archive (retired exams and historical offers)
     - docs
       - aibusiness/ (AI Business exams)
       - azure/ (Azure exams)
+      - courses/ (generated study guide courses)
       - dynamics/ (Dynamics exams)
       - github/ (GitHub exams)
       - guide/ (certification guides)
       - labs/ (hands-on lab guides)
       - microsoft365/ (Microsoft 365 exams)
       - power/ (Power Platform exams)
+      - prepare/ (exam preparation guides)
       - security/ (Security exams)
       - vouchers/ (voucher offers)
       - **contributing.mdx**
@@ -50,7 +53,7 @@ This is not the entire project structure, but it's the most important part of th
       - welcome.mdx
     - blog (blog posts)
   - layouts (page layouts)
-  - pages (routed pages: news, contact, etc.)
+  - pages (routed pages: /certs/, /news/, /contact/, etc.)
   - utils (utility functions)
 - astro.config.mjs (Astro configuration)
 - package.json (project dependencies)
@@ -118,10 +121,10 @@ This also allows you to preview your changes locally before submitting a pull re
 
    **macOS / Linux**
 
-   We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions:
+   We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions (Node 24 LTS is required):
    ```bash
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-   nvm install 22
+   nvm install 24
    ```
    Then install pnpm:
    ```bash
@@ -130,10 +133,10 @@ This also allows you to preview your changes locally before submitting a pull re
 
    **Windows**
 
-   Download Node.js from [nodejs.org](https://nodejs.org) or use [fnm](https://github.com/Schniz/fnm):
+   Download Node.js 24 LTS from [nodejs.org](https://nodejs.org) or use [fnm](https://github.com/Schniz/fnm):
    ```powershell
    winget install Schniz.fnm
-   fnm install 22
+   fnm install 24
    ```
    Then install pnpm:
    ```powershell
@@ -142,10 +145,8 @@ This also allows you to preview your changes locally before submitting a pull re
 
 3. Install dependencies:
    ```bash
-   pnpm install
-   pnpm approve-builds
+   pnpm install --frozen-lockfile
    ```
-   (`pnpm approve-builds` approves optional native build scripts required by some dependencies.)
 
 4. Start the dev server:
    ```bash
@@ -202,13 +203,13 @@ Restart PowerShell to apply. Now `pnpm install` runs through Socket automaticall
 
 ## GitHub Codespaces (browser-based editing with live preview)
 
-The repo ships with a pre-configured devcontainer so you can contribute entirely from your browser with a live preview, and no local setup required.
+You can contribute directly from your browser using GitHub Codespaces with a live preview and no local setup required.
 
 <Steps>
 
 1. Open the [mscerts/hub](https://github.com/mscerts/hub) repository on GitHub and click **Code → Codespaces → Create codespace on main** (or your fork's branch).
 
-2. Wait ~2 minutes for the container to build. VS Code opens in the browser with all extensions pre-installed and dependencies installed.
+2. Once VS Code opens in the browser, ensure Node 24 (`.node-version`) and `pnpm` are active and run `pnpm install --frozen-lockfile`.
 
 3. In the integrated terminal, start the dev server:
    ```bash
@@ -236,19 +237,20 @@ Optional flags:
 
 | Flag | Purpose |
 |------|---------|
-| `--beta` | Adds a beta status banner import |
+| `--beta --beta-start YYYY-MM-DD` | Adds the standard beta banner and generated beta timeline note using the official beta start date |
 | `--labs` | Adds an Exam Labs link in the Get Started block |
+| `--tier fundamentals\|business\|role-based` | Overrides the inferred How to Prepare guide tier |
 
 The script:
 - Validates the exam code format and determines the correct content area
-- Creates `src/content/docs/<area>/<CODE>.mdx` with all five required tabs
-- Prints a checklist of what to fill in next (exam URL description, training course link, etc.)
+- Creates `src/content/docs/<area>/<CODE>.mdx` with all five required tabs and Get Started cards
+- Prints a checklist of what to fill in next (exam URL description, training course link, beta tracker/status entries, etc.)
 
 The new page is automatically picked up by the sidebar, so no manual `astro.config.mjs` edits are needed.
 
 ## VSCode Support
 
-We recommend using [VSCode](https://code.visualstudio.com) or [GitHub Codespaces](https://github.com/features/codespaces) for contributing. The repo includes a pre-configured `.vscode/settings.json` with Markdown paste and drop settings, and a `.devcontainer` configuration for a one-click Codespaces setup.
+We recommend using [VSCode](https://code.visualstudio.com) or [GitHub Codespaces](https://github.com/features/codespaces) for contributing.
 
 Recommended extensions:
 
