@@ -412,8 +412,8 @@ test("an exam with no official course gets no P1 or P2, and a warning", () => {
   );
 });
 
-test("nothing is limited by default: every relevant page is a candidate, however many there are", () => {
-  // forced weak anchor: eleven documentation pages cover the task, more than the 6 the old default allowed
+test("P1, P2, P3 and P4 modules stay unlimited by default while P4 docs trim the low-BM25 tail", () => {
+  // forced weak anchor: eleven documentation pages cover the task, all well within the 80-page P4 docs tail cap
   const out = run({
     tasks: ["Configure user-defined routes"],
     options: { anchorCoverage: 2 },
@@ -424,11 +424,15 @@ test("nothing is limited by default: every relevant page is a candidate, however
     options: { anchorCoverage: 2, limits: { p4Docs: 6 } },
   });
   assert.equal(paths(capped.tasks[0], "P4", "docs").length, 6);
-  for (const [name, value] of Object.entries(out.params.limits))
-    assert.equal(value, null, `${name} has no limit (null in the file)`);
+  for (const [name, value] of Object.entries(out.params.limits)) {
+    if (name === "p4Docs") assert.equal(value, 80);
+    else assert.equal(value, null, `${name} has no limit (null in the file)`);
+  }
   assert.equal(out.params.scan, null);
   assert.equal(out.params.relativeFloor, 0);
-  assert.ok(Object.values(DEFAULTS.limits).every((n) => n === Infinity));
+  assert.equal(out.params.p4RelativeFloor, 0.35);
+  assert.equal(DEFAULTS.limits.p4Docs, 80);
+  assert.equal(DEFAULTS.p4RelativeFloor, 0.35);
 });
 
 test("a limit can still be asked for, to look at a short list", () => {

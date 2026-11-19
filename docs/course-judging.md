@@ -76,7 +76,15 @@ The **evidence** of a candidate is the text a judge may quote: for a module its 
 - a verdict that is not `core`, `supporting` or `reject`; a `supporting` pick without a valid relation; a relation on anything else;
 - no `why`, or one over 300 characters; flags that are not in the list; a confidence that is not `high`, `medium` or `low`;
 - a pick without a `quote`, an empty one, or one over 200 characters;
-- **a pick whose quote is not in the evidence.** The quote is compared by whole words, ignoring case, quote marks, dashes and spacing; it must be at least two words unless it is a whole one-word snippet, and the words must be in order. A `reject` may carry a quote, which is checked and reported but never sends the answer back.
+- **a pick whose quote is not in the evidence.** The quote is compared by whole words, ignoring case, quote marks, dashes and spacing; it must be at least two words unless it is a whole one-word snippet, and the words must be in order. A `reject` may carry a quote, which is checked and reported but never sends the answer back;
+- **mass-templated rejection reasons:** in any batch with 30 or more rejects, `check` fails if more than 35% of rejects share the exact same normalized `why` sentence, preventing scripted one-liner sweeps that bypass reading individual candidates.
+
+## Verdict reuse and out-of-scope propagation
+
+`node scripts/course-judge.mjs prepare <CODE> --reuse <dir-or-file>` reuses prior `.judged.json` files across rebuilds and guide updates:
+
+- **Exact `(task wording, foundation mode, target path, evidence signature)` cache:** when a task's text and the candidate's evidence snippets have not changed (or when a quote still verifies against updated evidence), the prior verdict is written straight into `<CODE>.00-reused.judged.json` instead of re-prompting a model.
+- **Exam-level out-of-scope propagation:** when a target was rejected with `confidence: "high"` and an exam-wide flag (`other-role`, `licensing-tier` or `outdated`), that rejection propagates to other tasks in the same exam instead of judging the same out-of-scope page up to 19 times (`--no-propagate-rejects` disables propagation).
 
 Each quote also gets a `quoteTermCoverage`: the share of the task's distinctive words (an abbreviation counting for its long form) that the quote contains. It is only recorded; the gates will use it, because a quote that says nothing of the task is no evidence for it.
 

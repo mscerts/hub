@@ -573,3 +573,32 @@ test("a page the maintainer pinned is shown under that task, whatever the rules 
   assert.equal(result.repeats[0].shownUnder, "d/g2/t2");
   assert.deepEqual(result.repeats[0].alsoFits, ["d/g1/t1"]);
 });
+
+test("a conceptual overview accepted for both Fundamentals and a task stays in Fundamentals when the task already has another core pick", () => {
+  const overview = (cls, extra = {}) =>
+    row(
+      "/purview/concept-overview",
+      {
+        title: "What is Microsoft Purview?",
+        class: cls,
+        target: { kind: "docs", path: "/purview/concept-overview" },
+      },
+      { signals: { concept: true }, ...extra },
+    );
+  const procedural = row("/purview/how-to-labels", {
+    title: "Create sensitivity labels",
+    class: "core",
+    target: { kind: "docs", path: "/purview/how-to-labels" },
+  });
+  const result = routePicks({
+    accepted: accepted({
+      "d/g/@foundations": [overview("foundation")],
+      "d/g/t1": [overview("core"), procedural],
+    }),
+    taskKeys: ["d/g/@foundations", "d/g/t1"],
+  });
+  assert.deepEqual(pathsAt(result, "d/g/@foundations"), [
+    "/purview/concept-overview",
+  ]);
+  assert.deepEqual(pathsAt(result, "d/g/t1"), ["/purview/how-to-labels"]);
+});

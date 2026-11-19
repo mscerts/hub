@@ -579,34 +579,73 @@ export function validateCourse(
         warnings.push(
           `${concept.text}: ${pick.path} is also shown under ${shownAt.get(pick.path)}`,
         );
-  // a task without a module of its own may point to a module that also covers it and is shown under another task
+  // a task without a module or docs page of its own may point to one that also covers it and is shown under another task
   for (const domain of course.domains)
     for (const group of domain.groups ?? [])
       for (const task of group.tasks ?? []) {
-        if (task.overlaps === undefined) continue;
-        if (!Array.isArray(task.overlaps) || task.overlaps.length === 0) {
-          errors.push(`${task.key}: overlaps must be a non-empty list`);
-          continue;
+        if (task.overlaps !== undefined) {
+          if (!Array.isArray(task.overlaps) || task.overlaps.length === 0) {
+            errors.push(`${task.key}: overlaps must be a non-empty list`);
+          } else {
+            if ((task.picks ?? []).some((p) => p?.target?.kind === "module"))
+              errors.push(
+                `${task.key}: has a module of its own, so it needs no pointer to another task's module`,
+              );
+            for (const o of task.overlaps) {
+              if (
+                !present(o?.path) ||
+                !present(o?.title) ||
+                !present(o?.shownUnder)
+              )
+                errors.push(
+                  `${task.key}: an overlap needs path, title and shownUnder: ${JSON.stringify(o)}`,
+                );
+              else if (shownAt.get(o.path) !== o.shownUnder)
+                errors.push(
+                  `${task.key}: the overlap ${o.path} is shown under ${shownAt.get(o.path) ?? "no task"}, not under ${o.shownUnder}`,
+                );
+              else if (o.shownUnder === task.key)
+                errors.push(
+                  `${task.key}: an overlap points to the task itself`,
+                );
+            }
+          }
         }
-        if ((task.picks ?? []).some((p) => p?.target?.kind === "module"))
-          errors.push(
-            `${task.key}: has a module of its own, so it needs no pointer to another task's module`,
-          );
-        for (const o of task.overlaps) {
+        if (task.docOverlaps !== undefined) {
           if (
-            !present(o?.path) ||
-            !present(o?.title) ||
-            !present(o?.shownUnder)
-          )
-            errors.push(
-              `${task.key}: an overlap needs path, title and shownUnder: ${JSON.stringify(o)}`,
-            );
-          else if (shownAt.get(o.path) !== o.shownUnder)
-            errors.push(
-              `${task.key}: the overlap ${o.path} is shown under ${shownAt.get(o.path) ?? "no task"}, not under ${o.shownUnder}`,
-            );
-          else if (o.shownUnder === task.key)
-            errors.push(`${task.key}: an overlap points to the task itself`);
+            !Array.isArray(task.docOverlaps) ||
+            task.docOverlaps.length === 0
+          ) {
+            errors.push(`${task.key}: docOverlaps must be a non-empty list`);
+          } else {
+            if (
+              (task.picks ?? []).some(
+                (p) =>
+                  p?.target?.kind === "docs" || p?.target?.kind === "github",
+              )
+            )
+              errors.push(
+                `${task.key}: has documentation of its own, so it needs no docOverlaps pointer`,
+              );
+            for (const o of task.docOverlaps) {
+              if (
+                !present(o?.path) ||
+                !present(o?.title) ||
+                !present(o?.shownUnder)
+              )
+                errors.push(
+                  `${task.key}: a docOverlap needs path, title and shownUnder: ${JSON.stringify(o)}`,
+                );
+              else if (shownAt.get(o.path) !== o.shownUnder)
+                errors.push(
+                  `${task.key}: the docOverlap ${o.path} is shown under ${shownAt.get(o.path) ?? "no task"}, not under ${o.shownUnder}`,
+                );
+              else if (o.shownUnder === task.key)
+                errors.push(
+                  `${task.key}: a docOverlap points to the task itself`,
+                );
+            }
+          }
         }
       }
   return {

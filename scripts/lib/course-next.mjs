@@ -266,11 +266,19 @@ export function buildNext({ course, guide, version, today, force = false }) {
                 keyMap.get(o.shownUnder) ?? groupMap.get(o.shownUnder),
             }))
             .filter((o) => o.shownUnder);
+          const docOverlaps = (old?.docOverlaps ?? [])
+            .map((o) => ({
+              ...clone(o),
+              shownUnder:
+                keyMap.get(o.shownUnder) ?? groupMap.get(o.shownUnder),
+            }))
+            .filter((o) => o.shownUnder);
           return {
             key: task.key,
             text: task.text,
             picks: old?.picks ? clone(old.picks) : [],
             ...(overlaps.length ? { overlaps } : {}),
+            ...(docOverlaps.length ? { docOverlaps } : {}),
           };
         }),
       };
@@ -386,6 +394,7 @@ export function rejectPending(next, key) {
         if (t.key === key) {
           t.picks = [];
           delete t.overlaps;
+          delete t.docOverlaps;
         }
   copy.pending = {
     ...copy.pending,
@@ -428,6 +437,9 @@ export function mergeBuilt(next, built) {
           t.picks = clone(source.picks ?? []);
           if (source.overlaps?.length) t.overlaps = clone(source.overlaps);
           else delete t.overlaps;
+          if (source.docOverlaps?.length)
+            t.docOverlaps = clone(source.docOverlaps);
+          else delete t.docOverlaps;
           doneTasks.push(t.key);
         }
     }

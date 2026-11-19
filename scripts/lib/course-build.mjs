@@ -47,6 +47,8 @@ import {
   validateCourse,
 } from "./course-format.mjs";
 import { isClassic } from "./course-classic.mjs";
+import { CONCEPT_TITLE } from "./course-candidates.mjs";
+import { isConceptPath } from "./course-toc.mjs";
 import { ACCEPTED_BY_MAINTAINER, kindOfPath } from "./course-gates.mjs";
 import { buildAudience } from "./course-audience.mjs";
 import { handsOnReason } from "./course-handson.mjs";
@@ -253,6 +255,23 @@ export function routePicks({ accepted, taskKeys, rejected = new Map() }) {
       byPath.set(path, list);
     }
   }
+  // Count distinct core candidates per task so a conceptual overview (`concept` / `What is ...`) accepted for
+  // `<group>/@foundations` stays in Fundamentals whenever every competing `core` task in that group already has
+  // another `core` resource of its own.
+  const corePathsByTask = new Map();
+  for (const [, list] of byPath) {
+    for (const r of list) {
+      if (r.pick.class === "core") {
+        let s = corePathsByTask.get(r.taskKey);
+        if (!s) {
+          s = new Set();
+          corePathsByTask.set(r.taskKey, s);
+        }
+        s.add(r.pick.target.path);
+      }
+    }
+  }
+
   // a page that fits one task fixes that task's load first; then the pages that fit the fewest tasks choose
   const load = new Map();
   const bump = (key) => load.set(key, (load.get(key) ?? 0) + 1);
@@ -279,20 +298,44 @@ export function routePicks({ accepted, taskKeys, rejected = new Map() }) {
     }
     let winner = rows[0];
     if (rows.length > 1) {
-      const top = rows.reduce((m, r) => (fitOrder(r, m) < 0 ? r : m), rows[0]);
-      // a module introduces the skill group's first task it fits, whatever the load; a docs page goes to the thinnest task
-      const byGuide = rows[0].pick.target.kind === "module";
-      winner = rows
-        .filter((r) => fitOrder(r, top) === 0)
-        .sort(
-          (a, b) =>
-            (byGuide ? order.get(a.taskKey) - order.get(b.taskKey) : 0) ||
-            (load.get(a.taskKey) ?? 0) - (load.get(b.taskKey) ?? 0) ||
-            (b.item.judge?.quoteTermCoverage ?? 0) -
-              (a.item.judge?.quoteTermCoverage ?? 0) ||
-            (b.item.coverage ?? 0) - (a.item.coverage ?? 0) ||
-            order.get(a.taskKey) - order.get(b.taskKey),
-        )[0];
+      const fRow = rows.find(
+        (r) =>
+          isFoundationKey(r.taskKey) &&
+          (r.item?.signals?.concept === true ||
+            isConceptPath(path) ||
+            CONCEPT_TITLE.test(r.pick.title)),
+      );
+      const coreCompetitors = rows.filter((r) => r.pick.class === "core");
+      const canPreserveInFoundations =
+        Boolean(fRow) &&
+        coreCompetitors.length > 0 &&
+        coreCompetitors.every(
+          (c) => (corePathsByTask.get(c.taskKey)?.size ?? 0) >= 2,
+        );
+      if (canPreserveInFoundations) {
+        winner = fRow;
+        for (const c of coreCompetitors) {
+          corePathsByTask.get(c.taskKey)?.delete(path);
+        }
+      } else {
+        const top = rows.reduce(
+          (m, r) => (fitOrder(r, m) < 0 ? r : m),
+          rows[0],
+        );
+        // a module introduces the skill group's first task it fits, whatever the load; a docs page goes to the thinnest task
+        const byGuide = rows[0].pick.target.kind === "module";
+        winner = rows
+          .filter((r) => fitOrder(r, top) === 0)
+          .sort(
+            (a, b) =>
+              (byGuide ? order.get(a.taskKey) - order.get(b.taskKey) : 0) ||
+              (load.get(a.taskKey) ?? 0) - (load.get(b.taskKey) ?? 0) ||
+              (b.item.judge?.quoteTermCoverage ?? 0) -
+                (a.item.judge?.quoteTermCoverage ?? 0) ||
+              (b.item.coverage ?? 0) - (a.item.coverage ?? 0) ||
+              order.get(a.taskKey) - order.get(b.taskKey),
+          )[0];
+      }
     }
     if (allRows.length > 1)
       repeats.push({
@@ -643,11 +686,29 @@ export function buildCourse({
                   title: r.title,
                   shownUnder: r.shownUnder,
                 }));
+          // likewise, a task without documentation of its own points to accepted docs placed once under sibling tasks
+          const docOverlaps = picks.some(
+            (p) => p.target.kind === "docs" || p.target.kind === "github",
+          )
+            ? []
+            : routed.repeats
+                .filter(
+                  (r) =>
+                    (r.kind === "docs" || r.kind === "github") &&
+                    r.alsoFits.includes(t.key) &&
+                    !isFoundationKey(r.shownUnder),
+                )
+                .map((r) => ({
+                  path: r.path,
+                  title: r.title,
+                  shownUnder: r.shownUnder,
+                }));
           return {
             key: t.key,
             text: t.text,
             picks,
             ...(overlaps.length ? { overlaps } : {}),
+            ...(docOverlaps.length ? { docOverlaps } : {}),
           };
         }),
       };

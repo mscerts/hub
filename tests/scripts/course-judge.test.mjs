@@ -6,7 +6,9 @@ import {
   DEFAULT_BATCH_CANDIDATES,
   FLAGS,
   VERDICTS,
+  applyReuseToBatches,
   buildBatches,
+  buildReuseIndex,
   estimateTokens,
   evidenceOf,
   findQuote,
@@ -599,5 +601,66 @@ test("constants are the ones the docs and the prompts name", () => {
       exam: { code: "NET-100", name: null },
     })[0].exam.name,
     null,
+  );
+});
+
+test("anti-templating guard rejects batches with mass-duplicated reject reasons", () => {
+  const batch = one();
+  const templated = judgmentsFor(batch, (j) =>
+    j.verdict === "reject" ? { ...j, why: "Out of scope generic reject." } : j,
+  );
+  const res = validateJudgments(batch, templated, {
+    minRejectsForTemplateCheck: 2,
+    maxTemplateShare: 0.35,
+  });
+  assert.match(res.errors.join("\n"), /templated reject reasons detected/);
+});
+
+test("buildReuseIndex and applyReuseToBatches reuse unchanged verdicts, re-judge changed evidence, and propagate high-confidence exam-level rejects", () => {
+  const { batches: list, pools } = batches();
+  const batch = list[0];
+  const p4RejectTarget = findCandidate(batch, "P4", "docs").c.target.path;
+  const answers = judgmentsFor(batch, (j) =>
+    j.target === p4RejectTarget
+      ? {
+          ...j,
+          verdict: "reject",
+          confidence: "high",
+          flags: ["other-role"],
+          why: "Written for developer SDK integration, not network administration.",
+        }
+      : j,
+  );
+  const v = validateJudgments(batch, answers);
+  const prior = mergeJudged(batch, v);
+
+  const reuseIdx = buildReuseIndex([prior], pools);
+  // 1. Identical batch: 100% reused, 0 remaining batches
+  const exactRun = applyReuseToBatches([batch], reuseIdx);
+  assert.equal(exactRun.remainingBatches.length, 0);
+  assert.equal(exactRun.stats.remaining, 0);
+  assert.ok(exactRun.reusedJudged);
+  assert.equal(exactRun.reusedJudged.kind, "judged");
+
+  // 2. New task wording containing the high-confidence other-role target: propagates the exam-level reject
+  const modifiedBatch = structuredClone(batch);
+  modifiedBatch.tasks[0].key = "networking/configure/brand-new-task";
+  modifiedBatch.tasks[0].text = "Configure brand new routing behavior";
+  const propRun = applyReuseToBatches([modifiedBatch], reuseIdx);
+  assert.ok(propRun.stats.reusedPropagated >= 1);
+  assert.ok(propRun.stats.remaining < propRun.stats.total);
+
+  // 3. Changed evidence invalidates exact reuse when the old quote is no longer in the new evidence
+  const changedEvidenceBatch = structuredClone(batch);
+  const coreTask = changedEvidenceBatch.tasks[0];
+  const coreCand = coreTask.candidates.find((c) => c.source === "P1");
+  coreCand.evidence = [
+    { where: "module title", text: "Completely rewritten module title" },
+  ];
+  const shiftedRun = applyReuseToBatches([changedEvidenceBatch], reuseIdx);
+  assert.equal(shiftedRun.stats.remaining, 1);
+  assert.equal(
+    shiftedRun.remainingBatches[0].tasks[0].candidates[0].target.path,
+    coreCand.target.path,
   );
 });

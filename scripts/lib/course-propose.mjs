@@ -32,7 +32,12 @@ const NOT_DOCS =
  * `tasks` are the guide's tasks (flattenTasks: key, text, domain, group); only the keys and the wording go to the
  * model, never what the candidate generator found, so that a proposal is independent of the word search.
  */
-export function buildProposalBatches({ tasks, exam, guideHash = null }) {
+export function buildProposalBatches({
+  tasks,
+  exam,
+  guideHash = null,
+  docPrefixes = null,
+}) {
   const groups = new Map();
   for (const task of tasks) {
     const groupId = task.key.split("/").slice(0, 2).join("/");
@@ -44,12 +49,17 @@ export function buildProposalBatches({ tasks, exam, guideHash = null }) {
       });
     groups.get(groupId).tasks.push({ key: task.key, text: task.text });
   }
+  const prefixes =
+    Array.isArray(docPrefixes) && docPrefixes.length > 0
+      ? [...new Set(docPrefixes)].slice(0, 24)
+      : null;
   return [...groups].map(([groupId, group]) => ({
     schemaVersion: PROPOSE_SCHEMA_VERSION,
     kind: "propose",
     batchId: groupId,
     exam,
     inputs: { guideHash },
+    ...(prefixes ? { docPrefixes: prefixes } : {}),
     group: { domain: group.domain, title: group.title },
     tasks: group.tasks,
   }));
@@ -74,6 +84,9 @@ export function proposalPrompt(batch) {
   const taskLines = batch.tasks
     .map((t) => `- \`${t.key}\`: ${t.text}`)
     .join("\n");
+  const prefixHint = batch.docPrefixes?.length
+    ? `\n- **Current documentation path roots used by this exam's products:** ${batch.docPrefixes.map((p) => `\`${p}/\``).join(", ")} (use these real folder roots when proposing articles in those product areas).`
+    : "";
   return `# Which Microsoft Learn pages teach these tasks?
 
 You are helping to build a study course for the Microsoft exam **${batch.exam.code}${batch.exam.name ? `: ${batch.exam.name}` : ""}**. The official study guide lists the tasks below for the skill group **${batch.group.title}** (domain: ${batch.group.domain}). For each task, name the pages on Microsoft Learn (learn.microsoft.com) that a person preparing for the exam should read or work through to learn it.
@@ -84,7 +97,7 @@ ${taskLines}
 
 ## What to name
 
-- **Documentation articles** (how-to, concept, tutorial, quickstart, reference where it teaches) at their address after the host, for example \`/power-bi/fundamentals/power-bi-overview\`.
+- **Documentation articles** (how-to, concept, tutorial, quickstart, reference where it teaches) at their address after the host, for example \`/power-bi/fundamentals/power-bi-overview\`.${prefixHint}
 - **Training modules** at \`/training/modules/<module-name>\`.
 - Nothing else: no learning paths, courses, videos, exams or pages of other sites.
 
@@ -209,6 +222,29 @@ export function buildResolver(pools, redirects = []) {
     }
   }
   const titles = new Map(); // normalized title -> [paths]
+  const familyDocs = new Map(); // docFamily(path) -> [{ path, words }]
+  const titleStopwords = new Set([
+    "in",
+    "on",
+    "for",
+    "the",
+    "a",
+    "an",
+    "to",
+    "of",
+    "and",
+    "with",
+    "by",
+    "using",
+    "microsoft",
+    "center",
+    "admin",
+    "portal",
+  ]);
+  const coreWords = (text) =>
+    normalizeTitle(withoutProduct(text))
+      .split(" ")
+      .filter((w) => w.length >= 3 && !titleStopwords.has(w));
   const add = (key, path) => {
     if (!key) return;
     const list = titles.get(key) ?? [];
@@ -218,6 +254,16 @@ export function buildResolver(pools, redirects = []) {
   for (const [path, meta] of pools.docMeta) {
     add(normalizeTitle(meta.title), path);
     add(normalizeTitle(withoutProduct(meta.title)), path);
+    const fam = docFamily(path);
+    const words = coreWords(meta.title);
+    if (fam && words.length >= 2) {
+      let list = familyDocs.get(fam);
+      if (!list) {
+        list = [];
+        familyDocs.set(fam, list);
+      }
+      list.push({ path, words: new Set(words) });
+    }
   }
   const moduleTitles = new Map();
   for (const [path, m] of pools.modules) {
@@ -226,7 +272,15 @@ export function buildResolver(pools, redirects = []) {
     list.push(path);
     moduleTitles.set(key, list);
   }
-  return { pools, moves, liveFrom, titles, moduleTitles };
+  return {
+    pools,
+    moves,
+    liveFrom,
+    titles,
+    moduleTitles,
+    familyDocs,
+    coreWords,
+  };
 }
 
 /**
@@ -295,7 +349,15 @@ function closest(paths, asked) {
  * `asked` is the address as the model wrote it (canonical form), "" when only a title was given.
  */
 export function resolveProposal(page, resolver) {
-  const { pools, moves, liveFrom, titles, moduleTitles } = resolver;
+  const {
+    pools,
+    moves,
+    liveFrom,
+    titles,
+    moduleTitles,
+    familyDocs,
+    coreWords,
+  } = resolver;
   // Where a page that moved lives now: the first address along its moves that is a page of the catalogs.
   const follow = (start) => {
     let path = start;
@@ -424,6 +486,64 @@ export function resolveProposal(page, resolver) {
       if (path)
         return found(path, "docs", "title", pools.docMeta.get(path).title);
       return { status: "unresolved", reason: "ambiguous-title", asked };
+    }
+
+    // Scoped fuzzy title fallback within the exact proposed documentation family when minor portal/admin suffixes
+    // differ ("Manage agents for Copilot" vs "Manage agents for Copilot in the Microsoft 365 admin center").
+    // Requires >=3 distinctive core words (or >=2 when exact subset), >=85% mutual overlap, and a unique winner.
+    if (asked && familyDocs && coreWords) {
+      const fam = docFamily(asked);
+      const qWords = coreWords(page.title);
+      const candidatesInFam = familyDocs.get(fam) ?? [];
+      if (qWords.length >= 2 && candidatesInFam.length > 0) {
+        const qSet = new Set(qWords);
+        const scored = [];
+        for (const cand of candidatesInFam) {
+          if (pools.docPaths && !pools.docPaths.has(cand.path)) continue;
+          let shared = 0;
+          for (const w of qSet) if (cand.words.has(w)) shared++;
+          const qRecall = shared / qSet.size;
+          const cRecall = shared / cand.words.size;
+          const f1 =
+            qRecall + cRecall > 0
+              ? (2 * qRecall * cRecall) / (qRecall + cRecall)
+              : 0;
+          if (qRecall >= 0.85 && f1 >= 0.85) {
+            scored.push({
+              path: cand.path,
+              f1,
+              prefix: commonPrefix(cand.path, asked),
+            });
+          }
+        }
+        scored.sort(
+          (a, b) =>
+            b.f1 - a.f1 || b.prefix - a.prefix || byText(a.path, b.path),
+        );
+        if (scored.length === 1) {
+          return found(
+            scored[0].path,
+            "docs",
+            "title",
+            pools.docMeta.get(scored[0].path).title,
+          );
+        }
+        if (
+          scored.length > 1 &&
+          (scored[0].f1 > scored[1].f1 + 0.05 ||
+            scored[0].prefix > scored[1].prefix)
+        ) {
+          return found(
+            scored[0].path,
+            "docs",
+            "title",
+            pools.docMeta.get(scored[0].path).title,
+          );
+        }
+        if (scored.length > 1) {
+          return { status: "unresolved", reason: "ambiguous-title", asked };
+        }
+      }
     }
   }
   return {

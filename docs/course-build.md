@@ -5,7 +5,7 @@ _Runbook of the builder (`scripts/course-build.mjs`, `scripts/lib/course-build.m
 The builder decides nothing. It takes what the earlier steps decided and writes it down as a course file: the study guide's tree, the picks the gates (or the maintainer) accepted, the remembered rejections, and the state of Learn they were judged against.
 
 ```bash
-node scripts/course-build.mjs AZ-104 [--gated FILE] [--out FILE] [--allow-stale] [--no-official-course] [--urls [--live]]
+node scripts/course-build.mjs AZ-104 [--run-dir DIR] [--gated FILE] [--out FILE] [--allow-stale] [--no-official-course] [--urls [--live]]
 ```
 
 Inputs:
@@ -59,7 +59,7 @@ After the accepted items are read, and before the course is written, the builder
 
 - **A pinned page stays where the maintainer put it.** An accept with `pinned: true` in the decisions file ([course-gates.md](course-gates.md)) decides the task before the two rules above are asked: the page is shown there, and `routing.repeats` lists the other tasks it was accepted for, like for any page that fits several. It is still left out when it is classic or hands-on.
 
-- **A task without a module points to the module that also covers it.** For every task that ended up with no module of its own, `routing.repeats` (each entry carries the page's `kind`) says which accepted modules fit it and are shown under another task; the builder writes them into the task as `overlaps` (`path`, `title`, `shownUnder`), and the page renders a note above the task's tabs ([courses.md](courses.md)). A module shown in a group's fundamentals is not listed, and a task with a module of its own gets no `overlaps`.
+- **A task without a module or documentation page points to the sibling task that covers it.** For every task that ended up with no module of its own, `routing.repeats` says which accepted modules fit it and are shown under another task (`overlaps`); likewise, when a task ended up with zero documentation picks of its own because its accepted documentation pages were deduplicated onto another task, the builder records `docOverlaps` (`path`, `title`, `shownUnder`). Both render a pointer note above the task's tabs ([courses.md](courses.md)). When a conceptual overview page is accepted for both `<group>/@foundations` and tasks that each already have at least two `core` picks, it stays in `Fundamentals` rather than leaving the group without an introduction.
 
 - **The audience profile is not a pick.** The builder reads the maintainer's decisions (`src/data_files/course-audience/<CODE>.json`, or `--audience FILE`), refuses a file that is not valid, and writes the guide's audience profile with the chosen resources into the course file as `audience` ([course-audience.md](course-audience.md)). Without decisions the concepts are listed as text.
 

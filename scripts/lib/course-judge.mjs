@@ -12,6 +12,7 @@
  * its JSON answer; this module builds the prompts and validates, verifies and merges the answers.
  */
 
+import { createHash } from "node:crypto";
 import { RELATIONS } from "./course-format.mjs";
 import { termCoverage } from "./course-lexical.mjs";
 
@@ -398,7 +399,11 @@ function indexBatch(batch) {
  * not in the evidence, and `items` the judgments by `task | target` (valid ones only) with the result of the quote
  * check. An answer with errors or unverified quotes is sent back to the judge.
  */
-export function validateJudgments(batch, file) {
+export function validateJudgments(
+  batch,
+  file,
+  { minRejectsForTemplateCheck = 30, maxTemplateShare = 0.35 } = {},
+) {
   const errors = [];
   const unverified = [];
   const items = new Map();
@@ -502,6 +507,34 @@ export function validateJudgments(batch, file) {
     for (const path of candidates.keys())
       if (!seen.has(idOf(key, path)))
         errors.push(`${idOf(key, path)}: not judged`);
+
+  // Mechanical anti-templating guard: catch scripted/lazy batches where >35% of >=30 rejects repeat identical wording.
+  const rejectReasons = new Map();
+  let totalRejects = 0;
+  for (const { judgment } of items.values()) {
+    if (judgment.verdict !== "reject") continue;
+    totalRejects++;
+    const normWhy = normalizeText(judgment.why);
+    if (normWhy) {
+      rejectReasons.set(normWhy, (rejectReasons.get(normWhy) ?? 0) + 1);
+    }
+  }
+  if (totalRejects >= minRejectsForTemplateCheck && maxTemplateShare < 1) {
+    let worstReason = "";
+    let worstCount = 0;
+    for (const [reason, count] of rejectReasons) {
+      if (count > worstCount) {
+        worstCount = count;
+        worstReason = reason;
+      }
+    }
+    if (worstCount / totalRejects > maxTemplateShare) {
+      errors.push(
+        `templated reject reasons detected: ${worstCount} of ${totalRejects} rejects (${Math.round((worstCount / totalRejects) * 100)}%) repeat the same reason ("${worstReason.slice(0, 80)}"); judge each candidate individually`,
+      );
+    }
+  }
+
   return { errors, unverified, items, judgedBy: file.judgedBy ?? null };
 }
 
@@ -565,6 +598,245 @@ export function mergeJudged(batch, judged) {
       unverifiedQuotes: count(
         (i) => i.judge.quote !== undefined && i.judge.quoteVerified === false,
       ),
+    },
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Incremental judgment cache reuse & exam-level out-of-scope propagation
+// ---------------------------------------------------------------------------
+
+const EXAM_LEVEL_REJECT_FLAGS = new Set([
+  "other-role",
+  "licensing-tier",
+  "outdated",
+]);
+
+export function evidenceSignature(evidence) {
+  return createHash("sha256")
+    .update(
+      JSON.stringify(
+        (evidence ?? []).map((e) => [e.where, normalizeText(e.text)]),
+      ),
+    )
+    .digest("hex")
+    .slice(0, 16);
+}
+
+/**
+ * Index prior `.judged.json` files (and optional current `pools` to compute evidence signatures when needed)
+ * so unchanged `(taskText, foundation, targetPath, evidenceSig)` pairs and unambiguous exam-level out-of-scope
+ * high-confidence rejects (`other-role`, `licensing-tier`, `outdated`) can be reused without re-prompting a model.
+ */
+export function buildReuseIndex(
+  priorJudgedFiles,
+  pools = null,
+  { propagateOutOfScope = true } = {},
+) {
+  const exact = new Map();
+  const pickedOrUnsureTargets = new Set();
+  const examLevelRejects = new Map();
+
+  for (const doc of priorJudgedFiles ?? []) {
+    if (doc?.kind !== "judged") continue;
+    for (const task of doc.tasks ?? []) {
+      const taskNorm = `${task.foundation ? "F:" : "T:"}${normalizeText(task.text)}`;
+      for (const item of task.items ?? []) {
+        const path = item?.target?.path;
+        const j = item?.judge;
+        if (!path || !j) continue;
+        if (j.quote !== undefined && j.quoteVerified === false) continue;
+
+        const evSig = pools
+          ? evidenceSignature(evidenceOf(item, pools))
+          : "any";
+        exact.set(`${taskNorm}|${path}|${evSig}`, j);
+        if (!pools) exact.set(`${taskNorm}|${path}|any`, j);
+
+        if (j.verdict !== "reject" || j.confidence === "low") {
+          pickedOrUnsureTargets.add(path);
+          examLevelRejects.delete(path);
+        } else if (
+          propagateOutOfScope &&
+          !pickedOrUnsureTargets.has(path) &&
+          j.confidence === "high" &&
+          (j.flags ?? []).some((f) => EXAM_LEVEL_REJECT_FLAGS.has(f)) &&
+          !examLevelRejects.has(path)
+        ) {
+          examLevelRejects.set(path, j);
+        }
+      }
+    }
+  }
+
+  return { exact, examLevelRejects };
+}
+
+/**
+ * Partition newly built judge batches into:
+ *   - `remainingBatches`: batches containing only candidates that still need model judging
+ *   - `reusedJudged`: a valid `kind: "judged"` object holding all reused/propagated items (null when 0 reused)
+ *   - `stats`: `{ total, reusedExact, reusedPropagated, remaining }`
+ */
+export function applyReuseToBatches(batches, reuseIndex) {
+  let total = 0;
+  let reusedExact = 0;
+  let reusedPropagated = 0;
+  const reusedTasks = new Map();
+  const remainingByGroup = new Map();
+
+  for (const batch of batches) {
+    const groupKey = batch.batchId.split("#")[0];
+    if (!remainingByGroup.has(groupKey)) {
+      remainingByGroup.set(groupKey, {
+        exam: batch.exam,
+        inputs: batch.inputs,
+        group: batch.group,
+        tasks: new Map(),
+      });
+    }
+    const remGroup = remainingByGroup.get(groupKey);
+
+    for (const task of batch.tasks) {
+      const taskNorm = `${task.foundation ? "F:" : "T:"}${normalizeText(task.text)}`;
+      for (const c of task.candidates) {
+        total++;
+        const evSig = evidenceSignature(c.evidence);
+        let hit =
+          reuseIndex.exact.get(`${taskNorm}|${c.target.path}|${evSig}`) ??
+          reuseIndex.exact.get(`${taskNorm}|${c.target.path}|any`) ??
+          null;
+        let propagated = false;
+        if (!hit && reuseIndex.examLevelRejects.has(c.target.path)) {
+          hit = reuseIndex.examLevelRejects.get(c.target.path);
+          propagated = true;
+        }
+
+        if (hit) {
+          if (propagated) reusedPropagated++;
+          else reusedExact++;
+          if (!reusedTasks.has(task.key)) {
+            reusedTasks.set(task.key, {
+              key: task.key,
+              text: task.text,
+              ...(task.foundation ? { foundation: true } : {}),
+              noP1: task.noP1,
+              items: [],
+            });
+          }
+          const { evidence, ...card } = c;
+          let quoteVerified = Boolean(hit.quote);
+          let quoteWhere;
+          let termCov = 0;
+          if (hit.quote) {
+            const qCheck = findQuote(hit.quote, evidence);
+            if (!qCheck.verified) {
+              // Evidence shifted so the old quote no longer matches; send back to a fresh judge instead!
+              reusedExact--;
+              hit = null;
+            } else {
+              quoteVerified = true;
+              quoteWhere = qCheck.where;
+              termCov = quoteTermCoverage(task.text, hit.quote);
+            }
+          }
+          if (hit) {
+            const flags = [...new Set(hit.flags ?? [])].sort(byText);
+            reusedTasks.get(task.key).items.push({
+              ...card,
+              judge: {
+                verdict: hit.verdict,
+                ...(hit.relation ? { relation: hit.relation } : {}),
+                why: hit.why,
+                ...(hit.quote
+                  ? {
+                      quote: hit.quote,
+                      quoteVerified,
+                      ...(quoteWhere ? { quoteWhere } : {}),
+                      quoteTermCoverage: termCov,
+                    }
+                  : {}),
+                flags: hit.flags ?? [],
+                confidence: hit.confidence,
+              },
+              flags,
+            });
+            continue;
+          }
+        }
+
+        if (!remGroup.tasks.has(task.key)) {
+          remGroup.tasks.set(task.key, {
+            task: { ...task, candidates: [] },
+            candidates: [],
+          });
+        }
+        remGroup.tasks.get(task.key).candidates.push(c);
+      }
+    }
+  }
+
+  const remainingBatches = [];
+  for (const [groupId, g] of remainingByGroup) {
+    const taskEntries = [...g.tasks.values()].map(({ task, candidates }) => ({
+      ...task,
+      candidates,
+    }));
+    if (taskEntries.length === 0) continue;
+    const parts = splitTasks(taskEntries, DEFAULT_BATCH_CANDIDATES);
+    parts.forEach((part, idx) => {
+      remainingBatches.push({
+        schemaVersion: JUDGE_SCHEMA_VERSION,
+        kind: "judge",
+        batchId: parts.length > 1 ? `${groupId}#${idx + 1}` : groupId,
+        ...(parts.length > 1 ? { part: { n: idx + 1, of: parts.length } } : {}),
+        exam: g.exam,
+        inputs: g.inputs,
+        group: g.group,
+        tasks: part.map(({ task, candidates }) => ({
+          ...task,
+          candidates,
+        })),
+      });
+    });
+  }
+
+  const allReusedItems = [...reusedTasks.values()].flatMap((t) => t.items);
+  const count = (fn) => allReusedItems.filter(fn).length;
+  const firstBatch = batches[0];
+  const reusedJudged =
+    allReusedItems.length > 0 && firstBatch
+      ? {
+          schemaVersion: JUDGE_SCHEMA_VERSION,
+          kind: "judged",
+          batchId: "reused-cache",
+          exam: firstBatch.exam,
+          inputs: firstBatch.inputs,
+          group: {
+            domain: "Reused judgments",
+            title: "Cached and propagated verdicts",
+            tasks: [],
+          },
+          judgedBy: "reuse-cache",
+          tasks: [...reusedTasks.values()],
+          stats: {
+            candidates: allReusedItems.length,
+            core: count((i) => i.judge.verdict === "core"),
+            supporting: count((i) => i.judge.verdict === "supporting"),
+            reject: count((i) => i.judge.verdict === "reject"),
+            unverifiedQuotes: 0,
+          },
+        }
+      : null;
+
+  return {
+    remainingBatches,
+    reusedJudged,
+    stats: {
+      total,
+      reusedExact,
+      reusedPropagated,
+      remaining: total - reusedExact - reusedPropagated,
     },
   };
 }

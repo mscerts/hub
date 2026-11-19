@@ -67,6 +67,8 @@ const INFER_PAGES = 5;
  * look at a short list.
  */
 export const NO_LIMIT = Infinity;
+export const DEFAULT_P4_DOCS_LIMIT = 80;
+export const DEFAULT_P4_RELATIVE_FLOOR = 0.35;
 
 export const DEFAULTS = Object.freeze({
   limits: Object.freeze({
@@ -76,15 +78,18 @@ export const DEFAULTS = Object.freeze({
     p3Module: NO_LIMIT,
     p3Unit: NO_LIMIT,
     p4Module: NO_LIMIT,
-    p4Docs: NO_LIMIT,
+    // P4 docs search can explode to 700-1000 low-BM25 tail hits on short tasks ("Create users", "Copilot Search");
+    // capping the deep tail at 80 with a 0.35 relative score floor cuts >50% of 0%-yield batches while P1/P2/P3/P5 stay uncapped.
+    p4Docs: DEFAULT_P4_DOCS_LIMIT,
     p1GroupModule: NO_LIMIT,
   }),
   // the share of a task's weight a page must contain, per provenance: the further from the exam's own course,
   // the more of the task a page has to cover
   minCoverage: Object.freeze({ P1: 0.34, P2: 0.5, P3: 0.5, P4: 0.6 }),
-  // a page is kept only if it scores at least this share of the best page's score: 0 keeps every page that
-  // passes the coverage threshold (a relevant page is not dropped for scoring below another)
+  // a page is kept only if it scores at least this share of the best page's score: 0 keeps every P1/P2/P3 page that
+  // passes the coverage threshold; p4RelativeFloor trims the noisy tail of catalog-only P4 docs
   relativeFloor: 0,
+  p4RelativeFloor: DEFAULT_P4_RELATIVE_FLOOR,
   anchorCoverage: 0.5,
   anchorModules: 3,
   anchorRelative: 0.5,
@@ -695,9 +700,9 @@ function candidatesForTask(task, ctx) {
 
   // ---- collect: search a pool, rank, keep the best of it
   const out = [];
-  const floor = (hits) => {
+  const floor = (hits, relFloor = options.relativeFloor) => {
     const best = hits[0]?.score ?? 0;
-    return hits.filter((h) => h.score >= options.relativeFloor * best);
+    return hits.filter((h) => h.score >= relFloor * best);
   };
   const gather = ({
     group,
@@ -706,6 +711,7 @@ function candidatesForTask(task, ctx) {
     classify,
     minCoverage,
     limit,
+    relFloor = options.relativeFloor,
     boost = () => ({}),
     describe,
   }) => {
@@ -722,7 +728,7 @@ function candidatesForTask(task, ctx) {
         return { ...hit, score: hit.score * factor, flags };
       })
       .sort((a, b) => b.score - a.score || byText(a.id, b.id));
-    for (const hit of floor(ranked).slice(0, limit))
+    for (const hit of floor(ranked, relFloor).slice(0, limit))
       out.push({ group, hit, ...describe(hit) });
   };
   // A task with a strong anchor ranks pages inside it higher. A task without one may use families under the
@@ -945,6 +951,7 @@ function candidatesForTask(task, ctx) {
       classify: docFilter,
       minCoverage: minCoverageFor("P4"),
       limit: options.limits.p4Docs,
+      relFloor: options.p4RelativeFloor,
       boost: docBoost,
       describe: (h) => ({
         source: "P4",
@@ -1268,9 +1275,14 @@ export function generateCandidates({
     groupModules: new Map(),
   };
 
+  const onlyTaskKeys = options.onlyTaskKeys
+    ? new Set(options.onlyTaskKeys)
+    : null;
   const tasks = options.audienceOnly
     ? []
-    : flattenTasks(guide).map((task) => candidatesForTask(task, ctx));
+    : flattenTasks(guide)
+        .filter((task) => !onlyTaskKeys || onlyTaskKeys.has(task.key))
+        .map((task) => candidatesForTask(task, ctx));
   const bySource = { P1: 0, P2: 0, P3: 0, P4: 0 };
   let candidates = 0;
   for (const t of tasks)
@@ -1483,6 +1495,7 @@ export function generateCandidates({
       sidebarCoverage: opts.sidebarCoverage,
       minCoverage: opts.minCoverage,
       relativeFloor: opts.relativeFloor,
+      p4RelativeFloor: opts.p4RelativeFloor,
       anchorCoverage: opts.anchorCoverage,
       anchorModules: opts.anchorModules,
       anchorRelative: opts.anchorRelative,

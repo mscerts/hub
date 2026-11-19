@@ -106,14 +106,14 @@ export async function loadLearnsync({ dir, fetchImpl }) {
   };
 }
 
-/** A learnsync checkout: LEARNSYNC_DIR, else ../learnsync next to the repo, else null (GitHub is used then). */
+/** A learnsync checkout: LEARNSYNC_DIR, else ../learnsync next to the repo, else .course-runs/learnsync inside it, else null (GitHub is used then). */
 export function learnsyncDir({ root = repoRoot, env = process.env } = {}) {
-  return (
-    env.LEARNSYNC_DIR ||
-    (existsSync(join(root, "..", "learnsync", "data"))
-      ? join(root, "..", "learnsync")
-      : null)
-  );
+  if (env.LEARNSYNC_DIR) return env.LEARNSYNC_DIR;
+  const sibling = join(root, "..", "learnsync");
+  if (existsSync(join(sibling, "data"))) return sibling;
+  const localCache = join(root, ".course-runs", "learnsync");
+  if (existsSync(join(localCache, "data"))) return localCache;
+  return null;
 }
 
 /** The set of live Learn paths from learnsync's docs-urls.txt (`<path>\t<lastmod or ->` per line). */

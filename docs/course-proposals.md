@@ -13,7 +13,7 @@ That the page exists, nothing more. A model writes addresses from memory, so som
 1. **The address.** Host and language stripped, lower case, no query, fragment or trailing slash. A page that is not on `learn.microsoft.com` is dropped (`not-learn`); a learning path, course, credential or video is not a page a course can pick (`not-a-page`).
 2. **Learn's moves** (`docs-redirects.json`, followed up to five times): a page that moved lives at its new address whatever the old one still says (`how: moved`).
 3. **The address as written**, when it is a live page of the catalog (`how: path`). A training module is looked up in the module catalog; a unit of a module outside the exam's courses becomes its module (`how: unit`).
-4. **The title**, when the address failed: the exact title, with or without the product the catalog appends ("Assign roles using the portal - Azure RBAC"), in the area the model named; the same title on several pages is settled by the closest address and never guessed on a tie (`how: title`, `ambiguous-title`).
+4. **The title**, when the address failed: the exact title, with or without the product the catalog appends ("Assign roles using the portal - Azure RBAC"), in the area the model named; the same title on several pages is settled by the closest address and never guessed on a tie (`how: title`, `ambiguous-title`). When exact normalized titles still miss because of minor portal suffixes ("Manage agent settings for Copilot" vs "Manage agent settings for Copilot in the Microsoft 365 admin center"), a scoped core-word title fallback checks pages inside the exact proposed documentation family (`>= 0.85` recall and F1 with a clear winner, returning `ambiguous-title` on ties).
 5. The hard filters of the generator (retired, classic, moved, not in the cache, boilerplate, not English) drop what exists but must not be offered (`dropped`).
 
 A page that is live but has no text in the catalog cannot be judged and is counted as `no-catalog-text`.
@@ -45,13 +45,11 @@ The prompt tells the model to answer from what it knows (no files, browsing or s
 ## Running it
 
 ```bash
-node scripts/course-candidates.mjs AZ-104                       # the word search first (course-candidates.md)
-node scripts/course-propose.mjs prepare AZ-104                  # a batch and a prompt per skill group (about 800-900 tokens each)
+node scripts/course-candidates.mjs AZ-104 --run-dir .course-runs/AZ-104  # the word search first (course-candidates.md)
+node scripts/course-propose.mjs prepare AZ-104 --run-dir .course-runs/AZ-104  # one batch/prompt per skill group (injects exam folder prefixes, never candidate pages)
 # give each <prefix>.propose.md to a FRESH model session, save its JSON as <prefix>.proposals.json
-node scripts/course-propose.mjs check <prefix>                  # exit 1: the model corrects the entries listed
-node scripts/course-propose.mjs merge AZ-104 --only-new --out <tmp>/course-candidates/AZ-104.p5.json
-node scripts/course-judge.mjs prepare AZ-104 --candidates <tmp>/course-candidates/AZ-104.p5.json --out <dir>
-# judge, check, merge as in course-judging.md; then gate with the judged files of both runs in one folder
+node scripts/course-propose.mjs check <prefix>                           # exit 1: the model corrects the entries listed
+node scripts/course-propose.mjs merge AZ-104 --run-dir .course-runs/AZ-104 --probe --out .course-runs/AZ-104/candidates/AZ-104.merged.json
 ```
 
 - **Who proposes:** a local Claude session per few skill groups, given only the prompt. It must not see the exam's existing course page or the shortlist: a proposal is only independent of the word search, and a fair test of the step, if the model answers from its own knowledge.

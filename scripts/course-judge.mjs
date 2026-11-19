@@ -21,14 +21,23 @@
  * Exit code: 0 done, 1 an answer is not valid, 2 usage or input error.
  */
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { loadPools } from "./course-candidates.mjs";
 import { readGuides } from "./course-source.mjs";
 import {
+  applyReuseToBatches,
   buildBatches,
+  buildReuseIndex,
   estimateTokens,
   judgePrompt,
   mergeJudged,
@@ -36,7 +45,7 @@ import {
 } from "./lib/course-judge.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-judge.mjs prepare <CODE> [--candidates FILE] [--group TEXT] [--out DIR] [--max-candidates N] [--foundations-only]
+const USAGE = `Usage: node scripts/course-judge.mjs prepare <CODE> [--candidates FILE] [--group TEXT] [--out DIR] [--run-dir DIR] [--max-candidates N] [--foundations-only] [--reuse DIR_OR_FILE] [--no-propagate-rejects]
        node scripts/course-judge.mjs check <prefix>
        node scripts/course-judge.mjs merge <prefix> [--keep-unverified]`;
 
@@ -49,6 +58,9 @@ function parseArgs(argv) {
     candidates: null,
     group: null,
     out: null,
+    runDir: null,
+    reuse: null,
+    noPropagateRejects: false,
     maxCandidates: null,
     keepUnverified: false,
     foundationsOnly: false,
@@ -58,6 +70,8 @@ function parseArgs(argv) {
     const arg = argv[i];
     if (arg === "--keep-unverified") options.keepUnverified = true;
     else if (arg === "--foundations-only") options.foundationsOnly = true;
+    else if (arg === "--no-propagate-rejects")
+      options.noPropagateRejects = true;
     else if (arg === "--max-candidates") {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
       const n = Number(argv[++i]);
@@ -66,9 +80,12 @@ function parseArgs(argv) {
           "--max-candidates must be a whole number of at least 1",
         );
       options.maxCandidates = n;
-    } else if (["--candidates", "--group", "--out"].includes(arg)) {
+    } else if (
+      ["--candidates", "--group", "--out", "--run-dir", "--reuse"].includes(arg)
+    ) {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
-      options[arg.slice(2)] = argv[++i];
+      const key = arg === "--run-dir" ? "runDir" : arg.slice(2);
+      options[key] = argv[++i];
     } else if (arg.startsWith("-")) throw new Error(`Unknown option ${arg}`);
     else positional.push(arg);
   }
@@ -168,7 +185,9 @@ async function prepare(
   const code = options.subject;
   const candidatesFile =
     options.candidates ??
-    join(tmp, "course-candidates", `${code}.candidates.json`);
+    (options.runDir
+      ? join(options.runDir, "candidates", `${code}.candidates.json`)
+      : join(tmp, "course-candidates", `${code}.candidates.json`));
   if (!existsSync(candidatesFile)) {
     error(
       `No candidates file for ${code}: ${candidatesFile}. Run node scripts/course-candidates.mjs ${code} first.`,
@@ -216,8 +235,44 @@ async function prepare(
       return 2;
     }
   }
-  const outDir = options.out ?? join(tmp, "course-judge");
+  const outDir =
+    options.out ??
+    (options.runDir
+      ? join(options.runDir, "judge")
+      : join(tmp, "course-judge"));
   mkdirSync(outDir, { recursive: true });
+
+  if (options.reuse) {
+    if (!existsSync(options.reuse)) {
+      error(`--reuse path not found: ${options.reuse}`);
+      return 2;
+    }
+    const priorDocs = [];
+    const st = statSync(options.reuse);
+    if (st.isDirectory()) {
+      for (const name of readdirSync(options.reuse)) {
+        if (name.endsWith(".judged.json")) {
+          priorDocs.push(
+            readJson(join(options.reuse, name), "prior judged file"),
+          );
+        }
+      }
+    } else {
+      priorDocs.push(readJson(options.reuse, "prior judged file"));
+    }
+    const reuseIndex = buildReuseIndex(priorDocs, loaded.pools, {
+      propagateOutOfScope: !options.noPropagateRejects,
+    });
+    const applied = applyReuseToBatches(batches, reuseIndex);
+    batches = applied.remainingBatches;
+    if (applied.reusedJudged) {
+      const reusedFile = join(outDir, `${code}.00-reused.judged.json`);
+      write(reusedFile, applied.reusedJudged);
+      log(
+        `Reused ${applied.stats.reusedExact} cached + ${applied.stats.reusedPropagated} propagated out-of-scope verdicts (${applied.stats.remaining} remaining to judge) -> ${reusedFile}`,
+      );
+    }
+  }
   let total = 0;
   batches.forEach((batch, i) => {
     const prefix = join(

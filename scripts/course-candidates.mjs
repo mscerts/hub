@@ -25,7 +25,7 @@
  * Exit code: 0 done, 2 usage or input error (no stored guide, guide not parsable, no learnsync data).
  */
 
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -36,37 +36,73 @@ import {
   loadLearnsyncDocs,
   readGuides,
 } from "./course-source.mjs";
-import { buildPools, generateCandidates } from "./lib/course-candidates.mjs";
+import {
+  NO_LIMIT,
+  buildPools,
+  generateCandidates,
+} from "./lib/course-candidates.mjs";
 import { parseGuide } from "./lib/course-guide.mjs";
 import { buildScopeMap } from "./lib/course-scope.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-candidates.mjs <CODE> [--out DIR] [--no-foundations] [--units all] [--no-sidebar]
+const USAGE = `Usage: node scripts/course-candidates.mjs <CODE> [--out DIR_OR_FILE] [--run-dir DIR] [--no-foundations] [--units all] [--no-sidebar]
+                                         [--uncapped] [--p4-limit N] [--p4-floor F] [--fill-gaps COURSE_JSON] [--require-full-caches]
        node scripts/course-candidates.mjs <CODE> --task <text> [--json]`;
 
 function parseArgs(argv) {
   const options = {
     code: null,
     out: null,
+    runDir: null,
     task: null,
     json: false,
     noFoundations: false,
     noSidebar: false,
     units: null,
+    uncapped: false,
+    p4Limit: null,
+    p4Floor: null,
+    fillGaps: null,
+    requireFullCaches: false,
   };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--json") options.json = true;
     else if (arg === "--no-foundations") options.noFoundations = true;
     else if (arg === "--no-sidebar") options.noSidebar = true;
+    else if (arg === "--uncapped") options.uncapped = true;
+    else if (arg === "--require-full-caches") options.requireFullCaches = true;
     else if (arg === "--units") {
       const value = argv[++i];
       if (value !== "all" && value !== "hands-on")
         throw new Error('--units takes "all" or "hands-on"');
       options.units = value;
-    } else if (arg === "--out" || arg === "--task") {
+    } else if (arg === "--p4-limit") {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
-      options[arg.slice(2)] = argv[++i];
+      const n = Number(argv[++i]);
+      if (!Number.isInteger(n) || n < 1)
+        throw new Error("--p4-limit must be a positive integer");
+      options.p4Limit = n;
+    } else if (arg === "--p4-floor") {
+      if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
+      const f = Number(argv[++i]);
+      if (!Number.isFinite(f) || f < 0 || f > 1)
+        throw new Error("--p4-floor must be between 0 and 1");
+      options.p4Floor = f;
+    } else if (
+      arg === "--out" ||
+      arg === "--task" ||
+      arg === "--run-dir" ||
+      arg === "--fill-gaps"
+    ) {
+      if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
+      const key =
+        arg === "--run-dir"
+          ? "runDir"
+          : arg === "--fill-gaps"
+            ? "fillGaps"
+            : arg.slice(2);
+      options[key] = argv[++i];
     } else if (arg.startsWith("-")) throw new Error(`Unknown option ${arg}`);
     else if (options.code) throw new Error("Only one exam code can be given");
     else options.code = arg.toUpperCase();
@@ -205,6 +241,18 @@ export async function main(argv, deps = {}) {
     }
     const loaded = await loadPools({ root, env, fetchImpl });
     const { learnsync, docs, courses } = loaded;
+    if (options.requireFullCaches) {
+      const missing = [];
+      if (!learnsync.moduleLinks) missing.push("module-links.json");
+      if (!docs.docs) missing.push("docs-catalog.json");
+      if (!docs.docPaths) missing.push("docs-urls.txt");
+      if (missing.length > 0) {
+        error(
+          `Full learnsync caches required (--require-full-caches), missing: ${missing.join(", ")}. Run \`node scripts/learnsync-sync.mjs\` first.`,
+        );
+        return 2;
+      }
+    }
     pools = loaded.pools;
     scope = buildScopeMap({
       code: options.code,
@@ -219,15 +267,57 @@ export async function main(argv, deps = {}) {
     return 2;
   }
 
+  let onlyTaskKeys = null;
+  if (options.fillGaps) {
+    if (!existsSync(options.fillGaps)) {
+      error(`Course file not found for --fill-gaps: ${options.fillGaps}`);
+      return 2;
+    }
+    let course;
+    try {
+      course = JSON.parse(readFileSync(options.fillGaps, "utf8"));
+    } catch (e) {
+      error(`Invalid JSON in ${options.fillGaps}: ${e.message}`);
+      return 2;
+    }
+    onlyTaskKeys = [];
+    for (const d of course.domains ?? []) {
+      for (const g of d.groups ?? []) {
+        for (const t of g.tasks ?? []) {
+          if (
+            !(t.picks?.length > 0) &&
+            !(t.overlaps?.length > 0) &&
+            !(t.docOverlaps?.length > 0)
+          ) {
+            onlyTaskKeys.push(t.key);
+          }
+        }
+      }
+    }
+  }
+
+  const p4DocsLimit = options.uncapped
+    ? NO_LIMIT
+    : (options.p4Limit ?? undefined);
+  const p4RelFloor = options.uncapped
+    ? 0
+    : (options.p4Floor ?? (options.fillGaps ? 0.2 : undefined));
+
   const result = generateCandidates({
     code: options.code,
     guide,
     scope,
     pools,
     options: {
-      ...(options.noFoundations ? { foundations: false } : {}),
+      ...(options.noFoundations || options.fillGaps
+        ? { foundations: false }
+        : {}),
       ...(options.units ? { units: options.units } : {}),
       ...(options.noSidebar ? { sidebar: false } : {}),
+      ...(p4DocsLimit !== undefined ? { limits: { p4Docs: p4DocsLimit } } : {}),
+      ...(p4RelFloor !== undefined ? { p4RelativeFloor: p4RelFloor } : {}),
+      ...(options.fillGaps ? { minCoverage: { P4: 0.35 } } : {}),
+      ...(onlyTaskKeys ? { onlyTaskKeys } : {}),
     },
   });
 
@@ -246,9 +336,24 @@ export async function main(argv, deps = {}) {
     return 0;
   }
 
-  const outDir = options.out ?? join(tmp, "course-candidates");
-  mkdirSync(outDir, { recursive: true });
-  const file = join(outDir, `${options.code}.candidates.json`);
+  let file;
+  if (options.out && /\.json$/i.test(options.out)) {
+    mkdirSync(dirname(options.out), { recursive: true });
+    file = options.out;
+  } else {
+    const outDir =
+      options.out ??
+      (options.runDir
+        ? join(options.runDir, "candidates")
+        : join(tmp, "course-candidates"));
+    mkdirSync(outDir, { recursive: true });
+    file = join(
+      outDir,
+      options.fillGaps
+        ? `${options.code}.gaps.candidates.json`
+        : `${options.code}.candidates.json`,
+    );
+  }
   writeFileSync(file, `${JSON.stringify(result, null, 2)}\n`);
   const s = result.stats;
   log(

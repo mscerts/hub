@@ -191,7 +191,7 @@ function headingIds(course, only) {
   return tasks;
 }
 
-/** The note of a task that has no module of its own: the modules that also cover it are listed once, under another task. */
+/** The note of a task that has no module or documentation of its own: the resources that also cover it are listed once, under another task. */
 function overlapNote(task, shown) {
   const where = (o) => {
     const target = shown.get(o.shownUnder);
@@ -202,23 +202,44 @@ function overlapNote(task, shown) {
       ? `under ${link} in the skill group ${plain(target.group)}`
       : `under ${link}`;
   };
+  const out = [];
   const list = task.overlaps ?? [];
-  if (list.length === 0) return [];
-  if (list.length === 1)
-    return [
+  if (list.length === 1) {
+    out.push(
       ":::note",
       `The Microsoft Learn module "${plain(list[0].title)}" also covers this task. It is listed once, ${where(list[0])}.`,
       ":::",
       "",
-    ];
-  return [
-    ":::note",
-    "These Microsoft Learn modules also cover this task. Each is listed once, under the task named:",
-    "",
-    ...list.map((o) => `- "${plain(o.title)}": ${where(o)}`),
-    ":::",
-    "",
-  ];
+    );
+  } else if (list.length > 1) {
+    out.push(
+      ":::note",
+      "These Microsoft Learn modules also cover this task. Each is listed once, under the task named:",
+      "",
+      ...list.map((o) => `- "${plain(o.title)}": ${where(o)}`),
+      ":::",
+      "",
+    );
+  }
+  const docsList = task.docOverlaps ?? [];
+  if (docsList.length === 1) {
+    out.push(
+      ":::note",
+      `The Microsoft Learn documentation page "${plain(docsList[0].title)}" also covers this task. It is listed once, ${where(docsList[0])}.`,
+      ":::",
+      "",
+    );
+  } else if (docsList.length > 1) {
+    out.push(
+      ":::note",
+      "These Microsoft Learn documentation pages also cover this task. Each is listed once, under the task named:",
+      "",
+      ...docsList.map((o) => `- "${plain(o.title)}": ${where(o)}`),
+      ":::",
+      "",
+    );
+  }
+  return out;
 }
 
 /**

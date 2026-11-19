@@ -41,13 +41,14 @@ import {
 import { readHistory } from "./lib/guide-history.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-build.mjs <CODE> [--gated FILE] [--out FILE] [--today YYYY-MM-DD] [--allow-stale] [--no-official-course] [--audience FILE] [--urls [--live]]`;
+const USAGE = `Usage: node scripts/course-build.mjs <CODE> [--gated FILE] [--out FILE] [--run-dir DIR] [--today YYYY-MM-DD] [--allow-stale] [--no-official-course] [--audience FILE] [--urls [--live]]`;
 
 function parseArgs(argv) {
   const options = {
     code: null,
     gated: null,
     out: null,
+    runDir: null,
     today: null,
     allowStale: false,
     noOfficialCourse: false,
@@ -60,9 +61,12 @@ function parseArgs(argv) {
     else if (arg === "--no-official-course") options.noOfficialCourse = true;
     else if (arg === "--urls") options.urls = true;
     else if (arg === "--live") options.live = options.urls = true;
-    else if (["--gated", "--out", "--today", "--audience"].includes(arg)) {
+    else if (
+      ["--gated", "--out", "--run-dir", "--today", "--audience"].includes(arg)
+    ) {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
-      options[arg.slice(2)] = argv[++i];
+      const key = arg === "--run-dir" ? "runDir" : arg.slice(2);
+      options[key] = argv[++i];
     } else if (arg.startsWith("-")) throw new Error(`Unknown option ${arg}`);
     else if (options.code) throw new Error("Only one exam code can be given");
     else options.code = arg.toUpperCase();
@@ -107,7 +111,10 @@ export async function main(argv, deps = {}) {
   const code = options.code;
   const today = options.today ?? now().toISOString().slice(0, 10);
   const gatedFile = resolve(
-    options.gated ?? join(tmp, "course-gates", `${code}.gated.json`),
+    options.gated ??
+      (options.runDir
+        ? join(options.runDir, "gates", `${code}.gated.json`)
+        : join(tmp, "course-gates", `${code}.gated.json`)),
   );
   let gated;
   try {
@@ -255,7 +262,12 @@ export async function main(argv, deps = {}) {
   } catch {
     // no history recorded: the course is checked against the stored guide, as before
   }
-  const out = resolve(options.out ?? join(tmp, "course-build", `${code}.json`));
+  const out = resolve(
+    options.out ??
+      (options.runDir
+        ? join(options.runDir, "build", `${code}.json`)
+        : join(tmp, "course-build", `${code}.json`)),
+  );
   mkdirSync(dirname(out), { recursive: true });
   writeFileSync(out, `${JSON.stringify(course, null, 2)}\n`);
   const s = result.stats;

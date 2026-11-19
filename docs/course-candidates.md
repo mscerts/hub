@@ -4,11 +4,11 @@
 
 For every task of an exam's study guide the generator produces a **shortlist** of Microsoft Learn modules and documentation pages (and the hands-on units the lab page collects) that might cover it, each tagged with where it came from. It decides nothing. It is lexical (BM25 over titles, descriptions, unit titles and URL words), so it finds pages that share the words of a task and is noisy by nature; the **product constraint** and the **hard filters** take out what is plainly wrong, and the judging step (not built yet) decides what belongs in the course. Nothing is written to the repository: the output is a working file for the next step.
 
-## No limit on how many
+## Limits and P4 tail pruning
 
-There is **no cap on the number of candidates** (maintainer's rule, 2026-10-19: if a resource is relevant it is included, there is no such thing as too many). The per-source limits (`DEFAULTS.limits`), the number of ranked pages a search examines (`scan`) and the floor relative to the best page's score (`relativeFloor`) are all off by default (`Infinity`, `Infinity`, `0`; written to the file's `params` as `null`, `null` and `0`). What still keeps a page out is relevance, not count: the **absolute coverage threshold** per provenance (`minCoverage`: the share of the task's own words a page must contain), the **hard filters** (retired, not in the caches, a page that is not a Learn page, boilerplate) and the **product constraint** below. A limit can still be passed as an option (`options.limits`, `options.scan`, `options.relativeFloor`) to look at a short list.
+Official training modules and linked documentation (`P1`, `P2`, `P3`, `p4Module` and `P5`) have **no cap** (`Infinity`, written to `params` as `null`). For `P4` documentation search (`DEFAULTS.limits.p4Docs: 80`, `DEFAULTS.p4RelativeFloor: 0.35`), broad tasks without a tight anchor previously pulled 500 to 1,000+ low-scoring lexical matches whose tail batches had 0% acceptance. Keeping the top 80 `P4` documentation pages per task within 35% of that task's top `P4` BM25 score trims the zero-yield lexical tail while leaving every `P1`/`P2`/`P3`/`P5` candidate uncapped. Pass `--uncapped` (or `--p4-limit N` / `--p4-floor F`) when you want an unfiltered `P4` scan.
 
-The price is judging work, not correctness: a shortlist several times longer means several times more prompts (see [course-judging.md](course-judging.md), which cuts a skill group into parts of at most 150 candidates so that each prompt fits one session). Measured on AZ-104 on 2026-10-19: with the old limits 1,496 candidates (143 of the 354 picks of the hand-made test page among them); with none 13,099 (215 of the 354), of which `P4` documentation pages are 10,382.
+What still keeps a page out is relevance: the **absolute coverage threshold** per provenance (`minCoverage`: the share of the task's own words a page must contain), the **hard filters** (retired, not in the caches, a page that is not a Learn page, boilerplate) and the **product constraint** below. When rebuilding or backfilling thin tasks on an existing course, `--fill-gaps <course.json>` runs a targeted pass (minimum coverage scaled by 0.75) restricted only to skill groups whose `foundations` list is empty and tasks that have zero own picks.
 
 ## Provenance
 
@@ -117,10 +117,10 @@ It follows the course file closely so the next step can copy fields: `target`, `
 ```bash
 node scripts/course-candidates.mjs AZ-104 --task "user-defined routes"   # print the shortlist of the matching tasks
 node scripts/course-candidates.mjs AZ-104 --task "external users" --json # the same as data
-node scripts/course-candidates.mjs AZ-104 [--out DIR]                    # the whole exam into <tmp>/course-candidates/AZ-104.candidates.json
+node scripts/course-candidates.mjs AZ-104 [--run-dir DIR] [--out DIR|FILE] [--require-full-caches] [--uncapped] [--fill-gaps COURSE.json]
 ```
 
-Inputs: the stored study guide (`src/data_files/learn-exams.json`, `LEARN_EXAMS_FILE`), learnsync data (a checkout in `LEARNSYNC_DIR`, else `../learnsync`, else GitHub `main`: `learn-catalog.json`, `learn-content.json`, `module-links.json`, and `docs-catalog.json` (about 40 MB), `docs-urls.txt`, `docs-redirects.json`), and the catalog API's course list (one request). A missing documentation file is a warning that switches the filters that need it off (no `docs-catalog.json`: only pages that modules list can be candidates, and a module's families cannot be inferred). A whole exam takes about ten seconds. Exit code 0 done, 2 usage or input error.
+Inputs: the stored study guide (`src/data_files/learn-exams.json`, `LEARN_EXAMS_FILE`), learnsync data (a checkout in `LEARNSYNC_DIR`, else `../learnsync`, else `.course-runs/learnsync` synced by `node scripts/learnsync-sync.mjs`, else GitHub `main`: `learn-catalog.json`, `learn-content.json`, `module-links.json`, and `docs-catalog.json` (about 40 MB), `docs-urls.txt`, `docs-redirects.json`), and the catalog API's course list (one request). Pass `--require-full-caches` on real builds to fail fast if any local cache file is missing instead of silently skipping documentation search. When `--out` ends with `.json`, the output is written directly to that file path; `--run-dir <dir>` writes to `<dir>/candidates/<CODE>.candidates.json`. A whole exam takes about ten seconds. Exit code 0 done, 2 usage or input error.
 
 ## Known limits
 

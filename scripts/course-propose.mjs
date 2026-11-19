@@ -48,9 +48,9 @@ import {
 } from "./lib/course-propose.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-propose.mjs prepare <CODE> [--group TEXT] [--out DIR]
+const USAGE = `Usage: node scripts/course-propose.mjs prepare <CODE> [--group TEXT] [--out DIR] [--run-dir DIR] [--candidates FILE]
        node scripts/course-propose.mjs check <prefix>
-       node scripts/course-propose.mjs merge <CODE> [--candidates FILE] [--answers DIR] [--out FILE] [--only-new] [--probe]`;
+       node scripts/course-propose.mjs merge <CODE> [--candidates FILE] [--answers DIR] [--out FILE] [--run-dir DIR] [--only-new] [--probe]`;
 const COMMANDS = ["prepare", "check", "merge"];
 
 function parseArgs(argv) {
@@ -59,6 +59,7 @@ function parseArgs(argv) {
     subject: null,
     group: null,
     out: null,
+    runDir: null,
     candidates: null,
     answers: null,
     onlyNew: false,
@@ -69,9 +70,14 @@ function parseArgs(argv) {
     const arg = argv[i];
     if (arg === "--only-new") options.onlyNew = true;
     else if (arg === "--probe") options.probe = true;
-    else if (["--group", "--out", "--candidates", "--answers"].includes(arg)) {
+    else if (
+      ["--group", "--out", "--run-dir", "--candidates", "--answers"].includes(
+        arg,
+      )
+    ) {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
-      options[arg.slice(2)] = argv[++i];
+      const key = arg === "--run-dir" ? "runDir" : arg.slice(2);
+      options[key] = argv[++i];
     } else if (arg.startsWith("-")) throw new Error(`Unknown option ${arg}`);
     else positional.push(arg);
   }
@@ -164,10 +170,23 @@ function prepare(options, { env, log, error, root, tmp }) {
     error(`${code}: the study guide does not parse completely.`);
     return 2;
   }
+  let docPrefixes = null;
+  const candPath =
+    options.candidates ??
+    (options.runDir
+      ? join(options.runDir, "candidates", `${code}.candidates.json`)
+      : null);
+  if (candPath && existsSync(candPath)) {
+    const cData = readJson(candPath, "the candidates file");
+    const fams = cData?.exam?.families ?? [];
+    const secs = cData?.exam?.sections ?? [];
+    docPrefixes = [...new Set([...fams, ...secs])].slice(0, 20);
+  }
   let batches = buildProposalBatches({
     tasks: flattenTasks(guide),
     exam: { code, name: stored.name ?? null },
     guideHash: stored.hash ?? null,
+    docPrefixes,
   });
   if (options.group) {
     const needle = options.group.toLowerCase();
@@ -179,7 +198,11 @@ function prepare(options, { env, log, error, root, tmp }) {
       return 2;
     }
   }
-  const outDir = options.out ?? join(tmp, "course-propose");
+  const outDir =
+    options.out ??
+    (options.runDir
+      ? join(options.runDir, "propose")
+      : join(tmp, "course-propose"));
   mkdirSync(outDir, { recursive: true });
   let total = 0;
   batches.forEach((batch, i) => {
@@ -231,13 +254,19 @@ async function merge(
   const code = options.subject;
   const candidatesFile =
     options.candidates ??
-    join(tmp, "course-candidates", `${code}.candidates.json`);
+    (options.runDir
+      ? join(options.runDir, "candidates", `${code}.candidates.json`)
+      : join(tmp, "course-candidates", `${code}.candidates.json`));
   const candidates = readJson(candidatesFile, "the candidates file");
   if (candidates.code !== code) {
     error(`${candidatesFile} is for ${candidates.code}, not ${code}.`);
     return 2;
   }
-  const answersDir = options.answers ?? join(tmp, "course-propose");
+  const answersDir =
+    options.answers ??
+    (options.runDir
+      ? join(options.runDir, "propose")
+      : join(tmp, "course-propose"));
   if (!existsSync(answersDir)) {
     error(`No proposals: ${answersDir} does not exist. Run prepare first.`);
     return 2;

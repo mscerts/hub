@@ -721,3 +721,42 @@ test("probeLiveMoves asks Learn once for each address and keeps the ones that en
     { path: "/azure/a/down", error: "socket hang up" },
   ]);
 });
+
+test("docPrefixes hint real Learn directory roots in the prompt, and scoped core-word title fallback resolves portal-suffixed titles", () => {
+  const batches = buildProposalBatches({
+    tasks: [
+      { key: "d/g/t", text: "Manage Copilot agents", domain: "D", group: "G" },
+    ],
+    exam: { code: "AB-650", name: "Administering M365 and AI Services" },
+    docPrefixes: ["/microsoft-365/admin", "/copilot/microsoft-365"],
+  });
+  const prompt = proposalPrompt(batches[0]);
+  assert.match(prompt, /`\/copilot\/microsoft-365\/`/);
+
+  const customPools = {
+    ...pools,
+    docMeta: new Map([
+      [
+        "/copilot/microsoft-365/agent-management-settings",
+        {
+          path: "/copilot/microsoft-365/agent-management-settings",
+          title:
+            "Manage agent settings for Copilot in the Microsoft 365 admin center",
+          description: "",
+        },
+      ],
+    ]),
+    docPaths: new Set(["/copilot/microsoft-365/agent-management-settings"]),
+  };
+  const res = resolveProposal(
+    {
+      path: "/copilot/microsoft-365/manage-agents-wrong-slug",
+      title: "Manage agent settings for Copilot",
+    },
+    buildResolver(customPools, []),
+  );
+  assert.deepEqual(
+    [res.status, res.path, res.how],
+    ["ok", "/copilot/microsoft-365/agent-management-settings", "title"],
+  );
+});

@@ -227,7 +227,7 @@ test("the default output folder is a temporary one, never the repository", async
   assert.deepEqual(readdirSync(w.root), ["src"], "the repo root is untouched");
 });
 
-test("missing documentation files are warnings, and the run still works on the modules", async () => {
+test("missing documentation files are warnings by default, and fail with --require-full-caches", async () => {
   const w = world({ docsFiles: false });
   const out = join(w.base, "out");
   const { code, io } = await run(["GH-900", "--out", out], w);
@@ -240,6 +240,21 @@ test("missing documentation files are warnings, and the run still works on the m
   );
   assert.equal(result.inputs.docsCatalog, false);
   assert.ok(result.stats.bySource.P1 > 0);
+
+  const strict = await run(
+    ["GH-900", "--out", out, "--require-full-caches"],
+    w,
+  );
+  assert.equal(strict.code, 2);
+  assert.match(strict.io.err.join("\n"), /Full learnsync caches required/);
+
+  // Smart --out file path writes directly to the named .json file instead of creating a nested directory
+  const filePath = join(w.base, "direct", "custom.json");
+  const direct = await run(["GH-900", "--out", filePath, "--uncapped"], w);
+  assert.equal(direct.code, 0);
+  const directData = JSON.parse(readFileSync(filePath, "utf8"));
+  assert.equal(directData.params.limits.p4Docs, null);
+  assert.equal(directData.params.p4RelativeFloor, 0);
 });
 
 test("usage and input errors are exit code 2 with a message", async () => {

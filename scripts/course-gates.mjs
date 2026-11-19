@@ -52,10 +52,10 @@ import {
 } from "./lib/course-gates.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = `Usage: node scripts/course-gates.mjs gate <CODE> [--judged DIR] [--out DIR] [--decisions FILE] [--today YYYY-MM-DD] [--urls [--live]] [--force] [--queue-unsure]
-       node scripts/course-gates.mjs show <CODE> [--out DIR]
-       node scripts/course-gates.mjs review <CODE> --course FILE --drop NUMBERS [--review FILE] [--note TEXT] [--decisions FILE] [--today YYYY-MM-DD] [--replace]
-       node scripts/course-gates.mjs resolve <CODE> [--out DIR] [--decisions FILE] [--today YYYY-MM-DD] [--replace]`;
+const USAGE = `Usage: node scripts/course-gates.mjs gate <CODE> [--judged DIR] [--out DIR] [--run-dir DIR] [--decisions FILE] [--today YYYY-MM-DD] [--urls [--live]] [--force] [--queue-unsure]
+       node scripts/course-gates.mjs show <CODE> [--out DIR] [--run-dir DIR]
+       node scripts/course-gates.mjs review <CODE> [--course FILE] --drop NUMBERS [--review FILE] [--run-dir DIR] [--note TEXT] [--decisions FILE] [--today YYYY-MM-DD] [--replace]
+       node scripts/course-gates.mjs resolve <CODE> [--out DIR] [--run-dir DIR] [--decisions FILE] [--today YYYY-MM-DD] [--replace]`;
 const COMMANDS = ["gate", "show", "review", "resolve"];
 
 function parseArgs(argv) {
@@ -64,6 +64,7 @@ function parseArgs(argv) {
     code: null,
     judged: null,
     out: null,
+    runDir: null,
     decisions: null,
     today: null,
     urls: false,
@@ -88,6 +89,7 @@ function parseArgs(argv) {
       [
         "--judged",
         "--out",
+        "--run-dir",
         "--decisions",
         "--today",
         "--course",
@@ -97,7 +99,8 @@ function parseArgs(argv) {
       ].includes(arg)
     ) {
       if (argv[i + 1] === undefined) throw new Error(`${arg} needs a value`);
-      options[arg.slice(2)] = argv[++i];
+      const key = arg === "--run-dir" ? "runDir" : arg.slice(2);
+      options[key] = argv[++i];
     } else if (arg.startsWith("-")) throw new Error(`Unknown option ${arg}`);
     else positional.push(arg);
   }
@@ -175,7 +178,11 @@ export async function main(argv, deps = {}) {
     return 2;
   }
   const code = options.code;
-  const outDir = options.out ?? join(tmp, "course-gates");
+  const outDir =
+    options.out ??
+    (options.runDir
+      ? join(options.runDir, "gates")
+      : join(tmp, "course-gates"));
   const queueFile = join(outDir, `${code}.queue.json`);
   const decisionsFile =
     options.decisions ??
@@ -198,11 +205,16 @@ export async function main(argv, deps = {}) {
     }
 
     if (options.command === "review") {
-      if (!options.course || options.drop === null) {
-        error(`review needs --course FILE and --drop NUMBERS\n${USAGE}`);
+      const courseArg =
+        options.course ??
+        (options.runDir ? join(options.runDir, "build", `${code}.json`) : null);
+      if (!courseArg || options.drop === null) {
+        error(
+          `review needs --course FILE and --drop NUMBERS (or --run-dir DIR)\n${USAGE}`,
+        );
         return 2;
       }
-      const courseFile = resolve(options.course);
+      const courseFile = resolve(courseArg);
       const course = readJson(courseFile, "the course file");
       const review = readJson(
         options.review
@@ -297,7 +309,11 @@ export async function main(argv, deps = {}) {
         return 2;
       }
     }
-    const judgedDir = options.judged ?? join(tmp, "course-judge");
+    const judgedDir =
+      options.judged ??
+      (options.runDir
+        ? join(options.runDir, "judge")
+        : join(tmp, "course-judge"));
     if (!existsSync(judgedDir)) {
       error(
         `No judged files: ${judgedDir} does not exist. Run node scripts/course-judge.mjs merge first.`,

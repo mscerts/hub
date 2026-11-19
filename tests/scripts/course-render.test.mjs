@@ -535,3 +535,25 @@ test("a task with picks and a pointer shows the note above its tabs", () => {
     /#### Explain the difference between Git and GitHub\n\n:::note\nThe Microsoft Learn module[^\n]*\n:::\n\n<Tabs>/,
   );
 });
+
+test("a task whose documentation was deduplicated onto a sibling task renders a docOverlaps note", () => {
+  const { course } = exampleCourse();
+  const target = taskOf(
+    course,
+    "Describe the purpose and benefits of version control",
+  );
+  const task = taskOf(course, "Explain the difference between Git and GitHub");
+  task.picks = task.picks.filter((p) => p.target.kind === "module");
+  task.docOverlaps = [
+    {
+      path: "/azure/github/version-control",
+      title: "About version control",
+      shownUnder: target.key,
+    },
+  ];
+  const page = renderCourse(course);
+  assert.match(
+    page,
+    /The Microsoft Learn documentation page "About version control" also covers this task\. It is listed once, under \[Describe the purpose and benefits of version control\]\(#describe-the-purpose-and-benefits-of-version-control\)\./,
+  );
+});
