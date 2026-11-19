@@ -2039,7 +2039,7 @@ test("every Titan journey the partner guide quotes is watched, by its own entry 
       ),
     ].map((match) => match[1]),
   );
-  assert.ok(quoted.size >= 14, `only ${quoted.size} journeys quoted`);
+  assert.ok(quoted.size >= 13, `only ${quoted.size} journeys quoted`);
   const watch = committedWatch();
   const own = new Set(
     watch

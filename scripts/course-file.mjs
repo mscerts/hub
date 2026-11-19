@@ -37,7 +37,7 @@ import { isComplete, versionLabels, versionMarks } from "./lib/course-next.mjs";
 import { NEXT_SUFFIX } from "./lib/course-format.mjs";
 import { findVersion, guideOfVersion } from "./lib/course-version.mjs";
 import { readHistory } from "./lib/guide-history.mjs";
-import { readGuides } from "./course-source.mjs";
+import { learnsyncDir, readGuides } from "./course-source.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 const USAGE = `Usage: node scripts/course-file.mjs validate <CODE|file> [--live]
@@ -266,7 +266,7 @@ export async function main(argv, deps = {}) {
       const lookup =
         verdictsFor ??
         (await learnsyncVerdicts({
-          dir: env.LEARNSYNC_DIR || join(root, "..", "learnsync"),
+          dir: learnsyncDir({ root, env }) || join(root, "..", "learnsync"),
           live: options.live,
         }));
       const verdicts = await lookup([

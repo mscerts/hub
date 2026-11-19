@@ -370,7 +370,7 @@ test("the partner certification week page is reviewed after the last event it li
   const months = { Oct: 10, Nov: 11, Dec: 12 };
   const ends = [
     ...source.matchAll(
-      /<LinkCard title="[^"]*, (Oct|Nov|Dec) (\d+)–(\d+) 2026"/g,
+      /<LinkCard title="[^"]*, (Oct|Nov|Dec) (\d+)–(\d+) 2026(?: \(registration closed\))?"/g,
     ),
   ].map(
     ([, month, , last]) =>

@@ -28,6 +28,7 @@ import {
   FOUNDATION_CLASS,
   foundationKey,
   groupKeyOf,
+  isFoundationKey,
 } from "./course-foundations.mjs";
 import { handsOnReason } from "./course-handson.mjs";
 import { diffTrees, squish } from "./course-guide.mjs";
@@ -600,6 +601,10 @@ export function validateCourse(
                 errors.push(
                   `${task.key}: an overlap needs path, title and shownUnder: ${JSON.stringify(o)}`,
                 );
+              else if (isFoundationKey(o.shownUnder))
+                errors.push(
+                  `${task.key}: the overlap ${o.path} points to a group's fundamentals (${o.shownUnder}), not a task`,
+                );
               else if (shownAt.get(o.path) !== o.shownUnder)
                 errors.push(
                   `${task.key}: the overlap ${o.path} is shown under ${shownAt.get(o.path) ?? "no task"}, not under ${o.shownUnder}`,
@@ -635,6 +640,10 @@ export function validateCourse(
               )
                 errors.push(
                   `${task.key}: a docOverlap needs path, title and shownUnder: ${JSON.stringify(o)}`,
+                );
+              else if (isFoundationKey(o.shownUnder))
+                errors.push(
+                  `${task.key}: the docOverlap ${o.path} points to a group's fundamentals (${o.shownUnder}), not a task`,
                 );
               else if (shownAt.get(o.path) !== o.shownUnder)
                 errors.push(

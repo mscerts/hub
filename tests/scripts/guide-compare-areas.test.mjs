@@ -11,10 +11,14 @@ import { readHistory } from "../../scripts/lib/guide-history.mjs";
 import { comparisonPairs } from "../../src/utils/guide-changes/compare.mjs";
 import { areasByTarget } from "../../src/utils/guide-changes/compare-areas.mjs";
 import { groupAreasByTarget } from "../../src/utils/guide-changes/compare-groups.mjs";
+import { versionState } from "../../src/utils/guide-changes/state.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const dir = join(root, "src/data_files/study-guide-history");
-const latest = (code) => readHistory(dir, code).versions.at(-1);
+const latest = (code) => {
+  const st = versionState(readHistory(dir, code));
+  return st.current ?? st.upcoming;
+};
 const domainTitles = (code) =>
   parseGuide(latest(code).lines).domains.map((d) => d.title);
 

@@ -54,7 +54,7 @@ The upcoming course is **complete** when there is no `pending` (`isComplete`). O
 - `node scripts/course-next.mjs status <CODE>` lists what is left and validates the file against its version.
 - `confirm <CODE> (--all | TASKKEY...)`: the carried picks of a reworded task still fit.
 - `reject <CODE> TASKKEY`: they do not; they go and the task is built like an added one.
-- `merge <CODE> --from FILE`: the picks of the tasks in `pending.added` and the fundamentals of the groups in `pending.foundations` are taken from a course file the pipeline built from the same version (a built course with only those tasks judged is enough), and cleared from `pending`.
+- `merge <CODE> --from FILE`: the picks of the tasks in `pending.added` and the fundamentals of the groups in `pending.foundations` are taken from a course file the pipeline built from the same version (a built course with only those tasks judged is enough), and cleared from `pending`. A build that judged only some groups does not see the picks the upcoming course carried over, so a page it picked may already be shown elsewhere: the merge keeps the carried one, drops the merged pick, and a task left without a module (or documentation page) of its own gets the same pointer to the task that shows it as the builder writes (`overlaps`, `docOverlaps`, never pointing to a group's fundamentals; the pointers the build wrote are followed to where the page is shown now). The modules the merged picks use are added to `inputs.picked` (unused ones are pruned), and `rejected` entries for the merged tasks and group fundamentals are carried too.
 
 Every command that writes validates first and writes nothing when the file would not be valid.
 

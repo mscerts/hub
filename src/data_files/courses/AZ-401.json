@@ -332,6 +332,10 @@
         "e85fa1d013651644eb2436e34152c5d4341f900b"
       ],
       [
+        "/training/modules/use-plan-mode-cloud-ops",
+        "4ed498c0755f38a567c3a2b7b80484ee64aed28d"
+      ],
+      [
         "/training/modules/write-first-query-kusto-query-language",
         "5d9779d21326930f2e9612a9464b3e84d1c611fe"
       ]
@@ -1258,14 +1262,13 @@
                     "path": "/training/modules/manage-azure-boards-using-github-copilot"
                   },
                   "title": "Manage Azure Boards by using GitHub Copilot integration",
-                  "class": "supporting",
-                  "relation": "same-workflow",
+                  "class": "core",
                   "source": "P4",
-                  "why": "Connects Azure Boards to GitHub repositories and hands work items to GitHub Copilot, through the built-in integration and not through MCP.",
+                  "why": "Connects Azure Boards to GitHub repositories and hands work items to GitHub Copilot, through the built-in integration and not through MCP. It is the module that covers this task.",
                   "evidence": "Connect Azure Boards to GitHub repositories",
                   "decision": {
                     "by": "maintainer",
-                    "at": "2026-11-14"
+                    "at": "2026-11-19"
                   }
                 }
               ]
@@ -3693,6 +3696,22 @@
                   "decision": {
                     "by": "auto",
                     "at": "2026-11-04"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "module",
+                    "path": "/training/modules/use-plan-mode-cloud-ops"
+                  },
+                  "title": "Use GitHub Copilot plan mode for cloud operations tasks",
+                  "class": "supporting",
+                  "relation": "same-workflow",
+                  "source": "P4",
+                  "why": "Plans infrastructure configuration changes and operational automation with GitHub Copilot plan mode before they are applied.",
+                  "evidence": "Plan cloud infrastructure changes with Copilot",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-19"
                   }
                 }
               ]

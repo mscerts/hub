@@ -627,14 +627,20 @@ export function renderCourseVersions(
     '<div slot="intro">',
     "",
     ":::caution",
-    labels.intro,
+    marks.largely && labels.rewrittenIntro
+      ? labels.rewrittenIntro
+      : labels.intro,
     ":::",
     "",
     "</div>",
     "",
     '<div slot="current">',
     "",
-    ...note(labels.currentLegend),
+    ...note(
+      marks.largely && labels.currentRewrittenLegend
+        ? labels.currentRewrittenLegend
+        : labels.currentLegend,
+    ),
     ...side(current, "current-", marks.current.task, marks.current.card),
     "",
     "</div>",

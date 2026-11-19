@@ -32,6 +32,8 @@ import {
   groupKeyOf,
   isFoundationKey,
 } from "./course-foundations.mjs";
+import { buildAudience, eachConcept } from "./course-audience.mjs";
+import { moduleOfPick } from "./course-format.mjs";
 import { squish } from "./course-guide.mjs";
 import { prettyDate, dayBefore } from "../../src/utils/guide-changes/state.mjs";
 import { diffAudience } from "./course-status.mjs";
@@ -206,6 +208,19 @@ export function planNext({ course, guide }) {
 const clone = (value) => structuredClone(value);
 
 /**
+ * The audience profile of the upcoming course: the new version's (the validator compares it with the guide
+ * version the course names), with the picks of every prerequisite concept the course in force had decided whose
+ * key is still there. A guide without an audience profile keeps the course's.
+ */
+function carryAudience(guideAudience, courseAudience) {
+  if (!guideAudience) return clone(courseAudience);
+  const concepts = eachConcept(courseAudience)
+    .filter((item) => item.key && item.picks)
+    .map((item) => ({ key: item.key, picks: item.picks }));
+  return buildAudience(guideAudience, { concepts });
+}
+
+/**
  * Build the upcoming course. `course` is the course in force, `guide` the parsed upcoming guide and `version` its
  * history version ({ n, asOf, firstSeen, lines }) and `today` a day (YYYY-MM-DD). Returns
  *   { ok: false, plan }                      the change is a rewrite: nothing is built (the whole pipeline instead)
@@ -262,17 +277,15 @@ export function buildNext({ course, guide, version, today, force = false }) {
           const overlaps = (old?.overlaps ?? [])
             .map((o) => ({
               ...clone(o),
-              shownUnder:
-                keyMap.get(o.shownUnder) ?? groupMap.get(o.shownUnder),
+              shownUnder: keyMap.get(o.shownUnder),
             }))
-            .filter((o) => o.shownUnder);
+            .filter((o) => o.shownUnder && !isFoundationKey(o.shownUnder));
           const docOverlaps = (old?.docOverlaps ?? [])
             .map((o) => ({
               ...clone(o),
-              shownUnder:
-                keyMap.get(o.shownUnder) ?? groupMap.get(o.shownUnder),
+              shownUnder: keyMap.get(o.shownUnder),
             }))
-            .filter((o) => o.shownUnder);
+            .filter((o) => o.shownUnder && !isFoundationKey(o.shownUnder));
           return {
             key: task.key,
             text: task.text,
@@ -318,7 +331,7 @@ export function buildNext({ course, guide, version, today, force = false }) {
     name: course.name,
     inputs: { ...inputs, builtAt: today },
     ...(guide.audience || course.audience
-      ? { audience: clone(guide.audience ?? course.audience) }
+      ? { audience: carryAudience(guide.audience, course.audience) }
       : {}),
     domains,
     rejected,
@@ -327,6 +340,7 @@ export function buildNext({ course, guide, version, today, force = false }) {
   const withAsOf = guide.asOf?.text
     ? { ...base, inputs: { guideAsOf: guide.asOf.text, ...base.inputs } }
     : base;
+  prunePicked(withAsOf);
   const next = withVersion(withAsOf, versionRef(version));
 
   // the keys that changed, for the decision list (see rekeyDecisions: it is done when the upcoming course takes over)
@@ -401,7 +415,161 @@ export function rejectPending(next, key) {
     confirm: list.filter((c) => c.key !== key),
     added: [...(copy.pending.added ?? []), key],
   };
+  repairOverlaps(copy);
+  prunePicked(copy);
   return { next: dropPendingIfEmpty(copy), rejected: true };
+}
+
+/**
+ * A page appears once in a course. The build that made the picks of `mergeBuilt` saw only the tasks it judged, so a
+ * page it picked may already be shown under a task or fundamentals list the upcoming course carried over. The
+ * carried one stays; the merged pick goes, and a task left without a module (or documentation page) of its own
+ * points to where the page is shown when that holder is another task (never a group's fundamentals).
+ */
+function dedupeMerged(course, mergedTasks, mergedGroups) {
+  const holder = new Map();
+  const pathOf = (pick) => pick?.target?.path;
+  const groupKey = (g) => (g.tasks[0] ? groupKeyOf(g.tasks[0].key) : null);
+  for (const d of course.domains)
+    for (const g of d.groups) {
+      const gk = groupKey(g);
+      if (gk && !mergedGroups.has(gk))
+        for (const pick of g.foundations ?? [])
+          if (pathOf(pick) && !holder.has(pathOf(pick)))
+            holder.set(pathOf(pick), foundationKey(gk));
+      for (const t of g.tasks)
+        if (!mergedTasks.has(t.key))
+          for (const pick of t.picks ?? [])
+            if (pathOf(pick) && !holder.has(pathOf(pick)))
+              holder.set(pathOf(pick), t.key);
+    }
+  for (const d of course.domains)
+    for (const g of d.groups) {
+      const gk = groupKey(g);
+      if (gk && mergedGroups.has(gk) && g.foundations) {
+        g.foundations = g.foundations.filter((p) => !holder.has(pathOf(p)));
+        if (!g.foundations.length) delete g.foundations;
+      }
+      for (const t of g.tasks) {
+        if (!mergedTasks.has(t.key)) continue;
+        const dropped = (t.picks ?? []).filter((p) => holder.has(pathOf(p)));
+        if (!dropped.length) continue;
+        t.picks = t.picks.filter((p) => !holder.has(pathOf(p)));
+        const point = (kinds, field) => {
+          const left = t.picks.some((p) => kinds.includes(p.target?.kind));
+          const entries = dropped
+            .filter((p) => kinds.includes(p.target?.kind))
+            .map((p) => ({
+              path: pathOf(p),
+              title: p.title,
+              shownUnder: holder.get(pathOf(p)),
+            }))
+            .filter((o) => o.shownUnder && !isFoundationKey(o.shownUnder));
+          if (left) delete t[field];
+          else if (entries.length) t[field] = [...(t[field] ?? []), ...entries];
+        };
+        point(["module"], "overlaps");
+        point(["docs", "github"], "docOverlaps");
+      }
+    }
+  repairOverlaps(course);
+}
+
+/**
+ * Follow every overlap/docOverlap pointer across the course to the task that currently shows the page, dropping
+ * pointers to pages shown nowhere or only in a group's fundamentals, self-pointers, duplicates, and pointers on
+ * tasks that already have a pick of that kind.
+ */
+function repairOverlaps(course) {
+  const taskHolder = new Map();
+  for (const d of course.domains)
+    for (const g of d.groups)
+      for (const t of g.tasks)
+        for (const pick of t.picks ?? [])
+          if (pick?.target?.path && !taskHolder.has(pick.target.path))
+            taskHolder.set(pick.target.path, t.key);
+  const own = (t, kinds) =>
+    (t.picks ?? []).some((p) => kinds.includes(p.target?.kind));
+  for (const d of course.domains)
+    for (const g of d.groups)
+      for (const t of g.tasks) {
+        for (const [field, kinds] of [
+          ["overlaps", ["module"]],
+          ["docOverlaps", ["docs", "github"]],
+        ]) {
+          if (!t[field]) continue;
+          const seen = new Set();
+          const fixed = own(t, kinds)
+            ? []
+            : t[field]
+                .map((o) => ({ ...o, shownUnder: taskHolder.get(o.path) }))
+                .filter((o) => {
+                  if (
+                    !o.shownUnder ||
+                    isFoundationKey(o.shownUnder) ||
+                    o.shownUnder === t.key ||
+                    seen.has(o.path)
+                  )
+                    return false;
+                  seen.add(o.path);
+                  return true;
+                });
+          if (fixed.length) t[field] = fixed;
+          else delete t[field];
+        }
+      }
+}
+
+/** Remove `inputs.picked` entries for modules no pick in the course references anymore. */
+function prunePicked(course) {
+  if (!course.inputs?.picked) return;
+  const scopeModules = new Set(
+    (course.inputs?.scope?.modules ?? []).map((e) => e[0]),
+  );
+  const used = new Set();
+  for (const d of course.domains ?? [])
+    for (const g of d.groups ?? []) {
+      for (const p of g.foundations ?? []) {
+        const m = moduleOfPick(p);
+        if (m && !scopeModules.has(m)) used.add(m);
+      }
+      for (const t of g.tasks ?? [])
+        for (const p of t.picks ?? []) {
+          const m = moduleOfPick(p);
+          if (m && !scopeModules.has(m)) used.add(m);
+        }
+    }
+  const kept = course.inputs.picked.filter((e) => used.has(e[0]));
+  if (kept.length)
+    course.inputs.picked = kept.sort((a, b) => byText(a[0], b[0]));
+  else delete course.inputs.picked;
+}
+
+/** Record modules used by merged picks in `inputs.picked` and prune any orphaned entries. */
+function carryPicked(course, built) {
+  const have = new Map((course.inputs?.picked ?? []).map((e) => [e[0], e]));
+  for (const entry of built.inputs?.picked ?? [])
+    if (!have.has(entry[0])) have.set(entry[0], entry);
+  if (have.size) course.inputs.picked = [...have.values()];
+  prunePicked(course);
+}
+
+/** Carry remembered rejections from `built` for the newly merged tasks and group fundamentals. */
+function carryRejected(course, built, mergedTasks, mergedGroups) {
+  const map = new Map(
+    (course.rejected ?? []).map((e) => [`${e.taskKey}|${e.path}`, e]),
+  );
+  for (const entry of built.rejected ?? []) {
+    const k = entry?.taskKey;
+    if (!k || !entry?.path) continue;
+    const relevant = isFoundationKey(k)
+      ? mergedGroups.has(groupKeyOf(k))
+      : mergedTasks.has(k);
+    if (relevant) map.set(`${k}|${entry.path}`, clone(entry));
+  }
+  course.rejected = [...map.values()].sort(
+    (a, b) => byText(a.taskKey, b.taskKey) || byText(a.path, b.path),
+  );
 }
 
 /**
@@ -443,6 +611,11 @@ export function mergeBuilt(next, built) {
           doneTasks.push(t.key);
         }
     }
+  const mergedTaskSet = new Set(doneTasks);
+  const mergedGroupSet = new Set(doneGroups);
+  dedupeMerged(copy, mergedTaskSet, mergedGroupSet);
+  carryPicked(copy, built);
+  carryRejected(copy, built, mergedTaskSet, mergedGroupSet);
   if (copy.pending) {
     copy.pending = {
       ...copy.pending,
@@ -501,25 +674,31 @@ export function rekeyDecisions(store, rekey) {
   const groups = new Map(rekey.groups);
   const removed = new Set(rekey.removed);
   const groupsGone = new Set(rekey.groupsGone ?? []);
-  const out = [];
+  const byPair = new Map();
   let moved = 0;
   let dropped = 0;
   for (const decision of store.decisions ?? []) {
     const task = String(decision.task);
+    let entry = null;
     if (isFoundationKey(task)) {
       const to = groups.get(groupKeyOf(task));
       if (to) {
-        out.push({ ...decision, task: foundationKey(to) });
+        entry = { ...decision, task: foundationKey(to) };
         moved++;
       } else if (groupsGone.has(groupKeyOf(task))) dropped++;
-      else out.push(decision);
+      else entry = decision;
     } else if (removed.has(task)) dropped++;
     else if (tasks.has(task)) {
-      out.push({ ...decision, task: tasks.get(task) });
+      entry = { ...decision, task: tasks.get(task) };
       moved++;
-    } else out.push(decision);
+    } else entry = decision;
+    if (entry) byPair.set(`${entry.task}|${entry.target}`, entry);
   }
-  return { store: { ...store, decisions: out }, moved, dropped };
+  return {
+    store: { ...store, decisions: [...byPair.values()] },
+    moved,
+    dropped,
+  };
 }
 
 /**
@@ -575,7 +754,9 @@ export function versionLabels({ effective, counts }) {
     current: `Current, until ${eve}`,
     upcoming: `Upcoming, from ${day}`,
     intro: `The skills measured change on ${day}. The first tab is the course for what the exam measures until ${eve}, the second tab the course for the skills measured from ${day}. What differs between them is marked in words as well as colour; the Study Guide Changes page shows every difference word for word.`,
+    rewrittenIntro: `The skills measured change on ${day}. The first tab is the course for what the exam measures until ${eve}, the second tab the course for the skills measured from ${day}. Because most of the study guide was rewritten, individual tasks and cards are not marked; the Study Guide Changes page shows every difference word for word.`,
     currentLegend: `This is the course for the skills measured until ${eve}. A task that leaves is marked "Leaves ${day}", a card the upcoming course does not have says "Until ${eve}", and a reworded task keeps its old wording here.`,
+    currentRewrittenLegend: `This is the course for the skills measured until ${eve}. Because most of the study guide was rewritten for ${day}, individual tasks and cards are not marked here; see the Study Guide Changes page for what changed.`,
     upcomingLegend: `This is the course for the skills measured from ${day}. New and reworded tasks are green and underlined with a badge, and a card the current course does not have is green and says "New from ${day}".`,
     rewritten: `This course was largely rewritten for the skills measured from ${day}: ${counts.added + counts.reworded} of ${counts.tasks} tasks are new or reworded, so nothing is marked. The Study Guide Changes page shows what changed.`,
     added: `New from ${day}`,

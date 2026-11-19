@@ -27,6 +27,7 @@ import {
   versionLabels,
   versionMarks,
 } from "../../scripts/lib/course-next.mjs";
+import { buildAudience } from "../../scripts/lib/course-audience.mjs";
 import { validateCourse } from "../../scripts/lib/course-format.mjs";
 import { parseGuide } from "../../scripts/lib/course-guide.mjs";
 import { asOfOfHeading } from "../../scripts/lib/guide-history.mjs";
@@ -239,7 +240,7 @@ test("buildNext: picks and decisions carry over, new tasks wait to be built, wea
 test("buildNext: the upcoming course follows the audience profile of the new version", () => {
   const course = {
     ...courseOf(V1),
-    audience: parseGuide(V1).audience,
+    audience: buildAudience(parseGuide(V1).audience, null),
   };
   const changed = parseGuide(
     guide({
@@ -258,7 +259,7 @@ test("buildNext: the upcoming course follows the audience profile of the new ver
     today: "2026-11-16",
   });
   assert.equal(result.ok, true);
-  assert.deepEqual(result.next.audience, changed.audience);
+  assert.deepEqual(result.next.audience, buildAudience(changed.audience, null));
   assert.notDeepEqual(result.next.audience, course.audience);
   assert.equal(result.report.audienceChanged, true);
 });
@@ -370,6 +371,170 @@ test("confirm, reject and merge clear the pending list, and an empty list leaves
   const empty = mergeBuilt(next, { domains: [] });
   assert.equal(empty.missing.length, next.pending.added.length);
   assert.equal(empty.next.pending.added.length, next.pending.added.length);
+});
+
+test("mergeBuilt: a page the upcoming course already shows is not shown twice, and the task points to it", () => {
+  const course = courseOf(V1);
+  const { next } = buildNext({
+    course,
+    guide: upcoming(edits),
+    version: VERSION,
+    today: "2026-11-16",
+  });
+  const tasks = (c) =>
+    c.domains.flatMap((d) => d.groups.flatMap((g) => g.tasks));
+  const addedKey = next.pending.added[0];
+  const carried = tasks(next).find((t) => t.key !== addedKey);
+  carried.picks = [
+    {
+      title: "Shared module",
+      target: { kind: "module", path: "/training/modules/shared" },
+    },
+  ];
+  const built = structuredClone(next);
+  tasks(built).find((t) => t.key === addedKey).picks = [
+    {
+      title: "Shared module",
+      target: { kind: "module", path: "/training/modules/shared" },
+    },
+    {
+      title: "Own article",
+      target: { kind: "docs", path: "/azure/own-article" },
+    },
+  ];
+  const merged = mergeBuilt(next, built);
+  const task = tasks(merged.next).find((t) => t.key === addedKey);
+  assert.deepEqual(
+    task.picks.map((p) => p.target.path),
+    ["/azure/own-article"],
+  );
+  assert.deepEqual(task.overlaps, [
+    {
+      path: "/training/modules/shared",
+      title: "Shared module",
+      shownUnder: carried.key,
+    },
+  ]);
+  assert.equal(
+    task.docOverlaps,
+    undefined,
+    "it has a documentation page of its own",
+  );
+
+  // a duplicate shown in a carried group's fundamentals is dropped without writing an @foundations overlap
+  const next2 = structuredClone(next);
+  next2.domains[0].groups[0].foundations = [
+    {
+      title: "Foundation module",
+      target: { kind: "module", path: "/training/modules/found-mod" },
+      class: "foundation",
+      source: "P3",
+      why: "Intro",
+      evidence: "Intro",
+      decision: { by: "auto", at: "2026-11-01" },
+    },
+  ];
+  next2.inputs.picked = [
+    ["/training/modules/found-mod", "sig1"],
+    ["/training/modules/orphan", "sig2"],
+  ];
+  const built2 = structuredClone(next2);
+  tasks(built2).find((t) => t.key === addedKey).picks = [
+    {
+      title: "Foundation module",
+      target: { kind: "module", path: "/training/modules/found-mod" },
+    },
+    {
+      title: "Own article",
+      target: { kind: "docs", path: "/azure/own-article" },
+    },
+  ];
+  built2.rejected = [
+    {
+      taskKey: addedKey,
+      path: "/azure/out-of-scope",
+      reason: "Another role.",
+      at: "2026-11-16",
+    },
+  ];
+  const merged2 = mergeBuilt(next2, built2);
+  const task2 = tasks(merged2.next).find((t) => t.key === addedKey);
+  assert.equal(
+    task2.overlaps,
+    undefined,
+    "never points overlaps at @foundations",
+  );
+  assert.deepEqual(merged2.next.inputs.picked, [
+    ["/training/modules/found-mod", "sig1"],
+  ]);
+  assert.equal(
+    merged2.next.rejected.some(
+      (r) => r.taskKey === addedKey && r.path === "/azure/out-of-scope",
+    ),
+    true,
+  );
+});
+
+test("rejectPending repairs sibling overlaps pointing to the rejected task, and validateCourse rejects @foundations overlaps", () => {
+  const course = courseOf(V1);
+  const { next } = buildNext({
+    course,
+    guide: upcoming(edits),
+    version: VERSION,
+    today: "2026-11-16",
+  });
+  const all = next.domains.flatMap((d) => d.groups.flatMap((g) => g.tasks));
+  const confirmKey = next.pending.confirm[0].key;
+  const targetTask = all.find((t) => t.key === confirmKey);
+  const sibling = all.find((t) => t.key !== confirmKey && t.picks);
+  targetTask.picks = [
+    {
+      title: "Reworded module",
+      target: { kind: "module", path: "/training/modules/reworded-mod" },
+      class: "core",
+      source: "P1",
+      decision: { by: "auto", at: "2026-11-01" },
+    },
+  ];
+  sibling.picks = [];
+  sibling.overlaps = [
+    {
+      path: "/training/modules/reworded-mod",
+      title: "Reworded module",
+      shownUnder: confirmKey,
+    },
+  ];
+  const after = rejectPending(next, confirmKey);
+  assert.equal(after.rejected, true);
+  const siblingAfter = after.next.domains
+    .flatMap((d) => d.groups.flatMap((g) => g.tasks))
+    .find((t) => t.key === sibling.key);
+  assert.equal(siblingAfter.overlaps, undefined);
+
+  // validateCourse refuses an overlap whose shownUnder is @foundations
+  const broken = structuredClone(course);
+  broken.domains[0].groups[0].foundations = [
+    {
+      title: "Found",
+      target: { kind: "module", path: "/training/modules/f" },
+      class: "foundation",
+      source: "P1",
+      why: "Base",
+      evidence: "Base",
+      decision: { by: "auto", at: "2026-11-01" },
+    },
+  ];
+  broken.domains[0].groups[0].tasks[0].picks = [];
+  broken.domains[0].groups[0].tasks[0].overlaps = [
+    {
+      path: "/training/modules/f",
+      title: "Found",
+      shownUnder: `${broken.domains[0].groups[0].tasks[0].key.split("/").slice(0, 2).join("/")}/@foundations`,
+    },
+  ];
+  const res = validateCourse(broken);
+  assert.equal(res.ok, false);
+  assert.match(res.errors.join("\n"), /points to a group's fundamentals/);
 });
 
 test("rekeyDecisions: decisions follow the tasks that changed key and leave with the tasks that are gone", () => {
@@ -705,6 +870,14 @@ test("versionMarks: a rewrite marks nothing and says so", () => {
     versionLabels({ effective: "2026-12-01", counts: marks.counts }).rewritten,
     /largely rewritten/,
   );
+  const { course: validCur, next: validNext } = twoVersions();
+  const rewritePage = renderCourseVersions(validCur, validNext, {
+    marks,
+    effective: "2026-12-01",
+    labels: versionLabels({ effective: "2026-12-01", counts: marks.counts }),
+  });
+  assert.doesNotMatch(rewritePage, /A task that leaves is marked/);
+  assert.doesNotMatch(rewritePage, /marked in words as well as colour/);
 });
 
 test("versionLabels: the words come from the day, with the day before for the course in force", () => {

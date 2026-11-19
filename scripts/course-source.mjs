@@ -109,10 +109,10 @@ export async function loadLearnsync({ dir, fetchImpl }) {
 /** A learnsync checkout: LEARNSYNC_DIR, else ../learnsync next to the repo, else .course-runs/learnsync inside it, else null (GitHub is used then). */
 export function learnsyncDir({ root = repoRoot, env = process.env } = {}) {
   if (env.LEARNSYNC_DIR) return env.LEARNSYNC_DIR;
-  const sibling = join(root, "..", "learnsync");
-  if (existsSync(join(sibling, "data"))) return sibling;
   const localCache = join(root, ".course-runs", "learnsync");
   if (existsSync(join(localCache, "data"))) return localCache;
+  const sibling = join(root, "..", "learnsync");
+  if (existsSync(join(sibling, "data"))) return sibling;
   return null;
 }
 

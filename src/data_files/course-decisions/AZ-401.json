@@ -2180,11 +2180,10 @@
       "task": "design-and-implement-processes-and-communications/configure-collaboration-and-communication/configure-integration-between-azure-boards-and-github-reposi",
       "target": "/training/modules/manage-azure-boards-using-github-copilot",
       "decision": "accept",
-      "class": "supporting",
-      "relation": "same-workflow",
-      "reason": "Connects Azure Boards to GitHub repositories and hands work items to GitHub Copilot, through the built-in integration and not through MCP.",
+      "class": "core",
+      "reason": "Connects Azure Boards to GitHub repositories and hands work items to GitHub Copilot, through the built-in integration and not through MCP. It is the module that covers this task.",
       "by": "maintainer",
-      "at": "2026-11-14",
+      "at": "2026-11-19",
       "pinned": true
     },
     {
@@ -2963,6 +2962,17 @@
       "reason": "The Learn module that covers this task.",
       "by": "maintainer",
       "at": "2026-11-14",
+      "pinned": true
+    },
+    {
+      "task": "design-and-implement-build-and-release-pipelines/design-and-implement-infrastructure-as-code-iac/implement-a-configuration-management-strategy-for-applicatio",
+      "target": "/training/modules/use-plan-mode-cloud-ops",
+      "decision": "accept",
+      "class": "supporting",
+      "relation": "same-workflow",
+      "reason": "Plans infrastructure configuration changes and operational automation with GitHub Copilot plan mode before they are applied.",
+      "by": "maintainer",
+      "at": "2026-11-19",
       "pinned": true
     }
   ],
