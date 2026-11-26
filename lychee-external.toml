@@ -34,8 +34,9 @@ include = [
   '^https?://microsoft\.github\.io/',
 
   # --- video ------------------------------------------------------------------
-  # YouTube answers 200 for a deleted video, so this only notices removed
-  # channels and a host that stops answering, not dead videos.
+  # YouTube answers 200 for a deleted video, so lychee only notices removed
+  # channels and a host that stops answering. Deleted videos and playlists are
+  # found by scripts/youtube-availability.mjs, which runs after lychee.
   '^https?://((www|m)\.)?youtube\.com/',
   '^https?://youtu\.be/',
 
