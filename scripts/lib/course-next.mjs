@@ -703,22 +703,20 @@ export function rekeyDecisions(store, rekey) {
 
 /**
  * What differs between the course in force and the upcoming course, for the page that shows both:
- * { largely, counts, current: { task, card }, upcoming: { task, card } }. `task` maps a task key to what the
+ * { counts, current: { task, card }, upcoming: { task, card } }. `task` maps a task key to what the
  * heading says ("new", "reworded-upcoming", "reworded-current", "leaves") and `card` maps `<task key>|<page path>`
  * to "added" (only the upcoming course has the card) or "removed" (only the course in force has it); cards of a
- * task that is new or leaves are not marked, the heading says it. When the change is a rewrite (more than
- * MAJOR_SHARE of the tasks new or reworded) nothing is marked and `largely` is true: marks on most of the page
- * say nothing.
+ * task that is new or leaves are not marked, the heading says it. Every change is marked, however much of the
+ * course it touches: showing what differs is the point of the page, so there is no limit (a rewrite is marked
+ * like any other change; MAJOR_SHARE only stops `buildNext` from patching one).
  */
 export function versionMarks({ current, next }) {
-  const { pairs, counts, share } = planNext({ course: current, guide: next });
+  const { pairs, counts } = planNext({ course: current, guide: next });
   const marks = {
-    largely: share > MAJOR_SHARE,
     counts,
     current: { task: new Map(), card: new Map() },
     upcoming: { task: new Map(), card: new Map() },
   };
-  if (marks.largely) return marks;
   const pathsOf = (task) =>
     new Set((task.picks ?? []).map((pick) => pick.target.path));
   for (const pair of pairs) {
@@ -754,11 +752,8 @@ export function versionLabels({ effective, counts }) {
     current: `Current, until ${eve}`,
     upcoming: `Upcoming, from ${day}`,
     intro: `The skills measured change on ${day}. The first tab is the course for what the exam measures until ${eve}, the second tab the course for the skills measured from ${day}. What differs between them is marked in words as well as colour; the Study Guide Changes page shows every difference word for word.`,
-    rewrittenIntro: `The skills measured change on ${day}. The first tab is the course for what the exam measures until ${eve}, the second tab the course for the skills measured from ${day}. Because most of the study guide was rewritten, individual tasks and cards are not marked; the Study Guide Changes page shows every difference word for word.`,
     currentLegend: `This is the course for the skills measured until ${eve}. A task that leaves is marked "Leaves ${day}", a card the upcoming course does not have says "Until ${eve}", and a reworded task keeps its old wording here.`,
-    currentRewrittenLegend: `This is the course for the skills measured until ${eve}. Because most of the study guide was rewritten for ${day}, individual tasks and cards are not marked here; see the Study Guide Changes page for what changed.`,
     upcomingLegend: `This is the course for the skills measured from ${day}. New and reworded tasks are green and underlined with a badge, and a card the current course does not have is green and says "New from ${day}".`,
-    rewritten: `This course was largely rewritten for the skills measured from ${day}: ${counts.added + counts.reworded} of ${counts.tasks} tasks are new or reworded, so nothing is marked. The Study Guide Changes page shows what changed.`,
     added: `New from ${day}`,
     reworded: "Reworded",
     rewordedCurrent: `Reworded from ${day}`,

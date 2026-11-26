@@ -814,7 +814,6 @@ function twoVersions() {
 test("versionMarks: new and reworded tasks, leaving tasks and the cards only one version has", () => {
   const { course, next } = twoVersions();
   const marks = versionMarks({ current: course, next });
-  assert.equal(marks.largely, false);
   const target = upcoming(edits);
   const before = parseGuide(V1);
   const up = (text) => marks.upcoming.task.get(keyOf(target, text));
@@ -848,7 +847,7 @@ test("versionMarks: new and reworded tasks, leaving tasks and the cards only one
   );
 });
 
-test("versionMarks: a rewrite marks nothing and says so", () => {
+test("versionMarks: a rewrite is marked like any other change, there is no limit", () => {
   const course = courseOf(V1);
   const target = upcoming(rewriteEdit);
   const { next } = buildNext({
@@ -859,16 +858,10 @@ test("versionMarks: a rewrite marks nothing and says so", () => {
     force: true,
   });
   const marks = versionMarks({ current: course, next });
-  assert.equal(marks.largely, true);
-  assert.equal(
-    marks.upcoming.task.size +
-      marks.current.task.size +
-      marks.upcoming.card.size,
-    0,
-  );
-  assert.match(
-    versionLabels({ effective: "2026-12-01", counts: marks.counts }).rewritten,
-    /largely rewritten/,
+  assert.equal("largely" in marks, false);
+  assert.ok(
+    marks.upcoming.task.size + marks.current.task.size > 0,
+    "a mostly rewritten course still marks its new and leaving tasks",
   );
   const { course: validCur, next: validNext } = twoVersions();
   const rewritePage = renderCourseVersions(validCur, validNext, {
@@ -876,8 +869,9 @@ test("versionMarks: a rewrite marks nothing and says so", () => {
     effective: "2026-12-01",
     labels: versionLabels({ effective: "2026-12-01", counts: marks.counts }),
   });
-  assert.doesNotMatch(rewritePage, /A task that leaves is marked/);
-  assert.doesNotMatch(rewritePage, /marked in words as well as colour/);
+  assert.match(rewritePage, /A task that leaves is marked/);
+  assert.match(rewritePage, /marked in words as well as colour/);
+  assert.doesNotMatch(rewritePage, /largely rewritten|nothing is marked/);
 });
 
 test("versionLabels: the words come from the day, with the day before for the course in force", () => {
@@ -890,7 +884,6 @@ test("versionLabels: the words come from the day, with the day before for the co
   assert.equal(labels.leaves, "Leaves December 1, 2026");
   assert.equal(labels.cardRemoved, "Until November 30, 2026");
   assert.equal(labels.cardAdded, "New from December 1, 2026");
-  assert.match(labels.rewritten, /3 of 12 tasks/);
 });
 
 test("renderCourseVersions: two slots, plain HTML headings with their own ids, and every mark in words", () => {
