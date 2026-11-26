@@ -1,12 +1,16 @@
 ---
 import { Aside, Card, CardGrid, LinkCard } from "@components/docs";
+import { bundlesForExam, examCodeOfPath } from "@utils/measureup-bundles.mjs";
 
 interface Props {
   assessmentUrl?: string;
   practiceTestUrl?: string;
+  // The hub's code of the exam; the card reads it from the address of the page when it is not given.
+  examCode?: string;
 }
 
-const { assessmentUrl, practiceTestUrl } = Astro.props;
+const { assessmentUrl, practiceTestUrl, examCode } = Astro.props;
+const bundles = bundlesForExam(examCode ?? examCodeOfPath(Astro.url.pathname));
 const hasProductSlot = Astro.slots.has("products");
 if (!hasProductSlot && (!assessmentUrl || !practiceTestUrl)) {
   throw new Error(
@@ -33,6 +37,23 @@ const ensureU44 = (url: string) => (url.includes("#u44") ? url : `${url}#u44`);
         target="_blank"
       />
     </CardGrid>
+  )}
+  {bundles.length > 0 && (
+    <>
+      <p>
+        <strong>Bundles that include this exam</strong>
+      </p>
+      <CardGrid>
+        {bundles.map((bundle) => (
+          <LinkCard
+            title={bundle.title}
+            href={bundle.href}
+            description={bundle.description}
+            target="_blank"
+          />
+        ))}
+      </CardGrid>
+    </>
   )}
   <LinkCard
     title="MeasureUp Subscriptions"
