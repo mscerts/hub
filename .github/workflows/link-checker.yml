@@ -154,6 +154,27 @@ jobs:
             --root-dir dist
             'dist/**/*.html'
 
+      # YouTube answers HTTP 200 for the page of a deleted video or playlist, which lychee cannot
+      # see. This step asks YouTube's oEmbed endpoint about the YouTube links of the report and adds
+      # the ones that do not exist to it as dead links, so the next step judges them like any other
+      # (reported after two runs, in the same issue). It ends by itself (a deadline of 3 minutes) and
+      # never fails: when it cannot do its work the YouTube links stay as lychee saw them.
+      - name: Check that YouTube videos and playlists still exist
+        id: youtube
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        timeout-minutes: 5
+        run: node scripts/youtube-availability.mjs
+
+      # A LevelUp course that was removed does not answer 404: its address answers 200 and shows
+      # the home page of the site, which lychee cannot tell. This step fetches the LevelUp course pages
+      # of the report and adds the ones that are not a course page to it as dead links (same rules as
+      # the step above: it ends by itself and never fails).
+      - name: Check that LevelUp course pages still exist
+        id: levelup
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        timeout-minutes: 5
+        run: node scripts/levelup-availability.mjs
+
       # The issue is created (or edited, commented on, closed) inside this step and the
       # tracker commit below only runs when it succeeded: its condition has no status-check
       # function. A failed issue step therefore leaves the tracker uncommitted and the next
