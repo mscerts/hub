@@ -194,7 +194,7 @@ test("every bundle of the baseline that is shown has a MeasureUp card on the pag
   assert.deepEqual([...missing].sort(), []);
 });
 
-test("the Markdown copy of an exam page lists its bundles under the MeasureUp products", async () => {
+test("the Markdown copy of an exam page lists its bundles below the MSFTHUB discount note", async () => {
   const body = `<MeasureUpCard>
 <CardGrid slot="products">
   <LinkCard title="MeasureUp Practice Test" href="https://www.measureup.com/x.html#u44" target="_blank"/>
@@ -216,8 +216,12 @@ test("the Markdown copy of an exam page lists its bundles under the MeasureUp pr
       copy.indexOf("Discounted bundles with other exams"),
   );
   assert.ok(
-    copy.indexOf("Discounted bundles with other exams") <
-      copy.indexOf("MeasureUp Subscriptions"),
+    copy.indexOf("MeasureUp Subscriptions") <
+      copy.indexOf("Discounted bundles with other exams"),
+  );
+  assert.ok(
+    copy.indexOf("exclusive 15% discount") <
+      copy.indexOf("Discounted bundles with other exams"),
   );
   // an exam in no bundle, or a page that is no exam page: the copy is as it was
   for (const options of [

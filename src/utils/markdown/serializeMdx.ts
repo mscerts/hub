@@ -368,14 +368,6 @@ export async function serializeMdx(
               1,
               headingNode("MeasureUp Practice Tests"),
               ...productNodes,
-              ...(bundleCards.length > 0
-                ? [
-                    paragraphNode(textNode("Discounted bundles with other exams:")),
-                    ...bundleCards.map((bundle) =>
-                      headingNode(bundle.title, bundle.href),
-                    ),
-                  ]
-                : []),
               headingNode(
                 "MeasureUp Subscriptions",
                 "https://www.measureup.com/subscription-plans-for-individuals#u44",
@@ -400,6 +392,16 @@ export async function serializeMdx(
                   ),
                 ),
               ]),
+              ...(bundleCards.length > 0
+                ? [
+                    paragraphNode(
+                      textNode("Discounted bundles with other exams:"),
+                    ),
+                    ...bundleCards.map((bundle) =>
+                      headingNode(bundle.title, bundle.href),
+                    ),
+                  ]
+                : []),
               ...defaultSlot,
             );
             return index;

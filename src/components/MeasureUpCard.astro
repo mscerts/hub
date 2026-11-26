@@ -43,6 +43,30 @@ const ensureU44 = (url: string) => (url.includes("#u44") ? url : `${url}#u44`);
       />
     </CardGrid>
   )}
+  <LinkCard
+    title="MeasureUp Subscriptions"
+    href="https://www.measureup.com/subscription-plans-for-individuals#u44"
+    target="_blank"
+  />
+  <p>
+    Official Microsoft Practice tests. They are expensive but they will prepare
+    you for the exam. They are harder than normal exam questions but that helps
+    even more to identify your weak areas and where you need to study more.
+    There are also cheaper assessments but they contain less questions and no
+    explanations.
+  </p>
+
+  <p>
+    MeasureUp also offers subscriptions in case you are planning to take
+    multiple exams in the next 12 months.
+  </p>
+  <slot name="before-discount" />
+  <Aside type="tip">
+    <p>
+      Use our code <strong>MSFTHUB</strong> for an exclusive 15% discount on the
+      MeasureUp store!
+    </p>
+  </Aside>
   {bundles.length > 0 && (
     <details class="my-4">
       <summary class={SUMMARY_CLASS}>
@@ -87,29 +111,5 @@ const ensureU44 = (url: string) => (url.includes("#u44") ? url : `${url}#u44`);
       </div>
     </details>
   )}
-  <LinkCard
-    title="MeasureUp Subscriptions"
-    href="https://www.measureup.com/subscription-plans-for-individuals#u44"
-    target="_blank"
-  />
-  <p>
-    Official Microsoft Practice tests. They are expensive but they will prepare
-    you for the exam. They are harder than normal exam questions but that helps
-    even more to identify your weak areas and where you need to study more.
-    There are also cheaper assessments but they contain less questions and no
-    explanations.
-  </p>
-
-  <p>
-    MeasureUp also offers subscriptions in case you are planning to take
-    multiple exams in the next 12 months.
-  </p>
-  <slot name="before-discount" />
-  <Aside type="tip">
-    <p>
-      Use our code <strong>MSFTHUB</strong> for an exclusive 15% discount on the
-      MeasureUp store!
-    </p>
-  </Aside>
   <slot />
 </Card>
