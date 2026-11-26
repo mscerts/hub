@@ -1,7 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Aside, Card, CardGrid, LinkCard } from "@components/docs";
-import { bundlesForExam, examCodeOfPath } from "@utils/measureup-bundles.mjs";
+import {
+  bundlesForExam,
+  examCodeOfPath,
+  productsForExam,
+} from "@utils/measureup-bundles.mjs";
 
 interface Props {
   assessmentUrl?: string;
@@ -11,15 +15,22 @@ interface Props {
 }
 
 const { assessmentUrl, practiceTestUrl, examCode } = Astro.props;
-const bundles = bundlesForExam(examCode ?? examCodeOfPath(Astro.url.pathname));
+const code = examCode ?? examCodeOfPath(Astro.url.pathname);
+const bundles = bundlesForExam(code);
 // The bundles sit behind a dropdown whose trigger has the size and layout of a LinkCard (the same classes as
 // the trigger of src/components/RelatedCerts.astro), so it reads as one more link of the card.
 const SUMMARY_CLASS =
   "group not-prose hover:shadow-default flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl border border-border bg-card p-4 text-inherit no-underline shadow-sm transition hover:border-border-strong sm:gap-4 sm:p-5 [&::-webkit-details-marker]:hidden";
 const hasProductSlot = Astro.slots.has("products");
-if (!hasProductSlot && (!assessmentUrl || !practiceTestUrl)) {
+// A card with no products slot and no product addresses lists the exam's assessment and practice test from the
+// MeasureUp Monitor's baseline (src/data_files/measureup-products.json), so a page needs no address of its own.
+const generated =
+  !hasProductSlot && !assessmentUrl && !practiceTestUrl
+    ? productsForExam(code)
+    : [];
+if (!hasProductSlot && !assessmentUrl !== !practiceTestUrl) {
   throw new Error(
-    "MeasureUpCard requires a products slot or both product URLs.",
+    "MeasureUpCard needs both product URLs, a products slot or neither.",
   );
 }
 
@@ -29,7 +40,13 @@ const ensureU44 = (url: string) => (url.includes("#u44") ? url : `${url}#u44`);
 <Card title="MeasureUp Practice Tests" icon="open-book">
   {hasProductSlot ? (
     <slot name="products" />
-  ) : (
+  ) : generated.length > 0 ? (
+    <CardGrid>
+      {generated.map((product) => (
+        <LinkCard title={product.title} href={product.href} target="_blank" />
+      ))}
+    </CardGrid>
+  ) : assessmentUrl && practiceTestUrl ? (
     <CardGrid>
       <LinkCard
         title="MeasureUp Assessment"
@@ -42,7 +59,7 @@ const ensureU44 = (url: string) => (url.includes("#u44") ? url : `${url}#u44`);
         target="_blank"
       />
     </CardGrid>
-  )}
+  ) : null}
   <LinkCard
     title="MeasureUp Subscriptions"
     href="https://www.measureup.com/subscription-plans-for-individuals#u44"

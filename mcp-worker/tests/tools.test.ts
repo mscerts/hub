@@ -3,6 +3,7 @@ import { describe, test } from "node:test";
 import {
   attrVal,
   cleanDocBody,
+  expandMeasureUpCard,
   extractLinks,
   unwrapActiveCourseVersion,
 } from "../scripts/bundle.ts";
@@ -34,6 +35,22 @@ describe("bundle extraction helpers", () => {
       attrVal(`title="Exam &quot;Beta&quot; &amp; Prep"`, "title"),
       'Exam "Beta" & Prep',
     );
+  });
+
+  test("writes the products of a bare MeasureUp card into the page, like a page that spells them out", () => {
+    const bare = "<MeasureUpCard />\n";
+    const links = extractLinks(bare, "2026-11-26", "AZ-104");
+    assert.deepEqual(
+      links.map((link) => [link.title, link.tab]),
+      [
+        ["MeasureUp Assessment", "MeasureUp"],
+        ["MeasureUp Practice Test", "MeasureUp"],
+      ],
+    );
+    for (const link of links)
+      assert.match(link.href, /^https:\/\/www\.measureup\.com\/.+#u44$/);
+    assert.equal(extractLinks(bare, "2026-11-26").length, 0);
+    assert.equal(expandMeasureUpCard(bare), bare);
   });
 
   test("ignores commented-out tabs/cards and groups post-Tabs MeasureUp links separately", () => {
