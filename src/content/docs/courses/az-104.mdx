@@ -5,7 +5,7 @@ description: "Follow a structured AZ-104 course organized by study guide task, w
 import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
 
 :::note
-This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official AZ-104 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-104?WT.mc_id=studentamb_165290) (October 26, 2023 version). Each task of the guide links to the Microsoft Learn training and the documentation that cover it. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AZ-104 labs page](/certs/labs/azure/az-104/), not here.
+This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official AZ-104 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/az-104?WT.mc_id=studentamb_165290) (April 17, 2026 version). Each task of the guide links to the Microsoft Learn training and the documentation that cover it. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [AZ-104 labs page](/certs/labs/azure/az-104/), not here.
 
 The course follows the approach of [How to Prepare for Role-Based Exams](/certs/prepare/role-based/): the study guide is the source of truth for what the exam covers, so work through it task by task, with the training to learn a topic and the documentation for the details and for hands-on work. Videos, practice tests and the other resources for the exam are on the [AZ-104 Study Materials](/certs/azure/az-104/) page.
 :::
@@ -34,7 +34,7 @@ As an Azure administrator, you often serve as part of a larger team dedicated to
   <LinkCard title="Microsoft Entra ID" description="What is Microsoft Entra?" href="https://learn.microsoft.com/entra/fundamentals/what-is-entra?WT.mc_id=studentamb_165290" target="_blank"/>
 </CardGrid>
 
-- Azure Resource Manager templates
+- Azure Resource Manager templates or Bicep files
 
 ## Manage Azure identities and governance (20–25%)
 
@@ -823,7 +823,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
   </TabItem>
 </Tabs>
 
-#### Create and configure a file share in Azure Storage
+#### Create and configure a file share in Azure Files
 
 :::note
 The Microsoft Learn module "Configure Azure Storage security" also covers this task. It is listed once, under [Create and use shared access signature (SAS) tokens](#create-and-use-shared-access-signature-sas-tokens) in the skill group Configure access to storage.
@@ -857,7 +857,7 @@ The Microsoft Learn module "Configure Azure Storage security" also covers this t
   </TabItem>
 </Tabs>
 
-#### Create and configure a container in Blob Storage
+#### Create and configure a container in Azure Blob Storage
 
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
@@ -915,6 +915,23 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
     </CardGrid>
   </TabItem>
 </Tabs>
+
+#### Configure soft delete for blobs and containers
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure Azure Blob Storage": under [Configure object replication](#configure-object-replication) in the skill group Configure and manage storage accounts
+- "Plan and implement security for storage": under [Manage access keys](#manage-access-keys) in the skill group Configure access to storage
+:::
+
+:::note
+These Microsoft Learn documentation pages also cover this task. Each is listed once, under the task named:
+
+- "Enable and manage soft delete for containers - Azure Storage": under [Create and configure a container in Azure Blob Storage](#create-and-configure-a-container-in-azure-blob-storage)
+- "Enable soft delete for blobs - Azure Storage": under [Configure blob versioning](#configure-blob-versioning)
+- "Manage and restore soft-deleted blobs - Azure Storage": under [Configure blob versioning](#configure-blob-versioning)
+:::
 
 #### Configure snapshots and soft delete for Azure Files
 
@@ -1221,21 +1238,19 @@ The concepts behind the tasks of this skill group. Work through them first: the 
   </TabItem>
 </Tabs>
 
-#### Configure Azure Disk Encryption
+#### Configure encryption at host for Azure virtual machines
 
 <Tabs>
   <TabItem label="Learning">
     <CardGrid>
       <LinkCard title="Implement disk encryption for Azure virtual machines" href="https://learn.microsoft.com/training/modules/implement-disk-encryption-azure-virtual-machines?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Configure BitLocker disk encryption for Windows IaaS Virtual Machines" href="https://learn.microsoft.com/training/modules/configure-bitlocker-disk-encryption-windows-iaas-virtual-machines?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
   <TabItem label="Documentation">
     <CardGrid>
-      <LinkCard title="Enable Azure Disk Encryption for Linux VMs" href="https://learn.microsoft.com/azure/virtual-machines/linux/disk-encryption-overview?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Enable Azure Disk Encryption for Windows VMs" href="https://learn.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Migrate from Azure Disk Encryption to encryption at host" href="https://learn.microsoft.com/azure/virtual-machines/disk-encryption-migrate?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Overview of managed disk encryption options" href="https://learn.microsoft.com/azure/virtual-machines/disk-encryption-overview?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Enable double encryption at rest for managed disks" href="https://learn.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -1469,7 +1484,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
   </TabItem>
 </Tabs>
 
-#### Create and manage an Azure container registry
+#### Create and manage an Azure Container Registry
 
 <Tabs>
   <TabItem label="Learning">
@@ -1833,7 +1848,7 @@ The Microsoft Learn module "Configure virtual networks" also covers this task. I
   </TabItem>
 </Tabs>
 
-#### Configure user-defined network routes
+#### Configure user-defined routes
 
 <Tabs>
   <TabItem label="Learning">
@@ -2305,7 +2320,7 @@ The Microsoft Learn module "Monitor your Azure virtual machines with Azure Monit
   </TabItem>
 </Tabs>
 
-#### Use Azure Network Watcher and Connection Monitor
+#### Use Azure Network Watcher and Connection monitor
 
 <Tabs>
   <TabItem label="Learning">
