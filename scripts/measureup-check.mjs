@@ -61,6 +61,8 @@
  *   SCAN_ATTEMPTS       2    (whole-listing reads before an incomplete scan fails)
  *   HUB_LINK_CHECK      1    (0 or false switches the hub link check off)
  *   MAX_HUB_PROBES      60
+ *   BUNDLE_CHECK        1    (0 or false: bundles are not read, the baseline keeps its own)
+ *   MAX_BUNDLE_PROBES   20   (product pages of new or renamed bundles read per run)
  *   FORCE_BASELINE      (1 = accept the scan silently, skip the mass-change failsafes)
  *   FETCH_DELAY_MS      2000 (pause between requests)
  *   FETCH_ATTEMPTS      3
@@ -181,6 +183,8 @@ export function loadConfig(env = process.env) {
     listingSort: (env.LISTING_SORT ?? "name").trim(),
     hubLinkCheck: on("HUB_LINK_CHECK", true),
     maxHubProbes: num("MAX_HUB_PROBES", 60),
+    bundleCheck: on("BUNDLE_CHECK", true),
+    maxBundleProbes: num("MAX_BUNDLE_PROBES", 20),
     forceBaseline: on("FORCE_BASELINE", false),
     fetchDelayMs: num("FETCH_DELAY_MS", 2000),
     fetchAttempts: Math.max(1, num("FETCH_ATTEMPTS", 3)),
@@ -459,6 +463,38 @@ export function isTracked(product) {
   return !product.retired && !isBundle(product);
 }
 
+/** The record kept in the baseline for a bundle: its exam codes come from its own product page. */
+export function storedBundle(bundle) {
+  return {
+    id: String(bundle.id ?? "").trim(),
+    name: cleanName(bundle.name),
+    url: bundle.url ?? "",
+    examCodes: [...new Set(bundle.examCodes ?? [])].sort(),
+  };
+}
+
+/**
+ * The exam codes of the products a bundle page says it includes ("Microsoft Practice Test AZ-900: ...",
+ * also Assessment and Certkit lines), sorted. A bundle's name and its address can disagree (the Security
+ * Path bundle is named SC-100, SC-200, SC-300, SC-900 and its address says sc-400), so the page decides.
+ */
+export function parseBundlePage(html) {
+  const text = decodeEntities(
+    String(html)
+      .replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, "")
+      .replace(/<[^>]+>/g, "\n"),
+  );
+  const codes = new Set();
+  for (const line of text.split("\n")) {
+    const match =
+      /^\s*(?:Microsoft\s+)?(?:Practice Test|Assessment|Certkit)\s+([A-Z]{2,3}-\d{2,4})\b/i.exec(
+        line,
+      );
+    if (match) codes.add(match[1].toUpperCase());
+  }
+  return [...codes].sort();
+}
+
 const compareProducts = (a, b) =>
   byCodePoint(a.name, b.name) || byCodePoint(a.id, b.id);
 
@@ -705,9 +741,11 @@ async function scanListingOnce(cfg, checkDeadline) {
 // ---------------------------------------------------------------------------
 function loadBaseline(cfg) {
   const rel = relative(root, cfg.baselineFile) || cfg.baselineFile;
-  if (!existsSync(cfg.baselineFile)) return { exists: false, products: [] };
+  if (!existsSync(cfg.baselineFile))
+    return { exists: false, products: [], bundles: [], hasBundles: false };
   const raw = readFileSync(cfg.baselineFile, "utf8").trim();
-  if (!raw) return { exists: false, products: [] };
+  if (!raw)
+    return { exists: false, products: [], bundles: [], hasBundles: false };
   let parsed;
   try {
     parsed = JSON.parse(raw);
@@ -728,9 +766,20 @@ function loadBaseline(cfg) {
       ? parsed.staleHubLinks
       : undefined;
   const products = parsed.products.map(storedProduct);
+  // `bundles` is newer than the file: a baseline without it is an old one, not a corrupt one
+  if (parsed.bundles !== undefined && !Array.isArray(parsed.bundles)) {
+    throw new ExtractionError(
+      `Corrupt MeasureUp baseline at ${rel} ("bundles" is not an array). The baseline was not modified.`,
+    );
+  }
+  const bundles = (parsed.bundles ?? [])
+    .map(storedBundle)
+    .filter((bundle) => bundle.id && bundle.examCodes.length > 0);
   return {
     exists: products.length > 0,
     products,
+    bundles,
+    hasBundles: parsed.bundles !== undefined,
     staleHubLinks,
     lastChecked: parsed.lastChecked,
   };
@@ -788,6 +837,130 @@ export function diffProducts(previous, scan) {
   };
 }
 
+/**
+ * The exam codes whose MeasureUp tests are retired: a retired product in the listing and no active one for
+ * the same code (MeasureUp keeps the products of a retired exam listed, marked `[Retired Exam]`).
+ */
+export function retiredExamCodes(scan) {
+  const retired = new Set();
+  const active = new Set();
+  for (const product of scan.listed.values()) {
+    if (isBundle(product) || !product.examCode) continue;
+    (product.retired ? retired : active).add(product.examCode);
+  }
+  return new Set([...retired].filter((code) => !active.has(code)));
+}
+
+/**
+ * The bundles by id. A bundle the baseline already has under the same name and address is kept as it is;
+ * a new or renamed one has to be read (`toVerify`). `removed` is informational (retired, not listed when the
+ * scan read everything, or "includes-retired": a bundle that holds the tests of an exam MeasureUp marks
+ * retired is not kept, whatever its listing says); a bundle the scan did not see is carried over.
+ */
+export function diffBundles(previous, scan) {
+  const previousById = new Map(previous.map((bundle) => [bundle.id, bundle]));
+  const retiredCodes = retiredExamCodes(scan);
+  const holdsRetired = (codes) => codes.some((code) => retiredCodes.has(code));
+  const active = [...scan.listed.values()].filter(
+    (product) => !product.retired && isBundle(product) && product.id,
+  );
+  const activeIds = new Set(active.map((product) => product.id));
+  const keep = [];
+  const toVerify = [];
+  const removed = [];
+  for (const product of active) {
+    const old = previousById.get(product.id);
+    const name = cleanName(product.name);
+    if (holdsRetired([...examCodesOf(name), ...(old?.examCodes ?? [])])) {
+      if (old) removed.push({ ...old, reason: "includes-retired" });
+      continue;
+    }
+    if (old && old.name === name && (!product.url || product.url === old.url))
+      keep.push(old);
+    else toVerify.push({ product, old });
+  }
+  const carried = [];
+  for (const [id, old] of previousById) {
+    if (activeIds.has(id)) continue;
+    const seen = scan.listed.get(id);
+    if (seen?.retired) removed.push({ ...old, reason: "retired" });
+    else if (scan.complete) removed.push({ ...old, reason: "unlisted" });
+    else carried.push(old);
+  }
+  return { keep, toVerify, removed, carried };
+}
+
+/** One GET of a product page. Never throws: { html } or { reason }. */
+async function fetchProductPage(cfg, url) {
+  try {
+    stats.requests++;
+    const response = await fetch(url, {
+      headers: { "User-Agent": USER_AGENT, Accept: ACCEPT },
+      redirect: "follow",
+      signal: AbortSignal.timeout(cfg.timeoutMs),
+    });
+    if (!response.ok) {
+      try {
+        await response.body?.cancel();
+      } catch {
+        /* the status is all that is needed */
+      }
+      return { reason: `HTTP ${response.status}` };
+    }
+    return { html: await response.text() };
+  } catch (error) {
+    return { reason: error?.message ?? String(error) };
+  }
+}
+
+/**
+ * Read the product page of every new or renamed bundle (at most `cfg.maxBundleProbes`, one request at a
+ * time) and take its exam codes from the page. Returns { verified, unverified, differing }:
+ *   verified    the bundle records to store (codes from the page);
+ *   unverified  { id, name, reason, old? }: the page could not be read or lists no products. A renamed
+ *               bundle keeps its old record, a new one is left out and read again next run;
+ *   differing   verified bundles whose name carries other exam codes than the page.
+ */
+export async function verifyBundles(cfg, toVerify, checkDeadline = () => {}) {
+  const verified = [];
+  const unverified = [];
+  const differing = [];
+  let probes = 0;
+  for (const { product, old } of toVerify) {
+    const name = cleanName(product.name);
+    const url = product.url || old?.url || "";
+    const fail = (reason) =>
+      unverified.push({ id: product.id, name, reason, old });
+    if (!url) {
+      fail("no product address in the listing");
+      continue;
+    }
+    if (probes >= cfg.maxBundleProbes) {
+      fail(`more than ${cfg.maxBundleProbes} bundles to read this run`);
+      continue;
+    }
+    if (probes > 0) await sleep(cfg.fetchDelayMs);
+    checkDeadline();
+    probes++;
+    const page = await fetchProductPage(cfg, url);
+    if (page.reason) {
+      fail(page.reason);
+      continue;
+    }
+    const examCodes = parseBundlePage(page.html);
+    if (examCodes.length === 0) {
+      fail("the page lists no included products");
+      continue;
+    }
+    const bundle = storedBundle({ id: product.id, name, url, examCodes });
+    verified.push(bundle);
+    const nameCodes = [...examCodesOf(name)].sort();
+    if (nameCodes.length > 0 && nameCodes.join() !== examCodes.join())
+      differing.push({ ...bundle, nameCodes });
+  }
+  return { verified, unverified, differing };
+}
+
 /** How the listed products split: followed, retired, and bundles (not followed). */
 export function countListing(scan, diff) {
   const all = [...scan.listed.values()];
@@ -801,9 +974,10 @@ export function countListing(scan, diff) {
 }
 
 /** The part of the baseline that decides whether it needs rewriting. */
-function baselineContent(products, staleHubLinks) {
+function baselineContent(products, staleHubLinks, bundles = []) {
   return JSON.stringify({
     products: products.map(storedProduct).sort(compareProducts),
+    bundles: bundles.map(storedBundle).sort(compareProducts),
     staleHubLinks: hasEntries(staleHubLinks) ? staleHubLinks : null,
   });
 }
@@ -811,12 +985,13 @@ function baselineContent(products, staleHubLinks) {
 const hasEntries = (object) =>
   Boolean(object) && Object.keys(object).length > 0;
 
-function baselineText(products, staleHubLinks) {
+function baselineText(products, staleHubLinks, bundles = []) {
   const body = {
     lastChecked: new Date().toISOString().replace(/\.\d{3}Z$/, "Z"),
     totalProducts: products.length,
   };
   if (hasEntries(staleHubLinks)) body.staleHubLinks = staleHubLinks;
+  body.bundles = bundles;
   body.products = products;
   return JSON.stringify(body, null, 2) + "\n";
 }
@@ -1453,14 +1628,67 @@ export async function main(cfg) {
     }
   }
 
+  // Bundles are not followed like products and never open an issue: the baseline keeps them with the
+  // exam codes of their own product pages, and the exam pages show the ones that include their exam.
+  let nextBundles = baseline.bundles;
+  let bundleResult = null;
+  if (cfg.bundleCheck) {
+    const bundleDiff = diffBundles(baseline.bundles, scan);
+    const check = await verifyBundles(cfg, bundleDiff.toVerify, checkDeadline);
+    const kept = new Map();
+    for (const bundle of [
+      ...bundleDiff.keep,
+      ...bundleDiff.carried,
+      ...check.verified,
+    ])
+      kept.set(bundle.id, bundle);
+    for (const failed of check.unverified)
+      if (failed.old) kept.set(failed.id, failed.old);
+    nextBundles = [...kept.values()].sort(compareProducts);
+    const known = new Set(baseline.bundles.map((bundle) => bundle.id));
+    bundleResult = {
+      added: check.verified.filter((bundle) => !known.has(bundle.id)),
+      renamed: check.verified.filter((bundle) => known.has(bundle.id)),
+      removed: bundleDiff.removed,
+      unverified: check.unverified,
+      differing: check.differing,
+    };
+    if (check.unverified.length > 0) {
+      const shown = check.unverified
+        .slice(0, 5)
+        .map((failed) => `${safeText(failed.name)} (${failed.reason})`)
+        .join("; ");
+      warnLoud(
+        `${plural(check.unverified.length, "bundle")} could not be read, so left as they were (a new one is left out and read again next run): ${shown}`,
+        { title: ANNOTATION_TITLE },
+      );
+    }
+    for (const bundle of bundleResult.added)
+      console.log(
+        `New bundle: ${bundle.name} (${bundle.examCodes.join(", ")})`,
+      );
+    for (const bundle of bundleResult.removed)
+      console.log(
+        `Bundle no longer active: ${bundle.name} (${{ retired: "marked retired", "includes-retired": "includes a retired exam" }[bundle.reason] ?? "not listed"})`,
+      );
+    for (const bundle of check.differing)
+      console.log(
+        `Bundle whose name and page list other exams: ${bundle.name} (name ${bundle.nameCodes.join(", ")}; page ${bundle.examCodes.join(", ")}; the page is used)`,
+      );
+  }
+
   // Decide.
   const hubFresh = silent ? [] : hubDiff.fresh;
   const changesFound =
     !silent && (diff.added.length > 0 || hubFresh.length > 0);
   const nextProducts = diff.next;
-  const nextContent = baselineContent(nextProducts, hubState);
+  const nextContent = baselineContent(nextProducts, hubState, nextBundles);
   const previousContent = baseline.exists
-    ? baselineContent(baseline.products, baseline.staleHubLinks)
+    ? baselineContent(
+        baseline.products,
+        baseline.staleHubLinks,
+        baseline.bundles,
+      )
     : null;
   const baselineChanged = nextContent !== previousContent;
 
@@ -1484,7 +1712,7 @@ export async function main(cfg) {
   if (baselineChanged) {
     writeFileSync(
       cfg.baselineFile,
-      baselineText(nextProducts, hubState),
+      baselineText(nextProducts, hubState, nextBundles),
       "utf8",
     );
   }
@@ -1544,6 +1772,9 @@ export async function main(cfg) {
     hub
       ? `- Hub links: ${hub.checked} checked, ${staleNow} stale (${hubDiff.known} already reported), ${hub.openCount} not listed but open, ${hub.unverifiedCount} could not be checked.`
       : "- Hub links: not checked this run.",
+    bundleResult
+      ? `- Bundles: ${nextBundles.length} kept, ${bundleResult.added.length} new, ${bundleResult.renamed.length} renamed, ${bundleResult.removed.length} no longer active, ${bundleResult.unverified.length} could not be read.`
+      : "- Bundles: not checked this run.",
     `- Baseline ${baselineChanged ? "updated" : "unchanged"}.`,
   ];
   for (const product of diff.removed.slice(0, 40)) {

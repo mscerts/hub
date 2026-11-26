@@ -5,6 +5,7 @@ import remarkParse from "remark-parse";
 import remarkStringify from "remark-stringify";
 import { visit } from "unist-util-visit";
 import { daysUntil } from "../guide-change-date.mjs";
+import { bundlesForExam, examCodeOfEntryId } from "../measureup-bundles.mjs";
 import remarkCallouts from "./remark-callouts.mjs";
 
 type MdxAttribute = {
@@ -24,6 +25,7 @@ type MdxNode = {
 };
 
 type MarkdownEntry = {
+  id?: string;
   data: {
     title?: string;
     description?: string;
@@ -121,7 +123,19 @@ function plainText(node: MdxNode): string {
   return childrenOf(node).map(plainText).join("");
 }
 
-export async function serializeMdx(body: string): Promise<string> {
+type SerializeOptions = {
+  /** The hub's code of the exam the page is about: the MeasureUp card lists the bundles that include it. */
+  examCode?: string;
+  /** The bundles to choose from (default: those of the MeasureUp baseline). */
+  bundles?: Parameters<typeof bundlesForExam>[1];
+  /** The exam codes that are retired (default: what Microsoft has retired today). */
+  retired?: Set<string>;
+};
+
+export async function serializeMdx(
+  body: string,
+  options: SerializeOptions = {},
+): Promise<string> {
   const processor = unified()
     .use(remarkParse)
     .use(remarkDirective)
@@ -344,6 +358,11 @@ export async function serializeMdx(body: string): Promise<string> {
                       : []),
                   ];
 
+            const bundleCards = bundlesForExam(
+              options.examCode,
+              options.bundles,
+              options.retired,
+            );
             parent.children?.splice(
               index,
               1,
@@ -373,6 +392,16 @@ export async function serializeMdx(body: string): Promise<string> {
                   ),
                 ),
               ]),
+              ...(bundleCards.length > 0
+                ? [
+                    paragraphNode(
+                      textNode("Discounted bundles with other exams:"),
+                    ),
+                    ...bundleCards.map((bundle) =>
+                      headingNode(bundle.title, bundle.href),
+                    ),
+                  ]
+                : []),
               ...defaultSlot,
             );
             return index;
@@ -440,5 +469,6 @@ export function serializeFrontmatter(data: MarkdownEntry["data"]): string {
 }
 
 export async function serializeEntry(entry: MarkdownEntry): Promise<string> {
-  return `${serializeFrontmatter(entry.data)}${(await serializeMdx(entry.body ?? "")).trim()}\n`;
+  const examCode = examCodeOfEntryId(entry.id);
+  return `${serializeFrontmatter(entry.data)}${(await serializeMdx(entry.body ?? "", { examCode })).trim()}\n`;
 }

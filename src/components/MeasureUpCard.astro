@@ -1,12 +1,21 @@
 ---
+import { Icon } from "astro-icon/components";
 import { Aside, Card, CardGrid, LinkCard } from "@components/docs";
+import { bundlesForExam, examCodeOfPath } from "@utils/measureup-bundles.mjs";
 
 interface Props {
   assessmentUrl?: string;
   practiceTestUrl?: string;
+  // The hub's code of the exam; the card reads it from the address of the page when it is not given.
+  examCode?: string;
 }
 
-const { assessmentUrl, practiceTestUrl } = Astro.props;
+const { assessmentUrl, practiceTestUrl, examCode } = Astro.props;
+const bundles = bundlesForExam(examCode ?? examCodeOfPath(Astro.url.pathname));
+// The bundles sit behind a dropdown whose trigger has the size and layout of a LinkCard (the same classes as
+// the trigger of src/components/RelatedCerts.astro), so it reads as one more link of the card.
+const SUMMARY_CLASS =
+  "group not-prose hover:shadow-default flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl border border-border bg-card p-4 text-inherit no-underline shadow-sm transition hover:border-border-strong sm:gap-4 sm:p-5 [&::-webkit-details-marker]:hidden";
 const hasProductSlot = Astro.slots.has("products");
 if (!hasProductSlot && (!assessmentUrl || !practiceTestUrl)) {
   throw new Error(
@@ -58,5 +67,49 @@ const ensureU44 = (url: string) => (url.includes("#u44") ? url : `${url}#u44`);
       MeasureUp store!
     </p>
   </Aside>
+  {bundles.length > 0 && (
+    <details class="my-4">
+      <summary class={SUMMARY_CLASS}>
+        <span class="flex min-w-0 flex-1 items-start gap-2 sm:gap-3">
+          <span
+            class="border-border bg-muted text-card-foreground grid size-9 shrink-0 place-items-center rounded-lg border"
+            aria-hidden="true"
+          >
+            <Icon name="ph:stack" class="size-4.5" />
+          </span>
+          <span class="min-w-0">
+            <span class="text-card-foreground group-hover:text-primary block text-base leading-snug font-semibold transition-colors">
+              Discounted bundles with other exams
+            </span>
+            <span class="text-muted-foreground mt-1 block text-sm leading-normal">
+              MeasureUp practice tests for this exam and others in one purchase.
+            </span>
+          </span>
+        </span>
+        <Icon
+          name="ph:caret-down"
+          class="text-muted-foreground group-hover:text-primary size-4 shrink-0 transition-transform [details[open]>summary>&]:rotate-180"
+          aria-hidden="true"
+        />
+      </summary>
+      <div class="mt-4">
+        <p>
+          These bundles combine the practice test of this exam with those of
+          other exams at a lower price. Our code <strong>MSFTHUB</strong> works
+          on bundles too.
+        </p>
+        <CardGrid>
+          {bundles.map((bundle) => (
+            <LinkCard
+              title={bundle.title}
+              href={bundle.href}
+              description={bundle.description}
+              target="_blank"
+            />
+          ))}
+        </CardGrid>
+      </div>
+    </details>
+  )}
   <slot />
 </Card>

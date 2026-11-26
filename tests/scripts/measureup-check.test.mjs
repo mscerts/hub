@@ -28,6 +28,10 @@ import {
   scanHubLinks,
   stripComments,
   suggestReplacements,
+  diffBundles,
+  retiredExamCodes,
+  parseBundlePage,
+  storedBundle,
 } from "../../scripts/measureup-check.mjs";
 import {
   bashSkipReason,
@@ -189,7 +193,7 @@ async function fakeSite(catalog, { pageSize = 12 } = {}) {
     }
     if (page) {
       response.statusCode = page.status ?? 200;
-      return response.end("product page");
+      return response.end(page.body ?? "product page");
     }
     if (site.catalog.some((p) => p.path === url.pathname)) {
       return response.end("product page");
@@ -1663,3 +1667,286 @@ test(
     assert.ok(!(await remote.files()).includes("stray.txt"));
   },
 );
+
+// ---------------------------------------------------------------------------
+// Bundles: kept in the baseline with the exam codes of their own product pages
+// ---------------------------------------------------------------------------
+const bundlePage = (codes) =>
+  `<html><body><h1>Bundle</h1><script>var x = "Microsoft Practice Test XX-999: nope";</script>` +
+  `<div class="products">${codes
+    .map(
+      (code) =>
+        `<div><span>Microsoft Practice Test ${code}: Some exam</span></div>`,
+    )
+    .join("")}</div></body></html>`;
+
+test("parseBundlePage: the exam codes of the products a bundle page includes, from its text only", () => {
+  assert.deepEqual(
+    parseBundlePage(bundlePage(["SC-900", "SC-300", "SC-200", "SC-100"])),
+    ["SC-100", "SC-200", "SC-300", "SC-900"],
+  );
+  assert.deepEqual(
+    parseBundlePage(
+      "<p>Microsoft Assessment AZ-104: A</p><p>Certkit AZ-104: A</p><p>Microsoft Practice Test az-900: B</p>",
+    ),
+    ["AZ-104", "AZ-900"],
+  );
+  assert.deepEqual(parseBundlePage("<p>Bundle (AZ-900 + AZ-104)</p>"), []);
+  assert.deepEqual(parseBundlePage(""), []);
+  // the name and the address of a bundle do not decide: only what the page lists
+  assert.deepEqual(
+    storedBundle({
+      id: 7893,
+      name: "Bundle (SC-100,SC-200,SC-300,SC-900): Microsoft Security Path",
+      url: "https://www.measureup.com/bundle-sc-200-sc-300-sc-400-sc-900-microsoft-security-path.html",
+      examCodes: ["SC-900", "SC-100", "SC-100"],
+    }).examCodes,
+    ["SC-100", "SC-900"],
+  );
+});
+
+test("diffBundles: unchanged bundles are kept unread, new and renamed ones are read, retired and unlisted ones leave", () => {
+  const stored = (id, name, codes = ["AZ-104", "AZ-900"]) =>
+    storedBundle({ id, name, url: `${SITE}/b-${id}.html`, examCodes: codes });
+  const live = (id, name, extra = {}) => ({
+    ...product(id, { kind: "bundle", code: "AZ-104" }),
+    name,
+    url: `${SITE}/b-${id}.html`,
+    ...extra,
+  });
+  const previous = [
+    stored("1", "Bundle One (AZ-900 + AZ-104)"),
+    stored("2", "Bundle Two (AZ-900 + AZ-104)"),
+    stored("3", "Bundle Three (AZ-900 + AZ-104)"),
+    stored("4", "Bundle Four (AZ-900 + AZ-104)"),
+  ];
+  const scan = (bundles, complete = true) => ({
+    listed: new Map(bundles.map((b) => [b.id, b])),
+    complete,
+  });
+  const diff = diffBundles(
+    previous,
+    scan([
+      live("1", "Bundle One (AZ-900 + AZ-104)"),
+      live("2", "Bundle Two renamed (AZ-900 + AZ-104)"),
+      live("3", "Bundle Three (AZ-900 + AZ-104)", { retired: true }),
+      live("9", "Bundle Nine (AZ-900 + AZ-305)"),
+    ]),
+  );
+  assert.deepEqual(
+    diff.keep.map((b) => b.id),
+    ["1"],
+  );
+  assert.deepEqual(
+    diff.toVerify.map((x) => [x.product.id, Boolean(x.old)]),
+    [
+      ["2", true],
+      ["9", false],
+    ],
+  );
+  assert.deepEqual(
+    diff.removed.map((b) => [b.id, b.reason]),
+    [
+      ["3", "retired"],
+      ["4", "unlisted"],
+    ],
+  );
+  // a scan that did not read everything removes nothing it did not see
+  const partial = diffBundles(
+    previous,
+    scan([live("1", "Bundle One (AZ-900 + AZ-104)")], false),
+  );
+  assert.deepEqual(
+    partial.carried.map((b) => b.id),
+    ["2", "3", "4"],
+  );
+  assert.deepEqual(partial.removed, []);
+});
+
+test("bundles: the baseline gets the exam codes of their pages, an unreadable page leaves a new bundle out, a quiet week changes nothing", async () => {
+  const live = [
+    ...range(1, 120),
+    product(130, { kind: "bundle", code: "AZ-104" }),
+    product(131, { kind: "bundle", code: "AZ-305" }),
+    product(132, { kind: "bundle", code: "DP-300" }),
+  ];
+  await withSite(live, async (site, dir) => {
+    // the name of 130 says AZ-104 + AZ-900, its page lists AZ-104 and AZ-305: the page is used
+    site.pages.set(product(130, { kind: "bundle" }).path, {
+      body: bundlePage(["AZ-104", "AZ-305"]),
+    });
+    site.pages.set(product(131, { kind: "bundle" }).path, {
+      body: bundlePage(["AZ-305", "AZ-900"]),
+    });
+    site.pages.set(product(132, { kind: "bundle" }).path, { status: 404 });
+    const first = await runMonitor(site, dir);
+    assert.equal(first.code, 0, first.stderr);
+    assert.equal(
+      first.output.changes_found,
+      "false",
+      "bundles never open an issue",
+    );
+    assert.deepEqual(
+      first.baseline.bundles.map((b) => [b.id, b.examCodes, b.url]),
+      [
+        ["130", ["AZ-104", "AZ-305"], `${site.origin}/mu-130-bundle.html`],
+        ["131", ["AZ-305", "AZ-900"], `${site.origin}/mu-131-bundle.html`],
+      ],
+    );
+    assert.match(first.stdout, /New bundle: .*\(AZ-104, AZ-305\)/);
+    assert.match(
+      first.stdout,
+      /Bundle whose name and page list other exams: .*name AZ-104, AZ-900; page AZ-104, AZ-305/,
+    );
+    assert.match(
+      first.stderr + first.stdout,
+      /1 bundle could not be read.*HTTP 404/,
+    );
+    assert.equal(first.baseline.totalProducts, 120, "bundles are not products");
+    assert.equal(first.baseline.products.length, 120);
+
+    // the bundle that failed is read again next run and the others are not read at all
+    site.pages.set(product(132, { kind: "bundle" }).path, {
+      body: bundlePage(["DP-300", "DP-900"]),
+    });
+    const hitsBefore = site.hits.length;
+    const second = await runMonitor(site, dir);
+    assert.equal(second.code, 0, second.stderr);
+    assert.deepEqual(
+      second.baseline.bundles.map((b) => b.id),
+      ["130", "131", "132"],
+    );
+    const bundleReads = site.hits
+      .slice(hitsBefore)
+      .filter((hit) => hit.includes("-bundle.html"));
+    assert.deepEqual(bundleReads, ["/mu-132-bundle.html"]);
+
+    // a quiet week: nothing to read, nothing to write
+    const third = await runMonitor(site, dir);
+    assert.equal(third.output.baseline_updated, "false");
+    assert.equal(third.baselineText, second.baselineText);
+    assert.equal(
+      site.hits.slice(hitsBefore).filter((hit) => hit.includes("-bundle.html"))
+        .length,
+      1,
+    );
+  });
+});
+
+test("bundles: a retired or unlisted bundle leaves the baseline, a renamed one is read again and an unreadable rename keeps its record", async () => {
+  const bundle = (id, name) => ({
+    ...product(id, { kind: "bundle", code: "AZ-104" }),
+    name,
+  });
+  const live = [
+    ...range(1, 120),
+    bundle(130, "Bundle One renamed (AZ-104 + AZ-305)"),
+    { ...bundle(131, "Bundle Two (AZ-104 + AZ-900)"), retired: true },
+  ];
+  await withSite(live, async (site, dir) => {
+    const text = await writeBaseline(
+      join(dir, "baseline.json"),
+      range(1, 120),
+      site.origin,
+    );
+    const baseline = JSON.parse(text);
+    baseline.bundles = [
+      storedBundle({
+        id: "130",
+        name: "Bundle One (AZ-104 + AZ-900)",
+        url: `${site.origin}/mu-130-bundle.html`,
+        examCodes: ["AZ-104", "AZ-900"],
+      }),
+      storedBundle({
+        id: "131",
+        name: "Bundle Two (AZ-104 + AZ-900)",
+        url: `${site.origin}/mu-131-bundle.html`,
+        examCodes: ["AZ-104", "AZ-900"],
+      }),
+      storedBundle({
+        id: "132",
+        name: "Bundle Three (AZ-104 + AZ-900)",
+        url: `${site.origin}/mu-132-bundle.html`,
+        examCodes: ["AZ-104", "AZ-900"],
+      }),
+    ];
+    await writeFile(
+      join(dir, "baseline.json"),
+      JSON.stringify(baseline, null, 2) + "\n",
+    );
+    // the renamed bundle's page cannot be read: its old record stays
+    site.pages.set("/mu-130-bundle.html", { status: 503 });
+    const run = await runMonitor(site, dir);
+    assert.equal(run.code, 0, run.stderr);
+    assert.deepEqual(
+      run.baseline.bundles.map((b) => [b.id, b.name, b.examCodes]),
+      [["130", "Bundle One (AZ-104 + AZ-900)", ["AZ-104", "AZ-900"]]],
+    );
+    assert.match(
+      run.stdout,
+      /Bundle no longer active: Bundle Two .*marked retired/,
+    );
+    assert.match(
+      run.stdout,
+      /Bundle no longer active: Bundle Three .*not listed/,
+    );
+    // now it can be read: the new name and the codes of the page
+    site.pages.set("/mu-130-bundle.html", {
+      body: bundlePage(["AZ-104", "AZ-305"]),
+    });
+    const again = await runMonitor(site, dir);
+    assert.deepEqual(
+      again.baseline.bundles.map((b) => [b.name, b.examCodes]),
+      [["Bundle One renamed (AZ-104 + AZ-305)", ["AZ-104", "AZ-305"]]],
+    );
+    // switched off, the baseline keeps what it has
+    const off = await runMonitor(site, dir, { BUNDLE_CHECK: "0" });
+    assert.equal(off.baselineText, again.baselineText);
+  });
+});
+
+test("bundles: one that holds the tests of an exam MeasureUp marks retired is not kept, nor read", () => {
+  // the products as the scan builds them: with their exam code and type
+  const scan = (products) => ({
+    listed: new Map(
+      products.map((p) => [p.id, { ...p, examCode: p.code, type: p.kind }]),
+    ),
+    complete: true,
+  });
+  const bundle = (id, code) => ({
+    ...product(id, { kind: "bundle", code }),
+    url: `${SITE}/b-${id}.html`,
+  });
+  const live = [
+    // AZ-130 is retired and has no active product; AZ-900 has both a retired and an active one
+    product(1, { kind: "practice-test", code: "AZ-130", retired: true }),
+    product(2, { kind: "assessment", code: "AZ-900", retired: true }),
+    product(3, { kind: "practice-test", code: "AZ-900" }),
+    bundle(10, "AZ-130"),
+    bundle(11, "AZ-104"),
+  ];
+  assert.deepEqual([...retiredExamCodes(scan(live))], ["AZ-130"]);
+  const old = storedBundle({
+    id: "10",
+    name: "Bundle AZ-130 + AZ-900",
+    url: `${SITE}/b-10.html`,
+    examCodes: ["AZ-130", "AZ-900"],
+  });
+  const diff = diffBundles([old], scan(live));
+  assert.deepEqual(diff.keep, []);
+  assert.deepEqual(
+    diff.toVerify.map((x) => x.product.id),
+    ["11"],
+  );
+  assert.deepEqual(
+    diff.removed.map((b) => [b.id, b.reason]),
+    [["10", "includes-retired"]],
+  );
+  // a bundle that is new and holds a retired exam is not even read
+  const fresh = diffBundles([], scan(live));
+  assert.deepEqual(
+    fresh.toVerify.map((x) => x.product.id),
+    ["11"],
+  );
+  assert.deepEqual(fresh.removed, []);
+});
