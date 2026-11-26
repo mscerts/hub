@@ -627,27 +627,21 @@ export function renderCourseVersions(
     '<div slot="intro">',
     "",
     ":::caution",
-    marks.largely && labels.rewrittenIntro
-      ? labels.rewrittenIntro
-      : labels.intro,
+    labels.intro,
     ":::",
     "",
     "</div>",
     "",
     '<div slot="current">',
     "",
-    ...note(
-      marks.largely && labels.currentRewrittenLegend
-        ? labels.currentRewrittenLegend
-        : labels.currentLegend,
-    ),
+    ...note(labels.currentLegend),
     ...side(current, "current-", marks.current.task, marks.current.card),
     "",
     "</div>",
     "",
     '<div slot="upcoming">',
     "",
-    ...note(marks.largely ? labels.rewritten : labels.upcomingLegend),
+    ...note(labels.upcomingLegend),
     ...side(next, "upcoming-", marks.upcoming.task, marks.upcoming.card),
     "",
     "</div>",
