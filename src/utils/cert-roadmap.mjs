@@ -42,8 +42,29 @@ export function examHref(code) {
   return `/certs/${area}/${String(code).toLowerCase()}/`;
 }
 
-/** The id an HTML element of a step or result carries. */
-export const panelId = (id) => `roadmap-${id}`;
+/** The id an HTML element of a step or result carries; `prefix` keeps the ids of two roadmaps on one page apart. */
+export const panelId = (id, prefix = "roadmap") => `${prefix}-${id}`;
+
+/**
+ * The steps and results a roadmap that starts at `start` can reach: through the answers and through the
+ * "next" link of a result. A roadmap placed on another page renders only these.
+ * @param {Roadmap} roadmap
+ * @returns {Set<string>}
+ */
+export function reachableIds(roadmap, start = roadmap.start) {
+  const seen = new Set();
+  const queue = [start];
+  while (queue.length > 0) {
+    const id = queue.shift();
+    if (seen.has(id)) continue;
+    seen.add(id);
+    const step = roadmap.steps[id];
+    if (step) for (const answer of step.answers) queue.push(answer.next);
+    const result = roadmap.results[id];
+    if (result?.next) queue.push(result.next.to);
+  }
+  return seen;
+}
 
 /** Every exam code the roadmap names, sorted, without repeats. */
 export function examCodesOf(roadmap) {
@@ -129,9 +150,14 @@ export function roadmapProblems(roadmap) {
  * at each of them (the tree is small), so each branch reads on its own.
  * @param {Roadmap} roadmap
  * @param {(code: string) => string} [describe] the text after an exam code ("Microsoft Azure Administrator")
+ * @param {string} [start] the step to start from (default: the start of the roadmap)
  * @returns {OutlineItem[]}
  */
-export function roadmapOutline(roadmap, describe = () => "") {
+export function roadmapOutline(
+  roadmap,
+  describe = () => "",
+  start = roadmap.start,
+) {
   const result = (id) => {
     const item = roadmap.results[id];
     const lines = [{ text: `${item.title}: ${item.summary}` }];
@@ -164,5 +190,7 @@ export function roadmapOutline(roadmap, describe = () => "") {
       })),
     };
   };
-  return [step(roadmap.start)];
+  if (!(start in roadmap.steps))
+    throw new Error(`The roadmap has no step "${start}" to start from`);
+  return [step(start)];
 }

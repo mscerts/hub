@@ -196,16 +196,19 @@ function examCodeOfSlug(slug: string): string | undefined {
 
 /** The certification roadmap component is a decision tree in a data file: the body gets it as a nested list. */
 export function expandCertRoadmap(src: string): string {
-  if (!/<CertRoadmap\s*\/>/.test(src)) return src;
+  if (!/<CertRoadmap\b[^>]*\/>/.test(src)) return src;
   type Item = { text: string; href?: string; children?: Item[] };
   const lines = (items: Item[], depth: number): string[] =>
     items.flatMap((item) => [
       `${"  ".repeat(depth)}- ${item.text}${item.href ? ` (${item.href})` : ""}`,
       ...lines(item.children ?? [], depth + 1),
     ]);
-  return src.replace(
-    /<CertRoadmap\s*\/>/g,
-    lines(roadmapOutline(readRoadmap(REPO_ROOT)), 0).join("\n"),
+  const roadmap = readRoadmap(REPO_ROOT);
+  return src.replace(/<CertRoadmap\b([^>]*)\/>/g, (_tag, attrs: string) =>
+    lines(
+      roadmapOutline(roadmap, undefined, attrVal(attrs, "start") ?? roadmap.start),
+      0,
+    ).join("\n"),
   );
 }
 

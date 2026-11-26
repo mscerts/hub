@@ -8,6 +8,7 @@ import {
   examCodesOf,
   examHref,
   panelId,
+  reachableIds,
   readRoadmap,
   roadmapOutline,
   roadmapProblems,
@@ -155,13 +156,13 @@ test("the page shows every step and result as a section the answers can link to"
     join(root, "src/components/CertRoadmap.astro"),
     "utf8",
   );
-  assert.match(source, /panelId\(id\)/);
+  assert.match(source, /idOf\(id\)/);
   assert.equal(panelId("x"), "roadmap-x");
   const page = readFileSync(
     join(root, "src/content/docs/guide/roadmap.mdx"),
     "utf8",
   );
-  assert.match(page, /<CertRoadmap \/>/);
+  assert.match(page, /<CertRoadmap history \/>/);
   const sidebar = readFileSync(
     join(root, "src/data_files/docs-sidebar.ts"),
     "utf8",
@@ -178,4 +179,56 @@ test("the Markdown copy lists the roadmap as nested lists with links to the exam
   assert.match(copy, /\[SC-200\]\(\/certs\/security\/sc-200\/\)/);
   assert.match(copy, /\[AB-400\]\(\/certs\/aibusiness\/ab-400\/\)/);
   assert.equal(roadmapOutline(roadmap).length, 1);
+});
+
+test("a roadmap that starts at a later step reaches only its own branch", () => {
+  const azure = reachableIds(roadmap, "azure-focus");
+  assert.ok(azure.has("azure-focus") && azure.has("r-azure-admin"));
+  assert.ok(!azure.has("security-focus") && !azure.has("r-sec-soc"));
+  assert.ok(!azure.has("experience"));
+  // every step and result can be reached from the start
+  assert.equal(
+    reachableIds(roadmap).size,
+    Object.keys(roadmap.steps).length + Object.keys(roadmap.results).length,
+  );
+  const outline = roadmapOutline(roadmap, undefined, "security-focus");
+  assert.equal(outline[0].text, roadmap.steps["security-focus"].question);
+  assert.throws(() => roadmapOutline(roadmap, undefined, "nowhere"), /nowhere/);
+});
+
+test("two roadmaps on one page get ids that cannot clash", () => {
+  assert.equal(panelId("azure-focus", "rm-azure"), "rm-azure-azure-focus");
+  assert.notEqual(panelId("a", "one"), panelId("a", "two"));
+});
+
+test("the component is a wizard that can sit on any page: props, the answer markers and the script it needs", () => {
+  const source = readFileSync(
+    join(root, "src/components/CertRoadmap.astro"),
+    "utf8",
+  );
+  for (const needle of [
+    "start?: string",
+    "prefix?: string",
+    "history?: boolean",
+    "data-roadmap-answer",
+    "data-roadmap-reset",
+    "data-roadmap-jump",
+    "data-roadmap-back",
+    "<script>",
+    "pushState",
+  ])
+    assert.ok(source.includes(needle), `CertRoadmap.astro lacks ${needle}`);
+  // the page with the roadmap in the address and the history: one per page
+  const page = readFileSync(
+    join(root, "src/content/docs/guide/roadmap.mdx"),
+    "utf8",
+  );
+  assert.match(page, /<CertRoadmap history \/>/);
+});
+
+test("the Markdown copy follows the start of a roadmap placed on another page", async () => {
+  const copy = await serializeMdx('<CertRoadmap start="security-focus" />\n');
+  assert.match(copy, /What do you do in security\?/);
+  assert.match(copy, /\[SC-200\]/);
+  assert.doesNotMatch(copy, /What do you do on Azure\?/);
 });

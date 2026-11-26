@@ -444,10 +444,17 @@ export async function serializeMdx(
                 ],
               })),
             });
+            const roadmap = readRoadmap();
             parent.children?.splice(
               index,
               1,
-              toList(roadmapOutline(readRoadmap())),
+              toList(
+                roadmapOutline(
+                  roadmap,
+                  undefined,
+                  attributeValue(node, "start") ?? roadmap.start,
+                ),
+              ),
             );
             return index;
           }
