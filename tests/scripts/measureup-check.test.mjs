@@ -29,6 +29,7 @@ import {
   stripComments,
   suggestReplacements,
   diffBundles,
+  retiredExamCodes,
   parseBundlePage,
   storedBundle,
 } from "../../scripts/measureup-check.mjs";
@@ -1902,4 +1903,50 @@ test("bundles: a retired or unlisted bundle leaves the baseline, a renamed one i
     const off = await runMonitor(site, dir, { BUNDLE_CHECK: "0" });
     assert.equal(off.baselineText, again.baselineText);
   });
+});
+
+test("bundles: one that holds the tests of an exam MeasureUp marks retired is not kept, nor read", () => {
+  // the products as the scan builds them: with their exam code and type
+  const scan = (products) => ({
+    listed: new Map(
+      products.map((p) => [p.id, { ...p, examCode: p.code, type: p.kind }]),
+    ),
+    complete: true,
+  });
+  const bundle = (id, code) => ({
+    ...product(id, { kind: "bundle", code }),
+    url: `${SITE}/b-${id}.html`,
+  });
+  const live = [
+    // AZ-130 is retired and has no active product; AZ-900 has both a retired and an active one
+    product(1, { kind: "practice-test", code: "AZ-130", retired: true }),
+    product(2, { kind: "assessment", code: "AZ-900", retired: true }),
+    product(3, { kind: "practice-test", code: "AZ-900" }),
+    bundle(10, "AZ-130"),
+    bundle(11, "AZ-104"),
+  ];
+  assert.deepEqual([...retiredExamCodes(scan(live))], ["AZ-130"]);
+  const old = storedBundle({
+    id: "10",
+    name: "Bundle AZ-130 + AZ-900",
+    url: `${SITE}/b-10.html`,
+    examCodes: ["AZ-130", "AZ-900"],
+  });
+  const diff = diffBundles([old], scan(live));
+  assert.deepEqual(diff.keep, []);
+  assert.deepEqual(
+    diff.toVerify.map((x) => x.product.id),
+    ["11"],
+  );
+  assert.deepEqual(
+    diff.removed.map((b) => [b.id, b.reason]),
+    [["10", "includes-retired"]],
+  );
+  // a bundle that is new and holds a retired exam is not even read
+  const fresh = diffBundles([], scan(live));
+  assert.deepEqual(
+    fresh.toVerify.map((x) => x.product.id),
+    ["11"],
+  );
+  assert.deepEqual(fresh.removed, []);
 });

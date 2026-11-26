@@ -838,26 +838,47 @@ export function diffProducts(previous, scan) {
 }
 
 /**
+ * The exam codes whose MeasureUp tests are retired: a retired product in the listing and no active one for
+ * the same code (MeasureUp keeps the products of a retired exam listed, marked `[Retired Exam]`).
+ */
+export function retiredExamCodes(scan) {
+  const retired = new Set();
+  const active = new Set();
+  for (const product of scan.listed.values()) {
+    if (isBundle(product) || !product.examCode) continue;
+    (product.retired ? retired : active).add(product.examCode);
+  }
+  return new Set([...retired].filter((code) => !active.has(code)));
+}
+
+/**
  * The bundles by id. A bundle the baseline already has under the same name and address is kept as it is;
- * a new or renamed one has to be read (`toVerify`). `removed` is informational (retired, or not listed
- * when the scan read everything); a bundle the scan did not see is carried over.
+ * a new or renamed one has to be read (`toVerify`). `removed` is informational (retired, not listed when the
+ * scan read everything, or "includes-retired": a bundle that holds the tests of an exam MeasureUp marks
+ * retired is not kept, whatever its listing says); a bundle the scan did not see is carried over.
  */
 export function diffBundles(previous, scan) {
   const previousById = new Map(previous.map((bundle) => [bundle.id, bundle]));
+  const retiredCodes = retiredExamCodes(scan);
+  const holdsRetired = (codes) => codes.some((code) => retiredCodes.has(code));
   const active = [...scan.listed.values()].filter(
     (product) => !product.retired && isBundle(product) && product.id,
   );
   const activeIds = new Set(active.map((product) => product.id));
   const keep = [];
   const toVerify = [];
+  const removed = [];
   for (const product of active) {
     const old = previousById.get(product.id);
     const name = cleanName(product.name);
+    if (holdsRetired([...examCodesOf(name), ...(old?.examCodes ?? [])])) {
+      if (old) removed.push({ ...old, reason: "includes-retired" });
+      continue;
+    }
     if (old && old.name === name && (!product.url || product.url === old.url))
       keep.push(old);
     else toVerify.push({ product, old });
   }
-  const removed = [];
   const carried = [];
   for (const [id, old] of previousById) {
     if (activeIds.has(id)) continue;
@@ -1648,7 +1669,7 @@ export async function main(cfg) {
       );
     for (const bundle of bundleResult.removed)
       console.log(
-        `Bundle no longer active: ${bundle.name} (${bundle.reason === "retired" ? "marked retired" : "not listed"})`,
+        `Bundle no longer active: ${bundle.name} (${{ retired: "marked retired", "includes-retired": "includes a retired exam" }[bundle.reason] ?? "not listed"})`,
       );
     for (const bundle of check.differing)
       console.log(

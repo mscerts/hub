@@ -128,6 +128,8 @@ type SerializeOptions = {
   examCode?: string;
   /** The bundles to choose from (default: those of the MeasureUp baseline). */
   bundles?: Parameters<typeof bundlesForExam>[1];
+  /** The exam codes that are retired (default: what Microsoft has retired today). */
+  retired?: Set<string>;
 };
 
 export async function serializeMdx(
@@ -359,6 +361,7 @@ export async function serializeMdx(
             const bundleCards = bundlesForExam(
               options.examCode,
               options.bundles,
+              options.retired,
             );
             parent.children?.splice(
               index,
@@ -367,7 +370,7 @@ export async function serializeMdx(
               ...productNodes,
               ...(bundleCards.length > 0
                 ? [
-                    paragraphNode(textNode("Bundles that include this exam:")),
+                    paragraphNode(textNode("Discounted bundles with other exams:")),
                     ...bundleCards.map((bundle) =>
                       headingNode(bundle.title, bundle.href),
                     ),

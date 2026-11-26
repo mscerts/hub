@@ -8,10 +8,13 @@ import {
   examCodeOfEntryId,
   examCodeOfPath,
   readBundles,
+  readRetiredExamCodes,
 } from "../../src/utils/measureup-bundles.mjs";
 import { serializeMdx } from "../../src/utils/markdown/serializeMdx.ts";
 
 const root = resolve(import.meta.dirname, "../..");
+
+const none = new Set();
 
 const BUNDLES = [
   {
@@ -60,7 +63,7 @@ test("the exam code of a page comes from its address or its collection id", () =
 });
 
 test("bundlesForExam: the bundles that include the exam, by name, with the tracking fragment and a readable title", () => {
-  const cards = bundlesForExam("AZ-104", BUNDLES);
+  const cards = bundlesForExam("AZ-104", BUNDLES, none);
   assert.deepEqual(
     cards.map((card) => card.title),
     ["MeasureUp Bundle: Azure Administrator (AZ-900 + AZ-104)"],
@@ -76,25 +79,68 @@ test("bundlesForExam: the bundles that include the exam, by name, with the track
   );
   // the Security Path bundle is named in a form of its own
   assert.deepEqual(
-    bundlesForExam("SC-300", BUNDLES).map((c) => c.title),
+    bundlesForExam("SC-300", BUNDLES, none).map((c) => c.title),
     [
       "MeasureUp Bundle: Microsoft Security Path (SC-100 + SC-200 + SC-300 + SC-900)",
     ],
   );
-  assert.deepEqual(bundlesForExam("gh-300", BUNDLES), []);
-  assert.deepEqual(bundlesForExam(undefined, BUNDLES), []);
-  assert.deepEqual(bundlesForExam("AZ-104", []), []);
+  assert.deepEqual(bundlesForExam("gh-300", BUNDLES, none), []);
+  assert.deepEqual(bundlesForExam(undefined, BUNDLES, none), []);
+  assert.deepEqual(bundlesForExam("AZ-104", [], none), []);
   // a link that carries the fragment already keeps one
   assert.equal(
-    bundlesForExam("PL-900", BUNDLES)[0].href,
+    bundlesForExam("PL-900", BUNDLES, none)[0].href,
     "https://www.measureup.com/bundle-pl-900-pl-400.html#u44",
   );
 });
 
-test("a bundle MeasureUp sells under PL-400 shows on AB-400, the exam PL-400 became on the hub", () => {
-  assert.equal(bundlesForExam("AB-400", BUNDLES).length, 1);
-  assert.equal(bundlesForExam("PL-400", BUNDLES).length, 1);
-  assert.equal(bundlesForExam("PL-900", BUNDLES).length, 1);
+test("a bundle with a retired exam shows on none of the pages of its exams", () => {
+  const retired = new Set(["PL-400"]);
+  assert.deepEqual(bundlesForExam("PL-900", BUNDLES, retired), []);
+  assert.deepEqual(bundlesForExam("PL-400", BUNDLES, retired), []);
+  assert.equal(bundlesForExam("PL-900", BUNDLES, none).length, 1);
+  // the other bundles are not affected
+  assert.equal(bundlesForExam("AZ-104", BUNDLES, retired).length, 1);
+  assert.equal(
+    bundlesForExam("SC-100", BUNDLES, new Set(["SC-900"])).length,
+    0,
+  );
+  assert.equal(
+    bundlesForExam("SC-100", BUNDLES, new Set(["AZ-900"])).length,
+    1,
+  );
+});
+
+test("readRetiredExamCodes: what Learn lists as retired, or schedules for a day before today, and the tracker's passed days", () => {
+  const retired = readRetiredExamCodes(root, new Date("2026-11-26T12:00:00Z"));
+  assert.ok(retired.has("PL-400"), "PL-400 retired on 2026-10-30");
+  assert.ok(retired.has("AZ-800") && retired.has("AZ-801"));
+  assert.ok(!retired.has("MS-102"), "retires on 2026-11-30: still on offer");
+  assert.ok(!retired.has("AZ-400"));
+  assert.ok(!retired.has("AZ-104"));
+  // the retirement day itself is still on offer; from the next day the exam counts as retired
+  const onTheDay = readRetiredExamCodes(root, new Date("2026-11-30T23:59:00Z"));
+  assert.ok(!onTheDay.has("MS-102"));
+  const after = readRetiredExamCodes(root, new Date("2026-12-01T00:00:00Z"));
+  assert.ok(after.has("MS-102"));
+  assert.ok(!after.has("AZ-400"));
+  assert.ok(
+    readRetiredExamCodes(root, new Date("2027-02-02T00:00:00Z")).has("AZ-400"),
+  );
+  assert.deepEqual([...readRetiredExamCodes("/nonexistent")], []);
+});
+
+test("no bundle of the baseline that is shown holds a retired exam", () => {
+  const retired = readRetiredExamCodes(root);
+  const bundles = readBundles(root);
+  for (const bundle of bundles)
+    for (const code of bundle.examCodes) {
+      const shown = bundlesForExam(code, bundles).some(
+        (card) => card.href.split("#")[0] === bundle.url,
+      );
+      const holdsRetired = bundle.examCodes.some((c) => retired.has(c));
+      assert.equal(shown, !holdsRetired, `${bundle.name} on ${code}`);
+    }
 });
 
 test("the baseline's bundles are well formed: MeasureUp addresses with the exam codes of their pages", () => {
@@ -123,7 +169,7 @@ test("the baseline's bundles are well formed: MeasureUp addresses with the exam 
   }
 });
 
-test("every bundle of the baseline shows on the exam pages that have a MeasureUp card, and only there", () => {
+test("every bundle of the baseline that is shown has a MeasureUp card on the page of each of its exams", () => {
   const withCard = new Set();
   for (const area of EXAM_AREAS) {
     const dir = join(root, "src", "content", "docs", area);
@@ -136,12 +182,13 @@ test("every bundle of the baseline shows on the exam pages that have a MeasureUp
         withCard.add(code);
     }
   }
+  const retired = readRetiredExamCodes(root);
   const missing = new Set();
-  for (const bundle of readBundles(root))
-    for (const code of bundle.examCodes) {
-      const hubCode = code === "PL-400" ? "AB-400" : code;
-      if (!withCard.has(hubCode)) missing.add(hubCode);
-    }
+  for (const bundle of readBundles(root)) {
+    if (bundle.examCodes.some((code) => retired.has(code))) continue;
+    for (const code of bundle.examCodes)
+      if (!withCard.has(code)) missing.add(code);
+  }
   // an exam with no hub page or no MeasureUp card shows no bundles: listed, not an error, so a new
   // bundle for such an exam is noticed here when the list below is out of date
   assert.deepEqual([...missing].sort(), []);
@@ -157,28 +204,30 @@ test("the Markdown copy of an exam page lists its bundles under the MeasureUp pr
   const copy = await serializeMdx(body, {
     examCode: "AZ-104",
     bundles: BUNDLES,
+    retired: none,
   });
-  assert.match(copy, /Bundles that include this exam:/);
+  assert.match(copy, /Discounted bundles with other exams:/);
   assert.match(
     copy,
     /### \[MeasureUp Bundle: Azure Administrator \(AZ-900 \+ AZ-104\)\]\(https:\/\/www\.measureup\.com\/bundle-azure-administrator\.html#u44\)/,
   );
   assert.ok(
     copy.indexOf("MeasureUp Practice Test") <
-      copy.indexOf("Bundles that include this exam"),
+      copy.indexOf("Discounted bundles with other exams"),
   );
   assert.ok(
-    copy.indexOf("Bundles that include this exam") <
+    copy.indexOf("Discounted bundles with other exams") <
       copy.indexOf("MeasureUp Subscriptions"),
   );
   // an exam in no bundle, or a page that is no exam page: the copy is as it was
   for (const options of [
-    { examCode: "GH-300", bundles: BUNDLES },
-    { bundles: BUNDLES },
-    { examCode: "AZ-104", bundles: [] },
+    { examCode: "GH-300", bundles: BUNDLES, retired: none },
+    { bundles: BUNDLES, retired: none },
+    { examCode: "AZ-104", bundles: [], retired: none },
+    { examCode: "AZ-104", bundles: BUNDLES, retired: new Set(["AZ-900"]) },
   ])
     assert.doesNotMatch(
       await serializeMdx(body, options),
-      /Bundles that include this exam/,
+      /Discounted bundles with other exams/,
     );
 });
