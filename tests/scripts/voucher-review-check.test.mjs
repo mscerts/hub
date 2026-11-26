@@ -367,14 +367,14 @@ test("the partner certification week page is reviewed after the last event it li
     join(root, "src", "content", "docs", "vouchers", "partnerweek.mdx"),
     "utf8",
   );
-  const months = { Oct: 10, Nov: 11, Dec: 12 };
+  const months = { Oct: 10, Nov: 11, Dec: 12, Jan: 1, Feb: 2, Mar: 3 };
   const ends = [
     ...source.matchAll(
-      /<LinkCard title="[^"]*, (Oct|Nov|Dec) (\d+)–(\d+) 2026(?: \(registration closed\))?"/g,
+      /<LinkCard title="[^"]*, (Oct|Nov|Dec|Jan|Feb|Mar) (\d+)–(\d+) (2026|2027)(?: \(registration closed\))?"/g,
     ),
   ].map(
-    ([, month, , last]) =>
-      `2026-${String(months[month]).padStart(2, "0")}-${last.padStart(2, "0")}`,
+    ([, month, , last, year]) =>
+      `${year}-${String(months[month]).padStart(2, "0")}-${last.padStart(2, "0")}`,
   );
   assert.ok(ends.length >= 1, "the page lists no event");
   const lastEvent = ends.sort().at(-1);
