@@ -42,6 +42,13 @@ import {
 } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import {
+  addDeadEntries,
+  collectSuccessfulLinks,
+  envNumber,
+  looksLikeAChange,
+  sleep,
+} from "./lib/report-dead-links.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -53,8 +60,6 @@ const YOUTUBE_HOSTS = new Set([
 ]);
 const VIDEO_ID = /^[A-Za-z0-9_-]{11}$/;
 const PLAYLIST_ID = /^[A-Za-z0-9_-]{10,64}$/;
-/** From this many links asked the share of missing ones is judged; below it only MAX_GONE counts. */
-const MIN_FOR_SHARE = 20;
 
 /**
  * What a YouTube address points at: { kind: "video" | "playlist", id } or null (a channel, a
@@ -117,31 +122,8 @@ export function oembedVerdict(status) {
  * the dead ones in `error_map`; only links that lychee did not already call dead are of interest.
  */
 export function collectYoutubeLinks(report) {
-  const found = new Map();
-  const add = (map) => {
-    if (!map || typeof map !== "object") return;
-    for (const [page, list] of Object.entries(map)) {
-      if (!Array.isArray(list)) continue;
-      for (const item of list) {
-        if (!item || typeof item.url !== "string") continue;
-        const target = youtubeTarget(item.url);
-        if (!target) continue;
-        const entry = found.get(item.url) ?? { target, pages: new Set() };
-        found.set(item.url, entry);
-        entry.pages.add(page);
-      }
-    }
-  };
-  add(report.success_map);
-  const dead = new Set();
-  for (const list of Object.values(report.error_map ?? {}))
-    if (Array.isArray(list))
-      for (const item of list) if (item?.url) dead.add(item.url);
-  for (const url of dead) found.delete(url);
-  return found;
+  return collectSuccessfulLinks(report, youtubeTarget);
 }
-
-const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
 
 /**
  * Ask oEmbed about every distinct video and playlist, one request at a time. `links` is the Map of
@@ -204,31 +186,18 @@ export function goneReason(target, status) {
  * Nothing is added when there is nothing to add; the report is changed in place.
  */
 export function addGoneLinks(report, links, answers) {
-  const added = [];
-  for (const [url, { target, pages }] of [...links].sort((a, b) =>
-    a[0] < b[0] ? -1 : 1,
-  )) {
+  const items = [];
+  for (const [url, { target, pages }] of links) {
     const answer = answers.get(canonicalUrl(target));
-    if (answer?.verdict !== "gone") continue;
-    report.error_map ??= {};
-    for (const page of [...pages].sort()) {
-      const list = (report.error_map[page] ??= []);
-      list.push({
+    if (answer?.verdict === "gone")
+      items.push({
         url,
-        status: {
-          text: goneReason(target, answer.status),
-          code: 404,
-        },
+        pages,
+        code: 404,
+        text: goneReason(target, answer.status),
       });
-      added.push(url);
-    }
   }
-  if (added.length > 0) {
-    if (Number.isFinite(report.errors)) report.errors += added.length;
-    if (Number.isFinite(report.successful))
-      report.successful = Math.max(0, report.successful - added.length);
-  }
-  return { added: added.length, links: [...new Set(added)] };
+  return addDeadEntries(report, items);
 }
 
 /**
@@ -253,10 +222,10 @@ export async function checkReport(report, options = {}) {
   const all = [...answers.values()];
   const gone = all.filter((a) => a.verdict === "gone").length;
   const unknown = all.filter((a) => a.verdict === "unknown").length;
-  // the share only means something with enough links asked; a handful is judged by the count alone
-  const tooMany =
-    gone > maxGone ||
-    (all.length >= MIN_FOR_SHARE && gone / all.length > maxGoneShare);
+  const tooMany = looksLikeAChange(
+    { asked: all.length, gone },
+    { maxGone, maxGoneShare },
+  );
   if (tooMany)
     return { asked: all.length, gone, unknown, tooMany, added: 0, links: [] };
   return {
@@ -289,13 +258,6 @@ function summaryText({ asked, gone, unknown, tooMany, links }) {
       );
   }
   return `${lines.join("\n")}\n`;
-}
-
-function envNumber(value, fallback) {
-  const n = Number(value);
-  return value !== undefined && value !== "" && Number.isFinite(n)
-    ? n
-    : fallback;
 }
 
 export async function main(e = process.env) {
