@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import test from "node:test";
+import { EXAM_AREAS } from "../../scripts/lib/areas.mjs";
 import { examStatuses } from "../../src/data_files/exam-status.mjs";
 import {
   examAreaOf,
@@ -122,7 +123,9 @@ test("the replacements are used, not the retired exams", () => {
 });
 
 test("the fundamentals exams of the poster are all offered to someone who is not sure", () => {
-  const unsure = roadmap.results["new-unsure"].exams.map((exam) => exam.code);
+  const unsure = roadmap.results["r-fund-unsure"].exams.map(
+    (exam) => exam.code,
+  );
   assert.deepEqual([...unsure].sort(), [
     "AB-900",
     "AI-901",
@@ -231,4 +234,72 @@ test("the Markdown copy follows the start of a roadmap placed on another page", 
   assert.match(copy, /What do you do in security\?/);
   assert.match(copy, /\[SC-200\]/);
   assert.doesNotMatch(copy, /What do you do on Azure\?/);
+});
+
+test("every exam page of the hub that is not retiring is recommended somewhere, and no question is too long or too deep", () => {
+  const live = EXAM_AREAS.flatMap((area) =>
+    readdirSync(join(root, "src", "content", "docs", area)).map((file) =>
+      file.replace(/\.mdx$/, ""),
+    ),
+  );
+  const retiring = retiringCodes();
+  const flagged = new Set(
+    Object.values(examStatuses).flatMap((area) =>
+      Object.entries(area)
+        .filter(([, status]) => ["RETIRED", "RETIRING"].includes(status.text))
+        .map(([code]) => code),
+    ),
+  );
+  const recommended = new Set(examCodesOf(roadmap));
+  for (const code of live) {
+    if (retiring.has(code) || flagged.has(code)) continue;
+    assert.ok(recommended.has(code), `${code} is not in any result`);
+  }
+  // at most 7 answers to a question, at most 5 questions before a result
+  for (const [id, step] of Object.entries(roadmap.steps))
+    assert.ok(
+      step.answers.length <= 7,
+      `${id} has ${step.answers.length} answers`,
+    );
+  let deepest = 0;
+  const walk = (id, depth) => {
+    if (id in roadmap.results) {
+      deepest = Math.max(deepest, depth);
+      return;
+    }
+    for (const answer of roadmap.steps[id].answers)
+      walk(answer.next, depth + 1);
+  };
+  walk(roadmap.start, 0);
+  assert.ok(deepest <= 5, `the longest path has ${deepest} questions`);
+});
+
+test("an expert exam is only a first choice after its prerequisite is settled", () => {
+  // AZ-305, SC-100, AB-100 and AZ-401 earn an expert certification only with another certification or exam
+  // (src/data_files/related-certs.ts): a result that starts with one of them is reached after the question
+  // that asks for it, or is a result about what comes after a certification the visitor holds
+  const expert = new Set(["AZ-305", "SC-100", "AB-100", "AZ-401"]);
+  const asks = {
+    "arch-azure-prereq": "r-arch-azure",
+    "arch-security-prereq": "r-arch-security",
+    "arch-ai-prereq": "r-arch-ai",
+    "devops-prereq": "r-devops",
+  };
+  for (const [step, result] of Object.entries(asks)) {
+    const yes = roadmap.steps[step].answers.find((a) => a.label === "Yes");
+    assert.equal(yes?.next, result, `${step}: "Yes" leads to ${result}`);
+  }
+  const allowed = new Set([
+    ...Object.values(asks),
+    "r-next-az-104",
+    "r-next-gh-300",
+    "r-replace-pl-600",
+  ]);
+  for (const [id, result] of Object.entries(roadmap.results))
+    for (const exam of result.exams)
+      if (expert.has(exam.code) && exam.role === "start")
+        assert.ok(
+          allowed.has(id),
+          `${id} starts with ${exam.code} without its prerequisite question`,
+        );
 });

@@ -146,8 +146,7 @@ export function roadmapProblems(roadmap) {
 
 /**
  * The whole roadmap as one nested list for the Markdown copy of the page: a question, its answers, and under
- * each answer the next question or the exams to take. A step several answers lead to is written out
- * at each of them (the tree is small), so each branch reads on its own.
+ * each answer the next question or the exams to take.
  * @param {Roadmap} roadmap
  * @param {(code: string) => string} [describe] the text after an exam code ("Microsoft Azure Administrator")
  * @param {string} [start] the step to start from (default: the start of the roadmap)
@@ -177,8 +176,13 @@ export function roadmapOutline(
     if (item.link) lines.push({ text: item.link.label, href: item.link.href });
     return lines;
   };
+  // a question several answers lead to is written out once, where it first appears
+  const written = new Set();
   const step = (id) => {
     const item = roadmap.steps[id];
+    if (written.has(id))
+      return { text: `${item.question} (the answers are listed above)` };
+    written.add(id);
     return {
       text: item.question,
       children: item.answers.map((answer) => ({
