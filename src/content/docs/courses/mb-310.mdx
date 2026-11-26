@@ -5,40 +5,40 @@ description: "Follow a structured MB-310 course organized by study guide task, w
 import { LinkCard, CardGrid, Tabs, TabItem } from '@components/docs';
 
 :::note
-This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official MB-310 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/mb-310?WT.mc_id=studentamb_165290) (August 14, 2026 version). Each task of the guide links to the Microsoft Learn training and the documentation that cover it. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [MB-310 labs page](/certs/labs/dynamics/mb-310/), not here.
+This course is a collection of Microsoft Learn modules and documentation pages, arranged by the skills measured in the [official MB-310 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/mb-310?WT.mc_id=studentamb_165290) (July 25, 2025 version). Each task of the guide links to the Microsoft Learn training and the documentation that cover it. Each skill group opens with its fundamentals, the theory behind its tasks, to read before the tasks. Exercises, guided projects, tutorials and quickstarts are on the [MB-310 labs page](/certs/labs/dynamics/mb-310/), not here.
 
 The course follows the approach of [How to Prepare for Role-Based Exams](/certs/prepare/role-based/): the study guide is the source of truth for what the exam covers, so work through it task by task, with the training to learn a topic and the documentation for the details and for hands-on work. Videos, practice tests and the other resources for the exam are on the [MB-310 Study Materials](/certs/dynamics/mb-310/) page.
 :::
 
 ## Audience profile
 
-### As a candidate for this exam, you analyze business requirements and translate them into fully realized business processes and solutions that implement industry-recommended practices during implementation and ongoing support. You have a foundational understanding of accounting principles and financial operations as they relate to
+### As a candidate for this exam, you analyze business requirements and translate them into fully realized business processes and solutions that implement industry-recommended practices. You have a fundamental understanding of accounting principles and financial operations as they relate to
 
-- Core tasks in Dynamics 365 finance and operations apps
+- Core tasks in the finance and operations apps
 - Manufacturing
 - Retail
 - Supply chain management operations
-- Service-based operations
 
 ### As a candidate for this exam, you specialize in one or more feature sets of Dynamics 365 Finance including
 
 - General ledger
-- Cash and bank management
-- Tax
+- Accounts payable
 - Accounts receivable
 - Credit and collections
-- Subscription billing
-- Accounts payable
-- Expense management
+- Cash and bank management
 - Budgeting
-- Fixed assets and asset leasing
+- Fixed assets
+- Asset leasing
+- Tax
+- Expense management
+- Subscription billing
 - Cost accounting
+- Cost management
 - Consolidation and elimination
-- Agents
 
-## Implement financial management (35–40%)
+## Implement financial management (40–45%)
 
-### Design and configure the chart of accounts and financial dimensions
+### Design and configure the chart of accounts
 
 #### Fundamentals
 
@@ -47,11 +47,8 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 <Tabs>
   <TabItem label="Learning">
     <CardGrid>
-      <LinkCard title="Describe Dynamics 365 finance and operations apps" href="https://learn.microsoft.com/training/modules/describe-finance-operations-apps?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Describe the general ledger in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/explore-general-ledger-dynamics-365?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Describe general ledger and cash and bank management processes in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/describe-general-ledger-cash-bank-management?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Describe shared features in Dynamics 365 finance and operations apps" href="https://learn.microsoft.com/training/modules/describe-shared-features?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Describe Dynamics 365 Finance core capabilities" href="https://learn.microsoft.com/training/modules/explore-microsoft-dynamics-365-finance-core-capabilities?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
   <TabItem label="Documentation">
@@ -107,7 +104,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
   </TabItem>
 </Tabs>
 
-#### Configure main account categories, ledger account aliases, and balance control accounts
+#### Configure main accounts categories, ledger account aliases, and balance control accounts
 
 <Tabs>
   <TabItem label="Learning">
@@ -155,21 +152,6 @@ The Microsoft Learn module "Set up chart of accounts in Dynamics 365 Finance" al
       <LinkCard title="Differences between financial tags and financial dimensions" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/financial-tag-financial-dimension?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Use financial tags to display free text invoice descriptions" href="https://learn.microsoft.com/dynamics365/finance/accounts-receivable/free-text-inv-desc?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Financial tag rule reference (preview)" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/financial-tag-rule-reference?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-</Tabs>
-
-#### Configure derived dimensions and financial dimension default templates
-
-:::note
-The Microsoft Learn module "Set up financial dimensions in Dynamics 365 Finance" also covers this task. It is listed once, under [Design and configure financial dimensions](#design-and-configure-financial-dimensions).
-:::
-
-<Tabs>
-  <TabItem label="Documentation">
-    <CardGrid>
-      <LinkCard title="Maintain financial dimension default templates - Finance | Dynamics 365" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/tasks/maintain-financial-dimension-default-templates?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Derived dimensions" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/derived-dimensions?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -247,56 +229,6 @@ The Microsoft Learn module "Configure currencies in Dynamics 365 Finance" also c
   </TabItem>
 </Tabs>
 
-#### Configure ledger calendar and fiscal calendar
-
-<Tabs>
-  <TabItem label="Learning">
-    <CardGrid>
-      <LinkCard title="Create fiscal calendars, years, and periods in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/create-fiscal-calendars-years-periods-dyn365-finance?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-  <TabItem label="Documentation">
-    <CardGrid>
-      <LinkCard title="Fiscal calendars, fiscal years, and periods" href="https://learn.microsoft.com/dynamics365/finance/budgeting/fiscal-calendars-fiscal-years-periods?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Change or reassign a ledger calendar" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/change-mdfy-clndr-to-ledger?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Close the fiscal year - Finance | Dynamics 365" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/tasks/close-fiscal-year?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-</Tabs>
-
-#### Configure posting layers for ledger transactions
-
-<Tabs>
-  <TabItem label="Learning">
-    <CardGrid>
-      <LinkCard title="Set up ledgers and journals in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/configure-ledgers-journals-dyn365-finance?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-  <TabItem label="Documentation">
-    <CardGrid>
-      <LinkCard title="Post fixed asset transactions to posting layers" href="https://learn.microsoft.com/dynamics365/finance/fixed-assets/post-fixed-asset-transactions-posting-layers?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-</Tabs>
-
-#### Configure and process ledger allocation rules
-
-<Tabs>
-  <TabItem label="Learning">
-    <CardGrid>
-      <LinkCard title="Configure ledger allocations and accruals in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/configure-ledger-allocations-accruals-dyn365-finance?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-  <TabItem label="Documentation">
-    <CardGrid>
-      <LinkCard title="Ledger allocation rules" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/ledger-allocation-rules?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Allocation terms" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/main-account-allocation-terms?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Process allocations" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/process-allocations?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Process ledger allocation journal - Finance | Dynamics 365" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/tasks/process-ledger-allocation-journal?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-</Tabs>
-
 ### Implement and manage journals
 
 #### Fundamentals
@@ -319,10 +251,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Configure journal names and vouchers
 
 :::note
-These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
-
-- "Perform general ledger daily procedures in Dynamics 365 Finance": under [Configure main account categories, ledger account aliases, and balance control accounts](#configure-main-account-categories-ledger-account-aliases-and-balance-control-accounts) in the skill group Design and configure the chart of accounts and financial dimensions
-- "Set up ledgers and journals in Dynamics 365 Finance": under [Configure posting layers for ledger transactions](#configure-posting-layers-for-ledger-transactions) in the skill group Configure ledgers and currencies
+The Microsoft Learn module "Perform general ledger daily procedures in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure main accounts categories, ledger account aliases, and balance control accounts](#configure-main-accounts-categories-ledger-account-aliases-and-balance-control-accounts) in the skill group Design and configure the chart of accounts.
 :::
 
 <Tabs>
@@ -339,16 +268,29 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 #### Configure journal controls and posting restriction rules
 
 :::note
-The Microsoft Learn module "Set up ledgers and journals in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure posting layers for ledger transactions](#configure-posting-layers-for-ledger-transactions) in the skill group Configure ledgers and currencies.
+No Learn module or documentation page covers this task yet.
 :::
 
-#### Configure and process periodic journals
+#### Implement journal approvals, including workflows
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Set up ledgers and journals in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/configure-ledgers-journals-dyn365-finance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Inventory journal approval workflows" href="https://learn.microsoft.com/dynamics365/supply-chain/inventory/inventory-journal-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Key invoice data into accounts payable using an approval journal - Finance | Dynamics 365" href="https://learn.microsoft.com/dynamics365/finance/accounts-payable/tasks/key-invoice-data-into-ap-system-approval-journal?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure and use periodic journals
 
 :::note
-These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
-
-- "Set up ledgers and journals in Dynamics 365 Finance": under [Configure posting layers for ledger transactions](#configure-posting-layers-for-ledger-transactions) in the skill group Configure ledgers and currencies
-- "Configure and perform periodic processes in Dynamics 365 Finance": under [Configure a currency revaluation posting profile](#configure-a-currency-revaluation-posting-profile) in the skill group Configure ledgers and currencies
+The Microsoft Learn module "Configure and perform periodic processes in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure a currency revaluation posting profile](#configure-a-currency-revaluation-posting-profile) in the skill group Configure ledgers and currencies.
 :::
 
 <Tabs>
@@ -376,13 +318,10 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
   </TabItem>
 </Tabs>
 
-#### Create and modify templates to edit journals in Microsoft Excel
+#### Create templates to edit journals in Microsoft Excel
 
 :::note
-These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
-
-- "Perform general ledger daily procedures in Dynamics 365 Finance": under [Configure main account categories, ledger account aliases, and balance control accounts](#configure-main-account-categories-ledger-account-aliases-and-balance-control-accounts) in the skill group Design and configure the chart of accounts and financial dimensions
-- "Set up ledgers and journals in Dynamics 365 Finance": under [Configure posting layers for ledger transactions](#configure-posting-layers-for-ledger-transactions) in the skill group Configure ledgers and currencies
+The Microsoft Learn module "Perform general ledger daily procedures in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure main accounts categories, ledger account aliases, and balance control accounts](#configure-main-accounts-categories-ledger-account-aliases-and-balance-control-accounts) in the skill group Design and configure the chart of accounts.
 :::
 
 <Tabs>
@@ -395,10 +334,6 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 
 #### Reverse financial transaction entries
 
-:::note
-The Microsoft Learn module "Set up ledgers and journals in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure posting layers for ledger transactions](#configure-posting-layers-for-ledger-transactions) in the skill group Configure ledgers and currencies.
-:::
-
 <Tabs>
   <TabItem label="Documentation">
     <CardGrid>
@@ -407,21 +342,27 @@ The Microsoft Learn module "Set up ledgers and journals in Dynamics 365 Finance"
   </TabItem>
 </Tabs>
 
-#### Create, validate, and post journal entries manually and by using Microsoft Excel
+#### Configure default descriptions
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Set up default descriptions for automatic posting" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/set-up-default-descriptions-for-automatic-posting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Default descriptions for the general ledger" href="https://learn.microsoft.com/dynamics365/supply-chain/landed-cost/defult-descriptions?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and use journal entries, including validation and posting manually and by using Microsoft Excel
 
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
 - "Intercompany accounting in Dynamics 365 Finance": under [Configure intercompany accounting](#configure-intercompany-accounting)
-- "Perform general ledger daily procedures in Dynamics 365 Finance": under [Configure main account categories, ledger account aliases, and balance control accounts](#configure-main-account-categories-ledger-account-aliases-and-balance-control-accounts) in the skill group Design and configure the chart of accounts and financial dimensions
-- "Set up ledgers and journals in Dynamics 365 Finance": under [Configure posting layers for ledger transactions](#configure-posting-layers-for-ledger-transactions) in the skill group Configure ledgers and currencies
+- "Perform general ledger daily procedures in Dynamics 365 Finance": under [Configure main accounts categories, ledger account aliases, and balance control accounts](#configure-main-accounts-categories-ledger-account-aliases-and-balance-control-accounts) in the skill group Design and configure the chart of accounts
 :::
 
 #### Configure batch processing of journals
-
-:::note
-The Microsoft Learn module "Set up ledgers and journals in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure posting layers for ledger transactions](#configure-posting-layers-for-ledger-transactions) in the skill group Configure ledgers and currencies.
-:::
 
 <Tabs>
   <TabItem label="Documentation">
@@ -605,7 +546,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 The Microsoft Learn module "Configure and perform periodic processes in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure a currency revaluation posting profile](#configure-a-currency-revaluation-posting-profile) in the skill group Configure ledgers and currencies.
 :::
 
-#### Perform financial consolidation and elimination processes
+#### Perform financial consolidation and elimination processes by using Consolidation online
 
 :::note
 The Microsoft Learn module "Configure and perform periodic processes in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure a currency revaluation posting profile](#configure-a-currency-revaluation-posting-profile) in the skill group Configure ledgers and currencies.
@@ -616,6 +557,22 @@ The Microsoft Learn module "Configure and perform periodic processes in Dynamics
     <CardGrid>
       <LinkCard title="Consolidation and elimination overview" href="https://learn.microsoft.com/dynamics365/finance/budgeting/consolidation-elimination-overview?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Online financial consolidations" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/consolidate-online?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Create and manage financial reports, including modifying row, column, and report definitions, and reporting trees
+
+:::note
+The Microsoft Learn module "Configure and perform periodic processes in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure a currency revaluation posting profile](#configure-a-currency-revaluation-posting-profile) in the skill group Configure ledgers and currencies.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Modify row definition cells" href="https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/analytics/modify-row-definition-cells-financial-reporting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Row definitions in financial report designer" href="https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/analytics/row-definitions-financial-reporting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Reporting tree definitions in financial reports" href="https://learn.microsoft.com/dynamics365/fin-ops-core/fin-ops/analytics/financial-reporting-tree-definitions?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -651,13 +608,20 @@ The Microsoft Learn module "Configure and perform periodic processes in Dynamics
   </TabItem>
 </Tabs>
 
+#### Design consolidation and elimination by using financial reports
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Work with analytics and reporting in finance and operations apps" href="https://learn.microsoft.com/training/modules/work-analytics-reporting-finance-operations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
 #### Configure and process ledger settlements
 
 :::note
-These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
-
-- "Perform general ledger daily procedures in Dynamics 365 Finance": under [Configure main account categories, ledger account aliases, and balance control accounts](#configure-main-account-categories-ledger-account-aliases-and-balance-control-accounts) in the skill group Design and configure the chart of accounts and financial dimensions
-- "Set up ledgers and journals in Dynamics 365 Finance": under [Configure posting layers for ledger transactions](#configure-posting-layers-for-ledger-transactions) in the skill group Configure ledgers and currencies
+The Microsoft Learn module "Perform general ledger daily procedures in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure main accounts categories, ledger account aliases, and balance control accounts](#configure-main-accounts-categories-ledger-account-aliases-and-balance-control-accounts) in the skill group Design and configure the chart of accounts.
 :::
 
 <Tabs>
@@ -680,6 +644,35 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
   </TabItem>
 </Tabs>
 
+#### Perform general ledger foreign currency revaluation
+
+:::note
+The Microsoft Learn module "Configure and perform periodic processes in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure a currency revaluation posting profile](#configure-a-currency-revaluation-posting-profile) in the skill group Configure ledgers and currencies.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Currency revaluation in a consolidation company" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/currency-revaluation-consolidation-company?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage the ledger calendar
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Create fiscal calendars, years, and periods in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/create-fiscal-calendars-years-periods-dyn365-finance?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Change or reassign a ledger calendar" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/change-mdfy-clndr-to-ledger?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
 ### Configure, collect, and report taxes
 
 #### Fundamentals
@@ -697,7 +690,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
   </TabItem>
 </Tabs>
 
-#### Configure sales tax groups, item sales tax groups, tax codes, settlement periods, authorities, and tax exemptions
+#### Configure tax groups, tax codes, settlement periods, and authorities
 
 <Tabs>
   <TabItem label="Learning">
@@ -711,7 +704,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Configure tax ledger posting groups
 
 :::note
-The Microsoft Learn module "Set up taxes in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure sales tax groups, item sales tax groups, tax codes, settlement periods, authorities, and tax exemptions](#configure-sales-tax-groups-item-sales-tax-groups-tax-codes-settlement-periods-authorities-and-tax-exemptions).
+The Microsoft Learn module "Set up taxes in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure tax groups, tax codes, settlement periods, and authorities](#configure-tax-groups-tax-codes-settlement-periods-and-authorities).
 :::
 
 <Tabs>
@@ -728,8 +721,8 @@ The Microsoft Learn module "Set up taxes in Dynamics 365 Finance" also covers th
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
-- "Set up taxes in Dynamics 365 Finance": under [Configure sales tax groups, item sales tax groups, tax codes, settlement periods, authorities, and tax exemptions](#configure-sales-tax-groups-item-sales-tax-groups-tax-codes-settlement-periods-authorities-and-tax-exemptions)
-- "Work with taxes in Dynamics 365 Finance": under [Configure sales tax groups, item sales tax groups, tax codes, settlement periods, authorities, and tax exemptions](#configure-sales-tax-groups-item-sales-tax-groups-tax-codes-settlement-periods-authorities-and-tax-exemptions)
+- "Set up taxes in Dynamics 365 Finance": under [Configure tax groups, tax codes, settlement periods, and authorities](#configure-tax-groups-tax-codes-settlement-periods-and-authorities)
+- "Work with taxes in Dynamics 365 Finance": under [Configure tax groups, tax codes, settlement periods, and authorities](#configure-tax-groups-tax-codes-settlement-periods-and-authorities)
 :::
 
 <Tabs>
@@ -746,8 +739,8 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
-- "Set up taxes in Dynamics 365 Finance": under [Configure sales tax groups, item sales tax groups, tax codes, settlement periods, authorities, and tax exemptions](#configure-sales-tax-groups-item-sales-tax-groups-tax-codes-settlement-periods-authorities-and-tax-exemptions)
-- "Work with taxes in Dynamics 365 Finance": under [Configure sales tax groups, item sales tax groups, tax codes, settlement periods, authorities, and tax exemptions](#configure-sales-tax-groups-item-sales-tax-groups-tax-codes-settlement-periods-authorities-and-tax-exemptions)
+- "Set up taxes in Dynamics 365 Finance": under [Configure tax groups, tax codes, settlement periods, and authorities](#configure-tax-groups-tax-codes-settlement-periods-and-authorities)
+- "Work with taxes in Dynamics 365 Finance": under [Configure tax groups, tax codes, settlement periods, and authorities](#configure-tax-groups-tax-codes-settlement-periods-and-authorities)
 :::
 
 <Tabs>
@@ -765,8 +758,8 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
-- "Set up taxes in Dynamics 365 Finance": under [Configure sales tax groups, item sales tax groups, tax codes, settlement periods, authorities, and tax exemptions](#configure-sales-tax-groups-item-sales-tax-groups-tax-codes-settlement-periods-authorities-and-tax-exemptions)
-- "Work with taxes in Dynamics 365 Finance": under [Configure sales tax groups, item sales tax groups, tax codes, settlement periods, authorities, and tax exemptions](#configure-sales-tax-groups-item-sales-tax-groups-tax-codes-settlement-periods-authorities-and-tax-exemptions)
+- "Set up taxes in Dynamics 365 Finance": under [Configure tax groups, tax codes, settlement periods, and authorities](#configure-tax-groups-tax-codes-settlement-periods-and-authorities)
+- "Work with taxes in Dynamics 365 Finance": under [Configure tax groups, tax codes, settlement periods, and authorities](#configure-tax-groups-tax-codes-settlement-periods-and-authorities)
 :::
 
 <Tabs>
@@ -780,6 +773,111 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
       <LinkCard title="Create sales tax transactions on documents - Finance | Dynamics 365" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/tasks/create-sales-tax-transactions-documents?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Whole amount and Interval calculation options for sales tax codes" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/whole-amount-interval-options-sales-tax-codes?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Sales tax specification by ledger transaction report" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/sales-tax-specification-by-ledger-transaction-report?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+### Implement cost management
+
+#### Fundamentals
+
+The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Describe inventory costing and master planning in Dynamics 365 Supply Chain Management" href="https://learn.microsoft.com/training/modules/describe-inventory-costing-master-planning-dynamics-365-supply-chain-management?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure cost groups
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Implement cost management in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/implement-cost-management?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Configure costing sheets in Dynamics 365 Supply Chain Management" href="https://learn.microsoft.com/training/modules/configure-costing-sheets?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Cost groups" href="https://learn.microsoft.com/dynamics365/supply-chain/cost-management/cost-groups?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Indirect cost posting" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/indirect-cost-posting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Costing sheets" href="https://learn.microsoft.com/dynamics365/supply-chain/cost-management/costing-sheets?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure inventory costing versions
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Configure costing sheets in Dynamics 365 Supply Chain Management": under [Configure cost groups](#configure-cost-groups)
+- "Implement cost management in Dynamics 365 Finance": under [Configure cost groups](#configure-cost-groups)
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Costing versions overview" href="https://learn.microsoft.com/dynamics365/supply-chain/cost-management/costing-versions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Manage standard cost updates" href="https://learn.microsoft.com/dynamics365/supply-chain/cost-management/manage-standard-cost-updates?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Restrictions on costing versions for standard costs" href="https://learn.microsoft.com/dynamics365/supply-chain/cost-management/restrictions-costing-versions-standard-costs?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Simulate cost changes by using a costing version for planned costs" href="https://learn.microsoft.com/dynamics365/supply-chain/cost-management/simulate-cost-changes-costing-version-planned-costs?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Differentiate between inventory costing methodologies
+
+:::note
+The Microsoft Learn module "Implement cost management in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure cost groups](#configure-cost-groups).
+:::
+
+#### Configure item model groups
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Get started with inventory management in Dynamics 365 Supply Chain Management" href="https://learn.microsoft.com/training/modules/get-started-inventory-management-supply-chain?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Override the default reservation principle for materials in production" href="https://learn.microsoft.com/dynamics365/supply-chain/production-control/override-default-reservation-principle?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure item groups and inventory posting profiles
+
+:::note
+The Microsoft Learn module "Implement cost management in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure cost groups](#configure-cost-groups).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Inventory posting profiles" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/inventory-posting-profiles?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Inventory posting" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/inventory-posting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Purchase order posting" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/purchase-order-posting?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Sales order posting" href="https://learn.microsoft.com/dynamics365/finance/general-ledger/sales-order-posting?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Perform inventory recalculation, closing, and adjustment processes
+
+:::note
+The Microsoft Learn module "Implement cost management in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure cost groups](#configure-cost-groups).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Adjust on-hand inventory cost values" href="https://learn.microsoft.com/dynamics365/supply-chain/cost-management/adjust-hand-inventory-cost-values?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Inventory close" href="https://learn.microsoft.com/dynamics365/supply-chain/cost-management/inventory-close?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -829,7 +927,7 @@ No Learn module or documentation page covers this task yet.
   </TabItem>
 </Tabs>
 
-#### Process sales order invoices and credit memos, including prepayments
+#### Process sales order invoices and credit memos
 
 :::note
 The Microsoft Learn module "Get started with accounts receivable daily procedures in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure and process free text invoices, including recurring free text invoices](#configure-and-process-free-text-invoices-including-recurring-free-text-invoices).
@@ -864,6 +962,23 @@ The Microsoft Learn module "Set up accounts receivable in Dynamics 365 Finance" 
     <CardGrid>
       <LinkCard title="Create charges codes" href="https://learn.microsoft.com/dynamics365/finance/accounts-receivable/create-charges-codes?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Waive, reinstate, or reverse interest fees" href="https://learn.microsoft.com/dynamics365/finance/accounts-receivable/waive-reinstate-reverse-interest-fees?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Manage customer holds
+
+:::note
+These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
+
+- "Set up credit and collections in Dynamics 365 Finance": under [Configure credit management processes](#configure-credit-management-processes) in the skill group Manage credit and collections
+- "Process credit and collections in Dynamics 365 Finance": under [Configure collections management processes, including collection activities](#configure-collections-management-processes-including-collection-activities) in the skill group Manage credit and collections
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Manage order holds" href="https://learn.microsoft.com/dynamics365/supply-chain/sales-marketing/tasks/manage-order-holds?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -915,6 +1030,16 @@ The Microsoft Learn module "Set up accounts receivable in Dynamics 365 Finance" 
   </TabItem>
 </Tabs>
 
+#### Configure customer change approvals
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Customer workflow" href="https://learn.microsoft.com/dynamics365/finance/accounts-receivable/customer-workflow?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
 #### Perform accounts receivable foreign currency revaluation
 
 :::note
@@ -929,7 +1054,7 @@ The Microsoft Learn module "Configure and perform periodic processes in Dynamics
   </TabItem>
 </Tabs>
 
-#### Configure billing classification
+#### Configure and use billing classification
 
 <Tabs>
   <TabItem label="Documentation">
@@ -938,6 +1063,20 @@ The Microsoft Learn module "Configure and perform periodic processes in Dynamics
       <LinkCard title="Create a billing classification in the public sector - Finance | Dynamics 365" href="https://learn.microsoft.com/dynamics365/finance/public-sector/tasks/create-billing-classification-public-sector?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Reimbursements in the public sector" href="https://learn.microsoft.com/dynamics365/finance/public-sector/reimbursements-public-sector?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Settlement priority in the public sector" href="https://learn.microsoft.com/dynamics365/finance/public-sector/settlement-priority-public-sector?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure batch processing of free text and sales order invoicing
+
+:::note
+The Microsoft Learn module "Get started with accounts receivable daily procedures in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure and process free text invoices, including recurring free text invoices](#configure-and-process-free-text-invoices-including-recurring-free-text-invoices).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Create sales order invoices - Finance | Dynamics 365" href="https://learn.microsoft.com/dynamics365/finance/accounts-receivable/tasks/create-sales-order-invoices?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -954,20 +1093,6 @@ The Microsoft Learn module "Configure cash and bank management in Dynamics 365 F
       <LinkCard title="Set up customers and customer bank accounts for ISO20022 direct debits - Finance | Dynamics 365" href="https://learn.microsoft.com/dynamics365/finance/localizations/europe/set-up-bank-accounts-iso20022-direct-debits?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="Set up SEPA direct debit mandate" href="https://learn.microsoft.com/dynamics365/finance/accounts-receivable/sepa-direct-debit-mandate?WT.mc_id=studentamb_165290" target="_blank"/>
       <LinkCard title="FR-00004 Update method of payment for a customer - Finance | Dynamics 365" href="https://learn.microsoft.com/dynamics365/finance/localizations/france/fr-00004-update-method-payment-customer?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-</Tabs>
-
-#### Process intercompany invoices
-
-:::note
-The Microsoft Learn module "Intercompany accounting in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure intercompany accounting](#configure-intercompany-accounting) in the skill group Implement and manage journals.
-:::
-
-<Tabs>
-  <TabItem label="Documentation">
-    <CardGrid>
-      <LinkCard title="Invoice matching and intercompany purchase orders" href="https://learn.microsoft.com/dynamics365/finance/accounts-payable/invoice-matching-intercompany-purchase-orders?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -1029,6 +1154,12 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 - "Process credit and collections in Dynamics 365 Finance": under [Configure collections management processes, including collection activities](#configure-collections-management-processes-including-collection-activities)
 :::
 
+#### Prepare and send customer account statements
+
+:::note
+The Microsoft Learn module "Process credit and collections in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure collections management processes, including collection activities](#configure-collections-management-processes-including-collection-activities).
+:::
+
 #### Configure and process collection letters
 
 :::note
@@ -1077,7 +1208,7 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
   </TabItem>
 </Tabs>
 
-#### Configure and process customer write-offs
+#### Configure and use customer write-offs
 
 :::note
 The Microsoft Learn module "Set up credit and collections in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure credit management processes](#configure-credit-management-processes).
@@ -1148,7 +1279,7 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 - "Get started with subscription billing in Dynamics 365 Finance": under [Generate sales documents by using billing schedules](#generate-sales-documents-by-using-billing-schedules)
 :::
 
-#### Configure and process revenue deferrals and recognition, including charges
+#### Configure and use revenue deferrals and recognition, including for charges, deferral defaults, and items deferred by default
 
 <Tabs>
   <TabItem label="Learning">
@@ -1158,13 +1289,10 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
   </TabItem>
 </Tabs>
 
-#### Configure and process expense deferrals and recognition
+#### Configure and use expense deferrals and recognition
 
 :::note
-These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
-
-- "Revenue and expense deferrals in Dynamics 365 Finance": under [Configure and process revenue deferrals and recognition, including charges](#configure-and-process-revenue-deferrals-and-recognition-including-charges)
-- "Get started with subscription billing in Dynamics 365 Finance": under [Generate sales documents by using billing schedules](#generate-sales-documents-by-using-billing-schedules)
+The Microsoft Learn module "Get started with subscription billing in Dynamics 365 Finance" also covers this task. It is listed once, under [Generate sales documents by using billing schedules](#generate-sales-documents-by-using-billing-schedules).
 :::
 
 #### Process and manage revenue and expense recognition schedules
@@ -1184,12 +1312,6 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
     </CardGrid>
   </TabItem>
 </Tabs>
-
-#### Configure deferral defaults and items deferred by default
-
-:::note
-The Microsoft Learn module "Revenue and expense deferrals in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure and process revenue deferrals and recognition, including charges](#configure-and-process-revenue-deferrals-and-recognition-including-charges).
-:::
 
 ## Implement and manage accounts payable and expenses (10–15%)
 
@@ -1243,24 +1365,16 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 The Microsoft Learn module "Configure Accounts payable in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure payment formats](#configure-payment-formats) in the skill group Implement and manage cash and bank.
 :::
 
-#### Process invoices and credit memos, with and without associated purchase orders, including prepayments
+#### Process purchase order invoices and credit memos, including prepayments
 
-<Tabs>
-  <TabItem label="Learning">
-    <CardGrid>
-      <LinkCard title="Work with accounts payable daily procedures in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/work-accounts-payable-daily-finance?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Process purchase order invoices in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/purchase-order-invoices-finance?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-</Tabs>
+:::note
+The Microsoft Learn module "Get started with accounts receivable daily procedures in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure and process free text invoices, including recurring free text invoices](#configure-and-process-free-text-invoices-including-recurring-free-text-invoices) in the skill group Implement and manage accounts receivable.
+:::
 
 #### Configure vendor payment methods
 
 :::note
-These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
-
-- "Work with accounts payable daily procedures in Dynamics 365 Finance": under [Process invoices and credit memos, with and without associated purchase orders, including prepayments](#process-invoices-and-credit-memos-with-and-without-associated-purchase-orders-including-prepayments)
-- "Configure Accounts payable in Dynamics 365 Finance": under [Configure payment formats](#configure-payment-formats) in the skill group Implement and manage cash and bank
+The Microsoft Learn module "Configure Accounts payable in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure payment formats](#configure-payment-formats) in the skill group Implement and manage cash and bank.
 :::
 
 <Tabs>
@@ -1285,7 +1399,7 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
   </TabItem>
 </Tabs>
 
-#### Configure vendor bank accounts
+#### Configure bank accounts and bank account approvals for vendors
 
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
@@ -1304,6 +1418,12 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
   </TabItem>
 </Tabs>
 
+#### Configure vendor change approvals
+
+:::note
+The Microsoft Learn documentation page "Vendor bank account workflow" also covers this task. It is listed once, under [Configure bank accounts and bank account approvals for vendors](#configure-bank-accounts-and-bank-account-approvals-for-vendors).
+:::
+
 #### Perform accounts payable foreign currency revaluation
 
 :::note
@@ -1318,15 +1438,32 @@ The Microsoft Learn module "Configure and perform periodic processes in Dynamics
   </TabItem>
 </Tabs>
 
-#### Process the vendor invoice journal
+#### Configure vendor invoice automation
+
+:::note
+The Microsoft Learn module "Set up and use Intelligent OCR for vendor invoices in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure invoice validation policies and invoice matching setup](#configure-invoice-validation-policies-and-invoice-matching-setup).
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Invoice automation for scanned documents" href="https://learn.microsoft.com/dynamics365/finance/accounts-payable/vendor-invoice-automation?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Vendor invoice automation workspace" href="https://learn.microsoft.com/dynamics365/finance/accounts-payable/vendor-invoices-workspace?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up options for vendor invoice automation" href="https://learn.microsoft.com/dynamics365/finance/accounts-payable/vnd-invoice-set-up-options?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Generate invoice lines when you import vendor invoices" href="https://learn.microsoft.com/dynamics365/finance/accounts-payable/auto-create-invc-lines-at-import?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Research or resolve exceptions - Finance | Dynamics 365" href="https://learn.microsoft.com/dynamics365/finance/accounts-payable/tasks/research-resolve-exceptions?WT.mc_id=studentamb_165290" target="_blank"/>
+      <LinkCard title="Set up vendor invoice policies" href="https://learn.microsoft.com/dynamics365/finance/accounts-receivable/tasks/set-up-vendor-invoice-policies?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Process the vendor invoice journal including voyage cost
 
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
 - "Work with accounting distributions, invoice validations, and settlements in Dynamics 365 Finance": under [Configure invoice validation policies and invoice matching setup](#configure-invoice-validation-policies-and-invoice-matching-setup)
 - "Set up and use Intelligent OCR for vendor invoices in Dynamics 365 Finance": under [Configure invoice validation policies and invoice matching setup](#configure-invoice-validation-policies-and-invoice-matching-setup)
-- "Process purchase order invoices in Dynamics 365 Finance": under [Process invoices and credit memos, with and without associated purchase orders, including prepayments](#process-invoices-and-credit-memos-with-and-without-associated-purchase-orders-including-prepayments)
-- "Work with accounts payable daily procedures in Dynamics 365 Finance": under [Process invoices and credit memos, with and without associated purchase orders, including prepayments](#process-invoices-and-credit-memos-with-and-without-associated-purchase-orders-including-prepayments)
 :::
 
 <Tabs>
@@ -1342,11 +1479,7 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
   </TabItem>
 </Tabs>
 
-#### Configure and process recurring vendor invoices
-
-:::note
-The Microsoft Learn module "Process purchase order invoices in Dynamics 365 Finance" also covers this task. It is listed once, under [Process invoices and credit memos, with and without associated purchase orders, including prepayments](#process-invoices-and-credit-memos-with-and-without-associated-purchase-orders-including-prepayments).
-:::
+#### Configure and use recurring vendor invoices
 
 <Tabs>
   <TabItem label="Documentation">
@@ -1359,22 +1492,10 @@ The Microsoft Learn module "Process purchase order invoices in Dynamics 365 Fina
 #### Process and generate vendor payments, centralized payments, and prepayments
 
 :::note
-These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
-
-- "Set up and use Intelligent OCR for vendor invoices in Dynamics 365 Finance": under [Configure invoice validation policies and invoice matching setup](#configure-invoice-validation-policies-and-invoice-matching-setup)
-- "Work with accounts payable daily procedures in Dynamics 365 Finance": under [Process invoices and credit memos, with and without associated purchase orders, including prepayments](#process-invoices-and-credit-memos-with-and-without-associated-purchase-orders-including-prepayments)
+The Microsoft Learn module "Set up and use Intelligent OCR for vendor invoices in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure invoice validation policies and invoice matching setup](#configure-invoice-validation-policies-and-invoice-matching-setup).
 :::
 
-#### Process intercompany vendor invoices
-
-:::note
-These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
-
-- "Intercompany accounting in Dynamics 365 Finance": under [Configure intercompany accounting](#configure-intercompany-accounting) in the skill group Implement and manage journals
-- "Process purchase order invoices in Dynamics 365 Finance": under [Process invoices and credit memos, with and without associated purchase orders, including prepayments](#process-invoices-and-credit-memos-with-and-without-associated-purchase-orders-including-prepayments)
-:::
-
-### Configure expense management
+### Configure and use expense management
 
 #### Fundamentals
 
@@ -1384,13 +1505,6 @@ The concepts behind the tasks of this skill group. Work through them first: the 
   <TabItem label="Learning">
     <CardGrid>
       <LinkCard title="Describe expense tracking, asset control, and budgeting processes in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/describe-expense-management-fixed-asset-management?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-  <TabItem label="Documentation">
-    <CardGrid>
-      <LinkCard title="Expense management overview" href="https://learn.microsoft.com/dynamics365/project-operations/prod-exp/expense-management?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Expense Agent overview (Preview)" href="https://learn.microsoft.com/dynamics365/project-operations/expense/expense-agent-overview?WT.mc_id=studentamb_165290" target="_blank"/>
-      <LinkCard title="Expense overview" href="https://learn.microsoft.com/dynamics365/project-operations/expense/expense-overview?WT.mc_id=studentamb_165290" target="_blank"/>
     </CardGrid>
   </TabItem>
 </Tabs>
@@ -1406,7 +1520,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
   </TabItem>
 </Tabs>
 
-#### Create and manage expense reports, including expense report policies
+#### Create and manage expense reports
 
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
@@ -1464,10 +1578,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 #### Create and manage budget register entries
 
 :::note
-These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
-
-- "Create fiscal calendars, years, and periods in Dynamics 365 Finance": under [Configure ledger calendar and fiscal calendar](#configure-ledger-calendar-and-fiscal-calendar) in the skill group Configure ledgers and currencies
-- "Set up and use basic budgeting Dynamics 365 Finance": under [Configure budgeting components, including budget models, codes, allocation terms, and transfer rules](#configure-budgeting-components-including-budget-models-codes-allocation-terms-and-transfer-rules)
+The Microsoft Learn module "Set up and use basic budgeting Dynamics 365 Finance" also covers this task. It is listed once, under [Configure budgeting components, including budget models, codes, allocation terms, and transfer rules](#configure-budgeting-components-including-budget-models-codes-allocation-terms-and-transfer-rules).
 :::
 
 <Tabs>
@@ -1508,49 +1619,11 @@ The concepts behind the tasks of this skill group. Work through them first: the 
   </TabItem>
 </Tabs>
 
-#### Validate budget control on transactions
+#### Activate or deactivate budget control configurations
 
 :::note
 The Microsoft Learn module "Set up and use budget control in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure budget controls including budget parameters, budget fund availability options, budget control rules and groups, and over-budget permissions](#configure-budget-controls-including-budget-parameters-budget-fund-availability-options-budget-control-rules-and-groups-and-over-budget-permissions).
 :::
-
-### Configure and manage budget planning
-
-#### Fundamentals
-
-The concepts behind the tasks of this skill group. Work through them first: the tasks below assume you know them.
-
-<Tabs>
-  <TabItem label="Documentation">
-    <CardGrid>
-      <LinkCard title="Budget planning overview" href="https://learn.microsoft.com/dynamics365/finance/budgeting/budget-planning-overview-configuration?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-</Tabs>
-
-#### Create and manage budget plans, including scenarios and allocations
-
-:::note
-The Microsoft Learn module "Set up and use basic budgeting Dynamics 365 Finance" also covers this task. It is listed once, under [Configure budgeting components, including budget models, codes, allocation terms, and transfer rules](#configure-budgeting-components-including-budget-models-codes-allocation-terms-and-transfer-rules) in the skill group Implement basic budgeting.
-:::
-
-<Tabs>
-  <TabItem label="Documentation">
-    <CardGrid>
-      <LinkCard title="Budget planning data allocation" href="https://learn.microsoft.com/dynamics365/finance/budgeting/budget-planning-data-allocation?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-</Tabs>
-
-#### Configure budget planning process, including organization hierarchy
-
-<Tabs>
-  <TabItem label="Learning">
-    <CardGrid>
-      <LinkCard title="Configure and use budget planning in Dynamics 365 Finance" href="https://learn.microsoft.com/training/modules/configure-use-budget-planning-dyn365-finance?WT.mc_id=studentamb_165290" target="_blank"/>
-    </CardGrid>
-  </TabItem>
-</Tabs>
 
 ## Manage fixed assets (10–15%)
 
@@ -1592,7 +1665,7 @@ The concepts behind the tasks of this skill group. Work through them first: the 
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
-- "Configure fixed assets management in Dynamics 365 Finance": under [Configure fixed asset books, including derived books](#configure-fixed-asset-books-including-derived-books)
+- "Configure fixed assets management in Dynamics 365 Finance": under [Configure fixed asset books](#configure-fixed-asset-books)
 - "Set up and acquire fixed assets in Dynamics 365 Finance": under [Create and manage fixed assets](#create-and-manage-fixed-assets)
 - "Manage fixed assets in Dynamics 365 Finance": under [Create and manage fixed asset groups and other fixed asset attributes](#create-and-manage-fixed-asset-groups-and-other-fixed-asset-attributes)
 - "Work with fixed asset deprecation and disposal in Dynamics 365 Finance": under [Configure depreciation profiles](#configure-depreciation-profiles)
@@ -1608,7 +1681,30 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
   </TabItem>
 </Tabs>
 
-#### Configure fixed asset books, including derived books
+#### Configure fixed asset parameters
+
+:::note
+These Microsoft Learn documentation pages also cover this task. Each is listed once, under the task named:
+
+- "Set up fixed assets": under [Configure depreciation profiles](#configure-depreciation-profiles)
+- "Fixed asset acquisition posting accounts": under [Configure fixed asset posting profiles](#configure-fixed-asset-posting-profiles)
+- "Fixed asset depreciation": under [Create and manage fixed assets](#create-and-manage-fixed-assets)
+- "Fixed asset depreciation conventions - Finance | Dynamics 365": under [Create and manage fixed assets](#create-and-manage-fixed-assets)
+- "Fixed asset disposal posting accounts": under [Configure fixed asset posting profiles](#configure-fixed-asset-posting-profiles)
+- "Fixed assets integration": under [Create and manage fixed assets](#create-and-manage-fixed-assets)
+- "Set up fixed asset groups - Finance | Dynamics 365": under [Create and manage fixed asset groups and other fixed asset attributes](#create-and-manage-fixed-asset-groups-and-other-fixed-asset-attributes)
+- "Set up fixed asset posting profiles - Finance | Dynamics 365": under [Configure fixed asset posting profiles](#configure-fixed-asset-posting-profiles)
+:::
+
+<Tabs>
+  <TabItem label="Learning">
+    <CardGrid>
+      <LinkCard title="Configure fixed asset depreciations in Dynamics 365 Business Central" href="https://learn.microsoft.com/training/modules/configure-fixed-asset-depreciations?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Configure fixed asset books
 
 <Tabs>
   <TabItem label="Learning">
@@ -1678,7 +1774,7 @@ These Microsoft Learn modules also cover this task. Each is listed once, under t
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
-- "Configure fixed assets management in Dynamics 365 Finance": under [Configure fixed asset books, including derived books](#configure-fixed-asset-books-including-derived-books)
+- "Configure fixed assets management in Dynamics 365 Finance": under [Configure fixed asset books](#configure-fixed-asset-books)
 - "Manage fixed assets in Dynamics 365 Finance": under [Create and manage fixed asset groups and other fixed asset attributes](#create-and-manage-fixed-asset-groups-and-other-fixed-asset-attributes)
 :::
 
@@ -1723,17 +1819,37 @@ The Microsoft Learn module "Set up and acquire fixed assets in Dynamics 365 Fina
 The Microsoft Learn module "Manage fixed assets in Dynamics 365 Finance" also covers this task. It is listed once, under [Create and manage fixed asset groups and other fixed asset attributes](#create-and-manage-fixed-asset-groups-and-other-fixed-asset-attributes) in the skill group Implement and manage fixed assets.
 :::
 
-#### Process fixed asset depreciation, including multi-company
+#### Process fixed asset depreciation
 
 :::note
 The Microsoft Learn module "Work with fixed asset deprecation and disposal in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure depreciation profiles](#configure-depreciation-profiles) in the skill group Implement and manage fixed assets.
 :::
 
-#### Process fixed asset split, reclassification, transfer, disposals and other transactions by using the fixed asset journal
+#### Process fixed asset disposals and other transactions by using the fixed asset journal
 
 :::note
 These Microsoft Learn modules also cover this task. Each is listed once, under the task named:
 
 - "Manage fixed assets in Dynamics 365 Finance": under [Create and manage fixed asset groups and other fixed asset attributes](#create-and-manage-fixed-asset-groups-and-other-fixed-asset-attributes) in the skill group Implement and manage fixed assets
 - "Work with fixed asset deprecation and disposal in Dynamics 365 Finance": under [Configure depreciation profiles](#configure-depreciation-profiles) in the skill group Implement and manage fixed assets
+:::
+
+#### Process fixed asset split, reclassification, and transfer
+
+:::note
+The Microsoft Learn module "Manage fixed assets in Dynamics 365 Finance" also covers this task. It is listed once, under [Create and manage fixed asset groups and other fixed asset attributes](#create-and-manage-fixed-asset-groups-and-other-fixed-asset-attributes) in the skill group Implement and manage fixed assets.
+:::
+
+<Tabs>
+  <TabItem label="Documentation">
+    <CardGrid>
+      <LinkCard title="Fixed asset intercompany split and transfer (preview)" href="https://learn.microsoft.com/dynamics365/finance/fixed-assets/split-transfer-fa?WT.mc_id=studentamb_165290" target="_blank"/>
+    </CardGrid>
+  </TabItem>
+</Tabs>
+
+#### Process acquisition and depreciation for derived books
+
+:::note
+The Microsoft Learn module "Configure fixed assets management in Dynamics 365 Finance" also covers this task. It is listed once, under [Configure fixed asset books](#configure-fixed-asset-books) in the skill group Implement and manage fixed assets.
 :::
