@@ -10,6 +10,7 @@ import matter from "gray-matter";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { assertSafeBundledContent } from "./content-safety.ts";
 import { productsForExam, readProducts } from "../../src/utils/measureup-bundles.mjs";
+import { readRoadmap, roadmapOutline } from "../../src/utils/cert-roadmap.mjs";
 import type { BlogPost, ContentBundle, DocPage, ResourceLink } from "../src/types.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -193,6 +194,21 @@ function examCodeOfSlug(slug: string): string | undefined {
     ?.toUpperCase();
 }
 
+/** The certification roadmap component is a decision tree in a data file: the body gets it as a nested list. */
+export function expandCertRoadmap(src: string): string {
+  if (!/<CertRoadmap\s*\/>/.test(src)) return src;
+  type Item = { text: string; href?: string; children?: Item[] };
+  const lines = (items: Item[], depth: number): string[] =>
+    items.flatMap((item) => [
+      `${"  ".repeat(depth)}- ${item.text}${item.href ? ` (${item.href})` : ""}`,
+      ...lines(item.children ?? [], depth + 1),
+    ]);
+  return src.replace(
+    /<CertRoadmap\s*\/>/g,
+    lines(roadmapOutline(readRoadmap(REPO_ROOT)), 0).join("\n"),
+  );
+}
+
 export function extractLinks(
   rawSrc: string,
   todayIso = new Date().toISOString().slice(0, 10),
@@ -228,9 +244,11 @@ export function cleanDocBody(
   todayIso = new Date().toISOString().slice(0, 10),
   examCode?: string,
 ): string {
-  return expandMeasureUpCard(
-    unwrapActiveCourseVersion(stripComments(rawSrc), todayIso),
-    examCode,
+  return expandCertRoadmap(
+    expandMeasureUpCard(
+      unwrapActiveCourseVersion(stripComments(rawSrc), todayIso),
+      examCode,
+    ),
   )
     // Imports are MDX implementation detail, not useful content.
     .replace(/^import\s+.*?;\s*$/gm, "")

@@ -10,6 +10,7 @@ import {
   examCodeOfEntryId,
   productsForExam,
 } from "../measureup-bundles.mjs";
+import { readRoadmap, roadmapOutline } from "../cert-roadmap.mjs";
 import remarkCallouts from "./remark-callouts.mjs";
 
 type MdxAttribute = {
@@ -24,6 +25,8 @@ type MdxNode = {
   value?: string;
   url?: string;
   depth?: number;
+  ordered?: boolean;
+  spread?: boolean;
   attributes?: MdxAttribute[];
   children?: MdxNode[];
 };
@@ -413,6 +416,38 @@ export async function serializeMdx(
                   ]
                 : []),
               ...defaultSlot,
+            );
+            return index;
+          }
+
+          if (name === "CertRoadmap") {
+            // the decision tree is a page of links in the browser; the copy lists it as one nested list
+            type Item = ReturnType<typeof roadmapOutline>[number];
+            const toList = (items: Item[]): MdxNode => ({
+              type: "list",
+              ordered: false,
+              spread: false,
+              children: items.map((item) => ({
+                type: "listItem",
+                spread: false,
+                children: [
+                  paragraphNode(
+                    item.href
+                      ? {
+                          type: "link",
+                          url: item.href,
+                          children: [textNode(item.text)],
+                        }
+                      : textNode(item.text),
+                  ),
+                  ...(item.children?.length ? [toList(item.children)] : []),
+                ],
+              })),
+            });
+            parent.children?.splice(
+              index,
+              1,
+              toList(roadmapOutline(readRoadmap())),
             );
             return index;
           }

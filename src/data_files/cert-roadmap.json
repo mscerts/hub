@@ -1,0 +1,1039 @@
+{
+  "start": "experience",
+  "steps": {
+    "experience": {
+      "question": "How much do you already work with Microsoft technology?",
+      "help": "Pick the answer that fits best. You can go back at any time with your browser's back button.",
+      "answers": [
+        {
+          "label": "I am new to it",
+          "next": "new-area"
+        },
+        {
+          "label": "I already work with it",
+          "next": "pro-area"
+        }
+      ]
+    },
+    "new-area": {
+      "question": "Which area are you interested in?",
+      "answers": [
+        {
+          "label": "Azure and cloud",
+          "next": "new-azure"
+        },
+        {
+          "label": "Microsoft 365 and Copilot",
+          "next": "new-m365"
+        },
+        {
+          "label": "Security",
+          "next": "new-security"
+        },
+        {
+          "label": "Power Platform",
+          "next": "new-power"
+        },
+        {
+          "label": "Dynamics 365",
+          "next": "new-dynamics"
+        },
+        {
+          "label": "AI for business",
+          "next": "new-aibusiness"
+        },
+        {
+          "label": "GitHub",
+          "next": "new-github"
+        },
+        {
+          "label": "I am not sure yet",
+          "next": "new-unsure"
+        }
+      ]
+    },
+    "pro-area": {
+      "question": "Which area do you work in?",
+      "answers": [
+        {
+          "label": "Azure and cloud",
+          "next": "azure-focus"
+        },
+        {
+          "label": "Microsoft 365",
+          "next": "m365-focus"
+        },
+        {
+          "label": "Security",
+          "next": "security-focus"
+        },
+        {
+          "label": "Power Platform",
+          "next": "power-focus"
+        },
+        {
+          "label": "Dynamics 365",
+          "next": "dynamics-focus"
+        },
+        {
+          "label": "AI for business",
+          "next": "aibusiness-focus"
+        },
+        {
+          "label": "GitHub",
+          "next": "github-focus"
+        }
+      ]
+    },
+    "azure-focus": {
+      "question": "What do you do on Azure?",
+      "answers": [
+        {
+          "label": "I run infrastructure and operations",
+          "next": "azure-infra"
+        },
+        {
+          "label": "I build applications and services",
+          "next": "azure-dev"
+        },
+        {
+          "label": "I build or operate AI solutions",
+          "next": "azure-ai"
+        },
+        {
+          "label": "I work with data",
+          "next": "azure-data"
+        }
+      ]
+    },
+    "azure-infra": {
+      "question": "Which of these describes your work best?",
+      "answers": [
+        {
+          "label": "General Azure administration",
+          "next": "r-azure-admin"
+        },
+        {
+          "label": "Windows Server in hybrid setups",
+          "next": "r-windows-server"
+        },
+        {
+          "label": "Networking",
+          "next": "r-azure-network"
+        },
+        {
+          "label": "Virtual desktops",
+          "next": "r-azure-avd"
+        },
+        {
+          "label": "SAP workloads",
+          "next": "r-azure-sap"
+        },
+        {
+          "label": "DevOps and delivery pipelines",
+          "next": "r-azure-devops"
+        }
+      ]
+    },
+    "azure-dev": {
+      "question": "What do you build?",
+      "answers": [
+        {
+          "label": "Cloud applications and services",
+          "next": "r-azure-dev"
+        },
+        {
+          "label": "AI applications and agents",
+          "next": "r-azure-ai-apps"
+        },
+        {
+          "label": "Applications on Azure Cosmos DB",
+          "next": "r-azure-cosmos"
+        },
+        {
+          "label": "Delivery pipelines and DevOps",
+          "next": "r-azure-devops"
+        }
+      ]
+    },
+    "azure-ai": {
+      "question": "What do you do with AI?",
+      "answers": [
+        {
+          "label": "Build AI applications and agents",
+          "next": "r-azure-ai-apps"
+        },
+        {
+          "label": "Run machine learning and generative AI in production",
+          "next": "r-azure-mlops"
+        },
+        {
+          "label": "Design systems of several cooperating agents",
+          "next": "r-azure-multi-agent"
+        }
+      ]
+    },
+    "azure-data": {
+      "question": "Which data platform do you work on?",
+      "answers": [
+        {
+          "label": "Microsoft Fabric",
+          "next": "azure-fabric"
+        },
+        {
+          "label": "Databases and Databricks",
+          "next": "azure-databases"
+        }
+      ]
+    },
+    "azure-fabric": {
+      "question": "What do you do in Fabric?",
+      "answers": [
+        {
+          "label": "Build data engineering pipelines",
+          "next": "r-fabric-engineer"
+        },
+        {
+          "label": "Build analytics solutions",
+          "next": "r-fabric-analytics"
+        }
+      ]
+    },
+    "azure-databases": {
+      "question": "What do you do with databases?",
+      "answers": [
+        {
+          "label": "Administer Azure SQL",
+          "next": "r-sql-admin"
+        },
+        {
+          "label": "Data engineering on Databricks",
+          "next": "r-databricks"
+        },
+        {
+          "label": "Develop AI-enabled database solutions",
+          "next": "r-sql-dev"
+        },
+        {
+          "label": "Build on Azure Cosmos DB",
+          "next": "r-azure-cosmos"
+        }
+      ]
+    },
+    "m365-focus": {
+      "question": "What do you do in Microsoft 365?",
+      "answers": [
+        {
+          "label": "Manage and secure devices (Intune)",
+          "next": "r-m365-endpoint"
+        },
+        {
+          "label": "Run Microsoft Teams",
+          "next": "r-m365-teams"
+        },
+        {
+          "label": "Administer the tenant",
+          "next": "r-m365-admin"
+        }
+      ]
+    },
+    "security-focus": {
+      "question": "What do you do in security?",
+      "answers": [
+        {
+          "label": "Detect and respond to threats",
+          "next": "r-sec-soc"
+        },
+        {
+          "label": "Manage identity and access",
+          "next": "r-sec-identity"
+        },
+        {
+          "label": "Protect information and meet compliance goals",
+          "next": "r-sec-information"
+        },
+        {
+          "label": "Secure cloud and AI workloads",
+          "next": "r-sec-cloud"
+        }
+      ]
+    },
+    "power-focus": {
+      "question": "What do you do on Power Platform?",
+      "answers": [
+        {
+          "label": "Design and configure solutions",
+          "next": "r-power-consultant"
+        },
+        {
+          "label": "Extend it with code and AI",
+          "next": "r-power-developer"
+        },
+        {
+          "label": "Analyze data with Power BI",
+          "next": "r-power-analyst"
+        }
+      ]
+    },
+    "dynamics-focus": {
+      "question": "What do you do in Dynamics 365?",
+      "answers": [
+        {
+          "label": "Customer Service",
+          "next": "r-dyn-service"
+        },
+        {
+          "label": "Finance",
+          "next": "r-dyn-finance"
+        },
+        {
+          "label": "Supply Chain Management",
+          "next": "r-dyn-supply"
+        },
+        {
+          "label": "Sales or Contact Center with AI",
+          "next": "aibusiness-d365"
+        },
+        {
+          "label": "Business Central, or Finance and Operations development",
+          "next": "r-dyn-other"
+        }
+      ]
+    },
+    "aibusiness-focus": {
+      "question": "What do you want to do with AI at work?",
+      "answers": [
+        {
+          "label": "Use AI in my everyday work",
+          "next": "r-ai-professional"
+        },
+        {
+          "label": "Lead AI adoption in my organization",
+          "next": "r-ai-leader"
+        },
+        {
+          "label": "Administer Microsoft 365 Copilot and agents",
+          "next": "r-ai-admin"
+        },
+        {
+          "label": "Use AI in Dynamics 365 sales or contact centers",
+          "next": "aibusiness-d365"
+        },
+        {
+          "label": "Build agents and AI applications",
+          "next": "aibusiness-build"
+        }
+      ]
+    },
+    "aibusiness-d365": {
+      "question": "Which Dynamics 365 area?",
+      "answers": [
+        {
+          "label": "Sales",
+          "next": "r-ai-sales"
+        },
+        {
+          "label": "Contact Center",
+          "next": "r-ai-contact-center"
+        }
+      ]
+    },
+    "aibusiness-build": {
+      "question": "What do you build?",
+      "answers": [
+        {
+          "label": "Agents in Copilot Studio",
+          "next": "r-ai-copilot-studio"
+        },
+        {
+          "label": "Intelligent applications",
+          "next": "r-ai-intelligent-apps"
+        },
+        {
+          "label": "Power Platform solutions extended with code and AI",
+          "next": "r-power-developer"
+        },
+        {
+          "label": "I design agentic AI architectures",
+          "next": "r-ai-architect"
+        }
+      ]
+    },
+    "github-focus": {
+      "question": "What do you do with GitHub?",
+      "answers": [
+        {
+          "label": "I am learning the platform",
+          "next": "r-gh-foundations"
+        },
+        {
+          "label": "Administer a GitHub enterprise",
+          "next": "r-gh-admin"
+        },
+        {
+          "label": "Automate with GitHub Actions",
+          "next": "r-gh-actions"
+        },
+        {
+          "label": "Secure code with Advanced Security",
+          "next": "r-gh-security"
+        },
+        {
+          "label": "Work with GitHub Copilot",
+          "next": "r-gh-copilot"
+        },
+        {
+          "label": "Develop agentic AI systems",
+          "next": "r-gh-agentic"
+        },
+        {
+          "label": "I manage products, programs or operations (no coding)",
+          "next": "r-gh-business"
+        }
+      ]
+    }
+  },
+  "results": {
+    "new-unsure": {
+      "title": "Start with a fundamentals exam",
+      "summary": "Fundamentals exams need no experience and show you what each area is about. Take the one that sounds the most interesting.",
+      "exams": [
+        {
+          "code": "AZ-900",
+          "role": "start"
+        },
+        {
+          "code": "AI-901",
+          "role": "start"
+        },
+        {
+          "code": "DP-900",
+          "role": "start"
+        },
+        {
+          "code": "SC-900",
+          "role": "start"
+        },
+        {
+          "code": "PL-900",
+          "role": "start"
+        },
+        {
+          "code": "GH-900",
+          "role": "start"
+        },
+        {
+          "code": "AB-900",
+          "role": "start"
+        }
+      ],
+      "next": {
+        "label": "Ready for a role-based exam?",
+        "to": "pro-area"
+      }
+    },
+    "new-azure": {
+      "title": "Start with Azure Fundamentals",
+      "summary": "AZ-900 is the Microsoft Azure Fundamentals exam. Add DP-900 for data or AI-901 for AI if those interest you.",
+      "exams": [
+        {
+          "code": "AZ-900",
+          "role": "start"
+        },
+        {
+          "code": "DP-900",
+          "role": "optional"
+        },
+        {
+          "code": "AI-901",
+          "role": "optional"
+        }
+      ],
+      "next": {
+        "label": "Ready for a role-based Azure exam?",
+        "to": "azure-focus"
+      }
+    },
+    "new-m365": {
+      "title": "Start with Microsoft 365 Copilot and Agent Administration Fundamentals",
+      "summary": "AB-900 covers Microsoft 365 Copilot and agent administration basics. The hub has no other Microsoft 365 fundamentals page.",
+      "exams": [
+        {
+          "code": "AB-900",
+          "role": "start"
+        }
+      ],
+      "next": {
+        "label": "Ready for a role-based Microsoft 365 exam?",
+        "to": "m365-focus"
+      }
+    },
+    "new-security": {
+      "title": "Start with Security, Compliance, and Identity Fundamentals",
+      "summary": "SC-900 is the Microsoft Security, Compliance, and Identity Fundamentals exam.",
+      "exams": [
+        {
+          "code": "SC-900",
+          "role": "start"
+        }
+      ],
+      "next": {
+        "label": "Ready for a role-based security exam?",
+        "to": "security-focus"
+      }
+    },
+    "new-power": {
+      "title": "Start with Power Platform Fundamentals",
+      "summary": "PL-900 is the Microsoft Power Platform Fundamentals exam.",
+      "exams": [
+        {
+          "code": "PL-900",
+          "role": "start"
+        }
+      ],
+      "next": {
+        "label": "Ready for a role-based Power Platform exam?",
+        "to": "power-focus"
+      }
+    },
+    "new-dynamics": {
+      "title": "Start with Power Platform Fundamentals",
+      "summary": "The hub has no Dynamics 365 fundamentals page. PL-900 covers the Power Platform that Dynamics 365 apps build on and is a good shared starting point.",
+      "exams": [
+        {
+          "code": "PL-900",
+          "role": "start"
+        }
+      ],
+      "next": {
+        "label": "Ready for a Dynamics 365 exam?",
+        "to": "dynamics-focus"
+      }
+    },
+    "new-aibusiness": {
+      "title": "Start with an AI for business exam",
+      "summary": "AB-730 is the AI Business Professional exam. AB-900 covers Microsoft 365 Copilot and agent administration basics.",
+      "exams": [
+        {
+          "code": "AB-730",
+          "role": "start"
+        },
+        {
+          "code": "AB-900",
+          "role": "optional"
+        }
+      ],
+      "next": {
+        "label": "Looking for something more specific?",
+        "to": "aibusiness-focus"
+      }
+    },
+    "new-github": {
+      "title": "Start with GitHub Foundations",
+      "summary": "GH-900 is the GitHub Foundations exam.",
+      "exams": [
+        {
+          "code": "GH-900",
+          "role": "start"
+        }
+      ],
+      "next": {
+        "label": "Ready for a role-based GitHub exam?",
+        "to": "github-focus"
+      }
+    },
+    "r-azure-admin": {
+      "title": "Azure Administrator",
+      "summary": "AZ-104 is the core exam for people who deploy and manage Azure resources. If you want to design solutions later, AZ-305 is the next step.",
+      "exams": [
+        {
+          "code": "AZ-104",
+          "role": "start"
+        },
+        {
+          "code": "AZ-305",
+          "role": "optional"
+        }
+      ]
+    },
+    "r-windows-server": {
+      "title": "Windows Server administration",
+      "summary": "AZ-802 covers Windows Server administration: identity, storage, networking and hybrid management.",
+      "exams": [
+        {
+          "code": "AZ-802",
+          "role": "start"
+        }
+      ]
+    },
+    "r-azure-network": {
+      "title": "Azure networking",
+      "summary": "AZ-700 covers designing and implementing Azure networking solutions.",
+      "exams": [
+        {
+          "code": "AZ-700",
+          "role": "start"
+        }
+      ]
+    },
+    "r-azure-avd": {
+      "title": "Azure Virtual Desktop",
+      "summary": "AZ-140 is for administrators who configure and operate Azure Virtual Desktop.",
+      "exams": [
+        {
+          "code": "AZ-140",
+          "role": "start"
+        }
+      ]
+    },
+    "r-azure-sap": {
+      "title": "SAP workloads on Azure",
+      "summary": "AZ-120 is for engineers who plan and administer SAP workloads on Azure.",
+      "exams": [
+        {
+          "code": "AZ-120",
+          "role": "start"
+        }
+      ]
+    },
+    "r-azure-devops": {
+      "title": "DevOps on Azure",
+      "summary": "AZ-401 is the replacement for AZ-400, which is retiring.",
+      "exams": [
+        {
+          "code": "AZ-401",
+          "role": "start"
+        }
+      ]
+    },
+    "r-azure-dev": {
+      "title": "Developing cloud solutions on Azure",
+      "summary": "AI-200 covers AI backend development on Azure: containers, data services and secure cloud integration. It follows the retired AZ-204.",
+      "exams": [
+        {
+          "code": "AI-200",
+          "role": "start"
+        }
+      ]
+    },
+    "r-azure-ai-apps": {
+      "title": "AI applications and agents on Azure",
+      "summary": "AI-103 is for developers who build AI applications and agents on Azure.",
+      "exams": [
+        {
+          "code": "AI-103",
+          "role": "start"
+        }
+      ]
+    },
+    "r-azure-mlops": {
+      "title": "Machine learning and generative AI in production",
+      "summary": "AI-300 is for engineers who operationalize machine learning and generative AI solutions.",
+      "exams": [
+        {
+          "code": "AI-300",
+          "role": "start"
+        }
+      ]
+    },
+    "r-azure-multi-agent": {
+      "title": "Multi-agent AI solutions",
+      "summary": "AI-500 is for engineers who design and implement solutions with several cooperating agents.",
+      "exams": [
+        {
+          "code": "AI-500",
+          "role": "start"
+        }
+      ]
+    },
+    "r-azure-cosmos": {
+      "title": "AI applications on Azure Cosmos DB",
+      "summary": "DP-420 is for developers who build AI applications with Azure Cosmos DB.",
+      "exams": [
+        {
+          "code": "DP-420",
+          "role": "start"
+        }
+      ]
+    },
+    "r-fabric-engineer": {
+      "title": "Data engineering in Microsoft Fabric",
+      "summary": "DP-700 is for data engineers who build pipelines and lakehouses in Fabric. DP-600 is the matching analytics exam.",
+      "exams": [
+        {
+          "code": "DP-700",
+          "role": "start"
+        },
+        {
+          "code": "DP-600",
+          "role": "optional"
+        }
+      ]
+    },
+    "r-fabric-analytics": {
+      "title": "Analytics in Microsoft Fabric",
+      "summary": "DP-600 is for analytics engineers who build semantic models and analytics solutions in Fabric. DP-700 is the matching data engineering exam.",
+      "exams": [
+        {
+          "code": "DP-600",
+          "role": "start"
+        },
+        {
+          "code": "DP-700",
+          "role": "optional"
+        }
+      ]
+    },
+    "r-sql-admin": {
+      "title": "Azure SQL administration",
+      "summary": "DP-300 is for database administrators who run Azure SQL.",
+      "exams": [
+        {
+          "code": "DP-300",
+          "role": "start"
+        },
+        {
+          "code": "DP-420",
+          "role": "optional"
+        }
+      ]
+    },
+    "r-databricks": {
+      "title": "Data engineering on Azure Databricks",
+      "summary": "DP-750 is for data engineers who build solutions on Azure Databricks.",
+      "exams": [
+        {
+          "code": "DP-750",
+          "role": "start"
+        }
+      ]
+    },
+    "r-sql-dev": {
+      "title": "AI-enabled database solutions",
+      "summary": "DP-800 is for developers who build AI-enabled solutions on databases.",
+      "exams": [
+        {
+          "code": "DP-800",
+          "role": "start"
+        },
+        {
+          "code": "DP-420",
+          "role": "optional"
+        }
+      ]
+    },
+    "r-m365-endpoint": {
+      "title": "Managing endpoints with Intune",
+      "summary": "MD-102 is for administrators who manage and secure devices with Microsoft Intune.",
+      "exams": [
+        {
+          "code": "MD-102",
+          "role": "start"
+        }
+      ]
+    },
+    "r-m365-teams": {
+      "title": "Microsoft Teams",
+      "summary": "Take MS-700, the Teams administrator exam, first. MS-721 (collaboration communications systems: Teams calling, meetings, devices and rooms) is the next exam on this path.",
+      "exams": [
+        {
+          "code": "MS-700",
+          "role": "start"
+        },
+        {
+          "code": "MS-721",
+          "role": "then"
+        }
+      ]
+    },
+    "r-m365-admin": {
+      "title": "Administering Microsoft 365 and AI services",
+      "summary": "AB-650 covers Microsoft 365 and AI administration: Copilot, agents, security and governance. It replaces MS-102, which is retiring.",
+      "exams": [
+        {
+          "code": "AB-650",
+          "role": "start"
+        }
+      ]
+    },
+    "r-sec-soc": {
+      "title": "Security operations",
+      "summary": "SC-200 is for analysts who detect, investigate and respond to threats. SC-100 is the architect-level exam to take later.",
+      "exams": [
+        {
+          "code": "SC-200",
+          "role": "start"
+        },
+        {
+          "code": "SC-100",
+          "role": "optional"
+        }
+      ]
+    },
+    "r-sec-identity": {
+      "title": "Identity and access",
+      "summary": "SC-300 is for administrators who manage identity and access with Microsoft Entra. SC-100 is the architect-level exam to take later.",
+      "exams": [
+        {
+          "code": "SC-300",
+          "role": "start"
+        },
+        {
+          "code": "SC-100",
+          "role": "optional"
+        }
+      ]
+    },
+    "r-sec-information": {
+      "title": "Information protection and compliance",
+      "summary": "SC-401 covers information security in Microsoft 365: Microsoft Purview, data protection and loss prevention. SC-100 is the architect-level exam to take later.",
+      "exams": [
+        {
+          "code": "SC-401",
+          "role": "start"
+        },
+        {
+          "code": "SC-100",
+          "role": "optional"
+        }
+      ]
+    },
+    "r-sec-cloud": {
+      "title": "Security for cloud and AI workloads",
+      "summary": "SC-500 covers end-to-end security controls for cloud and AI workloads. SC-100 is the architect-level exam to take later.",
+      "exams": [
+        {
+          "code": "SC-500",
+          "role": "start"
+        },
+        {
+          "code": "SC-100",
+          "role": "optional"
+        }
+      ]
+    },
+    "r-power-consultant": {
+      "title": "Building intelligent applications on Power Platform",
+      "summary": "AB-410 is the exam for building intelligent applications on Power Platform. It follows the retired PL-200.",
+      "exams": [
+        {
+          "code": "AB-410",
+          "role": "start"
+        }
+      ]
+    },
+    "r-power-developer": {
+      "title": "Extending Power Platform with code and AI",
+      "summary": "AB-400 is about extending Power Platform with code and AI. It is the renamed PL-400.",
+      "exams": [
+        {
+          "code": "AB-400",
+          "role": "start"
+        }
+      ]
+    },
+    "r-power-analyst": {
+      "title": "Data analysis with Power BI",
+      "summary": "PL-300 is for analysts who model, visualize and share data with Power BI.",
+      "exams": [
+        {
+          "code": "PL-300",
+          "role": "start"
+        }
+      ]
+    },
+    "r-dyn-service": {
+      "title": "Dynamics 365 Customer Service",
+      "summary": "MB-230 is for functional consultants who implement Dynamics 365 Customer Service.",
+      "exams": [
+        {
+          "code": "MB-230",
+          "role": "start"
+        }
+      ]
+    },
+    "r-dyn-finance": {
+      "title": "Dynamics 365 Finance",
+      "summary": "MB-310 is for functional consultants who implement Dynamics 365 Finance.",
+      "exams": [
+        {
+          "code": "MB-310",
+          "role": "start"
+        }
+      ]
+    },
+    "r-dyn-supply": {
+      "title": "Dynamics 365 Supply Chain Management",
+      "summary": "AB-330 covers AI-powered supply chain operations with Dynamics 365 Supply Chain Management. It replaces MB-330, which is retiring.",
+      "exams": [
+        {
+          "code": "AB-330",
+          "role": "start"
+        }
+      ]
+    },
+    "r-dyn-other": {
+      "title": "Not covered on this hub yet",
+      "summary": "The hub has no pages for the Business Central or Finance and Operations exams yet. Microsoft's certification poster lists every Dynamics 365 exam.",
+      "exams": [],
+      "link": {
+        "label": "Microsoft certification poster",
+        "href": "https://aka.ms/TrainCertPoster"
+      }
+    },
+    "r-ai-professional": {
+      "title": "AI Business Professional",
+      "summary": "AB-730 is the AI Business Professional exam, for using AI tools in everyday work. No coding is needed.",
+      "exams": [
+        {
+          "code": "AB-730",
+          "role": "start"
+        }
+      ]
+    },
+    "r-ai-leader": {
+      "title": "AI Transformation Leader",
+      "summary": "AB-731 is the AI Transformation Leader exam, for leading AI adoption in an organization. No coding is needed.",
+      "exams": [
+        {
+          "code": "AB-731",
+          "role": "start"
+        }
+      ]
+    },
+    "r-ai-admin": {
+      "title": "Microsoft 365 Copilot and agent administration",
+      "summary": "AB-900 covers how to administer Microsoft 365 Copilot and agents.",
+      "exams": [
+        {
+          "code": "AB-900",
+          "role": "start"
+        },
+        {
+          "code": "AB-650",
+          "role": "optional"
+        }
+      ]
+    },
+    "r-ai-sales": {
+      "title": "AI in Dynamics 365 Sales",
+      "summary": "AB-210 is about accelerating sales pipelines with AI in Dynamics 365.",
+      "exams": [
+        {
+          "code": "AB-210",
+          "role": "start"
+        }
+      ]
+    },
+    "r-ai-contact-center": {
+      "title": "AI in Dynamics 365 Contact Center",
+      "summary": "AB-250 is about transforming contact center experiences with AI in Dynamics 365.",
+      "exams": [
+        {
+          "code": "AB-250",
+          "role": "start"
+        }
+      ]
+    },
+    "r-ai-copilot-studio": {
+      "title": "Agents in Copilot Studio",
+      "summary": "AB-620 is for builders who design and build integrated AI solutions in Copilot Studio.",
+      "exams": [
+        {
+          "code": "AB-620",
+          "role": "start"
+        }
+      ]
+    },
+    "r-ai-intelligent-apps": {
+      "title": "Intelligent applications",
+      "summary": "AB-410 is for builders of intelligent applications.",
+      "exams": [
+        {
+          "code": "AB-410",
+          "role": "start"
+        }
+      ]
+    },
+    "r-ai-architect": {
+      "title": "Agentic AI architecture",
+      "summary": "AB-100 is for architects who design agentic AI business solutions.",
+      "exams": [
+        {
+          "code": "AB-100",
+          "role": "start"
+        }
+      ]
+    },
+    "r-gh-foundations": {
+      "title": "GitHub Foundations",
+      "summary": "GH-900 is the GitHub Foundations exam.",
+      "exams": [
+        {
+          "code": "GH-900",
+          "role": "start"
+        }
+      ]
+    },
+    "r-gh-admin": {
+      "title": "GitHub Enterprise Administrator",
+      "summary": "GH-100 is for administrators who run a GitHub enterprise.",
+      "exams": [
+        {
+          "code": "GH-100",
+          "role": "start"
+        }
+      ]
+    },
+    "r-gh-actions": {
+      "title": "GitHub Actions",
+      "summary": "GH-200 is for engineers who automate builds and deployments with GitHub Actions.",
+      "exams": [
+        {
+          "code": "GH-200",
+          "role": "start"
+        }
+      ]
+    },
+    "r-gh-security": {
+      "title": "GitHub Advanced Security",
+      "summary": "GH-500 is for engineers who secure code with GitHub Advanced Security.",
+      "exams": [
+        {
+          "code": "GH-500",
+          "role": "start"
+        }
+      ]
+    },
+    "r-gh-copilot": {
+      "title": "GitHub Copilot",
+      "summary": "GH-300 is for developers who work with GitHub Copilot.",
+      "exams": [
+        {
+          "code": "GH-300",
+          "role": "start"
+        }
+      ]
+    },
+    "r-gh-agentic": {
+      "title": "Developing agentic AI systems",
+      "summary": "GH-600 is for developers who build agentic AI systems with GitHub.",
+      "exams": [
+        {
+          "code": "GH-600",
+          "role": "start"
+        }
+      ]
+    },
+    "r-gh-business": {
+      "title": "Agentic AI for operational efficiency",
+      "summary": "GH-700 is the non-technical exam for product managers, program managers and business analysts who want to improve operations with agentic AI.",
+      "exams": [
+        {
+          "code": "GH-700",
+          "role": "start"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,131 @@
+---
+import { getCollection } from "astro:content";
+import { CardGrid, LinkButton, LinkCard } from "@components/docs";
+import { visibleExamStatuses } from "../data_files/exam-status.mjs";
+import {
+  examAreaOf,
+  examHref,
+  panelId,
+  readRoadmap,
+  roadmapProblems,
+} from "../utils/cert-roadmap.mjs";
+
+// The certification roadmap: one question per screen. Every question and every result is a section of the page and
+// an answer is a link to the section it leads to (`#roadmap-<id>`), so the page works without JavaScript and
+// each step has an address of its own, which the browser's back button follows. The decision logic is the data
+// file `src/data_files/cert-roadmap.json`; the exam pages, names and statuses come from the content.
+const roadmap = readRoadmap();
+const problems = roadmapProblems(roadmap);
+if (problems.length > 0)
+  throw new Error(`cert-roadmap.json is not sound: ${problems.join("; ")}`);
+
+const docs = await getCollection("docs");
+const statuses = Object.assign({}, ...Object.values(visibleExamStatuses()));
+const STATUS_WORDS: Record<string, string> = {
+  BETA: "beta",
+  RETIRING: "retiring",
+};
+const examDescription = (code: string, role: string) => {
+  const area = examAreaOf(code);
+  const entry = docs.find((doc) => doc.id === `${area}/${code.toLowerCase()}`);
+  if (!entry) throw new Error(`The roadmap names ${code}, which has no page`);
+  const name =
+    typeof entry.data.examName === "string"
+      ? entry.data.examName
+      : entry.data.title;
+  const status = STATUS_WORDS[statuses[code]?.text ?? ""];
+  const prefix =
+    role === "optional"
+      ? "Optional next step: "
+      : role === "then"
+        ? "Then: "
+        : "";
+  return `${prefix}${name}${status ? ` (${status})` : ""}`;
+};
+const start = panelId(roadmap.start);
+---
+
+<div class="roadmap not-prose my-6" data-roadmap>
+  {Object.entries(roadmap.steps).map(([id, step]) => (
+    <section
+      id={panelId(id)}
+      class="roadmap-panel"
+      data-start={id === roadmap.start ? "" : undefined}
+      aria-labelledby={`${panelId(id)}-title`}
+    >
+      <h2 id={`${panelId(id)}-title`} class="roadmap-question">
+        {step.question}
+      </h2>
+      {step.help && <p class="text-muted-foreground mb-4 text-sm">{step.help}</p>}
+      <CardGrid>
+        {step.answers.map((answer) => (
+          <LinkCard title={answer.label} href={`#${panelId(answer.next)}`} />
+        ))}
+      </CardGrid>
+      {id !== roadmap.start && (
+        <p class="mt-4">
+          <LinkButton href={`#${start}`} variant="ghost" size="sm">
+            Start over
+          </LinkButton>
+        </p>
+      )}
+    </section>
+  ))}
+  {Object.entries(roadmap.results).map(([id, result]) => (
+    <section
+      id={panelId(id)}
+      class="roadmap-panel"
+      aria-labelledby={`${panelId(id)}-title`}
+    >
+      <p class="text-muted-foreground mb-1 text-sm font-semibold">
+        Your roadmap
+      </p>
+      <h2 id={`${panelId(id)}-title`} class="roadmap-question">
+        {result.title}
+      </h2>
+      <p>{result.summary}</p>
+      {result.exams.length > 0 && (
+        <CardGrid>
+          {result.exams.map((exam) => (
+            <LinkCard
+              title={exam.code}
+              href={examHref(exam.code)}
+              description={examDescription(exam.code, exam.role)}
+            />
+          ))}
+        </CardGrid>
+      )}
+      {result.link && (
+        <LinkCard title={result.link.label} href={result.link.href} />
+      )}
+      <p class="mt-4 flex flex-wrap gap-2">
+        {result.next && (
+          <LinkButton href={`#${panelId(result.next.to)}`} variant="primary" size="sm">
+            {result.next.label}
+          </LinkButton>
+        )}
+        <LinkButton href={`#${start}`} variant="secondary" size="sm">
+          Start over
+        </LinkButton>
+      </p>
+    </section>
+  ))}
+</div>
+
+<style>
+  .roadmap-panel {
+    display: none;
+    scroll-margin-top: 6rem;
+  }
+  .roadmap-panel:target,
+  .roadmap:not(:has(.roadmap-panel:target)) .roadmap-panel[data-start] {
+    display: block;
+  }
+  .roadmap-question {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+</style>
