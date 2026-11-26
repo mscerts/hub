@@ -3,7 +3,7 @@
   "steps": {
     "experience": {
       "question": "How much do you already work with Microsoft technology?",
-      "help": "Pick the answer that fits best. You can go back at any time with your browser's back button.",
+      "help": "Pick the answer that fits best. You can go back and change an answer at any time.",
       "answers": [
         {
           "label": "I am new to it",
@@ -30,7 +30,7 @@
           "next": "retired-area"
         },
         {
-          "label": "My employer or a Microsoft partner needs certain certifications",
+          "label": "My company is a Microsoft partner and needs certifications",
           "next": "r-partner"
         }
       ]
@@ -57,7 +57,7 @@
           "next": "new-azure"
         },
         {
-          "label": "Microsoft 365 and Copilot",
+          "label": "Administering Microsoft 365 and Copilot",
           "next": "r-fund-m365"
         },
         {
@@ -394,7 +394,7 @@
           "next": "r-dyn-supply"
         },
         {
-          "label": "Business Central, or Finance and Operations development",
+          "label": "Business Central, Finance and Operations development or another Dynamics 365 app",
           "next": "r-dyn-other"
         }
       ]
@@ -456,12 +456,12 @@
           "next": "r-azure-multi-agent"
         },
         {
-          "label": "Networks on Azure",
-          "next": "r-azure-network"
+          "label": "A specialist Azure workload (networking or SAP)",
+          "next": "arch-azure-special"
         },
         {
-          "label": "SAP landscapes on Azure",
-          "next": "r-azure-sap"
+          "label": "Something else",
+          "next": "r-architect-other"
         }
       ]
     },
@@ -495,7 +495,7 @@
     },
     "arch-ai-prereq": {
       "question": "Do you already hold a certification that AB-100 accepts?",
-      "help": "On this hub these are the certifications of AB-210, AB-250, AB-400, AB-410, AB-620, AI-103, AI-300, MB-230 and MB-310. Microsoft's list also has a few other Dynamics 365 certifications.",
+      "help": "On this hub these are the certifications of AB-210, AB-250, AB-400 (formerly PL-400), AB-410, AB-620, AI-103, AI-300, MB-230, MB-310 and MB-330. Microsoft's list also has MB-500 (Dynamics 365: Finance and Operations Apps Developer Associate), MB-800 (Dynamics 365 Business Central Functional Consultant Associate) and MB-820 (Dynamics 365 Business Central Developer Associate), which the hub has no pages for.",
       "answers": [
         {
           "label": "Yes",
@@ -625,12 +625,12 @@
           "next": "r-windows-server"
         },
         {
-          "label": "AI-102 (Azure AI engineer)",
-          "next": "r-azure-ai-apps"
+          "label": "AI-102, AI-900 or DP-100 (Azure AI and data science)",
+          "next": "retired-azure-ai"
         },
         {
-          "label": "AI-900 (Azure AI fundamentals)",
-          "next": "r-fund-ai"
+          "label": "Another exam",
+          "next": "r-retired-other"
         }
       ]
     },
@@ -660,6 +660,40 @@
         {
           "label": "MB-330 (Dynamics 365 Supply Chain Management)",
           "next": "r-dyn-supply"
+        },
+        {
+          "label": "Another exam",
+          "next": "r-retired-other"
+        }
+      ]
+    },
+    "arch-azure-special": {
+      "question": "Which workload?",
+      "answers": [
+        {
+          "label": "Networks on Azure",
+          "next": "r-azure-network"
+        },
+        {
+          "label": "SAP landscapes on Azure",
+          "next": "r-azure-sap"
+        }
+      ]
+    },
+    "retired-azure-ai": {
+      "question": "Which exam was it?",
+      "answers": [
+        {
+          "label": "AI-102 (Azure AI engineer)",
+          "next": "r-azure-ai-apps"
+        },
+        {
+          "label": "DP-100 (Azure data scientist)",
+          "next": "r-azure-mlops"
+        },
+        {
+          "label": "AI-900 (Azure AI fundamentals)",
+          "next": "r-fund-ai"
         }
       ]
     }
@@ -1261,7 +1295,7 @@
     },
     "r-dyn-other": {
       "title": "Not covered on this hub yet",
-      "summary": "The hub has no pages for the Business Central or Finance and Operations exams yet. Microsoft's certification poster lists every Dynamics 365 exam.",
+      "summary": "The hub has no pages for the other Dynamics 365 exams yet, such as Business Central or Finance and Operations development (MB-500). Microsoft's certification poster lists every Dynamics 365 exam.",
       "exams": [],
       "link": {
         "label": "Microsoft certification poster",
@@ -1570,6 +1604,19 @@
           "role": "start"
         }
       ]
+    },
+    "r-architect-other": {
+      "title": "No architect exam for this area on the hub",
+      "summary": "The hub has architect-level exam pages for Azure (AZ-305), security (SC-100) and AI and agent solutions (AB-100). For any other area, Microsoft's certification poster lists every certification, or you can pick an exam by your role.",
+      "exams": [],
+      "link": {
+        "label": "Microsoft certification poster",
+        "href": "https://aka.ms/TrainCertPoster"
+      },
+      "next": {
+        "label": "Pick an exam by your role",
+        "to": "pro-area"
+      }
     }
   }
 }

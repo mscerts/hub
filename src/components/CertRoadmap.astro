@@ -73,6 +73,7 @@ const examDescription = (code: string, role: string) => {
 <div
   class="roadmap border-border bg-card/40 not-prose my-6 rounded-xl border p-4 sm:p-6"
   data-roadmap
+  data-pagefind-ignore
   data-prefix={prefix}
   data-start={start}
   data-history={history ? "true" : "false"}
@@ -96,8 +97,8 @@ const examDescription = (code: string, role: string) => {
       aria-labelledby={`${idOf(id)}-title`}
     >
       <p class="roadmap-kicker" data-roadmap-kicker></p>
-      <h2 id={`${idOf(id)}-title`} class="roadmap-heading" tabindex="-1">
-        {step.question}
+      <h2 class="roadmap-heading" tabindex="-1">
+        <span id={`${idOf(id)}-title`}>{step.question}</span>
       </h2>
       {step.help && <p class="roadmap-help">{step.help}</p>}
       <CardGrid>
@@ -133,8 +134,8 @@ const examDescription = (code: string, role: string) => {
       aria-labelledby={`${idOf(id)}-title`}
     >
       <p class="roadmap-kicker roadmap-kicker--result">Your roadmap</p>
-      <h2 id={`${idOf(id)}-title`} class="roadmap-heading" tabindex="-1">
-        {result.title}
+      <h2 class="roadmap-heading" tabindex="-1">
+        <span id={`${idOf(id)}-title`}>{result.title}</span>
       </h2>
       <p>{result.summary}</p>
       {result.exams.length > 0 && (
@@ -181,7 +182,9 @@ const examDescription = (code: string, role: string) => {
     scroll-margin-top: 6rem;
   }
   /* Without the script: the section the address points at, else the first question */
-  .roadmap:not([data-enhanced]) .roadmap-panel:target,
+  .roadmap:not([data-enhanced]) .roadmap-panel:target {
+    display: block;
+  }
   .roadmap:not([data-enhanced]):not(:has(.roadmap-panel:target))
     .roadmap-panel[data-start] {
     display: block;
@@ -235,7 +238,7 @@ const examDescription = (code: string, role: string) => {
     color: var(--color-muted-foreground);
   }
   .roadmap-trail :global(span + span)::before {
-    content: "\203A";
+    content: "\203A" / "";
     margin-right: 0.5rem;
   }
   .roadmap-trail :global(.roadmap-trail-last) {
@@ -276,7 +279,10 @@ const examDescription = (code: string, role: string) => {
   // The wizard. Everything it needs is in the markup: the sections are `[data-roadmap-panel]`, an answer is a link
   // with `data-roadmap-answer="<next id>"` and `data-label`, "Start over" is `[data-roadmap-reset]`, and the
   // result's follow-up button `[data-roadmap-jump="<id>"]`. Several roadmaps can be on one page; only one of
-  // them should use the address and the history (`data-history="true"`).
+  // them should use the address and the history (`data-history="true"`). The rules for addresses, saved trails
+  // and the shortest trail to a step are in src/utils/cert-roadmap-nav.mjs, which has tests.
+  import { idFromHash, trailTo, validTrail } from "../utils/cert-roadmap-nav.mjs";
+
   type Trail = { id: string; label: string }[];
   type Saved = { roadmap: string; trail: Trail; pushed: boolean };
 
@@ -290,7 +296,7 @@ const examDescription = (code: string, role: string) => {
       .forEach((panel) => panels.set(panel.dataset.roadmapPanel ?? "", panel));
     if (!panels.has(start)) return;
 
-    // what each question leads to: for the path of a visitor who arrives in the middle (a shared address)
+    // what each question leads to: for the trail of a visitor who arrives in the middle (a shared address)
     const edges = new Map<string, { to: string; label: string }[]>();
     panels.forEach((panel, id) => {
       edges.set(
@@ -303,26 +309,8 @@ const examDescription = (code: string, role: string) => {
         ),
       );
     });
-    const pathTo = (target: string): Trail => {
-      const seen = new Set([start]);
-      const queue: Trail[] = [[{ id: start, label: "" }]];
-      while (queue.length > 0) {
-        const trail = queue.shift() as Trail;
-        const last = trail[trail.length - 1];
-        if (last.id === target) return trail;
-        for (const edge of edges.get(last.id) ?? []) {
-          if (seen.has(edge.to) || !panels.has(edge.to)) continue;
-          seen.add(edge.to);
-          queue.push([...trail, { id: edge.to, label: edge.label }]);
-        }
-      }
-      return target === start
-        ? [{ id: start, label: "" }]
-        : [
-            { id: start, label: "" },
-            { id: target, label: "" },
-          ];
-    };
+    const pathTo = (target: string): Trail =>
+      trailTo(edges, start, target, panels);
 
     const bar = root.querySelector<HTMLElement>("[data-roadmap-trail]");
     const back = root.querySelector<HTMLButtonElement>("[data-roadmap-back]");
@@ -332,14 +320,20 @@ const examDescription = (code: string, role: string) => {
     ).matches;
     let trail: Trail = [{ id: start, label: "" }];
     let pushed = false;
+    let focusAfterPop = false;
 
-    const render = (focus: boolean) => {
+    // `focus`: the visitor acted on the wizard (move the focus to the new question); `announce`: tell a screen
+    // reader about the new question when the focus does not move (the browser's back and forward buttons)
+    // `defer`: after a traversal of the history the browser scrolls to the fragment and drops the focus, so the
+    // focus is set once that has happened
+    const render = (focus: boolean, announce = false, defer = false) => {
       const current = trail[trail.length - 1].id;
-      panels.forEach((panel, id) => {
-        if (id === current) panel.setAttribute("data-active", "");
-        else panel.removeAttribute("data-active");
+      const panel = panels.get(current);
+      if (!panel) return;
+      panels.forEach((other, id) => {
+        if (id === current) other.setAttribute("data-active", "");
+        else other.removeAttribute("data-active");
       });
-      const panel = panels.get(current) as HTMLElement;
       const kicker = panel.querySelector<HTMLElement>(
         ".roadmap-kicker:not(.roadmap-kicker--result)",
       );
@@ -359,9 +353,10 @@ const examDescription = (code: string, role: string) => {
         );
       }
       const heading = panel.querySelector<HTMLElement>(".roadmap-heading");
-      if (live && heading) live.textContent = heading.textContent;
+      if (live) live.textContent = announce && heading ? (heading.textContent ?? "") : "";
       if (focus && heading) {
-        heading.focus({ preventScroll: true });
+        if (defer) setTimeout(() => heading.focus({ preventScroll: true }), 0);
+        else heading.focus({ preventScroll: true });
         // no jump: scroll only when the top of the wizard is out of sight
         const top = root.getBoundingClientRect().top;
         if (top < 0 || top > window.innerHeight * 0.5)
@@ -372,15 +367,20 @@ const examDescription = (code: string, role: string) => {
       }
     };
 
-    const saved = (): Saved => ({ roadmap: prefix, trail, pushed });
     const writeHistory = (mode: "push" | "replace") => {
       if (!useHistory) return;
       const hash = `#${prefix}-${trail[trail.length - 1].id}`;
       if (mode === "push") {
         pushed = true;
-        history.pushState(saved(), "", hash);
+        history.pushState({ roadmap: prefix, trail, pushed } as Saved, "", hash);
       } else {
-        history.replaceState(saved(), "", hash);
+        // the entry keeps whether it was pushed by the wizard
+        const was = (history.state as Saved | null)?.pushed === true;
+        history.replaceState(
+          { roadmap: prefix, trail, pushed: was } as Saved,
+          "",
+          hash,
+        );
       }
     };
 
@@ -390,15 +390,15 @@ const examDescription = (code: string, role: string) => {
       writeHistory("push");
       render(true);
     };
-    const jump = (id: string) => {
-      if (!panels.has(id)) return;
-      trail = pathTo(id);
+    const reset = () => {
+      trail = [{ id: start, label: "" }];
       writeHistory("push");
       render(true);
     };
     const goBack = () => {
       if (trail.length < 2) return;
-      if (useHistory && pushed && (history.state as Saved | null)?.pushed) {
+      if (useHistory && (history.state as Saved | null)?.pushed) {
+        focusAfterPop = true;
         history.back();
         return;
       }
@@ -419,17 +419,21 @@ const examDescription = (code: string, role: string) => {
         return;
       const target = event.target as Element | null;
       const answer = target?.closest<HTMLElement>("[data-roadmap-answer]");
-      const reset = target?.closest<HTMLElement>("[data-roadmap-reset]");
+      const restart = target?.closest<HTMLElement>("[data-roadmap-reset]");
       const next = target?.closest<HTMLElement>("[data-roadmap-jump]");
       if (answer) {
         event.preventDefault();
         forward(answer.dataset.roadmapAnswer ?? "", answer.dataset.label ?? "");
-      } else if (reset) {
+      } else if (restart) {
         event.preventDefault();
-        if (trail.length > 1) jump(start);
+        if (trail.length > 1) reset();
       } else if (next) {
+        // the visitor keeps the trail they gave: the follow-up is one more step on it
         event.preventDefault();
-        jump(next.dataset.roadmapJump ?? "");
+        forward(
+          next.dataset.roadmapJump ?? "",
+          (next.textContent ?? "").replace(/\s+/g, " ").trim(),
+        );
       } else if (target?.closest("[data-roadmap-back]")) {
         event.preventDefault();
         goBack();
@@ -439,24 +443,32 @@ const examDescription = (code: string, role: string) => {
     if (useHistory) {
       window.addEventListener("popstate", () => {
         const state = history.state as Saved | null;
-        const hash = location.hash.slice(1);
-        if (state?.roadmap === prefix && state.trail?.length) {
-          trail = state.trail;
-          pushed = state.pushed;
-        } else if (hash.startsWith(`${prefix}-`)) {
-          trail = pathTo(hash.slice(prefix.length + 1));
-        } else {
+        const saved =
+          state?.roadmap === prefix
+            ? validTrail(state.trail, start, panels)
+            : null;
+        const named = idFromHash(location.hash, prefix, panels);
+        if (saved) {
+          trail = saved;
+          pushed = state?.pushed === true;
+        } else if (named) {
+          trail = pathTo(named);
+          pushed = false;
+        } else if (location.hash === "" || location.hash === "#") {
           trail = [{ id: start, label: "" }];
+          pushed = false;
+        } else {
+          // an address that is not the roadmap's (the skip link, the table of contents): leave the wizard as it is
+          return;
         }
-        render(false);
+        const focus = focusAfterPop;
+        focusAfterPop = false;
+        render(focus, !focus, focus);
       });
-      const hash = location.hash.slice(1);
-      if (hash.startsWith(`${prefix}-`)) {
-        const id = hash.slice(prefix.length + 1);
-        if (panels.has(id)) {
-          trail = pathTo(id);
-          writeHistory("replace");
-        }
+      const named = idFromHash(location.hash, prefix, panels);
+      if (named) {
+        trail = pathTo(named);
+        writeHistory("replace");
       }
     }
 

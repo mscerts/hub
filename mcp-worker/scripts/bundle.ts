@@ -10,7 +10,11 @@ import matter from "gray-matter";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { assertSafeBundledContent } from "./content-safety.ts";
 import { productsForExam, readProducts } from "../../src/utils/measureup-bundles.mjs";
-import { readRoadmap, roadmapOutline } from "../../src/utils/cert-roadmap.mjs";
+import {
+  describeExam,
+  readRoadmap,
+  roadmapOutline,
+} from "../../src/utils/cert-roadmap.mjs";
 import type { BlogPost, ContentBundle, DocPage, ResourceLink } from "../src/types.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -206,7 +210,11 @@ export function expandCertRoadmap(src: string): string {
   const roadmap = readRoadmap(REPO_ROOT);
   return src.replace(/<CertRoadmap\b([^>]*)\/>/g, (_tag, attrs: string) =>
     lines(
-      roadmapOutline(roadmap, undefined, attrVal(attrs, "start") ?? roadmap.start),
+      roadmapOutline(
+        roadmap,
+        (code: string) => describeExam(code, REPO_ROOT),
+        /(?:^|\s)start="([^"]*)"/.exec(attrs)?.[1] ?? roadmap.start,
+      ),
       0,
     ).join("\n"),
   );

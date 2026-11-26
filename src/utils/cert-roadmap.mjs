@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { AREA_BY_PREFIX } from "../../scripts/lib/areas.mjs";
+import { visibleExamStatuses } from "../data_files/exam-status.mjs";
 
 // The certification roadmap (`/certs/guide/roadmap/`) is a decision tree kept in `src/data_files/cert-roadmap.json`:
 // `steps` are questions whose answers lead to another step or to a result, and every result names the exams
@@ -87,16 +88,13 @@ export function roadmapProblems(roadmap) {
     if (id in results) problems.push(`"${id}" is both a step and a result`);
   if (!(start in steps)) problems.push(`The start "${start}" is not a step`);
 
-  const reached = new Set([start]);
+  // what the wizard can show from the start: through the answers and the "next" button of a result
+  const reached = start in steps ? reachableIds(roadmap) : new Set();
   const visiting = new Set();
   const visit = (id, trail) => {
-    if (id in results) {
-      reached.add(id);
-      return;
-    }
+    if (id in results) return;
     const step = steps[id];
     if (!step) return;
-    reached.add(id);
     if (visiting.has(id)) {
       problems.push(`The answers loop: ${[...trail, id].join(" -> ")}`);
       return;
@@ -111,9 +109,13 @@ export function roadmapProblems(roadmap) {
     if (!step.question?.trim()) problems.push(`Step "${id}" has no question`);
     if (!Array.isArray(step.answers) || step.answers.length < 2)
       problems.push(`Step "${id}" needs at least two answers`);
+    const labels = new Set();
     for (const answer of step.answers ?? []) {
       if (!answer.label?.trim())
         problems.push(`Step "${id}" has an answer without a label`);
+      else if (labels.has(answer.label))
+        problems.push(`Step "${id}" has the answer "${answer.label}" twice`);
+      labels.add(answer.label);
       if (!(answer.next in steps) && !(answer.next in results))
         problems.push(`Step "${id}": "${answer.next}" does not exist`);
     }
@@ -123,6 +125,10 @@ export function roadmapProblems(roadmap) {
     if (!result.title?.trim()) problems.push(`Result "${id}" has no title`);
     if (!result.summary?.trim()) problems.push(`Result "${id}" has no summary`);
     if (!reached.has(id)) problems.push(`Result "${id}" cannot be reached`);
+    if (!Array.isArray(result.exams)) {
+      problems.push(`Result "${id}" has no exams list`);
+      continue;
+    }
     if (result.exams.length === 0 && !result.link)
       problems.push(`Result "${id}" names no exam and has no link`);
     if (
@@ -132,12 +138,23 @@ export function roadmapProblems(roadmap) {
       problems.push(`Result "${id}" has no exam to start with`);
     const seen = new Set();
     for (const exam of result.exams) {
+      if (!["start", "then", "optional"].includes(exam.role))
+        problems.push(
+          `Result "${id}": ${exam.code} has the role "${exam.role}"`,
+        );
       if (seen.has(exam.code))
         problems.push(`Result "${id}" names ${exam.code} twice`);
       seen.add(exam.code);
       if (!examAreaOf(exam.code))
         problems.push(`Result "${id}": no area for ${exam.code}`);
     }
+    if (
+      result.link &&
+      !/^(https:\/\/\S+|\/certs\/[a-z0-9\-/]+\/)$/.test(result.link.href ?? "")
+    )
+      problems.push(
+        `Result "${id}": the link "${result.link.href}" is not an https address or a lowercase /certs/ path with a trailing slash`,
+      );
     if (result.next && !(result.next.to in steps))
       problems.push(`Result "${id}": "${result.next.to}" is not a step`);
   }
@@ -174,6 +191,10 @@ export function roadmapOutline(
       });
     }
     if (item.link) lines.push({ text: item.link.label, href: item.link.href });
+    if (item.next)
+      lines.push({
+        text: `${item.next.label} Continue with: ${roadmap.steps[item.next.to]?.question ?? item.next.to}`,
+      });
     return lines;
   };
   // a question several answers lead to is written out once, where it first appears
@@ -185,16 +206,46 @@ export function roadmapOutline(
     written.add(id);
     return {
       text: item.question,
-      children: item.answers.map((answer) => ({
-        text: answer.label,
-        children:
-          answer.next in roadmap.results
-            ? result(answer.next)
-            : [step(answer.next)],
-      })),
+      children: [
+        ...(item.help ? [{ text: `Note: ${item.help}` }] : []),
+        ...item.answers.map((answer) => ({
+          text: answer.label,
+          children:
+            answer.next in roadmap.results
+              ? result(answer.next)
+              : [step(answer.next)],
+        })),
+      ],
     };
   };
   if (!(start in roadmap.steps))
     throw new Error(`The roadmap has no step "${start}" to start from`);
   return [step(start)];
+}
+
+/**
+ * The name and the badge of an exam as the exam page gives them, "Microsoft Azure Administrator" or
+ * "Designing and Implementing Microsoft Agentic DevOps Solutions (beta)", for the Markdown copy and the MCP bundle
+ * (the page itself reads the same from the content collection). Empty when the page cannot be read.
+ * @param {string} code
+ * @returns {string}
+ */
+export function describeExam(code, root = process.cwd()) {
+  const area = examAreaOf(code);
+  if (!area) return "";
+  let text;
+  try {
+    text = readFileSync(
+      path.resolve(root, "src", "content", "docs", area, `${code}.mdx`),
+      "utf8",
+    );
+  } catch {
+    return "";
+  }
+  const name = /^examName:\s*"?(.*?)"?\s*$/m.exec(text)?.[1] ?? "";
+  const status = Object.assign({}, ...Object.values(visibleExamStatuses()))[
+    code
+  ]?.text;
+  const word = { BETA: "beta", RETIRING: "retiring" }[status ?? ""];
+  return name ? `${name}${word ? ` (${word})` : ""}` : "";
 }

@@ -41,7 +41,7 @@ describe("bundle extraction helpers", () => {
   test("writes the certification roadmap into the page as a nested list", () => {
     const body = expandCertRoadmap("Intro\n\n<CertRoadmap />\n");
     assert.match(body, /^- How much do you already work with Microsoft technology\?/m);
-    assert.match(body, /AZ-104 \(\/certs\/azure\/az-104\/\)/);
+    assert.match(body, /AZ-104: Microsoft Azure Administrator \(\/certs\/azure\/az-104\/\)/);
     assert.equal(expandCertRoadmap("no roadmap"), "no roadmap");
     const branch = expandCertRoadmap('<CertRoadmap start="security-focus" history />');
     assert.match(branch, /^- What do you do in security\?/);

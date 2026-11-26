@@ -10,7 +10,7 @@ import {
   examCodeOfEntryId,
   productsForExam,
 } from "../measureup-bundles.mjs";
-import { readRoadmap, roadmapOutline } from "../cert-roadmap.mjs";
+import { describeExam, readRoadmap, roadmapOutline } from "../cert-roadmap.mjs";
 import remarkCallouts from "./remark-callouts.mjs";
 
 type MdxAttribute = {
@@ -451,7 +451,7 @@ export async function serializeMdx(
               toList(
                 roadmapOutline(
                   roadmap,
-                  undefined,
+                  describeExam,
                   attributeValue(node, "start") ?? roadmap.start,
                 ),
               ),
