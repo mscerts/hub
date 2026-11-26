@@ -129,6 +129,59 @@ test("pairTasks: same, moved, reworded, added and removed tasks are told apart",
   assert.equal(pairs.at(-1).old.text, "Implement database projects");
 });
 
+test("pairTasks: what is left over in a skill group that kept its other tasks is paired by position, when the group was renamed and the words share one", () => {
+  const course = courseOf(V1);
+  const lifecycle = (d) => d[0].groups[1];
+  // the group is renamed and one task is reworded beyond what the words can pair
+  const renamed = pairTasks(
+    course,
+    upcoming((d) => {
+      lifecycle(d).title = "Manage the application lifecycle";
+      lifecycle(d).tasks[1] = "Implement an SQL repository";
+    }),
+  );
+  const pair = renamed.find(
+    (p) => p.new?.text === "Implement an SQL repository",
+  );
+  assert.equal(pair.kind, "reworded");
+  assert.equal(pair.old.text, "Implement database projects");
+  assert.ok(pair.similarity > 0 && pair.similarity < 0.55);
+  assert.equal(renamed.filter((p) => p.kind === "added").length, 0);
+  assert.equal(renamed.filter((p) => p.kind === "removed").length, 0);
+  // in a group that kept its title nothing is guessed: a removed and an added task stay two tasks
+  const same = pairTasks(
+    course,
+    upcoming((d) => {
+      lifecycle(d).tasks[1] = "Implement an SQL repository";
+    }),
+  );
+  assert.equal(
+    same.find((p) => p.new?.text === "Implement an SQL repository").kind,
+    "added",
+  );
+  // no word in common: still one task added and one removed
+  const unrelated = pairTasks(
+    course,
+    upcoming((d) => {
+      lifecycle(d).title = "Manage the application lifecycle";
+      lifecycle(d).tasks[1] = "Zzz qqq";
+    }),
+  );
+  assert.equal(unrelated.find((p) => p.new?.text === "Zzz qqq").kind, "added");
+  assert.equal(unrelated.filter((p) => p.kind === "removed").length, 1);
+  // a different number of tasks left on each side: nothing is guessed
+  const uneven = pairTasks(
+    course,
+    upcoming((d) => {
+      lifecycle(d).title = "Manage the application lifecycle";
+      lifecycle(d).tasks[1] = "Implement an SQL repository";
+      lifecycle(d).tasks.push("Implement another thing");
+    }),
+  );
+  assert.equal(uneven.filter((p) => p.kind === "added").length, 2);
+  assert.equal(uneven.filter((p) => p.kind === "removed").length, 1);
+});
+
 test("planNext: a small change is an update; a rewrite, a gone domain or a new group is not patched", () => {
   const course = courseOf(V1);
   const update = planNext({ course, guide: upcoming(edits) });

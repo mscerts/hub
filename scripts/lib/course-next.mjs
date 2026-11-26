@@ -114,6 +114,45 @@ export function pairTasks(course, guide) {
       similarity: score,
     });
   }
+  // 3. a skill group that kept most of its tasks under a new title and has as many tasks left over on each side: what is left is paired by position, as a reworded task, when each pair
+  // shares at least one word ("Create an agent flow" and "Create a workflow": a rename the words alone miss).
+  // The pair carries a low similarity, so a person confirms it before its picks are trusted.
+  const groupOf = (row) => `${row.domain}\u0000${row.group}`;
+  const claimed = new Set();
+  const newGroups = [...new Set(news.map(groupOf))];
+  for (const newGroup of newGroups) {
+    const votes = new Map(); // old group -> how many tasks of this new group came from it
+    for (const n of news) {
+      const pair = pairs.get(n.key);
+      if (groupOf(n) === newGroup && pair)
+        votes.set(groupOf(pair.old), (votes.get(groupOf(pair.old)) ?? 0) + 1);
+    }
+    const oldGroup = [...votes.entries()]
+      .filter(([group]) => !claimed.has(group))
+      .sort((a, b) => b[1] - a[1])[0]?.[0];
+    if (oldGroup === undefined) continue;
+    const taken = new Set([...pairs.values()].map((x) => x.old.key));
+    const leftOld = olds.filter(
+      (o) => groupOf(o) === oldGroup && !taken.has(o.key),
+    );
+    const leftNew = news.filter(
+      (n) => groupOf(n) === newGroup && !pairs.has(n.key),
+    );
+    if (!leftOld.length || leftOld.length !== leftNew.length) continue;
+    // a group with the same title gives no hint that its words changed: a removed and an added task in it are
+    // as likely two different tasks, so only a renamed group is trusted
+    if (norm(leftOld[0].group) === norm(leftNew[0].group)) continue;
+    const scores = leftOld.map((o, i) => similarity(o.text, leftNew[i].text));
+    if (scores.some((score) => score <= 0)) continue;
+    claimed.add(oldGroup);
+    leftOld.forEach((o, i) =>
+      pairs.set(leftNew[i].key, {
+        old: o,
+        kind: "reworded",
+        similarity: Math.round(scores[i] * 100) / 100,
+      }),
+    );
+  }
   const used = new Set([...pairs.values()].map((p) => p.old.key));
   return [
     ...news.map((n) =>
