@@ -7,7 +7,9 @@ import {
   bundlesForExam,
   examCodeOfEntryId,
   examCodeOfPath,
+  productsForExam,
   readBundles,
+  readProducts,
   readRetiredExamCodes,
 } from "../../src/utils/measureup-bundles.mjs";
 import { serializeMdx } from "../../src/utils/markdown/serializeMdx.ts";
@@ -234,4 +236,113 @@ test("the Markdown copy of an exam page lists its bundles below the MSFTHUB disc
       await serializeMdx(body, options),
       /Discounted bundles with other exams/,
     );
+});
+
+// ---------------------------------------------------------------------------
+// The product cards of the MeasureUp block (a bare <MeasureUpCard />)
+// ---------------------------------------------------------------------------
+const PRODUCTS = [
+  {
+    id: "1",
+    name: "Assessment AZ-900: Microsoft Azure Fundamentals",
+    examCode: "AZ-900",
+    type: "assessment",
+    url: "https://www.measureup.com/assessment-az-900-microsoft-azure-fundamentals.html",
+  },
+  {
+    id: "2",
+    name: "評価 AZ-900: Microsoft Azure の基礎",
+    examCode: "AZ-900",
+    type: "assessment",
+    url: "https://www.measureup.com/az-900-microsoft-azure.html",
+  },
+  {
+    id: "3",
+    name: "Microsoft Practice Test AZ-900: Microsoft Azure Fundamentals",
+    examCode: "AZ-900",
+    type: "practice-test",
+    url: "https://www.measureup.com/microsoft-practice-test-az-900.html#u44",
+  },
+  {
+    id: "4",
+    name: "CertKit AZ-900: Microsoft Azure Fundamentals",
+    examCode: "AZ-900",
+    type: "certkit",
+    url: "https://www.measureup.com/certkit-az-900.html",
+  },
+  {
+    id: "5",
+    name: "Assessment AZ-104: Azure Administrator",
+    examCode: "AZ-104",
+    type: "assessment",
+    url: "https://www.measureup.com/assessment-az-104.html",
+  },
+];
+
+test("productsForExam gives the English assessment and practice test, each with #u44, and no certkit", () => {
+  assert.deepEqual(productsForExam("az-900", PRODUCTS), [
+    {
+      title: "MeasureUp Assessment",
+      href: "https://www.measureup.com/assessment-az-900-microsoft-azure-fundamentals.html#u44",
+    },
+    {
+      title: "MeasureUp Practice Test",
+      href: "https://www.measureup.com/microsoft-practice-test-az-900.html#u44",
+    },
+  ]);
+  // only the products MeasureUp has: no card is made up for the missing practice test
+  assert.deepEqual(
+    productsForExam("AZ-104", PRODUCTS).map((card) => card.title),
+    ["MeasureUp Assessment"],
+  );
+  assert.deepEqual(productsForExam("GH-700", PRODUCTS), []);
+  assert.deepEqual(productsForExam(undefined, PRODUCTS), []);
+  assert.deepEqual(productsForExam("AZ-900", []), []);
+});
+
+test("every exam page with a bare MeasureUp card has products in the baseline, each with #u44 and a MeasureUp address", () => {
+  const products = readProducts(root);
+  assert.ok(products.length > 0);
+  let bare = 0;
+  for (const area of EXAM_AREAS) {
+    const dir = join(root, "src", "content", "docs", area);
+    for (const file of readdirSync(dir)) {
+      const text = readFileSync(join(dir, file), "utf8").replace(
+        /\{\/\*[\s\S]*?\*\/\}/g,
+        "",
+      );
+      if (!/<MeasureUpCard\s*\/>/.test(text)) continue;
+      bare++;
+      const code = file.replace(/\.mdx$/, "");
+      const cards = productsForExam(code, products);
+      assert.ok(cards.length > 0, `${code}: the baseline has no product`);
+      for (const card of cards) {
+        assert.match(
+          card.href,
+          /^https:\/\/www\.measureup\.com\/.+#u44$/,
+          `${code}: ${card.href}`,
+        );
+      }
+    }
+  }
+  assert.ok(bare > 0, "no exam page uses the generated MeasureUp card");
+});
+
+test("the Markdown copy of a bare MeasureUp card lists the products of the baseline", async () => {
+  const copy = await serializeMdx("<MeasureUpCard />\n", {
+    examCode: "AZ-900",
+    products: PRODUCTS,
+    bundles: [],
+    retired: none,
+  });
+  assert.match(
+    copy,
+    /### \[MeasureUp Assessment\]\(https:\/\/www\.measureup\.com\/assessment-az-900-microsoft-azure-fundamentals\.html#u44\)/,
+  );
+  assert.match(
+    copy,
+    /### \[MeasureUp Practice Test\]\(https:\/\/www\.measureup\.com\/microsoft-practice-test-az-900\.html#u44\)/,
+  );
+  assert.match(copy, /MeasureUp Subscriptions/);
+  assert.doesNotMatch(copy, /certkit/i);
 });

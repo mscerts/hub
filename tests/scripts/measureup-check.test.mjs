@@ -16,6 +16,7 @@ import {
   diffProducts,
   extractAssignedJson,
   findExamPages,
+  findGeneratedCards,
   isBundle,
   isRetired,
   isTracked,
@@ -645,6 +646,42 @@ test("hub links come from the exam pages, without comments, fragments and the li
   const pages = findExamPages(dir);
   assert.equal(pages.get("AZ-104"), "src/content/docs/azure/AZ-104.mdx");
   assert.equal(pages.has("notes"), false);
+});
+
+test("exam pages with a bare MeasureUp card are found, and the report says so", async () => {
+  const dir = await tempDir();
+  await writeDocs(dir, {
+    "azure/AZ-104.mdx": "<MeasureUpCard />",
+    "azure/AZ-900.mdx": "<MeasureUpCard>\n</MeasureUpCard>",
+    "azure/AZ-305.mdx": `<MeasureUpCard>\n<CardGrid slot="products">${link("/mu-1-assessment.html")}</CardGrid>\n</MeasureUpCard>`,
+    "azure/AZ-120.mdx": `<MeasureUpCard assessmentUrl="${SITE}/a.html" practiceTestUrl="${SITE}/b.html" />`,
+    "security/SC-900.mdx": "{/* <MeasureUpCard /> */}",
+    "guide/notes.md": "<MeasureUpCard />",
+  });
+  assert.deepEqual([...findGeneratedCards(dir)].sort(), ["AZ-104", "AZ-900"]);
+  const product = {
+    id: "1",
+    name: "Assessment AZ-104: Azure Administrator",
+    examCode: "AZ-104",
+    type: "assessment",
+    url: `${SITE}/mu-1-assessment.html`,
+    retired: false,
+  };
+  const scan = { listed: new Map([["1", product]]), complete: true };
+  const report = buildReport({
+    cfg: { today: "2026-11-26" },
+    scan,
+    diff: { active: [product], added: [product], removed: [] },
+    hubFresh: [],
+    hubKnown: 0,
+    hubLinks: new Map(),
+    examPages: findExamPages(dir),
+    generatedCards: findGeneratedCards(dir),
+  });
+  assert.match(
+    report,
+    /generated card of `src\/content\/docs\/azure\/AZ-104\.mdx`/,
+  );
 });
 
 test("a link is reported once, and kept while a probe fails", () => {

@@ -5,7 +5,11 @@ import remarkParse from "remark-parse";
 import remarkStringify from "remark-stringify";
 import { visit } from "unist-util-visit";
 import { daysUntil } from "../guide-change-date.mjs";
-import { bundlesForExam, examCodeOfEntryId } from "../measureup-bundles.mjs";
+import {
+  bundlesForExam,
+  examCodeOfEntryId,
+  productsForExam,
+} from "../measureup-bundles.mjs";
 import remarkCallouts from "./remark-callouts.mjs";
 
 type MdxAttribute = {
@@ -128,6 +132,8 @@ type SerializeOptions = {
   examCode?: string;
   /** The bundles to choose from (default: those of the MeasureUp baseline). */
   bundles?: Parameters<typeof bundlesForExam>[1];
+  /** The MeasureUp products to choose from (default: those of the MeasureUp baseline). */
+  products?: Parameters<typeof productsForExam>[1];
   /** The exam codes that are retired (default: what Microsoft has retired today). */
   retired?: Set<string>;
 };
@@ -339,24 +345,28 @@ export async function serializeMdx(
             const productNodes: MdxNode[] =
               productsSlot.length > 0
                 ? productsSlot
-                : [
-                    ...(assessmentUrl
-                      ? [
-                          headingNode(
-                            "MeasureUp Assessment",
-                            ensureU44(assessmentUrl),
-                          ),
-                        ]
-                      : []),
-                    ...(practiceTestUrl
-                      ? [
-                          headingNode(
-                            "MeasureUp Practice Test",
-                            ensureU44(practiceTestUrl),
-                          ),
-                        ]
-                      : []),
-                  ];
+                : !assessmentUrl && !practiceTestUrl
+                  ? productsForExam(options.examCode, options.products).map(
+                      (product) => headingNode(product.title, product.href),
+                    )
+                  : [
+                      ...(assessmentUrl
+                        ? [
+                            headingNode(
+                              "MeasureUp Assessment",
+                              ensureU44(assessmentUrl),
+                            ),
+                          ]
+                        : []),
+                      ...(practiceTestUrl
+                        ? [
+                            headingNode(
+                              "MeasureUp Practice Test",
+                              ensureU44(practiceTestUrl),
+                            ),
+                          ]
+                        : []),
+                    ];
 
             const bundleCards = bundlesForExam(
               options.examCode,

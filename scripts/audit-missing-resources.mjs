@@ -16,6 +16,10 @@ import { readdirSync, readFileSync, existsSync, writeFileSync } from "node:fs";
 import { join, dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { hasGithubLabsTab, isExempt } from "./lib/audit-exemptions.mjs";
+import {
+  productsForExam,
+  readProducts,
+} from "../src/utils/measureup-bundles.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -116,9 +120,19 @@ function stripComments(text) {
 // `<TabItem label=...>` are not, so only the former is matched.
 const LINKCARD_TITLE_RE = /<LinkCard\b[^>]*?\btitle="([^"]*)"/g;
 
-function collectTitles(examMdx) {
+// A bare `<MeasureUpCard />` has no LinkCard in the MDX: its cards come from the MeasureUp Monitor's baseline
+// (src/data_files/measureup-products.json), so the titles it shows count as the page's buttons.
+const BARE_MEASUREUP_CARD_RE = /<MeasureUpCard\s*\/>/;
+
+function collectTitles(examMdx, code, repoRoot) {
   const titles = [];
   for (const m of examMdx.matchAll(LINKCARD_TITLE_RE)) titles.push(m[1].trim());
+  if (BARE_MEASUREUP_CARD_RE.test(examMdx))
+    titles.push(
+      ...productsForExam(code, readProducts(repoRoot)).map(
+        (card) => card.title,
+      ),
+    );
   return titles;
 }
 
@@ -164,7 +178,7 @@ export function computeMissingResources(repoRoot = root) {
       scannedCount++;
 
       const examMdx = stripComments(raw);
-      const titles = collectTitles(examMdx);
+      const titles = collectTitles(examMdx, code, repoRoot);
       const labText = buildLabText(repoRoot, area, code.toLowerCase());
       const ctx = { titles, labText, code };
 

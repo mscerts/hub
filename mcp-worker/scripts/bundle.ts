@@ -9,10 +9,12 @@ import path from "node:path";
 import matter from "gray-matter";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { assertSafeBundledContent } from "./content-safety.ts";
+import { productsForExam, readProducts } from "../../src/utils/measureup-bundles.mjs";
 import type { BlogPost, ContentBundle, DocPage, ResourceLink } from "../src/types.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CONTENT_ROOT = path.resolve(__dirname, "../../src/content");
+const REPO_ROOT = path.resolve(__dirname, "../..");
 const OUT_FILE = path.resolve(__dirname, "../content-bundle.json");
 
 const VOUCHER_CATEGORIES = new Set(["100%", "50%", "Special"]);
@@ -164,11 +166,42 @@ function tabForOffset(
   return best?.label;
 }
 
+/**
+ * An exam page whose MeasureUp card lists its products by itself (a bare `<MeasureUpCard />`) has no address
+ * in its source: write the cards the page shows (the baseline's assessment and practice test) into it, so the
+ * bundle holds the same links as for a page that spells them out.
+ */
+export function expandMeasureUpCard(src: string, examCode?: string): string {
+  if (!examCode) return src;
+  return src.replace(/<MeasureUpCard\s*\/>/g, () => {
+    const cards = productsForExam(examCode, readProducts(REPO_ROOT))
+      .map(
+        (card: { title: string; href: string }) =>
+          `  <LinkCard title="${card.title}" href="${card.href}" target="_blank"/>`,
+      )
+      .join("\n");
+    return cards
+      ? `<MeasureUpCard>\n<CardGrid slot="products">\n${cards}\n</CardGrid>\n</MeasureUpCard>`
+      : "<MeasureUpCard>\n</MeasureUpCard>";
+  });
+}
+
+/** "azure/az-104" -> "AZ-104" (an exam page of one of the seven areas), else undefined. */
+function examCodeOfSlug(slug: string): string | undefined {
+  return /^(?:aibusiness|azure|dynamics|github|microsoft365|power|security)\/([a-z]{2,3}-\d{3})$/i
+    .exec(slug)?.[1]
+    ?.toUpperCase();
+}
+
 export function extractLinks(
   rawSrc: string,
   todayIso = new Date().toISOString().slice(0, 10),
+  examCode?: string,
 ): ResourceLink[] {
-  const src = unwrapActiveCourseVersion(stripComments(rawSrc), todayIso);
+  const src = expandMeasureUpCard(
+    unwrapActiveCourseVersion(stripComments(rawSrc), todayIso),
+    examCode,
+  );
   const ranges = buildSectionRanges(src);
   const links: ResourceLink[] = [];
   const re = /<LinkCard\s([^>]*?)(?:\/>|>[\s\S]*?<\/LinkCard>)/g;
@@ -193,8 +226,12 @@ export function extractLinks(
 export function cleanDocBody(
   rawSrc: string,
   todayIso = new Date().toISOString().slice(0, 10),
+  examCode?: string,
 ): string {
-  return unwrapActiveCourseVersion(stripComments(rawSrc), todayIso)
+  return expandMeasureUpCard(
+    unwrapActiveCourseVersion(stripComments(rawSrc), todayIso),
+    examCode,
+  )
     // Imports are MDX implementation detail, not useful content.
     .replace(/^import\s+.*?;\s*$/gm, "")
     // Convert plain HTML headings (used in CourseVersions) into Markdown headings before tag stripping.
@@ -279,8 +316,8 @@ export function buildDocs(
       ...(voucherCategory ? { voucherCategory } : {}),
       ...(voucherStarts ? { voucherStarts } : {}),
       ...(voucherEnds ? { voucherEnds } : {}),
-      links: extractLinks(content, todayIso),
-      body: cleanDocBody(content, todayIso),
+      links: extractLinks(content, todayIso, examCodeOfSlug(slug)),
+      body: cleanDocBody(content, todayIso, examCodeOfSlug(slug)),
     }];
   });
 }

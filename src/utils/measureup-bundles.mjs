@@ -120,3 +120,68 @@ export function bundlesForExam(
       description: `Practice tests for ${bundle.examCodes.join(", ")} in one purchase.`,
     }));
 }
+
+/**
+ * @typedef {{ id: string, name: string, examCode: string, type: string, url: string }} Product
+ * @typedef {{ title: string, href: string }} ProductCard
+ */
+
+/**
+ * The products the MeasureUp Monitor follows (assessments, practice tests, certkits), or [] when the file
+ * has none (or cannot be read).
+ * @returns {Product[]}
+ */
+export function readProducts(root = process.cwd()) {
+  try {
+    const parsed = JSON.parse(
+      readFileSync(
+        path.resolve(root, "src", "data_files", "measureup-products.json"),
+        "utf8",
+      ),
+    );
+    return Array.isArray(parsed.products) ? parsed.products : [];
+  } catch {
+    return [];
+  }
+}
+
+// The cards of the MeasureUp block of an exam page, in the order of the page: the type of product, the title of
+// its card and the name MeasureUp gives the English product ("Assessment AZ-104: ...", "Microsoft Practice Test
+// AZ-104: ..."). MeasureUp also lists some products in Japanese under the same exam code; the English one wins.
+// Certkits are not here: they sit in the Paid tab of the page, which is written by hand.
+const CARD_PRODUCTS = [
+  { type: "assessment", title: "MeasureUp Assessment", name: /^Assessment\s+/i },
+  {
+    type: "practice-test",
+    title: "MeasureUp Practice Test",
+    name: /^Microsoft Practice Test\s+/i,
+  },
+];
+
+/**
+ * The product cards of an exam page: the exam's assessment and practice test from the baseline, each with
+ * the `#u44` fragment. An exam MeasureUp has no product for gets none. Nothing derives an address from a name.
+ * @param {string | undefined} code
+ * @param {Product[]} [products]
+ * @returns {ProductCard[]}
+ */
+export function productsForExam(code, products = readProducts()) {
+  if (!code) return [];
+  const wanted = code.toUpperCase();
+  /** @type {ProductCard[]} */
+  const cards = [];
+  for (const { type, title, name } of CARD_PRODUCTS) {
+    const found = products.filter(
+      (product) =>
+        product.url &&
+        product.type === type &&
+        String(product.examCode).toUpperCase() === wanted,
+    );
+    const pick =
+      found.find((product) => name.test(product.name)) ??
+      found.find((product) => /^[\x20-\x7e]+$/.test(product.name)) ??
+      found[0];
+    if (pick) cards.push({ title, href: withTracking(pick.url) });
+  }
+  return cards;
+}

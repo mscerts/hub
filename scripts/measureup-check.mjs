@@ -1088,6 +1088,27 @@ export function findExamPages(docsDir) {
   return pages;
 }
 
+/**
+ * The exam pages whose MeasureUp card lists its products by itself: a bare `<MeasureUpCard />` (no products slot,
+ * no addresses) shows the exam's assessment and practice test from the baseline. Returns the Set of exam codes.
+ */
+export function findGeneratedCards(docsDir) {
+  const codes = new Set();
+  for (const [code, page] of findExamPages(docsDir)) {
+    let text;
+    try {
+      text = stripComments(
+        readFileSync(join(docsDir, page.slice(DOCS_PREFIX.length + 1)), "utf8"),
+      );
+    } catch {
+      continue;
+    }
+    if (/<MeasureUpCard\s*\/>|<MeasureUpCard>\s*<\/MeasureUpCard>/.test(text))
+      codes.add(code);
+  }
+  return codes;
+}
+
 /** Hub links split by what the listing alone says about them. */
 export function classifyHubLinks(links, scan) {
   const byPath = new Map();
@@ -1356,12 +1377,21 @@ function hubPagesFor(name, examPages) {
   return codes.length > 0 ? `no hub page for ${codes[0]}` : "—";
 }
 
-function linkedOn(product, hubLinks) {
+function linkedOn(product, hubLinks, examPages, generatedCards) {
   const path = product.url ? pathOf(product.url) : null;
   const entry = path ? hubLinks?.get(path) : null;
-  if (!entry) return "not linked";
-  const files = [...new Set(entry.locations.map((loc) => loc.file))];
-  return files.map((file) => `\`${file}\``).join("<br>");
+  const files = entry
+    ? [...new Set(entry.locations.map((loc) => loc.file))].map(
+        (file) => `\`${file}\``,
+      )
+    : [];
+  // the card of such a page shows an assessment and a practice test by itself (the tab cards are still by hand)
+  if (
+    (product.type === "assessment" || product.type === "practice-test") &&
+    generatedCards?.has(product.examCode)
+  )
+    files.push(`generated card of \`${examPages?.get(product.examCode)}\``);
+  return files.length > 0 ? files.join("<br>") : "not linked";
 }
 
 function locationsCell(link) {
@@ -1424,6 +1454,7 @@ export function buildReport({
   hubKnown,
   hubLinks,
   examPages,
+  generatedCards = new Set(),
 }) {
   const counts = countListing(scan, diff);
   const lines = [
@@ -1450,7 +1481,7 @@ export function buildReport({
       .map(
         (product) =>
           `| ${safeText(product.name)} | ${product.examCode || "—"} | ${product.type} | ` +
-          `${hubPagesFor(product.name, examPages)} | ${linkedOn(product, hubLinks)} | ${linkCell(product.url)} |`,
+          `${hubPagesFor(product.name, examPages)} | ${linkedOn(product, hubLinks, examPages, generatedCards)} | ${linkCell(product.url)} |`,
       );
     lines.push(...limitRows(rows), "");
   }
@@ -1605,6 +1636,7 @@ export async function main(cfg) {
 
   // The hub's own links.
   const examPages = findExamPages(cfg.docsDir);
+  const generatedCards = findGeneratedCards(cfg.docsDir);
   const listingPath = pathOf(cfg.listingUrl) ?? "/microsoft.html";
   const hubLinks = scanHubLinks(cfg.docsDir, listingPath);
   let hub = null;
@@ -1705,6 +1737,7 @@ export async function main(cfg) {
         hubKnown: hubDiff.known,
         hubLinks,
         examPages,
+        generatedCards,
       }),
       "utf8",
     );
