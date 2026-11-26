@@ -3254,7 +3254,98 @@
             {
               "key": "implement-financial-management/implement-cost-management/differentiate-between-inventory-costing-methodologies",
               "text": "Differentiate between inventory costing methodologies",
-              "picks": [],
+              "picks": [
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/dynamics365/supply-chain/cost-management/moving-average"
+                  },
+                  "title": "Moving average",
+                  "class": "core",
+                  "source": "P4",
+                  "why": "Explains one of the inventory costing methods the task asks you to tell apart: Moving average.",
+                  "evidence": "Moving average is a perpetual costing method based on the average principle, where the costs on inventory issues don't change when the purchase cost does.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-26"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/dynamics365/supply-chain/cost-management/fifo-physical-value-marking"
+                  },
+                  "title": "FIFO with physical value and marking",
+                  "class": "core",
+                  "source": "P4",
+                  "why": "Explains one of the inventory costing methods the task asks you to tell apart: FIFO with physical value and marking.",
+                  "evidence": "Financially updated issues from inventory are settled against the first financially updated receipts into inventory, based on the date of the transactions.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-26"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/dynamics365/supply-chain/cost-management/lifo-physical-value-marking"
+                  },
+                  "title": "LIFO with physical value and marking",
+                  "class": "core",
+                  "source": "P4",
+                  "why": "Explains one of the inventory costing methods the task asks you to tell apart: LIFO with physical value and marking.",
+                  "evidence": "Issues from inventory are settled against the last receipts into inventory based on the date of the inventory transaction with an outline on LIFO with marking.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-26"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/dynamics365/supply-chain/cost-management/lifo-date-physical-value-marking"
+                  },
+                  "title": "LIFO date with physical value and marking",
+                  "class": "core",
+                  "source": "P4",
+                  "why": "Explains one of the inventory costing methods the task asks you to tell apart: LIFO date with physical value and marking.",
+                  "evidence": "Issues from inventory are settled against the last receipts into inventory based on the date of the inventory transaction.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-26"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/dynamics365/supply-chain/cost-management/weighted-average-physical-value-marking"
+                  },
+                  "title": "Weighted average with physical value and marking",
+                  "class": "core",
+                  "source": "P4",
+                  "why": "Explains one of the inventory costing methods the task asks you to tell apart: Weighted average with physical value and marking.",
+                  "evidence": "Weighted average is an inventory model based on the weighted average principle, where issues from inventory are valued at the average received item value.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-26"
+                  }
+                },
+                {
+                  "target": {
+                    "kind": "docs",
+                    "path": "/dynamics365/supply-chain/cost-management/weighted-average-date"
+                  },
+                  "title": "Weighted average date with Include physical value and marking",
+                  "class": "core",
+                  "source": "P4",
+                  "why": "Explains one of the inventory costing methods the task asks you to tell apart: Weighted average date with Include physical value and marking.",
+                  "evidence": "Weighted average date is an inventory model based on the weighted average principle, where issues from inventory are valued at the average value of received items.",
+                  "decision": {
+                    "by": "maintainer",
+                    "at": "2026-11-26"
+                  }
+                }
+              ],
               "overlaps": [
                 {
                   "path": "/training/modules/implement-cost-management",
