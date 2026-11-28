@@ -11,6 +11,15 @@ const redirects = new Map(
     .split("\n")
     .map((line) => line.split(/\s+/).slice(0, 2)),
 );
+const update = process.argv.includes("--update");
+const previousManifest = JSON.parse(
+  await readFile(manifestUrl, "utf8").catch((error) => {
+    if (update && error.code === "ENOENT") return '{"paths":[]}';
+    throw error;
+  }),
+);
+const wikiNextIndex = redirects.get("/wiki-next/*");
+const isWikiNextChild = (path) => path.startsWith("/wiki-next/");
 // The review copy of a course page (docs/courses.md, "<name>-review") is regenerated and deleted as the maintainer
 // reviews a course: it is an ordinary page of the site, but not part of the baseline, so adding or removing one needs no
 // baseline update.
@@ -22,18 +31,21 @@ const paths = [
   ...new Set(
     [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
       .map((match) => new URL(match[1]).pathname)
-      .concat([...redirects.keys()]),
+      .concat(
+        [...redirects.keys()].filter((path) => path !== "/wiki-next/*"),
+        wikiNextIndex ? previousManifest.paths.filter(isWikiNextChild) : [],
+      ),
   ),
 ]
   .filter((path) => !isReviewCopy(path))
   .sort();
-if (process.argv.includes("--update")) {
+if (update) {
   await writeFile(manifestUrl, JSON.stringify({ paths }, null, 2) + "\n");
   console.log(
     `Updated public route baseline: ${paths.length} paths. Review its diff before committing.`,
   );
 }
-const manifest = JSON.parse(await readFile(manifestUrl, "utf8"));
+const manifest = update ? { paths } : previousManifest;
 const missingFromBaseline = paths.filter(
   (path) => !manifest.paths.includes(path),
 );
@@ -46,10 +58,10 @@ assert.deepEqual(
 for (const original of manifest.paths) {
   let path = original;
   const seen = new Set();
-  while (redirects.has(path)) {
+  while (redirects.has(path) || (wikiNextIndex && isWikiNextChild(path))) {
     assert.ok(!seen.has(path), `Redirect loop: ${original}`);
     seen.add(path);
-    path = redirects.get(path);
+    path = redirects.get(path) ?? wikiNextIndex;
   }
   if (path.startsWith("https://")) continue;
   assert.ok(

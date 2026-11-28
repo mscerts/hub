@@ -36,8 +36,6 @@ export default defineConfig({
     "/privacy.md": "/privacy/",
     "/wiki/privacy": "/privacy/",
     "/wiki/privacy.md": "/privacy/",
-    "/wiki-next/privacy": "/privacy/",
-    "/wiki-next/privacy.md": "/privacy/",
     "/guide": "/certs/guide/introduction/",
     "/vouchers/ab650beta/": "/certs/archive/vouchers/ab650beta/",
     "/azure/az-800": "/certs/archive/azure/az-800/",
