@@ -406,7 +406,7 @@ Verify all voucher percentages, codes, limits, deadlines, exclusions, announceme
 - `/certs/` is the all-exams index, owned by `src/pages/certs/index.astro`. It uses WikiList for all seven exam areas and excludes drafts. It lists the exam pages still under `src/content/docs/<area>/`; an exam moved to the archive is listed at `/certs/archive/` instead. `/wiki/` redirects to it.
 - `/certs/<content-id>/` is rendered by `src/pages/certs/[...slug].astro` through `DocsPage.astro` and `DocsShell.astro`.
 - `/certs/changelog/<code>/` (Study Guide Changes) is rendered by `src/pages/certs/changelog/[code].astro`, one page per exam page, from the history files (there is no `/certs/changelog/` or `/certs/courses/` index page). It is not indexed (`noindex`, left out of the sitemap in `astro.config.mjs`), has no Markdown endpoint and no "View as Markdown" action. `DocsShell.astro` shows `GuideChangeBanner.astro` under an exam's tagline while a change is upcoming or recent (30 days, `GUIDE_CHANGE_RECENT_DAYS`); its script recomputes the day count in the browser. Everything is described in `docs/study-guide-changes.md`.
-- Legacy content paths and `/wiki-next/*` redirect permanently to `/certs/*`.
+- Legacy bare and `/wiki/` content paths redirect permanently to their canonical destinations. Every `/wiki-next` URL redirects permanently to the `/certs/` index, including old Markdown URLs.
 - `remark-callouts.mjs` converts `:::note`, `:::tip`, `:::caution`, and `:::danger` directives to the local `Aside` component.
 
 ### Banner System

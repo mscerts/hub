@@ -1,6 +1,6 @@
 import { writeFile } from "node:fs/promises";
 
-// Exact generated routes avoid wildcard rules sending unknown URLs to nonexistent pages.
+// The retired /wiki-next prefix goes to the certification index, not deep links.
 export function redirectRules(redirects, pathnames) {
   const rules = new Map();
   const add = (source, target) => {
@@ -28,12 +28,13 @@ export function redirectRules(redirects, pathnames) {
     );
   for (const target of docs) {
     const id = target.slice("/certs/".length, -1);
-    for (const prefix of ["/", "/wiki/", "/wiki-next/"]) {
+    for (const prefix of ["/", "/wiki/"]) {
       add(`${prefix}${id}/`, target);
       add(`${prefix}${id}.md`, `/certs/${id}.md`);
     }
   }
   for (const [source, value] of Object.entries(redirects)) {
+    if (source === "/wiki-next" || source.startsWith("/wiki-next/")) continue;
     const target = typeof value === "string" ? value : value.destination;
     add(source, target);
     // An archived page takes over its previous canonical HTML and Markdown
@@ -44,7 +45,7 @@ export function redirectRules(redirects, pathnames) {
       target.startsWith("/certs/archive/")
     ) {
       const old = source.slice("/certs/".length).replace(/\/$/, "");
-      for (const prefix of ["/", "/wiki/", "/wiki-next/"]) {
+      for (const prefix of ["/", "/wiki/"]) {
         add(`${prefix}${old}/`, target);
         add(`${prefix}${old}.md`, target.replace(/\/$/, ".md"));
       }
@@ -55,15 +56,14 @@ export function redirectRules(redirects, pathnames) {
       const markdown = target.replace(/\/$/, ".md");
       add(`${old}.md`, markdown);
       if (!old.startsWith("/certs/")) {
-        for (const prefix of ["/wiki", "/wiki-next"]) {
-          add(`${prefix}${old}/`, target);
-          add(`${prefix}${old}.md`, markdown);
-        }
+        add(`/wiki${old}/`, target);
+        add(`/wiki${old}.md`, markdown);
       }
     }
   }
   add("/wiki/", "/certs/");
   add("/wiki-next/", "/certs/");
+  rules.set("/wiki-next/*", "/certs/");
   return (
     [...rules].map(([source, target]) => `${source} ${target} 301`).join("\n") +
     "\n"

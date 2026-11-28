@@ -22,7 +22,7 @@ test("legacy HTML and Markdown URLs reach canonical pages, with renames taking p
       .split("\n")
       .map((line) => line.split(" ").slice(0, 2)),
   );
-  for (const prefix of ["/", "/wiki/", "/wiki-next/"]) {
+  for (const prefix of ["/", "/wiki/"]) {
     assert.equal(lookup.get(`${prefix}azure/az-104/`), "/certs/azure/az-104/");
     assert.equal(
       lookup.get(`${prefix}azure/az-104.md`),
@@ -54,7 +54,7 @@ test("archived canonical pages preserve old HTML and Markdown URLs", () => {
       .split("\n")
       .map((line) => line.split(" ").slice(0, 2)),
   );
-  for (const prefix of ["/", "/wiki/", "/wiki-next/"]) {
+  for (const prefix of ["/", "/wiki/"]) {
     assert.equal(
       lookup.get(`${prefix}azure/az-800/`),
       "/certs/archive/azure/az-800/",
@@ -64,6 +64,24 @@ test("archived canonical pages preserve old HTML and Markdown URLs", () => {
       "/certs/archive/azure/az-800.md",
     );
   }
+});
+
+test("the retired wiki-next prefix sends all paths to the certification index", () => {
+  const rules = redirectRules(
+    { "/wiki-next/privacy": "/privacy/" },
+    ["certs/azure/az-104/"],
+  );
+  assert.deepEqual(
+    rules
+      .trim()
+      .split("\n")
+      .filter((line) => line.startsWith("/wiki-next")),
+    [
+      "/wiki-next/ /certs/ 301",
+      "/wiki-next /certs/ 301",
+      "/wiki-next/* /certs/ 301",
+    ],
+  );
 });
 
 test("Study Guide Changes pages get no legacy aliases and no Markdown rule", () => {
