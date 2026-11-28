@@ -91,6 +91,7 @@ const guideItems: DocsSidebarItem[] = [
   { label: "Introduction", href: docsPath("guide/introduction") },
   { label: "Overview", href: docsPath("guide/overview") },
   { label: "Scheduling an Exam", href: docsPath("guide/schedulingexam") },
+  { label: "Exam Accommodations", href: docsPath("guide/exam-accommodations") },
   {
     label: "Certification Dashboard",
     href: docsPath("guide/certificationdashboard"),
