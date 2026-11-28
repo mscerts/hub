@@ -291,6 +291,9 @@ function scaffold(args, env) {
   }
   console.log("");
   console.log("Next steps:");
+  console.log(
+    `  0. Add ${code} to the branch it belongs to in src/data_files/cert-roadmap.json (the Certification Roadmap); tests/scripts/cert-roadmap.test.mjs fails until every live exam page that is not retiring is in a result`,
+  );
   console.log(`  1. Open ${page} and:`);
   console.log(
     `       • Verify the exam URL and update the Get Started description`,

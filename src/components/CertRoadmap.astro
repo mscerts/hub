@@ -1,0 +1,482 @@
+---
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+import { CardGrid, LinkButton, LinkCard } from "@components/docs";
+import { visibleExamStatuses } from "../data_files/exam-status.mjs";
+import {
+  examAreaOf,
+  examHref,
+  panelId,
+  reachableIds,
+  readRoadmap,
+  roadmapProblems,
+} from "../utils/cert-roadmap.mjs";
+
+interface Props {
+  /** The question to start from: a step of cert-roadmap.json (default: the first question). Shows only what can be reached from it. */
+  start?: string;
+  /** Keeps the ids of two roadmaps on one page apart. */
+  prefix?: string;
+  /** Put each step in the address (`#<prefix>-<step>`) and in the browser history, so the back button and links to a step work. Use it for one roadmap per page. */
+  history?: boolean;
+}
+
+// The certification roadmap, a wizard that sits on the page: one question at a time, a back button, the answers
+// given so far and the exams to take at the end. It is rendered whole on the server: every question and every
+// result is a section and every answer a link to its section (`#<prefix>-<id>`), so without JavaScript the page
+// still works (the CSS shows the section the address points at). The script adds the wizard: it shows one
+// section at a time without a jump, keeps the trail, the back button and the history, and moves the focus to the
+// new question. The decision logic is the data file `src/data_files/cert-roadmap.json`; the exam pages, names
+// and statuses come from the content.
+const roadmap = readRoadmap();
+const problems = roadmapProblems(roadmap);
+if (problems.length > 0)
+  throw new Error(`cert-roadmap.json is not sound: ${problems.join("; ")}`);
+
+const {
+  start = roadmap.start,
+  prefix = "roadmap",
+  history = false,
+} = Astro.props;
+if (!(start in roadmap.steps))
+  throw new Error(`CertRoadmap: "${start}" is not a step of cert-roadmap.json`);
+const show = reachableIds(roadmap, start);
+const steps = Object.entries(roadmap.steps).filter(([id]) => show.has(id));
+const results = Object.entries(roadmap.results).filter(([id]) => show.has(id));
+const idOf = (id: string) => panelId(id, prefix);
+
+const docs = await getCollection("docs");
+const statuses = Object.assign({}, ...Object.values(visibleExamStatuses()));
+const STATUS_WORDS: Record<string, string> = {
+  BETA: "beta",
+  RETIRING: "retiring",
+};
+const examDescription = (code: string, role: string) => {
+  const area = examAreaOf(code);
+  const entry = docs.find((doc) => doc.id === `${area}/${code.toLowerCase()}`);
+  if (!entry) throw new Error(`The roadmap names ${code}, which has no page`);
+  const name =
+    typeof entry.data.examName === "string"
+      ? entry.data.examName
+      : entry.data.title;
+  const status = STATUS_WORDS[statuses[code]?.text ?? ""];
+  const prefixText =
+    role === "optional"
+      ? "Optional next step: "
+      : role === "then"
+        ? "Then: "
+        : "";
+  return `${prefixText}${name}${status ? ` (${status})` : ""}`;
+};
+---
+
+<div
+  class="roadmap border-border bg-card/40 not-prose my-6 rounded-xl border p-4 sm:p-6"
+  data-roadmap
+  data-pagefind-ignore
+  data-prefix={prefix}
+  data-start={start}
+  data-history={history ? "true" : "false"}
+>
+  <div class="roadmap-bar" data-roadmap-bar>
+    <button type="button" class="roadmap-back" data-roadmap-back disabled>
+      <Icon name="ph:arrow-left" class="size-4" aria-hidden="true" />
+      Back
+    </button>
+    <div class="roadmap-trail" data-roadmap-trail role="list" aria-label="Your answers"></div>
+  </div>
+  <p class="roadmap-live" data-roadmap-live aria-live="polite"></p>
+
+  {steps.map(([id, step]) => (
+    <section
+      id={idOf(id)}
+      class="roadmap-panel"
+      data-roadmap-panel={id}
+      data-kind="step"
+      data-start={id === start ? "" : undefined}
+      aria-labelledby={`${idOf(id)}-title`}
+    >
+      <p class="roadmap-kicker" data-roadmap-kicker></p>
+      <h2 class="roadmap-heading" tabindex="-1">
+        <span id={`${idOf(id)}-title`}>{step.question}</span>
+      </h2>
+      {step.help && <p class="roadmap-help">{step.help}</p>}
+      <CardGrid>
+        {step.answers.map((answer) => (
+          <LinkCard
+            title={answer.label}
+            href={`#${idOf(answer.next)}`}
+            data-roadmap-answer={answer.next}
+            data-label={answer.label}
+          />
+        ))}
+      </CardGrid>
+      {id !== start && (
+        <p class="roadmap-restart mt-4">
+          <LinkButton
+            href={`#${idOf(start)}`}
+            variant="ghost"
+            size="sm"
+            data-roadmap-reset
+          >
+            Start over
+          </LinkButton>
+        </p>
+      )}
+    </section>
+  ))}
+  {results.map(([id, result]) => (
+    <section
+      id={idOf(id)}
+      class="roadmap-panel"
+      data-roadmap-panel={id}
+      data-kind="result"
+      aria-labelledby={`${idOf(id)}-title`}
+    >
+      <p class="roadmap-kicker roadmap-kicker--result">Your roadmap</p>
+      <h2 class="roadmap-heading" tabindex="-1">
+        <span id={`${idOf(id)}-title`}>{result.title}</span>
+      </h2>
+      <p>{result.summary}</p>
+      {result.exams.length > 0 && (
+        <CardGrid>
+          {result.exams.map((exam) => (
+            <LinkCard
+              title={exam.code}
+              href={examHref(exam.code)}
+              description={examDescription(exam.code, exam.role)}
+            />
+          ))}
+        </CardGrid>
+      )}
+      {result.link && (
+        <LinkCard title={result.link.label} href={result.link.href} />
+      )}
+      <p class="mt-4 flex flex-wrap gap-2">
+        {result.next && (
+          <LinkButton
+            href={`#${idOf(result.next.to)}`}
+            variant="primary"
+            size="sm"
+            data-roadmap-jump={result.next.to}
+          >
+            {result.next.label}
+          </LinkButton>
+        )}
+        <LinkButton
+          href={`#${idOf(start)}`}
+          variant="secondary"
+          size="sm"
+          data-roadmap-reset
+        >
+          Start over
+        </LinkButton>
+      </p>
+    </section>
+  ))}
+</div>
+
+<style>
+  .roadmap-panel {
+    display: none;
+    scroll-margin-top: 6rem;
+  }
+  /* Without the script: the section the address points at, else the first question */
+  .roadmap:not([data-enhanced]) .roadmap-panel:target {
+    display: block;
+  }
+  .roadmap:not([data-enhanced]):not(:has(.roadmap-panel:target))
+    .roadmap-panel[data-start] {
+    display: block;
+  }
+  /* With the script: the section the wizard is on */
+  .roadmap[data-enhanced] .roadmap-panel[data-active] {
+    display: block;
+  }
+  .roadmap-bar,
+  .roadmap:not([data-enhanced]) .roadmap-kicker:not(.roadmap-kicker--result) {
+    display: none;
+  }
+  .roadmap[data-enhanced] .roadmap-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    min-height: 2.25rem;
+  }
+  .roadmap[data-enhanced] .roadmap-restart {
+    display: none;
+  }
+  .roadmap-back {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: 0.375rem;
+    height: 2rem;
+    padding: 0 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-card);
+    color: var(--color-card-foreground);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .roadmap-back:hover:not(:disabled) {
+    background: var(--color-muted);
+  }
+  .roadmap-back:disabled {
+    opacity: 0.45;
+    cursor: default;
+  }
+  .roadmap-trail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--color-muted-foreground);
+  }
+  .roadmap-trail :global(span + span)::before {
+    content: "\203A" / "";
+    margin-right: 0.5rem;
+  }
+  .roadmap-trail :global(.roadmap-trail-last) {
+    color: var(--color-card-foreground);
+    font-weight: 600;
+  }
+  .roadmap-live {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .roadmap-kicker {
+    margin: 0 0 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-muted-foreground);
+  }
+  .roadmap-heading {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-weight: 700;
+    outline: none;
+  }
+  .roadmap-help {
+    margin: 0 0 1rem;
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+  }
+</style>
+
+<script>
+  // The wizard. Everything it needs is in the markup: the sections are `[data-roadmap-panel]`, an answer is a link
+  // with `data-roadmap-answer="<next id>"` and `data-label`, "Start over" is `[data-roadmap-reset]`, and the
+  // result's follow-up button `[data-roadmap-jump="<id>"]`. Several roadmaps can be on one page; only one of
+  // them should use the address and the history (`data-history="true"`). The rules for addresses, saved trails
+  // and the shortest trail to a step are in src/utils/cert-roadmap-nav.mjs, which has tests.
+  import { idFromHash, trailTo, validTrail } from "../utils/cert-roadmap-nav.mjs";
+
+  type Trail = { id: string; label: string }[];
+  type Saved = { roadmap: string; trail: Trail; pushed: boolean };
+
+  function setup(root: HTMLElement) {
+    const prefix = root.dataset.prefix ?? "roadmap";
+    const start = root.dataset.start ?? "";
+    const useHistory = root.dataset.history === "true";
+    const panels = new Map<string, HTMLElement>();
+    root
+      .querySelectorAll<HTMLElement>("[data-roadmap-panel]")
+      .forEach((panel) => panels.set(panel.dataset.roadmapPanel ?? "", panel));
+    if (!panels.has(start)) return;
+
+    // what each question leads to: for the trail of a visitor who arrives in the middle (a shared address)
+    const edges = new Map<string, { to: string; label: string }[]>();
+    panels.forEach((panel, id) => {
+      edges.set(
+        id,
+        [...panel.querySelectorAll<HTMLElement>("[data-roadmap-answer]")].map(
+          (answer) => ({
+            to: answer.dataset.roadmapAnswer ?? "",
+            label: answer.dataset.label ?? "",
+          }),
+        ),
+      );
+    });
+    const pathTo = (target: string): Trail =>
+      trailTo(edges, start, target, panels);
+
+    const bar = root.querySelector<HTMLElement>("[data-roadmap-trail]");
+    const back = root.querySelector<HTMLButtonElement>("[data-roadmap-back]");
+    const live = root.querySelector<HTMLElement>("[data-roadmap-live]");
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    let trail: Trail = [{ id: start, label: "" }];
+    let pushed = false;
+    let focusAfterPop = false;
+
+    // `focus`: the visitor acted on the wizard (move the focus to the new question); `announce`: tell a screen
+    // reader about the new question when the focus does not move (the browser's back and forward buttons)
+    // `defer`: after a traversal of the history the browser scrolls to the fragment and drops the focus, so the
+    // focus is set once that has happened
+    const render = (focus: boolean, announce = false, defer = false) => {
+      const current = trail[trail.length - 1].id;
+      const panel = panels.get(current);
+      if (!panel) return;
+      panels.forEach((other, id) => {
+        if (id === current) other.setAttribute("data-active", "");
+        else other.removeAttribute("data-active");
+      });
+      const kicker = panel.querySelector<HTMLElement>(
+        ".roadmap-kicker:not(.roadmap-kicker--result)",
+      );
+      if (kicker) kicker.textContent = `Question ${trail.length}`;
+      if (back) back.disabled = trail.length < 2;
+      if (bar) {
+        const answers = trail.slice(1).filter((item) => item.label);
+        bar.replaceChildren(
+          ...answers.map((item, index) => {
+            const entry = document.createElement("span");
+            entry.setAttribute("role", "listitem");
+            entry.textContent = item.label;
+            if (index === answers.length - 1)
+              entry.className = "roadmap-trail-last";
+            return entry;
+          }),
+        );
+      }
+      const heading = panel.querySelector<HTMLElement>(".roadmap-heading");
+      if (live) live.textContent = announce && heading ? (heading.textContent ?? "") : "";
+      if (focus && heading) {
+        if (defer) setTimeout(() => heading.focus({ preventScroll: true }), 0);
+        else heading.focus({ preventScroll: true });
+        // no jump: scroll only when the top of the wizard is out of sight
+        const top = root.getBoundingClientRect().top;
+        if (top < 0 || top > window.innerHeight * 0.5)
+          root.scrollIntoView({
+            block: "start",
+            behavior: reduceMotion ? "auto" : "smooth",
+          });
+      }
+    };
+
+    const writeHistory = (mode: "push" | "replace") => {
+      if (!useHistory) return;
+      const hash = `#${prefix}-${trail[trail.length - 1].id}`;
+      if (mode === "push") {
+        pushed = true;
+        history.pushState({ roadmap: prefix, trail, pushed } as Saved, "", hash);
+      } else {
+        // the entry keeps whether it was pushed by the wizard
+        const was = (history.state as Saved | null)?.pushed === true;
+        history.replaceState(
+          { roadmap: prefix, trail, pushed: was } as Saved,
+          "",
+          hash,
+        );
+      }
+    };
+
+    const forward = (id: string, label: string) => {
+      if (!panels.has(id)) return;
+      trail = [...trail, { id, label }];
+      writeHistory("push");
+      render(true);
+    };
+    const reset = () => {
+      trail = [{ id: start, label: "" }];
+      writeHistory("push");
+      render(true);
+    };
+    const goBack = () => {
+      if (trail.length < 2) return;
+      if (useHistory && (history.state as Saved | null)?.pushed) {
+        focusAfterPop = true;
+        history.back();
+        return;
+      }
+      trail = trail.slice(0, -1);
+      writeHistory("replace");
+      render(true);
+    };
+
+    root.addEventListener("click", (event) => {
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      )
+        return;
+      const target = event.target as Element | null;
+      const answer = target?.closest<HTMLElement>("[data-roadmap-answer]");
+      const restart = target?.closest<HTMLElement>("[data-roadmap-reset]");
+      const next = target?.closest<HTMLElement>("[data-roadmap-jump]");
+      if (answer) {
+        event.preventDefault();
+        forward(answer.dataset.roadmapAnswer ?? "", answer.dataset.label ?? "");
+      } else if (restart) {
+        event.preventDefault();
+        if (trail.length > 1) reset();
+      } else if (next) {
+        // the visitor keeps the trail they gave: the follow-up is one more step on it
+        event.preventDefault();
+        forward(
+          next.dataset.roadmapJump ?? "",
+          (next.textContent ?? "").replace(/\s+/g, " ").trim(),
+        );
+      } else if (target?.closest("[data-roadmap-back]")) {
+        event.preventDefault();
+        goBack();
+      }
+    });
+
+    if (useHistory) {
+      window.addEventListener("popstate", () => {
+        const state = history.state as Saved | null;
+        const saved =
+          state?.roadmap === prefix
+            ? validTrail(state.trail, start, panels)
+            : null;
+        const named = idFromHash(location.hash, prefix, panels);
+        if (saved) {
+          trail = saved;
+          pushed = state?.pushed === true;
+        } else if (named) {
+          trail = pathTo(named);
+          pushed = false;
+        } else if (location.hash === "" || location.hash === "#") {
+          trail = [{ id: start, label: "" }];
+          pushed = false;
+        } else {
+          // an address that is not the roadmap's (the skip link, the table of contents): leave the wizard as it is
+          return;
+        }
+        const focus = focusAfterPop;
+        focusAfterPop = false;
+        render(focus, !focus, focus);
+      });
+      const named = idFromHash(location.hash, prefix, panels);
+      if (named) {
+        trail = pathTo(named);
+        writeHistory("replace");
+      }
+    }
+
+    root.setAttribute("data-enhanced", "");
+    render(false);
+  }
+
+  document
+    .querySelectorAll<HTMLElement>("[data-roadmap]")
+    .forEach((root) => setup(root));
+</script>

@@ -3,6 +3,7 @@ import { describe, test } from "node:test";
 import {
   attrVal,
   cleanDocBody,
+  expandCertRoadmap,
   expandMeasureUpCard,
   extractLinks,
   unwrapActiveCourseVersion,
@@ -35,6 +36,16 @@ describe("bundle extraction helpers", () => {
       attrVal(`title="Exam &quot;Beta&quot; &amp; Prep"`, "title"),
       'Exam "Beta" & Prep',
     );
+  });
+
+  test("writes the certification roadmap into the page as a nested list", () => {
+    const body = expandCertRoadmap("Intro\n\n<CertRoadmap />\n");
+    assert.match(body, /^- How much do you already work with Microsoft technology\?/m);
+    assert.match(body, /AZ-104: Microsoft Azure Administrator \(\/certs\/azure\/az-104\/\)/);
+    assert.equal(expandCertRoadmap("no roadmap"), "no roadmap");
+    const branch = expandCertRoadmap('<CertRoadmap start="security-focus" history />');
+    assert.match(branch, /^- What do you do in security\?/);
+    assert.doesNotMatch(branch, /What do you do on Azure/);
   });
 
   test("writes the products of a bare MeasureUp card into the page, like a page that spells them out", () => {

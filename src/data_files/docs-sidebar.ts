@@ -90,6 +90,7 @@ function buildExamItems(area: keyof typeof examStatuses): DocsSidebarItem[] {
 const guideItems: DocsSidebarItem[] = [
   { label: "Introduction", href: docsPath("guide/introduction") },
   { label: "Overview", href: docsPath("guide/overview") },
+  { label: "Certification Roadmap", href: docsPath("guide/roadmap") },
   { label: "Scheduling an Exam", href: docsPath("guide/schedulingexam") },
   { label: "Exam Accommodations", href: docsPath("guide/exam-accommodations") },
   {
