@@ -67,10 +67,9 @@ test("archived canonical pages preserve old HTML and Markdown URLs", () => {
 });
 
 test("the retired wiki-next prefix sends all paths to the certification index", () => {
-  const rules = redirectRules(
-    { "/wiki-next/privacy": "/privacy/" },
-    ["certs/azure/az-104/"],
-  );
+  const rules = redirectRules({ "/wiki-next/privacy": "/privacy/" }, [
+    "certs/azure/az-104/",
+  ]);
   assert.deepEqual(
     rules
       .trim()
