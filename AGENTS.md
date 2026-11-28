@@ -116,8 +116,8 @@ src/
 astro.config.mjs               # Redirects and Astro integrations
 public/
 ├── _headers                   # Cloudflare Pages HTTP security headers
-├── assets/icons/              # Microsoft Cloud product icon pack (SVG + PNG + manifest.json)
 └── resource-favicons/         # Cached normalized 32px grayscale external favicons
+assets-reference/microsoft-cloud-icons/ # Non-deployed Microsoft Cloud product icon library
 mcp-worker/
 ├── scripts/bundle.ts          # Builds content-bundle.json from src/content/ with safety checks
 ├── src/                       # Cloudflare Worker MCP server (Hono, Streamable HTTP JSON-RPC, read-only tools)
