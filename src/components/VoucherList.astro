@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import { LinkCard, CardGrid } from "@components/docs";
+import { Icon } from "astro-icon/components";
+import { CardGrid } from "@components/docs";
 import { isUpcomingVoucher } from "@utils/voucher-upcoming.mjs";
 
 interface Props {
@@ -8,39 +9,163 @@ interface Props {
 }
 
 const { category } = Astro.props;
+const cardDetails: Record<string, { summary: string; chips: string[] }> = {
+  "vouchers/datadays": {
+    summary: "Request a voucher for a featured data or analytics exam.",
+    chips: ["100% or 50%", "Select exams"],
+  },
+  "vouchers/partnerweek": {
+    summary:
+      "Browse partner training weeks. Upcoming sessions do not confirm vouchers.",
+    chips: ["Partner employees"],
+  },
+  "vouchers/levelup": {
+    summary:
+      "Pass a free certification prep test through Microsoft Partner LevelUp.",
+    chips: ["100% off", "Eligible partners", "While supplies last"],
+  },
+  "vouchers/southafricaaiskills": {
+    summary:
+      "Choose from eight courses in the YES × Microsoft AI Skills Initiative.",
+    chips: ["100% off", "South Africa"],
+  },
+  "vouchers/microsoftesi": {
+    summary:
+      "Check for a discount through your organization's Microsoft skilling program.",
+    chips: ["50% off", "Eligible organizations"],
+  },
+  "vouchers/microsoftxcoursera": {
+    summary: "Complete a qualifying Microsoft program on Coursera.",
+    chips: ["50% off", "Course completion"],
+  },
+  "vouchers/microsoftxdatacamp": {
+    summary: "Complete a Microsoft certification track on DataCamp.",
+    chips: ["50% off", "Related exams"],
+  },
+  "vouchers/studentdiscount": {
+    summary:
+      "Save on Microsoft certification exams after verifying your student status.",
+    chips: ["30% Fundamentals", "45% role-based", "Verified students"],
+  },
+  "vouchers/betaexams": {
+    summary:
+      "Find out how Microsoft beta exam offers work and where to find codes.",
+    chips: ["Beta exams", "Limited availability"],
+  },
+  "vouchers/mindhubreplayvoucherbundles": {
+    summary: "Buy an exam voucher bundle that includes a second attempt.",
+    chips: ["Paid bundle", "Retake included"],
+  },
+};
+const formatDate = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
+const chipTone = (chip: string) => {
+  if (chip.startsWith("100%")) {
+    return "border-[#f0abfc] bg-[#fae8ff] text-[#86198f] dark:border-[#d946ef]/60 dark:bg-[#d946ef]/15 dark:text-[#f0abfc]";
+  }
+  if (/^\d+%/.test(chip)) {
+    return "border-blue-300 bg-blue-100 text-blue-800 dark:border-blue-500/60 dark:bg-blue-500/15 dark:text-blue-300";
+  }
+  if (
+    /^(Starts |Deadline: |While supplies last$|Limited availability$)/.test(
+      chip,
+    )
+  ) {
+    return "border-amber-300 bg-amber-50 text-amber-900 dark:border-amber-400/40 dark:bg-amber-400/10 dark:text-amber-200";
+  }
+  return "border-blue-300 bg-blue-50 text-blue-900 dark:border-blue-400/40 dark:bg-blue-400/10 dark:text-blue-200";
+};
 
 // Fetch all docs
 const docs = await getCollection("docs");
 
 // Filter docs that have the requested voucherCategory in their frontmatter
-const vouchers = docs.filter(
-  (doc) => doc.data.voucherCategory === category
-);
+const vouchers = docs.filter((doc) => doc.data.voucherCategory === category);
 
 // Sort vouchers alphabetically by title for a cleaner list
 vouchers.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
-{
-  vouchers.length > 0 ? (
-    <CardGrid>
-      {vouchers.map((voucher) => {
-        const href = `/certs/${voucher.id}/`;
-        const starts = voucher.data.voucherStarts;
-        const description = isUpcomingVoucher(starts)
-          ? `Upcoming, starts ${starts!.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" })}. ${voucher.data.description || ""}`
-          : voucher.data.description || "";
+{vouchers.length > 0 ? (
+  <CardGrid class="items-start">
+    {vouchers.map((voucher) => {
+      const href = `/certs/${voucher.id}/`;
+      const { title, description, voucherStarts, voucherEnds } = voucher.data;
+      const details = cardDetails[voucher.id];
+      const summary = details?.summary ?? description;
+      const upcoming = voucherStarts && isUpcomingVoucher(voucherStarts);
+      const dateChip = upcoming
+        ? `Starts ${formatDate.format(voucherStarts)}`
+        : voucherEnds
+          ? `Deadline: ${formatDate.format(voucherEnds)}`
+          : null;
+      const chips = [
+        ...(details?.chips ?? []).slice(0, dateChip ? 2 : 3),
+        ...(dateChip ? [dateChip] : []),
+      ];
 
-        return (
-          <LinkCard
-            title={voucher.data.title}
-            description={description}
-            href={href}
+      return (
+        <a
+          href={href}
+          class="voucher-card docs-card border-border bg-card hover:border-border-strong group not-prose hover:shadow-default focus-visible:outline-primary flex items-start gap-3 rounded-xl border p-4 text-inherit no-underline shadow-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 sm:gap-4 sm:p-5"
+        >
+          <span
+            class="border-border bg-muted text-card-foreground grid size-9 shrink-0 place-items-center rounded-lg border"
+            aria-hidden="true"
+          >
+            <Icon name="ph:ticket" class="size-4.5" />
+          </span>
+          <span class="min-w-0 flex-1">
+            <span class="flex flex-wrap items-center gap-1.5">
+              <span class="text-card-foreground group-hover:text-primary text-base leading-snug font-semibold transition-colors">
+                {title}
+              </span>
+              {upcoming && (
+                <span class="rounded-full border border-amber-300 bg-amber-100 px-1.5 py-0.5 text-[0.62rem] leading-none font-bold tracking-wide text-amber-900 uppercase dark:border-amber-400/50 dark:bg-amber-400/15 dark:text-amber-200">
+                  Upcoming
+                </span>
+              )}
+            </span>
+            {summary && (
+              <span class="text-muted-foreground mt-1 block text-sm leading-normal">
+                {summary}
+              </span>
+            )}
+            {chips.length > 0 && (
+              <span class="mt-2 flex flex-wrap gap-1.5">
+                {chips.map((chip) => (
+                  <span
+                    class:list={[
+                      "rounded-md border px-1.5 py-0.5 text-[0.68rem] leading-tight font-semibold",
+                      chipTone(chip),
+                    ]}
+                  >
+                    {chip}
+                  </span>
+                ))}
+              </span>
+            )}
+          </span>
+          <Icon
+            name="ph:caret-right"
+            class="text-muted-foreground group-hover:text-primary size-4 shrink-0 self-center"
+            aria-hidden="true"
           />
-        );
-      })}
-    </CardGrid>
-  ) : (
-    <p>No vouchers currently available in this category.</p>
-  )
-}
+        </a>
+      );
+    })}
+  </CardGrid>
+) : (
+  <p>No vouchers currently available in this category.</p>
+)}
+
+<style>
+  .voucher-card,
+  .voucher-card :global(*) {
+    text-decoration: none !important;
+  }
+</style>
